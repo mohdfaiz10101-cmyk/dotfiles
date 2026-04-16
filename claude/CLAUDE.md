@@ -527,6 +527,7 @@ Opus 失败 → 报告用户，不再自动升级
 | 系统改进追踪（issue/proposal） | `/etc/nixos/IMPROVEMENTS.md` | Docker 代理端口问题 |
 | 操作手册（Hub/Discord/API/systemd） | `memory/command-reference.md` | 新增操作手册 |
 | 本 CLI 行为规则 | `~/CLAUDE.md` | 新增验证规则 |
+| App/软件开发经验（架构、踩坑、选型） | `memory/app-dev-journal.md` | 技术栈选型、UI 方案、部署流程 |
 
 ### 强制执行规则（MUST）
 - **MUST: 每完成一个实际操作（修改配置、安装软件、修复 bug、架构变更），立即按路由表写入对应 md 文件**
@@ -559,12 +560,65 @@ Opus 失败 → 报告用户，不再自动升级
 - **判断标准**：计划文件中包含"新建文件""修改文件""配置""部署"等实施关键词
 - **例外**：架构重构、复杂调试、多模块耦合分析 → 继续 Opus
 
+## App/软件开发经验记录（APP_DEV_JOURNAL — 死规则）
+
+**核心原则**：每次开发 App 或软件项目时，MUST 将关键开发经验写入 `memory/app-dev-journal.md`。
+
+### 触发条件
+- 新建 App/软件项目（从零搭建）
+- 技术栈选型决策
+- 踩坑修复（构建/部署/兼容性）
+- 架构 pattern 发现（可复用）
+- UI/UX 方案验证结论
+
+### 记录格式
+```
+## [项目名] — [一句话定位]
+- **日期**：YYYY-MM-DD
+- **技术栈**：框架 / 语言 / 工具链
+- **架构决策**：为什么选这个方案（vs 备选）
+- **踩坑记录**：问题 → 原因 → 解决
+- **可复用 pattern**：下次类似项目可直接搬的代码/配置
+- **部署方式**：本地/云/容器
+```
+
+### 与其他记忆的关系
+- 系统级踩坑（NixOS/Docker）→ 仍写 `lessons-learned.md`
+- 项目架构图/代码路径 → 仍写 `codebase-map.md`
+- `app-dev-journal.md` 专注**产品级经验**：选型理由、UI 方案、发布流程
+
 ## 自动学习（复利工程）
 - IMPORTANT: 每次犯错或发现新 pattern 时，MUST 自动追加到对应文件（按上表路由）
 - lessons-learned 格式：`- [日期] [操作者] 场景：教训内容`
 - 同时评估是否需要更新本 CLAUDE.md 的规则
 - 定期清理过时或错误的规则
 - **冲突同步**：更新 memory/ 文件时，检查 /etc/nixos/CONTEXT.md 和 IMPROVEMENTS.md 是否需要同步
+
+## 待办强制执行（TODO_FORCE_EXEC — 死规则）
+
+**核心原则**：待办列表中的任务 MUST 连续执行到底，不中途停下来问用户、不等确认、不暂停。
+
+### 触发条件
+- TODO 列表中有 `pending` 状态的任务
+- 当前没有 `in_progress` 的任务
+- 用户没有发送新消息中断
+
+### 执行规则（死规则 — 禁止违反）
+1. **连续执行**：标记 `in_progress` → 执行 → 标记 `completed` → 立即开始下一个 `pending` → 循环直到全部 `completed`
+2. **禁止停顿**：不在任务之间停下来汇报"已完成 X 个，还剩 Y 个"或询问"继续吗"
+3. **禁止等确认**：待办里的任务默认用户已批准，不需要再次确认
+4. **用户中断优先**：如果用户发了新消息，响应用户消息优先，处理完后继续待办
+5. **进度可见**：通过 TODO 状态更新让用户看到进度，不通过文字汇报
+
+### 例外（允许停下来）
+- 任务之间有阻塞依赖（A 的输出是 B 的输入，A 失败了）
+- 需要用户提供信息（如密码、URL、选择项）
+- 安全敏感操作（删除数据、修改 NixOS 配置）
+
+### 失败处理
+- 单个任务失败 → 标记 `cancelled`，继续下一个，不在中间停下来汇报
+- 连续 3 个任务失败 → 停下来报告问题
+- 全部完成后 → 输出最终汇总
 
 ## 意图→规则强制转化（INTENT_TO_RULE — 死规则）
 
@@ -591,6 +645,7 @@ Opus 失败 → 报告用户，不再自动升级
 | COMPACT_CONTINUE | 2026-04-16 | 用户要求 compact 后自动继续执行 |
 | INTENT_TO_RULE | 2026-04-16 | 用户要求重复要求强制记录为规则 |
 | 单次识别扩展 | 2026-04-16 | 用户质疑"只说一次怎么识别"，修正为第一次就识别 |
+| APP_DEV_JOURNAL | 2026-04-17 | 用户要求"每次做app或软件时记录开发经验" |
 
 ### 禁止行为
 - ❌ 只回复「好的」「我记住了」「下次会注意」但**不修改文件**
@@ -749,3 +804,32 @@ effort: low|medium|high
 
 ### 检测方法
 执行 `npm install` 前运行：`df -T . | grep -i ntfs` → 命中则拒绝执行
+
+## Windows 远程接管协议（WINDOWS_REMOTE_OWNERSHIP — 死规则）
+
+**核心原则**：Windows 是我管理的第二台机器，通过 SSH 远程操作，与 NixOS 同等对待。
+
+### 连接信息
+- **SSH**：`ssh G@192.168.2.36`（用户名 `G`，密码 `1`）
+- **Tailscale**：Windows 有 Tailscale，局域网和 VPN 都可达
+- **Windows 账户**：用户名 `G` / 密码 `1`
+
+### 执行规则（死规则）
+1. **MUST 主动通过 SSH 操作 Windows**，不要求用户手动在 Windows 上执行
+2. Windows 命令必须通过 `cmd /c "..."` 包裹（PowerShell 转义容易出错）
+3. 长命令用 base64 编码传输：`echo BASE64 | ssh G@192.168.2.36 'cmd /c "echo BASE64 | python -c \"import base64,os;os.system(base64.b64decode(input()))\""'`
+4. 文件传输用 `scp` 或 `ssh ... 'cmd /c "..." > C:\Users\G\output.txt'` 然后 `scp` 拉回
+5. 大软件安装用 `winget install`（需长 timeout >60s）
+6. Windows 代理设置：用 NixOS mihomo `192.168.2.100:7890`（allow-lan:true 已开）
+
+### Windows 已安装工具
+- Python 3.12 + pip 25.0.1（`C:\Users\G\AppData\Local\Programs\Python\Python312\`）
+- OpenCode v1.4.6（`C:\Users\G\.opencode\bin\opencode.exe`）
+- OpenSSH Server（已配置自动启动）
+
+### 与 NixOS 的差异注意
+- 路径用 `\` 不用 `/`（但 SSH cmd /c 内两者混用通常 OK）
+- 无 systemd，用 `schtasks` 管理定时任务
+- 防火墙用 `netsh advfirewall` 或 GUI
+- 环境变量用 `setx` 持久化（`set` 仅当次会话）
+- NTFS 权限模型不同，不依赖 Unix 权限

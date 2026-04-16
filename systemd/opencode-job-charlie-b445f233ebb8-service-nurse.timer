@@ -1,0 +1,12 @@
+[Unit]
+Description=Timer for OpenCode Job: service-nurse
+
+[Timer]
+OnCalendar=*-*-* *:05:00
+OnCalendar=*-*-* *:20:00
+OnCalendar=*-*-* *:35:00
+OnCalendar=*-*-* *:50:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -131,6 +131,29 @@
 ### 待诊断
 - **IO Wait 高**（35%）— loop0(/mnt/ai) 为瓶颈，Letta 容器 160MB IO 最高，考虑限制 Letta 写入频率
 
+## 2026-04-16 认知孪生 + Agent 体系 + 微信合并
+
+### 已完成
+- [x] **6 个 Agent Timer 创建** — security-watchdog/proxy-guardian/service-nurse/discord-butler/pet-feeder/cost-accountant 全部 active
+- [x] **Timer 格式修复** — OnCalendar 格式 + perl 路径 + PATH 修正（NixOS 适配）
+- [x] **Happy CLI 安装** — v1.1.6, npm i -g happy（不兼容 OpenCode）
+- [x] **手机远程方案确认** — SSH+tmux+Tailscale 为最佳方案
+- [x] **微信旧系统恢复** — 找到 windows-wechat-sync 脚本和 6 个微信 skill
+- [x] **wechat-finance 架构映射** — 1003 行工具完整分析
+- [x] **Agent 知识库架构审查** — skills(87) + memory(16) + Letta(3) + shared-knowledge 映射
+
+### 卡点（需用户操作）
+- [ ] **微信 Windows 端密钥提取** — 用户需在 Windows 上运行 pywxdump 或旧脚本 wechat-auto-decrypt.ps1
+  - Windows DB: /mnt/data/WeChat Files/w422417869/Msg/（79 个加密文件）
+  - 旧脚本: ~/launcher.bak.1776340007/windows-wechat-sync/
+  - 提取密钥后可用 wechat-finance 工具解密
+
+### 待执行
+- [ ] **微信管理平台开发** — CLI + Web UI + PostgreSQL + 连接 OpenCode
+- [ ] **pycryptodome + zstandard 安装** — wechat-finance 缺失依赖
+- [ ] **Agent 知识库可视化方案设计**
+- [ ] **memory 文件清理** — lessons-learned.md 196KB/1496行，pending-tasks.md 177行大量已完成
+
 ## 2026-04-15 智谱额度消耗 + Letta 修复（进行中）
 
 ### 已完成

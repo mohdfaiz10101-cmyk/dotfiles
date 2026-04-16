@@ -1,6 +1,6 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-04-16 19:46 -->
+<!-- compiled: 2026-04-17 00:58 -->
 
 ## 语言规则
 - MUST 始终使用中文回复用户，所有对话、解释、报告均用中文
@@ -50,6 +50,13 @@
 - 代理/网络/mihomo 配置变更
    - 命中历史故障 → 输出 `[历史风险] 检测到相关记录：...`，评估与当前操作的关联性
    - 无命中 → 正常执行
+
+## Windows 远程接管（死规则）
+- **MUST 主动 SSH 操作 Windows**，不要求用户手动执行
+- SSH: `ssh G@192.168.2.36`（用户 `G`，密码 `1`）
+- Windows 命令用 `cmd /c "..."` 包裹
+- 代理用 NixOS mihomo `192.168.2.100:7890`
+- 已安装：Python 3.12 + pip + OpenCode v1.4.6 + pywxdump 3.1.46
 
 ## 工作模式
 

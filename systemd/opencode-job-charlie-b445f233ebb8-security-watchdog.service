@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenCode Job: security-watchdog
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie
+Environment="PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+ExecStart="/usr/bin/perl" "/home/charlie/.config/opencode/scheduler/supervisor.pl" "/home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/security-watchdog.json"
+StandardOutput=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/security-watchdog.log
+StandardError=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/security-watchdog.log
+
+[Install]
+WantedBy=default.target

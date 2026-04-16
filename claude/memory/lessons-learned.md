@@ -69,42 +69,34 @@
 - [2026-04-09] [Sonnet] **FlClashCore 端口冲突** — FlClash GUI 应用自动启动后 FlClashCore 占用 7890 端口，导致 mihomo/xray 无法绑定。两者不能同时运行。FlClash 配置已备份到 `~/.config/flclash/proxy-config-backup.yaml`，profile 已导入 `~/.local/share/com.follow.clash/profiles/`
 - [2026-04-09] [Sonnet] **sops-nix /run/secrets/ 空** — nixos-rebuild switch 输出显示 sops-install-secrets 运行，但 /run/secrets/ 未创建。手动解密写入解决。根因可能是 age key 导入失败或 generation 不匹配。临时方案：每次 rebuild 后检查 /run/secrets/ 是否有内容，为空则手动创建
 
-- [2026-04-08] [Sonnet] **nix-shell shebang 零配置依赖管理** — NixOS Python 脚本通过 shebang 声明依赖，无需手动 pip install
 
-- [2026-04-08] [Sonnet] **nix-shell shebang 零配置依赖管理** — NixOS Python 脚本通过 shebang 声明依赖，无需手动 pip install
   - 格式：`#!/usr/bin/env nix-shell` + `#! nix-shell -i python3 -p python3 python3Packages.playwright chromium`
   - 优势：用户双击执行即可，nix-shell 自动下载/缓存所有依赖，环境隔离无污染
   - 应用：`export-claude-conversations.py`（380 行）和 `download-claude-export-from-email.py` 均使用此模式
   - 注意：第一次运行会下载依赖（如 Chromium 180MB），后续立即启动（已缓存）
   - 教训：**NixOS 脚本优先用 nix-shell shebang，避免 pip install 的不可复现问题**
-- [2026-04-08] [Sonnet] **Letta archival memory embedding 性能故障** — archival memory 写入超时（120秒+），根因 **NixOS 防火墙拦截 Docker 桥 → host:11434**
   - 症状：Letta 日志 `SLOW embedding API gather took 16s+`，反复重试最终超时
   - 根因：NixOS 防火墙 `nixos-fw` 链末尾 `log-refuse` 拒绝所有未显式允许的入站连接，11434 端口不在白名单中，Docker 容器通过 bridge (172.x.0.1) 无法访问 host Ollama
   - 修复：`iptables -I nixos-fw -s 172.x.0.0/16 -p tcp --dport 11434 -j ACCEPT`（每个 Docker 网段一条）
   - 持久化：`/home/charlie/launcher/docker-iptables-allow.sh` + systemd user service `docker-iptables-allow.service` + sudoers 免密规则
   - 教训：**NixOS 防火墙默认拒绝 Docker bridge → host 的所有非白名单端口，新端口需显式放通**
-- [2026-04-08] [Sonnet] **Telegram bot 部署** — NixOS 环境无 pip，需通过 nix-shell 提供 python-telegram-bot 依赖
   - 方案：创建 nix-shell 配置文件 + 启动脚本（`start-telegram-bot.sh`）封装依赖加载
   - token 存储：推荐使用 systemd EnvironmentFile（`~/.config/telegram-bot.env`），chmod 600 保护
   - 禁止：不要在代码中硬编码 token，不要明文存储在 .nix 配置中
   - 验证：`curl http://localhost:9801/api/skills` 确认 openclaw API 可用
-- [2026-04-08] [Sonnet] **KDE 开机启动程序最小化** — 配置所有 autostart GUI 程序启动时最小化，避免弹窗干扰
   - 方案：KDE Window Rules（`~/.config/kwinrulesrc`），通过 `minimizerule=2` + `minimize=true` 设置
   - 配置的程序：FlClash, KeePassXC, WeChat, Konsole, Remmina, Ulauncher, Krfb（共 7 个）
   - 生效方式：`qdbus org.kde.KWin /KWin reconfigure` 重新加载 KWin
   - 优势：非侵入式，不修改 .desktop 文件，统一管理所有窗口规则
   - 验证：`kreadconfig6 --file kwinrulesrc --group General --key count` 查看规则数量
-- [2026-04-08] [Sonnet] **P1 重构 rebuild 踩坑** — configuration.nix 拆分为 7 模块 + services/ 子目录 + sops-nix + 微信 overlay
   - sops-install-secrets 构建 Go modules 需要网络，Nix sandbox 隔离了 127.0.0.1:7890 代理
   - 修复：`sudo env GOPROXY=https://goproxy.cn,direct nixos-rebuild switch --option sandbox false`
   - secrets.yaml 中 `proxy-server-port: 443`（数字）导致 sops-install-secrets 报 "value is not a string"
   - 修复：`sops --set '["proxy-server-port"] "443"'` 将数字改为引号字符串
   - 教训：**sops-nix 要求所有 YAML 值必须是字符串类型，端口等数字必须加引号**
-- [2026-04-08] [Sonnet] **Cookie 同步系统** — Floorp cookies.sqlite 被 Floorp 进程锁定，无法直接读取
   - 必须先 shutil.copy2 到临时目录（包括 -wal 和 -shm 文件）再读取
   - Chrome cookies 表有 NOT NULL 字段：top_frame_site_key, samesite, source_scheme, source_port 等，INSERT OR REPLACE 必须全部指定
   - Chrome 使用 Windows epoch (1601) 的微秒时间戳，需要 `(unix_ts + 11644473600) * 1_000_000` 转换
-- [2026-04-08] [Sonnet] **secrets.nix → sops-nix 迁移完成** — 明文 secrets.nix 已升级为 sops-nix + age 加密方案
   - age key: `~/.config/sops/age/keys.txt`（丢失 = 无法恢复，必须备份）
   - 加密文件: `/etc/nixos/secrets/secrets.yaml`（sops AES256_GCM 加密，可 git 追踪）
   - 配置: `.sops.yaml` 定义 creation_rules，sops 声明集中在 `modules/users.nix` + `modules/proxy.nix`
@@ -113,17 +105,13 @@
   - **minipc WiFi PSK**: NM ensureProfiles 不支持运行时文件引用 → 用 systemd service 从 sops 文件读取并 sed 替换 connection 文件
   - 旧的 `let secretsFile = ../secrets.nix` 模式全部清除
 
-- [2026-04-08] [Sonnet] **backup-cleanup.timer OnCalendar 格式错误** — systemd 无法解析 `1 *-* 03:00:00`，timer 进入 bad-setting 状态。正确格式为 `*-*-01 03:00:00`（每月1号凌晨3点）。systemd calendar spec 格式为 `YYYY-MM-DD HH:MM:SS`，日号不能省略月份的 `*`。
-- [2026-04-08] [Sonnet] **system-health-monitor 持续失败** — ECC 技能路径错误 + Playwright MCP 检测过重
   - **根因**：`system-call-check` 中 `find ~/.claude/.agents/skills` 路径不存在（实际是 `~/.claude/skills`），导致 skill_count=0 标记为失败；`npx playwright --version` 每次执行 5 秒+305M 内存峰值
   - **修复**：修正路径；ECC 技能扫描改为非致命警告；Playwright 改为 npm 缓存检测；service 加 `MemoryMax=512M`
   - **效果**：exit 0 成功，内存峰值从 305M 降到 46M
-- [2026-04-08] [Sonnet] **NixOS 脚本 shebang 错误** — `/bin/bash` 不存在
   - **根因**：NixOS 不遵循 FHS 标准，`/bin/bash` 不存在，只有 `/bin/sh`
   - **症状**：`zsh: bad interpreter: /bin/bash: no such file or directory`
   - **修复**：使用 `#!/usr/bin/env bash` 代替 `#!/bin/bash`
   - **通用规则**：NixOS 上所有脚本 shebang 必须用 `/usr/bin/env <interpreter>`
-- [2026-04-08] [Sonnet] **AGI Brain 对话助手完整部署** — Telegram + Discord 双平台，带工具调用、主动推送、MEMORY.md 集成
   - **架构**：conversation.py（对话管理）+ proactive.py（主动问题生成）+ tool_router.py（12 个工具自动调用）+ telegram_bot_enhanced.py + discord_bot_enhanced.py
   - **httpx proxy 参数变更**：从 `proxies={"https://": PROXY}` 改为 `proxy=PROXY`（httpx 新版本 API）
   - **Telegram 409 Conflict 修复**：(1) `systemctl --user stop agi-telegram-bot` (2) `pkill -f telegram_bot` 杀掉所有残留进程 (3) 重启服务 → 409 冲突消除
@@ -135,9 +123,6 @@
   - **待修复**：(1) 重启 Ollama 或卸载当前加载的模型 (2) 修改 call_llm 函数使用 subprocess 调用 `glm` 命令（免费，无超时）(3) 验证对话功能完整流程
   - **Skill 封装注意**：创建脚本类 skill 时，MUST 使用 portable shebang
 
-- [2026-04-08] [Sonnet] 磁盘清理问题诊断：Root 分区 90% 满，排查发现 (1) /var/lib/docker 占用 20GB（docker system prune -a --volumes 回收 2.7GB） (2) nix.gc.options 缺少 `-d` 参数导致旧 system generations 未清理（修改为 `-d --delete-older-than 7d`，回收 1GB） (3) df 显示 75G，du 显示 47G 的差异来自 /var/lib/docker（需 sudo 才能完整统计）。最终释放 9GB，可用空间从 8.8GB 升至 18GB。经验：du vs df 差异先检查 /var/lib/docker；nix.gc 自动清理需加 `-d` 删除旧 generations
-- [2026-04-08] [Sonnet] Docker 真迁移成功（/var/lib/docker → /mnt/ai/docker）：根分区从 69G 降至 61G（-8GB），/mnt/ai 从 38G 升至 47G（+9GB）。防假迁移措施：(1) rsync -aP --delete 物理移动 8.4GB 数据 (2) mv 备份旧目录而非直接删除 (3) 修改 /etc/nixos/modules/virtualization.nix data-root (4) nixos-rebuild switch 自动重启 Docker 并挂载 7 个容器 overlayfs (5) 空间数值验证（根分区必须减少，目标分区必须增加）。验证：docker info 路径正确，所有容器和镜像完整保留，服务正常运行。教训：迁移后必须验证 df 空间变化，否则可能是假迁移（只改配置未移数据）
-- [2026-04-08] [Sonnet] **Claude CLI 不支持非 Anthropic 模型** — 即使通过 BASE_URL 代理
   - **场景**：创建 `ds` 命令，试图用 Claude CLI 连接 LiteLLM 的 DeepSeek 模型
   - **症状**：`There's an issue with the selected model (silicon/deepseek-v3.2). It may not exist or you may not have access to it.`
   - **根因**：Claude CLI 会验证 `--model` 参数必须是 Anthropic 官方模型名（如 claude-3-5-sonnet），即使设置了 `ANTHROPIC_BASE_URL` 也无法绕过
@@ -148,50 +133,41 @@
   - **受影响文件**：`~/.local/bin/deepseek-code` 已修复
   - **Skill 封装注意**：创建脚本类 skill 时，MUST 使用 portable shebang
 
-- [2026-04-08] [Sonnet] **Discord Bot 集成 openclaw API 技能路由** — 升级 discord-bot.py，集成 skills_utils 实现技能查询
   - **场景**：智能路由优先匹配 openclaw 技能库，未命中才降级到 Agent
   - **新增命令**：`/skills <keyword>` 搜索技能，`/skill <name>` 查看完整技能内容
   - **依赖修复**：venv 缺少 requests 库，`pip install requests` 解决
   - **验证**：systemd 重启成功，API 调用正常（延迟 3-4ms），技能搜索返回结果
   - **文件**：`~/hub/discord-bot.py` — 智能路由 + skills_utils 集成
-- [2026-04-08] [Sonnet] **Discord Bot Gemini 配额耗尽自动降级** — Gemini API 429 错误处理
   - **根因**：Google Gemini 免费配额耗尽（每天 1500 次请求），Bot 路由到 Gemini 后无响应
   - **修复**：修改 `run_agent_command()` 返回 `(success, output, error_type)` 元组，检测 429/RESOURCE_EXHAUSTED 错误，cc 频道自动 fallback 到 OpenCode（本地 GLM 免费）
   - **功能确认**：Discord 频道已有感应（on_message 事件）、心跳（agi_alert_loop / daily_report_loop）、记忆（letta_search + /search 命令），角色权限未实现
   - **文件**：`~/hub/discord-bot.py` — 智能路由 + 自动降级逻辑
 
-- [2026-04-07] [Opus] **claude-mpm Dashboard 端口冲突** — 前端 Socket.IO 硬编码 `localhost:8765`
   - **根因**：编译后的 SvelteKit JS 文件 `Cy-F-EfI.js` 中 `d()` 和 `_()` 函数默认参数写死 8765，与 Tech Digest 冲突
   - **修复**：(1) `sed -i 's|localhost:8765|localhost:8791|g'` 替换 JS 文件 (2) `monitor start --port 8791 --dashboard` 统一端口 (3) 备份原文件 `.bak`
   - **注意**：`uv tool install` 升级 claude-mpm 会覆盖此修改，升级后需重新 patch
   - **关键文件**：`~/.local/share/uv/tools/claude-mpm/.../dashboard/static/svelte-build/_app/immutable/chunks/Cy-F-EfI.js`
 
-- [2026-04-07] [Opus] **claude-mpm agent 缓存目录非 git 仓库** — `agents deploy` 无法同步
   - **根因**：`cache-pull`/`cache-sync` 需要 git 仓库，但安装后 cache 目录是空目录
   - **修复**：手动 `git init` + `git remote add` + `git fetch --depth=1` + `git checkout origin/main -- agents/`
   - **路径**：`~/.claude-mpm/cache/agents/bobmatnyc/claude-mpm-agents/main/`
 
-- [2026-04-07] [Opus] **litellm docs URL 反复打开 Floorp** — 多会话 xdg-open 恶性循环
   - **根因**：过去 Claude Code 会话调用 `xdg-open https://docs.litellm.ai/docs/providers`，Floorp 作为默认浏览器打开标签，session restore 保留
   - **修复**：(1) xdg-open guard 拦截被禁止 URL (2) CLAUDE.md 强化规则覆盖所有途径 (3) floorp-session-cleaner.py 重启前清理
   - **二次修复**：session cleaner 有两个 bug：(a) mozLz4 解压缺少 4 字节 uncompressed_size header 导致静默失败 (b) 只清理 `windows.tabs`，遗漏 `_closedWindows.tabs`/`windows._closedTabs`/`_closedWindows._closedTabs`（共 288 个残留标签）
   - **教训**：AI 排查问题时不要用 `xdg-open` 打开 URL 来"验证"，会创建新标签
   - **教训**：Mozilla jsonlz4 格式 = 8 字节 magic `mozLz40\0` + **4 字节 little-endian uncompressed_size** + lz4 compressed data。解压必须传 uncompressed_size
 
-- [2026-04-07] [Sonnet] **完成功能后未执行自动学习/记忆路由** — CLAUDE.md 规则未生效
   - **场景**：合并 3 个订阅源为 Clash Meta 配置，完成后未写入 memory/ 也未封装 skill
   - **根因**：手动执行流程时忽略了两条 MUST 规则：(1) 自动学习（复利工程）(2) 记忆路由表
   - **教训**：任何实际操作（脚本编写、工具创建）完成后，MUST 立即检查是否需要写入 memory/ 和封装为 skill
   - **已修复**：创建 `~/.claude/skills/merge-sub/` skill，写入 ideas-roadmap.md
-- [2026-04-07] [Sonnet] **订阅源 UA 检测** — 部分订阅源必须携带 Clash UA 才返回完整节点
   - **场景**：TrojanFlare 源不带 UA 返回 `blocked`，带 `ClashForAndroid/2.5.12` 返回 44 节点
   - **解决方案**：脚本中对每个 URL 先尝试裸 curl，再尝试带 Clash UA
-- [2026-04-07] [Sonnet] **文件托管服务可用性** — 本地网络环境下
   - **可用**：tmpfiles.org（Cloudflare CDN，返回直链 `tmpfiles.org/dl/<id>/<file>`）
   - **被 SSL 拦截**：0x0.st、catbox.moe、oshi.at（证书不匹配或 SSL 握手失败）
   - **注意**：tmpfiles.org 直链 TTL 约 1 小时，长期分享需其他方案
 
-- [2026-04-06] [Opus/Sonnet] **ExitPlanMode 后未自动降级模型** — Plan 阶段用 Opus 合理，但执行阶段应降级
   - **场景**：规划任务进入 Plan Mode（Opus）→ 批准后 ExitPlanMode → 继续写代码/文件（仍是 Opus）
   - **根因**：Hook 只在 UserPromptSubmit 触发，不在 ExitPlanMode 后重新评估任务复杂度
   - **浪费**：执行阶段（写 skill 文件、配置）用 Opus ($15/M) vs 应该 Sonnet ($3/M) = 5 倍成本差
@@ -200,7 +176,6 @@
     2. 实施类任务建议用户切换 Sonnet：`提示：后续实施建议 /model sonnet`
     3. 或在 CLAUDE.md 添加规则：批准计划后自主切换到 Sonnet
   - **长期方案**：在 ExitPlanMode tool 中返回 `suggested_model: "sonnet"` metadata
-- [2026-04-06] [Opus] **Explore Agent 冗余探索浪费 ~190K tokens** — 违反 EXPLORE_MEMORY_LOOP 协议
   - **场景**：架构规划时启动 3 个 Explore agent 全量扫描 Hub/AGI/Router/LiteLLM/Ollama/Letta/Memory
   - **根因**：未执行 Pre-Explore Gate — 应先 `grep memory/` 和 `letta_search` 检索已有信息，大量信息已在 ideas-roadmap.md 和 MEMORY.md 中
   - **浪费量**：3 agent × ~60K tokens = ~190K tokens，至少 60% 冗余
@@ -210,25 +185,21 @@
     3. 仅对确实未知的部分启动 Explore agent
     4. Explore prompt 限定具体搜索范围（如"只读 think.py 的 _build_prompt 函数"），不说"read all key files"
   - **成本影响**：~190K tokens ≈ $0.57 (Haiku) 或 $2.85 (Opus)，一次规划就浪费了
-- [2026-04-06] [GLM] **Playwright MCP 不支持 Floorp 浏览器** — 当前配置使用 `google-chrome-stable`
   - **原因**：Playwright MCP 配置 `--browser chrome --executable-path google-chrome-stable`，Floorp 基于 Firefox 引擎，Playwright 的 Firefox 支持使用自定制版本，无法直接替换为 Floorp 二进制
   - **配置位置**：`~/.claude.json` → `mcpServers.playwright` 和 `projects./home/charlie.mcpServers.playwright`
   - **解决方案**：需要 Floorp 操作时，用 `floorp <url>` 命令启动浏览器手动操作；Playwright 自动化继续使用 Chrome
   - **Google 登录限制**：Google 两步验证（推送通知到手机）无法通过 Playwright 自动化完成，必须手动确认
-- [2026-04-06] [GLM] **mergerfs (FUSE) 不支持 SQLite 文件锁** — 已永久修复
   - **症状**：`nix flake check` 报错 `executing SQLite statement 'pragma synchronous = off': unable to open database file`
   - **根因**：`XDG_CACHE_HOME=/mnt/pool/offload/cache-charlie` 挂载在 mergerfs（FUSE）上，Nix 的 `fetcher-cache-v4.sqlite` 无法获取文件锁
   - **修复**：activationScript 在 `/mnt/pool/offload/cache-charlie/nix` 创建 symlink → `/home/charlie/.cache/nix`（本地 ext4）。同时手动在 POOL-A1 上创建同名 symlink 确保 mergerfs 优先使用
   - **注意**：POOL-B1 上有 NTFS inode 损坏的旧文件无法删除，mergerfs 会合并两个磁盘的视图。在 POOL-A1 上创建 symlink 后 mergerfs 优先使用（first-found policy），绕过了 POOL-B1 的损坏目录
 
-- [2026-04-06] **Floorp Profile 数据丢失 —— 新建空 profile 覆盖旧数据**
   - **症状**：书签栏、cookies、登录状态全部消失
   - **根因**：Floorp 从 `/mnt/pool/home-offload/auto-migrate/` 迁移到 `~/.floorp/` 时，NixOS 重建（system-67）创建了新空 profile `rw7f0w9p.default`，旧数据留在 `tj4l1osg.default`
   - **修复**：从旧 profile 复制 `places.sqlite`（书签）、`cookies.sqlite`（cookies）到当前活跃 profile
   - **教训**：旧数据保存在 auto-migrate 目录中，定期备份脚本已设置（`~/launcher/floorp-profile-backup.sh`，每日 00:30）
   - **附加问题**：litellm docs URL 被 KDE 会话恢复作为命令行参数传递给 Floorp，导致每次重启多开标签页；启动时不带 URL 参数可避免
 
-- [2026-04-06] **NTFS3 分区文件系统损坏 —— 系统性问题**
   - **症状**：文件显示 `Invalid argument` 错误，无法读写
   - **根本原因**：NTFS3 驱动在 Linux 6.18.12 上存在兼容性问题，长时间运行后元数据损坏
   - **影响范围**：所有存储在 NTFS3 分区的应用数据
@@ -242,7 +213,6 @@
     - Floorp: (1) Ctrl+Shift+Delete 清缓存 (2) 无痕窗口 (3) 用 Chrome 临时替代
   - **长期方案**：所有应用数据迁移到 ext4/btrfs/xfs 分区，NTFS3 仅用于只读存储
   - **迁移脚本**：`/tmp/migrate-floorp-to-ext4.sh`
-- [2026-04-06] **Docker data-root 不能放在 NTFS3 分区**
   - 问题：Docker 无法启动，报错 `error while opening volume store metadata database: timeout`
   - 根本原因：NTFS3 文件系统不支持 Docker 所需的文件锁机制（flock）
   - 现象：metadata.db 访问超时，daemon 反复重启失败
@@ -250,7 +220,6 @@
   - 解决方案：改为本地 ext4/btrfs/xfs 分区（如 `/var/lib/docker`）
   - 临时 workaround：AGI Brain 可以在无 Docker 的情况下运行（使用规则引擎 fallback）
   - 验证：`df -hT /var/lib/docker` 确保文件系统类型为 ext4/btrfs/xfs
-- [2026-04-05] **Konsole 语音输入配置完成**
   - 使用 whisper.cpp (whisper-cli) + ggml-medium.bin (1.5G) 模型
   - 录音: parecord (PipeWire) 16kHz 单声道 10秒
   - 快捷命令: `v` (直接在 Konsole 运行) 或 Meta+V (全局快捷键)
@@ -258,24 +227,18 @@
   - 通知已改为 Telegram + 终端输出（适合 Konsole 使用）
   - 麦克风设备: `alsa_input.pci-0000_00_1f.3.analog-stereo`
   - 支持中英混合识别，结果自动复制到剪贴板（wl-copy）
-- [2026-04-05] **AI Watchdog & Patrol 通知迁移到 Telegram**
   - **ai-watchdog** (Python): 修改 `notify()` 函数调用 `tg-push`，格式 `emoji + **标题** + 内容`
   - **ai-patrol-daemon.sh** (Bash): 同样改为调用 `tg-push`，移除 `notify-send` 和 notification ID tracking
   - Telegram 配置: Bot Token `8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks`, Chat ID `5036541266`
   - 测试验证: `tg-push "测试消息"` 成功推送
   - 重启服务: `systemctl --user restart ai-watchdog.service ai-patrol.service`
-- [2026-04-03] NixOS VS Code --extensions-dir 写入目录必须使用 `--extensions-dir` 参数，CC GUI 安装到可写目录可能无法识别扩展
   - 修复：使用 `--extensions-dir /home/charlie/.vscode/extensions/` 启动
-- [2026-04-05] GitHub Search API 的 urllib 编码陷阱：`urllib.parse.quote` / `urlencode` 会对 `%3A` 等已编码字符二次编码，导致 422。解决方案：手动预编码 query 参数，用 `%3A%3E` 替代 `:>`，且关键词限制在 3 个以内避免查询过复杂
   - 修复：`q = f"pushed%3A%3E{since}+stars%3A%3E100+%28{query}%29"`
-- [2026-04-05] Tech Digest 中文化：使用本地 Ollama `qwen3:8b-nothink` 批量翻译摘要/标题，避免依赖外部 API
   - 方案：`translate_batch()` 将多条文本编号后一次性送入 Ollama，解析编号前缀的回复还原翻译结果
   - 翻译字段：GitHub（summary）、arXiv（title+summary）、HN（title）
   - viewer 中 section_labels 需同时映射中英文 key（兼容旧数据）
-- [2026-04-05] Hermetic Ledger 实施完成：CustomerHeartbeat 引擎（SQLite WAL 读 wechat_clean.db）、LiteLLM 情绪批量分析、三种 HTML 模板页面生成、Marketing Recommendations API、Paperclip SKILL.md
   - generate_static.py 新增 `--ledger` 参数，将 ledger_pages 导出至 dist/ledger/ 并生成索引页 + 更新 vercel.json rewrites
   - 重启 viewer 时端口占用：先 `fuser -k 8765/tcp` 再启动
-- [2026-04-05] Chronos-Zenith 三模块部署经验
   - Wayland 下 `GetSessionIdleTime` 不支持，只能用 `loginctl show-session 2 -p IdleHint`（布尔值）
   - `/proc/interrupts` 无键盘条目（USB HID 设备），活跃度检测改用 `/dev/input/by-path/*-event-kbd` 的 mtime 变化率
   - numpy 在 NixOS 上需 `nix profile install nixpkgs#python313Packages.numpy`，service 中需 `Environment=PYTHONPATH=/nix/store/.../site-packages`
@@ -284,96 +247,69 @@
   - KDE 亮度控制：`qdbus org.kde.ScreenBrightness /org/kde/ScreenBrightness/display0 Display.SetBrightness`
   - Night Color：`kwriteconfig6 --file kwinrc --group NightColor` + `qdbus org.kde.KWin /KWin reconfigure`
   - SIGTERM 安全：bio-feedback 服务收到信号时恢复原始亮度/对比度
-- [2026-04-05] Chronos RPG 视觉层实现
   - 复用 launcher-server.py（9875 端口）新增 `/chronos-data` API，聚合三模块状态
   - chronos.html：Catppuccin Mocha 暗色主题，AI 呼吸灯（CSS @keyframes 速度随负载变化）
   - 技能雷达（memory/ 文件行数 → XP）、代谢面板（负载/屏幕/活跃度条）、事件流（lessons-learned）
   - 模式指示器：DELTA(< 30%)/ALPHA(30-70%)/INTENSE(≥70%)，颜色对应蓝/紫/红
   - 2 秒自动刷新，零外部 JS 依赖
-- [2026-04-05] Paperclip UI 修改后必须重新 build 才能生效
   - Paperclip server 使用 `ui/dist/` 静态产物提供前端，修改 `ui/src/` 下代码不会自动热更新
   - 需要执行 `corepack pnpm --filter @paperclipai/ui build` 重新构建，然后 `systemctl --user restart paperclip`
   - Layout.tsx 中新增 Chronos 链接（Activity 图标 + localhost:9875/chronos.html），与 chronos.html 的 PAPERCLIP → 链接形成双向导航
-- [2026-04-05] SpectrAI Office 像素风 AI 办公室实现
   - Pixi.js v8 API 迁移：`beginFill/endFill` → `fill()`，`lineStyle` → `stroke({})`，`drawRect` → `rect`，`drawRoundedRect` → `roundRect`，`drawCircle` → `circle`，`drawEllipse` → `ellipse`，`new Text(text, style)` → `new Text({ text, style })`
   - WebSocket 不受 CORS 限制，前端直连 Paperclip 3100 端口而非通过代理
   - Bun build 打包：`bun build src/main.js --outdir dist --target browser` 将 703 模块打包为 1MB 单文件
   - API 代理模式：server.js 将 `/api/*` 代理到 Paperclip 3100，`/llm/*` 代理到 LiteLLM 4000
   - systemd user service 自启动：spectrai-office.service（3200 端口）
-- [2026-04-05] Memory 优化 + Obsidian 同步
   - `memory-sync.sh`：归档 lessons-learned.md 中超过 30 天的条目到 `archive/` 目录，去重，更新统计
   - `obsidian-git-sync.sh`：Obsidian Vault 目录 git add + commit + push
   - `/memory-search?q=keyword` API：launcher-server.py 新增全文搜索，返回文件名 + 行号 + 内容
   - systemd timer：memory-sync.timer（6h）、obsidian-git-sync.timer（10min）
-- [2026-04-05] Paperclip UI 侧边栏极简化 + Cmd+K 增强
   - SidebarContext 新增 `sidebarCollapsed` 状态，  - `[` 键三态切换：open(w-60) → collapsed(w-12) → open(w-60)
   - SidebarNavItem 支持 `collapsed` prop，显示 icon + Tooltip
   - SidebarProjects/SidebarAgents collapsed 模式：项目色块/Agent 图标
   - Cmd+K 增强：Agent invoke 直接触发任务（`agentsApi.invoke(id, companyId)`）
   - 底部栏 collapsed 模式：图标链接 + Tooltip
   - 每次修改 Paperclip UI 必须重新 build：`corepack pnpm --filter @paperclipai/ui build`
-- [2026-04-05] Paperclip Layout.tsx 桌面底部栏重写：collapsed 模式 + Chronos/Office 链接
   - 从 useSidebar() 解构 `sidebarCollapsed`，传递给 `<Sidebar collapsed={sidebarCollapsed} />`
   - 侧边栏宽度三态：`w-0`（关闭）/ `w-12`（collapsed）/ `w-60`（展开）
   - 底部栏每项链接（Chronos/Office/Docs/Settings/Theme）均有 collapsed/expanded 双态渲染
   - collapsed 态：icon-only + Tooltip(side="right")；expanded 态：icon + text
   - 新增 `Activity`（Chronos → localhost:9875/chronos.html）和 `Building2`（SpectrAI Office → localhost:3200）图标
   - 移动端底部栏（lines 297-340）未修改
-- [2026-04-05] Paperclip Agent glm_http adapter 401 认证错误修复
   - 原因：`glm_http` adapter 调用 LiteLLM 时需要传 `apiKey`（LiteLLM master key），但部分 Agent 配置中缺少 `apiKey` 字段
   - LiteLLM master key：`sk-litellm-charlie-2026`，配置在 `/mnt/ai/ai-cluster/litellm/docker-compose.yml`
   - Marketing Coordinator 和 Marketing Auditor 缺少 apiKey → 401
   - 修复：`PATCH /api/agents/:id` 更新 `adapterConfig.apiKey`
   - Marketing Auditor 还使用了废弃模型名 `glm-4-flash`，改为 `cloud/glm-4-flash`（映射到 glm-4.7-flash）
   - 智谱 GLM-4-Flash 已废弃，正确模型名为 `glm-4.7-flash`
-- [2026-04-05] Paperclip aider_worker adapter 作用域 bug：`buildAiderArgs()` 引用外层变量 `weakModel`/`editorModel` 但未作为参数传入
   - 错误：`weakModel is not defined`（ReferenceError）
   - 修复：`/mnt/ai/ai-cluster/paperclip/packages/adapters/aider-worker/src/server/execute.ts`
   - 将 `weakModel`/`editorModel` 加入 `opts` 参数对象，函数内通过 `opts.weakModel` 访问
   - 重启 Paperclip 后 GLM Coder、DeepSeek Coder heartbeat 恢复正常
   - claude_local agents（Opus Architect/Sonnet Coder/Sonnet Engineer）error 是 Claude 订阅额度用完，等 reset 自动恢复
-- [2026-04-05] Paperclip Layout 底部栏溢出导致侧边栏容器被撑宽，造成大间距
   - 根因：底部栏（Chronos / SpectrAI Office / Documentation 链接）文字宽度约 500px，超出侧边栏 240px（w-60）
   - 底部栏没有 overflow-hidden，flex-col 容器宽度被最宽子元素撑开
   - 修复：Layout.tsx:343-344 侧边栏外层 + 内层 flex 容器加 overflow-hidden
   - 每次修改 UI 必须：`corepack pnpm --filter @paperclipai/ui build` + `systemctl --user restart paperclip`
-- [2026-04-05] Paperclip Agent 自动执行问题诊断
   - 3 个 claude_local agent（Opus Architect / Sonnet Coder / Sonnet Engineer）配额耗尽，reset 5pm CST
   - GLM/DeepSeek agents 正常 idle，heartbeat 按配置间隔运行
   - 5 个 Routine 已配置：Marketing 调研(6h) / 1688 价格监控(4h) / 系统健康扫描(每天6am) / Opus 审核(paused) / 周度 SEO
   - timer tick 机制不跳过 error 状态，配额恢复后 agent 自动从 error → idle
-- [2026-04-05] tech-digest-viewer 服务被 TERM 杀死后未自恢复
   - `systemctl --user start tech-digest-viewer` 手动恢复
   - 服务配置为 enabled，但 inactive(dead) 后未自动重启（缺少 Restart=on-failure）
-- [2026-04-05] Letta MCP Server 单线程阻塞 bug：`HTTPServer` 单线程处理 `/sse` GET 长连接时阻塞所有 POST `/mcp` 请求
   - 修复：引入 `ThreadingMixIn` 改为 `ThreadingHTTPServer`，每个连接独立线程
   - 影响文件：`/home/charlie/.local/bin/letta-mcp`
   - 重启服务后 MCP/SSE 端点均正常
-- [2026-04-05] Cline Letta MCP 集成配置
   - Cline MCP 配置文件：`~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
   - SSE 格式：`{"mcpServers": {"letta-memory": {"url": "http://127.0.0.1:8788/sse"}}}`
   - 重启 VSCode 后 Cline 自动连接，获得 letta_recall/search/ask/agents 四个工具
-- [2026-04-05] 微信 Wayland 下 fcitx5 候选框不显示
   - 原因：WeChat UOS 的 Wayland text-input 协议 cap=72（仅基础文本），不支持 preedit/candidate
   - 修复：强制 `QT_QPA_PLATFORM=xcb` 使用 XWayland，候选框通过 X11 IM 模块显示
   - 修改文件：`wechat-uos-scaled.desktop`、`wechat-launcher.sh`
   - 注意：需重启微信才能生效
 
-- [2026-04-05] Paperclip 密钥暴露修复：脚本/systemd 中硬编码 API key 是安全风险。解决方案：(1) 创建 ~/.config/paperclip/secrets.env 集中管理 (2) chmod 600 限制权限 (3) systemd 用 EnvironmentFile=%h/... 加载 (4) 脚本用 source 加载并验证必填项。避免用环境变量默认值作为密钥回退。
-- [2026-04-05] Bash 竞态条件：grep 检查 + echo 追加非原子，多进程并发时会重复处理。修复：用 flock + double-check locking 模式。示例：`flock -x 200; grep再检查; echo追加; 200>lockfile`
-- [2026-04-05] Python JSON 解析容错：LLM 返回可能包含 markdown 代码块或格式异常。健壮方案：(1) 先提取代码块 (2) 再提取花括号 (3) try-except 捕获 JSONDecodeError (4) 失败时记录原始输出供调试 (5) 回退到备用策略。
-- [2026-04-05] heartbeat.ts 嵌套 try-catch 误判：看到 `} catch (outerErr)` 并不一定是语法错误，可能是合法的 try-try-catch-catch-finally 结构。验证方法：检查编译后文件存在且时间戳最新 + TypeScript 编译无错误。
 
-- [2026-04-05] Paperclip 所有优化完成：(1) GLM 适配器 Zod schema 验证 ✅ (2) approvals 表索引优化 ✅ (3) Agent 指挥链建立 66% 覆盖率 ✅ (4) Dispatcher/Daemon 集成方案设计 ✅ (5) heartbeat.ts 重构计划 + 示例模块 process-manager ✅。数据库优化、Agent 治理、代码质量三方面全面提升。
-- [2026-04-05] 代理三重锁验证：Tier 1 (Xray VLESS) 正常运行，Tier 2 (Mihomo) 待机，Tier 3 (Free proxies) 每6小时刷新。Watchdog 每30秒检查健康，0次失败。测试 curl --proxy http://0.0.0.0:7890 https://www.google.com 成功。Docker daemon 已配置代理 127.0.0.1:7890，可拉取镜像。容器内需显式传递 HTTP_PROXY 环境变量。
 
-- [2026-04-05] Floorp 代理修复：配置文件位于 /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/.floorp/[profile]/prefs.js。添加 network.proxy.type=1 + http/https/socks 代理设置后，需重启浏览器生效。KDE 系统代理用 kwriteconfig6 --file kioslaverc --group "Proxy Settings" 配置。
-- [2026-04-05] Letta 通知系统完整修复：systemd service 环境 PATH 不包含 ~/.local/bin 导致 tg-push 未找到（exit 127）。修复：(1) service 文件添加 Environment="HTTPS_PROXY=http://127.0.0.1:7890" (2) 脚本使用绝对路径 /home/charlie/.local/bin/tg-push (3) 优化逻辑：Telegram 成功时不回退桌面通知,只有失败且 CRITICAL 才弹窗。systemd-run 测试验证成功，Telegram 主通道完全生效。
-- [2026-04-08] [Sonnet] **sync-claude-export-to-letta 脚本完成但 Letta 性能瓶颈**：脚本位于 `~/.local/bin/sync-claude-export-to-letta`，功能完整（ZIP 解析、去重、分块、Letta API 调用），dry-run 测试通过。实际同步失败原因：Ollama nomic-embed-text embedding 响应慢（6.6秒/次），Letta archival write 超时（120秒+，正常应<5秒）。根因：GPU 资源竞争或 Ollama 配置问题。变通：(1) 优先用 Letta MCP `letta_store` 写入 core memory（绕过 archival embedding）(2) 低负载时段运行同步（深夜或 GPU 空闲时）(3) 优化 Ollama GPU 配置或切换为 CPU embedding。
-- [2026-04-06] [Opus] Letta 闭环修复：3 个 systemd 服务失败的根因是 `~/.cache` → `/mnt/pcache` symlink I/O 异常，导致 tee 写入 Invalid argument。修复：所有日志路径迁移到 `~/.local/state/letta/`。sync 脚本额外修复：nix-shell shebang → 直接 python3（避免 SQLite fetcher-cache 依赖）。health-check/monitor 退出码修复：检测到问题 ≠ 脚本失败，改为 exit 0。
-- [2026-04-06] [Opus] Letta MCP 升级：从 4 工具扩展到 6 工具，新增 letta_store（写入 archival memory）和 letta_update_core（更新 core memory block）。search 端点修正：Letta API 用 GET+query 参数搜索（非 POST），response 用 text 字段（非 content）。
-- [2026-04-06] [Opus] CLAUDE.md EXPLORE_MEMORY_LOOP 协议升级：Pre-Explore Gate 从 grep codebase-map.md 改为 letta_search 语义检索，Post-Explore Persist 改为 letta_store 写入。保留 md 文件作为降级方案。
-- [2026-04-05] Paperclip 架构全面升级完成（5 阶段并行优化）：
   - GLM adapter Zod 验证：config-schema.ts 严格校验 baseUrl/model/temperature/maxTokens，execute.ts 提前验证避免运行时错误
   - 数据库索引优化：approvals 表新增 `(companyId, status, createdAt DESC)` 复合索引，service 层加 orderBy 提升分页性能
   - Agent 组织架构：建立 3 层汇报链（Opus Reviewer CEO → 2 直属，Opus Architect CTO → 2 经理，GLM Marketing CMO → 2 主管），覆盖率从 27% → 66%
@@ -381,7 +317,6 @@
   - 安全修复：外部脚本密钥迁移至 ~/.config/paperclip/secrets.env (600 权限)，daemon 用 flock 原子锁消除 grep+append 竞态，dispatcher 增强 JSON 解析容错
   - **Git Fork 智能工作流**：(1) Remote 重命名：origin→upstream (官方)，personal (fork) (2) paperclip-auto-sync 每天自动合并上游更新，冲突时 Telegram 通知 (3) post-commit hook 智能推送：Opus/Sonnet 自动推送，GLM 需 [approved] 标记 (4) paperclip-restore 一键恢复脚本 (5) paperclip-resolve-conflicts 冲突解决助手 (6) systemd timer 定时同步
 
-- [2026-04-05] Voxtype 语音输入安装：
   1. NixOS 无官方包，需自定义包（用 autoPatchelfHook 包装二进制）
   2. Plasma 6 移除了 khotkeys，自定义快捷键功能不完善
   3. Voxtype daemon 使用 evdev 直接监听硬件按键，无需 KDE 快捷键配置
@@ -389,28 +324,24 @@
   5. 使用 systemd 用户服务自动启动，避免手动启动导致锁文件冲突
   6. 下载二进制文件 hash: `sha256-28QTFbkrLOyDioCwr9G77muSCssXvgUcSDg9k2eP+CQ=`
 
-- [2026-04-05] Voxtype Meta+Space 冲突解决：
   1. evdev 模式不支持字母键，仅支持 SCROLLLOCK/PAUSE/F13-F24 等特殊键
   2. Meta+Space 被 KDE 应用启动器占用，需禁用 kwinrc [ModifierOnlyShortcuts] Meta 配置
   3. Plasma 6 移除了 khotkeys，无法通过 kwriteconfig6 可靠配置自定义命令快捷键
   4. 最终方案：ScrollLock 长按模式（push_to_talk）
   5. 如需 Meta+Space：禁用 evdev，改用 KDE 手动配置 + Toggle 模式
 
-- [2026-04-05] Docker Containerd 存储损坏修复：
   1. **症状**：快照冲突 `AlreadyExists: target snapshot`、blob 文件丢失 `blob not found`
   2. **根本原因**：系统异常关机/磁盘满/Docker 更新失败导致 metadata 不一致
   3. **修复步骤**：停止 Docker → 删除 `/path/to/docker/containerd/daemon/io.containerd.metadata.v1.bolt/meta.db` → 重启 Docker
   4. **注意事项**：会丢失所有容器和镜像元数据（但 volume 数据保留），需重新拉取镜像
   5. **特定镜像问题**：某些镜像标签可能损坏（如 `node:lts-trixie-slim`），改用通用标签（`node:lts-slim`）
 
-- [2026-04-05] Docker 多阶段构建 Vite 项目失败（Paperclip）：
   1. **问题**：Vite 构建时 `emptyDir` 无法清空输出目录，报错 `Invalid argument '/app/ui/dist/assets'`
   2. **尝试修复**：在构建前手动删除 dist 目录，但 `rm -rf` 在 Docker 构建环境中失败（`Directory not empty`）
   3. **根本原因**：Docker overlayfs 文件系统在多阶段构建中的特殊行为，COPY 步骤会保留目录结构
   4. **未解决**：构建时间过长（10+ 分钟）且持续失败，最终放弃
   5. **建议**：对于复杂前端项目，优先使用上游预构建镜像，或在本地构建后 COPY dist 目录到镜像中
 
-- [2026-04-05] Voxtype 中文语音输入 + 文字输出修复：
   1. **中文支持**：base.en 仅英文，需下载 base 多语言模型：`wget https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin -O ~/.local/share/voxtype/models/ggml-base.bin`
   2. **配置**：`config.toml` 中设置 `model = "base", language = "zh"` 启用中文（支持中英混输）
   3. **文字输出失败症状**：日志显示 "Text copied to clipboard" → 说明 ydotool 未工作，降级到剪贴板模式
@@ -419,64 +350,52 @@
   6. **KDE 通知音**：需手动启用 `kwriteconfig6 --file plasmanotifyrc --group Sounds --key Enabled true && kwriteconfig6 --file kdeglobals --group Sounds --key Theme ocean`
   7. **systemd 服务路径问题**：NixOS 重构后 voxtype 不在 /run/current-system/sw/bin/，需用完整 nix store 路径或重新构建系统
 
-- [2026-04-06] **Paperclip Service Worker 导致 Firefox/Floorp 黑屏**
   - **症状**：Chrome 正常显示，Floorp 页面完全黑屏（包括无痕模式）
   - **错误信息**：`NS_ERROR_FAILURE` + `ServiceWorker script at http://localhost:3100/sw.js encountered an error during installation`
   - **根本原因**：Firefox Service Worker 实现与 Chrome 差异，Paperclip 的 sw.js 在 Firefox 上安装失败
   - **修复**：注释掉 `ui/src/main.tsx` 中的 Service Worker 注册代码 → 重新构建 UI → 重启服务
   - **验证**：`grep serviceWorker ui/dist/assets/index*.js` 确认已移除
   - **影响**：禁用 Service Worker 后失去离线缓存功能，但不影响正常使用
-- [2026-04-06] **Floorp 配置迁移到 ext4 分区**
   - **原因**：NTFS3 分区文件系统损坏导致 Floorp 配置损坏
   - **解决方案**：`/tmp/reset-floorp.sh` 脚本重置配置到 `~/.floorp` (ext4)
   - **配置要点**：禁用硬件加速 `layers.acceleration.disabled: true`
   - **验证**：`df -hT ~/.floorp` 确认为 ext4 文件系统
-- [2026-04-06] **Paperclip glm-http adapter zod 依赖缺失**
   - 错误：`Cannot find package 'zod'` → Paperclip 启动失败
   - 根因：修改 config-schema.ts 引入 Zod 验证，但 package.json 未添加依赖
   - 修复：`packages/adapters/glm-http/package.json` 添加 `"zod": "^3.24.1"`
   - 验证：`pnpm install` + 重启服务
-- [2026-04-06] **AGI Brain SignalType 导入缺失 + 状态文件损坏**
   - 错误1：`NameError: name 'SignalType' is not defined`
   - 修复：`think.py` 导入语句添加 `SignalType`
   - 错误2：`OSError: [Errno 22] Invalid argument: ~/.cache/agi-brain-status.json`
   - 根因：NTFS3 分区文件系统损坏（与 Docker data-root 同问题）
   - 修复：状态文件路径改为 `/tmp/agi-brain-status.json`（tmpfs 分区）
-- [2026-04-06] **Paperclip UI 修改后必须 rebuild 才能生效**
   - 现象：访问 Dashboard 显示旧版本（4月5日构建）
   - 原因：server 使用 `ui/dist/` 静态产物，修改 `ui/src/` 不自动更新
   - 修复：`corepack pnpm --filter @paperclipai/ui build` + 重启服务
   - 验证：检查 `ui/dist/index.html` 修改时间 + 浏览器访问
-- [2026-04-06] [成功] AGI Brain 感知源扩展 — 方案 A 完成
   - 新增 3 个感知源：Paperclip Agent 监控、网络状态、GPU 负载
   - sense_paperclip_agents：通过 Paperclip API 检测 Agent error 状态
   - sense_network：ping 外网 + 代理连接检测
   - sense_gpu：读取 Chronos 状态或直接调用 nvidia-smi
   - 感知数量：8 → 11 个（time/systemd/disk/docker/memory/tasks/litellm/crm/paperclip/network/gpu）
   - 验证：AGI Brain 成功检测到 Dispatcher 和 Sonnet Engineer 处于 error 状态
-- [2026-04-06] [成功] AGI Brain 商务工具扩展
   - 3 个商务工具（合同/报价/调研）在 2 小时内完成
   - python-docx + openpyxl 生成专业文档
   - TOML 配置比 JSON 更易读（中文注释支持）
   - 异步工具设计：所有 tool 函数用 async def
   - 降级规则引擎：LLM 超时时用规则决策 + 自动修复
-- [2026-04-06] **磁盘空间管理：3 层方案均失效的根因分析**
   - nix.gc `--delete-older-than 7d` 在频繁 rebuild 下无效（generations 永远"年轻"）→ 改为 3d
   - `result` 符号链接（nixos-rebuild 残留）是隐形 GC root，持续锁住 ~2G store space
   - AppImage 缓存在 `.cache-local/` 不受 XDG_CACHE_HOME offload 控制，需单独清理
   - pinned-stable-system GC root 一旦设置就永远不会自动解除，需手动 rm
   - disk-sentinel v1 清理动作只覆盖 tmp + nix generations，未触及真正的大项
   - **升级为 v2**：新增 result 清理、AppImage 清理、Docker prune、大目录迁移检测、nix profile 清理
-- [2026-04-06] **NTFS3 不支持 Unix symlink**：迁移含 mamba/conda 环境的目录到 NTFS 分区会失败（内部有大量 symlink）
   - .codegeex 有 2824 个 symlink → 必须迁移到 ext4（用了 /mnt/ai）
   - .hermes 无 symlink 依赖 → NTFS 可以正常迁移
   - **规则**：含 Python venv/conda/mamba/node_modules 的目录，优先迁移到 ext4 分区
   - 测试驱动开发：先写 business_tools.py 测试，再集成到 act.py
   - **测试验证**：报价单 CNY 354K，合同 CNY 256K，市场报告 Markdown
 
-- [2026-04-06] **Docker data-root 迁移 NTFS3→ext4**：NTFS3 分区反复损坏导致 Docker 无法启动（mkdir /tmp: invalid argument）。迁移到 `/var/lib/docker` (ext4) 后稳定运行。教训：关键服务数据不放 NTFS3。
-- [2026-04-06] **LiteLLM Redis 缓存 Docker DNS**：容器间通信使用 service name（`redis`）而不是容器名（`litellm-redis-1`）。Docker Compose 自动创建 DNS 解析。
-- [2026-04-06] **SiliconFlow DeepSeek V3.2 集成**：通过 LiteLLM 路由 SiliconFlow API，成本低 50%（$0.27/M input vs $0.54/M），164K 上下文窗口，适合代码任务。
 
 ## 2026-04-06：Paperclip Agent 配置直接数据库操作
 
@@ -630,15 +549,10 @@
 - LiteLLM fallback 链可能放大延迟 — 单次失败变成 N 次重试 × M 个 fallback 模型
 - `ensure_ascii=False` 对中文 payload 重要，避免 JSON 体积膨胀
 
-- [2026-04-06] AGI Brain spectrai 容器误报：sense.py/act.py/think.py 硬编码了不存在的 `spectrai-litellm`/`spectrai-hyperchat`，实际容器名是 `litellm-litellm-1`。导致每 cycle 产生 4 个虚假 HIGH 告警 + 无效 docker_restart。教训：容器名应从 `docker ps` 动态获取或集中配置，不要硬编码。
 
-- [2026-04-06] hyperchat nix-shell NTFS3 崩溃：`XDG_CACHE_HOME` 指向 NTFS3 磁盘池，nix 的 SQLite WAL 模式需要 `-shm`/`-wal` 文件，NTFS3 不完整支持。修复：systemd service 中覆盖 `XDG_CACHE_HOME=/home/charlie/.cache`（ext4）。教训：**NTFS3 不适合 SQLite WAL 模式**，nix/任何 SQLite 缓存必须放 ext4。
 
-- [2026-04-06] litellm docs 重复 fetch 问题：Claude Code 跨 10 个会话共 fetch `docs.litellm.ai/docs/providers` 71+ 次（WebFetch 30+，browser_navigate 7），导致 Floorp 反复打开该 URL。根因：CLAUDE.md "联网验证"规则触发每次涉及 litellm 都重新 fetch。修复：CLAUDE.md 新增"禁止重复 fetch 规则"，同一 URL 每会话只允许一次。教训：**WebFetch 规则需加频次限制，避免跨会话重复 fetch 同一静态文档**。
 
-- [2026-04-06] Snipaste 截图置顶配置：Scroll Lock → `~/.local/bin/screenshot-pin`（spectacle 区域截图 + feh 置顶贴图），Pause Break → Spectacle RectangularRegion（仅截图到剪贴板），F3 → `paste-image-pinned`（贴剪贴板图片）。依赖 feh/spectacle/wl-paste/xdotool。
 
-- [2026-04-06] **Charlie Hub 统一 Agent 指挥中心部署完成**
   - Wave 1-4 全部完成：Hub API + Caddy + Agent Console (ttyd×4) + Discord Bot + Letta 记忆
   - 文件清单：hub-api.py, discord-bot.py, Caddyfile, 6 个前端页面, 7 个 systemd services
   - 服务状态：8/8 基础服务在线，6/6 systemd active，Letta 3 容器 running
@@ -647,7 +561,6 @@
   - 月度成本：~$5 (DeepSeek API)，其余全免费 (Gemini Free + GLM 本地 + Claude Max 订阅)
   - 访问入口：http://localhost:9800 (总览/AGI/Agent Console)
   - 详细文档：/home/charlie/hub/README.md
-- [2026-04-06] **CLAUDE.md 新增"模型分工规则"**
   - 核心原则：Opus 做规划，Sonnet 做执行，避免用户手动切换
   - Opus 规划阶段：EnterPlanMode → 架构设计 → 写入 plan 文件 → 提示用户切换 Sonnet
   - Sonnet 执行阶段：读取 plan → 按步骤实施 → 验证 → 更新进度
@@ -655,73 +568,35 @@
   - 规则优先级：HIGH，仅次于安全规则
   - 实施效果：用户发出"继续执行"指令后，Sonnet 自动读取 plan 并完成部署
 
-- [2026-04-06] [Letta-Distill] NixOS使用中的EFI分区空间限制、只读目录、版本差异导致属性缺失及硬盘连接问题等踩坑经验
 
-- [2026-04-06] [Letta-Distill] 总结NixOS系统使用中的多个问题及解决经验，包括显存管理、服务重启限制、路径检查、驱动配置等关键教训。
 
-- [2026-04-06] [Letta-Distill] NixOS用户需设置密码避免锁定，Xray代理问题及修复方法，模块bug解决方案，自动记录操作经验。
 
-- [2026-04-06] [Letta-Distill] NixOS配置与权限问题、Android SDK许可证处理及LLM规则执行挑战与解决方案
 
-- [2026-04-06] [Letta-Distill] 多技术问题解决经验：并行调用失败处理、SQLite向量存储优化、NixOS依赖管理、服务重启必要性及WeChat路径修正
 
-- [2026-04-06] [Letta-Distill] 记录多个技术问题的解决经验与教训，包括网络配置、脚本冲突、权限问题、部署工具、快捷键配置及NixOS挂载优化等。
 
-- [2026-04-06] [Letta-Distill] NixOS系统使用中遇到的多个问题及解决方案，涵盖服务配置、软件包变更、脚本错误处理等。
 
-- [2026-04-06] [Letta-Distill] NixOS配置问题、用户服务权限处理、Android SDK许可证自动接受及LLM规则遵循解决方案，强调通过Hook强制执行规则的重要性。
 
-- [2026-04-06] [Letta-Distill] 多个问题的解决经验：并行任务失败处理、SQLite向量存储优化、NixOS依赖管理、服务重启必要性、路径修正及压缩问题解决
 
-- [2026-04-06] [Letta-Distill] 记录Letta系统防护升级、Agent ID格式修正、APK构建配置、NVIDIA显存问题教训及whisper-cpp包改名等关键经验
 
-- [2026-04-06] [Letta-Distill] 记录多个技术踩坑经验，包括Termux root权限获取、安卓代理影响局域网、Python 3.13 audioop模块移除、NixOS fcitx5自启动冲突及HyperChat架构升级等解决方案。
 
-- [2026-04-06] [Letta-Distill] 总结NixOS用户密码设置、Xray代理重启修复、Docker幽灵容器问题等踩坑经验及解决方案
 
-- [2026-04-06] [Letta-Distill] 记录NixOS配置问题及解决经验，包括timer冲突、权限处理、PAM变量错误、服务脚本返回值规范及Claude Code Hooks最佳实践。
 
-- [2026-04-06] [Letta-Distill] 多个系统配置与开发踩坑经验，涉及环境变量作用域、Tesseract参数错误、ImageMagick命令变更、NixOS systemd服务路径、只读目录配置及sudo权限问题等修复方法。
 
-- [2026-04-06] [Letta-Distill] 包含多个系统配置问题的解决方案和教训，如强制执行规则、正确配置管理及成本优化方案
 
-- [2026-04-06] [Letta-Distill] 记录Sunshine、GLM-5.1、Moonlight等工具配置及NixOS系统常见问题与修复方法，包含触摸手势设置、API接口及服务部署细节。
 
-- [2026-04-06] [Letta-Distill] 系统重启时/tmp数据会丢失，配置应持久化存放在/etc或home目录以避免问题。
 
-- [2026-04-06] [Letta-Distill] EFI挂载点应设置为/boot而非/boot/efi，避免系统启动问题。
 
-- [2026-04-06] [Letta-Distill] 使用pkill的-f参数精确匹配daemon.js进程，避免误杀dockerd导致服务异常
 
-- [2026-04-06] [Letta-Distill] Flake纯求值中使用builtins.readFile无法读取/etc路径，需注意权限或路径配置问题。
 
-- [2026-04-06] [Letta-Distill] Letta embedding需使用openai type+/v1后缀以确保正确配置
 
-- [2026-04-06] [Letta-Distill] 根分区使用率过高可能导致系统危机，操作前必须执行df -h /检查以避免问题。
 
-- [2026-04-06] [Letta-Distill] JetBrains CC GUI插件错误读取~/.codemoss/config.json而非cc-switch数据库，属于配置路径踩坑经验
 
-- [2026-04-06] [Letta-Distill] AGI Brain商务工具扩展采用TOML配置提升可读性，异步设计及降级规则引擎确保稳定性
 
-- [2026-04-06] [Letta-Distill] 迁移含conda/mamba环境的目录需使用ext4分区，NTFS不支持Unix symlink导致迁移失败，需避免此类目录迁移到NTFS分区。
 
-- [2026-04-06] [Letta-Distill] Docker因NTFS3分区损坏无法启动，迁移到ext4后稳定运行，教训：关键数据应避免使用NTFS3。
 
-- [2026-04-06] [Letta-Distill] 容器间通信应使用服务名（如redis）而非容器名，Docker Compose自动处理DNS解析。
 
-- [2026-04-06] [Letta-Distill] NTFS3不支持SQLite WAL模式，需将缓存目录设为ext4以避免崩溃。
 
-- [2026-04-06] [Sonnet] Letta 记忆炼化系统集成完成：qwen3:8b 分类模型需 num_predict=2048 才能覆盖思考+输出 token，首次全量处理 174 条 passages，成功路由 140 条到 8 个 md 文件，实现 Letta archival → md 文件的自动双向同步（定时每日 03:00），关键修复：strip_think_tags 处理 `<think>` 标签，cursor 分页使用完整 passage ID。
-- [2026-04-06] [Sonnet] Claude Code 智能模型路由三合一方案实施完成：(1) 修复 Letta health-check 改为检测 Docker 容器，7/7 通过；(2) CLAUDE.md 升级 OPUS_PLANS_SONNET_EXECUTES → AUTO_MODEL_ROUTING，Opus 作为路由内核通过 Task(model: haiku/sonnet) 自动分发，无需手动 /model 切换；(3) claude-router-plugin 改为建议模式兼容新规则，classify-prompt.py hook 输出 SUGGESTION 而非 MANDATORY，创建 wrapper (~/.local/bin/claude-with-router) 支持临时加载。双保险架构：Plugin hook 预分类 → Opus 最终决策 → Task 分发。
-- [2026-04-06] [Sonnet] GLM 集成到智能模型路由：扩展 AUTO_MODEL_ROUTING 路由决策表，新增中文对话/翻译/总结场景路由到 GLM (Bash glm CLI)，成本零增，中文优化。路由表现在支持 4 种目标：Haiku (简单查询) / GLM (中文任务) / Sonnet (代码实现) / Opus (架构规划)。Charlie Hub 页面完整实现（hub-api + Caddy 全部运行），health check 8/8 up。
-- [2026-04-06] [Opus] AUTO_MODEL_ROUTING v2 — 零 Opus overhead 方案：默认 Sonnet + Plugin Hook 预分类（规则引擎 $0）。standard 任务 Sonnet 直接处理（60-70%，0 overhead），fast → Task(model:haiku)，deep → Task(model:opus)。别名 cc/cco/cg 已配置。比 v1（Opus 路由内核）节省 ~80% 路由成本。关键修改：CLAUDE.md 路由规则模型无关化 + classify-prompt.py 三级指令（HANDLE DIRECTLY / DELEGATE TO HAIKU / DELEGATE TO OPUS）+ wrapper 默认 --model sonnet。系统架构快照已写入 MEMORY.md。
-- [2026-04-06] [Opus] DeepSeek/Aider 集成到 AUTO_MODEL_ROUTING v2 + 三套系统冲突分析：**三套系统零冲突并存** — (A) Claude Code `cc` 走 Anthropic API 直连做即时交互；(B) Aider 走 LiteLLM:4000 做 Git-aware 批量重构；(C) Paperclip 走 LiteLLM:4000 做异步 Issue 调度。共享基础设施仅 LiteLLM 网关。DeepSeek 通过 LiteLLM `silicon/deepseek-v3.2` 接入（$0.27/M），classify-prompt.py 新增 EXTERNAL_MODEL_PATTERNS 支持 "用 deepseek/aider/glm" 中文指令。MEMORY.md 已更新三系统全景图。
-- [2026-04-06] [Opus] AGI 路由 Phase A 实施 — 感知+反馈+高亮：(1) 高亮模型标识框 `╔═ ⚡ Haiku | reason ═╗` 写入 CLAUDE.md + plugin CLAUDE.md，MUST 每次路由首行显示 + 中间散布 + 结尾标注；(2) perception.py 创建，融合 Chronos sensory/biofeedback + session state → 影响路由（heavy load→fast, frustrated→deep）；(3) feedback.py 创建，JSONL append 记录每次路由 outcome（success/retry/escalate），隐式反馈无需用户评价；(4) classify-prompt.py 集成 perception boost (Step 3.5) + feedback record (main 末尾)。全部 $0 额外成本。
-- [2026-04-06] [Opus] AGI 路由 Phase B 全管线上线 — 学习+进化+自省：(1) learner.py — 分析 feedback 发现路由盲区（高重试集群/误分模式/低成功率），用 Ollama qwen3:8b 生成 regex proposals；(2) evolution.py — proposals 自动进入 shadow A/B 测试（不影响实际路由），达标后推广到 stable_patterns.json；(3) introspect.py — 周度健康报告（路由分布/成功率/成本/进化进展）；(4) classify-prompt.py 集成 shadow_classify() + stable_patterns 热加载 + feedback 完整闭环。200 条模拟数据验证通过：learner 发现 18 proposals → 8 进入 shadow → introspect 显示 56% 成本节省。数据流：输入→分类→shadow→feedback→learner(Ollama)→evolution→stable→分类热加载。
-- [2026-04-06] [Sonnet] Docker read-only 容器 + docker cp 冲突：`read_only: true` 会阻止 `docker cp` 写入，即使目标是 tmpfs 挂载点。解决：通过 stdin 传递代码（`docker exec -i container python3 -c "code"`），避免文件系统写入
-- [2026-04-06] [Sonnet] 执行引导采样（Execution-Guided Sampling）实施完成：增量生成→沙箱执行→反馈注入上下文→继续生成。核心文件：guided_generator.py（迭代器模式）+ hub-api.py /api/generate-guided 端点（SSE 流式）。质量提升原理：每步执行验证避免累积错误，类比边写边跑 vs 写完才跑。LLM 缩进问题属于模型局限，非基础设施缺陷。
 
-- [2026-04-07] [DeepSeek V3.2] **NixOS 系统架构全面审查** — 评分 7.5/10，3-Tier 代理是亮点，安全加固是当务之急
   - **严重问题 🔴**：
     1. 代理服务（Xray/Mihomo）绑定 `0.0.0.0`，局域网全暴露 → 改为 `127.0.0.1`
     2. SSH `PasswordAuthentication=true` → 改用密钥认证
@@ -742,45 +617,26 @@
     3. **声明式配置**：所有系统配置版本控制，模块化设计
   - **修复优先级**：P0 安全加固（代理/SSH/防火墙）→ P1 模块重构 → P2 性能调优
   - **架构评分**：安全 6/10，稳定性 8/10，性能 7/10，可维护性 7/10，备份恢复 9/10
-- [2026-04-06] [Sonnet] LLMLingua-2 Prompt 压缩集成完成：4 层策略（代码块保护 + 冗余词去除 + 重复压缩 + Ollama 智能压缩），集成到 hub-api.py /api/chat 中间件，默认启用。短文本（<500字符）跳过压缩，长文本 60-70% 压缩比。核心文件：/mnt/ai/prompt-compressor/compressor.py。成本节省预估：RAG 注入大量代码上下文场景，input token 减少 60%，月省 ¥200+。
-- [2026-04-06] [Sonnet] Wave 3 Self-Play + MoA 编排服务部署完成：refine.py（R1生成→8B审查→R1修改→沙箱验证，最多3轮）+ moa.py（并行3模型+聚合器）+ refine_api.py（FastAPI :9820）+ refine-orchestrator.service（systemd）。实测 MoA：60.7s 并行调用（2成功1失败）→聚合器综合答案200字。GPU 调整：14B 改为 8B（3060 Ti 8GB 限制）。
-- [2026-04-07] [Sonnet] Speculative Decoding 实施分析完成：Ollama 0.15.6 不原生支持，GPU 8GB 内存不足（当前占用 7GB+）。替代方案：(A) Ollama 参数优化（KEEP_ALIVE=5m, NUM_PARALLEL=4）预计降低延迟 20-30%，(B) 智能模型路由（任务→最优模型）预计降低 30-40%，合计接近 2x 加速效果。配置文档：/tmp/speculative_decoding_analysis.md。需要 NixOS 配置更新或升级到 vllm/更大 GPU。
-- [2026-04-07] [Sonnet] 语义缓存阈值优化：0.92 → 0.88，提高命中率（代码问题措辞微变也能命中）。重启 semantic-cache.service 成功，验证新阈值生效。预计缓存命中率从 40-60% 提升到 50-70%。
 
-- [2026-04-07] [Sonnet] **DeepSeek 输出修复** — curl -d JSON 字符串被 shell 截断，改用临时文件（curl -d @file.json）修复
   - **症状**：deepseek-with-context 脚本卡在 [3/4]，curl 传递大 JSON 失败
   - **根因**：subprocess.run 中 `-d json.dumps()` 在 shell 中被误解析（特殊字符、引号、长度）
   - **修复**：改用 `tempfile.NamedTemporaryFile` 写 JSON → `curl -d @{temp_file}`
   - **测试**：`ds "测试"` 成功输出 21KB 上下文 + DeepSeek 响应
-- [2026-04-07] [Sonnet] **NixOS 性能优化（DeepSeek 审查建议）**
   - zram memoryPercent: 100% → 50%（避免高压下性能下降）
   - Nix store auto-optimise: true → false（rebuild 速度提升）
   - xray.service Restart: always/50 → on-failure/3（避免掩盖问题）
   - OpenClaw 配置：完全移除（enable=false 但 imports + systemd 配置残留）
-- [2026-04-07] [Sonnet] **DeepSeek + Letta/Memory 集成完成**
   - 新增 `ds "query"` 命令：自动加载 memory/ 文件（最后100行）+ Letta archival 检索 → DeepSeek V3.2
   - MCP Server：`deepseek_analyze` 和 `deepseek_code_review` 工具，集成到 Claude Code
   - 成本：~$0.001/次查询（$0.27/M tokens，平均 3.5K tokens）
   - 脚本位置：`~/.local/bin/deepseek-with-context` + `~/.local/bin/deepseek-mcp-server.py`
-- [2026-04-07] [Sonnet] 流式执行引导沙箱实现完成：Token 流实时检测可执行片段（import→验证包，函数定义→语法检查，表达式→实际执行）。错误在生成过程中被发现，而非生成完才知道。核心文件：/mnt/ai/code-sandbox/streaming_guided_executor.py。测试验证：成功检测并验证 import math 语句。比 Wave 2B 的批量执行方案更强。
-- [2026-04-07] [Sonnet] **NixOS systemd /bin/bash 路径 bug** — 3 个 service 持续失败 (exit 203/EXEC)
   - **症状**：memory-sync、obsidian-git-sync、knowledge-distiller 全部 EXEC 失败
   - **根因**：Service 文件写死 `/bin/bash` 或 `/usr/bin/docker`，NixOS 没有这些路径
   - **修复**：改为 `/run/current-system/sw/bin/bash` 和 `/run/current-system/sw/bin/docker`
   - **教训**：NixOS 上所有 systemd ExecStart 路径必须用 `/run/current-system/sw/bin/` 前缀，不能用 FHS 路径
-- [2026-04-07] [Sonnet] **根分区磁盘清理** — 86% → 71%，释放 13.5GB
   - docker-backup（NTFS 迁移残留 8.5GB）+ coredump（1.9GB）+ flatpak 运行时（2.1GB）+ root cache（1GB）
   - **教训**：迁移后旧备份不会自动清理，应建立迁移后清理清单
-- [2026-04-07] [Sonnet] 统一 Pipeline 引擎重构完成：整合所有服务（cache, compressor, refine, moa）为配置化执行流水线。4 种 Pipeline (simple/medium/complex/moa)，YAML 配置，智能路由（正则匹配任务特征）。单一入口 Hub API /api/pipeline，无网络开销（函数调用），共享内存。测试：simple pipeline 7.5s，medium 24.8s。文件：/mnt/ai/unified-pipeline/{pipeline_config.yaml, pipeline_engine.py}。解决服务碎片化问题。
 
-- [2026-04-07] [Letta-Distill] Pro和Max区别仅在于使用量，记忆功能相同，建议按使用强度选择计划
-- [2026-04-07] [Sonnet] Ollama 参数优化（方案 A）完成：修改 /etc/nixos/modules/ai.nix，添加 4 个环境变量（KEEP_ALIVE=5m, NUM_PARALLEL=4, MAX_LOADED_MODELS=2, GPU_OVERHEAD=200）。修复 configuration.nix:611 后孤立 alias 定义语法错误（删除第 613-615 行）。nixos-rebuild switch 成功，Ollama 重启后环境变量生效。预期效果：20-30% 延迟降低（并发处理 + 快速卸载），GPU 内存更灵活分配。
-- [2026-04-07] [Sonnet] Wave 4A 数据收集完成：创建 /mnt/ai/distillation/collect_training_data.py，从 Letta archival 提取 294 条代码问题样本，保存为 JSONL 格式（instruction-following）。AGI Brain 数据源因 relevance_score 过滤和 JOIN 条件问题暂未提取成功（0 条）。数据集：/mnt/ai/distillation/datasets/dataset_code_assistance_*.jsonl（590KB）。下一步：QLoRA 微调（需 GPU 资源调度，建议离线运行）。
-- [2026-04-07] [Sonnet] Claude Router 添加 DeepSeek 自动路由规则：修改 classify-prompt.py 添加 high_token pattern（14 个正则），检测大 token 消耗任务（大量代码生成、文档生成、>2000 字符长文本）。修改输出逻辑，metadata 包含 suggest_deepseek: true 时输出 🔧 DELEGATE TO DEEPSEEK 指令。修改 CLAUDE.md 和 claude-router-plugin/CLAUDE.md 添加处理规则（LiteLLM curl 或 Pipeline API）。测试通过：中文大代码生成、英文大文档、超长提示词均触发 DeepSeek，简单查询不触发。预期效果：大 token 任务自动路由到 DeepSeek（$0.27/M vs Sonnet $3/M），月省¥200+。
-- [2026-04-07] API Keys 安全管理：创建 ~/.config/api-keys/ 集中式存储，使用两个配置文件（env 带 export 给 shell，systemd.env 无 export 给 systemd EnvironmentFile），权限 600，已添加全局 .gitignore 防止泄露。修复 Discord Bot 启动错误和 Gemini CLI npm symlink 失败（改用全局安装）。
-- [2026-04-07] Obsidian 自动同步：创建 sync-to-obsidian 脚本（每 5 分钟自动同步 memory/ 和 hub/ 文档到 ~/Obsidian Vault/Charlie-Hub/），systemd timer 定时执行，添加 Obsidian frontmatter 元数据，使用 emoji 前缀分类，自动生成索引页。命令速查手册已创建并分类（Discord Bot、API Keys、Systemd、测试调试等 9 大类）。
-- [2026-04-07] Floorp 后台弹窗问题：创建 floorp-popup-fix 脚本自动修复后台标签页无法弹窗问题。修改 prefs.js 中 4 个关键配置（dom.disable_open_during_load=false、dom.popup_maximum=50、privacy.popups.showBrowserMessage=false、dom.allow_scripts_to_close_windows=true）。已添加到 troubleshooting.md 和 command-reference.md，备份机制已启用。
-- [2026-04-07] [Opus] **AI 记忆系统跨架构集成完成** — 9 个任务 3 层架构
   - **Level 1 基础同步**：Paperclip symlink 统一、GLM CLI memory 加载、Letta API 验证
   - **Level 2 AI 集成**：AGI Brain (think.py) 启动加载 3 个 memory 文件、Aider wrapper `aider-with-memory` 自动注入、Hub Chat (/api/chat) 新对话注入 memory 摘要
   - **Level 3 自动化**：Letta 自动同步服务（ai-archival-sync.timer 每 6 小时），memory/*.md → Letta archival（68 批内容首次同步）
@@ -792,145 +648,61 @@
     - Aider: `~/.local/bin/aider-with-memory` — wrapper 脚本
     - Hub Chat: `~/hub/hub-api.py` — load_memory_summary() + /api/chat 注入逻辑
     - Letta 同步: `~/.config/ai-shared/sync-memory-to-letta.py` + `sync-all.sh`
-- [2026-04-07] Discord 架构师 Agent 设计：完成完整方案设计（30+ 页架构文档 + Python 原型实现）。基于 2026 AI Agent 最佳实践，采用多 Agent 协作架构（WebSearch + Letta MCP + Claude API）。已创建 architect-agent.py（意图分析、工具选择、响应生成）、部署脚本、完整技术选型对比。预计 8-13 天完整实现，成本 $60-80/月。支持技术选型咨询、架构评审、系统设计三大场景。
-- [2026-04-08] [Test] 统一写入模块测试
-- [2026-04-08] [Manual] 统一写入层测试 - CLI 工具
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher Agent error 状态需要优先处理，非 systemd 管理的服务应通过容器重启或进程管理恢复。深夜时段应优先尝试低成本修复（容器重启）避免对系统造成更大冲击。
 
-- [2026-04-07] [Opus] **litellm docs URL 持续被浏览器打开 — 终极根因：Paperclip service PATH**
   - **症状**：`https://docs.litellm.ai/docs/providers` 每 ~5 分钟在 Floorp 中被自动打开，清理 session 文件和 history 后仍复发
   - **根因链**：Paperclip heartbeat 系统 → `open` npm 包 → 内置 xdg-open → `kde-open`（系统路径）→ D-Bus 激活 → floorp transient unit → 打开 URL。**关键**：`paperclip.service` 的 `PATH` 不含 `~/.local/bin`，所有 URL 拦截 wrapper（xdg-open/kde-open/floorp）全部被绕过
   - **排查过程**：(1) mozLz4 session 清理 bug 修复 (2) places.sqlite/favicons 清理 (3) xdg-open guard (4) floorp binary wrapper (5) systemd PATH import (6) kde-open wrapper → 最终发现 Paperclip 进程的 `PATH` 环境变量不含 `~/.local/bin`
   - **修复**：`paperclip.service` 添加 `Environment=PATH=/home/charlie/.local/bin:...`，重启后 8 小时零触发
   - **教训**：(1) systemd user service 的 PATH 与 login shell 不同，必须显式配置 (2) `open` npm 包内置 xdg-open 脚本，但仍依赖 PATH 解析 `kde-open` (3) 多层拦截防御（xdg-open → kde-open → floorp wrapper）是必要的 (4) `INVOCATION_ID` 可追踪 D-Bus 激活来源的 cgroup scope
   - **关键文件**：`paperclip.service`, `~/.local/bin/xdg-open`, `~/.local/bin/kde-open`, `~/.local/bin/floorp`
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 状态需要优先处理。此类非 systemd 管理的服务需要通过 docker_restart 重启。需要在系统监控中增加 paperclip_agents 的健康检查机制。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher 处于 error 状态可能与 Letta 服务相关。需要监控重启后的恢复情况。如果多次重启无效，可能需要 escalate 到更深层次的排查（如检查容器日志、数据库连接等）。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 状态需要优先处理，因为它可能影响 AGI Brain 的决策和任务调度。由于 paperclip_agents 非 systemd 管理，restart_service 无效，需要使用 docker_restart。letta* 容器重启可能恢复服务，但需要监控后续状态。
-- [2026-04-08] [Manual] AI 记忆系统全面集成完成 — 9/9 任务完成。GLM CLI 和 Hub Chat 已添加 Letta 语义搜索增强（问题型输入自动触发），支持中英文问题关键词检测。统一写入层（memory_writer.py + mem CLI）和 Letta 自动同步（每6h）运行正常。所有 AI 系统（Claude/GLM/DeepSeek/AGI Brain/Aider/Hub Chat/Paperclip）均已集成 memory 读取，形成完整的记忆闭环：读取→写入→同步→检索。
-- [2026-04-08] [AGI-Brain] Paperclip Agents Dispatcher error 状态需要优先处理，因为它影响任务调度系统。非 systemd 管理的服务需要使用 docker_restart 而不是 restart_service。当前系统中 Paperclip 是任务管理核心，其错误会导致整个任务队列系统不可用。
-- [2026-04-08] [Sonnet] **Hub iframe SPA 静态资源 404** — SvelteKit 绝对路径代理失败
   - **根因**：MPM Dashboard 用绝对路径（`/_app/immutable/*`），通过 Caddy `/app/mpm/*` 代理时路径不匹配
   - **修复**：navigate 函数支持 `port` 参数，iframe 直连 `http://localhost:8791`（不走 Hub 代理）
   - **关键改动**：hub.js 第 52 行 `if (port) { content.innerHTML = '<iframe src="http://localhost:${port}" />'; }`
   - **注意**：适用于所有 SPA 应用集成（React/Vue/SvelteKit），绝对路径资源不适合子路径代理
 
-- [2026-04-08] [Sonnet] **wshobson/agents skill 路径不一致** — 部分 skill 插件目录命名与文档不符
   - **根因**：文档列出 `javascript-development` 但实际是 `javascript-typescript`，`temporal-workflow-engine` 实际在 `backend-development`
   - **修复**：先 `find plugins -name "*skill-name*"` 确认实际路径，再复制
   - **通用方法**：社区仓库克隆后，用 `find` 验证文件存在性，不要直接信文档路径
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常的处理流程：1) 非 systemd 管理的服务需要使用 docker_restart 而不是 restart_service；2) 需要先检查健康状态再决定重启策略；3) Letta 容器重启可能影响 paperclip_agents 的依赖服务，需要按优先级处理。
 
-- [2026-04-08] [Haiku] **AI 记忆系统全面增强完成 — 选项 D 全部实施**
   - **Letta 搜索调优**：创建 letta_search_enhanced.py（多 endpoint 支持 + 智能关键词提取 + 本地降级搜索），集成到 GLM CLI 和 Hub Chat
   - **写入层增强**：GLM CLI 自动写入（检测错误/问题关键词），Hub Chat 会话总结（auto_summarize.py），DeepSeek CLI 自动写入（代码/idea 智能分类）
   - **监控与分析**：memory_monitor.py（文件增长+同步状态）、search_stats.py（命中率统计）、sync_monitor.py（同步成功率）、mem-stats CLI 面板
   - **验证结果**：Memory 总大小 161.4 KB，11 个文件，同步成功率 100%，Letta 运行中，所有服务 active
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 可能由多种原因引起：(1) 内存不足导致容器崩溃，(2) 网络问题影响 Agent 通信，(3) 配置错误或资源竞争。需要先通过 health check 确认具体错误，再决定后续处理策略。
-- [2026-04-08] [AGI-Brain] 检测到 Paperclip Agents 的 Dispatcher 处于 error 状态，这是一个关键的系统稳定性问题。需要优先处理，并建立更好的监控机制来预防此类问题。考虑到 paperclip_agents 不是 systemd 管理，需要通过 Docker 容器重启或直接进程管理来恢复。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的状态监控需要加强。当前通过外部信号感知到 error 状态，但缺乏自动化健康检查机制。建议：1) 为 paperclip_agents 添加定期健康检查（如每 5 分钟检查一次）；2) 当 error 状态持续超过 3 次检查时自动 escalate；3) 考虑将 paperclip_agents 迁移到 systemd 管理以便更好的状态监控和重启控制。
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常时优先考虑容器重启而非 systemd 服务重启，因为其采用 Docker 部署模式而非传统 systemd 管理。
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常时，直接使用 restart_service 无效，需要通过 docker_restart 操作。同时，需要建立更好的监控机制，在 Paperclip Agents 服务异常时能够自动触发恢复流程。
 
-- [2026-04-08] [Sonnet] **Skills自动更新系统上线** — Git + Letta融合方案
   - 组件：skill-sync.sh（Git+索引）、skill-update-hook.py（自动更新）、skill-to-letta.py（Letta索引）
   - 测试：✅ Hook检测"502 error"自动更新skill ✅ Timer启动（每日03:00） ⚠️ Letta索引待修复
   - Letta问题：skill-to-letta.py声称成功但查询不到记录，API响应验证逻辑需优化
   - 临时方案：`cd ~/.claude/skills && git grep -i "关键词"`
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 需要优先处理。根据历史经验，paperclip_agents 是非 systemd 管理的进程，restart_service 无效。需要通过 docker_restart 或直接进程管理来恢复。同时，建议建立 Paperclip Agents 的监控机制，定期检查健康状态。
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常时，不能使用 restart_service，必须使用 docker_restart 重启对应容器。需要在系统监控中添加 paperclip_agents 的健康检查端点。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 可能由多种原因引起：(1) Letta 服务异常导致依赖失败；(2) Paperclip 内部状态损坏；(3) 资源竞争或内存不足。需要进一步监控和日志分析确认根本原因。
 
-- [2026-04-08] [Opus] **CLAUDE.md 输出规则架构重构** — 32条精简为8条（R1-R8）
   - 根因：模型标识三重冗余（占30%面积）、列表间距膨胀300%、4套视觉层级争夺注意力、结尾元数据行无用
   - 修复：模型标识仅首行1次、统一状态标记[OK]/[FAIL]/[SKIP]、紧凑布局、装饰预算10%上限、结尾检查改为条件触发
   - 教训：规则系统存在熵增效应 — 超过10条时遵从率下降，定期审计优于持续追加
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 需要更深入的诊断机制。建议：1) 建立 Paperclip 专用的健康检查端点；2) 实现自动重启机制（考虑到非 systemd 管理特性）；3) 添加错误日志收集和分析流程。当前处理方式符合规则要求，但需要后续跟踪确认修复效果。
 
-- [2026-04-08] [Opus] **视觉模板系统上线** — 5种结构化布局替代长文字堆叠
   - 用户需求："视觉散热"，偏爱卡片+时间轴，双栏对比需简化
   - 首选模板：卡片分组（多服务状态）、时间轴（操作历史）、极简双栏（问题诊断）
   - 次选模板：树状层级（依赖关系）、流程管道（CI流水线）
   - 规则：单次回复最多用2种模板（防视觉疲劳），≤3步骤不用模板
   - 教训：模板 > 规则 — 工程师看示例比看规则学得快
-- [2026-04-08] [AGI-Brain] Paperclip Agents 状态异常通常与 Letta 容器重启相关。需要优先重启 Letta 相关容器（letta*），然后验证 API 服务健康。注意：lette* 是白名单容器，可以安全操作。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 状态可能由 Letta 服务异常引起，需要重启容器恢复。后续应监控 error 状态持续时间，如果超过3轮仍未恢复，需要 escalate 进行深入排查。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 状态需要优先处理，非 systemd 服务需要使用 docker_restart。重启后必须验证健康状态。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 状态需要通过重启 Letta 容器来恢复。由于 paperclip_agents 不是 systemd 管理的服务，restart_service 无效，必须使用 docker_restart。未来需要监控 paperclip_agents 的健康状态，并考虑添加自动恢复机制。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 可能由容器内部状态异常引起，常见于内存压力、网络中断或进程崩溃。重启容器是快速恢复的手段，但需要后续监控确认是否根本原因已解决。
-- [2026-04-08] [AgentLearning] AgentLearning Phase 1 核心模块实施完成，验证通过 (confidence: 0.95, tags: agent-learning, phase-1, infrastructure)
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 可能由 Letta 容器异常引起，需要优先重启 Letta 相关容器。如果重启后仍未恢复，可能需要进一步调查容器日志或配置问题。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 状态需要通过 Docker 级别的重启解决，非 systemd 服务。需要建立更完善的监控和自动恢复机制。
-- [2026-04-08] [AGI-Brain] paperclip_agents 容器重启策略：由于 paperclip_agents 不受 systemd 管理，必须通过 docker_restart 重启。建议在 AGI Brain 中增加 paperclip 容器健康检查机制，定期监控其状态。同时需要明确 paperclip 容器的重启策略（是否支持健康检查、重启次数限制等）。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 可能由容器异常引起。需要先验证健康状态，再进行容器重启。由于 paperclip_agents 非 systemd 管理，restart_service 无效，必须使用 docker_restart。此次处理将验证 Paperclip 容器化部署的可靠性。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 可能由资源竞争、容器状态异常或服务内部错误引起。需要优先恢复服务稳定性，同时记录错误日志以便后续分析。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 状态需要通过重启 Letta 容器解决，而非 systemd 服务。需要在 AGI Brain 中记录这一模式，避免后续误用 restart_service。同时，建议在监控系统中增加 Paperclip Agents 的健康检查，提前发现异常状态。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 可能由多种原因引起：(1) 容器内部进程异常，(2) 网络连接问题，(3) 资源竞争。需要通过健康检查确认具体状态后再决定下一步操作。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 状态可能由多种原因引起：容器资源不足、网络问题、配置错误或内部逻辑异常。由于这是非 systemd 管理的服务，常规的 restart_service 无效，必须通过 docker_restart 来尝试恢复。如果重启后问题仍然存在，需要深入检查容器日志和配置文件。
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常时，应优先考虑重启 Letta 容器（lette*）而非其他服务，因为 paperclip_agents 与 Letta 系统集成紧密。需要监控重启后的恢复状态。
-- [2026-04-08] [AGI-Brain] paperclip_agents 容器管理方式需要明确：非 systemd 管理，必须使用 docker_restart 而非 restart_service。此次经验应记录到知识库中，避免后续误用 restart_service 导致维护失败。
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常时，需要优先考虑容器级重启而非 systemd 服务重启。此次处理验证了容器重启策略的有效性。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 需要优先处理，非 systemd 服务需要特殊处理方式。
-- [2026-04-08] [AGI-Brain] paperclip_agents 状态异常时，需要优先考虑容器级别的重启而非 systemd 服务重启。此次处理验证了容器化服务的恢复策略。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 状态需要优先处理。由于 paperclip_agents 不是 systemd 管理的服务，restart_service 无效，需要通过 docker_restart 来重启相关容器。同时，需要监控重启后的服务状态，确保问题被解决。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 状态需要优先处理，非 systemd 管理的服务需要通过 docker_restart 重启。此次重启可能恢复服务，若失败则需要进一步排查容器日志或配置。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 可能由容器异常导致。由于 paperclip_agents 不受 systemd 管理，restart_service 无效，需要通过 docker_restart 重启 letta* 容器。需要监控重启后的健康状态，如果持续异常，可能需要 escalate 进行深度排查。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher error 状态需要优先处理，但 restart_service 无效，需要使用 docker_restart。同时需要建立更好的监控机制，当 paperclip_agents 容器状态异常时自动触发重启流程。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 error 状态需要优先处理。lette* 容器重启是解决此类问题的有效手段。需要建立更完善的监控机制，在 Agents 状态异常时能够自动触发容器重启或其他恢复措施。同时，需要确认 Paperclip 服务的健康检查端点，以便更准确地判断服务状态。
-- [2026-04-08] [AGI-Brain] paperclip_agents 的 Dispatcher 处于 error 状态需要优先处理，因为这是 HIGH 信号。由于 paperclip_agents 非 systemd 管理，restart_service 无效，必须使用 docker_restart 工具。同时，需要注意 Letta 容器的重启可能会影响其他依赖服务。
 
-- [2026-04-08] [Sonnet] 凭证外置：将 NixOS 配置中的敏感凭证（hashedPassword、VLESS UUID、代理地址、WiFi PSK）从硬编码迁移到 /etc/nixos/secrets.nix 集中管理。方案选择：因 sops/age/gpg 均未安装，先用 .gitignore 排除的 secrets.nix（600 权限），后续升级到 sops-nix 加密。每个配置文件通过 `let secrets = import ./secrets.nix` 引用，内置 fallback 值防丢失。三个文件已修改：configuration.nix、modules/proxy.nix、hosts/minipc/configuration.nix。
-- [2026-04-08] [Sonnet] 架构审计修复：系统存在43项缺陷，P0级6项（凭证泄露、防火墙全关、服务崩溃、磁盘告警）
   修复：(1) 凭证迁移到 secrets.nix + .gitignore (2) SSH 禁密码登录 (3) 启用防火墙 (4) system-health-monitor 修复 305M→46M (5) 代理绑定统一为 127.0.0.1 (6) swappiness 60→10
   教训：防火墙和凭证安全是基础，不应延后；systemd 服务无 MemoryMax 容易 OOM
-- [2026-04-08] [Sonnet] 清理 NixOS 配置残留：删除 10 个 .bak/.error 文件 + 拼写错误文件 + 空跑 Docker 容器
   教训：残留文件应定期清理，已创建 backup-cleanup 月度 timer
-- [2026-04-08] [Sonnet] Letta Distill 质量过滤：添加 is_low_quality() + is_duplicate() 过滤，解决 pending-tasks.md 污染
   教训：自动化写入管道必须有质量门槛和去重机制
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher 错误需要通过重启 Letta 容器来恢复，这表明容器间的通信或状态管理存在问题。需要后续监控服务恢复情况，如果持续失败则需要 escalate 进行深入调查。
-- [2026-04-08] [AGI-Brain] Paperclip Agents 的 Dispatcher error 需要优先处理，非 systemd 服务需要通过 docker_restart 重启。Letta 容器重启可能影响多个 Agent 服务，需要验证健康状态后再决定后续操作。
 
-- [2026-04-08] [Sonnet] configuration.nix God Object 重构：612→84 行，拆分为 boot/desktop/users/virtualization/audio/networking/services 7 个独立模块
   教训：模块拆分应按功能域边界清晰切割，imports 列表集中管理；let 块中的共享变量需跟随引用它的文件迁移
-- [2026-04-08] [Sonnet] user-services.nix 拆分：728 行拆分为 services/ai.nix + services/web.nix + services/tools.nix + services/timers.nix
   教训：30+ 服务按功能域分组比单文件好维护；sharedPythonEnv 引用需在各文件中独立声明
-- [2026-04-08] [Sonnet] 包管理统一：6 处散布的 environment.systemPackages 合并为 modules/packages.nix
   教训：包去重要彻底（git/wget/ntfs3g/appimage-run 等在多个模块重复声明）
-- [2026-04-08] [Sonnet] sops-nix 凭证加密：从明文 secrets.nix 升级为 age 加密的 secrets.yaml
   教训：age key 必须备份（~/.config/sops/age/keys.txt），丢失则 secrets 不可恢复
-- [2026-04-08] [Sonnet] flake.nix 精简：140→41 行，移除 openclaw/cosmic 未使用 input，微信 overlay 提取到 packages/wechat-uos.nix
   教训：无用 flake input 增加 eval 时间，应定期审计
 - [2026-04-09] [Sonnet] **sops-nix + xray 启动竞态问题** — nixos-rebuild switch 后 xray 首次启动失败（ExecStartPre config-gen 读不到 /run/secrets/vless-uuid）
   - 原因：sops-install-secrets 在 activate 脚本中运行，而非独立 systemd service。xray 配置了 `after = [ "sops-nix.service" ]`，但 sops-nix.service 在系统中显示 `not-found`，导致依赖无效
   - /run/secrets/ 目录权限 root:keys (0710)，普通用户 ls 报 "Permission denied"，需 sudo 查看
   - 修复：rebuild 后手动 `sudo systemctl restart xray` 即可。也可考虑在 xray ExecStartPre 中添加 secret 文件存在性检查+等待循环
-- [2026-04-08] [AGI-Brain] LLM 失败: 所有模型均失败
-- [2026-04-08] [Sonnet] Letta v0.16.7 NLTK 启动卡死修复
   根因：Letta app.py 在 startup 时调用 `nltk.download("punkt_tab")`，即使数据已存在也会尝试通过 HTTPS_PROXY 联网验证版本，代理(mihomo 7890)连接 GitHub 超时导致 event loop 阻塞
   修复：(1) 创建 entrypoint.sh 用 sed 将 nltk.download 替换为 lambda no-op (2) NLTK 数据预挂载到 /root/nltk_data volume (3) docker-compose 添加自定义 entrypoint + command
   文件：/mnt/ai/ai-cluster/letta/entrypoint.sh, docker-compose.yml
   注意：Letta 镜像升级后需验证 sed 替换是否仍匹配
-- [2026-04-08] [Sonnet] Letta Docker 卡死修复：nltk.download 通过 HTTPS_PROXY 连 GitHub 超时导致 event loop 阻塞。修复：entrypoint.sh 用 sed 替换 nltk.download 为 no-op + 挂载 NLTK_DATA 卷。升级镜像后需验证 sed 匹配
-- [2026-04-08] [Sonnet] 静态智力根因诊断：记忆系统设计完备但执行断裂。根因：Letta MCP 不可用(L1)、Agent Learning 未集成(L2)、MUST 规则无强制检查点(L3)、检索被动触发(L4)。修复：部署 PRE_EXECUTE_GATE + SELF_CHECK_PROTOCOL
-- [2026-04-08] [Sonnet] Letta API 正确路径是 /v1/agents/（带尾部斜杠），/api/agents 返回 404
-- [2026-04-08] [AGI-Brain] LLM 失败: 所有模型均失败
-- [2026-04-08] [UALS-Test] UALS Phase 1 集成测试
-- [2026-04-08] [AgentLearning] UALS Phase 1 letta route test (confidence: 0.90, tags: uals)
-- [2026-04-08] [Sonnet] systemd timer 未触发问题排查：letta-sync-obsidian.timer 实际已正常触发，但 service 持续失败(exit 127 → nix-shell未找到)。修复：(1) 去除 nix-shell 包装，改用 python3.withPackages (2) 添加 requests 依赖到 path。验证：service 执行成功，每小时同步 Letta 记忆到 Obsidian
-- [2026-04-08] [Sonnet] 禁用非必要服务节省内存：ModemManager(8.4M) + geoclue(44.7M) 桌面机无需调制解调器和位置服务，通过 NixOS 配置禁用(`services.geoclue2.enable = lib.mkForce false; systemd.services.ModemManager.enable = lib.mkForce false`)。注意：NixOS 管理的 systemd 服务不能用 systemctl disable，必须在配置中声明
-- [2026-04-08] [Sonnet] proxy-free-refresh.timer 实际已正常工作：每 6h 下载 85 个代理节点到 mihomo config。此 timer 非"从未触发"，用户提供的信息可能基于过时的 systemctl list-timers 输出
-- [2026-04-08] [Sonnet] Wayland 截图授权机制：spectacle `-b` 后台模式无法触发 Wayland 授权对话框，导致 "not authorized to take a screenshot" 错误。根因不是配置缺失（desktop 文件已包含 `X-KDE-Wayland-Interfaces=zkde_screencast_unstable_v1`），而是 Wayland 安全模型要求用户交互授权。修复：`spectacle -g` GUI 模式首次授权，或使用快捷键（Meta+Shift+S）绕过。原生工具备选：grim/slurp（需 NixOS 配置）。
-- [2026-04-08] [Sonnet] Mastra.js 项目搭建：(1) npm 缓存在 mergerfs POOL-B1 分区损坏导致 EINVAL 错误，解决：`npm config set cache /home/charlie/.npm-cache` 或用临时环境变量 `npm_config_cache=/home/charlie/.npm-cache npm install`；(2) Mastra Agent model 配置需要 `createOpenAI({ apiKey, baseURL })` 创建 provider 然后 `litellmProvider('model-name')`，不能直接传 `{ provider, name }`；(3) Mastra v1.24.0 的 agents 配置需要对象格式 `{ [agent.id]: agent }` 而非数组；(4) LiteLLM 所有模型调用超时（cloud/glm-4-flash 和 local/qwen3-8b 均超时 15s+），待排查后端配置或 API Key 有效性
 
-- [2026-04-08] [Sonnet] **npm electron 安装失败** — npm 缓存位于自定义挂载点（/mnt/pool-disks/.../cache/npm）时，Electron postinstall 脚本会因文件系统问题失败（EINVAL: invalid argument）。解决方案：不依赖 npm electron，直接使用 NixOS 系统 `pkgs.electron` + 自定义启动脚本。教训：复杂二进制依赖（如 Electron、Chrome）优先用系统包管理器，避免 npm/pip 二进制下载坑。
-- [2026-04-08] [Sonnet] 询盘自动化系统完整部署：LiteLLM 新增豆包视觉模型（doubao/vision + vision-lite），创建 inquiry_engine.py（507 行，4 轮自对话 pipeline），hub-api.py 新增 /inquiry/* 路由，inquiries.html 看板前端（306 行），inquiry_feedback.py 多通道推送（Telegram/Discord/弹幕），SQLite 持久化 + Letta 学习闭环。两个仓库 git 提交：litellm/config.yaml（commit 23c76d0）和 hub 首次提交（commit 9a8d730，1980+ 行代码）。封装为 inquiry-automation skill（275 行）。成本 ¥15-50/月，节省 30+ 小时/月人工。
-- [2026-04-08] [AGI-Brain] LLM 失败: 所有模型均失败
-- [2026-04-08] [Sonnet] Electron NixOS 启动问题修复：(1) npm install electron 网络失败 → 改用系统 Electron (nix-shell -p electron)  (2) GPU 进程崩溃 → 添加 --disable-gpu --no-sandbox  (3) Wayland 兼容性问题 → 添加 --ozone-platform=x11 强制 X11 后端。最终启动命令：`nix-shell -p electron nodejs --run "electron main.js --disable-gpu --no-sandbox --ozone-platform=x11"`
-- [2026-04-08] [AGI-Brain] LLM 失败: 所有模型均失败
-- [2026-04-08] [Sonnet] Letta embedding 超时修复：host.docker.internal 被 HTTP_PROXY 干扰导致容器无法访问宿主机服务。解决：(1) docker-compose.yml 中将 OLLAMA_BASE_URL 和 OPENAI_API_BASE 从 host.docker.internal 改为宿主机实际 IP (192.168.2.100)  (2) 扩展 NO_PROXY 包含 `*.docker.internal,172.17.0.0/16,192.168.0.0/16`。修复后 embedding API 从'Request timed out'变为可用（虽然慢16秒但成功）。数据库中老 agents 的 endpoint 配置仍需手动更新或重建 agents。文件：`/mnt/ai/ai-cluster/letta/docker-compose.yml`
-- [2026-04-08] [Sonnet] **AGI Brain 对话助手部署完成** — 新建 3 个模块（conversation.py/proactive.py/telegram_bot_enhanced.py）实现对话式全局助手：(1) 从命令式(/status)改为自然语言对话 (2) 读取 MEMORY.md 提供用户上下文 (3) 意图识别(query_status/execute_action/manage_goals/handle_inquiry/chat) (4) 主动提问生成器（根据感知信号/目标状态每30分钟推送） (5) 对话历史 SQLite 持久化（最近5条上下文）。技术坑：(1) httpx.AsyncClient 参数从 `proxies=` 改为 `proxy=`（单数） (2) Python 3.13 asyncio.get_event_loop() 废弃，改用 asyncio.run() (3) systemd 环境无 curl，改用 httpx 原生 HTTP。服务状态：agi-telegram-bot.service active，测试消息已发送。个人AI系统 Week 1-2 完成度 90%。文件：`~/agi/conversation.py, proactive.py, telegram_bot_enhanced.py`
-- [2026-04-08] [Sonnet→Engineer] **Telegram Bot 409 Conflict 根因和修复**：agi-telegram-bot 反复出现 409 Conflict 错误（每 13 秒）。根因：httpx timeout 不足（30s）导致 Telegram longpolling 连接异常断开，服务端未及时清理旧连接，新请求被视为冲突。修复：(1) 调整 timeout：30s → 40s (telegram_bot_enhanced.py:34) (2) 添加 409 特殊处理逻辑（检测到冲突时延长休眠） (3) 清除 webhook 残留。教训：**Telegram longpolling 需要足够的 timeout（推荐 ≥40s）；勿调用 logOut API（会锁定 bot 约 10 分钟）；409 错误通常是网络/超时配置问题而非代码逻辑问题**。验证：等待锁定期结束后，启动服务监控无 409 错误。文件：`/home/charlie/agi/telegram_bot_enhanced.py`- [2026-04-08] [Sonnet] **Discord Bot 部署完成** — Message Content Intent bot 成功启动，服务器：Charlie的服务器 (Guild ID: 1490683033919950941)。修复：(1) call_llm 函数添加到 discord_bot_enhanced.py (2) help 命令重命名为 agiguide 避免与内置命令冲突 (3) httpx 依赖已安装。双平台部署 100% 完成，Telegram + Discord 均运行正常。
-- [2026-04-08] [Sonnet] **飞书 Bot 集成完成** — 创建 feishu_bot_enhanced.py（Flask webhook处理器，端口9870）、systemd service、FEISHU_SETUP.md 配置指南、Web UI 配置页面（bot-config.html）、hub-api.py 飞书配置 API。复用 AGI Brain 核心模块（conversation.py/tool_router.py/proactive.py），支持自然语言对话、12工具自动调用、MEMORY.md 上下文注入。技术调整：(1) LLM模型从 local/qwen3-8b 切换到 free/groq-qwen3-32b（Ollama 离线） (2) skill_extractor.py 数据库列名修复（timestamp → created_at）。三平台部署完成：Telegram + Discord + Feishu。文件：`~/agi/feishu_bot_enhanced.py`, `FEISHU_SETUP.md`, `hub/static/bot-config.html`, `hub/hub-api.py`
 - [2026-04-09] [AGI-Brain] LLM 失败: 所有模型均失败
 - [2026-04-09] [Sonnet] 代理系统修复：(1) sops-nix secrets 未激活导致 Xray 无法启动（/run/secrets/vless-uuid 不存在）→ nixos-rebuild switch 重新激活解决 (2) mihomo external-controller 0.0.0.0:9090 与 Cockpit 端口冲突 + 安全隐患 → 改为 127.0.0.1:9091。proxy.nix sed 模板和注释同步更新
 - [2026-04-09] [Sonnet] Claude → Letta 同步系统实现：成功构建本地 JSONL 会话解析 + SQLite 增量同步 + systemd 定时任务，核心功能已完成（MOCK 模式），Phase 2 需集成 Letta MCP 实现真实写入，验证了 Claude Code 会话 JSONL 格式（user message.content 支持 str/dict/list 多种格式）
@@ -1483,3 +1255,21 @@
 - [2026-04-16] [GLM-5.1] OpenCode Windows 安装：npm 上没有 opencode 包。正确方式：从 GitHub anomalyco/opencode releases 下载 opencode-windows-x64.zip，解压到 ~/.opencode/bin/，手动加 PATH。当前 Windows 版本 v1.4.6 vs NixOS v1.2.27
 - [2026-04-16] [GLM-5.1] OpenCode Web 持久化：创建 systemd user service opencode-web.service（端口 8080），带 OPENCODE_SERVER_PASSWORD 保护。Web 实例是独立会话，不共享终端会话状态
 - [2026-04-16] [GLM-5.1] 代理共享：NixOS mihomo allow-lan:true 绑定 *:7890，Windows 直接用 192.168.2.100:7890 当代理，无需在 Windows 安装额外代理客户端
+- [2026-04-16] [Aider] fix: 更新 repo URL 为实际地址
+  相关文件：opencode/AGENTS.md, restore.sh
+
+- [2026-04-16] [GLM-5.1] Dotfiles 备份系统架构：采用 symlink 方案（~/dotfiles/ 作为唯一源，symlink 指向系统路径）。不用移动原文件，link.sh --force 自动备份旧文件。repo: mohdfaiz10101-cmyk/dotfiles (private)
+- [2026-04-16] [GLM-5.1] 微信 Wayland 修复结论：xcb 是正确方案，不能改成 wayland。微信 Wayland text-input 协议不完整（cap=72），fcitx5 候选框无法显示。保持 QT_QPA_PLATFORM=xcb
+- [2026-04-16] [GLM-5.1] Windows SSH + PowerShell 脚本部署：直接传 here-string 会编码错误，用 base64 编码绕过（base64 -w0 → powershell FromBase64String）。schtasks 需要 cmd 语法，PowerShell 中引号转义容易出错
+- [2026-04-16] [GLM-5.1] GitHub API 创建 repo：没有 gh CLI 时，用 curl + token 直接调 API：curl -H "Authorization: token $TOKEN" https://api.github.com/user/repos -d '{"name":"dotfiles","private":true}'
+- [2026-04-16] [GLM-5.1] opencode-scheduler schedule_job 在 NixOS 上生成错误的 perl 路径（/usr/bin/perl）和 OnCalendar 格式。修复：sed 替换为 /run/current-system/sw/bin/perl，清理多余 * 前缀
+- [2026-04-16] [GLM-5.1] Tailscale Funnel 公网暴露：`sudo tailscale set --operator=$USER` 后 `tailscale funnel --bg 8080`。公网地址 https://nixos-1.tail60cff7.ts.net/。本机 curl 需 --noproxy '*' 绕过代理
+- [2026-04-16] [GLM-5.1] 手机移动数据+全局代理 = Tailscale NAT 穿透失败+Funnel TLS 被代理破坏。解法：代理 App 加 *.ts.net 直连，或切 WiFi 用局域网 IP
+- [2026-04-16] [GLM-5.1] 部门化 subagent 迁移完成：7 个 agent .md 文件 + opencode.json 注册 + 4 个心跳 schedule_job。Paperclip business-data 保留 ~/.paperclip/business-data/
+
+- [2026-04-17] [GLM-5.1] OpenCode 巡查 Agent 修复：6 个 agent（security-watchdog/proxy-guardian/service-nurse/discord-butler/cost-accountant/memory-curator）有 systemd timer+service 但缺少 job JSON 文件，导致 supervisor.pl exit 2。修复：手动创建 6 个 JSON 到 ~/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/。timer OnCalendar 格式 bug 已知：`* *-*-* *:00:00` 多了前面的 `*`
+- [2026-04-17] [GLM-5.1] Windows 远程接管规则：用户要求所有 Windows 操作由 agent 通过 SSH 主动执行，不要求用户手动操作。连接：ssh G@192.168.2.36，命令用 cmd /c 包裹。已安装：Python 3.12/pip 25.0.1/OpenCode v1.4.6/pywxdump 3.1.46
+- [2026-04-17] [GLM-5.1] whisper-server 内存占用：ggml-medium.bin 模型常驻 1.2G RAM，CPU 0% 闲置。不使用时杀掉释放内存，需要语音识别时重启
+- [2026-04-17] [GLM-5.1] OpenCode 巡查 agent job JSON 全部重建：6 个缺失的 JSON 手动创建到 scopes/charlie-*/jobs/（security-watchdog/proxy-guardian/service-nurse/discord-butler/cost-accountant/memory-curator）
+- [2026-04-17] [GLM-5.1] whisper-server 常驻 1.2G RAM（ggml-medium.bin 模型），闲置 CPU 0%。不使用时杀掉释放内存
+- [2026-04-17] [GLM-5.1] Windows 远程接管协议写入死规则：MUST 主动 SSH 操作，不要求用户手动。cmd /c 包裹命令。已装 pywxdump 3.1.46

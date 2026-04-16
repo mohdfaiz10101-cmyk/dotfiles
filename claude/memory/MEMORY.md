@@ -192,3 +192,52 @@ Issue 创建 → Dispatcher 关键词匹配 → Agent 分配
 
 ### 2026-04-09 Letta Distill
 - 详细记录了基于NixOS的系统架构设计，涵盖远程操控方案、数据同步策略、跨桌面环境兼容性配置及触控优化方案等核心架构决策。
+
+### 2026-04-16 OpenCode Agent 巡查体系（6 个新 Agent + Timer）
+
+**新增 6 个 OpenCode agent 配置文件**（~/.config/opencode/agents/）：
+- `security-watchdog.md` — SSH/端口/登录/密钥安全巡查
+- `proxy-guardian.md` — mihomo/xray 代理链路巡查
+- `service-nurse.md` — Docker/LiteLLM/Letta/磁盘/内存服务巡查
+- `discord-butler.md` — Discord Bot 状态巡查
+- `cost-accountant.md` — AI 成本报告（GLM 降级模型）
+- `memory-curator.md` — 记忆维护（已有 memory-maintain timer 覆盖）
+
+**Timer 调度表**（~/.config/systemd/user/）：
+```
+:00,:30  → security-watchdog    (每30分钟)
+:15,:45  → proxy-guardian       (每30分钟)
+:05,:20,:35,:50 → service-nurse (每15分钟)
+:10,:25,:40,:55 → discord-butler(每15分钟)
+:00 hourly → pet-feeder         (terminal-pet git commit)
+22:00 daily → cost-accountant   (AI成本日报)
+03:00 daily → memory-maintain   (已有)
+```
+
+**已知问题**：`schedule_job` 生成的 OnCalendar 格式错误（多了 `*` 前缀）和 perl 路径错误（`/usr/bin/perl` 在 NixOS 不存在），需 sed 手动修复。
+
+### 2026-04-16 微信聊天记录合并方案
+
+**目标**：合并 Windows + Linux 两端微信数据库，建立长期信息整合平台。
+
+**现状**：
+- Linux 端：16 个加密 DB，密钥已提取（~/.cache/wechat-finance/keys.json）
+- Windows 端：79 个加密 DB（/mnt/data/WeChat Files/），**密钥未知**
+- 工具：~/.local/bin/wechat-finance（1003 行 Python），缺失 pycryptodome + zstandard
+- 旧方案：~/launcher.bak.1776340007/windows-wechat-sync/（pywxdump + Syncthing）
+
+**卡点**：Windows 端需要用户在 Windows 上运行 pywxdump 提取密钥，或用旧脚本 wechat-auto-decrypt.ps1。
+
+**用户选择**：CLI + Web UI 都要 + PostgreSQL 存储 + 连接 OpenCode。
+
+### 2026-04-16 手机远程控制方案
+
+**结论**：SSH + tmux + Tailscale 是最佳方案（用户已有，零配置）。
+- Happy CLI（v1.1.6）：仅支持 Claude Code/Codex，不兼容 OpenCode
+- CloudCLI：深度绑定 Claude Code 协议
+- MuxPod：可作为 tmux 专用移动客户端（Android APK）
+- Tailscale 设备全部在线：Ace 5 Pro / Xiaomi Pad 5 / Windows / nixos-1
+- NixOS Tailscale IP：100.119.174.25
+
+### 2026-04-17 BalanceTrigger App 规划
+- [App 开发经验日志](app-dev-journal.md) — 技术栈选型/踩坑/可复用 pattern

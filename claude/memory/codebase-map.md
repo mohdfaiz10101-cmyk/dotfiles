@@ -757,3 +757,11 @@ Docker data-root 在 NTFS
 - [2026-04-16] [GLM-5.1] Paperclip→OpenCode 部门化迁移：5 个 subagent 已创建（marketing-coordinator/auditor, tech-architect/researcher, ops-dispatcher），位于 `~/.config/opencode/agents/`，hidden:true 不污染界面。动态系统由 systemd timers(18+) 覆盖，无需 Paperclip 心跳。COMPACT_CONTINUE 死规则写入 CLAUDE.md+AGENTS.md。
 - [2026-04-16] [Aider] feat: 添加 DeepSeek 自动训练脚本
   相关文件：auto-train-deepseek.sh
+
+- [2026-04-16] [Sonnet] wechat-finance 工具架构映射 → 完整分析完成 (详见本会话)
+  - 工具路径: ~/.local/bin/wechat-finance (1003行 Python 3.13)
+  - 核心流程: 进程内存扫描密钥 → SQLCipher 解密 → Zstd 解压 → XML 正则解析
+  - 密钥缓存: ~/.cache/wechat-finance/keys.json (16个数据库)
+  - 依赖: sqlcipher 4.14.0 ✅, pycryptodome ❌, zstandard ❌
+  - Windows 障碍: 进程扫描 (/proc → Windows API)、数据库路径、Schema 差异
+  - 关键文件: message/message_0.db, biz_message_0.db (25MB), contact/contact.db

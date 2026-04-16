@@ -33,3 +33,41 @@
   3. **内容营销向 AI Answer Engines 优化** — 传统 SEO 不够，GEO（Generative Engine Optimization）成为新标准。SpectrAI 文档需结构化（Schema Markup + FAQ 格式），确保被 ChatGPT/Perplexity 理解和引用。
   4. **多 Agent 协作成为差异化竞争点** — 单个 AI 工具已同质化。SpectrAI 独特的 NixOS + Paperclip + LiteLLM + Letta 栈可展示"Agent 编排"工作流，这是竞争者难以复制的。
   5. **70/30 自动化运营模型** — 70% 内容分发、SEO 监控、社媒发布用 AI agents 自动化；30% 产品路线、品牌定位、社区互动由人工决策。SpectrAI 可提供"开箱即用"的 Agent 工作流模板。
+
+---
+
+### [2026-04-16] [GLM-5.1] 微信聊天记录长期管理平台
+- **状态**：设计阶段，卡在 Windows 密钥提取
+- **用户需求**：CLI + Web UI + PostgreSQL + 连接 OpenCode
+- **技术栈**：
+  - 存储：PostgreSQL（合并后的微信聊天数据）
+  - CLI：Python CLI 工具（基于 wechat-finance 扩展）
+  - Web UI：FastAPI + 前端仪表盘
+  - AI 集成：OpenCode agent 可查询微信历史记录
+- **现状**：Linux 16 DB 密钥已提取，Windows 79 DB 密钥未知
+- **下一步**：用户在 Windows 端运行 pywxdump 提取密钥
+
+---
+
+### [2026-04-16] [GLM-5.1] Agent 知识库可视化方案
+- **状态**：设计阶段
+- **问题**：用户想知道各 agent 的知识库架构（是独立库还是自主学习库）和可视化方法
+- **当前知识架构**：
+  - OpenCode agents（13 个 .md 配置）→ 无独立知识库，共享 skills(87) + memory(16 files)
+  - Letta agents（3 个）→ 各自有 core memory + archival memory（向量化语义检索）
+  - Skills（87 个）→ 静态 YAML 配置，无学习机制
+  - Memory 文件（16 个 .md）→ 被动文本存储，grep 搜索
+  - 共享知识：shared-knowledge-index.json（3 条）
+- **可视化建议**：
+  1. **知识图谱视图**：agent→skill→memory 的依赖关系图（D3.js/Graphviz）
+  2. **健康仪表盘**：各知识库的条目数、最后更新时间、命中率
+  3. **搜索热力图**：哪些知识点被频繁检索（需先接入检索日志）
+- **关联**：Proactive Maintenance Planner skill 可自动识别高频主题
+
+### [2026-04-17] [Opus] BalanceTrigger App — 人体X形平衡法 + Trigger Points 融合
+- **状态**：Phase 1 MVP 开发中
+- **定位**：中西医疼痛治疗双体系融合 App，未来上架 App Store / Google Play
+- **技术栈**：React Native + Expo SDK 53 + TypeScript + react-native-svg + SQLite
+- **核心功能**：交互式人体地图 → 双体系诊断（Trigger Point 牵涉链 + X形平衡高升点）→ 按压引导 → 治疗记录
+- **竞品差异**：市面无中医X形平衡法整合的触发点 App
+- **详见**：`~/.claude/plans/lazy-cooking-garden.md`

@@ -1,9 +1,0 @@
-[Unit]
-Description=OpenCode Timer: heartbeat-marketing-scan (daily 10:00)
-
-[Timer]
-OnCalendar=*-*-* 10:00:00 Asia/Shanghai
-Persistent=true
-
-[Install]
-WantedBy=timers.target

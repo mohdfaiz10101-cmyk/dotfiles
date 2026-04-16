@@ -1,0 +1,9 @@
+[Unit]
+Description=Dotfiles auto push to GitHub
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/dotfiles/push-to-cloud.sh "auto push %${FOUR_DIGIT_YEAR}-%m-%d %H:%M"
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/usr/bin:/bin
