@@ -4,7 +4,7 @@
 #   或: ./restore.sh
 set -euo pipefail
 
-REPO_URL="https://github.com/charlie-nixos/dotfiles.git"
+REPO_URL="https://github.com/mohdfaiz10101-cmyk/dotfiles.git"
 DOTFILES="$HOME/dotfiles"
 BRANCH="${DOTFILES_BRANCH:-main}"
 
