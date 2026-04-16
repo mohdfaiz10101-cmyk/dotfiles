@@ -1,0 +1,16 @@
+[Unit]
+Description=Clipboard Sync with Android Tablet
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/clipboard-sync-tablet
+Restart=on-failure
+RestartSec=30
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

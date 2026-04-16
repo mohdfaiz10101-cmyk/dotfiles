@@ -1,0 +1,9 @@
+[Unit]
+Description=GLM glm-docker Timer
+
+[Timer]
+OnCalendar=*-*-* 11:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

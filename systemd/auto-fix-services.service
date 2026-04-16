@@ -1,0 +1,11 @@
+[Unit]
+Description=Auto Fix Failed Services
+After=network-online.target
+
+[Service]
+Type=oneshot
+TimeoutStartSec=60
+ExecStart=%h/.local/bin/auto-fix-services
+Environment=PATH=/run/current-system/sw/bin:%h/.local/bin
+StandardOutput=journal
+StandardError=journal

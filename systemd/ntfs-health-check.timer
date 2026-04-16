@@ -1,0 +1,11 @@
+[Unit]
+Description=NTFS Health Check Timer
+Requires=ntfs-health-check.service
+
+[Timer]
+OnCalendar=daily
+OnCalendar=09:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

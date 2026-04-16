@@ -1,0 +1,9 @@
+[Unit]
+Description=System Health Monitor
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/system-call-check
+StandardOutput=journal
+StandardError=journal
+MemoryMax=512M

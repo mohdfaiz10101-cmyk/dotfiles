@@ -1,0 +1,14 @@
+[Unit]
+Description=Asset Watcher — 实时监控文件变更，自动更新素材索引
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/asset-watcher
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

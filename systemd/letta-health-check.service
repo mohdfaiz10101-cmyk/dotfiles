@@ -1,0 +1,12 @@
+[Unit]
+Description=Letta Memory System Health Check
+Documentation=man:systemd.service(5)
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/test-letta-memory-system
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

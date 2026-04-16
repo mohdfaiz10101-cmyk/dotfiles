@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch AI Shared Config for changes
+
+[Path]
+PathChanged=/home/charlie/.config/ai-shared/shared-rules.yaml
+PathChanged=/home/charlie/.config/ai-shared/model-profiles
+
+[Install]
+WantedBy=default.target

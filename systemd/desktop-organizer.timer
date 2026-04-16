@@ -1,0 +1,9 @@
+[Unit]
+Description=每天 22:00 整理桌面
+
+[Timer]
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

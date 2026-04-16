@@ -1,0 +1,9 @@
+[Unit]
+Description=Run image captioner every 6 hours
+
+[Timer]
+OnCalendar=*-*-* 00/6:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for Letta Memory System Health Monitor
+Requires=letta-health-monitor.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

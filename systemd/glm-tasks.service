@@ -1,0 +1,6 @@
+[Unit]
+Description=GLM glm-tasks Task
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/opencode run "审查待办任务列表，标记已完成和过期任务" --dir /home/charlie

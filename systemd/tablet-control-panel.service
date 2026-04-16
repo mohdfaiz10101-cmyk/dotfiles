@@ -1,0 +1,13 @@
+[Unit]
+Description=Tablet Control Panel API Server (port 9876)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env python3 /home/charlie/launcher/tablet-control-api.py
+WorkingDirectory=/home/charlie/launcher
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Claude 模型智能切换守护进程
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/claude-model-daemon
+Restart=on-failure
+RestartSec=10
+Environment=DISPLAY=:0
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+[Install]
+WantedBy=default.target

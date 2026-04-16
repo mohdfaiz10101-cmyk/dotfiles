@@ -1,0 +1,6 @@
+[Unit]
+Description=Memory Sync - archive old entries and cleanup
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/launcher/memory-sync.sh

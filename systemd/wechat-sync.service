@@ -1,0 +1,16 @@
+[Unit]
+Description=WeChat Sync Daemon — auto-sync messages every 60s
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/ai-cluster/wechat-sync
+ExecStart=/run/current-system/sw/bin/nix-shell -p python313Packages.httpx sqlcipher python313Packages.zstandard --run "python3 sync_daemon.py"
+Restart=on-failure
+RestartSec=300
+StartLimitBurst=3
+StartLimitIntervalSec=3600
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

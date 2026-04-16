@@ -1,0 +1,23 @@
+[Unit]
+Description=ADDF Bridge - Paperclip to CrewAI orchestration service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/ai-cluster/addf
+Environment=LD_LIBRARY_PATH=/nix/store/ihpdbhy4rfxaixiamyb588zfc3vj19al-gcc-15.2.0-lib/lib
+Environment=OPENAI_API_KEY=sk-litellm-charlie-2026
+Environment=OPENAI_API_BASE=http://localhost:4000/v1
+Environment=PAPERCLIP_API=http://localhost:3100
+Environment=PAPERCLIP_COMPANY_ID=aae8a73b-784f-4815-9511-bec8f2409b75
+
+ExecStart=/mnt/ai/ai-cluster/addf/.venv/bin/uvicorn bridge.main:app --host 0.0.0.0 --port 8002
+
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

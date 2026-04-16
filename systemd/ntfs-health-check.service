@@ -1,0 +1,10 @@
+[Unit]
+Description=NTFS Health Check
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/ntfs-health-check
+Environment=PATH=/run/current-system/sw/bin:%h/.local/bin
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,11 @@
+[Unit]
+Description=Disk Pool Auto Mount Service
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/sudo /home/charlie/launcher/disk-pool-mount.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=NumLock Guard - 自动开启小键盘
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/numlock-guard
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

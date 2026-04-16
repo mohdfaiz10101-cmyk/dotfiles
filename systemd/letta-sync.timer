@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for syncing Claude Code sessions to Letta
+Requires=letta-sync.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

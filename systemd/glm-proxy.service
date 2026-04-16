@@ -1,0 +1,6 @@
+[Unit]
+Description=GLM glm-proxy Task
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/opencode run "运行代理系统诊断，检查三层代理连通性" --dir /home/charlie

@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode Timer: heartbeat-memory-maintain (daily 22:00)
+
+[Timer]
+OnCalendar=*-*-* 22:00:00 Asia/Shanghai
+Persistent=true
+
+[Install]
+WantedBy=timers.target

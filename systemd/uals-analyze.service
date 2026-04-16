@@ -1,0 +1,9 @@
+[Unit]
+Description=UALS Daily Analyzer
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 %h/.claude/uals/uals-analyzer.py
+StandardOutput=journal
+StandardError=journal

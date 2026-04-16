@@ -1,0 +1,9 @@
+[Unit]
+Description=UALS Daily Analysis Timer
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

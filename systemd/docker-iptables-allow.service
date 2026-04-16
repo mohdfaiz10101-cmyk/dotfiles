@@ -1,0 +1,11 @@
+[Unit]
+Description=Allow Docker bridge networks to access host Ollama
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/wrappers/bin/sudo /home/charlie/launcher/docker-iptables-allow.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

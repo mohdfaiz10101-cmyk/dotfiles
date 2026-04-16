@@ -1,0 +1,12 @@
+[Unit]
+Description=Claude 免费 API 自动切换守护进程
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/claude-free-api-auto daemon
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=default.target

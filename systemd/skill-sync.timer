@@ -1,0 +1,12 @@
+[Unit]
+Description=Skill Sync Timer (Git + Letta)
+Documentation=file://%h/.claude/skills/skill-sync.sh
+
+[Timer]
+# 每天下午 14:00 执行一次
+OnCalendar=*-*-* 14:00:00
+# 持久化：若 timer 在计划时间后启动，仍然会补偿执行任务
+Persistent=true
+
+[Install]
+WantedBy=timers.target

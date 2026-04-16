@@ -1,0 +1,11 @@
+[Unit]
+Description=Claude → Letta 同步定时器
+Documentation=file:///home/charlie/claude_letta_sync.py
+
+[Timer]
+# 每天 22:00 执行
+OnCalendar=22:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

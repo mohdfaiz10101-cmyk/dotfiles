@@ -1,0 +1,13 @@
+[Unit]
+Description=AI Task Pipeline Watchdog
+After=network.target glm-proxy.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/ai-watchdog --daemon
+Restart=on-failure
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

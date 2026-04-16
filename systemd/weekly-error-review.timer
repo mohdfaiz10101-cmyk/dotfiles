@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly Error Review Timer
+Requires=weekly-error-review.service
+
+[Timer]
+OnCalendar=Sun 20:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

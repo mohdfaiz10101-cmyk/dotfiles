@@ -1,0 +1,10 @@
+[Unit]
+Description=Letta Health Guard Timer - Every 5 Minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

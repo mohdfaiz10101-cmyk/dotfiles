@@ -1,0 +1,12 @@
+[Unit]
+Description=Claude 输出同步到平板服务
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/claude-tablet-output
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

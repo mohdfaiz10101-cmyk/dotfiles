@@ -1,0 +1,14 @@
+[Unit]
+Description=Claude → Letta 对话历史同步
+Documentation=file:///home/charlie/claude_letta_sync.py
+
+[Service]
+Type=oneshot
+User=charlie
+WorkingDirectory=/home/charlie
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/claude_letta_sync.py
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

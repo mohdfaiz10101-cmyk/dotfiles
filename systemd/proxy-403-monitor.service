@@ -1,0 +1,12 @@
+[Unit]
+Description=Claude API 403 Real-time Monitor
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/proxy-403-monitor
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync Charlie Hub docs to Obsidian Vault
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/sync-to-obsidian
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

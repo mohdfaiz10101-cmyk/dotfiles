@@ -1,0 +1,19 @@
+[Unit]
+Description=Roo Code Index Periodic Save Timer
+Documentation=https://roocodeapp.com/docs
+
+[Timer]
+# 每天 20:00 运行一次
+OnCalendar=daily
+OnCalendar=*-*-* 20:00:00
+
+# 系统启动后 5 分钟运行一次
+OnBootSec=5min
+
+# 精度 1 秒
+AccuracySec=1s
+
+Unit=roo-code-index-save.service
+
+[Install]
+WantedBy=timers.target

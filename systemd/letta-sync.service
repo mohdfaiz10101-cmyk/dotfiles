@@ -1,0 +1,13 @@
+[Unit]
+Description=Sync Claude Code session history to Letta
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/sync-session-to-letta
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

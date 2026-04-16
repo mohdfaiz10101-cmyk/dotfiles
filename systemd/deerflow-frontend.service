@@ -1,0 +1,15 @@
+[Unit]
+Description=DeerFlow Frontend (port 3000)
+After=network.target deerflow-gateway.service
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/ai-cluster/deerflow/frontend
+ExecStart=/run/current-system/sw/bin/node /mnt/ai/ai-cluster/deerflow/frontend/node_modules/next/dist/bin/next dev --port 3000
+Restart=on-failure
+RestartSec=15
+Environment=NODE_ENV=development
+Environment=NEXT_PUBLIC_API_URL=http://localhost:8001
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=DeerFlow Gateway API (port 8001)
+After=network.target ollama.service
+Wants=deerflow-langgraph.service
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/ai-cluster/deerflow/backend
+ExecStart=/mnt/ai/ai-cluster/deerflow/backend/.venv/bin/uvicorn app.gateway.app:app --host 0.0.0.0 --port 8001 --workers 2
+Restart=on-failure
+RestartSec=10
+Environment=DEER_FLOW_CONFIG_PATH=/mnt/ai/ai-cluster/deerflow/config.yaml
+
+[Install]
+WantedBy=default.target

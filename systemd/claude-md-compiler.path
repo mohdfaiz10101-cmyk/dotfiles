@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch CLAUDE.md for changes
+
+[Path]
+PathModified=/home/charlie/CLAUDE.md
+Unit=claude-md-compiler.service
+
+[Install]
+WantedBy=default.target

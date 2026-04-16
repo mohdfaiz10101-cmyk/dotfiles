@@ -1,0 +1,11 @@
+[Unit]
+Description=磁盘守护 v2（15分钟检查+智能迁移）
+Requires=disk-guard.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

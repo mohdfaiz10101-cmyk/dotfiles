@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly health check timer (Monday 08:00)
+
+[Timer]
+OnCalendar=Mon *-*-* 08:00:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

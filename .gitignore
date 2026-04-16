@@ -1,0 +1,34 @@
+# === Large / Generated ===
+node_modules/
+*.pyc
+__pycache__/
+.cache/
+*.log
+
+# === OpenCode heavy dirs ===
+opencode/node_modules/
+opencode/plugins/
+
+# === Secrets ===
+*.env
+.envrc
+.env
+credentials/
+*.key
+*.pem
+id_ed25519
+id_ed25519_windows
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*~
+
+# === Docker volumes ===
+docker-data/
+
+# === NTFS artifacts ===
+desktop.ini
+System Volume Information/

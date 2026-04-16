@@ -1,0 +1,16 @@
+[Unit]
+Description=Charlie Hub Discord Bot
+After=network.target charlie-hub.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/hub/venv/bin/python3 /home/charlie/hub/discord-bot.py
+Restart=on-failure
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin:/home/charlie/.npm-global/bin
+# 集中式 API Keys 配置（systemd 格式）
+EnvironmentFile=-%h/.config/api-keys/systemd.env
+
+[Install]
+WantedBy=default.target

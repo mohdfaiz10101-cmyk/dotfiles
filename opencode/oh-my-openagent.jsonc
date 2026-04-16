@@ -1,0 +1,167 @@
+{
+  "$schema": "https://opencode.ai/opencode.json",
+  "version": "3.17.2",
+  "disable_telemetry": true, // 关闭遥测
+  // ── Agent 角色索引 ─────────────────────────────────────────
+  // sisyphus       — 主编排器，负责任务分解、委派、验证闭环
+  // atlas          — 大师编排器，多 agent 并行协调，Plan 执行引擎
+  // prometheus     — 规划器，分析需求、生成可执行计划（Plan Mode）
+  // hephaestus     — 深度执行器，长上下文代码生成、复杂重构
+  // oracle         — 只读顾问，高难度架构决策、疑难 bug 诊断
+  // librarian      — 文档研究员，多仓库分析、官方文档检索
+  // explore        — 代码搜索员，定位"X 在哪""Y 怎么实现"
+  // metis          — 预规划顾问，识别隐含意图、歧义、AI 失败模式
+  // momus          — 评审员，评估计划/代码的清晰度、完整性
+  // multimodal-looker — 媒体分析员，PDF/图片/图表深度解读
+  // sisyphus-junior— 分类执行器，按 category+skills 执行委派任务
+  // ─────────────────────────────────────────────────────────
+  "agents": {
+    "sisyphus": {
+      "description": "主编排器 — 任务分解、委派子 agent、验证结果闭环",
+      "model": "openai-compatible/glm-5.1",
+      "temperature": 0.1,
+      "fallback_models": ["openai-compatible/glm-5-turbo", "openai-compatible/glm-4-plus"],
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "atlas": {
+      "description": "大师编排器 — 多 agent 并行协调，Plan 执行引擎",
+      "model": "openai-compatible/glm-5-turbo",
+      "temperature": 0.1,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "prometheus": {
+      "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）",
+      "model": "openai-compatible/glm-5.1",
+      "temperature": 0.3,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "hephaestus": {
+      "description": "深度执行器 — 长上下文代码生成、复杂重构",
+      "model": "openai-compatible/deepseek-v3.2",
+      "temperature": 0.2,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "oracle": {
+      "description": "只读顾问 — 架构决策、疑难 bug 诊断（GPT-4.1）",
+      "model": "openai-compatible/gpt-4.1",
+      "temperature": 0.2,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "librarian": {
+      "description": "文档研究员 — 多仓库分析、官方文档检索",
+      "model": "openai-compatible/glm-5-turbo",
+      "temperature": 0.1,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "explore": {
+      "description": "代码搜索员 — 定位文件、函数、实现模式",
+      "model": "openai-compatible/glm-4.7",
+      "temperature": 0.1,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "metis": {
+      "description": "预规划顾问 — 识别隐含意图、歧义、AI 失败模式",
+      "model": "openai-compatible/glm-5-turbo",
+      "temperature": 0.2,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "momus": {
+      "description": "评审员 — 代码审查（Qwen3-235B）",
+      "model": "openai-compatible/qwen3-235b",
+      "temperature": 0.3,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    },
+    "multimodal-looker": {
+      "description": "媒体分析员 — PDF/图片/图表深度解读",
+      "model": "openai-compatible/qwen3-235b",
+      "temperature": 0.1,
+      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。"
+    }
+  },
+  "category_mapping": {
+    "quick": "openai-compatible/glm-4.7",
+    "unspecified-low": "openai-compatible/glm-5-turbo",
+    "unspecified-high": "openai-compatible/glm-5.1",
+    "deep": "openai-compatible/gpt-4.1",
+    "visual-engineering": "openai-compatible/glm-5.1",
+    "ultrabrain": "openai-compatible/glm-5.1",
+    "writing": "openai-compatible/glm-5-turbo",
+    "artistry": "openai-compatible/qwen3-235b"
+  },
+  "background": {
+    "max_concurrent": 3,
+    "provider_limits": {
+      "openai-compatible": {
+        "max_parallel": 2
+      }
+    }
+  },
+  "lsp": {
+    "enabled": true,
+    "auto_start": true,
+    "servers": {
+      "typescript": {
+        "command": "typescript-language-server",
+        "args": ["--stdio"]
+      },
+      "bash": {
+        "command": "bash-language-server",
+        "args": ["start"]
+      },
+      "python": {
+        "command": "pylsp"
+      },
+      "json": {
+        "command": "vscode-json-language-server",
+        "args": ["--stdio"]
+      },
+      "yaml": {
+        "command": "yaml-language-server",
+        "args": ["--stdio"]
+      }
+    }
+  },
+  "mcp": {
+    "exa": {
+      "enabled": true,
+      "api_key": "${OMC_EXA_API_KEY:-}", // 从环境变量读取
+      "endpoint": "https://api.exa.ai"
+    },
+    "context7": {
+      "enabled": true,
+      "api_key": "ctx7sk-079b5643-e8e2-4eec-8b30-f0602f9e8d3c"
+    },
+    "grep_app": {
+      "enabled": true
+    }
+  },
+  "hashline": {
+    "enabled": true,
+    "strict": true
+  },
+  "hooks": {
+    "disabled": [
+      "experimental.session.compacting" // 禁用默认压缩钩子，用自建的
+    ]
+  },
+  "comment_checker": {
+    "enabled": true,
+    "strict": false
+  },
+  "todo_enforcer": {
+    "enabled": true,
+    "timeout_seconds": 300
+  },
+  "ralph_loop": {
+    "enabled": true,
+    "max_iterations": 10
+  },
+  "experimental": {
+    "preemptive_compaction": true // 自动上下文压缩：token 接近上限时自动 summarize 历史
+  },
+  "disabled_mcps": ["notion", "playwright"],
+  "env": {
+    "OMO_SEND_ANONYMOUS_TELEMETRY": "0",
+    "OMO_DISABLE_POSTHOG": "1"
+  }
+}

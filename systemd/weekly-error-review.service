@@ -1,0 +1,13 @@
+[Unit]
+Description=Weekly Error Review and Prevention Analysis
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/weekly-error-review
+Environment=PATH=/run/current-system/sw/bin:%h/.local/bin
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

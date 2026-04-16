@@ -1,0 +1,12 @@
+[Unit]
+Description=Docker 自动清理服务
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/docker-cleanup.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily Roo Code Task Digest
+Documentation=https://github.com/charlie/ai-learning
+
+[Timer]
+OnCalendar=daily
+OnCalendar=23:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

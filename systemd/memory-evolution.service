@@ -1,0 +1,16 @@
+[Unit]
+Description=Memory Evolution Engine - Self-Evolving AI Memory System
+After=network.target ollama.service letta.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/memory-evolution-engine
+Restart=on-failure
+RestartSec=300
+StartLimitBurst=3
+StartLimitIntervalSec=3600
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=SpectrAI Office - AI Employee Office Simulator
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/pool-disks/POOL-B1/home-offload/data/bun/bin/bun /home/charlie/projects/spectrai-office/server.js
+WorkingDirectory=/home/charlie/projects/spectrai-office
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

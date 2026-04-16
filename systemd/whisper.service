@@ -1,0 +1,13 @@
+[Unit]
+Description=Whisper Speech-to-Text Server (port 8178)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/whisper-server -m /mnt/pool/offload/whisper-models/ggml-medium.bin -l zh --host 127.0.0.1 --port 8178 -t 4
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

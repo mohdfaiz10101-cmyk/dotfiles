@@ -1,0 +1,14 @@
+[Unit]
+Description=ttyd - Aider Terminal (:7693)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/ttyd -p 7693 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -W /home/charlie/.nix-profile/bin/aider
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target

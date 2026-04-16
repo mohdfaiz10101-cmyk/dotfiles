@@ -1,0 +1,12 @@
+[Unit]
+Description=Tech Digest Web Viewer
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/tech-digest-viewer.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

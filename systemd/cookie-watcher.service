@@ -1,0 +1,12 @@
+[Unit]
+Description=Cookie Watcher — real-time sync of Floorp cookies
+After=browser-cookie-sync.timer
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/cookie-watcher.py --daemon
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

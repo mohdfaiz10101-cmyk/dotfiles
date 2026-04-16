@@ -1,0 +1,12 @@
+[Unit]
+Description=noVNC WebSocket proxy for krfb VNC
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/bin/sh -c 'exec websockify --web "$(find /nix/store -maxdepth 4 -path "*/share/webapps/novnc" -type d 2>/dev/null | tail -1)" 6090 localhost:5900'
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=graphical-session.target

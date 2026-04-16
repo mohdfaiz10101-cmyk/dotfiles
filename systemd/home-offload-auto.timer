@@ -1,0 +1,10 @@
+[Unit]
+Description=Home 大文件自动迁移定时器（每天凌晨 3 点）
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true
+Unit=home-offload-auto.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=OCR Image Text Indexer
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/mnt/ai/ai-cluster/unified-search
+ExecStart=/run/current-system/sw/bin/nix-shell --run "python3 ocr-indexer.py" ocr-shell.nix
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin
+TimeoutStartSec=600

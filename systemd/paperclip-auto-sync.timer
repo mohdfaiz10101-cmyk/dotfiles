@@ -1,0 +1,14 @@
+[Unit]
+Description=Paperclip Fork Auto Sync Timer
+Documentation=man:systemd.timer(5)
+
+[Timer]
+# 每天晚上 19:00 同步上游更新
+OnCalendar=*-*-* 19:00:00
+# 启动后 5 分钟执行一次（首次同步）
+OnStartupSec=5min
+# 如果错过执行时间，立即补上
+Persistent=true
+
+[Install]
+WantedBy=timers.target

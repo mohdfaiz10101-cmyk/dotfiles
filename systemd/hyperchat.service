@@ -1,0 +1,19 @@
+[Unit]
+Description=HyperChat v5.2 — CRM + WeChat Browser (port 9098)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/ai-cluster/hyperchat
+ExecStart=/run/current-system/sw/bin/nix-shell -p python313Packages.httpx python313Packages.uvicorn python313Packages.fastapi python313Packages.pydantic python313Packages.aiofiles python313Packages.websockets python313Packages.sse-starlette python313Packages.python-multipart --run "python3 app_v2.py"
+Restart=on-failure
+RestartSec=300
+StartLimitBurst=3
+StartLimitIntervalSec=3600
+Environment=PYTHONUNBUFFERED=1
+# nix-shell SQLite 在 NTFS3 上 WAL 不兼容，强制用 ext4 缓存
+Environment=XDG_CACHE_HOME=/home/charlie/.cache
+
+[Install]
+# Decommissioned 2026-04-16 — prevented from auto-starting
+# WantedBy=default.target

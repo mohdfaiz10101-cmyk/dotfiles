@@ -1,0 +1,14 @@
+[Unit]
+Description=Charlie Hub API (FastAPI :9801)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/hub
+ExecStart=/run/current-system/sw/bin/python3 -m uvicorn hub-api:app --host 127.0.0.1 --port 9801 --log-level warning
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+[Install]
+WantedBy=default.target

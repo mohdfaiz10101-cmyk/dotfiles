@@ -1,0 +1,12 @@
+[Unit]
+Description=Claude ESP Server - 实时同步 Claude 操作到平板
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/claude-esp-simple.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

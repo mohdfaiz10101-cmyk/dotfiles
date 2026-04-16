@@ -1,0 +1,10 @@
+[Unit]
+Description=Roo Code State Backup Timer (every 30min)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

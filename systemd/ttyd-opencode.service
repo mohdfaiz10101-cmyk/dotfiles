@@ -1,0 +1,17 @@
+[Unit]
+Description=ttyd - OpenCode Terminal (:7692)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -W /home/charlie/.local/bin/opencode
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=OLLAMA_HOST=http://127.0.0.1:11434
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
+
+[Install]
+WantedBy=default.target

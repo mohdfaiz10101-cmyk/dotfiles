@@ -1,0 +1,13 @@
+[Unit]
+Description=GitHub AI Weekly Trending Scanner
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/github-ai-weekly --notify
+Environment=HOME=%h
+Environment=PATH=%h/.local/bin:/run/current-system/sw/bin:/usr/bin:/bin
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus
+StandardOutput=append:%h/.cache/github-ai-weekly/weekly.log
+StandardError=append:%h/.cache/github-ai-weekly/weekly.log

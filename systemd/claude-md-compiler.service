@@ -1,0 +1,10 @@
+[Unit]
+Description=Compile CLAUDE.md to multi-target rule files
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.config/ai-shared/compiler.py
+Environment=HOME=/home/charlie
+StandardOutput=journal
+StandardError=journal

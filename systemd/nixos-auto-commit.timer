@@ -1,0 +1,9 @@
+[Unit]
+Description=每天自动提交 NixOS 配置变更
+
+[Timer]
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

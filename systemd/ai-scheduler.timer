@@ -1,0 +1,11 @@
+[Unit]
+Description=AI 智能调度器定时器
+Requires=ai-scheduler.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=1h
+Unit=ai-scheduler.service
+
+[Install]
+WantedBy=timers.target

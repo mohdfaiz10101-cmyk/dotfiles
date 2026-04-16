@@ -1,0 +1,13 @@
+[Unit]
+Description=JetBrains AI Proxy (CLAUDE.md + Letta injection)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/jetbrains-ai-proxy --port 9802
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

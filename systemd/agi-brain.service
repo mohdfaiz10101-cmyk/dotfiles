@@ -1,0 +1,26 @@
+[Unit]
+Description=AGI Brain — Sense→Think→Act 三环主循环
+After=network.target
+Wants=default.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/brain.py
+WorkingDirectory=/home/charlie/agi
+Restart=on-failure
+RestartSec=15
+StartLimitBurst=5
+Environment=PYTHONUNBUFFERED=1
+Environment=HOME=/home/charlie
+Environment=DISPLAY=:0
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+# LiteLLM 在 localhost:4000，清除代理避免干扰
+UnsetEnvironment=HTTP_PROXY HTTPS_PROXY http_proxy https_proxy
+Environment=NO_PROXY=localhost,127.0.0.1
+Environment=no_proxy=localhost,127.0.0.1
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agi-brain
+
+[Install]
+WantedBy=default.target

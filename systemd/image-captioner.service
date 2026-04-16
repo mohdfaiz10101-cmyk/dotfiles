@@ -1,0 +1,9 @@
+[Unit]
+Description=Image Captioner (minicpm-v, 30 images/run)
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/mnt/ai/ai-cluster/unified-search
+ExecStart=/run/current-system/sw/bin/python3 image-captioner.py
+Environment=PYTHONUNBUFFERED=1
