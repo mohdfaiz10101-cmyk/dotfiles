@@ -150,28 +150,6 @@
         "@upstash/context7-mcp@latest"
       ]
     },
-    "ref": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "ref-tools-mcp@latest"
-      ],
-      "environment": {
-        "REF_API_KEY": "${REF_API_KEY}"
-      }
-    },
-    "wechat": {
-      "type": "local",
-      "command": [
-        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
-        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
-        "--stdio"
-      ],
-      "environment": {
-        "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
-      }
-    },
     "gmail": {
       "type": "local",
       "command": [
