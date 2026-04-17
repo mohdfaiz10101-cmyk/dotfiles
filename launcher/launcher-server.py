@@ -309,6 +309,15 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                 self._json_response({"error": str(e)}, 500)
             return
 
+        if parsed.path == "/api/op-notify":
+            try:
+                data = json.loads(body)
+                result = self._op_notify(data)
+                self._json_response(result)
+            except Exception as e:
+                self._json_response({"error": str(e)}, 500)
+            return
+
         self.send_response(404)
         self.end_headers()
 
@@ -1203,6 +1212,136 @@ Git Diff（前3000字符）：
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(payload)
+
+    def _op_notify(self, data):
+        """OP 完成任务后的 webhook：接收 OP 报告，自动生成 CC 响应写入对话"""
+        from datetime import datetime
+        import subprocess as sp
+
+        source = data.get("source", "unknown")
+        status = data.get("status", "unknown")
+        summary = data.get("summary", "")
+        completed_count = data.get("completed_count", 0)
+
+        dialog_file = os.path.expanduser("~/.claude/projects/-home-charlie/memory/cc-op-dialog.jsonl")
+        op_status_file = "/tmp/op-status.json"
+        op_results_file = "/tmp/op-task-results.json"
+
+        # 读取 OP 最新状态数据（文件优先，POST body 补充）
+        op_status = {}
+        try:
+            with open(op_status_file, "r") as f:
+                op_status = json.load(f)
+        except Exception:
+            pass
+        # 用 POST body 中的字段补充（OP job 可以直接在 notify 里传递关键字段）
+        for key in ("fixes_failed", "disk_warn", "ports_down", "alerts", "fixes_applied"):
+            if key in data and data[key]:
+                op_status.setdefault(key, data[key])
+
+        op_results = []
+        try:
+            with open(op_results_file, "r") as f:
+                content = f.read().strip()
+                if content:
+                    op_results = json.loads(content) if content.startswith('[') else [json.loads(l) for l in content.splitlines() if l.strip()]
+        except Exception:
+            pass
+
+        # 构建 CC 决策 prompt（基于真实数据）
+        alerts = op_status.get("alerts", [])
+        fixes_failed = op_status.get("fixes_failed", [])
+        disk_warn = op_status.get("disk_warn", [])
+        ports_down = op_status.get("ports_down", [])
+
+        context_parts = []
+        if source == "service-nurse":
+            context_parts.append(f"OP service-nurse 巡检完成，状态: {op_status.get('status','unknown')}")
+            if fixes_failed:
+                context_parts.append(f"修复失败: {', '.join(fixes_failed)}")
+            if disk_warn:
+                context_parts.append(f"磁盘告警: {', '.join(disk_warn)}")
+            if ports_down:
+                context_parts.append(f"端口宕机: {', '.join(str(p) for p in ports_down)}")
+        elif source == "task-check":
+            context_parts.append(f"OP 完成了 {completed_count} 个 CC 委托任务")
+            if summary:
+                context_parts.append(f"摘要: {summary}")
+
+        if not context_parts:
+            context_parts = [f"OP 通知来自 {source}"]
+
+        op_report = "；".join(context_parts)
+
+        # 用 DeepSeek 生成 CC 的真实响应
+        cc_sys = (
+            "你是 CC，项目负责人，刚收到运维同事 OP 的工作汇报。"
+            "根据汇报内容给出一句具体的决策或指示。"
+            "如果有故障需要处理，指出优先级；如果一切正常，确认并说下一步。"
+            "专业口语化，1句话，≤30字，中文。"
+        )
+        cc_usr = f"OP 汇报：{op_report}"
+
+        def call_deepseek(sys_msg, usr_msg):
+            payload = json.dumps({
+                "model": "deepseek-v3.2",
+                "messages": [
+                    {"role": "system", "content": sys_msg},
+                    {"role": "user", "content": usr_msg}
+                ],
+                "max_tokens": 80,
+                "temperature": 0.7
+            }).encode()
+            req = ureq.Request("http://localhost:4000/v1/chat/completions", data=payload, headers={
+                "Authorization": "Bearer sk-litellm-charlie-2026",
+                "Content-Type": "application/json"
+            })
+            try:
+                with ureq.urlopen(req, timeout=15) as resp:
+                    r = json.loads(resp.read())
+                    return r["choices"][0]["message"]["content"].strip()
+            except Exception as e:
+                return f"[CC] 收到 OP 报告（{source}）"
+
+        cc_content = call_deepseek(cc_sys, cc_usr)
+
+        # 写入对话
+        now = datetime.now()
+        entry = {
+            "time": now.strftime("%H:%M"),
+            "from": "CC",
+            "to": "OP",
+            "content": cc_content,
+            "type": "auto-response",
+            "trigger": source
+        }
+        with open(dialog_file, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+        # 如果有严重故障，自动生成后续任务
+        new_tasks = []
+        if fixes_failed:
+            for svc in fixes_failed:
+                task = f"- [ ] [CC→OP] [{now.strftime('%Y-%m-%d %H:%M')}] [P1] 人工介入修复 {svc}（自动修复失败，需检查日志）"
+                new_tasks.append(task)
+        if disk_warn:
+            task = f"- [ ] [CC→OP] [{now.strftime('%Y-%m-%d %H:%M')}] [P2] 清理磁盘空间（目标<80%），受影响分区：{', '.join(disk_warn)}"
+            new_tasks.append(task)
+
+        if new_tasks:
+            op_tasks_file = os.path.expanduser("~/.claude/projects/-home-charlie/memory/op-tasks.md")
+            try:
+                with open(op_tasks_file, "a", encoding="utf-8") as f:
+                    f.write("\n".join(new_tasks) + "\n")
+            except Exception:
+                pass
+
+        return {
+            "ok": True,
+            "cc_response": cc_content,
+            "new_tasks": len(new_tasks),
+            "source": source
+        }
 
 if __name__ == "__main__":
     print(f"启动器服务运行在 http://localhost:{PORT}")
