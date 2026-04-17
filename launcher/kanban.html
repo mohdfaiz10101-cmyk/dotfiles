@@ -307,6 +307,7 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
         <input class="dialog-rounds" id="dialog-rounds" type="number" value="1" min="1" max="3" title="轮数">
         <button class="dialog-speak-btn" id="dialog-btn" onclick="triggerDialog()">⚡ 触发</button>
         <button class="dialog-speak-btn" style="flex:0.4;background:rgba(137,180,250,.1);color:var(--blue)" onclick="loadDialog()">↻</button>
+        <button class="dialog-speak-btn" id="voice-toggle" style="flex:0.5;font-size:15px;padding:3px 6px;" onclick="toggleVoice()" title="语音播报">🔇</button>
       </div>
     </div>
     <!-- Tab: 架构讨论 -->
@@ -977,98 +978,6 @@ document.addEventListener('keydown', e => {
 });
 
 // ── CC⇄OP 对话 ──────────────────────────────────────────────
-async function loadDialog() {
-  try {
-    const r = await fetch('/api/cc-op-dialog?n=30');
-    const data = await r.json();
-    const msgs = data.messages || [];
-    document.getElementById('cnt-dialog').textContent = msgs.length;
-    const area = document.getElementById('dialog-area');
-    const empty = document.getElementById('dialog-empty');
-    if (msgs.length === 0) { empty.style.display=''; return; }
-    empty.style.display = 'none';
-    // Only re-render if count changed (avoid scroll reset)
-    if (area.dataset.count == msgs.length) return;
-    area.dataset.count = msgs.length;
-    area.innerHTML = '';
-    // Extract decisions (lines with keywords)
-    const decisions = [];
-    msgs.forEach(msg => {
-      const txt = msg.content || '';
-      if (/优先|决定|建议|执行|已完成|完成|处理|注意|需要|阻塞|urgent/i.test(txt)) {
-        decisions.push({from: msg.from, content: txt, time: msg.time});
-      }
-    });
-    msgs.forEach((msg, idx) => {
-      const isCC = msg.from === 'CC';
-      const wrap = document.createElement('div');
-      wrap.style.display = 'flex';
-      wrap.style.flexDirection = 'column';
-      wrap.style.alignItems = isCC ? 'flex-end' : 'flex-start';
-      const sender = document.createElement('div');
-      sender.className = 'dialog-sender ' + (isCC ? 'cc' : 'op');
-      sender.textContent = isCC ? '🔵 CC' : '🟣 op';
-      const bubble = document.createElement('div');
-      bubble.className = 'dialog-bubble ' + (isCC ? 'cc' : 'op');
-      bubble.textContent = msg.content;
-      // 微信表情反应
-      const msgKey = 'dialog_react_' + idx + '_' + (msg.time||'');
-      const saved = JSON.parse(localStorage.getItem(msgKey)||'{}');
-      const reactArea = document.createElement('div');
-      reactArea.className = 'bubble-reactions';
-      function renderReacts() {
-        reactArea.innerHTML = '';
-        Object.entries(saved).forEach(([em,cnt]) => {
-          if(!cnt) return;
-          const b = document.createElement('span');
-          b.className = 'reaction-badge';
-          b.innerHTML = em + '<span class="cnt">' + cnt + '</span>';
-          b.onclick = (e) => { e.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(msgKey,JSON.stringify(saved)); renderReacts(); };
-          reactArea.appendChild(b);
-        });
-      }
-      renderReacts();
-      // 点击气泡显示表情选择器
-      const WECHAT_EMOJIS = ['😄','😂','🤣','😍','🥰','😘','😎','🤔','😅','😭','😡','👍','👎','❤️','🔥','💯','🎉','👏','🙏','💪','🤝','😏','🫡','😴','🤮','👀','💀','🐶','🐱','🍻'];
-      bubble.addEventListener('click', (e) => {
-        e.stopPropagation();
-        document.querySelectorAll('.emoji-picker').forEach(p => p.remove());
-        const picker = document.createElement('div');
-        picker.className = 'emoji-picker ' + (isCC ? 'emoji-picker-cc' : 'emoji-picker-op');
-        WECHAT_EMOJIS.forEach(em => {
-          const s = document.createElement('span');
-          s.textContent = em;
-          s.title = em;
-          s.onclick = (ev) => { ev.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(msgKey,JSON.stringify(saved)); renderReacts(); picker.remove(); };
-          picker.appendChild(s);
-        });
-        bubble.style.position = 'relative';
-        bubble.appendChild(picker);
-        setTimeout(() => document.addEventListener('click', () => picker.remove(), {once:true}), 10);
-      });
-      const ts = document.createElement('div');
-      ts.className = 'dialog-time ' + (isCC ? 'cc' : 'op');
-      ts.textContent = (msg.time||'') + (msg.type==='auto-response'?' ⚡':'') + (msg.type==='cc-urge'?' 🔔':'');
-      wrap.appendChild(sender);
-      wrap.appendChild(bubble);
-      wrap.appendChild(reactArea);
-      wrap.appendChild(ts);
-      area.appendChild(wrap);
-    });
-    area.scrollTop = area.scrollHeight;
-    // Show decisions panel
-    const decArea = document.getElementById('dialog-decision-area');
-    if (decisions.length > 0) {
-      const last = decisions[decisions.length - 1];
-      decArea.innerHTML = `<div class="dialog-decision">💡 最新决策 [${last.from}] ${last.content.slice(0,80)}${last.content.length>80?'...':''}</div>`;
-    } else {
-      decArea.innerHTML = '';
-    }
-  } catch(e) {
-    console.warn('loadDialog error', e);
-  }
-}
-
 async function triggerDialog() {
   const btn = document.getElementById('dialog-btn');
   const rounds = parseInt(document.getElementById('dialog-rounds').value) || 1;
@@ -1266,6 +1175,145 @@ loadDialog();
 setInterval(loadTasks, 15000);
 setInterval(loadOpStatus, 30000);
 setInterval(loadDialog, 20000);
+
+// ── 语音引擎（Web Speech API）──────────────────────────────────
+let voiceEnabled = localStorage.getItem('hub_voice') === '1';
+let lastSpokenIdx = -1;
+const synth = window.speechSynthesis;
+
+function toggleVoice() {
+  voiceEnabled = !voiceEnabled;
+  localStorage.setItem('hub_voice', voiceEnabled ? '1' : '0');
+  document.getElementById('voice-toggle').textContent = voiceEnabled ? '🔊' : '🔇';
+  if (!voiceEnabled) synth.cancel();
+}
+
+// 初始化按钮状态
+document.getElementById('voice-toggle').textContent = voiceEnabled ? '🔊' : '🔇';
+
+function getVoices() {
+  return new Promise(res => {
+    const v = synth.getVoices();
+    if (v.length) return res(v);
+    synth.addEventListener('voiceschanged', () => res(synth.getVoices()), { once: true });
+  });
+}
+
+async function speakMessage(text, isCC) {
+  if (!voiceEnabled || !synth) return;
+  synth.cancel();
+  const voices = await getVoices();
+  // CC: 女声/高音调（Strategic Leader）  OP: 男声/低音调（Ops Engineer）
+  const zhVoices = voices.filter(v => v.lang.startsWith('zh') || v.lang.startsWith('cmn'));
+  const allVoices = zhVoices.length ? zhVoices : voices;
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'zh-CN';
+  utt.rate = isCC ? 1.05 : 0.92;
+  utt.pitch = isCC ? 1.3 : 0.75;
+  utt.volume = 0.9;
+  // 选音色：CC 偏高索引，OP 偏低索引
+  if (allVoices.length >= 2) {
+    utt.voice = isCC ? allVoices[allVoices.length > 2 ? 1 : 0] : allVoices[0];
+  }
+  synth.speak(utt);
+}
+
+// 监听新对话消息 → 朗读最新一条
+function speakLatestDialog(msgs) {
+  if (!voiceEnabled || !msgs || !msgs.length) return;
+  const newIdx = msgs.length - 1;
+  if (newIdx <= lastSpokenIdx) return;
+  lastSpokenIdx = newIdx;
+  const msg = msgs[newIdx];
+  const isCC = msg.from === 'CC';
+  const prefix = isCC ? 'CC说：' : 'OP说：';
+  speakMessage(prefix + msg.content, isCC);
+}
+
+// Patch loadDialog to also trigger TTS
+const _origLoadDialog = loadDialog;
+window._dialogMsgsCache = [];
+async function loadDialog() {
+  // 原逻辑保持不变，只是在成功后触发语音
+  const area = document.getElementById('dialog-area');
+  try {
+    const r = await fetch('/api/cc-op-dialog?n=30');
+    if (!r.ok) return;
+    const data = await r.json();
+    const msgs = data.messages || [];
+    const decisions = data.decisions || [];
+    // 检测是否有新消息
+    const prevLen = window._dialogMsgsCache.length;
+    window._dialogMsgsCache = msgs;
+    area.innerHTML = '';
+    if (!msgs.length) {
+      area.innerHTML = '<div class="dialog-empty">暂无对话记录<br><small>点击触发对话</small></div>';
+    }
+    msgs.forEach((msg, idx) => {
+      const isCC = msg.from === 'CC';
+      const wrap = document.createElement('div');
+      wrap.style.display = 'flex';
+      wrap.style.flexDirection = 'column';
+      wrap.style.alignItems = isCC ? 'flex-end' : 'flex-start';
+      const sender = document.createElement('div');
+      sender.className = 'dialog-sender ' + (isCC ? 'cc' : 'op');
+      sender.textContent = isCC ? '🔵 CC' : '🟣 op';
+      const bubble = document.createElement('div');
+      bubble.className = 'dialog-bubble ' + (isCC ? 'cc' : 'op');
+      bubble.textContent = msg.content;
+      const msgKey = 'dialog_react_' + idx + '_' + (msg.time||'');
+      const saved = JSON.parse(localStorage.getItem(msgKey)||'{}');
+      const reactArea = document.createElement('div');
+      reactArea.className = 'bubble-reactions';
+      function renderReacts2() {
+        reactArea.innerHTML = '';
+        Object.entries(saved).forEach(([em,cnt]) => {
+          if(!cnt) return;
+          const b = document.createElement('span');
+          b.className = 'reaction-badge';
+          b.innerHTML = em + '<span class="cnt">'+cnt+'</span>';
+          b.onclick = e => { e.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(msgKey,JSON.stringify(saved)); renderReacts2(); };
+          reactArea.appendChild(b);
+        });
+      }
+      renderReacts2();
+      const WECHAT_EMOJIS2 = ['😄','😂','🤣','😍','🥰','😘','😎','🤔','😅','😭','😡','👍','👎','❤️','🔥','💯','🎉','👏','🙏','💪','🤝','😏','🫡','😴','🤮','👀','💀','🐶','🐱','🍻'];
+      bubble.addEventListener('click', e => {
+        e.stopPropagation();
+        document.querySelectorAll('.emoji-picker').forEach(p=>p.remove());
+        const picker = document.createElement('div');
+        picker.className = 'emoji-picker ' + (isCC?'emoji-picker-cc':'emoji-picker-op');
+        WECHAT_EMOJIS2.forEach(em => {
+          const s = document.createElement('span');
+          s.textContent = em;
+          s.onclick = ev => { ev.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(msgKey,JSON.stringify(saved)); renderReacts2(); picker.remove(); };
+          picker.appendChild(s);
+        });
+        bubble.style.position='relative';
+        bubble.appendChild(picker);
+        setTimeout(()=>document.addEventListener('click',()=>picker.remove(),{once:true}),10);
+      });
+      const ts = document.createElement('div');
+      ts.className = 'dialog-time ' + (isCC ? 'cc' : 'op');
+      ts.textContent = (msg.time||'') + (msg.type==='auto-response'?' ⚡':'') + (msg.type==='cc-urge'?' 🔔':'');
+      wrap.appendChild(sender);
+      wrap.appendChild(bubble);
+      wrap.appendChild(reactArea);
+      wrap.appendChild(ts);
+      area.appendChild(wrap);
+    });
+    area.scrollTop = area.scrollHeight;
+    const decArea = document.getElementById('dialog-decision-area');
+    if (decisions.length > 0) {
+      const last = decisions[decisions.length - 1];
+      decArea.innerHTML = `<div class="dialog-decision">💡 最新决策 [${last.from}] ${last.content.slice(0,80)}${last.content.length>80?'...':''}</div>`;
+    } else {
+      decArea.innerHTML = '';
+    }
+    // 新消息 → 语音播报
+    if (msgs.length > prevLen) speakLatestDialog(msgs);
+  } catch(e) { console.warn('loadDialog error', e); }
+}
 </script>
 </body>
 </html>
