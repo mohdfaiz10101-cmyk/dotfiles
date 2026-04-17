@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看板 · Claude Tasks</title>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<style>
+:root {
+  --bg: #1e1e2e; --surface: #181825; --overlay: #313244;
+  --text: #cdd6f4; --subtext: #a6adc8; --muted: #585b70;
+  --blue: #89b4fa; --green: #a6e3a1; --yellow: #f9e2af;
+  --red: #f38ba8; --mauve: #cba6f7; --peach: #fab387;
+  --teal: #94e2d5; --sky: #89dceb;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif; min-height:100vh; }
+
+header { display:flex; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid var(--overlay); flex-wrap:wrap; }
+header h1 { font-size:16px; color:var(--blue); font-weight:600; }
+header .dot { width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.badge { font-size:11px; background:var(--overlay); padding:2px 8px; border-radius:99px; color:var(--subtext); }
+.btn { padding:6px 12px; border-radius:6px; border:none; cursor:pointer; font-size:12px; background:var(--overlay); color:var(--text); }
+.btn:hover { background:var(--blue); color:var(--bg); }
+
+/* Search */
+.search-wrap { display:flex; align-items:center; gap:6px; margin-left:auto; }
+.search-input { background:var(--overlay); border:1px solid var(--muted); border-radius:6px; padding:5px 10px; color:var(--text); font-size:12px; width:180px; outline:none; transition:border-color .15s,width .2s; }
+.search-input:focus { border-color:var(--blue); width:220px; }
+.search-input::placeholder { color:var(--muted); }
+.search-hint { font-size:10px; color:var(--muted); white-space:nowrap; }
+
+/* Board */
+.board { display:flex; gap:16px; padding:16px; height:calc(100vh - 60px); overflow:hidden; }
+.column { flex:1; display:flex; flex-direction:column; background:var(--surface); border-radius:10px; overflow:hidden; min-width:220px; transition:background .15s; }
+.column.drag-over { background:rgba(137,180,250,.06); outline:2px dashed var(--blue); }
+.col-op-monitor { flex:1.2; }
+.col-header { padding:10px 14px; font-size:12px; font-weight:700; letter-spacing:.6px; display:flex; align-items:center; gap:8px; }
+.col-header .count { background:var(--overlay); padding:1px 7px; border-radius:99px; font-size:11px; color:var(--subtext); }
+.col-header.wip-warn { color:var(--red) !important; }
+.col-todo .col-header { color:var(--yellow); border-bottom:2px solid var(--yellow); }
+.col-doing .col-header { color:var(--peach); border-bottom:2px solid var(--peach); }
+.col-done .col-header { color:var(--green); border-bottom:2px solid var(--green); }
+.col-op-monitor .col-header { color:var(--mauve); border-bottom:2px solid var(--mauve); }
+
+/* WIP progress bar */
+.wip-bar { height:3px; width:100%; background:var(--overlay); flex-shrink:0; }
+.wip-bar-fill { height:100%; border-radius:0; transition:width .4s ease; }
+.col-todo .wip-bar-fill { background:var(--blue); }
+.col-doing .wip-bar-fill { background:var(--peach); }
+.col-done .wip-bar-fill { background:var(--green); }
+.wip-warn-label { font-size:9px; padding:2px 6px; background:rgba(243,139,168,.15); color:var(--red); border-radius:4px; margin-left:auto; }
+
+/* op monitor cards */
+.job-card { background:var(--overlay); border-radius:8px; padding:9px 11px; margin-bottom:6px; border-left:3px solid var(--muted); }
+.job-card.success { border-left-color:var(--green); }
+.job-card.failed { border-left-color:var(--red); }
+.job-card.no_log { border-left-color:var(--muted); }
+.job-name { font-size:12px; font-weight:600; color:var(--text); }
+.job-next { font-size:10px; color:var(--subtext); margin-top:3px; }
+.job-log { font-size:10px; color:var(--muted); margin-top:4px; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.job-log.ok { color:var(--green); }
+.job-log.fail { color:var(--red); }
+.op-pending-section { padding:8px 10px 4px; }
+.op-pending-title { font-size:10px; color:var(--yellow); font-weight:700; letter-spacing:.5px; margin-bottom:4px; }
+.op-pending-item { font-size:11px; color:var(--text); background:rgba(203,166,247,.1); border-radius:5px; padding:4px 8px; margin-bottom:3px; border-left:2px solid var(--mauve); }
+.live-dot { width:6px; height:6px; background:var(--mauve); border-radius:50%; animation:pulse 1.5s infinite; display:inline-block; }
+
+.cards { flex:1; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:8px; }
+.cards::-webkit-scrollbar { width:4px; }
+.cards::-webkit-scrollbar-track { background:transparent; }
+.cards::-webkit-scrollbar-thumb { background:var(--overlay); border-radius:4px; }
+
+.card { background:var(--overlay); border-radius:8px; padding:10px 12px; cursor:pointer; border:1px solid transparent; transition:border-color .15s,box-shadow .15s,opacity .15s; }
+.card:hover { border-color:var(--blue); box-shadow:0 0 0 2px rgba(137,180,250,.1); }
+.card.active { border-color:var(--mauve); }
+.card.dragging { opacity:.45; }
+.card.hidden-filter { display:none; }
+.card-title { font-size:13px; line-height:1.4; color:var(--text); word-break:break-all; }
+.card-title.done-text { text-decoration:line-through; color:var(--muted); }
+.card-meta { display:flex; align-items:center; gap:6px; margin-top:6px; flex-wrap:wrap; }
+.tag { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:600; }
+.tag-cc { background:rgba(137,180,250,.2); color:var(--blue); }
+.tag-op { background:rgba(203,166,247,.2); color:var(--mauve); }
+.tag-tg { background:rgba(148,226,213,.2); color:var(--teal); }
+
+/* 优先级徽章 */
+.priority-badge { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:700; letter-spacing:.3px; }
+.p0 { background:rgba(243,139,168,.25); color:var(--red); }
+.p1 { background:rgba(250,179,135,.25); color:var(--peach); }
+.p2 { background:rgba(249,226,175,.2); color:var(--yellow); }
+.p3 { background:rgba(137,180,250,.2); color:var(--blue); }
+
+/* 时间戳 */
+.card-ts { font-size:10px; color:var(--muted); margin-left:auto; }
+
+/* 角色标签 */
+.roles { display:flex; gap:4px; margin-top:5px; align-items:center; }
+.role-label { font-size:10px; color:var(--muted); }
+.role-handler { font-size:10px; padding:1px 7px; border-radius:4px; font-weight:700; }
+.role-manager { font-size:10px; padding:1px 7px; border-radius:4px; }
+.role-op { background:rgba(203,166,247,.25); color:var(--mauve); }
+.role-cc { background:rgba(137,180,250,.25); color:var(--blue); }
+.role-user { background:rgba(249,226,175,.2); color:var(--yellow); }
+.move-btns { display:flex; gap:4px; margin-top:8px; opacity:0; transition:opacity .15s; flex-wrap:wrap; }
+.card:hover .move-btns { opacity:1; }
+.move-btn { font-size:10px; padding:2px 7px; border-radius:4px; border:none; cursor:pointer; }
+.move-btn.left { background:rgba(249,226,175,.15); color:var(--yellow); }
+.move-btn.right { background:rgba(166,227,161,.15); color:var(--green); }
+.move-btn.delegate-op { background:rgba(203,166,247,.15); color:var(--mauve); }
+.move-btn.delegate-cc { background:rgba(137,180,250,.15); color:var(--blue); }
+.move-btn:hover { filter:brightness(1.3); }
+.chat-btn { margin-left:auto; font-size:10px; padding:2px 7px; border-radius:4px; border:none; cursor:pointer; background:rgba(137,180,250,.15); color:var(--blue); }
+.chat-btn:hover { background:rgba(137,180,250,.3); }
+
+/* Chat Panel */
+.chat-panel { position:fixed; right:0; top:0; bottom:0; width:380px; background:var(--surface); border-left:1px solid var(--overlay); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease; z-index:100; }
+.chat-panel.open { transform:translateX(0); }
+.chat-header { padding:12px 16px; border-bottom:1px solid var(--overlay); display:flex; align-items:center; gap:8px; }
+.chat-header h3 { font-size:13px; color:var(--blue); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.chat-close { background:none; border:none; color:var(--muted); cursor:pointer; font-size:18px; line-height:1; padding:2px; }
+.chat-close:hover { color:var(--red); }
+.chat-context { padding:8px 14px; background:var(--overlay); margin:8px; border-radius:6px; font-size:11px; color:var(--subtext); line-height:1.5; }
+.chat-messages { flex:1; overflow-y:auto; padding:10px 14px; display:flex; flex-direction:column; gap:8px; }
+.chat-messages::-webkit-scrollbar { width:4px; }
+.chat-messages::-webkit-scrollbar-thumb { background:var(--overlay); border-radius:4px; }
+.msg { max-width:90%; padding:8px 11px; border-radius:8px; font-size:13px; line-height:1.5; word-break:break-word; }
+.msg.user { background:rgba(137,180,250,.15); color:var(--text); align-self:flex-end; border-bottom-right-radius:2px; }
+.msg.bot { background:var(--overlay); color:var(--text); align-self:flex-start; border-bottom-left-radius:2px; }
+.msg.thinking { color:var(--muted); font-style:italic; background:transparent; font-size:12px; }
+.chat-input-area { padding:10px 14px; border-top:1px solid var(--overlay); display:flex; gap:8px; }
+.chat-input { flex:1; background:var(--overlay); border:1px solid var(--muted); border-radius:6px; padding:8px 10px; color:var(--text); font-size:13px; outline:none; resize:none; min-height:36px; max-height:120px; }
+.chat-input:focus { border-color:var(--blue); }
+.send-btn { background:var(--blue); color:var(--bg); border:none; border-radius:6px; padding:8px 12px; cursor:pointer; font-size:13px; font-weight:600; white-space:nowrap; }
+.send-btn:disabled { opacity:.5; cursor:not-allowed; }
+
+.empty-col { text-align:center; color:var(--muted); font-size:12px; padding:20px; }
+
+/* Agent 选择器 */
+.agent-select-row { display:flex; gap:6px; padding:6px 14px 0; align-items:center; }
+.agent-select-row label { font-size:11px; color:var(--muted); white-space:nowrap; }
+.agent-select { background:var(--overlay); border:1px solid var(--muted); border-radius:6px; color:var(--text); font-size:12px; padding:3px 8px; outline:none; flex:1; }
+.agent-select:focus { border-color:var(--blue); }
+
+/* Exec 卡片 */
+.exec-card { background:#0d1117; border-radius:8px; padding:10px 12px; margin-top:4px; border:1px solid var(--overlay); }
+.exec-cmd { font-family:monospace; font-size:12px; color:var(--sky); margin-bottom:6px; }
+.exec-output { font-family:monospace; font-size:11px; color:var(--subtext); white-space:pre-wrap; word-break:break-all; max-height:200px; overflow-y:auto; }
+.exec-output.ok { color:var(--green); }
+.exec-output.fail { color:var(--red); }
+.exec-run-btn { font-size:11px; padding:2px 10px; border-radius:4px; border:none; cursor:pointer; background:rgba(137,180,250,.2); color:var(--blue); margin-top:6px; }
+.exec-run-btn:hover { background:rgba(137,180,250,.4); }
+
+/* 终端面板 */
+.terminal-panel { position:fixed; bottom:0; left:0; right:0; height:45vh; background:var(--surface); border-top:2px solid var(--overlay); transform:translateY(100%); transition:transform .25s ease; z-index:50; display:flex; flex-direction:column; }
+.terminal-panel.open { transform:translateY(0); }
+.terminal-header { display:flex; align-items:center; gap:8px; padding:6px 14px; border-bottom:1px solid var(--overlay); background:var(--overlay); flex-shrink:0; }
+.terminal-header h4 { font-size:12px; color:var(--sky); flex:1; }
+.term-tabs { display:flex; gap:4px; }
+.term-tab { font-size:11px; padding:2px 10px; border-radius:4px; border:none; cursor:pointer; background:var(--bg); color:var(--subtext); }
+.term-tab.active { background:var(--blue); color:var(--bg); }
+.terminal-frame { flex:1; border:none; background:#000; }
+.terminal-toggle { position:fixed; bottom:12px; right:12px; background:var(--overlay); border:1px solid var(--sky); color:var(--sky); padding:6px 12px; border-radius:8px; cursor:pointer; font-size:12px; z-index:60; border-radius:99px; }
+.terminal-toggle:hover { background:var(--sky); color:var(--bg); }
+
+
+/* Agent Hub 标签页 */
+.agent-tabs { display:flex; border-bottom:1px solid var(--overlay); flex-shrink:0; }
+.agent-tab { flex:1; padding:6px 4px; font-size:11px; font-weight:600; border:none; cursor:pointer; background:transparent; color:var(--muted); border-bottom:2px solid transparent; transition:color .15s,border-color .15s; }
+.agent-tab:hover { color:var(--subtext); }
+.agent-tab.active { color:var(--teal); border-bottom-color:var(--teal); }
+.agent-tab-content { display:none; flex:1; overflow:hidden; flex-direction:column; }
+.agent-tab-content.visible { display:flex; }
+
+/* 架构讨论 */
+.discuss-input-row { display:flex; gap:6px; padding:8px 10px; border-bottom:1px solid var(--overlay); flex-shrink:0; }
+.discuss-topic-input { flex:1; background:var(--overlay); border:1px solid var(--muted); border-radius:6px; padding:5px 8px; color:var(--text); font-size:12px; outline:none; resize:none; }
+.discuss-topic-input:focus { border-color:var(--teal); }
+.discuss-rounds-sel { width:50px; background:var(--overlay); border:1px solid var(--muted); border-radius:6px; color:var(--text); font-size:11px; padding:4px 4px; outline:none; }
+.discuss-start-btn { padding:5px 10px; border-radius:6px; border:none; cursor:pointer; font-size:11px; font-weight:600; background:rgba(148,226,213,.2); color:var(--teal); white-space:nowrap; }
+.discuss-start-btn:disabled { opacity:.4; cursor:not-allowed; }
+.discuss-bubble.cc { background:rgba(137,180,250,.12); border-right:2px solid var(--blue); align-self:flex-end; }
+.discuss-bubble.op { background:rgba(203,166,247,.1); border-left:2px solid var(--mauve); align-self:flex-start; }
+.discuss-bubble.system { background:rgba(249,226,175,.08); color:var(--yellow); font-weight:600; text-align:center; font-size:11px; align-self:center; border:1px solid rgba(249,226,175,.2); }
+.discuss-bubble { max-width:94%; padding:7px 10px; border-radius:8px; font-size:12px; line-height:1.5; word-break:break-word; }
+
+/* Orchestrator 决策 */
+.orch-area { flex:1; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:8px; }
+.orch-decision-card { background:var(--overlay); border-radius:8px; padding:10px 12px; border-left:3px solid var(--teal); }
+.orch-decision-time { font-size:10px; color:var(--muted); margin-bottom:6px; }
+.orch-decision-topic { font-size:11px; font-weight:700; color:var(--yellow); margin-bottom:6px; }
+.orch-decision-body { font-size:12px; color:var(--text); line-height:1.6; white-space:pre-wrap; }
+.orch-task-tag { display:inline-block; font-size:10px; padding:1px 6px; border-radius:4px; margin:2px; }
+.orch-task-cc { background:rgba(137,180,250,.2); color:var(--blue); }
+.orch-task-op { background:rgba(203,166,247,.2); color:var(--mauve); }
+.orch-footer { padding:8px 10px; border-top:1px solid var(--overlay); display:flex; gap:6px; flex-shrink:0; }
+.orch-btn { flex:1; padding:5px 10px; border-radius:6px; border:none; cursor:pointer; font-size:11px; font-weight:600; background:rgba(148,226,213,.15); color:var(--teal); }
+.orch-btn:disabled { opacity:.4; cursor:not-allowed; }
+
+/* 移动端终端嵌入 */
+.mobile-term-tabs { display:flex; gap:4px; padding:6px 8px; border-bottom:1px solid var(--overlay); flex-shrink:0; }
+.mobile-term-btn { flex:1; padding:5px 4px; border-radius:5px; border:none; cursor:pointer; font-size:11px; background:var(--overlay); color:var(--subtext); }
+.mobile-term-btn.active { background:rgba(137,180,250,.25); color:var(--blue); }
+.mobile-term-iframe { flex:1; border:none; background:#000; }
+
+/* 移动端响应式 */
+@media (max-width:768px) {
+  .board { flex-direction:column; height:auto; overflow:visible; padding:8px; }
+  .column { flex:none; height:auto; max-height:60vh; }
+  .col-dialog { max-height:80vh; }
+  header { padding:10px 12px; gap:8px; }
+  .search-wrap { display:none; }
+  .terminal-panel { height:55vh; }
+}
+/* 快捷键提示 */
+.kbd-hint { font-size:10px; color:var(--muted); padding:2px 5px; border:1px solid var(--muted); border-radius:3px; }
+
+/* CC⇄OP 对话列 */
+.col-dialog { flex:1.8; min-width:280px; }
+.col-dialog .col-header { color:var(--teal); border-bottom:2px solid var(--teal); }
+.dialog-area { flex:1; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:6px; }
+.dialog-area::-webkit-scrollbar { width:4px; }
+.dialog-area::-webkit-scrollbar-thumb { background:var(--overlay); border-radius:4px; }
+.dialog-bubble { max-width:92%; padding:7px 10px; border-radius:8px; font-size:12px; line-height:1.5; word-break:break-word; }
+.dialog-bubble.cc { background:rgba(137,180,250,.15); color:var(--text); align-self:flex-end; border-bottom-right-radius:2px; border-left:none; border-right:2px solid var(--blue); }
+.dialog-bubble.op { background:rgba(203,166,247,.12); color:var(--text); align-self:flex-start; border-left:2px solid var(--mauve); }
+.dialog-sender { font-size:10px; font-weight:700; margin-bottom:3px; }
+.dialog-sender.cc { color:var(--blue); text-align:right; }
+.dialog-sender.op { color:var(--mauve); }
+.dialog-time { font-size:9px; color:var(--muted); margin-top:2px; }
+.dialog-time.cc { text-align:right; }
+.dialog-footer { padding:8px 10px; border-top:1px solid var(--overlay); display:flex; gap:6px; align-items:center; }
+.dialog-speak-btn { flex:1; padding:5px 10px; border-radius:6px; border:none; cursor:pointer; font-size:11px; font-weight:600; background:rgba(148,226,213,.15); color:var(--teal); transition:background .15s; }
+.dialog-speak-btn:hover { background:rgba(148,226,213,.3); }
+.dialog-speak-btn:disabled { opacity:.4; cursor:not-allowed; }
+.dialog-rounds { width:40px; background:var(--overlay); border:1px solid var(--muted); border-radius:6px; color:var(--text); font-size:12px; padding:4px 6px; text-align:center; outline:none; }
+.dialog-decision { background:rgba(249,226,175,.08); border:1px solid rgba(249,226,175,.2); border-radius:6px; padding:6px 8px; font-size:11px; color:var(--yellow); margin:4px 10px; }
+.dialog-empty { text-align:center; color:var(--muted); font-size:12px; padding:30px 10px; }
+.dialog-live-dot { width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
+</style>
+</head>
+<body>
+<header>
+  <span class="dot"></span>
+  <h1>任务看板</h1>
+  <span class="badge" id="total-badge">加载中...</span>
+  <button class="btn" onclick="loadTasks()">刷新</button>
+  <button class="btn" onclick="addTask()">+ 新任务</button>
+  <button class="btn" onclick="switchAgentTab('terminal', document.querySelector('.agent-tab:last-child'))" style="background:rgba(203,166,247,.15);color:var(--mauve)">⌨ OP终端</button>
+  <div class="search-wrap">
+    <input class="search-input" id="search-input" placeholder="搜索任务... (按 / 聚焦)" type="text" oninput="filterCards(this.value)" />
+    <span class="kbd-hint">/</span>
+  </div>
+</header>
+
+<div class="board">
+  <div class="column col-todo">
+    <div class="col-header" id="hdr-todo">待做 <span class="count" id="cnt-todo">0</span></div>
+    <div class="wip-bar"><div class="wip-bar-fill" id="bar-todo" style="width:0%"></div></div>
+    <div class="cards" id="col-todo"></div>
+  </div>
+  <div class="column col-doing">
+    <div class="col-header" id="hdr-doing">进行中 <span class="count" id="cnt-doing">0</span></div>
+    <div class="wip-bar"><div class="wip-bar-fill" id="bar-doing" style="width:0%"></div></div>
+    <div class="cards" id="col-doing"></div>
+  </div>
+  <div class="column col-done">
+    <div class="col-header" id="hdr-done">已完成 <span class="count" id="cnt-done">0</span></div>
+    <div class="wip-bar"><div class="wip-bar-fill" id="bar-done" style="width:0%"></div></div>
+    <div class="cards" id="col-done"></div>
+  </div>
+
+  <div class="column col-dialog">
+    <div class="col-header"><span class="dialog-live-dot"></span> Agent Hub <span class="count" id="cnt-dialog">0</span></div>
+    <!-- Tabs -->
+    <div class="agent-tabs">
+      <button class="agent-tab active" onclick="switchAgentTab('opmon',this)">👁 监控</button>
+      <button class="agent-tab" onclick="switchAgentTab('dialog',this)">💬 对话</button>
+      <button class="agent-tab" onclick="switchAgentTab('discuss',this)">🧠 讨论</button>
+      <button class="agent-tab" onclick="switchAgentTab('orch',this)">⚡ 调度</button>
+      <button class="agent-tab" onclick="switchAgentTab('terminal',this)">⌨ 终端</button>
+    </div>
+    <!-- Tab: OP 监控 -->
+    <div class="agent-tab-content visible" id="tab-opmon" style="flex-direction:column;overflow-y:auto">
+      <div class="cards" id="col-op" style="flex:1;overflow-y:auto;padding:8px"></div>
+    </div>
+    <!-- Tab: 任务对话 -->
+    <div class="agent-tab-content" id="tab-dialog" style="flex-direction:column">
+      <div class="dialog-area" id="dialog-area">
+        <div class="dialog-empty" id="dialog-empty">暂无对话记录<br><small>点击触发对话</small></div>
+      </div>
+      <div id="dialog-decision-area"></div>
+      <div class="dialog-footer">
+        <input class="dialog-rounds" id="dialog-rounds" type="number" value="1" min="1" max="3" title="轮数">
+        <button class="dialog-speak-btn" id="dialog-btn" onclick="triggerDialog()">⚡ 触发</button>
+        <button class="dialog-speak-btn" style="flex:0.4;background:rgba(137,180,250,.1);color:var(--blue)" onclick="loadDialog()">↻</button>
+      </div>
+    </div>
+    <!-- Tab: 架构讨论 -->
+    <div class="agent-tab-content" id="tab-discuss" style="flex-direction:column">
+      <div class="discuss-input-row">
+        <textarea class="discuss-topic-input" id="discuss-topic" rows="2" placeholder="输入讨论议题，如：kanban 架构优化方案、代理故障根因分析..."></textarea>
+        <select class="discuss-rounds-sel" id="discuss-rounds" title="讨论轮数">
+          <option value="1">1轮</option>
+          <option value="2" selected>2轮</option>
+          <option value="3">3轮</option>
+        </select>
+        <button class="discuss-start-btn" id="discuss-btn" onclick="triggerDiscuss()">开始</button>
+      </div>
+      <div class="dialog-area" id="discuss-area">
+        <div class="dialog-empty">输入议题后点击开始讨论</div>
+      </div>
+    </div>
+    <!-- Tab: Orchestrator 调度决策 -->
+    <div class="agent-tab-content" id="tab-orch" style="flex-direction:column">
+      <div class="orch-area" id="orch-area">
+        <div class="dialog-empty">暂无调度决策<br><small>先讨论议题再触发综合决策</small></div>
+      </div>
+      <div class="orch-footer">
+        <button class="orch-btn" id="orch-btn" onclick="triggerOrchestrate()">⚡ 综合决策</button>
+        <button class="orch-btn" style="flex:0.4;background:rgba(137,180,250,.1);color:var(--blue)" onclick="loadOrchestrate()">↻</button>
+      </div>
+    </div>
+    <!-- Tab: 移动端终端 -->
+    <div class="agent-tab-content" id="tab-terminal" style="flex-direction:column">
+      <div class="mobile-term-tabs">
+        <button class="mobile-term-btn active" onclick="openMobileTerm(7690,this)">🔵 CC Claude</button>
+        <button class="mobile-term-btn" onclick="openMobileTerm(7692,this)">🟣 OpenCode</button>
+        <button class="mobile-term-btn" onclick="openMobileTerm(7693,this)">🔀 Aider</button>
+      </div>
+      <iframe class="mobile-term-iframe" id="mobile-term-frame" src="http://localhost:7692" allow="clipboard-read;clipboard-write"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Panel -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-header">
+    <h3 id="chat-title">任务对话</h3>
+    <button class="chat-close" onclick="closeChat()">×</button>
+  </div>
+  <div class="chat-context" id="chat-context"></div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="agent-select-row">
+    <label>Agent:</label>
+    <select class="agent-select" id="agent-select">
+      <option value="auto">🤖 GLM-4.7 (默认)</option>
+      <option value="deepseek">🔧 DeepSeek-V3</option>
+      <option value="haiku">⚡ CC Haiku</option>
+      <option value="sonnet">✅ CC Sonnet</option>
+      <option value="qwen">🔻 Qwen3 (降级)</option>
+    </select>
+    <button class="btn" onclick="triggerOpJob()" title="触发当前 job" style="font-size:11px;padding:3px 8px;">▶ 触发</button>
+  </div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chat-input" placeholder="问 AI 或执行命令 (`cmd`)" rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px'"></textarea>
+    <button class="send-btn" id="send-btn" onclick="sendMsg()">发送</button>
+  </div>
+</div>
+
+<!-- 终端面板 -->
+<div class="terminal-panel" id="terminal-panel">
+  <div class="terminal-header">
+    <h4>终端</h4>
+    <div class="term-tabs">
+      <button class="term-tab active" onclick="switchTerm(this, 7690)">Claude</button>
+      <button class="term-tab" onclick="switchTerm(this, 7692)">OpenCode</button>
+      <button class="term-tab" onclick="switchTerm(this, 7693)">Aider</button>
+    </div>
+    <button class="chat-close" onclick="toggleTerminal()" style="margin-left:auto">×</button>
+  </div>
+  <iframe class="terminal-frame" id="terminal-frame" src="about:blank"></iframe>
+</div>
+<button class="terminal-toggle" onclick="toggleTerminal()" id="term-toggle-btn">⌨ 终端</button>
+
+<script>
+let tasks = {todo:[], doing:[], done:[]};
+let activeCard = null;
+let chatHistory = [];
+
+// 根据 raw 文本推导角色
+function inferRoles(raw, source) {
+  const r = raw || '';
+  const s = (source || '').toUpperCase();
+  if (r.includes('[CC→OP]')) return {handler:'op', manager:'cc'};
+  if (r.includes('[OP→CC]')) return {handler:'cc', manager:'op'};
+  if (r.includes('[TG-BOT]') || r.includes('[TG]')) return {handler:'cc', manager:'user'};
+  if (s === 'OP') return {handler:'op', manager:'cc'};
+  return {handler:'cc', manager:'user'};
+}
+
+function roleTag(name, type) {
+  const cls = type==='handler' ? 'role-handler' : 'role-manager';
+  const colorCls = name==='op' ? 'role-op' : name==='cc' ? 'role-cc' : 'role-user';
+  const label = name==='op' ? 'op 执行' : name==='cc' ? 'cc 执行' : '用户执行';
+  const mgr = name==='op' ? 'op 监管' : name==='cc' ? 'cc 监管' : '用户监管';
+  return `<span class="${cls} ${colorCls}">${type==='handler'?label:mgr}</span>`;
+}
+
+function tagClass(src) {
+  if (!src) return 'tag-cc';
+  const s = src.toUpperCase();
+  if (s.includes('OP')) return 'tag-op';
+  if (s.includes('TG') || s.includes('BOT')) return 'tag-tg';
+  return 'tag-cc';
+}
+
+function stripTags(text) {
+  return text.replace(/\[CC→OP\]|\[TG-BOT\]|\[TG\]|\[OP→CC\]/g, '').replace(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/g, '').trim();
+}
+
+// 解析优先级标签 P0-P3
+function parsePriority(text) {
+  const m = text.match(/\b(P[0-3])\b/i);
+  return m ? m[1].toUpperCase() : null;
+}
+
+// 生成优先级徽章 HTML
+function priorityBadge(p) {
+  if (!p) return '';
+  const cls = p.toLowerCase();
+  return `<span class="priority-badge ${cls}">${p}</span>`;
+}
+
+// 解析时间戳并转为相对时间
+function parseRelativeTime(raw) {
+  const m = raw.match(/\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2})\]/);
+  if (!m) return '';
+  const ts = new Date(m[1].replace(' ', 'T'));
+  if (isNaN(ts)) return '';
+  const diff = Date.now() - ts.getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return '刚刚';
+  if (mins < 60) return `${mins}分钟前`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}小时前`;
+  const days = Math.floor(hours / 24);
+  if (days === 1) return '昨天';
+  if (days < 30) return `${days}天前`;
+  return `${Math.floor(days/30)}个月前`;
+}
+
+function makeCard(task, col) {
+  const div = document.createElement('div');
+  div.className = 'card';
+  const cleanText = stripTags(task.text);
+  const src = task.source || 'CC';
+  const roles = inferRoles(task.raw, src);
+
+  // 优先级 + 时间戳
+  const priority = parsePriority(task.raw || task.text);
+  const relTime = parseRelativeTime(task.raw || '');
+
+  // 状态移动按钮
+  let statusBtns = '';
+  if (col === 'todo') statusBtns = `<button class="move-btn right" onclick="move(event,this,'doing')">▶ 进行中</button><button class="move-btn right" style="background:rgba(166,227,161,.15);color:var(--green)" onclick="move(event,this,'done')">✓ 完成</button>`;
+  if (col === 'doing') statusBtns = `<button class="move-btn left" onclick="move(event,this,'todo')">◀ 退回</button><button class="move-btn right" onclick="move(event,this,'done')">✓ 完成</button>`;
+  if (col === 'done') statusBtns = `<button class="move-btn left" onclick="move(event,this,'todo')">↩ 重开</button>`;
+
+  // 移交按钮
+  let delegateBtns = '';
+  if (col !== 'done') {
+    if (roles.handler !== 'op') {
+      delegateBtns += `<button class="move-btn delegate-op" onclick="delegateTo(event,this,'op')">→ 移交 op</button>`;
+    }
+    if (roles.handler !== 'cc') {
+      delegateBtns += `<button class="move-btn delegate-cc" onclick="delegateTo(event,this,'cc')">→ 移交 CC</button>`;
+    }
+  }
+
+  const safeText = cleanText.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  const safeRaw = task.raw.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+
+  div.innerHTML = `
+    <div class="card-title ${col==='done'?'done-text':''}">${cleanText}</div>
+    <div class="roles">
+      ${roleTag(roles.handler,'handler')}
+      <span class="role-label">↑</span>
+      ${roleTag(roles.manager,'manager')}
+    </div>
+    <div class="card-meta">
+      <span class="tag ${tagClass(src)}">${src}</span>
+      ${priority ? priorityBadge(priority) : ''}
+      ${relTime ? `<span class="card-ts">${relTime}</span>` : ''}
+      <button class="chat-btn" onclick="openChat(event,'${safeText}','${safeRaw}')">💬</button>
+      <button class="chat-btn" style="background:rgba(203,166,247,.15);color:var(--mauve)" onclick="reviewCard(event,this,'${safeText}','${src}','${safeRaw}')">📝 互评</button>
+    </div>
+    <div class="move-btns">${statusBtns}${delegateBtns}</div>
+    <div class="review-result" style="display:none;margin-top:6px;padding:6px 8px;border-radius:5px;font-size:11px;line-height:1.4"></div>
+  `;
+  div.querySelector('.card-title').addEventListener('click', () => {
+    openChat(null, cleanText, task.raw);
+  });
+  div._task = task;
+  div._roles = roles;
+  return div;
+}
+
+async function loadTasks() {
+  try {
+    const r = await fetch('/kanban-data');
+    tasks = await r.json();
+    render();
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+function render() {
+  const cols = {todo: document.getElementById('col-todo'), doing: document.getElementById('col-doing'), done: document.getElementById('col-done')};
+  const total = (tasks.todo||[]).length + (tasks.doing||[]).length + (tasks.done||[]).length;
+
+  for (const [col, el] of Object.entries(cols)) {
+    el.innerHTML = '';
+    const list = tasks[col] || [];
+    document.getElementById('cnt-'+col).textContent = list.length;
+
+    // 进度条
+    const pct = total > 0 ? Math.round(list.length / total * 100) : 0;
+    const bar = document.getElementById('bar-'+col);
+    if (bar) bar.style.width = pct + '%';
+
+    // WIP 警告
+    const hdr = document.getElementById('hdr-'+col);
+    if (hdr) {
+      const warnEl = hdr.querySelector('.wip-warn-label');
+      if (warnEl) warnEl.remove();
+      if (col === 'doing' && list.length > 5) {
+        hdr.classList.add('wip-warn');
+        hdr.insertAdjacentHTML('beforeend', '<span class="wip-warn-label">WIP超限!</span>');
+      } else if (col === 'todo' && list.length > 20) {
+        hdr.insertAdjacentHTML('beforeend', '<span class="wip-warn-label">积压过多</span>');
+        hdr.classList.add('wip-warn');
+      } else {
+        hdr.classList.remove('wip-warn');
+      }
+    }
+
+    if (!list.length) {
+      el.innerHTML = `<div class="empty-col">暂无任务</div>`;
+    } else {
+      list.forEach(t => el.appendChild(makeCard(t, col)));
+    }
+  }
+
+  document.getElementById('total-badge').textContent = `${total} 个任务`;
+
+  // 重建 Sortable（render 后 DOM 重建了）
+  initSortable();
+
+  // 保持搜索过滤状态
+  const q = document.getElementById('search-input').value.trim();
+  if (q) filterCards(q);
+}
+
+// 搜索过滤（只操作 DOM visibility，不修改数据）
+function filterCards(q) {
+  const keyword = q.toLowerCase().trim();
+  document.querySelectorAll('#col-todo .card, #col-doing .card, #col-done .card').forEach(card => {
+    if (!keyword) {
+      card.classList.remove('hidden-filter');
+    } else {
+      const text = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+      card.classList.toggle('hidden-filter', !text.includes(keyword));
+    }
+  });
+}
+
+async function move(e, btn, newStatus) {
+  e.stopPropagation();
+  const card = btn.closest('.card');
+  const task = card._task;
+  try {
+    await fetch('/kanban-move', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({line_text: task.raw, new_status: newStatus})});
+    if (newStatus === 'doing' && (task.raw.includes('[CC→OP]') || task.source === 'OP')) {
+      btn.textContent = '✓ 已加入op队列';
+      btn.style.color = 'var(--mauve)';
+    }
+    setTimeout(loadTasks, 600);
+  } catch(ex) { console.error(ex); }
+}
+
+async function delegateTo(e, btn, target) {
+  e.stopPropagation();
+  const card = btn.closest('.card');
+  const task = card._task;
+  const cleanText = stripTags(task.text);
+  try {
+    const r = await fetch('/kanban-delegate', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({text: cleanText, raw: task.raw, target})});
+    const d = await r.json();
+    if (d.ok) {
+      btn.textContent = '✓ 已移交';
+      btn.disabled = true;
+      setTimeout(loadTasks, 800);
+    }
+  } catch(ex) { console.error(ex); }
+}
+
+function openChat(e, title, rawLine) {
+  if (e) e.stopPropagation();
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+  if (e) e.target.closest('.card')?.classList.add('active');
+  activeCard = {title, rawLine};
+  chatHistory = [];
+  document.getElementById('chat-title').textContent = title.substring(0,40);
+  document.getElementById('chat-context').textContent = rawLine;
+  document.getElementById('chat-messages').innerHTML = `<div class="msg thinking">👋 关于「${title.substring(0,30)}」，有什么想聊的？</div>`;
+  document.getElementById('chat-panel').classList.add('open');
+  document.getElementById('chat-input').focus();
+}
+
+function closeChat() {
+  document.getElementById('chat-panel').classList.remove('open');
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+  activeCard = null;
+}
+
+async function sendMsg() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text || !activeCard) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+  const msgs = document.getElementById('chat-messages');
+  const agent = document.getElementById('agent-select').value;
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'msg user';
+  userMsg.textContent = text;
+  msgs.appendChild(userMsg);
+
+  const thinkMsg = document.createElement('div');
+  thinkMsg.className = 'msg thinking';
+  thinkMsg.textContent = '思考中...';
+  msgs.appendChild(thinkMsg);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  document.getElementById('send-btn').disabled = true;
+  chatHistory.push({role: 'user', content: text});
+
+  try {
+    const r = await fetch('/api/chat-route', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({messages: chatHistory, context: activeCard.rawLine, agent})
+    });
+    const d = await r.json();
+    thinkMsg.remove();
+
+    if (d.type === 'exec') {
+      const execCard = document.createElement('div');
+      execCard.className = 'msg bot';
+      execCard.innerHTML = `
+        <div class="exec-card">
+          <div class="exec-cmd">$ ${d.cmd}</div>
+          <div class="exec-output ${d.ok?'ok':'fail'}">${d.output || '(无输出)'}</div>
+          <button class="exec-run-btn" onclick="rerunCmd('${d.cmd.replace(/'/g,"\\'")}')">↺ 重新执行</button>
+        </div>`;
+      msgs.appendChild(execCard);
+      chatHistory.push({role: 'assistant', content: `执行命令: \`${d.cmd}\`\n输出:\n${d.output}`});
+    } else {
+      const botMsg = document.createElement('div');
+      botMsg.className = 'msg bot';
+      const modelLabel = d.model ? `<span style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">${d.model}</span>` : '';
+      botMsg.innerHTML = modelLabel + (d.reply || d.error || '（无回复）').replace(/\n/g,'<br>');
+      msgs.appendChild(botMsg);
+      chatHistory.push({role: 'assistant', content: d.reply || ''});
+    }
+  } catch(ex) {
+    thinkMsg.textContent = '[错误] ' + ex.message;
+  }
+
+  msgs.scrollTop = msgs.scrollHeight;
+  document.getElementById('send-btn').disabled = false;
+  input.focus();
+}
+
+async function rerunCmd(cmd) {
+  try {
+    const r = await fetch('/api/exec', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({cmd})
+    });
+    const d = await r.json();
+    const msgs = document.getElementById('chat-messages');
+    const el = document.createElement('div');
+    el.className = 'msg bot';
+    el.innerHTML = `<div class="exec-card"><div class="exec-cmd">$ ${cmd}</div><div class="exec-output ${d.ok?'ok':'fail'}">${d.output||'(无输出)'}</div></div>`;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+  } catch(e) { console.error(e); }
+}
+
+let termOpen = false;
+let currentTermPort = 7690;
+
+function toggleTerminal() {
+  const panel = document.getElementById('terminal-panel');
+  const btn = document.getElementById('term-toggle-btn');
+  termOpen = !termOpen;
+  if (termOpen) {
+    panel.classList.add('open');
+    btn.textContent = '× 关闭终端';
+    const frame = document.getElementById('terminal-frame');
+    if (frame.src === 'about:blank') frame.src = `http://localhost:${currentTermPort}`;
+  } else {
+    panel.classList.remove('open');
+    btn.textContent = '⌨ 终端';
+  }
+}
+
+function switchTerm(btn, port) {
+  document.querySelectorAll('.term-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  currentTermPort = port;
+  const frame = document.getElementById('terminal-frame');
+  frame.src = `http://localhost:${port}`;
+}
+
+async function triggerOpJob() {
+  if (!activeCard) return;
+  const jobName = activeCard.title.replace(' job 分析','').trim();
+  const valid = ['service-nurse','discord-butler','proxy-guardian','heartbeat-task-check','security-watchdog','heartbeat-check','heartbeat-system-sentry','marketing-scan'];
+  if (!valid.includes(jobName)) {
+    alert('当前卡片不是 op job，无法触发');
+    return;
+  }
+  try {
+    const r = await fetch('/api/trigger-op', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({job: jobName})
+    });
+    const d = await r.json();
+    const msgs = document.getElementById('chat-messages');
+    const el = document.createElement('div');
+    el.className = `msg ${d.ok ? 'bot' : 'thinking'}`;
+    el.textContent = d.ok ? `✓ 已触发 ${jobName}` : `✗ 触发失败: ${d.msg}`;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+  } catch(e) { console.error(e); }
+}
+
+function addTask() {
+  const text = prompt('输入新任务描述：');
+  if (!text) return;
+  fetch('/kanban-move', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({line_text: '__NEW__', new_status: 'todo', text})
+  }).then(() => loadTasks()).catch(() => {
+    alert(`请手动在 pending-tasks.md 添加：\n- [ ] ${text}`);
+  });
+}
+
+async function loadOpStatus() {
+  try {
+    const r = await fetch('/op-status');
+    const d = await r.json();
+    renderOpMonitor(d);
+  } catch(e) { console.error(e); }
+}
+
+function renderOpMonitor(data) {
+  const col = document.getElementById('col-op');
+  col.innerHTML = '';
+  const jobs = data.jobs || [];
+  document.getElementById('cnt-jobs').textContent = jobs.length;
+
+  const pending = data.op_pending || [];
+  if (pending.length) {
+    const sec = document.createElement('div');
+    sec.className = 'op-pending-section';
+    sec.innerHTML = `<div class="op-pending-title">▸ CC→OP 待执行 (${pending.length})</div>` +
+      pending.map(t => `<div class="op-pending-item">${t.replace(/\[CC→OP\]|\d{4}-\d{2}-\d{2} \d{2}:\d{2}/g,'').trim()}</div>`).join('');
+    col.appendChild(sec);
+  }
+
+  jobs.sort((a,b) => {
+    const order = {failed:0, unknown:1, no_log:2, success:3};
+    return (order[a.status]||1) - (order[b.status]||1);
+  });
+  jobs.forEach(j => {
+    const card = document.createElement('div');
+    card.className = `job-card ${j.status}`;
+    const lastLog = j.last_log.join(' ').replace(/\x1b\[[0-9;]*m/g,'').trim();
+    const logCls = j.status==='success' ? 'ok' : j.status==='failed' ? 'fail' : '';
+    const statusIcon = j.status==='success'?'✓':j.status==='failed'?'✗':'○';
+    const safeJob = j.job.replace(/'/g,"\\'");
+    const safeLog = lastLog.replace(/'/g,"\\'").slice(0,80);
+    const today = new Date().toISOString().slice(0,10);
+    card.innerHTML = `
+      <div class="job-name">${statusIcon} ${j.job}</div>
+      <div class="job-next">下次: ${j.next.replace(today,'今天')}</div>
+      ${lastLog ? `<div class="job-log ${logCls}" title="${lastLog}">${lastLog.slice(0,80)}</div>` : ''}
+      <div style="display:flex;gap:4px;margin-top:6px;flex-wrap:wrap">
+        <button class="move-btn right" style="background:rgba(148,226,213,.15);color:var(--teal);font-size:10px;padding:2px 8px" onclick="event.stopPropagation();runOpJob('${safeJob}',this)">▶ 触发</button>
+        <button class="move-btn" style="background:rgba(249,226,175,.12);color:var(--yellow);font-size:10px;padding:2px 8px" onclick="event.stopPropagation();ccVerifyOpLog('${safeJob}','${safeLog}',this)">🔍 CC验证</button>
+        <button class="chat-btn" onclick="event.stopPropagation();openChat(null,'${safeJob} job','op job: ${safeJob}\n状态: ${j.status}\n日志: ${safeLog}')">💬</button>
+      </div>
+    `;
+    col.appendChild(card);
+  });
+}
+
+async function reviewCard(e, btn, taskText, source, raw) {
+  e.stopPropagation();
+  const card = btn.closest('.card');
+  const resultEl = card.querySelector('.review-result');
+  btn.disabled = true;
+  btn.textContent = '评审中...';
+  resultEl.style.display = 'block';
+  resultEl.style.background = 'rgba(203,166,247,.08)';
+  resultEl.style.border = '1px solid var(--mauve)';
+  resultEl.textContent = '⏳ 正在分析 git diff...';
+
+  try {
+    const r = await fetch('/api/review', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({task_text: taskText, source, raw})
+    });
+    const d = await r.json();
+
+    const colors = {pass:'rgba(166,227,161,.12)', fail:'rgba(243,139,168,.12)', warn:'rgba(249,226,175,.12)', error:'rgba(88,91,112,.2)'};
+    const borders = {pass:'var(--green)', fail:'var(--red)', warn:'var(--yellow)', error:'var(--muted)'};
+    const icons = {pass:'✅', fail:'❌', warn:'⚠️', error:'⚠️'};
+    const v = d.verdict || 'error';
+
+    resultEl.style.background = colors[v] || colors.error;
+    resultEl.style.border = `1px solid ${borders[v] || borders.error}`;
+    resultEl.innerHTML = `
+      <div style="font-weight:700;color:${borders[v]};margin-bottom:3px">${icons[v]} ${d.reviewer||'?'}评审 ${d.branch||'?'} 分支 · ${d.model||''}</div>
+      <div style="color:var(--text)">${(d.summary||d.error||'').slice(0,300)}</div>
+    `;
+
+    const cardCol = card.closest('.cards')?.id?.replace('col-','');
+    if (v === 'pass' && cardCol === 'doing') {
+      await fetch('/kanban-move', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({line_text: raw, new_status: 'done'})});
+      setTimeout(loadTasks, 800);
+    } else if (v === 'fail' && cardCol === 'doing') {
+      await fetch('/kanban-move', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({line_text: raw, new_status: 'todo'})});
+      setTimeout(loadTasks, 800);
+    }
+
+    btn.textContent = `📝 ${icons[v]}`;
+    btn.disabled = false;
+  } catch(err) {
+    resultEl.textContent = '[错误] ' + err.message;
+    btn.textContent = '📝 互评';
+    btn.disabled = false;
+  }
+}
+
+async function runOpJob(job, btn) {
+  btn.disabled = true;
+  btn.textContent = '触发中...';
+  try {
+    const r = await fetch('/api/trigger-op', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({job})
+    });
+    const d = await r.json();
+    btn.textContent = d.ok ? '✓ 已触发' : '✗ 失败';
+    btn.style.color = d.ok ? 'var(--green)' : 'var(--red)';
+    setTimeout(() => { btn.textContent = '▶ 立即触发'; btn.style.color='var(--teal)'; btn.disabled=false; }, 3000);
+  } catch(e) { btn.textContent='✗ 错误'; btn.disabled=false; }
+}
+
+async function ccVerifyOpLog(job, logSnippet, btn) {
+  btn.disabled = true;
+  btn.textContent = '验证中...';
+  const prompt = `你是 CC（质检角色）。op 巡检 job "${job}" 报告如下日志片段：\n"${logSnippet}"\n请用1-2句话判断：(1)这个结论是否准确可信？(2)如果有误判，实际情况是什么？直接给结论，不要废话。`;
+  try {
+    const r = await fetch('/api/chat-route', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({messages:[{role:'user',content:prompt}], agent:'qwen'})
+    });
+    const d = await r.json();
+    btn.textContent = '🔍 CC验证';
+    btn.disabled = false;
+    const col = document.getElementById('col-op');
+    const resultEl = document.createElement('div');
+    resultEl.style.cssText = 'background:rgba(249,226,175,.08);border-radius:6px;padding:7px 10px;margin:4px 10px;font-size:11px;color:var(--text);border-left:3px solid var(--yellow)';
+    resultEl.innerHTML = `<span style="color:var(--yellow);font-size:10px;font-weight:700">CC验证 [${job}]</span><br>${(d.reply||'').slice(0,200)}`;
+    col.appendChild(resultEl);
+    col.scrollTop = col.scrollHeight;
+  } catch(e) { btn.textContent='✗'; btn.disabled=false; }
+}
+
+// Sortable 初始化 — 支持列内排序和跨列拖拽
+let _sortables = [];
+function initSortable() {
+  _sortables.forEach(s => s.destroy());
+  _sortables = [];
+  const colMap = {
+    'col-todo': 'todo',
+    'col-doing': 'doing',
+    'col-done': 'done'
+  };
+  Object.keys(colMap).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const s = Sortable.create(el, {
+      group: 'kanban',
+      animation: 150,
+      ghostClass: 'dragging',
+      dragClass: 'dragging',
+      onEnd(evt) {
+        const fromCol = colMap[evt.from.id];
+        const toCol = colMap[evt.to.id];
+        if (!fromCol || !toCol || fromCol === toCol) return;
+        // 跨列拖拽 → 调用 /kanban-move
+        const card = evt.item;
+        const task = card._task;
+        if (!task) return;
+        fetch('/kanban-move', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({line_text: task.raw, new_status: toCol})
+        }).then(() => setTimeout(loadTasks, 600)).catch(console.error);
+      }
+    });
+    _sortables.push(s);
+  });
+}
+
+// 快捷键
+document.addEventListener('keydown', e => {
+  const tag = document.activeElement.tagName.toLowerCase();
+  const inInput = tag === 'input' || tag === 'textarea' || tag === 'select';
+
+  if (e.key === 'Escape') {
+    // 清空搜索 或 关闭聊天
+    const si = document.getElementById('search-input');
+    if (si.value) {
+      si.value = '';
+      filterCards('');
+    } else {
+      closeChat();
+    }
+    return;
+  }
+  if (inInput) return;
+
+  if (e.key === '/') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    return;
+  }
+  if (e.key === 'n' || e.key === 'N') {
+    addTask();
+    return;
+  }
+  if (e.key === 'r' || e.key === 'R') {
+    loadTasks();
+    return;
+  }
+});
+
+// ── CC⇄OP 对话 ──────────────────────────────────────────────
+async function loadDialog() {
+  try {
+    const r = await fetch('/api/cc-op-dialog?n=30');
+    const data = await r.json();
+    const msgs = data.messages || [];
+    document.getElementById('cnt-dialog').textContent = msgs.length;
+    const area = document.getElementById('dialog-area');
+    const empty = document.getElementById('dialog-empty');
+    if (msgs.length === 0) { empty.style.display=''; return; }
+    empty.style.display = 'none';
+    // Only re-render if count changed (avoid scroll reset)
+    if (area.dataset.count == msgs.length) return;
+    area.dataset.count = msgs.length;
+    area.innerHTML = '';
+    // Extract decisions (lines with keywords)
+    const decisions = [];
+    msgs.forEach(msg => {
+      const txt = msg.content || '';
+      if (/优先|决定|建议|执行|已完成|完成|处理|注意|需要|阻塞|urgent/i.test(txt)) {
+        decisions.push({from: msg.from, content: txt, time: msg.time});
+      }
+    });
+    msgs.forEach(msg => {
+      const isCC = msg.from === 'CC';
+      const wrap = document.createElement('div');
+      wrap.style.display = 'flex';
+      wrap.style.flexDirection = 'column';
+      wrap.style.alignItems = isCC ? 'flex-end' : 'flex-start';
+      const sender = document.createElement('div');
+      sender.className = 'dialog-sender ' + (isCC ? 'cc' : 'op');
+      sender.textContent = isCC ? '🔵 CC' : '🟣 op';
+      const bubble = document.createElement('div');
+      bubble.className = 'dialog-bubble ' + (isCC ? 'cc' : 'op');
+      bubble.textContent = msg.content;
+      const ts = document.createElement('div');
+      ts.className = 'dialog-time ' + (isCC ? 'cc' : 'op');
+      ts.textContent = msg.time || '';
+      wrap.appendChild(sender);
+      wrap.appendChild(bubble);
+      wrap.appendChild(ts);
+      area.appendChild(wrap);
+    });
+    area.scrollTop = area.scrollHeight;
+    // Show decisions panel
+    const decArea = document.getElementById('dialog-decision-area');
+    if (decisions.length > 0) {
+      const last = decisions[decisions.length - 1];
+      decArea.innerHTML = `<div class="dialog-decision">💡 最新决策 [${last.from}] ${last.content.slice(0,80)}${last.content.length>80?'...':''}</div>`;
+    } else {
+      decArea.innerHTML = '';
+    }
+  } catch(e) {
+    console.warn('loadDialog error', e);
+  }
+}
+
+async function triggerDialog() {
+  const btn = document.getElementById('dialog-btn');
+  const rounds = parseInt(document.getElementById('dialog-rounds').value) || 1;
+  btn.disabled = true;
+  btn.textContent = '对话中...';
+  try {
+    const r = await fetch('/api/cc-op-speak', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({rounds})
+    });
+    const data = await r.json();
+    if (data.ok) {
+      await loadDialog();
+    } else {
+      alert('对话失败: ' + (data.error || JSON.stringify(data)));
+    }
+  } catch(e) {
+    alert('请求失败: ' + e);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '⚡ 触发对话';
+  }
+}
+
+// ── Agent Hub 标签切换 ──────────────────────────────────────
+function switchAgentTab(tab, btn) {
+  ['opmon','dialog','discuss','orch','terminal'].forEach(t => {
+    const el = document.getElementById('tab-' + t);
+    if (el) { el.classList.remove('visible'); el.style.display='none'; }
+  });
+  const target = document.getElementById('tab-' + tab);
+  if (target) { target.classList.add('visible'); target.style.display='flex'; }
+  document.querySelectorAll('.agent-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (tab === 'discuss') loadDiscuss();
+  if (tab === 'orch') loadOrchestrate();
+  if (tab === 'opmon') loadOpStatus();
+}
+
+// ── 架构讨论 ─────────────────────────────────────────────────
+async function triggerDiscuss() {
+  const topic = document.getElementById('discuss-topic').value.trim();
+  if (!topic) { alert('请输入讨论议题'); return; }
+  const rounds = parseInt(document.getElementById('discuss-rounds').value) || 2;
+  const btn = document.getElementById('discuss-btn');
+  btn.disabled = true; btn.textContent = '讨论中...';
+  try {
+    const r = await fetch('/api/cc-op-discuss', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({topic, rounds})
+    });
+    const data = await r.json();
+    if (data.ok) { renderDiscuss(data.messages); }
+    else { alert('讨论失败: ' + (data.error || JSON.stringify(data))); }
+  } catch(e) { alert('请求失败: ' + e); }
+  finally { btn.disabled=false; btn.textContent='开始'; }
+}
+
+async function loadDiscuss() {
+  // 读 cc-op-discuss.jsonl 最后一个 session
+  try {
+    const r = await fetch('/api/cc-op-discuss-history');
+    if (!r.ok) return;
+    const data = await r.json();
+    if (data.messages && data.messages.length) renderDiscuss(data.messages);
+  } catch(e) {}
+}
+
+function renderDiscuss(msgs) {
+  const area = document.getElementById('discuss-area');
+  area.innerHTML = '';
+  msgs.forEach(msg => {
+    const isCC = msg.from === 'CC';
+    const isSys = msg.from === 'SYSTEM';
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column;align-items:' + (isSys?'center':isCC?'flex-end':'flex-start');
+    const bubble = document.createElement('div');
+    bubble.className = 'discuss-bubble ' + (isSys?'system':isCC?'cc':'op');
+    if (!isSys) {
+      const hdr = document.createElement('div');
+      hdr.style.cssText = `font-size:10px;font-weight:700;margin-bottom:3px;color:${isCC?'var(--blue)':'var(--mauve)'};text-align:${isCC?'right':'left'}`;
+      hdr.textContent = (isCC ? '🔵 CC' : '🟣 OP') + (msg.round ? ` · 第${msg.round}轮` : '');
+      bubble.appendChild(hdr);
+    }
+    const txt = document.createElement('div');
+    txt.textContent = msg.content;
+    bubble.appendChild(txt);
+    wrap.appendChild(bubble);
+    area.appendChild(wrap);
+  });
+  area.scrollTop = area.scrollHeight;
+}
+
+// ── Orchestrator 调度 ─────────────────────────────────────────
+async function triggerOrchestrate() {
+  const btn = document.getElementById('orch-btn');
+  const topic = document.getElementById('discuss-topic')?.value?.trim() || '综合任务调度';
+  btn.disabled = true; btn.textContent = '决策中...';
+  try {
+    const r = await fetch('/api/orchestrate', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({topic})
+    });
+    const data = await r.json();
+    if (data.ok) {
+      renderOrchestrate([data]);
+      // 刷新看板（新任务已写入文件）
+      setTimeout(loadTasks, 1000);
+    } else { alert('调度失败: ' + (data.error||'')); }
+  } catch(e) { alert('请求失败: ' + e); }
+  finally { btn.disabled=false; btn.textContent='⚡ 综合决策'; }
+}
+
+async function loadOrchestrate() {
+  try {
+    const r = await fetch('/api/orchestrate-history');
+    if (!r.ok) return;
+    const data = await r.json();
+    if (data.decisions && data.decisions.length) renderOrchestrate(data.decisions);
+  } catch(e) {}
+}
+
+function renderOrchestrate(decisions) {
+  const area = document.getElementById('orch-area');
+  area.innerHTML = '';
+  decisions.slice(-5).forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'orch-decision-card';
+    const ccTasks = (d.cc_tasks_added||[]).map(t=>`<span class="orch-task-tag orch-task-cc">CC: ${t.slice(0,30)}</span>`).join('');
+    const opTasks = (d.op_tasks_added||[]).map(t=>`<span class="orch-task-tag orch-task-op">OP: ${t.slice(0,30)}</span>`).join('');
+    card.innerHTML = `
+      <div class="orch-decision-time">${d.time||''}</div>
+      ${d.topic ? `<div class="orch-decision-topic">📋 ${d.topic}</div>` : ''}
+      <div class="orch-decision-body">${(d.decision||'').slice(0,600)}</div>
+      ${(ccTasks||opTasks) ? `<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:3px">${ccTasks}${opTasks}</div>` : ''}
+    `;
+    area.appendChild(card);
+  });
+  area.scrollTop = area.scrollHeight;
+}
+
+// ── 移动端终端 ────────────────────────────────────────────────
+function openMobileTerm(port, btn) {
+  document.querySelectorAll('.mobile-term-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const frame = document.getElementById('mobile-term-frame');
+  if (frame) frame.src = 'http://' + location.hostname + ':' + port;
+}
+
+// Init
+loadTasks();
+loadOpStatus();
+loadDialog();
+setInterval(loadTasks, 15000);
+setInterval(loadOpStatus, 30000);
+setInterval(loadDialog, 20000);
+</script>
+</body>
+</html>

@@ -1,9 +1,8 @@
 [Unit]
-Description=Timer for OpenCode Job: heartbeat-task-check (every 30 min)
+Description=Timer for OpenCode Job: heartbeat-task-check
 
 [Timer]
 OnCalendar=*-*-* *:00:00 Asia/Shanghai
-OnCalendar=*-*-* *:30:00 Asia/Shanghai
 Persistent=true
 
 [Install]

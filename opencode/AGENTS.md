@@ -1,6 +1,6 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-04-17 00:58 -->
+<!-- compiled: 2026-04-17 13:46 -->
 
 ## 语言规则
 - MUST 始终使用中文回复用户，所有对话、解释、报告均用中文
@@ -51,44 +51,6 @@
    - 命中历史故障 → 输出 `[历史风险] 检测到相关记录：...`，评估与当前操作的关联性
    - 无命中 → 正常执行
 
-## Windows 远程接管（死规则）
-- **MUST 主动 SSH 操作 Windows**，不要求用户手动执行
-- SSH: `ssh G@192.168.2.36`（用户 `G`，密码 `1`）
-- Windows 命令用 `cmd /c "..."` 包裹
-- 代理用 NixOS mihomo `192.168.2.100:7890`
-- 已安装：Python 3.12 + pip + OpenCode v1.4.6 + pywxdump 3.1.46
-
 ## 工作模式
-
-## OpenCode Scheduler 配置（新增 2026-04-17）
-
-### Agent YAML Frontmatter 规范
-- **必须字段**：`description: "..."`
-- **可选字段**：`temperature: 0.3`（必须放在顶层，不能在 `tools:` 块内）
-- **tools 块**：`edit: false`、`bash: true`（工具权限配置）
-- **错误示例**：`temperature` 在 `tools:` 块内 → "expected boolean, received number tools.temperature"
-- **正确示例**：
-  ```yaml
-  ---
-  description: "代理守护者"
-  temperature: 0.3
-  tools:
-    edit: false
-    bash: true
-  ---
-  ```
-
-### systemd 服务 PATH 配置
-- **问题**：systemd service 文件是 NixOS 生成的 symlink，PATH 默认不包含 `/run/current-system/sw/bin`
-- **修复方法**：在 NixOS 模块中使用 `path = with pkgs; [ ... ]` 字段
-- **示例**：
-  ```nix
-  systemd.services.health-monitor = {
-    path = with pkgs; [ docker curl bash coreutils gawk hostname ];
-    serviceConfig = {
-      ExecStart = "${pkgs.bash}/bin/bash /etc/nixos/scripts/health-monitor.sh";
-    };
-  };
-  ```
 
 <!-- truncated: exceeded size limit -->

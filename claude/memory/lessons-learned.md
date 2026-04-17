@@ -1273,3 +1273,35 @@
 - [2026-04-17] [GLM-5.1] OpenCode 巡查 agent job JSON 全部重建：6 个缺失的 JSON 手动创建到 scopes/charlie-*/jobs/（security-watchdog/proxy-guardian/service-nurse/discord-butler/cost-accountant/memory-curator）
 - [2026-04-17] [GLM-5.1] whisper-server 常驻 1.2G RAM（ggml-medium.bin 模型），闲置 CPU 0%。不使用时杀掉释放内存
 - [2026-04-17] [GLM-5.1] Windows 远程接管协议写入死规则：MUST 主动 SSH 操作，不要求用户手动。cmd /c 包裹命令。已装 pywxdump 3.1.46
+
+- [2026-04-17] [Sonnet] **系统权限严重受损** — 所有权限提升工具无 setuid 位
+  - **症状**：sudo/pkexec/su 均无法使用（提示 "必须属于用户 ID 0(的用户)并且设置 setuid 位"）
+  - **根因**：未知（可能是 NixOS 配置错误或系统损坏）
+  - **影响**：无法执行 nixos-rebuild switch、无法执行任何需要 root 权限的操作
+  - **临时修复**：需重启到 single user 模式或 TTY 直接登录 root
+  - **长期修复**：在 NixOS 配置中启用 setuid（`security.wrappers.sudo.enable = true` 或 `programs.sudo.enable = true`）
+
+- [2026-04-17] [Sonnet] **系统权限严重受损** — 所有权限提升工具无 setuid 位
+  - **症状**：sudo/pkexec/su 均无法使用（提示 "必须属于用户 ID 0(的用户)并且设置 setuid 位"）
+  - **根因**：未知（可能是 NixOS 配置错误或系统损坏）
+  - **影响**：无法执行 nixos-rebuild switch、无法执行任何需要 root 权限的操作
+  - **临时修复**：需重启到 single user 模式或 TTY 直接登录 root
+  - **长期修复**：在 NixOS 配置中启用 setuid（`security.wrappers.sudo.enable = true` 或 `programs.sudo.enable = true`）
+
+- [2026-04-17] [Sonnet] **代理守护者巡检** — mihomo 进程未运行但端口正常
+  - **状态**：mihomo-watch.service active，端口 7890/7891/9090 listening
+  - **出口IP**：203.10.97.121（澳大利亚），直连/代理相同
+  - **服务可达性**：Google 200，GitHub 200，Claude AI 403（反爬虫）
+  - **异常**：mihomo 进程未运行，仅有监控脚本，可能由其他进程接管
+- [2026-04-17] [Sonnet] NixOS docker.sock 永久修复：删除 virtualization.nix 中 `L+ /var/run/docker.sock` tmpfiles 规则。原规则在 /var/run→/run 时创建循环链接，导致每次 nixos-rebuild 后 docker.socket 失效。当前 /var/run 已由 NixOS 自动 symlink 到 /run，无需额外规则。
+- [2026-04-17] [Sonnet] Letta NLTK 启动挂起：容器内无法访问 172.16.0.0/12→7890（mihomo代理）。修复：networking.nix 添加 extraCommands iptables 规则允许该网段访问 7890。使用 extraInputRules（nftables语法）无效，必须用 extraCommands（iptables语法）。
+- [2026-04-17] [Sonnet] 代理守护者巡检：mihomo 进程未运行但端口监听，Google 代理 OK，GitHub/Claude.ai 403，出口 IP 203.10.97.121（澳大利亚），代理可能未生效（代理出口 IP 与直连相同）
+- [2026-04-17] [Sonnet] 代理守护者巡检：mihomo 进程未运行但端口监听，Google 代理 OK，GitHub/Claude.ai 403，出口 IP 203.10.97.121（澳大利亚），代理可能未生效（代理出口 IP 与直连相同）
+
+- [2026-04-17] [Sonnet] op scheduler 过频：service-nurse/discord-butler 每15分钟(96x/天)、proxy-guardian/task-check 每30分钟(48x/天)，合计每天触发400+次OpenCode。已调整为每小时/每2小时。chronos-dream timer 孤儿（无对应JSON），已停用。教训：op创建timer时缺少频率审查，每次新增job应明确说明预期触发频率。
+
+- [2026-04-17] [Sonnet] op误诊NixOS sudo：op报告"sudo无setuid位"，实际上NixOS的setuid sudo在/run/wrappers/bin/sudo(4511权限正确)，不在/run/current-system/sw/bin/sudo(符号链接无setuid是正常的)。op还错误报告磁盘86%阻塞安装，实际86%是/mnt/data机械盘，根分区/只有53%。op建议用户进入单用户模式chmod=危险且错误。教训：op不理解NixOS wrapper机制，误把nix store符号链接当成实际可执行文件检查权限。
+
+- [2026-04-17] [Sonnet] **LibreOffice 成功安装 + OP 误诊教训** — LibreOffice 26.2.1.2 已通过 NixOS 包管理器安装成功。操作：(1) 取消注释 `/etc/nixos/modules/packages.nix` 第189行 `libreoffice-qt6-fresh` (2) 运行 `nixos-rebuild switch --flake /etc/nixos#charlie` (3) 验证 `libreoffice --version` 返回 26.2.1.2 620(Build:2)。OP 误诊教训：OP 声称"sudo无setuid位，需单用户模式修复"和"磁盘86%阻塞安装"都是错误的。实际状态：(1) NixOS 的 setuid sudo 在 `/run/wrappers/bin/sudo`（权限 4511 正确），不在 `/run/current-system/sw/bin/sudo`（符号链接无 setuid 是正常的）(2) 根分区 / 使用率 57%（37G 可用），86% 是 /mnt/data 机械盘，与 LibreOffice 安装无关。OP 误诊原因：不理解 NixOS wrapper 机制，误把 nix store 符号链接当成实际可执行文件检查权限。教训：AI 助手诊断系统问题时，需理解特定发行版的特殊机制（如 NixOS wrappers），不能套用通用 Linux 知识。
+
+- [2026-04-17] [Sonnet] **Windows 屏幕自动唤醒问题诊断** — 用户报告 Windows（192.168.2.36）设置熄屏但经常自动亮起。诊断方法：通过 SSH 运行 `powercfg -requests` 检查阻止请求，`powercfg -devicequery wake_armed` 检查已启用唤醒的设备，`powercfg -devicequery wake_programmable` 检查所有支持唤醒的设备。诊断结果：(1) 无应用程序或服务阻止电源管理 (2) 3 个设备已启用唤醒：Realtek PCIe GbE（有线网卡）、HID Keyboard Device、HID-compliant mouse (002) (3) 7 个设备支持唤醒（包括 2 个未启用的网卡）。解决方案：优先禁用网卡唤醒（最常见原因），其次禁用键盘/鼠标唤醒。操作方法：设备管理器 → 设备属性 → 电源管理 → 取消"允许此设备唤醒计算机"。报告已保存到 `~/Desktop/文档/修复指南/Windows屏幕唤醒问题诊断-2026-04-17.md`。教训：Windows 唤醒问题通常是网络唤醒（WOL）或输入设备误触发，通过 powercfg 工具可以快速定位原因。

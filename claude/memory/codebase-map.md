@@ -765,3 +765,20 @@ Docker data-root 在 NTFS
   - 依赖: sqlcipher 4.14.0 ✅, pycryptodome ❌, zstandard ❌
   - Windows 障碍: 进程扫描 (/proc → Windows API)、数据库路径、Schema 差异
   - 关键文件: message/message_0.db, biz_message_0.db (25MB), contact/contact.db
+- [2026-04-17] OpenCode MCP 集成方式探索：MCP 配置在 ~/.config/opencode/opencode.json 的 mcp 段，Agent 调用使用 delegate-task 工具（支持 category 路由和 skills 注入），CRM 集成通过 ~/.local/bin/crm CLI 工具，可封装为 MCP 服务器。详见 ~/Desktop/文档/OpenCode-MCP集成探索-2026-04-17.md
+## OpenCode MCP 集成架构
+
+### MCP 配置结构
+- 位置：~/.config/opencode/opencode.json (mcp 段)
+- 支持类型：local (command + environment), remote (endpoint + api_key)
+- 已配置服务器：claude-knowledge, letta, context7, gmail
+
+### Agent 调用架构
+- call-omo-agent：直接调用指定 subagent_type
+- delegate-task：按 category 路由，支持 skills 注入
+- Skill 自动匹配：按任务类型自动注入对应 skills
+
+### CRM 集成路径
+- 已有工具：~/.local/bin/crm (SQLite: /mnt/ai/apps/crm/crm.db)
+- 技能配置：~/.claude/skills/crm-agent/SKILL.md
+- 建议封装：将 CLI 封装为 MCP 服务器，配置到 opencode.json

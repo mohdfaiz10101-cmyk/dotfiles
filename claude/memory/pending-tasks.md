@@ -195,6 +195,9 @@
 - [ ] HyperChat 部署评估 — 确认是否需要部署
 - [ ] 系统健康监控优化 — 调整 system-health-monitor 检查项，避免 HyperChat 导致失败
 - [x] **Paperclip → OpenCode subagent 迁移** — ✅ 完成 (2026-04-15)，心跳系统已上线
-- [ ] **跟踪 OpenCode 前沿** — PR #7756（subagent 间委托）+ #12711（Agent Teams），逐步实现 AGI 级自主能力
+- [>] **跟踪 OpenCode 前沿** — PR #7756（subagent 间委托）+ #12711（Agent Teams），逐步实现 AGI 级自主能力
 - [ ] **Paperclip 空壳 agent 归档** — 停止 6 个空壳 agent 心跳，保留 business-data 只读引用
 
+- [ ] [ORCH→CC] [2026-04-17 13:41] 设计移动端状态卡片的信息架构与交互原型，明确核心指标（状态、负载、错误数）的展示层级与快捷操作（如重启）流程。
+- [ ] [ORCH→CC] [2026-04-17 13:41] 定义移动端数据接口需求，确保数据轻量、实时，并制定分级告警与聚合视图的展示规则。
+- [ ] [ORCH→CC] [2026-04-17 13:41] 负责移动端视图的前端实现或与前端开发团队的对接，确保UI/UX符合移动监管场景。
