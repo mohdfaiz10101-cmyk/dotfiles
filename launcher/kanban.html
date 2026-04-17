@@ -222,7 +222,8 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
 .dialog-area { flex:1; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:6px; }
 .dialog-area::-webkit-scrollbar { width:4px; }
 .dialog-area::-webkit-scrollbar-thumb { background:var(--overlay); border-radius:4px; }
-.dialog-bubble { max-width:92%; padding:7px 10px; border-radius:8px; font-size:12px; line-height:1.5; word-break:break-word; }
+.dialog-bubble { max-width:92%; padding:7px 10px; border-radius:8px; font-size:12px; line-height:1.5; word-break:break-word; position:relative; cursor:pointer; transition:filter .1s; }
+.dialog-bubble:hover { filter:brightness(1.12); }
 .dialog-bubble.cc { background:rgba(137,180,250,.15); color:var(--text); align-self:flex-end; border-bottom-right-radius:2px; border-left:none; border-right:2px solid var(--blue); }
 .dialog-bubble.op { background:rgba(203,166,247,.12); color:var(--text); align-self:flex-start; border-left:2px solid var(--mauve); }
 .dialog-sender { font-size:10px; font-weight:700; margin-bottom:3px; }
@@ -230,6 +231,17 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
 .dialog-sender.op { color:var(--mauve); }
 .dialog-time { font-size:9px; color:var(--muted); margin-top:2px; }
 .dialog-time.cc { text-align:right; }
+/* 微信表情反应 */
+.bubble-reactions { display:flex; gap:3px; flex-wrap:wrap; margin-top:3px; }
+.reaction-badge { font-size:13px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:1px 5px; cursor:pointer; transition:background .12s; user-select:none; }
+.reaction-badge:hover { background:rgba(255,255,255,.14); }
+.reaction-badge .cnt { font-size:9px; color:var(--muted); margin-left:2px; }
+/* 表情选择器 */
+.emoji-picker { position:absolute; z-index:200; background:var(--mantle); border:1px solid var(--overlay); border-radius:10px; padding:6px 8px; display:flex; flex-wrap:wrap; gap:4px; width:200px; box-shadow:0 4px 20px rgba(0,0,0,.4); }
+.emoji-picker span { font-size:18px; cursor:pointer; padding:2px; border-radius:4px; transition:background .1s; }
+.emoji-picker span:hover { background:rgba(255,255,255,.1); }
+.emoji-picker-cc { right:0; bottom:100%; margin-bottom:4px; }
+.emoji-picker-op { left:0; bottom:100%; margin-bottom:4px; }
 .dialog-footer { padding:8px 10px; border-top:1px solid var(--overlay); display:flex; gap:6px; align-items:center; }
 .dialog-speak-btn { flex:1; padding:5px 10px; border-radius:6px; border:none; cursor:pointer; font-size:11px; font-weight:600; background:rgba(148,226,213,.15); color:var(--teal); transition:background .15s; }
 .dialog-speak-btn:hover { background:rgba(148,226,213,.3); }
@@ -987,7 +999,7 @@ async function loadDialog() {
         decisions.push({from: msg.from, content: txt, time: msg.time});
       }
     });
-    msgs.forEach(msg => {
+    msgs.forEach((msg, idx) => {
       const isCC = msg.from === 'CC';
       const wrap = document.createElement('div');
       wrap.style.display = 'flex';
@@ -999,11 +1011,47 @@ async function loadDialog() {
       const bubble = document.createElement('div');
       bubble.className = 'dialog-bubble ' + (isCC ? 'cc' : 'op');
       bubble.textContent = msg.content;
+      // 微信表情反应
+      const msgKey = 'dialog_react_' + idx + '_' + (msg.time||'');
+      const saved = JSON.parse(localStorage.getItem(msgKey)||'{}');
+      const reactArea = document.createElement('div');
+      reactArea.className = 'bubble-reactions';
+      function renderReacts() {
+        reactArea.innerHTML = '';
+        Object.entries(saved).forEach(([em,cnt]) => {
+          if(!cnt) return;
+          const b = document.createElement('span');
+          b.className = 'reaction-badge';
+          b.innerHTML = em + '<span class="cnt">' + cnt + '</span>';
+          b.onclick = (e) => { e.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(msgKey,JSON.stringify(saved)); renderReacts(); };
+          reactArea.appendChild(b);
+        });
+      }
+      renderReacts();
+      // 点击气泡显示表情选择器
+      const WECHAT_EMOJIS = ['😄','😂','🤣','😍','🥰','😘','😎','🤔','😅','😭','😡','👍','👎','❤️','🔥','💯','🎉','👏','🙏','💪','🤝','😏','🫡','😴','🤮','👀','💀','🐶','🐱','🍻'];
+      bubble.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.emoji-picker').forEach(p => p.remove());
+        const picker = document.createElement('div');
+        picker.className = 'emoji-picker ' + (isCC ? 'emoji-picker-cc' : 'emoji-picker-op');
+        WECHAT_EMOJIS.forEach(em => {
+          const s = document.createElement('span');
+          s.textContent = em;
+          s.title = em;
+          s.onclick = (ev) => { ev.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(msgKey,JSON.stringify(saved)); renderReacts(); picker.remove(); };
+          picker.appendChild(s);
+        });
+        bubble.style.position = 'relative';
+        bubble.appendChild(picker);
+        setTimeout(() => document.addEventListener('click', () => picker.remove(), {once:true}), 10);
+      });
       const ts = document.createElement('div');
       ts.className = 'dialog-time ' + (isCC ? 'cc' : 'op');
-      ts.textContent = msg.time || '';
+      ts.textContent = (msg.time||'') + (msg.type==='auto-response'?' ⚡':'') + (msg.type==='cc-urge'?' 🔔':'');
       wrap.appendChild(sender);
       wrap.appendChild(bubble);
+      wrap.appendChild(reactArea);
       wrap.appendChild(ts);
       area.appendChild(wrap);
     });
@@ -1090,16 +1138,19 @@ async function loadDiscuss() {
   } catch(e) {}
 }
 
+const WECHAT_EMOJIS_DISCUSS = ['😄','😂','🤣','😍','🥰','👍','👎','❤️','🔥','💯','🎉','👏','🙏','💪','🤔','😅','😭','😎','🫡','😏','🤝','🐶','💀','👀','🍻'];
+
 function renderDiscuss(msgs) {
   const area = document.getElementById('discuss-area');
   area.innerHTML = '';
-  msgs.forEach(msg => {
+  msgs.forEach((msg, idx) => {
     const isCC = msg.from === 'CC';
     const isSys = msg.from === 'SYSTEM';
     const wrap = document.createElement('div');
     wrap.style.cssText = 'display:flex;flex-direction:column;align-items:' + (isSys?'center':isCC?'flex-end':'flex-start');
     const bubble = document.createElement('div');
     bubble.className = 'discuss-bubble ' + (isSys?'system':isCC?'cc':'op');
+    bubble.style.cursor = isSys ? 'default' : 'pointer';
     if (!isSys) {
       const hdr = document.createElement('div');
       hdr.style.cssText = `font-size:10px;font-weight:700;margin-bottom:3px;color:${isCC?'var(--blue)':'var(--mauve)'};text-align:${isCC?'right':'left'}`;
@@ -1109,7 +1160,44 @@ function renderDiscuss(msgs) {
     const txt = document.createElement('div');
     txt.textContent = msg.content;
     bubble.appendChild(txt);
-    wrap.appendChild(bubble);
+    // 表情反应
+    if (!isSys) {
+      const mKey = 'discuss_react_' + idx + '_' + (msg.time||msg.session||'');
+      const saved = JSON.parse(localStorage.getItem(mKey)||'{}');
+      const reactArea = document.createElement('div');
+      reactArea.className = 'bubble-reactions';
+      function renderR() {
+        reactArea.innerHTML = '';
+        Object.entries(saved).forEach(([em,cnt]) => {
+          if(!cnt) return;
+          const b = document.createElement('span');
+          b.className = 'reaction-badge';
+          b.innerHTML = em + '<span class="cnt">'+cnt+'</span>';
+          b.onclick = e => { e.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(mKey,JSON.stringify(saved)); renderR(); };
+          reactArea.appendChild(b);
+        });
+      }
+      renderR();
+      bubble.addEventListener('click', e => {
+        e.stopPropagation();
+        document.querySelectorAll('.emoji-picker').forEach(p=>p.remove());
+        const picker = document.createElement('div');
+        picker.className = 'emoji-picker ' + (isCC?'emoji-picker-cc':'emoji-picker-op');
+        WECHAT_EMOJIS_DISCUSS.forEach(em => {
+          const s = document.createElement('span');
+          s.textContent = em;
+          s.onclick = ev => { ev.stopPropagation(); saved[em]=(saved[em]||0)+1; localStorage.setItem(mKey,JSON.stringify(saved)); renderR(); picker.remove(); };
+          picker.appendChild(s);
+        });
+        bubble.style.position='relative';
+        bubble.appendChild(picker);
+        setTimeout(()=>document.addEventListener('click',()=>picker.remove(),{once:true}),10);
+      });
+      wrap.appendChild(bubble);
+      wrap.appendChild(reactArea);
+    } else {
+      wrap.appendChild(bubble);
+    }
     area.appendChild(wrap);
   });
   area.scrollTop = area.scrollHeight;
