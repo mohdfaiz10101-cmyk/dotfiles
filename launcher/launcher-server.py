@@ -56,6 +56,14 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             self._serve_cc_op_dialog(n)
             return
 
+        if parsed.path == "/api/task-results":
+            self._serve_task_results()
+            return
+
+        if parsed.path == "/api/op-tasks-pending":
+            self._serve_op_tasks_pending()
+            return
+
         if parsed.path == "/api/cc-op-discuss-history":
             f = os.path.expanduser("~/.claude/projects/-home-charlie/memory/cc-op-discuss.jsonl")
             msgs = []
@@ -723,6 +731,35 @@ Git Diff（前3000字符）：
             "diff_lines": diff_lines,
             "model": model_used,
         }
+
+    def _serve_task_results(self):
+        """返回 OP 最近任务执行结果 /tmp/op-task-results.json"""
+        results = []
+        try:
+            with open("/tmp/op-task-results.json", "r", encoding="utf-8") as f:
+                content = f.read().strip()
+                if content:
+                    results = json.loads(content) if content.startswith('[') else [json.loads(l) for l in content.splitlines() if l.strip()]
+        except Exception:
+            pass
+        self._json_response({"results": results[-20:]})
+
+    def _serve_op_tasks_pending(self):
+        """返回 op-tasks.md 中未完成任务列表"""
+        tasks = []
+        completed = []
+        try:
+            op_tasks_file = os.path.expanduser("~/.claude/projects/-home-charlie/memory/op-tasks.md")
+            with open(op_tasks_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("- [ ]"):
+                        tasks.append(line[5:].strip())
+                    elif line.startswith("- [x]"):
+                        completed.append(line[5:].strip())
+        except Exception:
+            pass
+        self._json_response({"pending": tasks, "completed": completed[-10:], "pending_count": len(tasks), "completed_count": len(completed)})
 
     def _serve_cc_op_dialog(self, n=20):
         dialog_file = os.path.expanduser("~/.claude/projects/-home-charlie/memory/cc-op-dialog.jsonl")

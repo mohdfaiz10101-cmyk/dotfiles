@@ -1,9 +1,10 @@
 [Unit]
-Description=Timer for OpenCode Job: heartbeat-task-check
+Description=OP Task Executor (every 20min, daytime)
 
 [Timer]
-OnCalendar=*-*-* *:00:00 Asia/Shanghai
-Persistent=true
+OnCalendar=08..23:*:00/20
+Persistent=false
+Unit=opencode-job-charlie-b445f233ebb8-heartbeat-task-check.service
 
 [Install]
 WantedBy=timers.target

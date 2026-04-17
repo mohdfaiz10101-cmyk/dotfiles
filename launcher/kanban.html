@@ -250,6 +250,12 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
 .dialog-decision { background:rgba(249,226,175,.08); border:1px solid rgba(249,226,175,.2); border-radius:6px; padding:6px 8px; font-size:11px; color:var(--yellow); margin:4px 10px; }
 .dialog-empty { text-align:center; color:var(--muted); font-size:12px; padding:30px 10px; }
 .dialog-live-dot { width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
+.task-result-row { font-size:10px; padding:3px 5px; border-radius:4px; background:rgba(255,255,255,.04); display:flex; gap:5px; align-items:flex-start; }
+.task-result-row.ok { border-left:2px solid var(--green); }
+.task-result-row.fail { border-left:2px solid var(--red); }
+.task-result-row .tr-time { color:var(--muted); white-space:nowrap; flex-shrink:0; }
+.task-result-row .tr-task { color:var(--subtext); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.task-result-row .tr-result { color:var(--text); flex:1.5; word-break:break-word; font-size:9px; }
 </style>
 </head>
 <body>
@@ -294,7 +300,20 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
       <button class="agent-tab" onclick="switchAgentTab('terminal',this)">⌨ 终端</button>
     </div>
     <!-- Tab: OP 监控 -->
-    <div class="agent-tab-content visible" id="tab-opmon" style="flex-direction:column;overflow-y:auto">
+    <div class="agent-tab-content visible" id="tab-opmon" style="flex-direction:column;overflow-y:auto;gap:0">
+      <!-- 待办积压 -->
+      <div id="tasks-pending-bar" style="padding:6px 10px;border-bottom:1px solid var(--overlay);font-size:11px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="color:var(--muted)">待办</span>
+        <span id="pending-count" style="font-weight:700;color:var(--yellow)">-</span>
+        <span style="color:var(--muted)">个</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)" id="pending-next">—</span>
+      </div>
+      <!-- 最近任务执行结果 -->
+      <div id="task-results-area" style="padding:6px 10px;border-bottom:1px solid var(--overlay);max-height:160px;overflow-y:auto">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:4px">📋 最近执行结果</div>
+        <div id="task-results-list" style="display:flex;flex-direction:column;gap:3px"></div>
+      </div>
+      <!-- OP 服务状态 -->
       <div class="cards" id="col-op" style="flex:1;overflow-y:auto;padding:8px"></div>
     </div>
     <!-- Tab: 任务对话 -->
@@ -1171,10 +1190,42 @@ function openMobileTerm(port, btn) {
 // Init
 loadTasks();
 loadOpStatus();
+// ── 任务执行结果 + 待办积压 ──────────────────────────────────
+async function loadTaskResults() {
+  try {
+    const [rRes, rPend] = await Promise.all([
+      fetch('/api/task-results').then(r=>r.json()),
+      fetch('/api/op-tasks-pending').then(r=>r.json())
+    ]);
+    // 待办积压
+    const pcount = rPend.pending_count || 0;
+    document.getElementById('pending-count').textContent = pcount;
+    document.getElementById('pending-count').style.color = pcount > 5 ? 'var(--red)' : pcount > 2 ? 'var(--yellow)' : 'var(--green)';
+    document.getElementById('pending-next').textContent = pcount ? `最旧: ${(rPend.pending[0]||'').slice(0,35)}…` : '全部完成 ✓';
+    // 执行结果
+    const list = document.getElementById('task-results-list');
+    const results = rRes.results || [];
+    if (!results.length) {
+      list.innerHTML = '<div style="color:var(--muted);font-size:10px">暂无执行记录</div>';
+      return;
+    }
+    list.innerHTML = '';
+    [...results].reverse().slice(0, 8).forEach(r => {
+      const row = document.createElement('div');
+      row.className = 'task-result-row ' + (r.status === 'ok' ? 'ok' : 'fail');
+      const taskShort = (r.task || '').replace(/\[.*?\]/g,'').trim().slice(0, 40);
+      row.innerHTML = `<span class="tr-time">${r.time||''}</span><span class="tr-task" title="${r.task||''}">${taskShort}</span><span class="tr-result">${r.status==='ok'?'✓':'✗'} ${(r.result||'').slice(0,60)}</span>`;
+      list.appendChild(row);
+    });
+  } catch(e) {}
+}
+
 loadDialog();
+loadTaskResults();
 setInterval(loadTasks, 15000);
 setInterval(loadOpStatus, 30000);
 setInterval(loadDialog, 20000);
+setInterval(loadTaskResults, 30000);
 
 // ── 语音引擎（Web Speech API）──────────────────────────────────
 let voiceEnabled = localStorage.getItem('hub_voice') === '1';
