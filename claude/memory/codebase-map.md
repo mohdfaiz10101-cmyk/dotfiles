@@ -782,3 +782,5 @@ Docker data-root 在 NTFS
 - 已有工具：~/.local/bin/crm (SQLite: /mnt/ai/apps/crm/crm.db)
 - 技能配置：~/.claude/skills/crm-agent/SKILL.md
 - 建议封装：将 CLI 封装为 MCP 服务器，配置到 opencode.json
+- [2026-04-17] [Aider] feat: kanban agent hub + CC⇄OP对话系统 + auto-skill封装
+  相关文件：bin/aggregate-inspection.py, bin/aggregate-inspections.py, claude/CLAUDE.md, claude/memory/app-dev-journal.md, claude/memory/cc-op-dialog.jsonl
