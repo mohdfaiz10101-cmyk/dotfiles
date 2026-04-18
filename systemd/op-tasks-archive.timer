@@ -1,0 +1,9 @@
+[Unit]
+Description=op-tasks 已完成任务自动归档
+
+[Timer]
+OnCalendar=*-*-* 02:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

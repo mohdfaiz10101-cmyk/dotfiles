@@ -1,0 +1,10 @@
+[Unit]
+Description=元监控 — 检查关键 timers 是否正常触发
+
+[Timer]
+OnBootSec=30min
+OnUnitActiveSec=4h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

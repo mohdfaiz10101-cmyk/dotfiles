@@ -14,6 +14,9 @@ StartLimitBurst=3
 StandardOutput=journal
 StandardError=journal
 Environment="PYTHONUNBUFFERED=1"
+Environment="PROXY=http://127.0.0.1:7890"
+Environment="HTTP_PROXY=http://127.0.0.1:7890"
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
 Environment="DISCORD_BOT_TOKEN=MTQ5MDY0MTY3ODEzNzAzMjg0NA.G7dnjb.8XnDoykFr9O8SRsQH1nnCXiV0Ge2LEOGTI47f8"
 Environment="DISCORD_GUILD_ID=1490683033919950941"
 

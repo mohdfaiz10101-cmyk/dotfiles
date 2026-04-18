@@ -1,0 +1,6 @@
+[Unit]
+Description=元监控 — 检查关键 timers 健康度
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/meta-monitor.sh

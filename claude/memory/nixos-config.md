@@ -645,3 +645,11 @@ Roo Code 的配置分散在 **4 个不同位置**，这是问题的根源：
 - **storage.nix 新增**：polkit 规则允许 `users` 组无密码挂载/卸载/弹出/解锁设备
 - 覆盖操作：`filesystem-mount` / `filesystem-mount-system` / `mount-other-seat` / `unmount-others` / `encrypted-unlock` / `eject-media` / `power-off-drive`
 - 效果：Dolphin 侧边栏点击存储设备不再弹密码框
+
+### 2026-04-18 [Sonnet] SSH 安全加固 — authorized_keys 权限修复
+- **问题**：`~/.ssh/authorized_keys` 权限为 644（组和其他用户可读），存在安全隐患
+- **修复**：`chmod 600 ~/.ssh/authorized_keys` → 权限改为 600（仅所有者可读写）
+- **最佳实践**：SSH 公钥文件应始终设置为 600 权限，防止其他用户读取
+- **验证命令**：`ls -la ~/.ssh/authorized_keys`
+
+- [2026-04-18] [GLM-5.1] desktop.nix 输入法环境变量修正：移除 GTK_IM_MODULE/QT_IM_MODULE/INPUT_METHOD/GLFW_IM_MODULE，只保留 XMODIFIERS="@im=fcitx"。原因：i18n.inputMethod.fcitx5.waylandFrontend=true 时，NixOS 模块自动管理 GTK/QT IM MODULE（不设置它们），让 Wayland 原生 text-input 协议生效。手动设置会覆盖此行为导致焦点丢失。

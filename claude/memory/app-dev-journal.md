@@ -44,3 +44,12 @@ type: project
 - **可复用 pattern**：op_delegate 工具写入 op-tasks.md → OP 定时器捡起执行
 - **文件**：~/agi/macg.py + ~/.local/bin/macg
 - **部署**：~/agi/.venv 虚拟环境，pip install langgraph langgraph-checkpoint-sqlite langchain-anthropic langchain-openai
+
+## [AGI Android APK] — CopilotKit 手机控制台
+- **日期**：2026-04-18
+- **技术栈**：Capacitor 6 + 原生 HTML/JS（无需 React Native）→ Android APK
+- **架构决策**：复用已有 AGI Gateway (9900) SSE/REST，不新建后端；Capacitor 包装单页 HTML，避免 Next.js 完整编译
+- **连接方式**：Tailscale IP → NixOS 主机 → port 9900
+- **任务链**：APK-A0（环境）→ APK-A1（初始化）→ APK-A2（UI）→ APK-A3（构建）
+- **输出**：~/Desktop/文档/agi-console-YYYYMMDD.apk
+- **状态**：已写入 op-tasks.md，等待 OP 执行

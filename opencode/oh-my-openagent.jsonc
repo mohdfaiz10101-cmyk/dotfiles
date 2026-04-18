@@ -79,7 +79,7 @@
     }
   },
   "category_mapping": {
-    "quick": "openai-compatible/glm-4.7",
+    "quick": "openai-compatible/cerebras-llama-8b",
     "unspecified-low": "openai-compatible/glm-5-turbo",
     "unspecified-high": "openai-compatible/glm-5.1",
     "deep": "openai-compatible/gpt-4.1",

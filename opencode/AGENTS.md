@@ -50,3 +50,9 @@
 - NVIDIA 驱动相关任何操作
 
 <!-- truncated: exceeded size limit -->
+## OP 修改通知协议（CHANGE_NOTIFY — 死规则）
+OP 修改任何共享文件（前端代码/hub-api/macg.py/配置文件）后，MUST 写一行到 `~/.claude/projects/-home-charlie/memory/cc-op-dialog.jsonl`：
+```json
+{"from":"OP","action":"modified","file":"path","reason":"why","time":"ISO"}
+```
+CC 每次会话启动时检查此文件，避免覆盖 OP 的修改。

@@ -4,6 +4,18 @@
 
 ---
 
+### [2026-04-18] [Sonnet] AGI Control Plane 前端全量重设计（REDESIGN v2）
+- **状态**：规划完成，待OP实施
+- **规划文档**：`~/Desktop/文档/agi-control-plane-redesign-plan.md`
+- **任务**：`~/op-tasks.md` REDESIGN-P0~P4（13个子任务段，约25个checkbox）
+- **架构**：Sidebar导航 + TopBar状态栏 + 5个面板（Chat/Dashboard/WeChat/Terminal/Memory）
+- **关键决策**：不引新UI库，单页Tab切换，轮询不用WebSocket，Catppuccin Mocha暗色
+- **技术栈**：Next.js 16 + CopilotKit 1.56 + recharts 3.8 + Tailwind 4 + lucide-react
+- **集成**：AGI-GW(9900) + Hub(9801) + Letta(8283) + LiteLLM(4000) 全部接入
+- **CopilotKit Actions**：6个（systemStatus/brainState/opTasks/lettaSearch/wechatReply/delegateOp）
+
+---
+
 ### [2026-04-16] [Sonnet] SpectrAI 营销策略（5 条简短摘要）
 - **状态**：已完成
 - **背景**：调研 2026 年 AI 工具营销趋势，针对 SpectrAI 产品定位（NixOS + 本地 AI 栈）

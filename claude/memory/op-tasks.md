@@ -1,58 +1,61 @@
-# OP 待办任务（2026-04-18 全量流转）
+# OP 待办任务（2026-04-18 清理归档）
 
-## 已完成存档
-- [x] [AGI→OP] 排查 Letta embedding 413 — ✅ 已修复
-- [x] [AGI→OP] P0-A cognitive_engine.py / P0-B macg.py / P1 brain.py / flows/*.py — ✅ 已创建
-- [x] [CC→OP] LiteLLM GLM 视觉模型 — ✅ glm-4.6v-flash + glm-4v-flash 已添加
-- [x] [CC→OP] op-connection-guard.sh 失败流转 — ✅ escalate_to_cc() 已实现
-- [x] CopilotKit T01/T02/T03 — ✅ CC 直接执行完毕（目录+main.py+agi-gateway:9900）
-- [x] charlie-hub hub-api.py — ✅ 2026-04-18 已修复
+## 待处理（未完成）
 
----
+### OP→CC 流转
+- [!] [OP→CC] heartbeat-task-check / service-nurse / discord-butler — systemd service 不存在，需从零创建 agent service 或从 Paperclip 配置中移除
+- [!] [OP→CC] heartbeat-system-sentry — 超时被 SIGALRM 杀死，需增加 TimeoutStartSec 或修复脚本
+- [!] [OP→CC] proxy-guardian — systemd service 不存在，同上
 
-## P0 — 立即执行
+### AGI 前端重设计（REDESIGN v2）
+> 规划文档：`~/Desktop/文档/agi-control-plane-redesign-plan.md`
+> 项目路径：`/mnt/ai/apps/agi-control-plane/frontend/`
 
-- [ ] [CC→OP] [2026-04-18 13:00] [P0] **监控修复-A** `auto-fix-services` 服务 timeout 被杀 → 检查 `journalctl --user -u auto-fix-services -n 50`，找出超时原因，修复或增加 TimeoutSec
-- [ ] [CC→OP] [2026-04-18 13:00] [P0] **监控修复-B** `security-watchdog` signal 异常（3h+ 无数据）→ 检查 OpenCode job security-watchdog.json，确认 prompt 输出是否写桌面，重启 timer 并触发一次手动执行
-- [ ] [CC→OP] [2026-04-18 13:00] [P0] **charlie-hub 启动** 确认 hub-api.py 正常：`systemctl --user status charlie-hub`，如未运行则 `systemctl --user restart charlie-hub`，验证 `curl http://localhost:9801/health`
+- [x] [完成 2026-04-18 23:00] — REDESIGN-P0-A：9文件创建+构建通过
+- [x] [完成 2026-04-18 23:00] — REDESIGN-P0-B：Sidebar完成
+- [x] [完成 2026-04-18 23:00] — REDESIGN-P0-C：TopBar+ServiceBadge完成
+- [x] [完成 2026-04-18 23:00] — REDESIGN-P0-D：4个hooks完成
+- [x] [完成 2026-04-18 23:00] — REDESIGN-P1-A：ChatPanel完成
+- [ ] [OP] REDESIGN-P1-B：CopilotKit Actions 注册（6个action）
+- [ ] [OP] REDESIGN-P2-A：KanbanDashboard — recharts图表 + MetricCard
+- [ ] [OP] REDESIGN-P2-B：LettaMemoryTree — 3个agent记忆可视化
+- [ ] [OP] REDESIGN-P3-A：WechatPanel增强版（头像/搜索/回复/轮询）
+- [ ] [OP] REDESIGN-P3-B：page.tsx 主布局重写（<100行）
+- [ ] [OP] REDESIGN-P4：生产构建 + 部署 + Git备份
 
-## P1 — CopilotKit 前端
+### Git 备份
+- [ ] [CC→OP] 全量 git 备份（memory + agi-control-plane + hub + nixos）
 
-- [ ] [CC→OP] [2026-04-18 13:00] [P1] **CopilotKit-T04** 初始化 Next.js 前端：
-  ```bash
-  cd /mnt/ai/apps/agi-control-plane/frontend
-  BUN_INSTALL=/mnt/ai/cache/bun /mnt/ai/cache/bun/bin/bun create next-app . --ts --tailwind --app --no-src-dir --yes
-  /mnt/ai/cache/bun/bin/bun add @copilotkit/react-core @copilotkit/react-ui @copilotkit/runtime recharts lucide-react
-  ```
-  验证：`ls /mnt/ai/apps/agi-control-plane/frontend/package.json`
-- [ ] [CC→OP] [2026-04-18 13:00] [P1] **CopilotKit-T05** 创建并启动前端服务：
-  写入 `~/.config/systemd/user/agi-frontend.service`（WorkingDirectory=/mnt/ai/apps/agi-control-plane/frontend，ExecStart=/mnt/ai/cache/bun/bin/bun run dev --port 3000），enable + start，验证 `curl http://localhost:3000`
+## 已完成（2026-04-18）
 
-## P1 — 系统运维
+- [x] [GLM-5.1] Letta(8283)+Hub(9801) 运行正常
+- [x] [GLM-5.1] hub-api 联系人API修复：3262联系人+3189头像+79消息记录，控制字符已清理
+- [x] CopilotKit T01-T03 全部完成
+- [x] charlie-hub hub-api.py 列名+控制字符+SafeJSONResponse 修复
+- [x] LiteLLM GLM 视觉模型添加
+- [x] OP agent 失败排查：heartbeat-task-check/service-nurse/discord-butler 根因=systemd service 不存在
+- [x] 40+ 条重复"重启服务"任务已清理
+- [x] APK构建任务：需sudo权限，转CC
 
-- [ ] [CC→OP] [2026-04-18 13:00] [P1] **成本审计修复** LiteLLM/Ollama：
-  1. `docker logs litellm --tail 50 | grep -i error`
-  2. 如有错误 → `docker restart litellm`
-  3. `curl -sf http://localhost:4000/health` 验证
-  4. `systemctl --user start ollama 2>/dev/null || docker start ollama 2>/dev/null`
-  5. 结果写 `/tmp/cost-audit-fix-$(date +%Y%m%d).md`
-
-- [ ] [CC→OP] [2026-04-18 13:00] [P1] **chronos-subconscious 降频** 修改 timer：`OnUnitActiveSec=20min` → `OnUnitActiveSec=1h`，同时在 ExecStart 脚本中加检查 `[ $(awk '{print int($1)}' /proc/loadavg) -gt 4 ] && exit 0`（CPU 高负载跳过）
-
-- [ ] [CC→OP] [2026-04-18 13:00] [P1] **Paperclip 空壳 agent 归档** 检查 Paperclip API（port 3100），列出所有 agent，停止心跳为 0 且 status=idle 超 7 天的 agent（最多 6 个），写结果到 `/tmp/paperclip-cleanup-$(date +%Y%m%d).json`
-
-## P2 — 监控补全
-
-- [ ] [CC→OP] [2026-04-18 13:00] [P2] **Docker 容器监控补全** 为以下容器添加 healthcheck 巡检（追加到 service-nurse OpenCode job）：nocodb、twenty-server、twenty-worker、n8n、deepwiki。检查方式：`docker inspect --format='{{.State.Health.Status}}' <name>`，异常则写 `/tmp/docker-health-$(date +%Y%m%d).md`
-
-- [ ] [CC→OP] [2026-04-18 13:00] [P2] **元监控（监工监工者）** 创建 `~/.local/bin/meta-monitor.sh`：检查以下 timers 是否 active + 最近触发时间 < 阈值×2（超时则写告警到 `/tmp/meta-monitor-alert.md`）：system-health-monitor / letta-health-guard / mihomo-guardian / cc-task-auditor / opencode-job-*-security-watchdog / opencode-job-*-proxy-guardian / opencode-job-*-heartbeat-task-check。创建对应 timer，每 4h 运行一次
-
-- [ ] [CC→OP] [2026-04-18 13:00] [P2] **op-tasks 已完成归档** 将 op-tasks.md 中所有 [x] 超过 24h 的条目移至 `op-tasks-archive-$(date +%Y%m).md`，保持活跃文件精简。每日 02:00 自动执行（创建 systemd timer）
-
-## 执行规则（MUST）
-- 每个任务完成后 MUST 将 `[ ]` 改为 `[x]` 并附上时间戳和结果摘要
-- 失败超过 2 次 MUST 改为 `[!]` 并写明失败原因，流转回 CC
-- 执行前先 grep 是否有重复任务（IDLE_GUARD）
-- 结果文件统一写到 `~/Desktop/巡检报告/` 或 `/tmp/`，不要只输出到终端
-- [ ] [AGI→OP] [2026-04-18 13:01] [high] 启动 Charlie Hub (Caddy) 服务以恢复总控 UI 和反向代理功能
-- [ ] [AGI→OP] [2026-04-18 13:01] [medium] 检查 Letta 服务停止原因并决定是否需要重启
+## 执行规则
+- 完成后 `[ ]` → `[x]` + 时间戳 | 失败 2 次 → `[!]` + 原因流转 CC
+- 优先执行 REDESIGN-P0 → P1 → P2 → P3 → P4
+- [ ] [AGI→OP] [2026-04-18 21:55] [high] 重启 Letta 服务以恢复 Agent 记忆与上下文管理
+- [ ] [AGI→OP] [2026-04-18 21:55] [high] 重启 Charlie-Hub 服务以恢复通信中枢
+- [ ] [OP→CC] [2026-04-18 22:00] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-18 22:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-18 22:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-18 22:20] [high] 启动 letta 服务 (systemctl start letta)
+- [ ] [OP→CC] [2026-04-18 22:20] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-18 22:21] [high] 重启 Letta 服务以恢复代理记忆和上下文功能
+- [ ] [AGI→OP] [2026-04-18 22:30] [high] 启动 letta 服务以恢复 AI Agent 能力
+- [ ] [AGI→OP] [2026-04-18 22:30] [high] 启动 charlie-hub 服务以恢复指令接收能力
+- [ ] [AGI→OP] [2026-04-18 22:31] [high] 检查并重启 letta 服务
+- [ ] [AGI→OP] [2026-04-18 22:47] [high] 启动 Letta 和 Charlie-Hub 服务，恢复 OP 代理协调及消息通知能力
+- [ ] [AGI→OP] [2026-04-18 22:50] [high] 立即重启 letta 服务并检查日志确认失败原因
+- [ ] [AGI→OP] [2026-04-18 22:50] [high] 立即重启 charlie-hub 服务
+- [ ] [AGI→OP] [2026-04-18 22:50] [medium] 检查 systemd 服务配置，确认是否存在自动重启失败或依赖问题
+- [ ] [AGI→OP] [2026-04-18 22:52] [high] 诊断并重启 Letta 服务，确保 Agent 系统在线
+- [ ] [AGI→OP] [2026-04-18 22:52] [high] 诊断并重启 Charlie-Hub 服务，恢复通信能力
+- [ ] [AGI→OP] [2026-04-18 23:13] [high] 重启 letta 和 charlie-hub 服务以恢复通信与代理能力
+- [ ] [AGI→OP] [2026-04-18 23:13] [medium] 检查 letta 与 charlie-hub 的日志（journalctl）确认停止原因

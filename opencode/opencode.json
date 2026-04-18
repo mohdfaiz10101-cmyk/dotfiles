@@ -77,12 +77,40 @@
             "context": 131072,
             "output": 8192
           }
+        },
+        "cerebras-llama-8b": {
+          "name": "Cerebras Llama-8B (极速免费 <100ms)",
+          "limit": {
+            "context": 8192,
+            "output": 4096
+          }
+        },
+        "cerebras-qwen3-235b": {
+          "name": "Cerebras Qwen3-235B (免费 MoE)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "cerebras-gpt-120b": {
+          "name": "Cerebras GPT-120B (免费)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "macg": {
+          "name": "MACG LangGraph (14工具+5流程+智能路由)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         }
       }
     }
   },
   "model": "openai-compatible/glm-5-turbo",
-  "small_model": "openai-compatible/glm-4.7",
+  "small_model": "openai-compatible/cerebras-llama-8b",
   "default_agent": "sisyphus",
   "agent": {
     "build": {
@@ -96,9 +124,9 @@
       "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）"
     },
     "explore": {
-      "model": "openai-compatible/glm-4.7",
+      "model": "openai-compatible/cerebras-llama-8b",
       "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。命令/路径必须用工具验证。不知道就说不知道，禁止编造。",
-      "description": "代码搜索员 — 定位文件、函数、实现模式"
+      "description": "代码搜索员 — 定位文件、函数、实现模式（Cerebras 极速）"
     },
     "chat": {
       "model": "openai-compatible/qwen3-235b",
@@ -134,6 +162,11 @@
       "model": "openai-compatible/glm-4-plus",
       "prompt_file": "/home/charlie/.config/opencode/agents/tech-researcher.md",
       "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。"
+    },
+    "macg": {
+      "model": "openai-compatible/macg",
+      "description": "MACG 统一调度 — LangGraph 智能路由（GLM免费→Opus升级）+ 14工具 + 5工作流 + 实时系统感知 + 微信 + OP委托",
+      "prompt_append": "你是 MACG LangGraph 统一调度器。你的回复已经过 GLM/Opus 处理，直接展示结果即可。"
     },
     "ops-dispatcher": {
       "model": "openai-compatible/glm-4-plus",

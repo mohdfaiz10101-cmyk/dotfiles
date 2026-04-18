@@ -5,9 +5,9 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/langchain-hub
-ExecStart=/mnt/ai/ai-cluster/langchain-hub/venv/bin/python web_viewer.py
-Restart=on-failure
-RestartSec=5
+ExecStart=/bin/true
+# DISABLED: venv path does not exist (2026-04-18)
+Restart=no
 Environment=PYTHONUNBUFFERED=1
 
 [Install]

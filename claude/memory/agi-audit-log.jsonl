@@ -1144,3 +1144,583 @@
 {"ts": "2026-04-18 13:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-18 13:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-18 13:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:15", "type": "task_queued", "task": "启动 Charlie Hub 服务（端口 9800）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:15", "type": "task_queued", "task": "确认 Letta 服务是否需要运行，如需要则启动", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:15", "type": "cycle", "summary": "系统核心服务 Charlie Hub 异常停运，需立即恢复；Letta 服务处于非活跃状态；APK 安装任务失败需人工介入", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 13:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:20", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:22", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:24", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:27", "type": "task_queued", "task": "启动 charlie-hub 服务（端口 9800）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:27", "type": "task_queued", "task": "启动 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:27", "type": "task_queued", "task": "诊断并重启 OP 监控循环，解决状态数据不更新问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:27", "type": "cycle", "summary": "系统资源负载正常，但核心服务 Letta 与 Charlie-Hub 处于停止状态，且 OP 监控数据滞后严重。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 13:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:32", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:36", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:55", "type": "task_queued", "task": "重启 charlie-hub 服务（端口9800，核心总控UI）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:55", "type": "task_queued", "task": "检查 letta 服务状态，确认是否需要启动", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:55", "type": "cycle", "summary": "系统整体运行正常，但核心服务 charlie-hub 处于停止状态需立即恢复", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 13:57", "type": "task_queued", "task": "检查并启动 Charlie Hub (Caddy) 服务，恢复总控 UI 访问", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:57", "type": "task_queued", "task": "诊断并重启 OP 代理，恢复心跳监控机制", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:57", "type": "task_queued", "task": "修正 Android Termux 安装流程：先通过 curl/wget 下载 APK 到本地，再执行 adb install", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 13:57", "type": "cycle", "summary": "系统资源负载正常，但关键入口 Charlie Hub 已停止服务，且 OP 代理状态数据严重滞后（22小时未更新）。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 13:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:16", "type": "task_queued", "task": "排查高内存占用进程（如浏览器、AI 模型），释放内存防止系统卡死", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:16", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复控制面板访问", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:16", "type": "cycle", "summary": "系统内存严重过载（90.6%），Charlie-Hub 与 Letta 服务停止，其余资源正常。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 14:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:23", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:24", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:28", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:29", "type": "cycle", "summary": "LLM 调用失败：Server disconnected without sending a response.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:30", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:31", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:32", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:33", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:35", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:36", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:37", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:38", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:39", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:40", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:43", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:46", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:47", "type": "task_queued", "task": "启动 LiteLLM、Charlie Hub 和 Letta 服务，确保 AI 工具链（System B/C）及总控界面可用", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:47", "type": "cycle", "summary": "核心AI基础设施服务全部停止，需立即恢复以保障工具链可用性", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 14:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:52", "type": "task_queued", "task": "重启核心服务：systemctl --user start litellm charlie-hub letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:52", "type": "task_queued", "task": "修正 Termux 安装流程：先 wget 下载 APK 到 /tmp，再执行 adb install", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:52", "type": "cycle", "summary": "核心 AI 基础设施（LiteLLM/Hub/Letta）全部离线，导致 Aider 和 Paperclip 不可用，需紧急重启；Android ADB 任务因工作流问题受阻。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 14:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 14:57", "type": "task_queued", "task": "重启核心 AI 服务栈：sudo systemctl restart litellm charlie-hub letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:57", "type": "task_queued", "task": "诊断 OP 监控循环失效原因，恢复实时状态数据上报", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:57", "type": "cycle", "summary": "核心 AI 基础设施服务全部停止运行，导致 Aider、Paperclip 及 Hub 不可用，需立即恢复。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 14:59", "type": "task_queued", "task": "启动 LiteLLM 服务以恢复系统 B 和 C 的模型调度能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:59", "type": "task_queued", "task": "启动 Charlie Hub (Caddy) 服务以恢复总控 UI", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:59", "type": "task_queued", "task": "诊断并修复 OP 监控循环，确保状态数据实时更新", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 14:59", "type": "cycle", "summary": "核心基础设施服务（LiteLLM、Charlie Hub）异常停止，且 OP 监控数据存在严重滞后", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 15:01", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:06", "type": "task_queued", "task": "重启核心服务：systemctl --user start litellm charlie-hub letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:06", "type": "task_queued", "task": "修正 Android Termux 安装流程：实现先 wget 下载 APK 到本地临时目录，再通过 adb install 安装", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:06", "type": "cycle", "summary": "核心 AI 基础设施服务（LiteLLM/Hub/Letta）全部停止运行，严重影响系统 B/C 功能，需立即恢复；Android 配置任务流程需修正。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:08", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:13", "type": "task_queued", "task": "立即重启核心服务：systemctl --user start letta litellm charlie-hub", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:13", "type": "cycle", "summary": "核心AI基础设施服务（LiteLLM/Charlie Hub/Letta）全部停止，严重影响系统功能，需立即干预。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:18", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:23", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:28", "type": "task_queued", "task": "启动 LiteLLM, Charlie Hub 和 Letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:28", "type": "task_queued", "task": "修复 OP 心跳上报机制，确保状态实时同步", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:28", "type": "cycle", "summary": "核心 AI 基础设施（LiteLLM, Hub, Letta）全部离线，严重阻碍工作流。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:29", "type": "task_queued", "task": "启动 LiteLLM 服务（端口 4000）- 恢复 Aider 和 Paperclip 基础设施", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:29", "type": "task_queued", "task": "启动 Charlie Hub 服务（端口 9800）- 恢复总控 UI", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:29", "type": "task_queued", "task": "检查并启动 Letta 服务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:29", "type": "task_queued", "task": "修复 OP 状态监控脚本，确保实时更新", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:29", "type": "cycle", "summary": "核心 AI 基础服务全部离线，需紧急恢复；系统资源正常，Android 设备在线", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:35", "type": "task_queued", "task": "启动 LiteLLM 服务：systemctl start litellm", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:35", "type": "task_queued", "task": "启动 Charlie Hub 服务：systemctl start charlie-hub", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:35", "type": "task_queued", "task": "启动 Letta 服务：systemctl start letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:35", "type": "cycle", "summary": "核心服务集体下线，AI 工具链已瘫痪，需立即恢复", "alert_count": 5, "skipped_llm": false}
+{"ts": "2026-04-18 15:37", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:38", "type": "task_queued", "task": "重启核心服务：systemctl start litellm charlie-hub letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:38", "type": "task_queued", "task": "检查并重启 OP 监控守护进程，确保状态实时更新", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:38", "type": "cycle", "summary": "系统硬件负载正常，但核心 AI 基础设施（LiteLLM、Charlie Hub）服务已停止，需立即恢复。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:42", "type": "task_queued", "task": "重启核心 AI 服务：systemctl --user start litellm charlie-hub letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:42", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 基础设施服务（LiteLLM、Hub、Letta）全部处于停止状态，需立即恢复。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:46", "type": "task_queued", "task": "启动 LiteLLM 服务（端口 4000），恢复 Aider 和 Paperclip 的模型访问能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:46", "type": "task_queued", "task": "启动 Charlie-Hub 管理服务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:46", "type": "task_queued", "task": "启动 Letta 记忆服务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 15:46", "type": "cycle", "summary": "系统资源正常，但核心 AI 基础设施服务（LiteLLM/Charlie-Hub/Letta）全部离线", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 15:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 15:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:06", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:07", "type": "task_queued", "task": "诊断 OP 代理进程为何停止上报心跳，重启相关服务并强制同步时间", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:07", "type": "task_queued", "task": "检查 Letta 容器日志，排查端口 8283 无响应的原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:07", "type": "task_queued", "task": "验证 LiteLLM (4000端口) 的实际健康状态，确认是否修复了之前的 413 错误", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:07", "type": "cycle", "summary": "系统资源负载低，但 OP 监控代理已失联超过24小时；LiteLLM 状态存疑，Letta 服务 API 无响应。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 16:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:11", "type": "task_queued", "task": "重启 Letta 容器或排查日志解决 API 无响应问题 (端口 8283)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:11", "type": "task_queued", "task": "修复 OP 心跳上报脚本/服务，确保状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:11", "type": "task_queued", "task": "更新系统感知脚本，使其能正确检测 Docker 容器状态而非仅 systemd", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:11", "type": "cycle", "summary": "系统资源负载低，核心 AI 基础设施部分恢复（LiteLLM 正常），但 Letta API 无响应，且 OP 心跳机制失效导致监控状态严重滞后（24小时未更新）。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 16:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:14", "type": "task_queued", "task": "重启 OP 代理监控服务，修复心跳上报机制", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:14", "type": "task_queued", "task": "检查并启动 Letta、LiteLLM 和 Charlie-Hub 服务，解决监控状态不一致问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:14", "type": "task_queued", "task": "排查 Letta 容器 API 无响应的具体原因（查看日志）", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:14", "type": "cycle", "summary": "系统资源负载尚可，但核心服务（Letta/LiteLLM/Hub）监控显示 inactive，且 OP 心跳已过期一天，需立即恢复监控与服务状态。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 16:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:18", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:23", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:24", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:26", "type": "task_queued", "task": "修复OP心跳上报机制，检查~/scripts/op_heartbeat.py或相关服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:26", "type": "task_queued", "task": "诊断Letta API无响应问题，检查容器日志：docker logs letta", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:26", "type": "task_queued", "task": "检查并重启systemd服务：letta、litellm、charlie-hub", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:26", "type": "cycle", "summary": "系统基础运行正常，但核心服务状态不一致，OP心跳超时24小时，Letta API无响应", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 16:28", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:35", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:36", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:47", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:52", "type": "task_queued", "task": "排查并清理高内存占用进程，释放系统内存以防 OOM", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:52", "type": "task_queued", "task": "修复 OP 心跳上报脚本，确保状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:52", "type": "task_queued", "task": "检查 Letta 容器日志，修复 API 8283 无响应问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:52", "type": "cycle", "summary": "系统内存占用极高（85%+），OP监控心跳失效导致数据陈旧，Letta服务API无响应", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-18 16:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 16:59", "type": "task_queued", "task": "重启 OP 监控脚本，排查阻塞心跳上报的原因，确保实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:59", "type": "task_queued", "task": "重启 Letta 容器或检查日志，恢复 8283 端口 API 响应", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:59", "type": "task_queued", "task": "检查 systemd 服务配置，修复 LiteLLM 和 Hub 服务状态显示为 inactive 的问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 16:59", "type": "cycle", "summary": "系统负载正常，但 OP 监控心跳停滞（数据滞后24小时），Letta API 无响应，需立即恢复监控服务与 AI 组件状态。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:06", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:09", "type": "cycle", "summary": "内存严重告警（89%），核心AI服务全挂，OP协调失联超24小时", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:11", "type": "task_queued", "task": "诊断并修复 OP 心跳上报机制，确保监控脚本正常运行并同步最新时间戳", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:11", "type": "task_queued", "task": "检查 Letta 容器日志（docker logs），排查端口 8283 无响应的原因并修复", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:11", "type": "task_queued", "task": "校准服务状态检测逻辑，确保与 Docker 容器实际运行状态一致", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:11", "type": "cycle", "summary": "系统资源处于空闲状态，但 OP 监控数据严重滞后（停留在昨日），且 Letta 服务虽容器运行但 API 不可达。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:12", "type": "task_queued", "task": "检查并重启核心服务集群，确认 Docker 容器与系统服务状态一致性", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:12", "type": "task_queued", "task": "修复 OP 监控脚本的心跳上报机制，确保状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:12", "type": "cycle", "summary": "核心服务检测显示不活跃，OP监控心跳过期超过24小时，需立即恢复基础设施与监控同步。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 17:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:16", "type": "task_queued", "task": "检查并重启 LiteLLM 服务（端口 4000），恢复 Aider 和 Paperclip 基础设施", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:16", "type": "task_queued", "task": "诊断并修复 Letta API 无响应问题（容器运行但端口 8283 无响应）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:16", "type": "task_queued", "task": "重启 Charlie Hub 服务，恢复统一入口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:16", "type": "task_queued", "task": "修复 OP 心跳上报机制，确保状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:16", "type": "cycle", "summary": "核心 AI 基础服务集群处于非活跃状态，Letta API 无响应，OP 心跳机制需修复", "alert_count": 5, "skipped_llm": false}
+{"ts": "2026-04-18 17:17", "type": "task_queued", "task": "重启 LiteLLM、Charlie Hub 和 Letta 服务，并验证 API 响应", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:17", "type": "task_queued", "task": "修复 OP 心跳上报脚本，确保状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:17", "type": "task_queued", "task": "整理 OP 结果历史，清除过时记录", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:17", "type": "cycle", "summary": "系统负载正常，但核心 AI 基础服务（Letta、Charlie Hub）处于不活跃状态，需人工介入；OP 心跳监控未实时更新", "alert_count": 5, "skipped_llm": false}
+{"ts": "2026-04-18 17:19", "type": "task_queued", "task": "诊断 Letta 容器 API 无响应问题：检查容器日志 (docker logs letta)、端口绑定、容器内进程状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:19", "type": "task_queued", "task": "修复 OP 心跳上报机制和状态监控脚本，确保实时同步服务状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:19", "type": "cycle", "summary": "系统资源正常，但核心服务 Letta (端口 8283) API 无响应，OP 状态监控脚本故障导致心跳延迟超过24小时", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:20", "type": "task_queued", "task": "诊断并重启 OP 监控服务，修复心跳上报机制", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:20", "type": "task_queued", "task": "检查并启动 LiteLLM (端口4000) 和 Charlie Hub 服务，恢复 Aider/Paperclip 基础设施", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:20", "type": "task_queued", "task": "排查 Letta 容器日志，解决端口 8283 无响应问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:20", "type": "cycle", "summary": "核心服务（LiteLLM/Hub/Letta）检测为 inactive 状态，且 OP 代理心跳停滞（昨天），需立即恢复监控与服务运行。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:22", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:24", "type": "task_queued", "task": "检查 Letta 容器日志，诊断 API 无响应原因并重启服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:24", "type": "task_queued", "task": "修复 OP 心跳上报脚本，确保系统状态数据实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:24", "type": "task_queued", "task": "排查内存占用较高原因（当前 ~17GB），确认是否有内存泄漏", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:24", "type": "cycle", "summary": "系统资源负载较低，但内存使用较高（17GB/24GB）；核心服务存在异常：Letta API 无响应，且 OP 监控数据过期（显示昨天），需立即修复。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:27", "type": "task_queued", "task": "诊断并重启 OP 监控/心跳脚本，确保状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:27", "type": "task_queued", "task": "检查 Letta 容器日志，排查端口 8283 无响应的原因并修复", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:27", "type": "task_queued", "task": "验证 LiteLLM (端口 4000) 实际运行状态，确认 413 错误是否解决", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:27", "type": "cycle", "summary": "系统资源负载低，但 OP 监控模块失联导致数据陈旧，Letta 服务 API 无响应需紧急排查。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:29", "type": "task_queued", "task": "立即重启核心服务栈：LiteLLM (端口4000)、Letta (端口8283)、Charlie Hub", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:29", "type": "task_queued", "task": "诊断并修复 OP 监控代理，确保心跳上报机制恢复运行", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:29", "type": "task_queued", "task": "服务启动后，排查 Letta API 无响应及 LiteLLM 413 错误的具体原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:29", "type": "cycle", "summary": "核心 AI 服务全停，OP 监控失联超 24 小时，基础设施处于不可用状态。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:32", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:34", "type": "task_queued", "task": "修复 OP 心跳上报脚本，恢复系统状态实时同步", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:34", "type": "task_queued", "task": "诊断 Letta 容器日志，重启服务以恢复 8283 端口 API 连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:34", "type": "task_queued", "task": "核实 systemd 状态与 Docker 容器状态不一致的原因（显示 inactive 但容器 running）", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:34", "type": "cycle", "summary": "系统资源正常，但Letta API无响应且OP监控心跳已断连超过24小时。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 17:36", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:37", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:44", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:45", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:46", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:48", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:49", "type": "task_queued", "task": "启动 Letta 服务以恢复代理记忆与调度功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:49", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 Discord/Telegram 通讯接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:49", "type": "cycle", "summary": "核心 AI 基础设施服务（Letta 和 Charlie-Hub）处于停机状态，需立即恢复，其余硬件与网络资源正常。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 17:50", "type": "task_queued", "task": "启动 Letta 服务以恢复 Agent 记忆与上下文能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:50", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 Discord 和命令行接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:50", "type": "task_queued", "task": "服务恢复后检查 OP Agent 状态并重新同步任务队列", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 17:50", "type": "cycle", "summary": "系统负载正常，但核心 AI 服务（Letta、Charlie-Hub）处于停止状态，导致 OP 代理离线。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 17:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 17:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:01", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:06", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:08", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:09", "type": "task_queued", "task": "检查并重启 Letta 服务，恢复 OP Agent 生态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:09", "type": "task_queued", "task": "检查并重启 Charlie-Hub 服务，恢复消息通知能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:09", "type": "cycle", "summary": "系统负载极低且 Android 设备在线，但核心服务 Letta 和 Charlie-Hub 均已停止运行，导致代理体系离线。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:13", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复核心通讯与协调能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:13", "type": "task_queued", "task": "启动 letta 服务以恢复 Agent 运行时环境", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:13", "type": "cycle", "summary": "系统负载正常，但核心 AI 服务（Letta 和 Charlie-Hub）已停止，导致 Agent 体系离线且认知执行力（Te）归零。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 18:14", "type": "task_queued", "task": "重启 Letta 服务以恢复 OP Agent 体系功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:14", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复核心通讯与集成功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:14", "type": "cycle", "summary": "系统负载正常，但核心组件 Letta 和 Charlie-Hub 服务异常停止，需立即干预。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:18", "type": "task_queued", "task": "重启 Letta 服务以恢复记忆与代理系统", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:18", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复中心枢纽功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:18", "type": "cycle", "summary": "系统资源负载正常，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需立即恢复。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 18:19", "type": "task_queued", "task": "启动 Letta 服务以恢复 Agent 代理功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:19", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复系统协调功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:19", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 服务 Letta 和 Charlie-Hub 处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:22", "type": "task_queued", "task": "启动 Letta 服务以恢复 OP Agent 认知与调度能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:22", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 Discord/API 通信入口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:22", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 协调服务（Letta 与 Charlie-Hub）均处于停止状态，OP 体系离线。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:24", "type": "task_queued", "task": "重启 Letta 和 Charlie-Hub 服务以恢复代理连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:24", "type": "cycle", "summary": "系统资源负载低，但核心服务 Letta 和 Charlie-Hub 处于离线状态，需立即恢复；认知指标显示执行力 Te 为 0。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 18:26", "type": "task_queued", "task": "启动 letta 服务以恢复 AI 记忆与 Agent 功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:26", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复 Discord/API 连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:26", "type": "task_queued", "task": "检查并终止异常的 ps 进程 (PID 162126)", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:26", "type": "cycle", "summary": "核心服务 Letta 与 Charlie-Hub 双双离线，需立即恢复；Android 端状态良好。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 18:27", "type": "task_queued", "task": "检查 charlie-hub 服务日志并尝试重启", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:27", "type": "task_queued", "task": "检查 letta 服务状态并重启以恢复 Agent 上下文", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:27", "type": "cycle", "summary": "系统资源运行平稳，但核心服务 charlie-hub 与 letta 处于停止状态，需人工介入恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:30", "type": "task_queued", "task": "启动 charlie-hub 和 letta 服务以恢复 AGI 核心功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:30", "type": "cycle", "summary": "系统资源负载正常，但核心服务 charlie-hub 和 letta 处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:32", "type": "task_queued", "task": "通过 systemctl 重启 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:32", "type": "task_queued", "task": "通过 systemctl 重启 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:32", "type": "cycle", "summary": "系统资源负载正常，但核心服务 charlie-hub 和 letta 已停止运行，需立即恢复；当前认知执行率极低，建议调整节奏。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:33", "type": "task_queued", "task": "启动 Letta 服务以恢复 OP Agent 调度能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:33", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复通信中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:33", "type": "cycle", "summary": "系统资源负载极低，但核心 AI 服务（Letta 与 Hub）已停止运行，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:35", "type": "task_queued", "task": "启动 Letta 服务以恢复代理核心功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:35", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复通信中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:35", "type": "cycle", "summary": "系统资源（CPU/内存/磁盘）运行正常，但核心 AI 服务（Letta、Charlie-Hub）处于非活动状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:36", "type": "task_queued", "task": "重启 Letta 服务以恢复 Agent 运行时能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:36", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复系统调度中心", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:36", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 组件 Letta 和 Charlie-Hub 服务均处于离线状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:40", "type": "task_queued", "task": "检查 Letta 服务状态并尝试启动，以恢复 Agent 核心功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:40", "type": "task_queued", "task": "检查 Charlie-Hub 服务日志并启动，恢复通信集成", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:40", "type": "cycle", "summary": "系统负载极低，核心资源充足，但 Letta 和 Charlie-Hub 关键服务处于 inactive 状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:41", "type": "task_queued", "task": "启动 Letta 服务以恢复 OP Agent 巡查体系", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:41", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 API 与 Discord 接入点", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:41", "type": "cycle", "summary": "系统资源负载较低，但关键服务 Letta 和 Charlie-Hub 处于非活动状态，需立即恢复以保障架构完整性。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:43", "type": "task_queued", "task": "重启 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:43", "type": "task_queued", "task": "重启 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:43", "type": "cycle", "summary": "系统资源负载低，但核心服务 letta 和 charlie-hub 处于停止状态，影响 AI 代理与协调功能。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:48", "type": "task_queued", "task": "检查 letta 服务日志并重启服务，确保 Agent 记忆持久化功能正常", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:48", "type": "task_queued", "task": "检查 charlie-hub 服务状态并重启，恢复中心枢纽连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:48", "type": "cycle", "summary": "系统硬件负载正常，但核心服务 Letta 和 Charlie-hub 处于停止状态，需立即恢复。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 18:49", "type": "task_queued", "task": "启动 Letta 服务以恢复代理功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:49", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复通信中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:49", "type": "cycle", "summary": "系统资源负载低，但核心服务 Letta 和 Charlie-Hub 处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 18:53", "type": "task_queued", "task": "启动 Letta 服务以恢复 AI 代理集群能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:53", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复系统中枢与通知功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:53", "type": "cycle", "summary": "系统资源正常，但核心 AI 服务 Letta 和 Charlie-Hub 处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:54", "type": "task_queued", "task": "重启 Letta 服务（systemctl start letta）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:54", "type": "task_queued", "task": "重启 Charlie-Hub 服务（systemctl start charlie-hub）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:54", "type": "cycle", "summary": "系统资源充足，但 Letta 和 Charlie-Hub 核心服务处于停机状态", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:56", "type": "task_queued", "task": "检查并重启 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:56", "type": "task_queued", "task": "检查并重启 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:56", "type": "cycle", "summary": "系统硬件负载极低，但核心 AI 组件（Letta 和 Charlie-Hub）处于停止状态，导致 Te 执行能力归零。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 18:57", "type": "task_queued", "task": "启动 Letta 服务以恢复代理记忆与推理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:57", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 Discord/消息接入功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 18:57", "type": "cycle", "summary": "系统资源充裕，但 Letta 和 Charlie-Hub 核心服务处于停止状态", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 18:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:02", "type": "task_queued", "task": "启动 Letta 服务以恢复代理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:02", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复消息协调", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:02", "type": "cycle", "summary": "系统核心资源负载正常，但 Letta 和 Charlie-Hub 关键服务处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:04", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复通知与 Hub 连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:04", "type": "task_queued", "task": "启动 letta 服务以恢复 OP Agent 巡查体系", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:04", "type": "task_queued", "task": "识别并检查 Java 进程 (PID 294074) 的具体用途及运行状态", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:04", "type": "cycle", "summary": "系统资源占用正常，但核心服务 letta 与 charlie-hub 处于停止状态，且检测到异常高 CPU 占用的 Java 进程。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 19:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:12", "type": "task_queued", "task": "启动 letta 和 charlie-hub 服务以恢复核心脑功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:12", "type": "task_queued", "task": "检查 PID 294074 (java) 进程详情及资源占用原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:12", "type": "cycle", "summary": "系统核心服务 Letta 与 Charlie-hub 意外停止，需立即恢复；Java 进程 CPU 占用较高。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 19:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:22", "type": "task_queued", "task": "启动 letta 服务以恢复 OP Agent 巡查体系", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:22", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复消息/通知中心", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:22", "type": "cycle", "summary": "系统资源负载低，Android 终端充电中，但关键 AI 服务 letta 与 charlie-hub 均已停止运行。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:24", "type": "task_queued", "task": "启动 Letta 服务以恢复 Agent 记忆与推理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:24", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复对外通信接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:24", "type": "task_queued", "task": "检查 OP Timer 调度器状态，确认为何 Te 执行指标为 0", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:24", "type": "cycle", "summary": "系统资源负载低且空闲，但核心服务 Letta 和 Charlie-Hub 均处于 inactive 状态，导致 OP 代理链路断开，当前无任务执行。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 19:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:27", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复通信枢纽", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:27", "type": "task_queued", "task": "启动 letta 服务以恢复 Agent 代理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:27", "type": "cycle", "summary": "系统负载低，Android 设备在线，但核心服务 letta 与 charlie-hub 处于停止状态", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:36", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:40", "type": "task_queued", "task": "检查并重启 Letta 服务以恢复 Agent 记忆与逻辑支持", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:40", "type": "task_queued", "task": "检查并重启 charlie-hub 服务以恢复 Discord/API 访问入口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:40", "type": "cycle", "summary": "系统资源负载极低且健康，但核心服务 Letta 与 Charlie-Hub 均处于停止状态，需立即修复以恢复智能体与连接能力。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:43", "type": "task_queued", "task": "启动 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:43", "type": "task_queued", "task": "启动 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:43", "type": "cycle", "summary": "系统资源负载正常，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需立即恢复以保障 AI 架构运行。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:45", "type": "task_queued", "task": "启动 Letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:45", "type": "task_queued", "task": "启动 Charlie-Hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:45", "type": "cycle", "summary": "系统资源负载正常，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需立即恢复架构完整性。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:48", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复中心枢纽功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:48", "type": "task_queued", "task": "启动 letta 服务以恢复 Agent 代理功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:48", "type": "cycle", "summary": "系统资源负载极低（CPU 0.8%），但核心服务 Letta 和 Charlie-Hub 处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:50", "type": "cycle", "summary": "系统资源闲置，核心推理服务 LiteLLM 正常，但代理中间件（Letta/Hub）处于离线状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:51", "type": "task_queued", "task": "启动 systemd 服务 letta 和 charlie-hub", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:51", "type": "cycle", "summary": "系统资源充裕，但核心 AI 服务（letta 和 charlie-hub）处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 19:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:55", "type": "task_queued", "task": "启动 Letta 服务以恢复 OP Agent 代理体系", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:55", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复中枢连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 19:55", "type": "cycle", "summary": "系统资源闲置，但核心服务 Letta 与 Charlie-Hub 已停止运行，导致 Te 执行力为零。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 19:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 19:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:07", "type": "task_queued", "task": "重启 Letta 服务以恢复 Agent 逻辑层", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:07", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复 Discord/API 通信", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:07", "type": "cycle", "summary": "系统资源负载低，但 Letta 和 Charlie-Hub 核心服务处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:08", "type": "task_queued", "task": "检查并重启 Letta 服务，恢复 Agent 长期记忆功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:08", "type": "task_queued", "task": "检查并重启 Charlie-Hub 服务，恢复 Hub 及相关集成功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:08", "type": "cycle", "summary": "系统资源负载低，但核心 AI 架构服务 Letta 与 Charlie-Hub 均处于停止状态，严重影响 Agent 记忆与任务调度。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:10", "type": "task_queued", "task": "启动 Letta 服务以恢复 Agent 记忆与技能路由", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:10", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 Hub 通信接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:10", "type": "cycle", "summary": "系统资源负载极低，但核心架构组件 Letta 与 Charlie-Hub 处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:15", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:20", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:22", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:24", "type": "task_queued", "task": "启动 letta 服务以恢复 Agent 巡查体系", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:24", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复 Discord/Hub 连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:24", "type": "cycle", "summary": "系统负载正常，但核心 AI 服务（Letta/Hub）处于离线状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:27", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:34", "type": "task_queued", "task": "启动 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:34", "type": "task_queued", "task": "启动 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:34", "type": "cycle", "summary": "核心 AI 服务（Letta 和 Charlie-Hub）处于停止状态，导致 OP 调度中断，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:36", "type": "task_queued", "task": "重启 Letta 服务以恢复 OP Agent 体系功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:36", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复 Hub 调度功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:36", "type": "cycle", "summary": "系统资源占用低且运行平稳，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需立即修复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:37", "type": "task_queued", "task": "重启 Letta 服务以恢复感知与 Agent 调度能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:37", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复通信与命令接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:37", "type": "cycle", "summary": "系统硬件负载正常，但核心 AI 组件服务已停止，需立即恢复以保障集群功能。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 20:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:46", "type": "task_queued", "task": "启动 letta 服务以维持 AI 核心功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:46", "type": "task_queued", "task": "启动 charlie-hub 服务以维持消息中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:46", "type": "cycle", "summary": "系统资源负载正常，Android 设备已连接，但关键服务未运行", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:51", "type": "task_queued", "task": "重启 Letta 服务以恢复 Agent 记忆与推理功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:51", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复中枢通信", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:51", "type": "cycle", "summary": "系统资源占用正常，但核心服务 Letta 和 Charlie-Hub 均处于离线状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 20:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:54", "type": "cycle", "summary": "系统资源正常，核心服务 Letta 和 Hub 已停止，待机状态良好", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-18 20:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 20:59", "type": "task_queued", "task": "启动 letta 服务以恢复代理大脑功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:59", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复调度中心", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 20:59", "type": "cycle", "summary": "核心 AI 架构服务中断，Letta 和 Charlie-Hub 均处于停止状态", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:01", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:06", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:08", "type": "task_queued", "task": "启动 Letta 服务以恢复代理运行时", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:08", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复通信枢纽", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:08", "type": "cycle", "summary": "系统核心服务 Letta 和 Charlie-Hub 处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:13", "type": "task_queued", "task": "检查并重启 Letta 服务，恢复 OP Agent 和 Letta Agents 的调度能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:13", "type": "task_queued", "task": "启动 Charlie-Hub 服务，确保消息中心与 API 接口可用", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:13", "type": "cycle", "summary": "系统资源负载正常，但核心代理服务 Letta 和通信 Hub 处于停止状态，影响 AI 集群功能。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:15", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:18", "type": "task_queued", "task": "诊断并重启 Letta 服务，恢复 Agent 认知能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:18", "type": "task_queued", "task": "诊断并重启 charlie-hub 服务，确保 Discord/Telegram 通讯链路畅通", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:18", "type": "cycle", "summary": "系统资源充足，但核心服务 Letta 和 Charlie-Hub 处于停止状态，导致 Te 执行能力降为 0%", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 21:20", "type": "task_queued", "task": "检查日志并重启 letta 服务，确保 OP Agent 体系核心运行", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:20", "type": "task_queued", "task": "检查日志并重启 charlie-hub 服务，恢复通讯枢纽功能", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:20", "type": "cycle", "summary": "系统硬件资源正常，但核心 AI 服务 Letta 和 Charlie-Hub 已停止，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:21", "type": "task_queued", "task": "重启 letta 服务以恢复 OP Agent 功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:21", "type": "task_queued", "task": "重启 charlie-hub 服务以恢复系统协调能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:21", "type": "task_queued", "task": "检查并处理进程 818107 的高 CPU 占用问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:21", "type": "cycle", "summary": "Letta 和 Hub 核心服务已停止运行，需立即恢复；检测到异常高 CPU 进程。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 21:23", "type": "task_queued", "task": "重启 letta 服务以恢复 Agent 代理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:23", "type": "task_queued", "task": "重启 charlie-hub 服务以恢复通讯中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:23", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 服务 letta 和通讯中枢 charlie-hub 处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:24", "type": "task_queued", "task": "启动 Letta 服务以恢复 AI 核心逻辑", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:24", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复连接中心", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:24", "type": "cycle", "summary": "系统资源负载低，但核心智能服务（Letta、Charlie-Hub）处于停止状态，需要恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:26", "type": "task_queued", "task": "启动 Letta 服务以恢复 OP 代理体系及 Agent 功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:26", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复 Discord/Telegram 通讯中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:26", "type": "cycle", "summary": "系统硬件资源负载正常，但核心服务 Letta 和 Charlie-Hub 处于离线状态，需立即干预。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:27", "type": "task_queued", "task": "重启 Letta 服务以恢复 Conscious/Subconscious/Bio-feedback 模块", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:27", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复 Discord/API 接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:27", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 服务 Letta 和 Hub 处于停止状态，影响思维循环与通信能力。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:32", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:36", "type": "task_queued", "task": "启动 letta 服务以恢复 AI 记忆与代理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:36", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复外部通信接入", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:36", "type": "cycle", "summary": "系统硬件资源正常，但核心 AI 组件（Letta 与 Hub）服务停止，需立即恢复以确保架构连通性。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:48", "type": "cycle", "summary": "LLM 调用失败：Server disconnected without sending a response.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:55", "type": "task_queued", "task": "重启 Letta 服务以恢复 Agent 记忆与上下文管理", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:55", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复通信中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 21:55", "type": "cycle", "summary": "系统资源充足，但 Letta 和 Charlie-Hub 核心服务处于停止状态，需恢复以确保代理体系正常工作。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 21:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 21:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:18", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:20", "type": "task_queued", "task": "启动 letta 服务 (systemctl start letta)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:20", "type": "task_queued", "task": "启动 charlie-hub 服务 (systemctl start charlie-hub)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:20", "type": "cycle", "summary": "系统资源占用低，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需立即恢复以保障 AI 架构运行。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 22:21", "type": "task_queued", "task": "重启 Letta 服务以恢复代理记忆和上下文功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:21", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复系统连接与通知能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:21", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 服务 Letta 和通信枢纽 Charlie-Hub 均处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 22:23", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:28", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:30", "type": "task_queued", "task": "启动 letta 服务以恢复 AI Agent 能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:30", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复指令接收能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:30", "type": "cycle", "summary": "系统资源负载极低，但核心服务 Letta 和 Charlie-Hub 已停止运行，Android 设备在线充电。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 22:31", "type": "task_queued", "task": "检查并重启 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:31", "type": "task_queued", "task": "检查并重启 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:31", "type": "cycle", "summary": "系统资源负载低，但核心服务 letta 和 charlie-hub 均处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 22:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:35", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:36", "type": "task_queued", "task": "检查并重启 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:36", "type": "task_queued", "task": "检查并重启 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:36", "type": "cycle", "summary": "系统资源负载正常，但核心服务 letta 和 charlie-hub 意外停止，需立即恢复以确保架构连续性。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 22:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:47", "type": "task_queued", "task": "启动 Letta 和 Charlie-Hub 服务，恢复 OP 代理协调及消息通知能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:47", "type": "cycle", "summary": "系统资源低负载运行，但核心服务 Letta 和 Charlie-Hub 均处于停止状态，需立即恢复以保障架构连续性。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 22:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:50", "type": "task_queued", "task": "立即重启 letta 服务并检查日志确认失败原因", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:50", "type": "task_queued", "task": "立即重启 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:50", "type": "task_queued", "task": "检查 systemd 服务配置，确认是否存在自动重启失败或依赖问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:50", "type": "cycle", "summary": "系统资源处于低负载状态，但核心服务 Letta 和 Charlie-Hub 均已停止，导致当前执行力（Te）为零，仅 LiteLLM 在线。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 22:52", "type": "task_queued", "task": "诊断并重启 Letta 服务，确保 Agent 系统在线", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:52", "type": "task_queued", "task": "诊断并重启 Charlie-Hub 服务，恢复通信能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 22:52", "type": "cycle", "summary": "系统资源负载极低，但核心 AI 服务 Letta 和通信 Hub 均处于停止状态，需立即干预。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 22:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 22:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:01", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:06", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:08", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:13", "type": "task_queued", "task": "重启 letta 和 charlie-hub 服务以恢复通信与代理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:13", "type": "task_queued", "task": "检查 letta 与 charlie-hub 的日志（journalctl）确认停止原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:13", "type": "cycle", "summary": "系统资源负载较低，但核心服务 letta 与 charlie-hub 处于停止状态，需立即恢复以保障代理体系运作。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-18 23:15", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
