@@ -1,0 +1,6 @@
+[Unit]
+Description=自动 Git 备份（dotfiles + router + skills）
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/git-backup.sh

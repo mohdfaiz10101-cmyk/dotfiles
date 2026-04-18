@@ -1142,3 +1142,5 @@
 {"ts": "2026-04-18 13:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-18 13:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-18 13:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 13:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
