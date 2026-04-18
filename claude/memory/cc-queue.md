@@ -26,3 +26,7 @@
 - [ ] [CC接管-OP回流] [2026-04-18 22:14] [high] [2026-04-18 22:00] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [CC接管-OP回流] [2026-04-18 22:14] [high] [2026-04-18 22:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [CC接管-OP回流] [2026-04-18 22:14] [high] [2026-04-18 22:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+
+## CC 审计接管 [2026-04-19 02:14]
+- [ ] [CC接管-OP回流] [2026-04-19 02:14] [high] [2026-04-19 01:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [CC接管-OP回流] [2026-04-19 02:14] [high] [2026-04-19 02:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）

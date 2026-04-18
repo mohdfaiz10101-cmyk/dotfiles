@@ -190,7 +190,7 @@
     "letta": {
       "type": "local",
       "command": [
-        "python3",
+        "/run/current-system/sw/bin/python3",
         "/home/charlie/.local/bin/letta-mcp",
         "--stdio"
       ]
@@ -214,6 +214,13 @@
         "GMAIL_CREDENTIALS_PATH": "/home/charlie/.gmail-mcp/credentials.json",
         "GMAIL_OAUTH_PATH": "/home/charlie/.gmail-mcp/gcp-oauth.keys.json"
       }
+    },
+    "macg": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/agi/macg_mcp.py"
+      ]
     }
   },
   "plugin": [

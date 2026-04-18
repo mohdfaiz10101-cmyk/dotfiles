@@ -3,6 +3,7 @@ Description=OpenCode Job (adaptive): heartbeat-task-check
 After=network.target
 
 [Service]
+TimeoutStopSec=600
 Type=oneshot
 ExecStart=/home/charlie/.local/bin/op-adaptive-gate heartbeat-task-check /run/current-system/sw/bin/perl /home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-task-check.json
 Environment=HOME=/home/charlie

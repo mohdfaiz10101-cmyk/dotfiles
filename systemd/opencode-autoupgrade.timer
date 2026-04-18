@@ -1,0 +1,11 @@
+[Unit]
+Description=每日检查 OpenCode 更新
+Requires=opencode-autoupgrade.service
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=3600
+
+[Install]
+WantedBy=timers.target

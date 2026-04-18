@@ -2,6 +2,7 @@
 Description=OpenCode Job: cost-accountant
 
 [Service]
+TimeoutStopSec=600
 Type=oneshot
 WorkingDirectory=/home/charlie
 Environment="PATH=/run/current-system/sw/bin:/home/charlie/.npm-global/bin:/home/charlie/.local/bin:/usr/bin:/bin"

@@ -56,3 +56,34 @@ OP 修改任何共享文件（前端代码/hub-api/macg.py/配置文件）后，
 {"from":"OP","action":"modified","file":"path","reason":"why","time":"ISO"}
 ```
 CC 每次会话启动时检查此文件，避免覆盖 OP 的修改。
+
+## Letta 记忆 REST API（MCP 不可用时的临时替代）
+
+当 Letta MCP 未连接时，用以下 curl 命令直接访问 Letta：
+
+### Agent IDs
+- `code-assistant`：`agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea`
+- `nixos-sysadmin`：`agent-8651643c-e753-47ed-9759-bd955c6ac240`
+
+### 搜索记忆（替代 letta_search）
+```bash
+curl -sL -H "Authorization: Bearer letta" \
+  "http://localhost:8283/v1/agents/agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea/archival-memory/?query=关键词&limit=5" \
+  | python3 -c "import sys,json; [print(r['text'][:200]) for r in json.load(sys.stdin)]"
+```
+
+### 写入记忆（替代 letta_store）
+```bash
+curl -sL -X POST -H "Authorization: Bearer letta" -H "Content-Type: application/json" \
+  -d '{"text":"[日期] [内容摘要]"}' \
+  "http://localhost:8283/v1/agents/agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea/archival-memory/"
+```
+
+### 系统运维搜索（nixos-sysadmin agent）
+```bash
+curl -sL -H "Authorization: Bearer letta" \
+  "http://localhost:8283/v1/agents/agent-8651643c-e753-47ed-9759-bd955c6ac240/archival-memory/?query=关键词&limit=5" \
+  | python3 -c "import sys,json; [print(r['text'][:200]) for r in json.load(sys.stdin)]"
+```
+
+**使用时机**：执行任务前 MUST 先搜索相关关键词，避免重复踩坑。

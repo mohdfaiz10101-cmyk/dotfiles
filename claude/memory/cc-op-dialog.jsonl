@@ -22,3 +22,4 @@
 {"time": "21:04", "from": "CC", "to": "OP", "content": "重启完成5个任务。", "type": "auto-response", "trigger": "task-check"}
 {"time": "21:05", "from": "CC", "to": "OP", "content": "1个任务完成，一切正常。", "type": "auto-response", "trigger": "task-check"}
 {"time": "23:12", "from": "CC", "to": "OP", "content": "29个任务已搞定。", "type": "auto-response", "trigger": "task-check"}
+{"time": "23:19", "from": "CC", "to": "OP", "content": "3个任务已全部完成。", "type": "auto-response", "trigger": "task-check"}

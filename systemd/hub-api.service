@@ -1,0 +1,14 @@
+[Unit]
+Description=Charlie Hub API (port 9801)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/hub
+ExecStart=/run/current-system/sw/bin/python3 %h/hub/hub-api.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

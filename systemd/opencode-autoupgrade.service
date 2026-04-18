@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode 自动升级检查
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/opencode-autoupgrade
+StandardOutput=journal
+StandardError=journal

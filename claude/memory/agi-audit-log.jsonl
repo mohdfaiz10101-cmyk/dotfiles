@@ -1724,3 +1724,198 @@
 {"ts": "2026-04-18 23:13", "type": "task_queued", "task": "检查 letta 与 charlie-hub 的日志（journalctl）确认停止原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
 {"ts": "2026-04-18 23:13", "type": "cycle", "summary": "系统资源负载较低，但核心服务 letta 与 charlie-hub 处于停止状态，需立即恢复以保障代理体系运作。", "alert_count": 2, "skipped_llm": false}
 {"ts": "2026-04-18 23:15", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:20", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:22", "type": "task_queued", "task": "诊断 letta 和 charlie-hub 服务失败原因并启动", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:22", "type": "task_queued", "task": "检查认知模块时间判断逻辑（深夜显示为'白天'）", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:22", "type": "task_queued", "task": "Android 设备充电状态良好，无需处理", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:22", "type": "cycle", "summary": "系统资源正常，但核心服务 letta 和 charlie-hub 处于非活动状态，执行率异常", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:23", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:25", "type": "cycle", "summary": "系统资源闲置，核心服务 Letta 与 Hub 停止运行，OP 协调能力已中断。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:27", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:30", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:32", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:35", "type": "task_queued", "task": "启动 Letta 服务以恢复 AI 核心功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:35", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复通讯中枢", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:35", "type": "task_queued", "task": "检查 Te 执行率为 0 的原因，排查 OP Agent 调度问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:35", "type": "cycle", "summary": "深夜时段系统资源充裕，但核心服务 Letta 和 Charlie-Hub 未运行，需立即恢复", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:37", "type": "task_queued", "task": "重启 Letta 服务以恢复 Agent 记忆与推理能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:37", "type": "task_queued", "task": "重启 Charlie-Hub 服务以恢复对外通信接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:37", "type": "task_queued", "task": "检查并修正认知模块的时间因子判定逻辑", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:37", "type": "cycle", "summary": "系统资源使用正常，但核心服务 Letta 与 Charlie-Hub 均已停止运行，需立即干预。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:42", "type": "task_queued", "task": "启动 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:42", "type": "task_queued", "task": "启动 letta 服务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:42", "type": "task_queued", "task": "监控 PID 1328520，若持续高 CPU 则结束进程", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:42", "type": "cycle", "summary": "系统资源负载正常，但核心协调服务 charlie-hub 和 letta 均处于停止状态，需立即恢复。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:44", "type": "task_queued", "task": "检查并重启 letta 服务，确保 Agent 体系感知层正常", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:44", "type": "task_queued", "task": "检查并重启 charlie-hub 服务，恢复中心节点通信", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:44", "type": "cycle", "summary": "系统资源负载极低，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需恢复以保障代理体系运行。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-18 23:56", "type": "task_queued", "task": "重启 letta 服务以恢复 Subconscious 和 Agent 路由", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:56", "type": "task_queued", "task": "重启 charlie-hub 服务以恢复 Hub 通信能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-18 23:56", "type": "cycle", "summary": "系统资源负载正常，但核心服务 letta 和 charlie-hub 处于停止状态；检测到深夜时段且执行力（Te）极低。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-18 23:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:18", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:19", "type": "task_queued", "task": "检查并重启 letta 服务以恢复 Agent 交互能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:19", "type": "task_queued", "task": "检查并重启 charlie-hub 服务以恢复中枢连接", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:19", "type": "cycle", "summary": "系统资源使用正常，但核心服务 Letta 与 Hub 处于停止状态，当前深夜执行意愿极低。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:23", "type": "task_queued", "task": "启动并检查 Letta 服务状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:23", "type": "task_queued", "task": "启动并检查 Charlie-Hub 服务状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:23", "type": "cycle", "summary": "系统资源负载正常，但核心架构服务 Letta 和 Charlie-Hub 均处于停止状态，当前为深夜低执行力时段。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:24", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:28", "type": "task_queued", "task": "启动 Letta 服务以恢复核心代理框架", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:28", "type": "task_queued", "task": "启动 Charlie-Hub 服务以恢复通信枢纽", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:28", "type": "cycle", "summary": "系统资源负载正常，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需尽快恢复；当前深夜时段认知执行力极低。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:30", "type": "task_queued", "task": "检查并尝试启动 charlie-hub 和 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:30", "type": "cycle", "summary": "系统资源负载正常，但核心服务 charlie-hub 和 letta 处于停止状态，需人工或 OP 干预。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:33", "type": "task_queued", "task": "重启 charlie-hub 服务以恢复通信枢纽功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:33", "type": "task_queued", "task": "重启 letta 服务以恢复 Agent 记忆与上下文能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:33", "type": "cycle", "summary": "系统负载正常，但核心 AI 服务（Letta、Hub）已停止；深夜时段认知状态显示执行意愿极低。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:35", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:37", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:38", "type": "task_queued", "task": "重启 letta 服务以恢复 OP Agent 巡查体系", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:38", "type": "task_queued", "task": "重启 charlie-hub 服务以恢复 Hub/Discord/API 接口", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:38", "type": "cycle", "summary": "系统资源使用率低，但核心智能体服务 Letta 和通信中枢 Charlie-Hub 处于停止状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:42", "type": "task_queued", "task": "启动letta服务，检查失败原因", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:42", "type": "task_queued", "task": "启动charlie-hub服务，检查失败原因", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:42", "type": "cycle", "summary": "系统资源正常，但核心服务letta和charlie-hub未运行", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:45", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复系统协调中心", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:45", "type": "task_queued", "task": "启动 letta 服务以恢复 Agent 记忆与逻辑层", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:45", "type": "cycle", "summary": "系统资源负载正常，但核心服务 charlie-hub 和 letta 均处于停止状态，需立即恢复。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:46", "type": "task_queued", "task": "重启 charlie-hub 服务以恢复 Hub/Discord 接入能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:46", "type": "task_queued", "task": "重启 letta 服务以恢复 Agent 记忆与上下文功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:46", "type": "task_queued", "task": "诊断 PID 1569903 node 进程的高 CPU 占用原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:46", "type": "cycle", "summary": "系统资源负载正常，但核心 AI 服务（letta/charlie-hub）已停止运行，需恢复架构连续性。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-19 00:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:51", "type": "task_queued", "task": "启动 letta 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:51", "type": "task_queued", "task": "启动 charlie-hub 服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:51", "type": "cycle", "summary": "深夜时段系统负载正常，但核心服务 Letta 和 Charlie-Hub 处于停止状态，需恢复以保障自动化流程。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 00:53", "type": "task_queued", "task": "立即调查 PID 1595566 (node) 进程的异常高 CPU 占用，视情况执行 kill 或重启", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:53", "type": "task_queued", "task": "启动 charlie-hub 服务以恢复通知和 API 响应能力", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:53", "type": "task_queued", "task": "确认 letta 服务是否需要夜间运行，如需代理记忆功能则重启", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 00:53", "type": "cycle", "summary": "系统负载较高（Node 进程占用 603% CPU），且核心通信服务 Hub 与 Letta 处于停止状态。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-19 00:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 00:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:07", "type": "task_queued", "task": "检查 charlie-hub 服务日志并重启服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:07", "type": "task_queued", "task": "启动 letta 服务以恢复 Agent 记忆与执行能力", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:07", "type": "task_queued", "task": "启动 litellm 服务以恢复 API 代理功能", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:07", "type": "cycle", "summary": "系统资源负载低，但核心 AI 基础设施服务（charlie-hub, letta, litellm）处于异常或停止状态，需立即恢复；当前深夜时段用户执行力极低。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-19 01:08", "type": "task_queued", "task": "检查 charlie-hub 服务日志并执行重启，解决启动卡死问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:08", "type": "task_queued", "task": "检查 letta 服务日志并重启，恢复 Agent 运行环境", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:08", "type": "cycle", "summary": "系统资源负载较低，但核心服务 charlie-hub 启动异常且 letta 服务已停止。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:12", "type": "cycle", "summary": "系统状态平稳，无异常警报，暂无待处理任务。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-19 01:14", "type": "cycle", "summary": "系统运行中，但关键监控数据（CPU/内存）丢失，且检测到异常进程占用。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:16", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:17", "type": "task_queued", "task": "检查并重启系统监控服务，以恢复 CPU/内存数据的读取", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:17", "type": "cycle", "summary": "系统负载较高（用户正在编码），但基础监控指标获取失败。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:21", "type": "task_queued", "task": "诊断并修复系统监控采集脚本，确保 CPU/内存数据正常获取", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:21", "type": "cycle", "summary": "系统监控数据获取失败，检测到 opencode 进程 CPU 占用率过高", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:23", "type": "task_queued", "task": "检查并修复系统监控服务，恢复 CPU 和内存数据读取", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:23", "type": "cycle", "summary": "系统监控数据丢失，且检测到高 CPU 占用进程。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-19 01:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:26", "type": "task_queued", "task": "调查并处理 opencode 进程高 CPU 占用问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:26", "type": "task_queued", "task": "检查并修复系统监控数据采集服务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:26", "type": "cycle", "summary": "系统整体平稳，但检测到 opencode 进程 CPU 占用极高，且基础监控数据采集异常。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:28", "type": "task_queued", "task": "检查系统监控服务状态，修复 CPU/内存 数据采集为空的问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:28", "type": "cycle", "summary": "系统核心监控数据（CPU/内存）获取异常，且检测到 opencode 进程高负载运行。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:30", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:32", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:36", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:38", "type": "cycle", "summary": "检测到进程 opencode 异常占用 99.3% CPU，其余指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:42", "type": "task_queued", "task": "强制终止僵死的 ps 进程 (PID: 1771037)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:42", "type": "cycle", "summary": "系统资源监控数据获取受阻，发现 ps 进程异常卡死及 opencode 高负载。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-19 01:43", "type": "task_queued", "task": "检查进程 opencode (PID: 1675619) 的状态，确认是否为正常工作负载（如编译/渲染），若异常则执行终止操作", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:43", "type": "cycle", "summary": "检测到进程 'opencode' 异常占用全部 CPU 资源", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:45", "type": "task_queued", "task": "检查进程 opencode (PID: 1675619) 状态，若为无响应或死循环则执行终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:45", "type": "task_queued", "task": "检查系统监控脚本，修复 CPU/内存 总量数据获取缺失的问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:45", "type": "cycle", "summary": "系统磁盘使用正常，但检测到 opencode 进程异常占用 CPU 资源。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:46", "type": "task_queued", "task": "检查系统监控脚本或服务状态，修复 CPU 与 内存数据获取失败的问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:46", "type": "cycle", "summary": "系统基础监控数据（CPU/内存）丢失，同时检测到 opencode 进程高负荷运行。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:52", "type": "cycle", "summary": "检测到进程 'opencode' 占用极高 CPU (99.4%)，且系统总资源监控数据缺失。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:55", "type": "task_queued", "task": "调查并可能终止占用 99.4% CPU 的 opencode 进程 (PID: 1675619)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:55", "type": "cycle", "summary": "检测到进程 opencode 异常占用 99.4% CPU，需立即处理", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 01:57", "type": "task_queued", "task": "修复系统监控数据获取服务", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 01:57", "type": "cycle", "summary": "系统检测到进程 opencode 异常高耗 CPU (99.5%)，且基础监控数据获取异常。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 01:59", "type": "cycle", "summary": "系统整体平稳，但检测到 opencode 进程在深夜异常占用 99.5% CPU。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:01", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:05", "type": "task_queued", "task": "检查进程 opencode (PID: 1675619) 的运行状态，判断是否处于死循环或无响应状态，根据情况决定是否终止。", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:05", "type": "cycle", "summary": "检测到进程 opencode 占用极高 CPU 资源，需确认是否异常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:09", "type": "task_queued", "task": "检查并处理异常高 CPU 占用进程 opencode (PID: 1675619)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:09", "type": "cycle", "summary": "系统基础数据缺失，但检测到进程 opencode (PID: 1675619) CPU 占用率达到 99.5%。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:13", "type": "task_queued", "task": "检查进程 opencode (PID: 1675619) 的具体状态，若为异常死循环则终止进程", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:13", "type": "cycle", "summary": "系统运行正常，但检测到 opencode 进程 CPU 占用过高。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:15", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:18", "type": "task_queued", "task": "检查系统监控服务，恢复 CPU 和内存数据采集", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:18", "type": "cycle", "summary": "系统运行中，但 opencode 进程占用 99.5% CPU，部分监控数据缺失。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 02:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:22", "type": "task_queued", "task": "检查并分析进程 opencode (PID: 1675619) 的高 CPU 占用原因，若为异常进程则终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:22", "type": "task_queued", "task": "修复系统资源监控服务，确保 CPU 和内存数据正常采集", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:22", "type": "cycle", "summary": "系统资源监控数据缺失，且进程 opencode 异常占用 99.5% CPU。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 02:24", "type": "task_queued", "task": "诊断并修复系统监控脚本，确保能正确获取 CPU、内存及服务状态", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:24", "type": "cycle", "summary": "系统基础监控数据获取失败，但检测到 opencode 进程 CPU 占用率极高 (99.5%)。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 02:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:27", "type": "task_queued", "task": "调查进程 opencode (PID: 1675619)，确认是否卡死或死循环，必要时执行 kill 命令终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:27", "type": "task_queued", "task": "检查系统监控服务，修复 CPU 和内存总数据返回为空的问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:27", "type": "cycle", "summary": "系统整体资源数据缺失，但检测到进程 opencode 异常占用 CPU 达 99.5%。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-19 02:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:33", "type": "task_queued", "task": "检查进程 opencode (PID: 1675619) 是否卡死，若非必要任务则建议终止或降权", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:33", "type": "cycle", "summary": "检测到进程 opencode CPU 占用率极高（99.5%），系统其余状态基本正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:35", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:37", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:39", "type": "task_queued", "task": "分析进程 opencode (PID: 1675619) 的状态，若为死循环或无响应则执行终止操作。", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:39", "type": "cycle", "summary": "系统进程 opencode (PID: 1675619) 异常占用 99.5% CPU 资源，存在卡顿风险。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:47", "type": "cycle", "summary": "检测到 opencode 进程 CPU 占用率高达 99.6%，其余系统指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:53", "type": "cycle", "summary": "检测到进程 opencode CPU 占用率异常高达 99.6%，建议排查。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:55", "type": "task_queued", "task": "调查并处理高 CPU 占用进程 opencode (PID: 1675619)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:55", "type": "cycle", "summary": "检测到进程 opencode 占用极高 CPU 资源，需立即处理。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:56", "type": "task_queued", "task": "调查并处理 opencode (PID: 1675619) 进程的高 CPU 占用问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-19 02:56", "type": "cycle", "summary": "检测到 opencode 进程异常占用 CPU 资源", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-19 02:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}

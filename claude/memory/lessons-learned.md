@@ -73,3 +73,6 @@
   教训：waylandFrontend=true时NixOS fcitx5模块不设置GTK_IM_MODULE/QT_IM_MODULE，让Wayland原生text-input协议生效；手动设了等于强制走X11桥接，导致焦点问题
 
 - [2026-04-18] [Sonnet] hub-api.py 微信数据库列名：merged DB 用小写（create_time/message_content/local_id/local_type），不是大写（CreateTime/StrContent）。之前代码用大写导致 last_time 全为0。另外 nickname/remark 字段可能含控制字符，需 sanitize。table_map 映射的每张 Msg_ 表就是一个联系人，没有 StrTalker 列。
+
+- [2026-04-19] [GLM-5.1] service-nurse 巡检诊断结论：(1) glm-proxy.service 僵尸服务 ExecStart=/bin/true（NixOS 无 /bin/true），已 disable+mask+reset-failed；(2) image-captioner.service WorkingDirectory=/mnt/ai/ai-cluster/unified-search 不存在（目录从未创建）；(3) cookie-sync-server :9977 返回空响应非故障，服务只有 /cookies 端点有 handler；(4) health-monitor 系统服务 30s 超时，脚本内 Telegram API 阻塞
+- [2026-04-19] [Sonnet] OP→CC 升级项排查结论：discord-butler/proxy-guardian/service-nurse 的 systemd unit 实际存在（opencode-job-* service+timer），凌晨 LiteLLM 不可达导致 op-adaptive-gate 失败→AGI Brain 误报为 agent 重启失败。当前 3 个 service 状态均为 inactive/success，问题已自愈。根因是凌晨 LiteLLM 服务短暂不可用
