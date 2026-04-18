@@ -1,0 +1,6 @@
+[Unit]
+Description=微信备份提醒 — 通过 Telegram + notify-send 提醒用户手动备份微信聊天记录
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/agi/wechat-backup-reminder.sh

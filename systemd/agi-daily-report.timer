@@ -1,0 +1,9 @@
+[Unit]
+Description=AGI Brain 每日报告定时器（22:00）
+
+[Timer]
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

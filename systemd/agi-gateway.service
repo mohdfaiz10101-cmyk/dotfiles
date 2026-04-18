@@ -1,0 +1,13 @@
+[Unit]
+Description=AGI Control Plane Gateway (port 9900)
+After=network.target
+
+[Service]
+WorkingDirectory=/mnt/ai/apps/agi-control-plane/backend
+ExecStart=/home/charlie/agi/.venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port 9900
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONPATH=/mnt/ai/apps/agi-control-plane/backend
+
+[Install]
+WantedBy=default.target

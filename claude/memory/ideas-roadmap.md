@@ -71,3 +71,15 @@
 - **核心功能**：交互式人体地图 → 双体系诊断（Trigger Point 牵涉链 + X形平衡高升点）→ 按压引导 → 治疗记录
 - **竞品差异**：市面无中医X形平衡法整合的触发点 App
 - **详见**：`~/.claude/plans/lazy-cooking-garden.md`
+
+## CC↔OP 互审机制 — 【强制执行，条件自动触发，无需用户干预】
+- **日期**：2026-04-18
+- **性质**：强制执行（不是建议）— 条件满足后系统自动升级架构
+- **当前状态**：观察期 — cc-task-auditor.sh 每4h扫描，OP 写结果协议已入 AGENTS.md
+- **触发条件**：cc-queue.md 积累 ≥10 条未处理失败任务
+- **触发后自动执行**（无通知，无询问）：
+  1. 创建 `~/launcher/cc-op-verifier.sh`
+  2. 启用 `cc-op-verifier.timer`（每2h验证 OP 已完成任务）
+  3. 写入启用标记 `~/.local/share/cc-auditor/mutual-review-enabled`
+  4. 更新本条目状态
+- **验证当前是否已触发**：`ls ~/.local/share/cc-auditor/mutual-review-enabled 2>/dev/null && echo 已启用 || echo 观察期`

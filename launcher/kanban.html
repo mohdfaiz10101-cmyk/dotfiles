@@ -79,11 +79,13 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
 .card.hidden-filter { display:none; }
 .card-title { font-size:13px; line-height:1.4; color:var(--text); word-break:break-all; }
 .card-title.done-text { text-decoration:line-through; color:var(--muted); }
-.card-meta { display:flex; align-items:center; gap:6px; margin-top:6px; flex-wrap:wrap; }
+/* ── 卡片信息行（常驻，仅标签/徽章，无按钮） ── */
+.card-meta { display:flex; align-items:center; gap:5px; margin-top:5px; flex-wrap:wrap; }
 .tag { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:600; }
 .tag-cc { background:rgba(137,180,250,.2); color:var(--blue); }
 .tag-op { background:rgba(203,166,247,.2); color:var(--mauve); }
 .tag-tg { background:rgba(148,226,213,.2); color:var(--teal); }
+.card-ts { font-size:10px; color:var(--muted); margin-left:auto; }
 
 /* 优先级徽章 */
 .priority-badge { font-size:10px; padding:1px 6px; border-radius:4px; font-weight:700; letter-spacing:.3px; }
@@ -92,27 +94,42 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
 .p2 { background:rgba(249,226,175,.2); color:var(--yellow); }
 .p3 { background:rgba(137,180,250,.2); color:var(--blue); }
 
-/* 时间戳 */
-.card-ts { font-size:10px; color:var(--muted); margin-left:auto; }
+/* Agent 归属徽章（点击切换） */
+.agent-badge { font-size:10px; padding:1px 7px; border-radius:10px; font-weight:700; cursor:pointer; border:none; letter-spacing:.2px; transition:opacity .15s; }
+.agent-badge:hover { opacity:.75; }
+.agent-cc      { background:rgba(137,180,250,.25); color:var(--blue); }
+.agent-op      { background:rgba(203,166,247,.25); color:var(--mauve); }
+.agent-aider   { background:rgba(166,227,161,.25); color:var(--green); }
+.agent-paperclip { background:rgba(250,179,135,.25); color:var(--peach); }
+.agent-letta   { background:rgba(148,226,213,.25); color:var(--teal); }
+.agent-agi     { background:rgba(243,139,168,.25); color:var(--red); }
+.agent-discord { background:rgba(180,190,254,.25); color:var(--lavender); }
+.agent-user    { background:rgba(249,226,175,.2); color:var(--yellow); }
 
-/* 角色标签 */
-.roles { display:flex; gap:4px; margin-top:5px; align-items:center; }
-.role-label { font-size:10px; color:var(--muted); }
-.role-handler { font-size:10px; padding:1px 7px; border-radius:4px; font-weight:700; }
-.role-manager { font-size:10px; padding:1px 7px; border-radius:4px; }
-.role-op { background:rgba(203,166,247,.25); color:var(--mauve); }
-.role-cc { background:rgba(137,180,250,.25); color:var(--blue); }
-.role-user { background:rgba(249,226,175,.2); color:var(--yellow); }
-.move-btns { display:flex; gap:4px; margin-top:8px; opacity:0; transition:opacity .15s; flex-wrap:wrap; }
-.card:hover .move-btns { opacity:1; }
-.move-btn { font-size:10px; padding:2px 7px; border-radius:4px; border:none; cursor:pointer; }
-.move-btn.left { background:rgba(249,226,175,.15); color:var(--yellow); }
-.move-btn.right { background:rgba(166,227,161,.15); color:var(--green); }
-.move-btn.delegate-op { background:rgba(203,166,247,.15); color:var(--mauve); }
-.move-btn.delegate-cc { background:rgba(137,180,250,.15); color:var(--blue); }
-.move-btn:hover { filter:brightness(1.3); }
-.chat-btn { margin-left:auto; font-size:10px; padding:2px 7px; border-radius:4px; border:none; cursor:pointer; background:rgba(137,180,250,.15); color:var(--blue); }
-.chat-btn:hover { background:rgba(137,180,250,.3); }
+/* 角色微型标签（内联在 card-meta） */
+.role-mini { font-size:10px; color:var(--muted); padding:1px 4px; }
+
+/* ── 操作行（hover 显示，全部按钮合并一行） ── */
+.card-actions { display:flex; align-items:center; gap:4px; margin-top:5px; opacity:0; transition:opacity .15s; flex-wrap:wrap; }
+.card:hover .card-actions { opacity:1; }
+.act-btn { font-size:10px; padding:2px 7px; border-radius:4px; border:none; cursor:pointer; transition:filter .1s; }
+.act-btn:hover { filter:brightness(1.3); }
+.act-btn.status-next  { background:rgba(166,227,161,.15); color:var(--green); }
+.act-btn.status-done  { background:rgba(166,227,161,.2);  color:var(--green); font-weight:700; }
+.act-btn.status-back  { background:rgba(249,226,175,.15); color:var(--yellow); }
+.act-btn.to-op        { background:rgba(203,166,247,.15); color:var(--mauve); }
+.act-btn.to-cc        { background:rgba(137,180,250,.15); color:var(--blue); }
+.act-btn.chat         { background:rgba(137,180,250,.12); color:var(--blue); }
+.act-btn.review       { background:rgba(203,166,247,.12); color:var(--mauve); }
+.act-btn.inject-op    { background:rgba(166,227,161,.1);  color:var(--green); }
+.act-btn.comment      { background:rgba(249,226,175,.1);  color:var(--yellow); }
+.act-divider { width:1px; height:12px; background:var(--overlay); margin:0 2px; flex-shrink:0; }
+/* 分组折叠 */
+.group-header { font-size:11px; font-weight:600; color:var(--subtext); padding:4px 6px; margin:8px 0 2px; border-radius:4px; cursor:pointer; display:flex; align-items:center; gap:5px; user-select:none; }
+.group-header:hover { background:var(--overlay); color:var(--text); }
+.group-toggle { font-size:9px; color:var(--muted); width:10px; }
+.group-count { margin-left:auto; background:var(--overlay); color:var(--muted); font-size:10px; padding:0 5px; border-radius:8px; }
+.group-body { padding-left:0; }
 
 /* Chat Panel */
 .chat-panel { position:fixed; right:0; top:0; bottom:0; width:380px; background:var(--surface); border-left:1px solid var(--overlay); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease; z-index:100; }
@@ -256,6 +273,54 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
 .task-result-row .tr-time { color:var(--muted); white-space:nowrap; flex-shrink:0; }
 .task-result-row .tr-task { color:var(--subtext); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .task-result-row .tr-result { color:var(--text); flex:1.5; word-break:break-word; font-size:9px; }
+
+/* ── Filter Bar ──────────────────────────────────────────── */
+.filter-bar { display:flex; align-items:center; gap:6px; padding:6px 16px; border-bottom:1px solid var(--overlay); flex-wrap:wrap; background:var(--surface); flex-shrink:0; }
+.filter-pill { font-size:11px; padding:3px 10px; border-radius:99px; border:1px solid var(--overlay); background:transparent; color:var(--subtext); cursor:pointer; transition:all .15s; }
+.filter-pill:hover { border-color:var(--blue); color:var(--text); }
+.filter-pill.active { background:var(--blue); color:var(--bg); border-color:var(--blue); font-weight:700; }
+.filter-pill.fp-p0.active { background:var(--red); border-color:var(--red); }
+.filter-pill.fp-p1.active { background:var(--peach); border-color:var(--peach); }
+.filter-pill.fp-op.active { background:var(--mauve); border-color:var(--mauve); }
+.filter-pill.fp-agi.active { background:var(--red); border-color:var(--red); }
+.filter-pill.fp-aider.active { background:var(--green); border-color:var(--green); }
+/* ── Stats Bar ───────────────────────────────────────────── */
+.stats-bar { display:flex; align-items:center; gap:12px; padding:4px 16px; font-size:11px; color:var(--subtext); background:var(--surface); border-bottom:1px solid var(--overlay); flex-shrink:0; }
+.stats-progress { flex:1; height:4px; background:var(--overlay); border-radius:2px; overflow:hidden; max-width:140px; }
+.stats-progress-fill { height:100%; background:var(--green); border-radius:2px; transition:width .4s; }
+.stats-item .n { color:var(--text); font-weight:700; }
+/* ── Quota Widget ────────────────────────────────────────── */
+.quota-widget { display:flex; gap:6px; margin-left:auto; align-items:center; }
+.quota-chip { font-size:10px; padding:2px 8px; border-radius:99px; background:var(--overlay); color:var(--muted); white-space:nowrap; cursor:pointer; transition:color .12s; }
+.quota-chip:hover { color:var(--text); }
+/* ── Batch Bar ───────────────────────────────────────────── */
+.batch-bar { display:none; align-items:center; gap:8px; padding:5px 16px; background:rgba(137,180,250,.08); border-bottom:1px solid rgba(137,180,250,.2); font-size:11px; flex-shrink:0; }
+.batch-bar.visible { display:flex; }
+.batch-count { color:var(--blue); font-weight:700; }
+.batch-btn { font-size:11px; padding:3px 10px; border-radius:5px; border:none; cursor:pointer; transition:filter .1s; }
+.batch-btn:hover { filter:brightness(1.25); }
+.batch-btn.complete { background:rgba(166,227,161,.2); color:var(--green); }
+.batch-btn.delegate { background:rgba(203,166,247,.2); color:var(--mauve); }
+.batch-btn.clr { background:var(--overlay); color:var(--muted); }
+/* ── Card Checkbox (batch) ───────────────────────────────── */
+.card-cb-wrap { display:none; position:absolute; top:8px; right:8px; }
+.batch-mode-active .cards .card { position:relative; padding-right:26px; }
+.batch-mode-active .cards .card .card-cb-wrap { display:block; }
+.card-cb { width:15px; height:15px; cursor:pointer; accent-color:var(--blue); }
+.card.batch-selected { border-color:var(--blue) !important; background:rgba(137,180,250,.06); }
+/* CC⇄OP 对话树状结构 */
+.dialog-tree { background:rgba(148,226,213,.04); border:1px solid rgba(148,226,213,.15); border-radius:8px; padding:10px 12px; margin:6px 4px; font-family:'Noto Sans CJK SC','Microsoft YaHei',monospace; }
+.dialog-tree-title { font-size:11px; font-weight:700; color:var(--teal); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.dialog-tree-title .tree-icon { font-size:14px; }
+.dialog-tree-lines { font-size:11px; line-height:1.7; color:var(--subtext); white-space:pre-wrap; word-break:break-word; }
+.dialog-tree-lines .t-root { color:var(--teal); font-weight:700; }
+.dialog-tree-lines .t-cc { color:var(--blue); }
+.dialog-tree-lines .t-op { color:var(--mauve); }
+.dialog-tree-lines .t-leaf { color:var(--yellow); font-weight:600; }
+.dialog-tree-lines .t-conn { color:var(--muted); }
+.dialog-tree-toggle { font-size:10px; color:var(--muted); cursor:pointer; padding:2px 6px; border-radius:4px; background:var(--overlay); border:none; transition:background .12s; }
+.dialog-tree-toggle:hover { background:rgba(148,226,213,.15); color:var(--teal); }
+.dialog-tree.collapsed .dialog-tree-lines { display:none; }
 </style>
 </head>
 <body>
@@ -265,16 +330,46 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
   <span class="badge" id="total-badge">加载中...</span>
   <button class="btn" onclick="loadTasks()">刷新</button>
   <button class="btn" onclick="addTask()">+ 新任务</button>
-  <button class="btn" onclick="switchAgentTab('terminal', document.querySelector('.agent-tab:last-child'))" style="background:rgba(203,166,247,.15);color:var(--mauve)">⌨ OP终端</button>
   <div class="search-wrap">
     <input class="search-input" id="search-input" placeholder="搜索任务... (按 / 聚焦)" type="text" oninput="filterCards(this.value)" />
     <span class="kbd-hint">/</span>
   </div>
 </header>
 
+<!-- Filter + Stats Bar -->
+<div class="filter-bar" id="filter-bar">
+  <button class="filter-pill active" onclick="toggleFilter('all',this)" data-filter="all">全部</button>
+  <button class="filter-pill fp-p0" onclick="toggleFilter('p0',this)" data-filter="p0">🔴 P0</button>
+  <button class="filter-pill fp-p1" onclick="toggleFilter('p1',this)" data-filter="p1">🟠 P1</button>
+  <button class="filter-pill" onclick="toggleFilter('cc',this)" data-filter="cc">✅ CC</button>
+  <button class="filter-pill fp-op" onclick="toggleFilter('op',this)" data-filter="op">🐉 OP</button>
+  <button class="filter-pill fp-agi" onclick="toggleFilter('agi',this)" data-filter="agi">🤖 AGI</button>
+  <button class="filter-pill fp-aider" onclick="toggleFilter('aider',this)" data-filter="aider">🔀 Aider</button>
+  <button class="filter-pill" onclick="toggleBatchMode()" id="btn-batch" title="批量操作 (b)">☑ 批量</button>
+  <div class="quota-widget" id="quota-widget">
+    <span class="quota-chip" id="quota-glm" onclick="loadQuota()" title="今日 GLM 调用估算">🐉 --</span>
+    <span class="quota-chip" id="quota-claude" onclick="loadQuota()" title="Claude 今日会话">✅ --</span>
+  </div>
+</div>
+<div class="stats-bar">
+  <span class="stats-item">待做 <span class="n" id="stat-todo">0</span></span>
+  <span class="stats-item">进行 <span class="n" id="stat-doing">0</span></span>
+  <span class="stats-item">完成 <span class="n" id="stat-done">0</span></span>
+  <span class="stats-item" id="stat-rate" style="color:var(--green)">0%</span>
+  <div class="stats-progress"><div class="stats-progress-fill" id="stats-progress-fill" style="width:0%"></div></div>
+  <span style="font-size:10px;color:var(--muted)" id="kbd-hint-bar">j/k=导航 d=完成 Enter=对话 /=搜索 b=批量</span>
+</div>
+<!-- Batch Action Bar -->
+<div class="batch-bar" id="batch-bar">
+  已选 <span class="batch-count" id="batch-count">0</span> 条
+  <button class="batch-btn complete" onclick="batchComplete()">✓ 全部完成</button>
+  <button class="batch-btn delegate" onclick="batchDelegate('op')">→OP 移交</button>
+  <button class="batch-btn clr" onclick="clearBatch()">× 清除</button>
+</div>
+
 <div class="board">
   <div class="column col-todo">
-    <div class="col-header" id="hdr-todo">待做 <span class="count" id="cnt-todo">0</span></div>
+    <div class="col-header" id="hdr-todo">待做 <span class="count" id="cnt-todo">0</span><button onclick="toggleAllGroups()" id="btn-collapse-all" title="一键折叠/展开所有分组" style="margin-left:auto;background:none;border:none;cursor:pointer;font-size:11px;color:var(--subtext);padding:0 4px;line-height:1;" >▼全</button></div>
     <div class="wip-bar"><div class="wip-bar-fill" id="bar-todo" style="width:0%"></div></div>
     <div class="cards" id="col-todo"></div>
   </div>
@@ -297,7 +392,6 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
       <button class="agent-tab" onclick="switchAgentTab('dialog',this)">💬 对话</button>
       <button class="agent-tab" onclick="switchAgentTab('discuss',this)">🧠 讨论</button>
       <button class="agent-tab" onclick="switchAgentTab('orch',this)">⚡ 调度</button>
-      <button class="agent-tab" onclick="switchAgentTab('terminal',this)">⌨ 终端</button>
     </div>
     <!-- Tab: OP 监控 -->
     <div class="agent-tab-content visible" id="tab-opmon" style="flex-direction:column;overflow-y:auto;gap:0">
@@ -354,15 +448,6 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
         <button class="orch-btn" style="flex:0.4;background:rgba(137,180,250,.1);color:var(--blue)" onclick="loadOrchestrate()">↻</button>
       </div>
     </div>
-    <!-- Tab: 移动端终端 -->
-    <div class="agent-tab-content" id="tab-terminal" style="flex-direction:column">
-      <div class="mobile-term-tabs">
-        <button class="mobile-term-btn active" onclick="openMobileTerm(7690,this)">🔵 CC Claude</button>
-        <button class="mobile-term-btn" onclick="openMobileTerm(7692,this)">🟣 OpenCode</button>
-        <button class="mobile-term-btn" onclick="openMobileTerm(7693,this)">🔀 Aider</button>
-      </div>
-      <iframe class="mobile-term-iframe" id="mobile-term-frame" src="http://localhost:7692" allow="clipboard-read;clipboard-write"></iframe>
-    </div>
   </div>
 </div>
 
@@ -414,6 +499,60 @@ let activeCard = null;
 let chatHistory = [];
 
 // 根据 raw 文本推导角色
+// Agent 定义表（用于循环切换）
+const AGENT_LIST = [
+  { id:'cc',        label:'CC',        emoji:'✅' },
+  { id:'op',        label:'OP',        emoji:'🐉' },
+  { id:'aider',     label:'Aider',     emoji:'🔀' },
+  { id:'paperclip', label:'Paperclip', emoji:'📎' },
+  { id:'letta',     label:'Letta',     emoji:'🧠' },
+  { id:'agi',       label:'AGI',       emoji:'🤖' },
+  { id:'discord',   label:'Discord',   emoji:'💬' },
+  { id:'user',      label:'用户',      emoji:'👤' },
+];
+
+function inferAgent(raw) {
+  const r = raw || '';
+  const m = r.match(/\[agent:(\w+)\]/i);
+  if (m) return m[1].toLowerCase();
+  if (r.includes('[Aider]') || /\baider\b/i.test(r)) return 'aider';
+  if (r.includes('[Paperclip]') || /\bpaperclip\b/i.test(r)) return 'paperclip';
+  if (r.includes('[Letta]') || /\bletta\b/i.test(r)) return 'letta';
+  if (r.includes('[AGI]') || /\bagi\b/i.test(r)) return 'agi';
+  if (r.includes('[Discord]') || /\bdiscord\b/i.test(r)) return 'discord';
+  if (r.includes('[CC→OP]') || r.includes('[OP]') || r.toUpperCase().includes('SOURCE:OP')) return 'op';
+  if (r.includes('[OP→CC]') || r.includes('[CC]') || r.includes('[TG-BOT]')) return 'cc';
+  return null; // 未指定
+}
+
+function agentBadge(agentId, taskText, col) {
+  if (!agentId) return `<button class="agent-badge agent-user" onclick="cycleAgent(event,this)" data-task="${taskText.replace(/"/g,'&quot;')}" title="点击切换归属 agent">👤 未指定</button>`;
+  const a = AGENT_LIST.find(x => x.id === agentId) || {label:agentId, emoji:'?'};
+  return `<button class="agent-badge agent-${agentId}" onclick="cycleAgent(event,this)" data-task="${taskText.replace(/"/g,'&quot;')}" title="点击切换归属 agent">${a.emoji} ${a.label}</button>`;
+}
+
+function cycleAgent(e, btn) {
+  e.stopPropagation();
+  const card = btn.closest('.card');
+  const task = card._task;
+  if (!task) return;
+  const cur = inferAgent(task.raw);
+  const idx = AGENT_LIST.findIndex(a => a.id === cur);
+  const next = AGENT_LIST[(idx + 1) % AGENT_LIST.length];
+  // 更新 raw：替换或添加 [agent:xxx] 标签
+  task.raw = task.raw.replace(/\[agent:\w+\]/gi, '').trim() + ` [agent:${next.id}]`;
+  task.text = task.text.replace(/\[agent:\w+\]/gi, '').trim();
+  // 更新徽章外观
+  btn.className = `agent-badge agent-${next.id}`;
+  btn.textContent = `${next.emoji} ${next.label}`;
+  // 保存到后端
+  fetch('/kanban-assign', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({line_text: task.text, agent: next.id})
+  }).catch(() => {});
+}
+
 function inferRoles(raw, source) {
   const r = raw || '';
   const s = (source || '').toUpperCase();
@@ -441,7 +580,25 @@ function tagClass(src) {
 }
 
 function stripTags(text) {
-  return text.replace(/\[CC→OP\]|\[TG-BOT\]|\[TG\]|\[OP→CC\]/g, '').replace(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/g, '').trim();
+  return text.replace(/\[CC→OP\]|\[TG-BOT\]|\[TG\]|\[OP→CC\]|\[ORCH→CC\]|\[ORCH→OP\]|\[看板注入\]/g, '')
+             .replace(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/g, '').trim();
+}
+
+// 标题精简：去 markdown 装饰，提取动作→目标结构
+function formatTitle(text) {
+  let t = text
+    .replace(/\*\*/g, '')           // **bold**
+    .replace(/~~[^~]*~~/g, '')      // ~~删除线~~
+    .replace(/`[^`]*`/g, s => s.replace(/`/g,''))  // `code`
+    .replace(/✅|✓|🔧|⏳|📝|📄|🎯|🛠️|⚡|🔀|🐉/g, '') // emoji
+    .replace(/\s+/g, ' ').trim();
+  // 截断 — 分隔符后的详细说明，保留主标题
+  const dashIdx = t.indexOf(' — ');
+  if (dashIdx > 0 && dashIdx < 40) t = t.substring(0, dashIdx);
+  // 截断括号内的说明（超过主标题后）
+  const parenIdx = t.indexOf('（');
+  if (parenIdx > 20) t = t.substring(0, parenIdx).trim();
+  return t.length > 55 ? t.substring(0, 52) + '…' : t;
 }
 
 // 解析优先级标签 P0-P3
@@ -485,42 +642,53 @@ function makeCard(task, col) {
   // 优先级 + 时间戳
   const priority = parsePriority(task.raw || task.text);
   const relTime = parseRelativeTime(task.raw || '');
+  const assignedAgent = inferAgent(task.raw);
 
-  // 状态移动按钮
-  let statusBtns = '';
-  if (col === 'todo') statusBtns = `<button class="move-btn right" onclick="move(event,this,'doing')">▶ 进行中</button><button class="move-btn right" style="background:rgba(166,227,161,.15);color:var(--green)" onclick="move(event,this,'done')">✓ 完成</button>`;
-  if (col === 'doing') statusBtns = `<button class="move-btn left" onclick="move(event,this,'todo')">◀ 退回</button><button class="move-btn right" onclick="move(event,this,'done')">✓ 完成</button>`;
-  if (col === 'done') statusBtns = `<button class="move-btn left" onclick="move(event,this,'todo')">↩ 重开</button>`;
+  const safeText = cleanText.replace(/\n|\r/g,' ').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  const safeRaw = task.raw.replace(/\n|\r/g,' ').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  const displayTitle = formatTitle(cleanText);
 
+  // 状态按钮
+  let statusBtnsHtml = '';
+  if (col === 'todo')  statusBtnsHtml = `<button class="act-btn status-next" onclick="move(event,this,'doing')">▶ 进行中</button><button class="act-btn status-done" onclick="move(event,this,'done')">✓ 完成</button>`;
+  if (col === 'doing') statusBtnsHtml = `<button class="act-btn status-back" onclick="move(event,this,'todo')">◀ 退回</button><button class="act-btn status-done" onclick="move(event,this,'done')">✓ 完成</button>`;
+  if (col === 'done')  statusBtnsHtml = `<button class="act-btn status-back" onclick="move(event,this,'todo')">↩ 重开</button>`;
   // 移交按钮
-  let delegateBtns = '';
+  let delegateHtml = '';
   if (col !== 'done') {
-    if (roles.handler !== 'op') {
-      delegateBtns += `<button class="move-btn delegate-op" onclick="delegateTo(event,this,'op')">→ 移交 op</button>`;
-    }
-    if (roles.handler !== 'cc') {
-      delegateBtns += `<button class="move-btn delegate-cc" onclick="delegateTo(event,this,'cc')">→ 移交 CC</button>`;
-    }
+    if (roles.handler !== 'op') delegateHtml += `<button class="act-btn to-op" onclick="delegateTo(event,this,'op')">→OP</button>`;
+    if (roles.handler !== 'cc') delegateHtml += `<button class="act-btn to-cc" onclick="delegateTo(event,this,'cc')">→CC</button>`;
   }
-
-  const safeText = cleanText.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-  const safeRaw = task.raw.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  // 角色简写
+  const roleMini = `<span class="role-mini">${roles.handler}↑${roles.manager}</span>`;
 
   div.innerHTML = `
-    <div class="card-title ${col==='done'?'done-text':''}">${cleanText}</div>
-    <div class="roles">
-      ${roleTag(roles.handler,'handler')}
-      <span class="role-label">↑</span>
-      ${roleTag(roles.manager,'manager')}
-    </div>
+    <div class="card-cb-wrap"><input type="checkbox" class="card-cb" onclick="event.stopPropagation();toggleBatchSelect(event,this.closest('.card'))"></div>
+    <div class="card-title ${col==='done'?'done-text':''}" title="${cleanText}">${displayTitle}</div>
     <div class="card-meta">
       <span class="tag ${tagClass(src)}">${src}</span>
+      ${agentBadge(assignedAgent, safeText, col)}
       ${priority ? priorityBadge(priority) : ''}
+      ${roleMini}
       ${relTime ? `<span class="card-ts">${relTime}</span>` : ''}
-      <button class="chat-btn" onclick="openChat(event,'${safeText}','${safeRaw}')">💬</button>
-      <button class="chat-btn" style="background:rgba(203,166,247,.15);color:var(--mauve)" onclick="reviewCard(event,this,'${safeText}','${src}','${safeRaw}')">📝 互评</button>
     </div>
-    <div class="move-btns">${statusBtns}${delegateBtns}</div>
+    <div class="card-actions">
+      ${statusBtnsHtml}
+      ${delegateHtml ? `<span class="act-divider"></span>${delegateHtml}` : ''}
+      <span class="act-divider"></span>
+      <button class="act-btn chat" onclick="openChat(event,'${safeText}','${safeRaw}')">💬</button>
+      <button class="act-btn review" onclick="reviewCard(event,this,'${safeText}','${src}','${safeRaw}')">📝</button>
+      ${col!=='done' ? `<button class="act-btn inject-op" onclick="injectToOp(event,'${safeText}')" title="发送到 OP 终端">▶OP</button>` : ''}
+      ${col!=='done' ? `<button class="act-btn comment" onclick="openComment(event,this,'${safeText}')" title="写评论">✏️</button>` : ''}
+    </div>
+    <div class="comment-box" style="display:none;margin-top:6px">
+      <textarea class="comment-input" rows="2" placeholder="写评论或补充指令..." style="width:100%;resize:vertical;font-size:11px;padding:4px 6px;border-radius:4px;border:1px solid var(--overlay);background:var(--mantle);color:var(--text);box-sizing:border-box"></textarea>
+      <div style="display:flex;gap:4px;margin-top:3px">
+        <button onclick="submitComment(event,this,'op')" style="flex:1;font-size:10px;padding:2px 6px;border-radius:4px;border:none;cursor:pointer;background:rgba(203,166,247,.2);color:var(--mauve)">→ OP 执行</button>
+        <button onclick="submitComment(event,this,'cc')" style="flex:1;font-size:10px;padding:2px 6px;border-radius:4px;border:none;cursor:pointer;background:rgba(137,180,250,.2);color:var(--blue)">→ CC 执行</button>
+        <button onclick="this.closest('.comment-box').style.display='none'" style="font-size:10px;padding:2px 6px;border-radius:4px;border:none;cursor:pointer;background:var(--overlay);color:var(--muted)">×</button>
+      </div>
+    </div>
     <div class="review-result" style="display:none;margin-top:6px;padding:6px 8px;border-radius:5px;font-size:11px;line-height:1.4"></div>
   `;
   div.querySelector('.card-title').addEventListener('click', () => {
@@ -573,6 +741,9 @@ function render() {
 
     if (!list.length) {
       el.innerHTML = `<div class="empty-col">暂无任务</div>`;
+    } else if (col === 'todo' && list.length > 3) {
+      // todo 列：按分类分组折叠
+      renderGrouped(el, list);
     } else {
       list.forEach(t => el.appendChild(makeCard(t, col)));
     }
@@ -583,9 +754,13 @@ function render() {
   // 重建 Sortable（render 后 DOM 重建了）
   initSortable();
 
+  // 更新统计栏
+  updateStats();
+
   // 保持搜索过滤状态
   const q = document.getElementById('search-input').value.trim();
   if (q) filterCards(q);
+  else applyFilters();
 }
 
 // 搜索过滤（只操作 DOM visibility，不修改数据）
@@ -614,6 +789,155 @@ async function move(e, btn, newStatus) {
     }
     setTimeout(loadTasks, 600);
   } catch(ex) { console.error(ex); }
+}
+
+// ── 注入任务到 OP tmux 会话 ──────────────────────────────
+async function injectToOp(e, text) {
+  e.stopPropagation();
+  const btn = e.target;
+  btn.textContent = '…';
+  try {
+    const r = await fetch('/api/inject-task', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({text, target: 'opencode'})
+    });
+    const d = await r.json();
+    if (d.ok) {
+      btn.textContent = '✓';
+      btn.style.color = 'var(--green)';
+      // 切换到终端 tab 让用户看到注入结果
+      const termTab = document.querySelector('.agent-tab:last-child');
+      if (termTab) switchAgentTab('terminal', termTab);
+    } else {
+      btn.textContent = '!';
+    }
+  } catch { btn.textContent = '!'; }
+  setTimeout(() => { btn.textContent = '▶OP'; }, 2500);
+}
+
+// ── 评论注入：展开 / 提交 ─────────────────────────────────
+function openComment(e, btn, taskText) {
+  e.stopPropagation();
+  const card = btn.closest('.card');
+  const box = card.querySelector('.comment-box');
+  const isOpen = box.style.display !== 'none';
+  box.style.display = isOpen ? 'none' : 'block';
+  if (!isOpen) {
+    box.querySelector('.comment-input').focus();
+    box._taskText = taskText;
+  }
+}
+
+async function submitComment(e, btn, target) {
+  e.stopPropagation();
+  const box = btn.closest('.comment-box');
+  const comment = box.querySelector('.comment-input').value.trim();
+  const taskText = box._taskText || '';
+  if (!comment) return;
+
+  const combined = taskText ? `${taskText} — 补充：${comment}` : comment;
+
+  if (target === 'op') {
+    // 注入到 OP tmux 终端立即执行
+    btn.textContent = '→ 发送…';
+    try {
+      const r = await fetch('/api/inject-task', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({text: combined, target: 'opencode'})
+      });
+      const d = await r.json();
+      btn.textContent = d.ok ? '✓ 已发OP' : '!失败';
+    } catch { btn.textContent = '!错误'; }
+  } else {
+    // 写入 pending-tasks.md（CC 处理）
+    const ts = new Date().toISOString().slice(0,16).replace('T',' ');
+    await fetch('/kanban-delegate', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({text: combined, raw: `- [ ] [用户评论→CC] [${ts}] ${combined}`, target: 'cc'})
+    });
+    btn.textContent = '✓ 已发CC';
+  }
+  setTimeout(() => { box.style.display = 'none'; box.querySelector('.comment-input').value = ''; }, 1500);
+}
+
+// ── 任务自动归类 ──────────────────────────────────────────
+const TASK_CATEGORIES = [
+  { id: 'wechat',  label: '💬 微信体系',   keywords: ['微信','wechat','WeChat','pycryptodome','zstandard','密钥'] },
+  { id: 'system',  label: '🔧 系统维护',   keywords: ['firewall','NixOS','nixpkgs','扩容','健康检查','磁盘','IO Wait','合并冲突','空壳'] },
+  { id: 'ai',      label: '🤖 AI 系统',    keywords: ['AI 系统','Mastra','Qdrant','Playwright','UI-TARS','Week','DeepSeek训练','Agent知识库'] },
+  { id: 'dev',     label: '⚡ 开发项目',   keywords: ['宠物','tamagotchi','管理平台','可视化'] },
+  { id: 'git',     label: '📦 配置 & Git', keywords: ['git','origin','仓库','backup','备份','虚拟机'] },
+  { id: 'misc',    label: '📋 其他',       keywords: [] },  // 兜底
+];
+
+function classifyTask(text) {
+  const t = text.toLowerCase();
+  for (const cat of TASK_CATEGORIES) {
+    if (cat.keywords.some(k => text.includes(k) || t.includes(k.toLowerCase()))) return cat.id;
+  }
+  return 'misc';
+}
+
+// ── 一键折叠/展开所有分组 ──────────────────────────────────
+function toggleAllGroups() {
+  const headers = document.querySelectorAll('#col-todo .group-header');
+  if (!headers.length) return;
+  const anyExpanded = Array.from(headers).some(h => {
+    const cat = h.dataset.cat;
+    return localStorage.getItem('grp-' + cat) !== '1';
+  });
+  const btn = document.getElementById('btn-collapse-all');
+  headers.forEach(h => {
+    const cat = h.dataset.cat;
+    const body = h.nextElementSibling;
+    if (anyExpanded) {
+      localStorage.setItem('grp-' + cat, '1');
+      body.style.display = 'none';
+      h.querySelector('.group-toggle').textContent = '▶';
+    } else {
+      localStorage.removeItem('grp-' + cat);
+      body.style.display = '';
+      h.querySelector('.group-toggle').textContent = '▼';
+    }
+  });
+  if (btn) btn.textContent = anyExpanded ? '▶全' : '▼全';
+}
+
+// ── 渲染时按分类分组（仅 todo 列） ─────────────────────────
+function renderGrouped(col, tasks) {
+  col.innerHTML = '';
+  const groups = {};
+  TASK_CATEGORIES.forEach(c => { groups[c.id] = []; });
+  tasks.forEach(task => {
+    const cat = classifyTask(task.text + ' ' + (task.raw || ''));
+    groups[cat].push(task);
+  });
+
+  TASK_CATEGORIES.forEach(cat => {
+    const items = groups[cat.id];
+    if (!items.length) return;
+
+    // 分组标题（可折叠）
+    const hdr = document.createElement('div');
+    hdr.className = 'group-header';
+    hdr.dataset.cat = cat.id;
+    const collapsed = localStorage.getItem('grp-' + cat.id) === '1';
+    hdr.innerHTML = `<span class="group-toggle">${collapsed ? '▶' : '▼'}</span> ${cat.label} <span class="group-count">${items.length}</span>`;
+    hdr.onclick = () => {
+      const isNowCollapsed = grpBody.style.display !== 'none';
+      grpBody.style.display = isNowCollapsed ? 'none' : '';
+      hdr.querySelector('.group-toggle').textContent = isNowCollapsed ? '▶' : '▼';
+      localStorage.setItem('grp-' + cat.id, isNowCollapsed ? '1' : '0');
+    };
+    col.appendChild(hdr);
+
+    const grpBody = document.createElement('div');
+    grpBody.className = 'group-body';
+    if (collapsed) grpBody.style.display = 'none';
+    items.forEach(task => grpBody.appendChild(makeCard(task, 'todo')));
+    col.appendChild(grpBody);
+  });
 }
 
 async function delegateTo(e, btn, target) {
@@ -963,38 +1287,7 @@ function initSortable() {
   });
 }
 
-// 快捷键
-document.addEventListener('keydown', e => {
-  const tag = document.activeElement.tagName.toLowerCase();
-  const inInput = tag === 'input' || tag === 'textarea' || tag === 'select';
-
-  if (e.key === 'Escape') {
-    // 清空搜索 或 关闭聊天
-    const si = document.getElementById('search-input');
-    if (si.value) {
-      si.value = '';
-      filterCards('');
-    } else {
-      closeChat();
-    }
-    return;
-  }
-  if (inInput) return;
-
-  if (e.key === '/') {
-    e.preventDefault();
-    document.getElementById('search-input').focus();
-    return;
-  }
-  if (e.key === 'n' || e.key === 'N') {
-    addTask();
-    return;
-  }
-  if (e.key === 'r' || e.key === 'R') {
-    loadTasks();
-    return;
-  }
-});
+// 快捷键（由后面的综合 keydown handler 统一处理）
 
 // ── CC⇄OP 对话 ──────────────────────────────────────────────
 async function triggerDialog() {
@@ -1222,10 +1515,86 @@ async function loadTaskResults() {
 
 loadDialog();
 loadTaskResults();
+loadQuota();
 setInterval(loadTasks, 15000);
 setInterval(loadOpStatus, 30000);
 setInterval(loadDialog, 20000);
 setInterval(loadTaskResults, 30000);
+setInterval(loadQuota, 120000); // quota every 2 min
+
+// ── CC⇄OP 对话树状结构可视化 ─────────────────────────────────
+function renderDialogTree(msgs, topic) {
+  if (msgs.length < 6) return null;
+
+  // 提取对话摘要：每 2 条取一组关键句
+  const ccPoints = [];
+  const opPoints = [];
+  msgs.forEach((m, i) => {
+    const text = (m.content || '').replace(/\n/g, ' ').trim();
+    // 截取前 40 字作为要点
+    const summary = text.length > 40 ? text.slice(0, 37) + '…' : text;
+    if (m.from === 'CC') ccPoints.push(summary);
+    else if (m.from !== 'SYSTEM') opPoints.push(summary);
+  });
+
+  // 取前 3 条 CC 和 OP 要点
+  const ccShow = ccPoints.slice(0, 3);
+  const opShow = opPoints.slice(0, 3);
+
+  // 提取结论（最后一条消息）
+  const lastMsg = msgs[msgs.length - 1];
+  const conclusion = (lastMsg.content || '').replace(/\n/g, ' ').trim();
+  const conclusionShort = conclusion.length > 50 ? conclusion.slice(0, 47) + '…' : conclusion;
+
+  // 根节点标题
+  const rootLabel = topic ? topic.slice(0, 30) : (msgs[0]?.content || '').replace(/\n/g, ' ').slice(0, 25);
+  const totalRounds = Math.ceil(msgs.filter(m => m.from !== 'SYSTEM').length / 2);
+
+  // 构建树状文本
+  let lines = '';
+  lines += `<span class="t-root">▸ ${rootLabel}</span>  <span style="font-size:10px;color:var(--muted)">${msgs.length}条 · ${totalRounds}轮</span>\n`;
+  lines += `<span class="t-conn">│</span>\n`;
+
+  // CC 分支
+  ccShow.forEach((p, i) => {
+    const prefix = i < ccShow.length - 1 ? '├─' : '└─';
+    const isLast = i === ccShow.length - 1;
+    const connector = isLast ? '└─' : '├─';
+    lines += `<span class="t-conn">${connector}</span> <span class="t-cc">CC</span> ${p}\n`;
+    if (!isLast) lines += `<span class="t-conn">│</span>\n`;
+  });
+  lines += `<span class="t-conn">│</span>\n`;
+
+  // OP 分支
+  opShow.forEach((p, i) => {
+    const isLast = i === opShow.length - 1;
+    const connector = isLast ? '└─' : '├─';
+    lines += `<span class="t-conn">${connector}</span> <span class="t-op">OP</span> ${p}\n`;
+    if (!isLast) lines += `<span class="t-conn">│</span>\n`;
+  });
+  lines += `<span class="t-conn">│</span>\n`;
+
+  // 结论叶子节点
+  lines += `<span class="t-conn">◆</span> <span class="t-leaf">结论</span> ${conclusionShort}`;
+
+  // 构建容器
+  const container = document.createElement('div');
+  container.className = 'dialog-tree';
+  container.innerHTML = `
+    <div class="dialog-tree-title">
+      <span class="tree-icon">🌳</span> 对话结构 · ${totalRounds} 轮
+      <button class="dialog-tree-toggle" onclick="toggleDialogTree(this)" title="折叠/展开">收起</button>
+    </div>
+    <div class="dialog-tree-lines">${lines}</div>
+  `;
+  return container;
+}
+
+function toggleDialogTree(btn) {
+  const tree = btn.closest('.dialog-tree');
+  tree.classList.toggle('collapsed');
+  btn.textContent = tree.classList.contains('collapsed') ? '展开' : '收起';
+}
 
 // ── 语音引擎（Web Speech API）──────────────────────────────────
 let voiceEnabled = localStorage.getItem('hub_voice') === '1';
@@ -1280,6 +1649,221 @@ function speakLatestDialog(msgs) {
   const prefix = isCC ? 'CC说：' : 'OP说：';
   speakMessage(prefix + msg.content, isCC);
 }
+
+// ── Filter System ─────────────────────────────────────────
+let activeFilter = 'all';
+
+function toggleFilter(key, btn) {
+  activeFilter = key;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  document.querySelectorAll('#col-todo .card, #col-doing .card, #col-done .card').forEach(card => {
+    const task = card._task;
+    if (!task) return;
+    let visible = true;
+    if (activeFilter !== 'all') {
+      const raw = (task.raw || '').toLowerCase();
+      const text = (task.text || '').toLowerCase();
+      const agent = inferAgent(task.raw);
+      switch (activeFilter) {
+        case 'p0': visible = /\bp0\b/.test(raw) || /\bp0\b/.test(text); break;
+        case 'p1': visible = /\bp1\b/.test(raw) || /\bp1\b/.test(text); break;
+        case 'cc': visible = agent === 'cc' || (!agent && !raw.includes('[agent:')); break;
+        case 'op': visible = agent === 'op' || raw.includes('[cc→op]') || raw.includes('source:op'); break;
+        case 'agi': visible = agent === 'agi' || raw.includes('agi') || raw.includes('[agi→op]'); break;
+        case 'aider': visible = agent === 'aider'; break;
+      }
+    }
+    card.classList.toggle('hidden-filter', !visible);
+  });
+}
+
+// ── Stats Bar ─────────────────────────────────────────────
+function updateStats() {
+  const todo = (tasks.todo || []).length;
+  const doing = (tasks.doing || []).length;
+  const done = (tasks.done || []).length;
+  const total = todo + doing + done;
+  const rate = total > 0 ? Math.round(done / total * 100) : 0;
+  document.getElementById('stat-todo').textContent = todo;
+  document.getElementById('stat-doing').textContent = doing;
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-rate').textContent = rate + '%';
+  document.getElementById('stats-progress-fill').style.width = rate + '%';
+}
+
+// ── Quota Widget ──────────────────────────────────────────
+async function loadQuota() {
+  try {
+    const r = await fetch('/api/quota');
+    const d = await r.json();
+    const g = document.getElementById('quota-glm');
+    const c = document.getElementById('quota-claude');
+    if (g) g.textContent = `🐉 ~$${(d.glm_cost_today || 0).toFixed(3)}`;
+    if (c) c.textContent = `✅ ${d.claude_sessions_today || 0}次`;
+  } catch(e) {}
+}
+
+// ── Batch Operations ──────────────────────────────────────
+let batchSelected = new Set();
+let batchMode = false;
+
+function toggleBatchMode() {
+  batchMode = !batchMode;
+  const btn = document.getElementById('btn-batch');
+  if (batchMode) {
+    btn.classList.add('active');
+    document.getElementById('col-todo').classList.add('batch-mode-active');
+    document.getElementById('col-doing').classList.add('batch-mode-active');
+  } else {
+    btn.classList.remove('active');
+    document.getElementById('col-todo').classList.remove('batch-mode-active');
+    document.getElementById('col-doing').classList.remove('batch-mode-active');
+    clearBatch();
+  }
+}
+
+function toggleBatchSelect(e, card) {
+  if (!batchMode) return;
+  const task = card._task;
+  if (!task) return;
+  const key = task.raw;
+  const cb = card.querySelector('.card-cb');
+  if (batchSelected.has(key)) {
+    batchSelected.delete(key);
+    card.classList.remove('batch-selected');
+    if (cb) cb.checked = false;
+  } else {
+    batchSelected.add(key);
+    card.classList.add('batch-selected');
+    if (cb) cb.checked = true;
+  }
+  updateBatchBar();
+}
+
+function updateBatchBar() {
+  const bar = document.getElementById('batch-bar');
+  document.getElementById('batch-count').textContent = batchSelected.size;
+  bar.classList.toggle('visible', batchSelected.size > 0);
+}
+
+async function batchComplete() {
+  if (!batchSelected.size) return;
+  await Promise.all(Array.from(batchSelected).map(rawLine =>
+    fetch('/kanban-move', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({line_text: rawLine, new_status: 'done'})})
+  ));
+  clearBatch();
+  if (batchMode) toggleBatchMode();
+  setTimeout(loadTasks, 500);
+}
+
+async function batchDelegate(target) {
+  if (!batchSelected.size) return;
+  const allTasks = [...(tasks.todo||[]), ...(tasks.doing||[])];
+  const sel = allTasks.filter(t => batchSelected.has(t.raw));
+  await Promise.all(sel.map(t =>
+    fetch('/kanban-delegate', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({text: t.text, raw: t.raw, target})})
+  ));
+  clearBatch();
+  if (batchMode) toggleBatchMode();
+  setTimeout(loadTasks, 500);
+}
+
+function clearBatch() {
+  batchSelected.clear();
+  document.querySelectorAll('.card.batch-selected').forEach(c => {
+    c.classList.remove('batch-selected');
+    const cb = c.querySelector('.card-cb');
+    if (cb) cb.checked = false;
+  });
+  document.getElementById('batch-bar').classList.remove('visible');
+}
+
+// ── Keyboard Shortcuts ────────────────────────────────────
+let focusedCardIdx = -1;
+
+function getVisibleCards() {
+  return Array.from(document.querySelectorAll('#col-todo .card:not(.hidden-filter), #col-doing .card:not(.hidden-filter)'));
+}
+
+function setCardFocus(idx) {
+  const cards = getVisibleCards();
+  if (!cards.length) return;
+  focusedCardIdx = Math.max(0, Math.min(cards.length - 1, idx));
+  cards.forEach((c, i) => {
+    c.style.outline = i === focusedCardIdx ? '2px solid var(--mauve)' : '';
+  });
+  cards[focusedCardIdx]?.scrollIntoView({block:'nearest', behavior:'smooth'});
+}
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+  const chatOpen = document.getElementById('chat-panel').classList.contains('open');
+
+  switch(e.key) {
+    case '/':
+      e.preventDefault();
+      document.getElementById('search-input').focus();
+      break;
+    case 'Escape':
+      if (chatOpen) { closeChat(); return; }
+      document.getElementById('search-input').value = '';
+      filterCards('');
+      activeFilter = 'all';
+      document.querySelectorAll('.filter-pill').forEach(p => { p.classList.toggle('active', p.dataset.filter === 'all'); });
+      applyFilters();
+      clearBatch();
+      document.querySelectorAll('.card').forEach(c => c.style.outline = '');
+      focusedCardIdx = -1;
+      break;
+    case 'j':
+    case 'ArrowDown':
+      if (!chatOpen) { e.preventDefault(); setCardFocus(focusedCardIdx + 1); }
+      break;
+    case 'k':
+    case 'ArrowUp':
+      if (!chatOpen) { e.preventDefault(); setCardFocus(focusedCardIdx - 1); }
+      break;
+    case 'd': {
+      if (chatOpen) break;
+      const cards = getVisibleCards();
+      if (focusedCardIdx >= 0 && cards[focusedCardIdx]) {
+        const task = cards[focusedCardIdx]._task;
+        if (task) {
+          fetch('/kanban-move', {method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({line_text: task.raw, new_status: 'done'})
+          }).then(() => { setTimeout(loadTasks, 400); focusedCardIdx = Math.max(0, focusedCardIdx - 1); });
+        }
+      }
+      break;
+    }
+    case 'Enter': {
+      if (chatOpen) break;
+      const cards = getVisibleCards();
+      if (focusedCardIdx >= 0 && cards[focusedCardIdx]) {
+        const task = cards[focusedCardIdx]._task;
+        if (task) openChat(null, task.text, task.raw);
+      }
+      break;
+    }
+    case 'r':
+      if (!chatOpen) loadTasks();
+      break;
+    case 'b':
+      if (!chatOpen) toggleBatchMode();
+      break;
+    case 'n':
+    case 'N':
+      if (!chatOpen) addTask();
+      break;
+  }
+});
 
 // Patch loadDialog to also trigger TTS
 const _origLoadDialog = loadDialog;
@@ -1352,6 +1936,11 @@ async function loadDialog() {
       wrap.appendChild(reactArea);
       wrap.appendChild(ts);
       area.appendChild(wrap);
+      // 在第 3 条消息后插入树状结构可视化
+      if (idx === 2 && msgs.length >= 6) {
+        const treeEl = renderDialogTree(msgs, data.topic || null);
+        if (treeEl) area.appendChild(treeEl);
+      }
     });
     area.scrollTop = area.scrollHeight;
     const decArea = document.getElementById('dialog-decision-area');

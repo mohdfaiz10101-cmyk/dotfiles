@@ -1,0 +1,14 @@
+[Unit]
+Description=CC 自主决策引擎 — 有异常才运行
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/cc-autonomous-runner.sh
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

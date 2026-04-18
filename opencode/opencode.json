@@ -44,6 +44,26 @@
             "output": 8192
           }
         },
+        "glm-4.6v-flash": {
+          "name": "GLM-4.6V-Flash 视觉 (Z.AI 免费)",
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "capabilities": {
+            "vision": true
+          }
+        },
+        "glm-4v-flash": {
+          "name": "GLM-4V-Flash 视觉 (Z.AI 免费)",
+          "limit": {
+            "context": 16384,
+            "output": 1024
+          },
+          "capabilities": {
+            "vision": true
+          }
+        },
         "gpt-4.1": {
           "name": "GPT-4.1 (GitHub 免费)",
           "limit": {
@@ -67,32 +87,32 @@
   "agent": {
     "build": {
       "model": "openai-compatible/glm-5.1",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。命令/路径/版本必须用工具验证，禁止凭记忆回答。不知道就说不知道，禁止编造。",
       "description": "代码构建器 — 代码生成、功能实现、测试编写"
     },
     "plan": {
       "model": "openai-compatible/glm-5.1",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。命令/路径/版本必须用工具验证，禁止凭记忆回答。不知道就说不知道，禁止编造。",
       "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）"
     },
     "explore": {
       "model": "openai-compatible/glm-4.7",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。命令/路径必须用工具验证。不知道就说不知道，禁止编造。",
       "description": "代码搜索员 — 定位文件、函数、实现模式"
     },
     "chat": {
       "model": "openai-compatible/qwen3-235b",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。不知道就说不知道，禁止编造。涉及系统状态先查再答。",
       "description": "对话模式 — 日常问答、知识查询、翻译总结"
     },
     "refactor": {
-      "model": "openai-compatible/deepseek-v3.2",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "model": "openai-compatible/glm-5.1",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。命令/路径/版本必须用工具验证，禁止凭记忆回答。不知道就说不知道，禁止编造。",
       "description": "重构器 — 代码优化、架构改进、模式重构"
     },
     "arch": {
       "model": "openai-compatible/gpt-4.1",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n## 防幻觉规则（死规则）\n不确定的事实直接说不确定。架构建议必须基于用户实际系统，不凭假设编造。不知道就说不知道。",
       "description": "架构师 — 系统设计、技术选型、方案评审"
     },
     "marketing-coordinator": {

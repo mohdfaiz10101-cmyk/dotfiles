@@ -1,0 +1,18 @@
+[Unit]
+Description=WeChat AI Auto-Reply Agent
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/agi
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/wechat_agent.py
+Restart=on-failure
+RestartSec=60
+Environment=HOME=/home/charlie
+Environment=LITELLM_BASE_URL=http://localhost:4000/v1
+Environment=LITELLM_API_KEY=sk-litellm-charlie-2026
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/charlie/.Xauthority
+
+[Install]
+WantedBy=default.target

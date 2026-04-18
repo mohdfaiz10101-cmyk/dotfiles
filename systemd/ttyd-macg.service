@@ -1,0 +1,18 @@
+[Unit]
+Description=ttyd — LangGraph MACG 终端 (port 7694)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/ttyd \
+  --port 7694 \
+  --writable \
+  --base-path /macg \
+  --title "MACG LangGraph" \
+  /run/current-system/sw/bin/bash -c \
+  "cd /home/charlie/agi && source .venv/bin/activate 2>/dev/null || true && python3 macg.py"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

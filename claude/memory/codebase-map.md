@@ -784,3 +784,15 @@ Docker data-root 在 NTFS
 - 建议封装：将 CLI 封装为 MCP 服务器，配置到 opencode.json
 - [2026-04-17] [Aider] feat: kanban agent hub + CC⇄OP对话系统 + auto-skill封装
   相关文件：bin/aggregate-inspection.py, bin/aggregate-inspections.py, claude/CLAUDE.md, claude/memory/app-dev-journal.md, claude/memory/cc-op-dialog.jsonl
+- [2026-04-17] [Aider] feat: 待办执行结果显示 + 频率提升
+  相关文件：launcher/kanban.html, launcher/launcher-server.py, opencode/heartbeat-task-check.json, systemd/opencode-job-charlie-b445f233ebb8-heartbeat-task-check.timer
+
+## AGI Control Plane (2026-04-18)
+- 路径: `/mnt/ai/apps/agi-control-plane/`
+- Gateway: `backend/main.py` → FastAPI port 9900
+  - GET /api/brain /api/tasks /api/cognitive /api/flows /api/systemd
+  - GET /sse/brain (SSE 流)
+  - POST /copilotkit (CopilotKit runtime endpoint)
+- Service: `~/.config/systemd/user/agi-gateway.service` → active(running)
+- 依赖: ~/agi/.venv (fastapi + uvicorn + httpx)
+- T04(Next.js) + T05(frontend service) 待 OP 执行

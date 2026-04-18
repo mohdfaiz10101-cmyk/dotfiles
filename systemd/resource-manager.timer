@@ -1,0 +1,9 @@
+[Unit]
+Description=动态资源管理 每5分钟
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

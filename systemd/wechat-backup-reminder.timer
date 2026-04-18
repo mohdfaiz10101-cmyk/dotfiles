@@ -1,0 +1,10 @@
+[Unit]
+Description=微信备份提醒（每3天10:00检查）
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+OnUnitActiveSec=3d
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/whisper-server -m /mnt/pool/offload/whisper-models/ggml-medium.bin -l zh --host 127.0.0.1 --port 8178 -t 4
+ExecStart=/run/current-system/sw/bin/whisper-server -m /mnt/pool/offload/whisper-models/ggml-medium.bin -l zh --host 127.0.0.1 --port 8178 -t 4 --inference-path /v1/audio/transcriptions --convert
 Restart=on-failure
 RestartSec=5
 Environment=PYTHONUNBUFFERED=1

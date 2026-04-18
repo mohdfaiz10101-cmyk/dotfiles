@@ -119,37 +119,26 @@ Claude 操作─┘           ↓
 
 ## 语音输入
 
-### Voxtype（已安装）
-- **版本**: 0.6.5
-- **安装方式**: NixOS 自定义包（`/etc/nixos/modules/productivity.nix`）
+### Voxtype（已安装，2026-04-18 更新）
 - **配置**: `~/.config/voxtype/config.toml`
-- **快捷键**: Meta+Space（长按）
-- **模式**: Push-to-Talk（按住录音，松开转写）
-- **引擎**: Whisper base.en（本地）
+- **快捷键**: ScrollLock 长按（Push-to-Talk）
+- **引擎**: Whisper remote（whisper-server :8178，medium 模型）
 - **自动启动**: systemd 用户服务（`~/.config/systemd/user/voxtype.service`）
-- **输出方式**: 直接输入光标位置（wtype/ydotool）
-- **优势**: 
-  - 本地隐私保护
-  - 支持中文/CJK 
-  - Wayland 原生支持
-  - 低延迟（模型加载仅 0.09s）
-- **状态**: ✅ 运行中（`systemctl --user status voxtype`）
+- **输出方式**: paste 模式（wl-copy 写剪贴板 → ydotool 发 Shift+Insert 自动粘贴）
+- **粘贴链路**: wtype（KDE 不支持）→ 降级 ydotool（通过 uinput 模拟物理按键）
+- **关键配置**: `paste_keys = "shift+insert"`（Ctrl+V 在终端中无效）、`pre_type_delay_ms = 150`、`driver_order = ["ydotool", "dotool"]`
 
 ### 使用方法
-- **按住 Meta+Space** → 开始录音（最多 60 秒）
-- **松开** → 自动转写并输入文字
+- **按住 ScrollLock** → 开始录音（最多 60 秒）
+- **松开** → 自动转写 → 文字自动粘贴到当前焦点窗口
 - **状态查看**: `voxtype status`
 - **重启服务**: `systemctl --user restart voxtype`
 
-### 进阶配置
-- GPU 加速：`voxtype setup gpu`（可启用 CUDA/Vulkan）
-- 切换模型：`voxtype setup model`（可选 tiny/small/medium/large）
-- Waybar 集成：`voxtype setup waybar`
-
-### 已知问题
-- **Meta+Space 不可用**: evdev 模式不支持字母键组合，KDE 系统占用
-- **解决方案**: 使用 ScrollLock 长按（或 Pause/F13-F24）
-- **输出失败降级**: 如 wtype 失败，自动切换到剪贴板模式
+### KDE Wayland 限制
+- wtype 不可用（`Compositor does not support the virtual keyboard protocol`）
+- dotool 不支持 CJK 字符输入
+- ydotool 通过 uinput 可发送按键，是唯一可用的输入驱动
+- Ctrl+V 在终端中无效，必须用 Shift+Insert
 
 - [2026-04-06] [Letta-Distill] 记录AI自动化集群部署配置，包含Dify、n8n等工具的docker-compose路径及LiteLLM路由策略问题。
 

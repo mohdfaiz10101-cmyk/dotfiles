@@ -1,0 +1,10 @@
+[Unit]
+Description=CC 任务审计定时器（每4小时）
+
+[Timer]
+OnBootSec=30min
+OnUnitActiveSec=4h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

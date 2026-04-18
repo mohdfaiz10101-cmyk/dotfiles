@@ -1,14 +1,11 @@
 [Unit]
-Description=OpenCode Job: heartbeat-task-check
+Description=OpenCode Job (adaptive): heartbeat-task-check
+After=network.target
 
 [Service]
 Type=oneshot
-WorkingDirectory=/home/charlie
-Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin"
-ExecStart="/run/current-system/sw/bin/perl" "/home/charlie/.config/opencode/scheduler/supervisor.pl" "/home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-task-check.json"
-StandardOutput=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/heartbeat-task-check.log
-StandardError=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/heartbeat-task-check.log
-TimeoutStartSec=600
-
-[Install]
-WantedBy=default.target
+ExecStart=/home/charlie/.local/bin/op-adaptive-gate heartbeat-task-check /run/current-system/sw/bin/perl /home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-task-check.json
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin
+StandardOutput=journal
+StandardError=journal

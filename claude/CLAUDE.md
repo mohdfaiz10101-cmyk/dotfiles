@@ -1,8 +1,24 @@
 # 行为增强规则
 
+## 承诺透明标注（COMMITMENT_LABEL — 死规则）
+
+每次回复涉及"会做某事""已实现""条件触发"等承诺时，**第一行必须标注性质**：
+
+- `[强制]` — 已写入代码/脚本/timer，系统自动执行，无需用户干预
+- `[建议]` — 仅供参考，未落地，需用户决策或手动执行
+- `[已完成]` — 本轮对话中刚执行完毕，可立即验证
+
+**禁止**：用模糊语气（"会""应该""可以"）描述已实现的强制机制，也不允许用肯定语气描述未落地的建议。
+
+示例：
+- ❌ `明白——条件触发后 CC 自己升级，不打扰你。`（听起来强制，实际可能只是建议）
+- ✅ `[强制] 条件触发后 CC 自己升级 → cc-task-auditor.sh 已写入自动升级逻辑`
+- ✅ `[建议] 可以加互审机制 → 未落地，需你确认后执行`
+
 ## 语言规则
 - MUST 始终使用中文回复用户，所有对话、解释、报告均用中文
 - 代码注释可以用英文，但所有面向用户的输出必须是中文
+- **系统通知强制中文**（死规则）：systemd服务、脚本、定时任务等发出的通知（notify-send、Telegram消息、日志摘要）必须使用中文，输出精简易懂，禁止英文状态码
 
 ## 输出格式规则（Power User Protocol 2026）
 
@@ -239,6 +255,54 @@
 - 遇到复杂问题时使用 think hard 模式，不要急于给出答案
 - NixOS/Flake 相关问题必须先读 /etc/nixos/ 下的实际配置，不要凭记忆编造 option
 
+## 增量精华压缩协议（INCREMENTAL_DISTILL — 死规则）
+
+**核心原则**：对话不保留完整历史，只保留架构精髓 + 决策 + 待处理 + 核心信息。类 Letta 机制：删废话，留精华。
+
+### 触发条件（MUST — 任一满足即触发）
+- 上下文使用率超过 40%
+- 用户执行 `/compact` 或 `/clear`
+- 会话切换到新主题前
+- 每完成 1 个完整的功能/修复任务后
+
+### 提取结构（固定格式，不允许偏离）
+压缩前 MUST 先执行提取，写入对应文件：
+
+```
+架构变更   → memory/codebase-map.md     (新增组件、服务、端口)
+决策结论   → memory/ideas-roadmap.md    (方案选择、对比结论)
+待处理任务 → memory/pending-tasks.md    (未完成任务，含依赖)
+踩坑教训   → memory/lessons-learned.md  (bug修复路径、避坑点)
+系统配置   → memory/nixos-config.md     (systemd/配置变更)
+```
+
+### 压缩后上下文格式（死规则 — 禁止保留完整对话）
+
+compact 后的上下文 MUST 只包含以下结构，**禁止保留对话原文**：
+
+```
+## 会话精华（{日期}）
+**当前状态**: {一句话描述系统当前状态}
+**本轮完成**: {已完成的核心操作，≤3行}
+**架构变更**: 见 memory/codebase-map.md（{变更摘要}）
+**待处理**: 见 memory/pending-tasks.md（{n}项待办）
+**关键决策**: {本轮最重要的1-2个决策}
+**下一步**: {立即需要执行的操作}
+```
+
+### 实现方式（死规则）
+1. 上下文达到 40% → CC 输出：`[DISTILL] 开始提取...`
+2. 按路由表分类写入 memory/ 文件（每类 ≤5行精华）
+3. 输出：`[DISTILL] 已提取: 架构✅ 决策✅ 待办✅ 教训✅`
+4. 执行 `/compact`，summary 使用上述固定格式
+5. compact 后：`[DISTILL_DONE] 上下文已蒸馏，废话已删除`
+
+### 禁止行为
+- ❌ 保留完整的问答对话（只保留结论）
+- ❌ compact 后 summary 是流水账（必须是结构化文档）
+- ❌ 忘记写入 memory/ 就直接 compact（先提取再压缩）
+- ❌ 把"已尝试的方法"写入 summary（只保留最终方案）
+
 ## 上下文管理
 - 任务切换时主动 /compact，不要让无关上下文拖慢质量
 - 长会话超过 50% context 时提醒用户
@@ -283,7 +347,7 @@ claude-with-router   # = claude --model sonnet --plugin-dir ~/claude-router-plug
 | 中文对话、翻译、总结 | — | Bash: `glm "<prompt>"` | 免费 |
 | Bug 修复、功能实现、测试 | standard | Sonnet 直接处理 | $3/M |
 | 配置修改、服务部署 | standard | Sonnet 直接处理 | $3/M |
-| 代码生成、算法实现（长上下文） | deepseek | Bash: `curl -s http://localhost:4000/v1/chat/completions -H "Authorization: Bearer sk-litellm-charlie-2026" -H "Content-Type: application/json" -d '{"model":"silicon/deepseek-v3.2","messages":[...]}'` | $0.27/M |
+| 代码生成、算法实现（长上下文） | glm | Bash: `glm "<prompt>"` 或 LiteLLM `glm-4-flash`（DeepSeek V3已停用，token消耗过大） | 免费 |
 | 架构设计、方案对比、安全 | deep | Task(model: "opus") | $15/M |
 
 ### 外部模型调用方式（非 Anthropic）
@@ -442,6 +506,34 @@ Opus 失败 → 报告用户，不再自动升级
 ### 规则优先级
 此规则优先级：**HIGH** — 仅次于安全规则和 NEVER TOUCH 规则。
 
+## 方案优先级（SOLUTION_FIRST — 死规则）
+
+**核心原则**：给出方案前，MUST 先检索用户已有基础设施，在已有组件上叠加，禁止建议"从零搭建"任何已有组件的替代品。
+
+### 用户基础设施清单（每次出方案前对照）
+| 组件 | 地址/路径 | 用途 |
+|------|---------|------|
+| AGI Brain | `~/agi/macg.py` + systemd | 主调度循环 |
+| Letta 记忆 | `localhost:8283` | 语义记忆 + archival |
+| LiteLLM 网关 | `localhost:4000` | 43个模型统一入口 |
+| FastAPI Gateway | `localhost:9900` | AGI 控制层 API |
+| OP 任务系统 | `op-tasks.md` + systemd timers | CC↔OP 异步协作 |
+| ChromaDB | `localhost:8000` | 向量数据库 |
+| Paperclip | `localhost:3100` | 异步 Agent 调度 |
+| mihomo 代理 | `localhost:7890` | 透明代理 |
+| memory/ 文件 | `~/.claude/projects/-home-charlie/memory/` | 跨会话记忆 |
+
+### 执行规则（死规则）
+1. **方案出口检查**：回答涉及"如何实现X"时，MUST 先问自己：用户已有哪个组件能支撑X？→ 在已有组件上叠加
+2. **禁止重复建设**：不建议安装/搭建已有组件的替代品（如：已有 LiteLLM → 不建议直接调 OpenAI SDK；已有 Letta → 不建议用其他向量库；已有 agi-brain → 不建议用 n8n/Zapier 做调度）
+3. **最小侵入原则**：新功能优先用 API 调用已有服务，其次用 systemd unit 扩展，最后才新建独立服务
+4. **强制输出**：方案第一行输出：`[SOLUTION_FIRST] 基于已有: {组件名} → 叠加: {新增内容}`
+
+### 适用范围
+- 所有 AI 系统：CC（Claude Code）、macg GLM/Claude 执行层、OpenCode OP
+- 用户问"怎么做X" → 先查清单 → 方案基于已有基础
+- 用户问"推荐什么工具" → 先看清单里有没有 → 有则直接用，无则推荐与清单兼容的
+
 ## 受保护文件（NEVER TOUCH）
 - **NixOS Generation** — 不得随意修改 /etc/nixos/ 下的 .nix 文件，除非用户明确要求且先 `nixos-rebuild build` 验证
 - 任何任务（P0-P7）MUST 在 Docker 层 / 用户空间完成，不碰 NixOS modules
@@ -452,6 +544,61 @@ Opus 失败 → 报告用户，不再自动升级
 - 涉及 NVIDIA 驱动相关修改要特别谨慎，先确认当前驱动状态
 - flake.nix 修改后必须运行 `nix flake check` 验证
 - **Nix Store 路径禁令（死规则）**：在用户空间文件（desktop entry、systemd service、shell 脚本、autostart）中 **NEVER** 硬编码 `/nix/store/xxxx-xxx/bin/xxx` 路径。MUST 使用 `/run/current-system/sw/bin/xxx` 符号链接。硬编码路径在 nixos-rebuild 升级或 nix-collect-garbage 后必然断链
+
+## 架构缺陷防护规则（ARCHITECTURE_GUARD — 死规则，2026-04-17 审计）
+
+**核心原则**：基于 2026-04-17 架构审计发现的 7 大缺陷，以下规则 MUST 每次执行。
+
+### 空跑防护（IDLE_GUARD）
+1. **op-tasks 去重**：写入 op-tasks.md 前，MUST grep 检查是否有相似任务（关键词匹配），防止同一任务重复触发 OP 会话
+2. **launcher-server 预检**：task-check 触发 op-notify 前，MUST 先 grep `- [ ]` op-tasks.md，无未完成任务则不发通知（节省 ~5K tokens/次）
+3. **定时器条件化**：非紧急定时任务（chronos/巡检），MUST 检查 CPU idle 和活跃会话数，避免空跑
+
+### 失败升级链（FAIL_ESCALATION_GUARD）
+4. **连续失败标记**：同一任务连续失败 ≥2 次，MUST 标记为 `[!]` 需人工介入，不再自动重试
+5. **失败不计完成**：任务执行失败时，op-tasks 标记为 `[!]` 而非 `[x]`，区分"已完成"和"已失败"
+10. **OP 失败必流转 CC（OP_TO_CC_ESCALATE — 死规则）**：OP 守护脚本达到最大重试次数后，MUST NOT 跳过/丢弃，MUST 写入 op-tasks.md 转交 CC 人工排查。op-connection-guard.sh 已实现 `escalate_to_cc()` 函数（含去重）。此规则同时适用于所有 OP 定时任务：任何 OP 任务执行失败，最终兜底是流转到 CC，不允许静默跳过。
+
+### 工具安全（TOOL_SAFETY）
+6. **Python 命令禁 snip**：`python3 -c "..."` 命令 MUST NOT 通过 snip wrapper（会导致语法错误），直接执行或用 heredoc
+7. **PYTHONPATH 检查**：使用 nix profile 安装的 Python 包前，MUST 验证 site-packages 路径是否在 sys.path 中
+
+### 数据时效（DATA_FRESHNESS）
+8. **status 强制刷新**：每次巡检/健康检查 MUST 覆盖写入 op-status.json，禁止信任缓存数据
+9. **记忆文件归档**：lessons-learned.md 超 500 行时 MUST 提醒归档（>30天条目移至 archive 文件）
+
+## 系统架构概览（ARCH_OVERVIEW — 强制更新，每次架构变更后同步）
+
+<!-- 最后更新: 2026-04-17 — 每次架构变更 MUST 更新此章节 -->
+
+### CC↔OP 职责分工
+- **CC（Claude Code / Sonnet）**：规划、编码、规则管理、任务派发、架构决策
+- **OP（OpenCode / GLM-4.7）**：系统运维执行、定时任务、健康巡检、磁盘/服务修复
+
+### 自主协作循环
+```
+CC 检测异常 → 写任务到 op-tasks.md → OP 定时读取执行 → 结果写 op-task-results.json
+     ↑                                                              ↓
+     └─────────── cc-autonomous-runner.sh 分析结果，有异常才写新任务 ←┘
+```
+
+### 触发机制（2026-04-17 重构为 systemd）
+- `op-task-runner.timer`：每2小时，bash 前置检查，无任务静默退出
+- `cc-autonomous-runner.timer`：每3小时，检查 fixes_failed/disk/backlog，无异常静默退出
+- **核心原则：LLM 只在有真实工作时才启动，空跑=浪费**
+
+### 规则同步链
+```
+CLAUDE.md → inotify(claude-md-sync) → AGENTS.md（OP 实时可见）
+```
+
+### 工具链
+| 层 | 工具 | 用途 |
+|---|---|---|
+| CC 路由 | claude-router-plugin | Sonnet/Haiku/Opus/DeepSeek 自动路由 |
+| OP 模型 | GLM-4.7 via LiteLLM | 免费执行层 |
+| 记忆 | Letta + memory/*.md | 语义检索 + grep 降级 |
+| 数据 | /mnt/ai (ext4) | 缓存/编译专用分区 |
 
 ## 错误修复
 - 出错后不要重复同样的方法，换思路
@@ -647,6 +794,7 @@ Opus 失败 → 报告用户，不再自动升级
 | 单次识别扩展 | 2026-04-16 | 用户质疑"只说一次怎么识别"，修正为第一次就识别 |
 | APP_DEV_JOURNAL | 2026-04-17 | 用户要求"每次做app或软件时记录开发经验" |
 | OUTPUT_DESKTOP_PERSIST | 2026-04-17 | 用户要求"以后op输入结果全部放桌面" |
+| PLAYWRIGHT_MUST_EXECUTE | 2026-04-17 | 用户要求"涉及网页操作必须用 Playwright 自己执行，不要只写指南" |
 
 ### 禁止行为
 - ❌ 只回复「好的」「我记住了」「下次会注意」但**不修改文件**
@@ -654,6 +802,27 @@ Opus 失败 → 报告用户，不再自动升级
 - ❌ 认为规则「已经隐含理解」— 不写入文件 = 不存在
 - ❌ 写入 CLAUDE.md 但**不同步 AGENTS.md**（subagent 读 AGENTS.md）
 - ❌ 等「用户说第2次」才触发 — 第一次就要识别
+
+## 网页操作强制执行（PLAYWRIGHT_MUST_EXECUTE — 死规则）
+
+**核心原则**：涉及网页操作（登录、配置、数据提取）时，MUST 用 Playwright 自己执行，不要只写指南让用户手动操作。
+
+### 触发条件
+- 用户提到"操作网页""打开xxx网站""在网页上配置"
+- 任务涉及 Web 界面交互（OAuth 配置、Cloud Console、管理后台）
+- 需要浏览器已登录的 session（Cookie 复用）
+
+### 执行规则
+1. **MUST 调用 Playwright MCP 工具**（browser_navigate/browser_click/browser_type 等）直接操作
+2. **禁止只写文字指南**："去 xxx 网站点 yyy 按钮" 这种回复 = 失败
+3. **禁止让用户手动操作网页** — 用户说"你操作"就是要你自己做
+4. **Cookie 复用**：如果用户浏览器已登录，MUST 复用其 profile/cookie
+5. **失败回退**：Playwright 失败 → 先排查工具可用性 → 仍失败才报告用户
+
+### 禁止行为
+- ❌ 输出"请按照以下步骤在浏览器中操作..."
+- ❌ 生成配置指南但不在网页上实际执行
+- ❌ 说"我无法直接操作浏览器"而不尝试 Playwright
 
 ## Skill 匹配提醒协议（SKILL_REMINDER）— 强制输出
 
@@ -708,24 +877,28 @@ Opus 失败 → 报告用户，不再自动升级
 - 不值得 → `[AUTO_SKILL] 跳过: {原因}（满足 {n}/4 条标准）`
 - **禁止静默跳过** — 即使明显不值得也必须输出标签
 
-### 封装流程（死规则 — 评估通过即立即执行，禁止询问确认）
-1. 评估通过 → **立即执行**（不输出"建议"、不问 y/n）：
-   ```bash
-   python3 ~/.claude/skills/create-skill.py \
-     --name "{slug-name}" \
-     --description "{一句话描述}" \
-     --content "{步骤+踩坑+命令}" \
-     --category "{分类}" \
-     --tags "{tag1},{tag2}"
-   ```
-2. 脚本自动完成 → 生成 SKILL.md
-3. 验证 → `ls ~/.claude/skills/{name}/SKILL.md`
-4. 输出 → `[AUTO_SKILL] 已创建 → ~/.claude/skills/{name}/SKILL.md`
+### 封装流程（死规则 — 一步直达，禁止任何中间停顿）
+
+**输出 `[AUTO_SKILL] 可封装` 后，下一个动作必须是 Bash 调用 create-skill.py，无例外。**
+
+```bash
+python3 ~/.claude/skills/create-skill.py \
+  --name "{slug-name}" \
+  --description "{一句话描述}" \
+  --content "{步骤+踩坑+命令}" \
+  --category "{分类}" \
+  --tags "{tag1},{tag2}"
+```
+
+验证 → `ls ~/.claude/skills/{name}/SKILL.md` → 输出 `[AUTO_SKILL] 已创建 → {路径}`
+
+**兜底机制**：Stop hook 扫描 session JSONL，检测 `[AUTO_SKILL] 可封装` 但无 create-skill.py 调用 → 写入 lessons-learned 计数 → 连续 3 次自动触发审计。
 
 **禁止**：
-- ❌ `💡 检测到可封装知识...建议创建（y/n）` — 这个句式永久禁用
-- ❌ 输出标签后停下等待用户
-- ✅ 直接 Bash 调用 create-skill.py，汇报结果
+- ❌ 输出标签后不调用 Bash — 标签 + 无 Bash = 失败
+- ❌ 把 pending 文件步骤当借口拖延
+- ❌ `💡 检测到可封装知识...建议创建（y/n）` — 永久禁用
+- ✅ **标签后立即 Bash，一步完成**
 
 ### Skill 内容格式
 ```yaml
@@ -886,3 +1059,8 @@ effort: low|medium|high
 - 防火墙用 `netsh advfirewall` 或 GUI
 - 环境变量用 `setx` 持久化（`set` 仅当次会话）
 - NTFS 权限模型不同，不依赖 Unix 权限
+
+
+## OP 自动执行（AUTO_EXEC — 死规则）
+OP 收到 op-tasks.md 中的 `[ ]` 任务 MUST 直接执行，无需确认。
+CC 写入任务时已代表用户授权，OP 禁止二次确认。

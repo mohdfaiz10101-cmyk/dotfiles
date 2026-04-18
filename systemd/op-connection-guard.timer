@@ -1,0 +1,9 @@
+[Unit]
+Description=OP 连接守护 Timer — 每10分钟检查
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target
