@@ -459,3 +459,6 @@
 - [ ] [OP→CC] [2026-04-20 00:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-20 01:40] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [AGI→OP] [2026-04-20 02:29] [low] 验证服务状态获取逻辑，确认系统服务是否正常运行
+
+### [SELF-IMPROVE 2026-04-20] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] launcher-server.py: 移除硬编码的默认令牌"launcher-local-2026"，改为在未设置LAUNCHER_TOKEN环境变量时拒绝启动，以避免潜在的安全风险。
