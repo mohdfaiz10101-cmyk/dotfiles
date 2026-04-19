@@ -2,6 +2,16 @@
 
 <!-- 清理日期: 2026-04-17 — 删除所有 [x] 已完成条目，只保留未完成任务 -->
 
+## 高优先
+
+- [ ] **全模型幻觉防护系统（P1）** — 覆盖所有 AI 模型（GLM/DeepSeek/Sonnet/Opus/Haiku）
+  - **触发**：GLM 声称 OpenCode 已停止开发（幻觉）
+  - 方案 A：AGENTS.md 加「工具现状速查表」（名称/版本/状态/验证命令）
+  - 方案 B：op-tasks 执行前强制 shell 验证关键工具状态（不信 LLM 口头声明）
+  - 方案 C：不确定工具状态时强制 WebSearch 验证（不走记忆/训练数据）
+  - 方案 D：加入「知识截止声明」提示词：模型说新工具状态时必须标注 [需验证]
+  - 优先实施 B+C，成本最低效果最直接
+
 ## 中优先
 
 - [ ] **综合方案：你的个人 AI 系统** — Week 1-2 完成(2026-04-08)，Week 3-4 待执行
@@ -47,6 +57,11 @@
 
 ## 开发项目
 
+- [ ] **Sourcing 采购网站完善** — `~/projects/projects/sourcing-site/`（Astro 5 + Tailwind 4，端口 4322）
+  - 现状：半成品，只有 index.html 主页（Hero + 产品分类 + AI产品生成器 + 报价表单）
+  - api/components/layouts 目录为空
+  - src/pages/ 只有 index.html
+  - 需要：拆分组件、补充 API 端点、连接 LiteLLM 替代 HyperChat、产品 CRUD
 - [ ] **Claude Code 风格宠物** — usik/tamagotchi Phase 2，AI Agent 互动插件
 - [ ] **配置 DeepSeek 训练环境** — 安装 PyTorch 或配置 Docker 容器
 

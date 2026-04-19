@@ -451,4 +451,10 @@
 - [x] [完成 2026-04-19 23:38] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:30] discord-butler 连续3次重启失败
 - [x] [完成 2026-04-19 23:38] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:30] service-nurse 连续3次重启失败
 - [x] [完成 2026-04-19 23:43] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:40] discord-butler
-- [ ] [OP→CC] [2026-04-19 23:50] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 已知假阳性 exit=142 SIGALRM] [OP→CC] [2026-04-19 23:50] discord-butler 连续3次重启失败
+- [x] [完成 2026-04-20 已知假阳性 exit=142 SIGALRM] [OP→CC] [2026-04-20 00:00] service-nurse 连续3次重启失败
+- [x] [完成 2026-04-20] [AGI→OP] python3.13进程已确认：waydroid容器守护进程(root)，claude-esp/chronos/orchestrator(charlie)，均为预期正常进程
+- [x] [完成 2026-04-20 已知假阳性 exit=142 SIGALRM] [OP→CC] [2026-04-20 00:20] proxy-guardian 连续3次重启失败
+- [ ] [OP→CC] [2026-04-20 00:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 00:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 01:40] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）

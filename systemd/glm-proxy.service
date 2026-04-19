@@ -1,7 +1,12 @@
 [Unit]
-Description=GLM glm-proxy Task
+Description=GLM Proxy (8787) - Long-term memory agent
+After=network-online.target
 
 [Service]
-Type=oneshot
-ExecStart=/bin/true
-# DISABLED: opencode not needed as oneshot proxy task (2026-04-18)
+Type=simple
+ExecStart=/home/charlie/.local/bin/glm-proxy
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

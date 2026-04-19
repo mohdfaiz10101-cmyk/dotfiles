@@ -107,3 +107,6 @@
   - 场景：GLM 创建 systemd service 使用 /bin/bash，NixOS 没有此路径
   - 修复：改用 /run/current-system/sw/bin/bash 或 ExecStart 直接指向脚本文件（脚本用 #!/usr/bin/env bash shebang）
   - 教训：NixOS systemd unit 的 ExecStart 必须用绝对路径，且只有 /run/current-system/sw/bin/ 下的命令可靠
+
+- [2026-04-20] [GLM] Floorp fcitx5 无法打字：根因是 ~/.local/bin/floorp wrapper 显式设置 MOZ_ENABLE_WAYLAND=0 强制 XWayland 模式，导致 KDE Plasma 6 Wayland 下 fcitx5 text-input protocol 不工作。修复：改为 MOZ_ENABLE_WAYLAND=1
+- [2026-04-20] [GLM] Node.js letta-mcp-server SIGABRT 崩溃（225MB coredump）：一次性 OOM/Node 异常，Letta Docker 服务本身正常。MCP bridge 是 CC 子进程，每次会话自动重启。清理 coredump: sudo rm -f /var/lib/systemd/coredump/core.*.zst
