@@ -4,7 +4,7 @@ Documentation=man:systemd.service(5)
 
 [Service]
 Type=oneshot
-ExecStart=/home/charlie/.local/bin/test-letta-memory-system
+ExecStart=/home/charlie/agi/letta-health-check.sh
 StandardOutput=journal
 StandardError=journal
 

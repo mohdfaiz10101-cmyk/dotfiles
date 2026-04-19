@@ -787,6 +787,13 @@ Docker data-root 在 NTFS
 - [2026-04-17] [Aider] feat: 待办执行结果显示 + 频率提升
   相关文件：launcher/kanban.html, launcher/launcher-server.py, opencode/heartbeat-task-check.json, systemd/opencode-job-charlie-b445f233ebb8-heartbeat-task-check.timer
 
+## launcher-server.py (2026-04-19)
+- 路径: `/home/charlie/launcher/launcher-server.py` (~2415行)
+- 端口: 9875, nohup 启动
+- Auth: Bearer Token (`_check_auth()`) — LAUNCHER_TOKEN=launcher-local-2026, LOCAL_ONLY=1 时 localhost 放行
+- 关键 API: /api/status, /api/wechat/sessions, /api/wechat/messages, /api/op-notify
+- 踩坑: do_POST 中 auth check 必须在 rfile.read() 前，否则 BrokenPipeError
+
 ## AGI Control Plane (2026-04-18)
 - 路径: `/mnt/ai/apps/agi-control-plane/`
 - Gateway: `backend/main.py` → FastAPI port 9900

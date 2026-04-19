@@ -11,6 +11,9 @@ ExecStart=/run/current-system/sw/bin/ttyd \
   /run/current-system/sw/bin/bash -c "cd /home/charlie/agi && source .venv/bin/activate && while true; do python3 macg.py; echo '按 Enter 重启 macg...'; read; done"
 Restart=on-failure
 RestartSec=5
+Environment=HOME=/home/charlie
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
 
 [Install]
 WantedBy=default.target

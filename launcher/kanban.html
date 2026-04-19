@@ -351,7 +351,9 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
     <span class="quota-chip" id="quota-claude" onclick="loadQuota()" title="Claude 今日会话">✅ --</span>
   </div>
 </div>
-<div class="stats-bar">
+ <div class="stats-bar">
+  <span id="svc-bar" style="font-size:10px;display:flex;align-items:center;gap:4px"></span>
+  <span id="svc-disk" style="font-size:10px;color:var(--peach);margin-right:8px"></span>
   <span class="stats-item">待做 <span class="n" id="stat-todo">0</span></span>
   <span class="stats-item">进行 <span class="n" id="stat-doing">0</span></span>
   <span class="stats-item">完成 <span class="n" id="stat-done">0</span></span>
@@ -392,6 +394,7 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
       <button class="agent-tab" onclick="switchAgentTab('dialog',this)">💬 对话</button>
       <button class="agent-tab" onclick="switchAgentTab('discuss',this)">🧠 讨论</button>
       <button class="agent-tab" onclick="switchAgentTab('orch',this)">⚡ 调度</button>
+      <button class="agent-tab" onclick="switchAgentTab('optasks',this)">📋 任务板</button>
     </div>
     <!-- Tab: OP 监控 -->
     <div class="agent-tab-content visible" id="tab-opmon" style="flex-direction:column;overflow-y:auto;gap:0">
@@ -446,6 +449,22 @@ header .dot { width:8px; height:8px; background:var(--green); border-radius:50%;
       <div class="orch-footer">
         <button class="orch-btn" id="orch-btn" onclick="triggerOrchestrate()">⚡ 综合决策</button>
         <button class="orch-btn" style="flex:0.4;background:rgba(137,180,250,.1);color:var(--blue)" onclick="loadOrchestrate()">↻</button>
+      </div>
+    </div>
+    <!-- Tab: OpTaskBoard — op-tasks.md 可视化 -->
+    <div class="agent-tab-content" id="tab-optasks" style="flex-direction:column;overflow-y:auto;gap:0">
+      <div style="display:flex;gap:2px;padding:6px 10px;border-bottom:1px solid var(--overlay);font-size:11px;align-items:center">
+        <span style="color:var(--blue)">待做</span><span id="otb-pending" style="font-weight:700;color:var(--yellow)">-</span>
+        <span style="color:var(--muted);margin:0 4px">|</span>
+        <span style="color:var(--green)">完成</span><span id="otb-done" style="font-weight:700;color:var(--green)">-</span>
+        <span style="color:var(--muted);margin:0 4px">|</span>
+        <span style="color:var(--red)">失败</span><span id="otb-failed" style="font-weight:700;color:var(--red)">-</span>
+        <button onclick="loadOpTaskBoard()" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--subtext);font-size:12px">↻</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px 6px;flex:1;overflow-y:auto;font-size:11px">
+        <div id="otb-col-pending" style="background:rgba(137,180,250,.06);border-radius:6px;padding:4px;overflow-y:auto"></div>
+        <div id="otb-col-done" style="background:rgba(166,227,161,.06);border-radius:6px;padding:4px;overflow-y:auto"></div>
+        <div id="otb-col-failed" style="background:rgba(243,139,168,.06);border-radius:6px;padding:4px;overflow-y:auto"></div>
       </div>
     </div>
   </div>
@@ -1115,10 +1134,25 @@ function addTask() {
 
 async function loadOpStatus() {
   try {
-    const r = await fetch('/op-status');
-    const d = await r.json();
+    const [opRes, statusRes] = await Promise.all([fetch('/op-status'), fetch('/api/status')]);
+    const d = await opRes.json();
     renderOpMonitor(d);
+    if (statusRes.ok) renderServiceStatus(await statusRes.json());
   } catch(e) { console.error(e); }
+}
+
+function renderServiceStatus(data) {
+  const bar = document.getElementById('svc-bar');
+  if (!bar) return;
+  const svcs = data.services || {};
+  bar.innerHTML = Object.entries(svcs).map(([k,v]) =>
+    `<span style="color:${v==='ok'?'var(--green)':'var(--red)'}">●</span> ${k}`
+  ).join('  ');
+  const disks = data.disks || {};
+  const aiDisk = disks['/mnt/ai'];
+  if (aiDisk) {
+    document.getElementById('svc-disk').textContent = `AI盘 ${aiDisk.pct}`;
+  }
 }
 
 function renderOpMonitor(data) {
@@ -1317,7 +1351,7 @@ async function triggerDialog() {
 
 // ── Agent Hub 标签切换 ──────────────────────────────────────
 function switchAgentTab(tab, btn) {
-  ['opmon','dialog','discuss','orch','terminal'].forEach(t => {
+  ['opmon','dialog','discuss','orch','terminal','optasks'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if (el) { el.classList.remove('visible'); el.style.display='none'; }
   });
@@ -1328,7 +1362,39 @@ function switchAgentTab(tab, btn) {
   if (tab === 'discuss') loadDiscuss();
   if (tab === 'orch') loadOrchestrate();
   if (tab === 'opmon') loadOpStatus();
+  if (tab === 'optasks') loadOpTaskBoard();
 }
+
+async function loadOpTaskBoard() {
+  try {
+    const r = await fetch('/api/op-tasks');
+    const data = await r.json();
+    const text = data.content || '';
+    const lines = text.split('\n');
+    const pending = [], done = [], failed = [];
+    lines.forEach(l => {
+      const m = l.match(/^- \[([ x!])\]\s*(.*)/);
+      if (!m) return;
+      const [, status, content] = m;
+      const tags = (content.match(/\[(OP|CC|OP→CC|AGI→OP)\]/g) || []).join(' ');
+      const ts = (content.match(/\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}/) || [''])[0];
+      const title = content.replace(/\[.*?\]/g, '').trim().slice(0, 60);
+      const card = `<div style="padding:3px 4px;border-bottom:1px solid var(--overlay);font-size:10px">
+        <div style="color:var(--text)">${title}</div>
+        <div style="color:var(--muted);font-size:9px">${tags} ${ts}</div></div>`;
+      if (status === ' ') pending.push(card);
+      else if (status === 'x') done.push(card);
+      else if (status === '!') failed.push(card);
+    });
+    document.getElementById('otb-pending').textContent = pending.length;
+    document.getElementById('otb-done').textContent = done.length;
+    document.getElementById('otb-failed').textContent = failed.length;
+    document.getElementById('otb-col-pending').innerHTML = pending.slice(-20).reverse().join('');
+    document.getElementById('otb-col-done').innerHTML = done.slice(-20).reverse().join('');
+    document.getElementById('otb-col-failed').innerHTML = failed.slice(-20).reverse().join('');
+  } catch(e) { console.warn('loadOpTaskBoard error', e); }
+}
+setInterval(() => { if (document.getElementById('tab-optasks')?.classList.contains('visible')) loadOpTaskBoard(); }, 30000);
 
 // ── 架构讨论 ─────────────────────────────────────────────────
 async function triggerDiscuss() {

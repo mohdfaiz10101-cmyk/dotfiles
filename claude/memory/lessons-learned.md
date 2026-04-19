@@ -54,8 +54,6 @@
 - [2026-04-18] [GLM-5.1] agi-frontend 127 错误：bun run dev 调 next 但 node_modules/.bin/next 不存在（bun install 超时导致）。bun install 成功后恢复正常
 - [2026-04-18] [GLM-5.1] **OP 自动注入重复误报任务**：discord-butler/heartbeat-system-sentry/heartbeat-task-check/proxy-guardian/service-nurse 等 service unit 根本不存在，OP 监控循环反复报告"重启失败"并注入 op-tasks.md。根因：OP 检查服务列表时不区分"service 不存在"和"service 存在但失败"。修复：CC 批量标记为误报。建议：OP auto-fix-services 增加 `systemctl cat $svc` 前置检查，unit 不存在则跳过
 - [2026-04-18] [GLM-5.1] **Termux APK 安装流程**：F-Droid URL 格式已变（12KB 不是完整 APK），GitHub releases 直接下载 arm64 APK 更可靠。`curl -sL https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk` → `adb install` 成功
-- [2026-04-18] [Sonnet] AUTO_SKILL 执行漏检：输出了 [AUTO_SKILL] 可封装 但未调用 create-skill.py（累计 6 次，已合并重复记录）
-
 - [2026-04-18] [GLM-5.1] Capacitor 8.x 要求 Java 21，NixOS 默认 Java 17 → 降级到 Capacitor 6.x 解决
 - [2026-04-18] [GLM-5.1] hub-caddy service 原用 caddy binary（nix store 过期）→ 改用 Python http.server 临时替代
 - [2026-04-18] [GLM-5.1] discord-butler/service-nurse/heartbeat-system-sentry 失败根因：systemd service 文件从未创建
@@ -76,3 +74,36 @@
 
 - [2026-04-19] [GLM-5.1] service-nurse 巡检诊断结论：(1) glm-proxy.service 僵尸服务 ExecStart=/bin/true（NixOS 无 /bin/true），已 disable+mask+reset-failed；(2) image-captioner.service WorkingDirectory=/mnt/ai/ai-cluster/unified-search 不存在（目录从未创建）；(3) cookie-sync-server :9977 返回空响应非故障，服务只有 /cookies 端点有 handler；(4) health-monitor 系统服务 30s 超时，脚本内 Telegram API 阻塞
 - [2026-04-19] [Sonnet] OP→CC 升级项排查结论：discord-butler/proxy-guardian/service-nurse 的 systemd unit 实际存在（opencode-job-* service+timer），凌晨 LiteLLM 不可达导致 op-adaptive-gate 失败→AGI Brain 误报为 agent 重启失败。当前 3 个 service 状态均为 inactive/success，问题已自愈。根因是凌晨 LiteLLM 服务短暂不可用
+
+- [2026-04-19] [GLM-5.1] launcher-server.py auth 踩坑：do_POST 中 _check_auth() 必须在 rfile.read(length) 之前调用，否则 body 已被消费导致后续 handler 读不到数据 → BrokenPipeError。正确顺序：auth check → read body → dispatch route
+
+- [2026-04-19] [GLM-5.1] launcher-server.py Bearer Token auth 实现：LAUNCHER_TOKEN 环境变量（默认 launcher-local-2026），LOCAL_ONLY_AUTH=1 时 localhost 请求（127.0.0.1/::1）自动放行，远程请求需 Authorization: Bearer {token} header
+
+- [2026-04-19] [GLM-5.1] crm.html 微信面板踩坑：fetch 9875 messages API 返回的 JSON 含 emoji/control chars 导致 Python json.load 失败，但浏览器 JS fetch 正常处理。chat 参数需 encodeURIComponent 编码
+
+- [2026-04-19] [GLM-5.1] OP→CC 告警模式识别：所有 opencode-job-* 服务告警都是 AGI Brain 误报（LiteLLM 短暂不可达后自愈），服务 exit 0 正常完成后 Brain 误判为重启失败。标记 [x] 即可，无需实际修复
+- [2026-04-19] [Sonnet] 成本优化5项：(1) OP定时任务 glm-5.1→glm-4.7 省推理开销 (2) Router high_token 正则收紧，避免'文档/报告'等常用词误推 DeepSeek (3) fast 规则增加运维查询模式（cat/ls/grep/systemctl/curl 等）(4) system-sentry 从 opencode 进程改为纯 bash 脚本，内存 711MB→19MB (5) sentry timeout 120→300s 防 ALRM 被杀。已写入 AUTO_COST_OPTIMIZE 死规则，agent 以后自动执行类似优化。
+- [2026-04-19] [Sonnet] AUTO_SKILL 执行漏检：输出了 [AUTO_SKILL] 可封装 但未调用 create-skill.py（累计 7 次）
+- [2026-04-19] [GLM-5.1] 场景：AGI Control Plane Dashboard 数据对不上
+  问题1: /api/tasks done/fail 返回 bool，前端期望 int → done===0 永远 false
+  问题2: /api/systemd 返回 dict{str:str}，前端期望 SystemdService[] 数组 → safeArray 得空
+  问题3: systemctl --user show MemoryCurrent 返回 "[not set]" → int() 崩溃
+  修复: (1) done/fail 改为 0/1 int (2) systemd 改返回 [{name,active,sub,memory_mb,cpu_percent}] (3) safe_int 处理 [not set]
+  教训: **前后端类型必须对齐** — TypeScript interface vs Python 返回值，任何 bool/int/数组/字典 不匹配都会导致前端静默显示空数据
+
+- [2026-04-19] [Opus] **op-exec.sh formatter 修复：opencode --format json 实际输出格式**
+  - 场景：op-exec.sh 调用 opencode run --format json 后 formatter 没有捕获执行结果
+  - 根因：opencode JSON 格式中 `tool_use` 事件的数据在 `part.state.input/output/metadata` 下，而非直接在 `part.input`
+  - 三种事件类型：`step_start`(空), `tool_use`(含 state.status/input/output/metadata.exit), `text`(part.text), `step_finish`(reason=stop/tool-calls)
+  - 修复：重写 formatter 按实际格式解析 state 字段，捕获 bash 命令+输出+退出码
+  - 教训：opencode 的 --format json 与 Claude API 格式不同，必须先抓原始输出再写 parser
+
+- [2026-04-19] [Opus] **OP prompt 优化：精简指令 GLM 执行效率高 3 倍**
+  - 场景：冗长 prompt（含多条规则）导致 GLM token 耗尽，没完成最后的 sed 标记
+  - 修复：精简为 5 行指令（角色 + 规则 + sed 命令 + 任务 + 开始），GLM 每次任务只用 ~47K tokens
+  - 教训：GLM 上下文有限（~45K 有效），prompt 越短效率越高；任务 ID 用变量提取，sed 命令直接嵌入 prompt
+
+- [2026-04-19] [Opus] **NixOS systemd user service 不能用 /bin/bash**
+  - 场景：GLM 创建 systemd service 使用 /bin/bash，NixOS 没有此路径
+  - 修复：改用 /run/current-system/sw/bin/bash 或 ExecStart 直接指向脚本文件（脚本用 #!/usr/bin/env bash shebang）
+  - 教训：NixOS systemd unit 的 ExecStart 必须用绝对路径，且只有 /run/current-system/sw/bin/ 下的命令可靠

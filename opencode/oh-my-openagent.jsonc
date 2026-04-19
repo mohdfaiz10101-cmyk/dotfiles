@@ -37,7 +37,7 @@
     },
     "hephaestus": {
       "description": "深度执行器 — 长上下文代码生成、复杂重构",
-      "model": "openai-compatible/deepseek-v3.2",
+      "model": "openai-compatible/glm-5.1",
       "temperature": 0.2,
       "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。"
     },
@@ -55,7 +55,7 @@
     },
     "explore": {
       "description": "代码搜索员 — 定位文件、函数、实现模式",
-      "model": "openai-compatible/glm-4.7",
+      "model": "openai-compatible/glm-5-turbo",
       "temperature": 0.1,
       "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。"
     },

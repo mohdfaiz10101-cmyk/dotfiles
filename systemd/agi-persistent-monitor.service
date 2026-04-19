@@ -1,0 +1,12 @@
+[Unit]
+Description=AGI 常驻监控面板（tmux agi-monitor）
+
+[Service]
+Type=forking
+ExecStartPre=-/run/current-system/sw/bin/tmux kill-session -t agi-monitor
+ExecStart=/run/current-system/sw/bin/tmux new-session -d -s agi-monitor /run/current-system/sw/bin/bash %h/.local/bin/agi-persistent-monitor.sh
+ExecStop=/run/current-system/sw/bin/tmux kill-session -t agi-monitor
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

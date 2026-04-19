@@ -1,0 +1,6 @@
+[Unit]
+Description=唤醒 Windows (WOL magic packet)
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/wol-windows.sh

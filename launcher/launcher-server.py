@@ -14,6 +14,28 @@ import urllib.request as ureq
 from datetime import datetime
 
 PORT = 9875
+LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "launcher-local-2026")
+LOCAL_ONLY_AUTH = os.environ.get("LAUNCHER_LOCAL_ONLY", "1") == "1"
+
+
+def _check_auth(handler):
+    """Bearer Token + 本地来源校验。本地请求直接放行，远程需 Bearer Token。"""
+    if LOCAL_ONLY_AUTH:
+        client_ip = handler.client_address[0]
+        if client_ip in ("127.0.0.1", "::1", "localhost"):
+            return True
+    auth = handler.headers.get("Authorization", "")
+    if auth == f"Bearer {LAUNCHER_TOKEN}":
+        return True
+    handler.send_response(401)
+    handler.send_header("Content-Type", "application/json")
+    handler.send_header("Access-Control-Allow-Origin", "*")
+    handler.end_headers()
+    handler.wfile.write(
+        json.dumps({"error": "unauthorized", "hint": "Bearer token required"}).encode()
+    )
+    return False
+
 
 # ── GLM-4.7 统一高质量系统提示 ────────────────────────────────────────────────
 _GLM_SYSTEM_BASE = """Charlie 的 NixOS 系统助手。背景：NixOS 26.05 / RTX 3060Ti / 12核 / 24GB，CC（Claude Code规划层）+ OP（OpenCode执行层），服务：LiteLLM:4000 / Letta:8283 / AGI Brain / charlie-hub:9875。直接用中文给出行动建议，不复述任务，不分析提示词，不说"作为AI"，回答完整不截断。"""
@@ -41,6 +63,9 @@ class LauncherHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+
+        if parsed.path.startswith("/api/") and not _check_auth(self):
+            return
 
         if parsed.path == "/chronos-data":
             self._serve_chronos_data()
@@ -86,6 +111,17 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             self._serve_op_tasks_pending()
             return
 
+        if parsed.path == "/api/op-tasks":
+            f = os.path.expanduser(
+                "~/.claude/projects/-home-charlie/memory/op-tasks.md"
+            )
+            try:
+                with open(f, "r", encoding="utf-8") as fh:
+                    self._json_response({"content": fh.read()})
+            except FileNotFoundError:
+                self._json_response({"content": ""})
+            return
+
         if parsed.path == "/api/cc-op-discuss-history":
             f = os.path.expanduser(
                 "~/.claude/projects/-home-charlie/memory/cc-op-discuss.jsonl"
@@ -127,6 +163,10 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             except FileNotFoundError:
                 pass
             self._json_response({"decisions": decisions[-10:]})
+            return
+
+        if parsed.path == "/api/status":
+            self._serve_api_status()
             return
 
         if parsed.path == "/api/dashboard":
@@ -286,6 +326,10 @@ class LauncherHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urllib.parse.urlparse(self.path)
+
+        if parsed.path.startswith("/api/") and not _check_auth(self):
+            return
+
         length = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(length)
 
@@ -1030,9 +1074,73 @@ class LauncherHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(payload)
 
+    def _serve_api_status(self):
+        """系统状态摘要：核心服务健康、磁盘、OP任务数"""
+        import subprocess as _sp
+
+        services = {}
+        checks = [
+            ("litellm", "http://localhost:4000/health"),
+            ("letta", "http://localhost:8283/v1/models"),
+            ("hub-api", "http://localhost:9801/health"),
+            ("launcher", "http://localhost:9875/"),
+            ("crm-static", "http://localhost:9876/"),
+            ("frontend", "http://localhost:3000/"),
+        ]
+        for name, url in checks:
+            try:
+                req = ureq.Request(url, method="GET")
+                req.add_header("Authorization", "Bearer sk-litellm-charlie-2026")
+                ureq.urlopen(req, timeout=3)
+                services[name] = "ok"
+            except Exception:
+                services[name] = "down"
+
+        disks = {}
+        try:
+            out = _sp.check_output(["df", "-h", "/", "/mnt/ai"], text=True, timeout=5)
+            lines = out.strip().splitlines()[1:]
+            for line in lines:
+                parts = line.split()
+                if len(parts) >= 6:
+                    disks[parts[5]] = {
+                        "used": parts[2],
+                        "total": parts[1],
+                        "pct": parts[4],
+                    }
+        except Exception:
+            pass
+
+        op_pending = 0
+        op_done = 0
+        try:
+            with open(
+                os.path.expanduser(
+                    "~/.claude/projects/-home-charlie/memory/op-tasks.md"
+                ),
+                "r",
+            ) as f:
+                for line in f:
+                    if line.strip().startswith("- [ ]"):
+                        op_pending += 1
+                    elif line.strip().startswith("- [x]"):
+                        op_done += 1
+        except Exception:
+            pass
+
+        self._json_response(
+            {
+                "services": services,
+                "disks": disks,
+                "op_tasks": {"pending": op_pending, "done": op_done},
+                "timestamp": datetime.now().isoformat(),
+            }
+        )
+
     def _serve_quota(self):
         """Return GLM estimated cost + Claude session count for today."""
         from datetime import date
+
         today = date.today().isoformat()
 
         # Claude sessions today from history.jsonl
@@ -1071,7 +1179,9 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             pass
 
         # Also count from AGI Brain audit log if available
-        audit_log = os.path.expanduser("~/.claude/projects/-home-charlie/memory/agi-audit-log.jsonl")
+        audit_log = os.path.expanduser(
+            "~/.claude/projects/-home-charlie/memory/agi-audit-log.jsonl"
+        )
         try:
             with open(audit_log, "r") as f:
                 for line in f:
@@ -1080,7 +1190,11 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                         continue
                     try:
                         entry = json.loads(line)
-                        if entry.get("ts", "").startswith(today) and entry.get("type") == "cycle" and not entry.get("skipped_llm"):
+                        if (
+                            entry.get("ts", "").startswith(today)
+                            and entry.get("type") == "cycle"
+                            and not entry.get("skipped_llm")
+                        ):
                             glm_calls_today += 1
                             glm_cost_today += 0.0005  # ~$0.0005 per GLM-4-flash call
                     except Exception:
@@ -1088,12 +1202,14 @@ class LauncherHandler(SimpleHTTPRequestHandler):
         except FileNotFoundError:
             pass
 
-        self._json_response({
-            "claude_sessions_today": len(sessions_today),
-            "glm_calls_today": glm_calls_today,
-            "glm_cost_today": round(glm_cost_today, 4),
-            "date": today,
-        })
+        self._json_response(
+            {
+                "claude_sessions_today": len(sessions_today),
+                "glm_calls_today": glm_calls_today,
+                "glm_cost_today": round(glm_cost_today, 4),
+                "date": today,
+            }
+        )
 
     def _serve_kanban_data(self):
         todo_file = os.path.expanduser(

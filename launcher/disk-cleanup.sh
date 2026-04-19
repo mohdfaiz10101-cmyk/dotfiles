@@ -3,7 +3,8 @@
 
 set -euo pipefail
 
-LOG="/var/log/disk-cleanup.log"
+LOG="$HOME/.local/log/disk-cleanup.log"
+mkdir -p "$(dirname "$LOG")"
 echo "[$(date)] 开始磁盘清理" >> "$LOG"
 
 # 1. 清理 tmp 旧文件（7天前）
@@ -15,11 +16,11 @@ find ~/.paperclip/instances/default/data/run-logs -name "*.ndjson" -mtime +30 -d
 # 3. 清理 memory-dream 备份（7天前）
 find ~/.cache/memory-dream/backups -type d -mtime +7 -exec rm -rf {} + 2>/dev/null || true
 
-# 4. 清理 systemd journal（保留1个月）
-sudo journalctl --vacuum-time=30d >> "$LOG" 2>&1
+# 4. 清理 systemd journal（保留1个月）- 跳过（需要root权限）
+# sudo journalctl --vacuum-time=30d >> "$LOG" 2>&1
 
-# 5. Nix store 垃圾回收（删除未使用的包）
-nix-collect-garbage -d >> "$LOG" 2>&1
+# 5. Nix store 垃圾回收（删除未使用的包）- 跳过（需要root权限，避免误删）
+# nix-collect-garbage -d >> "$LOG" 2>&1
 
 echo "[$(date)] 清理完成" >> "$LOG"
 df -h / >> "$LOG"

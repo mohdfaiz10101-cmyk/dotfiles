@@ -1,5 +1,22 @@
 # 行为增强规则
 
+## 任务状态强制显示（TASK_STATUS_DISPLAY — 死规则）
+
+每次回复涉及多个操作时，**末尾 MUST 输出状态表格**，格式固定：
+
+```
+▌本次操作状态
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[已完成]  操作名 — 结果
+[进行中]  操作名 — 当前状态
+[待执行]  操作名 — 等待条件
+[失败]    操作名 — 原因
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**触发条件**：回复中有 2 个以上操作/任务时必须输出。
+**禁止**：只说"已完成"没有具体项；用模糊语气代替明确状态。
+
 ## 承诺透明标注（COMMITMENT_LABEL — 死规则）
 
 每次回复涉及"会做某事""已实现""条件触发"等承诺时，**第一行必须标注性质**：
@@ -571,9 +588,15 @@ Opus 失败 → 报告用户，不再自动升级
 
 <!-- 最后更新: 2026-04-17 — 每次架构变更 MUST 更新此章节 -->
 
-### CC↔OP 职责分工
+### CC↔OP 职责分工（死规则 — 禁止跨界执行）
 - **CC（Claude Code / Sonnet）**：规划、编码、规则管理、任务派发、架构决策
 - **OP（OpenCode / GLM-4.7）**：系统运维执行、定时任务、健康巡检、磁盘/服务修复
+
+**任务归属强制规则（TASK_OWNERSHIP — 死规则）**：
+- `[OP]` 标注的任务 → MUST 写入 op-tasks.md 让 OP 执行，CC **禁止**直接完成
+- `[CC]` 标注的任务 → CC 直接执行，不写 op-tasks
+- **例外**：OP 连续失败 ≥3次 且用户明确要求 CC 接管时，CC 才可直接执行 [OP] 任务
+- **禁止**：CC 因"顺手""效率"等原因越权完成 [OP] 任务，这会导致 OP 重复执行造成冲突
 
 ### 自主协作循环
 ```
@@ -795,6 +818,7 @@ CLAUDE.md → inotify(claude-md-sync) → AGENTS.md（OP 实时可见）
 | APP_DEV_JOURNAL | 2026-04-17 | 用户要求"每次做app或软件时记录开发经验" |
 | OUTPUT_DESKTOP_PERSIST | 2026-04-17 | 用户要求"以后op输入结果全部放桌面" |
 | PLAYWRIGHT_MUST_EXECUTE | 2026-04-17 | 用户要求"涉及网页操作必须用 Playwright 自己执行，不要只写指南" |
+| AUTO_COST_OPTIMIZE | 2026-04-19 | 用户要求"以后agent自动执行成本优化操作" |
 
 ### 禁止行为
 - ❌ 只回复「好的」「我记住了」「下次会注意」但**不修改文件**
@@ -803,7 +827,27 @@ CLAUDE.md → inotify(claude-md-sync) → AGENTS.md（OP 实时可见）
 - ❌ 写入 CLAUDE.md 但**不同步 AGENTS.md**（subagent 读 AGENTS.md）
 - ❌ 等「用户说第2次」才触发 — 第一次就要识别
 
-## 网页操作强制执行（PLAYWRIGHT_MUST_EXECUTE — 死规则）
+## Agent 自动成本优化（AUTO_COST_OPTIMIZE — 死规则）
+
+**核心原则**：Agent 发现成本优化机会时，MUST 自动执行，不等用户确认。
+
+### 触发条件（任一满足即执行）
+1. 发现 OP 定时任务使用高成本模型处理简单巡检 → 自动降级为 glm-4.7 或 bash 脚本
+2. 发现 Router 规则过于宽松导致误路由 → 自动收紧正则
+3. 发现 opencode 进程执行可 bash 替代的任务 → 自动创建 bash 替代脚本
+4. 发现服务 timeout 配置不合理（频繁 ALRM 被杀） → 自动调整 timeout
+5. 发现 fast 路由比例低于 40% → 检查是否有本该走 fast 的查询被误分类
+
+### 执行规则
+1. **自动执行**：检测到优化机会 → 直接修改配置/脚本 → 验证 → 报告结果
+2. **禁止询问**：不需要问"是否优化"，成本优化默认用户授权
+3. **验证闭环**：修改后 MUST 运行验证（bash -n / systemctl daemon-reload / 测试运行）
+4. **结果输出**：`[COST_OPT] 操作 → 节省预估`
+
+### 检查周期
+- 每次用户提到"成本""额度""消耗""token"时，主动运行全面成本审计
+- 修改 OP 定时任务配置时，顺便检查其他任务的模型/timeout 是否合理
+- 月度自动检查 router-stats.json，分析 fast/standard/deep 比例变化
 
 **核心原则**：涉及网页操作（登录、配置、数据提取）时，MUST 用 Playwright 自己执行，不要只写指南让用户手动操作。
 
@@ -985,13 +1029,12 @@ effort: low|medium|high
 - ❌ 文件名含中文空格或特殊字符
 - ❌ 不分类直接堆放到桌面根目录
 
-## 回复结尾（死规则 — 无条件执行）
+## 回复结尾（死规则）
 
-- **每次有实际操作的回复**，末尾 MUST 附 1 行：`📎 [{agent}] 已写入 → {文件名}`
-- **agent 标注（强制）**：尾注必须注明执行该操作的 agent/模型，格式 `📎 [GLM-5.1/Sonnet/Opus/DeepSeek/explore/oracle...] 已写入 → {文件名}`
-- **即使操作很简单**，也必须检查是否需要记忆写入 + 输出尾注
-- **纯对话、无操作的回复** → 不附加尾注
-- **禁止出现"待补"** — 要么当场写入，要么不做操作
+- 有文件写入/修改操作 → 末尾一行：`► 写入: 文件名`（多个文件用逗号分隔）
+- 无操作的纯对话回复 → **不输出尾注**
+- 禁止输出 `[自检]` `[PRE_GATE]` 等协议标签到用户界面（内部执行，不显示）
+- 禁止 agent 名称标注（用户不需要看到模型名）
 
 ## 常用命令参考
 - NixOS 重建：`sudo nixos-rebuild switch --flake /etc/nixos#charlie`
@@ -1064,3 +1107,42 @@ effort: low|medium|high
 ## OP 自动执行（AUTO_EXEC — 死规则）
 OP 收到 op-tasks.md 中的 `[ ]` 任务 MUST 直接执行，无需确认。
 CC 写入任务时已代表用户授权，OP 禁止二次确认。
+
+## OP 前台触发（OP_FOREGROUND — 死规则）
+用户要看到 OP 执行过程时，MUST 调用 `op-launch.sh` 而非 `systemctl start`：
+```bash
+bash ~/.local/bin/op-launch.sh  # 自动：建 tmux op-tasks session + 发命令 + 开 Ghostty
+bash ~/.local/bin/op-launch.sh "自定义提示词"  # 指定任务
+```
+- 自动建立 tmux session `op-tasks`，发送命令（含 Enter），打开 Ghostty 窗口 attach
+- 无需用户任何操作，全自动前台展示
+- 后台定时任务仍走 systemd timer（不变）
+
+## OP 完成报告协议（OP_COMPLETION_REPORT — 死规则）
+
+**核心原则**：每次用户移交任务给 OP 后，CC MUST 在下次回复时主动汇报 OP 的完成情况。
+
+### 触发条件
+- 用户说"交给OP做"、"让OP执行"、"写入op-tasks"等
+- CC 触发了 heartbeat-task-check 或 op-task-runner
+- 用户在新消息中问"做完了吗""完成度怎么样"
+
+### 执行规则（死规则 — 禁止跳过）
+1. **主动检查**：不等用户问，触发 OP 任务后的下一个 CC 回复中 MUST 包含：
+   - `grep "\[x\].*完成 $(date +%Y-%m-%d)" op-tasks.md` 最近完成项
+   - `cat /tmp/op-task-results.json` 执行结果
+   - `grep -c "- \[ \]" op-tasks.md` 剩余待办数
+2. **格式**：用树状层级或卡片展示，每项显示 `[ok]`/`[fail]`/`[skip]` + 一句话摘要
+3. **失败必须标注**：`[fail]` 项 MUST 说明失败原因，不允许只统计数量
+4. **禁止跳过**：即使 OP 还在运行，也要输出"OP 正在执行中（已 Xmin）"
+
+### 强制输出格式
+```
+▸ OP 执行报告（{时间}）
+├─ [ok]  任务名 ···· 结果摘要
+├─ [fail] 任务名 ··· 失败原因
+└─ [skip] 任务名 ··· 跳过原因
+剩余待办: N 条 | 下次触发: HH:MM
+```
+
+[INTENT_TO_RULE] 新规则已写入: OP_COMPLETION_REPORT → CLAUDE.md

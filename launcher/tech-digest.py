@@ -15,7 +15,9 @@ import xml.etree.ElementTree as ET
 
 # ── Constants ──────────────────────────────────────────────────────
 
-PROXY = os.environ.get("HTTPS_PROXY", os.environ.get("HTTP_PROXY", "http://127.0.0.1:7890"))
+PROXY = os.environ.get(
+    "HTTPS_PROXY", os.environ.get("HTTP_PROXY", "http://127.0.0.1:7890")
+)
 ROADMAP_PATH = os.path.expanduser(
     "~/.claude/projects/-home-charlie/memory/ideas-roadmap.md"
 )
@@ -37,24 +39,26 @@ TRANSLATE_MODEL = os.environ.get("TRANSLATE_MODEL", "qwen3:8b-nothink")
 
 # ── Translation ────────────────────────────────────────────────────
 
+
 def translate_batch(texts, timeout=60):
     """Translate a list of texts to Chinese via Ollama in one call."""
     if not texts:
         return []
-    numbered = "\n".join(f"{i+1}. {t}" for i, t in enumerate(texts) if t)
+    numbered = "\n".join(f"{i + 1}. {t}" for i, t in enumerate(texts) if t)
     if not numbered:
         return texts
     prompt = (
         "Translate each line below to Chinese. "
-        "Keep the number prefix. Output ONLY translations, nothing else.\n\n"
-        + numbered
+        "Keep the number prefix. Output ONLY translations, nothing else.\n\n" + numbered
     )
-    payload = json.dumps({
-        "model": TRANSLATE_MODEL,
-        "prompt": prompt,
-        "stream": False,
-        "options": {"temperature": 0.1},
-    }).encode("utf-8")
+    payload = json.dumps(
+        {
+            "model": TRANSLATE_MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "options": {"temperature": 0.1},
+        }
+    ).encode("utf-8")
     req = urllib.request.Request(
         OLLAMA_URL,
         data=payload,
@@ -102,14 +106,19 @@ def translate_items(items, fields=("summary",)):
 
 # ── Network helpers ────────────────────────────────────────────────
 
+
 def build_opener(use_proxy=True):
     """Build urllib opener with optional proxy."""
     handlers = [urllib.request.HTTPSHandler()]
     if use_proxy and PROXY:
-        handlers.append(urllib.request.ProxyHandler({
-            "http": PROXY,
-            "https": PROXY,
-        }))
+        handlers.append(
+            urllib.request.ProxyHandler(
+                {
+                    "http": PROXY,
+                    "https": PROXY,
+                }
+            )
+        )
     return urllib.request.build_opener(*handlers)
 
 
@@ -128,6 +137,7 @@ def fetch_xml(url, opener, timeout=20):
 
 
 # ── GitHub Trending ────────────────────────────────────────────────
+
 
 def fetch_github(keywords, opener, days=7):
     """Fetch trending repos created in the last N days."""
@@ -148,20 +158,23 @@ def fetch_github(keywords, opener, days=7):
 
     items = []
     for repo in data.get("items", []):
-        items.append({
-            "title": repo["full_name"],
-            "url": repo["html_url"],
-            "summary": (repo.get("description") or "")[:120],
-            "stars": repo.get("stargazers_count", 0),
-            "language": repo.get("language") or "—",
-            "date": repo.get("created_at", "")[:10],
-            "source": "github",
-        })
+        items.append(
+            {
+                "title": repo["full_name"],
+                "url": repo["html_url"],
+                "summary": (repo.get("description") or "")[:120],
+                "stars": repo.get("stargazers_count", 0),
+                "language": repo.get("language") or "—",
+                "date": repo.get("created_at", "")[:10],
+                "source": "github",
+            }
+        )
     translate_items(items, fields=("summary",))
     return items
 
 
 # ── arXiv Papers ───────────────────────────────────────────────────
+
 
 def fetch_arxiv(keywords, opener):
     """Fetch recent arXiv papers matching keywords."""
@@ -200,18 +213,21 @@ def fetch_arxiv(keywords, opener):
 
         published = entry.find("atom:published", ns).text[:10]
 
-        items.append({
-            "title": title,
-            "url": pdf_url,
-            "summary": summary,
-            "date": published,
-            "source": "arxiv",
-        })
+        items.append(
+            {
+                "title": title,
+                "url": pdf_url,
+                "summary": summary,
+                "date": published,
+                "source": "arxiv",
+            }
+        )
     translate_items(items, fields=("title", "summary"))
     return items
 
 
 # ── Hacker News ────────────────────────────────────────────────────
+
 
 def fetch_hn(keywords, opener, top_n=50):
     """Fetch top HN stories and filter by keywords."""
@@ -227,20 +243,23 @@ def fetch_hn(keywords, opener, top_n=50):
         if not story or story.get("type") != "story" or not story.get("url"):
             continue
 
-        items.append({
-            "title": story.get("title", ""),
-            "url": story.get("url", ""),
-            "summary": "",
-            "score": story.get("score", 0),
-            "comments": story.get("descendants", 0),
-            "by": story.get("by", ""),
-            "source": "hn",
-        })
+        items.append(
+            {
+                "title": story.get("title", ""),
+                "url": story.get("url", ""),
+                "summary": "",
+                "score": story.get("score", 0),
+                "comments": story.get("descendants", 0),
+                "by": story.get("by", ""),
+                "source": "hn",
+            }
+        )
     translate_items(items, fields=("title",))
     return items
 
 
 # ── Scoring & formatting ──────────────────────────────────────────
+
 
 def score_results(items, keywords):
     """Score items by keyword relevance and return top N."""
@@ -256,7 +275,7 @@ def truncate(text, max_len=60):
     """Truncate text with ellipsis."""
     text = text.replace("|", " ").replace("\n", " ").strip()
     if len(text) > max_len:
-        return text[:max_len - 1] + "…"
+        return text[: max_len - 1] + "…"
     return text
 
 
@@ -334,6 +353,7 @@ def append_report(markdown, path):
 
 # ── CLI ────────────────────────────────────────────────────────────
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Tech Digest Pipeline")
     parser.add_argument(
@@ -346,7 +366,7 @@ def parse_args():
         "--keywords",
         type=str,
         default=None,
-        help='Comma-separated keywords (overrides defaults for all sources)',
+        help="Comma-separated keywords (overrides defaults for all sources)",
     )
     parser.add_argument(
         "--limit",
@@ -374,9 +394,7 @@ def main():
         keywords = DEFAULT_KEYWORDS
 
     sources_to_run = (
-        ["github", "arxiv", "hn"]
-        if args.source == "all"
-        else [args.source]
+        ["github", "arxiv", "hn"] if args.source == "all" else [args.source]
     )
 
     opener = build_opener(use_proxy=True)
@@ -404,6 +422,30 @@ def main():
         limit=args.limit,
     )
     append_report(report, args.output)
+
+    # Write JSON output for 3000 dashboard
+    import pathlib
+
+    json_out = pathlib.Path.home() / "Desktop" / "巡检报告" / "tech-digest-latest.json"
+    json_out.parent.mkdir(parents=True, exist_ok=True)
+    json_items = []
+    for src, items in results.items():
+        for item in items[:10]:
+            json_items.append(
+                {
+                    "title": item.get("title", ""),
+                    "summary": item.get("title", "")[:100],
+                    "source": src,
+                    "ts": datetime.date.today().isoformat(),
+                }
+            )
+    json_out.write_text(
+        json.dumps(
+            {"title": "Tech Digest", "items": json_items[:30]},
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

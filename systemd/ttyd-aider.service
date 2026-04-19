@@ -4,11 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7693 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -W /home/charlie/.nix-profile/bin/aider
+ExecStart=/run/current-system/sw/bin/ttyd -p 7693 -t fontSize=13 -W /run/current-system/sw/bin/bash --login
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
 
 [Install]
 WantedBy=default.target

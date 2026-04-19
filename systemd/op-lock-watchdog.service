@@ -1,0 +1,8 @@
+[Unit]
+Description=OP Lock Watchdog — 自动修复卡死的 OP 进程
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/op-lock-watchdog.sh
+StandardOutput=journal
+StandardError=journal
