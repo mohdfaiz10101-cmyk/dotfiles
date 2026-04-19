@@ -458,3 +458,4 @@
 - [ ] [OP→CC] [2026-04-20 00:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-20 00:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-20 01:40] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-20 02:29] [low] 验证服务状态获取逻辑，确认系统服务是否正常运行
