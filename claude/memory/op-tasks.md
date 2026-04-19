@@ -462,3 +462,6 @@
 
 ### [SELF-IMPROVE 2026-04-20] GLM 自动代码审查
 - [ ] [SELF-IMPROVE] launcher-server.py: 移除硬编码的默认令牌"launcher-local-2026"，改为在未设置LAUNCHER_TOKEN环境变量时拒绝启动，以避免潜在的安全风险。
+- [ ] [AGI→OP] [2026-04-20 04:31] [medium] 检查进程 744839 (python3.13) 的命令行参数及状态，确认是否为预期的 AI 推理/训练任务
+- [ ] [AGI→OP] [2026-04-20 05:16] [medium] 确认关键服务状态（如未显示）
+- [ ] [AGI→OP] [2026-04-20 05:30] [medium] 调查进程 950357 (python3.13) 的详细运行状态和资源消耗原因

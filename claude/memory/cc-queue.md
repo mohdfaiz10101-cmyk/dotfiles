@@ -70,3 +70,12 @@
 - [ ] [CC接管-失败返工] [2026-04-20 01:36] [high] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中心"Tab：任务看板(读op-tasks.md)、实时Feed(轮询op-live-feed.jsonl)、AGI状态(curl 9900)、触发OP按钮。参考/mnt/ai/apps/agi-control-plane/frontend/app/components/launcher/LauncherPanel.tsx格式
 - [ ] [CC接管-OP回流] [2026-04-20 01:36] [high] [2026-04-20 00:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [CC接管-OP回流] [2026-04-20 01:36] [high] [2026-04-20 00:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+
+## CC 审计接管 [2026-04-20 05:36]
+- [ ] [CC接管-失败返工] [2026-04-20 05:36] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
+- [ ] [CC接管-失败返工] [2026-04-20 05:36] [high] [失败 2026-04-19 23:02] EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次执行超限 邮件索引：(1) SSH Windows 192.168.2.36 找 DreamMail6 数据目录 (C:\\Users\\G\\AppData\\Roaming\\DreamMail 或 Program Files\\DreamMail6)，列出邮件文件；(2) sde1 只有 BoxCounter.ini 元数据，无实际邮件；(3) 找到邮件后 scp 到 /mnt/ai/data/dreammail-export/，解析写 email-index.json，top-500 发件人/收件人索引到 Letta
+- [ ] [CC接管-失败返工] [2026-04-20 05:36] [high] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 systemd 服务，需先实现 digest 生成器（roo-digest 脚本存在但无输出文件）
+- [ ] [CC接管-失败返工] [2026-04-20 05:36] [high] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中心"Tab：任务看板(读op-tasks.md)、实时Feed(轮询op-live-feed.jsonl)、AGI状态(curl 9900)、触发OP按钮。参考/mnt/ai/apps/agi-control-plane/frontend/app/components/launcher/LauncherPanel.tsx格式
+- [ ] [CC接管-OP回流] [2026-04-20 05:36] [high] [2026-04-20 00:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [CC接管-OP回流] [2026-04-20 05:36] [high] [2026-04-20 00:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [CC接管-OP回流] [2026-04-20 05:36] [high] [2026-04-20 01:40] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
