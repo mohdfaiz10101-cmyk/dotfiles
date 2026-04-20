@@ -1,0 +1,10 @@
+[Unit]
+Description=Recoll idle-index update timer (user)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+Unit=recoll-idle-index.service
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=闲置时更新 fsearch 索引
+ConditionPathExists=%h/.local/bin/check-idle.sh
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/fsearch --update-database
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7
+CPUWeight=1
+MemoryHigh=256M
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

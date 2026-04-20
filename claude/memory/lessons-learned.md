@@ -1,5 +1,7 @@
 # 踩坑日志
 
+- [2026-04-20] [Sonnet] **高返工率根因：先修后诊断** — ANSI乱码修了3轮，每次只改症状未验证假设。死规则：修复前先写假设+验证命令，确认根因后再动手。命令示例：`echo -e '\x1b[<17;35;24M' | sed '...' | xxd` 这类一行验证。
+
 - [2026-04-20] [Sonnet] **find扫NTFS大分区引发IO等待+swap耗尽**
   - 场景：CC 发起 `find /mnt/win_c /mnt/data` 搜索DreamMail，3个并行find进程拖满IO
   - 教训：NTFS扫描任务必须写入OP低优先级任务队列（[low]标注），不得在CC会话中同步执行
@@ -138,3 +140,7 @@
   相关文件：opencode/AGENTS.md, opencode/opencode.json
 - [2026-04-20] [Aider] fix: 恢复 opencode.json 真实内容（第二次循环链接修复）
   相关文件：opencode/opencode.json
+- [2026-04-20] [Aider] fix: 清除循环链接+废链接（AGENTS.md/opencode.json修复，28个废链接删除）
+  相关文件：claude/memory/agi-audit-log.jsonl, claude/memory/lessons-learned.md, claude/memory/op-tasks.md, opencode/AGENTS.md, opencode/opencode.json
+- [2026-04-20] [Aider] fix: AGENTS.md 补充 nixos-rebuild 完整命令格式（必须指定 #charlie）
+  相关文件：opencode/AGENTS.md

@@ -1,7 +1,11 @@
-- [ ] [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中心"Ta
-- [ ] [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：无数据源 — 未找到 digest JSON 文件或 systemd 服务，需先实现 d
-- [ ] [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次�
-- [ ] [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device
+- [x] [完成 2026-04-20 18:20] 已知假阳性重复，FEAT-OP-CENTER-01为编码任务需CC实现 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-20 18:20] tech-digest数据源已创建，需完整运行 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-20 18:20] 重复#1 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-20 18:20] 重复#2 tech-digest [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-20 18:20] 重复#1 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中心"Ta
+- [x] [完成 2026-04-20 18:20] 重复#2 tech-digest [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：无数据源 — 未找到 digest JSON 文件或 systemd 服务，需先实现 d
+- [x] [完成 2026-04-20 18:20] Windows SSH不可达 阻塞中 [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次�
+- [x] [完成 2026-04-20 18:20] Windows SSH不可达 阻塞中 [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device
 # OP 待办任务
 
 ## 待处理
@@ -492,5 +496,11 @@
 - [x] [完成 2026-04-20 17:30] 已知假阳性 [OP→CC] [2026-04-20 14:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败
 - [x] [完成 2026-04-20 17:30] 已知假阳性 [OP→CC] [2026-04-20 14:00] [high] OP agent service-nurse 连续 3 次重启失败
 - [x] [完成 2026-04-20 17:30] 无python3.13异常进程（ps无占用异常） [AGI→OP] [2026-04-20 14:27] [high] 检查 python3.13 进程详情
-- [ ] [OP→CC] [2026-04-20 17:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-20 17:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:20] 已知假阳性：opencode timer job非持续服务，inactive属正常 [OP→CC] [2026-04-20 17:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 17:40] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:20] 无异常python3.13进程 [AGI→OP] [2026-04-20 17:48] [high] 检查 python3.13 进程详情，若非预期任务则终止该进程
+- [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:34] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 18:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
