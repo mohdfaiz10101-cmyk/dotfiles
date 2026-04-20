@@ -59,6 +59,12 @@
    - 命中历史故障 → 输出 `[历史风险] 检测到相关记录：...`，评估与当前操作的关联性
    - 无命中 → 正常执行
 
+## NixOS 常用命令（死规则 — 必须用完整格式）
+- **重建系统**：`sudo nixos-rebuild switch --flake /etc/nixos#charlie`（禁止省略 `--flake /etc/nixos#charlie`）
+- **验证语法**：`nix flake check /etc/nixos`
+- **只构建不切换**：`sudo nixos-rebuild build --flake /etc/nixos#charlie`
+- `charlie` 是此机器的 flake 输出名，还有 `minipc` 是另一台机器，不要搞混
+
 ## 回复结尾（死规则）
 - **每次有实际操作的回复**，末尾 MUST 附 1 行：`📎 [{agent}] 已写入 → {文件名}`
 - **agent 标注（强制）**：`📎 [GLM-5.1/Sonnet/Opus/DeepSeek/explore/oracle...] 已写入 → {文件名}`
