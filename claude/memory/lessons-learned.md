@@ -134,3 +134,5 @@
 - [2026-04-20] [GLM] Node.js letta-mcp-server SIGABRT 崩溃（225MB coredump）：一次性 OOM/Node 异常，Letta Docker 服务本身正常。MCP bridge 是 CC 子进程，每次会话自动重启。清理 coredump: sudo rm -f /var/lib/systemd/coredump/core.*.zst
 - [2026-04-20] [Aider] fix: 添加 noGUI 紧急恢复模式 + 修复 NVIDIA GSP firmware 卡死
   相关文件：configuration.nix, modules/desktop.nix
+- [2026-04-20] [Aider] fix: 修复 opencode.json 和 AGENTS.md 循环软链接，恢复真实文件内容
+  相关文件：opencode/AGENTS.md, opencode/opencode.json

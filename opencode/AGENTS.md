@@ -1,10 +1,11 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-04-16 12:34 -->
+<!-- compiled: 2026-04-20 11:29 -->
 
 ## 语言规则
 - MUST 始终使用中文回复用户，所有对话、解释、报告均用中文
 - 代码注释可以用英文，但所有面向用户的输出必须是中文
+- **系统通知强制中文**（死规则）：systemd服务、脚本、定时任务等发出的通知（notify-send、Telegram消息、日志摘要）必须使用中文，输出精简易懂，禁止英文状态码
 
 ## 输出格式规则
 **R1 零废话**：禁止寒暄前缀（"好的""我来""接下来"）、禁止第一人称动作描述、禁止过渡句。直接输出结果。
@@ -47,53 +48,5 @@
 - `rm` / `dd` / `mkfs` / `fdisk` 等磁盘操作
 - Docker `rm` / `prune` / 网络变更
 - NVIDIA 驱动相关任何操作
-- 代理/网络/mihomo 配置变更
-   - 命中历史故障 → 输出 `[历史风险] 检测到相关记录：...`，评估与当前操作的关联性
-   - 无命中 → 正常执行
-
-## 回复结尾（死规则）
-- **每次有实际操作的回复**，末尾 MUST 附 1 行：`📎 [{agent}] 已写入 → {文件名}`
-- **agent 标注（强制）**：`📎 [GLM-5.1/Sonnet/Opus/DeepSeek/explore/oracle...] 已写入 → {文件名}`
-- **纯对话、无操作的回复** → 不附加尾注
-
-## 工作模式
 
 <!-- truncated: exceeded size limit -->
-## OP 任务系统（2026-04-20更新）
-- op-tasks路径：`~/op-tasks.md`（不是 memory/ 下）
-- `[ ]` 普通待办 + `[!]` 失败任务都要扫描执行
-- `[low]` 任务：检查 CPU idle（`vmstat 1 1 | tail -1 | awk '{print $15}'`），<60% 则跳过
-- 禁止输出"是否执行""需要确认"，CC写入即授权
-
-## 假阳性识别（MUST — 防误报）
-- `opencode-job-*` service failed → 先检查 `systemctl --user show xxx --property=Result`
-- `Result=success` + `ExecMainStatus=0` = **正常oneshot结束**，标 `[x]` 不上报CC
-
-## 定时任务时段（TIMER_HOURS — 死规则）
-- 所有 OnCalendar MUST 在 08:00-23:00 内
-- **禁止**凌晨（00:00-07:59）执行任何AI/LLM任务
-
-## Windows远程
-- SSH: `ssh G@192.168.2.36` 密码 `1`
-- 命令用 `cmd /c "..."` 包裹，代理: `http_proxy=http://192.168.2.100:7890`
-
-## opencode自检（启动前必做）
-- `bash ~/.local/bin/opencode-config-guard.sh`
-- 检测循环链接 → 从备份恢复 → 通知CC
-
-## 基础设施（必须在已有组件叠加，禁止替代）
-LiteLLM:4000 | Letta:8283 | AGI:9900 | Hub-API:9801 | Launcher:9875 | Paperclip:3100
-
-## Docker 部署验证协议（DOCKER_DEPLOY_VERIFY — 死规则）
-部署 Docker 容器后，MUST 按以下顺序验证，**不得跳过任何步骤**：
-1. `docker ps --filter name=<容器名> --format "{{.Status}}"` → 确认 Up
-2. `docker inspect <容器名> --format '{{.State.Health.Status}}'` → 循环等待直到 `healthy`（最多60次，每5秒一次）
-3. `curl -sf http://localhost:<端口>/<健康路径>` → HTTP 200 才算成功
-4. 若步骤3失败 → 立即 `docker logs <容器名> --tail 30` 输出错误，标记 `[FAIL]` 不汇报成功
-- **禁止**：容器 Created/Starting 时就汇报"修复成功"
-- **禁止**：不 curl 验证就说端口可访问
-
-## 服务修复后验证（SERVICE_FIX_VERIFY — 死规则）
-修复任何服务/端口问题后，MUST 输出验证结果：
-- `curl -s http://localhost:<端口>/ -o /dev/null -w "%{http_code}"` → 200/301/302 才算可访问
-- 非 2xx/3xx → 不汇报成功，继续排查日志
