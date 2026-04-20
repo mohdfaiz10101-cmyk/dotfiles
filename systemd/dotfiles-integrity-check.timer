@@ -1,0 +1,10 @@
+[Unit]
+Description=每日 09:30 Dotfiles 完整性巡检
+
+[Timer]
+OnCalendar=*-*-* 09:30:00
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

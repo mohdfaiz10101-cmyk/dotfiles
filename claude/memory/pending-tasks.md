@@ -73,3 +73,16 @@
 
 - [ ] [ORCH→CC] [2026-04-17 17:52] 设计移动端专用状态卡片视图
 - 注: IO Wait 高问题已通过架构优化缓解（loop0 迁移到 /mnt/ai ext4），暂无需专门诊断
+
+## 三方实时对话室（P1）
+- 方案2：WebSocket 三方对话室 — CC/OP/用户实时互看对话
+- 技术选型：FastAPI WebSocket + hub.html 嵌入 + op-live-feed.jsonl 作为消息总线
+- CC 和 OP 各自身份广播到 /ws/dialogue，浏览器实时显示
+- 集成到 agi-control-plane 3000 新增 "对话室" tab
+- 优先级：高（用户强需求）
+
+## 微信人格模拟（P2）
+- 从微信历史提取用户对话风格 → 训练/few-shot 人格模型
+- 社区最佳实践：CharacterLM / PersonaHub / LIMA instruction tuning
+- 实现路径：wechat_merged DB → 提取用户消息 → 构建 few-shot prompt → 注入 GLM system prompt
+- 输出：预测用户下一步走向，显示在 3000 dashboard 右侧面板
