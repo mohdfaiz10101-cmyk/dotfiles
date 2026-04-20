@@ -1,0 +1,6 @@
+[Unit]
+Description=系统卡顿检测与自动修复
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/lag-detector.sh

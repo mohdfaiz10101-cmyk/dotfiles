@@ -2,7 +2,7 @@
 Description=每周日凌晨 3:00 清理架构
 
 [Timer]
-OnCalendar=Mon *-*-03 00:00:00
+OnCalendar=Mon *-*-* 10:00:00
 Persistent=true
 
 [Install]

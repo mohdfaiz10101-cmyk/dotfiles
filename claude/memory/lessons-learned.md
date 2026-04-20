@@ -1,5 +1,21 @@
 # 踩坑日志
 
+- [2026-04-20] [Sonnet] **find扫NTFS大分区引发IO等待+swap耗尽**
+  - 场景：CC 发起 `find /mnt/win_c /mnt/data` 搜索DreamMail，3个并行find进程拖满IO
+  - 教训：NTFS扫描任务必须写入OP低优先级任务队列（[low]标注），不得在CC会话中同步执行
+  - 修复：终止find进程 + 任务写入op-tasks DREAMMAIL-SEARCH [low]，空闲时执行
+
+- [2026-04-20] [Sonnet] **opencode.json循环软链接导致所有OP任务失败**
+  - 场景：dotfiles/opencode/opencode.json 自指向自身，opencode启动报JSON invalid
+  - 根因：stow或手动ln时目标路径写错
+  - 修复：rm循环链接 + cp备份文件恢复 + 写opencode-config-guard.sh防复发
+  - 预防：CC Stop hook + OP heartbeat前置检查均加入guard脚本
+
+- [2026-04-20] [Sonnet] **OP heartbeat prompt只扫[ ]不扫[!]导致失败任务积压**
+  - 场景：EMAIL-SEARCH/WIN-GIT-01标记[!]后OP忽略，长期堆积
+  - 修复：更新heartbeat-task-check.json prompt加入[!]扫描逻辑
+  - 同时：sisyphus.md加入假阳性识别规则（timer job Result=success不算失败）
+
 - [2026-04-20] [Sonnet] **Chrome 在 NTFS 上崩溃**
   - 场景：强制关机后 Chrome 报"致命错误"，配置目录 `~/.config/google-chrome` 软链接指向 NTFS（/mnt/pool-disks/POOL-B1）
   - 根因：NTFS 不支持文件锁，强制关机后脏位导致 Chrome 无法创建 SingletonLock

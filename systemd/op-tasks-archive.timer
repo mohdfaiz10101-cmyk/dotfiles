@@ -2,7 +2,7 @@
 Description=op-tasks 已完成任务自动归档
 
 [Timer]
-OnCalendar=*-*-* 02:00:00
+OnCalendar=*-*-* 10:00:00
 Persistent=true
 
 [Install]

@@ -468,3 +468,4 @@
 - [ ] [AGI→OP] [2026-04-20 07:58] [medium] 分析python3.13进程运行状态和资源使用情况
 - [ ] [OP→CC] [2026-04-20 09:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-20 09:30] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-20 10:06] [medium] 检查进程 437787 的具体命令行参数及运行时长，确认是否为预期任务

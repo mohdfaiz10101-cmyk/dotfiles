@@ -2,7 +2,7 @@
 Description=Timer for OpenCode Job: discord-butler
 
 [Timer]
-OnCalendar=*-*-* *:30:00
+OnCalendar=*-*-* 08..23:30:00
 Persistent=true
 
 [Install]

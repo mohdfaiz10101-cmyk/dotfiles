@@ -4,7 +4,7 @@ After=docker.service
 
 [Timer]
 # 每 6 小时执行一次
-OnCalendar=*-*-* 00,06,12,18:00:00
+OnCalendar=*-*-* 09,13,17,21:00:00
 # 系统启动后延迟 5 分钟，避免影响启动速度
 OnBootSec=5min
 # 允许 10 分钟内随机偏移，分散系统负载

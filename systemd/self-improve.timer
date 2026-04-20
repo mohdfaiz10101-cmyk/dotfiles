@@ -2,7 +2,7 @@
 Description=每日 03:00 运行自我改进 Agent
 
 [Timer]
-OnCalendar=*-*-* 03:00:00
+OnCalendar=*-*-* 10:00:00
 Persistent=true
 
 [Install]

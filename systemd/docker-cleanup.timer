@@ -3,7 +3,7 @@ Description=每周日凌晨 3 点执行 Docker 清理
 Requires=docker-cleanup.service
 
 [Timer]
-OnCalendar=Sun *-*-* 03:00:00
+OnCalendar=Sun *-*-* 10:00:00
 Persistent=true
 
 [Install]
