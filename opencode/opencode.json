@@ -163,5 +163,6 @@
   "tui": {
     "code_blocks": "collapsed",
     "tool_output": "hidden"
-  }
+  },
+  "instructions": "输出约束（最高优先级）：每条任务结果≤1行，格式[ok/fail/skip]任务名—结果；总输出≤15行；禁止解释过程、列步骤、废话前缀（好的/我将/首先）；禁止重复 prompt 内容；只输出结论。"
 }

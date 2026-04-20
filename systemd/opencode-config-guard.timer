@@ -1,0 +1,9 @@
+[Unit]
+Description=每15分钟检测 OpenCode 配置文件循环链接
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=15min
+
+[Install]
+WantedBy=timers.target

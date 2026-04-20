@@ -1,0 +1,7 @@
+[Unit]
+Description=OpenCode 配置文件循环链接检测修复
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/opencode-config-guard.sh

@@ -136,3 +136,5 @@
   相关文件：configuration.nix, modules/desktop.nix
 - [2026-04-20] [Aider] fix: 修复 opencode.json 和 AGENTS.md 循环软链接，恢复真实文件内容
   相关文件：opencode/AGENTS.md, opencode/opencode.json
+- [2026-04-20] [Aider] fix: 恢复 opencode.json 真实内容（第二次循环链接修复）
+  相关文件：opencode/opencode.json
