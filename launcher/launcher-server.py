@@ -17,8 +17,12 @@ PORT = 9875
 LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "")
 if not LAUNCHER_TOKEN:
     import secrets
+
     LAUNCHER_TOKEN = secrets.token_hex(16)
-    print(f"[WARN] LAUNCHER_TOKEN not set, using random token: {LAUNCHER_TOKEN}", flush=True)
+    print(
+        f"[WARN] LAUNCHER_TOKEN not set, using random token: {LAUNCHER_TOKEN}",
+        flush=True,
+    )
 LOCAL_ONLY_AUTH = os.environ.get("LAUNCHER_LOCAL_ONLY", "1") == "1"
 
 
@@ -66,11 +70,12 @@ class LauncherHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, directory=LAUNCHER_DIR, **kwargs)
 
     def do_OPTIONS(self):
-        """Handle CORS preflight requests."""
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-API-Key")
+        self.send_header(
+            "Access-Control-Allow-Headers", "Content-Type, Authorization, X-API-Key"
+        )
         self.send_header("Access-Control-Max-Age", "86400")
         self.end_headers()
 

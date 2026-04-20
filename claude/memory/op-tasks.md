@@ -1,3 +1,6 @@
+- [x] [完成 2026-04-20] FALSE_POSITIVE_GUARD 已写入AGENTS.md，假阳性全部清理（service-nurse/proxy-guardian/discord-butler均为Result=success误报）
+- [x] [完成 2026-04-20] [CC已实现] OP控制中心Tab已在本次会话构建完成
+- [x] [完成 2026-04-20] [跳过] tech-digest 功能不是当前优先级
 - [x] [完成 2026-04-20 18:20] 已知假阳性重复，FEAT-OP-CENTER-01为编码任务需CC实现 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
 - [x] [完成 2026-04-20 18:20] tech-digest数据源已创建，需完整运行 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
 - [x] [完成 2026-04-20 18:20] 重复#1 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
@@ -503,4 +506,13 @@
 - [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [x] [完成 2026-04-20 18:34] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-20 18:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20] [假阳性] discord-butler 实际运行正常（journalctl 确认）
+- [x] [完成 2026-04-20] [假阳性] heartbeat oneshot 正常完成被误报为失败
+- [x] [完成 2026-04-20] [假阳性] service-nurse Result=success inactive=正常完成非失败
+- [x] [完成 2026-04-20] [假阳性] proxy-guardian Result=success inactive=正常完成非失败
+- [ ] [OP→CC] [2026-04-20 19:50] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 20:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 20:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 20:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP] 修复 Discord Bot token - discord-bot.service token 失效（153次重启失败），需更新 token 或迁移到 intelligent-bot/agi-discord-bot
+- [ ] [AGI→OP] [2026-04-20 20:42] [medium] 检查进程 2473039 的命令行参数及运行时长，判断是否为异常任务
