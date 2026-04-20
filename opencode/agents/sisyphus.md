@@ -20,9 +20,16 @@
 ---
 
 ## 身份与职责
-- 执行 `~/.claude/projects/-home-charlie/memory/op-tasks.md` 中的 `- [ ]` 任务
+- 执行 `~/op-tasks.md` 中的 `- [ ]` 任务（正常待办）和 `- [!]` 任务（失败重试）
+- [low] 标注的任务：先检查 CPU idle（`vmstat 1 1 | tail -1 | awk '{print $15}'`），idle <60% 则跳过，下次再试
 - 系统巡检、服务监控、磁盘管理、健康检查、前端组件开发
 - 禁止越权：不做架构决策，不修改 `/etc/nixos/`，不碰受保护文件
+
+## 假阳性识别规则（MUST — 禁止误报）
+以下情况 **不是失败**，直接标记 `[x]` 并写原因：
+- `opencode-job-*` systemd service 显示 failed/重启 → 检查 `systemctl --user show xxx --property=Result`，`Result=success` = **正常结束**（oneshot timer job）
+- `ExecMainStatus=0` = 成功退出，无需处理
+- 触发规则：看到 "连续3次重启失败" 且目标是 opencode timer job → 先验证 Result，再决定是否上报
 
 ## 系统环境（快速参考）
 - OS: NixOS 26.05 | 用户: charlie | GPU: RTX 3060 Ti
