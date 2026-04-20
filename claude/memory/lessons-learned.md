@@ -1,5 +1,11 @@
 # 踩坑日志
 
+- [2026-04-20] [Sonnet] **Chrome 在 NTFS 上崩溃**
+  - 场景：强制关机后 Chrome 报"致命错误"，配置目录 `~/.config/google-chrome` 软链接指向 NTFS（/mnt/pool-disks/POOL-B1）
+  - 根因：NTFS 不支持文件锁，强制关机后脏位导致 Chrome 无法创建 SingletonLock
+  - 修复：`rsync` 迁移至 ext4（`/mnt/ai/data/chrome-config`），更新软链接
+  - 教训：所有浏览器配置目录必须在 ext4，不能在 NTFS。已加入 NTFS_BAN 迁移表
+
 - [2026-04-18] [Sonnet] **SSH authorized_keys 权限不安全**
   - 场景：安全哨兵巡检发现 `~/.ssh/authorized_keys` 权限为 644（组和其他用户可读）
   - 风险：其他用户可读取公钥，虽然不影响SSH安全性，但违反最佳实践
@@ -110,3 +116,5 @@
 
 - [2026-04-20] [GLM] Floorp fcitx5 无法打字：根因是 ~/.local/bin/floorp wrapper 显式设置 MOZ_ENABLE_WAYLAND=0 强制 XWayland 模式，导致 KDE Plasma 6 Wayland 下 fcitx5 text-input protocol 不工作。修复：改为 MOZ_ENABLE_WAYLAND=1
 - [2026-04-20] [GLM] Node.js letta-mcp-server SIGABRT 崩溃（225MB coredump）：一次性 OOM/Node 异常，Letta Docker 服务本身正常。MCP bridge 是 CC 子进程，每次会话自动重启。清理 coredump: sudo rm -f /var/lib/systemd/coredump/core.*.zst
+- [2026-04-20] [Aider] fix: 添加 noGUI 紧急恢复模式 + 修复 NVIDIA GSP firmware 卡死
+  相关文件：configuration.nix, modules/desktop.nix

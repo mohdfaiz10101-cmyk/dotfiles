@@ -1,0 +1,9 @@
+[Unit]
+Description=NixOS 三合一同步：rebuild + git + 快照
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/nixos-full-sync
+StandardOutput=journal
+StandardError=journal

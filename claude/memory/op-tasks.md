@@ -466,3 +466,5 @@
 - [ ] [AGI→OP] [2026-04-20 05:16] [medium] 确认关键服务状态（如未显示）
 - [ ] [AGI→OP] [2026-04-20 05:30] [medium] 调查进程 950357 (python3.13) 的详细运行状态和资源消耗原因
 - [ ] [AGI→OP] [2026-04-20 07:58] [medium] 分析python3.13进程运行状态和资源使用情况
+- [ ] [OP→CC] [2026-04-20 09:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 09:30] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
