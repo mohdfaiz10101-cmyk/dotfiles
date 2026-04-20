@@ -72,7 +72,10 @@ body {
 .session-list::-webkit-scrollbar { width: 4px; }
 .session-list::-webkit-scrollbar-thumb { background: var(--surface1); border-radius: 2px; }
 .session-item {
-  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--surface0);
   cursor: pointer;
   transition: background 0.15s;
@@ -110,6 +113,31 @@ body {
 .session-time {
   font-size: 11px;
   color: var(--overlay);
+}
+.session-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--surface1);
+}
+.session-avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: var(--surface1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lavender);
+}
+.session-info {
+  flex: 1;
+  min-width: 0;
 }
 .chat-panel {
   display: flex;
@@ -169,11 +197,39 @@ body {
 .msg-row {
   display: flex;
   margin-bottom: 6px;
+  gap: 8px;
+  align-items: flex-start;
 }
 .msg-row.sent { justify-content: flex-end; }
 .msg-row.received { justify-content: flex-start; }
-.msg-bubble {
+.msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--surface1);
+  margin-top: 2px;
+}
+.msg-avatar-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--surface1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--subtext);
+  margin-top: 2px;
+}
+.msg-body {
   max-width: 65%;
+  min-width: 0;
+}
+.msg-bubble {
   padding: 8px 12px;
   border-radius: 12px;
   font-size: 14px;
@@ -287,10 +343,17 @@ function renderSessions(list) {
   container.innerHTML = list.map(s => {
     const active = s.username === currentChat ? " active" : "";
     const badge = s.is_chatroom ? '<span class="session-chatroom-badge">群</span>' : "";
+    const initial = (s.display_name || s.username).charAt(0).toUpperCase();
+    const avatarHtml = s.avatar
+      ? '<img class="session-avatar" src="' + escapeHtml(s.avatar) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="session-avatar-placeholder" style="display:none">' + escapeHtml(initial) + '</div>'
+      : '<div class="session-avatar-placeholder">' + escapeHtml(initial) + '</div>';
     return '<div class="session-item' + active + '" data-username="' + escapeHtml(s.username) + '">' +
-      '<div class="session-name">' + escapeHtml(s.display_name) + badge + '</div>' +
-      '<div class="session-summary">' + escapeHtml(s.summary || "") + '</div>' +
-      '<div class="session-time">' + relativeTime(s.last_timestamp) + '</div>' +
+      avatarHtml +
+      '<div class="session-info">' +
+        '<div class="session-name">' + escapeHtml(s.display_name) + badge + '</div>' +
+        '<div class="session-summary">' + escapeHtml(s.summary || "") + '</div>' +
+        '<div class="session-time">' + relativeTime(s.last_timestamp) + '</div>' +
+      '</div>' +
     '</div>';
   }).join("");
 
@@ -360,19 +423,44 @@ function renderMessages(messages, session) {
   let html2 = "";
   let lastTime = 0;
 
+  // Session-level avatar for non-sender side
+  const sessionAvatar = session && session.avatar ? session.avatar : "";
+  const myAvatar = ""; // self avatar not available yet
+
   for (const m of messages) {
     if (m.create_time - lastTime > 300) {
       html2 += '<div class="time-header"><span>' + formatTime(m.create_time) + '</span></div>';
     }
     lastTime = m.create_time;
 
-    const isSent = MY_IDS.includes(m.sender_name);
+    const isSent = MY_IDS.includes(m.sender_wxid || m.sender_name);
     const cls = isSent ? "sent" : "received";
-    const senderHtml = (session && session.is_chatroom && m.sender_name && !isSent)
+
+    // Avatar: sent = right side (no left avatar), received = left side
+    const avatarInitial = (m.sender_name || "?").charAt(0).toUpperCase();
+    let leftAvatarHtml = "";
+    let rightAvatarHtml = "";
+    if (isSent) {
+      rightAvatarHtml = myAvatar
+        ? '<img class="msg-avatar" src="' + escapeHtml(myAvatar) + '" onerror="this.style.display=\'none\'">'
+        : '<div class="msg-avatar-placeholder">我</div>';
+    } else {
+      const avUrl = sessionAvatar;
+      leftAvatarHtml = avUrl
+        ? '<img class="msg-avatar" src="' + escapeHtml(avUrl) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="msg-avatar-placeholder" style="display:none">' + escapeHtml(avatarInitial) + '</div>'
+        : '<div class="msg-avatar-placeholder">' + escapeHtml(avatarInitial) + '</div>';
+    }
+
+    // Sender name: show for group chats (non-self), and for private chats (show contact name once)
+    const senderHtml = (!isSent && m.sender_name && session && session.is_chatroom)
       ? '<div class="msg-sender">' + escapeHtml(m.sender_name) + '</div>' : "";
 
     html2 += '<div class="msg-row ' + cls + '">' +
-      '<div class="msg-bubble">' + senderHtml + escapeHtml(m.message_content) + '</div>' +
+      leftAvatarHtml +
+      '<div class="msg-body">' + senderHtml +
+        '<div class="msg-bubble">' + escapeHtml(m.message_content) + '</div>' +
+      '</div>' +
+      rightAvatarHtml +
     '</div>';
   }
 

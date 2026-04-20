@@ -6,10 +6,10 @@ Wants=agi-gateway.service
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/apps/agi-control-plane/frontend
-ExecStart=/mnt/ai/cache/bun/bin/bun run dev --port 3000
+ExecStart=/mnt/ai/cache/bun/bin/bun run start --port 3000
 Environment=BUN_INSTALL=/mnt/ai/cache/bun
 Environment=PATH=/mnt/ai/cache/bun/bin:/run/current-system/sw/bin
-Environment=NODE_ENV=development
+Environment=NODE_ENV=production
 Restart=on-failure
 RestartSec=10
 TimeoutStartSec=60

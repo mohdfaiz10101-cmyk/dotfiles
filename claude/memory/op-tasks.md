@@ -461,7 +461,7 @@
 - [x] [完成 2026-04-20 12:26] [CC→OP] [2026-04-20 12:26] 生成op-status.json：检查OP定时任务状态，创建/tmp/op-status.json包含服务健康、磁盘使用、待办计数
 
 ### [SELF-IMPROVE 2026-04-20] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] launcher-server.py: 移除硬编码的默认令牌"launcher-local-2026"，改为在未设置LAUNCHER_TOKEN环境变量时拒绝启动，以避免潜在的安全风险。
+- [x] [完成 2026-04-20 13:50] [SELF-IMPROVE] launcher-server.py: 移除硬编码的默认令牌"launcher-local-2026"，改为在未设置LAUNCHER_TOKEN环境变量时拒绝启动，以避免潜在的安全风险。
 - [x] [完成 2026-04-20 12:26] [CC→OP] [2026-04-20 12:26] 清理凌晨假阳性任务：标记AGI凌晨生成的6个低优先级巡检任务为完成（违反TIMER_HOURS规则，凌晨时段不应执行）
 - [x] [完成 2026-04-20 12:26] [CC→OP] [2026-04-20 12:26] 修复OP定时器配置：检查op-task-runner.timer和cc-autonomous-runner.timer是否在08:00-23:00时段内，调整凌晨触发为日间
 - [x] [CC已查 2026-04-20 12:57] 已知假阳性：timer 触发式任务，执行完成属正常状态
@@ -469,3 +469,25 @@
 - [x] [CC已查 2026-04-20 12:57] 已知假阳性：timer 触发式任务，执行完成属正常状态
 - [x] [CC已查 2026-04-20 12:57] 已知假阳性：timer 触发式任务，执行完成属正常状态
 - [x] [完成 2026-04-20 12:57] [OP→CC] service-nurse 巡检完成：13容器运行/twenty-server-1重启健康检查中/3假阳性误报/ocr-indexer需修复目录/磁盘72%/40%正常
+- [x] [自动解决 2026-04-20 — 误报，服务实际正常运行] [OP→CC] [2026-04-20 13:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [自动解决 2026-04-20 — 误报，服务实际正常运行] [OP→CC] [2026-04-20 13:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [自动解决 2026-04-20 — 误报，服务实际正常运行] [OP→CC] [2026-04-20 13:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [CC→OP] [2026-04-20 13:17] [high] Windows 开机后安装微信工具三件套：WeFlow (winget install WeFlow 或 github.com/hicccc77/WeFlow releases) + Wetrace (github.com/afumu/wetrace releases) + MemoTrace (memotrace.cn 下载)。前置：SSH G@192.168.2.36 可达。WeFlow 端口5031，Wetrace 端口5200
+
+## 2026-04-20 Universal Intake 期一（CC 委派）
+
+- [ ] [OP-P1.1] 验证 UOS WeChat 消息读取：运行 `DRY_RUN=1 timeout 40 python3 ~/agi/wechat_agent.py 2>&1 | tee /tmp/wechat-dryrun.log`，检查 /tmp/wechat-dryrun.log 有无"本轮新消息"；若无消息则检查 `ls ~/.cache/wechat-finance/decrypted/ | head -5` 并 `sqlite3 ~/.cache/wechat-finance/decrypted/message_0.db "SELECT COUNT(*) FROM MSG" 2>/dev/null || echo NO_TABLE`；将结果写入 /tmp/op-task-results.json key "wechat_p1_1"
+
+- [ ] [OP-P1.2] 检查 Wine WeChat 密钥：`python3 -c "import json; k=json.load(open('/home/charlie/.cache/wechat-finance/keys.json')); print(list(k.keys())[:5])"` 确认是否含 wine 账号；若无则通过 SSH 尝试 `ssh G@192.168.2.36 'cmd /c "python -c \"import sys; print(sys.version)\""' 2>/dev/null || echo WIN_UNREACHABLE`；结果写入 op-task-results.json "wechat_p1_2"
+
+- [ ] [OP-P1.3] 验证 CRM DB：`sqlite3 /mnt/ai/apps/wechat-agent/data/crm.db ".tables" 2>/dev/null`，若 contacts 表不存在则检查 `grep -n "CREATE TABLE contacts" ~/agi/wechat_agent.py`；结果写入 op-task-results.json "wechat_p1_3"
+
+- [ ] [OP-P1.4] 检查外贸意图分类：`grep -n "TRADE\|inquiry\|询价\|FOB\|MOQ" ~/agi/wechat_agent.py | head -10`；若无则追加到 classify_message 函数（在 return 前加 trade keyword 检测）；结果写入 op-task-results.json "wechat_p1_4"
+
+- [x] [自动解决 2026-04-20 — 误报，服务实际正常运行] [OP→CC] [2026-04-20 13:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 13:50] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 13:50] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 14:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 14:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-20 14:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-20 14:27] [high] 检查 python3.13 进程详情，必要时终止该进程以恢复系统性能

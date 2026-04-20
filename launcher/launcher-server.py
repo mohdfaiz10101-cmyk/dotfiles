@@ -14,7 +14,11 @@ import urllib.request as ureq
 from datetime import datetime
 
 PORT = 9875
-LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "launcher-local-2026")
+LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "")
+if not LAUNCHER_TOKEN:
+    import secrets
+    LAUNCHER_TOKEN = secrets.token_hex(16)
+    print(f"[WARN] LAUNCHER_TOKEN not set, using random token: {LAUNCHER_TOKEN}", flush=True)
 LOCAL_ONLY_AUTH = os.environ.get("LAUNCHER_LOCAL_ONLY", "1") == "1"
 
 
@@ -478,10 +482,20 @@ class LauncherHandler(SimpleHTTPRequestHandler):
         try:
             conn = sqlite3.connect(contact_db)
             cur = conn.cursor()
-            cur.execute("SELECT username, nick_name, remark FROM contact")
+            cur.execute(
+                "SELECT username, nick_name, remark, "
+                "CASE WHEN typeof(big_head_url)='text' AND big_head_url LIKE 'http%' THEN big_head_url "
+                "WHEN typeof(small_head_url)='text' AND small_head_url LIKE 'http%' THEN small_head_url "
+                "ELSE '' END as avatar "
+                "FROM contact"
+            )
             for row in cur.fetchall():
                 uname, nick, remark = row[0], row[1] or "", row[2] or ""
-                contact_map[uname] = remark or nick or uname
+                avatar = row[3] or ""
+                contact_map[uname] = {
+                    "display": remark or nick or uname,
+                    "avatar": avatar,
+                }
             conn.close()
         except Exception:
             pass
@@ -500,10 +514,14 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                     continue
                 is_chatroom = uname.endswith("@chatroom") or stype == 2
                 time_sec = ts / 1000 if ts and ts > 1e12 else (ts or 0)
+                cinfo = contact_map.get(uname, {})
+                if isinstance(cinfo, str):
+                    cinfo = {"display": cinfo, "avatar": ""}
                 sessions.append(
                     {
                         "username": uname,
-                        "display_name": contact_map.get(uname, uname),
+                        "display_name": cinfo.get("display", uname),
+                        "avatar": cinfo.get("avatar", ""),
                         "summary": re.sub(
                             r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", (summary or "")[:100]
                         ),
@@ -525,6 +543,34 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             return
 
         WECHAT_DIR = "/mnt/ai/data/wechat-merged"
+        contact_db = os.path.join(WECHAT_DIR, "contact", "contact.db")
+
+        # Build contact name map for sender resolution
+        contact_names = {}
+        try:
+            conn = sqlite3.connect(contact_db)
+            cur = conn.cursor()
+            cur.execute(
+                "SELECT username, nick_name, remark, "
+                "CASE WHEN typeof(big_head_url)='text' AND big_head_url LIKE 'http%' THEN big_head_url "
+                "WHEN typeof(small_head_url)='text' AND small_head_url LIKE 'http%' THEN small_head_url "
+                "ELSE '' END as avatar FROM contact"
+            )
+            for row in cur.fetchall():
+                uname, nick, remark, avatar = (
+                    row[0],
+                    row[1] or "",
+                    row[2] or "",
+                    row[3] or "",
+                )
+                contact_names[uname] = {
+                    "display": remark or nick or uname,
+                    "avatar": avatar,
+                }
+            conn.close()
+        except Exception:
+            pass
+
         table_hash = hashlib.md5(chat.encode()).hexdigest()
         table_name = f"Msg_{table_hash}"
 
@@ -568,14 +614,21 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                     if not content:
                         continue
                     content = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", content)
-                    sender_name, text = "", content
+                    sender_wxid, sender_name, text = "", "", content
                     if "\n" in content:
                         first_line, rest = content.split("\n", 1)
                         if rest and (
                             ":" in first_line or first_line.startswith("wxid_")
                         ):
-                            sender_name = first_line.rstrip(":")
+                            sender_wxid = first_line.rstrip(":")
                             text = rest
+
+                    if sender_wxid:
+                        cinfo = contact_names.get(sender_wxid, {})
+                        if isinstance(cinfo, dict):
+                            sender_name = cinfo.get("display", sender_wxid)
+                        else:
+                            sender_name = str(cinfo) if cinfo else sender_wxid
 
                     messages.append(
                         {
@@ -583,6 +636,7 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                             "create_time": ctime,
                             "message_content": text[:2000],
                             "sender_name": sender_name,
+                            "sender_wxid": sender_wxid,
                         }
                     )
                 conn.close()

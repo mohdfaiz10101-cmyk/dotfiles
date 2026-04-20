@@ -46,3 +46,4 @@
 - [操作手册](command-reference.md) — Hub/Discord/API/systemd
 - [LiteLLM 部署](litellm-deployment.md) — 配置和诊断
 - [OP 任务](op-tasks.md) — CC↔OP 异步协作
+- [北极星文档](north-star.md) — Charlie 的 AI OS 终极目标，每次会话必读，所有建议必须对齐
