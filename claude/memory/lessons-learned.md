@@ -148,15 +148,61 @@
 ### 会话摘要 [2026-04-20] [Sonnet/自动]
 - 对话轮次: 118 | 被纠正: 1次
   - 用户纠正: 不是这次 你是验证这一个月以来的所有案例 给我下你返工的原因和解决方案
-
-### 会话摘要 [2026-04-20] [Sonnet/自动]
-- 对话轮次: 118 | 被纠正: 1次
-  - 用户纠正: 不是这次 你是验证这一个月以来的所有案例 给我下你返工的原因和解决方案
-
-### 会话摘要 [2026-04-20] [Sonnet/自动]
 - 对话轮次: 117 | 被纠正: 1次
-  - 用户纠正: 不是这次 你是验证这一个月以来的所有案例 给我下你返工的原因和解决方案
+- [2026-04-20] [Sonnet] WeChat 4.x (xwechat) DB 加密分析：
+  - 进程名：WeChatAppEx.exe（多进程架构）
+  - DB路径：C:\Users\G\Documents\xwechat_files\w422417869_448e\db_storage\
+  - 主要DB：message/message_0.db (10MB), contact/contact.db (3.7MB), session/session.db
+  - 加密状态：全部 SQLCipher 加密，非明文
+  - 失败原因：pywxdump 3.1.46 不支持 4.x；wcferry 39.5.2.0 仅支持 3.9.x；ctypes.WinDLL 在 SSH 非交互会话挂起
+  - 可行路径：(1) Frida 动态插桩捕获 SQLite open key (2) 等待 wcferry 4.x 版本 (3) 在 Windows 桌面手动运行提取脚本
+  - wxid: w422417869_448e
+[2026-04-20] [Sonnet] 场景：微信三端消息合并 Phase 1 完成
 
-### 会话摘要 [2026-04-20] [Sonnet/自动]
-- 对话轮次: 117 | 被纠正: 1次
-  - 用户纠正: 不是这次 你是验证这一个月以来的所有案例 给我下你返工的原因和解决方案
+完成内容：
+1. 合并 NixOS UOS + Windows PC 消息到统一 DB
+   - 路径：/mnt/ai/data/wechat-merged/messages.db
+   - 总消息：319条（UOS: 104 + Windows: 215，去重9条）
+   - Schema：msg_id TEXT, server_id, talker, is_send, create_time, local_type, message_content, source, db_origin, merged_at
+
+2. 更新 hub-api
+   - WECHAT_MSG_DBS[0] 指向 merged DB
+   - 添加 search 参数到 /api/wechat/messages 端点
+   - 修复重复消息 bug（删除重复的 results.append）
+
+3. API 测试验证
+   - 默认查询：curl 'http://localhost:9800/api/wechat/messages?limit=5'
+   - talker 筛选：curl 'http://localhost:9800/api/wechat/messages?limit=5&talker=xxx'
+   - 搜索功能：curl 'http://localhost:9800/api/wechat/messages?limit=5&search=%E6%88%91'（需 URL 编码）
+
+已知问题：
+- 搜索中文关键词需 URL 编码（如 '我' → '%E6%88%91'）
+- hub-api 服务端口 9800，不是 9900（AGI Gateway）
+
+下一步（Phase 2）：
+- 手机端 Web UI（ttyd 或 port 3000 的微信 Tab）
+- mobile Safari 访问 merged DB 的界面
+- [2026-04-20] [Sonnet] 微信三端消息汇总：hub-api _query_messages 函数存在重复代码导致每条消息返回2次（第116-140行）。修复方法：删除第128-140行的重复 results.append 代码块。症状：10条查询返回20个结果（10个唯一ID重复2次）。
+- [2026-04-20] [Sonnet] 微信三端消息汇总：msg_id 数据类型不匹配导致合并失败。原 schema：msg_id INTEGER。修复：msg_id TEXT。原因：微信 msg_id 是字符串格式（如 "uos_xxx_123"）。
+- [2026-04-20] [Sonnet] 微信三端消息汇总：搜索功能需要 URL 编码（curl 自动编码）。API 端点：/api/wechat/messages?limit=10&search=关键词。已验证包含"我"、"高中"的消息可正常检索。
+- [2026-04-20] [Sonnet] 场景：微信三端消息同步 Phase 2 完成 - 手机端 Web UI
+
+完成内容：
+1. 创建微信搜索页面
+   - 路径：/home/charlie/hub/static/wechat-search.html
+   - 功能：搜索消息内容、联系人筛选、加载更多
+   - API 调用：/api/wechat/messages?limit=20&offset=0&search=关键词&talker=xxx
+
+2. 添加 hub-api 端点
+   - 路径：/wechat
+   - 功能：返回微信搜索 HTML 页面
+
+3. 访问方式
+   - 本地：http://localhost:9800/wechat
+   - 手机 Safari：http://192.168.2.100:9800/wechat
+
+技术细节：
+- 纯前端 HTML + JS，无需额外服务
+- 响应式设计，支持手机浏览器
+- 分页加载（每页20条）
+- 实时搜索和筛选

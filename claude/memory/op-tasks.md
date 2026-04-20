@@ -1,3 +1,6 @@
+- [ ] [CC] [2026-04-20] [high] WeChat 4.x DB密钥提取：需在Windows桌面会话运行Frida钩子捕获SQLite open key（SSH非交互会话无法用ctypes读进程内存）。DB路径: xwechat_files/w422417869_448e/db_storage/。可行方案: pip install frida frida-tools 然后桌面运行 frida-script
+- [x] [完成 2026-04-20] [重复已完成] FEAT-OP-CENTER-01 CC已实现，OP→CC升级重复项清理
+- [x] [完成 2026-04-20] [跳过] tech-digest数据源非当前优先级，OP→CC升级重复项清理
 - [x] [完成 2026-04-20] FALSE_POSITIVE_GUARD 已写入AGENTS.md，假阳性全部清理（service-nurse/proxy-guardian/discord-butler均为Result=success误报）
 - [x] [完成 2026-04-20] [CC已实现] OP控制中心Tab已在本次会话构建完成
 - [x] [完成 2026-04-20] [跳过] tech-digest 功能不是当前优先级
@@ -510,9 +513,11 @@
 - [x] [完成 2026-04-20] [假阳性] heartbeat oneshot 正常完成被误报为失败
 - [x] [完成 2026-04-20] [假阳性] service-nurse Result=success inactive=正常完成非失败
 - [x] [完成 2026-04-20] [假阳性] proxy-guardian Result=success inactive=正常完成非失败
-- [ ] [OP→CC] [2026-04-20 19:50] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-20 20:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-20 20:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-20 20:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20] [假阳性×4] discord-butler/heartbeat-system-sentry/heartbeat-task-check/service-nurse 均 Result=success，oneshot正常完成非失败
 - [ ] [OP] 修复 Discord Bot token - discord-bot.service token 失效（153次重启失败），需更新 token 或迁移到 intelligent-bot/agi-discord-bot
-- [ ] [AGI→OP] [2026-04-20 20:42] [medium] 检查进程 2473039 的命令行参数及运行时长，判断是否为异常任务
+- [x] [完成 2026-04-20] 进程 2473039 已不存在，无异常
+- [x] [完成 2026-04-20] [假阳性] proxy-guardian Result=success，正常完成
+- [x] [完成 2026-04-20] [假阳性] heartbeat-task-check/service-nurse Result=success，AGENTS.md已更新FALSE_POSITIVE_GUARD
+- [x] [完成 2026-04-20] [假阳性] discord-butler Result=success 重复误报
+- [ ] [AGI→OP] [2026-04-20 22:35] [medium] 检查 python3.13 进程的命令行参数及状态，确认是否为正常业务任务
+- [ ] [OP→CC] [2026-04-20 22:40] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）

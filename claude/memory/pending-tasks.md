@@ -29,9 +29,13 @@
 
 ## 微信体系
 
+- [x] **AGI Brain 构建（2026-04-20验证）** — ✅ 服务正常运行（PID: 2185071）
+   - 相关文件：`~/agi/brain.py`
+   - 服务状态：`systemctl --user status agi-brain`
 - [ ] **微信 Windows 端密钥提取** — 需在 Windows 运行 pywxdump 或 wechat-auto-decrypt.ps1
-  - Windows DB: /mnt/data/WeChat Files/w422417869/Msg/（79 个加密文件）
-  - 提取密钥后可用 wechat-finance 工具解密
+   - Windows DB: /mnt/data/WeChat Files/w422417869/Msg/（79 个加密文件）
+   - 提取密钥后可用 wechat-finance 工具解密
+   - 阻塞原因：等待用户在 Windows 端手动执行
 - [ ] **微信管理平台开发** — CLI + Web UI + PostgreSQL + 连接 OpenCode
 - [ ] **Agent 知识库可视化方案设计**
 
@@ -43,13 +47,12 @@
 
 ## 系统维护
 
-- [ ] **成本审计服务修复（P1）** — 修复 LiteLLM 和 Ollama 不可用问题
-  - [ ] 检查 LiteLLM 日志：`docker logs litellm --tail 100 | grep -i error`
-  - [ ] 重启 LiteLLM：`docker restart litellm`
-  - [ ] 启动 Ollama：`systemctl start ollama` 或 Docker 运行
-  - [ ] 验证服务健康：`curl -sf http://localhost:4000/health` 和 `curl -sf http://localhost:11434/api/tags`
-  - [ ] 配置成本告警通知（Telegram + notify-send）
-  - [ ] 添加服务健康监控（systemd + 定时检查）
+- [ ] **成本审计服务修复（P1）** — LiteLLM 已验证运行，Ollama 待启动
+   - [x] 检查 LiteLLM 状态：✅ 运行正常（Up 10h, healthy）
+   - [x] 验证 LiteLLM API：✅ http://localhost:4000/health 可达
+   - [ ] 启动 Ollama：`systemctl start ollama` 或 Docker 运行（当前不可达）
+   - [ ] 配置成本告警通知（Telegram + notify-send）
+   - [ ] 添加服务健康监控（systemd + 定时检查）
 - [ ] **firewall.service 修复** — 运行 `sudo /etc/nixos/scripts/fix-firewall.sh`（4步，脚本已就绪）
 - [ ] **NixOS nixpkgs 更新** — `nix flake update nixpkgs --flake /etc/nixos` + rebuild（锁定 2026-04-09）
 - [ ] **Paperclip 空壳 agent 归档** — 停止 6 个空壳 agent 心跳

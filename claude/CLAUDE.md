@@ -188,6 +188,12 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 每个会话首条实质性回复前 MUST 输出：`[ARCH] 审计报告: {天数}天前 | 状态正常/异常`
 纯对话 → `[ARCH] skip:非实质性任务`
 
+## OP状态感知（OP_AWARENESS — 死规则）
+每个会话第一个实质性任务前 MUST 调用 `macg_op_status` MCP 工具读取 OP 最新状态。
+- 有未读的真实失败（Result=failed）→ 输出 `[OP] 待处理: {任务}` 并询问是否优先处理
+- 全部假阳性（Result=success inactive）→ 静默清理，不打扰用户
+- 输出格式：`[OP] {待处理数}个真实任务 / {假阳性数}个假阳性已清理`
+
 ## 回复结尾（死规则）
 - 有文件写入/修改 → 末尾一行：`► 写入: 文件名`
 - 纯对话 → 不输出尾注
