@@ -1,10 +1,9 @@
 [Unit]
-Description=Claude → Letta 同步定时器
-Documentation=file:///home/charlie/claude_letta_sync.py
+Description=AGI Letta 记忆同步定时器（每6小时）
+Documentation=file:///home/charlie/agi/letta-sync.py
 
 [Timer]
-# 每天 22:00 执行
-OnCalendar=22:00
+OnCalendar=*-*-* 10,16,22:00:00
 Persistent=true
 
 [Install]

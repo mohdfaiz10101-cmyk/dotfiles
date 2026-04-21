@@ -1,0 +1,9 @@
+[Unit]
+Description=AGI 微信学习定时器（每日11:00）
+
+[Timer]
+OnCalendar=*-*-* 11:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

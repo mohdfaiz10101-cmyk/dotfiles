@@ -159,7 +159,7 @@
   "experimental": {
     "preemptive_compaction": true // 自动上下文压缩：token 接近上限时自动 summarize 历史
   },
-  "disabled_mcps": ["notion", "playwright"],
+  "disabled_mcps": [],
   "env": {
     "OMO_SEND_ANONYMOUS_TELEMETRY": "0",
     "OMO_DISABLE_POSTHOG": "1"

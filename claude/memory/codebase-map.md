@@ -803,3 +803,9 @@ Docker data-root 在 NTFS
 - Service: `~/.config/systemd/user/agi-gateway.service` → active(running)
 - 依赖: ~/agi/.venv (fastapi + uvicorn + httpx)
 - T04(Next.js) + T05(frontend service) 待 OP 执行
+
+- [2026-04-21] [GLM-5.1] doc_pipeline.py: ~/agi/doc_pipeline.py — 文档智能管道(OCR→结构化→模板填充), CLI: extract/enrich/fill/validate/pipeline, 依赖docxtpl+openpyxl+httpx(在agi/.venv)
+- [2026-04-21] [GLM-5.1] hub-api /api/context: 6个端点(search/match/entity/profile/timeline/attach) + /api/doc 3个端点(extract/pipeline/fill), 代理context_graph.py和doc_pipeline.py
+- [2026-04-21] [GLM-5.1] 3000 chat route升级: 意图路由(GLM-4.6v-flash)→context_graph/doc_pipeline→LLM回复, route.ts
+- [2026-04-21] [GLM-5.1] ~/templates/: customs_declaration.docx, quotation.xlsx, packing_list.xlsx, commercial_invoice.docx
+- [2026-04-21] [GLM-5.1] flows/index.json: 新增doc_pipeline和context_graph flow注册

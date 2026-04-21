@@ -95,3 +95,65 @@
   3. 写入启用标记 `~/.local/share/cc-auditor/mutual-review-enabled`
   4. 更新本条目状态
 - **验证当前是否已触发**：`ls ~/.local/share/cc-auditor/mutual-review-enabled 2>/dev/null && echo 已启用 || echo 观察期`
+
+---
+
+## Tech Digest — 2026-04-21
+
+### GitHub 热门项目
+
+| # | 仓库 | 星标 | 语言 | 摘要 |
+|---|------|-------|------|---------|
+| 1 | [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | 106594 | Python | 100+ AI Agent & RAG apps you can actually run — clone, cust… |
+| 2 | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) | 101897 | TypeScript | An open-source AI agent that brings the power of Gemini dir… |
+| 3 | [langflow-ai/langflow](https://github.com/langflow-ai/langflow) | 147160 | Python | Langflow is a powerful tool for building and deploying AI-p… |
+
+### arXiv 论文
+
+| # | 标题 | 日期 | 摘要 |
+|---|-------|------|---------|
+| 1 | [FineCog-Nav: Integrating Fine-grained Cognitive M…](https://arxiv.org/pdf/2604.16298v1) | 2026-04-17 | UAV vision-language navigation (VLN) requires an agent to navigate complex 3D e… |
+| 2 | [Using Large Language Models and Knowledge Graphs …](https://arxiv.org/pdf/2604.16280v1) | 2026-04-17 | Explaining Machine Learning (ML) results in a transparent and user-friendly man… |
+| 3 | [Evaluating the Progression of Large Language Mode…](https://arxiv.org/pdf/2604.16279v1) | 2026-04-17 | Large Language Models (LLMs) have the potential to accelerate small molecule dr… |
+
+### Hacker News
+
+| # | 标题 | 得分 | 评论 |
+|---|-------|-------|----------|
+| 1 | [Deezer says 44% of songs uploaded to its platform dail…](https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/) | 150 | 168 |
+| 2 | [Atlassian enables default data collection to train AI](https://letsdatascience.com/news/atlassian-enables-default-data-collection-to-train-ai-f71343d8) | 340 | 78 |
+| 3 | [The Abstraction Fallacy: Why AI Can Simulate but Not I…](https://deepmind.google/research/publications/231971/) | 9 | 2 |
+
+---
+
+## Tech Digest — 2026-04-21
+
+### GitHub 热门项目
+
+| # | 仓库 | 星标 | 语言 | 摘要 |
+|---|------|-------|------|---------|
+| 1 | [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | 106594 | Python | 100+ AI Agent & RAG apps you can actually run — clone, cust… |
+| 2 | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) | 101897 | TypeScript | An open-source AI agent that brings the power of Gemini dir… |
+| 3 | [langflow-ai/langflow](https://github.com/langflow-ai/langflow) | 147160 | Python | Langflow is a powerful tool for building and deploying AI-p… |
+| 4 | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | 134202 | Python | The agent engineering platform |
+| 5 | [browser-use/browser-use](https://github.com/browser-use/browser-use) | 88896 | Python | 🌐 Make websites accessible for AI agents. Automate tasks on… |
+
+### arXiv 论文
+
+| # | 标题 | 日期 | 摘要 |
+|---|-------|------|---------|
+| 1 | [FineCog-Nav: Integrating Fine-grained Cognitive M…](https://arxiv.org/pdf/2604.16298v1) | 2026-04-17 | UAV vision-language navigation (VLN) requires an agent to navigate complex 3D e… |
+| 2 | [Using Large Language Models and Knowledge Graphs …](https://arxiv.org/pdf/2604.16280v1) | 2026-04-17 | Explaining Machine Learning (ML) results in a transparent and user-friendly man… |
+| 3 | [Evaluating the Progression of Large Language Mode…](https://arxiv.org/pdf/2604.16279v1) | 2026-04-17 | Large Language Models (LLMs) have the potential to accelerate small molecule dr… |
+| 4 | [No Universal Courtesy: A Cross-Linguistic, Multi-…](https://arxiv.org/pdf/2604.16275v1) | 2026-04-17 | This paper explores the response of Large Language Models (LLMs) to user prompt… |
+| 5 | [From Benchmarking to Reasoning: A Dual-Aspect, La…](https://arxiv.org/pdf/2604.16270v1) | 2026-04-17 | The complexity of Vietnam's legal texts presents a significant barrier to publi… |
+
+### Hacker News
+
+| # | 标题 | 得分 | 评论 |
+|---|-------|-------|----------|
+| 1 | [Deezer says 44% of songs uploaded to its platform dail…](https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/) | 150 | 168 |
+| 2 | [Atlassian enables default data collection to train AI](https://letsdatascience.com/news/atlassian-enables-default-data-collection-to-train-ai-f71343d8) | 341 | 78 |
+| 3 | [The Abstraction Fallacy: Why AI Can Simulate but Not I…](https://deepmind.google/research/publications/231971/) | 9 | 2 |
+| 4 | [Zero-copy protobuf and ConnectRPC for Rust](https://medium.com/@iainmcgin/zero-copy-protobuf-and-connectrpc-for-rust-69bda8ac0f02) | 116 | 32 |
+| 5 | [AI chatbots could be making you stupider](https://www.bbc.com/future/article/20260417-ai-chatbots-could-be-making-you-stupider) | 36 | 41 |

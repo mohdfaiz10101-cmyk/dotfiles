@@ -194,6 +194,21 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 - 全部假阳性（Result=success inactive）→ 静默清理，不打扰用户
 - 输出格式：`[OP] {待处理数}个真实任务 / {假阳性数}个假阳性已清理`
 
+## FALSE_POSITIVE_GUARD（OP死规则 — 绝不违反）
+`systemctl --user is-active <service>` 返回 `inactive` 不等于失败。
+判断服务是否真正失败的**唯一正确方法**：
+```bash
+systemctl --user show <svc> --property=Result,ActiveState,SubState
+```
+- `Result=success` → 正常完成（oneshot/timer），**禁止写 [!] 或升级 CC**，输出 `[SKIP] <svc> Result=success 正常完成`
+- `Result=failed` 或 `ActiveState=failed` → 才是真正失败
+- 典型正常 inactive 服务：discord-butler, heartbeat-*, service-nurse, proxy-guardian, *-check, *-timer
+
+## opencode配置规则（死规则）
+- opencode.json 的 `instructions` 字段 MUST 是数组 `["..."]`，不能是字符串
+- 报错 `expected array, received string` → 用 python 把字符串包成数组修复
+- 修改 opencode.json 后 MUST 运行 `opencode --version` 验证无报错
+
 ## 回复结尾（死规则）
 - 有文件写入/修改 → 末尾一行：`► 写入: 文件名`
 - 纯对话 → 不输出尾注

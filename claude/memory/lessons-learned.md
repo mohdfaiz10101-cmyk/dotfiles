@@ -206,3 +206,16 @@
 - 响应式设计，支持手机浏览器
 - 分页加载（每页20条）
 - 实时搜索和筛选
+- [2026-04-20] [Sonnet] 微信数据链接：Wine 微信 ~/文档/WeChat Files → /mnt/data/WeChat Files（符号链接），84G 完整数据，备份至 WeChat Files.wine-backup（20K）
+- [2026-04-21] [Aider] fix: opencode.json instructions 必须为数组格式（永久修复）
+  相关文件：opencode/opencode.json
+
+- [2026-04-21] [GLM] 集成：散落功能联动集成
+  - brain.py 加 _auto_trigger_flows()：每30轮检测服务异常→self_heal，每60轮→social_intelligence
+  - brain.py 加 _increment_flow_runs()：flow执行后自动更新 index.json runs计数
+  - brain.py 加 Cognitive Modulation：Ne发散限流/深夜降级/Fe休息提醒
+  - self_improve.py 加 _write_to_letta() + _trigger_evolve()：审查结论→Letta archival + 触发evolve flow
+  - wechat-learn.py 加 _trigger_social_flow()：导入完成后自动触发social_intelligence flow
+  - 4个 systemd timer 已启用：cognitive-engine(09:00), self-improve(10:00), wechat-learn(11:00), letta-sync(10,16,22:00)
+  - 关键教训：audit只出报告不够，必须实际执行代码变更才算完成
+  - 关键教训：brain.py加调用点时必须同时写函数体，否则会crash
