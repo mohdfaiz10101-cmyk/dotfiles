@@ -321,3 +321,8 @@
   6. 最终可用方案：NixOS environment.etc 固化 config.toml，mode=cdi，runtimes=[pkgs.runc/bin/runc]
 
 - [2026-04-21] [Sonnet] GPT-SoVITS Docker镜像：API文件是 api.py（不是 api_v2.py），TTS端点是 POST / 而非 /tts，参数用 text_language 而非 prompt_language
+
+### 会话摘要 [2026-04-21] [Sonnet/自动]
+- 对话轮次: 105 | 被纠正: 2次
+  - 用户纠正: 你不是说不支持 4.0吗
+  - 用户纠正: 那不是说sonnet推理很强吗 怎么会这种逻辑漏洞

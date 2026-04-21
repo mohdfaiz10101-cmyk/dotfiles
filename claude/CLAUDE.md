@@ -139,6 +139,12 @@ bash ~/launcher/disk-pool-mount.sh status
 
 检测：`df -T . | grep -i ntfs` → 命中则拒绝执行
 
+## 迁移/安装前强制预检（PRE_MIGRATE_CHECK — 死规则）
+任何涉及「安装大文件」「迁移数据」「docker pull」「写入目标路径」的操作，MUST 在执行前完成：
+1. **空间检查**：`df -h <目标路径>` → 确认可用空间 > 预估大小 × 1.5
+2. **文件系统检查**：`df -T <目标路径>` → fuseblk/ntfs 禁止写入 Docker/overlayfs 数据
+3. 未通过任一检查 → 输出 `[PRE_MIGRATE_FAIL] 原因` 并提出替代方案，禁止强行执行
+
 ## Windows 远程（WINDOWS_REMOTE_OWNERSHIP — 死规则）
 - SSH：`ssh G@192.168.2.36`（密码 `1`），MUST 主动 SSH 操作，不要求用户手动执行
 - 命令包裹：`cmd /c "..."` | 代理：mihomo `192.168.2.100:7890`

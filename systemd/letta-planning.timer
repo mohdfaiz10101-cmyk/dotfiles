@@ -1,0 +1,9 @@
+[Unit]
+Description=每日 09:00 触发 AI 规划
+
+[Timer]
+OnCalendar=*-*-* 09:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

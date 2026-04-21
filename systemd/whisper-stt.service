@@ -1,0 +1,15 @@
+[Unit]
+Description=Whisper STT 语音转文字服务（faster-whisper + GPU）
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/docker compose -f /mnt/ai/ai-cluster/whisper-stt/docker-compose.yml up
+ExecStop=/usr/bin/docker compose -f /mnt/ai/ai-cluster/whisper-stt/docker-compose.yml down
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/mnt/ai/ai-cluster/whisper-stt
+
+[Install]
+WantedBy=default.target

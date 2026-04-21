@@ -19,6 +19,12 @@
   - 方案 D：加入「知识截止声明」提示词：模型说新工具状态时必须标注 [需验证]
   - 优先实施 B+C，成本最低效果最直接
 
+- [ ] **Docker data-root 迁移到 POOL-D1**（[Sonnet] 2026-04-21）
+  - 目标：`/mnt/pool-disks/POOL-D1/docker`（ext4, 748G）
+  - 步骤：改 `/etc/nixos/modules/virtualization.nix` data-root → nixos-rebuild → 验证
+  - 前提：docker 停止，rsync 数据已同步完成
+  - 完成后删除 `/mnt/ai/docker/` 释放空间
+
 ## 中优先
 
 - [ ] **综合方案：你的个人 AI 系统** — Week 1-2 完成(2026-04-08)，Week 3-4 待执行

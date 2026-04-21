@@ -1,8 +1,8 @@
 [Unit]
-Description=OP 连接守护 Timer — 每10分钟检查
+Description=OP 连接守护 Timer — 每30分钟检查
 
 [Timer]
-OnCalendar=*:0/10
+OnCalendar=*:0/30
 Persistent=true
 
 [Install]
