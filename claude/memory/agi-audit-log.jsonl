@@ -4951,3 +4951,4 @@
 {"ts": "2026-04-21 16:54", "type": "cycle", "summary": "系统监控数据采集异常，CPU/内存状态未知，且发现 'ps' 进程异常占用 CPU。", "alert_count": 2, "skipped_llm": false}
 {"ts": "2026-04-21 16:56", "type": "cycle", "summary": "检测到 python3.13 进程 CPU 占用率过高 (66.6%)，其余系统指标正常。", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-21 16:58", "type": "cycle", "summary": "系统负载较高，两个 Python 进程占用大量 CPU 资源，磁盘空间使用正常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-21 17:00", "type": "cycle", "summary": "系统运行平稳，但存在监控数据缺失（CPU/内存）及磁盘使用率偏高（69%）的情况。", "alert_count": 2, "skipped_llm": false}
