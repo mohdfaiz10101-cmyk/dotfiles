@@ -146,6 +146,27 @@
       "environment": {
         "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
       }
+    },
+    "macg": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/agi/macg_mcp.py"
+      ]
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "mcp-server-playwright",
+        "--browser", "chrome",
+        "--executable-path", "/run/current-system/sw/bin/google-chrome-stable"
+      ]
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx", "-y", "@modelcontextprotocol/server-memory"
+      ]
     }
   },
   "plugin": [
