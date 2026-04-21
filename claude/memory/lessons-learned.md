@@ -311,3 +311,13 @@
 ### 会话摘要 [2026-04-21] [Sonnet/自动]
 - 对话轮次: 122 | 被纠正: 1次
   - 用户纠正: 密码有误，请重新输入。您还有2次机会
+
+- [2026-04-21] [Sonnet] NixOS NVIDIA Docker GPU直通踩坑：
+  1. `hardware.nvidia-container-toolkit.enable = true` 需加 `suppressNvidiaDriverAssertion = true`，否则 noGUI specialisation 断言失败
+  2. docker daemon 用 NixOS 生成的 `/nix/store/*-daemon.json` 而非 `/etc/docker/daemon.json`，必须通过 `virtualisation.docker.daemon.settings` 配置
+  3. `pkgs.nvidia-container-toolkit` 只有 nvidia-ctk，`nvidia-container-runtime` 在 `pkgs.nvidia-container-toolkit.tools`
+  4. nvidia-container-runtime 读取 `/etc/nvidia-container-runtime/config.toml`（不是 `/etc/nvidia-container-toolkit/`），且默认 mode="auto" 找不到 runc，需改 mode="cdi" + runtimes=["绝对路径/runc"]
+  5. docker compose `deploy.resources.reservations.devices: driver: nvidia` 需要 NVIDIA 钩子（legacy模式），CDI/runtime:nvidia 不支持此语法，改用 `runtime: nvidia` 在服务顶层
+  6. 最终可用方案：NixOS environment.etc 固化 config.toml，mode=cdi，runtimes=[pkgs.runc/bin/runc]
+
+- [2026-04-21] [Sonnet] GPT-SoVITS Docker镜像：API文件是 api.py（不是 api_v2.py），TTS端点是 POST / 而非 /tts，参数用 text_language 而非 prompt_language

@@ -1,3 +1,7 @@
+- [ ] [CC] [2026-04-21] [high] Docker容器 clever_jang 自动修复失败，需人工检查：docker logs clever_jang --tail 30
+- [ ] [CC] [2026-04-21] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30
+- [ ] [OP→CC] [2026-04-21 19:04] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [ ] [OP→CC] [2026-04-21 19:04] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
 - [ ] [CC] [2026-04-21] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30
 - [ ] [SELF-UPGRADE] [2026-04-21] [medium] FALSE_POSITIVE_GUARD审计：假阳性率85%，检查OP服务状态判断逻辑，更新AGENTS.md
 - [ ] [CC→OP] [2026-04-21 18:30] Docker容器 twenty-server-1 自动修复：docker-health-nurse脚本应检测并自动修复，检查healthcheck配置，若失败写CC_DELEGATE
