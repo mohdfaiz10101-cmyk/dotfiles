@@ -219,3 +219,5 @@
   - 4个 systemd timer 已启用：cognitive-engine(09:00), self-improve(10:00), wechat-learn(11:00), letta-sync(10,16,22:00)
   - 关键教训：audit只出报告不够，必须实际执行代码变更才算完成
   - 关键教训：brain.py加调用点时必须同时写函数体，否则会crash
+- [2026-04-21] [Aider] fix: 永久修复循环链接根因 — push-to-cloud.sh 不再 rsync 软链接文件
+  相关文件：opencode/AGENTS.md, push-to-cloud.sh
