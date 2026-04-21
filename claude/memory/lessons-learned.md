@@ -303,3 +303,11 @@
   - 用户纠正: 我搜索下近一个月来 给cc和op 和glm的优化 全部找出来 看是否被修改了。如果有修改全补上。然后只能cc修改。
   - 用户纠正: 我不明白 一般人买glm和deepseek是不是没办法配置好 导致能力下降很快
 - [2026-04-21] [Sonnet] 业务邮件发送流程：msmtp + Gmail App Password → msmtp -a gmail --smtp-domain=gmail.com -t < mail.txt，收件人支持 -t 从stdin读To/Cc头，附件用 -- -a attachment.pdf。配置文件 ~/.msmtprc，凭据源 ~/.config/claude-export.env
+
+### 会话摘要 [2026-04-21] [Sonnet/自动]
+- 对话轮次: 124 | 被纠正: 1次
+  - 用户纠正: 密码有误，请重新输入。您还有2次机会
+
+### 会话摘要 [2026-04-21] [Sonnet/自动]
+- 对话轮次: 122 | 被纠正: 1次
+  - 用户纠正: 密码有误，请重新输入。您还有2次机会
