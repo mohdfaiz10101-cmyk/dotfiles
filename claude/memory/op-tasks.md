@@ -536,3 +536,5 @@
 - [ ] [AGI→OP] [2026-04-21 08:45] [medium] 检查 python3.13 进程状态，确认是否为正常计算任务
 - [ ] [OP→CC] [2026-04-21 09:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-21 09:20] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-21 10:10] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-21 10:15] [medium] 检查 python3.13 进程的命令行参数及运行状态，判断是否为用户预期的任务
