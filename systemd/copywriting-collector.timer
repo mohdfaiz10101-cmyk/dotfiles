@@ -1,0 +1,10 @@
+[Unit]
+Description=每日采集爆款文案
+Requires=copywriting-collector.service
+
+[Timer]
+OnCalendar=*-*-* 09:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

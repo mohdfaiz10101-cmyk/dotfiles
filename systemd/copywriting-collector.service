@@ -1,0 +1,8 @@
+[Unit]
+Description=爆款情感文案每日采集
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/copywriting_collector.py
+StandardOutput=append:/home/charlie/agi/data/copywriting-collector.log
+StandardError=append:/home/charlie/agi/data/copywriting-collector.log
