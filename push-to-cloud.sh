@@ -34,9 +34,9 @@ echo "[4/4] 同步配置文件..."
 cp -f ~/CLAUDE.md "$DOTFILES/claude/CLAUDE.md"
 
 # OpenCode 配置（排除重文件）
+# 注意：opencode.json 和 AGENTS.md 是软链接指向 dotfiles，不能 rsync 回来（会创建循环链接）
+# 只同步 oh-my-openagent.jsonc（不是软链接）
 rsync -a --exclude='node_modules' --exclude='plugins' --exclude='.env' \
-    ~/.config/opencode/opencode.json \
-    ~/.config/opencode/AGENTS.md \
     ~/.config/opencode/oh-my-openagent.jsonc \
     "$DOTFILES/opencode/" 2>/dev/null || true
 
