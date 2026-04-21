@@ -561,9 +561,13 @@
 - [x] [OP→CC] [2026-04-21 13:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
 - [x] [OP→CC] [2026-04-21 13:20] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
 - [x] [完成 2026-04-21] 磁盘检查：根分区75%/数据池28%，均正常，无需清理 [AGI→OP] [2026-04-21 13:24] [low] 关注磁盘 AI 使用率变化，必要时执行清理
-- [ ] [OP→CC] [2026-04-21 13:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-21 13:30] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-21 13:30] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-21 13:30] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-21 14:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-21 14:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [OP→CC→SKIP] discord-butler: Result=success 假阳性
+- [x] [OP→CC→SKIP] heartbeat-task-check: Result=success 假阳性
+- [x] [OP→CC→SKIP] proxy-guardian: Result=success 假阳性
+- [x] [OP→CC→SKIP] security-watchdog: Result=success 假阳性
+- [x] [OP→CC→SKIP] heartbeat-system-sentry: Result=success 假阳性
+- [x] [OP→CC→SKIP] service-nurse: Result=success 假阳性
+- [ ] [OP→CC] [2026-04-21 14:10] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-21 14:10] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-21 14:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-21 14:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
