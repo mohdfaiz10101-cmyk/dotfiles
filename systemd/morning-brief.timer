@@ -1,0 +1,9 @@
+[Unit]
+Description=每日晨报定时器
+
+[Timer]
+OnCalendar=*-*-* 09:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

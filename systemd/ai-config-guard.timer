@@ -1,0 +1,13 @@
+[Unit]
+Description=AI配置链路巡检定时器
+Requires=ai-config-guard.service
+
+[Timer]
+OnBootSec=5min
+OnCalendar=*-*-* 09:00:00
+OnCalendar=*-*-* 14:00:00
+OnCalendar=*-*-* 20:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

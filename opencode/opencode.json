@@ -57,6 +57,13 @@
             "context": 131072,
             "output": 8192
           }
+        },
+        "glm-4v-flash": {
+          "name": "GLM-4V-Flash 视觉 (Z.AI)",
+          "limit": {
+            "context": 8192,
+            "output": 1024
+          }
         }
       }
     }
@@ -67,7 +74,7 @@
   "agent": {
     "build": {
       "model": "openai-compatible/glm-5.1",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。编码死规则：(1) 修改任何文件前MUST先read_file读取完整内容 (2) 修改后重启→curl验证→检查日志 (3) 3000控制台(/mnt/ai/apps/agi-control-plane/frontend/)已是dev/HMR模式，禁止执行bun run build",
       "description": "代码构建器 — 代码生成、功能实现、测试编写"
     },
     "plan": {
@@ -87,7 +94,7 @@
     },
     "refactor": {
       "model": "openai-compatible/deepseek-v3.2",
-      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。编码死规则：(1) 修改任何文件前MUST先read_file读取完整内容 (2) 修改后重启→curl验证→检查日志 (3) 3000控制台(/mnt/ai/apps/agi-control-plane/frontend/)已是dev/HMR模式，禁止执行bun run build",
       "description": "重构器 — 代码优化、架构改进、模式重构"
     },
     "arch": {
@@ -158,14 +165,29 @@
       "type": "local",
       "command": [
         "mcp-server-playwright",
-        "--browser", "chrome",
-        "--executable-path", "/run/current-system/sw/bin/google-chrome-stable"
+        "--browser",
+        "chrome",
+        "--executable-path",
+        "/run/current-system/sw/bin/google-chrome-stable"
       ]
     },
     "memory": {
       "type": "local",
       "command": [
-        "npx", "-y", "@modelcontextprotocol/server-memory"
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/mnt/ai",
+        "/home/charlie",
+        "/etc/nixos"
       ]
     }
   },

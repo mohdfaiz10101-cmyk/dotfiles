@@ -1,0 +1,9 @@
+[Unit]
+Description=AI晨报 — 未回微信+今日任务
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash -c 'opencode run --model openai-compatible/glm-5-turbo "每日晨报任务：(1) 读取 ~/op-tasks.md 统计今日待办数量 (2) 检查 ~/.local/share/hyperchat/data/wechat_digests.db 最新5条未回消息(SELECT sender,content,datetime FROM digests ORDER BY timestamp DESC LIMIT 5) (3) 生成中文简报写入 ~/Desktop/巡检报告/晨报-$(date +%Y-%m-%d).md 格式：## 晨报\\n待办:N条\\n微信未回:列表 (4) notify-send 晨报就绪 简报已生成" 2>/dev/null'
+StandardOutput=journal
+StandardError=journal

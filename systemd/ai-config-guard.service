@@ -1,0 +1,9 @@
+[Unit]
+Description=AI配置链路巡检
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/ai-config-guard.sh
+StandardOutput=journal
+StandardError=journal

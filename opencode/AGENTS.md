@@ -1,6 +1,6 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-04-21 12:45 -->
+<!-- compiled: 2026-04-21 — CC维护，禁止其他AI修改 -->
 
 ## 语言规则
 - MUST 始终使用中文回复，代码注释可用英文
@@ -35,5 +35,39 @@
 - NixOS/Flake 问题必须先 Read 实际配置，不凭记忆编造
 - 出错不重复同样方法，换思路；连续失败2次 /clear 重新开始
 
+## AGENTS.md 所有权（死规则）
+- 本文件**只能由 CC（Claude Code）写入/修改**
+- 禁止：GLM / OpenCode agent / OP / 任何其他 AI 直接修改此文件
+- 其他 AI 需要新增规则 → 输出 `CC_DELEGATE: 新增规则到 AGENTS.md: {内容}`，由 CC 执行
+
+## FALSE_POSITIVE_GUARD（死规则）
+- `systemctl --user is-active <svc>` 返回 `inactive` ≠ 失败
+- 判断服务是否真正失败**唯一方法**：`systemctl --user show <svc> --property=Result,ActiveState,SubState`
+  - `Result=success` → 正常完成（oneshot/timer），输出 `[SKIP] 正常完成`，**禁止写 [!] 或升级任务**
+  - `Result=failed` 且 `ActiveState=failed` → 才是真正失败
+- 典型正常 inactive 服务：opencode-job-*、heartbeat-*、*-check、*-timer
+
+## 3000 控制台开发规则（死规则）
+- 路径：`/mnt/ai/apps/agi-control-plane/frontend/app/`
+- 运行模式：**dev 模式（HMR）**，改完自动生效，浏览器刷新即可
+- **禁止执行** `bun run build` / `next build` / 切换 `NODE_ENV=production`
+- 修改文件后无需重启服务
+
+## 编码规则（死规则）
+- 修改代码文件前 **MUST** 先用 read_file 工具读取当前内容
+- 修改后 MUST：重启服务 → curl 验证 → 检查日志 → 确认前端生效
+- 禁止凭记忆猜测代码结构
+
+## 基础设施清单
+| 组件 | 地址 |
+|------|------|
+| LiteLLM 网关 | `localhost:4000` |
+| Letta 记忆 | `localhost:8283` |
+| Hub API | `localhost:9800` |
+| FastAPI Gateway | `localhost:9900` |
+| 3000 控制台 | `localhost:3000`（dev模式） |
+| ChromaDB | `localhost:8000` |
+| Twenty CRM | `localhost:3001` |
+
 ---
-Source: ~/CLAUDE.md | Auto-compiled
+Source: ~/CLAUDE.md | CC维护 | 禁止其他AI修改
