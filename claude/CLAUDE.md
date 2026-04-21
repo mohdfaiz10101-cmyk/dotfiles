@@ -57,11 +57,15 @@
 | Letta 记忆 | `localhost:8283` |
 | LiteLLM 网关 | `localhost:4000` |
 | FastAPI Gateway | `localhost:9900` |
+| Hub API | `localhost:9800` (`~/hub/hub-api.py`) |
 | OP 任务系统 | `op-tasks.md` + systemd timers |
 | ChromaDB | `localhost:8000` |
 | Paperclip | `localhost:3100` |
 | mihomo 代理 | `localhost:7890` |
+| **3000 控制台** | `localhost:3000` — Next.js **dev模式**（HMR，改完自动生效，禁止切换回 production） |
 | memory/ | `~/.claude/projects/-home-charlie/memory/` |
+
+**3000 控制台开发规则**：修改 `/mnt/ai/apps/agi-control-plane/frontend/app/` 下文件后**无需 rebuild 或重启**，浏览器自动热更新。禁止执行 `bun run build` 或切换 `NODE_ENV=production`（已设为 dev 模式）。
 
 ## CC↔OP 职责分工（死规则）
 - **CC**：规划、编码、规则管理、任务派发、架构决策
@@ -161,6 +165,12 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 
 禁止：只说「记住了」不修改文件 | 推迟到下次 | 等第2次才触发
 
+## AGENTS.md 所有权（死规则）
+- `~/.config/opencode/AGENTS.md` 和 `~/dotfiles/opencode/AGENTS.md` **只能由 CC（Claude Code）写入/修改**
+- 禁止：GLM / OpenCode agent / OP / 任何其他 AI 直接修改这两个文件
+- 其他 AI 需要新增规则 → 输出 `CC_DELEGATE: 新增规则到 AGENTS.md: {内容}`，由 CC 执行
+- opencode-config-guard.sh 修复 AGENTS.md 时 MUST 从 git 恢复 CC 提交的版本，禁止覆盖
+
 ## TODO 强制执行（TODO_FORCE_EXEC — 死规则）
 有 pending 任务时 MUST 连续执行到底，禁止停顿汇报/询问确认。例外：阻塞依赖/需用户提供信息/安全敏感操作
 
@@ -193,6 +203,19 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 - 有未读的真实失败（Result=failed）→ 输出 `[OP] 待处理: {任务}` 并询问是否优先处理
 - 全部假阳性（Result=success inactive）→ 静默清理，不打扰用户
 - 输出格式：`[OP] {待处理数}个真实任务 / {假阳性数}个假阳性已清理`
+
+## Letta 连通性自动修复（LETTA_AUTOFIX — 死规则）
+每个会话第一个需要调用记忆的操作前，MUST 先验证 Letta 可用：
+```bash
+curl -s --connect-timeout 3 http://localhost:8283/v1/agents -w "%{http_code}" -o /dev/null
+```
+- 返回 `307` 或 `200` → 正常，继续
+- 连接失败/超时 → 自动执行修复序列：
+  1. `docker inspect letta-db --format='{{.State.Health.Status}}'`
+  2. DB unhealthy → `docker restart letta-db && sleep 30`
+  3. `docker restart letta && sleep 15`
+  4. 再次验证，失败则输出 `[LETTA_FAIL] DB状态: {状态}，需手动检查`
+- 禁止：MCP 报错后继续假装 Letta 可用、静默跳过记忆操作
 
 ## FALSE_POSITIVE_GUARD（OP死规则 — 绝不违反）
 `systemctl --user is-active <service>` 返回 `inactive` 不等于失败。

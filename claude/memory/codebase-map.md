@@ -809,3 +809,5 @@ Docker data-root 在 NTFS
 - [2026-04-21] [GLM-5.1] 3000 chat route升级: 意图路由(GLM-4.6v-flash)→context_graph/doc_pipeline→LLM回复, route.ts
 - [2026-04-21] [GLM-5.1] ~/templates/: customs_declaration.docx, quotation.xlsx, packing_list.xlsx, commercial_invoice.docx
 - [2026-04-21] [GLM-5.1] flows/index.json: 新增doc_pipeline和context_graph flow注册
+- [2026-04-21] [Aider] feat: 恢复 macg/playwright/memory MCP 配置
+  相关文件：opencode/opencode.json

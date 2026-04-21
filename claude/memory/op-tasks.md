@@ -1,3 +1,4 @@
+- [ ] [OP] [2026-04-21] [high] Docker容器健康巡检：创建 systemd timer (每10分钟) 检查 letta-db/twenty-server-1/letta 容器健康状态，unhealthy 时自动 docker restart，失败超3次写 CC_DELEGATE
 - [x] [完成 2026-04-21 11:04] — 重复#3 FEAT-OP-CENTER-01，CC已实现 [OP→CC] [2026-04-21 09:04] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
 - [x] [完成 2026-04-21 11:04] — 重复#4 tech-digest数据源，非当前优先级 [OP→CC] [2026-04-21 09:04] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
 - [x] [完成 2026-04-21 11:04] — 重复#5 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 23:00] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
