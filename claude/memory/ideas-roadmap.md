@@ -4,6 +4,41 @@
 
 ---
 
+### [2026-04-21] [Sonnet] 虚拟人 & 视频营销流水线方案
+- **状态**：规划完成，P0-P2 待实施
+- **方案文档**：`~/agi/virtual-person-plan.md`
+- **目标**：复刻抖音爆款情感视频创作者声音/形象，自动生产外贸/电商场景短视频
+- **技术栈**：
+  - 声音克隆：GPT-SoVITS（中文，5-10min训练，8GB VRAM可跑）
+  - 数字人视频：MuseTalk（实时口型同步，8GB VRAM）
+  - 文案生成：DeepSeek v3.2（已有，`localhost:4000`）
+  - 后期：FFmpeg 竖屏1080x1920 + 字幕烧录
+- **3000面板**：`video-marketing` tab（已加入业务分组）
+- **路线图**：P0采集素材→P1声音训练→P2数字人部署→P3整合→P4测试→P5抖音发布
+- **来源**：用户分享抖音创作者「牛哞哞」风格，要求复刻气场+声音
+
+---
+
+### [2026-04-21] [Sonnet] 爆款文案采集器（已上线）
+- **状态**：已完成
+- **脚本**：`~/agi/copywriting_collector.py`
+- **定时器**：每日09:30 `copywriting-collector.timer`
+- **输出**：`~/agi/data/copywriting-{date}.json`（30条AI生成模板）
+- **平台**：微信搜一搜 + 抖音Web + DeepSeek生成
+- **金句模式**：「你最大的XX，不是XX，而是XX」结构
+
+---
+
+### [2026-04-21] [Sonnet] 远程桌面方案（Guacamole + krdpserver + cloudflared）
+- **状态**：已部署，需测试新cloudflare URL
+- **方案**：krdpserver(3389) → Guacamole web client → cloudflared tunnel → 5G手机访问
+- **配置文件**：`/tmp/guac-config/`
+- **cloudflared服务**：`cloudflared-novnc.service`
+- **当前URL**：每次重启会变（需`journalctl --user -u cloudflared-novnc`查看）
+- **永久域名**：待绑定 charliewei1990@gmail.com Cloudflare账号
+
+---
+
 ### [2026-04-18] [Sonnet] AGI Control Plane 前端全量重设计（REDESIGN v2）
 - **状态**：规划完成，待OP实施
 - **规划文档**：`~/Desktop/文档/agi-control-plane-redesign-plan.md`

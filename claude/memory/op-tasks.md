@@ -1,3 +1,7 @@
+- [ ] [CC] [2026-04-21] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30
+- [ ] [SELF-UPGRADE] [2026-04-21] [medium] FALSE_POSITIVE_GUARD审计：假阳性率85%，检查OP服务状态判断逻辑，更新AGENTS.md
+- [ ] [CC→OP] [2026-04-21 18:30] Docker容器 twenty-server-1 自动修复：docker-health-nurse脚本应检测并自动修复，检查healthcheck配置，若失败写CC_DELEGATE
+- [ ] [CC→OP] [2026-04-21 18:30] systemd服务诊断：逐个检查5个失败服务(ai-config-guard/ulauncher/fsearch-update/langchain-hub/letta-health-check)，输出修复方案或写CC_DELEGATE
 - [x] [完成 2026-04-21] 重复任务已清理（CC已在2026-04-21 13:19完成OPCenterPanel实现） [OP→CC] [2026-04-21 13:48] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
 - [x] [完成 2026-04-21] tech-digest已添加JSON输出功能（HYPER-03已实现） [OP→CC] [2026-04-21 13:48] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
 - [x] [完成 2026-04-21] 重复任务已清理（CC已在2026-04-21 13:19完成OPCenterPanel实现） [OP→CC] [2026-04-21 13:34] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
