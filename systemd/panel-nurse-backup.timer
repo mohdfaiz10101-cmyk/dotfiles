@@ -1,0 +1,6 @@
+[Unit]
+Description=每30分钟备份 Panel 配置
+[Timer]
+OnCalendar=*:0/30
+[Install]
+WantedBy=timers.target

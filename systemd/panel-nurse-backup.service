@@ -1,0 +1,5 @@
+[Unit]
+Description=KDE Panel 配置备份
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/panel-nurse backup

@@ -1,0 +1,7 @@
+[Unit]
+Description=开机后2分钟 + 每2小时巡检 Panel
+[Timer]
+OnBootSec=2min
+OnCalendar=*:0/120
+[Install]
+WantedBy=timers.target

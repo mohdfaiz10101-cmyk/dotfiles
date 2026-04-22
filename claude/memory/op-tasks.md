@@ -1,5 +1,5 @@
-- [ ] [CC] [2026-04-22] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30
-- [ ] [CC] [2026-04-22] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
+- [x] [CC] [2026-04-22] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30
+- [x] [CC] [2026-04-22] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
 - [x] [完成 2026-04-21 21:01] clever_jang容器已不存在（已清理）— [CC] Docker容器 clever_jang 自动修复失败
 - [x] [完成 2026-04-21 21:01] gptsovits运行中(unhealthy但9880端口正常) — [CC] Docker容器 gptsovits 自动修复失败
 - [x] [完成 2026-04-21 21:01] 重复任务（CC已于04-19实现OPCenterPanel） — [OP→CC] FEAT-OP-CENTER-01
@@ -557,10 +557,12 @@
 - [x] [完成 2026-04-21 23:07] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-21 23:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [x] [完成 2026-04-21 23:32] [OP→CC] discord-butler: Result=success 假阳性，无需修复
 - [x] [完成 2026-04-21 23:32] [OP→CC] proxy-guardian: Result=success 假阳性，无需修复
-- [ ] [AGI→OP] [2026-04-22 10:35] [high] 分析AI磁盘分区占用详情并执行清理策略
-- [ ] [AGI→OP] [2026-04-22 10:36] [high] 扫描并清理 /mnt 或 /var 等大文件目录，释放磁盘空间
-- [ ] [AGI→OP] [2026-04-22 10:38] [high] 清理磁盘空间，建议执行 nix-collect-garbage -d 或查找并删除大文件
-- [ ] [AGI→OP] [2026-04-22 10:42] [high] 分析 AI 分区磁盘占用情况，查找大文件并执行清理或通知用户扩容
-- [ ] [AGI→OP] [2026-04-22 10:48] [medium] 检查AI数据分区空间占用，执行清理操作以释放空间
-- [ ] [AGI→OP] [2026-04-22 10:50] [low] 观察recoll索引进程是否正常结束
-- [ ] [AGI→OP] [2026-04-22 10:56] [high] 检查 /mnt/disk_ai 目录下的冗余文件并执行清理
+- [x] [完成 2026-04-22 11:01] 分析AI磁盘分区占用详情并执行清理策略 — 92%→87%，释放5.4G(appimage cache+floorp cache+wine temp)
+- [x] [完成 2026-04-22 11:01] 扫描大文件目录 — /mnt/ai 92%→87%，清理缓存释放5.4G
+- [x] [完成 2026-04-22 11:01] 清理磁盘空间 — nix-collect-garbage执行(无root权限回收少)+缓存清理，释放5.4G
+- [x] [完成 2026-04-22 11:01] 分析AI分区占用 — wechat-ios 22G/wine 2.4G/floorp 786M，已清理可回收缓存
+- [x] [完成 2026-04-22 11:01] 检查AI数据分区 — /mnt/ai 87%可用13G
+- [x] [完成 2026-04-22 11:01] 观察recoll索引进程 — ps无recoll进程(已完成或未运行)
+- [x] [完成 2026-04-22 11:01] 检查disk_ai — /mnt/disk_ai不存在(无此挂载点)，已清理/mnt/ai冗余
+- [x] [完成 2026-04-22 11:01] 清理AI数据盘 — 92%→87%，已释放5.4G
+- [x] [完成 2026-04-22 11:01] 清理AI数据盘冗余 — 清除appimage/go/floorp/wine缓存
