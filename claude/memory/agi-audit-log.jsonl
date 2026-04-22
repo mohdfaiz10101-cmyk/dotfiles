@@ -5522,3 +5522,17 @@
 {"ts": "2026-04-22 14:27", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-22 14:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-22 14:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:35", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:36", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:38", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:52", "type": "cycle", "summary": "系统运行平稳，但AI磁盘占用较高(87%)，且CPU与内存监控数据缺失。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 14:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 14:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
