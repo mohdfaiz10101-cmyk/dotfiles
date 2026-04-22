@@ -575,3 +575,6 @@
 - [x] [完成 2026-04-22 13:04] 重复任务，磁盘87%正常 [AGI→OP] [2026-04-22 12:53] [medium] 扫描磁盘空间，清理冗余数据以防空间不足
 - [x] [完成 2026-04-22 13:04] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-22 13:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-22 13:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-22 13:32] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-22 13:45] [medium] 检查磁盘空间占用详情并清理不必要的数据，防止磁盘写满
+- [ ] [OP→CC] [2026-04-22 14:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
