@@ -335,3 +335,5 @@
 - [2026-04-22] [GLM] NixOS: plasmashell 进程 comm 名为 `.plasmashell-wr`（wrapper），`pgrep -x plasmashell` 匹配不到，必须用 `pgrep -f plasmashell` 或 `pgrep plasmashell`。所有涉及 plasmashell 进程检测的脚本必须注意此兼容性问题。
 - [2026-04-22] [GLM] `nix-store --verify --check-contents` 在 systemd timer 中会超时（遍历整个 store），应只使用 `nix-store --verify` 并加 `timeout 20` 限制。
 - [2026-04-22] [GLM] systemd user service 创建后必须：(1) daemon-reload (2) enable --now (3) 验证 timer 列表 (4) 用 show --property=Result 验证首次运行结果。service 引用脚本路径必须与实际文件名一致。
+- [2026-04-22] [Aider] feat: SOPS加密ZAI_API_KEY + OP模型分层 + 修复plasma-manager警告
+  相关文件：home/charlie.nix, modules/users.nix, secrets/secrets.yaml

@@ -811,3 +811,5 @@ Docker data-root 在 NTFS
 - [2026-04-21] [GLM-5.1] flows/index.json: 新增doc_pipeline和context_graph flow注册
 - [2026-04-21] [Aider] feat: 恢复 macg/playwright/memory MCP 配置
   相关文件：opencode/opencode.json
+- [2026-04-22] [Aider] feat: 声明式固化 SSH密钥/Docker防火墙/home-manager+plasma-manager
+  相关文件：modules/networking.nix, modules/users.nix

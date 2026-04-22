@@ -18,8 +18,8 @@ UnsetEnvironment=HTTP_PROXY HTTPS_PROXY http_proxy https_proxy
 Environment=NO_PROXY=localhost,127.0.0.1
 Environment=no_proxy=localhost,127.0.0.1
 Environment=ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
-Environment=ANTHROPIC_API_KEY=c958396d0cd542d1b4c727270e259eb7.kqPFB3oHSu5pcRZ8
-Environment=ANTHROPIC_AUTH_TOKEN=c958396d0cd542d1b4c727270e259eb7.kqPFB3oHSu5pcRZ8
+# SOPS 解密：key 从 /run/secrets/zai-api-key 读取（nixos-rebuild 后生效）
+EnvironmentFile=-/run/secrets/zai-api-key-env
 Environment=ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.5-air
 Environment=ANTHROPIC_DEFAULT_SONNET_MODEL=glm-5.1
 Environment=ANTHROPIC_DEFAULT_OPUS_MODEL=glm-5.1

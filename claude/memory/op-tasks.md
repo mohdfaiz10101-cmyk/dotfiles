@@ -574,13 +574,20 @@
 - [x] [完成 2026-04-22 13:04] 磁盘87%正常(13G可用)无需清理 [AGI→OP] [2026-04-22 12:32] [high] 检查并清理 AI 数据目录以释放磁盘空间
 - [x] [完成 2026-04-22 13:04] 重复任务，磁盘87%正常 [AGI→OP] [2026-04-22 12:53] [medium] 扫描磁盘空间，清理冗余数据以防空间不足
 - [x] [完成 2026-04-22 13:04] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-22 13:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-22 13:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-22 13:32] [high] OP agent proxy-guardian 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [AGI→OP] [2026-04-22 13:45] [medium] 检查磁盘空间占用详情并清理不必要的数据，防止磁盘写满
-- [ ] [OP→CC] [2026-04-22 14:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [AGI→OP] [2026-04-22 15:58] [medium] 清理磁盘空间，降低 AI 分区使用率
-- [ ] [AGI→OP] [2026-04-22 16:10] [high] 清理AI磁盘空间以降低使用率
-- [ ] [AGI→OP] [2026-04-22 16:25] [high] 分析并清理 AI 数据目录以降低磁盘占用率
-- [ ] [AGI→OP] [2026-04-22 16:38] [high] 检查并清理磁盘AI空间
-- [ ] [AGI→OP] [2026-04-22 16:51] [medium] 检查 AI 分区（/mnt/data 或类似路径）的详细占用情况，清理大文件或过期缓存。
-- [ ] [AGI→OP] [2026-04-22 16:55] [high] 扫描 AI 数据磁盘，清理冗余文件或扩容
+- [x] [完成 2026-04-22 17:02] 假阳性(Result=success)，discord-butler正常 — [OP→CC] discord-butler
+- [x] [完成 2026-04-22 17:02] 假阳性(Result=success)，proxy-guardian正常 — [OP→CC] proxy-guardian
+- [x] [完成 2026-04-22 17:02] 已清理npm/pip/bun/stt-venv缓存，/mnt/ai 89%→85% — 磁盘清理
+- [x] [完成 2026-04-22 17:02] 假阳性(Result=success)，heartbeat-system-sentry正常 — heartbeat-system-sentry
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理，已清理 — [AGI→OP] 磁盘清理
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理 — [AGI→OP] 清理AI磁盘空间
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理 — [AGI→OP] 分析清理AI数据目录
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理 — [AGI→OP] 检查清理磁盘AI空间
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理 — [AGI→OP] AI分区占用检查清理
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理 — [AGI→OP] 扫描AI数据磁盘清理
+- [x] [完成 2026-04-22 17:02] 重复磁盘清理 — [AGI→OP] 清理disk_ai磁盘空间
+- [ ] [AGI→OP] [2026-04-22 17:55] [low] 清理 AI 磁盘空间，降低使用率至安全范围
+- [ ] [OP→CC] [2026-04-22 18:00] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-22 18:15] [medium] 扫描并清理 AI 数据分区中的冗余文件或日志
+- [ ] [AGI→OP] [2026-04-22 18:17] [medium] 分析并清理 AI 数据盘空间
+- [ ] [OP→CC] [2026-04-22 18:30] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [AGI→OP] [2026-04-22 18:56] [high] 分析磁盘 AI 占用详情并尝试清理缓存或临时文件以释放空间

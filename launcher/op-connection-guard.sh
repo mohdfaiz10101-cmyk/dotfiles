@@ -62,17 +62,21 @@ check_proxy() {
 # ── 3. 扫描 OP 日志中的连接错误 ──
 scan_errors() {
     local failed_agents=()
+    local cutoff
+    cutoff=$(date -d '30 minutes ago' '+%Y-%m-%dT%H:%M' 2>/dev/null || date -v-30M '+%Y-%m-%dT%H:%M')
     if [[ -d "$LOG_DIR" ]]; then
         for logfile in "$LOG_DIR"/*.log; do
             [[ -f "$logfile" ]] || continue
             local agent_name
             agent_name=$(basename "$logfile" .log)
-            # 检查最近 30 分钟的日志
-            if grep -q "Unable to connect" "$logfile" 2>/dev/null; then
-                # 检查是否最近 30 分钟内出现
-                if find "$logfile" -mmin -30 | grep -q .; then
-                    failed_agents+=("$agent_name")
-                fi
+            # 只检查最近 30 分钟内新增的"Unable to connect"行（按时间戳过滤）
+            # 日志格式包含 ISO 时间戳，只取 >= cutoff 的行
+            if tail -200 "$logfile" 2>/dev/null | grep "Unable to connect" | \
+               awk -v cut="$cutoff" '{
+                 for(i=1;i<=NF;i++) if($i ~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}T/) { ts=$i; break }
+                 if(ts >= cut) found=1
+               } END{exit !found}'; then
+                failed_agents+=("$agent_name")
             fi
         done
     fi
