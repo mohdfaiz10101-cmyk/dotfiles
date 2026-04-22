@@ -195,10 +195,11 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 禁止：只说「记住了」不修改文件 | 推迟到下次 | 等第2次才触发
 
 ## AGENTS.md 所有权（死规则）
-- `~/.config/opencode/AGENTS.md` 和 `~/dotfiles/opencode/AGENTS.md` **只能由 CC（Claude Code）写入/修改**
-- 禁止：GLM / OpenCode agent / OP / 任何其他 AI 直接修改这两个文件
-- 其他 AI 需要新增规则 → 输出 `CC_DELEGATE: 新增规则到 AGENTS.md: {内容}`，由 CC 执行
-- opencode-config-guard.sh 修复 AGENTS.md 时 MUST 从 git 恢复 CC 提交的版本，禁止覆盖
+- **允许**：OpenCode agent 可以向 AGENTS.md **追加新规则**（append only，不删除任何已有内容）
+- **禁止**：任何 AI 删除/修改/覆盖已有规则行
+- CC 每次检查时：验证已有规则行数只增不减，有删除 → 从 git 恢复被删内容并追加
+- opencode-config-guard.sh 修复策略：git diff 确认删除行 → 只恢复被删内容，不整体覆盖
+- GLM / OP / 其他非 OpenCode AI → 仍需输出 `CC_DELEGATE: 新增规则: {内容}`，由 CC 执行
 
 ## TODO 强制执行（TODO_FORCE_EXEC — 死规则）
 有 pending 任务时 MUST 连续执行到底，禁止停顿汇报/询问确认。例外：阻塞依赖/需用户提供信息/安全敏感操作

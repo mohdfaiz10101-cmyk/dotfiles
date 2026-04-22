@@ -337,3 +337,5 @@
 - [2026-04-22] [GLM] systemd user service 创建后必须：(1) daemon-reload (2) enable --now (3) 验证 timer 列表 (4) 用 show --property=Result 验证首次运行结果。service 引用脚本路径必须与实际文件名一致。
 - [2026-04-22] [Aider] feat: SOPS加密ZAI_API_KEY + OP模型分层 + 修复plasma-manager警告
   相关文件：home/charlie.nix, modules/users.nix, secrets/secrets.yaml
+- [2026-04-22] [Aider] fix: Floorp输入法声明式修复 + GLM知识写入job + user.js Wayland设置
+  相关文件：home/charlie.nix, modules/browser.nix

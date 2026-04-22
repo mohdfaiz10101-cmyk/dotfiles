@@ -813,3 +813,5 @@ Docker data-root 在 NTFS
   相关文件：opencode/opencode.json
 - [2026-04-22] [Aider] feat: 声明式固化 SSH密钥/Docker防火墙/home-manager+plasma-manager
   相关文件：modules/networking.nix, modules/users.nix
+- [2026-04-22] [Aider] feat: 4个新GLM job timer + AGENTS.md追加权限规则
+  相关文件：opencode/AGENTS.md, systemd/opencode-job-charlie-b445f233ebb8-aider-refactor.service, systemd/opencode-job-charlie-b445f233ebb8-aider-refactor.timer, systemd/opencode-job-charlie-b445f233ebb8-codebase-mapper.service, systemd/opencode-job-charlie-b445f233ebb8-codebase-mapper.timer
