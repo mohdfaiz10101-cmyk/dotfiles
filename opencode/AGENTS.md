@@ -1,6 +1,6 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-04-21 21:39 -->
+<!-- compiled: 2026-04-22 — CC维护，禁止其他AI修改。违反者输出 CC_DELEGATE 而非直接写入 -->
 
 ## 语言规则
 - MUST 始终使用中文回复，代码注释可用英文
