@@ -572,3 +572,4 @@
 - [ ] [OP→CC] [2026-04-22 12:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [OP→CC] [2026-04-22 12:30] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [ ] [AGI→OP] [2026-04-22 12:32] [high] 检查并清理 AI 数据目录以释放磁盘空间
+- [ ] [AGI→OP] [2026-04-22 12:53] [medium] 扫描磁盘空间，清理冗余数据以防空间不足

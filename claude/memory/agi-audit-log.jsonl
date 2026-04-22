@@ -5454,3 +5454,22 @@
 {"ts": "2026-04-22 12:32", "type": "task_queued", "task": "检查并清理 AI 数据目录以释放磁盘空间", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
 {"ts": "2026-04-22 12:32", "type": "task_queued", "task": "调查 PID 255308 (ps) 和 PID 255306 (python3.13) 的高占用原因，若非必要则终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
 {"ts": "2026-04-22 12:32", "type": "cycle", "summary": "系统磁盘 AI 使用率偏高（87%），且存在 python3.13 和 ps 进程异常占用 CPU。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-22 12:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:36", "type": "task_queued", "task": "终止卡死的 ps 进程 (PID 263139) 以恢复监控服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 12:36", "type": "cycle", "summary": "系统监控数据采集受阻，ps进程卡死导致CPU/内存数据丢失，AI磁盘占用达87%。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 12:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:48", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:53", "type": "task_queued", "task": "检查并重启系统监控服务，恢复CPU和内存数据采集", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 12:53", "type": "task_queued", "task": "调查PID 296135 (ps) 进程异常状态，必要时进行清理", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 12:53", "type": "task_queued", "task": "扫描磁盘空间，清理冗余数据以防空间不足", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 12:53", "type": "cycle", "summary": "系统监控数据缺失（CPU/内存），磁盘使用率较高（87%），且存在异常高CPU进程。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-22 12:54", "type": "task_queued", "task": "调查并终止异常进程 ps (PID 300484)，防止系统阻塞", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 12:54", "type": "task_queued", "task": "检查 python3.13 (PID 300482) 进程是否为正常业务负载", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 12:54", "type": "cycle", "summary": "系统检测到异常高 CPU 进程且磁盘空间处于高位", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-22 12:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 12:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}

@@ -3,7 +3,7 @@ Description=Chronos Subconscious — periodic dream cycle
 
 [Timer]
 OnBootSec=15min
-OnUnitActiveSec=1h
+OnUnitActiveSec=6h
 Persistent=true
 
 [Install]

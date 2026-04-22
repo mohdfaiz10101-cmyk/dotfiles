@@ -1,0 +1,9 @@
+[Unit]
+Description=AGI 反馈总线 每小时运行
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

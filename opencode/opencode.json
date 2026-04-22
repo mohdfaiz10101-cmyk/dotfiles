@@ -151,7 +151,7 @@
         "--stdio"
       ],
       "environment": {
-        "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
+        "WECHAT_BRIDGE_URL": "http://192.168.2.36:18888"
       }
     },
     "macg": {

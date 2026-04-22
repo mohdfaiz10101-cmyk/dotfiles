@@ -2,7 +2,7 @@
 Description=每日自学机制巡检
 
 [Timer]
-OnCalendar=Mon..Sun 12:00:00
+OnCalendar=Wed 12:00:00
 Persistent=true
 
 [Install]
