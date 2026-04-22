@@ -326,3 +326,7 @@
 - 对话轮次: 105 | 被纠正: 2次
   - 用户纠正: 你不是说不支持 4.0吗
   - 用户纠正: 那不是说sonnet推理很强吗 怎么会这种逻辑漏洞
+- [2026-04-22] [Aider] fix: 恢复 AGENTS.md CC所有权声明 + opencode instructions 禁止agent修改
+  相关文件：opencode/AGENTS.md, opencode/opencode.json
+- [2026-04-22] [Aider] fix: 恢复 AGENTS.md 完整内容（sisyphus二次篡改）+ 新增 SKILL_FIRST_FIX 死规则
+  相关文件：opencode/AGENTS.md

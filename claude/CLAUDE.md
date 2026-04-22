@@ -111,6 +111,15 @@
 触发：nixos-rebuild / nix flake update / systemctl restart-stop / rm/dd/mkfs / NVIDIA / mihomo 变更
 → grep `memory/` 相关关键词，命中输出 `[历史风险] {摘要}`，无命中正常执行
 
+## 修复前 Skill 检索（SKILL_FIRST_FIX — 死规则）
+收到任何「修复/fix/解决/恢复」类任务时，MUST 在手动操作前执行：
+1. `grep -ri "{关键词}" ~/.claude/skills/` 检索匹配 skill
+2. `grep -i "{关键词}" ~/.claude/projects/-home-charlie/memory/lessons-learned.md` 检索历史修复
+3. **命中 skill** → 优先调用 `Skill` 工具执行，输出 `[SKILL_HIT] 调用: {skill名}`
+4. **命中历史记录** → 直接按历史方案执行，输出 `[HISTORY_HIT] 来源: lessons-learned #{行号} → {方案摘要}`
+5. 两者均无命中 → 正常手动诊断，输出 `[SKILL_MISS] 无历史记录，开始诊断`
+禁止：跳过检索直接手动修复 | 命中后仍重新诊断绕过历史方案
+
 ## 上下文管理（INCREMENTAL_DISTILL）
 - 上下文>40% 或 /compact 时：先按路由表写入 memory/ 各文件，再 compact
 - compact 后 MUST 自动继续执行未完成任务，首行输出 `[COMPACT_CONTINUE] 恢复任务: {名} | 进度: {x/y} | 下一步: {操作}`

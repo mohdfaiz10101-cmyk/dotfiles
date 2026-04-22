@@ -5363,3 +5363,30 @@
 {"ts": "2026-04-22 10:28", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-22 10:29", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-04-22 10:30", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:32", "type": "cycle", "summary": "LLM 调用失败：Server disconnected without sending a response.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:33", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:35", "type": "task_queued", "task": "分析AI磁盘分区占用详情并执行清理策略", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:35", "type": "cycle", "summary": "系统检测到AI磁盘分区占用率高达90%，且python3.13进程持续高CPU占用。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:36", "type": "task_queued", "task": "扫描并清理 /mnt 或 /var 等大文件目录，释放磁盘空间", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:36", "type": "cycle", "summary": "AI磁盘使用率高达91%，需立即处理，其他监控数据暂时缺失。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:38", "type": "task_queued", "task": "清理磁盘空间，建议执行 nix-collect-garbage -d 或查找并删除大文件", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:38", "type": "task_queued", "task": "监控 nix-daemon 和 recollindex 进程状态，确认是否为正常的构建或索引任务", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:38", "type": "cycle", "summary": "系统磁盘 AI 使用率高达 91%，CPU 主要被 Nix 守护进程和 Recoll 索引占用。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:40", "type": "cycle", "summary": "系统检测到高 CPU 占用进程，且磁盘 AI 使用率达到 92%。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:42", "type": "task_queued", "task": "分析 AI 分区磁盘占用情况，查找大文件并执行清理或通知用户扩容", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:42", "type": "task_queued", "task": "检查 recollindex 和 python3.13 进程状态，如果进程卡死则终止", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:42", "type": "cycle", "summary": "AI 分区磁盘占用率极高，系统存在高 CPU 占用进程", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-04-22 10:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:46", "type": "task_queued", "task": "降低 .recollindex-wr 进程优先级或暂停索引，释放 CPU 资源", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:46", "type": "cycle", "summary": "系统面临存储危机，AI磁盘使用率高达92%，同时CPU负载因后台索引任务极重。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:48", "type": "task_queued", "task": "检查AI数据分区空间占用，执行清理操作以释放空间", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:48", "type": "cycle", "summary": "监控数据部分缺失，AI数据分区空间告警(92%)，Recoll索引进程占用大量CPU。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:50", "type": "task_queued", "task": "观察recoll索引进程是否正常结束", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:50", "type": "cycle", "summary": "系统磁盘空间告急（92%），且存在高CPU占用的索引进程。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-22 10:56", "type": "task_queued", "task": "检查 /mnt/disk_ai 目录下的冗余文件并执行清理", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:56", "type": "cycle", "summary": "系统CPU负载极高，且AI磁盘空间使用率达到92%告警线。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-22 10:58", "type": "task_queued", "task": "检查并重启系统监控服务，恢复数据采集", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:58", "type": "task_queued", "task": "调查并处理异常 CPU 进程 'ps' (PID 79371)", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-22 10:58", "type": "cycle", "summary": "系统监控数据部分缺失，AI 磁盘使用率 92%，发现异常高 CPU 占用进程", "alert_count": 3, "skipped_llm": false}
