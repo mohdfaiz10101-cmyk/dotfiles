@@ -35,6 +35,15 @@
 - NixOS/Flake 问题必须先 Read 实际配置，不凭记忆编造
 - 出错不重复同样方法，换思路；连续失败2次 /clear 重新开始
 
+## 修复前 Skill 检索（SKILL_FIRST_FIX — 死规则）
+收到任何「修复/fix/解决/恢复」类任务时，MUST 先执行：
+1. `grep -ri "{关键词}" ~/.claude/skills/` 检索匹配 skill
+2. `grep -i "{关键词}" memory/lessons-learned.md` 检索历史修复
+3. 命中 skill → 调用 Skill 工具，输出 `[SKILL_HIT] 调用: {skill名}`
+4. 命中历史 → 按历史方案执行，输出 `[HISTORY_HIT] lessons-learned #{行} → {摘要}`
+5. 均无命中 → 手动诊断，输出 `[SKILL_MISS] 无历史，开始诊断`
+禁止：跳过检索直接手动修复
+
 ## 迁移/安装前强制预检（PRE_MIGRATE_CHECK — 死规则）
 任何「安装大文件」「迁移数据」「docker pull」「写入目标路径」操作，执行前 MUST：
 1. `df -h <目标>` → 可用空间 > 预估 × 1.5
@@ -48,12 +57,15 @@
 - `Result=failed` → 才是真正失败
 
 ## AGENTS.md 所有权（死规则）
-`~/.config/opencode/AGENTS.md` 只能由 CC（Claude Code）写入/修改。禁止 GLM / OpenCode agent / OP 直接修改。
-其他 AI 需要新增规则 → 输出 `CC_DELEGATE: 新增规则到 AGENTS.md: {内容}`，由 CC 执行。
+`~/.config/opencode/AGENTS.md` 和 `~/dotfiles/opencode/AGENTS.md` **只能由 CC（Claude Code）写入/修改**。
+禁止 GLM / OpenCode agent / OP / sisyphus / 任何其他 AI 直接修改。
+需要新增规则 → 输出 `CC_DELEGATE: 新增规则到 AGENTS.md: {内容}`，由 CC 执行。
+opencode-config-guard.sh 修复时 MUST 从 git 恢复 CC 提交的版本，禁止覆盖。
 
 ## 3000 控制台开发规则（dev 模式 — 死规则）
 `localhost:3000` 是 Next.js dev 模式（HMR），改完自动生效。
-禁止执行 `bun run build` 或切换 `NODE_ENV=production`。
+路径：`/mnt/ai/apps/agi-control-plane/frontend/app/`
+禁止执行 `bun run build` / `next build` 或切换 `NODE_ENV=production`。修改文件后无需重启服务。
 
 ---
-Source: ~/CLAUDE.md | Auto-compiled
+Source: ~/CLAUDE.md | Auto-compiled | CC-only writes
