@@ -83,5 +83,13 @@ opencode-config-guard.sh 修复时 MUST 从 git 恢复 CC 提交的版本，禁�
 路径：`/mnt/ai/apps/agi-control-plane/frontend/app/`
 禁止执行 `bun run build` / `next build` 或切换 `NODE_ENV=production`。修改文件后无需重启服务。
 
+## 模型标识（强制输出 — 死规则）
+每次回复第一行 MUST 输出：`▸ {emoji} {模型代号} | {路由原因}`
+- GLM-4.7：`▸ ⚡ GLM-4.7 | 快速任务`
+- GLM-Z-Flash（glm-5-turbo）：`▸ 🔧 GLM-Z-Flash | 均衡任务`
+- GLM-Z-Air（glm-5.1 coding）：`▸ 🐉 GLM-Z-Air | 代码/SWE任务`
+- Claude Sonnet：`▸ ✅ Sonnet | CC直接处理`
+禁止：跳过首行标识 | 把标识放在回复末尾 | 只有部分回复有标识
+
 ---
 Source: ~/CLAUDE.md | Auto-compiled | CC-only writes
