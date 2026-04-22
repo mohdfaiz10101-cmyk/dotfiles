@@ -1,0 +1,7 @@
+[Unit]
+Description=Nix Store Integrity Check
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/nix-store-integrity-check.sh

@@ -1,0 +1,9 @@
+[Unit]
+Description=PlasmaShell Crash Guard
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/plasmashell-crash-guard.sh

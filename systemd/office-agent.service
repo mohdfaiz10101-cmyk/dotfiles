@@ -1,0 +1,13 @@
+[Unit]
+Description=AI LibreOffice 控制引擎 (port 9810)
+After=network.target hub-api.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/office-agent-runner.sh
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

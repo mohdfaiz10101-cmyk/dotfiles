@@ -1,9 +1,0 @@
-[Unit]
-Description=Nix Store 巡检与自动修复
-After=network.target
-
-[Service]
-Type=oneshot
-ExecStart=/home/charlie/.local/bin/nix-store-nurse
-StandardOutput=journal
-StandardError=journal

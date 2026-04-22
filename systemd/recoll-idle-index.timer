@@ -1,10 +1,9 @@
 [Unit]
-Description=Recoll idle-index update timer (user)
+Description=Recoll 每日增量索引（仅本地重要目录）
 
 [Timer]
-OnBootSec=5min
-OnUnitActiveSec=30min
-Unit=recoll-idle-index.service
+OnCalendar=*-*-* 14:00:00
+Persistent=true
 
 [Install]
 WantedBy=default.target
