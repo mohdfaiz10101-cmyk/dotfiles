@@ -604,3 +604,8 @@
 - [ ] [AGI→OP] [2026-04-23 00:41] [high] 检查并清理 / 或挂载点下的 AI 磁盘空间，防止存储溢出
 - [ ] [AGI→OP] [2026-04-23 00:54] [low] Fe评分过低({fe_score})，建议用户休息
 - [ ] [AGI→OP] [2026-04-23 00:54] [high] 检查并分析python3.13进程(1395457)的异常行为，必要时终止或重启
+- [ ] [AGI→OP] [2026-04-23 01:15] [medium] 检查 AI 磁盘空间并尝试清理不必要的缓存或日志文件
+
+- [ ] [OP] [2026-04-23] [medium] WIN-NODE-01 Windows云节点-环境搭建：SSH到192.168.2.36，检查Python版本，安装pip依赖(requests/openai)，验证能访问 api.z.ai（设置代理 192.168.2.100:7890），写测试脚本确认GLM API可用，结果写入 C:\ai-node\status.txt
+- [ ] [OP] [2026-04-23] [medium] WIN-NODE-02 Windows微信任务脚本：基于WIN-NODE-01完成后，写 C:\ai-node\wechat-processor.py：轮询 http://192.168.2.36:18888/api/messages 获取未读消息 → 调 GLM API分类(客户咨询/群聊/@提及) → 自动回复或写摘要到 C:\ai-node\daily-summary.txt，Syncthing同步到NixOS ~/Desktop/wechat-reports/
+- [ ] [OP] [2026-04-23] [low] WIN-NODE-03 Windows Task Scheduler定时任务：WIN-NODE-02完成后，用schtasks在Windows创建每日22:00执行wechat-processor.py的定时任务，执行日志写 C:\ai-node\logs\，完成后Telegram通知 tg-push
