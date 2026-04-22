@@ -1,6 +1,6 @@
-- [ ] [CC] [2026-04-22] [high] Docker容器 d9ea53c32f6d_litellm-litellm 自动修复失败，需人工检查：docker logs d9ea53c32f6d_litellm-litellm --tail 30
-- [ ] [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
-- [ ] [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-22 23:03] 容器ID已不存在(旧ID)，litellm当前healthy正常运行
+- [x] [完成 2026-04-22 23:03] 重复#7 FEAT-OP-CENTER-01，CC已于04-19实现OPCenterPanel [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-22 23:03] 重复#7 tech-digest，HYPER-03已实现JSON输出 [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
 - [x] [CC] [2026-04-22] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30
 - [x] [CC] [2026-04-22] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
 - [x] [完成 2026-04-21 21:01] clever_jang容器已不存在（已清理）— [CC] Docker容器 clever_jang 自动修复失败
@@ -599,5 +599,6 @@
 - [x] [AGI→OP] [2026-04-22 19:47] [medium] 检查 AI 分区的大文件或日志，执行磁盘清理操作 [完成 2026-04-22 21:02] — 同上合并执行
 - [x] [AGI→OP] [2026-04-22 19:53] [medium] 分析并清理 AI 分区冗余文件以释放空间 [完成 2026-04-22 21:02] — 同上合并执行
 - [x] [AGI→OP] [2026-04-22 20:17] [medium] 扫描 AI 数据目录，清理旧日志或缓存文件释放空间 [完成 2026-04-22 21:02] — 同上合并执行
-- [ ] [AGI→OP] [2026-04-22 21:17] [medium] 检查 AI 磁盘占用情况，清理冗余数据或扩展存储
-- [ ] [AGI→OP] [2026-04-22 22:09] [medium] 检查 AI 数据盘的大文件并执行清理操作
+- [x] [完成 2026-04-22 23:03] /mnt/ai 80%(20G可用)，清turbopack缓存释放~1G — [AGI→OP] [2026-04-22 21:17] [medium] 检查 AI 磁盘占用情况，清理冗余数据或扩展存储
+- [x] [完成 2026-04-22 23:03] 同上合并执行，80%正常(大文件:baloo 1.5G/wechat/playwright，均业务数据) — [AGI→OP] [2026-04-22 22:09] [medium] 检查 AI 数据盘的大文件并执行清理操作
+- [ ] [AGI→OP] [2026-04-23 00:41] [high] 检查并清理 / 或挂载点下的 AI 磁盘空间，防止存储溢出

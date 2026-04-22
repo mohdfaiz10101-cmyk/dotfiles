@@ -354,3 +354,5 @@
   - 注意：sqlcipher 解密命令需用 PRAGMA cipher_compatibility = 4
   - 注意：message_0.db 只有 .factory 备份，不在活跃使用中（活跃的是 message_1.db）
   - GDB断点法（setCipherKey at 0x41efc90）可用但命中太多无关字符串，内存扫描更高效
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：tg-push cooldown 机制
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：tg-push cooldown 机制
