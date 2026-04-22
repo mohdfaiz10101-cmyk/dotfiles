@@ -93,3 +93,13 @@ opencode-config-guard.sh 修复时 MUST 从 git 恢复 CC 提交的版本，禁�
 
 ---
 Source: ~/CLAUDE.md | Auto-compiled | CC-only writes
+
+## 云端备份（CLOUD_BACKUP — 死规则）
+用户说「备份」「推送」「云端」「保存配置」时，MUST 执行：
+```bash
+bash ~/dotfiles/push-to-cloud.sh "auto backup $(date '+%Y-%m-%d %H:%M')"
+```
+- 该脚本同步 skills/memory/CLAUDE.md/agents 到 `~/dotfiles/` 并 git push 到 GitHub
+- `opencode.json` 已是软链接→dotfiles，无需额外同步
+- 执行后输出 `[BACKUP_OK] 已推送 GitHub: mohdfaiz10101-cmyk/dotfiles`
+- 禁止：只说"可以备份"但不执行脚本
