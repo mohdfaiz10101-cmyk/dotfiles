@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode Timer: aider-refactor (weekly Mon 10:00)
+
+[Timer]
+OnCalendar=Mon *-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

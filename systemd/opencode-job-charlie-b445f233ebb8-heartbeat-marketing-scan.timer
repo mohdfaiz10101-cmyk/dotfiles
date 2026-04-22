@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode Timer: heartbeat-marketing-scan (every 2h 08:00-22:00)
+
+[Timer]
+OnCalendar=*-*-* 08,10,12,14,16,18,20,22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

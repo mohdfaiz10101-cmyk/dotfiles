@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode Timer: glm-knowledge-writer (daily 10:00 14:00 18:00 22:00)
+
+[Timer]
+OnCalendar=*-*-* 10,14,18,22:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
