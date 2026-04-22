@@ -192,3 +192,35 @@
 | 3 | [The Abstraction Fallacy: Why AI Can Simulate but Not I…](https://deepmind.google/research/publications/231971/) | 9 | 2 |
 | 4 | [Zero-copy protobuf and ConnectRPC for Rust](https://medium.com/@iainmcgin/zero-copy-protobuf-and-connectrpc-for-rust-69bda8ac0f02) | 116 | 32 |
 | 5 | [AI chatbots could be making you stupider](https://www.bbc.com/future/article/20260417-ai-chatbots-could-be-making-you-stupider) | 36 | 41 |
+
+---
+
+## 2026 AGI 全技术吸收计划（[Sonnet] 2026-04-21）
+
+### 已完成规划（全部写入 op-tasks.md）
+
+**立即可吸收（红色）**
+- n8n AI Nodes 接 Hub API → 文字触发工作流
+- OODA Loop 改造 OP 执行框架（Observe/Orient/Decide/Act）
+- /intake 多意图分解 + Fast Intent 路由（iCARE 模式）
+- Mem0 三温记忆控制器（Hot/Warm/Cold 分层）
+- MAGMA 多图记忆 tag 策略（semantic/temporal/causal/entity）
+
+**中期吸收（黄色）**
+- Qwen3.5-Omni 部署 → 语音+多模态输入（桌宠/微信语音）
+- GLM-4.6V 多模态 /intake（图片→意图→Playwright/CRM/Knowledge）
+- MetaAgent 工具自发现 → 自动注册到 Tool RAG
+- AdaptOrch 升级 Claude Router Hook（动态路由替代规则路由）
+- AFlow 风格任务规划 /api/plan-task（MCTS 多方案选优）
+
+**长期架构（绿色，后续推进）**
+- Meta HyperAgents（CC+OP 自我修改）
+- human-on-loop 自主谱演进
+- Hybrid Orchestration Mesh 层
+- EvoAgentX 工具失败→自动生成新策略
+
+### 技术来源
+AFlow(ICLR2025) / MAGMA(arXiv2601) / Mem0(arXiv2504) / MoMA(arXiv2509) /
+Qwen3.5-Omni(2026-03) / GLM-4.6V / AdaptOrch(2026-02) / iCARE(CEUR2025) /
+MetaAgent(arXiv2508) / AAIF+MCP(LF 2025-12)
+

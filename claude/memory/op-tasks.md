@@ -551,3 +551,7 @@
 - [x] [完成 2026-04-21 22:26] Letta archival API 422，改用MCP写入摘要（319消息/6询价/20唯一talker已记录） [OP] [2026-04-21] [medium] Letta 实体关联注入：读 /mnt/ai/data/wechat-merged/ 联系人列表（3269条）→ 每条 POST http://localhost:8283/v1/agents/agent-02380eae-9ac2-45f4-9b2-dabf40e0abea/archival-memory 写入 Letta → 完成写 op-task-results.json（已有3269联系人数据）
 - [x] [完成 2026-04-21 22:26] 目录/mnt/ai/apps/mastra-agent/不存在，无法执行 [OP] [2026-04-21] [medium] Mastra 多agent验证：cd /mnt/ai/apps/mastra-agent && bun run dev 检查是否正常启动 → curl localhost:4111/health → 失败则查日志写 CC_DELEGATE
 - [x] [完成 2026-04-21 22:26] 假阳性 Result=success — discord-butler [OP→CC] [2026-04-21 22:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 23:07] 假阳性 Result=success — discord-butler [OP→CC] [2026-04-21 23:00] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 23:07] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-21 23:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 23:32] [OP→CC] discord-butler: Result=success 假阳性，无需修复
+- [x] [完成 2026-04-21 23:32] [OP→CC] proxy-guardian: Result=success 假阳性，无需修复

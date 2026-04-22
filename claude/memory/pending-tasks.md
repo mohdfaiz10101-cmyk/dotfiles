@@ -2,6 +2,19 @@
 
 <!-- 清理日期: 2026-04-17 — 删除所有 [x] 已完成条目，只保留未完成任务 -->
 
+## 2026 AGI 技术吸收（2026-04-21 派发 OP，今日执行）
+- [ ] **[OP] n8n AI Nodes** → 文字触发工作流（接 Hub API）
+- [ ] **[CC] OODA Loop** → OP执行框架改造
+- [ ] **[CC] /intake 多意图** → iCARE分解+并行路由
+- [ ] **[CC] Mem0三温** → memory_controller.py Hot/Warm/Cold
+- [ ] **[CC] MAGMA tag** → Letta archival多维标签
+- [ ] **[OP] Qwen3.5-Omni** → 语音/多模态输入部署
+- [ ] **[CC] GLM-4.6V /intake** → 图片→意图→执行
+- [ ] **[OP] MetaAgent** → 工具自发现→Tool RAG自动注册
+- [ ] **[CC] AdaptOrch** → Claude Router动态路由升级
+- [ ] **[CC] AFlow /api/plan-task** → MCTS多方案规划
+- 详细规划见：`memory/ideas-roadmap.md` + `~/op-tasks.md`
+
 ## 高优先
 
 ### 3000 控制台升级路线图（[Sonnet] 2026-04-21）
