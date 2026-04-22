@@ -224,3 +224,9 @@ AFlow(ICLR2025) / MAGMA(arXiv2601) / Mem0(arXiv2504) / MoMA(arXiv2509) /
 Qwen3.5-Omni(2026-03) / GLM-4.6V / AdaptOrch(2026-02) / iCARE(CEUR2025) /
 MetaAgent(arXiv2508) / AAIF+MCP(LF 2025-12)
 
+
+### [2026-04-22 补录] [Sonnet] 虚拟人实施进度（昨天已完成）
+- GPT-SoVITS API: 端口9880，零样本TTS验证OK（niumoumou.wav参考音）
+- 方案文档: `~/agi/virtual-person-plan.md`
+- P1完成: TTS可调用 | P2待做: MuseTalk部署
+- VRAM: GPT-SoVITS 3GB + MuseTalk 4GB = 7GB，串行执行

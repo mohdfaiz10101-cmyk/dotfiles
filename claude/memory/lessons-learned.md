@@ -1,5 +1,11 @@
 # 踩坑日志
 
+- [2026-04-22] [Sonnet] **Letta archival 记忆缺失根因：hash缓存在 /tmp，重启后丢失** — letta-sync.py 的 HASH_CACHE 原为 `/tmp/letta-sync-hashes.json`，重启后清空导致重复写入（DB从2055条膨胀到6945条），且 API limit=2000 导致计数虚报"满"。修复：缓存改为 `~/.config/letta-sync-hashes.json` + 对现有DB条目重建缓存 + SQL去重删除4890条重复。
+
+- [2026-04-22] [Sonnet] **GPT-SoVITS API 正确参数**：`text_lang`应为`text_language`，`ref_audio_path`应为`refer_wav_path`，中文字符需 Python urllib.parse.urlencode 编码（curl直接传中文会400）。测试命令：`python3 -c "import urllib.request,urllib.parse; params=urllib.parse.urlencode({...}); urllib.request.urlopen(f'http://localhost:9880/?{params}')"` → 200 OK，返回55KB WAV。
+
+- [2026-04-22] [Sonnet] **WeChat UOS 图片 V2 格式**：dat文件头为 `07 08 56 32`（非XOR编码），直接解码为JPEG/PNG，不需要XOR键。消息丢失原因：WeChat离线7天（4月15-22日），正在从服务器同步历史，等待即可。DB和WAL均有效。
+
 - [2026-04-21] [GLM] **未验证分区类型直接触发 NTFS_BAN** — `/mnt/ai` 实为 ext4 loop 设备，GLM 未执行 `df -T` 就断言 NTFS 并给出迁移建议。死规则：涉及分区类型的任何操作，MUST 先 `df -T <path>` 验证，禁止凭路径名推断。
 
 - [2026-04-20] [Sonnet] **高返工率根因：先修后诊断** — ANSI乱码修了3轮，每次只改症状未验证假设。死规则：修复前先写假设+验证命令，确认根因后再动手。命令示例：`echo -e '\x1b[<17;35;24M' | sed '...' | xxd` 这类一行验证。
@@ -330,8 +336,6 @@
   相关文件：opencode/AGENTS.md, opencode/opencode.json
 - [2026-04-22] [Aider] fix: 恢复 AGENTS.md 完整内容（sisyphus二次篡改）+ 新增 SKILL_FIRST_FIX 死规则
   相关文件：opencode/AGENTS.md
-- [2026-04-22] [GLM] 踩坑：NixOS上plasmashell进程名为`.plasmashell-wr`(wrapper)，`pgrep -x plasmashell`匹配不到，必须用`pgrep -f plasmashell`或`pgrep plasmashell`
-
 - [2026-04-22] [GLM] NixOS: plasmashell 进程 comm 名为 `.plasmashell-wr`（wrapper），`pgrep -x plasmashell` 匹配不到，必须用 `pgrep -f plasmashell` 或 `pgrep plasmashell`。所有涉及 plasmashell 进程检测的脚本必须注意此兼容性问题。
 - [2026-04-22] [GLM] `nix-store --verify --check-contents` 在 systemd timer 中会超时（遍历整个 store），应只使用 `nix-store --verify` 并加 `timeout 20` 限制。
 - [2026-04-22] [GLM] systemd user service 创建后必须：(1) daemon-reload (2) enable --now (3) 验证 timer 列表 (4) 用 show --property=Result 验证首次运行结果。service 引用脚本路径必须与实际文件名一致。
@@ -339,3 +343,14 @@
   相关文件：home/charlie.nix, modules/users.nix, secrets/secrets.yaml
 - [2026-04-22] [Aider] fix: Floorp输入法声明式修复 + GLM知识写入job + user.js Wayland设置
   相关文件：home/charlie.nix, modules/browser.nix
+
+- [2026-04-22] [GLM-Z-Air] UOS微信4.1.1数据库解密：关键突破是验证算法修正
+  - 症状：ylytdeng/wechat-decrypt 扫描 /proc/<pid>/mem 的 x'<hex>' 模式，15M候选全失败
+  - 原因：HMAC验证算法写错。正确方法是用 PBKDF2-HMAC-SHA512（mac_salt = salt XOR 0x3A, iterations=2），不是直接 HMAC
+  - 修复：用 ylytdeng key_scan_common.py 的 verify_enc_key() 函数
+  - 结果：16/16 活跃 DB 全部解密成功
+  - 密钥位置：~/文档/xwechat_files/wxid_bjo2p0swoxm822_fe61/decrypted/keys.json
+  - 解密DB位置：~/文档/xwechat_files/wxid_bjo2p0swoxm822_fe61/decrypted/dbs/
+  - 注意：sqlcipher 解密命令需用 PRAGMA cipher_compatibility = 4
+  - 注意：message_0.db 只有 .factory 备份，不在活跃使用中（活跃的是 message_1.db）
+  - GDB断点法（setCipherKey at 0x41efc90）可用但命中太多无关字符串，内存扫描更高效

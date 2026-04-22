@@ -815,3 +815,12 @@ Docker data-root 在 NTFS
   相关文件：modules/networking.nix, modules/users.nix
 - [2026-04-22] [Aider] feat: 4个新GLM job timer + AGENTS.md追加权限规则
   相关文件：opencode/AGENTS.md, systemd/opencode-job-charlie-b445f233ebb8-aider-refactor.service, systemd/opencode-job-charlie-b445f233ebb8-aider-refactor.timer, systemd/opencode-job-charlie-b445f233ebb8-codebase-mapper.service, systemd/opencode-job-charlie-b445f233ebb8-codebase-mapper.timer
+
+## WeChat UOS 4.1.1 解密完成 (2026-04-22)
+- 密钥提取：内存扫描 x'<hex>' 模式 + PBKDF2-HMAC-SHA512 验证（mac_salt = salt XOR 0x3A, iter=2）
+- 密钥文件：~/文档/xwechat_files/wxid_bjo2p0swoxm822_fe61/decrypted/keys.json（16个密钥）
+- 解密DB目录：~/文档/xwechat_files/wxid_bjo2p0swoxm822_fe61/decrypted/dbs/（16个明文SQLite）
+- 朋友圈导出：sns_timeline.json（48条，含文字/时间/点赞数）
+- 消息DB：229条消息，但 message_content 是 WCDB 压缩格式（WCDB_CT_* = 4）
+- 合并DB：/mnt/ai/data/wechat-merged/messages.db（319条，来自之前Wine端合并）
+- 待解决：WCDB 压缩消息解码 + 跨端合并（Wine + UOS + Windows）

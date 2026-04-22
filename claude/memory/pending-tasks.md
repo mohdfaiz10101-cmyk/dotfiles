@@ -55,9 +55,6 @@
 
 ## 微信体系
 
-- [x] **AGI Brain 构建（2026-04-20验证）** — ✅ 服务正常运行（PID: 2185071）
-   - 相关文件：`~/agi/brain.py`
-   - 服务状态：`systemctl --user status agi-brain`
 - [ ] **微信 Windows 端密钥提取** — 需在 Windows 运行 pywxdump 或 wechat-auto-decrypt.ps1
    - Windows DB: /mnt/data/WeChat Files/w422417869/Msg/（79 个加密文件）
    - 提取密钥后可用 wechat-finance 工具解密
