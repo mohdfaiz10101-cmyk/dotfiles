@@ -17,6 +17,12 @@
 - **R8** 装饰预算：装饰元素≤回复总行数10%
 **承诺标注**：涉及承诺时第一行标注 `[强制]` / `[建议]` / `[已完成]`，禁止模糊语气
 
+## 声明式优先（DECLARATIVE_FIRST — 死规则）
+配置稳定后 MUST 声明式固化，禁止用"备份+恢复脚本"替代。
+触发信号：用户说「稳定了」「永久化」「每次都丢」「备份一下」
+→ MUST 提示：`[DECL] 建议声明式固化，路径：{nix模块}，方案：{home-manager/nixos module}`
+→ 禁止只给 backup/restore 脚本方案
+
 ## NixOS 专项
 - 路径禁令：用户空间文件中 **NEVER** 硬编码 `/nix/store/xxx/bin/xxx`，MUST 用 `/run/current-system/sw/bin/xxx`
 - 修改 .nix 文件前 MUST Read 当前内容，修改后 MUST `nix flake check`

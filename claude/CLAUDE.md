@@ -125,6 +125,20 @@
 - compact 后 MUST 自动继续执行未完成任务，首行输出 `[COMPACT_CONTINUE] 恢复任务: {名} | 进度: {x/y} | 下一步: {操作}`
 - 禁止等用户说「继续」才恢复
 
+## 声明式优先（DECLARATIVE_FIRST — 死规则）
+配置稳定后 MUST 声明式固化，禁止用"备份+恢复脚本"替代。
+
+| 配置类型 | 声明式方式 |
+|---------|-----------|
+| 系统服务/包/内核 | `/etc/nixos/*.nix` → nixos-rebuild |
+| 用户软件/dotfiles/KDE面板 | `home-manager` + `plasma-manager` |
+| 用户 systemd 服务 | `home-manager systemd.user.services` |
+| Shell/环境变量 | `home.sessionVariables` / `programs.zsh` |
+
+触发信号：用户说「稳定了」「永久化」「每次都丢」「备份一下」
+→ MUST 提示：`[DECL] 建议声明式固化，路径：{nix模块}，方案：{home-manager/nixos module}`
+→ 禁止只给 backup/restore 脚本方案
+
 ## NixOS 专项
 - 路径禁令：用户空间文件中 **NEVER** 硬编码 `/nix/store/xxx/bin/xxx`，MUST 用 `/run/current-system/sw/bin/xxx`
 - 修改 .nix 文件前 MUST Read 当前内容，修改后 MUST `nix flake check`
