@@ -205,3 +205,12 @@
   - 每天 09:00 OP 执行：读取昨日微信未回复消息 + 今日 op-tasks
   - 生成中文简报 → notify-send + 写 ~/Desktop/巡检报告/晨报-YYYY-MM-DD.md
 
+
+## Windows 微信兼容性修复（2026-04-22）
+
+- [ ] **[待定-长期] Win 微信 WeChatFerry 兼容性**
+  - **根因**：WeChatFerry v39.5.2 只支持微信 3.9.x，当前 Windows 安装的是微信 4.x（Weixin 4.1.8）
+  - **临时方案**：在 Windows 安装微信 3.9.12.51（降级），可通过 wcferry 读取消息
+  - **风险**：微信可能提示"版本过低"并强制更新
+  - **长期方案**：等待 wcferry 社区支持 4.x（Issue #314 closed as not_planned，暂无时间表）；或改用其他方案（itchat-uos / gewechat API）
+  - **当前状态**：暂缓，使用 UOS Linux 微信（已解密成功）替代

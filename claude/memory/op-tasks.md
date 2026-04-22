@@ -569,7 +569,9 @@
 - [x] [完成 2026-04-22 磁盘正常无需清理] [AGI→OP] [2026-04-22 11:59] [medium] 检查磁盘 AI 分区空间占用情况，清理不必要的数据
 - [x] [重复跳过] [AGI→OP] [2026-04-22 12:19] [medium] 扫描 AI 磁盘空间，清理临时文件或旧的模型缓存
 - [x] [重复跳过] [AGI→OP] [2026-04-22 12:23] [medium] 分析并清理 AI 分区磁盘空间，释放存储资源
-- [ ] [OP→CC] [2026-04-22 12:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [OP→CC] [2026-04-22 12:30] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
-- [ ] [AGI→OP] [2026-04-22 12:32] [high] 检查并清理 AI 数据目录以释放磁盘空间
-- [ ] [AGI→OP] [2026-04-22 12:53] [medium] 扫描磁盘空间，清理冗余数据以防空间不足
+- [x] [完成 2026-04-22 13:04] 假阳性 Result=success — discord-butler [OP→CC] [2026-04-22 12:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-22 13:04] 假阳性 Result=success — heartbeat-system-sentry [OP→CC] [2026-04-22 12:30] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-22 13:04] 磁盘87%正常(13G可用)无需清理 [AGI→OP] [2026-04-22 12:32] [high] 检查并清理 AI 数据目录以释放磁盘空间
+- [x] [完成 2026-04-22 13:04] 重复任务，磁盘87%正常 [AGI→OP] [2026-04-22 12:53] [medium] 扫描磁盘空间，清理冗余数据以防空间不足
+- [x] [完成 2026-04-22 13:04] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-22 13:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [ ] [OP→CC] [2026-04-22 13:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
