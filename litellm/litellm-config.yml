@@ -1,0 +1,198 @@
+# LiteLLM Proxy Config
+# 路由策略必须是 simple-shuffle（priority 在 v1.77.7 中未实现）
+# API key 使用 os.environ/VAR_NAME 语法读取环境变量
+
+model_list:
+  # === Z.AI GLM 系列（主力） ===
+  # GLM 思维链模型：timeout ≥120，Z.AI 并发限制低，rpm=5 防止429
+  # 2026-04-22 rpm 10→5，加 tpm 限制避免打爆；cooldown_time 60s 防止连续重试
+  - model_name: glm-5.1
+    litellm_params:
+      model: openai/glm-5.1
+      api_base: https://api.z.ai/api/coding/paas/v4
+      api_key: os.environ/ZAI_API_KEY
+      temperature: 0.7
+      timeout: 120
+      rpm: 5
+      tpm: 100000
+      max_retries: 1
+      drop_params: false
+
+  - model_name: glm-5-turbo
+    litellm_params:
+      model: openai/glm-5-turbo
+      api_base: https://api.z.ai/api/coding/paas/v4
+      api_key: os.environ/ZAI_API_KEY
+      temperature: 0.7
+      timeout: 120
+      rpm: 5
+      tpm: 100000
+      max_retries: 1
+      drop_params: false
+
+  - model_name: glm-4.7
+    litellm_params:
+      model: openai/glm-4.7
+      api_base: https://api.z.ai/api/coding/paas/v4
+      api_key: os.environ/ZAI_API_KEY
+      temperature: 0.7
+      timeout: 120
+      rpm: 5
+      tpm: 100000
+      max_retries: 1
+      drop_params: false
+
+  # glm-4-plus 需要 z.ai 账户有足够余额/资源包
+  - model_name: glm-4-plus
+    litellm_params:
+      model: openai/glm-4-plus
+      api_base: https://api.z.ai/api/coding/paas/v4
+      api_key: os.environ/ZAI_API_KEY
+      temperature: 0.7
+      timeout: 120
+      rpm: 5
+      tpm: 100000
+      max_retries: 1
+      drop_params: false
+
+  # === GLM 视觉模型（免费，支持图片输入） ===
+  - model_name: glm-4.6v-flash
+    litellm_params:
+      model: openai/glm-4.6v-flash
+      api_base: https://api.z.ai/api/coding/paas/v4
+      api_key: os.environ/ZAI_API_KEY
+      temperature: 0.7
+      timeout: 120
+      rpm: 5
+      tpm: 100000
+      max_retries: 1
+      drop_params: false
+
+  # glm-4v-flash 已移除 — Z.AI 不支持此模型，只有 glm-4.6v-flash 可用
+
+  # === SiliconFlow DeepSeek 系列 ===
+  - model_name: deepseek-v3.2
+    litellm_params:
+      model: openai/deepseek-ai/DeepSeek-V3.2
+      api_base: https://api.siliconflow.cn/v1
+      api_key: os.environ/SILICONFLOW_API_KEY
+      temperature: 0.7
+      timeout: 60
+
+  # === 豆包视觉模型（火山方舟，多模态理解）===
+  - model_name: doubao/vision
+    litellm_params:
+      model: openai/doubao-1-5-vision-pro-32k
+      api_base: https://ark.cn-beijing.volces.com/api/v3
+      api_key: os.environ/ARK_API_KEY
+      timeout: 60
+
+  - model_name: doubao/vision-lite
+    litellm_params:
+      model: openai/doubao-1-5-vision-lite-32k
+      api_base: https://ark.cn-beijing.volces.com/api/v3
+      api_key: os.environ/ARK_API_KEY
+      timeout: 60
+
+  # === Google Gemini（已封禁，暂停） ===
+  # gemini API key 被 Google 封禁 (403 PERMISSION_DENIED)，2026-04-15
+
+  # === GitHub Models（免费） ===
+  - model_name: gpt-4.1
+    litellm_params:
+      model: openai/gpt-4.1
+      api_base: https://models.github.ai/inference
+      api_key: os.environ/GITHUB_TOKEN
+      timeout: 60
+
+  # === SiliconFlow Qwen3（免费额度） ===
+  # local/qwen3-8b 别名 → 替代 Ollama（Ollama 未安装）
+  - model_name: local/qwen3-8b
+    litellm_params:
+      model: openai/Qwen/Qwen3-8B
+      api_base: https://api.siliconflow.cn/v1
+      api_key: os.environ/SILICONFLOW_API_KEY
+      timeout: 30
+
+  - model_name: qwen3-235b
+    litellm_params:
+      model: openai/Qwen/Qwen3-235B-A22B-Instruct-2507
+      api_base: https://api.siliconflow.cn/v1
+      api_key: os.environ/SILICONFLOW_API_KEY
+      timeout: 60
+
+  # === Groq Whisper 语音转文字（免费，超快，替代本地 whisper-server） ===
+  - model_name: groq-whisper-large
+    litellm_params:
+      model: groq/whisper-large-v3-turbo
+      api_key: os.environ/GROQ_API_KEY
+
+  - model_name: groq-whisper
+    litellm_params:
+      model: groq/whisper-large-v3
+      api_key: os.environ/GROQ_API_KEY
+
+  # === SiliconFlow Embedding（免费） ===
+  - model_name: bge-large-zh
+    litellm_params:
+      model: openai/BAAI/bge-large-zh-v1.5
+      api_base: https://api.siliconflow.cn/v1
+      api_key: os.environ/SILICONFLOW_API_KEY
+      max_input_tokens: 512  # bge-large-zh-v1.5 最大512token，超出截断避免413
+
+  # === Cerebras（免费推理，极速） ===
+  - model_name: cerebras-llama-8b
+    litellm_params:
+      model: cerebras/llama3.1-8b
+      api_key: os.environ/CEREBRAS_API_KEY
+      timeout: 60
+
+  - model_name: cerebras-qwen3-235b
+    litellm_params:
+      model: cerebras/qwen-3-235b-a22b-instruct-2507
+      api_key: os.environ/CEREBRAS_API_KEY
+      timeout: 120
+
+  - model_name: cerebras-gpt-120b
+    litellm_params:
+      model: cerebras/gpt-oss-120b
+      api_key: os.environ/CEREBRAS_API_KEY
+      timeout: 60
+
+  # === Cerebras GLM-4.7 fallback（同名自动failover） ===
+  - model_name: glm-4.7
+    litellm_params:
+      model: cerebras/zai-glm-4.7
+      api_key: os.environ/CEREBRAS_API_KEY
+      timeout: 60
+      drop_params: false
+
+  # === MACG LangGraph（本地，14工具+5流程+智能路由）===
+  - model_name: macg
+    litellm_params:
+      model: openai/macg
+      api_base: http://localhost:9910/v1
+      api_key: none
+      timeout: 120
+
+router_settings:
+  routing_strategy: "simple-shuffle"
+  allowed_fails: 3
+  cooldown_time: 60
+  enable_pre_call_checks: false
+  num_retries: 1
+  retry_after: 15
+  timeout: 300
+
+litellm_settings:
+  # aiohttp streaming socket timeout（解决 Timeout on reading data from socket）
+  request_timeout: 300
+  stream_timeout: 300
+  # Langfuse 可观测性追踪
+  success_callback: ["langfuse"]
+  failure_callback: ["langfuse"]
+
+environment_variables:
+  LANGFUSE_PUBLIC_KEY: "pk-lf-charlie-2026"
+  LANGFUSE_SECRET_KEY: "sk-lf-charlie-2026"
+  LANGFUSE_HOST: "http://172.17.0.1:3010"
