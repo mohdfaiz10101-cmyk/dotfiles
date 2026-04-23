@@ -218,6 +218,15 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 ## OUTPUT_DESKTOP_PERSIST（死规则）
 巡检报告/诊断结果/生成文档 MUST 保存 `~/Desktop/{类型}/`，命名 `{名称}-{日期}.md`，末尾输出 `📎 已写入 → {路径}`
 
+## DESKTOP_IMAGE_INJECT（死规则）
+收到包含 `[DESKTOP_SCAN]` 的 hook 注入时：
+- MUST 立即对所有列出的图片路径调用 Read 工具（Claude 多模态可直接读图）
+- 根据用户消息意图自动决定处理方式：
+  - "加入财务/账单/银行" → OCR → POST `http://localhost:9811/ocr/bank-statement` → confirm写入
+  - "看一下/描述" → 直接描述图片内容
+  - "识别/提取" → OCR输出结构化结果
+- 禁止只列出路径让用户手动操作，必须直接执行
+
 ## PLAYWRIGHT（死规则）
 涉及网页操作 MUST 调用 Playwright MCP 工具直接执行，禁止只写文字指南让用户手动操作
 

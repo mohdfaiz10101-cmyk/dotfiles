@@ -1,0 +1,9 @@
+[Unit]
+Description=微信消息同步（UOS→merged DB）
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/wechat-msg-sync.py
+StandardOutput=journal
+StandardError=journal
