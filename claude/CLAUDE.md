@@ -102,6 +102,14 @@
 - 格式：`- [日期] [模型] 场景：内容`（模型标识必填：[Sonnet]/[GLM]/[Opus]等）
 - 一个事实只存一处，写入前 grep 检查是否有过时旧信息
 
+## 主动记忆触发（PROACTIVE_MEMORY — 死规则）
+以下情形 MUST 立即写入，不等用户说"记住"：
+- 发现系统工具替换（如 xdotool→ydotool）→ `lessons-learned.md`
+- 发现设备状态事实（root/ADB/VPN/已安装工具）→ `setup-plan.md` + `MEMORY.md`
+- 发现服务端口/配置与代码不符（如 macg.py 写 9801 但实际 9800）→ `troubleshooting.md`
+- 用户纠正我的错误假设 → `lessons-learned.md`
+- 完成一个完整的修复流程 → `lessons-learned.md`（记录症状→根因→修复）
+
 ## 探索记忆闭环（EXPLORE_MEMORY_LOOP）
 - Explore 前：先 `letta_search` 搜索，输出 `[PRE_EXPLORE] L1命中/无缓存`
 - Explore 后：`letta_store` 写入发现 + 同步 `memory/codebase-map.md`，输出 `[POST_EXPLORE] 已写入/写入失败`

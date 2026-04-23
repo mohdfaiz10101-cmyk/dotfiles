@@ -362,3 +362,13 @@
 - [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
 - [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
 - [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
+
+### 会话摘要 [2026-04-23] [Sonnet/自动]
+- 对话轮次: 142 | 被纠正: 1次
+  - 用户纠正: 这发送不对劲啊 只能用屏幕截屏来发送信息吗
+
+### 会话摘要 [2026-04-23] [Sonnet/自动]
+- 对话轮次: 137 | 被纠正: 1次
+  - 用户纠正: 这发送不对劲啊 只能用屏幕截屏来发送信息吗
+
+- [2026-04-23] [Sonnet] xdotool 在 KDE Wayland 崩溃：xdotool 在 KDE Plasma Wayland 下触发"致命错误被关闭"弹窗（崩溃），即使设置了 XAUTHORITY 也不行。解决：全部替换为 ydotool（uinput 层，Wayland 原生）+ wmctrl（窗口激活）+ wl-copy/Ctrl+V（粘贴，比 ydotool type 更可靠处理中文）。ydotoold daemon 已在系统中通过 systemd user service 运行。GUI 应用中用 Ctrl+V 粘贴（终端用 Shift+Insert）。
