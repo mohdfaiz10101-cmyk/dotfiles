@@ -103,3 +103,4 @@ bash ~/dotfiles/push-to-cloud.sh "auto backup $(date '+%Y-%m-%d %H:%M')"
 - `opencode.json` 已是软链接→dotfiles，无需额外同步
 - 执行后输出 `[BACKUP_OK] 已推送 GitHub: mohdfaiz10101-cmyk/dotfiles`
 - 禁止：只说"可以备份"但不执行脚本
+- **搜索年份死规则**：WebSearch 关键词 MUST 包含当前年份（2026），禁止只搜 2024/2025

@@ -223,6 +223,7 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 
 ## 自动验证
 - 涉及第三方工具/API 先 WebSearch 验证最新用法，不凭记忆
+- **搜索年份死规则**：WebSearch 关键词 MUST 包含当前年份（2026），禁止只搜 2024/2025。格式：关键词 + "2026" 或 "site:github.com 2026"
 - 绝对禁止打开 `docs.litellm.ai/docs/providers`（曾触发 Floorp 反复开标签）
 - 修改服务代码后 MUST：重启 → curl测试 → 检查日志 → 验证前端
 - 编辑脚本后 `bash -n <file>`（PostToolUse hook 已自动执行）
