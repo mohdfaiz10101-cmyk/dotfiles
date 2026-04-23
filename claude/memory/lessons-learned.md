@@ -356,3 +356,9 @@
   - GDB断点法（setCipherKey at 0x41efc90）可用但命中太多无关字符串，内存扫描更高效
 - [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：tg-push cooldown 机制
 - [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：tg-push cooldown 机制
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
+- [2026-04-23] [Stop-Hook] AUTO_SKILL 补调：Windows微信版本锁定+降级部署流程
