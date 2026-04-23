@@ -6,7 +6,7 @@ set -euo pipefail
 
 REPO_URL="https://github.com/mohdfaiz10101-cmyk/dotfiles.git"
 DOTFILES="$HOME/dotfiles"
-BRANCH="${DOTFILES_BRANCH:-main}"
+BRANCH="${DOTFILES_BRANCH:-op}"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -121,6 +121,9 @@ do_link "systemd" "$HOME/.config/systemd/user"
 do_link "opencode/opencode.json" "$HOME/.config/opencode/opencode.json" 2>/dev/null || true
 do_link "opencode/AGENTS.md" "$HOME/.config/opencode/AGENTS.md" 2>/dev/null || true
 do_link "opencode/agents" "$HOME/.config/opencode/agents" 2>/dev/null || true
+
+# OP 任务
+do_link "op-tasks.md" "$HOME/op-tasks.md"
 
 # ── Step 4: 验证 ──
 echo ""
