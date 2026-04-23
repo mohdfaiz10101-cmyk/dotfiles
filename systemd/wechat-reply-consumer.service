@@ -7,6 +7,8 @@ Type=simple
 ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/wechat-reply-consumer.py
 Restart=on-failure
 RestartSec=10
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
 
 [Install]
 WantedBy=default.target

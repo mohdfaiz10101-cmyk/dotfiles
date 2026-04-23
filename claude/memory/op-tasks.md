@@ -609,3 +609,4 @@
 - [ ] [OP] [2026-04-23] [medium] WIN-NODE-01 Windows云节点-环境搭建：SSH到192.168.2.36，检查Python版本，安装pip依赖(requests/openai)，验证能访问 api.z.ai（设置代理 192.168.2.100:7890），写测试脚本确认GLM API可用，结果写入 C:\ai-node\status.txt
 - [ ] [OP] [2026-04-23] [medium] WIN-NODE-02 Windows微信任务脚本：基于WIN-NODE-01完成后，写 C:\ai-node\wechat-processor.py：轮询 http://192.168.2.36:18888/api/messages 获取未读消息 → 调 GLM API分类(客户咨询/群聊/@提及) → 自动回复或写摘要到 C:\ai-node\daily-summary.txt，Syncthing同步到NixOS ~/Desktop/wechat-reports/
 - [ ] [OP] [2026-04-23] [low] WIN-NODE-03 Windows Task Scheduler定时任务：WIN-NODE-02完成后，用schtasks在Windows创建每日22:00执行wechat-processor.py的定时任务，执行日志写 C:\ai-node\logs\，完成后Telegram通知 tg-push
+- [ ] [AGI→OP] [2026-04-23 01:28] [medium] 扫描 AI 磁盘目录，查找可清理的临时文件或旧模型数据

@@ -64,6 +64,27 @@
             "context": 8192,
             "output": 1024
           }
+        },
+        "local/qwen3-8b": {
+          "name": "Qwen3-8B (SiliconFlow 免费，零成本搜索)",
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          }
+        },
+        "cerebras-llama-8b": {
+          "name": "Llama-3.1-8B (Cerebras 极速免费)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "cerebras-qwen3-235b": {
+          "name": "Qwen3-235B (Cerebras 免费)",
+          "limit": {
+            "context": 131072,
+            "output": 16384
+          }
         }
       }
     }
@@ -83,9 +104,9 @@
       "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）"
     },
     "explore": {
-      "model": "openai-compatible/glm-5-turbo",
+      "model": "openai-compatible/local/qwen3-8b",
       "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
-      "description": "代码搜索员 — 定位文件、函数、实现模式"
+      "description": "代码搜索员 — 定位文件、函数（Qwen3-8B 零成本）"
     },
     "chat": {
       "model": "openai-compatible/qwen3-235b",
