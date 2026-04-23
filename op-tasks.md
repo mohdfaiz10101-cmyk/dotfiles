@@ -665,3 +665,56 @@
   - 输出：`{"plan": [...steps], "confidence": N, "alternatives": [...]}`
   - OP 接到复杂任务时可先调此端点获取最优计划再执行
   - 集成到 3000 OP中心面板：任务详情页加"AI规划"按钮
+
+## [CC→OP] MUSETALK-BUILD — MuseTalk P2 部署（2026-04-23）
+
+- [ ] **MUSETALK-B1** 下载模型权重（在 /mnt/ai/apps/musetalk 目录执行）
+  ```bash
+  cd /mnt/ai/apps/musetalk
+  export HF_ENDPOINT=https://hf-mirror.com
+  mkdir -p ~/agi/models/musetalk/{musetalkV15,musetalk,sd-vae,whisper,dwpose,syncnet,face-parse-bisent}
+  # 下载到宿主机 models 目录（容器挂载点）
+  pip install -U "huggingface_hub[cli]" gdown -q
+  # MuseTalk V1.5 主模型
+  huggingface-cli download TMElyralab/MuseTalk \
+    --local-dir ~/agi/models/musetalk \
+    --include "musetalkV15/musetalk.json" "musetalkV15/unet.pth"
+  # SD VAE
+  huggingface-cli download stabilityai/sd-vae-ft-mse \
+    --local-dir ~/agi/models/musetalk/sd-vae \
+    --include "config.json" "diffusion_pytorch_model.bin"
+  # Whisper tiny
+  huggingface-cli download openai/whisper-tiny \
+    --local-dir ~/agi/models/musetalk/whisper \
+    --include "config.json" "pytorch_model.bin" "preprocessor_config.json"
+  # DWPose
+  huggingface-cli download yzd-v/DWPose \
+    --local-dir ~/agi/models/musetalk/dwpose \
+    --include "dw-ll_ucoco_384.pth"
+  # Face parse
+  gdown --id 154JgKpzCPW82qINcVieuPH3fZ2e0P812 -O ~/agi/models/musetalk/face-parse-bisent/79999_iter.pth
+  curl -L https://download.pytorch.org/models/resnet18-5c106cde.pth \
+    -o ~/agi/models/musetalk/face-parse-bisent/resnet18-5c106cde.pth
+  ```
+  成功条件：`ls ~/agi/models/musetalk/musetalkV15/unet.pth` 存在
+
+- [ ] **MUSETALK-B2** 构建 Docker 镜像（约30分钟）
+  ```bash
+  cd /mnt/ai/apps/musetalk
+  docker build -t musetalk:local . 2>&1 | tee /tmp/musetalk-build.log
+  echo "build exit: $?"
+  ```
+  成功条件：`docker images | grep musetalk:local` 有输出
+
+- [ ] **MUSETALK-B3** 启动容器 + 验证 API
+  ```bash
+  # 复制头像到 avatar 目录
+  cp ~/agi/data/avatar/niumoumou.jpg ~/agi/data/avatar/
+  cd ~/agi/docker/virtual-person
+  docker compose --profile musetalk up -d musetalk
+  sleep 10
+  curl -s http://localhost:9881/health
+  ```
+  成功条件：health 返回 {"status":"ok","models_ready":true}
+  结果写入 op-task-results.json
+

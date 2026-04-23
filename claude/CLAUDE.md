@@ -246,6 +246,14 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 每个会话首条实质性回复前 MUST 输出：`[ARCH] 审计报告: {天数}天前 | 状态正常/异常`
 纯对话 → `[ARCH] skip:非实质性任务`
 
+## 会话记忆自动加载（SESSION_MEMORY_BOOT — 死规则）
+每个会话第一个实质性任务前 MUST 并行执行：
+1. `mcp__letta-memory__letta_recall` 查询最近上下文（query="最近任务 用户状态 进行中项目"）
+2. 读取 `~/.claude/projects/-home-charlie/memory/MEMORY.md` 获取用户档案
+- 输出格式：`[MEM] Letta: {命中条数}条 | 档案: {关键摘要}`
+- Letta 不可用时降级：只读 memory/ 文件，输出 `[MEM] Letta离线，使用本地档案`
+- 纯闲聊/单句问答 → `[MEM] skip:非实质性任务`
+
 ## OP状态感知（OP_AWARENESS — 死规则）
 每个会话第一个实质性任务前 MUST 调用 `macg_op_status` MCP 工具读取 OP 最新状态。
 - 有未读的真实失败（Result=failed）→ 输出 `[OP] 待处理: {任务}` 并询问是否优先处理

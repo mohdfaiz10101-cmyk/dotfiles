@@ -104,3 +104,11 @@ bash ~/dotfiles/push-to-cloud.sh "auto backup $(date '+%Y-%m-%d %H:%M')"
 - 执行后输出 `[BACKUP_OK] 已推送 GitHub: mohdfaiz10101-cmyk/dotfiles`
 - 禁止：只说"可以备份"但不执行脚本
 - **搜索年份死规则**：WebSearch 关键词 MUST 包含当前年份（2026），禁止只搜 2024/2025
+
+## 会话记忆自动加载（SESSION_MEMORY_BOOT — 死规则）
+每个会话第一个实质性任务前 MUST 并行执行：
+1. `mcp__letta-memory__letta_recall` 查询最近上下文（query="最近任务 用户状态 进行中项目"）
+2. 读取 `~/.claude/projects/-home-charlie/memory/MEMORY.md` 获取用户档案
+- 输出格式：`[MEM] Letta: {命中条数}条 | 档案: {关键摘要}`
+- Letta 不可用时降级：只读 memory/ 文件，输出 `[MEM] Letta离线，使用本地档案`
+- 纯闲聊/单句问答 → `[MEM] skip:非实质性任务`

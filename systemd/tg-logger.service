@@ -1,0 +1,13 @@
+[Unit]
+Description=Telegram Bot Message Logger
+After=network-online.target
+
+[Service]
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/tg_logger.py
+Restart=always
+RestartSec=10
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=https_proxy=http://127.0.0.1:7890
+
+[Install]
+WantedBy=default.target
