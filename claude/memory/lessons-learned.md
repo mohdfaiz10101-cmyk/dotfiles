@@ -1,5 +1,18 @@
 # 踩坑日志
 
+- [2026-04-23] [Sonnet] **WeChat XWayland UI自动化：xdotool+xclip全X11路径是唯一可靠方案**
+  - 坐标系：wmctrl报告2×真实坐标；xdotool getwindowgeometry=真实X11物理坐标；ydotool=Wayland logical=X11/1.25
+  - 例：WeChat窗口 xdotool pos=(425,85) → ydotool pos=(340,68) → wmctrl pos=(850,170)
+  - ydotool click无法激活XWayland应用（WeChat）的控件焦点，弃用ydotool click
+  - xdotool key --window <xid> KEY：直接X11事件注入，不经Wayland，WeChat响应正常
+  - 粘贴方案：xclip -selection clipboard（X11剪贴板）+ xdotool key --window ctrl+v → 搜索框收到文字
+  - wl-copy（Wayland剪贴板）+ ydotool paste对WeChat搜索框无效
+  - **Ctrl+F全局搜索导航**：粘贴搜索词后等2s，功能区条目自动高亮，直接Enter（0次Down）打开聊天
+  - Down键会跳到网页建议区，不要用Down导航到联系人
+  - 已测试：Down×7在v12偶尔成功但不稳定（搜索结果顺序动态变化），Enter=0 Down在v13验证为稳定方案
+  - xdotool absolute click会触发KDE XTest权限弹窗，必须用 --window 参数避免
+  - wechat_agent.py HTTP API端口9801：POST /api/wechat/reply 返回202（非阻塞），避免macg.py 5s超时
+
 - [2026-04-22] [Sonnet] **Letta archival 记忆缺失根因：hash缓存在 /tmp，重启后丢失** — letta-sync.py 的 HASH_CACHE 原为 `/tmp/letta-sync-hashes.json`，重启后清空导致重复写入（DB从2055条膨胀到6945条），且 API limit=2000 导致计数虚报"满"。修复：缓存改为 `~/.config/letta-sync-hashes.json` + 对现有DB条目重建缓存 + SQL去重删除4890条重复。
 
 - [2026-04-22] [Sonnet] **GPT-SoVITS API 正确参数**：`text_lang`应为`text_language`，`ref_audio_path`应为`refer_wav_path`，中文字符需 Python urllib.parse.urlencode 编码（curl直接传中文会400）。测试命令：`python3 -c "import urllib.request,urllib.parse; params=urllib.parse.urlencode({...}); urllib.request.urlopen(f'http://localhost:9880/?{params}')"` → 200 OK，返回55KB WAV。
