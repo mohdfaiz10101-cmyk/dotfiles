@@ -1,0 +1,8 @@
+[Unit]
+Description=fcitx5 Floorp 输入法自适应巡检
+After=fcitx5.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/fcitx5-adaptive-check
+StandardOutput=journal

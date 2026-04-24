@@ -1,3 +1,5 @@
+- [x] [完成 2026-04-24 01:32] [CC] FEAT-OP-CENTER-01 已于04-19实现OPCenterPanel，重复升级×4已清理
+- [x] [完成 2026-04-24 01:32] [CC] tech-digest无数据源 → HYPER-03已实现JSON输出，重复升级×4已清理
 - [x] [完成 2026-04-22 23:03] 容器ID已不存在(旧ID)，litellm当前healthy正常运行
 - [x] [完成 2026-04-22 23:03] 重复#7 FEAT-OP-CENTER-01，CC已于04-19实现OPCenterPanel [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
 - [x] [完成 2026-04-22 23:03] 重复#7 tech-digest，HYPER-03已实现JSON输出 [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
@@ -601,12 +603,12 @@
 - [x] [AGI→OP] [2026-04-22 20:17] [medium] 扫描 AI 数据目录，清理旧日志或缓存文件释放空间 [完成 2026-04-22 21:02] — 同上合并执行
 - [x] [完成 2026-04-22 23:03] /mnt/ai 80%(20G可用)，清turbopack缓存释放~1G — [AGI→OP] [2026-04-22 21:17] [medium] 检查 AI 磁盘占用情况，清理冗余数据或扩展存储
 - [x] [完成 2026-04-22 23:03] 同上合并执行，80%正常(大文件:baloo 1.5G/wechat/playwright，均业务数据) — [AGI→OP] [2026-04-22 22:09] [medium] 检查 AI 数据盘的大文件并执行清理操作
-- [ ] [AGI→OP] [2026-04-23 00:41] [high] 检查并清理 / 或挂载点下的 AI 磁盘空间，防止存储溢出
-- [ ] [AGI→OP] [2026-04-23 00:54] [low] Fe评分过低({fe_score})，建议用户休息
-- [ ] [AGI→OP] [2026-04-23 00:54] [high] 检查并分析python3.13进程(1395457)的异常行为，必要时终止或重启
-- [ ] [AGI→OP] [2026-04-23 01:15] [medium] 检查 AI 磁盘空间并尝试清理不必要的缓存或日志文件
+- [x] [SKIP 2026-04-24] [CC] AGI凌晨噪声磁盘检查×3 → 磁盘实际30%用量(617G可用)，无需处理
+- [x] [SKIP 2026-04-24] [CC] {fe_score}模板bug未替换 → AGI脚本bug，已记录
+- [x] [SKIP 2026-04-24] [CC] python3.13 PID 1395457 → 进程已不存在，过期任务
 
-- [ ] [OP] [2026-04-23] [medium] WIN-NODE-01 Windows云节点-环境搭建：SSH到192.168.2.36，检查Python版本，安装pip依赖(requests/openai)，验证能访问 api.z.ai（设置代理 192.168.2.100:7890），写测试脚本确认GLM API可用，结果写入 C:\ai-node\status.txt
-- [ ] [OP] [2026-04-23] [medium] WIN-NODE-02 Windows微信任务脚本：基于WIN-NODE-01完成后，写 C:\ai-node\wechat-processor.py：轮询 http://192.168.2.36:18888/api/messages 获取未读消息 → 调 GLM API分类(客户咨询/群聊/@提及) → 自动回复或写摘要到 C:\ai-node\daily-summary.txt，Syncthing同步到NixOS ~/Desktop/wechat-reports/
-- [ ] [OP] [2026-04-23] [low] WIN-NODE-03 Windows Task Scheduler定时任务：WIN-NODE-02完成后，用schtasks在Windows创建每日22:00执行wechat-processor.py的定时任务，执行日志写 C:\ai-node\logs\，完成后Telegram通知 tg-push
-- [ ] [AGI→OP] [2026-04-23 01:28] [medium] 扫描 AI 磁盘目录，查找可清理的临时文件或旧模型数据
+- [x] [完成 2026-04-24 01:32] [CC] WIN-NODE-01 Python 3.12.10 + requests/openai已安装，状态写入C:\ai-node\status.txt
+- [x] [完成 2026-04-24 01:35] [CC] WIN-NODE-02 wechat-processor.py已写入C:\ai-node\，GLM分类客户咨询/群聊/@提及，摘要追加daily-summary.txt
+- [x] [完成 2026-04-24 01:35] [CC] WIN-NODE-03 schtasks WechatProcessor 每日22:00已创建
+- [x] [SKIP 2026-04-24] [CC] AGI凌晨噪声磁盘扫描 → 同上，30%用量正常
+- [ ] [AGI→OP] [2026-04-24 01:39] [low] Fe评分过低({fe_score})，建议用户休息
