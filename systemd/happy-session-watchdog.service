@@ -1,0 +1,8 @@
+[Unit]
+Description=Happy Session Watchdog - kill stuck sessions
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/happy-session-watchdog.sh
+TimeoutStartSec=30

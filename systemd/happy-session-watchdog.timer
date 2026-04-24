@@ -1,0 +1,9 @@
+[Unit]
+Description=Happy Session Watchdog - every 3min
+
+[Timer]
+OnCalendar=*:0/3:00
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

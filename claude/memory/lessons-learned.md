@@ -559,3 +559,7 @@
 ### 会话摘要 [2026-04-24] [Sonnet/自动]
 - 对话轮次: 127 | 被纠正: 1次
   - 用户纠正: 问题是我手机5G网络访问哪个地址进行远程编程。 我不要tailscale.我要固定地址
+
+- [2026-04-24] [GLM] happy claude session 卡死：症状→用户发了消息但happy无响应超过5分钟 根因→上游代理节点(良心云 aws-link1.liangxin1.xyz) DNS解析失败，mihomo 7890端口在监听但所有出站请求ECONNREFUSED，happy SDK backoff到retry 50还不停(无max_retries)，session永远不放弃 修复→kill卡死进程+创建happy-session-watchdog.sh(每3分钟检查session日志最后修改时间，>5分钟无更新自动kill+notify) 防范→watchdog已注册systemd timer(happy-session-watchdog.timer)，代理节点故障是上游问题无法本地控制
+
+- [2026-04-24] [GLM] 启动崩溃：~/.cache 是指向 /mnt/ai/cache/xdg 的符号链接，home-manager linkGeneration 尝试 mkdir ~/.cache 报"文件已存在" → 级联导致所有用户服务失败（找不到 bash/python3/npx）。修复：在 home/charlie.nix 添加 activation script，在 linkGeneration 前删除旧 .keep 符号链接。症状：启动卡住、大量服务 "Failed at step EXEC spawning"。
