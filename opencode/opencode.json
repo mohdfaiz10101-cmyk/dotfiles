@@ -137,14 +137,6 @@
         "RULES_PATH": "/home/charlie/CLAUDE.md"
       }
     },
-    "letta": {
-      "type": "local",
-      "command": [
-        "python3",
-        "/home/charlie/.local/bin/letta-mcp",
-        "--stdio"
-      ]
-    },
     "context7": {
       "type": "local",
       "command": [
@@ -153,22 +145,49 @@
         "@upstash/context7-mcp@2.1.8"
       ]
     },
-    "wechat": {
+    "exa": {
       "type": "local",
       "command": [
-        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
-        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
-        "--stdio"
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-exa@latest"
       ],
       "environment": {
-        "WECHAT_BRIDGE_URL": "http://192.168.2.36:18888"
+        "EXA_API_KEY": "${OMC_EXA_API_KEY:-}"
       }
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem@2026.1.14",
+        "/mnt/ai",
+        "/home/charlie",
+        "/etc/nixos"
+      ]
+    },
+    "letta": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/home/charlie/.local/bin/letta-mcp",
+        "--stdio"
+      ]
     },
     "macg": {
       "type": "local",
       "command": [
         "/mnt/ai/home-offload/agi/.venv/bin/python3",
         "/home/charlie/agi/macg_mcp.py"
+      ]
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory@2026.1.26"
       ]
     },
     "playwright": {
@@ -181,24 +200,27 @@
         "/run/current-system/sw/bin/google-chrome-stable"
       ]
     },
-    "memory": {
+    "ref": {
       "type": "local",
       "command": [
         "npx",
         "-y",
-        "@modelcontextprotocol/server-memory@2026.1.26"
-      ]
+        "ref-tools-mcp@latest"
+      ],
+      "environment": {
+        "REF_API_KEY": "${REF_API_KEY}"
+      }
     },
-    "filesystem": {
+    "wechat": {
       "type": "local",
       "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-filesystem@2026.1.14",
-        "/mnt/ai",
-        "/home/charlie",
-        "/etc/nixos"
-      ]
+        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
+        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
+        "--stdio"
+      ],
+      "environment": {
+        "WECHAT_BRIDGE_URL": "http://192.168.2.36:18888"
+      }
     }
   },
   "plugin": [
