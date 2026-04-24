@@ -611,4 +611,4 @@
 - [x] [完成 2026-04-24 01:35] [CC] WIN-NODE-02 wechat-processor.py已写入C:\ai-node\，GLM分类客户咨询/群聊/@提及，摘要追加daily-summary.txt
 - [x] [完成 2026-04-24 01:35] [CC] WIN-NODE-03 schtasks WechatProcessor 每日22:00已创建
 - [x] [SKIP 2026-04-24] [CC] AGI凌晨噪声磁盘扫描 → 同上，30%用量正常
-- [ ] [AGI→OP] [2026-04-24 01:39] [low] Fe评分过低({fe_score})，建议用户休息
+- [x] [完成 2026-04-24 11:07] [AGI→OP] [2026-04-24 01:39] [low] Fe评分过低({fe_score}) — 模板变量未渲染，无实际可执行操作，标记跳过
