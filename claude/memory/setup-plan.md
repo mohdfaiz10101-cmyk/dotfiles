@@ -17,3 +17,6 @@
 
 ## 网络
 - Tailscale + Syncthing + mihomo 代理
+
+## 小米平板5
+- [2026-04-24] [Sonnet] 小米平板5已确认 Root (Magisk)，Tailscale IP 100.104.211.70，ADB WiFi 可用

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7690 -t fontSize=13 -W /run/current-system/sw/bin/bash --login
+ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/index.html -p 7690 -t fontSize=13 -W /run/current-system/sw/bin/bash --login
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

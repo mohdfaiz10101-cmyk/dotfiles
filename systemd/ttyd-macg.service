@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd \
+ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/index.html \
   --port 7694 \
   --writable \
   --title "MACG LangGraph" \

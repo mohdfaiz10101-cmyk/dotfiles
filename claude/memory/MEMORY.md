@@ -11,7 +11,7 @@
 ## 设备清单
 - **NixOS 主机** — 日常主力，RTX 3060 Ti / KDE Plasma Wayland
 - **Android 手机** — OnePlus Ace 5 Pro (PKR110) Android 16，**已 Root (Magisk)**，**ADB WiFi 已连接** (port 5555)，Termux + Tailscale
-- **Android 平板** — Obsidian 同步，SSH 连接主机
+- **Android 平板** — 小米平板5 (24117RK2CC)，Obsidian 同步，SSH 连接主机，**已 Root (Magisk)**，ADB WiFi Tailscale IP: 100.104.211.70:5555
 - **VR 头显** — Meta Quest，串流待定
 - **Windows** — SSH `G@192.168.2.36` 密码 `1` | Tailscale 组网
 - 网络：Tailscale + Syncthing + mihomo
