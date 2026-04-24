@@ -46,6 +46,36 @@
 
 **失败升级链**：连续2次失败 → Haiku→Sonnet→Opus，传递：原始任务+失败原因+已尝试方法，格式 `[ESCALATION] 从X升级到Y，原因：{摘要}`
 
+## Agent 免费模型路由（AGENT_FREE_ROUTE — 死规则）
+
+**原则**：新配 agent 默认用免费模型，只有复杂编码/推理才用付费模型。
+
+### 免费模型优先级（从高到低选）
+| 优先级 | 模型 | Provider ID | 适用场景 |
+|--------|------|-------------|---------|
+| 1 | **Big Pickle** | `opencode/big-pickle` | 通用对话、工具调用（GLM-4.6，限时免费） |
+| 2 | **Cerebras Qwen3-235B** | `openai-compatible/cerebras-qwen3-235b` | 中文任务、记账、通知（完全免费） |
+| 3 | **GPT-4.1** | `openai-compatible/gpt-4.1` | 复杂推理（GitHub 免费） |
+| 4 | **Cerebras Llama-8B** | `openai-compatible/cerebras-llama-8b` | 简单命令、格式化（完全免费，极速） |
+| 5 | **GLM-4.7** | `openai-compatible/glm-4.7` | 中文推理（智谱免费额度） |
+
+### Agent 模型分配规则
+| Agent 类型 | 免费模型 | 说明 |
+|-----------|---------|------|
+| **巡检/监控/通知类**（guardian, nurse, watchdog） | Cerebras Qwen3-235B | 只跑命令+格式化输出，不需要强推理 |
+| **记账/CRM/信息录入**（finance, crm） | Cerebras Qwen3-235B | 结构化数据+API调用 |
+| **日常对话/问答**（chat） | Big Pickle 或 Qwen3-235B | 闲聊不花钱 |
+| **代码搜索/定位**（explore） | Cerebras Llama-8B | 只需 grep/cat 结果 |
+| **运维执行**（sisyphus, ops） | GLM-5-turbo | 需要强编码能力 |
+| **代码生成/构建**（build） | GLM-5.1 | 需要最强编码能力 |
+
+### CC 配置新 Agent 时的流程（死规则）
+1. 判断 agent 属于哪类（巡检/记账/编码/推理）
+2. 按上表选免费模型
+3. 写入 `opencode.json` agent 配置
+4. 写入 `~/.config/opencode/agents/{name}.md`
+5. 输出 `[AGENT_ROUTE] {name} → {model}（免费/{原因}）`
+
 **Plan Mode后**：实施类任务建议切换 `/model sonnet`（节省5倍成本）
 
 ## 基础设施清单（SOLUTION_FIRST — 死规则）

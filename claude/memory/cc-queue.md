@@ -263,3 +263,7 @@
 ## CC 审计接管 [2026-04-24 18:01]
 - [ ] [CC接管-失败返工] [2026-04-24 18:01] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
 - [ ] [CC接管-失败返工] [2026-04-24 18:01] [high] [失败 2026-04-19 23:02] EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次执行超限 邮件索引：(1) SSH Windows 192.168.2.36 找 DreamMail6 数据目录 (C:\\Users\\G\\AppData\\Roaming\\DreamMail 或 Program Files\\DreamMail6)，列出邮件文件；(2) sde1 只有 BoxCounter.ini 元数据，无实际邮件；(3) 找到邮件后 scp 到 /mnt/ai/data/dreammail-export/，解析写 email-index.json，top-500 发件人/收件人索引到 Letta
+
+## CC 审计接管 [2026-04-24 21:07]
+- [ ] [CC接管-失败返工] [2026-04-24 21:07] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
+- [ ] [CC接管-失败返工] [2026-04-24 21:07] [high] [失败 2026-04-19 23:02] EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次执行超限 邮件索引：(1) SSH Windows 192.168.2.36 找 DreamMail6 数据目录 (C:\\Users\\G\\AppData\\Roaming\\DreamMail 或 Program Files\\DreamMail6)，列出邮件文件；(2) sde1 只有 BoxCounter.ini 元数据，无实际邮件；(3) 找到邮件后 scp 到 /mnt/ai/data/dreammail-export/，解析写 email-index.json，top-500 发件人/收件人索引到 Letta
