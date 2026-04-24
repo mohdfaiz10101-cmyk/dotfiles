@@ -6817,3 +6817,80 @@
 {"ts": "2026-04-24 12:57", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-24 12:58", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-24 12:59", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:00", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:01", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:02", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:03", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:04", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:05", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:06", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:07", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:08", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:09", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 13:10", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:11", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:12", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 13:13", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:14", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:15", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:16", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:17", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:18", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:19", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 13:20", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:21", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:22", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:25", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:27", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:29", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:31", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:32", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:33", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:34", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:36", "type": "task_queued", "task": "检查系统监控采集脚本或代理运行状态，排查数据丢失原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 13:36", "type": "cycle", "summary": "系统磁盘使用率正常（30%），但CPU、内存及服务监控数据获取失败。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 13:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:40", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:44", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:46", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:48", "type": "task_queued", "task": "调查 PID 150449 的 Node 进程状态，确认是否死循环或资源泄漏，必要时重启该服务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 13:48", "type": "cycle", "summary": "系统磁盘使用正常，但检测到 Node 进程 CPU 占用异常（104%）。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:50", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 13:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:00", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:06", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:08", "type": "task_queued", "task": "检查 PID 317293 进程的具体命令行参数及运行状态", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 14:08", "type": "cycle", "summary": "检测到单个 Python 进程 CPU 占用率较高，其余指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:13", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:15", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:17", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:19", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:21", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:23", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:27", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:35", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:37", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:47", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 14:56", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 14:57", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 14:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}

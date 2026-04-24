@@ -824,3 +824,5 @@ Docker data-root 在 NTFS
 - 消息DB：229条消息，但 message_content 是 WCDB 压缩格式（WCDB_CT_* = 4）
 - 合并DB：/mnt/ai/data/wechat-merged/messages.db（319条，来自之前Wine端合并）
 - 待解决：WCDB 压缩消息解码 + 跨端合并（Wine + UOS + Windows）
+- [2026-04-24] [Aider] feat: 恢复 ref + exa (websearch) MCP 配置
+  相关文件：opencode/opencode.json

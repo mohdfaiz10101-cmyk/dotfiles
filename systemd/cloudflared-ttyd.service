@@ -1,0 +1,15 @@
+[Unit]
+Description=Cloudflare Tunnel — ttyd opencode 手机入口 (port 7692)
+After=network-online.target ttyd-opencode.service
+Wants=ttyd-opencode.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cloudflared-ttyd
+Restart=on-failure
+RestartSec=30
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target

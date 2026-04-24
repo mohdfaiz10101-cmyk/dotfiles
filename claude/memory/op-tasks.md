@@ -213,7 +213,7 @@
 - [x] [完成 2026-04-19 11:35] next build 通过，Chronos 数据 API 验证通过
 
 ### UPGRADE-07 [OP] tech-digest 接入 3000 Dashboard
-- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 systemd 服务，需先实现 digest 生成器（roo-digest 脚本存在但无输出文件）
+- [x] [完成 2026-04-24 OP清理] UPGRADE-07 — HYPER-03已实现tech-digest JSON输出，重复项清理
 
 ### UPGRADE-08 [OP] Letta distill 升级
 - [x] [完成 2026-04-19 11:39] 脚本路径: /home/charlie/.local/bin/letta-distill（367行）
@@ -465,7 +465,7 @@
 - [x] [完成 2026-04-19 21:07] [AGI→OP] [2026-04-19 20:44] [medium] 检查 python3.13 进程是否为预期任务，或是否发生异常 — 已过时，进程已结束
 [x] [完成 2026-04-19 21:45] [已知假阳性] [OP→CC] [2026-04-19 21:10] service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
 - [x] [完成 2026-04-19 22:36] [OP→CC] service-nurse 巡检完成：Docker健康/磁盘正常/8个失败服务需修复（详见报告）
-- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中心"Tab：任务看板(读op-tasks.md)、实时Feed(轮询op-live-feed.jsonl)、AGI状态(curl 9900)、触发OP按钮。参考/mnt/ai/apps/agi-control-plane/frontend/app/components/launcher/LauncherPanel.tsx格式
+- [x] [完成 2026-04-24 OP清理] FEAT-OP-CENTER-01 — CC已于04-19实现OPCenterPanel，重复升级×5清理
 - [x] [完成 2026-04-19 23:02] — 已知假阳性，opencode timer job非持续服务 [OP→CC] [2026-04-19 23:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
 - [x] [完成 2026-04-19 23:15] AUTO-2306 [OP] 部署 nginx 服务 — Docker nginx:alpine:8888, 静态页200OK
 - [x] [完成 2026-04-19 23:20] [已知假阳性] OP→CC service-nurse — timer触发式job exit 142(SIGALRM超时)非服务故障，LiteLLM/Docker均健康

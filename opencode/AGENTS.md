@@ -127,3 +127,10 @@ AI 模型可能对工具状态产生幻觉（如声称某工具"已停止开发"
 
 **方案 C — 不确定工具状态时强制 WebSearch**（已在 CLAUDE.md 第34行）：
 - 不确定时不走记忆/训练数据，强制 WebSearch，关键词 MUST 包含 "2026"
+
+## AUTO_SKILL 强制执行（死规则）
+输出 `[AUTO_SKILL] 可封装` 后，必须在**同一回复内**立即调用：
+```bash
+python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}" --content "{内容}" --category "{类}" --tags "{tag1},{tag2}"
+```
+禁止：只输出标签不执行 | 说"稍后封装" | 等用户确认

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} /run/current-system/sw/bin/bash --login
+ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -W /home/charlie/.local/bin/opencode-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

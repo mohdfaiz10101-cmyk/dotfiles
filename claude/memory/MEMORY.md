@@ -21,12 +21,19 @@
 - [OP Agent 巡查体系](op-agent-system.md) — Skill 路由 + Letta Agents + Timer 调度
 - [AI 工具对比](ai-tools.md) — OpenCode/Aider/Cline 等
 
+## OpenCode Agents（别名速查）
+- **sisy / sisyphus** = opencode `--agent sisyphus`，OP 运维执行 Agent，配置：`~/.config/opencode/agents/sisyphus.md`，模型：glm-5.1
+- **atlas** = 大师编排器，多 agent 并行
+- **prometheus** = 规划器，Plan Mode
+- **hephaestus** = 深度执行器，长上下文代码生成
+- ttyd-opencode 端口 7692 → 启动命令：`opencode --agent sisyphus`（tmux session "sisyphus"）
+
 ## 架构决策
 - [Chronos-Zenith](codebase-map.md) — Sensory/Subconscious/Bio-feedback 三模块
 - [HyperChat + Hermetic Ledger](ai-cluster-architecture.md) — CRM + 微信 + 营销
 
 ## 偏好
-- 终端: Konsole + ttyd(7690-7693) | 编辑器: VS Code + Aider | 浏览器: Floorp + Chrome
+- 终端: Konsole + ttyd(7690-7694) | 编辑器: VS Code + Aider | 浏览器: Floorp + Chrome
 - 主题: Catppuccin Mocha | 代理: mihomo | 通知: Telegram | 语言: 中文
 - 成本: LiteLLM $10/月上限，Claude Code Sonnet 默认 + Hook 路由
 

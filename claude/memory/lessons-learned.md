@@ -516,3 +516,42 @@
 ### 会话摘要 [2026-04-24] [Sonnet/自动]
 - 对话轮次: 127 | 被纠正: 1次
   - 用户纠正: 我的意思是 是关机前的数据 而不是rebuild的数据？
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 120 | 被纠正: 1次
+  - 用户纠正: 我的意思是 是关机前的数据 而不是rebuild的数据？
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 54 | 被纠正: 1次
+  - 用户纠正: 那我grub里面的而 nixos default每次都是最新版本吗 我怎么感觉每次进去感觉不对劲
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 62 | 被纠正: 1次
+  - 用户纠正: 那我grub里面的而 nixos default每次都是最新版本吗 我怎么感觉每次进去感觉不对劲
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 64 | 被纠正: 1次
+  - 用户纠正: 那我grub里面的而 nixos default每次都是最新版本吗 我怎么感觉每次进去感觉不对劲
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 81 | 被纠正: 1次
+  - 用户纠正: 那我grub里面的而 nixos default每次都是最新版本吗 我怎么感觉每次进去感觉不对劲
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 99 | 被纠正: 1次
+  - 用户纠正: 那我grub里面的而 nixos default每次都是最新版本吗 我怎么感觉每次进去感觉不对劲
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 121 | 被纠正: 1次
+  - 用户纠正: 那我grub里面的而 nixos default每次都是最新版本吗 我怎么感觉每次进去感觉不对劲
+
+- [2026-04-24] [Sonnet] 代理主从倒置根因：proxy-watchdog 代码 `echo "xray"` 默认 xray 为主，`if CURRENT != "xray"` 每5分钟主动停 mihomo 切 xray，注释写的 Tier1=mihomo 但代码逻辑相反。修复：改 default 和恢复逻辑为 mihomo，rebuild（restartIfChanged=false 保护不断线）。
+- [2026-04-24] [Sonnet] mihomo-guardian 92次误报根因：ipinfo.io/country 被限速返回 429 JSON，ifconfig.me/country 返回 "Not found"，guardian 误判为"不支持地区"触发 rollback，rollback 调用 do_rollback 超时120s+。修复：do_check 改为只检查 gstatic.com generate_204，任何非000均视为健康，去掉国家检测整个分支。
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 130 | 被纠正: 1次
+  - 用户纠正: 问题是我手机5G网络访问哪个地址进行远程编程。 我不要tailscale.我要固定地址
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 129 | 被纠正: 1次
+  - 用户纠正: 问题是我手机5G网络访问哪个地址进行远程编程。 我不要tailscale.我要固定地址

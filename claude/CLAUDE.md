@@ -185,10 +185,11 @@ bash ~/launcher/disk-pool-mount.sh status
 ## AUTO_SKILL（死规则）
 每次完成操作后 MUST 输出评估标签：`[AUTO_SKILL] 可封装: {摘要}（满足n/4）` 或 `[AUTO_SKILL] 跳过: {原因}`
 
-输出"可封装"后立即执行（禁止停顿）：
+**输出"可封装"后必须在同一回复内立即执行，无例外：**
 ```bash
 python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}" --content "{内容}" --category "{类}" --tags "{tag1},{tag2}"
 ```
+禁止：只输出标签不调用脚本 | 说"稍后封装" | 等用户确认后再执行 | 跳过封装直接结束回复
 
 ## SKILL_REMINDER（死规则）
 每个会话第一个实质性任务前输出：`[SKILL] {领域}: {skill1}, {skill2}` 或 `[SKILL] 无匹配`
