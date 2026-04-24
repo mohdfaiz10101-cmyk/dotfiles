@@ -134,3 +134,7 @@ AI 模型可能对工具状态产生幻觉（如声称某工具"已停止开发"
 python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}" --content "{内容}" --category "{类}" --tags "{tag1},{tag2}"
 ```
 禁止：只输出标签不执行 | 说"稍后封装" | 等用户确认
+
+## TIMER_HOURS 例外规则
+- OP 正在跑任务时，CC timer 无时段限制（00:00-07:59 可执行）
+- 检测方式：`pgrep -f "opencode.*sisyphus"` 有输出 OR op-tasks.md 含 `[进行中]`
