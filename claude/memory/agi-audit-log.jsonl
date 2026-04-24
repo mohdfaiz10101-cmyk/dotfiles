@@ -6894,3 +6894,79 @@
 {"ts": "2026-04-24 14:56", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-04-24 14:57", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-04-24 14:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:01", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:03", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:05", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:07", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:11", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:13", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:16", "type": "task_queued", "task": "分析进程 python3.13 (PID: 782583) 的运行状态与来源，确认是否为死循环或异常任务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 15:16", "type": "task_queued", "task": "排查监控脚本，解决 CPU 和内存数据显示为 '?' 的故障", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 15:16", "type": "cycle", "summary": "检测到 python3.13 进程 CPU 满载运行，系统总体资源监控数据缺失。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 15:17", "type": "cycle", "summary": "系统磁盘使用率正常，但检测到 python3.13 进程高负荷运行。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:18", "type": "task_queued", "task": "强制终止异常的 ps 进程 (PID: 800450) 并检查系统调用状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 15:18", "type": "task_queued", "task": "分析高负载 Python 进程 (PID: 800431, 800432) 的执行内容，确认是否为失控任务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 15:18", "type": "cycle", "summary": "系统出现异常高 CPU 占用，ps 进程疑似死循环且多个 Python 进程高负载运行。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 15:19", "type": "task_queued", "task": "调查 PID 809706, 809707, 809725 的进程详情，确认是否为死循环或异常计算任务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 15:19", "type": "cycle", "summary": "系统基础监控数据（CPU/内存）读取失败，且检测到多个 Python 进程处于高负载运行状态。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 15:20", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:22", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:24", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:25", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 15:27", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:29", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:31", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:33", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:35", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:37", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:43", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:47", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:49", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 15:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:02", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:04", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:06", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:07", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:08", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:10", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:11", "type": "cycle", "summary": "系统运行平稳，磁盘使用率健康，无异常警报或挂起任务。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:13", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:15", "type": "cycle", "summary": "系统运行平稳，磁盘空间充足（30%），当前无异常警报或积压任务。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:16", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:17", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:18", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 16:20", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:22", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:24", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:26", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:28", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:30", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:32", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:34", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:36", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:38", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:40", "type": "task_queued", "task": "检查 PID 1413977 (python3.13) 进程状态，确认是否为死循环或失控任务，必要时终止该进程以释放资源。", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 16:40", "type": "cycle", "summary": "系统检测到 python3.13 进程异常占用 100% CPU 资源。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:41", "type": "task_queued", "task": "查看 PID 1422450 和 1422451 的具体命令行参数和运行状态，确认是否为异常进程", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 16:41", "type": "cycle", "summary": "检测到两个 python3.13 进程占用极高 CPU 资源，需确认是否为预期任务。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 16:42", "type": "task_queued", "task": "检查 PID 1432892, 1432895, 1433000 的进程详情，若为异常死循环或非关键任务，执行终止操作以释放 CPU 资源。", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 16:42", "type": "cycle", "summary": "系统检测到多个 python3.13 进程 CPU 占用率极高，可能导致系统卡顿，需要立即处理。", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-04-24 16:44", "type": "task_queued", "task": "检查并修复系统监控服务，恢复 CPU 和内存数据采集", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 16:44", "type": "cycle", "summary": "系统监控显示 CPU/内存数据丢失，且发现 python3.13 进程占用 CPU 较高。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 16:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:47", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:49", "type": "task_queued", "task": "检查 python3.13 (PID: 1492742) 进程详情，必要时进行限制或终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-04-24 16:49", "type": "cycle", "summary": "检测到 python3.13 进程 CPU 占用过高（66.6%）", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:51", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:53", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 16:57", "type": "cycle", "summary": "系统基本服务正常，但检测到 python3.13 进程 CPU 占用较高 (66.6%)，且部分系统指标 (总 CPU/内存) 数据缺失。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-04-24 16:58", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}

@@ -8,8 +8,6 @@ ExecStart=/home/charlie/.local/bin/opencode web --port 8080 --hostname 0.0.0.0
 Restart=on-failure
 RestartSec=5
 Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin"
-Environment="OPENCODE_SERVER_PASSWORD=charlie2026"
-Environment="OPENCODE_SERVER_USERNAME=charlie"
 
 [Install]
 WantedBy=default.target

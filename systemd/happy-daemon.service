@@ -9,6 +9,7 @@ ExecStart=/home/charlie/.npm-global/bin/happy daemon start-sync
 Restart=on-failure
 RestartSec=10
 Environment=PATH=/home/charlie/.npm-global/bin:/run/current-system/sw/bin:/usr/bin:/bin
+Environment=HOME=/home/charlie
 
 [Install]
 WantedBy=default.target
