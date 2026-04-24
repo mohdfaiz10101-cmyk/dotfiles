@@ -1,7 +1,6 @@
 [Unit]
 Description=KDE Remote Framebuffer VNC Server
 After=graphical-session.target plasma-plasmashell.service
-PartOf=graphical-session.target
 
 [Service]
 Type=simple

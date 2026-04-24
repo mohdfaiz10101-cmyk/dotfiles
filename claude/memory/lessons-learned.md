@@ -495,3 +495,14 @@
   触发链：01:38 fwupd-refresh+Cockpit启动 → CPU 70%+ → 01:44 CPU 96% → 01:49 KWin主线程挂 → 强制重启
   已修复：claude-orphan-killer 60s→5min，fcitx5/wechat-sync 改为仅08-23运行
   待修复：proxy-watchdog 15s→90s（需改 /etc/nixos/modules/proxy.nix:517）
+- [2026-04-24] [Aider] fix: 修复登录卡死三根因
+  相关文件：home/charlie.nix, modules/desktop.nix
+
+- [2026-04-24] [Sonnet] NixOS 登录卡死三根因诊断修复：
+  - 症状：gen 156 某些启动会话卡死（boot -3 仅36秒，全部 KDE 组件 DBus NoReply）
+  - 根因1：xdg-desktop-portal 懒启动，Plasma 组件超时等待 → 修复：activation 脚本在 graphical-session.target.wants/ 创建 portal 链接
+  - 根因2：home-manager 在 /mnt/ai 挂载前执行（.cache→/mnt/ai/cache/xdg）→ 修复：systemd.services.home-manager-charlie After/Wants mnt-ai.mount
+  - 根因3：krfb-autostart.service 有 PartOf=graphical-session.target → novnc 循环依赖被 systemd 强制删除 → 修复：移除 PartOf
+  - 诊断方法：journalctl -b -N 对比多次启动，查找 "ordering cycle" 和 "Failed to register with host portal QDBusError"
+  - 存储警告：storage.nix 已改为 POOL-D1 bind mount，下次重启 /mnt/ai 从 loop→bind，POOL-D1/ai 有16个容器（loop有14），数据已迁移
+- [2026-04-24] [Sonnet] NixOS登录卡死根因+防护：(1)systemd用户服务 PartOf+After 指向同一target且被Requires→循环依赖；(2)home-manager在/mnt/ai挂载前执行（~/.cache→/mnt/ai/cache符号链接）。修复：新建nixos-preflight-check.sh(rebuild前检查两类问题)+nixos-smoketest.sh(rebuild后验证3项)+集成进nixos-rebuild-safe步骤2.5/3.5+CLAUDE.md NIXOS_REBUILD_GUARD规则
