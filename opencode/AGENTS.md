@@ -112,3 +112,18 @@ bash ~/dotfiles/push-to-cloud.sh "auto backup $(date '+%Y-%m-%d %H:%M')"
 - 输出格式：`[MEM] Letta: {命中条数}条 | 档案: {关键摘要}`
 - Letta 不可用时降级：只读 memory/ 文件，输出 `[MEM] Letta离线，使用本地档案`
 - 纯闲聊/单句问答 → `[MEM] skip:非实质性任务`
+
+## 幻觉防护系统（HALLUCINATION_GUARD — 死规则）
+AI 模型可能对工具状态产生幻觉（如声称某工具"已停止开发"/"不可用"）。
+
+**方案 B — op-tasks 执行前强制 shell 验证工具状态**：
+- 执行 op-task 前，若任务涉及特定工具/服务，MUST 先运行验证命令：
+  - OpenCode: `opencode --version`
+  - Docker 容器: `docker ps --filter name=<name>`
+  - systemd 服务: `systemctl --user show <svc> --property=Result,ActiveState`
+  - Python 包: `python3 -c "import <pkg>; print('ok')"`
+- 禁止：只凭 LLM 口头声明工具状态直接跳过步骤
+- 若 shell 验证与 LLM 声明冲突 → 以 shell 结果为准，输出 `[TOOL_VERIFY] shell覆盖LLM声明: {工具} → {实际状态}`
+
+**方案 C — 不确定工具状态时强制 WebSearch**（已在 CLAUDE.md 第34行）：
+- 不确定时不走记忆/训练数据，强制 WebSearch，关键词 MUST 包含 "2026"

@@ -6709,3 +6709,111 @@
                                                                                                                                                     {"ts": "2026-04-24 11:05", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-24 11:06", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-04-24 11:08", "type": "cycle", "summary": "LLM 调用失败：Server disconnected without sending a response.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:10", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:11", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:12", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:14", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:15", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:16", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:17", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:18", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:19", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:20", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:21", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:22", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:23", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:24", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:25", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:26", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:27", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:28", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:29", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:30", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:31", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:32", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:33", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:34", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:35", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:36", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:37", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:38", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:39", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:40", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:41", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:42", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:43", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:44", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:45", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:46", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:47", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:48", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:49", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:50", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:51", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:52", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:53", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:54", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:55", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 11:56", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:57", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:58", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 11:59", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:00", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:01", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 12:02", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 12:03", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:04", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:05", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:06", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:07", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:08", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:09", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:10", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:12", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:13", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 12:14", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:15", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:16", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:17", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:18", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:19", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:20", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:21", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:22", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:23", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:24", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:25", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:26", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:27", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:28", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:29", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:30", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:31", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:32", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:33", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:34", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:35", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:36", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-04-24 12:37", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:38", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:39", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:40", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:41", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:42", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:43", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:44", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:45", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:46", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:47", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:48", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:49", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:50", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:51", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:52", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:53", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:54", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:55", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:56", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:57", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:58", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-04-24 12:59", "type": "cycle", "summary": "LLM 调用失败：No module named 'certifi.core'", "alert_count": 1, "skipped_llm": false}

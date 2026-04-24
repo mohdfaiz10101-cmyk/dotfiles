@@ -1,0 +1,14 @@
+[Unit]
+Description=Happy CLI Daemon (Claude Code On the Go)
+After=network-online.target mnt-pool\\x2ddisks-POOL\\x2dD1.mount
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.npm-global/bin/happy daemon start-sync
+Restart=on-failure
+RestartSec=10
+Environment=PATH=/home/charlie/.npm-global/bin:/run/current-system/sw/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

@@ -506,3 +506,13 @@
   - 诊断方法：journalctl -b -N 对比多次启动，查找 "ordering cycle" 和 "Failed to register with host portal QDBusError"
   - 存储警告：storage.nix 已改为 POOL-D1 bind mount，下次重启 /mnt/ai 从 loop→bind，POOL-D1/ai 有16个容器（loop有14），数据已迁移
 - [2026-04-24] [Sonnet] NixOS登录卡死根因+防护：(1)systemd用户服务 PartOf+After 指向同一target且被Requires→循环依赖；(2)home-manager在/mnt/ai挂载前执行（~/.cache→/mnt/ai/cache符号链接）。修复：新建nixos-preflight-check.sh(rebuild前检查两类问题)+nixos-smoketest.sh(rebuild后验证3项)+集成进nixos-rebuild-safe步骤2.5/3.5+CLAUDE.md NIXOS_REBUILD_GUARD规则
+- [2026-04-24] [Aider] fix: NixOS登录卡死三根因修复 + 预检/冒烟测试工具
+  相关文件：claude/memory/ideas-roadmap.md, claude/memory/lessons-learned.md, systemd/graphical-session.target.wants/xdg-desktop-portal.service, systemd/krfb-autostart.service
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 128 | 被纠正: 1次
+  - 用户纠正: 我的意思是 是关机前的数据 而不是rebuild的数据？
+
+### 会话摘要 [2026-04-24] [Sonnet/自动]
+- 对话轮次: 127 | 被纠正: 1次
+  - 用户纠正: 我的意思是 是关机前的数据 而不是rebuild的数据？

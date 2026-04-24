@@ -292,3 +292,12 @@ systemctl --user show <svc> --property=Result,ActiveState,SubState
 - 有文件写入/修改 → 末尾一行：`► 写入: 文件名`
 - 纯对话 → 不输出尾注
 - 禁止输出 `[自检]` `[PRE_GATE]` 等协议标签到用户界面
+
+## NixOS 重建安全门（NIXOS_REBUILD_GUARD — 死规则）
+1. **rebuild 前** MUST 运行 `bash ~/.local/bin/nixos-preflight-check.sh`
+   - 有 WARN 输出 → 修复后再 rebuild，禁止强行跳过
+2. **新增用户 systemd 服务** 时 MUST 检查：
+   - 禁止同一服务同时有 `PartOf=<T>` + `After=<T>` + 被其他 WantedBy T 的服务 Requires
+   - 若 ExecStart 或 WorkingDirectory 涉及 /mnt/ 路径 → MUST 加 `After=<mount-unit>`
+3. **新增 fileSystems."/mnt/xxx"** 时 MUST 检查 ~/.xxx 是否指向该路径，若是则对应 home-manager 服务 MUST 加 After/Wants
+4. **rebuild 后** MUST 运行 `bash ~/.local/bin/nixos-smoketest.sh` 验证
