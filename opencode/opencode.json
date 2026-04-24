@@ -9,13 +9,6 @@
         "apiKey": "sk-litellm-charlie-2026"
       },
       "models": {
-        "deepseek-v3.2": {
-          "name": "DeepSeek V3.2 (SiliconFlow)",
-          "limit": {
-            "context": 163840,
-            "output": 8192
-          }
-        },
         "glm-5.1": {
           "name": "GLM-5.1 旗舰 (Z.AI)",
           "limit": {
@@ -58,8 +51,8 @@
             "output": 8192
           }
         },
-        "glm-4v-flash": {
-          "name": "GLM-4V-Flash 视觉 (Z.AI)",
+        "glm-4.6v-flash": {
+          "name": "GLM-4.6V-Flash 视觉 (Z.AI)",
           "limit": {
             "context": 8192,
             "output": 1024
@@ -114,7 +107,7 @@
       "description": "对话模式 — 日常问答、知识查询、翻译总结"
     },
     "refactor": {
-      "model": "openai-compatible/deepseek-v3.2",
+      "model": "openai-compatible/glm-5-turbo",
       "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。编码死规则：(1) 修改任何文件前MUST先read_file读取完整内容 (2) 修改后重启→curl验证→检查日志 (3) 3000控制台(/mnt/ai/apps/agi-control-plane/frontend/)已是dev/HMR模式，禁止执行bun run build",
       "description": "重构器 — 代码优化、架构改进、模式重构"
     },
@@ -243,6 +236,13 @@
   "tui": {
     "code_blocks": "collapsed",
     "tool_output": "hidden"
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow",
+    "doom_loop": "allow",
+    "external_directory": "allow"
   },
   "instructions": [
     "输出约束（最高优先级）：每条任务结果≤1行，格式[ok/fail/skip]任务名—结果；总输出≤15行；禁止解释过程、列步骤、废话前缀（好的/我将/首先）；禁止重复 prompt 内容；只输出结论。",
