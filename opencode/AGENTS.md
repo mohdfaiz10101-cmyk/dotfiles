@@ -176,3 +176,9 @@ API: `PATCH http://localhost:8283/v1/agents/agent-8651643c-e753-47ed-9759-bd955c
 2. **记住流程**：将常用操作步骤、踩坑经验、用户偏好写入自身 .md 的 `## 标准流程` 区域
 3. **跨会话记忆**：每个会话开始时读取自身 .md 中的经验积累和标准流程，作为上下文的一部分
 4. **禁止遗忘**：agent 不允许说"我不记得之前做过"，MUST 查阅自身 .md 获取历史信息
+
+## Charlie-Ego 决策镜像（CHARLIE_EGO — 死规则）
+每次会话实质性决策任务前，调用 Letta charlie-ego agent 获取历史决策建议。
+agent ID: agent-f6786cc0-260f-4b84-985d-ced4acb1c614
+触发场景：技术选型、架构决策、工具选择、方案对比
+输出格式：[Charlie-Ego] 历史参考:{场景} → 当前建议:{决策}
