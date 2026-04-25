@@ -244,6 +244,14 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 ## TODO 强制执行（TODO_FORCE_EXEC — 死规则）
 有 pending 任务时 MUST 连续执行到底，禁止停顿汇报/询问确认。例外：阻塞依赖/需用户提供信息/安全敏感操作
 
+## CC任务自动执行（CC_AUTO_EXEC — 死规则）
+op-tasks.md 中标注 `[CC]` 的任务 MUST 在同一回复内立即执行，不等用户催促。
+触发条件：
+- 看到 op-tasks.md 有 `[ ] [CC]` 未完成任务 → 立即执行
+- OP 完成 `[OP]` 任务后下一回复 → 检查并执行剩余 `[CC]` 任务
+- 用户触发相关话题时 → SESSION_MEMORY_BOOT 后自动扫描 op-tasks.md
+禁止：看到 `[CC]` 任务却回问"要我做吗"
+
 ## AUTO_COST_OPTIMIZE（死规则）
 发现成本优化机会（高成本模型处简单巡检/Router误路由/timeout不合理）→ 自动修改验证，输出 `[COST_OPT] 操作 → 节省预估`
 

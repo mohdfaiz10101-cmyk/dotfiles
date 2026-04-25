@@ -4,6 +4,6 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/wechat-msg-sync.py
+ExecStart=/run/current-system/sw/bin/nix-shell -p python3Packages.pycryptodome --run "python3 /home/charlie/.local/bin/wechat-msg-sync.py"
 StandardOutput=journal
 StandardError=journal
