@@ -169,3 +169,10 @@ SESSION_MEMORY_BOOT 读到设备/服务/端口等事实后，MUST 执行闭环�
 memory/MEMORY.md 中的设备清单/服务端口/关键拓扑变更后，MUST 同步更新 Letta nixos-sysadmin agent 的 core memory [human] block。
 API: `PATCH http://localhost:8283/v1/agents/agent-8651643c-e753-47ed-9759-bd955c6ac240/core-memory/blocks/human`
 确保 letta_recall 自动携带最新设备/端口/拓扑信息。
+
+## Agent 持续学习规则（AGENT_CONTINUOUS_LEARN — 死规则）
+每个 agent 的 `.md` 文件 MUST 包含以下指令：
+1. **任务完成后更新思路**：每次完成任务后，回顾并优化自己的处理流程，将改进点写入自身 .md 文件的 `## 经验积累` 区域
+2. **记住流程**：将常用操作步骤、踩坑经验、用户偏好写入自身 .md 的 `## 标准流程` 区域
+3. **跨会话记忆**：每个会话开始时读取自身 .md 中的经验积累和标准流程，作为上下文的一部分
+4. **禁止遗忘**：agent 不允许说"我不记得之前做过"，MUST 查阅自身 .md 获取历史信息
