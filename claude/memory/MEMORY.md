@@ -42,6 +42,36 @@
 - [BalanceTrigger App](app-dev-journal.md) — App 开发经验日志
 - [手机远程方案](setup-plan.md) — SSH + tmux + Tailscale（已确认最佳方案）
 
+## 桌面资产（Desktop Assets）
+- **APK**: `~/Desktop/charlie-hub.apk` — Charlie Hub Android 客户端（3.8MB），通过 ADB 推送到手机/平板安装
+- **手机备份**: `~/Desktop/手机备份/PKR110-20260419/` — OnePlus Ace 5 Pro 完整备份
+- **商业文件**: `~/Desktop/商业文件/` — 外贸合同、发票 PDF
+- **开发工具**: `~/Desktop/开发工具/` — 桌面快捷方式(.desktop)、ADB 脚本、平板安装脚本
+- **巡检报告**: `~/Desktop/巡检报告/` — 系统巡检 JSONL feed、competitive 报告
+- **微信配置**: `~/Desktop/微信配置/` — 微信相关配置文件
+- **系统文档**: `~/Desktop/系统文档/` — NixOS 配置备份
+- **数据库**: `~/Desktop/crm.db` — CRM 数据库副本
+
+## 桌面目录结构速查
+```
+~/Desktop/
+├── charlie-hub.apk          # Hub Android APK
+├── crm.db                   # CRM 数据库
+├── init_boot.img            # OnePlus boot 镜像
+├── 安卓开发/                # Android 开发资源
+├── 手机备份/PKR110-20260419/ # OnePlus 备份
+├── 开发工具/                # .desktop 快捷方式 + ADB 脚本
+├── 商业文件/                # 外贸合同发票
+├── 巡检报告/                # 系统报告 JSONL
+├── 微信配置/                # 微信配置
+├── 系统文档/                # 系统配置文档
+├── 网络代理/                # 代理相关
+├── agent-reports/           # AI Agent 报告
+├── research/                # 技术调研
+├── glm-tasks/               # GLM 任务
+└── GLM-Output/              # GLM 输出
+```
+
 ## 知识库索引
 - [踩坑日志](lessons-learned.md) — 错误修复经验（append-only）
 - [踩坑归档](lessons-learned-archive.md) — 30天以上旧条目

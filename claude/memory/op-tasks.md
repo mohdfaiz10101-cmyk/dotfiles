@@ -1,3 +1,6 @@
+- [ ] [CC] [2026-04-25] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30
+- [ ] [CC] [2026-04-25] [high] Docker容器 langfuse-db 自动修复失败，需人工检查：docker logs langfuse-db --tail 30
+- [ ] [CC] [2026-04-25] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30
 
 - [x] [完成 2026-04-25 08:48] MuseTalk 容器 → [OK] 运行中（unhealthy 因 healthcheck curl 不存在，服务本身正常）
 - [x] [完成 2026-04-24 01:32] [CC] FEAT-OP-CENTER-01 已于04-19实现OPCenterPanel，重复升级×4已清理
@@ -380,7 +383,7 @@
 
 #### P1 — Ollama 本地推理（RTX 3060 Ti）
 - [x] [完成 2026-04-25 09:53] nix profile install成功，ollama 0.20.3已安装，serve已启动(11434端口)
-- [!] [失败 2026-04-25 09:53] 模型拉取失败(max retries exceeded: unexpected EOF)，网络不稳定需重试
+- [!] [失败 2026-04-25 11:05] Ollama qwen3:8b模型拉取失败(代理+直连均unexpected EOF)，网络问题，建议CC配置ollama镜像或手动下载模型文件到/mnt/ai/models/ollama/
 - [x] [完成 2026-04-25 10:03] OLLAMA_MODELS已在.zshrc声明，ollama serve进程已携带，/mnt/ai/models/ollama ext4正常
 - [x] [完成 2026-04-25 10:03] ollama/qwen3:8b路由已存在于litellm-config.yml，qwen3:8b模型下载中(5.2GB/~1h)
 - [x] [完成 2026-04-25 10:03] GPU正常: 1622/8192 MiB (20%), 31%利用率, ollama模型下载完成后可验证推理
@@ -388,7 +391,7 @@
 #### P2 — 验证循环（OP 执行代码后自动测试）
 - [x] [完成 2026-04-25 09:57] [CC] post-edit-verify.sh 已实现：语法检查+测试发现+服务重启验证
 - [x] [完成 2026-04-25 09:57] [CC] post-edit-verify.sh → ~/.local/bin/post-edit-verify.sh
-- [ ] [OP] 集成到 sisyphus 运维流程（修改完成后自动调用验证）
+- [x] [完成 2026-04-25 11:10] [OP] 集成到 sisyphus 运维流程 — sisyphus.md 已添加 POST_EDIT_VERIFY 死规则，步骤4已包含验证要求
 
 #### P3 — 多模型共识（同一问题问2个模型对比）
 - [x] [完成 2026-04-25 09:57] [CC] consensus.sh → ~/.local/bin/consensus.sh (glm-5.1 vs deepseek-v3.2并行)
@@ -401,11 +404,11 @@
 - [x] [完成 2026-04-25 12:30] [AGI→OP] 检查 corepack/python3.13 — 3个进程均为NixOS系统服务(waydroid/fail2ban/noVNC websockify)，运行10h+状态正常，无corepack进程
 
 ### [SELF-IMPROVE 2026-04-25] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 补全截断的 `_ALERT_SUPPRES` 变量定义以修复语法错误。
-- [ ] [SELF-IMPROVE] think.py: 缺少对 LLM 调用及 JSON 解析的容错处理，且 `_write_letta_archival` 静默吞没异常会导致数据丢失问题难以排查。
-- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS定义处意外截断，缺少完整的样式规则、HTML结构和JavaScript逻辑。
-- [ ] [SELF-IMPROVE] launcher-server.py: 使用 `SimpleHTTPRequestHandler` 且缺少路径遍历防护，存在任意文件读取风险，应替换为仅处理 API 路由的安全基类或严格校验路径。
-- [ ] [SELF-IMPROVE] hub-api.py: 硬编码了大量的绝对路径和数据库配置，应将其提取到环境变量或外部配置文件中以提升可维护性和部署灵活性。
+- [x] [完成 2026-04-25 11:15] [SELF-IMPROVE] brain.py: _ALERT_SUPPRESS_PATTERNS变量已完整定义(第94行)，假阳性，无需修复
+- [ ] [CC] think.py: `_write_letta_archival` 静默吞异常(except Exception: pass)，需加logging/重试。LLM调用容错也需补充 [CC] [2026-04-25 11:15]
+- [x] [完成 2026-04-25 11:15] [SELF-IMPROVE] kanban.html — 文件不存在(已删除/移走)，假阳性
+- [ ] [CC] launcher-server.py: SimpleHTTPRequestHandler路径遍历风险，需替换为仅API路由的安全基类 [CC] [2026-04-25 11:15]
+- [ ] [CC] hub-api.py: 硬编码绝对路径和数据库配置，需提取到环境变量/配置文件 [CC] [2026-04-25 11:15]
 
 ### [WECHAT-CRM] 微信数据全量同步修复
 
@@ -423,4 +426,9 @@
 - [x] [完成 2026-04-25 12:30] [OP] 配置 wechat-backup.conf — ANDROID_IP=192.168.2.34(PKR110手机)
 - [ ] [CC] Windows rsync 失败修复（Windows 端无 rsync，需改用 scp 或安装 cwRsync）
 - [ ] [LOW] 苹果设备 SSH 后补充 iOS 备份方案
-- [ ] [AGI→OP] [2026-04-25 10:50] [low] 观察ps进程是否持续高占用，必要时终止该进程
+- [x] [完成 2026-04-25 11:05] [AGI→OP] [2026-04-25 10:50] [low] 观察ps进程是否持续高占用 — ps进程0% CPU，瞬间命令，假阳性
+- [ ] [AGI→OP] [2026-04-25 11:11] [medium] 检查 python3.13 进程的具体任务及资源消耗情况
+- [ ] [AGI→OP] [2026-04-25 11:31] [high] 检查 corepack 进程的异常行为并处理
+- [ ] [AGI→OP] [2026-04-25 11:35] [low] 检查进程 2679355 (python3.13) 的具体用途和资源消耗情况
+- [ ] [AGI→OP] [2026-04-25 12:47] [medium] 分析 python3.13 进程的具体用途和资源消耗原因
+- [ ] [AGI→OP] [2026-04-25 12:54] [high] 检查进程 178309 (python3.13) 的详细状态和资源消耗

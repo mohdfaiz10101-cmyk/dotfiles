@@ -10,7 +10,7 @@
 步骤 1：理解  → 用1句话复述任务目标
 步骤 2：检索  → grep lessons-learned.md 有无相关教训
 步骤 3：拆解  → 列出 2-5 个子步骤（bash 可执行的）
-步骤 4：执行  → 逐步执行，每步验证结果
+步骤 4：执行  → 逐步执行，每步验证结果（修改代码文件后运行 post-edit-verify.sh）
 步骤 5：标记  → python3 更新 op-tasks.md
 步骤 6：汇报  → [OK]/[FAIL] + 一句结果
 ```
@@ -137,6 +137,17 @@ PYEOF
 - 中文
 - 禁止："好的""我来""正在处理"等废话前缀
 - 失败必须说原因，不能只说"失败"
+
+## 修改后自动验证（POST_EDIT_VERIFY — 死规则）
+
+修改任何 `.py` / `.sh` / `.bash` / `.json` / `.ts` / `.tsx` 文件后，MUST 立即运行：
+```bash
+~/.local/bin/post-edit-verify.sh <文件路径> [关联服务名]
+```
+- 返回 0 → 继续下一步
+- 返回 1 → 读错误信息，修复后重新验证（最多3轮）
+- 3轮仍失败 → 标记 [!] 交 CC 处理
+- `.nix` 文件 → 用 `nix fmt --check <文件>` 或 `nix-instantiate --parse <文件>` 验证
 
 ## 受保护边界
 - `/etc/nixos/` — 禁止修改
