@@ -22,9 +22,26 @@
 - **外接设备**: sda(3.9M) + sdb(14.6G USB)
 - **备注**: NixOS flake 配置中有 `nixosConfigurations.minipc`，由大主机统一管理
 
-## Windows
-- SSH：`G@192.168.2.36`，密码 `1`
-- Tailscale 组网
+## Windows 主机 (WIN-S2D8GP89FU1)
+- **SSH**: `G@192.168.2.36` 密码 `1` | Tailscale 组网
+- **Python**: 3.12.10 (`C:\Users\G\AppData\Local\Programs\Python\Python312\`)
+- **无 Docker** — 文件管理用 Python 脚本 + SMB 共享
+- **角色**: 文件存档库、数据库备份、商业文档中心
+- **共享路径**: `\\192.168.2.36\共享` 或 Tailscale IP 访问
+- **同步**: Syncthing 双向同步 memory/ + documents/
+
+## 双机记忆同步（DUAL_MACHINE_SYNC — 死规则）
+- **NixOS (192.168.2.100)** = 主力机，所有 AI Agent 运行于此
+- **Windows (192.168.2.36)** = 存档机，文档数据库 + 记忆副本
+- **同步工具**: Syncthing（双向实时同步）
+- **同步目录**:
+  | 目录 | NixOS | Windows | 说明 |
+  |------|-------|---------|------|
+  | memory/ | `~/.claude/projects/-home-charlie/memory/` | `C:\Users\G\sync\memory\` | 所有 agent 记忆文件 |
+  | documents/ | `/mnt/ai/documents/` | `C:\Users\G\sync\documents\` | 财务/CRM/合同文档 |
+  | dotfiles/ | `~/dotfiles/` | `C:\Users\G\sync\dotfiles\` | agent 配置 + skills |
+- **冲突策略**: NixOS 为主（服务端），Windows 为只读副本
+- **验证**: 每次 agent 写入 memory 后，检查 Syncthing 同步状态
 
 ## 大主机有线网 (eno1 — Intel I219-V)
 - MAC: 04:42:1a:21:3b:11 | WoL sysfs: enabled

@@ -32,10 +32,46 @@
 - [Chronos-Zenith](codebase-map.md) — Sensory/Subconscious/Bio-feedback 三模块
 - [HyperChat + Hermetic Ledger](ai-cluster-architecture.md) — CRM + 微信 + 营销
 
+## 磁盘分配规则（DISK_ALLOCATION — 死规则）
+| 分区 | 类型 | 大小 | 已用 | 用途 | 文件系统限制 |
+|------|------|------|------|------|-------------|
+| `/` 根分区 | NVMe | 89G | 86% | **仅系统级**：NixOS包、kernel、boot | ❌禁止装应用数据 |
+| `/mnt/ai` | HDD ext4 | 920G | 31% | **AI应用+服务数据**：Docker、apps、documents | ✅ ext4 可全操作 |
+| `/mnt/data` | HDD NTFS | 932G | 80% | **个人数据**：视频、音乐、下载、微信备份 | ❌NTFS禁npm/bun/docker |
+| `/mnt/pool` | mergerfs | 6.4T | 30% | **冷存储+归档**：游戏、ISO、backup、archive | ❌NTFS禁npm/bun/docker |
+| `/mnt/win_c` | NVMe NTFS | 233G | 75% | **只读挂载** Windows C盘 | ❌只读，禁止写入 |
+
+### 软件安装分配决策树
+```
+需要安装软件？
+├─ 系统包（DE/浏览器/CLI工具）→ NixOS packages.nix → 根分区
+├─ Docker容器/AI服务 → /mnt/ai/apps/{name}/ → ext4
+├─ Python venv/Node项目 → /mnt/ai/apps/{name}-venv/ → ext4
+├─ 用户配置文件 → ~/dotfiles/ → 根分区（小文件无压力）
+├─ 大文件下载/媒体 → /mnt/data/downloads/ → NTFS
+└─ 归档/备份 → /mnt/pool/backup/ → mergerfs
+```
+
+### 双机软件分工
+| 类别 | NixOS (主力机) | Windows (存档机) |
+|------|---------------|----------------|
+| AI/ML 服务 | ✅ Docker | ❌ |
+| 微信 | Wine (bridge) | ✅ 原生微信 |
+| Office/文档 | OnlyOffice | ✅ WPS/Office |
+| 文件存档 | /mnt/ai/documents/ | C:\Users\G\sync\documents\ |
+| 数据库 | ✅ PostgreSQL/SQLite | ❌ |
+| 开发环境 | ✅ 全栈 | Python脚本 |
+
+### 安装前强制检查（与 PRE_MIGRATE_CHECK 合并）
+1. `df -hT <目标路径>` → 可用空间 > 预估×1.5 且 非 NTFS（Docker/npm/bun）
+2. 根分区 >85% → 禁止装新系统包，用 nix-collect-garbage 清理
+
 ## 偏好
 - 终端: Konsole + ttyd(7690-7694) | 编辑器: VS Code + Aider | 浏览器: Floorp + Chrome
 - 主题: Catppuccin Mocha | 代理: mihomo | 通知: Telegram | 语言: 中文
 - 成本: LiteLLM $10/月上限，Claude Code Sonnet 默认 + Hook 路由
+- **Agent创建**: 必须先搜索互联网已有开源 agent/skill，推荐参考后再决策，不要闭门造车
+- **工作流设计**: 先调研业界已有方案（GitHub trend、LangChain Hub、n8n community），再讨论
 
 ## 进行中的项目
 - [微信数据合并](wechat-merge-plan.md) — 双端 DB 合并，Windows 密钥待提取

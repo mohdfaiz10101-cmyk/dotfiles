@@ -69,6 +69,15 @@ class LauncherHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=LAUNCHER_DIR, **kwargs)
 
+    def translate_path(self, path):
+        """Override to prevent directory traversal outside LAUNCHER_DIR."""
+        resolved = super().translate_path(path)
+        launcher_real = os.path.realpath(LAUNCHER_DIR)
+        if not os.path.realpath(resolved).startswith(launcher_real + os.sep) and \
+                os.path.realpath(resolved) != launcher_real:
+            return os.path.join(launcher_real, "index.html")
+        return resolved
+
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_header("Access-Control-Allow-Origin", "*")
@@ -340,6 +349,15 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             self._serve_quota()
             return
 
+        # 安全限制：仅允许静态资源，防止暴露 .py/.sh/.json 等敏感文件
+        _ext = os.path.splitext(parsed.path)[1].lower()
+        _allowed_exts = {".html", ".js", ".css", ".ico", ".png", ".svg", ".woff", ".woff2", ".ttf", ".map", ""}
+        if _ext not in _allowed_exts:
+            self.send_response(403)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": "forbidden"}).encode())
+            return
         super().do_GET()
 
     def do_POST(self):

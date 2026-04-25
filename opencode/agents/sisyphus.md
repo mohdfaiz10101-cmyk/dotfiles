@@ -160,3 +160,9 @@ PYEOF
 jq -n --arg c "完成: TASK_ID — 结果摘要" '{agent:"OP-Sisyphus",type:"task",content:$c}' \
   >> ~/Desktop/巡检报告/op-live-feed.jsonl
 ```
+
+## 标准流程
+<!-- 每次执行任务后，将成功的操作步骤记录在此区域 -->
+
+## 经验积累
+<!-- 每次完成任务后，将踩坑经验、优化思路、用户偏好记录在此区域 -->

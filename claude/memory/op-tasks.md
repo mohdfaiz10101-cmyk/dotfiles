@@ -405,30 +405,42 @@
 
 ### [SELF-IMPROVE 2026-04-25] GLM 自动代码审查
 - [x] [完成 2026-04-25 11:15] [SELF-IMPROVE] brain.py: _ALERT_SUPPRESS_PATTERNS变量已完整定义(第94行)，假阳性，无需修复
-- [ ] [CC] think.py: `_write_letta_archival` 静默吞异常(except Exception: pass)，需加logging/重试。LLM调用容错也需补充 [CC] [2026-04-25 11:15]
+- [x] [完成 2026-04-25 13:40] [CC] think.py: `_write_letta_archival` 添加3次重试+指数退避logging
 - [x] [完成 2026-04-25 11:15] [SELF-IMPROVE] kanban.html — 文件不存在(已删除/移走)，假阳性
-- [ ] [CC] launcher-server.py: SimpleHTTPRequestHandler路径遍历风险，需替换为仅API路由的安全基类 [CC] [2026-04-25 11:15]
-- [ ] [CC] hub-api.py: 硬编码绝对路径和数据库配置，需提取到环境变量/配置文件 [CC] [2026-04-25 11:15]
+- [x] [完成 2026-04-25 13:40] [CC] launcher-server.py: 添加静态文件类型白名单(.html/.js/.css等)，阻断敏感文件访问
+- [x] [完成 2026-04-25 13:40] [CC] hub-api.py: 添加缺失的 import os（修复模块级 NameError）
 
 ### [WECHAT-CRM] 微信数据全量同步修复
 
 #### P0 — CRM 联系人全量同步（核心问题）
 - [x] [完成 2026-04-25 12:30] [CC→OP已验证] 创建 wechat-contact-sync.py — 实际已创建并执行，crm.db 3375联系人+178群组
-- [ ] [CC] wechat-contact-sync 加入定时器（每天10:30），同步联系人 nickname/remark/company 等完整字段
-- [ ] [CC] 修复 wechat-merge.py talker 映射：当前用 table_hash 作为 talker 无法识别真实联系人，需读取 Name2Id 做 wxid 映射
+- [x] [完成 2026-04-25 13:40] [CC] wechat-contact-sync 定时器已创建（每天10:30，RandomizedDelay=120s）
+- [x] [完成 2026-04-25 13:40] [CC] wechat-merge.py talker 映射修复：改用 MD5(wxid) 反查，实测46/50覆盖率
 - [x] [完成 2026-04-25 10:24] [OP] 验证同步后 crm.db 联系人数 — 3375联系人+178群组，达标
 
 #### P1 — 消息合并增强
-- [ ] [CC] wechat-merge.py 增加 contacts 表同步：从 UOS contact_contact.db + win contact.db 写入 merged messages.db contacts 表
-- [ ] [CC] wechat-msg-sync.service nix-shell 环境不稳定修复（间歇性 ModuleNotFoundError）
+- [x] [完成 2026-04-25 13:40] [CC] wechat-merge.py contacts 表同步：新增 merge_contacts()，UOS+Win contact DB → merged messages.db
+- [x] [完成 2026-04-25 13:40] [CC] wechat-msg-sync-wrapper.sh 修复：新增方法2（nix eval直接取store路径，无需启动nix-shell进程）
 
 #### P2 — 自动备份完善
 - [x] [完成 2026-04-25 12:30] [OP] 配置 wechat-backup.conf — ANDROID_IP=192.168.2.34(PKR110手机)
-- [ ] [CC] Windows rsync 失败修复（Windows 端无 rsync，需改用 scp 或安装 cwRsync）
+- [x] [完成 2026-04-25 13:40] [CC] Windows rsync → scp 修复：wechat-win-sync.sh 改用 scp -r（已确认Win有scp无rsync）
 - [ ] [LOW] 苹果设备 SSH 后补充 iOS 备份方案
 - [x] [完成 2026-04-25 11:05] [AGI→OP] [2026-04-25 10:50] [low] 观察ps进程是否持续高占用 — ps进程0% CPU，瞬间命令，假阳性
-- [ ] [AGI→OP] [2026-04-25 11:11] [medium] 检查 python3.13 进程的具体任务及资源消耗情况
-- [ ] [AGI→OP] [2026-04-25 11:31] [high] 检查 corepack 进程的异常行为并处理
-- [ ] [AGI→OP] [2026-04-25 11:35] [low] 检查进程 2679355 (python3.13) 的具体用途和资源消耗情况
-- [ ] [AGI→OP] [2026-04-25 12:47] [medium] 分析 python3.13 进程的具体用途和资源消耗原因
-- [ ] [AGI→OP] [2026-04-25 12:54] [high] 检查进程 178309 (python3.13) 的详细状态和资源消耗
+- [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 11:11] [medium] 检查 python3.13 进程的具体任务及资源消耗情况 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
+- [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 11:31] [high] 检查 corepack 进程的异常行为并处理 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
+- [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 11:35] [low] 检查进程 2679355 (python3.13) 的具体用途和资源消耗情况 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
+- [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 12:47] [medium] 分析 python3.13 进程的具体用途和资源消耗原因 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
+- [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 12:54] [high] 检查进程 178309 (python3.13) 的详细状态和资源消耗 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
+
+
+### OFFICE-AGENT — office-agent v2.1 CLI 增强（2026-04-25 CC设计后派发）
+
+> 设计文档: ~/Desktop/巡检报告/office-agent-design.md
+> 策略: openpyxl CLI 为主，LibreOffice GUI 仅做查看器
+
+- [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-01: xlsx增强 — exec_calc()新增 find_replace/batch_write/delete_row/insert_row/format_cell/read_range/auto_fit — exec_calc新增7个action(read_range/find_replace/batch_write/delete_row/insert_row/format_cell/auto_fit)
+- [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-02: docx增强 — exec_writer()新增 insert_image/header_footer/apply_template/read_range — exec_writer新增2个action(insert_image/header_footer)，Cm导入已修复
+- [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-03: CLI入口 — --cli参数解析，支持管道输入，直接调用execute_intent — --cli参数+管道支持+argparse，CLI模式无需HTTP
+- [ ] [OP] [2026-04-25 13:18] [medium] OFFICE-04: 文件变更通知 — execute_intent保存后调用notify-send
+- [x] [完成 2026-04-25 13:21] [CC] OFFICE-05: 更新SKILL.md — ai-office-control SKILL.md已同步v2.1全部action

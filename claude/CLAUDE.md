@@ -324,6 +324,8 @@ systemctl --user show <svc> --property=Result,ActiveState,SubState
 - 典型正常 inactive 服务：discord-butler, heartbeat-*, service-nurse, proxy-guardian, *-check, *-timer
 
 ## AUTO_AGENT（死规则 — 类比 AUTO_SKILL）
+
+### 被动触发（任务中检测到信号）
 识别信号：重复任务类型 ≥3次 | 用户说"设置个agent/帮我建个agent" | 缺少对应专职 agent
 触发后立即（不等用户确认）：
 1. 判断类型 → 按 AGENT_FREE_ROUTE 选免费模型
@@ -333,6 +335,32 @@ systemctl --user show <svc> --property=Result,ActiveState,SubState
 
 **输出格式**（供 hook 解析）：`[AUTO_AGENT] 可创建: {slug} — {中文描述} | 模型: {model_id} | 类型: {巡检/编码/对话}`
 禁止：只说"可以建一个 agent"不输出标签 | 等用户二次确认才创建
+
+### 主动推荐（PROACTIVE_AGENT_RECOMMEND — 死规则）
+
+**触发时机**：SESSION_MEMORY_BOOT 时或用户问"有什么建议"时，MUST 执行历史模式分析。
+
+**分析流程**（3步，≤30秒完成）：
+1. **扫描高频任务**：`grep -oP '\[OP\].*?(?=\[)' op-tasks*.md | sort | uniq -c | sort -rn | head -5`
+2. **扫描重复踩坑**：`grep -c "场景：" lessons-learned.md` + 提取最近7天关键词频率
+3. **计算覆盖率**：已有 agents（`ls ~/.config/opencode/agents/`）vs 高频任务类型 → 差集
+
+**推荐阈值**：
+| 条件 | 动作 |
+|------|------|
+| 同类任务 ≥3次/周 且 无对应 agent | 输出 `[AGENT_RECOMMEND]` 推荐 |
+| 同类任务 ≥5次/周 且 有 skill 但无 agent | 输出 `[AGENT_UPGRADE]` 升级建议 |
+| 同类任务 <3次 | `[SKIP]` 维持 skill 级别 |
+
+**输出格式**（末尾附加，不干扰正常任务流）：
+```
+[AGENT_RECOMMEND] 基于 {N} 个任务样本分析:
+| 推荐 | 原因 | 模型 | 类型 |
+|------|------|------|------|
+| {slug} | "{场景}"出现{N}次，无专职agent | {免费模型} | {类型} |
+```
+
+**禁止**：每次会话都输出推荐（仅首次 SESSION_MEMORY_BOOT 时输出一次）| 推荐后追着用户问要不要建 | 推荐已有 agent 的同类（去重）
 
 ## MCP_OUTPUT_VERIFY（死规则 — 禁止信任未验证的 MCP 输出）
 MCP 工具输出（macg_op_status、letta_recall 等）可能返回缓存快照，与实际文件不符。

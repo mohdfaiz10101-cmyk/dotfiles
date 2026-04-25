@@ -70,3 +70,9 @@ backup_repo ~/.claude/skills main
 - 不 force push，不 rebase
 - commit message 用中文日期格式
 - MUST 使用中文回复
+
+## 标准流程
+<!-- 每次执行任务后，将成功的操作步骤记录在此区域 -->
+
+## 经验积累
+<!-- 每次完成任务后，将踩坑经验、优化思路、用户偏好记录在此区域 -->

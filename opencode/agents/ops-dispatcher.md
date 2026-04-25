@@ -72,3 +72,9 @@ op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
 - 结果文件写到 `~/Desktop/巡检报告/` 或 `/tmp/`
 - bun 安装必须用 `/mnt/ai/cache/bun/bin/bun`（NTFS 禁令）
 - 修改 NixOS 配置前先 `nix flake check` 验证
+
+## 标准流程
+<!-- 每次执行任务后，将成功的操作步骤记录在此区域 -->
+
+## 经验积累
+<!-- 每次完成任务后，将踩坑经验、优化思路、用户偏好记录在此区域 -->

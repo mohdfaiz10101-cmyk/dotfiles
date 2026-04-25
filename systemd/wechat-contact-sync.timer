@@ -1,0 +1,10 @@
+[Unit]
+Description=微信联系人同步定时器 — 每天 10:30
+
+[Timer]
+OnCalendar=*-*-* 10:30:00
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

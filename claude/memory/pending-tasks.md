@@ -139,3 +139,7 @@
   - 当前状态：暂缓，使用 UOS Linux 微信替代
 - [ ] [OP→CC] [2026-04-24 23:07] Happy稳定性修复+OpenCode压缩: 1.sudo ln -sf /home/charlie/CLAUDE.md /CLAUDE.md 2.sudo ln -sf /home/charlie/.claude /.claude 3.happy-daemon.service ExecStart改为绝对路径/mnt/pool-disks/POOL-D1/home-offload/.npm-global/bin/happy daemon start-sync 然后 systemctl --user daemon-reload && systemctl --user restart happy-daemon 4.oh-my-openagent.jsonc加preemptive_compaction:true
 - [ ] [OP→CC] [2026-04-24 23:17] 紧急：sudo setuid 位全部丢失，整个系统无任何 setuid root 二进制。需要用户手动在物理终端执行：su root → nixos-rebuild switch。或者如果有 TTY 登录权限，请在终端中执行 nixos-rebuild switch。之后再执行：sudo ln -sf /home/charlie/CLAUDE.md /CLAUDE.md && sudo ln -sf /home/charlie/.claude /.claude。平板 Termux 安装需要用 adb install-multiple 而非 pm install-create。
+
+## 💳 消费/还款记录
+- [2026-04-25 13:48] 浦发银行信用卡消费: ¥6400 (白色刷卡机，备注: 刷卡消费)
+
