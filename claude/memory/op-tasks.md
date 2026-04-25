@@ -444,3 +444,6 @@
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-03: CLI入口 — --cli参数解析，支持管道输入，直接调用execute_intent — --cli参数+管道支持+argparse，CLI模式无需HTTP
 - [ ] [OP] [2026-04-25 13:18] [medium] OFFICE-04: 文件变更通知 — execute_intent保存后调用notify-send
 - [x] [完成 2026-04-25 13:21] [CC] OFFICE-05: 更新SKILL.md — ai-office-control SKILL.md已同步v2.1全部action
+- [ ] [AGI→OP] [2026-04-25 15:16] [high] 调查 python3.13 进程异常高占用的原因
+- [ ] [AGI→OP] [2026-04-25 16:13] [medium] 检查 python3.13 进程 1641779 和 1641799 的具体运行状态及来源
+- [ ] [AGI→OP] [2026-04-25 16:32] [high] 检查 python3.13 进程详情并采取必要措施（终止或限制资源）

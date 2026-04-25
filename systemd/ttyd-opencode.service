@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/index.html -p 7692 -t fontSize=10 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -t scrollback=50000 -W /home/charlie/.local/bin/opencode-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -t fontSize=10 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -t scrollback=50000 -W /home/charlie/.local/bin/opencode-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

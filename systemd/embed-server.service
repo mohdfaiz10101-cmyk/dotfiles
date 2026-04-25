@@ -1,0 +1,15 @@
+[Unit]
+Description=Local Embedding Server (ONNX MiniLM-L6-v2)
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=EMBED_MODEL_PATH=/mnt/ai/models/all-MiniLM-L6-v2
+ExecStart=/mnt/ai/apps/embed-venv/bin/python /mnt/ai/apps/embed-server/embed_server.py
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/mnt/ai/apps/embed-server
+
+[Install]
+WantedBy=default.target
