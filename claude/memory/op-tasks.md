@@ -721,3 +721,10 @@
 - [ ] [OP] image-captioner 服务修复：WorkingDirectory `/mnt/ai/ai-cluster/unified-search` 不存在。需要找到 image-captioner.py 实际位置并更新 service 文件的 WorkingDirectory，或确认该项目已废弃直接禁用服务。
 - [ ] [OP] wechat-msg-sync 服务修复：`ModuleNotFoundError: No module named 'Crypto'`。当前系统 python3 可以 import Crypto（pycryptodome 已装），但 systemd 环境可能 PATH 不同。检查 service 是否需要指定 PYTHONPATH 或用完整 python 路径，确认依赖可用。
 - [ ] [AGI→OP] [2026-04-25 09:58] [high] 检查 corepack 和 python3.13 进程的具体活动，确认是否为异常任务或僵尸进程
+
+### [SELF-IMPROVE 2026-04-25] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 补全截断的 `_ALERT_SUPPRES` 变量定义以修复语法错误。
+- [ ] [SELF-IMPROVE] think.py: 缺少对 LLM 调用及 JSON 解析的容错处理，且 `_write_letta_archival` 静默吞没异常会导致数据丢失问题难以排查。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS定义处意外截断，缺少完整的样式规则、HTML结构和JavaScript逻辑。
+- [ ] [SELF-IMPROVE] launcher-server.py: 使用 `SimpleHTTPRequestHandler` 且缺少路径遍历防护，存在任意文件读取风险，应替换为仅处理 API 路由的安全基类或严格校验路径。
+- [ ] [SELF-IMPROVE] hub-api.py: 硬编码了大量的绝对路径和数据库配置，应将其提取到环境变量或外部配置文件中以提升可维护性和部署灵活性。

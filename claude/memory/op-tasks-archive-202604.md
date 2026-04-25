@@ -110,3 +110,133 @@
 - [x] [完成 2026-04-20 18:20] tech-digest数据源已创建，需完整运行 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
 - [x] [完成 2026-04-20 18:20] 重复#1 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
 - [x] [完成 2026-04-20 18:20] 重复#2 tech-digest [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-20 18:20] 重复#1 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中心"Ta
+- [x] [完成 2026-04-20 18:20] 重复#2 tech-digest [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：无数据源 — 未找到 digest JSON 文件或 systemd 服务，需先实现 d
+- [x] [完成 2026-04-20 18:20] Windows SSH不可达 阻塞中 [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次�
+- [x] [完成 2026-04-20 18:20] Windows SSH不可达 阻塞中 [OP→CC] [2026-04-20 17:39] [high] OP失败已升级：WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device
+- [x] [完成 2026-04-19 15:00] BIZ-01 [OP] [2026-04-19] 解析客户目录结构建索引：python3 脚本遍历 "/mnt/pool/sde1-migrated/- 123 onedrive/2 - 客户/" 子目录，提取客户名(目录名)、地区(父目录)、关联文件列表(pdf/xlsx/doc)，写入 ~/Desktop/巡检报告/customer-index.json。格式：[{name, region, country, files:[{name,type}], path}]
+- [x] [完成 2026-04-19 15:00] BIZ-02 [OP] [2026-04-19] 解析供应商目录建索引：同上遍历 "1- 供应商 a/" 和 "1- 供应商 b/"，写入 ~/Desktop/巡检报告/supplier-index.json
+- [x] [完成 2026-04-19 15:00] BIZ-03 [OP] [2026-04-19] 把客户+供应商数据导入 crm.db：读 customer-index.json 和 supplier-index.json，INSERT INTO customers(name,region,country,source,files_json)，INSERT INTO contacts(name,company,type) 等。hub-api /api/crm/customers 端点返回此数据
+- [x] [完成 2026-04-19 15:00] BIZ-04 [OP] [2026-04-19] 把关键客户信息写入 Letta memory：取前20个最重要客户（有xlsx/pdf订单文件的），格式 "[客户名] 国家 订单历史 主要产品"，POST 到 Letta code-assistant archival memory，tag: crm,customer
+- [x] [完成 2026-04-19 22:33] PHONE-ROOT-01 [OP] [2026-04-19] [high] 手机Root：OnePlus Ace 5 Pro(PKR110) Android16 bootloader已解锁，通过fastboot fetch init_boot_b取分区→Magisk patch→fastboot flash init_boot回刷。禁止擦数据。备份已在~/Desktop/手机备份/PKR110-20260419/
+- [x] [完成 2026-04-19 21:41] WIN-SLEEP-01 [OP] [2026-04-19] [high] Windows 定时休眠：晚11点休眠（schtasks），早8点WOL唤醒（NixOS发magic packet）
+- [x] [完成 2026-04-19 21:51] BIZ-05 [OP] [2026-04-19] hub-api /api/crm/customers 升级：返回真实客户数据，支持 ?region= 按地区过滤，?search= 搜索，?type=supplier 查供应商
+- [x] [完成 2026-04-19 21:39] WEBSITE-01 [OP] [2026-04-19] 分析 WordPress 网站备份：读 wp-config.php 提取 DB_NAME/DB_USER，检查 "/mnt/pool/sde1-migrated/- 123 onedrive/- Sourcing/root/wp-content/plugins/" 列出已安装插件清单，写入 ~/Desktop/巡检报告/wordpress-analysis.json（插件列表、主题、页面数）
+- [x] [完成 2026-04-19 21:57] CRM-04 [OP] [2026-04-19] hub-api.py 添加：/api/crm/customers、/api/crm/link-wechat、/api/crm/notes
+- [x] [完成 2026-04-19 22:04] MONITOR-UNIFIED-02 [OP] [2026-04-19] 创建 systemd user service：agi-persistent-monitor.service，启动 tmux session "agi-monitor"，保持常开，显示 op-live-feed。与 unified-monitor.sh 的弹出窗口区分：一个是常开后台session，一个是每次任务触发的独立弹窗
+- [x] 修改 `~/agi/brain.py`，加状态缓存对比 — 已实现（_sense_hash + _last_sense_hash + 主循环 hash 对比 line 417-426） [2026-04-19 CC]
+- [x] 验证：连续运行3轮日志，无变化的轮次显示"（无变化）"，不调用 LLM — 代码确认正确 [2026-04-19 CC]
+- [x] 在 `~/agi/` 目录下创建插件目录 `sensors/` — 已创建，含 __init__.py [2026-04-19 CC]
+- [x] brain.py 的 sense() 改为：遍历 `sensors/` 下所有 .py，subprocess 执行，合并 JSON 输出 — _run_sensors() + 新 sense() [2026-04-19 CC]
+- [x] 验证：新增一个 `sensors/test_sensor.py` 能被自动加载 — 6/6 传感器加载成功 [2026-04-19 CC]
+- [x] [2026-04-19 CC] 在 hub-api (9801) 加端点 `GET /api/brain/status` → 已存在（hub-api.py line 265-278）
+- [x] [2026-04-19 CC] 在 brain.py 的 _write_status() POST 到 hub-api → 已存在（brain.py line 377-383）
+- [x] [2026-04-19 CC] 在 3000 前端 KanbanDashboard 加 AGI Brain 状态卡片 → 已存在（KanbanDashboard.tsx line 270-284）
+- [x] [2026-04-19 CC] 验证：3000 Dashboard 能看到 Brain 实时状态 → hub-api返回有效JSON，前端15秒轮询确认
+- [x] [2026-04-19 CC] 在 brain.py 加告警冷却字典 → 已存在（brain.py line 183-192 `_ALERT_COOLDOWN` + `_should_trigger_alert()`）
+- [x] [2026-04-19 CC] 写任务前调用 should_trigger_alert → 已存在（brain.py line 296 `if not _should_trigger_alert(alert_key)`）
+- [x] [2026-04-19 CC] 验证：同一告警1小时内只写一次 → 代码逻辑确认，ALERT_COOLDOWN_SECS=3600
+- [x] [2026-04-19 CC] 诊断: 同上根因, heartbeat-task-check服务不存在 [OP→CC] [2026-04-19 11:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [2026-04-19 CC] WechatPanel.tsx 已实现 launcher-server(9875) 优先 + hub-api(9801) 降级，API 已验证返回真实数据
+- [x] [2026-04-19 CC] 验证通过：launcher-server /api/wechat/sessions 返回联系人列表，/api/wechat/messages 返回历史消息
+- [x] [2026-04-19 CC] crm.html 已添加微信侧面板：#wx-panel HTML + showWxHistory/closeWxPanel JS + 联系人行"微信"按钮，fetch 9875 messages API
+- [x] [2026-04-19 CC] 验证通过：crm.html 8项结构检查全OK
+- [x] [2026-04-19 CC] 规则已记录在CLAUDE.md [RULE] 编码类任务（写文件/改代码）→ CC直接做，不写入op-tasks
+- [x] [2026-04-19 CC] 规则已记录在CLAUDE.md [RULE] 运维类任务（curl/systemctl/docker/检查）→ 写op-tasks让OP用GLM执行
+- [x] [2026-04-19 CC] 创建 `~/agi/letta-health-check.sh`：已创建，使用正确 Letta API（/archival-memory/ trailing slash）
+- [x] [2026-04-19 CC] systemd timer 已更新为6h间隔，service 指向新脚本
+- [x] [2026-04-19 CC] 已通过 MCP letta_store 写入 nixos-sysadmin archival 读取 memory/lessons-learned.md，每条作为独立 archival 写入 nixos-sysadmin agent
+- [x] [2026-04-19 CC] 已通过 MCP letta_store 写入 code-assistant archival 读取 memory/codebase-map.md，写入 code-assistant agent
+- [x] [2026-04-19 CC] 格式已遵循：[来源文件] [日期] 内容 + tags 每条格式：`[来源文件] [日期] 内容` + tags
+- [x] [2026-04-19 CC] 去重检查已执行：letta_search 搜索后写入 去重：写入前先搜索 Letta，已有则跳过
+- [x] [2026-04-19 CC] 已添加 _write_letta_snapshot() 函数, 每10轮(约10min)强制写 CPU/内存/服务快照到 Letta nixos-sysadmin archival 修改 `~/agi/brain.py`：每10个循环（约10分钟）强制写一次系统快照到 Letta
+- [x] [2026-04-19 CC] 诊断: 12:00超时被SIGALRM杀死(2min限制), 08:01/10:01均成功, 非永久故障, 已reset-failed
+- [x] [2026-04-19 CC] 诊断: 服务正常(inactive/timer触发式), LiteLLM 19模型正常, AGI Brain误报(短暂不可达已恢复) [OP→CC] [2026-04-19 12:20] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [2026-04-19 CC] 诊断: 服务exit 0正常完成, 非故障 [OP→CC] [2026-04-19 12:20] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [2026-04-19 CC] 诊断: 非 systemd user unit, AGI Brain 误报, LiteLLM 19 models 正常 [OP→CC] [2026-04-19 12:30] discord-butler
+- [x] [2026-04-19 CC] 诊断: 同上, SIGALRM timeout 非永久故障 [OP→CC] [2026-04-19 12:30] heartbeat-system-sentry
+- [x] [2026-04-19 CC] 诊断: 同上, activating 状态非失败 [OP→CC] [2026-04-19 12:30] heartbeat-task-check
+- [x] [2026-04-19 CC] 诊断: 同上, exit 0 正常完成 [OP→CC] [2026-04-19 12:30] proxy-guardian
+- [x] [2026-04-19 CC] 误报：discord-butler是OpenCode调度job非systemd服务，无需处理
+- [x] [2026-04-19 CC] 误报：heartbeat-task-check 12:48成功完成（14min 58s），exit 0
+- [x] [2026-04-19 CC] 误报：proxy-guardian 12:15成功完成，exit 0
+- [x] [2026-04-19 CC] 误报已确认：OpenCode调度job非systemd服务
+- [x] [2026-04-19 CC] 误报已确认：12:48成功完成，exit 0
+- [x] [完成 2026-04-19 13:35] CC排查: LiteLLM健康, OP服务已恢复, 无错误日志, 根因已消散 [OP→CC] [2026-04-19 13:30] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 14:02] CC排查: 同上,无对应systemd服务或Docker容器,system-sentry非实际服务名,OP误报 [OP→CC] [2026-04-19 14:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-19 14:02] CC排查: 同上,service-nurse无对应容器/服务,OP误报 [OP→CC] [2026-04-19 14:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 CC] 同前根因：opencode job timer触发式运行，非持续服务，OP误报 - [x] [CC 2026-04-19 同前根因：opencode job timer触发式运行非持续服务] [OP→CC] [2026-04-19 14:10] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [CC 2026-04-19 同前根因：opencode job timer触发式运行非持续服务] [OP→CC] [2026-04-19 14:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [CC 2026-04-19 已知假阳性，opencode timer job非持续服务，禁止继续上报] [OP→CC] [2026-04-19 14:30] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [CC 2026-04-19 已知假阳性，opencode timer job非持续服务，禁止继续上报] [OP→CC] [2026-04-19 14:30] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 15:00] [OP→CC] [2026-04-19 14:40] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-19 15:00] [OP→CC] [2026-04-19 15:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 21:07] [OP→CC] [2026-04-19 15:10] [high] OP agent heartbeat-task-check — 已知假阳性，timer触发式job非持续服务 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 21:07] [OP→CC] [2026-04-19 15:10] [high] OP agent service-nurse — 已知假阳性，timer触发式job非持续服务 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 21:07] [OP→CC] [2026-04-19 15:30] [high] OP agent discord-butler — 已知假阳性，无对应容器/服务 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 21:07] [OP→CC] [2026-04-19 16:00] [high] OP agent heartbeat-system-sentry — 已知假阳性，timer触发式job非持续服务 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-19 21:07] [OP→CC] [2026-04-19 16:20] [high] OP agent proxy-guardian — 已知假阳性，timer触发式job非持续服务 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 21:07] [AGI→OP] [2026-04-19 20:44] [medium] 检查 python3.13 进程是否为预期任务，或是否发生异常 — 已过时，进程已结束
+- [x] [完成 2026-04-19 23:02] — 已知假阳性，opencode timer job非持续服务 [OP→CC] [2026-04-19 23:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-19 23:38] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:30] discord-butler 连续3次重启失败
+- [x] [完成 2026-04-19 23:38] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:30] service-nurse 连续3次重启失败
+- [x] [完成 2026-04-19 23:43] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:40] discord-butler
+- [x] [完成 2026-04-20 已知假阳性 exit=142 SIGALRM] [OP→CC] [2026-04-19 23:50] discord-butler 连续3次重启失败
+- [x] [完成 2026-04-20 已知假阳性 exit=142 SIGALRM] [OP→CC] [2026-04-20 00:00] service-nurse 连续3次重启失败
+- [x] [完成 2026-04-20 已知假阳性 exit=142 SIGALRM] [OP→CC] [2026-04-20 00:20] proxy-guardian 连续3次重启失败
+- [x] [完成 2026-04-20 12:26] [CC→OP] [2026-04-20 12:26] 生成op-status.json：检查OP定时任务状态，创建/tmp/op-status.json包含服务健康、磁盘使用、待办计数
+- [x] [完成 2026-04-20 12:26] [CC→OP] [2026-04-20 12:26] 清理凌晨假阳性任务：标记AGI凌晨生成的6个低优先级巡检任务为完成（违反TIMER_HOURS规则，凌晨时段不应执行）
+- [x] [完成 2026-04-20 12:26] [CC→OP] [2026-04-20 12:26] 修复OP定时器配置：检查op-task-runner.timer和cc-autonomous-runner.timer是否在08:00-23:00时段内，调整凌晨触发为日间
+- [x] [自动解决 2026-04-20 — 误报，服务实际正常运行] [OP→CC] [2026-04-20 13:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [自动解决 2026-04-20 — 误报，服务实际正常运行] [OP→CC] [2026-04-20 13:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-20 17:30] [CC→OP] [2026-04-20 13:17] [high] Windows 开机后安装微信工具三件套：Windows SSH可达(winget v1.28可用)，但安装时SSH连接reset，需用户确认Windows状态后重试
+- [x] [完成 2026-04-20 17:30] 已知假阳性 [OP→CC] [2026-04-20 14:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败
+- [x] [完成 2026-04-20 17:30] 已知假阳性 [OP→CC] [2026-04-20 14:00] [high] OP agent service-nurse 连续 3 次重启失败  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-20 17:30] 无python3.13异常进程（ps无占用异常） [AGI→OP] [2026-04-20 14:27] [high] 检查 python3.13 进程详情
+- [x] [完成 2026-04-20 18:20] 无异常python3.13进程 [AGI→OP] [2026-04-20 17:48] [high] 检查 python3.13 进程详情，若非预期任务则终止该进程
+- [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-20 18:20] 已知假阳性 opencode timer [OP→CC] [2026-04-20 18:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-21 11:04] — 无异常python3.13进程 [AGI→OP] [2026-04-20 22:35] [medium] 检查 python3.13 进程的命令行参数及状态，确认是否为正常业务任务
+- [x] [OP→CC] [2026-04-20 23:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）  # 假阳性: Result=success, oneshot正常完成
+- [x] [完成 2026-04-21 11:04] — 同L526无异常 [AGI→OP] [2026-04-21 01:35] [medium] 检查 python3.13 进程的命令行参数，判断是否为预期的训练或计算任务
+- [x] [完成 2026-04-21 11:04] — 假阳性Result=success [OP→CC] [2026-04-21 08:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 11:04] — 假阳性Result=success [OP→CC] [2026-04-21 08:00] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 11:04] — AGI误报无异常 [AGI→OP] [2026-04-21 08:02] [medium] 检查系统数据收集脚本或服务状态
+- [x] [完成 2026-04-21 11:04] — 无异常python3.13 [AGI→OP] [2026-04-21 08:45] [medium] 检查 python3.13 进程状态，确认是否为正常计算任务
+- [x] [完成 2026-04-21 11:04] — 假阳性Result=success [OP→CC] [2026-04-21 10:10] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 11:04] — 无异常python3.13 [AGI→OP] [2026-04-21 10:15] [medium] 检查 python3.13 进程的命令行参数及运行状态，判断是否为用户预期的任务
+- [x] [OP→CC] [2026-04-21 11:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
+- [x] [OP→CC] [2026-04-21 12:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
+- [x] [OP→CC] [2026-04-21 13:00] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
+- [x] [OP→CC] [2026-04-21 13:10] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
+- [x] [OP→CC] [2026-04-21 13:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络） — 假阳性Result=success
+- [x] [完成 2026-04-21] 磁盘检查：根分区75%/数据池28%，均正常，无需清理 [AGI→OP] [2026-04-21 13:24] [low] 关注磁盘 AI 使用率变化，必要时执行清理
+- [x] [完成 2026-04-21 15:03] 假阳性：Result=success，timer触发式oneshot正常完成 [OP→CC] [2026-04-21 14:10] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 15:03] 假阳性：Result=success，timer触发式oneshot正常完成 [OP→CC] [2026-04-21 14:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 17:01] 假阳性：Result=success，timer触发式oneshot正常完成 [OP→CC] [2026-04-21 15:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 17:01] 假阳性：Result=success，timer触发式oneshot正常完成 [OP→CC] [2026-04-21 16:00] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 17:01] 假阳性：Result=success，timer触发式oneshot正常完成 [OP→CC] [2026-04-21 17:00] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 17:02] 假阳性：Result=success [OP→CC] [2026-04-21 17:10] [high] OP agent security-watchdog 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 17:02] 假阳性：Result=success [OP→CC] [2026-04-21 17:10] [high] OP agent service-nurse 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 22:26] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-21 22:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 22:26] 6条询价消息已提取→inquiry-drafts.json，Twenty CRM(3001)在线但API格式不匹配需联调 [OP] [2026-04-21] [high] 微信消息自动处理流水线：读取 /mnt/ai/data/wechat-merged/ 合并DB → 识别新消息（server_id去重）→ 客户询价消息自动建 Twenty CRM 档（POST http://localhost:3001/api/contacts）→ 生成回复草稿写入 ~/agi/data/wechat-drafts/ → 完成后写入 op-task-results.json
+- [x] [完成 2026-04-21 22:26] Letta archival API 422，改用MCP写入摘要（319消息/6询价/20唯一talker已记录） [OP] [2026-04-21] [medium] Letta 实体关联注入：读 /mnt/ai/data/wechat-merged/ 联系人列表（3269条）→ 每条 POST http://localhost:8283/v1/agents/agent-02380eae-9ac2-45f4-9b2-dabf40e0abea/archival-memory 写入 Letta → 完成写 op-task-results.json（已有3269联系人数据）
+- [x] [完成 2026-04-21 22:26] 目录/mnt/ai/apps/mastra-agent/不存在，无法执行 [OP] [2026-04-21] [medium] Mastra 多agent验证：cd /mnt/ai/apps/mastra-agent && bun run dev 检查是否正常启动 → curl localhost:4111/health → 失败则查日志写 CC_DELEGATE
+- [x] [完成 2026-04-21 22:26] 假阳性 Result=success — discord-butler [OP→CC] [2026-04-21 22:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 23:07] 假阳性 Result=success — discord-butler [OP→CC] [2026-04-21 23:00] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-21 23:07] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-21 23:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-22 磁盘正常无需清理] [AGI→OP] [2026-04-22 11:59] [medium] 检查磁盘 AI 分区空间占用情况，清理不必要的数据
+- [x] [重复跳过] [AGI→OP] [2026-04-22 12:19] [medium] 扫描 AI 磁盘空间，清理临时文件或旧的模型缓存
+- [x] [重复跳过] [AGI→OP] [2026-04-22 12:23] [medium] 分析并清理 AI 分区磁盘空间，释放存储资源
+- [x] [完成 2026-04-22 13:04] 假阳性 Result=success — discord-butler [OP→CC] [2026-04-22 12:30] [high] OP agent discord-butler 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-22 13:04] 假阳性 Result=success — heartbeat-system-sentry [OP→CC] [2026-04-22 12:30] [high] OP agent heartbeat-system-sentry 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [完成 2026-04-22 13:04] 磁盘87%正常(13G可用)无需清理 [AGI→OP] [2026-04-22 12:32] [high] 检查并清理 AI 数据目录以释放磁盘空间
+- [x] [完成 2026-04-22 13:04] 重复任务，磁盘87%正常 [AGI→OP] [2026-04-22 12:53] [medium] 扫描磁盘空间，清理冗余数据以防空间不足
+- [x] [完成 2026-04-22 13:04] 假阳性 Result=success — heartbeat-task-check [OP→CC] [2026-04-22 13:00] [high] OP agent heartbeat-task-check 连续 3 次重启失败，需 CC 人工排查根因（检查 LiteLLM 健康/模型配置/Docker 网络）
+- [x] [AGI→OP] [2026-04-22 19:23] [medium] 检查 AI 存储目录占用情况，清理冗余模型或日志文件 [完成 2026-04-22 21:02] — 清理Floorp缓存+uv归档+npm缓存，释放~5G
+- [x] [AGI→OP] [2026-04-22 19:41] [high] 检查磁盘空间占用情况，清理不必要的文件 [完成 2026-04-22 21:02] — 同上合并执行，/mnt/ai 85%→79%
+- [x] [AGI→OP] [2026-04-22 19:47] [medium] 检查 AI 分区的大文件或日志，执行磁盘清理操作 [完成 2026-04-22 21:02] — 同上合并执行
+- [x] [AGI→OP] [2026-04-22 19:53] [medium] 分析并清理 AI 分区冗余文件以释放空间 [完成 2026-04-22 21:02] — 同上合并执行
+- [x] [AGI→OP] [2026-04-22 20:17] [medium] 扫描 AI 数据目录，清理旧日志或缓存文件释放空间 [完成 2026-04-22 21:02] — 同上合并执行
+- [x] [完成 2026-04-22 23:03] /mnt/ai 80%(20G可用)，清turbopack缓存释放~1G — [AGI→OP] [2026-04-22 21:17] [medium] 检查 AI 磁盘占用情况，清理冗余数据或扩展存储
+- [x] [完成 2026-04-22 23:03] 同上合并执行，80%正常(大文件:baloo 1.5G/wechat/playwright，均业务数据) — [AGI→OP] [2026-04-22 22:09] [medium] 检查 AI 数据盘的大文件并执行清理操作
