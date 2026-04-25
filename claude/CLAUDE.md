@@ -407,3 +407,27 @@ SESSION_MEMORY_BOOT 读到设备/服务/端口等事实后，MUST 执行闭环�
 memory/MEMORY.md 中的设备清单/服务端口/关键拓扑变更后，MUST 同步更新 Letta nixos-sysadmin agent 的 core memory [human] block。
 API: `PATCH http://localhost:8283/v1/agents/agent-8651643c-e753-47ed-9759-bd955c6ac240/core-memory/blocks/human`
 确保 letta_recall 自动携带最新设备/端口/拓扑信息。
+
+## Charlie-Ego 决策镜像（CHARLIE_EGO — 死规则）
+每次会话第一个实质性任务前，MUST 召唤 charlie-ego 获取决策建议：
+```bash
+# Letta charlie-ego agent
+curl -s -L -X POST "http://localhost:8283/v1/agents/agent-f6786cc0-260f-4b84-985d-ced4acb1c614/messages/" \
+  -H "Content-Type: application/json" \
+  -d "{\"messages\":[{\"role\":\"user\",\"content\":\"这个情境下Charlie会怎么做：{任务摘要}\"}]}" \
+  | python3 -c "import sys,json; msgs=json.load(sys.stdin).get('messages',[]); [print(m['content']) for m in msgs if m.get('role')=='assistant']"
+```
+
+**对答模式注入**：CC 回复复杂决策类任务时，MUST 在回复首段注入：
+```
+[Charlie-Ego] 历史参考: {类似场景} → 当前建议: {决策}
+```
+
+**会话结束记录（Stop hook）**：每次会话结束前，将本次关键决策写入 charlie-ego archival memory：
+```bash
+~/.local/bin/charlie-ego-record.sh "{决策摘要}"
+```
+
+**charlie-ego agent ID**: `agent-f6786cc0-260f-4b84-985d-ced4acb1c614`
+**触发场景**：技术选型、架构决策、工具选择、方案对比、任何「应该用A还是B」
+**跳过场景**：纯操作执行（已确定方案）、闲聊、单句问答
