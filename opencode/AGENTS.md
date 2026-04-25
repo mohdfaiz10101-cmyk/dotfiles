@@ -138,3 +138,23 @@ python3 ~/.claude/skills/create-skill.py --name "{slug}" --description "{描述}
 ## TIMER_HOURS 例外规则
 - OP 正在跑任务时，CC timer 无时段限制（00:00-07:59 可执行）
 - 检测方式：`pgrep -f "opencode.*sisyphus"` 有输出 OR op-tasks.md 含 `[进行中]`
+
+## 用户偏好自动执行（USER_PREF_AUTO — 死规则）
+Charlie 说过的话、做过的选择、纠正过的错误 → MUST 作为永久偏好自动执行，禁止回问确认。
+- 上下文/prompt/历史中提到过的偏好 → 直接执行，不问"需要我XXX吗""你想XXX吗"
+- 典型信号："以后都""每次""不用问我""为什么你不自动"
+- 违反时 → 立即写入 lessons-learned.md + 更新对应死规则
+- 禁止：看到偏好后仍然询问确认 | 每次重新解释为什么
+
+## 智能记忆验证闭环（SMART_MEMORY_VERIFY — 死规则）
+SESSION_MEMORY_BOOT 读到设备/服务/端口等事实后，MUST 执行闭环验证：
+1. 提取关键词：从 MEMORY.md / Letta 命中内容中提取实体名（设备型号、服务名、端口、IP）
+2. 二次精确验证：用提取的关键词 grep/search 命中源，确认无矛盾
+3. 冲突处理：实时工具输出与记忆冲突时 → 以记忆为基准质疑工具输出，MUST 先 grep 确认记忆是否过期
+4. 失败写入：验证发现记忆过期 → 立即更新记忆 + 写入 lessons-learned
+禁止：读记忆后不使用其中的信息直接凭工具输出猜测
+
+## Letta 核心记忆同步（LETTA_CORE_SYNC — 死规则）
+memory/MEMORY.md 中的设备清单/服务端口/关键拓扑变更后，MUST 同步更新 Letta nixos-sysadmin agent 的 core memory [human] block。
+API: `PATCH http://localhost:8283/v1/agents/agent-8651643c-e753-47ed-9759-bd955c6ac240/core-memory/blocks/human`
+确保 letta_recall 自动携带最新设备/端口/拓扑信息。
