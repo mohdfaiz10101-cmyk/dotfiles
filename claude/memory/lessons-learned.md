@@ -469,3 +469,4 @@
   - pi 无内置 web server，无多客户端实时同步（和 OpenCode 相同限制）
   - CLI alias：`pi` = `pi --provider litellm --model glm-5-turbo`（已写入 .zshrc）
 - [2026-04-25] [Sonnet] **auto-save 第二次误改 waylandFrontend**：2026-04-24 22:00 auto-save 再次将 waylandFrontend=true 改为 false，OP 在 02:26 改回但 lessons-learned 未能阻止。根因：auto-save 脚本无法理解 PROTECTED 注释。修复：在配置行加 # PROTECTED: DO NOT CHANGE TO FALSE + 注释说明历史。永久方案：把 auto-save 脚本加入 waylandFrontend 黑名单。
+- [2026-04-25] [Sonnet] CC看到op-tasks中的[CC]任务没有主动执行，等用户催促才做。根因：SESSION_MEMORY_BOOT读到待办但没触发CC_AUTO_EXEC。修复：CLAUDE.md写入CC_AUTO_EXEC死规则，要求看到[ ] [CC]任务立即执行不等确认。

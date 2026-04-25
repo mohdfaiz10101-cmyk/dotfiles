@@ -85,3 +85,28 @@
 - [x] [完成 2026-04-19 23:38] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:30] discord-butler 连续3次重启失败
 - [x] [完成 2026-04-19 23:38] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:30] service-nurse 连续3次重启失败
 - [x] [完成 2026-04-19 23:43] [已知假阳性 — exit=142 SIGALRM超时，timer job正常] [OP→CC] [2026-04-19 23:40] discord-butler
+- [x] [完成 2026-04-22 23:03] 重复#7 FEAT-OP-CENTER-01，CC已于04-19实现OPCenterPanel [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-22 23:03] 重复#7 tech-digest，HYPER-03已实现JSON输出 [OP→CC] [2026-04-22 21:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [CC] [2026-04-22] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30
+- [x] [CC] [2026-04-22] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
+- [x] [完成 2026-04-21] 重复任务已清理（CC已在2026-04-21 13:19完成OPCenterPanel实现） [OP→CC] [2026-04-21 13:48] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-21] tech-digest已添加JSON输出功能（HYPER-03已实现） [OP→CC] [2026-04-21 13:48] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-21] 重复任务已清理（CC已在2026-04-21 13:19完成OPCenterPanel实现） [OP→CC] [2026-04-21 13:34] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-21] tech-digest已添加JSON输出功能（HYPER-03已实现） [OP→CC] [2026-04-21 13:34] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-21 13:19] [OP] [2026-04-21] [high] 3000控制台-P1 TopBar服务健康灯：修改 /mnt/ai/apps/agi-control-plane/frontend/app/components/layout/TopBar.tsx，每30秒 fetch /api/health-status（需新建此 Next.js route），ping 端口 4000/8283/9800/3001/8000，TopBar 右侧显示彩色圆点 ●，绿=UP 红=DOWN，hover显示延迟
+- [x] [完成 2026-04-21 13:19] [OP] [2026-04-21] [high] 3000控制台-P1 Projects配置外置：新建 /mnt/ai/apps/agi-control-plane/frontend/projects.json 存里程碑数据，修改 /app/api/projects/route.ts 从 JSON 文件读取替代硬编码，支持热更新不需重启
+- [x] [完成 2026-04-21 13:19] [OP] [2026-04-21] [medium] 3000控制台-P2 通知中心：在 TopBar 右上角加 badge 组件，订阅 /api/notifications（新建 route），轮询 op-tasks pending数量 + docker unhealthy 容器数，有异常时红色 badge 显示数字
+- [x] [完成 2026-04-21 13:19] [CC] [2026-04-21] [high] 3000控制台全面检查：(1)所有面板是否正常渲染无报错 (2)API路由/api/*是否返回正确数据 (3)Sidebar分组颜色+Projects面板��示验证 (4)OPCenterPanel任务数据是否实时 (5)WechatMerge/History面板后端���通性 (6)CopilotKit AI助手是否可用
+- [x] [CC] [2026-04-21] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30 — 已修复(healthcheck端口3001→3000)
+- [x] [OP→CC] [2026-04-21 13:01] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中 — CC已实现OPCenterPanel
+- [x] [OP→CC] [2026-04-21 13:01] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system — 低优先级跳过
+- [x] [OP] [2026-04-21] [high] Docker容器健康巡检：创建 systemd timer (每10分钟) 检查 letta-db/twenty-server-1/letta 容器健康状态，unhealthy 时自动 docker restart，失败超3次写 CC_DELEGATE — [完成 2026-04-21] docker-health-nurse.timer 已创建
+- [x] [完成 2026-04-21 11:04] — 重复#3 FEAT-OP-CENTER-01，CC已实现 [OP→CC] [2026-04-21 09:04] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-21 11:04] — 重复#4 tech-digest数据源，非当前优先级 [OP→CC] [2026-04-21 09:04] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-21 11:04] — 重复#5 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 23:00] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-21 11:04] — 重复#6 tech-digest [OP→CC] [2026-04-20 23:00] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-21 11:04] — 阻塞: 需Windows桌面会话运行Frida，SSH无法执行 [CC] [2026-04-20] [high] WeChat 4.x DB密钥提取：需在Windows桌面会话运行Frida钩子捕获SQLite open key（SSH非交互会话无法用ctypes读进程内存）。DB路径: xwechat_files/w422417869_448e/db_storage/。可行方案: pip install frida frida-tools 然后桌面运行 frida-script
+- [x] [完成 2026-04-20 18:20] 已知假阳性重复，FEAT-OP-CENTER-01为编码任务需CC实现 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-20 18:20] tech-digest数据源已创建，需完整运行 [OP→CC] [2026-04-20 18:17] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system
+- [x] [完成 2026-04-20 18:20] 重复#1 FEAT-OP-CENTER-01 [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] FEAT-OP-CENTER-01 [OP] [2026-04-19] [high] 3000控制台新增"OP控制中
+- [x] [完成 2026-04-20 18:20] 重复#2 tech-digest [OP→CC] [2026-04-20 18:11] [high] OP失败已升级：- [!] [2026-04-19 11:38] 无数据源 — 未找到 digest JSON 文件或 system

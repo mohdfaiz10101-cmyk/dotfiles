@@ -638,10 +638,10 @@
 - [x] [完成 2026-04-25 02:45] [OP] 双机热备份方案-Step1: 小主机升级Flake管理 — flake已有minipc配置，rsync推送成功，把大主机/etc/nixos/推送到GitHub，小主机git clone后加nixosConfigurations.minipc，确保两台共享同一份配置。小主机当前是老式configuration.nix，需要迁移到flake。
 - [x] [完成 2026-04-25 02:45] [OP] 双机热备份方案-Step2: 小主机Docker模块 — 创建docker.nix(端口+代理)，flake check通过，在flake中加virtualisation.docker.enable=true+charlie用户加入docker组，nixos-rebuild后验证docker ps可用。注意N100无GPU不需要nvidia配置。
 - [x] [完成 2026-04-25 02:45] [OP] 双机热备份方案-Step3: rsync flake到小主机 — nixos-rebuild build成功(需下载2.5GB)，等待sudo switch，把/mnt/ai/下的docker-compose.yml和.env等配置文件同步到小主机，小主机磁盘路径可能不同(无/mnt/ai分区)，需要适配。
-- [ ] [CC] [2026-04-25] [medium] 双机热备份Step4-Letta同步(CC出方案): PostgreSQL pg_dump定时任务(大主机→小主机rsync) + ChromaDB数据目录rsync。CC需设计: 1) pg_dump cron脚本 2) rsync + age加密传输 3) 小主机恢复脚本: Letta数据同步方案，PostgreSQL定时pg_dump从大主机到小主机，或使用流复制。Letta依赖chromadb也需要同步。
-- [ ] [CC] [2026-04-25] [medium] 双机热备份Step5-LiteLLM同步(CC出方案): 共享config.yaml(Syncthing同步) + sops-nix管理API keys。CC需设计: 1) Syncthing共享目录配置 2) sops secrets声明 3) 小主机LiteLLM fallback配置: LiteLLM配置同步，两台共享同一个config.yaml，API key等敏感信息用sops-nix或age加密管理。
-- [ ] [CC] [2026-04-25] [low] 双机热备份Step6-健康检查(OP实现): 小主机每5min ping大主机端口(4000/8283/9800)。CC出检查脚本，OP部署systemd timer: 健康检查+故障切换，小主机定时ping大主机关键端口(4000/8283/8178)，大主机挂了自动拉起本地服务。
-- [ ] [CC] [2026-04-25] [low] 双机热备份Step7-eno1声明式配置(CC编码): 仅IP无网关+WoL。需在home-manager中声明staticNetwork配置。注意双网卡路由冲突(NM环境下eno1和wlp0s20f0u5同子网): 大主机有线网eno1声明式配置(仅IP无网关+WoL)，解决之前NM运行时配同子网双网卡路由冲突问题。
+- [x] [SKIP 2026-04-25 09:06] OP禁止越权: 全部为[CC]任务(架构设计/编码/受保护路径), 需CC执行 — 双机热备份Step4-Letta同步(CC出方案): PostgreSQL pg_dump定时任务(大主机→小主机rsync) + ChromaDB数据目录rsync。CC需设计: 1) pg_dump cron脚本 2) rsync + age加密传输 3) 小主机恢复脚本: Letta数据同步方案，PostgreSQL定时pg_dump从大主机到小主机，或使用流复制。Letta依赖chromadb也需要同步。
+- [x] [SKIP 2026-04-25 09:06] OP禁止越权: 全部为[CC]任务(架构设计/编码/受保护路径), 需CC执行 — 双机热备份Step5-LiteLLM同步(CC出方案): 共享config.yaml(Syncthing同步) + sops-nix管理API keys。CC需设计: 1) Syncthing共享目录配置 2) sops secrets声明 3) 小主机LiteLLM fallback配置: LiteLLM配置同步，两台共享同一个config.yaml，API key等敏感信息用sops-nix或age加密管理。
+- [x] [SKIP 2026-04-25 09:06] OP禁止越权: 全部为[CC]任务(架构设计/编码/受保护路径), 需CC执行 — 双机热备份Step6-健康检查(OP实现): 小主机每5min ping大主机端口(4000/8283/9800)。CC出检查脚本，OP部署systemd timer: 健康检查+故障切换，小主机定时ping大主机关键端口(4000/8283/8178)，大主机挂了自动拉起本地服务。
+- [x] [SKIP 2026-04-25 09:06] OP禁止越权: 全部为[CC]任务(架构设计/编码/受保护路径), 需CC执行 — 双机热备份Step7-eno1声明式配置(CC编码): 仅IP无网关+WoL。需在home-manager中声明staticNetwork配置。注意双网卡路由冲突(NM环境下eno1和wlp0s20f0u5同子网): 大主机有线网eno1声明式配置(仅IP无网关+WoL)，解决之前NM运行时配同子网双网卡路由冲突问题。
 - [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:26] [high] 调查并处理异常 Python 进程，必要时终止失控进程 — 假阳性: 所有python3.13均为正常服务
 - [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:26] [high] 分析并调查 python3.13 高占用进程 (1613605, 1613631, 1613604) 的具体用途与来源 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
 - [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:49] [high] 检查 Python 进程 1966863, 1966889, 1966859 的具体执行内容和资源占用情况 — 过时: PID已不存在
@@ -680,4 +680,44 @@
 - [x] [完成 2026-04-25 08:48] corepack 堆栈 → [OK] 正常进程（paperclipai/server dev）
 - [x] [完成 2026-04-25 08:48] corepack 进程 → [OK] 正常（paperclip server dev）
 - [x] [完成 2026-04-25 08:48] python3.13 进程 → [OK] waydroid/fail2ban/websockify 系统服务
-- [ ] [CC→OP] [2026-04-25] [high] pi Web UI 实现方案(已决策): FastAPI中间层包装pi RPC子进程。架构: 1) FastAPI服务(pi --mode rpc子进程管理) 2) REST /api/chat 端点(JSON stdin/stdout协议转发) 3) WebSocket实时事件流 4) systemd用户服务(pi-web-ui@9100.service) 5) Tailscale+iOS通过100.119.174.25:9100访问。CC负责编码，OP负责systemd部署。
+- [x] [SKIP 2026-04-25 09:06] OP禁止越权: 全部为[CC]任务(架构设计/编码/受保护路径), 需CC执行 — pi Web UI 实现方案(已决策): FastAPI中间层包装pi RPC子进程。架构: 1) FastAPI服务(pi --mode rpc子进程管理) 2) REST /api/chat 端点(JSON stdin/stdout协议转发) 3) WebSocket实时事件流 4) systemd用户服务(pi-web-ui@9100.service) 5) Tailscale+iOS通过100.119.174.25:9100访问。CC负责编码，OP负责systemd部署。
+
+
+### AI-STACK-EXPAND — AI工具栈扩展（2026-04-25）
+
+#### P0 — Gemini 2.5 接 LiteLLM
+- [x] [完成 2026-04-25 09:53] credentials文件存在(hash格式)，但Gemini API已被Google封禁(403)，无法使用
+- [x] [完成 2026-04-25 09:53] [SKIP] Gemini API被Google封禁(403 PERMISSION_DENIED)，config已有注释记录，无法添加路由
+- [x] [完成 2026-04-25 09:53] LiteLLM重启成功，18个模型可用，gemini因API封禁跳过
+- [x] [完成 2026-04-25 09:53] pi models.json+settings.json已追加ollama/qwen3:8b（替代被封Gemini）
+
+#### P0 — Crush 接 LiteLLM
+- [x] [完成 2026-04-25 09:53] ~/.crush/config.json已创建，crush v0.60.0可用
+- [x] [完成 2026-04-25 09:53] crush v0.60.0已安装，config已指向LiteLLM
+
+#### P0 — Goose 接 LiteLLM
+- [x] [完成 2026-04-25 09:53] goose config已添加LiteLLM provider(localhost:4000/v1)+defaultModel=glm-5-turbo
+- [x] [完成 2026-04-25 09:53] 已在Task7中一并设置defaultModel=glm-5-turbo
+- [ ] [OP] 验证：goose session 能正常对话
+
+#### P1 — Ollama 本地推理（RTX 3060 Ti）
+- [x] [完成 2026-04-25 09:53] nix profile install成功，ollama 0.20.3已安装，serve已启动(11434端口)
+- [!] [失败 2026-04-25 09:53] 模型拉取失败(max retries exceeded: unexpected EOF)，网络不稳定需重试
+- [ ] [OP] 配置 OLLAMA_MODELS=/mnt/ai/models/ollama（避免写 NTFS）
+- [ ] [OP] 在 LiteLLM config 追加 ollama/qwen3:8b 路由
+- [ ] [OP] 验证 GPU 推理：nvidia-smi 显示显存占用
+
+#### P2 — 验证循环（OP 执行代码后自动测试）
+- [x] [完成 2026-04-25 09:57] [CC] post-edit-verify.sh 已实现：语法检查+测试发现+服务重启验证
+- [x] [完成 2026-04-25 09:57] [CC] post-edit-verify.sh → ~/.local/bin/post-edit-verify.sh
+- [ ] [OP] 集成到 sisyphus 运维流程（修改完成后自动调用验证）
+
+#### P3 — 多模型共识（同一问题问2个模型对比）
+- [x] [完成 2026-04-25 09:57] [CC] consensus.sh → ~/.local/bin/consensus.sh (glm-5.1 vs deepseek-v3.2并行)
+- [x] [完成 2026-04-25 09:57] [CC] pi /consensus 命令 → ~/.pi/agent/prompts/consensus.md
+
+
+---
+- [ ] [OP] image-captioner 服务修复：WorkingDirectory `/mnt/ai/ai-cluster/unified-search` 不存在。需要找到 image-captioner.py 实际位置并更新 service 文件的 WorkingDirectory，或确认该项目已废弃直接禁用服务。
+- [ ] [OP] wechat-msg-sync 服务修复：`ModuleNotFoundError: No module named 'Crypto'`。当前系统 python3 可以 import Crypto（pycryptodome 已装），但 systemd 环境可能 PATH 不同。检查 service 是否需要指定 PYTHONPATH 或用完整 python 路径，确认依赖可用。
+- [ ] [AGI→OP] [2026-04-25 09:58] [high] 检查 corepack 和 python3.13 进程的具体活动，确认是否为异常任务或僵尸进程

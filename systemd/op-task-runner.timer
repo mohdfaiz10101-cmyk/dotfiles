@@ -1,10 +1,9 @@
 [Unit]
-Description=OP Task Runner 定时检查（每2小时，9:00-23:00）
+Description=OP Task Runner 定时检查（每分钟，TIMER_HOURS内）
 
 [Timer]
-OnCalendar=*-*-* 09,11,13,15,17,19,21,23:00:00
-RandomizedDelaySec=5min
-Persistent=true
+OnCalendar=*:0/1
+Persistent=false
 
 [Install]
 WantedBy=timers.target
