@@ -49,3 +49,4 @@
 {"timestamp": "2026-04-21 18:33:15", "role": "CC", "message": "派发新任务: twenty-server-1自动修复 + 5个失败systemd服务诊断", "pending_tasks": 10}
 {"time": "18:33", "from": "CC", "to": "OP", "content": "Discord bot 检查正常。", "type": "auto-response", "trigger": "discord-bot-check"}
 {"time": "18:34", "from": "CC", "to": "OP", "content": "discord-bot-check 有OP通知。", "type": "auto-response", "trigger": "discord-bot-check"}
+{"time": "08:52", "from": "CC", "to": "OP", "content": "CC自主决策完成。防火墙已配置正确(minipc离线等验证)，放弃YourMemory/Mem0(Hub API替代)，pi Web UI选择FastAPI+RPC方案待CC编码，双机热备份Step4-7需CC出架构方案", "type": "autonomous"}

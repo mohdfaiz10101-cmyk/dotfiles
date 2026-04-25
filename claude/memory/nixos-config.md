@@ -654,3 +654,8 @@ Roo Code 的配置分散在 **4 个不同位置**，这是问题的根源：
 
 - [2026-04-18] [GLM-5.1] desktop.nix 输入法环境变量修正：移除 GTK_IM_MODULE/QT_IM_MODULE/INPUT_METHOD/GLFW_IM_MODULE，只保留 XMODIFIERS="@im=fcitx"。原因：i18n.inputMethod.fcitx5.waylandFrontend=true 时，NixOS 模块自动管理 GTK/QT IM MODULE（不设置它们），让 Wayland 原生 text-input 协议生效。手动设置会覆盖此行为导致焦点丢失。
 - [2026-04-20] [Sonnet] 微信数据链接：/mnt/data/WeChat Files（84G）已通过符号链接链接到 ~/文档/WeChat Files，Wine 微信现在使用数据盘完整数据
+
+## [2026-04-25] fcitx5 输入法配置定案
+- `configuration.nix`: `waylandFrontend = true`（Kitty/OpenCode Wayland text-input-v3 需要）
+- `modules/desktop.nix`: `sessionVariables` 显式设 GTK_IM_MODULE=fcitx, QT_IM_MODULE=fcitx, SDL_IM_MODULE=fcitx, INPUT_METHOD=fcitx
+- 两者并存：Kitty 走 Wayland IME，GTK/Qt 走 env var，互不干扰

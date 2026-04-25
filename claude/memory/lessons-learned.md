@@ -1,5 +1,11 @@
 # 踩坑日志
 
+- [2026-04-25] [GLM-Z-Flash] **ADB 同一设备多连接 + pm install SELinux 限制**
+  - 症状：`adb devices` 显示多个 PKR110 设备，`pm install /sdcard/` 报 SELinux fuse 拒绝
+  - 根因：同一台 OnePlus Ace 5 Pro 通过 WiFi(192.168.2.200) 和 Tailscale(100.64.206.110) 双连接；Android 16 SELinux 限制 system_server 读 /sdcard/
+  - 修复：断开重复连接保留一个；APK 推到 `/data/local/tmp/` 再 `pm install`，或用 `am start` 调系统安装器
+  - 设备对应：PKR110 = 一加 Ace 5 Pro（手机），nabu = 小米平板5（24117RK2CC），后者 Tailscale IP 100.104.211.70
+
 - [2026-04-23] [Sonnet] **wxhook/wxhook 0.0.10 不支持 WeChat 4.x (xwechat UWP架构)**
   - 症状：`Bot()` 初始化抛 `Exception: unknown error`
   - 根因：wxhook 0.0.10 硬编码 `self.version = "3.9.5.81"`，`start-wechat.exe` 只注入 `WeChat.exe`（3.9.x传统桌面版），当前机器运行 `WeChatAppEx.exe`（xwechat 4.x）
@@ -439,3 +445,27 @@
 - [2026-04-24] [GLM] happy claude session 卡死：症状→用户发了消息但happy无响应超过5分钟 根因→上游代理节点(良心云 aws-link1.liangxin1.xyz) DNS解析失败，mihomo 7890端口在监听但所有出站请求ECONNREFUSED，happy SDK backoff到retry 50还不停(无max_retries)，session永远不放弃 修复→kill卡死进程+创建happy-session-watchdog.sh(每3分钟检查session日志最后修改时间，>5分钟无更新自动kill+notify) 防范→watchdog已注册systemd timer(happy-session-watchdog.timer)，代理节点故障是上游问题无法本地控制
 
 - [2026-04-24] [GLM] 启动崩溃：~/.cache 是指向 /mnt/ai/cache/xdg 的符号链接，home-manager linkGeneration 尝试 mkdir ~/.cache 报"文件已存在" → 级联导致所有用户服务失败（找不到 bash/python3/npx）。修复：在 home/charlie.nix 添加 activation script，在 linkGeneration 前删除旧 .keep 符号链接。症状：启动卡住、大量服务 "Failed at step EXEC spawning"。
+- [2026-04-25] [Sonnet] **fewer-permission-prompts skill 清空 bypass-all**：此 skill 扫描历史记录后将 `"allow":["*"]` 替换为具体白名单（17条只读规则），导致 ADB/nixos-rebuild 等命令重新弹权限提示。修复：手动恢复 `"allow":["Bash(*)","Read(*)","Edit(*)","Write(*)","Agent(*)"]`。建议：运行该 skill 前确认是否真的需要收紧权限。
+- [2026-04-25] [Sonnet] **auto-save 误改 fcitx5 waylandFrontend**：2026-04-24 22:00 自动提交将 `waylandFrontend=true` 改为 `false`（注释称修复 Floorp 输入法），破坏 Kitty/OpenCode Wayland IME。根因：`waylandFrontend=true` 时 NixOS 不自动设 GTK_IM_MODULE，auto-save 认为这是 bug 改掉了。修复：改回 `true` + 在 desktop.nix `sessionVariables` 显式设置 GTK_IM_MODULE/QT_IM_MODULE/SDL_IM_MODULE/INPUT_METHOD。
+- [2026-04-25] [Aider] fix: opencode permission bypass + model cleanup
+  相关文件：opencode/opencode.json
+- [2026-04-25] [Sonnet] 插網線斷 WiFi：eno1 有兩條 NM 連接搶默認路由 → nmcli connection modify 有线连接1/eno1-wired ipv4.never-default yes 修復
+
+### 会话摘要 [2026-04-25] [Sonnet/自动]
+- 对话轮次: 136 | 被纠正: 1次
+  - 用户纠正: 不是登陆问题 是代理问题 请彻查
+
+### 会话摘要 [2026-04-25] [Sonnet/自动]
+- 对话轮次: 138 | 被纠正: 1次
+  - 用户纠正: 不是登陆问题 是代理问题 请彻查
+- [2026-04-25] [GLM] 偏好：Charlie要求已知偏好自动执行，禁止回问。新增 USER_PREF_AUTO 死规则。典型信号：以后都/每次/不用问我
+
+- [2026-04-25] [GLM-Z-Air] **pi (badlogic/pi-mono) v0.70.2 自定义 provider 模型名不带前缀**
+  - 场景：pi --provider litellm --model openai-compatible/glm-4.7 报 400 Invalid model name
+  - 根因：pi 的 custom provider models.json 中 model id 必须和 LiteLLM `/v1/models` 返回的 id 完全一致（如 `glm-4.7`），不能带 `openai-compatible/` 前缀
+  - 修复：models.json model id 改为 `glm-4.7`、`glm-5-turbo` 等（和 LiteLLM 实际 id 一致）
+  - 配置路径：`~/.pi/agent/models.json`（custom provider）+ `~/.pi/agent/AGENTS.md`（规则注入）
+  - pi 自动发现项目目录下的 AGENTS.md 和 CLAUDE.md，无需手动注入 system prompt
+  - pi 无内置 web server，无多客户端实时同步（和 OpenCode 相同限制）
+  - CLI alias：`pi` = `pi --provider litellm --model glm-5-turbo`（已写入 .zshrc）
+- [2026-04-25] [Sonnet] **auto-save 第二次误改 waylandFrontend**：2026-04-24 22:00 auto-save 再次将 waylandFrontend=true 改为 false，OP 在 02:26 改回但 lessons-learned 未能阻止。根因：auto-save 脚本无法理解 PROTECTED 注释。修复：在配置行加 # PROTECTED: DO NOT CHANGE TO FALSE + 注释说明历史。永久方案：把 auto-save 脚本加入 waylandFrontend 黑名单。

@@ -1,0 +1,11 @@
+[Unit]
+Description=CC 任务自动处理器（处理 op-tasks.md 中的 [CC] 标记任务）
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/cc-task-runner.sh
+Environment=HOME=/home/charlie
+Environment=PATH=/home/charlie/.local/bin:/run/current-system/sw/bin:/usr/bin:/bin
+StandardOutput=journal
+StandardError=journal

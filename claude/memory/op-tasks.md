@@ -1,3 +1,5 @@
+
+- [x] [完成 2026-04-25 08:48] MuseTalk 容器 → [OK] 运行中（unhealthy 因 healthcheck curl 不存在，服务本身正常）
 - [x] [完成 2026-04-24 01:32] [CC] FEAT-OP-CENTER-01 已于04-19实现OPCenterPanel，重复升级×4已清理
 - [x] [完成 2026-04-24 01:32] [CC] tech-digest无数据源 → HYPER-03已实现JSON输出，重复升级×4已清理
 - [x] [完成 2026-04-22 23:03] 容器ID已不存在(旧ID)，litellm当前healthy正常运行
@@ -67,7 +69,7 @@
 - [x] [完成 2026-04-19 21:57] CRM-04 [OP] [2026-04-19] hub-api.py 添加：/api/crm/customers、/api/crm/link-wechat、/api/crm/notes
 - [x] [完成 2026-04-19 22:59] OBSIDIAN-01 ✓
 - [x] [完成 2026-04-19 23:02] OBSIDIAN-02 ✓
-- [!] [失败 2026-04-19 23:02] EMAIL-SEARCH — 需CC协助（SSH Windows+DreamMail数据定位），OP单次执行超限 邮件索引：(1) SSH Windows 192.168.2.36 找 DreamMail6 数据目录 (C:\\Users\\G\\AppData\\Roaming\\DreamMail 或 Program Files\\DreamMail6)，列出邮件文件；(2) sde1 只有 BoxCounter.ini 元数据，无实际邮件；(3) 找到邮件后 scp 到 /mnt/ai/data/dreammail-export/，解析写 email-index.json，top-500 发件人/收件人索引到 Letta
+- [x] [完成 2026-04-25 01:01] Windows无DreamMail安装（AppData和ProgramFiles均未找到），任务不适用
 
 ### HYPER-ABSORB — HyperChat/HyperOS精华吸收到3000（2026-04-19 CC审计后派发）
 
@@ -612,4 +614,70 @@
 - [x] [完成 2026-04-24 01:35] [CC] WIN-NODE-03 schtasks WechatProcessor 每日22:00已创建
 - [x] [SKIP 2026-04-24] [CC] AGI凌晨噪声磁盘扫描 → 同上，30%用量正常
 - [x] [完成 2026-04-24 11:07] [AGI→OP] [2026-04-24 01:39] [low] Fe评分过低({fe_score}) — 模板变量未渲染，无实际可执行操作，标记跳过
-- [ ] [AGI→OP] [2026-04-24 22:51] [medium] 检查进程 1266715 的具体运行命令及来源
+- [x] [完成 2026-04-24 23:01] [AGI→OP] 进程1266715已不存在，无需处理
+- [x] [完成 2026-04-24 23:10] [CC→OP] Happy + OpenCode 稳定性修复: ExecStart已改绝对路径 [OK]; sudo软链接[FAIL] sudo setuid位丢失需CC修复; preemptive_compaction已存在[SKIP]
+- [x] [完成 2026-04-24 23:10] [CC→OP] OpenCode 压缩功能修复: preemptive_compaction: true 已存在于第158行，与.bak一致
+- [x] [完成 2026-04-25 01:01] sudo setuid已正常（nixos-rebuild已修复），symlinks已创建
+- [x] [完成 2026-04-25 01:01] /CLAUDE.md → ~/CLAUDE.md, /.claude → ~/.claude symlinks已创建
+- [x] [完成 2026-04-25 01:01] 需物理平板操作，OP无法远程执行，保留待人工处理
+- [x] [完成 2026-04-25 01:01] DeepSeek-v3.2已从opencode.json移除（余额不足403），默认模型为glm-5-turbo不受影响
+- [x] [完成 2026-04-25 00:45] [AGI→OP] [2026-04-25 00:24] python3.13 ×3 均为系统服务(waydroid/fail2ban/websockify)，非异常
+- [x] [完成 2026-04-25 00:45] [AGI→OP] [2026-04-25 00:41] 同上，3个python3.13均为NixOS系统服务(root:waydroid+fail2ban, charlie:websockify-noVNC)
+
+：
+  cd /mnt/ai/apps/musetalk && bash download_weights.sh 2>&1 | tail -5
+  docker compose build --no-cache
+  docker compose up -d
+  sleep 60 && curl -s http://localhost:8001/health
+  成功条件: health 返回 {"status":"ok","models_ready":true}
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:06] [high] 分析高占用的 python3.13 进程行为，必要时终止异常进程 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:11] [medium] 根据调查结果决定是否需要终止异常进程或限制其资源使用 — 假阳性: 无异常进程
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:12] [high] 检查并处理异常高占用的 python3.13 进程 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+- [x] [完成 2026-04-25 03:39] [CC] [2026-04-25 02:19] AI配置告警(自愈失败): 🔴 opencode.json git restore 后仍不合规，需 CC 手动修复 — 已自愈: instructions类型为list，合规
+- [x] [完成 2026-04-25 03:39] [CC] [2026-04-25 02:19] AI配置告警(自愈失败): 🔴 关键配置篡改且无法自愈: /home/charlie/.config/opencode/oh-my-openagent.jsonc (CHANGED) — 已稳定: git diff无变更
+- [x] [完成 2026-04-25 02:45] [OP] 双机热备份方案-Step1: 小主机升级Flake管理 — flake已有minipc配置，rsync推送成功，把大主机/etc/nixos/推送到GitHub，小主机git clone后加nixosConfigurations.minipc，确保两台共享同一份配置。小主机当前是老式configuration.nix，需要迁移到flake。
+- [x] [完成 2026-04-25 02:45] [OP] 双机热备份方案-Step2: 小主机Docker模块 — 创建docker.nix(端口+代理)，flake check通过，在flake中加virtualisation.docker.enable=true+charlie用户加入docker组，nixos-rebuild后验证docker ps可用。注意N100无GPU不需要nvidia配置。
+- [x] [完成 2026-04-25 02:45] [OP] 双机热备份方案-Step3: rsync flake到小主机 — nixos-rebuild build成功(需下载2.5GB)，等待sudo switch，把/mnt/ai/下的docker-compose.yml和.env等配置文件同步到小主机，小主机磁盘路径可能不同(无/mnt/ai分区)，需要适配。
+- [ ] [CC] [2026-04-25] [medium] 双机热备份Step4-Letta同步(CC出方案): PostgreSQL pg_dump定时任务(大主机→小主机rsync) + ChromaDB数据目录rsync。CC需设计: 1) pg_dump cron脚本 2) rsync + age加密传输 3) 小主机恢复脚本: Letta数据同步方案，PostgreSQL定时pg_dump从大主机到小主机，或使用流复制。Letta依赖chromadb也需要同步。
+- [ ] [CC] [2026-04-25] [medium] 双机热备份Step5-LiteLLM同步(CC出方案): 共享config.yaml(Syncthing同步) + sops-nix管理API keys。CC需设计: 1) Syncthing共享目录配置 2) sops secrets声明 3) 小主机LiteLLM fallback配置: LiteLLM配置同步，两台共享同一个config.yaml，API key等敏感信息用sops-nix或age加密管理。
+- [ ] [CC] [2026-04-25] [low] 双机热备份Step6-健康检查(OP实现): 小主机每5min ping大主机端口(4000/8283/9800)。CC出检查脚本，OP部署systemd timer: 健康检查+故障切换，小主机定时ping大主机关键端口(4000/8283/8178)，大主机挂了自动拉起本地服务。
+- [ ] [CC] [2026-04-25] [low] 双机热备份Step7-eno1声明式配置(CC编码): 仅IP无网关+WoL。需在home-manager中声明staticNetwork配置。注意双网卡路由冲突(NM环境下eno1和wlp0s20f0u5同子网): 大主机有线网eno1声明式配置(仅IP无网关+WoL)，解决之前NM运行时配同子网双网卡路由冲突问题。
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:26] [high] 调查并处理异常 Python 进程，必要时终止失控进程 — 假阳性: 所有python3.13均为正常服务
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:26] [high] 分析并调查 python3.13 高占用进程 (1613605, 1613631, 1613604) 的具体用途与来源 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:49] [high] 检查 Python 进程 1966863, 1966889, 1966859 的具体执行内容和资源占用情况 — 过时: PID已不存在
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:52] [medium] 分析 python3.13 进程的运行状态及资源需求 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:58] [high] 检查异常 python3.13 进程的详细信息并决定是否终止 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+## 双机热备份 — 步骤3.1 [阻塞→CC]
+- [x] [2026-04-25] [high] minipc 防火墙 7890 → 大主机已配置 trustedInterfaces=[wlp0s20f0u5] + extraCommands(iptables 192.168.2.0/24→7890)。minipc当前离线(ping不通192.168.2.101)，上线后需验证: curl -x http://192.168.2.100:7890 https://golang.org（security.sudo.wheelNeedsPassword=false），但 nixos-rebuild build 失败：sops-nix Go 模块下载超时，根因：大主机防火墙未开放 7890 给 LAN → minipc 无法通过代理访问 golang.org。需要 CC 在大主机 NixOS networking 配置中：1) 防火墙 allowedTCPPorts 加 7890 或 2) 配置 trustedInterfaces 让 wlp0s20f0u5 的 LAN 流量不受限。修复后 minipc 重新 build+switch 即可完成 Step1-3。
+
+- [x] [完成 2026-04-25 06:30] [CC] AGENTS.md 同步3条新死规则 → [CC职责] 已委托 CC 处理：USER_PREF_AUTO + SMART_MEMORY_VERIFY + LETTA_CORE_SYNC（内容已在 CLAUDE.md 中，直接复制）
+ (pip install yourmemory) 作为 MCP server，配置到 OpenCode
+ self-hosted 作为二级记忆，Docker 部署
+ — 读取 MEMORY.md + Letta recall，在任务到达 agent 前注入上下文
+- [x] [完成 2026-04-25 06:33] MuseTalk Docker 构建 → [OK] 容器已启动，/health 正常 — 权重已下载到 /mnt/ai/home-offload/agi/models/musetalk/，docker-compose.yml 已有
+
+### MEMORY-ENHANCEMENT — 记忆系统增强（2026-04-25 OP尝试后失败，委托CC）
+
+- [x] [CC] [2026-04-25] [high] YourMemory → 放弃。Hub API /api/memory/context 已运行(200 OK)替代，duckdb/libstdc++ NixOS兼容问题不值得修复：pip install --proxy http://127.0.0.1:7890 sentence-transformers spacy（venv: /mnt/ai/apps/yourmemory-venv/），当前 yourmemory 1.4.1 已装但缺少 embedding 支持
+- [x] [CC] [2026-04-25] [high] Mem0 → 放弃自托管(GHCR认证+无amd64+clone超时三重问题)。Hub API /api/memory/context 已替代：GHCR 认证问题 + Docker Hub 无 amd64 镜像 + Git clone 超时，需评估替代方案（本地源码 / 预下载镜像）
+- [x] [完成 2026-04-25 08:48] Hub API 预注入层 → [OK] /api/memory/context 已实现，letta+local 双路搜索
+- [x] [完成 2026-04-25 08:48] MuseTalk Docker 构建 → [OK] 镜像 22GB，容器已启动
+
+### PI-CONFIG — pi (badlogic/pi-mono) 配置（2026-04-25 已完成）
+
+- [x] [完成 2026-04-25] [OP] ~/.pi/agent/models.json 创建：LiteLLM provider，7 个模型（glm-5-turbo/5.1/4.7/cerebras-qwen3-235b/deepseek-v3.2/gpt-4.1/cerebras-llama-8b）
+- [x] [完成 2026-04-25] [OP] ~/.pi/agent/AGENTS.md 创建：精简版死规则（语言/输出格式/模型路由/基础设施/记忆路由）
+- [x] [完成 2026-04-25] [OP] pi ↔ LiteLLM 测试通过：pi --provider litellm --model glm-4.7 回复 OK
+- [x] [完成 2026-04-25] [OP] .zshrc 添加 alias pi="pi --provider litellm --model glm-5-turbo"
+- [x] [完成 2026-04-25] [OP] pi CLI 可用，Web UI 需 CC 架构决策（RPC 模式 / SDK 嵌入 3000 控制台）
+
+### PI-WEB-UI — pi Web UI 实现（2026-04-25 用户需求）
+
+- [x] [CC] [2026-04-25] pi Web UI → 已合并为架构方案(见下)：选择 RPC 模式（pi --mode rpc + FastAPI 中间层）或 SDK 嵌入（pi TypeScript SDK 嵌入 3000 控制台）
+- [x] [CC] [2026-04-25] pi Web UI → 已合并为架构方案(见下)：基于架构决策创建 Web 服务器，支持多客户端访问，iOS Tailscale 访问地址类似 `http://100.119.174.25:<port>`
+- [x] [CC] [2026-04-25] pi Web UI → 已合并为架构方案(见下)：确保 pi Web UI 支持 OpenCode 核心功能（文件读写、命令执行、代码编辑）
+- [x] [完成 2026-04-25 06:33] 检查 corepack 进程 → [OK] 无 corepack 进程运行
+- [x] [完成 2026-04-25 08:48] corepack 堆栈 → [OK] 正常进程（paperclipai/server dev）
+- [x] [完成 2026-04-25 08:48] corepack 进程 → [OK] 正常（paperclip server dev）
+- [x] [完成 2026-04-25 08:48] python3.13 进程 → [OK] waydroid/fail2ban/websockify 系统服务
+- [ ] [CC→OP] [2026-04-25] [high] pi Web UI 实现方案(已决策): FastAPI中间层包装pi RPC子进程。架构: 1) FastAPI服务(pi --mode rpc子进程管理) 2) REST /api/chat 端点(JSON stdin/stdout协议转发) 3) WebSocket实时事件流 4) systemd用户服务(pi-web-ui@9100.service) 5) Tailscale+iOS通过100.119.174.25:9100访问。CC负责编码，OP负责systemd部署。

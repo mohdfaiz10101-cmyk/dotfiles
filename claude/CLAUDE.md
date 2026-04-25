@@ -30,6 +30,7 @@
 - 允许：08:00-23:00 | 禁止：00:00-07:59
 - 创建/修改 timer 后 MUST grep 验证无凌晨时间残留
 - 检测到凌晨时间 → 自动推迟到 10:00
+- **例外：OP 正在跑任务时，CC 无时段限制**（检测方式：`pgrep -f "opencode.*sisyphus"` 或 op-tasks.md 有 `[进行中]` 标记）
 
 ## 模型路由决策表
 | 任务类型 | 执行方式 |
@@ -314,6 +315,24 @@ systemctl --user show <svc> --property=Result,ActiveState,SubState
 - `Result=failed` 或 `ActiveState=failed` → 才是真正失败
 - 典型正常 inactive 服务：discord-butler, heartbeat-*, service-nurse, proxy-guardian, *-check, *-timer
 
+## AUTO_AGENT（死规则 — 类比 AUTO_SKILL）
+识别信号：重复任务类型 ≥3次 | 用户说"设置个agent/帮我建个agent" | 缺少对应专职 agent
+触发后立即（不等用户确认）：
+1. 判断类型 → 按 AGENT_FREE_ROUTE 选免费模型
+2. 创建 `~/.config/opencode/agents/{name}.md`
+3. 输出 `[AUTO_AGENT] 可创建: {name} — {desc} | 模型: {model} | 类型: {type}`
+4. Stop hook（cc-autoagent-hook.sh）自动捕获并写入 oh-my-openagent.jsonc
+
+**输出格式**（供 hook 解析）：`[AUTO_AGENT] 可创建: {slug} — {中文描述} | 模型: {model_id} | 类型: {巡检/编码/对话}`
+禁止：只说"可以建一个 agent"不输出标签 | 等用户二次确认才创建
+
+## MCP_OUTPUT_VERIFY（死规则 — 禁止信任未验证的 MCP 输出）
+MCP 工具输出（macg_op_status、letta_recall 等）可能返回缓存快照，与实际文件不符。
+**规则**：读取 MCP 状态后，MUST 交叉验证原始文件再向用户汇报：
+- `macg_op_status` 显示"待处理" → MUST `python3 -c "... op-tasks.md"` 确认是否真未完成
+- letta 返回的事实 → 若涉及文件/服务状态，先 Read/curl 验证再使用
+- 禁止：直接将 MCP 输出作为事实报告给用户
+
 ## opencode配置规则（死规则）
 - opencode.json 的 `instructions` 字段 MUST 是数组 `["..."]`，不能是字符串
 - 报错 `expected array, received string` → 用 python 把字符串包成数组修复
@@ -332,3 +351,23 @@ systemctl --user show <svc> --property=Result,ActiveState,SubState
    - 若 ExecStart 或 WorkingDirectory 涉及 /mnt/ 路径 → MUST 加 `After=<mount-unit>`
 3. **新增 fileSystems."/mnt/xxx"** 时 MUST 检查 ~/.xxx 是否指向该路径，若是则对应 home-manager 服务 MUST 加 After/Wants
 4. **rebuild 后** MUST 运行 `bash ~/.local/bin/nixos-smoketest.sh` 验证
+
+## 用户偏好自动执行（USER_PREF_AUTO — 死规则）
+Charlie 说过的话、做过的选择、纠正过的错误 → MUST 作为永久偏好自动执行，禁止回问确认。
+- 上下文/prompt/历史中提到过的偏好 → 直接执行，不问"需要我XXX吗""你想XXX吗"
+- 典型信号："以后都""每次""不用问我""为什么你不自动"
+- 违反时 → 立即写入 lessons-learned.md + 更新对应死规则
+- 禁止：看到偏好后仍然询问确认 | 每次重新解释为什么
+
+## 智能记忆验证闭环（SMART_MEMORY_VERIFY — 死规则）
+SESSION_MEMORY_BOOT 读到设备/服务/端口等事实后，MUST 执行闭环验证：
+1. 提取关键词：从 MEMORY.md / Letta 命中内容中提取实体名（设备型号、服务名、端口、IP）
+2. 二次精确验证：用提取的关键词 grep/search 命中源，确认无矛盾
+3. 冲突处理：实时工具输出与记忆冲突时 → 以记忆为基准质疑工具输出，MUST 先 grep 确认记忆是否过期
+4. 失败写入：验证发现记忆过期 → 立即更新记忆 + 写入 lessons-learned
+禁止：读记忆后不使用其中的信息直接凭工具输出猜测
+
+## Letta 核心记忆同步（LETTA_CORE_SYNC — 死规则）
+memory/MEMORY.md 中的设备清单/服务端口/关键拓扑变更后，MUST 同步更新 Letta nixos-sysadmin agent 的 core memory [human] block。
+API: `PATCH http://localhost:8283/v1/agents/agent-8651643c-e753-47ed-9759-bd955c6ac240/core-memory/blocks/human`
+确保 letta_recall 自动携带最新设备/端口/拓扑信息。

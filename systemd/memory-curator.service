@@ -1,0 +1,13 @@
+[Unit]
+Description=记忆策展巡检 — 归档过期条目、检测矛盾、维护索引
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/opencode-run-agent.sh memory-curator "执行定期巡检：1.归档30天前条目 2.检测文件矛盾 3.验证MEMORY.md索引完整性 4.输出报告到~/Desktop/巡检报告/"
+StandardOutput=journal
+StandardError=journal
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

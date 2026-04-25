@@ -370,3 +370,9 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 
 | sudo 无法使用，报错 "必须属于用户 ID 0(的用户)并且设置 setuid 位" | NixOS sudo 配置错误，setuid 位未正确设置 | 检查 `/etc/nixos/configuration.nix` 中的 `security.sudo` 配置，重新构建系统：`sudo nixos-rebuild switch` |
 | 防火墙无规则，系统完全暴露 | nftables 未启用或配置为空规则 | 在 `/etc/nixos/configuration.nix` 中启用防火墙：`networking.nftables.enable = true; networking.firewall.enable = true; networking.firewall.allowedTCPPorts = [ 22 80 443 ];` |
+
+## KDE 任务栏/通知卡死（DrKonqi 堆积）
+- **症状**：通知点不掉，任务栏点不动
+- **根因**：多个 DrKonqi coredump-launcher 服务累积，plasmashell 冻结
+- **修复**：在 Kitty 终端运行：`killall plasmashell && WAYLAND_DISPLAY=wayland-0 plasmashell &`
+- **预防**：定期 `systemctl --user reset-failed 'drkonqi*'` 清除失败状态；coredump 积累超过 3 个时自动清理

@@ -63,7 +63,7 @@
     },
     "multimodal-looker": {
       "description": "媒体分析员 — PDF/图片/图表深度解读",
-      "model": "openai-compatible/glm-4v-flash",
+      "model": "openai-compatible/glm-4.6v-flash",
       "temperature": 0.1,
       "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。"
     }

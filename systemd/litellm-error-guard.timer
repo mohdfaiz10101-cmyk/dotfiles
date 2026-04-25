@@ -1,0 +1,10 @@
+[Unit]
+Description=LiteLLM Error Guard Timer — 自适应间隔巡检
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=5min
+RandomizedDelaySec=30sec
+
+[Install]
+WantedBy=timers.target

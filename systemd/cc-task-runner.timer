@@ -1,0 +1,9 @@
+[Unit]
+Description=CC 任务自动检测 — 每分钟
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=false
+
+[Install]
+WantedBy=timers.target
