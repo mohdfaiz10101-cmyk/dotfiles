@@ -91,6 +91,17 @@ opencode-config-guard.sh 修复时 MUST 从 git 恢复 CC 提交的版本，禁�
 - Claude Sonnet：`▸ ✅ Sonnet | CC直接处理`
 禁止：跳过首行标识 | 把标识放在回复末尾 | 只有部分回复有标识
 
+
+
+## AUTO_AGENT 主动推荐（PROACTIVE_AGENT_RECOMMEND — 死规则）
+SESSION_MEMORY_BOOT 时 MUST 执行历史模式分析（≤30秒）：
+1. 扫描高频任务：     10 op-tasks-archive.md:[OP] 
+      2 op-tasks.md:[OP] 
+2. 扫描重复踩坑： + 最近7天关键词频率
+3. 计算覆盖率：已有agents vs 高频任务 → 差集
+阈值：≥3次/周无agent→ | ≥5次/周有skill无agent→ | <3次→SKIP
+仅首次SESSION_MEMORY_BOOT时输出一次，禁止每次都推荐、禁止追着用户问。
+
 ---
 Source: ~/CLAUDE.md | Auto-compiled | CC-only writes
 
