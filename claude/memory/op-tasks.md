@@ -1,3 +1,5 @@
+- [ ] [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30
+- [ ] [CC] [2026-04-25] [high] Docker容器 musetalk 自动修复失败，需人工检查：docker logs musetalk --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 langfuse-db 自动修复失败，需人工检查：docker logs langfuse-db --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30

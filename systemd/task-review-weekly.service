@@ -1,0 +1,7 @@
+[Unit]
+Description=Weekly Task Review Analysis
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env python3 /home/charlie/bin/task-review.py
+Environment=HOME=/home/charlie
