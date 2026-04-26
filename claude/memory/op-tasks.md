@@ -457,3 +457,10 @@
 - [ ] [AGI→OP] [2026-04-26 00:11] [low] Fe评分过低({fe_score})，建议用户休息
 - [ ] [AGI→OP] [2026-04-26 02:38] [low] 检查进程 1408783 是否仍在运行并异常消耗资源
 - [ ] [AGI→OP] [2026-04-26 06:22] [medium] 调查进程 2615409 (python3.13) 的高占用原因，确认是否为正常业务负载
+
+### [SELF-IMPROVE 2026-04-26] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 补全末尾截断的代码（如 `_ALERT_SUPPRES` 变量定义及后续逻辑），确保文件语法完整可运行。
+- [ ] [SELF-IMPROVE] think.py: 函数内部硬编码了 Letta 的 API 地址和 Agent ID，应提取为环境变量或配置常量以提高可维护性和灵活性。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS声明处被意外截断，导致样式和后续JavaScript逻辑缺失，需要补全完整的文件内容。
+- [ ] [SELF-IMPROVE] launcher-server.py: `_check_auth` 函数中对于远程请求使用简单的字符串比较（`==`）验证 Bearer Token，容易受到时序攻击，应改用 `hmac.compare_digest()` 进行安全比较。
+- [ ] [SELF-IMPROVE] hub-api.py: 将`dialogue_append`函数中同步的文件IO操作改为异步实现（如使用aiofiles），以避免在FastAPI中阻塞事件循环。
