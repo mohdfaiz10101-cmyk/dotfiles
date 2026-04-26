@@ -431,3 +431,26 @@ curl -s -L -X POST "http://localhost:8283/v1/agents/agent-f6786cc0-260f-4b84-985
 **charlie-ego agent ID**: `agent-f6786cc0-260f-4b84-985d-ced4acb1c614`
 **触发场景**：技术选型、架构决策、工具选择、方案对比、任何「应该用A还是B」
 **跳过场景**：纯操作执行（已确定方案）、闲聊、单句问答
+
+## 媒体交付自测（MEDIA_DELIVERY_TEST — 死规则）
+视频/音频/图片/文档等媒体文件交付前，MUST自行测试：
+1. 视频文件 → `ffprobe` 确认可播放（codec/duration/resolution）
+2. 音频文件 → `ffprobe` 确认可解码（sample_rate/channels/duration）
+3. 图片 → Read工具直接查看，确认非空白/非损坏
+4. APK → 检查文件大小合理 + ADB安装测试
+5. 文档 → 打开确认内容完整非乱码
+- 测试失败 → 修复后重新交付，禁止跳过测试直接发送给用户
+- 输出格式：`[MEDIA_TEST] {文件名} → {结果}（格式/时长/分辨率等）`
+
+## Hub APK多设备推送（APK_MULTI_PUSH — 死规则）
+Hub Mobile APK每次构建后 MUST 同时推送到：
+1. 手机（ace-5-pro）: `adb -s 192.168.2.33:5555 install`（Tailscale备用: `100.64.206.110:5555`）
+2. 平板（xiaomi-pad-5）: `adb -s 100.104.211.70:5555 install`（Tailscale直连，始终在线）
+- 推送失败 → 重试1次，仍失败记录到 troubleshooting.md
+- 禁止只推一台设备就标记完成
+- 输出格式：`[APK_PUSH] 手机→[OK/FAIL] 平板→[OK/FAIL]`
+
+## 用户直接执行指令（USER_DIRECT_EXEC — 死规则）
+用户说"你自己做了""你直接做""别推给CC"时 → MUST 直接执行当前任务，禁止推给CC/OP。
+- 此规则覆盖 CC↔OP 职责分工中的限制
+- 执行完成后记录到 lessons-learned.md

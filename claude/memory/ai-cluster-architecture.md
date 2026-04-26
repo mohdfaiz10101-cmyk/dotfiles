@@ -48,7 +48,12 @@ type: reference
 |------|------|------|
 | Charlie Hub (Caddy) | 9800 | 总控 UI + 反向代理 |
 | Charlie Hub API | 9801 | FastAPI 后端 |
-| ttyd-claude/gemini/opencode/aider | 7690-7693 | AI 终端 |
+| ttyd-clash (Clash 管理终端) | 7690 | **Clash ttyd** — 用户确认 |
+| ttyd-aider | 7693 | Aider 终端 |
+| ttyd-macg | 7694 | LangGraph MACG 终端 |
+| opencode-web | 8080 | OpenCode Web UI |
+| mihomo 面板 | 9090 | Clash Meta 控制面板 |
+| ai-launcher (手机入口) | 7699 | 统一入口页，Python http.server --bind 0.0.0.0 |
 | HyperChat CRM | 9098 | WeChat + CRM + Hermetic Ledger |
 | Paperclip | 3100 | 任务管理 |
 | LiteLLM | 4000 | 模型路由代理（43端点） |

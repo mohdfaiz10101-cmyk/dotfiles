@@ -464,3 +464,7 @@
 - [ ] [SELF-IMPROVE] kanban.html: 代码在CSS声明处被意外截断，导致样式和后续JavaScript逻辑缺失，需要补全完整的文件内容。
 - [ ] [SELF-IMPROVE] launcher-server.py: `_check_auth` 函数中对于远程请求使用简单的字符串比较（`==`）验证 Bearer Token，容易受到时序攻击，应改用 `hmac.compare_digest()` 进行安全比较。
 - [ ] [SELF-IMPROVE] hub-api.py: 将`dialogue_append`函数中同步的文件IO操作改为异步实现（如使用aiofiles），以避免在FastAPI中阻塞事件循环。
+- [ ] [CC] [2026-04-26 12:29] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: 只能由 CC
+- [x] [测试 2026-04-26 14:40] TASK-TEST-001 — OP Push Service 推送测试成功
+- [x] [完成 2026-04-26 14:43] TASK-TEST-002 — OP Push Service 自动推送测试
+- [x] [完成 2026-04-26 14:47] TASK-TEST-003 — OP Push Service 完整流程测试
