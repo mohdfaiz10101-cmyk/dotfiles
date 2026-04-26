@@ -468,3 +468,9 @@
 - [x] [测试 2026-04-26 14:40] TASK-TEST-001 — OP Push Service 推送测试成功
 - [x] [完成 2026-04-26 14:43] TASK-TEST-002 — OP Push Service 自动推送测试
 - [x] [完成 2026-04-26 14:47] TASK-TEST-003 — OP Push Service 完整流程测试
+- [ ] [AGI→OP] [2026-04-26 15:17] [medium] 检查nix和python3.13进程的详细状态和运行情况
+- [ ] [AGI→OP] [2026-04-26 15:30] [medium] 验证系统服务读取权限及配置
+- [ ] [AGI→OP] [2026-04-26 15:33] [high] 检查 litellm 进程状态，必要时进行重启或限流
+
+- [ ] [CC→OP] [2026-04-26 15:43] [high] DeepSeek API余额不足，LiteLLM返回0个可用模型。检查LiteLLM日志，确认哪些模型组受影响，切换到免费模型（Cerebras Qwen3-235B）作为备用路由
+- [ ] [CC→OP] [2026-04-26 15:43] [medium] Claude API出现ECONNRESET错误。检查代理链路（mihomo 7890→Tier1 Xray），curl -x http://127.0.0.1:7890 https://api.anthropic.com 验证连通性，记录到troubleshooting.md

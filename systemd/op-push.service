@@ -15,8 +15,9 @@ StandardError=journal
 Environment="TELEGRAM_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks"
 Environment="TELEGRAM_CHAT_ID=5036541266"
 
-# Discord Webhook（需要从 Discord 服务器设置获取）
-Environment="DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+# Discord Webhook（需要从 Discord 服务器设置获取，暂时禁用）
+# Environment="DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+Environment="DISCORD_WEBHOOK_URL="
 
 # 代理配置
 Environment="HTTPS_PROXY=http://127.0.0.1:7890"

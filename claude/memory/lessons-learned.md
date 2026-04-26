@@ -28,3 +28,36 @@
 - [2026-04-26] [GLM-Z-Flash] 场景：Hub API端口混淆。根因：workflow.py默认hub_api_url=9801但实际Hub API在9800。修复：改为9800。教训：确认前先curl两个端口。
 - [2026-04-26] [GLM-Z-Flash] 场景：Mem0 Docker镜像不支持amd64。根因：mem0/mem0-api-server:latest无linux/amd64 manifest。修复：待CC用pip+venv方案替代Docker。
 - [2026-04-26] [GLM-Z-Flash] 场景：AGI Telegram Bot不支持群组@提及。根因：_check_auth()只允许私聊，未检测群组entities.mention。修复：(1)添加context参数获取bot.username (2)检测update.message.entities中mention类型 (3)匹配@{bot_username}返回True (4)更新所有调用点。教训：python-telegram-bot群组@通过entities.type=="mention"检测，需offset+length提取。
+
+### 会话摘要 [2026-04-26] [Sonnet/自动]
+- 对话轮次: 133 | 被纠正: 1次
+  - 用户纠正: 你刚才修改的不对啊 7699下面两个标签一个claude实时的输出 一个opencode.你刚才把claude修改了。我需要claude标签同步
+
+### 会话摘要 [2026-04-26] [Sonnet/自动]
+- 对话轮次: 133 | 被纠正: 1次
+  - 用户纠正: 你刚才修改的不对啊 7699下面两个标签一个claude实时的输出 一个opencode.你刚才把claude修改了。我需要claude标签同步
+
+### 会话摘要 [2026-04-26] [Sonnet/自动]
+- 对话轮次: 131 | 被纠正: 1次
+  - 用户纠正: 你刚才修改的不对啊 7699下面两个标签一个claude实时的输出 一个opencode.你刚才把claude修改了。我需要claude标签同步
+
+### 会话摘要 [2026-04-26] [Sonnet/自动]
+- 对话轮次: 127 | 被纠正: 2次
+  - 用户纠正: 你刚才修改的不对啊 7699下面两个标签一个claude实时的输出 一个opencode.你刚才把claude修改了。我需要claude标签同步
+  - 用户纠正: glm弱智没解决下面问题 你帮我看下怎么解决 ：验证错误：
+event_webhooks_url: 无法验证指定的活动 webhook 网址。验证错误：
+eve
+
+### 会话摘要 [2026-04-26] [Sonnet/自动]
+- 对话轮次: 125 | 被纠正: 3次
+  - 用户纠正: 你刚才修改的不对啊 7699下面两个标签一个claude实时的输出 一个opencode.你刚才把claude修改了。我需要claude标签同步
+  - 用户纠正: glm弱智没解决下面问题 你帮我看下怎么解决 ：验证错误：
+event_webhooks_url: 无法验证指定的活动 webhook 网址。验证错误：
+eve
+
+### 会话摘要 [2026-04-26] [Sonnet/自动]
+- 对话轮次: 118 | 被纠正: 3次
+  - 用户纠正: 你刚才修改的不对啊 7699下面两个标签一个claude实时的输出 一个opencode.你刚才把claude修改了。我需要claude标签同步
+  - 用户纠正: glm弱智没解决下面问题 你帮我看下怎么解决 ：验证错误：
+event_webhooks_url: 无法验证指定的活动 webhook 网址。验证错误：
+eve
