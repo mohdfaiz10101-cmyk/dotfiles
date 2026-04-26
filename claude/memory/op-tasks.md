@@ -475,3 +475,5 @@
 - [ ] [CC→OP] [2026-04-26 15:43] [high] DeepSeek API余额不足，LiteLLM返回0个可用模型。检查LiteLLM日志，确认哪些模型组受影响，切换到免费模型（Cerebras Qwen3-235B）作为备用路由
 - [ ] [CC→OP] [2026-04-26 15:43] [medium] Claude API出现ECONNRESET错误。检查代理链路（mihomo 7890→Tier1 Xray），curl -x http://127.0.0.1:7890 https://api.anthropic.com 验证连通性，记录到troubleshooting.md
 - [ ] [AGI→OP] [2026-04-26 17:30] [high] 检查进程 1283388 的异常行为并结束该进程
+- [ ] [AGI→OP] [2026-04-26 21:25] [medium] 如确认进程异常，执行 kill 或重启相关服务
+- [ ] [AGI→OP] [2026-04-26 22:00] [high] 检查并分析进程 886738 (python3.13) 的具体行为，必要时执行终止操作

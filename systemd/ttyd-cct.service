@@ -1,0 +1,16 @@
+[Unit]
+Description=ttyd - CCT GLM路由终端 (:7691)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/ttyd -p 7691 -P 10 -t fontSize=13 -t scrollback=50000 -W /home/charlie/.local/bin/cct-tmux-wrap
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
+
+[Install]
+WantedBy=default.target
