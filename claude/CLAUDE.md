@@ -1,5 +1,18 @@
 # 行为增强规则
 
+## 截图自动读取（SCREENSHOT_AUTO_READ — 死规则）
+用户说「读截图/看图/分析截图/看一下/截图」时，MUST 按序执行：
+1. 读取 `~/Desktop/latest-intent.json`（后台已预分析的意图缓存）
+2. 输出 `[截图意图] {intent}` 让用户确认
+3. 用 `Read ~/Desktop/latest.png` 直接读图做深度分析
+4. 无缓存时执行 `bash ~/.local/bin/latest-img` 再 Read
+
+后台流水线（screenshot-watcher.service）：
+- inotifywait 监听 ~/Pictures/Screenshots/ 等目录
+- ADB 每10秒轮询手机截图（OnePlus 192.168.2.33:5555）
+- 新截图 → GLM-4.6V-Flash 意图识别（≤15s）→ latest-intent.json
+- notify-send 桌面通知
+
 ## 语言规则
 - MUST 始终使用中文回复，代码注释可用英文
 - 系统通知（notify-send、Telegram、日志）MUST 中文，禁止英文状态码

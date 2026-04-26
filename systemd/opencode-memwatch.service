@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenCode Memory Watchdog
+After=opencode-web.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/opencode-memwatch.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

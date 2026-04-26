@@ -9,8 +9,8 @@ Restart=on-failure
 RestartSec=15
 StartLimitIntervalSec=120
 StartLimitBurst=5
-MemoryMax=1500M
-MemorySwapMax=0
+MemoryMax=infinity
+OOMScoreAdjust=-500
 Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin"
 
 [Install]
