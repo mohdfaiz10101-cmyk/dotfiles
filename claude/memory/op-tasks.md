@@ -1,3 +1,4 @@
+- [ ] [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md
 - [ ] [CC] [2026-04-27] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 musetalk 自动修复失败，需人工检查：docker logs musetalk --tail 30
@@ -483,3 +484,10 @@
 - [ ] [AGI→OP] [2026-04-27 04:44] [high] 确认进程是否失控，必要时执行限流或终止操作
 - [ ] [AGI→OP] [2026-04-27 06:54] [medium] 验证服务状态检测模块是否正常运行
 - [ ] [AGI→OP] [2026-04-27 08:03] [high] 检查 nix-daemon 是否正在进行构建或垃圾回收，必要时调整其资源限制
+
+### [SELF-IMPROVE 2026-04-27] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 第88行存在未完成的代码 `_ALERT_SUPPRES`，会导致 SyntaxError 使整个模块无法加载。
+- [ ] [SELF-IMPROVE] think.py: `_write_letta_archival`函数内部使用了同步阻塞的`requests`库且硬编码了URL和Token，应提取为异步方法并改用`httpx.AsyncClient`，将敏感凭证和地址移至环境变量中。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS中间被截断，需要补全缺失的样式和JS逻辑以确保功能完整可用。
+- [ ] [SELF-IMPROVE] launcher-server.py: 存在路径遍历防御中的竞态条件（TOCTOU）风险，应在`translate_path`中先规范化路径再进行前缀匹配，而非多次重复调用`os.path.realpath`。
+- [ ] [SELF-IMPROVE] hub-api.py: 存在严重的CORS安全风险，应将`allow_origins=["*"]`替换为具体允许的域名列表，并限制`allow_methods`和`allow_headers`为实际需要的值。
