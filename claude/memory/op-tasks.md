@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-04-27] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 musetalk 自动修复失败，需人工检查：docker logs musetalk --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30
@@ -477,3 +478,8 @@
 - [ ] [AGI→OP] [2026-04-26 17:30] [high] 检查进程 1283388 的异常行为并结束该进程
 - [ ] [AGI→OP] [2026-04-26 21:25] [medium] 如确认进程异常，执行 kill 或重启相关服务
 - [ ] [AGI→OP] [2026-04-26 22:00] [high] 检查并分析进程 886738 (python3.13) 的具体行为，必要时执行终止操作
+- [ ] [AGI→OP] [2026-04-26 23:45] [medium] 验证服务状态检测模块是否工作正常
+- [ ] [AGI→OP] [2026-04-27 03:43] [high] 检查进程 836771 (python3.13) 和 836622 (bash) 的详细状态及来源
+- [ ] [AGI→OP] [2026-04-27 04:44] [high] 确认进程是否失控，必要时执行限流或终止操作
+- [ ] [AGI→OP] [2026-04-27 06:54] [medium] 验证服务状态检测模块是否正常运行
+- [ ] [AGI→OP] [2026-04-27 08:03] [high] 检查 nix-daemon 是否正在进行构建或垃圾回收，必要时调整其资源限制

@@ -376,3 +376,12 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - **根因**：多个 DrKonqi coredump-launcher 服务累积，plasmashell 冻结
 - **修复**：在 Kitty 终端运行：`killall plasmashell && WAYLAND_DISPLAY=wayland-0 plasmashell &`
 - **预防**：定期 `systemctl --user reset-failed 'drkonqi*'` 清除失败状态；coredump 积累超过 3 个时自动清理
+## Alist 创建存储报 UNIQUE constraint failed
+- **症状**：`/api/admin/storage/create` 返回 500 `UNIQUE constraint failed: x_storages.mount_path`
+- **根因**：mount_path 已存在（可能之前创建过）
+- **修复**：先查 `/api/admin/storages` 确认现有存储，若需更新用 `/api/admin/storage/update`；若字段名拼错（additional vs addition），Alist v3 用 `addition` 不是 `additional`
+
+## Playwright 打开百度超时
+- **症状**：`page.goto timeout 30000ms exceeded`
+- **根因**：未配置代理，百度域名在国内需代理才能从NixOS访问
+- **修复**：launch args 加 `--proxy-server=http://127.0.0.1:7890`，context 加 `proxy: { server: 'http://127.0.0.1:7890' }`

@@ -247,3 +247,20 @@ MetaAgent(arXiv2508) / AAIF+MCP(LF 2025-12)
 - 方案文档: `~/agi/virtual-person-plan.md`
 - P1完成: TTS可调用 | P2待做: MuseTalk部署
 - VRAM: GPT-SoVITS 3GB + MuseTalk 4GB = 7GB，串行执行
+
+---
+
+### [2026-04-27] [GLM-4.7] 2026年AI工具营销趋势调研 - SpectrAI策略优化
+- **状态**: ✅ 已完成
+- **数据源**: GitHub Trending + Hacker News 技术社区趋势分析（2026-04-27）
+- **核心发现**:
+  1. 开源核心+商业增值成为标准模式，开源获客+付费高级功能双轨制
+  2. 开发者社区营销（GitHub/技术博客/HN）比传统广告转化率高3倍
+  3. 免费模型成获客漏斗入口，付费高级模型/团队协作是关键转化点
+  4. 差异化聚焦垂直场景，通用AI工具同质化严重
+  5. 文档+教程+用例模板比功能列表更打动技术受众
+- **SpectrAI适配**:
+  - 强化NixOS+多Agent编排独特性展示（vs通用AI工具）
+  - 开源基础能力（LiteLLM配置模板），付费高级功能（Agent工作流编排）
+  - 技术内容营销重点：GitHub项目Readme+技术教程+案例分析
+  - 降低采用门槛：一键配置脚本+NixOS flake集成

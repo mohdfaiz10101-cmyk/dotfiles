@@ -1,11 +1,20 @@
 # 设备互联方案
 
-## Android 手机
+## Android 手机（主力）
 - 型号：OnePlus Ace 5 Pro (PKR110)，Android 16，Bootloader 已解锁
 - **已 Root**：Magisk，通过 fastboot flash init_boot 完成（2026-04-19）
 - **ADB WiFi 已连接**：`adb connect <手机IP>:5555`，可随时使用
 - Termux 已安装，Tailscale 已配置
 - 微信备份：需 `adb shell`→ `/data/data/com.tencent.mm/MicroMsg`（需 root）
+
+## Android 手机（坏屏备用机 / STT 服务器）
+- 型号：Xiaomi M2011K2G（Redmi K30 Pro），Android 13，**11GB RAM**，225GB 存储
+- **ADB WiFi**：`192.168.2.29:5555`（已无线连接在线）
+- ADB 序列号（USB）：`89f5ae98`
+- 状态：屏幕损坏，充电正常，可 24h 常开作服务器
+- 用途规划：sherpa-onnx + SenseVoice HTTP STT 服务器（:8178）→ 替代 Groq Whisper
+- Termux/Tailscale：待安装（[op-tasks.md] pending）
+- [2026-04-27] [Sonnet] 记录确认
 
 ## 连接方法
 - SSH/ADB：手机 IP 通过 `adb devices` 确认

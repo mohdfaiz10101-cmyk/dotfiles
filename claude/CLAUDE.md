@@ -280,6 +280,12 @@ op-tasks.md 中标注 `[CC]` 的任务 MUST 在同一回复内立即执行，不
   - "识别/提取" → OCR输出结构化结果
 - 禁止只列出路径让用户手动操作，必须直接执行
 
+## 设备连接自动记录（DEVICE_REGISTRY — 死规则）
+任何涉及设备连接的操作（ADB connect、SSH 登录、新 IP 确认）完成后，MUST 立即记录到 `memory/setup-plan.md`：
+- 格式：`型号 | IP:PORT | ADB序列号 | OS | RAM | 状态 | 用途 | 日期`
+- 触发信号：`adb connect`成功、`adb devices`发现新设备、SSH新设备登录、用户说"连上了"
+- 禁止：设备连接成功后不记录就继续操作，导致下次会话无法找回
+
 ## PLAYWRIGHT（死规则）
 涉及网页操作 MUST 调用 Playwright MCP 工具直接执行，禁止只写文字指南让用户手动操作
 

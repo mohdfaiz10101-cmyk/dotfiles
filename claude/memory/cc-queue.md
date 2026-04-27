@@ -317,3 +317,15 @@
 ## CC 审计接管 [2026-04-26 20:08]
 - [ ] [CC接管-失败返工] [2026-04-26 20:08] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
 - [ ] [CC接管-失败返工] [2026-04-26 20:08] [high] [失败 2026-04-25 11:05] Ollama qwen3:8b模型拉取失败(代理+直连均unexpected EOF)，网络问题，建议CC配置ollama镜像或手动下载模型文件到/mnt/ai/models/ollama/
+
+## CC 审计接管 [2026-04-27 00:08]
+- [ ] [CC接管-失败返工] [2026-04-27 00:08] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
+- [ ] [CC接管-失败返工] [2026-04-27 00:08] [high] [失败 2026-04-25 11:05] Ollama qwen3:8b模型拉取失败(代理+直连均unexpected EOF)，网络问题，建议CC配置ollama镜像或手动下载模型文件到/mnt/ai/models/ollama/
+
+## CC 审计接管 [2026-04-27 02:05]
+- [ ] [CC接管-失败返工] [2026-04-27 02:05] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
+- [ ] [CC接管-失败返工] [2026-04-27 02:05] [high] [失败 2026-04-25 11:05] Ollama qwen3:8b模型拉取失败(代理+直连均unexpected EOF)，网络问题，建议CC配置ollama镜像或手动下载模型文件到/mnt/ai/models/ollama/
+
+## CC 审计接管 [2026-04-27 06:05]
+- [ ] [CC接管-失败返工] [2026-04-27 06:05] [high] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
+- [ ] [CC接管-失败返工] [2026-04-27 06:05] [high] [失败 2026-04-25 11:05] Ollama qwen3:8b模型拉取失败(代理+直连均unexpected EOF)，网络问题，建议CC配置ollama镜像或手动下载模型文件到/mnt/ai/models/ollama/

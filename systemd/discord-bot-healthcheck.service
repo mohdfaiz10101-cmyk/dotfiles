@@ -1,0 +1,7 @@
+[Unit]
+Description=Discord Bot 健康检查
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/discord-bot-healthcheck.sh

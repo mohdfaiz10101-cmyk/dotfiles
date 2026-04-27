@@ -127,3 +127,29 @@ eve
 - 对话轮次: 107 | 被纠正: 2次
   - 用户纠正: 我现在切换tab他们连接状态不会改变对不对我不想在切换后被打断任务
   - 用户纠正: 不是说op和cc推理能力都依赖云端吗怎么会omm被杀错误
+- [2026-04-27] [GLM-5-turbo] 场景：百度网盘OAuth授权无法纯API绕过。百度强制要求用户交互登录（滑块/短信验证），即使Playwright无头模式也会被拦截。唯一方案：用户在手机/平板浏览器打开OAuth授权链接，手动登录后获取refresh_token。Alist BaiduNetdisk驱动只需要refresh_token即可挂载。
+- [2026-04-27] [GLM-5-turbo] 场景：screenshot-watcher只监控手机(192.168.2.33)，未覆盖平板(100.104.211.70)。已修复：加入平板ADB轮询，截图保存到~/Pictures/TabletScreenshots/，共享GLM-4.6V意图识别流程。
+- [2026-04-27] [GLM-5-turbo] 场景：GLM-4.6V-Flash频繁429限流。LiteLLM单模型无fallback，连续调用>3次即触发限流。需在连续调用间加sleep 10-15秒间隔。
+- [2026-04-27] [GLM-5-turbo] 场景：Playwright在NixOS上必须用executablePath指定系统Chrome，且headless:true模式对百度OAuth无效（被反自动化检测）。Charlie要求：所有AI操作必须无头(headless)，不允许弹出浏览器窗口。
+
+### 会话摘要 [2026-04-27] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 不是以前无线连接过吗？你怎么都没有记忆？把这些都边做边记以后。然后然后边做边记的这个东西以后都要强制你怎么强制
+- [2026-04-27] [GLM-5] 场景：CCT终端黑屏修复
+  - 根因：ttyd 1.7.7 -I 参数完全替换页面，custom index.html 有 #terminal-container div 但缺少 xterm.js + WebSocket 连接代码（ttyd 嵌入二进制的默认 HTML 才有）
+  - 修复：ttyd-cct.service 去掉 -I 参数，用 ttyd 默认 index.html 渲染终端
+  - 影响：语音/复制浮动面板丢失，但 launcher index.html 已有对应浮动工具栏覆盖
+  - 验证：curl 127.0.0.1:7691 确认包含 token/WebSocket/xterm/terminal-container
+
+- [2026-04-27] [GLM-5-Turbo] 场景：读平板截图时用了 intent 缓存的旧图片而非最新截图
+  症状：latest-intent.json 指向 01:15 的旧截图（tablet-screenshot.png），但平板上实际最新截图是 03:26 的
+  根因：(1) ADB screencap 生成的是当前屏幕实时抓拍，不是用户保存的截图文件 (2) 未先 adb shell ls 确认平板上最新的截图文件再拉取 (3) 截图 watcher 的 intent 缓存可能过期
+  修复：(1) 必须先 `adb shell ls /sdcard/DCIM/Screenshots/` 确认最新文件名和时间戳 (2) 拉取最新时间戳的截图文件，不依赖 intent 缓存 (3) ADB pull 失败时用 `adb shell cat > local` 兜底
+  经验：intent 缓存只是预分析提示，绝对不能替代读取最新截图文件。平板截图路径是 /sdcard/DCIM/Screenshots/（非 /sdcard/Pictures/Screenshots/）
+
+- [2026-04-27] [GLM-5-Turbo] 场景：Claude Code 2.1.92 通过 LiteLLM 调用 GLM-5.1 报 500 UnsupportedParamsError: openai does not support parameters: ['thinking']
+  症状：CCT 终端（GLM 路由）反复重试，显示 "Retrying in 3 seconds... (attempt 5/10)"
+  根因：Claude Code 2.1.92 默认发送 thinking 参数，LiteLLM glm-5.1 配置 drop_params: false 直接透传给 Z.AI OpenAI 兼容 API，Z.AI 不支持该参数
+  修复：LiteLLM config.yml glm-5.1 条目 drop_params: false → true（静默丢弃不支持的参数）
+  配置文件：/mnt/ai/ai-cluster/litellm/litellm-config.yml
+  验证：发送带 thinking 参数的请求 → 正常返回（reasoning_content 有内容）

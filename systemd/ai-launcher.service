@@ -1,11 +1,12 @@
 [Unit]
 Description=AI Launcher — 手机统一入口 (:7699)
-After=network.target
+After=network.target mnt-ai.mount
+Requires=mnt-ai.mount
 
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/apps/launcher
-ExecStart=/nix/store/nyijib6swbd9a6644g7ccaxbd51nq4ib-caddy-2.11.2/bin/caddy run --config /mnt/ai/apps/launcher/Caddyfile
+ExecStart=%h/.nix-profile/bin/caddy run --config /mnt/ai/apps/launcher/Caddyfile
 Restart=on-failure
 RestartSec=5
 
