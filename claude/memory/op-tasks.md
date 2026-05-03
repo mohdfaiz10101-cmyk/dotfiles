@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 6 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 6 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 5 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 5 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 4 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 4 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 3 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 3 hours ago --tail 30
