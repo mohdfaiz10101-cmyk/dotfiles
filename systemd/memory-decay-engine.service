@@ -1,0 +1,10 @@
+[Unit]
+Description=记忆遗忘引擎 - Memory Decay Engine
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/memory-decay-engine.py --force --layer all --report
+WorkingDirectory=%h
+Environment=HOME=%h
+Environment=PATH=/run/current-system/sw/bin:%h/.local/bin

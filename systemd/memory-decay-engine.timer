@@ -1,0 +1,10 @@
+[Unit]
+Description=记忆遗忘引擎 - 每周日10:00执行
+
+[Timer]
+OnCalendar=Sun 10:00:00
+Persistent=true
+AccuracySec=5min
+
+[Install]
+WantedBy=timers.target

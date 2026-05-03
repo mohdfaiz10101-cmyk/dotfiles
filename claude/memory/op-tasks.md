@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 5 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 5 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 4 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 4 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 3 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 3 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 2 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 2 hours ago --tail 30
@@ -18,6 +19,8 @@
 # OP 待办任务
 
 ## 待处理
+
+
 
 ### BUSINESS-DATA-IMPORT — 外贸业务数据索引入库（2026-04-19 CC发现后派发）
 
