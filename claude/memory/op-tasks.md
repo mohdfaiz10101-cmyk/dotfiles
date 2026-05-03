@@ -1,3 +1,5 @@
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 33 minutes ago 自动修复失败，需人工检查：docker logs Exited (137) 33 minutes ago --tail 30
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 3 minutes ago 自动修复失败，需人工检查：docker logs Exited (137) 3 minutes ago --tail 30
 - [ ] [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md
 - [ ] [CC] [2026-04-27] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
 - [ ] [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30
