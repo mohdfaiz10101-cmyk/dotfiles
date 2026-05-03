@@ -1,0 +1,8 @@
+[Unit]
+Description=推送 Cloudflare tunnel URL 到 Telegram
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/push-tunnel-url
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin

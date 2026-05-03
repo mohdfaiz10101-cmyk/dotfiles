@@ -1,0 +1,10 @@
+[Unit]
+Description=微信实时监控定时器（每15分钟）
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=15min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

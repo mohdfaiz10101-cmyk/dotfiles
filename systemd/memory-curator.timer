@@ -1,0 +1,9 @@
+[Unit]
+Description=记忆策展定期巡检（每周日10:00）
+
+[Timer]
+OnCalendar=Sun *-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=AGI Brain 每日审计报告
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie/agi
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/report_generator.py
+StandardOutput=journal
+StandardError=journal

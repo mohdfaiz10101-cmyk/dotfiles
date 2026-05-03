@@ -1,0 +1,10 @@
+[Unit]
+Description=定时推送手机入口链接
+
+[Timer]
+OnCalendar=*-*-* 09:00:00
+OnCalendar=*-*-* 20:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

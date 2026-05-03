@@ -1,9 +1,9 @@
 [Unit]
-Description=Letta Health Guard Timer - Every 5 Minutes
+Description=Letta Health Guard Timer - Every 30 Minutes
 
 [Timer]
 OnBootSec=5min
-OnUnitActiveSec=15min
+OnUnitActiveSec=30min
 Persistent=true
 
 [Install]

@@ -1,0 +1,12 @@
+[Unit]
+Description=闲置时检查并更新 fsearch 索引
+ConditionPathExists=%h/.local/bin/check-idle.sh
+
+[Timer]
+OnCalendar=*-*-* *:00,30:00
+OnActiveSec=30min
+AccuracySec=1s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

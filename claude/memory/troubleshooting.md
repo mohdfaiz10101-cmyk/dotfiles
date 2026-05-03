@@ -261,3 +261,127 @@ curl -x http://192.168.80.242:7890 https://www.google.com  # ✅ 应返回 HTML
 | hyperchat.service 自动重启 | `WantedBy=default.target` 导致即使 disable 也在全局 scope 自动启动 | (1) 注释 `[Install] WantedBy=default.target` (2) `systemctl --user disable --now hyperchat.service` (3) 验证 `systemctl --user status hyperchat.service` 应显示 inactive(dead) |
 | voxtype 崩溃 (File exists error 17) | `~/.local/share/voxtype` 是指向不存在 NTFS 路径的悬空符号链接 | `rm ~/.local/share/voxtype && mkdir -p ~/.local/share/voxtype`，然后下载模型：`voxtype setup` 或手动下载 ggml-base.bin 到 `~/.local/share/voxtype/models/` |
 | opencode-stt 插件 numpy ImportError | Python venv 缺少 `libstdc++.so.6`（NixOS 无标准 FHS 路径）+ PortAudio 缺失 | 用 nix-shell 启动 opencode 或 venv 中设置 `LD_LIBRARY_PATH=$(nix eval nixpkgs#gcc.cc.lib)/lib` |
+
+## [2026-04-17] 纸杯包装机 HS 编码查询
+
+**查询时间**：2026-04-17
+**任务**：查询纸杯包装机（Paper Cup Packing Machine）的 HS 海关编码
+
+**主要发现**：
+1. **纸浆、纸或纸板制品模制成型机器**：HS 8441400000
+   - 适用：纸杯机、纸杯成型机、纸杯贴面机、纸杯水线机
+   - 无海关监管条件，无检验检疫要求
+   - 申报要素：品牌、型号、用途等
+
+2. **纸杯机（具体）**：HS 8441309000
+   - 适用：全自动纸杯制造机、超声波纸杯成型机
+   - Made-in-China 实际出口产品使用此编码
+
+3. **独立包装机**：HS 84223030.90
+   - 适用：纯包装功能的机器（非制造）
+
+**申报建议**：
+- 纸杯制造/成型 → 8441309000 或 8441400000
+- 纸杯包装（独立功能）→ 84223030.90
+- 必须提供品牌、型号、用途等申报要素
+
+**外贸操作**：
+- 出口报关无需许可证（8441400000）
+- 中国进口关税约 5%-10%，增值税 13%
+- 准备设备说明书、技术参数、品牌型号证明
+
+**参考文件**：~/Desktop/外贸知识/纸杯包装机HS编码查询-2026-04-17.md
+
+**相关查询**：
+- 纸杯（成品）：48236910（一次性纸杯）、48236990（纸杯盖）
+- 纸杯机配件：84419090.00
+
+---
+
+## [2026-04-18] 成本审计服务不可用
+
+**症状**：成本审计巡检无法获取 LiteLLM 消耗数据和 Ollama 本地模型状态
+
+**根因**：
+1. **LiteLLM API 离线**：Docker 容器运行但健康检查失败（`curl -sf http://localhost:4000/health` 无响应）
+2. **Ollama 服务未运行**：`curl -sf http://localhost:11434/api/tags` 无响应
+
+**影响**：
+- 无法追踪实际 API 消耗（预算 $10/月，70%🟡 / 100%🔴 告警失效）
+- DeepSeek 模型不可用（硅基动力版已停用，依赖 LiteLLM 网关）
+- 无法使用免费本地模型
+
+**诊断步骤**：
+```bash
+# 检查容器运行状态
+docker ps | grep -E "litellm|ollama"
+
+# 检查健康状态
+curl -sf http://localhost:4000/health || echo "LiteLLM 不可用"
+curl -sf http://localhost:11434/api/tags || echo "Ollama 不可用"
+
+# 查看日志
+docker logs litellm --tail 50
+systemctl status ollama
+```
+
+**修复步骤**：
+
+**1. LiteLLM 修复**：
+```bash
+# 检查日志找错误
+docker logs litellm --tail 100 | grep -i error
+
+# 重启服务
+docker restart litellm
+
+# 如仍失败，检查配置
+cat ~/.config/litellm/litellm_config.yaml
+
+# 检查端口占用
+ss -tlnp | grep 4000
+```
+
+**2. Ollama 修复**：
+```bash
+# 启动服务
+systemctl start ollama
+
+# 或用 Docker 运行
+docker run -d --gpus all -p 11434:11434 --name ollama ollama/ollama
+
+# 验证
+curl -sf http://localhost:11434/api/tags | jq '.models | length'
+```
+
+**验证**：
+- LiteLLM：`curl -sf http://localhost:4000/spend/tags | jq` 应返回消耗数据
+- Ollama：`curl -sf http://localhost:11434/api/tags | jq '.models[] | .name'` 应列出模型
+
+**预防**：
+- 添加 systemd 服务监控 LiteLLM/Ollama 健康状态
+- 定时任务重启失败服务
+- 成本审计巡检在服务离线时自动告警（Telegram/notify-send）
+
+**替代方案（应急）**：
+- 临时使用 GLM 免费额度（已配置）
+- Claude API 直接调用（无 LiteLLM 代理）
+- 等待服务恢复后补充成本数据
+
+| sudo 无法使用，报错 "必须属于用户 ID 0(的用户)并且设置 setuid 位" | NixOS sudo 配置错误，setuid 位未正确设置 | 检查 `/etc/nixos/configuration.nix` 中的 `security.sudo` 配置，重新构建系统：`sudo nixos-rebuild switch` |
+| 防火墙无规则，系统完全暴露 | nftables 未启用或配置为空规则 | 在 `/etc/nixos/configuration.nix` 中启用防火墙：`networking.nftables.enable = true; networking.firewall.enable = true; networking.firewall.allowedTCPPorts = [ 22 80 443 ];` |
+
+## KDE 任务栏/通知卡死（DrKonqi 堆积）
+- **症状**：通知点不掉，任务栏点不动
+- **根因**：多个 DrKonqi coredump-launcher 服务累积，plasmashell 冻结
+- **修复**：在 Kitty 终端运行：`killall plasmashell && WAYLAND_DISPLAY=wayland-0 plasmashell &`
+- **预防**：定期 `systemctl --user reset-failed 'drkonqi*'` 清除失败状态；coredump 积累超过 3 个时自动清理
+## Alist 创建存储报 UNIQUE constraint failed
+- **症状**：`/api/admin/storage/create` 返回 500 `UNIQUE constraint failed: x_storages.mount_path`
+- **根因**：mount_path 已存在（可能之前创建过）
+- **修复**：先查 `/api/admin/storages` 确认现有存储，若需更新用 `/api/admin/storage/update`；若字段名拼错（additional vs addition），Alist v3 用 `addition` 不是 `additional`
+
+## Playwright 打开百度超时
+- **症状**：`page.goto timeout 30000ms exceeded`
+- **根因**：未配置代理，百度域名在国内需代理才能从NixOS访问
+- **修复**：launch args 加 `--proxy-server=http://127.0.0.1:7890`，context 加 `proxy: { server: 'http://127.0.0.1:7890' }`

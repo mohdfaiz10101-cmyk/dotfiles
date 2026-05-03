@@ -1,0 +1,9 @@
+[Unit]
+Description=每30分钟卡顿检测
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=30min
+
+[Install]
+WantedBy=timers.target

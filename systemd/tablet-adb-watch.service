@@ -1,0 +1,14 @@
+[Unit]
+Description=Auto-reconnect ADB to Xiaomi Pad 5 via Tailscale
+After=network-online.target tailscaled.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/tablet-adb-watch
+Restart=always
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/home/charlie/.local/bin:/run/current-system/sw/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

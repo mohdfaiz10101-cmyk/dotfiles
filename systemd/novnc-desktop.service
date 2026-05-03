@@ -1,0 +1,14 @@
+[Unit]
+Description=noVNC Web Desktop Viewer
+After=krfb-autostart.service
+Requires=krfb-autostart.service
+
+[Service]
+Type=simple
+ExecStartPre=/run/current-system/sw/bin/sleep 3
+ExecStart=/home/charlie/.nix-profile/bin/novnc --listen 6080 --vnc localhost:5900
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

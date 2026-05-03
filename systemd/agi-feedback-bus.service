@@ -1,0 +1,7 @@
+[Unit]
+Description=AGI 反馈总线 — 汇聚所有子系统输出
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/agi-feedback-bus.sh
+ExecStartPost=/run/current-system/sw/bin/python3 /home/charlie/agi/cognitive_engine.py

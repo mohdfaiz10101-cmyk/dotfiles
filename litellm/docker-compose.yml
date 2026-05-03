@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: litellm-redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - litellm-cache:/data
+    command: redis-server --appendonly yes --appendfilename "redis-aof.aof"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - litellm-net
+
+  litellm:
+    image: litellm/litellm:latest
+    container_name: litellm-litellm
+    # host 网络：Docker iptables=false 时 bridge 无 NAT，容器无法访问外网
+    network_mode: host
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./litellm-config.yml:/app/config.yml:ro
+      - ./litellm-logs:/var/log/litellm
+    env_file:
+      - ./.env
+    environment:
+      LITELLM_CACHE: "redis"
+      REDIS_HOST: localhost
+      REDIS_PORT: "6379"
+      http_proxy: "http://127.0.0.1:7890"
+      https_proxy: "http://127.0.0.1:7890"
+      no_proxy: "127.0.0.0/8,localhost,api.z.ai,open.bigmodel.cn,api.siliconflow.cn,*.siliconflow.cn"
+    entrypoint: ["litellm"]
+    command:
+      - --config
+      - /app/config.yml
+      - --port
+      - "4000"
+      - --telemetry
+      - "false"
+      - --debug
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:4000/health/readiness').read()"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+
+volumes:
+  litellm-cache:
+    driver: local
+  litellm-logs:
+    driver: local
+
+networks:
+  litellm-net:
+    driver: bridge

@@ -1,0 +1,9 @@
+[Unit]
+Description=每日检查 NixOS 26.05 稳定版发布
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

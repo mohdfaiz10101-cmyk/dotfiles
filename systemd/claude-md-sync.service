@@ -1,0 +1,13 @@
+[Unit]
+Description=CLAUDE.md → AGENTS.md 实时同步监听
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/claude-md-watcher.sh
+Restart=on-failure
+RestartSec=3
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

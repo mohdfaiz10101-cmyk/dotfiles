@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/mnt/ai/ai-cluster/hyperchat
+WorkingDirectory=/home/charlie/.local/share/hyperchat
 ExecStart=/run/current-system/sw/bin/nix-shell -p python313Packages.httpx python313Packages.uvicorn python313Packages.fastapi python313Packages.pydantic python313Packages.aiofiles python313Packages.websockets python313Packages.sse-starlette python313Packages.python-multipart --run "python3 app_v2.py"
-Restart=on-failure
+Restart=no
 RestartSec=300
 StartLimitBurst=3
 StartLimitIntervalSec=3600

@@ -1,0 +1,10 @@
+[Unit]
+Description=CC Autonomous Decision Timer (every 10min, daytime)
+
+[Timer]
+OnCalendar=08..23:*:00/10
+Persistent=false
+Unit=opencode-job-charlie-b445f233ebb8-cc-autonomous.service
+
+[Install]
+WantedBy=timers.target

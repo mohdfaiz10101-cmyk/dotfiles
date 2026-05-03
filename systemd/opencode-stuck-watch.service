@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenCode Stuck Session Watchdog
+After=opencode-web.service
+PartOf=opencode-web.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/opencode-stuck-watch.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=微信消息同步定时器（每5分钟）
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Unit=wechat-msg-sync.service
+
+[Install]
+WantedBy=timers.target

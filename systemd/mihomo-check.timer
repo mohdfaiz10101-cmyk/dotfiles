@@ -1,0 +1,11 @@
+[Unit]
+Description=Mihomo 健康检查 每5分钟
+After=network-online.target
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

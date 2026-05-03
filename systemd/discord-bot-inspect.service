@@ -1,0 +1,11 @@
+[Unit]
+Description=Discord Bot Inspection (Every 30 minutes)
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/discord-bot-inspect.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

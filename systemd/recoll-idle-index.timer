@@ -1,0 +1,9 @@
+[Unit]
+Description=Recoll 每日增量索引（仅本地重要目录）
+
+[Timer]
+OnCalendar=*-*-* 14:00:00
+Persistent=true
+
+[Install]
+WantedBy=default.target

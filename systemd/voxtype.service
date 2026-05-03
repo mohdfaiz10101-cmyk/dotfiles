@@ -5,7 +5,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 Environment="YDOTOOL_SOCKET=/run/user/1000/.ydotool_socket"
-ExecStart=/run/current-system/sw/bin/voxtype daemon
+ExecStart=/run/current-system/sw/bin/voxtype -v daemon
 Restart=on-failure
 RestartSec=5
 

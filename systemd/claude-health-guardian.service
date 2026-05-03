@@ -1,0 +1,8 @@
+[Unit]
+Description=Claude API 健康监测守护
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/claude-health-guardian.sh
+TimeoutStartSec=60

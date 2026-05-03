@@ -1,0 +1,6 @@
+[Unit]
+Description=OP 自主升级 — 周度分析 lessons 升级规则
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/op-self-upgrade.sh

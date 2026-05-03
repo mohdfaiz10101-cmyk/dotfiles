@@ -1,0 +1,15 @@
+[Unit]
+Description=Plasmashell crash watchdog — auto-recover from start-limit-hit
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash -c '\
+  RESULT=$(systemctl --user show plasma-plasmashell --property=Result --value); \
+  STATE=$(systemctl --user show plasma-plasmashell --property=ActiveState --value); \
+  if [ "$RESULT" = "start-limit-hit" ] || [ "$RESULT" = "failed" ] || [ "$STATE" = "failed" ]; then \
+    systemctl --user reset-failed plasma-plasmashell; \
+    sleep 1; \
+    systemctl --user start plasma-plasmashell; \
+    notify-send "Plasma 自动恢复" "plasmashell 已重启（原因: $RESULT）" --urgency=normal; \
+  fi'

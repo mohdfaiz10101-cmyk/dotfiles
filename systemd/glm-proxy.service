@@ -1,6 +1,12 @@
 [Unit]
-Description=GLM glm-proxy Task
+Description=GLM Proxy (8787) - Long-term memory agent
+After=network-online.target
 
 [Service]
-Type=oneshot
-ExecStart=/run/current-system/sw/bin/opencode run "运行代理系统诊断，检查三层代理连通性" --dir /home/charlie
+Type=simple
+ExecStart=/home/charlie/.local/bin/glm-proxy
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

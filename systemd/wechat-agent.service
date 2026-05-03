@@ -1,0 +1,22 @@
+[Unit]
+Description=WeChat Agent (Command-Only Mode)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/agi
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/wechat_agent.py
+Restart=on-failure
+RestartSec=60
+Environment=HOME=/home/charlie
+Environment=LITELLM_BASE_URL=http://localhost:4000/v1
+Environment=LITELLM_API_KEY=sk-litellm-charlie-2026
+Environment=COMMAND_ONLY=1
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStartPre=/run/current-system/sw/bin/bash -c 'echo "XAUTHORITY=$(ls /run/user/1000/xauth_* 2>/dev/null | head -1)" > /tmp/wechat-agent-xauth.env'
+EnvironmentFile=-/tmp/wechat-agent-xauth.env
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=动态资源管理器
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/launcher/resource-manager.sh all

@@ -1,0 +1,14 @@
+[Unit]
+Description=微信CRM自动归档
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/crm/wechat_crm_archiver.py
+Restart=on-failure
+RestartSec=30
+Environment=HUB_API=http://localhost:9875
+Environment=LETTA_API=http://localhost:8283
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Discord Bot 每小时健康检查
+Requires=discord-bot-healthcheck.service
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+
+[Install]
+WantedBy=timers.target

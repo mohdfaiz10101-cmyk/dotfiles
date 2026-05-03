@@ -1,0 +1,12 @@
+[Unit]
+Description=银行卡还款提醒
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/finance-reminder.sh
+Environment=HOME=/home/charlie
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+EnvironmentFile=-/tmp/wechat-agent-xauth.env

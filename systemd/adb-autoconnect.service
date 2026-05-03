@@ -1,0 +1,11 @@
+[Unit]
+Description=自动连接手机无线ADB
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/adb-autoconnect.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

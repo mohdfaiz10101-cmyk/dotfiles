@@ -1,0 +1,10 @@
+{
+  "id": "git-backup-daily",
+  "name": "每日 Git 备份",
+  "description": "自动 commit + push 所有变更到 GitHub",
+  "schedule": "0 3 * * *",
+  "agent": "git-backup",
+  "prompt": "执行所有仓库的 git 备份。检查 ~/dotfiles（op分支）、~/claude-router-plugin（main分支）、~/.claude/skills（main分支）。有变更则 commit + push，无变更跳过。结果写入 /tmp/git-backup-$(date +%Y%m%d).log",
+  "enabled": true,
+  "timeout": 120
+}

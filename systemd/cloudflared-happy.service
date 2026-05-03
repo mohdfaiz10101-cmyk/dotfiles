@@ -1,0 +1,14 @@
+[Unit]
+Description=Cloudflare Tunnel — happy 手机入口 (daemon port)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cloudflared-happy
+Restart=on-failure
+RestartSec=30
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target

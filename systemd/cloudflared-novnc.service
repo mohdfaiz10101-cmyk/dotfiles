@@ -1,0 +1,15 @@
+[Unit]
+Description=Cloudflare Tunnel for noVNC Desktop
+After=novnc-desktop.service
+Requires=novnc-desktop.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cloudflared-bin tunnel --url http://localhost:6080
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/charlie/.local/share/cloudflared-novnc.log
+StandardError=append:/home/charlie/.local/share/cloudflared-novnc.log
+
+[Install]
+WantedBy=graphical-session.target

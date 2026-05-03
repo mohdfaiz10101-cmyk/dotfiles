@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=oneshot
 # 设置 Docker socket 环境变量，允许访问
+Environment="PATH=/run/current-system/sw/bin:/run/wrappers/bin"
 Environment="DOCKER_HOST=unix:///var/run/docker.sock"
 Environment="HTTPS_PROXY=http://127.0.0.1:7890"
 Environment="https_proxy=http://127.0.0.1:7890"

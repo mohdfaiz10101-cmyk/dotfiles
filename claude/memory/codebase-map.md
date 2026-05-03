@@ -765,3 +765,64 @@ Docker data-root 在 NTFS
   - 依赖: sqlcipher 4.14.0 ✅, pycryptodome ❌, zstandard ❌
   - Windows 障碍: 进程扫描 (/proc → Windows API)、数据库路径、Schema 差异
   - 关键文件: message/message_0.db, biz_message_0.db (25MB), contact/contact.db
+- [2026-04-17] OpenCode MCP 集成方式探索：MCP 配置在 ~/.config/opencode/opencode.json 的 mcp 段，Agent 调用使用 delegate-task 工具（支持 category 路由和 skills 注入），CRM 集成通过 ~/.local/bin/crm CLI 工具，可封装为 MCP 服务器。详见 ~/Desktop/文档/OpenCode-MCP集成探索-2026-04-17.md
+## OpenCode MCP 集成架构
+
+### MCP 配置结构
+- 位置：~/.config/opencode/opencode.json (mcp 段)
+- 支持类型：local (command + environment), remote (endpoint + api_key)
+- 已配置服务器：claude-knowledge, letta, context7, gmail
+
+### Agent 调用架构
+- call-omo-agent：直接调用指定 subagent_type
+- delegate-task：按 category 路由，支持 skills 注入
+- Skill 自动匹配：按任务类型自动注入对应 skills
+
+### CRM 集成路径
+- 已有工具：~/.local/bin/crm (SQLite: /mnt/ai/apps/crm/crm.db)
+- 技能配置：~/.claude/skills/crm-agent/SKILL.md
+- 建议封装：将 CLI 封装为 MCP 服务器，配置到 opencode.json
+- [2026-04-17] [Aider] feat: kanban agent hub + CC⇄OP对话系统 + auto-skill封装
+  相关文件：bin/aggregate-inspection.py, bin/aggregate-inspections.py, claude/CLAUDE.md, claude/memory/app-dev-journal.md, claude/memory/cc-op-dialog.jsonl
+- [2026-04-17] [Aider] feat: 待办执行结果显示 + 频率提升
+  相关文件：launcher/kanban.html, launcher/launcher-server.py, opencode/heartbeat-task-check.json, systemd/opencode-job-charlie-b445f233ebb8-heartbeat-task-check.timer
+
+## launcher-server.py (2026-04-19)
+- 路径: `/home/charlie/launcher/launcher-server.py` (~2415行)
+- 端口: 9875, nohup 启动
+- Auth: Bearer Token (`_check_auth()`) — LAUNCHER_TOKEN=launcher-local-2026, LOCAL_ONLY=1 时 localhost 放行
+- 关键 API: /api/status, /api/wechat/sessions, /api/wechat/messages, /api/op-notify
+- 踩坑: do_POST 中 auth check 必须在 rfile.read() 前，否则 BrokenPipeError
+
+## AGI Control Plane (2026-04-18)
+- 路径: `/mnt/ai/apps/agi-control-plane/`
+- Gateway: `backend/main.py` → FastAPI port 9900
+  - GET /api/brain /api/tasks /api/cognitive /api/flows /api/systemd
+  - GET /sse/brain (SSE 流)
+  - POST /copilotkit (CopilotKit runtime endpoint)
+- Service: `~/.config/systemd/user/agi-gateway.service` → active(running)
+- 依赖: ~/agi/.venv (fastapi + uvicorn + httpx)
+- T04(Next.js) + T05(frontend service) 待 OP 执行
+
+- [2026-04-21] [GLM-5.1] doc_pipeline.py: ~/agi/doc_pipeline.py — 文档智能管道(OCR→结构化→模板填充), CLI: extract/enrich/fill/validate/pipeline, 依赖docxtpl+openpyxl+httpx(在agi/.venv)
+- [2026-04-21] [GLM-5.1] hub-api /api/context: 6个端点(search/match/entity/profile/timeline/attach) + /api/doc 3个端点(extract/pipeline/fill), 代理context_graph.py和doc_pipeline.py
+- [2026-04-21] [GLM-5.1] 3000 chat route升级: 意图路由(GLM-4.6v-flash)→context_graph/doc_pipeline→LLM回复, route.ts
+- [2026-04-21] [GLM-5.1] ~/templates/: customs_declaration.docx, quotation.xlsx, packing_list.xlsx, commercial_invoice.docx
+- [2026-04-21] [GLM-5.1] flows/index.json: 新增doc_pipeline和context_graph flow注册
+- [2026-04-21] [Aider] feat: 恢复 macg/playwright/memory MCP 配置
+  相关文件：opencode/opencode.json
+- [2026-04-22] [Aider] feat: 声明式固化 SSH密钥/Docker防火墙/home-manager+plasma-manager
+  相关文件：modules/networking.nix, modules/users.nix
+- [2026-04-22] [Aider] feat: 4个新GLM job timer + AGENTS.md追加权限规则
+  相关文件：opencode/AGENTS.md, systemd/opencode-job-charlie-b445f233ebb8-aider-refactor.service, systemd/opencode-job-charlie-b445f233ebb8-aider-refactor.timer, systemd/opencode-job-charlie-b445f233ebb8-codebase-mapper.service, systemd/opencode-job-charlie-b445f233ebb8-codebase-mapper.timer
+
+## WeChat UOS 4.1.1 解密完成 (2026-04-22)
+- 密钥提取：内存扫描 x'<hex>' 模式 + PBKDF2-HMAC-SHA512 验证（mac_salt = salt XOR 0x3A, iter=2）
+- 密钥文件：~/文档/xwechat_files/wxid_bjo2p0swoxm822_fe61/decrypted/keys.json（16个密钥）
+- 解密DB目录：~/文档/xwechat_files/wxid_bjo2p0swoxm822_fe61/decrypted/dbs/（16个明文SQLite）
+- 朋友圈导出：sns_timeline.json（48条，含文字/时间/点赞数）
+- 消息DB：229条消息，但 message_content 是 WCDB 压缩格式（WCDB_CT_* = 4）
+- 合并DB：/mnt/ai/data/wechat-merged/messages.db（319条，来自之前Wine端合并）
+- 待解决：WCDB 压缩消息解码 + 跨端合并（Wine + UOS + Windows）
+- [2026-04-24] [Aider] feat: 恢复 ref + exa (websearch) MCP 配置
+  相关文件：opencode/opencode.json

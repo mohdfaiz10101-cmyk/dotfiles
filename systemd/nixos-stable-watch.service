@@ -1,0 +1,7 @@
+[Unit]
+Description=检查 NixOS 26.05 稳定版是否发布并自动切换
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/nixos-stable-watch.sh

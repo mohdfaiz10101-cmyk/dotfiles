@@ -1,0 +1,6 @@
+[Unit]
+Description=WeChat版本自动检测守卫
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wechat-version-guard.sh

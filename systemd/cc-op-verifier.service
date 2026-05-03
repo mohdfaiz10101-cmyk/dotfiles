@@ -1,0 +1,5 @@
+[Unit]
+Description=CC 验证 OP 任务结果（互审阶段）
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/launcher/cc-op-verifier.sh

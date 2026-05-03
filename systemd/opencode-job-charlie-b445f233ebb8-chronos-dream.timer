@@ -2,8 +2,8 @@
 Description=Timer for OpenCode Job: chronos-dream
 
 [Timer]
-OnCalendar=*-*-* *:00:00
-OnCalendar=*-*-* *:30:00
+OnCalendar=*-*-* 08..23:00:00
+OnCalendar=*-*-* 08..23:30:00
 Persistent=true
 
 [Install]

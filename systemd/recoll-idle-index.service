@@ -1,0 +1,6 @@
+[Unit]
+Description=Recoll idle-index update service (user)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -lc '/home/charlie/.recoll/idle_index_run.sh'

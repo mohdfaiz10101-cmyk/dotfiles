@@ -594,3 +594,43 @@ dom.allow_scripts_to_close_windows = true # 允许脚本关闭窗口
 ```
 
 ---
+
+---
+
+## Windows 主机（192.168.2.36）最效率操作速查
+
+> 更新：2026-04-22 [Sonnet]
+> **SSH最快路径**：`ssh G@192.168.2.36`（密码 `1`）
+
+### 命令执行模板
+```bash
+# 单条命令（无交互）
+ssh G@192.168.2.36 "cmd /c \"你的命令\""
+
+# PowerShell（推荐用于文件/注册表）
+ssh G@192.168.2.36 "powershell -NoProfile -Command \"你的PS命令\""
+
+# 读文件（跨行内容）
+ssh G@192.168.2.36 "type C:\\path\\to\\file" 2>/dev/null
+
+# 上传文件到Windows
+scp /本地路径 G@192.168.2.36:C:/Users/G/Desktop/
+
+# 下载文件到本地
+scp G@192.168.2.36:"C:/Users/G/Desktop/文件" /tmp/
+```
+
+### 常用场景
+| 场景 | 命令 |
+|------|------|
+| 检查微信进程 | `ssh G@192.168.2.36 "tasklist | findstr WeChat"` |
+| 启动微信 | `ssh G@192.168.2.36 "start /b C:\\Program Files\\Tencent\\Weixin\\Weixin.exe"` |
+| 读注册表 | `ssh G@192.168.2.36 "reg query HKCU\\Software\\Tencent\\WeChat"` |
+| 定时任务 | `ssh G@192.168.2.36 "schtasks /query /tn 任务名"` |
+| 设置环境变量 | `ssh G@192.168.2.36 "setx VAR_NAME value"` |
+| 代理配置 | 用 mihomo `192.168.2.100:7890` |
+
+### 反复踩坑（NEVER做）
+- ❌ 不要用 `&` 后台，SSH会话断开进程也死（用 `start /b`）
+- ❌ 路径用正斜杠 `/` 在PowerShell可以，`cmd /c` 下必须用 `\\`
+- ❌ 中文乱码：ssh前加 `LANG=zh_CN.UTF-8` 或PowerShell用 `-OutputEncoding UTF8`

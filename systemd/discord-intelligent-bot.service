@@ -8,6 +8,8 @@ WorkingDirectory=/home/charlie/.local/discord-bot
 ExecStart=/home/charlie/.local/discord-bot/venv/bin/python3 /home/charlie/.local/discord-bot/discord_bot.py
 Restart=on-failure
 RestartSec=10
+StartLimitInterval=3600
+StartLimitBurst=3
 Environment=DISCORD_BOT_TOKEN=MTQ5MDY0MTY3ODEzNzAzMjg0NA.G7dnjb.8XnDoykFr9O8SRsQH1nnCXiV0Ge2LEOGTI47f8
 Environment=DISCORD_GUILD_ID=1490683033919950941
 Environment=PYTHONUNBUFFERED=1

@@ -1,0 +1,10 @@
+[Unit]
+Description=每日凌晨3点 NixOS 三合一同步
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

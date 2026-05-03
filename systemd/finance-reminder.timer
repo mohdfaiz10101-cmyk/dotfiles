@@ -1,0 +1,10 @@
+[Unit]
+Description=银行卡还款提醒定时器
+
+[Timer]
+OnCalendar=*-*-* 09:00:00
+OnCalendar=*-*-* 20:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

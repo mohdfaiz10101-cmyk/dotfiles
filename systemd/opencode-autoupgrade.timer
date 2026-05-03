@@ -1,0 +1,10 @@
+[Unit]
+Description=每日检查 OpenCode 更新
+Requires=opencode-autoupgrade.service
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

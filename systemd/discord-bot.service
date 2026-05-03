@@ -4,9 +4,11 @@ After=network.target charlie-hub.service
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/hub/venv/bin/python3 /home/charlie/hub/discord-bot.py
+ExecStart=/home/charlie/.local/discord-bot/venv/bin/python3 /home/charlie/.local/discord-bot/discord_bot.py
 Restart=on-failure
 RestartSec=10
+StartLimitInterval=3600
+StartLimitBurst=3
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin:/home/charlie/.npm-global/bin
 # 集中式 API Keys 配置（systemd 格式）

@@ -1,0 +1,10 @@
+[Unit]
+Description=Claude API 健康监测（每5分钟）
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

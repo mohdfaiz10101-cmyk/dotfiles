@@ -1,0 +1,17 @@
+[Unit]
+Description=AGI Control Plane Frontend (Next.js :3000)
+After=network-online.target agi-gateway.service
+Wants=agi-gateway.service
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/apps/agi-control-plane/frontend
+ExecStart=/run/current-system/sw/bin/npx next dev --port 3000
+Environment=PATH=/run/current-system/sw/bin
+Environment=NODE_ENV=development
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=60
+
+[Install]
+WantedBy=default.target

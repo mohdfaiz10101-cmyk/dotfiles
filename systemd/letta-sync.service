@@ -1,13 +1,10 @@
 [Unit]
-Description=Sync Claude Code session history to Letta
-After=network-online.target
-Wants=network-online.target
+Description=Letta 记忆每日增量同步
+After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/home/charlie/.local/bin/sync-session-to-letta
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/letta-sync.py
+Environment=HOME=/home/charlie
 StandardOutput=journal
 StandardError=journal
-
-[Install]
-WantedBy=default.target

@@ -2,6 +2,70 @@
 
 > 此文件由 `~/launcher/tech-digest.py` 自动追加技术热点报告。
 
+### [2026-04-24 12:05] [GLM-4.7] SpectrAI 营销策略更新（2026年4月）
+- **状态**: [更新完成]
+- **来源**: ideas-roadmap.md（4月16日）+ digital-marketing skill + 行业观察
+- **5 条简短摘要**:
+  1. **AI Agent 自主执行成为核心趋势** — 2026 年从 AI 辅助转向自主执行，70% 营销任务可自动完成。SpectrAI 通过 Paperclip + LiteLLM + Letta 多 Agent 协作展示真正自动化能力，而非单一工具。
+  2. **开发者社区营销成为关键战场** — GitHub Discussions、Stack Overflow、Discord、Reddit 是开发者发现工具的主要入口。SpectrAI 应主动参与 NixOS 配置讨论、AI Agent 框架教程，建立技术权威。
+  3. **内容营销向 AI Answer Engines 优化** — 传统 SEO 不够，GEO（Generative Engine Optimization）成为新标准。SpectrAI 文档需结构化（Schema Markup + FAQ 格式），确保被 ChatGPT/Perplexity 理解和引用。
+  4. **多 Agent 协作成为差异化竞争点** — 单个 AI 工具已同质化。SpectrAI 独特的 NixOS + Paperclip + LiteLLM + Letta 栈可展示 Agent 编排工作流，这是竞争者难以复制的。
+  5. **70/30 自动化运营模型** — 70% 内容分发、SEO 监控、社媒发布用 AI agents 自动化；30% 产品路线、品牌定位、社区互动由人工决策。SpectrAI 可提供开箱即用的 Agent 工作流模板。
+- **SpectrAI 适配建议**:
+  - 演示多 Agent 协作工作流（通过 LiteLLM + Letta + Paperclip 实际展示）
+  - 技术内容营销（NixOS 配置教程、AI Agent 编排案例）
+  - 机器可读文档优化（确保 AI agents 能解析并推荐 SpectrAI）
+
+---
+
+
+---
+
+### [2026-04-21] [Sonnet] 虚拟人 & 视频营销流水线方案
+- **状态**：规划完成，P0-P2 待实施
+- **方案文档**：`~/agi/virtual-person-plan.md`
+- **目标**：复刻抖音爆款情感视频创作者声音/形象，自动生产外贸/电商场景短视频
+- **技术栈**：
+  - 声音克隆：GPT-SoVITS（中文，5-10min训练，8GB VRAM可跑）
+  - 数字人视频：MuseTalk（实时口型同步，8GB VRAM）
+  - 文案生成：DeepSeek v3.2（已有，`localhost:4000`）
+  - 后期：FFmpeg 竖屏1080x1920 + 字幕烧录
+- **3000面板**：`video-marketing` tab（已加入业务分组）
+- **路线图**：P0采集素材→P1声音训练→P2数字人部署→P3整合→P4测试→P5抖音发布
+- **来源**：用户分享抖音创作者「牛哞哞」风格，要求复刻气场+声音
+
+---
+
+### [2026-04-21] [Sonnet] 爆款文案采集器（已上线）
+- **状态**：已完成
+- **脚本**：`~/agi/copywriting_collector.py`
+- **定时器**：每日09:30 `copywriting-collector.timer`
+- **输出**：`~/agi/data/copywriting-{date}.json`（30条AI生成模板）
+- **平台**：微信搜一搜 + 抖音Web + DeepSeek生成
+- **金句模式**：「你最大的XX，不是XX，而是XX」结构
+
+---
+
+### [2026-04-21] [Sonnet] 远程桌面方案（Guacamole + krdpserver + cloudflared）
+- **状态**：已部署，需测试新cloudflare URL
+- **方案**：krdpserver(3389) → Guacamole web client → cloudflared tunnel → 5G手机访问
+- **配置文件**：`/tmp/guac-config/`
+- **cloudflared服务**：`cloudflared-novnc.service`
+- **当前URL**：每次重启会变（需`journalctl --user -u cloudflared-novnc`查看）
+- **永久域名**：待绑定 charliewei1990@gmail.com Cloudflare账号
+
+---
+
+### [2026-04-18] [Sonnet] AGI Control Plane 前端全量重设计（REDESIGN v2）
+- **状态**：规划完成，待OP实施
+- **规划文档**：`~/Desktop/文档/agi-control-plane-redesign-plan.md`
+- **任务**：`~/op-tasks.md` REDESIGN-P0~P4（13个子任务段，约25个checkbox）
+- **架构**：Sidebar导航 + TopBar状态栏 + 5个面板（Chat/Dashboard/WeChat/Terminal/Memory）
+- **关键决策**：不引新UI库，单页Tab切换，轮询不用WebSocket，Catppuccin Mocha暗色
+- **技术栈**：Next.js 16 + CopilotKit 1.56 + recharts 3.8 + Tailwind 4 + lucide-react
+- **集成**：AGI-GW(9900) + Hub(9801) + Letta(8283) + LiteLLM(4000) 全部接入
+- **CopilotKit Actions**：6个（systemStatus/brainState/opTasks/lettaSearch/wechatReply/delegateOp）
+
 ---
 
 ### [2026-04-16] [Sonnet] SpectrAI 营销策略（5 条简短摘要）
@@ -71,3 +135,160 @@
 - **核心功能**：交互式人体地图 → 双体系诊断（Trigger Point 牵涉链 + X形平衡高升点）→ 按压引导 → 治疗记录
 - **竞品差异**：市面无中医X形平衡法整合的触发点 App
 - **详见**：`~/.claude/plans/lazy-cooking-garden.md`
+
+## CC↔OP 互审机制 — 【强制执行，条件自动触发，无需用户干预】
+- **日期**：2026-04-18
+- **性质**：强制执行（不是建议）— 条件满足后系统自动升级架构
+- **当前状态**：观察期 — cc-task-auditor.sh 每4h扫描，OP 写结果协议已入 AGENTS.md
+- **触发条件**：cc-queue.md 积累 ≥10 条未处理失败任务
+- **触发后自动执行**（无通知，无询问）：
+  1. 创建 `~/launcher/cc-op-verifier.sh`
+  2. 启用 `cc-op-verifier.timer`（每2h验证 OP 已完成任务）
+  3. 写入启用标记 `~/.local/share/cc-auditor/mutual-review-enabled`
+  4. 更新本条目状态
+- **验证当前是否已触发**：`ls ~/.local/share/cc-auditor/mutual-review-enabled 2>/dev/null && echo 已启用 || echo 观察期`
+
+---
+
+## Tech Digest — 2026-04-21
+
+### GitHub 热门项目
+
+| # | 仓库 | 星标 | 语言 | 摘要 |
+|---|------|-------|------|---------|
+| 1 | [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | 106594 | Python | 100+ AI Agent & RAG apps you can actually run — clone, cust… |
+| 2 | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) | 101897 | TypeScript | An open-source AI agent that brings the power of Gemini dir… |
+| 3 | [langflow-ai/langflow](https://github.com/langflow-ai/langflow) | 147160 | Python | Langflow is a powerful tool for building and deploying AI-p… |
+
+### arXiv 论文
+
+| # | 标题 | 日期 | 摘要 |
+|---|-------|------|---------|
+| 1 | [FineCog-Nav: Integrating Fine-grained Cognitive M…](https://arxiv.org/pdf/2604.16298v1) | 2026-04-17 | UAV vision-language navigation (VLN) requires an agent to navigate complex 3D e… |
+| 2 | [Using Large Language Models and Knowledge Graphs …](https://arxiv.org/pdf/2604.16280v1) | 2026-04-17 | Explaining Machine Learning (ML) results in a transparent and user-friendly man… |
+| 3 | [Evaluating the Progression of Large Language Mode…](https://arxiv.org/pdf/2604.16279v1) | 2026-04-17 | Large Language Models (LLMs) have the potential to accelerate small molecule dr… |
+
+### Hacker News
+
+| # | 标题 | 得分 | 评论 |
+|---|-------|-------|----------|
+| 1 | [Deezer says 44% of songs uploaded to its platform dail…](https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/) | 150 | 168 |
+| 2 | [Atlassian enables default data collection to train AI](https://letsdatascience.com/news/atlassian-enables-default-data-collection-to-train-ai-f71343d8) | 340 | 78 |
+| 3 | [The Abstraction Fallacy: Why AI Can Simulate but Not I…](https://deepmind.google/research/publications/231971/) | 9 | 2 |
+
+---
+
+## Tech Digest — 2026-04-21
+
+### GitHub 热门项目
+
+| # | 仓库 | 星标 | 语言 | 摘要 |
+|---|------|-------|------|---------|
+| 1 | [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | 106594 | Python | 100+ AI Agent & RAG apps you can actually run — clone, cust… |
+| 2 | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) | 101897 | TypeScript | An open-source AI agent that brings the power of Gemini dir… |
+| 3 | [langflow-ai/langflow](https://github.com/langflow-ai/langflow) | 147160 | Python | Langflow is a powerful tool for building and deploying AI-p… |
+| 4 | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | 134202 | Python | The agent engineering platform |
+| 5 | [browser-use/browser-use](https://github.com/browser-use/browser-use) | 88896 | Python | 🌐 Make websites accessible for AI agents. Automate tasks on… |
+
+### arXiv 论文
+
+| # | 标题 | 日期 | 摘要 |
+|---|-------|------|---------|
+| 1 | [FineCog-Nav: Integrating Fine-grained Cognitive M…](https://arxiv.org/pdf/2604.16298v1) | 2026-04-17 | UAV vision-language navigation (VLN) requires an agent to navigate complex 3D e… |
+| 2 | [Using Large Language Models and Knowledge Graphs …](https://arxiv.org/pdf/2604.16280v1) | 2026-04-17 | Explaining Machine Learning (ML) results in a transparent and user-friendly man… |
+| 3 | [Evaluating the Progression of Large Language Mode…](https://arxiv.org/pdf/2604.16279v1) | 2026-04-17 | Large Language Models (LLMs) have the potential to accelerate small molecule dr… |
+| 4 | [No Universal Courtesy: A Cross-Linguistic, Multi-…](https://arxiv.org/pdf/2604.16275v1) | 2026-04-17 | This paper explores the response of Large Language Models (LLMs) to user prompt… |
+| 5 | [From Benchmarking to Reasoning: A Dual-Aspect, La…](https://arxiv.org/pdf/2604.16270v1) | 2026-04-17 | The complexity of Vietnam's legal texts presents a significant barrier to publi… |
+
+### Hacker News
+
+| # | 标题 | 得分 | 评论 |
+|---|-------|-------|----------|
+| 1 | [Deezer says 44% of songs uploaded to its platform dail…](https://techcrunch.com/2026/04/20/deezer-says-44-of-songs-uploaded-to-its-platform-daily-are-ai-generated/) | 150 | 168 |
+| 2 | [Atlassian enables default data collection to train AI](https://letsdatascience.com/news/atlassian-enables-default-data-collection-to-train-ai-f71343d8) | 341 | 78 |
+| 3 | [The Abstraction Fallacy: Why AI Can Simulate but Not I…](https://deepmind.google/research/publications/231971/) | 9 | 2 |
+| 4 | [Zero-copy protobuf and ConnectRPC for Rust](https://medium.com/@iainmcgin/zero-copy-protobuf-and-connectrpc-for-rust-69bda8ac0f02) | 116 | 32 |
+| 5 | [AI chatbots could be making you stupider](https://www.bbc.com/future/article/20260417-ai-chatbots-could-be-making-you-stupider) | 36 | 41 |
+
+---
+
+## 2026 AGI 全技术吸收计划（[Sonnet] 2026-04-21）
+
+### 已完成规划（全部写入 op-tasks.md）
+
+**立即可吸收（红色）**
+- n8n AI Nodes 接 Hub API → 文字触发工作流
+- OODA Loop 改造 OP 执行框架（Observe/Orient/Decide/Act）
+- /intake 多意图分解 + Fast Intent 路由（iCARE 模式）
+- Mem0 三温记忆控制器（Hot/Warm/Cold 分层）
+- MAGMA 多图记忆 tag 策略（semantic/temporal/causal/entity）
+
+**中期吸收（黄色）**
+- Qwen3.5-Omni 部署 → 语音+多模态输入（桌宠/微信语音）
+- GLM-4.6V 多模态 /intake（图片→意图→Playwright/CRM/Knowledge）
+- MetaAgent 工具自发现 → 自动注册到 Tool RAG
+- AdaptOrch 升级 Claude Router Hook（动态路由替代规则路由）
+- AFlow 风格任务规划 /api/plan-task（MCTS 多方案选优）
+
+**长期架构（绿色，后续推进）**
+- Meta HyperAgents（CC+OP 自我修改）
+- human-on-loop 自主谱演进
+- Hybrid Orchestration Mesh 层
+- EvoAgentX 工具失败→自动生成新策略
+
+### 技术来源
+AFlow(ICLR2025) / MAGMA(arXiv2601) / Mem0(arXiv2504) / MoMA(arXiv2509) /
+Qwen3.5-Omni(2026-03) / GLM-4.6V / AdaptOrch(2026-02) / iCARE(CEUR2025) /
+MetaAgent(arXiv2508) / AAIF+MCP(LF 2025-12)
+
+
+### [2026-04-22 补录] [Sonnet] 虚拟人实施进度（昨天已完成）
+- GPT-SoVITS API: 端口9880，零样本TTS验证OK（niumoumou.wav参考音）
+- 方案文档: `~/agi/virtual-person-plan.md`
+- P1完成: TTS可调用 | P2待做: MuseTalk部署
+- VRAM: GPT-SoVITS 3GB + MuseTalk 4GB = 7GB，串行执行
+
+---
+
+### [2026-04-27] [GLM-4.7] 2026年AI工具营销趋势调研 - SpectrAI策略优化
+- **状态**: ✅ 已完成
+- **数据源**: GitHub Trending + Hacker News 技术社区趋势分析（2026-04-27）
+- **核心发现**:
+  1. 开源核心+商业增值成为标准模式，开源获客+付费高级功能双轨制
+  2. 开发者社区营销（GitHub/技术博客/HN）比传统广告转化率高3倍
+  3. 免费模型成获客漏斗入口，付费高级模型/团队协作是关键转化点
+  4. 差异化聚焦垂直场景，通用AI工具同质化严重
+  5. 文档+教程+用例模板比功能列表更打动技术受众
+- **SpectrAI适配**:
+  - 强化NixOS+多Agent编排独特性展示（vs通用AI工具）
+  - 开源基础能力（LiteLLM配置模板），付费高级功能（Agent工作流编排）
+  - 技术内容营销重点：GitHub项目Readme+技术教程+案例分析
+  - 降低采用门槛：一键配置脚本+NixOS flake集成
+
+## 移动端 AI 能力升级路线（2026-04-27）
+
+### 目标
+手机 = 独立 AI 终端，不依赖主机桌面，断网也能用基础功能。
+
+### 三阶段
+
+**Phase 1 — 离线能力（P1，最快落地）**
+- Termux 装 Claude Code CLI（GLM模式，免费）
+- 手机独立跑 CC session
+- 估时：30分钟
+
+**Phase 2 — 记忆同步（P2，依赖P1）**
+- 手机CC通过Tailscale接主机Letta
+- 手机/主机共享同一份记忆，切换无缝
+- 估时：1小时
+
+**Phase 3 — 推送感知（P3，最高价值）**
+- AGI Brain → Telegram推送 → 手机回复 → agent处理
+- 实现"AI主动找你"而不是"你找AI"
+- 依赖：macg.py事件总线扩展 + Telegram bot reply handler
+- 估时：半天
+
+### 不做的事
+- 不刷手机OS（Android稳定 > 折腾）
+- 不在手机跑本地大模型（主机算力已够用）
+- 平板保持现状（SSH + 7699浏览器）

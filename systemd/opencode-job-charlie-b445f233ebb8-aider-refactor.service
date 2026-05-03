@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenCode Job: aider-refactor
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie
+Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin"
+ExecStart=/home/charlie/.local/bin/op-adaptive-gate aider-refactor /run/current-system/sw/bin/perl /home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/aider-refactor.json
+StandardOutput=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/aider-refactor.log
+StandardError=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/aider-refactor.log
+TimeoutStartSec=1200
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>操作指南</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Sans CJK SC", sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 16px;
+  line-height: 1.8;
+}
+h1 { color: #fff; font-size: 22px; margin-bottom: 16px; border-bottom: 2px solid #0f3460; padding-bottom: 8px; }
+h2 { color: #66b2ff; font-size: 17px; margin: 20px 0 8px; }
+.card {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin: 8px 0;
+}
+.step-num {
+  background: #0f3460;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+.cmd {
+  background: #0d1117;
+  color: #7ee787;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 13px;
+  margin: 6px 0;
+  overflow-x: auto;
+  cursor: pointer;
+  position: relative;
+}
+.cmd:active { background: #1a2744; }
+.cmd::after { content: "点击复制"; position: absolute; right: 8px; top: 8px; font-size: 11px; color: #555; }
+.tag {
+  display: inline-block;
+  background: #0f3460;
+  color: #66b2ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-right: 4px;
+}
+.warn { background: #3d2000; border-left: 3px solid #ff9800; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 8px 0; }
+.ok { background: #002d00; border-left: 3px solid #4caf50; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 8px 0; }
+.section { margin-bottom: 24px; }
+a { color: #66b2ff; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<h1>系统操作指南</h1>
+
+<!-- APK 开发 -->
+<div class="section">
+<h2>一、APK 开发（启动器 App）</h2>
+<div class="card">
+  <p><span class="tag">方案</span> Web PWA → 安卓 APK</p>
+  <p>启动器已经是 PWA，可以直接安装到手机主屏幕：</p>
+
+  <div class="step"><div class="step-num">1</div><div>手机浏览器打开启动器（需同一网络）<div class="cmd">http://电脑IP:9875/launcher.html</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>Chrome：菜单 → 「添加到主屏幕」<br>Firefox：菜单 → 「安装」</div></div>
+
+  <div class="step"><div class="step-num">3</div><div>手机主屏幕出现「启动器」图标，点击即用</div></div>
+
+  <div class="ok">PWA 模式无需编译，秒装。全屏运行，和原生 App 体验一致。</div>
+
+  <p style="margin-top:12px"><strong>如果要打包成真正的 APK：</strong></p>
+  <div class="step"><div class="step-num">1</div><div>安装 Android SDK（已加入 NixOS 配置）</div></div>
+  <div class="step"><div class="step-num">2</div><div>用 Capacitor 打包<div class="cmd">cd ~/launcher && npx cap init && npx cap add android && npx cap open android</div></div></div>
+</div>
+</div>
+
+<!-- APK 管理 -->
+<div class="section">
+<h2>二、APK 管理（推送到手机）</h2>
+<div class="card">
+  <p><span class="tag">工具</span> ~/launcher/apk-manager.sh</p>
+
+  <div class="step"><div class="step-num">1</div><div>把 APK 文件放到<div class="cmd">~/APKs/</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>扫描设备<div class="cmd">~/launcher/apk-manager.sh scan</div></div></div>
+
+  <div class="step"><div class="step-num">3</div><div>安装到手机<div class="cmd">~/launcher/apk-manager.sh install 文件名.apk</div></div></div>
+
+  <div class="step"><div class="step-num">4</div><div>批量安装所有 APK<div class="cmd">~/launcher/apk-manager.sh batch</div></div></div>
+
+  <div class="warn">确保手机 USB 调试已开启，或 WiFi ADB 已连接</div>
+</div>
+</div>
+
+<!-- 桌面自动分类 -->
+<div class="section">
+<h2>三、项目自动分类</h2>
+<div class="card">
+  <p><span class="tag">工具</span> ~/launcher/desktop-auto-sort.sh</p>
+
+  <p>新建项目放到 <code>~/Projects/</code>，自动识别类型并在桌面创建快捷方式。</p>
+
+  <div class="step"><div class="step-num">1</div><div>手动扫描一次<div class="cmd">~/launcher/desktop-auto-sort.sh scan</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>后台持续监控<div class="cmd">~/launcher/desktop-auto-sort.sh watch &</div></div></div>
+
+  <p style="margin-top:8px">支持自动识别：安卓、Flutter、Rust、Node.js、Python、Go、Nix、Docker 项目</p>
+</div>
+</div>
+
+<!-- 磁盘迁移 -->
+<div class="section">
+<h2>四、磁盘自动迁移</h2>
+<div class="card">
+  <p><span class="tag">工具</span> ~/launcher/disk-auto-migrate.sh</p>
+
+  <div class="step"><div class="step-num">1</div><div>查看磁盘状态<div class="cmd">~/launcher/disk-auto-migrate.sh status</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>预览迁移（不实际执行）<div class="cmd">~/launcher/disk-auto-migrate.sh dry-run</div></div></div>
+
+  <div class="step"><div class="step-num">3</div><div>执行迁移<div class="cmd">~/launcher/disk-auto-migrate.sh run</div></div></div>
+
+  <div class="step"><div class="step-num">4</div><div>后台持续监控（每 10 分钟检查）<div class="cmd">~/launcher/disk-auto-migrate.sh watch &</div></div></div>
+
+  <div class="warn">当前 /mnt/data 使用率 86%，建议执行一次迁移或清理</div>
+</div>
+</div>
+
+<!-- 启动器 -->
+<div class="section">
+<h2>五、桌面启动器</h2>
+<div class="card">
+  <div class="step"><div class="step-num">1</div><div>启动服务<div class="cmd">python3 ~/launcher/launcher-server.py &</div></div></div>
+  <div class="step"><div class="step-num">2</div><div>浏览器打开<div class="cmd">http://127.0.0.1:9875/launcher.html</div></div></div>
+  <div class="step"><div class="step-num">3</div><div>悬浮桌面模式<div class="cmd">~/launcher/launch-desktop-widget.sh</div></div></div>
+</div>
+</div>
+
+<!-- 远程串流 -->
+<div class="section">
+<h2>六、远程串流（Sunshine + Moonlight）</h2>
+<div class="card">
+  <p><span class="tag">方案</span> 手机/平板/VR → 主机低延迟串流</p>
+
+  <div class="step"><div class="step-num">1</div><div>首次访问 Sunshine Web 配置面板<div class="cmd">https://localhost:47990</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>设置管理员用户名和密码</div></div>
+
+  <div class="step"><div class="step-num">3</div><div>手机/平板安装 Moonlight（Play 商店搜索即可）</div></div>
+
+  <div class="step"><div class="step-num">4</div><div>Moonlight 自动发现主机（同一网络），点击配对</div></div>
+
+  <div class="step"><div class="step-num">5</div><div>在主机上确认配对 PIN 码</div></div>
+
+  <div class="ok">使用 NVIDIA RTX 3060 Ti 硬件编码，延迟极低。支持 4K@60fps。</div>
+  <div class="warn">首次使用可能需要重新登录或重启让 Sunshine 服务生效</div>
+</div>
+</div>
+
+<!-- Cockpit -->
+<div class="section">
+<h2>七、Cockpit 系统管理面板</h2>
+<div class="card">
+  <p><span class="tag">用途</span> 触屏 Web 管理系统：磁盘、服务、日志、终端、网络</p>
+
+  <div class="step"><div class="step-num">1</div><div>浏览器打开<div class="cmd">http://localhost:9090</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>用系统账号登录（charlie / 密码）</div></div>
+
+  <div class="ok">无需终端即可管理系统：查看磁盘、管理 Docker、重启服务、查看日志</div>
+</div>
+</div>
+
+<!-- Web 终端 -->
+<div class="section">
+<h2>八、Web 终端（ttyd）</h2>
+<div class="card">
+  <p><span class="tag">用途</span> 浏览器里直接用终端，适合平板/手机操作</p>
+
+  <div class="step"><div class="step-num">1</div><div>浏览器打开<div class="cmd">http://localhost:7681</div></div></div>
+
+  <div class="ok">直接进入 zsh shell，支持所有终端操作。深色主题，16px 字体。</div>
+
+  <table style="width:100%;margin-top:12px;border-collapse:collapse">
+    <tr style="background:#1e1e2e;color:#cdd6f4"><th style="padding:6px 10px;text-align:left">终端</th><th style="padding:6px 10px">端口</th><th style="padding:6px 10px">用途</th></tr>
+    <tr><td style="padding:5px 10px">Claude Code</td><td style="padding:5px 10px;text-align:center"><a href="http://localhost:7690" target="_blank">7690</a></td><td style="padding:5px 10px">CC 对话</td></tr>
+    <tr style="background:#181825"><td style="padding:5px 10px">Gemini CLI</td><td style="padding:5px 10px;text-align:center"><a href="http://localhost:7691" target="_blank">7691</a></td><td style="padding:5px 10px">Gemini 对话</td></tr>
+    <tr><td style="padding:5px 10px">OpenCode</td><td style="padding:5px 10px;text-align:center"><a href="http://localhost:7692" target="_blank">7692</a></td><td style="padding:5px 10px">OP 任务执行</td></tr>
+    <tr style="background:#181825"><td style="padding:5px 10px">Aider</td><td style="padding:5px 10px;text-align:center"><a href="http://localhost:7693" target="_blank">7693</a></td><td style="padding:5px 10px">批量代码重构</td></tr>
+    <tr><td style="padding:5px 10px"><strong>MACG LangGraph</strong></td><td style="padding:5px 10px;text-align:center"><a href="http://localhost:7694" target="_blank" style="color:#a6e3a1;font-weight:bold">7694</a></td><td style="padding:5px 10px"><strong>认知图谱 / 自愈 / 进化</strong></td></tr>
+  </table>
+</div>
+</div>
+
+<!-- HyperChat CRM -->
+<div class="section">
+<h2>九、HyperChat 超级聊天 + CRM</h2>
+<div class="card">
+  <p><span class="tag">功能</span> 8 MCP 服务 + CRM 客户管理 + AI 分析 + 微信集成</p>
+
+  <div class="step"><div class="step-num">1</div><div>浏览器打开<div class="cmd">http://localhost:9098</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>5 个标签页：搜索 / 客户 / 商机 / 任务 / 统计面板</div></div>
+
+  <div class="step"><div class="step-num">3</div><div>悬浮 AI 按钮：自动获取微信最新消息，AI 生成回复</div></div>
+
+  <div class="step"><div class="step-num">4</div><div>导出客户为 CSV<div class="cmd">http://localhost:9098/api/crm/export</div></div></div>
+
+  <div class="step"><div class="step-num">5</div><div>API 文档<div class="cmd">http://localhost:9098/docs</div></div></div>
+
+  <div class="ok">2826 联系人（含 298 公众号），自动评分（6 维度），支持批量操作</div>
+</div>
+</div>
+
+<!-- Tailscale -->
+<div class="section">
+<h2>十、Tailscale 外网组网</h2>
+<div class="card">
+  <p><span class="tag">用途</span> 从外网（手机/平板/VR）安全连接主机，无需端口转发</p>
+
+  <div class="step"><div class="step-num">1</div><div>首次登录 Tailscale<div class="cmd">sudo tailscale up</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>浏览器打开登录链接，用 Google/GitHub 账号登录</div></div>
+
+  <div class="step"><div class="step-num">3</div><div>手机安装 Tailscale App（Play 商店），同一账号登录</div></div>
+
+  <div class="step"><div class="step-num">4</div><div>查看分配的内网 IP<div class="cmd">tailscale ip</div></div></div>
+
+  <div class="step"><div class="step-num">5</div><div>手机浏览器用 Tailscale IP 访问所有本地服务</div></div>
+
+  <div class="ok">Moonlight 也可以通过 Tailscale IP 连接 Sunshine，实现外网低延迟串流</div>
+</div>
+</div>
+
+<!-- Syncthing -->
+<div class="section">
+<h2>十一、Syncthing 文件同步</h2>
+<div class="card">
+  <p><span class="tag">用途</span> 全设备实时文件同步（密码库、文档、照片）</p>
+
+  <div class="step"><div class="step-num">1</div><div>打开 Syncthing Web 管理界面<div class="cmd">http://localhost:8384</div></div></div>
+
+  <div class="step"><div class="step-num">2</div><div>手机安装 Syncthing（Play 商店），扫码配对</div></div>
+
+  <div class="step"><div class="step-num">3</div><div>添加同步文件夹（建议先同步密码库 ~/密码.kdbx）</div></div>
+
+  <div class="ok">P2P 加密传输，不经过第三方服务器。局域网直连更快。</div>
+  <div class="warn">KeePassXC 数据库通过 Syncthing 同步到手机 KeePassDX</div>
+</div>
+</div>
+
+<!-- KDE Connect -->
+<div class="section">
+<h2>十二、KDE Connect</h2>
+<div class="card">
+  <p><span class="tag">用途</span> 剪贴板同步、通知推送、文件传输、远程输入</p>
+
+  <div class="step"><div class="step-num">1</div><div>手机安装 KDE Connect App</div></div>
+
+  <div class="step"><div class="step-num">2</div><div>同一 WiFi 网络下自动发现，点击配对</div></div>
+
+  <div class="step"><div class="step-num">3</div><div>启用需要的功能：剪贴板共享、通知同步、远程输入</div></div>
+
+  <div class="ok">复制文本自动同步到手机，手机通知推送到桌面</div>
+</div>
+</div>
+
+<!-- COSMIC -->
+<div class="section">
+<h2>十三、COSMIC 备用桌面</h2>
+<div class="card">
+  <p>NixOS rebuild 完成后：</p>
+  <div class="step"><div class="step-num">1</div><div>注销当前会话</div></div>
+  <div class="step"><div class="step-num">2</div><div>登录界面左下角选择 「COSMIC」</div></div>
+  <div class="step"><div class="step-num">3</div><div>设置会通过同步脚本自动迁移<div class="cmd">~/plasma-cosmic-sync.sh</div></div></div>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.cmd').forEach(el => {
+  el.addEventListener('click', () => {
+    navigator.clipboard.writeText(el.textContent.replace('点击复制','').trim());
+    el.style.borderColor = '#4caf50';
+    setTimeout(() => el.style.borderColor = '', 1000);
+  });
+});
+</script>
+
+</body>
+</html>
