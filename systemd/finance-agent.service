@@ -3,6 +3,7 @@ Description=Finance Agent API
 After=network.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 WorkingDirectory=/home/charlie/agi/finance
 ExecStart=/home/charlie/agi/.venv/bin/python3 -m uvicorn finance_agent:app --host 0.0.0.0 --port 9811 --log-level warning

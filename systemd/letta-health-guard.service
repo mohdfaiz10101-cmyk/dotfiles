@@ -3,6 +3,7 @@ Description=Letta Health Guard - 5-Layer Protection
 After=network.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=oneshot
 # 设置 Docker socket 环境变量，允许访问
 Environment="PATH=/run/current-system/sw/bin:/run/wrappers/bin"

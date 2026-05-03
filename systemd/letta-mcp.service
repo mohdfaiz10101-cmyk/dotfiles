@@ -3,6 +3,7 @@ Description=Letta Memory MCP Server
 After=network.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/.local/bin/letta-mcp
 Restart=always

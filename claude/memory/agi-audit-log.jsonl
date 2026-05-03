@@ -11771,3 +11771,112 @@
 {"ts": "2026-05-03 12:57", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-03 12:58", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-03 12:59", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:00", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:01", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:02", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:03", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:04", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:05", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:06", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:15", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 13:16", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:17", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:18", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:19", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:20", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:21", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+                                                                                                                  {"ts": "2026-05-03 13:24", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 13:25", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:26", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:27", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:28", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:29", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:30", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:31", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:32", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:33", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:34", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:35", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:36", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:37", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:38", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:39", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 13:40", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:41", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:42", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:43", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:44", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:45", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:46", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:47", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:48", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:49", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:50", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:51", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:52", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:53", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:54", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:55", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:56", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:57", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:58", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 13:59", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:00", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:01", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:02", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:03", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:04", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:05", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:06", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:07", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:08", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:09", "type": "task_queued", "task": "检查系统监控代理或数据采集服务是否正常运行", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:09", "type": "cycle", "summary": "系统数据未提供有效监控指标，无法评估当前状态", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:11", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:12", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:13", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:14", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:15", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:16", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:17", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:18", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:19", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:20", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:21", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:22", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:23", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:24", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:25", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:26", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:27", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:28", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:29", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:30", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:31", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:33", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:34", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:35", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:36", "type": "task_queued", "task": "检查 alembic 进程是否为数据库迁移卡死，必要时进行终止", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:36", "type": "cycle", "summary": "系统存在高 CPU 占用进程，当前无待处理任务，整体服务状态稳定。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-03 14:38", "type": "cycle", "summary": "系统检测到 python3.13 进程占用 CPU 66.6%，需关注其运行状态。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:39", "type": "cycle", "summary": "检测到 python3.13 进程占用 CPU 较高，其他系统指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:41", "type": "task_queued", "task": "调查并处理异常高 CPU 占用的 python3.13 进程 (PID: 79390, 79385)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:41", "type": "cycle", "summary": "系统检测到高 CPU 占用，Python3.13 进程异常", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-03 14:43", "type": "task_queued", "task": "调查并终止异常的 python3.13 进程 (PID: 92919)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:43", "type": "task_queued", "task": "确认 CPU 负载数据缺失原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:43", "type": "cycle", "summary": "CPU 使用率异常，python3.13 进程占用 100% 资源", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:45", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:47", "type": "task_queued", "task": "持续监控 PID 122251 (python3.13) 的 CPU 使用情况，确认是否为正常负载", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:47", "type": "cycle", "summary": "系统运行正常，仅监测到 Python 进程占用较高 CPU", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:48", "type": "cycle", "summary": "系统运行平稳，磁盘AI使用率正常，无待处理异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:49", "type": "task_queued", "task": "调查并处理 python3.13 (PID: 135429) 的高 CPU 占用问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:49", "type": "cycle", "summary": "系统检测到 python3.13 进程异常占用 100% CPU", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:50", "type": "task_queued", "task": "检查进程 143274 的详细信息及资源消耗原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:50", "type": "cycle", "summary": "系统检测到 python3.13 进程占用 CPU 过高（66.6%），其他指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:52", "type": "cycle", "summary": "系统磁盘使用正常，但检测到 python3.13 进程 CPU 占用 100%", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:53", "type": "cycle", "summary": "系统运行平稳，磁盘使用率正常，无异常警报或待处理任务。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:55", "type": "cycle", "summary": "检测到 python3.13 进程 CPU 占用过高，其他指标正常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:56", "type": "cycle", "summary": "检测到 python3.13 进程 CPU 占用 100%，需关注其运行状态", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-03 14:58", "type": "task_queued", "task": "检查系统监控代理，确认 CPU 和内存数据获取是否正常", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-03 14:58", "type": "cycle", "summary": "系统当前无服务运行且部分指标未知，磁盘 AI 使用率为 32%，状态空闲。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-03 14:59", "type": "cycle", "summary": "系统检测到 python3.13 进程占用 CPU 过高，其他资源状态正常。", "alert_count": 1, "skipped_llm": false}

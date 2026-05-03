@@ -3,6 +3,7 @@ Description=Memory Evolution Engine - Self-Evolving AI Memory System
 After=network.target ollama.service letta.service
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/.local/bin/memory-evolution-engine
 Restart=on-failure

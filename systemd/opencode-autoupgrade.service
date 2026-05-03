@@ -3,6 +3,7 @@ Description=OpenCode 自动升级检查
 After=network-online.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=oneshot
 ExecStart=/home/charlie/.local/bin/opencode-autoupgrade
 StandardOutput=journal

@@ -3,6 +3,7 @@ Description=Claude API 403 Real-time Monitor
 After=network.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=%h/.local/bin/proxy-403-monitor
 Restart=always

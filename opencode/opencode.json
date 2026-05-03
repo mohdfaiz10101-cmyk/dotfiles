@@ -183,6 +183,31 @@
         "GMAIL_CREDENTIALS_PATH": "/home/charlie/.gmail-mcp/credentials.json",
         "GMAIL_OAUTH_PATH": "/home/charlie/.gmail-mcp/gcp-oauth.keys.json"
       }
+    },
+    "macg": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/agi/macg_mcp.py"
+      ]
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "mcp-server-playwright",
+        "--browser",
+        "chrome",
+        "--executable-path",
+        "/run/current-system/sw/bin/google-chrome-stable"
+      ]
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
     }
   },
   "plugin": [

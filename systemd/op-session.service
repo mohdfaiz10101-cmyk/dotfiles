@@ -3,6 +3,7 @@ Description=OP Agent 永久 tmux session（feed 常驻）
 After=graphical-session.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/home/charlie/.local/bin/op-session-init.sh

@@ -3,6 +3,7 @@ Description=HyperChat v5.2 — CRM + WeChat Browser (port 9098)
 After=network.target
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 WorkingDirectory=/home/charlie/.local/share/hyperchat
 ExecStart=/run/current-system/sw/bin/nix-shell -p python313Packages.httpx python313Packages.uvicorn python313Packages.fastapi python313Packages.pydantic python313Packages.aiofiles python313Packages.websockets python313Packages.sse-starlette python313Packages.python-multipart --run "python3 app_v2.py"

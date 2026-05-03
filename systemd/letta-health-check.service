@@ -3,6 +3,7 @@ Description=Letta Memory System Health Check
 Documentation=man:systemd.service(5)
 
 [Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=oneshot
 Environment=PATH=/run/current-system/sw/bin:/run/wrappers/bin
 ExecStart=/home/charlie/agi/letta-health-check.sh

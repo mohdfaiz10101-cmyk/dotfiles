@@ -508,3 +508,4 @@
 - [ ] [SELF-IMPROVE] kanban.html: CSS代码在`--`处被截断，需要补全剩余的样式定义和JavaScript逻辑代码以保证功能完整。
 - [ ] [SELF-IMPROVE] launcher-server.py: 存在命令注入风险，subprocess调用应使用列表形式传参并严格校验输入，避免直接拼接shell命令。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在危险的命令注入风险，应禁用或移除导入的 `subprocess` 模块，防止潜在的操作系统命令执行漏洞。
+- [ ] [AGI→OP] [2026-05-03 14:50] [medium] 检查进程 143274 的详细信息及资源消耗原因
