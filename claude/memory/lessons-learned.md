@@ -157,3 +157,13 @@ eve
 - [2026-04-27] [GLM-5] 场景：Hyprland 启动黑屏。根因：(1) 系统从 noGUI specialisation 启动（nomodeset禁用GPU）(2) hyprland.conf 缺少 render.explicit_sync=2（NVIDIA 555+必须显式同步）。修复：charlie.nix 添加 render{explicit_sync=2;} + __GL_GSYNC_ALLOWED/__GL_VRR_ALLOWED 环境变量 + vfr=true。重启选 "NixOS - Default"（非 noGUI）。
 
 - [2026-04-28] [Sonnet] 场景：Hyprland 启动后1秒崩溃，SDDM循环重启导致屏幕闪烁显示乱码文字。根因：**egl-wayland 未安装**。Hyprland NVIDIA wiki明确要求 `egl-wayland` 作为 EGL↔Wayland 桥接，缺少则无法初始化显示→立即crash→SDDM反复重启→黑屏闪烁。修复：`/etc/nixos/modules/hyprland.nix` 添加 `hardware.graphics.extraPackages = [ pkgs.egl-wayland ]` 和 `environment.systemPackages` 中加入 `egl-wayland`。诊断方法：`nix-store -qR <system-derivation> | grep egl` 验证闭包是否包含 egl-wayland。注意：`nixos-rebuild switch` 遇到 dbus 实现变更时需用 `boot` 方式重启。
+
+- [2026-05-03] [GLM-5.1] 场景：Hyprland+KDE双桌面冲突导致卡死
+  - 症状：系统随机卡死，journalctl无GPU/OOM错误
+  - 根因：panel-nurse-check.timer + plasmashell-crash-guard.timer 检测到 plasmashell 未运行 → 在 Hyprland 下自动启动 plasmashell → Wayland 冲突 → 崩溃风暴
+  - 修复：(1) 禁用3个timer (2) mask plasma-plasmashell/kactivitymanagerd service (3) panel-nurse和crash-guard脚本加 Hyprland 检测退出
+  - 教训：切换桌面环境后必须检查旧DE的守护进程/autostart/timer
+- [2026-05-03] [Sonnet] 场景：系统频繁强制重启（7次/2h）。根因：krdpserver-desktop.service 反复 SIGABRT 崩溃（36次coredump），Restart=on-failure 触发无限重启循环，DrKonqi 级联崩溃(8个处理器)。修复：systemctl --user disable krdpserver-desktop.service。如需远程桌面改用 wayvnc。
+- [2026-05-03] [Sonnet] 场景：Docker 16容器同时启动导致资源争抢、letta在litellm就绪前启动报429。修复：创建 /mnt/ai/ai-cluster/start-all.sh 分4层有序启动（Tier1基础设施→Tier2 LiteLLM→Tier3 AI服务→Tier4辅助），systemd user service docker-ordered-start.service 自动在登录后执行，先 docker stop 所有自动拉起的容器再有序启动。
+
+- [2026-05-03] [Sonnet] 场景：Hyprland 屏幕顶部显示配置错误 → 原因：`render:explicit_sync` 在 Hyprland 0.54.x 已废弃（移到内部自动处理）→ 修复：删除 `/etc/nixos/home/charlie.nix` 中 `render = { explicit_sync = 1; }` 段 → `hyprctl reload` 确认无错误
