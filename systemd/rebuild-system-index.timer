@@ -1,0 +1,9 @@
+[Unit]
+Description=每6小时自动重建系统索引
+
+[Timer]
+OnCalendar=00/6:17:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

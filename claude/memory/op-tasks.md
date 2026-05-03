@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 4 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 4 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 3 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 3 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 2 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 2 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) About an hour ago 自动修复失败，需人工检查：docker logs Exited (137) About an hour ago --tail 30
@@ -516,3 +517,7 @@
 - [ ] [AGI→OP] [2026-05-03 14:50] [medium] 检查进程 143274 的详细信息及资源消耗原因
 - [ ] [AGI→OP] [2026-05-03 19:32] [high] 调查并终止异常高占用的 python3.13 进程
 - [ ] [AGI→OP] [2026-05-03 20:38] [medium] 检查 Python 进程 1102449 和 1102445 的运行状态及日志
+- [ ] [CC] 手机AI冗余APP精简 — 删除deepseek/通义千问/poe/hunyuan/bard/perplexity(共6个，功能被LiteLLM覆盖)，保留claude
+- [ ] [CC] 手机数据提取到电脑 — Chrome书签(Floccus同步)、Joplin笔记、有道笔记、幕布笔记、钱迹记账、微信/QQ联系人存CRM
+- [ ] [CC] 配置手机Chrome书签同步 — Floccus同步到Nextcloud/WebDAV，自动入库ChromaDB
+- [ ] [CC] 手机输入法精简 — 删除搜狗/讯飞/飞扬(3个重复)，保留Gboard

@@ -18,9 +18,6 @@
 ## 高优先
 
 ### 3000 控制台升级路线图（[Sonnet] 2026-04-21）
-- [x] ~~**P1** TopBar 服务健康灯~~ — 已实现（TopBar.tsx `/api/health-status`）
-- [x] ~~**P1** Projects 里程碑改为 JSON 配置文件~~ — 已实现（projects.json + route.ts 读取）
-- [x] ~~**P2** 通知中心~~  — 已实现（TopBar OP badge + 服务健康灯，HTTP检查覆盖Docker异常）
 - [ ] **P3** Cmd+K 全局搜索跨面板
 
 - [x] ~~**全模型幻觉防护系统（P1）**~~ — B+C 已实现：Rule B写入AGENTS.md，Rule C已在CLAUDE.md
@@ -119,12 +116,9 @@
 ### 期二：Universal Intake 串联（[CC] 执行）
 
 - [x] ~~**[CC-P2.1] UniversalBar 组件**~~ — 已存在
-- [x] ~~**[CC-P2.2] hub-api.py /intake 端点**~~ — 已实现（实体提取+对话室广播）
-- [x] ~~**[CC-P2.3] Letta 实体关联写入**~~ — 已实现（2026-04-24）
 
 ### 期三：知识图谱可视化（[CC] 执行）
 
-- [x] ~~**[CC-P3.1] GraphPanel 组件**~~ — 已实现
 - [ ] **[CC-P3.2] 微信联系人 → CRM 自动建图**
 
 ### 期四：习惯学习（[OP] 定时）

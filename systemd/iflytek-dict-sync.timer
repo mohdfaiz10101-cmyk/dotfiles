@@ -1,0 +1,10 @@
+[Unit]
+Description=讯飞词库每小时同步
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=重建系统索引 SYSTEM-INDEX.md
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/rebuild-system-index
+TimeoutStartSec=60
