@@ -167,3 +167,15 @@ eve
 - [2026-05-03] [Sonnet] 场景：Docker 16容器同时启动导致资源争抢、letta在litellm就绪前启动报429。修复：创建 /mnt/ai/ai-cluster/start-all.sh 分4层有序启动（Tier1基础设施→Tier2 LiteLLM→Tier3 AI服务→Tier4辅助），systemd user service docker-ordered-start.service 自动在登录后执行，先 docker stop 所有自动拉起的容器再有序启动。
 
 - [2026-05-03] [Sonnet] 场景：Hyprland 屏幕顶部显示配置错误 → 原因：`render:explicit_sync` 在 Hyprland 0.54.x 已废弃（移到内部自动处理）→ 修复：删除 `/etc/nixos/home/charlie.nix` 中 `render = { explicit_sync = 1; }` 段 → `hyprctl reload` 确认无错误
+
+### 会话摘要 [2026-05-03] [Sonnet/自动]
+- 对话轮次: 128 | 被纠正: 1次
+  - 用户纠正: telegram通知太频繁 取消一些没必要的 如果是成功过的 就减少通知频率 出现错误的通知才给更多的通知
+
+### 会话摘要 [2026-05-03] [Sonnet/自动]
+- 对话轮次: 129 | 被纠正: 1次
+  - 用户纠正: telegram通知太频繁 取消一些没必要的 如果是成功过的 就减少通知频率 出现错误的通知才给更多的通知
+
+### 会话摘要 [2026-05-03] [Sonnet/自动]
+- 对话轮次: 132 | 被纠正: 1次
+  - 用户纠正: telegram通知太频繁 取消一些没必要的 如果是成功过的 就减少通知频率 出现错误的通知才给更多的通知

@@ -1,3 +1,6 @@
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 3 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 3 hours ago --tail 30
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 2 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 2 hours ago --tail 30
+- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) About an hour ago 自动修复失败，需人工检查：docker logs Exited (137) About an hour ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 33 minutes ago 自动修复失败，需人工检查：docker logs Exited (137) 33 minutes ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 3 minutes ago 自动修复失败，需人工检查：docker logs Exited (137) 3 minutes ago --tail 30
 - [ ] [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md
@@ -511,3 +514,5 @@
 - [ ] [SELF-IMPROVE] launcher-server.py: 存在命令注入风险，subprocess调用应使用列表形式传参并严格校验输入，避免直接拼接shell命令。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在危险的命令注入风险，应禁用或移除导入的 `subprocess` 模块，防止潜在的操作系统命令执行漏洞。
 - [ ] [AGI→OP] [2026-05-03 14:50] [medium] 检查进程 143274 的详细信息及资源消耗原因
+- [ ] [AGI→OP] [2026-05-03 19:32] [high] 调查并终止异常高占用的 python3.13 进程
+- [ ] [AGI→OP] [2026-05-03 20:38] [medium] 检查 Python 进程 1102449 和 1102445 的运行状态及日志

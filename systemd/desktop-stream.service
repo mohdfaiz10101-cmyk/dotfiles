@@ -1,0 +1,12 @@
+[Unit]
+Description=Desktop Screenshot Stream (:5997)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/desktop-stream.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

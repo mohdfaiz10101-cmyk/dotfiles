@@ -1,0 +1,17 @@
+[Unit]
+Description=Headless Chrome with CDP (remote debugging)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/google-chrome-stable \
+  --remote-debugging-port=9222 \
+  --no-first-run \
+  --no-default-browser-check \
+  --user-data-dir=/mnt/ai/cache/chrome-cdp \
+  --headless=new
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
