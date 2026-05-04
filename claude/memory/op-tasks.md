@@ -1,3 +1,5 @@
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 29 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 29 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 538ba795619a_litellm-litellm 自动修复失败，需人工检查：docker logs 538ba795619a_litellm-litellm --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 28 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 28 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 27 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 27 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 26 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 26 hours ago --tail 30
