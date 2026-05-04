@@ -3,7 +3,7 @@ Description=OP Lock Watchdog Timer — 每15分钟检查一次
 
 [Timer]
 OnBootSec=5min
-OnUnitActiveSec=15min
+OnUnitActiveSec=30min
 AccuracySec=1min
 
 [Install]

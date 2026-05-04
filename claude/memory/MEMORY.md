@@ -81,6 +81,7 @@
 - 成本: LiteLLM $10/月上限，Claude Code Sonnet 默认 + Hook 路由
 - **Agent创建**: 必须先搜索互联网已有开源 agent/skill，推荐参考后再决策，不要闭门造车
 - **工作流设计**: 先调研业界已有方案（GitHub trend、LangChain Hub、n8n community），再讨论
+- **mihomo GLOBAL**: MUST 保持 `⚡ 自动选择`（URLTest），禁止设为 DIRECT（直连访问 anthropic 会 403）
 
 ## 进行中的项目
 - [微信数据合并](wechat-merge-plan.md) — 双端 DB 合并，Windows 密钥待提取

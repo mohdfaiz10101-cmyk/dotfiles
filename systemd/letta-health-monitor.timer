@@ -4,7 +4,7 @@ Requires=letta-health-monitor.service
 
 [Timer]
 OnBootSec=5min
-OnUnitActiveSec=2h
+OnUnitActiveSec=6h
 Persistent=true
 
 [Install]

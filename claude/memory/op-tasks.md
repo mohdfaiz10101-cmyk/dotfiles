@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 21 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 21 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 20 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 20 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 19 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 19 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 18 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 18 hours ago --tail 30
@@ -557,3 +558,5 @@
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3` 进行的数据库查询操作替换为异步数据库驱动（如 `aiosqlite`），以避免阻塞 FastAPI 的异步事件循环。
 - [ ] [AGI→OP] [2026-05-04 11:08] [medium] 若进程异常，考虑终止或重启相关服务
 - [ ] [AGI→OP] [2026-05-04 11:34] [medium] 确认系统服务状态，补充 services 列表信息。
+- [ ] [AGI→OP] [2026-05-04 13:57] [high] 排查 python3.13 进程为何满载，必要时终止该进程
+- [ ] [AGI→OP] [2026-05-04 14:17] [high] 验证 NixOS 系统状态查询接口是否正常

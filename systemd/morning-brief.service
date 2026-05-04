@@ -2,4 +2,4 @@
 Description=AGI 每日晨报
 [Service]
 Type=oneshot
-ExecStart=/bin/bash /home/charlie/.local/bin/morning-brief.sh
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/morning-brief.sh

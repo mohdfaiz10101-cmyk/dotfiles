@@ -27,10 +27,13 @@ LOCAL_ONLY_AUTH = os.environ.get("LAUNCHER_LOCAL_ONLY", "1") == "1"
 
 
 def _check_auth(handler):
-    """Bearer Token + 本地来源校验。本地请求直接放行，远程需 Bearer Token。"""
+    """Bearer Token + 本地来源校验。本地/Tailscale 请求直接放行，其他远程需 Bearer Token。"""
     if LOCAL_ONLY_AUTH:
         client_ip = handler.client_address[0]
         if client_ip in ("127.0.0.1", "::1", "localhost"):
+            return True
+        # Tailscale 子网 100.64.0.0/10 直接放行
+        if client_ip.startswith("100."):
             return True
     auth = handler.headers.get("Authorization", "")
     if auth == f"Bearer {LAUNCHER_TOKEN}":
