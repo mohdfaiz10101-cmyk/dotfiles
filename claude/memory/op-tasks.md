@@ -1,3 +1,12 @@
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 15 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 15 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 14 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 14 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 13 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 13 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 12 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 11 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 11 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 10 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 10 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 9 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 9 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 8 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 8 hours ago --tail 30
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 7 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 7 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 6 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 6 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 5 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 5 hours ago --tail 30
 - [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) 4 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 4 hours ago --tail 30
@@ -525,3 +534,12 @@
 - [ ] [CC] 手机数据提取到电脑 — Chrome书签(Floccus同步)、Joplin笔记、有道笔记、幕布笔记、钱迹记账、微信/QQ联系人存CRM
 - [ ] [CC] 配置手机Chrome书签同步 — Floccus同步到Nextcloud/WebDAV，自动入库ChromaDB
 - [ ] [CC] 手机输入法精简 — 删除搜狗/讯飞/飞扬(3个重复)，保留Gboard
+- [ ] [AGI→OP] [2026-05-04 01:55] [high] 调查并终止僵尸或异常高占用的 'ps' 进程
+- [ ] [AGI→OP] [2026-05-04 03:26] [medium] 分析并限制 python3.13 进程资源消耗
+- [ ] [AGI→OP] [2026-05-04 04:12] [medium] 若进程非必要，终止高耗资源的 bash 进程
+- [ ] [AGI→OP] [2026-05-04 04:19] [medium] 检查进程 990142 (python3.13) 的具体用途和异常行为
+- [ ] [AGI→OP] [2026-05-04 04:27] [medium] 检查 PostgreSQL 数据库连接状态，排查 pg_isready 进程异常占用资源原因
+- [ ] [AGI→OP] [2026-05-04 04:30] [high] 检查高占用 python3.13 进程的详细信息和来源
+- [ ] [AGI→OP] [2026-05-04 05:45] [low] 如果进程异常，收集堆栈信息以便调试
+- [ ] [AGI→OP] [2026-05-04 06:58] [high] 检查进程 1866317 的详细状态及资源消耗原因
+- [ ] [AGI→OP] [2026-05-04 08:52] [medium] 检查 NixOS 主机连接及传感器状态

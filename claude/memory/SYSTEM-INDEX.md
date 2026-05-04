@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-03 21:57 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-04 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,55 +10,58 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
-| 3000 | (v1",pid=38536,fd=22)) |
+| 3000 | (v1",pid=38225,fd=22)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
 | 4000 | 0.0.0.0:* |
-| 4533 | users:(("navidrome",pid=1751,fd=9)) |
-| 5037 | users:(("adb",pid=688933,fd=11)) |
+| 4001 | users:(("python3.13",pid=38685,fd=6)) |
+| 4533 | users:(("navidrome",pid=1652,fd=9)) |
+| 5037 | users:(("adb",pid=2920,fd=11)) |
 | 5244 | 0.0.0.0:* |
 | 5244 | [::]:* |
 | 5678 | 0.0.0.0:* |
 | 5678 | [::]:* |
-| 5900 | users:(("wayvnc",pid=1241373,fd=10)) |
-| 5997 | users:(("python3.13",pid=1097419,fd=3)) |
-| 5998 | users:((".websockify-wra",pid=1240113,fd=3)) |
+| 5900 | users:(("wayvnc",pid=4148,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=4153,fd=4)) |
 | 6379 | 0.0.0.0:* |
-| 7681 | users:(("ttyd",pid=1486,fd=13)) |
-| 7690 | users:(("ttyd",pid=1848,fd=13)) |
-| 7691 | users:(("ttyd",pid=1844,fd=13)) |
-| 7693 | users:(("ttyd",pid=1843,fd=13)) |
-| 7694 | users:(("ttyd",pid=1852,fd=13)) |
-| 7699 | users:(("caddy",pid=1136090,fd=4)) |
+| 7681 | users:(("ttyd",pid=2357,fd=13)) |
+| 7690 | users:(("ttyd",pid=1715,fd=13)) |
+| 7691 | users:(("ttyd",pid=1712,fd=13)) |
+| 7693 | users:(("ttyd",pid=1711,fd=13)) |
+| 7694 | users:(("ttyd",pid=1719,fd=13)) |
+| 7699 | users:(("caddy",pid=3912,fd=4)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:(("opencode",pid=3730,fd=19)) |
+| 8080 | users:(("opencode",pid=3904,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
 | 8284 | [::]:* |
 | 8384 | 0.0.0.0:* |
-| 8788 | users:(("python3.13",pid=1743,fd=3)) |
-| 8789 | users:(("python3.13",pid=1723,fd=3)) |
+| 8788 | users:(("python3.13",pid=1641,fd=3)) |
+| 8789 | users:(("python3.13",pid=1625,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
-| 9099 | users:(("python3.13",pid=11348,fd=3)) |
-| 9222 | users:(("chrome",pid=636883,fd=76)) |
-| 9800 | users:(("python3.13",pid=1729,fd=6)) |
-| 9801 | users:(("python3.13",pid=10038,fd=6)) |
-| 9810 | users:(("python3.13",pid=1759,fd=6)) |
-| 9875 | users:(("python3.13",pid=1739,fd=3)) |
-| 9876 | users:(("python3.13",pid=17327,fd=3)) |
+| 9099 | users:(("python3.13",pid=11282,fd=3)) |
+| 9222 | users:(("chrome",pid=3938,fd=60)) |
+| 9800 | users:(("python3.13",pid=1629,fd=6)) |
+| 9801 | users:(("python3.13",pid=9802,fd=6)) |
+| 9810 | users:(("python3.13",pid=1658,fd=6)) |
+| 9811 | users:(("python3.13",pid=43040,fd=13)) |
+| 9875 | users:(("python3.13",pid=1635,fd=3)) |
+| 9876 | users:(("python3.13",pid=16943,fd=3)) |
 | 9880 | 0.0.0.0:* |
 | 9880 | [::]:* |
-| 9900 | users:(("python3.13",pid=22521,fd=13)) |
-| 9922 | users:(("node",pid=1491406,fd=21)) |
-| 9977 | users:(("python3",pid=1663,fd=3)) |
-| 9980 | users:(("python3.13",pid=1640,fd=3)) |
+| 9900 | users:(("python3.13",pid=24696,fd=13)) |
+| 9910 | users:(("python3.13",pid=43572,fd=14)) |
+| 9922 | users:(("node",pid=1627,fd=21)) |
+| 9977 | users:(("python3",pid=1574,fd=3)) |
+| 9979 | users:(("python3.13",pid=38134,fd=3)) |
+| 9980 | users:(("python3.13",pid=1553,fd=3)) |
 | 22000 | *:* |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
@@ -114,7 +117,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（418个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（419个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -195,7 +198,7 @@ static
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
 **op-*** (18个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +8更多`
-**opencode-*** (7个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-stuck-watch.sh, opencode-tmux-wrap`
+**opencode-*** (8个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-stuck-watch.sh, opencode-tmux-wrap`
 **other-*** (50个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +40更多`
 **otp-*** (1个): `otp-sync`
 **panel-*** (1个): `panel-nurse`
@@ -310,7 +313,7 @@ tech-researcher
 ```
 
 ### ~/.claude/skills/ — Skills
-共 147 个 skill 目录
+共 148 个 skill 目录
 
 ### memory/ — 记忆系统
 ```
@@ -320,11 +323,8 @@ ai-cluster-architecture.md
 ai-tools.md
 app-dev-journal.md
 cc-queue.md
-cline-api-integration-analysis.md
 codebase-map.md
 command-reference.md
-feedback_architecture_continuity.md
-feedback_entry_point.md
 feedback_phone_operations.md
 ideas-roadmap.md
 lessons-learned-archive.md
@@ -339,16 +339,15 @@ op-review-report.md
 op-tasks-archive-202604.md
 op-tasks-archive-20260423.md
 op-tasks.md
+opencode-session-log.md
 pending-tasks.md
 setup-plan.md
 trade-workflow-architecture.md
 troubleshooting.md
 wechat-merge-plan.md
-weekly-error-review-2026-W14.md
-weekly-error-review-2026-W15.md
 ```
 
-## 三、systemd 用户服务（350个注册，64个运行中）
+## 三、systemd 用户服务（350个注册，69个运行中）
 
 ### 当前运行中
 ```
@@ -358,6 +357,7 @@ agi-frontend
 agi-gateway
 agi-telegram-bot
 ai-rules-sync
+ai-watchdog
 at-spi-dbus-bus
 caddy-launcher
 chrome-cdp
@@ -365,12 +365,16 @@ chronos-biofeedback
 chronos-sensory
 claude-esp
 claude-md-sync
+claude-tablet-output
 claude-token-tray
+clipboard-sync-tablet
 cloudflared-happy
+content-router
 cookie-sync-server
 dbus
 dotfiles-symlink-watch
 fcitx5
+finance-agent
 freeze-detector
 gcr-ssh-agent
 glm-monitor
@@ -379,6 +383,7 @@ hub-api
 kunifiedpush-distributor
 launcher
 letta-mcp
+macg-api
 memory-evolution
 mihomo-watch
 navidrome
@@ -399,7 +404,6 @@ proxy-403-monitor
 python-crash-guard
 screenshot-watcher
 sunshine
-swayidle
 tablet-adb-watch
 tablet-control-panel
 ttyd-aider
@@ -418,7 +422,7 @@ xdg-permission-store
 ydotoold
 ```
 
-## 四、定时任务（94个 timer）
+## 四、定时任务（96个 timer）
 ```
 adb-tablet-keepalive
 agi-cognitive-engine
@@ -469,6 +473,7 @@ litellm-error-guard
 maintenance-learner
 memory-backup
 memory-curator
+memory-decay-engine
 mihomo-backup
 mihomo-guardian
 morning-brief
@@ -500,6 +505,7 @@ opencode-job-charlie-b445f233ebb8-proxy-guardian
 opencode-job-charlie-b445f233ebb8-security-watchdog
 phone-tailscale-guard
 push-tunnel-url
+rebuild-system-index
 recoll-idle-index
 selflearn-check
 sync-memory-ntfs
