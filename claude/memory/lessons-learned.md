@@ -172,3 +172,31 @@ eve
 - [2026-05-04] [GLM-5.1] 场景：mihomo GLOBAL 反复变 DIRECT | 根因：(1)mihomo 配置文件没有 GLOBAL proxy-group，mihomo 自动创建默认 DIRECT (2)proxy-watchdog/proxy-free-fetch 下载免费订阅后 restart mihomo，覆盖了良心云配置 | 修复：在良心云配置 proxy-groups 末尾追加 GLOBAL(type=select, now=⚡自动选择) | 注意：mihomo Meta 用 type=select 不是 Selector | 自动保护：创建了 mihomo-anthemic-check.timer 每10min 检测 GLOBAL+anthropic 可达性
 
 - [2026-05-04] [GLM] 场景：AI 架构全面审计与优化 | CLAUDE.md 从 477行/125条强制规则 精简为 119行/17条 L1核心规则，L2/L3 移入 memory/rules-secondary.md 按需加载 | 创建 cc-session-boot.sh 五合一启动脚本（Letta+OP+ARCH 3秒完成） | 禁用 5 个重叠 systemd 服务（Letta 3合1, 磁盘 3合1, 代理去重, OP去重） | 删除 20 个废弃 auto-* Skills + 10 个废弃脚本 | 重启 opencode-web 释放 508MB 内存泄漏 | Swap 从 5.6G 降至 5.0G
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 129 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 128 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 127 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 126 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 125 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 125 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+### 会话摘要 [2026-05-05] [Sonnet/自动]
+- 对话轮次: 123 | 被纠正: 1次
+  - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
