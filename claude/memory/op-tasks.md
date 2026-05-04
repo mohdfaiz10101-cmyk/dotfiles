@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 27 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 27 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 26 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 26 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 25 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 25 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 24 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 24 hours ago --tail 30
@@ -565,3 +566,4 @@
 - [ ] [AGI→OP] [2026-05-04 11:34] [medium] 确认系统服务状态，补充 services 列表信息。
 - [ ] [AGI→OP] [2026-05-04 13:57] [high] 排查 python3.13 进程为何满载，必要时终止该进程
 - [ ] [AGI→OP] [2026-05-04 14:17] [high] 验证 NixOS 系统状态查询接口是否正常
+- [ ] [AGI→OP] [2026-05-04 19:42] [medium] 验证服务状态检测模块的配置
