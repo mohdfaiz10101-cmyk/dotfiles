@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 17 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 17 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 16 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 16 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 15 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 15 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 14 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 14 hours ago --tail 30
@@ -544,3 +545,10 @@
 - [ ] [AGI→OP] [2026-05-04 05:45] [low] 如果进程异常，收集堆栈信息以便调试
 - [ ] [AGI→OP] [2026-05-04 06:58] [high] 检查进程 1866317 的详细状态及资源消耗原因
 - [ ] [AGI→OP] [2026-05-04 08:52] [medium] 检查 NixOS 主机连接及传感器状态
+
+### [SELF-IMPROVE 2026-05-04] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 修复文件末尾 `_ALERT_SUPPRES` 变量名截断的语法错误。
+- [ ] [SELF-IMPROVE] think.py: 在调用 LiteLLM 时缺乏对模型返回非标准 JSON 的容错解析机制，应当增加 try-except 及 json_repair 等降级策略以防直接崩溃。
+- [ ] [SELF-IMPROVE] kanban.html: 缺少HTML闭合标签且CSS代码截断不完整，需补全`.wip-bar`及后续所有样式和HTML结构。
+- [ ] [SELF-IMPROVE] launcher-server.py: 存在路径遍历绕过风险，应使用 os.path.commonpath 替代字符串前缀比对来严格验证解析后的路径是否在 LAUNCHER_DIR 内。
+- [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3` 进行的数据库查询操作替换为异步数据库驱动（如 `aiosqlite`），以避免阻塞 FastAPI 的异步事件循环。
