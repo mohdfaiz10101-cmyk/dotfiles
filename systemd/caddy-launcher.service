@@ -1,14 +1,1 @@
-[Unit]
-Description=Caddy Launcher Gateway (:7699)
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=%h/.nix-profile/bin/caddy run --config /mnt/ai/apps/launcher/Caddyfile
-Restart=on-failure
-RestartSec=5
-StandardOutput=journal
-StandardError=journal
-
-[Install]
-WantedBy=default.target
+/nix/store/58s3vr16wll8bv4gzgnqahd947p8i7ip-home-manager-files/.config/systemd/user/caddy-launcher.service

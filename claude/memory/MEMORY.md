@@ -2,6 +2,7 @@
 
 ## 全局索引
 - [SYSTEM-INDEX.md](SYSTEM-INDEX.md) — **AI 冷启动必读**：端口/服务/依赖/数据流/故障定位
+- [rules-secondary.md](rules-secondary.md) — **L2/L3 规则**：会话启动/任务执行/参考规则（CLAUDE.md 只保留 L1 核心）
 
 ## 反馈规则
 - [必须提供访问入口](feedback_entry_point.md) — 部署服务后 MUST 给出 URL 和启动命令

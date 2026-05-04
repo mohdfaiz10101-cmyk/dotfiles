@@ -214,6 +214,46 @@ jq -n --arg c "完成: TASK_ID — 结果摘要" '{agent:"OP-Sisyphus",type:"tas
   >> ~/Desktop/巡检报告/op-live-feed.jsonl
 ```
 
+## 工具调用学习闭环（TOOL_LEARN — 死规则）
+
+### 成功时：记住正确调用
+每次工具调用成功后，MUST 检查是否是**首次成功**（grep lessons-learned 无记录），若是则追加：
+```bash
+echo "- [$(date +%Y-%m-%d)] [OP] 工具: {工具名} | 调用: {命令摘要} | 结果: 成功 | 场景: {适用场景}" \
+  >> ~/.claude/projects/-home-charlie/memory/lessons-learned.md
+```
+
+### 失败时：自动学习并更新
+工具调用失败后，MUST 在重试前执行：
+
+**Step 1** — 分析失败原因，写入经验：
+```bash
+python3 -c "
+line = f'- [$(date +%Y-%m-%d)] [OP] 失败学习: {工具名} | 错误调用: {实际调用} | 错误: {错误信息前30字} | 正确用法: {修复后的调用} | 原因: {根因}'
+with open('/home/charlie/.claude/projects/-home-charlie/memory/lessons-learned.md','a') as f:
+    f.write(line + '\n')
+"
+```
+
+**Step 2** — 搜索历史是否有类似失败记录（避免重复踩坑）：
+```bash
+grep -i "{关键词}" ~/.claude/projects/-home-charlie/memory/lessons-learned.md | tail -3
+```
+
+**Step 3** — 根据历史记录调整调用方式后重试
+
+### 学习记录格式（统一）
+```
+- [日期] [OP] {类型}: {工具名} | {字段} | {内容}
+```
+类型：`成功记录` / `失败学习` / `调用更新`
+
+### 判定规则
+- **首次成功**：grep 无匹配 → 记录
+- **非首次**：grep 有匹配 → 跳过（不重复记录）
+- **失败**：无论是否首次 → MUST 记录（含错误+修复）
+- **连续3次同类失败** → 标记 [!] 交 CC，附带所有学习记录
+
 ## 标准流程
 <!-- 每次执行任务后，将成功的操作步骤记录在此区域 -->
 
