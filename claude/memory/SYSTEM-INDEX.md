@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-04 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-04 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -16,7 +16,7 @@
 | 4000 | 0.0.0.0:* |
 | 4001 | users:(("python3.13",pid=38685,fd=6)) |
 | 4533 | users:(("navidrome",pid=1652,fd=9)) |
-| 5037 | users:(("adb",pid=2920,fd=11)) |
+| 5037 | users:(("adb",pid=16039,fd=11)) |
 | 5244 | 0.0.0.0:* |
 | 5244 | [::]:* |
 | 5678 | 0.0.0.0:* |
@@ -25,18 +25,19 @@
 | 5998 | users:((".websockify-wra",pid=4153,fd=4)) |
 | 6379 | 0.0.0.0:* |
 | 7681 | users:(("ttyd",pid=2357,fd=13)) |
-| 7690 | users:(("ttyd",pid=1715,fd=13)) |
-| 7691 | users:(("ttyd",pid=1712,fd=13)) |
+| 7690 | users:(("ttyd",pid=814810,fd=13)) |
+| 7691 | users:(("ttyd",pid=814808,fd=13)) |
 | 7693 | users:(("ttyd",pid=1711,fd=13)) |
 | 7694 | users:(("ttyd",pid=1719,fd=13)) |
-| 7699 | users:(("caddy",pid=3912,fd=4)) |
+| 7699 | users:(("caddy",pid=1577727,fd=4)) |
+| 7699 | users:(("caddy",pid=1720441,fd=4)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:(("opencode",pid=3904,fd=19)) |
+| 8080 | users:(("opencode",pid=1072450,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
@@ -52,7 +53,7 @@
 | 9801 | users:(("python3.13",pid=9802,fd=6)) |
 | 9810 | users:(("python3.13",pid=1658,fd=6)) |
 | 9811 | users:(("python3.13",pid=43040,fd=13)) |
-| 9875 | users:(("python3.13",pid=1635,fd=3)) |
+| 9875 | users:(("python3.13",pid=262371,fd=3)) |
 | 9876 | users:(("python3.13",pid=16943,fd=3)) |
 | 9880 | 0.0.0.0:* |
 | 9880 | [::]:* |
@@ -62,6 +63,8 @@
 | 9977 | users:(("python3",pid=1574,fd=3)) |
 | 9979 | users:(("python3.13",pid=38134,fd=3)) |
 | 9980 | users:(("python3.13",pid=1553,fd=3)) |
+| 9999 | users:(("python3.13",pid=1095231,fd=3)) |
+| 19877 | users:(("python3.13",pid=1720438,fd=6)) |
 | 22000 | *:* |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
@@ -117,12 +120,12 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（419个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（412个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
 **agi-*** (2个): `agi-feedback-bus.sh, agi-persistent-monitor.sh`
-**ai-*** (13个): `ai-architecture-audit, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-rules-sync.sh, ai-rules-watch.sh... +3更多`
+**ai-*** (14个): `ai-architecture-audit, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-rules-sync.sh, ai-rules-watch.sh... +4更多`
 **aider-*** (2个): `aider-post-commit-hook, aider-with-memory`
 **apk-*** (1个): `apk-debug`
 **architecture-*** (2个): `architecture-cleanup.sh, architecture-health-check`
@@ -132,7 +135,7 @@ static
 **baseline-*** (1个): `baseline-update.sh`
 **boot-*** (1个): `boot-recovery.sh`
 **browser-*** (1个): `browser-launch-with-cookies`
-**cc-*** (23个): `cc-autoagent-hook.sh, cc-autonomous-runner.sh, cc-autoskill-hook.sh, cc-behavior-audit.sh, cc-blocker-resolver.sh, cc-conversation-recorder.sh, cc-decision-learner.sh, cc-desktop-image-inject.sh, cc-dialogue-broadcast.sh, cc-discord-push... +13更多`
+**cc-*** (24个): `cc-autoagent-hook.sh, cc-autonomous-runner.sh, cc-autoskill-hook.sh, cc-behavior-audit.sh, cc-blocker-resolver.sh, cc-conversation-recorder.sh, cc-decision-learner.sh, cc-desktop-image-inject.sh, cc-dialogue-broadcast.sh, cc-discord-push... +14更多`
 **cct-*** (1个): `cct-tmux-wrap`
 **charlie-*** (1个): `charlie-ego-record.sh`
 **check-*** (2个): `check-idle-simple.sh, check-idle.sh`
@@ -186,7 +189,7 @@ static
 **mem-*** (1个): `mem-stats`
 **memory-*** (4个): `memory-backup, memory-decay-engine.py, memory-dream, memory-evolution-engine`
 **meta-*** (1个): `meta-monitor.sh`
-**mihomo-*** (2个): `mihomo-config-validate, mihomo-guardian`
+**mihomo-*** (3个): `mihomo-anthropic-check, mihomo-config-validate, mihomo-guardian`
 **morning-*** (1个): `morning-brief.sh`
 **mutual-*** (1个): `mutual-review`
 **new-*** (1个): `new-api-manager`
@@ -232,7 +235,6 @@ static
 **tablet-*** (1个): `tablet-adb-watch`
 **task-*** (1个): `task-complete`
 **terminal-*** (1个): `terminal-pet`
-**test-*** (5个): `test-ai-models.sh, test-letta-memory-system, test-windsurf-knowledge-mcp, test-windsurf-router, test-windsurf-smart-router`
 **tg-*** (5个): `tg-bot-tasks, tg-command, tg-push, tg-saved-reader, tg-screenshot`
 **tiny-*** (1个): `tiny-agents`
 **todo-*** (1个): `todo_sync.py`
@@ -249,7 +251,6 @@ static
 **weekly-*** (1个): `weekly-error-review`
 **whisper-*** (1个): `whisper-stt-server`
 **win-*** (2个): `win-deploy, win-exec`
-**windsurf-*** (5个): `windsurf-konsole-sidebar, windsurf-mcp-summary, windsurf-realtime-summary, windsurf-sidebar, windsurf-with-sidebar`
 **wine-*** (1个): `wine-wechat`
 **wol-*** (1个): `wol-windows.sh`
 **wx-*** (1个): `wx-memory-extract.py`
@@ -313,7 +314,7 @@ tech-researcher
 ```
 
 ### ~/.claude/skills/ — Skills
-共 148 个 skill 目录
+共 128 个 skill 目录
 
 ### memory/ — 记忆系统
 ```
@@ -342,13 +343,14 @@ op-tasks-archive-202605.md
 op-tasks.md
 opencode-session-log.md
 pending-tasks.md
+rules-secondary.md
 setup-plan.md
 trade-workflow-architecture.md
 troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（350个注册，69个运行中）
+## 三、systemd 用户服务（351个注册，68个运行中）
 
 ### 当前运行中
 ```
@@ -369,7 +371,6 @@ claude-md-sync
 claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
-cloudflared-happy
 content-router
 cookie-sync-server
 dbus
@@ -379,10 +380,10 @@ finance-agent
 freeze-detector
 gcr-ssh-agent
 glm-monitor
+glm-proxy
 headless-browser
 hub-api
 kunifiedpush-distributor
-launcher
 letta-mcp
 macg-api
 memory-evolution
@@ -423,7 +424,7 @@ xdg-permission-store
 ydotoold
 ```
 
-## 四、定时任务（96个 timer）
+## 四、定时任务（94个 timer）
 ```
 adb-tablet-keepalive
 agi-cognitive-engine
@@ -432,7 +433,6 @@ agi-feedback-bus
 agi-self-improve
 agi-wechat-learn
 ai-architecture-audit
-ai-config-guard
 ai-scheduler
 auto-fix-services
 backup-cleanup
@@ -485,7 +485,6 @@ nixos-stable-watch
 nixos-test-notify
 ntfs-health-check
 ocr-indexer
-op-connection-guard
 op-lock-watchdog
 op-self-upgrade
 op-task-runner
