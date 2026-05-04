@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-04 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-05 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -16,7 +16,7 @@
 | 4000 | 0.0.0.0:* |
 | 4001 | users:(("python3.13",pid=38685,fd=6)) |
 | 4533 | users:(("navidrome",pid=1652,fd=9)) |
-| 5037 | users:(("adb",pid=16039,fd=11)) |
+| 5037 | users:(("adb",pid=3572592,fd=11)) |
 | 5244 | 0.0.0.0:* |
 | 5244 | [::]:* |
 | 5678 | 0.0.0.0:* |
@@ -29,7 +29,6 @@
 | 7691 | users:(("ttyd",pid=814808,fd=13)) |
 | 7693 | users:(("ttyd",pid=1711,fd=13)) |
 | 7694 | users:(("ttyd",pid=1719,fd=13)) |
-| 7699 | users:(("caddy",pid=1577727,fd=4)) |
 | 7699 | users:(("caddy",pid=1720441,fd=4)) |
 | 7890 | *:* |
 | 7891 | *:* |
@@ -37,7 +36,7 @@
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:(("opencode",pid=1072450,fd=19)) |
+| 8080 | users:(("opencode",pid=2436060,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
@@ -63,7 +62,6 @@
 | 9977 | users:(("python3",pid=1574,fd=3)) |
 | 9979 | users:(("python3.13",pid=38134,fd=3)) |
 | 9980 | users:(("python3.13",pid=1553,fd=3)) |
-| 9999 | users:(("python3.13",pid=1095231,fd=3)) |
 | 19877 | users:(("python3.13",pid=1720438,fd=6)) |
 | 22000 | *:* |
 | 40544 | 0.0.0.0:* |
@@ -350,7 +348,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（351个注册，68个运行中）
+## 三、systemd 用户服务（351个注册，66个运行中）
 
 ### 当前运行中
 ```
@@ -380,7 +378,6 @@ finance-agent
 freeze-detector
 gcr-ssh-agent
 glm-monitor
-glm-proxy
 headless-browser
 hub-api
 kunifiedpush-distributor
@@ -406,7 +403,6 @@ proxy-403-monitor
 python-crash-guard
 screenshot-watcher
 sunshine
-tablet-adb-watch
 tablet-control-panel
 ttyd-aider
 ttyd-cct
@@ -424,9 +420,8 @@ xdg-permission-store
 ydotoold
 ```
 
-## 四、定时任务（94个 timer）
+## 四、定时任务（92个 timer）
 ```
-adb-tablet-keepalive
 agi-cognitive-engine
 agi-daily-report
 agi-feedback-bus
@@ -503,7 +498,6 @@ opencode-job-charlie-b445f233ebb8-marketing-scan
 opencode-job-charlie-b445f233ebb8-memory-maintain
 opencode-job-charlie-b445f233ebb8-proxy-guardian
 opencode-job-charlie-b445f233ebb8-security-watchdog
-phone-tailscale-guard
 push-tunnel-url
 rebuild-system-index
 recoll-idle-index
