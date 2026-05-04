@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-04 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-04 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -338,6 +338,7 @@ op-agent-system.md
 op-review-report.md
 op-tasks-archive-202604.md
 op-tasks-archive-20260423.md
+op-tasks-archive-202605.md
 op-tasks.md
 opencode-session-log.md
 pending-tasks.md
