@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 18 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 18 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 17 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 17 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 16 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 16 hours ago --tail 30
 - [ ] [CC] [2026-05-04] [high] Docker容器 Exited (137) 15 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 15 hours ago --tail 30
@@ -552,3 +553,4 @@
 - [ ] [SELF-IMPROVE] kanban.html: 缺少HTML闭合标签且CSS代码截断不完整，需补全`.wip-bar`及后续所有样式和HTML结构。
 - [ ] [SELF-IMPROVE] launcher-server.py: 存在路径遍历绕过风险，应使用 os.path.commonpath 替代字符串前缀比对来严格验证解析后的路径是否在 LAUNCHER_DIR 内。
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3` 进行的数据库查询操作替换为异步数据库驱动（如 `aiosqlite`），以避免阻塞 FastAPI 的异步事件循环。
+- [ ] [AGI→OP] [2026-05-04 11:08] [medium] 若进程异常，考虑终止或重启相关服务
