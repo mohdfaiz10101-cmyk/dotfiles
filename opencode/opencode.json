@@ -59,23 +59,6 @@
           }
         }
       }
-    },
-    "opencode-go": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "OpenCode Go",
-      "options": {
-        "baseURL": "https://api.opencode.cc/v1",
-        "apiKey": "sk-qmWNFVvvcUtQjN44MNLmuNiXSXfO7yDBBERwvWywVpa788lKbUBihssicJQlIN4M"
-      },
-      "models": {
-        "opencode-go-pro": {
-          "name": "OpenCode Go Pro",
-          "limit": {
-            "context": 200000,
-            "output": 16384
-          }
-        }
-      }
     }
   },
   "model": "openai-compatible/glm-5-turbo",
