@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 41 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 41 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 40 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 40 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 39 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 39 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 38 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 38 hours ago --tail 30
@@ -584,3 +585,11 @@
 - [ ] [AGI→OP] [2026-05-05 01:24] [high] 检查rg进程4102120的资源占用情况，判断是否为异常搜索任务
 - [ ] [AGI→OP] [2026-05-05 07:21] [high] 检查进程 2775116 和 2775093 (python3.13) 的具体用途，确认是否为异常任务
 - [ ] [AGI→OP] [2026-05-05 08:16] [high] 分析两个 python3.13 进程的资源消耗原因，必要时进行限流或重启
+
+### [SELF-IMPROVE 2026-05-05] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 修复第95行 `_ALERT_SUPPRES` 变量名截断及未赋值的语法错误。
+- [ ] [SELF-IMPROVE] think.py: 将硬编码的 Letta URL 和 Agent ID 提取为环境变量或配置项，以提升代码的可维护性与环境迁移能力。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS中间被截断，需要补充完整缺失的样式规则以及关键的HTML结构和JavaScript逻辑。
+- [ ] [SELF-IMPROVE] launcher-server.py: 使用命令模板或白名单机制严格校验`subprocess`启动的参数，避免潜在的命令注入风险。
+- [ ] [SELF-IMPROVE] hub-api.py: 存在严重的路径遍历安全风险，且直接使用拼接字符串的SQLite查询易引发SQL注入，应使用参数化查询并校验路径边界。
+- [ ] [AGI→OP] [2026-05-05 10:28] [high] 如果进程异常，考虑终止高占用进程以恢复系统响应
