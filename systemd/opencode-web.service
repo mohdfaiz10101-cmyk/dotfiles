@@ -4,14 +4,14 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.local/bin/opencode web --port 8080 --hostname 0.0.0.0
+ExecStart=/run/current-system/sw/bin/bash -c 'unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY; exec /home/charlie/.local/bin/opencode web --port 8080 --hostname 0.0.0.0'
 Restart=on-failure
 RestartSec=15
 StartLimitIntervalSec=120
 StartLimitBurst=5
 MemoryMax=infinity
 OOMScoreAdjust=-500
-Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin"
+Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin" "no_proxy=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn,api.opencode.ai,opencode.ai" "NO_PROXY=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn,api.opencode.ai,opencode.ai"
 
 [Install]
 WantedBy=default.target

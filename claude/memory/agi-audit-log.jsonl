@@ -15246,3 +15246,71 @@
 {"ts": "2026-05-05 21:31", "type": "cycle", "summary": "系统运行平稳，CPU和内存数据暂缺，磁盘AI占用率34%处于正常范围，无待处理任务。", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-05 21:32", "type": "task_queued", "task": "检查并处理 PID 1550969 (python3.13) 的高 CPU 占用问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
 {"ts": "2026-05-05 21:32", "type": "cycle", "summary": "系统存在 CPU 资源异常占用，磁盘使用正常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 21:33", "type": "cycle", "summary": "系统存在 python3.13 进程高 CPU 占用，其余指标正常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 21:34", "type": "cycle", "summary": "系统运行正常，检测到 python3.13 进程占用较高 CPU 资源。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:35", "type": "cycle", "summary": "系统运行平稳，各项指标正常，磁盘使用率为34%。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:36", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:37", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:39", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 21:40", "type": "task_queued", "task": "检查 CPU 和内存监控数据采集服务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:40", "type": "cycle", "summary": "系统数据部分缺失，但磁盘空间正常，无待处理任务或服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:42", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 21:43", "type": "task_queued", "task": "检查并处理 PID 1614184 (python3.13) 的高 CPU 占用问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:43", "type": "cycle", "summary": "系统检测到 python3.13 进程占用 100% CPU 资源，其余服务状态正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 21:44", "type": "cycle", "summary": "系统各项指标正常，暂无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:46", "type": "cycle", "summary": "系统检测到高 CPU 占用进程，但服务运行正常，暂无异常警报", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 21:47", "type": "cycle", "summary": "系统运行正常，检测到瞬时CPU高占用进程，暂无服务异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:48", "type": "task_queued", "task": "检查系统监控代理进程，确认为何 CPU 和内存数据丢失。", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:48", "type": "cycle", "summary": "系统监控数据部分缺失，但磁盘使用正常且无待处理任务或警报。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 21:49", "type": "cycle", "summary": "系统运行正常，CPU存在高占用进程但无直接警报", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:51", "type": "task_queued", "task": "调查并处理 python3.13 进程异常占用 CPU 的情况", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:51", "type": "task_queued", "task": "检查系统监控代理，修复 CPU 数据获取异常", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:51", "type": "cycle", "summary": "系统检测到异常高负载进程，CPU 数据获取失败", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 21:53", "type": "cycle", "summary": "系统运行正常，无异常警报，无待处理任务。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:54", "type": "task_queued", "task": "检查 python3.13 (PID: 1670729) 进程详情，确认是否为异常任务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:54", "type": "task_queued", "task": "修复系统监控模块，确保 CPU 和 内存数据能正常上报", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:54", "type": "cycle", "summary": "系统存在高CPU占用进程，内存和服务状态数据缺失。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-05-05 21:55", "type": "cycle", "summary": "系统运行平稳，磁盘占用 34%，无异常告警或待处理任务。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:56", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 21:57", "type": "task_queued", "task": "检查进程 python3.13 (PID: 1690801) 的具体状态，若异常则终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:57", "type": "task_queued", "task": "排查系统监控数据获取失败的原因", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:57", "type": "cycle", "summary": "检测到 Python 进程 CPU 占用异常，系统其他数据缺失", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 21:58", "type": "task_queued", "task": "检查 python3.13 (PID: 1697474) 进程详情，确认是否为异常任务", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 21:58", "type": "cycle", "summary": "检测到 python3.13 进程占用 CPU 66.6%，系统其余状态正常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:00", "type": "cycle", "summary": "系统运行平稳，各项指标无明显异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:01", "type": "cycle", "summary": "系统运行正常，检测到 python3.13 进程 CPU 占用较高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:02", "type": "task_queued", "task": "调查并处理高 CPU 占用进程 python3.13 (PID: 1721622)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:02", "type": "task_queued", "task": "检查系统监控代理状态，修复 CPU/内存 数据采集为 '?' 的问题", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:02", "type": "cycle", "summary": "检测到 python3.13 进程占用大量 CPU 资源（66.6%），系统监控数据显示异常。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 22:04", "type": "task_queued", "task": "调查并处理异常进程 python3.13 (PID: 1731118, 1731113) 的高 CPU 占用", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:04", "type": "cycle", "summary": "系统存在异常 CPU 占用，磁盘空间正常，无待处理任务", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 22:05", "type": "cycle", "summary": "系统运行平稳，无异常警报，待处理任务数为0", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:06", "type": "task_queued", "task": "检查并分析进程 1745224 的行为，必要时进行限制或终止", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:06", "type": "cycle", "summary": "检测到 python3.13 进程占用单核 CPU 达到 100%，需关注资源异常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:07", "type": "cycle", "summary": "系统存在高 CPU 占用进程，其他服务状态未知", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:11", "type": "cycle", "summary": "系统整体运行平稳，CPU使用率未知，但检测到python3.13进程占用较高，待处理任务积压为0。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:12", "type": "task_queued", "task": "检查系统监控代理状态，确保CPU和内存数据正常上报", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:12", "type": "cycle", "summary": "系统运行平稳，CPU和内存数据缺失，磁盘AI占用正常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:15", "type": "cycle", "summary": "系统状态正常，无异常警报，OP无待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:16", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:17", "type": "cycle", "summary": "CPU 使用率未知，但检测到 python3.13 进程占用 66.6% CPU，其余系统指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:18", "type": "task_queued", "task": "检查 python3.13 (PID: 1816611) 的具体用途及异常原因，必要时进行限制或终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:18", "type": "cycle", "summary": "系统整体负载平稳，但检测到 python3.13 进程异常占用 CPU", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:19", "type": "task_queued", "task": "调查 PID 1824090 和 1824085 的具体进程详情及用途", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:19", "type": "cycle", "summary": "系统检测到两个 Python 进程（python3.13）占用异常高 CPU 资源", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 22:21", "type": "cycle", "summary": "系统运行平稳，磁盘占用正常，无异常警报。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:22", "type": "task_queued", "task": "调查并处理进程 1840023 的高 CPU 占用问题（查看详情或终止进程）", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:22", "type": "cycle", "summary": "检测到 Python3.13 进程异常占用 100% CPU，需立即排查", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:23", "type": "task_queued", "task": "分析并处理异常进程 python3.13 (PID: 1847157) 的高 CPU 占用问题", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:23", "type": "cycle", "summary": "检测到 python3.13 进程异常占用 100% CPU 资源", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:26", "type": "task_queued", "task": "检查并分析高 CPU 占用进程 runc:[2:INIT] 和 python3.13 的运行状态", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:26", "type": "cycle", "summary": "系统检测到高 CPU 占用进程", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 22:28", "type": "cycle", "summary": "系统运行平稳，AI 磁盘占用正常，暂无异常警报。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 22:29", "type": "task_queued", "task": "检查 python3.13 进程详情，判断是否为异常任务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:29", "type": "cycle", "summary": "检测到 python3.13 进程占用 100% CPU，系统其他服务状态未知", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:30", "type": "task_queued", "task": "检查 PID 1892606 (python3.13) 的具体功能和资源消耗情况", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 22:30", "type": "cycle", "summary": "系统负载较高，python3.13 进程占用 66.6% CPU", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 22:32", "type": "cycle", "summary": "系统整体运行平稳，但检测到 python3.13 进程占用 CPU 100%。", "alert_count": 1, "skipped_llm": false}
