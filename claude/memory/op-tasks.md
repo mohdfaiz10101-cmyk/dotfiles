@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 43 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 43 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 42 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 42 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 41 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 41 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 40 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 40 hours ago --tail 30
@@ -594,3 +595,5 @@
 - [ ] [SELF-IMPROVE] launcher-server.py: 使用命令模板或白名单机制严格校验`subprocess`启动的参数，避免潜在的命令注入风险。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在严重的路径遍历安全风险，且直接使用拼接字符串的SQLite查询易引发SQL注入，应使用参数化查询并校验路径边界。
 - [ ] [AGI→OP] [2026-05-05 10:28] [high] 如果进程异常，考虑终止高占用进程以恢复系统响应
+- [ ] [AGI→OP] [2026-05-05 11:39] [medium] 确认 python3.13 进程是否为正常任务运行
+- [ ] [AGI→OP] [2026-05-05 12:07] [high] 检查容器 runc:[2:INIT] 的运行状态及异常原因

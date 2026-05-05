@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-05 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-05 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -61,7 +61,6 @@
 | 9922 | users:(("node",pid=1627,fd=21)) |
 | 9977 | users:(("python3",pid=1574,fd=3)) |
 | 9980 | users:(("python3.13",pid=1553,fd=3)) |
-| 11434 | users:(("ollama",pid=233092,fd=3)) |
 | 19877 | users:(("python3.13",pid=1720438,fd=6)) |
 | 22000 | *:* |
 | 40544 | 0.0.0.0:* |
@@ -350,7 +349,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（353个注册，64个运行中）
+## 三、systemd 用户服务（353个注册，63个运行中）
 
 ### 当前运行中
 ```
@@ -390,7 +389,6 @@ mihomo-watch
 navidrome
 numlock-guard
 office-agent
-ollama
 op-push
 op-tasks-watcher
 op-watchdog

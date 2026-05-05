@@ -14604,3 +14604,59 @@
 {"ts": "2026-05-05 11:31", "type": "cycle", "summary": "系统存在两个高 CPU 占用进程，暂无其他异常", "alert_count": 2, "skipped_llm": false}
 {"ts": "2026-05-05 11:32", "type": "task_queued", "task": "调查并限制或终止异常高CPU占用进程 (python3.13, opencode)", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
 {"ts": "2026-05-05 11:32", "type": "cycle", "summary": "CPU资源被python3.13和opencode进程完全占用，需立即处理", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:34", "type": "cycle", "summary": "系统总体状态良好，磁盘使用率正常，但检测到两个高 CPU 占用进程。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:35", "type": "task_queued", "task": "调查 opencode 进程异常高占用的原因并处理", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:35", "type": "task_queued", "task": "修复系统监控数据采集模块（CPU/内存显示为 ?）", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:35", "type": "cycle", "summary": "系统内存与CPU核心数据缺失，但检测到进程 opencode 占用 CPU 过高", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:37", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 11:38", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 11:39", "type": "task_queued", "task": "检查并分析 opencode 进程的异常行为，必要时进行干预", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:39", "type": "task_queued", "task": "确认 python3.13 进程是否为正常任务运行", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:39", "type": "cycle", "summary": "系统检测到 CPU 负载异常升高，opencode 和 python3.13 进程占用大量资源", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:41", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 11:43", "type": "cycle", "summary": "系统存在两个高 CPU 占用进程，但无挂起任务或明确警报。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:44", "type": "task_queued", "task": "检查并处理进程 python3.13 (PID: 798301) 的高 CPU 占用情况", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:44", "type": "cycle", "summary": "CPU 使用率异常，存在两个高负载进程（python3.13 和 opencode）占用大量资源。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:46", "type": "cycle", "summary": "系统存在高 CPU 占用进程，但服务运行正常。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:48", "type": "task_queued", "task": "检查 opencode (PID: 3794589) 和 python3.13 (PID: 827700) 进程状态，必要时终止异常进程", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:48", "type": "cycle", "summary": "检测到 opencode 和 python3.13 进程 CPU 占用过高", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:50", "type": "task_queued", "task": "检查进程 opencode (PID: 3794589) 和 python3 (PID: 844897) 的状态，确认是否异常或需终止", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 11:50", "type": "cycle", "summary": "系统磁盘使用正常，但检测到 opencode 和 python3 进程占用极高 CPU 资源", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 11:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 11:53", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 11:55", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 11:57", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 11:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 12:00", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 12:01", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-05 12:02", "type": "task_queued", "task": "监控 opencode 和 nix-shell 进程状态，确认是否为正常工作负载或卡死", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:02", "type": "cycle", "summary": "系统运行正常，但检测到两个高CPU占用进程", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:04", "type": "task_queued", "task": "检查 PID 967016 的 python3.13 进程详情", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:04", "type": "task_queued", "task": "检查 PID 3794589 的 opencode 进程详情", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:04", "type": "task_queued", "task": "修复系统监控数据采集（CPU/内存/服务）", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:04", "type": "cycle", "summary": "系统 CPU 占用极高，存在三个高负载进程，内存和服务状态未知", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-05-05 12:06", "type": "task_queued", "task": "检查进程 python3.13 (981395) 的详细状态，确认是否为异常死循环或失控任务", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:06", "type": "cycle", "summary": "检测到高 CPU 占用进程，系统整体负载较高", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:07", "type": "task_queued", "task": "调查并抑制 OpenCode 进程的异常 CPU 使用", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:07", "type": "task_queued", "task": "检查容器 runc:[2:INIT] 的运行状态及异常原因", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:07", "type": "cycle", "summary": "系统检测到 CPU 负载异常，OpenCode 和容器进程占用过高", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:09", "type": "cycle", "summary": "LLM 调用失败：'list' object has no attribute 'get'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 12:10", "type": "cycle", "summary": "系统存在高CPU占用进程，需确认是否正常", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:12", "type": "cycle", "summary": "系统检测到两个高 CPU 占用进程，但磁盘空间和服务状态正常。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:13", "type": "task_queued", "task": "调查 python3.13 (PID: 1041357) 的高 CPU 占用原因，若异常则终止进程", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:13", "type": "cycle", "summary": "检测到系统中有两个进程（python3.13 和 opencode）占用了近 100% 的 CPU 资源", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:15", "type": "cycle", "summary": "检测到多个进程占用过高CPU，需关注系统负载。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-05-05 12:16", "type": "cycle", "summary": "系统资源监控数据部分缺失，但检测到 opencode 进程 CPU 占用异常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 12:18", "type": "cycle", "summary": "系统CPU资源被两个进程（python3.13 和 opencode）占满，但暂无服务异常警报", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:20", "type": "cycle", "summary": "系统检测到两个高 CPU 占用进程，暂无其他异常服务或操作待办。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:21", "type": "task_queued", "task": "检查进程 opencode (PID: 3794589) 的具体活动，确认是否发生异常或死循环", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:21", "type": "cycle", "summary": "系统检测到进程 opencode 占用 CPU 资源过高，其余指标正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 12:23", "type": "cycle", "summary": "检测到 opencode 和 python3.13 进程占用极高 CPU，需关注系统性能", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:24", "type": "task_queued", "task": "调查opencode进程(PID:3794589)的高CPU占用原因，必要时终止或重启该进程", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:24", "type": "cycle", "summary": "系统整体运行正常，但opencode进程CPU占用极高", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 12:26", "type": "task_queued", "task": "检查进程 opencode (PID: 3794589) 是否正常运行或陷入死循环", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:26", "type": "cycle", "summary": "系统总体状态正常，但检测到两个进程（ps 和 opencode）占用极高 CPU 资源。", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:28", "type": "cycle", "summary": "系统存在高CPU占用进程，暂无服务或代理异常", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 12:29", "type": "cycle", "summary": "系统存在高CPU占用进程，其他状态正常。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 12:31", "type": "task_queued", "task": "监控 opencode (PID: 3794589) 的资源使用情况", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 12:31", "type": "cycle", "summary": "系统存在高 CPU 占用进程，但暂无其他明显异常", "alert_count": 2, "skipped_llm": false}
