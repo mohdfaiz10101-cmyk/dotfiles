@@ -1,0 +1,14 @@
+[Unit]
+Description=LiteLLM Tool-Stripping Proxy
+After=docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai-cluster/litellm/strip_tools_proxy.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

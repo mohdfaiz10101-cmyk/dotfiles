@@ -14688,3 +14688,36 @@
 {"ts": "2026-05-05 12:58", "type": "task_queued", "task": "检查 python3.13 和 opencode 进程的具体状态，确认是否卡死或执行高强度计算，必要时进行干预", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
 {"ts": "2026-05-05 12:58", "type": "cycle", "summary": "系统检测到高 CPU 占用进程，其余资源状态未知，无积压任务。", "alert_count": 2, "skipped_llm": false}
 {"ts": "2026-05-05 12:59", "type": "cycle", "summary": "LLM 调用失败：'list' object has no attribute 'get'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:00", "type": "task_queued", "task": "检查 opencode (PID: 3794589) 进程状态，确认是否为异常死循环或卡死", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:00", "type": "task_queued", "task": "修复系统监控数据获取模块，恢复 CPU 和内存总览数据", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:00", "type": "cycle", "summary": "检测到高CPU占用进程，系统服务数据缺失", "alert_count": 4, "skipped_llm": false}
+{"ts": "2026-05-05 13:02", "type": "task_queued", "task": "调查并终止异常高占用的 ps 和 opencode 进程", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:02", "type": "cycle", "summary": "系统 CPU 使用率未知，但检测到 ps 和 opencode 进程异常占用高 CPU 资源。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-05-05 13:03", "type": "task_queued", "task": "检查并分析高CPU占用进程 python3 (PID: 1485904) 的运行状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:03", "type": "task_queued", "task": "检查并分析高CPU占用进程 opencode (PID: 3794589) 的运行状态", "priority": "high", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:03", "type": "task_queued", "task": "监控进程 python3.13 (PID: 1485897) 的资源使用情况", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:03", "type": "cycle", "summary": "系统CPU负载较高，有多个进程占用大量CPU资源。", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-05-05 13:05", "type": "task_queued", "task": "监控 nix-shell 资源使用情况", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:05", "type": "cycle", "summary": "系统中有进程占用极高CPU资源，需关注", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-05-05 13:07", "type": "task_queued", "task": "检查 Python3.13 进程（PID: 1519228, 1519222, 1519191）的具体用途和资源消耗详情", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:07", "type": "cycle", "summary": "检测到多个 Python3.13 进程占用高 CPU，需关注资源消耗情况", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:10", "type": "task_queued", "task": "检查 python3.13 进程的具体任务和资源消耗情况", "priority": "medium", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:10", "type": "task_queued", "task": "监控 claude 和 opencode 进程的资源使用", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:10", "type": "cycle", "summary": "系统负载较高，多个进程（python3.13、claude、opencode）占用大量CPU资源", "alert_count": 3, "skipped_llm": false}
+{"ts": "2026-05-05 13:12", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:14", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:16", "type": "cycle", "summary": "系统运行基本平稳，但检测到 opencode 进程异常占用 CPU。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:17", "type": "cycle", "summary": "系统磁盘 AI 占用适中，但检测到高 CPU 占用进程", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 13:19", "type": "task_queued", "task": "监控 python3.13 (PID: 1622721) 的CPU使用情况", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-05 13:19", "type": "cycle", "summary": "系统检测到两个高CPU占用进程，暂无其他异常", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 13:20", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:21", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:22", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:23", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:25", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:26", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:27", "type": "cycle", "summary": "系统存在高 CPU 占用进程，磁盘使用率正常", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 13:29", "type": "cycle", "summary": "系统存在高CPU占用进程，无其他异常，OP待处理任务为0", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-05-05 13:30", "type": "cycle", "summary": "LLM 调用失败：All connection attempts failed", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-05 13:31", "type": "cycle", "summary": "系统运行平稳，无活跃警报，但存在一个 Python 进程占用较高 CPU。", "alert_count": 1, "skipped_llm": false}
