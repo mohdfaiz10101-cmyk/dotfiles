@@ -26,3 +26,10 @@
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-01: xlsx增强 — exec_calc()新增 find_replace/batch_write/delete_row/insert_row/format_cell/read_range/auto_fit — exec_calc新增7个action(read_range/find_replace/batch_write/delete_row/insert_row/format_cell/auto_fit)
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-02: docx增强 — exec_writer()新增 insert_image/header_footer/apply_template/read_range — exec_writer新增2个action(insert_image/header_footer)，Cm导入已修复
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-03: CLI入口 — --cli参数解析，支持管道输入，直接调用execute_intent — --cli参数+管道支持+argparse，CLI模式无需HTTP
+- [x] [完成 2026-04-24 11:07] [AGI→OP] [2026-04-24 01:39] [low] Fe评分过低({fe_score}) — 模板变量未渲染，无实际可执行操作，标记跳过
+- [x] [完成 2026-04-25 00:45] [AGI→OP] [2026-04-25 00:24] python3.13 ×3 均为系统服务(waydroid/fail2ban/websockify)，非异常
+- [x] [完成 2026-04-25 00:45] [AGI→OP] [2026-04-25 00:41] 同上，3个python3.13均为NixOS系统服务(root:waydroid+fail2ban, charlie:websockify-noVNC)
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:06] [high] 分析高占用的 python3.13 进程行为，必要时终止异常进程 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:11] [medium] 根据调查结果决定是否需要终止异常进程或限制其资源使用 — 假阳性: 无异常进程
+- [x] [完成 2026-04-25 03:39] [AGI→OP] [2026-04-25 02:12] [high] 检查并处理异常高占用的 python3.13 进程 — 假阳性: python3.13进程均为waydroid/fail2ban/websockify等正常服务
+- [x] [完成 2026-04-25 03:39] [CC] [2026-04-25 02:19] AI配置告警(自愈失败): 🔴 opencode.json git restore 后仍不合规，需 CC 手动修复 — 已自愈: instructions类型为list，合规
