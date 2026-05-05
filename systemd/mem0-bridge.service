@@ -1,0 +1,17 @@
+[Unit]
+Description=Mem0 Short-term Memory Bridge
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/home-offload/agi/.venv/bin/python3 /home/charlie/agi/mem0_bridge.py
+Environment=PYTHONPATH=/mnt/ai/apps/mem0-venv3/lib/python3.13/site-packages
+Environment=MEM0_PORT=8285
+Environment=MEM0_DATA=/mnt/ai/apps/mem0-data
+Environment=OPENAI_API_KEY=sk-litellm-charlie-2026
+Environment=OPENAI_BASE_URL=http://localhost:4000/v1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

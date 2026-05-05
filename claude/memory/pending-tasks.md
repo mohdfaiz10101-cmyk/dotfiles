@@ -137,3 +137,12 @@
 ## 💳 消费/还款记录
 - [2026-04-25 13:48] 浦发银行信用卡消费: ¥6400 (白色刷卡机，备注: 刷卡消费)
 
+## 2026-05-05 会话待办（从升级任务中拆出）
+
+- [ ] **[OP] mem0 记忆桥部署** — NixOS Python venv numpy 兼容性问题未解决，需用 conda 或 Docker 方式部署
+- [ ] **[OP] ComfyUI + Flux 模型下载** — Docker 镜像已拉取，模型（Flux 1.1 Schnell ~10GB）需下载到 /mnt/ai/apps/comfyui/models/checkpoints/
+- [ ] **[OP] Ollama Qwen2.5-7B 模型下载** — 服务已启动(localhost:11434)，模型下载中（网络限速）
+- [ ] **[CC] Telegram/Discord 信息自动归类 + 多AI讨论** — 消息接收→分类→讨论→执行流水线，用 n8n + 免费模型(Haiku/Cerebras)
+- [ ] **[CC] OpenSCAD 安装** — 参数化3D建模，配合 GLM 生成代码设计鞋子
+- [ ] **[CC] MuseTalk 历史任务回顾** — 搜索历史会话中 musetalk 相关任务，确认当前状态
+

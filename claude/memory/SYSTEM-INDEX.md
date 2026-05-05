@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-05 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-05 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -36,7 +36,7 @@
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:(("opencode",pid=2436060,fd=19)) |
+| 8080 | users:(("opencode",pid=4053940,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
@@ -53,15 +53,15 @@
 | 9810 | users:(("python3.13",pid=1658,fd=6)) |
 | 9811 | users:(("python3.13",pid=43040,fd=13)) |
 | 9875 | users:(("python3.13",pid=262371,fd=3)) |
-| 9876 | users:(("python3.13",pid=16943,fd=3)) |
+| 9876 | users:(("python3.13",pid=3804503,fd=3)) |
 | 9880 | 0.0.0.0:* |
 | 9880 | [::]:* |
 | 9900 | users:(("python3.13",pid=24696,fd=13)) |
 | 9910 | users:(("python3.13",pid=43572,fd=14)) |
 | 9922 | users:(("node",pid=1627,fd=21)) |
 | 9977 | users:(("python3",pid=1574,fd=3)) |
-| 9979 | users:(("python3.13",pid=38134,fd=3)) |
 | 9980 | users:(("python3.13",pid=1553,fd=3)) |
+| 11434 | users:(("ollama",pid=233092,fd=3)) |
 | 19877 | users:(("python3.13",pid=1720438,fd=6)) |
 | 22000 | *:* |
 | 40544 | 0.0.0.0:* |
@@ -95,6 +95,7 @@ macg.py
 macg_api.py
 macg_mcp.py
 macg_tui_demo.py
+mem0_bridge.py
 op_push_service.py
 proactive.py
 report_generator.py
@@ -118,7 +119,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（412个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（413个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -133,7 +134,7 @@ static
 **baseline-*** (1个): `baseline-update.sh`
 **boot-*** (1个): `boot-recovery.sh`
 **browser-*** (1个): `browser-launch-with-cookies`
-**cc-*** (24个): `cc-autoagent-hook.sh, cc-autonomous-runner.sh, cc-autoskill-hook.sh, cc-behavior-audit.sh, cc-blocker-resolver.sh, cc-conversation-recorder.sh, cc-decision-learner.sh, cc-desktop-image-inject.sh, cc-dialogue-broadcast.sh, cc-discord-push... +14更多`
+**cc-*** (25个): `cc-autoagent-hook.sh, cc-autonomous-runner.sh, cc-autoskill-hook.sh, cc-behavior-audit.sh, cc-blocker-resolver.sh, cc-conversation-recorder.sh, cc-decision-learner.sh, cc-desktop-image-inject.sh, cc-dialogue-broadcast.sh, cc-discord-push... +15更多`
 **cct-*** (1个): `cct-tmux-wrap`
 **charlie-*** (1个): `charlie-ego-record.sh`
 **check-*** (2个): `check-idle-simple.sh, check-idle.sh`
@@ -262,6 +263,7 @@ QtScrcpy-x86_64.AppImage
 agi-control-plane
 android-sdk
 cc-op-graph
+comfyui
 content-creator
 content-router
 crm
@@ -348,7 +350,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（351个注册，66个运行中）
+## 三、systemd 用户服务（353个注册，64个运行中）
 
 ### 当前运行中
 ```
@@ -366,9 +368,9 @@ chronos-biofeedback
 chronos-sensory
 claude-esp
 claude-md-sync
-claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
+cloudflared-happy
 content-router
 cookie-sync-server
 dbus
@@ -388,15 +390,14 @@ mihomo-watch
 navidrome
 numlock-guard
 office-agent
+ollama
 op-push
 op-tasks-watcher
 op-watchdog
 opencode-memwatch
-opencode-stuck-watch
 opencode-web
 otp-sync
 paperclip-report-daemon
-phone-ai-bridge
 pipewire
 pipewire-pulse
 proxy-403-monitor
@@ -409,7 +410,6 @@ ttyd-cct
 ttyd-claude
 ttyd-macg
 voxtype
-vpn-watchdog
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
