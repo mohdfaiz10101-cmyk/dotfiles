@@ -1,0 +1,7 @@
+[Unit]
+Description=知识图谱自动填充（每日从memory文件提取实体+关系）
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/memory-kg-populator.py
+StandardOutput=journal

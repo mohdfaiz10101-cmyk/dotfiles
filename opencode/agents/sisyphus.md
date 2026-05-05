@@ -141,6 +141,23 @@ Launcher:    ~/launcher/launcher-server.py
 [完成] TASK-xxx — MarketingPanel 已上线
 ```
 
+## 代码检索（执行前 MUST — 死规则）
+
+涉及以下操作时，MUST 先执行 `code-search`：
+- 修改/读取/分析任何代码文件（.py/.ts/.tsx/.sh/.nix 等）
+- 定位函数/类/配置的具体位置
+- 不理解某个文件作用或依赖关系时
+
+```bash
+# 任务执行前，先搜代码索引
+code-search "任务关键词" --limit 5
+# 正则搜索特定模式
+code-search --grep "def function_name"
+```
+
+**索引自动更新**：inotify 实时监控 + git hook commit触发 + 每小时全量
+**索引库**：`~/.local/share/code-index/codebase.db` (SQLite FTS5，241文件)
+
 ## 记忆检索（执行前必查）
 
 ```bash
@@ -152,7 +169,8 @@ grep -i "关键词" ~/.claude/projects/-home-charlie/memory/troubleshooting.md |
 MCP 工具优先级：
 1. `claude-knowledge` → `search_memory` 搜索记忆文件
 2. `letta` → `letta_search` 语义检索
-3. 直接 grep（降级方案）
+3. `code-search` → 全文搜索代码库
+4. 直接 grep（降级方案）
 
 ## 任务标记（死规则 — 禁用 sed）
 

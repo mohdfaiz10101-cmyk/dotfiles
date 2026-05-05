@@ -117,3 +117,10 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 - **涉及 nixos-rebuild** → 加载 L3「NIXOS_REBUILD_GUARD」
 - **涉及 Explore/代码搜索** → 加载 L3「EXPLORE_MEMORY_LOOP」
 - **涉及文件安装/迁移** → L1「PRE_MIGRATE_CHECK」已覆盖
+
+## 会话持久化（2026-05-06 自动注入）
+- **会话启动**时自动运行 `~/.local/bin/project-context-inject`，注入上次会话摘要和项目上下文
+- **会话结束**时调用 `project-context-save "做了什么"`，保存状态供下次续接
+- - 代码索引: `code-search "关键词"` (FTS5全文), `code-indexer` (重建索引) | DB: `~/.local/share/code-index/codebase.db` | timer: 每小时自动更新
+- 上下文快照: `~/.claude/projects/-home-charlie/memory/.current-context.md`
+- 会话历史: `~/.claude/projects/-home-charlie/memory/.last-session.md`

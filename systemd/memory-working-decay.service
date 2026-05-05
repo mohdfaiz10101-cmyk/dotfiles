@@ -1,0 +1,7 @@
+[Unit]
+Description=工作记忆衰减检查（Ebbinghaus遗忘曲线）
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/memory-working-decay.py
+StandardOutput=journal

@@ -1,0 +1,10 @@
+[Unit]
+Description=工作记忆衰减双次检查（08:10 + 20:10）
+
+[Timer]
+OnCalendar=*-*-* 08:10:00
+OnCalendar=*-*-* 20:10:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

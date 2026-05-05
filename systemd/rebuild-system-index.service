@@ -5,4 +5,5 @@ After=network.target
 [Service]
 Type=oneshot
 ExecStart=/home/charlie/.local/bin/rebuild-system-index
-TimeoutStartSec=60
+ExecStartPost=/home/charlie/.local/bin/memory-bootstrap.sh
+TimeoutStartSec=90

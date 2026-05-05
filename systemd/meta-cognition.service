@@ -1,0 +1,8 @@
+[Unit]
+Description=元认知报告（记忆健康+冲突检测+自适应）
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/meta-cognition.py
+ExecStartPost=/home/charlie/.local/bin/memory-tg-push.sh health
+StandardOutput=journal
