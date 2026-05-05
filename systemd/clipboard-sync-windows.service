@@ -1,0 +1,12 @@
+[Unit]
+Description=Clipboard Sync with Windows (Tailscale)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/clipboard-sync-windows
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

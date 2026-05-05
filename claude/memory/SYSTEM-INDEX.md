@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-05 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-05 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -13,8 +13,9 @@
 | 3000 | (v1",pid=38225,fd=22)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
-| 4000 | 0.0.0.0:* |
+| 4000 | users:(("python3.13",pid=2165470,fd=6)) |
 | 4001 | users:(("python3.13",pid=38685,fd=6)) |
+| 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=1652,fd=9)) |
 | 5037 | users:(("adb",pid=3572592,fd=11)) |
 | 5244 | 0.0.0.0:* |
@@ -30,17 +31,20 @@
 | 7693 | users:(("ttyd",pid=1711,fd=13)) |
 | 7694 | users:(("ttyd",pid=1719,fd=13)) |
 | 7699 | users:(("caddy",pid=1720441,fd=4)) |
+| 7699 | users:(("caddy",pid=2338608,fd=4)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:(("opencode",pid=4053940,fd=19)) |
+| 8080 | users:((".opencode",pid=3859643,fd=15)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
 | 8284 | [::]:* |
+| 8285 | users:(("python3.13",pid=2203136,fd=11)) |
+| 8286 | users:(("python3.13",pid=2596238,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8788 | users:(("python3.13",pid=1641,fd=3)) |
 | 8789 | users:(("python3.13",pid=1625,fd=3)) |
@@ -88,6 +92,7 @@ discord_cc_push.py
 doc_knowledge.py
 doc_pipeline.py
 email_sync.py
+embedding_server.py
 letta-sync.py
 mac.py
 macg.py
@@ -118,7 +123,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（413个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（414个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -139,7 +144,7 @@ static
 **check-*** (2个): `check-idle-simple.sh, check-idle.sh`
 **claude-*** (36个): `claude-api-autoheal.sh, claude-api-manager, claude-api-unified, claude-auto-fix, claude-auto-login, claude-cad.py, claude-dual, claude-esp, claude-failover.sh, claude-free-api-auto... +26更多`
 **clip-*** (1个): `clip-sync`
-**clipboard-*** (1个): `clipboard-sync-tablet`
+**clipboard-*** (2个): `clipboard-sync-tablet, clipboard-sync-windows`
 **cloudflared-*** (3个): `cloudflared-bin, cloudflared-happy, cloudflared-ttyd`
 **code-*** (1个): `code-dual`
 **cookie-*** (1个): `cookie-watcher.py`
@@ -349,7 +354,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（353个注册，63个运行中）
+## 三、systemd 用户服务（356个注册，65个运行中）
 
 ### 当前运行中
 ```
@@ -358,6 +363,7 @@ agi-brain
 agi-frontend
 agi-gateway
 agi-telegram-bot
+ai-launcher
 ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
@@ -369,11 +375,12 @@ claude-esp
 claude-md-sync
 claude-token-tray
 clipboard-sync-tablet
-cloudflared-happy
+clipboard-sync-windows
 content-router
 cookie-sync-server
 dbus
 dotfiles-symlink-watch
+embedding-server
 fcitx5
 finance-agent
 freeze-detector
@@ -383,9 +390,10 @@ headless-browser
 hub-api
 kunifiedpush-distributor
 letta-mcp
+litellm-strip-proxy
 macg-api
+mem0-bridge
 memory-evolution
-mihomo-watch
 navidrome
 numlock-guard
 office-agent
@@ -393,7 +401,6 @@ op-push
 op-tasks-watcher
 op-watchdog
 opencode-memwatch
-opencode-web
 otp-sync
 paperclip-report-daemon
 pipewire
