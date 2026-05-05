@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-06 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-06 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -106,6 +106,7 @@ report_generator.py
 self_improve.py
 sensor-bridge.py
 social_relations.py
+telegram_bot.py
 telegram_bot_enhanced.py
 tg_logger.py
 tg_user_client.py
@@ -123,7 +124,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（415个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（430个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -146,7 +147,7 @@ static
 **clip-*** (1个): `clip-sync`
 **clipboard-*** (2个): `clipboard-sync-tablet, clipboard-sync-windows`
 **cloudflared-*** (4个): `cloudflared-bin, cloudflared-happy, cloudflared-launcher, cloudflared-ttyd`
-**code-*** (1个): `code-dual`
+**code-*** (4个): `code-dual, code-indexer, code-search, code-watcher`
 **cookie-*** (1个): `cookie-watcher.py`
 **crush-*** (1个): `crush-wrapper.sh`
 **cursor-*** (1个): `cursor-setup-check`
@@ -166,7 +167,7 @@ static
 **floorp-*** (3个): `floorp-clean-start, floorp-popup-fix, floorp-session-cleaner.py`
 **four-*** (1个): `four-tool-dispatch.sh`
 **fsearch-*** (1个): `fsearch-idle-update.sh`
-**git-*** (1个): `git-backup.sh`
+**git-*** (2个): `git-backup.sh, git-codebase-update`
 **github-*** (1个): `github-ai-weekly`
 **glm-*** (6个): `glm-enhanced, glm-float, glm-monitor, glm-proxy, glm-task, glm-watch`
 **gpu-*** (1个): `gpu-mode`
@@ -190,8 +191,8 @@ static
 **mcp-*** (1个): `mcp-health-check`
 **media-*** (1个): `media-crawler`
 **mem-*** (1个): `mem-stats`
-**memory-*** (4个): `memory-backup, memory-decay-engine.py, memory-dream, memory-evolution-engine`
-**meta-*** (1个): `meta-monitor.sh`
+**memory-*** (10个): `memory-backup, memory-bootstrap.sh, memory-decay-engine.py, memory-dream, memory-episodic.py, memory-evolution-engine, memory-kg-populator.py, memory-router, memory-tg-push.sh, memory-working-decay.py`
+**meta-*** (2个): `meta-cognition.py, meta-monitor.sh`
 **mihomo-*** (3个): `mihomo-anthropic-check, mihomo-config-validate, mihomo-guardian`
 **morning-*** (1个): `morning-brief.sh`
 **mutual-*** (1个): `mutual-review`
@@ -203,7 +204,7 @@ static
 **numlock-*** (1个): `numlock-guard`
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
-**op-*** (18个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +8更多`
+**op-*** (19个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +9更多`
 **opencode-*** (8个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-stuck-watch.sh, opencode-tmux-wrap`
 **other-*** (50个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +40更多`
 **otp-*** (1个): `otp-sync`
@@ -215,6 +216,7 @@ static
 **phone-*** (4个): `phone-ai-bridge.sh, phone-control.sh, phone-screenshot, phone-tailscale-guard`
 **plasmashell-*** (1个): `plasmashell-crash-guard.sh`
 **post-*** (1个): `post-edit-verify.sh`
+**project-*** (2个): `project-context-inject, project-context-save`
 **proxy-*** (6个): `proxy-403-monitor, proxy-db-init, proxy-learn, proxy-status-quick, proxy-status-widget, proxy-windows-discover`
 **push-*** (2个): `push-apk, push-tunnel-url`
 **python-*** (1个): `python-crash-guard.sh`
@@ -229,6 +231,7 @@ static
 **selflearn-*** (1个): `selflearn-health-check.sh`
 **service-*** (1个): `service-zombie-cleaner.sh`
 **setup-*** (2个): `setup-0011, setup-letta-telegram-alert`
+**skill-*** (1个): `skill-auto-extract.py`
 **smart-*** (4个): `smart-ip, smart-memory-classifier, smart-router.py, smart-search`
 **sqlite-*** (2个): `sqlite_web, sqlite_wsgi`
 **start-*** (2个): `start-desktop-pet.sh, start-wechat`
@@ -355,7 +358,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（357个注册，68个运行中）
+## 三、systemd 用户服务（364个注册，67个运行中）
 
 ### 当前运行中
 ```
@@ -378,13 +381,12 @@ claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
 cloudflared-happy
-cloudflared-launcher
+code-watcher
 content-router
 cookie-sync-server
 dbus
 dotfiles-symlink-watch
 embedding-server
-fcitx5
 finance-agent
 freeze-detector
 gcr-ssh-agent
@@ -429,7 +431,7 @@ xdg-permission-store
 ydotoold
 ```
 
-## 四、定时任务（92个 timer）
+## 四、定时任务（98个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -446,6 +448,7 @@ cc-task-auditor
 cc-task-runner
 chronos-subconscious
 claude-orphan-killer
+code-indexer
 copywriting-collector
 daily-summary
 discord-bot-healthcheck
@@ -479,6 +482,10 @@ maintenance-learner
 memory-backup
 memory-curator
 memory-decay-engine
+memory-kg-populator
+memory-tg-daily
+memory-working-decay
+meta-cognition
 mihomo-backup
 mihomo-guardian
 morning-brief
@@ -490,6 +497,7 @@ nixos-test-notify
 ntfs-health-check
 ocr-indexer
 op-lock-watchdog
+op-precheck
 op-self-upgrade
 op-task-runner
 op-tasks-archive
