@@ -1,0 +1,15 @@
+[Unit]
+Description=Cloudflare Quick Tunnel — AI Launcher (7699)
+After=network-online.target opencode-web.service
+Wants=opencode-web.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cloudflared-launcher
+Restart=on-failure
+RestartSec=30
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target
