@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 2 days ago 自动修复失败，需人工检查：docker logs Exited (137) 2 days ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 47 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 47 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 46 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 46 hours ago --tail 30
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 45 hours ago 自动修复失败，需人工检查：docker logs Exited (137) 45 hours ago --tail 30
@@ -601,3 +602,4 @@
 - [ ] [AGI→OP] [2026-05-05 10:28] [high] 如果进程异常，考虑终止高占用进程以恢复系统响应
 - [ ] [AGI→OP] [2026-05-05 11:39] [medium] 确认 python3.13 进程是否为正常任务运行
 - [ ] [AGI→OP] [2026-05-05 12:07] [high] 检查容器 runc:[2:INIT] 的运行状态及异常原因
+- [ ] [AGI→OP] [2026-05-05 17:01] [low] 如进程异常，考虑终止或限制其资源
