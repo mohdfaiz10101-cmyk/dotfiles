@@ -1,0 +1,11 @@
+[Unit]
+Description=OP 空跑防护定时器（每30分钟）
+Requires=op-precheck.service
+
+[Timer]
+OnCalendar=*:0,30
+RandomizedDelaySec=120
+Persistent=true
+
+[Install]
+WantedBy=timers.target

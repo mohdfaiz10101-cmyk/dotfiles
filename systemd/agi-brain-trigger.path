@@ -1,0 +1,9 @@
+[Unit]
+Description=AGI Brain 热触发：文件变更立即分析
+
+[Path]
+PathChanged=/tmp/agi-brain-trigger
+Unit=agi-brain.service
+
+[Install]
+WantedBy=timers.target

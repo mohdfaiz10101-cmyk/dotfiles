@@ -1,0 +1,8 @@
+[Unit]
+Description=AGI Brain 热触发执行（单次）
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/brain.py --once
+StandardOutput=journal
+StandardError=journal
