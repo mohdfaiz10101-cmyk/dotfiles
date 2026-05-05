@@ -1,0 +1,13 @@
+[Unit]
+Description=Embedding Server (ONNX MiniLM-L6-v2)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/apps/mem0-venv/bin/run-embedding.sh /home/charlie/agi/embedding_server.py
+Environment=EMBEDDING_PORT=8286
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

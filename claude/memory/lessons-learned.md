@@ -200,3 +200,7 @@ eve
 ### 会话摘要 [2026-05-05] [Sonnet/自动]
 - 对话轮次: 123 | 被纠正: 1次
   - 用户纠正: 那claude额度实在是少 用几下就没了一般人没必要把
+
+- [2026-05-05] [CC] LiteLLM strip proxy: GLM API 不支持 web_search tool type，Claude Code 通过 LiteLLM 转发时报 `tools[0].type:type is illegal`。修复：strip_tools_proxy.py (4000) → LiteLLM (4002)，在 proxy 层剥离非 function 类型的 tools。LiteLLM `drop_params:true` 只丢弃参数不丢弃 tool 定义。
+- [2026-05-05] [CC] LiteLLM Docker --port 参数在 v1.77.7 被忽略（监听随机端口），必须用 `PORT` 环境变量才能固定端口。
+- [2026-05-05] [CC] mem0-bridge NixOS 依赖链：numpy 需 libstdc++.so.6（设 LD_LIBRARY_PATH），chromadb 需 sentence-transformers 需 torch（530MB），NixOS venv + pip 方式不适合重 ML 依赖，应用 Docker。
