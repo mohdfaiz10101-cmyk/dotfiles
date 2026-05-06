@@ -1,9 +1,9 @@
 [Unit]
-Description=Docker Container Health Nurse Timer (every 30 min)
+Description=Docker Container Health Nurse Timer (every 2h)
 
 [Timer]
 OnBootSec=3min
-OnUnitActiveSec=30min
+OnUnitActiveSec=2h
 Persistent=true
 
 [Install]
