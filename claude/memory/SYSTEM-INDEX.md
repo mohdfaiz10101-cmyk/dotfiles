@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-06 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-06 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -13,7 +13,7 @@
 | 3000 | (v1",pid=38225,fd=22)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
-| 4000 | users:(("python3.13",pid=1250091,fd=6)) |
+| 4000 | 0.0.0.0:* |
 | 4001 | users:(("python3.13",pid=38685,fd=6)) |
 | 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=1652,fd=9)) |
@@ -31,14 +31,13 @@
 | 7693 | users:(("ttyd",pid=1711,fd=13)) |
 | 7694 | users:(("ttyd",pid=1719,fd=13)) |
 | 7699 | users:(("caddy",pid=2197376,fd=4)) |
-| 7699 | users:(("caddy",pid=2338608,fd=4)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:((".opencode",pid=2106684,fd=15)) |
+| 8080 | users:((".opencode",pid=2881048,fd=15)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
@@ -46,6 +45,7 @@
 | 8285 | users:(("python3.13",pid=2203136,fd=11)) |
 | 8286 | users:(("python3.13",pid=2596238,fd=3)) |
 | 8384 | 0.0.0.0:* |
+| 8787 | users:(("python3.13",pid=2625253,fd=3)) |
 | 8788 | users:(("python3.13",pid=1641,fd=3)) |
 | 8789 | users:(("python3.13",pid=1625,fd=3)) |
 | 9090 | *:* |
@@ -67,6 +67,7 @@
 | 9980 | users:(("python3.13",pid=1553,fd=3)) |
 | 19877 | users:(("python3.13",pid=1720438,fd=6)) |
 | 22000 | *:* |
+| 24801 | users:(("python3.13",pid=3618130,fd=3)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -124,7 +125,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（430个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（431个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -261,6 +262,7 @@ static
 **wol-*** (1个): `wol-windows.sh`
 **wx-*** (1个): `wx-memory-extract.py`
 **xdg-*** (2个): `xdg-open, xdg-open-guard`
+**ydotool-*** (1个): `ydotool-bridge.py`
 **yt-*** (1个): `yt-dlp`
 **zeditor-*** (1个): `zeditor-nvidia`
 
@@ -358,7 +360,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（364个注册，68个运行中）
+## 三、systemd 用户服务（363个注册，68个运行中）
 
 ### 当前运行中
 ```
@@ -367,7 +369,6 @@ agi-brain
 agi-frontend
 agi-gateway
 agi-telegram-bot
-ai-launcher
 ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
@@ -392,11 +393,11 @@ finance-agent
 freeze-detector
 gcr-ssh-agent
 glm-monitor
+glm-proxy
 headless-browser
 hub-api
 kunifiedpush-distributor
 letta-mcp
-litellm-strip-proxy
 macg-api
 mem0-bridge
 memory-evolution
@@ -407,6 +408,7 @@ op-push
 op-tasks-watcher
 op-watchdog
 opencode-memwatch
+opencode-stuck-watch
 opencode-web
 otp-sync
 paperclip-report-daemon
@@ -432,7 +434,7 @@ xdg-permission-store
 ydotoold
 ```
 
-## 四、定时任务（98个 timer）
+## 四、定时任务（96个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -454,6 +456,7 @@ copywriting-collector
 daily-summary
 discord-bot-healthcheck
 disk-cleanup
+disk-guard
 disk-sentinel
 disk-space-monitor
 docker-cleanup
@@ -463,7 +466,6 @@ dotfiles-integrity-check
 dotfiles-push
 drkonqi-coredump-cleanup
 drkonqi-sentry-postman
-fcitx5-adaptive-check
 finance-reminder
 git-backup
 github-ai-weekly
@@ -512,8 +514,6 @@ opencode-job-charlie-b445f233ebb8-glm-knowledge-writer
 opencode-job-charlie-b445f233ebb8-heartbeat-marketing-scan
 opencode-job-charlie-b445f233ebb8-heartbeat-memory-maintain
 opencode-job-charlie-b445f233ebb8-heartbeat-system-sentry
-opencode-job-charlie-b445f233ebb8-marketing-scan
-opencode-job-charlie-b445f233ebb8-memory-maintain
 opencode-job-charlie-b445f233ebb8-proxy-guardian
 opencode-job-charlie-b445f233ebb8-security-watchdog
 push-tunnel-url
