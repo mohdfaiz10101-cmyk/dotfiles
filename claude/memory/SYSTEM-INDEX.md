@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-06 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-06 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -358,7 +358,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（364个注册，67个运行中）
+## 三、systemd 用户服务（364个注册，68个运行中）
 
 ### 当前运行中
 ```
@@ -387,6 +387,7 @@ cookie-sync-server
 dbus
 dotfiles-symlink-watch
 embedding-server
+fcitx5
 finance-agent
 freeze-detector
 gcr-ssh-agent
