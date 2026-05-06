@@ -212,3 +212,11 @@ eve
 ### 会话摘要 [2026-05-05] [Sonnet/自动]
 - 对话轮次: 127 | 被纠正: 1次
   - 用户纠正: 不对啊 还是有代理问题
+
+## systemd 服务卡住排查
+- 症状: opencode web 任务卡住、其他 timer 服务不触发
+- 根因: systemd job queue 被卡在 "activating" 的服务阻塞
+- 排查: systemctl --user list-jobs 看是否有 pending job; systemctl --user status <service> 看是否卡在启动中
+- 常见诱因: 脚本中 curl 连接 SSE/WebSocket 端点不退出（缺 --max-time），且脚本用 set -e 导致永久死锁
+- 修复: systemctl --user stop <service>; systemctl --user reset-failed <service>
+- 预防: 所有 curl health check 加 --connect-timeout 3 --max-time 5; 避免 curl 访问 SSE 端点（用 /health 代替）
