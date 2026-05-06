@@ -16515,3 +16515,47 @@
 {"ts": "2026-05-06 20:57", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-06 20:58", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-06 20:59", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:00", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:01", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:02", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:03", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:04", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:06", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:07", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:08", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:09", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:10", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:11", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:12", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:14", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:15", "type": "cycle", "summary": "LLM 调用失败：Server error '502 Bad Gateway' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:16", "type": "cycle", "summary": "LLM 调用失败：Server error '502 Bad Gateway' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:17", "type": "cycle", "summary": "LLM 调用失败：Server error '502 Bad Gateway' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:18", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:20", "type": "cycle", "summary": "LLM 调用失败：Server error '502 Bad Gateway' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:21", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:22", "type": "cycle", "summary": "LLM 调用失败：Client error '429 Too Many Requests' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-06 21:23", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:24", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:25", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:26", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:27", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:29", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:33", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:38", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:43", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:48", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:53", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 21:58", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:03", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:08", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:13", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:18", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:23", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:28", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:33", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:38", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:43", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:48", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:53", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-06 22:58", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
