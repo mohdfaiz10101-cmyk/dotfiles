@@ -219,4 +219,4 @@ eve
 - 排查: systemctl --user list-jobs 看是否有 pending job; systemctl --user status <service> 看是否卡在启动中
 - 常见诱因: 脚本中 curl 连接 SSE/WebSocket 端点不退出（缺 --max-time），且脚本用 set -e 导致永久死锁
 - 修复: systemctl --user stop <service>; systemctl --user reset-failed <service>
-- 预防: 所有 curl health check 加 --connect-timeout 3 --max-time 5; 避免 curl 访问 SSE 端点（用 /health 代替）
+- 预防: 所有 curl health check 加 --connect-timeout 3 --max-time 5; 避免 curl 访问 SSE 端点（用 /health 代替）- [2026-05-07] [OP] 失败学习: Floorp中文输入 | 错误: MOZ_ENABLE_WAYLAND=1 + Wayland text-input-v3 + KWin relay | 错误: NVIDIA下KWin text-input-v3 relay不可靠，即使fcitx5-gtk的im-fcitx5.so已加载也无法回退 | 正确用法: MOZ_ENABLE_WAYLAND=0 强制XWayland，GTK IM模块直接工作 | 根因: Wayland text-input-v3协议优先级高于GTK IM模块，KWin relay在NVIDIA下不稳定
