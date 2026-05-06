@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-06 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-07 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,64 +10,66 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
-| 3000 | (v1",pid=38225,fd=22)) |
+| 3000 | (v1",pid=4834,fd=22)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
-| 4000 | 0.0.0.0:* |
-| 4001 | users:(("python3.13",pid=38685,fd=6)) |
+| 4000 | users:(("python3.13",pid=1747,fd=6)) |
+| 4001 | users:(("python3.13",pid=1656,fd=6)) |
 | 4002 | 0.0.0.0:* |
-| 4533 | users:(("navidrome",pid=1652,fd=9)) |
-| 5037 | users:(("adb",pid=3572592,fd=11)) |
+| 4533 | users:(("navidrome",pid=1754,fd=9)) |
+| 5037 | users:(("adb",pid=2544,fd=11)) |
 | 5244 | 0.0.0.0:* |
 | 5244 | [::]:* |
 | 5678 | 0.0.0.0:* |
 | 5678 | [::]:* |
-| 5900 | users:(("wayvnc",pid=4148,fd=11)) |
-| 5998 | users:((".websockify-wra",pid=4153,fd=4)) |
+| 5900 | users:(("wayvnc",pid=3120,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=3121,fd=4)) |
 | 6379 | 0.0.0.0:* |
-| 7681 | users:(("ttyd",pid=2357,fd=13)) |
-| 7690 | users:(("ttyd",pid=814810,fd=13)) |
-| 7691 | users:(("ttyd",pid=814808,fd=13)) |
-| 7693 | users:(("ttyd",pid=1711,fd=13)) |
-| 7694 | users:(("ttyd",pid=1719,fd=13)) |
-| 7699 | users:(("caddy",pid=2197376,fd=4)) |
+| 7681 | users:(("ttyd",pid=2152,fd=13)) |
+| 7690 | users:(("ttyd",pid=1795,fd=13)) |
+| 7691 | users:(("ttyd",pid=1794,fd=13)) |
+| 7693 | users:(("ttyd",pid=1789,fd=13)) |
+| 7694 | users:(("ttyd",pid=1796,fd=13)) |
+| 7699 | users:(("caddy",pid=1646,fd=3)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:((".opencode",pid=2881048,fd=15)) |
+| 8080 | users:((".opencode",pid=2737,fd=15)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
 | 8284 | [::]:* |
-| 8285 | users:(("python3.13",pid=2203136,fd=11)) |
-| 8286 | users:(("python3.13",pid=2596238,fd=3)) |
+| 8285 | users:(("python3.13",pid=3415,fd=11)) |
+| 8286 | users:(("python3.13",pid=3522,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=2625253,fd=3)) |
-| 8788 | users:(("python3.13",pid=1641,fd=3)) |
-| 8789 | users:(("python3.13",pid=1625,fd=3)) |
+| 8787 | users:(("python3.13",pid=3408,fd=3)) |
+| 8788 | users:(("python3.13",pid=1746,fd=3)) |
+| 8789 | users:(("python3.13",pid=1725,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
-| 9099 | users:(("python3.13",pid=11282,fd=3)) |
-| 9222 | users:(("chrome",pid=3938,fd=60)) |
-| 9800 | users:(("python3.13",pid=1629,fd=6)) |
-| 9801 | users:(("python3.13",pid=9802,fd=6)) |
-| 9810 | users:(("python3.13",pid=1658,fd=6)) |
-| 9811 | users:(("python3.13",pid=43040,fd=13)) |
-| 9875 | users:(("python3.13",pid=262371,fd=3)) |
-| 9876 | users:(("python3.13",pid=3804503,fd=3)) |
+| 9099 | users:(("python3.13",pid=9128,fd=3)) |
+| 9222 | users:(("chrome",pid=2179,fd=56)) |
+| 9800 | users:(("python3.13",pid=1737,fd=6)) |
+| 9801 | users:(("python3.13",pid=1861,fd=6)) |
+| 9810 | users:(("python3.13",pid=1757,fd=6)) |
+| 9811 | users:(("python3.13",pid=1708,fd=13)) |
+| 9875 | users:(("python3.13",pid=1742,fd=3)) |
+| 9876 | users:(("python3.13",pid=3409,fd=3)) |
 | 9880 | 0.0.0.0:* |
 | 9880 | [::]:* |
-| 9900 | users:(("python3.13",pid=24696,fd=13)) |
-| 9910 | users:(("python3.13",pid=43572,fd=14)) |
-| 9922 | users:(("node",pid=1627,fd=21)) |
-| 9977 | users:(("python3",pid=1574,fd=3)) |
-| 9980 | users:(("python3.13",pid=1553,fd=3)) |
-| 19877 | users:(("python3.13",pid=1720438,fd=6)) |
+| 9900 | users:(("python3.13",pid=1639,fd=13)) |
+| 9910 | users:(("python3.13",pid=1748,fd=14)) |
+| 9922 | users:(("node",pid=1735,fd=21)) |
+| 9977 | users:(("python3",pid=1661,fd=3)) |
+| 9979 | users:(("python3.13",pid=3406,fd=3)) |
+| 9980 | users:(("python3.13",pid=1647,fd=3)) |
+| 11434 | users:(("ollama",pid=1759,fd=3)) |
+| 20241 | users:(("cloudflared",pid=182809,fd=6)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=3618130,fd=3)) |
+| 24801 | users:(("python3.13",pid=3122,fd=4)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -360,7 +362,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（363个注册，68个运行中）
+## 三、systemd 用户服务（363个注册，73个运行中）
 
 ### 当前运行中
 ```
@@ -378,10 +380,11 @@ chronos-biofeedback
 chronos-sensory
 claude-esp
 claude-md-sync
+claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
-cloudflared-happy
+cloudflared-launcher
 code-watcher
 content-router
 cookie-sync-server
@@ -397,13 +400,17 @@ glm-proxy
 headless-browser
 hub-api
 kunifiedpush-distributor
+launcher
 letta-mcp
+litellm-strip-proxy
 macg-api
 mem0-bridge
 memory-evolution
+mihomo-watch
 navidrome
 numlock-guard
 office-agent
+ollama
 op-push
 op-tasks-watcher
 op-watchdog
@@ -434,7 +441,7 @@ xdg-permission-store
 ydotoold
 ```
 
-## 四、定时任务（96个 timer）
+## 四、定时任务（95个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -456,7 +463,6 @@ copywriting-collector
 daily-summary
 discord-bot-healthcheck
 disk-cleanup
-disk-guard
 disk-sentinel
 disk-space-monitor
 docker-cleanup
