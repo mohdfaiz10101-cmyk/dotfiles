@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-07 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-07 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -67,9 +67,8 @@
 | 9979 | users:(("python3.13",pid=3406,fd=3)) |
 | 9980 | users:(("python3.13",pid=1647,fd=3)) |
 | 11434 | users:(("ollama",pid=1759,fd=3)) |
-| 20241 | users:(("cloudflared",pid=182809,fd=6)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=3122,fd=4)) |
+| 24801 | users:(("python3.13",pid=2424723,fd=3)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -384,7 +383,7 @@ claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
-cloudflared-launcher
+cloudflared-happy
 code-watcher
 content-router
 cookie-sync-server

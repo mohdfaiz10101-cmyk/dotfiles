@@ -88,5 +88,19 @@
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
 
+
+## 记忆系统状态（自动注入 2026-05-07 06:17）
+| 指标 | 值 |
+|------|-----|
+| KG实体/关系 | N/A / N/A |
+| Letta MCP | active |
+| lessons-learned条目 | 36 |
+| 历史会话数 | 38 |
+
+### 高频主题（最近）
+
+
+> 以上由 memory-bootstrap.sh 自动注入，每小时更新
+
 ---
 Source: ~/CLAUDE.md | Auto-compiled
