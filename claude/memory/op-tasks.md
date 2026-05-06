@@ -1,13 +1,13 @@
 - [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 2 days ago 自动修复失败，需人工检查：docker logs Exited (137) 2 days ago --tail 30
-- [ ] [CC] [2026-05-04] [high] Docker容器 538ba795619a_litellm-litellm 自动修复失败，需人工检查：docker logs 538ba795619a_litellm-litellm --tail 30
-- [ ] [CC] [2026-05-03] [high] Docker容器 Exited (137) About an hour ago 自动修复失败，需人工检查：docker logs Exited (137) About an hour ago --tail 30
-- [ ] [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md
-- [ ] [CC] [2026-04-27] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30
-- [ ] [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30
-- [ ] [CC] [2026-04-25] [high] Docker容器 musetalk 自动修复失败，需人工检查：docker logs musetalk --tail 30
-- [ ] [CC] [2026-04-25] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30
-- [ ] [CC] [2026-04-25] [high] Docker容器 langfuse-db 自动修复失败，需人工检查：docker logs langfuse-db --tail 30
-- [ ] [CC] [2026-04-25] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30
+- [!]  [CC] [2026-05-04] [high] Docker容器 538ba795619a_litellm-litellm 自动修复失败，需人工检查：docker logs 538ba795619a_litellm-litellm --tail 30 [DECAY:遗忘率25%]
+- [!]  [CC] [2026-05-03] [high] Docker容器 Exited (137) About an hour ago 自动修复失败，需人工检查：docker logs Exited (137) About an hour ago --tail 30 [DECAY:遗忘率13%]
+- [!]  [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md [DECAY:遗忘率0%]
+- [!]  [CC] [2026-04-27] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30 [DECAY:遗忘率0%]
+- [!]  [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30 [DECAY:遗忘率0%]
+- [!]  [CC] [2026-04-25] [high] Docker容器 musetalk 自动修复失败，需人工检查：docker logs musetalk --tail 30 [DECAY:遗忘率0%]
+- [!]  [CC] [2026-04-25] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30 [DECAY:遗忘率0%]
+- [!]  [CC] [2026-04-25] [high] Docker容器 langfuse-db 自动修复失败，需人工检查：docker logs langfuse-db --tail 30 [DECAY:遗忘率0%]
+- [!]  [CC] [2026-04-25] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30 [DECAY:遗忘率0%]
 
 - [x] [完成 2026-04-25 08:48] MuseTalk 容器 → [OK] 运行中（unhealthy 因 healthcheck curl 不存在，服务本身正常）
 - [x] [完成 2026-04-24 01:32] [CC] FEAT-OP-CENTER-01 已于04-19实现OPCenterPanel，重复升级×4已清理
@@ -451,7 +451,7 @@
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-01: xlsx增强 — exec_calc()新增 find_replace/batch_write/delete_row/insert_row/format_cell/read_range/auto_fit — exec_calc新增7个action(read_range/find_replace/batch_write/delete_row/insert_row/format_cell/auto_fit)
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-02: docx增强 — exec_writer()新增 insert_image/header_footer/apply_template/read_range — exec_writer新增2个action(insert_image/header_footer)，Cm导入已修复
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-03: CLI入口 — --cli参数解析，支持管道输入，直接调用execute_intent — --cli参数+管道支持+argparse，CLI模式无需HTTP
-- [ ] [OP] [2026-04-25 13:18] [medium] OFFICE-04: 文件变更通知 — execute_intent保存后调用notify-send
+- [!]  [OP] [2026-04-25 13:18] [medium] OFFICE-04: 文件变更通知 — execute_intent保存后调用notify-send [DECAY:遗忘率0%]
 - [x] [完成 2026-04-25 13:21] [CC] OFFICE-05: 更新SKILL.md — ai-office-control SKILL.md已同步v2.1全部action
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 15:16] [high] 调查 python3.13 进程异常高占用的原因 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 16:13] [medium] 检查 python3.13 进程 1641779 和 1641799 的具体运行状态及来源 — 假阳性: 系统服务进程，重复告警
@@ -471,7 +471,7 @@
 - [ ] [SELF-IMPROVE] kanban.html: 代码在CSS声明处被意外截断，导致样式和后续JavaScript逻辑缺失，需要补全完整的文件内容。
 - [ ] [SELF-IMPROVE] launcher-server.py: `_check_auth` 函数中对于远程请求使用简单的字符串比较（`==`）验证 Bearer Token，容易受到时序攻击，应改用 `hmac.compare_digest()` 进行安全比较。
 - [ ] [SELF-IMPROVE] hub-api.py: 将`dialogue_append`函数中同步的文件IO操作改为异步实现（如使用aiofiles），以避免在FastAPI中阻塞事件循环。
-- [ ] [CC] [2026-04-26 12:29] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: 只能由 CC
+- [!]  [CC] [2026-04-26 12:29] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: 只能由 CC [DECAY:遗忘率0%]
 - [x] [测试 2026-04-26 14:40] TASK-TEST-001 — OP Push Service 推送测试成功
 - [x] [完成 2026-04-26 14:43] TASK-TEST-002 — OP Push Service 自动推送测试
 - [x] [完成 2026-04-26 14:47] TASK-TEST-003 — OP Push Service 完整流程测试
@@ -479,8 +479,8 @@
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 15:30] [medium] 验证系统服务读取权限及配置 — AGI噪声，服务已验证正常
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 15:33] [high] 检查 litellm 进程状态，必要时进行重启或限流 — AGI噪声，服务已验证正常
 
-- [ ] [CC→OP] [2026-04-26 15:43] [high] DeepSeek API余额不足，LiteLLM返回0个可用模型。检查LiteLLM日志，确认哪些模型组受影响，切换到免费模型（Cerebras Qwen3-235B）作为备用路由
-- [ ] [CC→OP] [2026-04-26 15:43] [medium] Claude API出现ECONNRESET错误。检查代理链路（mihomo 7890→Tier1 Xray），curl -x http://127.0.0.1:7890 https://api.anthropic.com 验证连通性，记录到troubleshooting.md
+- [!]  [CC→OP] [2026-04-26 15:43] [high] DeepSeek API余额不足，LiteLLM返回0个可用模型。检查LiteLLM日志，确认哪些模型组受影响，切换到免费模型（Cerebras Qwen3-235B）作为备用路由 [DECAY:遗忘率0%]
+- [!]  [CC→OP] [2026-04-26 15:43] [medium] Claude API出现ECONNRESET错误。检查代理链路（mihomo 7890→Tier1 Xray），curl -x http://127.0.0.1:7890 https://api.anthropic.com 验证连通性，记录到troubleshooting.md [DECAY:遗忘率0%]
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 17:30] [high] 检查进程 1283388 的异常行为并结束该进程 — 假阳性: PID已过期/系统服务进程
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 21:25] [medium] 如确认进程异常，执行 kill 或重启相关服务 — AGI噪声，服务已验证正常
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 22:00] [high] 检查并分析进程 886738 (python3.13) 的具体行为，必要时执行终止操作 — 假阳性: PID已过期/系统服务进程
@@ -505,7 +505,7 @@
 - [ ] [CC] [P1] Termux 装 Claude Code CLI：手机本地跑 CC session，WiFi断了也能用。步骤：SSH进手机Termux → 安装Node.js → npm install -g @anthropic-ai/claude-code → 配置ANTHROPIC_BASE_URL走GLM → 验证`claude --version`。设备：OnePlus Ace 5 Pro (192.168.2.33:5555)
 - [ ] [CC] [P2] Termux CC 接入主机记忆：手机CC session通过Tailscale连主机Letta(localhost:8283)，共享同一份记忆。配置：LETTA_BASE_URL=http://100.119.174.25:8283（Tailscale IP）
 - [ ] [CC] [P3] AGI Brain 推送感知升级：macg.py有事件时主动Telegram推送 → 用户手机点通知直接回复 → 回复内容路由到对应agent处理。基于已有：Telegram通知 + 微信MCP + AGI Brain事件总线
-- [ ] [CC] [2026-05-03 01:25] AI配置告警(自愈失败): 🔴 opencode.json 不合规且无法自愈
+- [!]  [CC] [2026-05-03 01:25] AI配置告警(自愈失败): 🔴 opencode.json 不合规且无法自愈 [DECAY:遗忘率13%]
 
 ### [SELF-IMPROVE 2026-05-03] GLM 自动代码审查
 - [ ] [SELF-IMPROVE] brain.py: 补全第97行截断的 `_ALERT_SUPPRES` 变量定义，否则会导致模块导入时抛出 SyntaxError 而完全无法运行。
@@ -524,11 +524,11 @@
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 03:26] [medium] 分析并限制 python3.13 进程资源消耗 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 04:12] [medium] 若进程非必要，终止高耗资源的 bash 进程 — 假阳性: PID已过期/系统服务进程
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 04:19] [medium] 检查进程 990142 (python3.13) 的具体用途和异常行为 — 假阳性: PID已过期/系统服务进程
-- [ ] [AGI→OP] [2026-05-04 04:27] [medium] 检查 PostgreSQL 数据库连接状态，排查 pg_isready 进程异常占用资源原因
+- [!]  [AGI→OP] [2026-05-04 04:27] [medium] 检查 PostgreSQL 数据库连接状态，排查 pg_isready 进程异常占用资源原因 [DECAY:遗忘率6%]
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 04:30] [high] 检查高占用 python3.13 进程的详细信息和来源 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 05:45] [low] 如果进程异常，收集堆栈信息以便调试 — 假阳性: PID已过期/系统服务进程
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 06:58] [high] 检查进程 1866317 的详细状态及资源消耗原因 — 假阳性: 系统服务进程，重复告警
-- [ ] [AGI→OP] [2026-05-04 08:52] [medium] 检查 NixOS 主机连接及传感器状态
+- [!]  [AGI→OP] [2026-05-04 08:52] [medium] 检查 NixOS 主机连接及传感器状态 [DECAY:遗忘率6%]
 
 ### [SELF-IMPROVE 2026-05-04] GLM 自动代码审查
 - [ ] [SELF-IMPROVE] brain.py: 修复文件末尾 `_ALERT_SUPPRES` 变量名截断的语法错误。
@@ -539,7 +539,7 @@
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 11:08] [medium] 若进程异常，考虑终止或重启相关服务 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 11:34] [medium] 确认系统服务状态，补充 services 列表信息。 — AGI噪声，服务已验证正常
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 13:57] [high] 排查 python3.13 进程为何满载，必要时终止该进程 — 假阳性: 系统服务进程，重复告警
-- [ ] [AGI→OP] [2026-05-04 14:17] [high] 验证 NixOS 系统状态查询接口是否正常
+- [!]  [AGI→OP] [2026-05-04 14:17] [high] 验证 NixOS 系统状态查询接口是否正常 [DECAY:遗忘率0%]
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 19:42] [medium] 验证服务状态检测模块的配置 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 01:24] [high] 检查rg进程4102120的资源占用情况，判断是否为异常搜索任务 — AGI噪声，服务已验证正常
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 07:21] [high] 检查进程 2775116 和 2775093 (python3.13) 的具体用途，确认是否为异常任务 — 假阳性: PID已过期/系统服务进程
@@ -555,7 +555,7 @@
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 11:39] [medium] 确认 python3.13 进程是否为正常任务运行 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 12:07] [high] 检查容器 runc:[2:INIT] 的运行状态及异常原因 — 假阳性: PID已过期/系统服务进程
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 17:01] [low] 如进程异常，考虑终止或限制其资源 — 假阳性: PID已过期/系统服务进程
-- [ ] [AGI→OP] [2026-05-05 18:13] [low] 确认 Nix 构建任务状态，必要时调整 nice 值
+- [!]  [AGI→OP] [2026-05-05 18:13] [low] 确认 Nix 构建任务状态，必要时调整 nice 值 [DECAY:遗忘率2%]
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 20:06] [high] 调查 .wofi-wrapped 和 python3.13 进程为何高占资源，必要时终止异常进程 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 22:06] [medium] 检查并分析进程 1745224 的行为，必要时进行限制或终止 — 假阳性: PID已过期/系统服务进程
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 23:36] [medium] 调查并终止异常的 sh (2281645) 和 nix-shell (2281614) 进程 — 假阳性: 系统服务进程，重复告警
