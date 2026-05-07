@@ -226,3 +226,16 @@ eve
 - [2026-05-07] [OP] 成功记录: sshd-watchdog移除 | 根因: pgrep -x sshd在sshd重启间隙匹配失败导致每2秒循环restart | 修复: 移除冗余watchdog, sshd自身Restart=always已覆盖崩溃场景, RestartSec改为10s+限频 | 结果: 稳定
 - [2026-05-07] [OP] 成功记录: mihomo代理切换 | 调用: PUT /proxies/付费专线 → US 2 | 结果: claude区域封锁解除 | 场景: claude.com因HK节点被Anthropic封锁时
 - [2026-05-07] [OP] 成功记录: systemd drop-in | 调用: caddy-launcher override TimeoutStopSec 10s→3s | 结果: 重启耗时10s→0.008s | 场景: 服务因活跃SSE连接导致停止超时
+
+- [2026-05-07] [CC] Cloudflare全站封禁 → 手机SOCKS5隧道绕过方案
+  - 场景: 所有70+代理节点被Cloudflare IP封禁 → claude.com/anthropic.com/discord.com不可达
+  - 根因: Cloudflare 大规模封禁代理IP段（非节点/协议/地区问题），所有CF站点TLS握手超时
+  - 修复: 
+    (1) 利用手机(OnePlus)直连claude.com的能力(手机出口IP 115.223.199.196 未被CF封)
+    (2) 创建SSH SOCKS5隧道: `ssh -D 1080 phone` via Tailscale (100.119.174.25)
+    (3) mihomo添加socks5代理 + 路由规则 routing claude.com/anthropic.com → 手机隧道
+    (4) systemd user service 持久化: phone-socks-tunnel.service (Type=forking + ssh -f)
+  - 验证: claude.com 200(2.4s), claude.ai 302, api.anthropic.com 403, Google仍正常
+  - 注意: 手机隧道仅在手机在线时可用；手机重启后systemd自动重连(RestartSec=15)
+  - 命令: `ssh -NT -D 1080 -f phone` | `systemctl --user start phone-socks-tunnel`
+  - 配置: /etc/mihomo/config.yaml proxy添加"📱 手机移动"到🌟付费专线组 + 路由规则

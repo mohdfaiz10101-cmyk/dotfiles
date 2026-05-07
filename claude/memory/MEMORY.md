@@ -25,6 +25,8 @@
   - 道长（备）：`https://skr.daozhangnb.dpdns.org/clash`
   - TrojanFlare（备）：`https://s1.trojanflare.one/clashx/01737539-508d-4504-aa37-f7643b037cf7`
   - mihomo API：`localhost:9091`（9090被Cockpit占用）
+  - **手机SOCKS5隧道**（Cloudflare封禁绕过）：`ssh -D 1080 phone` → systemd user service 持久化
+  - claude.com/anthropic.com 路由到 🌟 付费专线 → 📱 手机移动（SOCKS5）
 
 ## AI 架构（详见独立文件）
 - [AI 三套系统详情](ai-cluster-architecture.md) — CC/Aider/Paperclip + 端口 + Letta

@@ -1,0 +1,12 @@
+[Unit]
+Description=FRP Client (connect to Windows frps)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/frpc -c %h/.config/frpc/frpc.toml
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target

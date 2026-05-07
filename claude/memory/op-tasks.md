@@ -562,3 +562,12 @@
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 20:06] [high] 调查 .wofi-wrapped 和 python3.13 进程为何高占资源，必要时终止异常进程 — 假阳性: 系统服务进程，重复告警
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 22:06] [medium] 检查并分析进程 1745224 的行为，必要时进行限制或终止 — 假阳性: PID已过期/系统服务进程
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 23:36] [medium] 调查并终止异常的 sh (2281645) 和 nix-shell (2281614) 进程 — 假阳性: 系统服务进程，重复告警
+
+## 2026-05-07 22:55 修复日志
+- [x] [OP] Cloudflare 全站封禁修复 — 手机SOCKS5隧道代理方案
+  - 根因: 所有代理节点(70+)被Cloudflare IP封禁，所有CF站点不可达
+  - 方案: 利用手机(OnePlus)直连claude.com的能力，创建SSH SOCKS5隧道
+  - 配置: /etc/mihomo/config.yaml 添加SOCKS5代理 → 路由规则claude.com/anthropic.com走手机
+  - 持久化: systemd user service ~/.config/systemd/user/phone-socks-tunnel.service 开机自启
+  - SSH隧道: ssh -D 1080 phone(Tailscale 100.119.174.25)，ServerAliveInterval=30自动重连
+  - 验证: claude.com 200 ✓ | claude.ai 302 ✓ | api.anthropic.com 403 ✓
