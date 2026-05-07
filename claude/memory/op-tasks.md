@@ -1,5 +1,5 @@
 - [ ] [CC] [2026-05-06] [high] Docker容器 Exited (137) 3 days ago 自动修复失败，需人工检查：docker logs Exited (137) 3 days ago --tail 30
-- [ ] [CC] [2026-05-05] [high] Docker容器 Exited (137) 2 days ago 自动修复失败，需人工检查：docker logs Exited (137) 2 days ago --tail 30
+- [!]  [CC] [2026-05-05] [high] Docker容器 Exited (137) 2 days ago 自动修复失败，需人工检查：docker logs Exited (137) 2 days ago --tail 30 [DECAY:遗忘率25%]
 - [!]  [CC] [2026-05-04] [high] Docker容器 538ba795619a_litellm-litellm 自动修复失败，需人工检查：docker logs 538ba795619a_litellm-litellm --tail 30 [DECAY:遗忘率25%]
 - [!]  [CC] [2026-05-03] [high] Docker容器 Exited (137) About an hour ago 自动修复失败，需人工检查：docker logs Exited (137) About an hour ago --tail 30 [DECAY:遗忘率13%]
 - [!]  [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md [DECAY:遗忘率0%]
