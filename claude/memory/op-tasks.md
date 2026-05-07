@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago 自动修复失败，需人工检查：docker logs Exited (137) 4 days ago --tail 30
 - [ ] [CC] [2026-05-06] [high] Docker容器 Exited (137) 3 days ago 自动修复失败，需人工检查：docker logs Exited (137) 3 days ago --tail 30
 - [!]  [CC] [2026-05-05] [high] Docker容器 Exited (137) 2 days ago 自动修复失败，需人工检查：docker logs Exited (137) 2 days ago --tail 30 [DECAY:遗忘率25%]
 - [!]  [CC] [2026-05-04] [high] Docker容器 538ba795619a_litellm-litellm 自动修复失败，需人工检查：docker logs 538ba795619a_litellm-litellm --tail 30 [DECAY:遗忘率25%]

@@ -224,3 +224,5 @@ eve
 - [2026-05-07] [OP] 失败学习: nixos-full-sync | 错误调用: nixos-rebuild-safe未加PATH直接调用 | 错误: 命令未找到, rebuild失败, 每小时重新触发 | 正确用法: export PATH="$HOME/.local/bin:$PATH" 在脚本开头 | 原因: systemd user service默认PATH不含~/.local/bin
 - [2026-05-07] [OP] 失败学习: sshd-watchdog | 错误: /etc/nixos/sshd-watchdog.nix脚本缺少||导致每2秒无条件重启sshd | 根因: ss -tlnp | grep -q :22  systemctl restart sshd 缺少||运算符,变成每次循环都执行restart | 修复: kill进程+修复nix配置脚本语法
 - [2026-05-07] [OP] 成功记录: sshd-watchdog移除 | 根因: pgrep -x sshd在sshd重启间隙匹配失败导致每2秒循环restart | 修复: 移除冗余watchdog, sshd自身Restart=always已覆盖崩溃场景, RestartSec改为10s+限频 | 结果: 稳定
+- [2026-05-07] [OP] 成功记录: mihomo代理切换 | 调用: PUT /proxies/付费专线 → US 2 | 结果: claude区域封锁解除 | 场景: claude.com因HK节点被Anthropic封锁时
+- [2026-05-07] [OP] 成功记录: systemd drop-in | 调用: caddy-launcher override TimeoutStopSec 10s→3s | 结果: 重启耗时10s→0.008s | 场景: 服务因活跃SSE连接导致停止超时
