@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-07 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-07 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -37,7 +37,7 @@
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:((".opencode",pid=2737,fd=15)) |
+| 8080 | users:((".opencode",pid=3487857,fd=15)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
@@ -45,7 +45,7 @@
 | 8285 | users:(("python3.13",pid=3415,fd=11)) |
 | 8286 | users:(("python3.13",pid=3522,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=3408,fd=3)) |
+| 8787 | users:(("python3.13",pid=3350924,fd=3)) |
 | 8788 | users:(("python3.13",pid=1746,fd=3)) |
 | 8789 | users:(("python3.13",pid=1725,fd=3)) |
 | 9090 | *:* |
@@ -66,9 +66,7 @@
 | 9977 | users:(("python3",pid=1661,fd=3)) |
 | 9979 | users:(("python3.13",pid=3406,fd=3)) |
 | 9980 | users:(("python3.13",pid=1647,fd=3)) |
-| 11434 | users:(("ollama",pid=1759,fd=3)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=2424723,fd=3)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -361,7 +359,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（363个注册，73个运行中）
+## 三、systemd 用户服务（363个注册，72个运行中）
 
 ### 当前运行中
 ```
@@ -409,7 +407,6 @@ mihomo-watch
 navidrome
 numlock-guard
 office-agent
-ollama
 op-push
 op-tasks-watcher
 op-watchdog
