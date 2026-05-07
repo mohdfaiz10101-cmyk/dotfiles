@@ -1,6 +1,4 @@
 [Unit]
-StartLimitIntervalSec=120
-StartLimitBurst=5
 Description=OpenCode Web Server (:8080)
 After=network.target
 
@@ -8,8 +6,10 @@ After=network.target
 Type=simple
 UnsetEnvironment=http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 ExecStart=/home/charlie/.local/bin/opencode web --port 8080 --hostname 0.0.0.0
-Restart=always
+Restart=on-failure
 RestartSec=15
+StartLimitIntervalSec=120
+StartLimitBurst=5
 MemoryMax=infinity
 OOMScoreAdjust=-500
 Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin" "http_proxy=" "https_proxy=" "HTTP_PROXY=" "HTTPS_PROXY=" "no_proxy=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn" "NO_PROXY=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn"
