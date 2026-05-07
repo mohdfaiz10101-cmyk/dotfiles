@@ -467,6 +467,7 @@
 - [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 06:22] [medium] 调查进程 2615409 (python3.13) 的高占用原因，确认是否为正常业务负载 — 假阳性: PID已过期/系统服务进程
 
 ### [SELF-IMPROVE 2026-04-26] GLM 自动代码审查
+- [x] [完成 2026-05-07 14:01] op-precheck.sh opencode PATH已修复, auto-fix-services已加oneshot跳过规则
 - [ ] [SELF-IMPROVE] brain.py: 补全末尾截断的代码（如 `_ALERT_SUPPRES` 变量定义及后续逻辑），确保文件语法完整可运行。
 - [ ] [SELF-IMPROVE] think.py: 函数内部硬编码了 Letta 的 API 地址和 Agent ID，应提取为环境变量或配置常量以提高可维护性和灵活性。
 - [ ] [SELF-IMPROVE] kanban.html: 代码在CSS声明处被意外截断，导致样式和后续JavaScript逻辑缺失，需要补全完整的文件内容。
