@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-08 11:10 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-08 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -7,42 +7,74 @@
 |------|------|
 | 22 | 0.0.0.0:* |
 | 22 | [::]:* |
+| 443 | 0.0.0.0:* |
+| 443 | [::]:* |
 | 1053 | *:* |
-| 4000 | users:(("python3.13",pid=1667,fd=6)) |
-| 4001 | users:(("python3.13",pid=1580,fd=6)) |
-| 4533 | users:(("navidrome",pid=1678,fd=11)) |
-| 5037 | users:(("adb",pid=2108,fd=11)) |
-| 5900 | users:(("wayvnc",pid=3335,fd=11)) |
-| 5998 | users:((".websockify-wra",pid=3336,fd=4)) |
-| 7681 | users:(("ttyd",pid=2021,fd=13)) |
-| 7690 | users:(("ttyd",pid=1789,fd=13)) |
-| 7691 | users:(("ttyd",pid=1788,fd=13)) |
-| 7693 | users:(("ttyd",pid=1775,fd=13)) |
-| 7694 | users:(("ttyd",pid=1790,fd=13)) |
-| 7699 | users:(("caddy",pid=1559,fd=6)) |
+| 1080 | users:(("ssh",pid=3891,fd=4)) |
+| 1080 | users:(("ssh",pid=3891,fd=5)) |
+| 3000 | (v1",pid=52236,fd=22)) |
+| 3001 | 0.0.0.0:* |
+| 3001 | [::]:* |
+| 4000 | users:(("python3.13",pid=149719,fd=6)) |
+| 4001 | users:(("python3.13",pid=53200,fd=6)) |
+| 4002 | 0.0.0.0:* |
+| 4533 | users:(("navidrome",pid=1645,fd=9)) |
+| 5037 | users:(("adb",pid=2207,fd=11)) |
+| 5244 | 0.0.0.0:* |
+| 5244 | [::]:* |
+| 5678 | 0.0.0.0:* |
+| 5678 | [::]:* |
+| 5900 | users:(("wayvnc",pid=3906,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=3907,fd=4)) |
+| 6379 | 0.0.0.0:* |
+| 7681 | users:(("ttyd",pid=2287,fd=13)) |
+| 7690 | users:(("ttyd",pid=1704,fd=13)) |
+| 7691 | users:(("ttyd",pid=1703,fd=13)) |
+| 7693 | users:(("ttyd",pid=1702,fd=13)) |
+| 7694 | users:(("ttyd",pid=1706,fd=13)) |
+| 7699 | users:(("caddy",pid=3768,fd=6)) |
 | 7890 | *:* |
 | 7891 | *:* |
+| 8000 | 0.0.0.0:* |
+| 8000 | [::]:* |
+| 8001 | 0.0.0.0:* |
+| 8001 | [::]:* |
+| 8080 | users:((".opencode",pid=28065,fd=15)) |
+| 8283 | 0.0.0.0:* |
+| 8283 | [::]:* |
+| 8284 | 0.0.0.0:* |
+| 8284 | [::]:* |
+| 8286 | users:(("python3.13",pid=57809,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=4437,fd=3)) |
-| 8788 | users:(("python3.13",pid=1663,fd=3)) |
-| 8789 | users:(("python3.13",pid=1643,fd=3)) |
+| 8787 | users:(("python3.13",pid=22762,fd=3)) |
+| 8788 | users:(("python3.13",pid=1636,fd=3)) |
+| 8789 | users:(("python3.13",pid=1622,fd=3)) |
+| 9000 | users:(("adb",pid=2207,fd=15)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
-| 9222 | users:(("chrome",pid=2405,fd=61)) |
-| 9800 | users:(("python3.13",pid=1651,fd=6)) |
-| 9801 | users:(("python3.13",pid=1839,fd=6)) |
-| 9875 | users:(("python3.13",pid=1652,fd=3)) |
-| 9876 | users:(("python3.13",pid=4451,fd=3)) |
-| 9922 | users:(("node",pid=1648,fd=21)) |
-| 9977 | users:(("python3",pid=1582,fd=3)) |
-| 9979 | users:(("python3.13",pid=4435,fd=3)) |
-| 9980 | users:(("python3.13",pid=1560,fd=3)) |
+| 9099 | users:(("python3.13",pid=16761,fd=3)) |
+| 9222 | users:(("chrome",pid=3558,fd=66)) |
+| 9800 | users:(("python3.13",pid=1626,fd=6)) |
+| 9801 | users:(("python3.13",pid=12822,fd=6)) |
+| 9810 | users:(("python3.13",pid=1651,fd=6)) |
+| 9811 | users:(("python3.13",pid=58049,fd=13)) |
+| 9875 | users:(("python3.13",pid=1628,fd=3)) |
+| 9876 | users:(("python3.13",pid=22772,fd=3)) |
+| 9880 | 0.0.0.0:* |
+| 9880 | [::]:* |
+| 9900 | users:(("python3.13",pid=28036,fd=13)) |
+| 9922 | users:(("node",pid=1624,fd=21)) |
+| 9977 | users:(("python3",pid=1560,fd=3)) |
+| 9979 | users:(("python3.13",pid=52264,fd=3)) |
+| 9980 | users:(("python3.13",pid=1540,fd=3)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=3340,fd=4)) |
+| 24801 | users:(("python3.13",pid=19846,fd=3)) |
+| 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
 | 47990 | *:* |
 | 48010 | *:* |
+| 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
 
@@ -329,7 +361,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（367个注册，66个运行中）
+## 三、systemd 用户服务（367个注册，73个运行中）
 
 ### 当前运行中
 ```
@@ -347,35 +379,43 @@ chronos-sensory
 claude-esp
 claude-md-sync
 claude-tablet-output
+claude-token-tray
+clipboard-sync-tablet
 clipboard-sync-windows
 cloudflared-happy
+code-watcher
 content-router
 cookie-sync-server
 dbus
 dotfiles-symlink-watch
+embedding-server
+fcitx5
 finance-agent
 freeze-detector
+frpc
 gcr-ssh-agent
 glm-monitor
 glm-proxy
-happy-daemon
 headless-browser
 hub-api
 kunifiedpush-distributor
 launcher
 letta-mcp
 litellm-strip-proxy
-macg-api
 memory-evolution
 mihomo-watch
 navidrome
+numlock-guard
 office-agent
 op-push
 op-tasks-watcher
 op-watchdog
 opencode-memwatch
+opencode-stuck-watch
 opencode-web
+otp-sync
 paperclip-report-daemon
+phone-socks-tunnel
 pipewire
 pipewire-pulse
 proxy-403-monitor
@@ -392,7 +432,6 @@ voxtype
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
-wechat-uos
 wireplumber
 xdg-desktop-portal
 xdg-document-portal
