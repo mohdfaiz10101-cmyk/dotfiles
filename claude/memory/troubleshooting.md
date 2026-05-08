@@ -387,3 +387,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - **修复**：launch args 加 `--proxy-server=http://127.0.0.1:7890`，context 加 `proxy: { server: 'http://127.0.0.1:7890' }`
 - [2026-05-08] [GLM] 症状→原因→状态: OP连接守护/service-nurse定时器停止运行→可能systemd timer被禁用或依赖链断裂→待修复
 - [2026-05-08] [GLM] 症状:ai-config-guard反复exit-code 2→原因:INVALIDARGUMENT→状态:已知未修复
+- [2026-05-08] [GLM] 症状→原因→状态: OP connection-guard日志停更于5月4日后断更，service-nurse日志停更于4月22日，推测相关timer已停止或service本身failed未恢复

@@ -273,3 +273,4 @@ eve
 - [2026-05-08] [GLM自动] 观察: 4个user服务持续failed(agl-discord-bot/discord-intelligent-bot/docker-ordered-start/letta-health-guard)，OP连接守护日志停更4天(最后5/4)，service-nurse日志停更至4/22
 - [2026-05-08] [GLM自动] 观察: 4个用户服务持续failed状态: agi-discord-bot/discord-intelligent-bot/docker-ordered-start/mihomo-guardian，需排查是否已弃用可清理
 - [2026-05-08] [GLM自动] 观察: LiteLLM /health返回401 auth_error但无api key参数，说明网关存活但健康检查端点需认证，非故障
+- [2026-05-08] [GLM自动] 观察: 4个user服务failed(docker-ordered-start/litellm-error-guard/mihomo-guardian/recoll-idle)，LiteLLM 4000端口存活但返回401(health端点需api_key)，/mnt/ai 35%空间充足
