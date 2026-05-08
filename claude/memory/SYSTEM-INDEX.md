@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-07 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-08 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,6 +10,8 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
+| 1080 | users:(("ssh",pid=634872,fd=4)) |
+| 1080 | users:(("ssh",pid=634872,fd=5)) |
 | 3000 | (v1",pid=4834,fd=22)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
@@ -30,7 +32,7 @@
 | 7691 | users:(("ttyd",pid=1794,fd=13)) |
 | 7693 | users:(("ttyd",pid=1789,fd=13)) |
 | 7694 | users:(("ttyd",pid=1796,fd=13)) |
-| 7699 | users:(("caddy",pid=1129122,fd=6)) |
+| 7699 | users:(("caddy",pid=274540,fd=7)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
@@ -66,9 +68,9 @@
 | 9977 | users:(("python3",pid=1661,fd=3)) |
 | 9979 | users:(("python3.13",pid=3406,fd=3)) |
 | 9980 | users:(("python3.13",pid=1647,fd=3)) |
+| 9999 | users:(("python3.13",pid=3485627,fd=3)) |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=1550894,fd=3)) |
-| 36455 | users:(("claude",pid=1672362,fd=28)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -126,7 +128,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（431个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（432个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -208,7 +210,7 @@ static
 **office-*** (1个): `office-agent-runner.sh`
 **op-*** (19个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +9更多`
 **opencode-*** (8个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-stuck-watch.sh, opencode-tmux-wrap`
-**other-*** (50个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +40更多`
+**other-*** (51个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +41更多`
 **otp-*** (1个): `otp-sync`
 **panel-*** (1个): `panel-nurse`
 **paperclip-*** (6个): `paperclip-aider-worker, paperclip-auto-sync, paperclip-dispatcher, paperclip-report-daemon.sh, paperclip-resolve-conflicts, paperclip-restore`
@@ -361,7 +363,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（364个注册，73个运行中）
+## 三、systemd 用户服务（368个注册，76个运行中）
 
 ### 当前运行中
 ```
@@ -393,6 +395,7 @@ embedding-server
 fcitx5
 finance-agent
 freeze-detector
+frpc
 gcr-ssh-agent
 glm-monitor
 glm-proxy
@@ -405,7 +408,6 @@ litellm-strip-proxy
 macg-api
 mem0-bridge
 memory-evolution
-mihomo-watch
 navidrome
 numlock-guard
 office-agent
@@ -417,11 +419,14 @@ opencode-stuck-watch
 opencode-web
 otp-sync
 paperclip-report-daemon
+phone-socks-tunnel
 pipewire
 pipewire-pulse
 proxy-403-monitor
 python-crash-guard
+run-p640953-i9026297
 screenshot-watcher
+ssh-winpc-tunnel
 sunshine
 tablet-control-panel
 ttyd-aider
