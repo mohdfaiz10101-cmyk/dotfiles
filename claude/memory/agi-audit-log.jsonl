@@ -17223,3 +17223,104 @@
 {"ts": "2026-05-08 16:57", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-08 16:58", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-08 16:59", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:00", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:01", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:02", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:03", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:04", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:05", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:06", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:07", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:08", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:09", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:10", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:11", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:12", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:13", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:14", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:15", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:16", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:17", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘使用率均在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:18", "type": "cycle", "summary": "系统运行平稳，资源使用正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:19", "type": "cycle", "summary": "系统运行正常，CPU负载略高但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:20", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:21", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:22", "type": "cycle", "summary": "系统运行正常，无服务异常或磁盘压力", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:23", "type": "cycle", "summary": "系统运行正常，CPU和内存负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:24", "type": "cycle", "summary": "系统运行正常，CPU和内存负载较低，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:26", "type": "cycle", "summary": "系统运行正常，存在已知进程占用CPU", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:27", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:28", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:29", "type": "cycle", "summary": "系统运行正常，Python进程高CPU属于已知现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:30", "type": "cycle", "summary": "系统运行正常，CPU和内存负载在健康范围内，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:31", "type": "cycle", "summary": "系统运行正常，各项指标健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:32", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存和磁盘使用率健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:33", "type": "cycle", "summary": "系统运行正常，CPU占用略有波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:34", "type": "cycle", "summary": "系统运行正常，服务健康，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:36", "type": "cycle", "summary": "系统运行平稳，各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:37", "type": "cycle", "summary": "系统状态正常，服务健康，资源负载低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:38", "type": "cycle", "summary": "系统运行正常，资源使用健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:39", "type": "cycle", "summary": "系统运行平稳，各项指标均正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:41", "type": "cycle", "summary": "系统运行正常，CPU使用率适中，内存和磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:42", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:43", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:44", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:45", "type": "cycle", "summary": "系统运行平稳，资源负载低且无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:46", "type": "cycle", "summary": "系统运行正常，CPU与内存负载健康，无异常服务状态", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:47", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:49", "type": "cycle", "summary": "系统运行正常，无服务异常，CPU和内存使用率均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:51", "type": "cycle", "summary": "LLM 调用失败：Client error '408 Request Timeout' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 17:52", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:53", "type": "cycle", "summary": "系统运行正常，CPU高占用进程为正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:54", "type": "cycle", "summary": "系统运行正常，资源占用低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:55", "type": "cycle", "summary": "系统运行正常，各项指标均处于健康范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:56", "type": "cycle", "summary": "系统运行正常，CPU使用率低，内存和磁盘使用率在合理范围内，服务全部健康。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:58", "type": "cycle", "summary": "系统负载正常，CPU使用率低，服务健康，存在瞬时CPU飙升进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 17:59", "type": "cycle", "summary": "系统运行正常，服务健康，CPU占用符合预期", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:00", "type": "cycle", "summary": "系统负载正常，无服务异常或磁盘压力", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:01", "type": "cycle", "summary": "系统运行正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:02", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:04", "type": "cycle", "summary": "系统运行正常，CPU负载低，内存充足，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:06", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:07", "type": "cycle", "summary": "系统运行平稳，各项指标正常，无待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:09", "type": "cycle", "summary": "系统运行正常，CPU和内存负载健康，磁盘使用率低，无活跃告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:10", "type": "cycle", "summary": "系统运行正常，CPU和内存使用率低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:11", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:13", "type": "cycle", "summary": "系统运行正常，CPU与内存负载在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:14", "type": "cycle", "summary": "系统资源占用低，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:15", "type": "cycle", "summary": "系统运行正常，CPU略高但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:17", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均处于健康水平", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:18", "type": "cycle", "summary": "系统运行正常，CPU负载适中，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:19", "type": "cycle", "summary": "系统运行正常，CPU/内存负载低，磁盘健康，无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:20", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:21", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:22", "type": "cycle", "summary": "系统运行正常，服务全健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:23", "type": "task_queued", "task": "监控高CPU进程（python3.13/PID 1256696, 1256857）行为，若持续异常需介入", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-08 18:23", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:25", "type": "cycle", "summary": "系统运行平稳，资源负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:26", "type": "cycle", "summary": "系统运行正常，CPU/内存负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:28", "type": "cycle", "summary": "LLM 调用失败：Client error '408 Request Timeout' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 18:30", "type": "cycle", "summary": "LLM 调用失败：Client error '408 Request Timeout' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 18:32", "type": "cycle", "summary": "LLM 调用失败：Client error '408 Request Timeout' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 18:34", "type": "cycle", "summary": "系统运行正常，CPU资源占用低，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:35", "type": "cycle", "summary": "系统运行正常，CPU和内存负载较低，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:36", "type": "cycle", "summary": "系统运行正常，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:37", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:38", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:40", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存使用率良好，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:41", "type": "cycle", "summary": "系统运行正常，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:42", "type": "cycle", "summary": "系统运行正常，CPU使用率低，内存充足，磁盘健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:43", "type": "cycle", "summary": "系统状态正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:44", "type": "cycle", "summary": "系统运行正常，资源负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:46", "type": "cycle", "summary": "LLM 调用失败：Client error '408 Request Timeout' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 18:47", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均处于健康范围，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:48", "type": "cycle", "summary": "系统运行正常，CPU使用率低，内存与磁盘空间充足，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:49", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:51", "type": "cycle", "summary": "系统运行正常，资源占用低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:52", "type": "cycle", "summary": "系统状态正常，CPU使用率低，服务全部健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:53", "type": "cycle", "summary": "系统运行正常，CPU占用略高但属于系统进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:54", "type": "cycle", "summary": "系统状态正常，CPU负载较低，服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:55", "type": "cycle", "summary": "系统运行正常，python3.13 进程高CPU为正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:56", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:57", "type": "cycle", "summary": "系统运行正常，CPU负载较低，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 18:58", "type": "cycle", "summary": "系统运行正常，CPU/内存负载低，无服务异常", "alert_count": 0, "skipped_llm": false}

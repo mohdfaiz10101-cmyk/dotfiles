@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-08 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-08 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -15,7 +15,7 @@
 | 3000 | (v1",pid=52236,fd=22)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
-| 4000 | users:(("python3.13",pid=149719,fd=6)) |
+| 4000 | users:(("python3.13",pid=1706262,fd=6)) |
 | 4001 | users:(("python3.13",pid=53200,fd=6)) |
 | 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=1645,fd=9)) |
@@ -29,17 +29,20 @@
 | 6379 | 0.0.0.0:* |
 | 7681 | users:(("ttyd",pid=2287,fd=13)) |
 | 7690 | users:(("ttyd",pid=1704,fd=13)) |
-| 7691 | users:(("ttyd",pid=1703,fd=13)) |
+| 7691 | users:(("ttyd",pid=3345140,fd=13)) |
+| 7692 | users:(("ttyd",pid=3475087,fd=13)) |
 | 7693 | users:(("ttyd",pid=1702,fd=13)) |
 | 7694 | users:(("ttyd",pid=1706,fd=13)) |
-| 7699 | users:(("caddy",pid=3768,fd=6)) |
+| 7695 | users:(("ttyd",pid=3392061,fd=13)) |
+| 7699 | users:(("caddy",pid=2961185,fd=7)) |
+| 7699 | users:(("caddy",pid=3514009,fd=7)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8001 | 0.0.0.0:* |
 | 8001 | [::]:* |
-| 8080 | users:((".opencode",pid=28065,fd=15)) |
+| 8080 | users:((".opencode",pid=1706776,fd=21)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
@@ -49,11 +52,9 @@
 | 8787 | users:(("python3.13",pid=22762,fd=3)) |
 | 8788 | users:(("python3.13",pid=1636,fd=3)) |
 | 8789 | users:(("python3.13",pid=1622,fd=3)) |
-| 9000 | users:(("adb",pid=2207,fd=15)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
 | 9099 | users:(("python3.13",pid=16761,fd=3)) |
-| 9222 | users:(("chrome",pid=3558,fd=66)) |
 | 9800 | users:(("python3.13",pid=1626,fd=6)) |
 | 9801 | users:(("python3.13",pid=12822,fd=6)) |
 | 9810 | users:(("python3.13",pid=1651,fd=6)) |
@@ -63,10 +64,14 @@
 | 9880 | 0.0.0.0:* |
 | 9880 | [::]:* |
 | 9900 | users:(("python3.13",pid=28036,fd=13)) |
+| 9910 | users:(("python3.13",pid=363937,fd=14)) |
 | 9922 | users:(("node",pid=1624,fd=21)) |
 | 9977 | users:(("python3",pid=1560,fd=3)) |
 | 9979 | users:(("python3.13",pid=52264,fd=3)) |
 | 9980 | users:(("python3.13",pid=1540,fd=3)) |
+| 9993 | *:* |
+| 9993 | 0.0.0.0:* |
+| 20241 | users:(("cloudflared",pid=1312933,fd=6)) |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=19846,fd=3)) |
 | 40544 | 0.0.0.0:* |
@@ -126,12 +131,12 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（432个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（442个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
 **agi-*** (2个): `agi-feedback-bus.sh, agi-persistent-monitor.sh`
-**ai-*** (14个): `ai-architecture-audit, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-rules-sync.sh, ai-rules-watch.sh... +4更多`
+**ai-*** (18个): `ai-architecture-audit, ai-brainstorm, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-poll... +8更多`
 **aider-*** (2个): `aider-post-commit-hook, aider-with-memory`
 **apk-*** (1个): `apk-debug`
 **architecture-*** (2个): `architecture-cleanup.sh, architecture-health-check`
@@ -143,9 +148,11 @@ static
 **browser-*** (1个): `browser-launch-with-cookies`
 **cc-*** (25个): `cc-autoagent-hook.sh, cc-autonomous-runner.sh, cc-autoskill-hook.sh, cc-behavior-audit.sh, cc-blocker-resolver.sh, cc-conversation-recorder.sh, cc-decision-learner.sh, cc-desktop-image-inject.sh, cc-dialogue-broadcast.sh, cc-discord-push... +15更多`
 **cct-*** (1个): `cct-tmux-wrap`
+**cf-*** (1个): `cf-tunnel-7699`
 **charlie-*** (1个): `charlie-ego-record.sh`
 **check-*** (2个): `check-idle-simple.sh, check-idle.sh`
 **claude-*** (36个): `claude-api-autoheal.sh, claude-api-manager, claude-api-unified, claude-auto-fix, claude-auto-login, claude-cad.py, claude-dual, claude-esp, claude-failover.sh, claude-free-api-auto... +26更多`
+**claudep-*** (1个): `claudep-tmux-wrap`
 **clip-*** (1个): `clip-sync`
 **clipboard-*** (2个): `clipboard-sync-tablet, clipboard-sync-windows`
 **cloudflared-*** (4个): `cloudflared-bin, cloudflared-happy, cloudflared-launcher, cloudflared-ttyd`
@@ -172,6 +179,7 @@ static
 **git-*** (2个): `git-backup.sh, git-codebase-update`
 **github-*** (1个): `github-ai-weekly`
 **glm-*** (6个): `glm-enhanced, glm-float, glm-monitor, glm-proxy, glm-task, glm-watch`
+**google-*** (1个): `google-chrome-proxy`
 **gpu-*** (1个): `gpu-mode`
 **happy-*** (3个): `happy-daemon-start.sh, happy-login.sh, happy-session-watchdog.sh`
 **hermes-*** (1个): `hermes-wrapper`
@@ -196,6 +204,7 @@ static
 **memory-*** (10个): `memory-backup, memory-bootstrap.sh, memory-decay-engine.py, memory-dream, memory-episodic.py, memory-evolution-engine, memory-kg-populator.py, memory-router, memory-tg-push.sh, memory-working-decay.py`
 **meta-*** (2个): `meta-cognition.py, meta-monitor.sh`
 **mihomo-*** (3个): `mihomo-anthropic-check, mihomo-config-validate, mihomo-guardian`
+**mobile-*** (1个): `mobile-entry`
 **morning-*** (1个): `morning-brief.sh`
 **mutual-*** (1个): `mutual-review`
 **new-*** (1个): `new-api-manager`
@@ -210,6 +219,7 @@ static
 **opencode-*** (8个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-stuck-watch.sh, opencode-tmux-wrap`
 **other-*** (51个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +41更多`
 **otp-*** (1个): `otp-sync`
+**overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
 **panel-*** (1个): `panel-nurse`
 **paperclip-*** (6个): `paperclip-aider-worker, paperclip-auto-sync, paperclip-dispatcher, paperclip-report-daemon.sh, paperclip-resolve-conflicts, paperclip-restore`
 **paste-*** (1个): `paste-image-pinned`
@@ -361,7 +371,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（367个注册，73个运行中）
+## 三、systemd 用户服务（372个注册，78个运行中）
 
 ### 当前运行中
 ```
@@ -369,11 +379,12 @@ agent-orchestrator
 agi-brain
 agi-frontend
 agi-gateway
+agi-telegram-bot
 ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
 caddy-launcher
-chrome-cdp
+cf-tunnel-7699
 chronos-biofeedback
 chronos-sensory
 claude-esp
@@ -382,11 +393,11 @@ claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
-cloudflared-happy
 code-watcher
 content-router
 cookie-sync-server
 dbus
+dconf
 dotfiles-symlink-watch
 embedding-server
 fcitx5
@@ -402,6 +413,7 @@ kunifiedpush-distributor
 launcher
 letta-mcp
 litellm-strip-proxy
+macg-api
 memory-evolution
 mihomo-watch
 navidrome
@@ -414,6 +426,7 @@ opencode-memwatch
 opencode-stuck-watch
 opencode-web
 otp-sync
+overcode-loop-watch
 paperclip-report-daemon
 phone-socks-tunnel
 pipewire
@@ -427,7 +440,9 @@ tablet-control-panel
 ttyd-aider
 ttyd-cct
 ttyd-claude
+ttyd-claudep
 ttyd-macg
+ttyd-overcode
 voxtype
 wechat-agent
 wechat-crm-archiver
@@ -440,7 +455,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（95个 timer）
+## 四、定时任务（96个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -455,6 +470,7 @@ cc-autonomous-runner
 cc-op-verifier
 cc-task-auditor
 cc-task-runner
+cf-url-notify
 chronos-subconscious
 claude-orphan-killer
 code-indexer

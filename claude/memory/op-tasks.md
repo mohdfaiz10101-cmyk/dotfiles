@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-08] [high] Docker容器 Exited (137) 5 days ago 自动修复失败，需人工检查：docker logs Exited (137) 5 days ago --tail 30
 - [ ] [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago 自动修复失败，需人工检查：docker logs Exited (137) 4 days ago --tail 30
 - [x] [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago — 已定位: langfuse/langfuse:2 OOM killed, 容器已不存在(日志不可用), 建议docker rm清理或加内存重启
 - [!] [CC] [2026-05-06] [high] Docker容器 Exited (137) 3 days ago — 与4天前同一langfuse容器, 容器已不存在

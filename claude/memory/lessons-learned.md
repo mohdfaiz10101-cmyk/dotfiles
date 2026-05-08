@@ -271,3 +271,5 @@ eve
   - 限制: 该版本 Clash Meta 不支持 ADB intent 激活 VPN，必须通过 UI 手动点击
   - ADB 设备变化: USB(ff3ef385) + WiFi(192.168.2.37) → 5G(192.168.2.33)
 - [2026-05-08] [GLM自动] 观察: 4个user服务持续failed(agl-discord-bot/discord-intelligent-bot/docker-ordered-start/letta-health-guard)，OP连接守护日志停更4天(最后5/4)，service-nurse日志停更至4/22
+- [2026-05-08] [GLM自动] 观察: 4个用户服务持续failed状态: agi-discord-bot/discord-intelligent-bot/docker-ordered-start/mihomo-guardian，需排查是否已弃用可清理
+- [2026-05-08] [GLM自动] 观察: LiteLLM /health返回401 auth_error但无api key参数，说明网关存活但健康检查端点需认证，非故障
