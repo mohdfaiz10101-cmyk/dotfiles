@@ -1,10 +1,10 @@
 [Unit]
-Description=ttyd - Overcode Terminal (:7692)
+Description=ttyd - Claude Official Terminal (:7695)
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7692 --base-path /overcode -t fontSize=14 -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/overcode-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -b /cc -p 7695 -P 10 -t fontSize=13 -t scrollback=50000 -W /home/charlie/.local/bin/claudep-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

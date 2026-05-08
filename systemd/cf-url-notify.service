@@ -1,0 +1,8 @@
+[Unit]
+Description=推送 Cloudflare 隧道 URL 到 Telegram
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'URL=$(cat /tmp/cf-tunnel-7699-url 2>/dev/null); [ -n "$URL" ] && /home/charlie/.local/bin/tg-push "📱 CF隧道（定时提醒）: $URL" || true'
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin

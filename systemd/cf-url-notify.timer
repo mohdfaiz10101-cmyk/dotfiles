@@ -1,0 +1,9 @@
+[Unit]
+Description=每 6 小时推送 CF 隧道 URL
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=6h
+
+[Install]
+WantedBy=timers.target
