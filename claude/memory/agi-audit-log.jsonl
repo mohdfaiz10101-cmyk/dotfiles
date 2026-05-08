@@ -16896,3 +16896,6 @@
 {"ts": "2026-05-08 02:57", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-08 03:02", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-08 03:07", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 11:10", "type": "cycle", "summary": "LLM 调用失败：Using SOCKS proxy, but the 'socksio' package is not installed. Make sure to install httpx using `pip install httpx[socks]`.", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-08 11:11", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-08 11:12", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
