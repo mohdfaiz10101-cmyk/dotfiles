@@ -385,3 +385,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - **症状**：`page.goto timeout 30000ms exceeded`
 - **根因**：未配置代理，百度域名在国内需代理才能从NixOS访问
 - **修复**：launch args 加 `--proxy-server=http://127.0.0.1:7890`，context 加 `proxy: { server: 'http://127.0.0.1:7890' }`
+- [2026-05-08] [GLM] 症状→原因→状态: OP连接守护/service-nurse定时器停止运行→可能systemd timer被禁用或依赖链断裂→待修复

@@ -33,137 +33,7 @@
 - 出错不重复同样方法，连续失败2次 /clear
 
 
-## 记忆系统状态（自动注入 2026-05-06 06:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 168 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 36 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-06 12:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 168 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 36 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-06 18:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 168 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 36 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-07 00:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | N/A / N/A |
-| Letta MCP | active |
-| lessons-learned条目 | 36 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-07 06:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | N/A / N/A |
-| Letta MCP | active |
-| lessons-learned条目 | 36 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-07 12:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 171 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 36 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-07 18:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 171 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 38 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-08 00:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 171 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 43 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-  •       1 claude.com因HK节点被Anthropic封锁时
-  •       1 所有70+代理节点被Cloudflare IP封禁 → claude.com/anthropic.com/discord.com不可达
-  •       1 服务因活跃SSE连接导致停止超时
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-08 11:10）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 172 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 43 |
-| 历史会话数 | 38 |
-
-### 高频主题（最近）
-  •       1 claude.com因HK节点被Anthropic封锁时
-  •       1 所有70+代理节点被Cloudflare IP封禁 → claude.com/anthropic.com/discord.com不可达
-  •       1 服务因活跃SSE连接导致停止超时
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
-
-
-## 记忆系统状态（自动注入 2026-05-08 12:17）
+## 记忆系统状态（自动注入 2026-05-08 13:57）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | N/A / N/A |
@@ -172,9 +42,9 @@
 | 历史会话数 | 38 |
 
 ### 高频主题（最近）
-  •       1 claude.com因HK节点被Anthropic封锁时
-  •       1 所有70+代理节点被Cloudflare IP封禁 → claude.com/anthropic.com/discord.com不可达
-  •       1 服务因活跃SSE连接导致停止超时
+  • : (×1)
+  • : (×1)
+  • : (×1)
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
 

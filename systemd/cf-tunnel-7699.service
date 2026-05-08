@@ -1,0 +1,14 @@
+[Unit]
+Description=Cloudflare Tunnel — 7699 手机备用入口
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cf-tunnel-7699
+Restart=on-failure
+RestartSec=30
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target

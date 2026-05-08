@@ -239,3 +239,35 @@ eve
   - 注意: 手机隧道仅在手机在线时可用；手机重启后systemd自动重连(RestartSec=15)
   - 命令: `ssh -NT -D 1080 -f phone` | `systemctl --user start phone-socks-tunnel`
   - 配置: /etc/mihomo/config.yaml proxy添加"📱 手机移动"到🌟付费专线组 + 路由规则
+
+- [2026-05-08] [CC] 记忆系统全链路诊断与修复
+  - 场景: 当前 Claude Code 窗口中记忆注入完全失效，lessons-learned/让塔/KG 有大量数据但不被使用
+  - 根因1: cc-letta-check.sh 中 Letta REST API 返回含控制字符的 JSON，python3 json.load 报错 → 每次静默退出，零注入
+  - 根因2: 意图路由硬编码为 code-assistant（9条记忆），运维问题应路由到 nixos-sysadmin（140条记忆）
+  - 根因3: memory-bootstrap.sh 高频主题正则 `(?<=场景[：:] ).*` 与实际格式不匹配
+  - 根因4: memory-bootstrap.sh Letta 状态检测用的 systemctl --user letta-mcp（不存在），应用 curl 检测 Docker
+  - 根因5: AGENTS.md 被注入了10个重复的「记忆系统状态」块，浪费上下文窗口
+  - 修复1: cc-letta-check.sh 添加 `raw.replace(控制字符)` 清理 + 意图关键词路由(ops_kw→nixos-sysadmin)
+  - 修复2: memory-bootstrap.sh 正则改为 `场景[:\s]` + Letta 用 curl HTTP status 检测 + 清理逻辑改为替换而非追加
+  - 修复3: AGENTS.md 运行 bootstrap 清理重复块
+  - 验证: echo '{"message":"mihomo proxy"}' | cc-letta-check.sh → 命中5条nixos-sysadmin记忆
+  - 子agent超时: 当前 spawn 6 个子agent全部 60-120s 超时，但最终都返回了结果
+
+- [2026-05-08] [CC] mihomo 代理规则修复
+  - 场景: Chrome/终端大量网站无法访问（cloudflare/npm/pypi/zerotier/twitter/discord全挂）
+  - 根因1: 「🐟 漏网之鱼」默认 DIRECT，被墙域名没命中规则就直连
+  - 根因2: 代理节点（SG/HK）IP 被 Cloudflare 封禁，TLS握手超时
+  - 根因3: fake-ip DNS 缓存过期导致 Chrome 转圈（central.zerotier.com）
+  - 修复1: mihomo config 添加 cloudflare/npm/pypi/zerotier/workers.dev/pages.dev → DIRECT
+  - 修复2: 手动切换代理到 US_5 节点（能通所有站）
+  - 修复3: curl -X POST flush fake-ip + DNS 缓存
+  - 注意: mihomo 自动选择的健康检查 URL 是 google.com，选出的节点可能不通 cloudflare
+
+- [2026-05-08] [CC] 手机 OnePlus 代理诊断
+  - 场景: Google Play 无法访问，手机完全没走代理
+  - 根因: Clash Meta App 没在运行，无 VPN 接口，系统代理为空
+  - 手机配置: Clash Meta v0.x，config 在 /storage/emulated/0/ClashMeta/config.yaml
+  - 已有: Magisk service.d/99-clash-meta.sh 开机自启脚本（但 intent 无法激活 VPN）
+  - 限制: 该版本 Clash Meta 不支持 ADB intent 激活 VPN，必须通过 UI 手动点击
+  - ADB 设备变化: USB(ff3ef385) + WiFi(192.168.2.37) → 5G(192.168.2.33)
+- [2026-05-08] [GLM自动] 观察: 4个user服务持续failed(agl-discord-bot/discord-intelligent-bot/docker-ordered-start/letta-health-guard)，OP连接守护日志停更4天(最后5/4)，service-nurse日志停更至4/22
