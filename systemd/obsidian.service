@@ -1,0 +1,19 @@
+[Unit]
+Description=Obsidian via Wine
+After=graphical-session.target network.target
+Wants=graphical-session.target
+
+[Service]
+Type=forking
+PIDFile=/home/charlie/.obsidian/wine-obsidian.pid
+ExecStartPre=/bin/mkdir -p /home/charlie/.obsidian
+ExecStart=/bin/sh -c 'nohup wine /mnt/win_c/Programs/Obsidian/Obsidian.exe > /home/charlie/.obsidian/obsidian.log 2>&1 & echo $! > /home/charlie/.obsidian/wine-obsidian.pid'
+ExecStop=/bin/kill -15 $MAINPID
+Restart=on-failure
+RestartSec=10
+Environment=DISPLAY=:0
+Environment=WSL_INTEROP=/mnt/wsl
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+[Install]
+WantedBy=graphical-session.target
