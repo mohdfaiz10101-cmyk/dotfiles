@@ -309,3 +309,4 @@ eve
   - 症状：所有境外站点 Google/GitHub/claude.ai 全 000（TLS EOF），HTTP 502
   - 根因：nodpai 订阅 155 个节点全被 GFW 封锁（TCP 通但 TLS 握手 EOF）
   - 修复：需更新订阅或切换到良心云等其他订阅
+- [2026-05-09] [GLM自动] 观察: AGI四个子系统(cognitive/discord/feedback/self-improve)均failed; /mnt/ai磁盘81%逼近警戒线; op-connection-guard日志5/4后停更
