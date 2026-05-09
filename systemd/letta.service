@@ -1,0 +1,15 @@
+[Unit]
+Description=Letta Memory Server
+After=network.target
+
+[Service]
+Type=simple
+Environment=LETTA_PG_URI=postgresql://letta:letta@localhost:5432/letta
+Environment=LD_LIBRARY_PATH=/nix/store/j2kgllgds4w7na8zqv1msi0mpvpjxda8-gcc-15.2.0-lib/lib
+Environment=PATH=/mnt/ai/apps/letta-venv/bin:/run/current-system/sw/bin
+ExecStart=/mnt/ai/apps/letta-venv/bin/letta server
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
