@@ -1,3 +1,5 @@
+- [ ] [CC] [2026-05-09] [high] Docker容器 Exited (0) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (0) 12 hours ago --tail 30
+- [ ] [CC] [2026-05-09] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30
 - [ ] [CC] [2026-05-08] [high] Docker容器 Exited (127) 3 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 3 weeks ago --tail 30
 - [ ] [CC] [2026-05-08] [high] Docker容器 Exited (137) 5 days ago 自动修复失败，需人工检查：docker logs Exited (137) 5 days ago --tail 30
 - [!]  [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago 自动修复失败，需人工检查：docker logs Exited (137) 4 days ago --tail 30 [DECAY:遗忘率25%]
@@ -574,3 +576,10 @@
   - 持久化: systemd user service ~/.config/systemd/user/phone-socks-tunnel.service 开机自启
   - SSH隧道: ssh -D 1080 phone(Tailscale 100.119.174.25)，ServerAliveInterval=30自动重连
   - 验证: claude.com 200 ✓ | claude.ai 302 ✓ | api.anthropic.com 403 ✓
+
+### [SELF-IMPROVE 2026-05-09] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 修复第98行未完成的类型注解语法错误（将 `_last_proactive_time: f` 改为 `_last_proactive_time: float = 0.0`）。
+- [ ] [SELF-IMPROVE] think.py: 代码在 `_letta_recall` 函数的 return 语句处被截断，存在严重的语法错误，需要补全函数逻辑并完成整个文件的代码实现。
+- [ ] [SELF-IMPROVE] kanban.html: 补全被截断的CSS代码（如.wip-bar样式及后续的卡片样式、脚本逻辑等）以形成完整可运行的页面。
+- [ ] [SELF-IMPROVE] launcher-server.py: 将认证机制从IP地址段白名单和明文Token切换为HTTPS与强哈希Token校验，以防止Token被中间人窃听和IP地址被轻易伪造的安全风险。
+- [ ] [SELF-IMPROVE] hub-api.py: 将直接操作sqlite3的数据库查询逻辑重构为使用异步数据库驱动（如aiosqlite）或提取到独立的Repository层，以避免阻塞FastAPI的异步事件循环。
