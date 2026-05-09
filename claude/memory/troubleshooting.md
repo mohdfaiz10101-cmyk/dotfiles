@@ -389,3 +389,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - [2026-05-08] [GLM] 症状:ai-config-guard反复exit-code 2→原因:INVALIDARGUMENT→状态:已知未修复
 - [2026-05-08] [GLM] 症状→原因→状态: OP connection-guard日志停更于5月4日后断更，service-nurse日志停更于4月22日，推测相关timer已停止或service本身failed未恢复
 - [2026-05-09] [GLM] 症状:LiteLLM /health返回401→原因:endpoint需要api_key→状态:服务可能正常但health检查方式需带key; Hub Discord Bot+ai-config-guard连续失败
+- [2026-05-09] [GLM] 症状→原因→状态: LiteLLM /health返回401 auth_error→health端点需api_key或bypass配置→待修复；连接守护5月4日后无新日志→timer可能disabled→待排查
