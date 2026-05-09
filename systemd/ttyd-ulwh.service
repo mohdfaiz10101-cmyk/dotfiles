@@ -1,10 +1,10 @@
 [Unit]
-Description=ttyd - Sisy Terminal (:7692)
+Description=ttyd - ULWh Terminal (:7696)
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7692 --base-path /overcode -t fontSize=14 -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/sisy-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -p 7696 --base-path /ulwh -t fontSize=14 -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/ulwh-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

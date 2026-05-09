@@ -7,6 +7,11 @@
           "text": "opencode集成测试成功",
           "tags": "integration",
           "timestamp": "1778263383"
+        },
+        {
+          "text": "2026-05-09 Letta重建完成: agents=sysadmin(0040ded4)+code(9b3bcec2), 1734条archival灌入(含lessons/nixos/troubleshoot/codebase/ai-tools/对话记录). embedding :8286正常(384维), LiteLLM :4000路由GLM-4.7. KG 16实体已清理重复observations. memory-decay-engine.py agent IDs已更新.",
+          "tags": "letta,rebuild,memory-system,2026-05-09",
+          "timestamp": "1778315298"
         }
       ]
     },
