@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "opencode",
+  "scroll_speed": 3,
+  "scroll_acceleration": { "enabled": false },
+  "diff_style": "stacked",
+  "mouse": true,
+  "tool_output": "hidden",
+  "code_blocks": "collapsed",
+  "keybinds": {
+    "tool_details": "ctrl+y",
+    "messages_toggle_conceal": "ctrl+shift+y"
+  }
+}

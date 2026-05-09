@@ -1,0 +1,26 @@
+{
+  "continue": false,
+  "createdAt": "2026-04-17T00:45:00+0800",
+  "invocation": {
+    "args": [
+      "run",
+      "--model",
+      "openai-compatible/glm-4.7",
+      "--dir",
+      "/home/charlie",
+      "服务护士巡检：检查Docker容器、systemd服务、端口可达性、磁盘空间。异常服务自动修复（最多3次/小时）。用中文。简洁。\n\n⚠️ 格式约束：本任务禁止输出 📎 尾注、禁止 [自检] 行、禁止 CLAUDE.md 中的视觉模板和状态标记格式。只输出纯文本执行结果。\n\n⚠️ FALSE_POSITIVE_GUARD：systemctl is-active 返回 inactive ≠ 失败。必须用 systemctl --user show <svc> --property=Result 验证：Result=success → 正常完成，禁止升级为失败任务。opencode-job-* 均为 oneshot，inactive Result=success 是正常状态。"
+    ],
+    "command": "/home/charlie/.local/bin/opencode"
+  },
+  "lastRunAt": "2026-04-22T12:00:00+0800",
+  "lastRunSource": "scheduled",
+  "lastRunStatus": "running",
+  "model": "openai-compatible/glm-5.1",
+  "prompt": "服务护士巡检：(1) Docker容器: docker ps -a --format 'table {{.Names}}\t{{.Status}}' (2) 失败的systemd服务: systemctl --user --failed; systemctl --failed (3) 端口可达: for p in 4000 8283 8788 9098 9800 9801 3100 8003; do timeout 2 bash -c \"echo >/dev/tcp/localhost/$p\" 2>/dev/null && echo \"$p:UP\" || echo \"$p:DOWN\"; done (4) 磁盘: df -h / /mnt/ai (5) 退出容器尝试重启，失败服务尝试systemctl reset-failed + restart（同服务限3次/小时）。用中文。简洁输出。\n\n⚠️ 格式约束：本任务禁止输出 📎 尾注、禁止 [自检] 行、禁止 CLAUDE.md 中的视觉模板和状态标记格式。只输出纯文本执行结果。\n\n⚠️ FALSE_POSITIVE_GUARD：systemctl is-active 返回 inactive ≠ 失败。必须用 systemctl --user show <svc> --property=Result 验证：Result=success → 正常完成，禁止升级为失败任务。opencode-job-* 均为 oneshot，inactive Result=success 是正常状态。",
+  "scopeId": "charlie-b445f233ebb8",
+  "slug": "service-nurse",
+  "timeoutSeconds": 300,
+  "updatedAt": "2026-04-22T12:00:00+0800",
+  "workdir": "/home/charlie",
+  "args": []
+}

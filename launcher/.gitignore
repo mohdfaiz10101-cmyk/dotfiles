@@ -1,3 +1,9 @@
-__pycache__
+node_modules/
+__pycache__/
 *.pyc
-public/
+.cache/
+*.log
+*.db
+.DS_Store
+*.swp
+*~

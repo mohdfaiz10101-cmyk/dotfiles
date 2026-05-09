@@ -1,0 +1,75 @@
+# Skill: Create code-dual Command
+
+你是一个自动化脚本创建助手。执行以下步骤创建 code-dual 命令。
+
+## 任务目标
+创建 code-dual 脚本，用单条命令在 tmux 中同时启动 Claude CLI 和 Aider DeepSeek。
+
+## 执行流程（直接执行，不委托）
+
+### 1. 创建脚本文件
+使用 Write 工具创建 `~/.local/bin/code-dual`：
+
+```bash
+#!/bin/bash
+# code-dual: Launch Claude CLI and Aider + DeepSeek in parallel tmux session
+
+set -e
+
+SESSION_NAME="code-dual-$(date +%s)"
+WORKING_DIR="${1:-.}"
+
+# 检查 tmux 可用性
+if ! command -v tmux &> /dev/null; then
+  echo "❌ tmux 未安装"
+  exit 1
+fi
+
+# 创建新 tmux 会话
+tmux new-session -d -s "$SESSION_NAME" -x 240 -y 60
+
+# 左窗格：Claude CLI
+tmux send-keys -t "$SESSION_NAME" "cd '$WORKING_DIR' && claude-with-router" Enter
+
+# 右窗格：Aider + DeepSeek
+tmux split-window -t "$SESSION_NAME" -h
+tmux send-keys -t "$SESSION_NAME" "cd '$WORKING_DIR' && aider --model openai/silicon-deepseek-v3.2 ." Enter
+
+# 均衡布局
+tmux select-layout -t "$SESSION_NAME" "main-vertical"
+
+echo "✅ 会话已启动: $SESSION_NAME"
+echo "   Ctrl+B O - 切换面板"
+echo "   Ctrl+B X - 关闭面板"
+
+# 连接到会话
+tmux attach-session -t "$SESSION_NAME"
+```
+
+### 2. 设置权限
+运行：`chmod +x ~/.local/bin/code-dual`
+
+### 3. 验证 PATH
+检查 ~/.local/bin 是否在 PATH 中：
+- 运行：`echo $PATH | grep -q "$HOME/.local/bin"`
+- 如果不在，追加到 ~/.bashrc：`export PATH="$HOME/.local/bin:$PATH"`
+
+### 4. 语法验证
+运行：`bash -n ~/.local/bin/code-dual`
+
+### 5. 记录到 memory
+追加到 `~/.claude/projects/-home-charlie/memory/ai-tools.md`：
+
+```
+- [日期] [模型] mpm-code-dual-setup skill：创建 code-dual 命令脚本
+  - 位置：~/.local/bin/code-dual
+  - 功能：tmux 双面板启动 Claude + Aider
+  - Token 优化：skill 直接执行，节省 ~60k tokens（vs 多层委托）
+```
+
+## 成本优化说明
+此 skill 设计用于节省 token：
+- **问题**：多层 Task 委托消耗 75k+ tokens
+- **原因**：每次委托传递完整 CLAUDE.md（8k+ tokens）
+- **方案**：skill 内直接使用 Write/Bash 工具，单次上下文完成
+- **收益**：节省 ~60k tokens/次

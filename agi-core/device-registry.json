@@ -1,0 +1,13 @@
+{
+  "devices": [
+    {
+      "id": "89f5ae98",
+      "name": "Xiaomi M2011K2G",
+      "type": "android",
+      "connection": "adb",
+      "status": "unknown",
+      "registered": "2026-04-18",
+      "sensors": ["battery", "screen", "wifi", "memory", "foreground_app"]
+    }
+  ]
+}

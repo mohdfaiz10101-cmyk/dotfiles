@@ -1,0 +1,19 @@
+[Unit]
+Description=Docker Compose 有序启动
+After=docker.service mnt-ai.mount
+Requires=docker.service
+Wants=mnt-ai.mount
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=charlie
+# 先停掉 Docker 自动拉起的所有容器
+ExecStartPre=-/run/current-system/sw/bin/docker stop $(/run/current-system/sw/bin/docker ps -q)
+# 有序启动
+ExecStart=/run/current-system/sw/bin/bash /mnt/ai/ai-cluster/start-all.sh
+# 关闭时有序 down
+ExecStop=/run/current-system/sw/bin/bash -c 'for f in /mnt/ai/ai-cluster/litellm/docker-compose.yml /mnt/ai/ai-cluster/letta/docker-compose.yml /mnt/ai/ai-cluster/langfuse/docker-compose.yml /mnt/ai/ai-cluster/twenty-crm/docker-compose.yml /mnt/ai/apps/musetalk/docker-compose.yml /home/charlie/agi/docker/virtual-person/docker-compose.yml; do [ -f "$f" ] && /run/current-system/sw/bin/docker compose -f "$f" down 2>/dev/null; done'
+
+[Install]
+WantedBy=multi-user.target

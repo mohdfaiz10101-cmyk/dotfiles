@@ -1,0 +1,10 @@
+models/
+data/
+__pycache__/
+*.pyc
+*.db
+*.log
+.cache/
+.DS_Store
+*.swp
+*~

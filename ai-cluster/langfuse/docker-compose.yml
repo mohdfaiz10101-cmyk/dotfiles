@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+  langfuse-db:
+    image: postgres:15-alpine
+    container_name: langfuse-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: langfuse
+      POSTGRES_PASSWORD: langfuse2026
+      POSTGRES_DB: langfuse
+    volumes:
+      - langfuse-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langfuse"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - langfuse-net
+
+  langfuse:
+    image: langfuse/langfuse:2
+    container_name: langfuse
+    restart: unless-stopped
+    depends_on:
+      langfuse-db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3010:3000"
+    environment:
+      DATABASE_URL: postgresql://langfuse:langfuse2026@langfuse-db:5432/langfuse
+      NEXTAUTH_SECRET: charlie-langfuse-secret-2026
+      NEXTAUTH_URL: http://localhost:3010
+      SALT: charlie-langfuse-salt-2026
+      TELEMETRY_ENABLED: "false"
+      LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES: "false"
+      # 初始管理员账号
+      LANGFUSE_INIT_ORG_ID: charlie-org
+      LANGFUSE_INIT_ORG_NAME: Charlie AI
+      LANGFUSE_INIT_PROJECT_ID: main-project
+      LANGFUSE_INIT_PROJECT_NAME: AI Infrastructure
+      LANGFUSE_INIT_PROJECT_PUBLIC_KEY: pk-lf-charlie-2026
+      LANGFUSE_INIT_PROJECT_SECRET_KEY: sk-lf-charlie-2026
+      LANGFUSE_INIT_USER_EMAIL: charlie@nixos.local
+      LANGFUSE_INIT_USER_NAME: charlie
+      LANGFUSE_INIT_USER_PASSWORD: charlie2026lf
+    networks:
+      - langfuse-net
+
+volumes:
+  langfuse-postgres:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/pool-disks/POOL-D1/ai/docker/langfuse-postgres
+
+networks:
+  langfuse-net:
+    driver: bridge

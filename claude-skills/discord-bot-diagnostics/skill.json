@@ -1,0 +1,48 @@
+{
+  "name": "discord-bot-diagnostics",
+  "version": "1.0.0",
+  "author": "Claude MPM",
+  "description": "Diagnose and auto-repair Discord Bot issues, including systemd service status, API quota exhaustion, and connectivity problems",
+  "triggers": [
+    "discord bot",
+    "bot status",
+    "api quota",
+    "429 error",
+    "gemini error",
+    "bot diagnostics",
+    "bot not responding",
+    "resource exhausted"
+  ],
+  "category": "diagnostics",
+  "tags": ["discord", "systemd", "api", "monitoring", "auto-repair"],
+  "prerequisites": {
+    "services": ["discord-bot.service"],
+    "files": [
+      "~/hub/discord-bot.py",
+      "~/.config/api-keys/systemd.env",
+      "~/.config/systemd/user/discord-bot.service"
+    ],
+    "commands": ["systemctl", "journalctl", "curl"]
+  },
+  "related_skills": [
+    "mpm-config",
+    "hermetic-ledger",
+    "paperclip"
+  ],
+  "auto_update": {
+    "enabled": true,
+    "trigger_patterns": [
+      "discord bot.*429",
+      "bot.*not responding",
+      "quota.*exhausted",
+      "gemini.*error"
+    ],
+    "update_strategy": "append_troubleshooting"
+  },
+  "global_share": {
+    "enabled": true,
+    "share_url": "https://skills.claude-mpm.dev/discord-bot-diagnostics",
+    "access": "public",
+    "sync_interval": "daily"
+  }
+}

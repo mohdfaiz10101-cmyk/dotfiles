@@ -1,0 +1,26 @@
+{
+  "last_scan": "2026-04-18T07:47:23+00:00",
+  "files": {
+    "MEMORY.md": "2026-04-18T07:44:13+00:00",
+    "ai-tools.md": "2026-04-18T04:07:50+00:00",
+    "codebase-map.md": "2026-04-18T04:56:08+00:00",
+    "command-reference.md": "2026-04-18T02:51:29+00:00",
+    "ideas-roadmap.md": "2026-04-18T04:16:54+00:00",
+    "lessons-learned.md": "2026-04-18T07:39:26+00:00",
+    "nixos-config.md": "2026-04-18T02:51:29+00:00",
+    "obsidian-sync-guide.md": "2026-04-18T02:51:29+00:00",
+    "pending-tasks.md": "2026-04-18T02:51:29+00:00",
+    "setup-plan.md": "2026-04-18T02:51:29+00:00",
+    "troubleshooting.md": "2026-04-18T02:51:29+00:00",
+    "cline-api-integration-analysis.md": "2026-04-18T02:51:29+00:00",
+    "weekly-error-review-2026-W14.md": "2026-04-18T02:51:29+00:00",
+    "weekly-error-review-2026-W15.md": "2026-04-18T02:51:29+00:00",
+    "litellm-startup-diagnosis.md": "2026-04-18T02:51:29+00:00",
+    "litellm-deployment.md": "2026-04-18T02:51:29+00:00",
+    "app-dev-journal.md": "2026-04-18T05:22:31+00:00",
+    "op-tasks.md": "2026-04-18T07:46:50+00:00",
+    "op-review-report.md": "2026-04-18T02:51:29+00:00",
+    "cc-queue.md": "2026-04-18T04:09:23+00:00",
+    "feedback_entry_point.md": "2026-04-18T07:44:02+00:00"
+  }
+}

@@ -1,0 +1,54 @@
+version: '3.8'
+
+# 虚拟人流水线 — GPT-SoVITS + MuseTalk
+# RTX 3060 Ti 8GB：MuseTalk 用 profile 按需启动，防 OOM
+# GPT-SoVITS: http://localhost:9880  (常驻)
+# MuseTalk:   http://localhost:9881  (按需: docker compose --profile musetalk up -d musetalk)
+
+services:
+  # ===== TTS 声音克隆 (常驻) =====
+  gptsovits:
+    image: breakstring/gpt-sovits:latest
+    container_name: gptsovits
+    runtime: nvidia
+    restart: unless-stopped
+    ports:
+      - "9880:9880"
+    volumes:
+      - /home/charlie/agi/models/voice/gpt_weights:/workspace/GPT_weights
+      - /home/charlie/agi/models/voice/sovits_weights:/workspace/SoVITS_weights
+      - /home/charlie/agi/data/voice:/workspace/data
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512
+    # 启动时预加载牛哞哞声音模型
+    command: python api.py -a 0.0.0.0 -p 9880 -dr /workspace/data/niumoumou.wav -dt "让我们一起加油每一天都是新的开始" -dl "zh"
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9880/docs')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  # ===== 数字人口型同步 (按需) =====
+  musetalk:
+    build: /mnt/ai/apps/musetalk
+    image: musetalk:local
+    container_name: musetalk
+    runtime: nvidia
+    restart: unless-stopped
+    ports:
+      - "9881:8000"
+    volumes:
+      - /home/charlie/agi/models/musetalk:/app/models
+      - /home/charlie/agi/data/avatar:/app/avatar
+      - /home/charlie/agi/data/videos:/app/output
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512
+    profiles:
+      - musetalk
+
+networks:
+  default:
+    name: virtual-person-net

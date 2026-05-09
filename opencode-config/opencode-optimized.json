@@ -1,0 +1,128 @@
+{
+  "$schema": "https://opencode.ai/opencode.json",
+  "provider": {
+    "openai-compatible": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM",
+      "options": {
+        "baseURL": "http://localhost:4000/v1",
+        "apiKey": "sk-litellm-charlie-2026",
+        "timeout": 120000,  // 2分钟超时
+        "maxRetries": 2      // 最大重试次数
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro (SiliconFlow)",
+          "limit": {
+            "context": 65536,  // 优化：从160K降到64K
+            "output": 4096     // 优化：从8K降到4K
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash (SiliconFlow)",
+          "limit": {
+            "context": 32768,  // 优化：从128K降到32K
+            "output": 4096
+          }
+        },
+        "glm-5.1": {
+          "name": "GLM-5.1 旗舰 (Z.AI)",
+          "limit": {
+            "context": 32768,  // 优化：从128K降到32K
+            "output": 4096
+          }
+        },
+        "glm-5-turbo": {
+          "name": "GLM-5-Turbo (Z.AI)",
+          "limit": {
+            "context": 16384,  // 优化：从128K降到16K
+            "output": 2048
+          }
+        },
+        "glm-4.7": {
+          "name": "GLM-4.7 (Z.AI)",
+          "limit": {
+            "context": 16384,
+            "output": 2048
+          }
+        }
+      }
+    }
+  },
+  "model": "openai-compatible/deepseek-v4-pro",
+  "small_model": "openai-compatible/deepseek-v4-flash",
+  "default_agent": "chat",
+  "agent": {
+    "chat": {
+      "model": "openai-compatible/glm-5-turbo",
+      "max_turns": 10,  // 新增：限制对话轮数
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。禁止重复相同输出，禁止循环执行。"
+    }
+  },
+  "mcp": {
+    "claude-knowledge": {
+      "enabled": true,  // 明确启用
+      "type": "local",
+      "command": ["node", "/home/charlie/.local/lib/windsurf-knowledge-mcp/server.js"]
+    },
+    "letta": {
+      "enabled": true,
+      "type": "local",
+      "command": ["python3", "/home/charlie/.local/bin/letta-mcp", "--stdio"]
+    },
+    "context7": {
+      "enabled": false,  // 禁用不常用的MCP
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp@latest"]
+    },
+    "ref": {
+      "enabled": false,
+      "type": "local",
+      "command": ["npx", "-y", "ref-tools-mcp@latest"]
+    },
+    "wechat": {
+      "enabled": false,
+      "type": "local",
+      "command": ["/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
+                 "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server", "--stdio"]
+    },
+    "playwright": {
+      "enabled": false,
+      "type": "local",
+      "command": ["mcp-server-playwright", "--browser", "chrome"]
+    }
+  },
+  "theme": "dark",
+  "tui": {
+    "code_blocks": "collapsed",
+    "tool_output": "hidden",
+    "hide_thinking": true,
+    "max_output_lines": 100  // 新增：限制输出行数
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "ls|cat|grep|find|echo|pwd|cd": "allow",  // 明确允许的命令
+      "rm -rf *": "ask",  // 危险命令需要确认
+      "git push *": "ask",
+      "npm install -g *": "ask",
+      "pip install *": "ask",
+      "*": "ask"  // 默认需要确认
+    },
+    "webfetch": "allow",
+    "websearch": "allow",
+    "doom_loop": "ask",  // 循环检测需要确认
+    "external_directory": {
+      "/home/charlie/**": "allow",
+      "/mnt/**": "allow"
+    }
+  },
+  "stability": {
+    "max_retries": 3,           // 最大重试次数
+    "retry_delay": 2000,        // 重试延迟(ms)
+    "max_concurrent_requests": 2, // 最大并发请求
+    "memory_limit_mb": 2048,    // 内存限制
+    "enable_loop_detection": true, // 启用循环检测
+    "loop_threshold": 3         // 连续3次相同输出视为循环
+  }
+}

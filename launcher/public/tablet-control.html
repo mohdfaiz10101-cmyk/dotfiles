@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>平板控制面板</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .status {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .status-item {
+            background: rgba(255,255,255,0.05);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00ff88;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .btn {
+            background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,255,136,0.2));
+            border: 2px solid rgba(0,212,255,0.3);
+            color: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, rgba(0,212,255,0.4), rgba(0,255,136,0.4));
+        }
+        .btn-icon {
+            font-size: 24px;
+        }
+        .btn-danger {
+            border-color: rgba(255,100,100,0.5);
+            background: linear-gradient(135deg, rgba(255,100,100,0.2), rgba(255,50,50,0.2));
+        }
+        .output {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+        .output.show { display: block; }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎮 平板控制面板</h1>
+        <div class="status">
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>NixOS 主机</span>
+            </div>
+            <div class="status-item" id="windows-status">
+                <div class="status-dot" style="background: #888"></div>
+                <span>Windows 主机</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🖥️ 远程连接</div>
+        <div class="button-grid">
+            <button class="btn" onclick="exec('remmina -c rdp://G@192.168.123.136')">
+                <div class="btn-icon">🪟</div>
+                <div>Windows RDP</div>
+            </button>
+            <button class="btn" onclick="exec('moonlight 192.168.123.136')">
+                <div class="btn-icon">🎮</div>
+                <div>Moonlight 串流</div>
+            </button>
+            <button class="btn" onclick="exec('input-leap-server &')">
+                <div class="btn-icon">🖱️</div>
+                <div>跨屏互控</div>
+            </button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🌐 Web 服务</div>
+        <div class="button-grid">
+            <button class="btn" onclick="openUrl('http://localhost:9098')">
+                <div class="btn-icon">💬</div>
+                <div>HyperChat</div>
+            </button>
+            <button class="btn" onclick="openUrl('http://localhost:9875')">
+                <div class="btn-icon">🚀</div>
+                <div>启动器</div>
+            </button>
+            <button class="btn" onclick="openUrl('http://localhost:8384')">
+                <div class="btn-icon">🔄</div>
+                <div>Syncthing</div>
+            </button>
+            <button class="btn" onclick="openUrl('http://localhost:9090')">
+                <div class="btn-icon">⚙️</div>
+                <div>Cockpit</div>
+            </button>
+            <button class="btn" onclick="openUrl('http://localhost:7681')">
+                <div class="btn-icon">💻</div>
+                <div>Web 终端</div>
+            </button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🔧 系统操作</div>
+        <div class="button-grid">
+            <button class="btn" onclick="exec('systemctl --user restart hyperchat')">
+                <div class="btn-icon">🔄</div>
+                <div>重启 HyperChat</div>
+            </button>
+            <button class="btn" onclick="exec('systemctl --user restart clipboard-sync-tablet')">
+                <div class="btn-icon">📋</div>
+                <div>重启剪贴板同步</div>
+            </button>
+            <button class="btn" onclick="checkServices()">
+                <div class="btn-icon">📊</div>
+                <div>检查服务状态</div>
+            </button>
+            <button class="btn btn-danger" onclick="if(confirm('确定要重启系统？')) exec('systemctl reboot')">
+                <div class="btn-icon">🔴</div>
+                <div>重启系统</div>
+            </button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🤖 Agent 调度中心</div>
+        <div id="agent-status" style="display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px">
+            <div class="status-item"><div class="status-dot" id="opus-dot" style="background:#888"></div><span id="opus-label">Opus 空闲</span></div>
+            <div class="status-item"><div class="status-dot" id="glm-dot" style="background:#888"></div><span id="glm-label">GLM 空闲</span></div>
+            <div class="status-item"><span id="queue-label">队列: --</span></div>
+            <div class="status-item"><span id="patrol-label">巡逻: --</span></div>
+        </div>
+        <div class="button-grid">
+            <button class="btn" onclick="agentControl('start')">
+                <div class="btn-icon">▶️</div><div>启动调度</div>
+            </button>
+            <button class="btn" onclick="agentControl('stop')">
+                <div class="btn-icon">⏹️</div><div>停止调度</div>
+            </button>
+            <button class="btn" onclick="agentControl('patrol')">
+                <div class="btn-icon">🔍</div><div>立即巡逻</div>
+            </button>
+            <button class="btn" onclick="showAddTask()">
+                <div class="btn-icon">➕</div><div>添加任务</div>
+            </button>
+        </div>
+        <div id="task-list" style="margin-top:15px;max-height:300px;overflow-y:auto"></div>
+    </div>
+
+    <div id="add-task-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index:100;padding:20px;overflow-y:auto">
+        <div style="max-width:500px;margin:50px auto;background:#1a1a2e;padding:25px;border-radius:16px;border:2px solid rgba(0,212,255,0.3)">
+            <h3 style="color:#00d4ff;margin-bottom:15px">添加新任务</h3>
+            <input id="task-title" placeholder="任务标题" style="width:100%;padding:12px;border-radius:8px;border:1px solid #444;background:#222;color:#fff;font-size:16px;margin-bottom:10px">
+            <textarea id="task-desc" placeholder="任务描述（可选）" rows="3" style="width:100%;padding:12px;border-radius:8px;border:1px solid #444;background:#222;color:#fff;font-size:14px;margin-bottom:10px;resize:none"></textarea>
+            <div style="display:flex;gap:10px;margin-bottom:15px">
+                <select id="task-complexity" style="flex:1;padding:10px;border-radius:8px;border:1px solid #444;background:#222;color:#fff;font-size:14px">
+                    <option value="simple">简单 → GLM</option>
+                    <option value="medium" selected>中等 → GLM</option>
+                    <option value="complex">复杂 → Opus</option>
+                    <option value="critical">关键 → Opus</option>
+                </select>
+                <select id="task-priority" style="flex:1;padding:10px;border-radius:8px;border:1px solid #444;background:#222;color:#fff;font-size:14px">
+                    <option value="1">紧急</option>
+                    <option value="3">高</option>
+                    <option value="5" selected>中</option>
+                    <option value="8">低</option>
+                </select>
+            </div>
+            <div style="display:flex;gap:10px">
+                <button class="btn" style="flex:1;min-height:50px" onclick="submitTask()">提交</button>
+                <button class="btn btn-danger" style="flex:1;min-height:50px" onclick="hideAddTask()">取消</button>
+            </div>
+            <div style="margin-top:15px">
+                <div class="section-title" style="font-size:14px">快捷模板</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+                    <button class="btn" style="padding:10px 15px;min-height:auto;font-size:13px" onclick="fillTemplate('构建营销网站','使用现代前端框架构建营销落地页，包含SEO优化','medium')">🌐 营销网站</button>
+                    <button class="btn" style="padding:10px 15px;min-height:auto;font-size:13px" onclick="fillTemplate('SEO优化分析','分析现有网站SEO状况，生成优化建议和执行方案','medium')">🔍 SEO分析</button>
+                    <button class="btn" style="padding:10px 15px;min-height:auto;font-size:13px" onclick="fillTemplate('修复系统Bug','检查并修复系统服务异常','simple')">🐛 修复Bug</button>
+                    <button class="btn" style="padding:10px 15px;min-height:auto;font-size:13px" onclick="fillTemplate('架构设计评审','对系统架构进行深度分析和优化建议','complex')">🏗️ 架构评审</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 模型额度</div>
+        <div id="quota-panel" style="display:flex;flex-direction:column;gap:12px">
+            <div class="status-item" style="flex-direction:column;align-items:stretch;width:100%">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:600;color:#cba6f7">🐉 Opus (2233.ai 包月)</span>
+                    <span id="opus-quota-text" style="color:#aaa;font-size:13px">加载中...</span>
+                </div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:8px;height:14px;overflow:hidden">
+                    <div id="opus-quota-bar" style="height:100%;background:linear-gradient(90deg,#cba6f7,#9b6dff);width:0%;transition:width 0.5s;border-radius:8px"></div>
+                </div>
+            </div>
+            <div class="status-item" style="flex-direction:column;align-items:stretch;width:100%">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:600;color:#f9e2af">📜 GLM (Coding Plan)</span>
+                    <span id="glm-quota-text" style="color:#aaa;font-size:13px">加载中...</span>
+                </div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:8px;height:14px;overflow:hidden">
+                    <div id="glm-quota-bar" style="height:100%;background:linear-gradient(90deg,#f9e2af,#e8a820);width:0%;transition:width 0.5s;border-radius:8px"></div>
+                </div>
+            </div>
+            <div class="status-item" style="flex-direction:column;align-items:stretch;width:100%">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:600;color:#89b4fa">⚔ Sonnet (2233.ai 流量)</span>
+                    <span id="sonnet-quota-text" style="color:#aaa;font-size:13px">加载中...</span>
+                </div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:8px;height:14px;overflow:hidden">
+                    <div id="sonnet-quota-bar" style="height:100%;background:linear-gradient(90deg,#89b4fa,#4080e0);width:0%;transition:width 0.5s;border-radius:8px"></div>
+                </div>
+            </div>
+            <div class="status-item" style="flex-direction:column;align-items:stretch;width:100%">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-weight:600;color:#a6e3a1">🏠 Ollama (本地)</span>
+                    <span id="ollama-quota-text" style="color:#aaa;font-size:13px">加载中...</span>
+                </div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:8px;height:14px;overflow:hidden">
+                    <div id="ollama-quota-bar" style="height:100%;background:linear-gradient(90deg,#a6e3a1,#40b040);width:0%;transition:width 0.5s;border-radius:8px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+
+        function showOutput(text) {
+            output.textContent = text;
+            output.classList.add('show');
+            setTimeout(() => output.classList.remove('show'), 5000);
+        }
+
+        function exec(cmd) {
+            showOutput('⏳ 执行中...');
+            fetch('/api/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ command: cmd })
+            })
+            .then(r => r.json())
+            .then(data => {
+                showOutput('✅ ' + (data.output || '命令已执行'));
+            })
+            .catch(err => {
+                showOutput('❌ 错误: ' + err.message);
+            });
+        }
+
+        function openUrl(url) {
+            window.open(url, '_blank');
+        }
+
+        function checkServices() {
+            showOutput('⏳ 检查服务状态...');
+            fetch('/api/status')
+                .then(r => r.json())
+                .then(data => {
+                    const status = Object.entries(data)
+                        .map(([k, v]) => `${k}: ${v ? '✅' : '❌'}`)
+                        .join('\n');
+                    showOutput(status);
+                })
+                .catch(err => showOutput('❌ ' + err.message));
+        }
+
+        // 检查 Windows 主机状态
+        function checkWindowsStatus() {
+            fetch('/api/ping-windows')
+                .then(r => r.json())
+                .then(data => {
+                    const dot = document.querySelector('#windows-status .status-dot');
+                    if (data.online) {
+                        dot.style.background = '#00ff88';
+                    } else {
+                        dot.style.background = '#888';
+                    }
+                });
+        }
+
+        // 每 10 秒检查一次 Windows 状态
+        checkWindowsStatus();
+        setInterval(checkWindowsStatus, 10000);
+
+        // === Agent 面板 ===
+        function agentControl(action) {
+            showOutput('⏳ ' + action + '...');
+            fetch('/api/agent/control', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({action})
+            }).then(r=>r.json()).then(d=>{
+                showOutput('✅ ' + action + ' 完成');
+                refreshAgent();
+            }).catch(e=>showOutput('❌ '+e.message));
+        }
+
+        function refreshAgent() {
+            fetch('/api/agent/status').then(r=>r.json()).then(d=>{
+                const opusDot = document.getElementById('opus-dot');
+                const glmDot = document.getElementById('glm-dot');
+                const opusLabel = document.getElementById('opus-label');
+                const glmLabel = document.getElementById('glm-label');
+                const queueLabel = document.getElementById('queue-label');
+                const patrolLabel = document.getElementById('patrol-label');
+
+                if(d.opus_active){opusDot.style.background='#ff6600';opusLabel.textContent='Opus 工作中';}
+                else{opusDot.style.background='#00d4ff';opusLabel.textContent='Opus 空闲';}
+                if(d.glm_active){glmDot.style.background='#ff6600';glmLabel.textContent='GLM 工作中';}
+                else{glmDot.style.background='#00ff88';glmLabel.textContent='GLM 空闲';}
+
+                const qs = d.queue_stats||{};
+                queueLabel.textContent = `待:${qs.pending||0} 跑:${qs.running||0} 完:${qs.done||0} 败:${qs.failed||0}`;
+
+                const p = d.patrol||{};
+                patrolLabel.textContent = `巡逻: ${p.total_issues||0}问题 ${p.auto_fixed||0}修复`;
+            }).catch(()=>{});
+
+            fetch('/api/agent/tasks').then(r=>r.json()).then(tasks=>{
+                if(!Array.isArray(tasks)) return;
+                const list = document.getElementById('task-list');
+                const icons = {running:'🔄',pending:'⏳',done:'✅',failed:'❌',review:'👀'};
+                const agentColors = {opus:'#ff6600',glm:'#00ff88',unassigned:'#888'};
+                list.innerHTML = tasks.slice(0,20).map(t=>`
+                    <div style="background:rgba(255,255,255,0.08);padding:14px 16px;border-radius:12px;margin-bottom:8px;border-left:4px solid ${agentColors[t.assigned_to]||'#444'}">
+                        <div style="font-size:16px;font-weight:600;margin-bottom:6px">${icons[t.status]||'❓'} ${t.title}</div>
+                        <div style="display:flex;gap:12px;font-size:14px">
+                            <span style="color:${agentColors[t.assigned_to]||'#888'};font-weight:600">${(t.assigned_to||'?').toUpperCase()}</span>
+                            <span style="color:#aaa">${t.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }).catch(()=>{});
+        }
+
+        function showAddTask(){document.getElementById('add-task-modal').style.display='block';}
+        function hideAddTask(){document.getElementById('add-task-modal').style.display='none';}
+        function fillTemplate(title,desc,complexity){
+            document.getElementById('task-title').value=title;
+            document.getElementById('task-desc').value=desc;
+            document.getElementById('task-complexity').value=complexity;
+        }
+        function submitTask(){
+            const title=document.getElementById('task-title').value.trim();
+            if(!title){alert('请输入标题');return;}
+            fetch('/api/agent/tasks',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    title,
+                    description:document.getElementById('task-desc').value,
+                    complexity:document.getElementById('task-complexity').value,
+                    priority:parseInt(document.getElementById('task-priority').value)
+                })
+            }).then(r=>r.json()).then(d=>{
+                hideAddTask();
+                showOutput('✅ 任务已添加: '+title);
+                document.getElementById('task-title').value='';
+                document.getElementById('task-desc').value='';
+                refreshAgent();
+            }).catch(e=>showOutput('❌ '+e.message));
+        }
+
+        // 每 5 秒刷新 Agent 状态
+        refreshAgent();
+        setInterval(refreshAgent, 5000);
+
+        // === 模型额度 ===
+        async function refreshQuota() {
+            // 2233.ai 包月 — check key health via HyperChat router
+            try {
+                const r = await fetch('http://localhost:9098/api/router/health');
+                const d = await r.json();
+                if (d.keys) {
+                    // Find monthly key (opus)
+                    const monthly = d.keys.find(k => k.name?.includes('月') || k.type === 'monthly');
+                    const flow = d.keys.find(k => k.name?.includes('流量') || k.type === 'flow');
+                    if (monthly) {
+                        const pct = Math.max(0, Math.min(100, monthly.health || 80));
+                        document.getElementById('opus-quota-bar').style.width = pct + '%';
+                        document.getElementById('opus-quota-text').textContent = `健康 ${pct}% | 到期 04-24`;
+                    }
+                    if (flow) {
+                        const pct = Math.max(0, Math.min(100, flow.health || 70));
+                        document.getElementById('sonnet-quota-bar').style.width = pct + '%';
+                        document.getElementById('sonnet-quota-text').textContent = `健康 ${pct}%`;
+                    }
+                }
+            } catch(e) {
+                document.getElementById('opus-quota-text').textContent = '接口离线';
+                document.getElementById('sonnet-quota-text').textContent = '接口离线';
+            }
+
+            // GLM Coding Plan
+            try {
+                const weekUsed = 900; // approx from last known
+                const weekLimit = 2000;
+                const pct = Math.round((1 - weekUsed/weekLimit) * 100);
+                document.getElementById('glm-quota-bar').style.width = Math.max(0, pct) + '%';
+                document.getElementById('glm-quota-text').textContent = `~${weekLimit - weekUsed} 次/周剩余`;
+                if (pct < 20) document.getElementById('glm-quota-bar').style.background = 'linear-gradient(90deg,#f38ba8,#e64553)';
+            } catch(e) {}
+
+            // Ollama (本地，无限额)
+            try {
+                const r = await fetch('http://localhost:11434/api/tags');
+                const d = await r.json();
+                const models = d.models?.length || 0;
+                document.getElementById('ollama-quota-bar').style.width = '100%';
+                document.getElementById('ollama-quota-text').textContent = `${models} 模型 | 无限额`;
+            } catch(e) {
+                document.getElementById('ollama-quota-bar').style.width = '0%';
+                document.getElementById('ollama-quota-text').textContent = '离线';
+            }
+        }
+        refreshQuota();
+        setInterval(refreshQuota, 30000);
+    </script>
+</body>
+</html>

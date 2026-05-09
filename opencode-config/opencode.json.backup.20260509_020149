@@ -1,0 +1,273 @@
+{
+  "$schema": "https://opencode.ai/opencode.json",
+  "provider": {
+    "openai-compatible": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM",
+      "options": {
+        "baseURL": "http://localhost:4000/v1",
+        "apiKey": "sk-litellm-charlie-2026"
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro (SiliconFlow)",
+          "limit": {
+            "context": 163840,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash (SiliconFlow)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "glm-5.1": {
+          "name": "GLM-5.1 旗舰 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-5-turbo": {
+          "name": "GLM-5-Turbo (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4.7": {
+          "name": "GLM-4.7 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4-plus": {
+          "name": "GLM-4-Plus (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-4.1": {
+          "name": "GPT-4.1 (GitHub 免费)",
+          "limit": {
+            "context": 1047576,
+            "output": 32768
+          }
+        },
+        "qwen3-235b": {
+          "name": "Qwen3-235B (SiliconFlow 免费)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "anthropic": {
+      "name": "Anthropic Direct",
+      "models": {
+        "claude-sonnet-4-20250514": {
+          "name": "Claude Sonnet 4",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "model": "openai-compatible/deepseek-v4-pro",
+  "small_model": "openai-compatible/deepseek-v4-flash",
+  "default_agent": "chat",
+  "agent": {
+    "build": {
+      "model": "openai-compatible/deepseek-v4-pro",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。",
+      "description": "代码构建器 — 代码生成、功能实现、测试编写"
+    },
+    "plan": {
+      "model": "openai-compatible/glm-5.1",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。",
+      "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）"
+    },
+    "explore": {
+      "model": "openai-compatible/deepseek-v4-flash",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "description": "代码搜索员 — 定位文件、函数、实现模式"
+    },
+    "chat": {
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "description": "对话模式 — 日常问答、知识查询、翻译总结（GLM 中文最佳）"
+    },
+    "refactor": {
+      "model": "openai-compatible/deepseek-v4-pro",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "description": "重构器 — 代码优化、架构改进、模式重构"
+    },
+    "arch": {
+      "model": "openai-compatible/glm-5.1",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。",
+      "description": "架构师 — 系统设计、技术选型、方案评审（GLM 中文深度分析）"
+    },
+    "marketing-coordinator": {
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_file": "/home/charlie/.config/opencode/agents/marketing-coordinator.md",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。"
+    },
+    "marketing-auditor": {
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_file": "/home/charlie/.config/opencode/agents/marketing-auditor.md",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。"
+    },
+    "tech-architect": {
+      "model": "openai-compatible/glm-5.1",
+      "prompt_file": "/home/charlie/.config/opencode/agents/tech-architect.md",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。"
+    },
+    "tech-researcher": {
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_file": "/home/charlie/.config/opencode/agents/tech-researcher.md",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。"
+    },
+    "ops-dispatcher": {
+      "model": "openai-compatible/deepseek-v4-flash",
+      "prompt_file": "/home/charlie/.config/opencode/agents/ops-dispatcher.md",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户。"
+    }
+  },
+  "mcp": {
+    "claude-knowledge": {
+      "type": "local",
+      "command": [
+        "node",
+        "/home/charlie/.local/lib/windsurf-knowledge-mcp/server.js"
+      ],
+      "environment": {
+        "MEMORY_PATH": "/home/charlie/.claude/projects/-home-charlie/memory",
+        "SKILLS_PATH": "/home/charlie/.claude/skills",
+        "RULES_PATH": "/home/charlie/CLAUDE.md"
+      }
+    },
+    "letta": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/home/charlie/.local/bin/letta-mcp",
+        "--stdio"
+      ]
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    },
+    "ref": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "ref-tools-mcp@latest"
+      ],
+      "environment": {
+        "REF_API_KEY": "${REF_API_KEY}"
+      }
+    },
+    "wechat": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
+        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
+        "--stdio"
+      ],
+      "environment": {
+        "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
+      }
+    },
+    "gmail": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ],
+      "environment": {
+        "GMAIL_CREDENTIALS_PATH": "/home/charlie/.gmail-mcp/credentials.json",
+        "GMAIL_OAUTH_PATH": "/home/charlie/.gmail-mcp/gcp-oauth.keys.json"
+      }
+    },
+    "macg": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/agi/macg_mcp.py"
+      ]
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "mcp-server-playwright",
+        "--browser",
+        "chrome",
+        "--executable-path",
+        "/run/current-system/sw/bin/google-chrome-stable"
+      ]
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "ai-poll": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/.local/bin/ai-poll-mcp"
+      ]
+    }
+  },
+  "plugin": [
+    "opencode-vibeguard",
+    "opencode-pty",
+    "opencode-scheduler",
+    "opencode-worktree",
+    "opencode-snip"
+  ],
+  "theme": "dark",
+  "tui": {
+    "code_blocks": "collapsed",
+    "tool_output": "hidden",
+    "hide_thinking": true
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "*": "allow",
+      "rm -rf *": "ask",
+      "git push *": "ask",
+      "npm install -g *": "ask",
+      "pip install *": "allow"
+    },
+    "webfetch": "allow",
+    "websearch": "allow",
+    "external_directory": {
+      "/home/charlie/**": "allow",
+      "/mnt/**": "allow",
+      "/tmp/**": "allow"
+    },
+    "doom_loop": "ask",
+    "skill": {
+      "*": "allow"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "mpm-code-dual-setup",
+  "name": "mpm-code-dual-setup",
+  "version": "1.0.0",
+  "description": "Create code-dual command to launch Claude + Aider in tmux session",
+  "author": "Charlie",
+  "capabilities": ["setup-tool", "shell-scripting"],
+  "entry_point": "prompt.txt",
+  "cost_optimization": {
+    "problem": "Multi-layer Task delegation consumed 75k+ tokens",
+    "solution": "Direct Write/Bash execution within single skill context",
+    "token_savings": "~60k per invocation vs multi-agent approach"
+  },
+  "inputs": {
+    "optional": {
+      "target_dir": {
+        "description": "Target directory for script (default: ~/.local/bin/)",
+        "default": "~/.local/bin"
+      }
+    }
+  }
+}

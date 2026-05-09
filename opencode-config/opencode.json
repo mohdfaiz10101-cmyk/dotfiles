@@ -1,0 +1,304 @@
+{
+  "$schema": "https://opencode.ai/opencode.json",
+  "provider": {
+    "z-ai": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Z.AI (GLM via LiteLLM)",
+      "options": {
+        "baseURL": "http://localhost:4000/v1",
+        "apiKey": "sk-litellm-charlie-2026",
+        "timeout": 120000,
+        "maxRetries": 2
+      },
+      "models": {
+        "glm-5-turbo": { "name": "GLM-5-Turbo" },
+        "glm-5.1": { "name": "GLM-5.1" },
+        "glm-5": { "name": "GLM-5.1" }
+      }
+    },
+    "openai-compatible": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM",
+      "options": {
+        "baseURL": "http://localhost:4000/v1",
+        "apiKey": "sk-litellm-charlie-2026",
+        "timeout": 120000,
+        "maxRetries": 2
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V3 Pro (官方)",
+          "limit": {
+            "context": 163840,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V3 Flash (官方)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "glm-5.1": {
+          "name": "GLM-5.1 旗舰 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-5-turbo": {
+          "name": "GLM-5-Turbo (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4.7": {
+          "name": "GLM-4.7 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4-plus": {
+          "name": "GLM-4-Plus (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-4.1": {
+          "name": "GPT-4.1 (GitHub 免费)",
+          "limit": {
+            "context": 1047576,
+            "output": 32768
+          }
+        },
+        "qwen3-235b": {
+          "name": "Qwen3-235B (SiliconFlow 免费)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "anthropic": {
+      "name": "Anthropic Direct",
+      "models": {
+        "claude-sonnet-4-20250514": {
+          "name": "Claude Sonnet 4",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "model": "openai-compatible/glm-5.1",
+  "small_model": "openai-compatible/glm-5-turbo",
+  "default_agent": "sisyphus",
+  "agent": {
+    "foc": {
+      "mode": "primary",
+      "model": "openai-compatible/cerebras-qwen3-235b",
+      "description": "免费模式 — cerebras 完全免费，问答/探索/小改动"
+    },
+    "sisyphus": {
+      "mode": "primary",
+      "model": "openai-compatible/glm-5.1",
+      "prompt_file": "/home/charlie/.config/opencode/agents/sisyphus.md",
+      "description": "主指挥官 — 任务分解、派发子agent、闭环验证"
+    },
+    "build": {
+      "mode": "subagent",
+      "model": "openai-compatible/deepseek-v4-pro",
+      "description": "代码构建器 — 代码生成、功能实现、测试编写"
+    },
+    "plan": {
+      "mode": "primary",
+      "model": "openai-compatible/glm-5.1",
+      "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）"
+    },
+    "explore": {
+      "mode": "subagent",
+      "model": "openai-compatible/deepseek-v4-flash",
+      "description": "代码搜索员 — 定位文件、函数、实现模式"
+    },
+    "chat": {
+      "mode": "primary",
+      "model": "openai-compatible/glm-5-turbo",
+      "description": "对话模式 — 日常问答、知识查询、翻译总结"
+    },
+    "refactor": {
+      "mode": "subagent",
+      "model": "openai-compatible/deepseek-v4-pro",
+      "description": "重构器 — 代码优化、架构改进、模式重构"
+    },
+    "arch": {
+      "mode": "primary",
+      "model": "openai-compatible/glm-5.1",
+      "description": "架构师 — 系统设计、技术选型、方案评审"
+    },
+    "marketing-coordinator": {
+      "mode": "primary",
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_file": "/home/charlie/.config/opencode/agents/marketing-coordinator.md"
+    },
+    "marketing-auditor": {
+      "mode": "subagent",
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_file": "/home/charlie/.config/opencode/agents/marketing-auditor.md"
+    },
+    "tech-architect": {
+      "mode": "primary",
+      "model": "openai-compatible/glm-5.1",
+      "prompt_file": "/home/charlie/.config/opencode/agents/tech-architect.md"
+    },
+    "tech-researcher": {
+      "mode": "subagent",
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_file": "/home/charlie/.config/opencode/agents/tech-researcher.md"
+    },
+    "ops-dispatcher": {
+      "mode": "primary",
+      "model": "openai-compatible/deepseek-v4-flash",
+      "prompt_file": "/home/charlie/.config/opencode/agents/ops-dispatcher.md"
+    }
+  },
+  "mcp": {
+    "claude-knowledge": {
+      "type": "local",
+      "command": [
+        "node",
+        "/home/charlie/.local/lib/windsurf-knowledge-mcp/server.js"
+      ],
+      "environment": {
+        "MEMORY_PATH": "/home/charlie/.claude/projects/-home-charlie/memory",
+        "SKILLS_PATH": "/home/charlie/.claude/skills",
+        "RULES_PATH": "/home/charlie/CLAUDE.md"
+      }
+    },
+    "letta": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/home/charlie/.local/bin/letta-mcp",
+        "--stdio"
+      ]
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    },
+    "ref": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "ref-tools-mcp@latest"
+      ],
+      "environment": {
+        "REF_API_KEY": "${REF_API_KEY}"
+      }
+    },
+    "wechat": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
+        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
+        "--stdio"
+      ],
+      "environment": {
+        "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
+      }
+    },
+    "gmail": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ],
+      "environment": {
+        "GMAIL_CREDENTIALS_PATH": "/home/charlie/.gmail-mcp/credentials.json",
+        "GMAIL_OAUTH_PATH": "/home/charlie/.gmail-mcp/gcp-oauth.keys.json"
+      }
+    },
+    "macg": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/agi/macg_mcp.py"
+      ]
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "mcp-server-playwright",
+        "--browser",
+        "chrome",
+        "--executable-path",
+        "/run/current-system/sw/bin/google-chrome-stable"
+      ]
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "ai-poll": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/.local/bin/ai-poll-mcp"
+      ]
+    }
+  },
+  "plugin": [
+    "oh-my-openagent",
+    "opencode-mem",
+    "opencode-mystatus",
+    "opencode-vibeguard",
+    "opencode-pty",
+    "opencode-scheduler",
+    "opencode-worktree",
+    "opencode-snip"
+  ],
+  "theme": "dark",
+  "tui": {
+    "code_blocks": "collapsed",
+    "tool_output": "hidden",
+    "hide_thinking": true
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "*": "allow",
+      "rm -rf *": "ask",
+      "git push *": "ask",
+      "npm install -g *": "ask",
+      "pip install *": "allow"
+    },
+    "webfetch": "allow",
+    "websearch": "allow",
+    "external_directory": {
+      "/home/charlie/**": "allow",
+      "/mnt/**": "allow",
+      "/tmp/**": "allow"
+    },
+    "doom_loop": "ask",
+    "skill": {
+      "*": "allow"
+    }
+  }
+}

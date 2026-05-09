@@ -1,0 +1,27 @@
+{
+  "name": "agent-learning-framework",
+  "version": "1.0.0",
+  "description": "Universal AI agent learning framework with multi-model distillation (GLM + DeepSeek + Sonnet) and cross-agent knowledge sharing",
+  "author": "Opus + Sonnet",
+  "triggers": [
+    "agent learning",
+    "knowledge distillation",
+    "cross-agent",
+    "multi-model",
+    "ai memory"
+  ],
+  "dependencies": [
+    "memory_writer.py"
+  ],
+  "files": [
+    "~/.config/ai-shared/agent_learning.py",
+    "~/.config/ai-shared/multi_model_distiller.py",
+    "~/.config/ai-shared/knowledge_router.py",
+    "~/.config/ai-shared/knowledge_event_bus.py",
+    "~/.config/ai-shared/relation_triggers.yaml"
+  ],
+  "related_skills": [
+    "mpm-config",
+    "paperclip"
+  ]
+}

@@ -1,0 +1,21 @@
+services:
+  whisper-stt:
+    image: ghcr.io/speaches-ai/speaches:latest-cuda
+    container_name: whisper-stt
+    restart: on-failure
+    ports:
+      - "9870:8000"
+    environment:
+      - WHISPER__MODEL=medium
+      - WHISPER__DEVICE=cuda
+      - WHISPER__COMPUTE_TYPE=float16
+      - WHISPER__MODEL_DIR=/models
+    volumes:
+      - /mnt/ai/ai-cluster/whisper-stt/models:/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

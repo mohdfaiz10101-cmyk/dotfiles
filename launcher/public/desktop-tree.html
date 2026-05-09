@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桌面结构树</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'Noto Sans SC', sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    color: #58a6ff;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #21262d;
+  }
+  .tree-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .folder-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .folder-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .folder-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #21262d;
+  }
+  .folder-icon { font-size: 1.5rem; }
+  .folder-name { font-size: 1.1rem; font-weight: 600; color: #f0f6fc; }
+  .folder-count {
+    margin-left: auto;
+    background: #30363d;
+    color: #8b949e;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+  }
+  .item-list { list-style: none; }
+  .item-list li {
+    padding: 5px 0 5px 8px;
+    border-left: 2px solid #21262d;
+    margin-left: 8px;
+    font-size: 0.9rem;
+    color: #8b949e;
+    transition: color 0.15s;
+  }
+  .item-list li:hover { color: #58a6ff; border-left-color: #58a6ff; }
+  .item-list li:last-child { border-left-color: transparent; position: relative; }
+  .item-list li:last-child::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    height: 50%;
+    width: 2px;
+    background: #21262d;
+  }
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-align: center;
+  }
+  .stat-num { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.75rem; color: #8b949e; }
+  .legend {
+    text-align: center;
+    margin-top: 24px;
+    color: #484f58;
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>桌面结构树</h1>
+
+<div class="stats-bar" id="stats"></div>
+<div class="tree-container" id="tree"></div>
+<div class="legend">点击文件夹名可在 Dolphin 中打开 | 自动更新于页面加载时</div>
+
+<script>
+const folderConfig = {
+  'Claude-AI':  { icon: '🤖', color: '#a371f7' },
+  '开发工具':   { icon: '🛠️', color: '#f97583' },
+  '浏览器':     { icon: '🌐', color: '#79c0ff' },
+  'Web服务':    { icon: '☁️', color: '#56d364' },
+  '系统工具':   { icon: '⚙️', color: '#d2a8ff' },
+  '系统文档':   { icon: '📄', color: '#e3b341' },
+  '社交通讯':   { icon: '💬', color: '#3fb950' },
+  '网络代理':   { icon: '🔒', color: '#f85149' },
+  '网盘同步':   { icon: '☁️', color: '#79c0ff' },
+  '媒体文件':   { icon: '🎵', color: '#d2a8ff' },
+  '安卓开发':   { icon: '📱', color: '#56d364' },
+};
+
+const data = {
+  'Claude-AI': ['Claude 待办挂件', 'Claude 状态树', 'Claude 自动登录', 'Claude ESP', 'ESP 功能请求', 'Token 监控'],
+  '开发工具': ['Aider', 'Claude Code', 'Cline', 'VS Code', 'Cursor', 'Gemini CLI', 'Goose', 'IDEA', 'Kitty', 'OpenCode', 'Kate', 'Konsole', 'Windsurf', 'Marketing Stack', 'Discover'],
+  '浏览器': ['Chrome', 'Firefox', 'Floorp'],
+  'Web服务': ['1688', '操作指南', '启动器', '营销工作流', 'Autogen', 'BrowserAgent', 'ChromaDB', 'Dashboard', 'Dify', 'ERPNext', 'Guacamole', 'HyperChat', 'HyperOS', 'InboxZero', 'Langflow', 'Letta', 'LiteLLM', 'Mem0', 'N8N', 'Ollama', 'OpenClaw', 'Open-WebUI', 'SocialAgg', 'TripMap', 'Xray 代理'],
+  '系统工具': ['启动器悬浮桌面', '语音输入', 'Tokri', 'NVIDIA Settings', 'Ark', 'Discover', 'Dolphin', '系统监控', 'Spectacle', '系统设置', 'Virt-Manager'],
+  '系统文档': ['工作报告', '待办清单', '软件审查', '微信归档', '微信同步', '部署报告', '系统架构图', '全景图', '主控台', 'AI 算力方案', 'HyperOS', 'Windows 对照表'],
+  '社交通讯': ['微信', 'Telegram'],
+  '网络代理': ['FlClash'],
+  '网盘同步': ['配置 Rclone', 'Rclone Web 管理'],
+  '媒体文件': ['Elisa 音乐', 'Gwenview', 'Okular 阅读器'],
+  '安卓开发': ['推送 APK 到平板', 'AnyIn.1 APK', 'AnyIn1 启动'],
+};
+
+// 排序：按条目数从多到少
+const sorted = Object.entries(data).sort((a, b) => b[1].length - a[1].length);
+
+// 统计
+let totalFolders = sorted.length;
+let totalItems = sorted.reduce((s, [, items]) => s + items.length, 0);
+document.getElementById('stats').innerHTML = `
+  <div class="stat"><div class="stat-num">${totalFolders}</div><div class="stat-label">分类文件夹</div></div>
+  <div class="stat"><div class="stat-num">${totalItems}</div><div class="stat-label">应用/文档</div></div>
+  <div class="stat"><div class="stat-num">${Math.round(totalItems/totalFolders)}</div><div class="stat-label">平均每组</div></div>
+`;
+
+// 渲染树
+const container = document.getElementById('tree');
+sorted.forEach(([folder, items]) => {
+  const cfg = folderConfig[folder] || { icon: '📁', color: '#8b949e' };
+  const card = document.createElement('div');
+  card.className = 'folder-card';
+  card.innerHTML = `
+    <div class="folder-header">
+      <span class="folder-icon">${cfg.icon}</span>
+      <span class="folder-name" style="color:${cfg.color}">${folder}</span>
+      <span class="folder-count">${items.length}</span>
+    </div>
+    <ul class="item-list">
+      ${items.map(i => `<li>${i}</li>`).join('')}
+    </ul>
+  `;
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "continue": false,
+  "createdAt": "2026-04-17T14:00:00+0800",
+  "invocation": {
+    "args": [
+      "run",
+      "--model",
+      "openai-compatible/deepseek-v3.2",
+      "--dir",
+      "/home/charlie",
+      "你是 CC 自主决策引擎。执行以下步骤：\n\n1. 读取 /tmp/op-status.json（OP 最新巡检结果）\n2. 读取 /tmp/op-task-results.json（OP 最近完成的任务）\n3. 统计 ~/.claude/projects/-home-charlie/memory/op-tasks.md 中 `- [ ]` 数量\n4. 基于真实数据决策：fixes_failed → 生成追踪任务；disk_warn → 生成清理任务；任务积压>5 → 生成排查任务；无异常 → 不写任务\n5. 写新任务到 op-tasks.md（格式：`- [ ] [CC→OP] [时间] 具体任务`）\n6. 写一条对话到 /home/charlie/.claude/projects/-home-charlie/memory/cc-op-dialog.jsonl（JSON行：{time,from:CC,to:OP,content,type:autonomous}）\n7. 输出 ≤ 10 行摘要报告\n\n禁止：虚空任务、询问用户、对话式输出。数据驱动，有依据才写。"
+    ],
+    "command": "/home/charlie/.local/bin/opencode"
+  },
+  "model": "openai-compatible/deepseek-v3.2",
+  "prompt": "CC 自主决策：读 OP 报告 → 分析 → 生成具体任务",
+  "scopeId": "charlie-b445f233ebb8",
+  "slug": "cc-autonomous",
+  "timeoutSeconds": 180,
+  "workdir": "/home/charlie"
+}

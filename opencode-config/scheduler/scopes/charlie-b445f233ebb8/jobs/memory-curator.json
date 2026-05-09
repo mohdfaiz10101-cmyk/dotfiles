@@ -1,0 +1,26 @@
+{
+  "continue": false,
+  "createdAt": "2026-04-17T00:45:00+0800",
+  "invocation": {
+    "args": [
+      "run",
+      "--model",
+      "openai-compatible/glm-4.7",
+      "--dir",
+      "/home/charlie",
+      "记忆策展人巡检：整理memory/文件、归档过期条目、检测矛盾、维护索引。>30天条目需确认后归档。用中文。简洁。"
+    ],
+    "command": "/home/charlie/.local/bin/opencode"
+  },
+  "lastRunAt": "",
+  "lastRunSource": "",
+  "lastRunStatus": "",
+  "model": "openai-compatible/glm-5-turbo",
+  "prompt": "记忆策展人巡检：(1) memory/文件体积: du -sh ~/.claude/projects/-home-charlie/memory/*.md | sort -h (2) 检查矛盾: MEMORY.md中的端口清单是否与ss -tlnp一致 (3) 检查Letta同步: 调用letta agents查看agent数量 (4) >100KB文件建议拆分 (5) >30天条目列出需归档清单（不自动归档）。用中文。简洁输出。",
+  "scopeId": "charlie-b445f233ebb8",
+  "slug": "memory-curator",
+  "timeoutSeconds": 300,
+  "updatedAt": "2026-04-17T00:45:00+0800",
+  "workdir": "/home/charlie",
+  "args": []
+}

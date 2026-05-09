@@ -1,0 +1,28 @@
+{
+  "continue": true,
+  "createdAt": "2026-04-15T23:00:00+0800",
+  "invocation": {
+    "args": [
+      "run",
+      "--model",
+      "openai-compatible/glm-4.7",
+      "--continue",
+      "--dir",
+      "/home/charlie",
+      "执行 op-tasks.md 中的待办任务。你是 OP（运维+开发执行层），可以写代码、创建文件、修改配置、运行命令。\n\n步骤：\n1. 读 ~/op-tasks.md\n   - 取前5个 `- [ ]` 未完成任务\n   - 取前3个 `- [!]` 失败任务（这些是重试任务，优先级次于普通待办）\n   - [low] 标注的任务：CPU idle >60% 时才执行（用 `vmstat 1 1 | tail -1 | awk \"{print \\}\"` 检查idle%）\n2. 对每个任务执行：\n   - 运维类（curl/systemctl/docker）→ bash 直接执行\n   - 开发类（创建文件/修改代码）→ 用 write/edit 工具\n   - [!]失败任务 → 重试，若仍失败标记 `[!x2]` 并写原因\n3. 成功 → 改为 `- [x] [完成 YYYY-MM-DD HH:MM] — 结果`\n   失败 → 改为 `- [!] [失败 YYYY-MM-DD HH:MM] 原因`\n4. 结果写入 /tmp/op-task-results.json（覆盖写）\n5. 通知：curl -s -X POST http://localhost:9875/api/op-notify -H 'Content-Type: application/json' -d '{source:task-check,completed_count:N,summary:摘要}' 2>/dev/null || true\n\n没有任何待执行任务 → 输出 '[DONE] 无待执行任务' 后退出。\n用中文。\n\n⚠️ FALSE_POSITIVE_GUARD（死规则）：\n- `systemctl --user is-active <svc>` 返回 `inactive` ≠ 失败\n- 判断服务真正失败的唯一方法：`systemctl --user show <svc> --property=Result,ActiveState`\n  - Result=success → 正常完成（oneshot/timer），输出 [SKIP] 正常完成，禁止写失败或升级任务\n  - Result=failed 且 ActiveState=failed → 才是真正失败\n- opencode-job-* 服务全部是 oneshot，完成后 inactive Result=success 是正常状态"
+    ],
+    "command": "/home/charlie/.local/bin/opencode"
+  },
+  "lastRunAt": "2026-04-22T12:05:54+0800",
+  "lastRunExitCode": 0,
+  "lastRunSource": "scheduled",
+  "lastRunStatus": "success",
+  "model": "openai-compatible/glm-4.7",
+  "prompt": "执行 op-tasks.md 中的待办任务。你是 OP（运维+开发执行层），可以写代码、创建文件、修改配置、运行命令。\n\n步骤：\n1. 读 ~/op-tasks.md\n   - 取前5个 `- [ ]` 未完成任务\n   - 取前3个 `- [!]` 失败任务（这些是重试任务，优先级次于普通待办）\n   - [low] 标注的任务：CPU idle >60% 时才执行（用 `vmstat 1 1 | tail -1 | awk \"{print \\}\"` 检查idle%）\n2. 对每个任务执行：\n   - 运维类（curl/systemctl/docker）→ bash 直接执行\n   - 开发类（创建文件/修改代码）→ 用 write/edit 工具\n   - [!]失败任务 → 重试，若仍失败标记 `[!x2]` 并写原因\n3. 成功 → 改为 `- [x] [完成 YYYY-MM-DD HH:MM] — 结果`\n   失败 → 改为 `- [!] [失败 YYYY-MM-DD HH:MM] 原因`\n4. 结果写入 /tmp/op-task-results.json（覆盖写）\n5. 通知：curl -s -X POST http://localhost:9875/api/op-notify -H 'Content-Type: application/json' -d '{source:task-check,completed_count:N,summary:摘要}' 2>/dev/null || true\n\n没有任何待执行任务 → 输出 '[DONE] 无待执行任务' 后退出。\n用中文。\n\n⚠️ FALSE_POSITIVE_GUARD（死规则）：\n- `systemctl --user is-active <svc>` 返回 `inactive` ≠ 失败\n- 判断服务真正失败的唯一方法：`systemctl --user show <svc> --property=Result,ActiveState`\n  - Result=success → 正常完成（oneshot/timer），输出 [SKIP] 正常完成，禁止写失败或升级任务\n  - Result=failed 且 ActiveState=failed → 才是真正失败\n- opencode-job-* 服务全部是 oneshot，完成后 inactive Result=success 是正常状态",
+  "scopeId": "charlie-b445f233ebb8",
+  "slug": "heartbeat-task-check",
+  "timeoutSeconds": 0,
+  "updatedAt": "2026-04-22T12:23:06+0800",
+  "workdir": "/home/charlie",
+  "args": []
+}

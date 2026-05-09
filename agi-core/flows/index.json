@@ -1,0 +1,141 @@
+{
+  "flows": [
+    {
+      "name": "self_heal",
+      "file": "self_heal.py",
+      "trigger": [
+        "disk",
+        "service",
+        "proxy",
+        "巡检",
+        "修复"
+      ],
+      "created": "2026-04-18",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "task_decompose",
+      "file": "task_decompose.py",
+      "trigger": [
+        "分解",
+        "拆分",
+        "并行"
+      ],
+      "created": "2026-04-18",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "code_loop",
+      "file": "code_loop.py",
+      "trigger": [
+        "代码",
+        "生成",
+        "测试"
+      ],
+      "created": "2026-04-18",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "evolve",
+      "file": "evolve.py",
+      "trigger": [
+        "优化",
+        "进化",
+        "指标"
+      ],
+      "created": "2026-04-18",
+      "success_rate": 0.0,
+      "runs": 7
+    },
+    {
+      "name": "workflow_gen",
+      "file": "workflow_gen.py",
+      "trigger": [
+        "生成工作流",
+        "新流程"
+      ],
+      "created": "2026-04-18",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "social_intelligence",
+      "file": "social_intelligence.py",
+      "trigger": [
+        "社交",
+        "关系",
+        "微信分析",
+        "群友",
+        "画像",
+        "意图"
+      ],
+      "created": "2026-04-21",
+      "success_rate": 0.0,
+      "runs": 132
+    },
+    {
+      "name": "doc_pipeline",
+      "file": "doc_pipeline.py",
+      "trigger": [
+        "报关单",
+        "报价",
+        "发票",
+        "装箱单",
+        "文档",
+        "OCR",
+        "提取",
+        "填充模板"
+      ],
+      "created": "2026-04-21",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "context_graph",
+      "file": "context_graph.py",
+      "trigger": [
+        "客户",
+        "公司",
+        "实体",
+        "关系图谱",
+        "CRM查询",
+        "时间线"
+      ],
+      "created": "2026-04-21",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "email_sync",
+      "file": "email_sync.py",
+      "trigger": [
+        "邮件",
+        "email",
+        "收件箱",
+        "IMAP"
+      ],
+      "created": "2026-04-21",
+      "success_rate": 0.0,
+      "runs": 0
+    },
+    {
+      "name": "doc_knowledge",
+      "file": "doc_knowledge.py",
+      "trigger": [
+        "知识库",
+        "搜索文档",
+        "文档查询",
+        "ChromaDB"
+      ],
+      "created": "2026-04-21",
+      "success_rate": 0.0,
+      "runs": 0
+    }
+  ],
+  "last_updated": "2026-04-21",
+  "auto_evolve": true,
+  "metrics_path": "/home/charlie/.local/share/macg/metrics.json"
+}
