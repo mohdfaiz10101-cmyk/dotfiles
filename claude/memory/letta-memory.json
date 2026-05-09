@@ -1,0 +1,22 @@
+{
+  "agents": {
+    "nixos-sysadmin": {
+      "core_memory": {},
+      "archival_memory": [
+        {
+          "text": "opencode集成测试成功",
+          "tags": "integration",
+          "timestamp": "1778263383"
+        }
+      ]
+    },
+    "code-assistant": {
+      "core_memory": {},
+      "archival_memory": []
+    },
+    "opus-analyst": {
+      "core_memory": {},
+      "archival_memory": []
+    }
+  }
+}

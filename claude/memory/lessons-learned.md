@@ -273,4 +273,39 @@ eve
 - [2026-05-08] [GLM自动] 观察: 4个user服务持续failed(agl-discord-bot/discord-intelligent-bot/docker-ordered-start/letta-health-guard)，OP连接守护日志停更4天(最后5/4)，service-nurse日志停更至4/22
 - [2026-05-08] [GLM自动] 观察: 4个用户服务持续failed状态: agi-discord-bot/discord-intelligent-bot/docker-ordered-start/mihomo-guardian，需排查是否已弃用可清理
 - [2026-05-08] [GLM自动] 观察: LiteLLM /health返回401 auth_error但无api key参数，说明网关存活但健康检查端点需认证，非故障
-- [2026-05-08] [GLM自动] 观察: 4个user服务failed(docker-ordered-start/litellm-error-guard/mihomo-guardian/recoll-idle)，LiteLLM 4000端口存活但返回401(health端点需api_key)，/mnt/ai 35%空间充足
+- [2026-05-09] [GLM-5-turbo] 场景：overcode-loop-watch 反复误杀。根因：kill 后无冷却期，overcode 被 tmux-wrap 自动重启后再次循环。修复：添加冷却机制(5min×N次, 5次后30min停检) + 进程存活检测。文件：~/.local/bin/overcode-loop-watch.sh
+- [2026-05-09] [GLM-5-turbo] 场景：memory-bootstrap.sh 高频主题全返回空值。根因：`[^|]+` 正则在多行条目匹配空串。修复：改为 `grep -oP '场景[：:]\s*\K\S+'`。文件：~/.local/bin/memory-bootstrap.sh
+- [2026-05-09] [GLM-5-turbo] 场景：Letta Docker 完全消失(容器/镜像/compose目录全无)，8283不可达。重建：docker-compose.yml(letta+pgvector)，Docker Hub 拉取失败(mirror EOF)，改 pip install。加速器 docker.1ms.run 部分 blob 损坏，xuanyuan.me 不可达。
+- [2026-05-09] [GLM-5-turbo] 场景：snip 偶发 SQLITE_BUSY。tracking.db 1.6MB，多进程并发写入锁竞争。非持续性bug，不影响功能。
+
+### 会话摘要 [2026-05-09] [Sonnet/自动]
+- 对话轮次: 138 | 被纠正: 2次
+  - 用户纠正: 我github上没有吗 但是不要覆盖我的配置
+  - 用户纠正: 但是overcode这个配置不对啊 跟关机前不一样
+
+### 会话摘要 [2026-05-09] [Sonnet/自动]
+- 对话轮次: 136 | 被纠正: 2次
+  - 用户纠正: 我github上没有吗 但是不要覆盖我的配置
+  - 用户纠正: 但是overcode这个配置不对啊 跟关机前不一样
+
+### 会话摘要 [2026-05-09] [Sonnet/自动]
+- 对话轮次: 135 | 被纠正: 3次
+  - 用户纠正: 我github上没有吗 但是不要覆盖我的配置
+  - 用户纠正: 但是overcode这个配置不对啊 跟关机前不一样
+
+### 会话摘要 [2026-05-09] [Sonnet/自动]
+- 对话轮次: 134 | 被纠正: 4次
+  - 用户纠正: 我github上没有吗 但是不要覆盖我的配置
+  - 用户纠正: 但是overcode这个配置不对啊 跟关机前不一样
+
+- [2026-05-09] [GLM-5-turbo] 场景：Letta 完全消失的根因追溯
+  - 症状：curl localhost:8283 返回 000，Docker 无容器/镜像，compose 目录内容丢失
+  - 根因：5月8日 23:29 系统重启，docker-ordered-start 反复失败，Letta compose 未重新拉起
+  - 时间线：22:42 Letta 正常 → 23:18 Docker daemon 停 → 23:29 系统重启 → Letta 再未启动
+  - 重建：pip install letta==0.16.7 成功（/mnt/ai/apps/letta-venv），但需 PostgreSQL 5432
+  - 阻塞：Docker 镜像拉取失败（mirror EOF），本地无 PostgreSQL，Letta 暂无法启动
+
+- [2026-05-09] [GLM-5-turbo] 场景：mihomo 全部节点失效
+  - 症状：所有境外站点 Google/GitHub/claude.ai 全 000（TLS EOF），HTTP 502
+  - 根因：nodpai 订阅 155 个节点全被 GFW 封锁（TCP 通但 TLS 握手 EOF）
+  - 修复：需更新订阅或切换到良心云等其他订阅

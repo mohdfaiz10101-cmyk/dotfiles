@@ -33,20 +33,20 @@
 - 出错不重复同样方法，连续失败2次 /clear
 
 
-## 记忆系统状态（自动注入 2026-05-08 18:17）
+## 记忆系统状态（自动注入 2026-05-09 06:17）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | N/A / N/A |
-| Letta MCP | active |
-| lessons-learned条目 | 49 |
-| 历史会话数 | 38 |
+| Letta MCP | inactive |
+| lessons-learned条目 | 55 |
+| 历史会话数 | 42 |
 
 ### 高频主题（最近）
-  • : (×1)
-  • : (×1)
-  • : (×1)
-  • : (×1)
-  • : (×1)
+  • Hyprland (×3)
+  • mihomo (×2)
+  • Letta (×2)
+  • Claude (×2)
+  • snip (×1)
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
 
