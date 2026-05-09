@@ -311,3 +311,7 @@ eve
   - 修复：需更新订阅或切换到良心云等其他订阅
 - [2026-05-09] [GLM自动] 观察: AGI四个子系统(cognitive/discord/feedback/self-improve)均failed; /mnt/ai磁盘81%逼近警戒线; op-connection-guard日志5/4后停更
 - [2026-05-09] [GLM自动] 观察: 3个user服务失败(letta-health-guard/recoll-idle-index/system-health-monitor)，/mnt/ai 32%充裕，连接守护日志停在5月4日可能timer已停
+- [2026-05-09] [GLM自动] 观察: Paperclip(3100)未运行; op-connection-guard日志停在5/4已5天未更新; discord-bot和ai-config-guard自4/22持续failed
+- [2026-05-09] [GLM自动] 观察: 根分区86%超85%警戒线需gc; LiteLLM/Hub/ChromaDB正常; mihomo-guardian和op-precheck为failed但非关键服务
+- [2026-05-09] [GLM自动] 观察: Paperclip(3100)未运行; op-connection-guard日志停在5/4已5天未更新; discord-bot和ai-config-guard自4/22持续failed
+- [2026-05-09] [GLM自动] 观察: 根分区86%超85%警戒线需gc; LiteLLM/Hub/ChromaDB正常; mihomo-guardian和op-precheck为failed但非关键

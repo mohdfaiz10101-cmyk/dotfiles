@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-09 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-09 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -15,23 +15,37 @@
 | 3000 | (v1",pid=101143,fd=22)) |
 | 4000 | users:(("python3.13",pid=1651,fd=6)) |
 | 4001 | users:(("python3.13",pid=99998,fd=6)) |
+| 4002 | 0.0.0.0:* |
+| 4096 | users:(("kilo",pid=532210,fd=22)) |
 | 4533 | users:(("navidrome",pid=1660,fd=9)) |
+| 4747 | users:((".opencode",pid=3161320,fd=40)) |
 | 5037 | users:(("adb",pid=2202,fd=11)) |
 | 5432 | users:((".postgres-wrapp",pid=2685505,fd=6)) |
 | 5432 | users:((".postgres-wrapp",pid=2685505,fd=7)) |
+| 5678 | 0.0.0.0:* |
+| 5678 | [::]:* |
 | 5900 | users:(("wayvnc",pid=3703,fd=11)) |
 | 5998 | users:((".websockify-wra",pid=3705,fd=4)) |
+| 6379 | 0.0.0.0:* |
 | 7681 | users:(("ttyd",pid=2273,fd=13)) |
 | 7690 | users:(("ttyd",pid=1727,fd=13)) |
 | 7691 | users:(("ttyd",pid=1721,fd=13)) |
-| 7692 | users:(("ttyd",pid=1737,fd=13)) |
+| 7692 | users:(("ttyd",pid=3173308,fd=13)) |
 | 7693 | users:(("ttyd",pid=1717,fd=13)) |
 | 7694 | users:(("ttyd",pid=1736,fd=13)) |
 | 7695 | users:(("ttyd",pid=1730,fd=13)) |
-| 7699 | users:(("ttyd",pid=2164093,fd=13)) |
+| 7696 | users:(("ttyd",pid=3173300,fd=13)) |
+| 7697 | users:(("ttyd",pid=3239112,fd=13)) |
+| 7699 | users:(("ttyd",pid=569547,fd=13)) |
 | 7890 | *:* |
 | 7891 | *:* |
+| 8000 | 0.0.0.0:* |
+| 8000 | [::]:* |
 | 8080 | users:((".opencode",pid=2060289,fd=19)) |
+| 8283 | 0.0.0.0:* |
+| 8283 | [::]:* |
+| 8284 | 0.0.0.0:* |
+| 8284 | [::]:* |
 | 8286 | users:(("python3.13",pid=100002,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8787 | users:(("python3.13",pid=100142,fd=3)) |
@@ -39,7 +53,7 @@
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
 | 9099 | users:(("python3.13",pid=3224,fd=3)) |
-| 9222 | users:(("chrome",pid=4114995,fd=80)) |
+| 9222 | users:(("chrome",pid=1014523,fd=75)) |
 | 9800 | users:(("python3.13",pid=1637,fd=6)) |
 | 9801 | users:(("python3.13",pid=108549,fd=6)) |
 | 9810 | users:(("python3.13",pid=1664,fd=6)) |
@@ -56,6 +70,7 @@
 | 9993 | 0.0.0.0:* |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=3708,fd=4)) |
+| 34975 | users:(("code",pid=513919,fd=61)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -113,7 +128,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（446个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（449个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -156,6 +171,7 @@ static
 **finance-*** (1个): `finance-reminder.sh`
 **fix-*** (1个): `fix-screenshot-permission`
 **floorp-*** (3个): `floorp-clean-start, floorp-popup-fix, floorp-session-cleaner.py`
+**foc-*** (1个): `foc-tmux-wrap`
 **four-*** (1个): `four-tool-dispatch.sh`
 **fsearch-*** (1个): `fsearch-idle-update.sh`
 **git-*** (2个): `git-backup.sh, git-codebase-update`
@@ -226,6 +242,7 @@ static
 **selflearn-*** (1个): `selflearn-health-check.sh`
 **service-*** (1个): `service-zombie-cleaner.sh`
 **setup-*** (2个): `setup-0011, setup-letta-telegram-alert`
+**sisy-*** (1个): `sisy-tmux-wrap`
 **skill-*** (1个): `skill-auto-extract.py`
 **smart-*** (4个): `smart-ip, smart-memory-classifier, smart-router.py, smart-search`
 **sqlite-*** (2个): `sqlite_web, sqlite_wsgi`
@@ -239,6 +256,7 @@ static
 **tg-*** (5个): `tg-bot-tasks, tg-command, tg-push, tg-saved-reader, tg-screenshot`
 **tiny-*** (1个): `tiny-agents`
 **todo-*** (1个): `todo_sync.py`
+**ulwh-*** (1个): `ulwh-tmux-wrap`
 **unified-*** (1个): `unified-monitor.sh`
 **upload-*** (1个): `upload-cookies-to-server`
 **vastai-*** (2个): `vastai-auto-list.sh, vastai-setup.sh`
@@ -264,6 +282,7 @@ static
 ```
 QtScrcpy-x86_64.AppImage
 agi-control-plane
+aider-venv
 android-sdk
 cc-op-graph
 comfyui
@@ -354,7 +373,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（375个注册，77个运行中）
+## 三、systemd 用户服务（377个注册，80个运行中）
 
 ### 当前运行中
 ```
@@ -380,6 +399,7 @@ code-watcher
 content-router
 cookie-sync-server
 dbus
+dconf
 dotfiles-symlink-watch
 embedding-server
 fcitx5
@@ -395,8 +415,8 @@ kunifiedpush-distributor
 launcher
 litellm-strip-proxy
 macg-api
+mem0-bridge
 memory-evolution
-mihomo-watch
 navidrome
 numlock-guard
 office-agent
@@ -422,9 +442,11 @@ ttyd-aider
 ttyd-cct
 ttyd-claude
 ttyd-claudep
+ttyd-foc
 ttyd-macg
 ttyd-overcode
 ttyd-overtab
+ttyd-ulwh
 voxtype
 wechat-agent
 wechat-crm-archiver

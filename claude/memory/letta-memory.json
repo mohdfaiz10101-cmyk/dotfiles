@@ -17,7 +17,13 @@
     },
     "code-assistant": {
       "core_memory": {},
-      "archival_memory": []
+      "archival_memory": [
+        {
+          "text": "[验证测试] 7699端口修复完成：ttyd-overtab抢占端口→停用→Caddy launcher恢复。分类器修复：glm-4-flash不存在→换glm-5-turbo，jq构建JSON body，sed清理控制字符。",
+          "tags": "test,fix,launcher,classifier",
+          "timestamp": "1778322399"
+        }
+      ]
     },
     "opus-analyst": {
       "core_memory": {},
