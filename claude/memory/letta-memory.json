@@ -12,6 +12,16 @@
           "text": "2026-05-09 Letta重建完成: agents=sysadmin(0040ded4)+code(9b3bcec2), 1734条archival灌入(含lessons/nixos/troubleshoot/codebase/ai-tools/对话记录). embedding :8286正常(384维), LiteLLM :4000路由GLM-4.7. KG 16实体已清理重复observations. memory-decay-engine.py agent IDs已更新.",
           "tags": "letta,rebuild,memory-system,2026-05-09",
           "timestamp": "1778315298"
+        },
+        {
+          "text": "2026-05-10 会话修复记录汇总：\n1. Hyprland Super+D toggle修复：删除 bind=$mod,D,fullscreen，只保留 bind=$mod,d,fullscreen,1\n2. 鼠标滚轮方向修复：hyprland.conf mouse_down→e-1, mouse_up→e+1\n3. Letta MCP 307重定向修复：macg_mcp.py 4处 /v1/agents\" → /v1/agents/\" （Letta 0.16.7对无尾斜杠URL返回307，urllib不自动follow POST 307）\n4. Agent生命周期优化规则写入 ai-shared-rules.md（任务原子化/上下文管理/Token经济/会话接力/反模式）\n5. 本地三层同步完成：ai-shared-rules.md → CLAUDE.md + AGENTS.md + macg.py\n6. 创建 Windows 同步脚本 ~/.local/bin/ai-rules-sync-windows.sh（SSH推送+Git pull双模式）\n7. Windows机器192.168.2.36当前离线，待上线后执行同步",
+          "tags": "修复,hyprland,letta-mcp,agent优化,ai-rules-sync,windows-sync",
+          "timestamp": "1778395601"
+        },
+        {
+          "text": "Letta MCP URL尾部斜杠踩坑：Letta Docker 0.16.7对无尾部斜杠的URL返回307重定向，urllib.request.urlopen不自动follow POST请求的307。修复方法：所有拼接处加尾部斜杠。涉及文件：~/agi/macg_mcp.py，LETTA_BASE=\"http://localhost:8283\"",
+          "tags": "踩坑,letta,307-redirect,urllib,mcp",
+          "timestamp": "1778395601"
         }
       ]
     },
@@ -52,6 +62,21 @@
           "text": "Hyprland Super+D fullscreen 和 fullscreen,1 两行绑定共存导致 toggle 失效。修复：只保留 fullscreen,1（maximize 保留间隙）。另外 natural_scroll=true 导致鼠标滚轮切工作区方向反转，需把 mouse_down 绑 e-1、mouse_up 绑 e+1。",
           "tags": "hyprland,键绑定,滚轮,fullscreen,配置",
           "timestamp": "1778388889"
+        },
+        {
+          "text": "## FRP 隧道配置（2026-05-10）\n\n**极路由 FRP 服务端**: 115.223.199.196:7000 (v0.61.1)\n**控制台**: http://115.223.199.196:7500 (admin/admin)\n**Token**: 12345\n\n**Windows frpc 已连接**:\n- SSH 代理: 115.223.199.196:2222 → 本机 :22\n- 状态: online\n\n**手机 5G 连接方式**:\n- `ssh <用户名>@115.223.199.196 -p 2222`\n- 或用 Termux/JuiceSSH 连 115.223.199.196:2222\n\n## Agent 工作流最佳实践（Charlie 总结）\n\n1. **一任务一生命周期**: Agent 领任务→同一窗口完成扫描/写码/自测/纠错→Commit后关窗口→下一需求新窗口\n2. **Context Caching**: DeepSeek 对重复上下文打1折，不换窗口=省钱\n3. **任务原子化**: 不让一个Agent干大活，拆细后各自独立生命周期\n4. **总结式接力**: 超30轮时手动输出 Current State Summary，带总结开新窗口\n5. **禁止全项目索引自发对话**: MCP插件 auto-indexing 改为 on-demand\n\n**Agent 使用场景**: OpenCode 直接改本地代码（非 Dify）",
+          "tags": "frp,tunnel,agent-workflow,best-practices,networking",
+          "timestamp": "1778395180"
+        },
+        {
+          "text": "Charlie Agent 使用模式：OpenCode 里直接改本地代码，非 Dify 自动化流。采用\"一任务一生命周期\"法则。DeepSeek Context Caching 是省钱关键。",
+          "tags": "agent,opencode,preference,workflow",
+          "timestamp": "1778395180"
+        },
+        {
+          "text": "## 设备登记清单（2026-05-10）\n\n### 极路由4 增强版（HC5962）\n- 设备型号: 极路由4 增强版（HC5962）\n- 品牌标识: gee（极路由）\n- MAC地址: D4EE07610432\n- 电源规格: 12.0V == 1.5A\n- 管理地址1（官方）: 4006024660.com\n- 管理地址2（实际标注）: 192.168.123.1\n- 默认管理账号: admin\n- 默认管理密码: admin\n- 官方网站: www.hiwifi.com\n- 制造商: 北京极科极客科技有限公司\n- **FRP 服务端**: 115.223.199.196:7000 (v0.61.1)\n- **FRP 控制台**: http://115.223.199.196:7500 (admin/admin)\n- **FRP Token**: 12345\n\n### 中国电信光猫（ZXHN F650 3.0）\n- 设备型号: GPON天翼网关（4口单频），ZXHN F650 (GPON ONU) 3.0\n- 默认管理地址: 192.168.1.1\n- 默认管理账号: useradmin\n- 默认管理密码: evqzg\n- 默认WiFi名称: ChinaNet-3Cnn\n- 默认WiFi密码: vkpfph2l\n- 设备标识: 247E51-4583 3247 E51E 87F1 0\n- S/N序列号: LQHAK5U00446\n- 备注: 浙江电信定制版",
+          "tags": "hardware,networking,router,device-registration",
+          "timestamp": "1778395197"
         }
       ]
     },

@@ -826,3 +826,5 @@ Docker data-root 在 NTFS
 - 待解决：WCDB 压缩消息解码 + 跨端合并（Wine + UOS + Windows）
 - [2026-04-24] [Aider] feat: 恢复 ref + exa (websearch) MCP 配置
   相关文件：opencode/opencode.json
+- [2026-05-10] [Aider] feat: 新增 Agent 生命周期优化规则（任务原子化/上下文管理/Token经济/会话接力）
+  相关文件：ai-shared-rules.md

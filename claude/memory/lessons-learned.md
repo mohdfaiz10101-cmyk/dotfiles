@@ -320,3 +320,6 @@ eve
 - [2026-05-09] [GLM自动] 观察: Paperclip(3100)未运行; op-connection-guard日志停在5/4已5天未更新; discord-bot和ai-config-guard自4/22持续failed
 - [2026-05-09] [GLM自动] 观察: 根分区86%超85%警戒线需gc; LiteLLM/Hub/ChromaDB正常; mihomo-guardian和op-precheck为failed但非关键
 - [2026-05-09] [OP] 磁盘管理重构: storage.nix 全声明式挂载所有分区(原udisks2自动挂载的NTFS全部转移到NixOS管理)，disk-pool.sh 精简为仅mergerfs+SnapRAID，创建 DISK-LAYOUT.md 记录完整分区布局 | 效果: git clone + nixos-rebuild = 全部挂载点恢复
+- [2026-05-10] [GLM自动] 观察: 8个user service真失败(Result=exit-code)，letta-distill和mihomo-guardian今日13:00-13:53分别崩溃，agi-discord-bot/discord-intelligent-bot/docker-ordered-start/op-precheck长期未恢复
+- [2026-05-10] [GLM自动] 观察: op-connection-guard.log最后记录停在2026-05-04距今6天无新巡检。守护进程可能已停或timer禁用
+- [2026-05-10] [GLM自动] 观察: 核心设施全绿-LiteLLM(4000)/Letta(8283)/Hub(9800)/Gateway(9900)/ChromaDB(8000)/Next.js(3000)/mihomo(7890)全部端口在监听，Docker 5容器healthy，/mnt/ai磁盘31%

@@ -1,0 +1,10 @@
+[Unit]
+Description=AI 规则同步到 Windows（每小时尝试）
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+AccuracySec=5min
+
+[Install]
+WantedBy=timers.target

@@ -1,6 +1,6 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-05-06 01:59 -->
+<!-- compiled: 2026-05-10 14:39 -->
 
 ## 语言规则
 - MUST 始终使用中文回复，代码注释可用英文
@@ -31,24 +31,6 @@
 - 批量并行 | 自主决策先做后报告 | 复杂问题 think hard
 - NixOS/Flake 问题必须先 Read 实际配置
 - 出错不重复同样方法，连续失败2次 /clear
-
-
-## 记忆系统状态（自动注入 2026-05-10 12:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | 175 / 14 |
-| Letta MCP | active |
-| lessons-learned条目 | 62 |
-| 历史会话数 | 42 |
-
-### 高频主题（最近）
-  • Hyprland (×3)
-  • mihomo (×2)
-  • Letta (×2)
-  • Claude (×2)
-  • snip (×1)
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
 
 ---
 Source: ~/CLAUDE.md | Auto-compiled

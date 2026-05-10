@@ -1,0 +1,10 @@
+[Unit]
+Description=AI 规则同步到 Windows（SSH 推送）
+After=ssh-winpc-tunnel.service
+Requires=ssh-winpc-tunnel.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/ai-rules-sync-windows.sh --ssh
+StandardOutput=journal
+StandardError=journal
