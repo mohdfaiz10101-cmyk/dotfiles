@@ -1,0 +1,19 @@
+[Unit]
+Description=Clipboard bidirectional sync (NixOS <-> Windows)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/clip-sync watch
+ExecStop=/home/charlie/.local/bin/clip-sync stop
+Restart=always
+RestartSec=10
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=clip-sync
+
+[Install]
+WantedBy=default.target
