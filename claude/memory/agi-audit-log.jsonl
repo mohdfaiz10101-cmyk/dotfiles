@@ -18243,3 +18243,5 @@
 {"ts": "2026-05-10 01:05", "type": "cycle", "summary": "系统运行正常，CPU轻度负载，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-10 01:06", "type": "cycle", "summary": "系统运行正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-10 01:09", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 10:58", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 10:59", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
