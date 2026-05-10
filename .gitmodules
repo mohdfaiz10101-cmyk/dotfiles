@@ -1,0 +1,3 @@
+[submodule ".opencode/workflows-community"]
+	path = .opencode/workflows-community
+	url = https://github.com/zb-ss/opencode-workflows.git
