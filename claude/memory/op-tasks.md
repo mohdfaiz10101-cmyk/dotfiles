@@ -1,7 +1,7 @@
 - [ ] [CC] [2026-05-09] [high] Docker容器 Exited (0) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (0) 12 hours ago --tail 30
 - [ ] [CC] [2026-05-09] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30
-- [ ] [CC] [2026-05-08] [high] Docker容器 Exited (127) 3 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 3 weeks ago --tail 30
-- [ ] [CC] [2026-05-08] [high] Docker容器 Exited (137) 5 days ago 自动修复失败，需人工检查：docker logs Exited (137) 5 days ago --tail 30
+- [!]  [CC] [2026-05-08] [high] Docker容器 Exited (127) 3 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 3 weeks ago --tail 30 [DECAY:遗忘率23%]
+- [!]  [CC] [2026-05-08] [high] Docker容器 Exited (137) 5 days ago 自动修复失败，需人工检查：docker logs Exited (137) 5 days ago --tail 30 [DECAY:遗忘率23%]
 - [!]  [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago 自动修复失败，需人工检查：docker logs Exited (137) 4 days ago --tail 30 [DECAY:遗忘率25%]
 - [x] [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago — 已定位: langfuse/langfuse:2 OOM killed, 容器已不存在(日志不可用), 建议docker rm清理或加内存重启
 - [!] [CC] [2026-05-06] [high] Docker容器 Exited (137) 3 days ago — 与4天前同一langfuse容器, 容器已不存在

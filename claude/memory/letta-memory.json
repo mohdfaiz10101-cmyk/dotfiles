@@ -22,6 +22,21 @@
           "text": "[验证测试] 7699端口修复完成：ttyd-overtab抢占端口→停用→Caddy launcher恢复。分类器修复：glm-4-flash不存在→换glm-5-turbo，jq构建JSON body，sed清理控制字符。",
           "tags": "test,fix,launcher,classifier",
           "timestamp": "1778322399"
+        },
+        {
+          "text": "2026-05-09 OP执行: Konsole双击标题栏无法最大化窗口 | 结果: 成功 | 关键发现: KWin的TitleBarDoubleClickCommand未设置导致双击标题栏不最大化，写入~/.config/kwinrc [MouseBindings] -> TitleBarDoubleClickCommand=Maximize",
+          "tags": "op-exec,konsole,kwin,kde",
+          "timestamp": "1778340186"
+        },
+        {
+          "text": "2026-05-09 OP执行: Waybar 缺少 123456 工作区按钮 | 结果: 成功 | 关键发现: waybar的hyprland/workspaces模块默认只显示有窗口的工作区，需添加 persistent_workspaces 配置强制显示1-6号工作区按钮。同时将图标从中文数字(一二三四五六)改为阿拉伯数字(123456)",
+          "tags": "op-exec,waybar,hyprland,workspace",
+          "timestamp": "1778340341"
+        },
+        {
+          "text": "2026-05-09 OP执行: 磁盘布局统一管理 | 结果: 成功 | 关键发现: storage.nix 全声明式挂载所有18个分区(含之前udisks2自动挂载的NTFS)，disk-pool.sh 精简为mergerfs+SnapRAID，创建DISK-LAYOUT.md。git push到GitHub，新机器clone+rebuild即可恢复全部挂载点",
+          "tags": "op-exec,disk-storage,nixos",
+          "timestamp": "1778341278"
         }
       ]
     },

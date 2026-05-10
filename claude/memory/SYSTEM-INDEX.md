@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-09 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-10 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -16,7 +16,6 @@
 | 4000 | users:(("python3.13",pid=1651,fd=6)) |
 | 4001 | users:(("python3.13",pid=99998,fd=6)) |
 | 4002 | 0.0.0.0:* |
-| 4096 | users:(("kilo",pid=532210,fd=22)) |
 | 4533 | users:(("navidrome",pid=1660,fd=9)) |
 | 4747 | users:((".opencode",pid=3161320,fd=40)) |
 | 5037 | users:(("adb",pid=2202,fd=11)) |
@@ -27,28 +26,29 @@
 | 5900 | users:(("wayvnc",pid=3703,fd=11)) |
 | 5998 | users:((".websockify-wra",pid=3705,fd=4)) |
 | 6379 | 0.0.0.0:* |
+| 7000 | *:* |
+| 7500 | *:* |
 | 7681 | users:(("ttyd",pid=2273,fd=13)) |
 | 7690 | users:(("ttyd",pid=1727,fd=13)) |
 | 7691 | users:(("ttyd",pid=1721,fd=13)) |
-| 7692 | users:(("ttyd",pid=3173308,fd=13)) |
 | 7693 | users:(("ttyd",pid=1717,fd=13)) |
 | 7694 | users:(("ttyd",pid=1736,fd=13)) |
 | 7695 | users:(("ttyd",pid=1730,fd=13)) |
 | 7696 | users:(("ttyd",pid=3173300,fd=13)) |
 | 7697 | users:(("ttyd",pid=3239112,fd=13)) |
-| 7699 | users:(("ttyd",pid=569547,fd=13)) |
+| 7699 | users:(("caddy",pid=610681,fd=7)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:((".opencode",pid=2060289,fd=19)) |
+| 8080 | users:((".opencode",pid=3947111,fd=15)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
 | 8284 | [::]:* |
 | 8286 | users:(("python3.13",pid=100002,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=100142,fd=3)) |
+| 8787 | users:(("python3.13",pid=3733711,fd=3)) |
 | 8789 | users:(("python3.13",pid=1632,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
@@ -70,7 +70,6 @@
 | 9993 | 0.0.0.0:* |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=3708,fd=4)) |
-| 34975 | users:(("code",pid=513919,fd=61)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -128,7 +127,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（449个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（450个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -190,6 +189,7 @@ static
 **jetbrains-*** (1个): `jetbrains-ai-proxy`
 **kde-*** (4个): `kde-logout-now, kde-open, kde-open5, kde-tray-auto-hide`
 **kill-*** (1个): `kill-ghostty`
+**kilo-*** (1个): `kilo-profile`
 **lag-*** (1个): `lag-detector.sh`
 **latest-*** (1个): `latest-img`
 **letta-*** (6个): `letta-distill, letta-health-guard, letta-health-monitor, letta-mcp, letta-monitor, letta-planning-trigger.sh`
@@ -373,7 +373,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（377个注册，80个运行中）
+## 三、systemd 用户服务（381个注册，80个运行中）
 
 ### 当前运行中
 ```
@@ -385,6 +385,7 @@ agi-telegram-bot
 ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
+caddy-launcher
 chrome-cdp
 chronos-biofeedback
 chronos-sensory
@@ -394,7 +395,6 @@ claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
-cloudflared-happy
 code-watcher
 content-router
 cookie-sync-server
@@ -415,7 +415,6 @@ kunifiedpush-distributor
 launcher
 litellm-strip-proxy
 macg-api
-mem0-bridge
 memory-evolution
 navidrome
 numlock-guard
@@ -444,17 +443,18 @@ ttyd-claude
 ttyd-claudep
 ttyd-foc
 ttyd-macg
-ttyd-overcode
-ttyd-overtab
 ttyd-ulwh
 voxtype
+waybar
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
 wireplumber
 xdg-desktop-portal
+xdg-desktop-portal-hyprland
 xdg-document-portal
 xdg-permission-store
+xfce4-notifyd
 ydotool-bridge
 ydotoold
 ```

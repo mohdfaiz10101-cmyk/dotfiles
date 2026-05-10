@@ -315,3 +315,4 @@ eve
 - [2026-05-09] [GLM自动] 观察: 根分区86%超85%警戒线需gc; LiteLLM/Hub/ChromaDB正常; mihomo-guardian和op-precheck为failed但非关键服务
 - [2026-05-09] [GLM自动] 观察: Paperclip(3100)未运行; op-connection-guard日志停在5/4已5天未更新; discord-bot和ai-config-guard自4/22持续failed
 - [2026-05-09] [GLM自动] 观察: 根分区86%超85%警戒线需gc; LiteLLM/Hub/ChromaDB正常; mihomo-guardian和op-precheck为failed但非关键
+- [2026-05-09] [OP] 磁盘管理重构: storage.nix 全声明式挂载所有分区(原udisks2自动挂载的NTFS全部转移到NixOS管理)，disk-pool.sh 精简为仅mergerfs+SnapRAID，创建 DISK-LAYOUT.md 记录完整分区布局 | 效果: git clone + nixos-rebuild = 全部挂载点恢复
