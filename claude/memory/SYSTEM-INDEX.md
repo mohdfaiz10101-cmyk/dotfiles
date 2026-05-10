@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-10 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-10 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -12,13 +12,15 @@
 | 1053 | *:* |
 | 1080 | users:(("ssh",pid=5225,fd=4)) |
 | 1080 | users:(("ssh",pid=5225,fd=5)) |
+| 2222 | *:* |
+| 2223 | *:* |
 | 3000 | (v1",pid=76435,fd=22)) |
 | 4000 | users:(("python3.13",pid=1699,fd=6)) |
 | 4001 | users:(("python3.13",pid=82369,fd=6)) |
 | 4002 | 0.0.0.0:* |
 | 4096 | users:(("kilo",pid=704462,fd=20)) |
 | 4533 | users:(("navidrome",pid=1723,fd=9)) |
-| 4747 | users:(("opencode",pid=883502,fd=30)) |
+| 4747 | users:(("opencode",pid=3518485,fd=44)) |
 | 5037 | users:(("adb",pid=2456,fd=11)) |
 | 5900 | users:(("wayvnc",pid=5872,fd=11)) |
 | 5998 | users:((".websockify-wra",pid=5873,fd=4)) |
@@ -34,19 +36,17 @@
 | 7695 | users:(("ttyd",pid=1866,fd=13)) |
 | 7696 | users:(("ttyd",pid=1874,fd=13)) |
 | 7697 | users:(("ttyd",pid=1867,fd=13)) |
-| 7699 | users:(("caddy",pid=5708,fd=6)) |
 | 7890 | *:* |
 | 7891 | *:* |
-| 8000 | 0.0.0.0:* |
-| 8000 | [::]:* |
-| 8080 | users:(("opencode",pid=1007394,fd=19)) |
+| 8080 | users:(("opencode",pid=1245981,fd=15)) |
+| 8090 | users:(("opencode",pid=3956457,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
 | 8284 | [::]:* |
 | 8286 | users:(("python3.13",pid=94009,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=27314,fd=3)) |
+| 8787 | users:(("python3.13",pid=4172483,fd=3)) |
 | 8789 | users:(("python3.13",pid=1665,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
@@ -65,12 +65,14 @@
 | 9980 | users:(("python3.13",pid=1575,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
+| 17698 | *:* |
+| 17699 | *:* |
 | 20241 | users:(("cloudflared",pid=6098,fd=6)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=1065317,fd=3)) |
-| 39023 | users:(("claude",pid=420099,fd=28)) |
+| 24801 | users:(("python3.13",pid=1089704,fd=3)) |
 | 40544 | 0.0.0.0:* |
 | 40671 | users:(("code",pid=703492,fd=63)) |
+| 45451 | users:(("claude",pid=3339389,fd=24)) |
 | 47984 | *:* |
 | 47989 | *:* |
 | 47990 | *:* |
@@ -128,12 +130,12 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（452个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（456个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
 **agi-*** (2个): `agi-feedback-bus.sh, agi-persistent-monitor.sh`
-**ai-*** (18个): `ai-architecture-audit, ai-brainstorm, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-poll... +8更多`
+**ai-*** (19个): `ai-architecture-audit, ai-brainstorm, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-poll... +9更多`
 **aider-*** (2个): `aider-post-commit-hook, aider-with-memory`
 **apk-*** (1个): `apk-debug`
 **architecture-*** (2个): `architecture-cleanup.sh, architecture-health-check`
@@ -234,6 +236,7 @@ static
 **python-*** (1个): `python-crash-guard.sh`
 **quick-*** (2个): `quick-run-cmd, quick-screenshot`
 **rebuild-*** (1个): `rebuild-system-index`
+**recovery-*** (1个): `recovery-manager`
 **review-*** (1个): `review-op-branch`
 **roo-*** (12个): `roo-apply-optimizations.sh, roo-backup-config.sh, roo-code-check, roo-digest, roo-enforce-rules, roo-export, roo-index-load.sh, roo-index-save.sh, roo-restore-config.sh, roo-state-backup... +2更多`
 **rta-*** (1个): `rta-scanner`
@@ -242,6 +245,7 @@ static
 **screenshot-*** (3个): `screenshot-now, screenshot-pin, screenshot-watcher.sh`
 **selflearn-*** (1个): `selflearn-health-check.sh`
 **service-*** (1个): `service-zombie-cleaner.sh`
+**session-*** (1个): `session-switch`
 **setup-*** (2个): `setup-0011, setup-letta-telegram-alert`
 **sisy-*** (1个): `sisy-tmux-wrap`
 **skill-*** (1个): `skill-auto-extract.py`
@@ -266,7 +270,7 @@ static
 **voice-*** (3个): `voice-input, voice-push, voice-test`
 **vpn-*** (1个): `vpn-watchdog`
 **warp-*** (10个): `warp-auto, warp-auto-fold, warp-claude-attach, warp-claude-auto, warp-claude-launch, warp-dual-view, warp-launch-claude, warp-multi, warp-session, warp-split-now`
-**waybar-*** (1个): `waybar-wifi.sh`
+**waybar-*** (2个): `waybar-wifi.sh, waybar-workspace-scroll.sh`
 **wayland-*** (1个): `wayland-screenshot`
 **wechat-*** (14个): `wechat-android-backup.sh, wechat-contact-sync.py, wechat-finance, wechat-kanban-push.sh, wechat-live-monitor.py, wechat-merge.py, wechat-msg-sync-wrapper.sh, wechat-msg-sync.py, wechat-reply-consumer.py, wechat-send.sh... +4更多`
 **weekly-*** (1个): `weekly-error-review`
@@ -350,6 +354,7 @@ app-dev-journal.md
 cc-queue.md
 codebase-map.md
 command-reference.md
+data-recovery-deployment.md
 feedback_phone_operations.md
 ideas-roadmap.md
 lessons-learned-7699.md
@@ -375,7 +380,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（383个注册，77个运行中）
+## 三、systemd 用户服务（385个注册，81个运行中）
 
 ### 当前运行中
 ```
@@ -387,7 +392,6 @@ agi-telegram-bot
 ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
-caddy-launcher
 cf-tunnel-7699
 chrome-cdp
 chronos-biofeedback
@@ -398,7 +402,6 @@ claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
-cloudflared-happy
 code-watcher
 content-router
 cookie-sync-server
@@ -408,14 +411,18 @@ embedding-server
 fcitx5
 finance-agent
 freeze-detector
+frpc
 gcr-ssh-agent
 glm-monitor
 glm-proxy
+headless-browser
 hub-api
 kunifiedpush-distributor
 launcher
+letta-mcp
 litellm-strip-proxy
 macg-api
+mem0-bridge
 memory-evolution
 navidrome
 numlock-guard
@@ -426,6 +433,7 @@ op-watchdog
 opencode-memwatch
 opencode-stuck-watch
 opencode-web
+opencode-web-sisy
 otp-sync
 overcode-loop-watch
 paperclip-report-daemon
@@ -435,6 +443,7 @@ pipewire-pulse
 proxy-403-monitor
 python-crash-guard
 screenshot-watcher
+ssh-winpc-tunnel
 sunshine
 tablet-control-panel
 ttyd-aider
@@ -458,7 +467,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（97个 timer）
+## 四、定时任务（98个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -466,6 +475,7 @@ agi-feedback-bus
 agi-self-improve
 agi-wechat-learn
 ai-architecture-audit
+ai-rules-sync-windows
 ai-scheduler
 auto-fix-services
 backup-cleanup

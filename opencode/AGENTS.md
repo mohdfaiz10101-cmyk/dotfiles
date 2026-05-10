@@ -32,5 +32,23 @@
 - NixOS/Flake 问题必须先 Read 实际配置
 - 出错不重复同样方法，连续失败2次 /clear
 
+
+## 记忆系统状态（自动注入 2026-05-10 18:17）
+| 指标 | 值 |
+|------|-----|
+| KG实体/关系 | 175 / 14 |
+| Letta MCP | active |
+| lessons-learned条目 | 66 |
+| 历史会话数 | 42 |
+
+### 高频主题（最近）
+  • Hyprland (×4)
+  • Letta (×3)
+  • mihomo (×2)
+  • Claude (×2)
+  • snip (×1)
+
+> 以上由 memory-bootstrap.sh 自动注入，每小时更新
+
 ---
 Source: ~/CLAUDE.md | Auto-compiled
