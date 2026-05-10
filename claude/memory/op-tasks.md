@@ -583,3 +583,10 @@
 - [ ] [SELF-IMPROVE] kanban.html: 补全被截断的CSS代码（如.wip-bar样式及后续的卡片样式、脚本逻辑等）以形成完整可运行的页面。
 - [ ] [SELF-IMPROVE] launcher-server.py: 将认证机制从IP地址段白名单和明文Token切换为HTTPS与强哈希Token校验，以防止Token被中间人窃听和IP地址被轻易伪造的安全风险。
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接操作sqlite3的数据库查询逻辑重构为使用异步数据库驱动（如aiosqlite）或提取到独立的Repository层，以避免阻塞FastAPI的异步事件循环。
+
+### [SELF-IMPROVE 2026-05-10] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 第96行存在语法错误（`_last_proactive_time: f`）会导致模块导入失败，应修正为有效的类型注解如 `_last_proactive_time: float = 0.0`。
+- [ ] [SELF-IMPROVE] think.py: 存在未闭合的 f-string 字符串语法错误，会导致模块导入失败。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS部分截断，需要补充完整缺失的样式以及实现看板核心交互的JavaScript逻辑。
+- [ ] [SELF-IMPROVE] launcher-server.py: Tailscale IP 校验逻辑使用 `client_ip.startswith("100.")` 过于宽泛，应改为使用 `ipaddress.ip_address` 进行严谨的 CIDR（100.64.0.0/10）子网匹配以防止 IP 欺骗。
+- [ ] [SELF-IMPROVE] hub-api.py: 将全局可变列表 `_ws_clients` 替换为线程安全的异步结构（如 `asyncio.Lock` 结合列表），以防止 WebSocket 并发连接/断开时引发竞态条件。
