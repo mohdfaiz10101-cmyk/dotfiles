@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenCode Web Sisyphus (port 8090)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.npm-global/bin/opencode web --port 8090 --cors http://localhost:7699
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+WorkingDirectory=/home/charlie
+
+[Install]
+WantedBy=default.target

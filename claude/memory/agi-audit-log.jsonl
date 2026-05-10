@@ -18324,3 +18324,94 @@
 {"ts": "2026-05-10 14:56", "type": "cycle", "summary": "系统运行正常，无异常服务告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-10 14:57", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-10 14:58", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:00", "type": "cycle", "summary": "系统运行正常，存在已知高CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:01", "type": "cycle", "summary": "系统运行正常，CPU与内存负载低，无服务异常或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:02", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 15:04", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均处于健康水平", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:06", "type": "cycle", "summary": "系统运行正常，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:07", "type": "cycle", "summary": "系统资源正常，CPU负载较低，无服务异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:09", "type": "cycle", "summary": "系统运行正常，CPU、内存、磁盘及服务状态均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:10", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知正常进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:11", "type": "cycle", "summary": "系统运行平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:13", "type": "task_queued", "task": "监控PID 3651080 (ps)的CPU使用情况，如持续高CPU则进一步调查", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-10 15:13", "type": "cycle", "summary": "系统运行正常，CPU和内存使用率在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:14", "type": "cycle", "summary": "系统运行正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:15", "type": "cycle", "summary": "系统运行正常，CPU/内存负载低，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:16", "type": "cycle", "summary": "系统运行正常，资源使用率低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:18", "type": "cycle", "summary": "系统运行正常，CPU与内存负载健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:19", "type": "cycle", "summary": "系统运行正常，所有服务健康，无重大异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:20", "type": "cycle", "summary": "系统运行正常，CPU和内存负载在合理范围内，磁盘使用率低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:21", "type": "cycle", "summary": "系统运行正常，CPU中等负载，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:23", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:25", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 15:26", "type": "cycle", "summary": "系统运行正常，资源使用率低，无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:28", "type": "cycle", "summary": "系统运行正常，CPU/内存负载低，无活跃服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:29", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:30", "type": "cycle", "summary": "系统运行正常，无异常服务或资源瓶颈", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:31", "type": "cycle", "summary": "系统各项指标正常，无活跃服务与告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:32", "type": "cycle", "summary": "系统运行正常，CPU和内存负载处于健康水平，无服务异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:34", "type": "cycle", "summary": "系统运行正常，CPU略高但在合理范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:35", "type": "cycle", "summary": "系统运行正常，CPU负载适中，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:36", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:37", "type": "cycle", "summary": "（无变化）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:39", "type": "cycle", "summary": "LLM 调用失败：Client error '408 Request Timeout' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 15:41", "type": "cycle", "summary": "系统运行正常，无异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:42", "type": "cycle", "summary": "系统运行正常，CPU占用适中，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:44", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:45", "type": "cycle", "summary": "系统运行平稳，各项指标正常，无待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:46", "type": "cycle", "summary": "系统运行正常，Python进程偶发CPU占用但属常规服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:47", "type": "cycle", "summary": "系统运行正常，CPU与内存负载健康，无活跃告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:48", "type": "task_queued", "task": "监控PID 4123010 (python3.13) 和 4121283 (litellm) 的CPU占用趋势", "priority": "low", "source": "AGI→OP", "status": "queued", "impact": "pending"}
+{"ts": "2026-05-10 15:48", "type": "cycle", "summary": "系统整体运行正常，仅发现高CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:49", "type": "cycle", "summary": "系统运行正常，CPU和内存使用率在合理范围内，无服务异常或待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:51", "type": "cycle", "summary": "系统运行正常，存在已知的Python进程高CPU占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:52", "type": "cycle", "summary": "系统运行正常，负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:53", "type": "cycle", "summary": "系统运行正常，CPU存在Python高负载进程，但符合常规服务特征", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:54", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存与磁盘使用率健康，无服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:55", "type": "cycle", "summary": "系统资源负载低，服务健康，CPU占用高进程为系统正常组件", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:57", "type": "cycle", "summary": "系统运行正常，CPU与内存负载适中，磁盘空间充足，无活跃异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:58", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 15:59", "type": "cycle", "summary": "系统负载正常，存在高CPU进程但属于常规服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:00", "type": "cycle", "summary": "系统运行正常，CPU与内存负载低，无异常服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:02", "type": "cycle", "summary": "系统运行正常，CPU负载在合理范围内，服务全健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:03", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 16:04", "type": "cycle", "summary": "LLM 调用失败：'list' object has no attribute 'get'", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 16:06", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知正常进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:08", "type": "cycle", "summary": "系统状态正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:11", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知进程python3.13，非异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:12", "type": "cycle", "summary": "系统负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:14", "type": "cycle", "summary": "系统运行正常，CPU hog为已知python3.13进程，非异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:15", "type": "cycle", "summary": "系统资源使用正常，无明显异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:16", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 16:18", "type": "cycle", "summary": "系统运行正常，无异常服务，CPU负载及内存使用率在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:19", "type": "cycle", "summary": "系统运行正常，无异常服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:20", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载健康，无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:22", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知正常进程python3.13", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:24", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:26", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:28", "type": "cycle", "summary": "系统状态正常，CPU高占用为临时进程，无告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:29", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:30", "type": "cycle", "summary": "系统运行正常，CPU/内存负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:31", "type": "cycle", "summary": "系统运行正常，核心服务健康，存在高CPU进程但属正常系统行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:32", "type": "cycle", "summary": "系统运行正常，CPU低负载，内存充足，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:34", "type": "cycle", "summary": "系统运行正常，资源占用低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:35", "type": "cycle", "summary": "系统运行正常，CPU低负载，内存使用适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:36", "type": "cycle", "summary": "系统运行正常，资源使用率低，服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:37", "type": "cycle", "summary": "系统资源负载正常，存在瞬时CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:38", "type": "cycle", "summary": "系统运行正常，CPU负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:40", "type": "cycle", "summary": "系统运行正常，CPU占用低，内存充足，磁盘使用率31%，无告警。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:42", "type": "cycle", "summary": "系统运行正常，CPU、内存及磁盘使用率均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:43", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:44", "type": "cycle", "summary": "系统运行平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:46", "type": "cycle", "summary": "系统运行正常，CPU负载适中，服务全部健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:47", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:48", "type": "cycle", "summary": "系统运行正常，资源使用率低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:49", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:51", "type": "cycle", "summary": "系统运行正常，资源使用低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:52", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:53", "type": "cycle", "summary": "系统运行正常，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:54", "type": "cycle", "summary": "系统运行平稳，资源负载低且无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:55", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-10 16:57", "type": "cycle", "summary": "系统运行正常，存在瞬时CPU采样波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:58", "type": "cycle", "summary": "系统运行正常，无异常或服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-10 16:59", "type": "cycle", "summary": "系统运行正常，资源使用低，无异常服务", "alert_count": 0, "skipped_llm": false}
