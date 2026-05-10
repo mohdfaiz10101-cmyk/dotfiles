@@ -151,6 +151,10 @@ eve
 
 - [2026-05-03] [Sonnet] 场景：Hyprland 屏幕顶部显示配置错误 → 原因：`render:explicit_sync` 在 Hyprland 0.54.x 已废弃（移到内部自动处理）→ 修复：删除 `/etc/nixos/home/charlie.nix` 中 `render = { explicit_sync = 1; }` 段 → `hyprctl reload` 确认无错误
 
+ - [2026-05-10] [GLM-5.1] 场景：Hyprland Super+D 窗口放大后无法再按一次缩小。根因：fullscreen 和 fullscreen,1 两行绑定共存导致 toggle 冲突。修复：只保留 fullscreen,1（maximize 保留间隙），删除 fullscreen 行。另外 natural_scroll=true 导致鼠标滚轮切工作区方向反转，需把 mouse_down 绑 e-1、mouse_up 绑 e+1。
+
+- [2026-05-10] [GLM-5.1] 场景：Letta MCP 工具（letta_store/letta_search）调用超时。根因：Letta Docker 0.16.7 对 /v1/agents（无尾部斜杠）返回 307 重定向到 /v1/agents/，urllib.request.urlopen 不自动 follow POST 307。修复：macg_mcp.py 中所有 /v1/agents" 改为 /v1/agents/"。同时 disable 了已失效的 systemd letta.service（venv 已不存在，Letta 跑在 Docker 里）。
+
 ### 会话摘要 [2026-05-03] [Sonnet/自动]
 - 对话轮次: 128 | 被纠正: 1次
   - 用户纠正: telegram通知太频繁 取消一些没必要的 如果是成功过的 就减少通知频率 出现错误的通知才给更多的通知

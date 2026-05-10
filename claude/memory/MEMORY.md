@@ -133,3 +133,15 @@
 - [LiteLLM 部署](litellm-deployment.md) — 配置和诊断
 - [OP 任务](op-tasks.md) — CC↔OP 异步协作
 - [北极星文档](north-star.md) — Charlie 的 AI OS 终极目标，每次会话必读，所有建议必须对齐
+
+## 数据恢复系统
+- [智能数据恢复部署](data-recovery-deployment.md) — 三层防护（启动检测+运行监控+定时备份）
+
+## NixOS FRP 隧道（永久）
+- frps: `192.168.123.1:7000`, token=`12345`
+- `192.168.123.1:2223` → NixOS:22 (SSH) — `ssh -p 2223 charlie@192.168.123.1`
+- `192.168.123.1:24801` → NixOS:24801 (KVM ydotool-bridge)
+- `192.168.123.1:17699` → NixOS:7699 (TTY/AI Launcher)
+- systemd 用户服务: `frpc.service` + `ydotool-bridge.service`（enabled）
+- Tailscale SSH 因 OpenSSH 版本不兼容，走 frpc 隧道绕过
+- 2026-05-10 验证通过

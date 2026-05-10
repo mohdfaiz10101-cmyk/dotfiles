@@ -37,6 +37,21 @@
           "text": "2026-05-09 OP执行: 磁盘布局统一管理 | 结果: 成功 | 关键发现: storage.nix 全声明式挂载所有18个分区(含之前udisks2自动挂载的NTFS)，disk-pool.sh 精简为mergerfs+SnapRAID，创建DISK-LAYOUT.md。git push到GitHub，新机器clone+rebuild即可恢复全部挂载点",
           "tags": "op-exec,disk-storage,nixos",
           "timestamp": "1778341278"
+        },
+        {
+          "text": "NixOS frpc 隧道（永久 systemd 服务，enabled）：\n- frpc 服务: ~/.config/systemd/user/frpc.service\n- 配置: ~/.config/frpc/frpc.toml\n- frps 服务器: 192.168.123.1:7000, token=12345\n- 隧道映射:\n  192.168.123.1:2223 → NixOS:22 (SSH)  |  ssh -p 2223 charlie@192.168.123.1\n  192.168.123.1:24801 → NixOS:24801 (KVM ydotool-bridge)\n  192.168.123.1:17699 → NixOS:7699 (TTY/AI Launcher)\n- ydotool-bridge 服务: ~/.config/systemd/user/ydotool-bridge.service, 监听 24801\n- Windows SSH 到 NixOS: ssh -p 2223 charlie@192.168.123.1\n- Tailscale 直连有问题（OpenSSH 版本不兼容），走 frpc 隧道绕过\n- 2026-05-10 验证通过",
+          "tags": "nixos,frpc,tunnel,ssh,kvm,permanent-config",
+          "timestamp": "1778386811"
+        },
+        {
+          "text": "Hyprland 键绑定经验：1) fullscreen 和 fullscreen,1 不能共存否则 toggle 失效，只保留一个。2) natural_scroll=true 时鼠标滚轮切工作区方向反转，需 mouse_down 绑 e-1、mouse_up 绑 e+1。3) Letta Docker 0.16.7 对 /v1/agents 返回 307 重定向到 /v1/agents/，urllib 不自动 follow POST 重定向，必须加尾部斜杠。",
+          "tags": "hyprland,letta,配置,MCP修复",
+          "timestamp": "1778388884"
+        },
+        {
+          "text": "Hyprland Super+D fullscreen 和 fullscreen,1 两行绑定共存导致 toggle 失效。修复：只保留 fullscreen,1（maximize 保留间隙）。另外 natural_scroll=true 导致鼠标滚轮切工作区方向反转，需把 mouse_down 绑 e-1、mouse_up 绑 e+1。",
+          "tags": "hyprland,键绑定,滚轮,fullscreen,配置",
+          "timestamp": "1778388889"
         }
       ]
     },

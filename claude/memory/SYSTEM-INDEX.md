@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-10 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-10 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,71 +10,72 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
-| 1080 | users:(("ssh",pid=3901,fd=4)) |
-| 1080 | users:(("ssh",pid=3901,fd=5)) |
-| 3000 | (v1",pid=101143,fd=22)) |
-| 4000 | users:(("python3.13",pid=1651,fd=6)) |
-| 4001 | users:(("python3.13",pid=99998,fd=6)) |
+| 1080 | users:(("ssh",pid=5225,fd=4)) |
+| 1080 | users:(("ssh",pid=5225,fd=5)) |
+| 3000 | (v1",pid=76435,fd=22)) |
+| 4000 | users:(("python3.13",pid=1699,fd=6)) |
+| 4001 | users:(("python3.13",pid=82369,fd=6)) |
 | 4002 | 0.0.0.0:* |
-| 4533 | users:(("navidrome",pid=1660,fd=9)) |
-| 4747 | users:((".opencode",pid=3161320,fd=40)) |
-| 5037 | users:(("adb",pid=2202,fd=11)) |
-| 5432 | users:((".postgres-wrapp",pid=2685505,fd=6)) |
-| 5432 | users:((".postgres-wrapp",pid=2685505,fd=7)) |
-| 5678 | 0.0.0.0:* |
-| 5678 | [::]:* |
-| 5900 | users:(("wayvnc",pid=3703,fd=11)) |
-| 5998 | users:((".websockify-wra",pid=3705,fd=4)) |
+| 4096 | users:(("kilo",pid=704462,fd=20)) |
+| 4533 | users:(("navidrome",pid=1723,fd=9)) |
+| 4747 | users:(("opencode",pid=883502,fd=30)) |
+| 5037 | users:(("adb",pid=2456,fd=11)) |
+| 5900 | users:(("wayvnc",pid=5872,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=5873,fd=4)) |
 | 6379 | 0.0.0.0:* |
 | 7000 | *:* |
 | 7500 | *:* |
-| 7681 | users:(("ttyd",pid=2273,fd=13)) |
-| 7690 | users:(("ttyd",pid=1727,fd=13)) |
-| 7691 | users:(("ttyd",pid=1721,fd=13)) |
-| 7693 | users:(("ttyd",pid=1717,fd=13)) |
-| 7694 | users:(("ttyd",pid=1736,fd=13)) |
-| 7695 | users:(("ttyd",pid=1730,fd=13)) |
-| 7696 | users:(("ttyd",pid=3173300,fd=13)) |
-| 7697 | users:(("ttyd",pid=3239112,fd=13)) |
-| 7699 | users:(("caddy",pid=610681,fd=7)) |
+| 7681 | users:(("ttyd",pid=2280,fd=13)) |
+| 7690 | users:(("ttyd",pid=1863,fd=13)) |
+| 7691 | users:(("ttyd",pid=1860,fd=13)) |
+| 7692 | users:(("ttyd",pid=1873,fd=13)) |
+| 7693 | users:(("ttyd",pid=1858,fd=13)) |
+| 7694 | users:(("ttyd",pid=1871,fd=13)) |
+| 7695 | users:(("ttyd",pid=1866,fd=13)) |
+| 7696 | users:(("ttyd",pid=1874,fd=13)) |
+| 7697 | users:(("ttyd",pid=1867,fd=13)) |
+| 7699 | users:(("caddy",pid=5708,fd=6)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:((".opencode",pid=3947111,fd=15)) |
+| 8080 | users:(("opencode",pid=1007394,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | 0.0.0.0:* |
 | 8284 | [::]:* |
-| 8286 | users:(("python3.13",pid=100002,fd=3)) |
+| 8286 | users:(("python3.13",pid=94009,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=3733711,fd=3)) |
-| 8789 | users:(("python3.13",pid=1632,fd=3)) |
+| 8787 | users:(("python3.13",pid=27314,fd=3)) |
+| 8789 | users:(("python3.13",pid=1665,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
-| 9099 | users:(("python3.13",pid=3224,fd=3)) |
-| 9222 | users:(("chrome",pid=1014523,fd=75)) |
-| 9800 | users:(("python3.13",pid=1637,fd=6)) |
-| 9801 | users:(("python3.13",pid=108549,fd=6)) |
-| 9810 | users:(("python3.13",pid=1664,fd=6)) |
-| 9811 | users:(("python3.13",pid=100742,fd=13)) |
-| 9875 | users:(("python3.13",pid=1644,fd=3)) |
-| 9876 | users:(("python3.13",pid=20658,fd=3)) |
-| 9900 | users:(("python3.13",pid=99739,fd=13)) |
-| 9910 | users:(("python3.13",pid=101336,fd=14)) |
-| 9922 | users:(("node",pid=1636,fd=21)) |
-| 9977 | users:(("python3",pid=1573,fd=3)) |
-| 9979 | users:(("python3.13",pid=50098,fd=3)) |
-| 9980 | users:(("python3.13",pid=1549,fd=3)) |
+| 9099 | users:(("python3.13",pid=11171,fd=3)) |
+| 9222 | users:(("chrome",pid=5414,fd=62)) |
+| 9800 | users:(("python3.13",pid=1681,fd=6)) |
+| 9801 | users:(("python3.13",pid=14044,fd=6)) |
+| 9810 | users:(("python3.13",pid=1732,fd=6)) |
+| 9811 | users:(("python3.13",pid=94274,fd=13)) |
+| 9875 | users:(("python3.13",pid=1683,fd=3)) |
+| 9876 | users:(("python3.13",pid=27324,fd=3)) |
+| 9900 | users:(("python3.13",pid=17084,fd=13)) |
+| 9910 | users:(("python3.13",pid=95355,fd=14)) |
+| 9977 | users:(("python3",pid=1606,fd=3)) |
+| 9979 | users:(("python3.13",pid=81450,fd=3)) |
+| 9980 | users:(("python3.13",pid=1575,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
+| 20241 | users:(("cloudflared",pid=6098,fd=6)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=3708,fd=4)) |
+| 24801 | users:(("python3.13",pid=1065317,fd=3)) |
+| 39023 | users:(("claude",pid=420099,fd=28)) |
 | 40544 | 0.0.0.0:* |
+| 40671 | users:(("code",pid=703492,fd=63)) |
 | 47984 | *:* |
 | 47989 | *:* |
 | 47990 | *:* |
 | 48010 | *:* |
+| 55113 | users:(("code",pid=821506,fd=36)) |
 | 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
@@ -127,7 +128,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（450个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（452个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -214,7 +215,7 @@ static
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
 **op-*** (19个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +9更多`
-**opencode-*** (9个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-sisyphus-guard, opencode-stuck-watch.sh, opencode-tmux-wrap`
+**opencode-*** (10个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-integrity-check, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-sisyphus-guard, opencode-stuck-watch.sh, opencode-tmux-wrap`
 **other-*** (53个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +43更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
@@ -265,6 +266,7 @@ static
 **voice-*** (3个): `voice-input, voice-push, voice-test`
 **vpn-*** (1个): `vpn-watchdog`
 **warp-*** (10个): `warp-auto, warp-auto-fold, warp-claude-attach, warp-claude-auto, warp-claude-launch, warp-dual-view, warp-launch-claude, warp-multi, warp-session, warp-split-now`
+**waybar-*** (1个): `waybar-wifi.sh`
 **wayland-*** (1个): `wayland-screenshot`
 **wechat-*** (14个): `wechat-android-backup.sh, wechat-contact-sync.py, wechat-finance, wechat-kanban-push.sh, wechat-live-monitor.py, wechat-merge.py, wechat-msg-sync-wrapper.sh, wechat-msg-sync.py, wechat-reply-consumer.py, wechat-send.sh... +4更多`
 **weekly-*** (1个): `weekly-error-review`
@@ -373,7 +375,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（381个注册，80个运行中）
+## 三、systemd 用户服务（383个注册，77个运行中）
 
 ### 当前运行中
 ```
@@ -386,6 +388,7 @@ ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
 caddy-launcher
+cf-tunnel-7699
 chrome-cdp
 chronos-biofeedback
 chronos-sensory
@@ -395,21 +398,19 @@ claude-tablet-output
 claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
+cloudflared-happy
 code-watcher
 content-router
 cookie-sync-server
 dbus
-dconf
 dotfiles-symlink-watch
 embedding-server
 fcitx5
 finance-agent
 freeze-detector
-frpc
 gcr-ssh-agent
 glm-monitor
 glm-proxy
-headless-browser
 hub-api
 kunifiedpush-distributor
 launcher
@@ -434,7 +435,6 @@ pipewire-pulse
 proxy-403-monitor
 python-crash-guard
 screenshot-watcher
-ssh-winpc-tunnel
 sunshine
 tablet-control-panel
 ttyd-aider
@@ -443,6 +443,7 @@ ttyd-claude
 ttyd-claudep
 ttyd-foc
 ttyd-macg
+ttyd-overcode
 ttyd-ulwh
 voxtype
 waybar
@@ -451,10 +452,8 @@ wechat-crm-archiver
 wechat-reply-consumer
 wireplumber
 xdg-desktop-portal
-xdg-desktop-portal-hyprland
 xdg-document-portal
 xdg-permission-store
-xfce4-notifyd
 ydotool-bridge
 ydotoold
 ```

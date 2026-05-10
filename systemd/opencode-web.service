@@ -7,6 +7,7 @@ After=network.target
 [Service]
 Type=simple
 UnsetEnvironment=http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+ExecStartPre=/home/charlie/.local/bin/opencode-integrity-check
 ExecStart=/home/charlie/.local/bin/opencode web --port 8080 --hostname 0.0.0.0
 Restart=always
 RestartSec=15

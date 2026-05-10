@@ -1,5 +1,5 @@
 [Unit]
-Description=FRP Client (connect to Windows frps)
+Description=FRP Client (connect to router frps)
 After=network.target
 
 [Service]
