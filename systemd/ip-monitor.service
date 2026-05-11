@@ -1,0 +1,9 @@
+[Unit]
+Description=ISP IP Monitor → Telegram Push
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/ip-monitor-telegram
+StandardOutput=journal
+StandardError=journal

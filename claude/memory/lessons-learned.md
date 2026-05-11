@@ -326,3 +326,75 @@ eve
 - [2026-05-11] [GLM自动] 观察: LiteLLM /health 返回401 auth_error，网关运行但认证异常；4个user服务failed(architecture-audit/rules-sync/discord-bot/docker-start)；op-connection-guard日志停更于05-04
 - [2026-05-11] [GLM自动] 观察: LiteLLM /health返回401 auth_error，连接正常但未传api key，可能是健康检查curl未带header；4个systemd服务处于failed状态(aggregate-marketing-research/ai-architecture-audit/ai-rules-sync-windows/discord-intelligent-bot)
 - [2026-05-11] [GLM自动] 观察: LiteLLM 4000端口返回auth_error无API key；4个user service处于failed状态(discord-bot/ai-rules-sync等)；/mnt/ai磁盘32%正常；OP连接守护5/4全天正常
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 120 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+
+### 会话摘要 [2026-05-11] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
