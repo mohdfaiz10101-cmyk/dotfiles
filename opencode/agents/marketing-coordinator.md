@@ -43,6 +43,44 @@ hidden: true
 5. **审核** → 检查产出是否符合 BRAND.md 红线
 6. **追踪** → 记录到 memory/ideas-roadmap.md
 
+## 记忆汇总（强制执行）
+
+**每次完成调研任务后，必须调用记忆系统存储结果：**
+
+### Letta Archival 存储
+```yaml
+调用: letta-memory_letta_store(
+  agent="code-assistant",
+  text="[营销调研|{日期}] SpectrAI {主题}\n\n{摘要内容}",
+  tags="营销,调研,SpectrAI,{主题}"
+)
+```
+
+### 本地 Memory 文件存储
+```yaml
+调用: memory(
+  mode="add",
+  content="[营销调研|{日期}] SpectrAI {主题} → {5条摘要}",
+  tags="营销,调研,SpectrAI",
+  scope="all-projects"
+)
+```
+
+**存储格式示例：**
+```markdown
+[营销调研|2026-05-11] SpectrAI AI工具营销趋势
+
+1. 开发者社区 + PLG 双引擎
+   - 提供免费沙箱/试用层，5分钟内让用户达到"aha时刻"
+   - GitHub仓库作为营销渠道：48h issue响应、开源参考实现、技术博客
+
+2. GEO/AEO 替代传统 SEO
+   - 35-45% B2B AI研究始于ChatGPT/Perplexity
+   - 内容策略转向"被AI引用"：结构化FAQ、对比页、基准报告
+
+[来源：WordStream 2026 AI营销趋势]
+```
+
 ## 审核红线（每次输出前必须检查）
 
 - 严禁虚假宣传（"最强""第一"等）

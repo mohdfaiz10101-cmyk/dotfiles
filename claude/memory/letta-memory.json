@@ -87,6 +87,11 @@
           "text": "验证记忆系统永久可用",
           "tags": "测试,稳定性",
           "timestamp": "1778436718"
+        },
+        {
+          "text": "[营销调研|2026-05-11] SpectrAI AI工具营销趋势\n\n1. 开发者社区 + PLG 双引擎：免费沙箱/试用层，5分钟aha时刻，GitHub仓库作为营销渠道\n2. GEO/AEO 替代传统 SEO：35-45% B2B AI研究始于ChatGPT/Perplexity，内容策略转向\"被AI引用\"\n3. 集成生态 = 分发渠道：在LangChain、Vercel AI SDK、Slack等用户工作流中嵌入，集成市场带来持续流量\n4. Newsletter赞助 + ABM闭环：Techpresso/Ben's Bites等newsletter赞助，企业域名数据喂给ABM系统\n5. 技术诚实 = 品牌护城河：发布含失败案例的基准报告，安全研究/红队披露/架构深度解析\n\n来源：WordStream 2026 AI营销趋势、MiniLoop SaaS PLG策略、Udit.co AI产品GTM Playbook",
+          "tags": "营销,调研,SpectrAI,AI工具,GTM",
+          "timestamp": "1778472726"
         }
       ]
     },

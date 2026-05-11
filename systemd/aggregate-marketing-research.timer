@@ -1,0 +1,9 @@
+[Unit]
+Description=每小时聚合营销调研输出
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

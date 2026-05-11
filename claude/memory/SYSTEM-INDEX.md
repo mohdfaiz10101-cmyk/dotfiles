@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-11 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-11 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -18,9 +18,9 @@
 | 4001 | users:(("python3.13",pid=1687,fd=6)) |
 | 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=1780,fd=11)) |
-| 4747 | users:(("opencode",pid=38220,fd=36)) |
+| 4747 | users:(("opencode",pid=1272238,fd=36)) |
 | 5001 | users:(("python3.13",pid=3634484,fd=13)) |
-| 5037 | users:(("adb",pid=3929822,fd=11)) |
+| 5037 | users:(("adb",pid=397432,fd=11)) |
 | 5054 | users:((".ulauncher-wrap",pid=534205,fd=16)) |
 | 5900 | users:(("wayvnc",pid=3247,fd=11)) |
 | 5998 | users:((".websockify-wra",pid=3248,fd=4)) |
@@ -42,11 +42,11 @@
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:(("opencode",pid=2297,fd=19)) |
-| 8090 | users:(("opencode",pid=4066,fd=19)) |
+| 8080 | users:(("opencode",pid=1273861,fd=15)) |
+| 8090 | users:(("opencode",pid=1271666,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
-| 8284 | users:(("python3.13",pid=1506493,fd=3)) |
+| 8284 | users:(("python3.13",pid=1600083,fd=3)) |
 | 8286 | users:(("python3.13",pid=4149,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8787 | users:(("python3.13",pid=4022,fd=3)) |
@@ -72,8 +72,8 @@
 | 17699 | *:* |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=3249,fd=4)) |
+| 36451 | users:(("claude",pid=1372204,fd=29)) |
 | 40544 | 0.0.0.0:* |
-| 41111 | users:(("claude",pid=3746989,fd=24)) |
 | 47984 | *:* |
 | 47989 | *:* |
 | 47990 | *:* |
@@ -139,10 +139,11 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（472个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（473个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
+**aggregate-*** (1个): `aggregate-marketing-research.sh`
 **agi-*** (2个): `agi-feedback-bus.sh, agi-persistent-monitor.sh`
 **ai-*** (19个): `ai-architecture-audit, ai-brainstorm, ai-cad, ai-config-guard.sh, ai-config-watcher.sh, ai-knowledge-sync, ai-manager, ai-patrol-autofix.sh, ai-patrol-daemon.sh, ai-poll... +9更多`
 **aider-*** (2个): `aider-post-commit-hook, aider-with-memory`
@@ -396,7 +397,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（401个注册，89个运行中）
+## 三、systemd 用户服务（403个注册，88个运行中）
 
 ### 当前运行中
 ```
@@ -463,7 +464,6 @@ pipewire-pulse
 proxy-403-monitor
 python-crash-guard
 screenshot-watcher
-ssh-winpc-tunnel
 sunshine
 tablet-control-panel
 telegram-userbot
@@ -491,8 +491,9 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（101个 timer）
+## 四、定时任务（103个 timer）
 ```
+aggregate-marketing-research
 agi-cognitive-engine
 agi-daily-report
 agi-feedback-bus
@@ -550,6 +551,7 @@ memory-working-decay
 meta-cognition
 mihomo-backup
 mihomo-guardian
+mihomo-health
 mihomo-sync
 morning-brief
 nix-store-check
