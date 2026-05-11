@@ -11,13 +11,32 @@
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ],
-      "prompt_append": "FALSE_POSITIVE_GUARD（死规则）：systemctl --user is-active返回inactive≠失败。判断唯一方法：systemctl --user show <svc> --property=Result,ActiveState。Result=success→正常完成，禁止写[!]或升级CC。AGENTS.md只能CC写入，需改规则时输出CC_DELEGATE:新增规则到AGENTS.md:{内容}。MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。会话启动时MUST检查CC委托任务：运行 grep '^- \\[ \\]' ~/.claude/projects/-home-charlie/memory/op-tasks.md，有未完成任务则立即执行，完成后用 sed -i 将对应行 '- [ ]' 改为 '- [x]'。CC_REVIEW规则：完成任务后运行 cd ~/dotfiles && git log cc ^main --oneline 2>/dev/null | head -3，有新提交时读取 git diff main..cc --stat 和前50行diff，输出≤5行中文评论 [OK/WARN/FAIL]，格式：[CC-review] 文件: 评论。 示例(正确): 巡检发现is-active返回inactive → 先运行show --property=Result → Result=success → 输出[SKIP]正常完成。示例(错误): 看到inactive直接写[!]失败。"
+      "permission": {
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "librarian": "allow",
+          "oracle": "allow",
+          "metis": "allow",
+          "momus": "allow",
+          "general": "allow"
+        }
+      },
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。\nFALSE_POSITIVE_GUARD：systemctl is-active返回inactive≠失败，用 show --property=Result 验证。\nAGENTS.md 仅 CC 写入，需改规则输出 CC_DELEGATE:新增规则到AGENTS.md:{内容}。\nCC_REVIEW：完成任务后 cd ~/dotfiles && git log cc ^main --oneline | head -3，有新提交则 diff main..cc --stat 输出评论。"
     },
     "atlas": {
       "description": "大师编排器 — 多 agent 并行协调，Plan 执行引擎",
       "model": "openai-compatible/glm-5-turbo",
       "temperature": 0.1,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "permission": {
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "librarian": "allow",
+          "general": "allow"
+        }
+      },
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -27,7 +46,15 @@
       "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）",
       "model": "openai-compatible/glm-5.1",
       "temperature": 0.3,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "permission": {
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "librarian": "allow",
+          "general": "allow"
+        }
+      },
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -37,7 +64,15 @@
       "description": "深度执行器 — 长上下文代码生成、复杂重构",
       "model": "openai-compatible/deepseek-v4-pro",
       "temperature": 0.2,
-      "prompt_append": "编码死规则：(1) 修改任何代码文件前 MUST 先用 read_file 工具读取完整内容，禁止凭记忆猜测结构 (2) 修改后 MUST 重启服务→curl验证→检查日志→确认前端生效，不验证=任务未完成 (3) 3000控制台(/mnt/ai/apps/agi-control-plane/frontend/app/)已是dev模式(HMR)，改完自动生效，禁止执行bun run build (4) FALSE_POSITIVE_GUARD：systemctl is-active返回inactive≠失败，必须用 systemctl --user show <svc> --property=Result 验证，Result=success才是正常完成。MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。 示例(正确): 用户说改route.ts → 先read_file读取完整内容 → 找到目标行 → edit_file精确替换 → curl验证。示例(错误): 不读文件直接猜测内容写入 → 必出错。",
+      "permission": {
+        "task": {
+          "*": "deny",
+          "explore": "allow",
+          "librarian": "allow",
+          "general": "allow"
+        }
+      },
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。\n编码规则：改前先 read_file 读完整内容，改后重启→curl→日志→前端验证。\n3000控制台 HMR 自动生效，禁止 bun run build。\nFALSE_POSITIVE_GUARD：systemctl is-active 返回 inactive≠失败，用 show --property=Result 验证。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -47,7 +82,7 @@
       "description": "只读顾问 — 架构决策、疑难 bug 诊断（GPT-4.1，Claude key 暂缺）",
       "model": "openai-compatible/gpt-4.1",
       "temperature": 0.2,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -57,7 +92,7 @@
       "description": "文档研究员 — 多仓库分析、官方文档检索",
       "model": "openai-compatible/glm-5-turbo",
       "temperature": 0.1,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -67,7 +102,7 @@
       "description": "代码搜索员 — 定位文件、函数、实现模式",
       "model": "openai-compatible/deepseek-v4-flash",
       "temperature": 0.1,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -101,7 +136,7 @@
       "description": "预规划顾问 — 识别隐含意图、歧义、AI 失败模式",
       "model": "openai-compatible/glm-5-turbo",
       "temperature": 0.2,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -111,7 +146,7 @@
       "description": "评审员 — 代码审查（Qwen3-235B）",
       "model": "openai-compatible/qwen3-235b",
       "temperature": 0.3,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
@@ -121,7 +156,7 @@
       "description": "媒体分析员 — PDF/图片/图表深度解读",
       "model": "openai-compatible/glm-4.6v-flash",
       "temperature": 0.1,
-      "prompt_append": "MUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文。输出规则：总输出≤20行；格式 [OK/FAIL/WARN] 操作→结果；多项相同→×N合并；详细内容写文件只返回路径；无法处理时在末行写 CC_DELEGATE:任务描述 触发交接。",
+      "prompt_append": "MUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"

@@ -1,0 +1,10 @@
+[Unit]
+Description=Cloudflare Tunnel
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/cloudflared tunnel --no-autoupdate run --token eyJhIjoiMDdkZmQ1MmYzNWM1Y2Y0ZmUyOGQ2MjQ1ZDdlMTQ0YjMiLCJ0IjoiNGIzOWI4YzMtNTE2Yi00ZWEwLWE4YWItNjEwNWU1ZTcyNGEyIiwicyI6Ill6VTRZalE1WmprdE1tRXdOQzAwTmpBM0xXSTJOMk10WkRrMk9XWmhNVFF5TUdFeSJ9
+Restart=always
+
+[Install]
+WantedBy=default.target
