@@ -1,0 +1,11 @@
+[Unit]
+Description=Force Claude to use compatible proxy
+After=mihomo.service
+Requires=mihomo.service
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash -c 'sleep 8 && /run/current-system/sw/bin/curl -X PUT http://127.0.0.1:9091/proxies/GLOBAL -H "Content-Type: application/json" -d "{\"name\": \"🚀 选择代理\"}"'
+
+[Install]
+WantedBy=default.target

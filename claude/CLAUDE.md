@@ -66,6 +66,14 @@ nix flake check /etc/nixos
 Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行，禁止回问确认。
 - 违反时 → 写入 lessons-learned.md
 
+## 记忆系统强制降级（MEMORY_FALLBACK — 死规则）
+当检测到 `Letta MCP: inactive` 或 `curl localhost:8284/health` 失败时：
+1. MUST 调用 `macg_macg_memory_read` 读取本地记忆
+2. MUST 优先读取 `MEMORY.md` → `lessons-learned.md` → `op-tasks.md`
+3. MUST 将读取结果整合到回答中，标注来源 `[记忆]`
+4. 禁止直接跳过记忆系统
+5. Letta 恢复后优先使用 `macg_macg_letta_*` 工具
+
 ## 模型路由决策表
 | 任务类型 | 执行方式 |
 |---------|---------|

@@ -1,5 +1,5 @@
-- [ ] [CC] [2026-05-09] [high] Docker容器 Exited (0) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (0) 12 hours ago --tail 30
-- [ ] [CC] [2026-05-09] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30
+- [!]  [CC] [2026-05-09] [high] Docker容器 Exited (0) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (0) 12 hours ago --tail 30 [DECAY:遗忘率25%]
+- [!]  [CC] [2026-05-09] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30 [DECAY:遗忘率25%]
 - [!]  [CC] [2026-05-08] [high] Docker容器 Exited (127) 3 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 3 weeks ago --tail 30 [DECAY:遗忘率23%]
 - [!]  [CC] [2026-05-08] [high] Docker容器 Exited (137) 5 days ago 自动修复失败，需人工检查：docker logs Exited (137) 5 days ago --tail 30 [DECAY:遗忘率23%]
 - [!]  [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago 自动修复失败，需人工检查：docker logs Exited (137) 4 days ago --tail 30 [DECAY:遗忘率25%]
@@ -590,3 +590,4 @@
 - [ ] [SELF-IMPROVE] kanban.html: 代码在CSS部分截断，需要补充完整缺失的样式以及实现看板核心交互的JavaScript逻辑。
 - [ ] [SELF-IMPROVE] launcher-server.py: Tailscale IP 校验逻辑使用 `client_ip.startswith("100.")` 过于宽泛，应改为使用 `ipaddress.ip_address` 进行严谨的 CIDR（100.64.0.0/10）子网匹配以防止 IP 欺骗。
 - [ ] [SELF-IMPROVE] hub-api.py: 将全局可变列表 `_ws_clients` 替换为线程安全的异步结构（如 `asyncio.Lock` 结合列表），以防止 WebSocket 并发连接/断开时引发竞态条件。
+- [ ] [AGI→OP] [2026-05-11 00:29] [low] 检查letta进程538521是否正常处理任务，非异常则忽略

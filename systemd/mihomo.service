@@ -1,0 +1,13 @@
+[Unit]
+Description=Mihomo Proxy Service
+After=network.target
+
+[Service]
+Type=simple
+User=charlie
+ExecStart=/run/current-system/sw/bin/mihomo -d %h/.config/mihomo -f %h/.config/mihomo/config.yaml
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

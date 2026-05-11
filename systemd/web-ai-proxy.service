@@ -1,0 +1,13 @@
+[Unit]
+Description=Web AI Proxy — OpenAI-compatible proxy for web AI tools
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/home-offload/agi/.venv/bin/python3 /home/charlie/.local/bin/web-ai-proxy --port 5001
+Environment=LD_LIBRARY_PATH=/nix/store/ab3753m6i7isgvzphlar0a8xb84gl96i-gcc-15.2.0-lib/lib
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

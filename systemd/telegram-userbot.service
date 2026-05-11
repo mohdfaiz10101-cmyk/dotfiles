@@ -1,0 +1,16 @@
+[Unit]
+Description=Telegram Userbot (API Key-based)
+After=network.target
+
+[Service]
+Type=simple
+
+WorkingDirectory=/home/charlie/agi
+ExecStart=/run/current-system/sw/bin/nix-shell -p python3Packages.telethon python3Packages.pysocks --command "python3 /home/charlie/agi/telegram-userbot.py"
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/charlie/.local/share/opencode/logs/telegram-userbot.log
+StandardError=append:/home/charlie/.local/share/opencode/logs/telegram-userbot.log
+
+[Install]
+WantedBy=default.target

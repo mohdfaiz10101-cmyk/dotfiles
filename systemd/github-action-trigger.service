@@ -1,0 +1,12 @@
+[Unit]
+Description=GitHub Actions 自动触发器
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/github-action-trigger
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

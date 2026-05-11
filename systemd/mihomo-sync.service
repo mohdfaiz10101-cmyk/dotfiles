@@ -1,0 +1,8 @@
+[Unit]
+Description=Mihomo 配置同步（/etc → ~）
+After=network-online.target mihomo-backup.service
+
+[Service]
+Type=oneshot
+User=charlie
+ExecStart=%h/.local/bin/mihomo-config-sync

@@ -1,0 +1,10 @@
+[Unit]
+Description=Mihomo 配置同步（每 5 分钟）
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-10 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-11 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,74 +10,74 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
-| 1080 | users:(("ssh",pid=5225,fd=4)) |
-| 1080 | users:(("ssh",pid=5225,fd=5)) |
-| 2222 | *:* |
+| 1080 | users:(("ssh",pid=6139,fd=4)) |
+| 1080 | users:(("ssh",pid=6139,fd=5)) |
 | 2223 | *:* |
-| 3000 | (v1",pid=76435,fd=22)) |
-| 4000 | users:(("python3.13",pid=1699,fd=6)) |
-| 4001 | users:(("python3.13",pid=82369,fd=6)) |
+| 3000 | (v1",pid=8247,fd=22)) |
+| 4000 | users:(("python3.13",pid=1773,fd=6)) |
+| 4001 | users:(("python3.13",pid=1687,fd=6)) |
 | 4002 | 0.0.0.0:* |
-| 4096 | users:(("kilo",pid=704462,fd=20)) |
-| 4533 | users:(("navidrome",pid=1723,fd=9)) |
-| 4747 | users:(("opencode",pid=3518485,fd=44)) |
-| 5037 | users:(("adb",pid=2456,fd=11)) |
-| 5900 | users:(("wayvnc",pid=5872,fd=11)) |
-| 5998 | users:((".websockify-wra",pid=5873,fd=4)) |
+| 4533 | users:(("navidrome",pid=1780,fd=11)) |
+| 4747 | users:(("opencode",pid=38220,fd=36)) |
+| 5001 | users:(("python3.13",pid=3634484,fd=13)) |
+| 5037 | users:(("adb",pid=3929822,fd=11)) |
+| 5054 | users:((".ulauncher-wrap",pid=534205,fd=16)) |
+| 5900 | users:(("wayvnc",pid=3247,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=3248,fd=4)) |
 | 6379 | 0.0.0.0:* |
 | 7000 | *:* |
 | 7500 | *:* |
-| 7681 | users:(("ttyd",pid=2280,fd=13)) |
-| 7690 | users:(("ttyd",pid=1863,fd=13)) |
-| 7691 | users:(("ttyd",pid=1860,fd=13)) |
-| 7692 | users:(("ttyd",pid=1873,fd=13)) |
-| 7693 | users:(("ttyd",pid=1858,fd=13)) |
-| 7694 | users:(("ttyd",pid=1871,fd=13)) |
-| 7695 | users:(("ttyd",pid=1866,fd=13)) |
-| 7696 | users:(("ttyd",pid=1874,fd=13)) |
-| 7697 | users:(("ttyd",pid=1867,fd=13)) |
+| 7681 | users:(("ttyd",pid=2184,fd=13)) |
+| 7690 | users:(("ttyd",pid=1835,fd=13)) |
+| 7691 | users:(("ttyd",pid=1829,fd=13)) |
+| 7692 | users:(("ttyd",pid=1848,fd=13)) |
+| 7693 | users:(("ttyd",pid=1827,fd=13)) |
+| 7694 | users:(("ttyd",pid=1843,fd=13)) |
+| 7695 | users:(("ttyd",pid=1837,fd=13)) |
+| 7696 | users:(("ttyd",pid=1857,fd=13)) |
+| 7697 | users:(("ttyd",pid=1840,fd=13)) |
+| 7699 | users:(("caddy",pid=4046,fd=6)) |
+| 7700 | users:(("ttyd",pid=1856,fd=13)) |
 | 7890 | *:* |
 | 7891 | *:* |
-| 8080 | users:(("opencode",pid=1245981,fd=15)) |
-| 8090 | users:(("opencode",pid=3956457,fd=19)) |
+| 8000 | 0.0.0.0:* |
+| 8000 | [::]:* |
+| 8080 | users:(("opencode",pid=2297,fd=19)) |
+| 8090 | users:(("opencode",pid=4066,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
-| 8284 | 0.0.0.0:* |
-| 8284 | [::]:* |
-| 8286 | users:(("python3.13",pid=94009,fd=3)) |
+| 8284 | users:(("python3.13",pid=1506493,fd=3)) |
+| 8286 | users:(("python3.13",pid=4149,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=4172483,fd=3)) |
-| 8789 | users:(("python3.13",pid=1665,fd=3)) |
+| 8787 | users:(("python3.13",pid=4022,fd=3)) |
+| 8789 | users:(("python3.13",pid=1752,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
-| 9099 | users:(("python3.13",pid=11171,fd=3)) |
-| 9222 | users:(("chrome",pid=5414,fd=62)) |
-| 9800 | users:(("python3.13",pid=1681,fd=6)) |
-| 9801 | users:(("python3.13",pid=14044,fd=6)) |
-| 9810 | users:(("python3.13",pid=1732,fd=6)) |
-| 9811 | users:(("python3.13",pid=94274,fd=13)) |
-| 9875 | users:(("python3.13",pid=1683,fd=3)) |
-| 9876 | users:(("python3.13",pid=27324,fd=3)) |
-| 9900 | users:(("python3.13",pid=17084,fd=13)) |
-| 9910 | users:(("python3.13",pid=95355,fd=14)) |
-| 9977 | users:(("python3",pid=1606,fd=3)) |
-| 9979 | users:(("python3.13",pid=81450,fd=3)) |
-| 9980 | users:(("python3.13",pid=1575,fd=3)) |
+| 9099 | users:(("python3.13",pid=5963,fd=3)) |
+| 9222 | users:(("chrome",pid=2188,fd=59)) |
+| 9800 | users:(("python3.13",pid=1761,fd=6)) |
+| 9801 | users:(("python3.13",pid=1915,fd=6)) |
+| 9810 | users:(("python3.13",pid=1787,fd=6)) |
+| 9811 | users:(("python3.13",pid=1736,fd=13)) |
+| 9875 | users:(("python3.13",pid=1766,fd=3)) |
+| 9876 | users:(("python3.13",pid=4025,fd=3)) |
+| 9900 | users:(("python3.13",pid=1648,fd=13)) |
+| 9910 | users:(("python3.13",pid=1776,fd=14)) |
+| 9922 | users:(("node",pid=3731215,fd=21)) |
+| 9977 | users:(("python3",pid=1700,fd=3)) |
+| 9979 | users:(("python3.13",pid=3993,fd=3)) |
+| 9980 | users:(("python3.13",pid=1659,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 17698 | *:* |
 | 17699 | *:* |
-| 20241 | users:(("cloudflared",pid=6098,fd=6)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=1089704,fd=3)) |
+| 24801 | users:(("python3.13",pid=3249,fd=4)) |
 | 40544 | 0.0.0.0:* |
-| 40671 | users:(("code",pid=703492,fd=63)) |
-| 45451 | users:(("claude",pid=3339389,fd=24)) |
+| 41111 | users:(("claude",pid=3746989,fd=24)) |
 | 47984 | *:* |
 | 47989 | *:* |
 | 47990 | *:* |
 | 48010 | *:* |
-| 55113 | users:(("code",pid=821506,fd=36)) |
 | 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
@@ -93,12 +93,14 @@ context_graph.py
 conversation.py
 copywriting_collector.py
 daily_summary.py
+discord-bot.py
 discord_bot_enhanced.py
 discord_cc_push.py
 doc_knowledge.py
 doc_pipeline.py
 email_sync.py
 embedding_server.py
+event_hooks.py
 letta-sync.py
 mac.py
 macg.py
@@ -106,14 +108,21 @@ macg_api.py
 macg_mcp.py
 macg_tui_demo.py
 mem0_bridge.py
+multi_project_manager.py
 op_push_service.py
+permission_guard.py
 proactive.py
 report_generator.py
 self_improve.py
 sensor-bridge.py
 social_relations.py
+telegram-api-client.py
+telegram-direct-client.py
+telegram-login.py
+telegram-userbot.py
 telegram_bot.py
 telegram_bot_enhanced.py
+telegram_bridge.py
 tg_logger.py
 tg_user_client.py
 think.py
@@ -130,7 +139,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（456个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（472个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -149,7 +158,7 @@ static
 **cct-*** (1个): `cct-tmux-wrap`
 **cf-*** (1个): `cf-tunnel-7699`
 **charlie-*** (1个): `charlie-ego-record.sh`
-**check-*** (2个): `check-idle-simple.sh, check-idle.sh`
+**check-*** (3个): `check-idle-simple.sh, check-idle.sh, check-ttyd.sh`
 **claude-*** (36个): `claude-api-autoheal.sh, claude-api-manager, claude-api-unified, claude-auto-fix, claude-auto-login, claude-cad.py, claude-dual, claude-esp, claude-failover.sh, claude-free-api-auto... +26更多`
 **claudep-*** (1个): `claudep-tmux-wrap`
 **clip-*** (1个): `clip-sync`
@@ -168,16 +177,18 @@ static
 **dotfiles-*** (2个): `dotfiles-integrity-check.sh, dotfiles-symlink-watch.sh`
 **douyin-*** (1个): `douyin-web`
 **download-*** (1个): `download-claude-export-from-email.py`
+**event-*** (1个): `event_hooks_trigger.py`
 **export-*** (1个): `export-claude-conversations.py`
 **fcitx5-*** (1个): `fcitx5-adaptive-check`
 **finance-*** (1个): `finance-reminder.sh`
 **fix-*** (1个): `fix-screenshot-permission`
 **floorp-*** (3个): `floorp-clean-start, floorp-popup-fix, floorp-session-cleaner.py`
 **foc-*** (1个): `foc-tmux-wrap`
+**force-*** (1个): `force-claude-proxy`
 **four-*** (1个): `four-tool-dispatch.sh`
 **fsearch-*** (1个): `fsearch-idle-update.sh`
 **git-*** (2个): `git-backup.sh, git-codebase-update`
-**github-*** (1个): `github-ai-weekly`
+**github-*** (2个): `github-action-trigger, github-ai-weekly`
 **glm-*** (6个): `glm-enhanced, glm-float, glm-monitor, glm-proxy, glm-task, glm-watch`
 **google-*** (1个): `google-chrome-proxy`
 **gpu-*** (1个): `gpu-mode`
@@ -195,7 +206,7 @@ static
 **kilo-*** (1个): `kilo-profile`
 **lag-*** (1个): `lag-detector.sh`
 **latest-*** (1个): `latest-img`
-**letta-*** (6个): `letta-distill, letta-health-guard, letta-health-monitor, letta-mcp, letta-monitor, letta-planning-trigger.sh`
+**letta-*** (10个): `letta-distill, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh, letta-precheck.py, letta-selfheal`
 **libreoffice-*** (1个): `libreoffice-x11`
 **litellm-*** (2个): `litellm-error-guard.sh, litellm-startup.sh`
 **marketing-*** (1个): `marketing-web-workflow.sh`
@@ -204,7 +215,7 @@ static
 **mem-*** (1个): `mem-stats`
 **memory-*** (10个): `memory-backup, memory-bootstrap.sh, memory-decay-engine.py, memory-dream, memory-episodic.py, memory-evolution-engine, memory-kg-populator.py, memory-router, memory-tg-push.sh, memory-working-decay.py`
 **meta-*** (2个): `meta-cognition.py, meta-monitor.sh`
-**mihomo-*** (3个): `mihomo-anthropic-check, mihomo-config-validate, mihomo-guardian`
+**mihomo-*** (4个): `mihomo-anthropic-check, mihomo-config-sync, mihomo-config-validate, mihomo-guardian`
 **mobile-*** (1个): `mobile-entry`
 **morning-*** (1个): `morning-brief.sh`
 **mutual-*** (1个): `mutual-review`
@@ -217,14 +228,15 @@ static
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
 **op-*** (19个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +9更多`
-**opencode-*** (10个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-integrity-check, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-sisyphus-guard, opencode-stuck-watch.sh, opencode-tmux-wrap`
-**other-*** (53个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +43更多`
+**opencode-*** (12个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-integrity-check, opencode-intent-detector, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-sisyphus-guard, opencode-stuck-watch.sh... +2更多`
+**other-*** (54个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +44更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
 **overtab-*** (1个): `overtab-tmux-wrap`
 **panel-*** (1个): `panel-nurse`
 **paperclip-*** (6个): `paperclip-aider-worker, paperclip-auto-sync, paperclip-dispatcher, paperclip-report-daemon.sh, paperclip-resolve-conflicts, paperclip-restore`
 **paste-*** (1个): `paste-image-pinned`
+**permission-*** (1个): `permission_check.py`
 **pet-*** (1个): `pet-feeder`
 **petals-*** (1个): `petals-server.sh`
 **phone-*** (4个): `phone-ai-bridge.sh, phone-control.sh, phone-screenshot, phone-tailscale-guard`
@@ -234,6 +246,7 @@ static
 **proxy-*** (6个): `proxy-403-monitor, proxy-db-init, proxy-learn, proxy-status-quick, proxy-status-widget, proxy-windows-discover`
 **push-*** (2个): `push-apk, push-tunnel-url`
 **python-*** (1个): `python-crash-guard.sh`
+**query-*** (1个): `query-router.sh`
 **quick-*** (2个): `quick-run-cmd, quick-screenshot`
 **rebuild-*** (1个): `rebuild-system-index`
 **recovery-*** (1个): `recovery-manager`
@@ -261,6 +274,7 @@ static
 **tg-*** (5个): `tg-bot-tasks, tg-command, tg-push, tg-saved-reader, tg-screenshot`
 **tiny-*** (1个): `tiny-agents`
 **todo-*** (1个): `todo_sync.py`
+**ttyd-*** (1个): `ttyd-quick-check`
 **ulwh-*** (1个): `ulwh-tmux-wrap`
 **unified-*** (1个): `unified-monitor.sh`
 **upload-*** (1个): `upload-cookies-to-server`
@@ -270,8 +284,9 @@ static
 **voice-*** (3个): `voice-input, voice-push, voice-test`
 **vpn-*** (1个): `vpn-watchdog`
 **warp-*** (10个): `warp-auto, warp-auto-fold, warp-claude-attach, warp-claude-auto, warp-claude-launch, warp-dual-view, warp-launch-claude, warp-multi, warp-session, warp-split-now`
-**waybar-*** (2个): `waybar-wifi.sh, waybar-workspace-scroll.sh`
+**waybar-*** (1个): `waybar-wifi.sh`
 **wayland-*** (1个): `wayland-screenshot`
+**web-*** (2个): `web-ai-proxy, web-ai-proxy-wrapper`
 **wechat-*** (14个): `wechat-android-backup.sh, wechat-contact-sync.py, wechat-finance, wechat-kanban-push.sh, wechat-live-monitor.py, wechat-merge.py, wechat-msg-sync-wrapper.sh, wechat-msg-sync.py, wechat-reply-consumer.py, wechat-send.sh... +4更多`
 **weekly-*** (1个): `weekly-error-review`
 **whisper-*** (1个): `whisper-stt-server`
@@ -311,6 +326,7 @@ ollama
 onlyoffice
 sadtalker
 wav2lip
+web-ai-proxy
 wechat-agent
 wechat-backup
 yourmemory-venv
@@ -380,7 +396,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（385个注册，81个运行中）
+## 三、systemd 用户服务（401个注册，89个运行中）
 
 ### 当前运行中
 ```
@@ -388,11 +404,10 @@ agent-orchestrator
 agi-brain
 agi-frontend
 agi-gateway
-agi-telegram-bot
 ai-rules-sync
 ai-watchdog
 at-spi-dbus-bus
-cf-tunnel-7699
+caddy-launcher
 chrome-cdp
 chronos-biofeedback
 chronos-sensory
@@ -400,12 +415,14 @@ claude-esp
 claude-md-sync
 claude-tablet-output
 claude-token-tray
+clip-sync
 clipboard-sync-tablet
 clipboard-sync-windows
 code-watcher
 content-router
 cookie-sync-server
 dbus
+dconf
 dotfiles-symlink-watch
 embedding-server
 fcitx5
@@ -413,6 +430,7 @@ finance-agent
 freeze-detector
 frpc
 gcr-ssh-agent
+github-action-trigger
 glm-monitor
 glm-proxy
 headless-browser
@@ -422,16 +440,18 @@ launcher
 letta-mcp
 litellm-strip-proxy
 macg-api
-mem0-bridge
 memory-evolution
+mihomo
 navidrome
 numlock-guard
 office-agent
 op-push
 op-tasks-watcher
 op-watchdog
+opencode-intent-detector
 opencode-memwatch
 opencode-stuck-watch
+opencode-telegram-processor
 opencode-web
 opencode-web-sisy
 otp-sync
@@ -446,6 +466,7 @@ screenshot-watcher
 ssh-winpc-tunnel
 sunshine
 tablet-control-panel
+telegram-userbot
 ttyd-aider
 ttyd-cct
 ttyd-claude
@@ -453,9 +474,12 @@ ttyd-claudep
 ttyd-foc
 ttyd-macg
 ttyd-overcode
+ttyd-overtab
 ttyd-ulwh
+ulauncher
 voxtype
 waybar
+web-ai-proxy
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
@@ -467,7 +491,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（98个 timer）
+## 四、定时任务（101个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -484,6 +508,7 @@ cc-op-verifier
 cc-task-auditor
 cc-task-runner
 cf-url-notify
+check-ttyd
 chronos-subconscious
 claude-orphan-killer
 code-indexer
@@ -508,11 +533,11 @@ health-check
 iflytek-dict-sync
 image-captioner
 lag-detector
-letta-distill
 letta-health-check
 letta-health-guard
 letta-health-monitor
-letta-planning
+letta-mcp-health-check
+letta-selfheal
 letta-sync
 litellm-error-guard
 maintenance-learner
@@ -525,6 +550,7 @@ memory-working-decay
 meta-cognition
 mihomo-backup
 mihomo-guardian
+mihomo-sync
 morning-brief
 nix-store-check
 nixos-auto-commit
@@ -548,6 +574,7 @@ opencode-job-charlie-b445f233ebb8-glm-knowledge-writer
 opencode-job-charlie-b445f233ebb8-heartbeat-marketing-scan
 opencode-job-charlie-b445f233ebb8-heartbeat-memory-maintain
 opencode-job-charlie-b445f233ebb8-heartbeat-system-sentry
+opencode-job-charlie-b445f233ebb8-letta-selfheal-hourly
 opencode-job-charlie-b445f233ebb8-proxy-guardian
 opencode-job-charlie-b445f233ebb8-security-watchdog
 opencode-sisyphus-guard

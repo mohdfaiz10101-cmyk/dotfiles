@@ -1,16 +1,13 @@
 [Unit]
 Description=Waybar status bar for Hyprland
-After=graphical-session.target hyprland.service
+After=graphical-session.target
 PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/nix/store/nkdzafhkcw8d5cbfa6y9cm5i8fw9c8ak-waybar-0.15.0/bin/waybar
+ExecStart=/run/current-system/sw/bin/waybar
 Restart=on-failure
 RestartSec=5
-Environment=WAYLAND_DISPLAY=wayland-1
-Environment=XDG_CURRENT_DESKTOP=Hyprland
-Environment=HYPRLAND_INSTANCE_SIGNATURE=521ece463c4a9d3d128670688a34756805a4328f_1778381892_74897479
 
 [Install]
 WantedBy=graphical-session.target

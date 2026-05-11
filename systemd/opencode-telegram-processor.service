@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenCode Telegram 任务处理器
+After=network.target
+
+[Service]
+Type=simple
+Environment="PATH=%h/.npm-global/bin:/run/current-system/sw/bin"
+ExecStart=%h/.local/bin/opencode-telegram-processor
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

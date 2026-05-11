@@ -1,0 +1,11 @@
+[Unit]
+Description=Check ttyd service status
+Requires=check-ttyd.service
+
+[Timer]
+OnCalendar=*:0/5
+Unit=check-ttyd.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

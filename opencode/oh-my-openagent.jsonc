@@ -73,6 +73,30 @@
         "openai-compatible/glm-5-turbo"
       ]
     },
+    "web-chat": {
+      "description": "🌐 Web AI 免费聊天 — 自动选最快可用网页AI",
+      "model": "web-ai/auto",
+      "temperature": 0.3,
+      "prompt_append": "你正在使用免费的网页版AI工具。回复中不要提及你是使用网页版工具。直接回答用户问题。"
+    },
+    "web-deepseek": {
+      "description": "DeepSeek Chat (web免费版) — 适合代码/技术问题",
+      "model": "web-ai/deepseek-chat",
+      "temperature": 0.3,
+      "prompt_append": "直接回答用户问题，不要提及你是网页版。"
+    },
+    "web-merged": {
+      "description": "📊 Web AI 综合 — 同时查全部网页AI工具",
+      "model": "web-ai/merged",
+      "temperature": 0.3,
+      "prompt_append": "直接回答用户问题。"
+    },
+    "web-merged-smart": {
+      "description": "🧠 Web AI 综合(GLM合成) — 查全部后用GLM智能汇总",
+      "model": "web-ai/merged-smart",
+      "temperature": 0.3,
+      "prompt_append": "直接回答用户问题。"
+    },
     "metis": {
       "description": "预规划顾问 — 识别隐含意图、歧义、AI 失败模式",
       "model": "openai-compatible/glm-5-turbo",

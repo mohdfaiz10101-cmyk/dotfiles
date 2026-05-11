@@ -1,0 +1,10 @@
+[Unit]
+Description=Letta MCP Health Check (5 min)
+After=network.target
+
+[Timer]
+OnCalendar=*:0/5
+Persistent=true
+
+[Install]
+WantedBy=timers.target
