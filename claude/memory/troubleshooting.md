@@ -396,3 +396,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - [2026-05-10] [GLM] op-connection-guard.log停在5/4距今6天无新巡检;service-nurse日志ai-config-guard 4/22失败后未恢复触发skip缩短间隔;核心设施全绿-7端口在监听Docker5容器healthy/mnt/ai磁盘31%
 - [2026-05-11] [GLM] 症状→原因→状态: LiteLLM 401→可能是key轮转或配置漂移，需检查master_key；4个failed service→长期未清理的僵尸服务，建议audit后disable或fix；op-connection-guard停更→timer可能被disable或脚本异常
 - [2026-05-11] [GLM] 症状→原因→状态: service-nurse日志停更(4/22)，ai-config-guard.service曾exit-code=2(INVALIDARGUMENT)后未恢复；connection-guard日志停更(5/4)已7天未巡检，需检查对应timer是否active
+- [2026-05-11] [GLM] 症状→原因→状态: LiteLLM auth_error→可能重启后env/key未加载→需检查litellm.service; ai-config-guard exit-code 2→INVALIDARGUMENT→脚本参数变更→需更新service配置; Hub Discord Bot failed→未知→需查日志

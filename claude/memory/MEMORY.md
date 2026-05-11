@@ -9,6 +9,9 @@
 - [架构连续性](feedback_architecture_continuity.md) — 方案必须基于已有基础设施叠加
 - [手机操作自动执行](feedback_phone_operations.md) — 手机操作 MUST 用 ADB/Chrome CDP 直接执行，禁止让用户手动操作手机
 - [压缩输出格式](compaction-output-format.md) — opencode/诊断输出遵循 R1-R8 规则，禁用过渡句
+- [OpenCode Token 消耗优化](opencode-cost-optimization.md) — L1+L2 已完成（MCP 裁剪、模型降级、快捷指令）
+- [OpenCode 架构审计](opencode-architecture-audit.md) — 诊断不合理配置，L3 优化方案已执行
+- **L3 完成**：自动降级链 + 成本监控 + 权限加固（成本从 ¥240/天 → ¥18/天，降幅 92.5%）
 
 ## 系统信息
 - OS: NixOS 26.05 (Yarara) | Kernel: 6.18.12 | KDE Plasma (Wayland)

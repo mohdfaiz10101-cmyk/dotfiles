@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenCode Session RAG 检索服务
+After=network.target letta-chromadb.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/venv/session-rag/bin/python3 %h/.local/bin/session-rag-server.py --port=9812
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

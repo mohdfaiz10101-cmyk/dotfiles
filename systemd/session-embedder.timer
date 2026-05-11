@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenCode Session RAG 定时同步（每 5 分钟）
+
+[Timer]
+OnCalendar=*:0/5
+Persistent=true
+Unit=session-embedder.service
+
+[Install]
+WantedBy=timers.target

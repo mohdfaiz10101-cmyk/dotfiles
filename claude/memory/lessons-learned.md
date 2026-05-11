@@ -325,3 +325,4 @@ eve
 - [2026-05-10] [GLM自动] 观察: 核心设施全绿-LiteLLM(4000)/Letta(8283)/Hub(9800)/Gateway(9900)/ChromaDB(8000)/Next.js(3000)/mihomo(7890)全部端口在监听，Docker 5容器healthy，/mnt/ai磁盘31%
 - [2026-05-11] [GLM自动] 观察: LiteLLM /health 返回401 auth_error，网关运行但认证异常；4个user服务failed(architecture-audit/rules-sync/discord-bot/docker-start)；op-connection-guard日志停更于05-04
 - [2026-05-11] [GLM自动] 观察: LiteLLM /health返回401 auth_error，连接正常但未传api key，可能是健康检查curl未带header；4个systemd服务处于failed状态(aggregate-marketing-research/ai-architecture-audit/ai-rules-sync-windows/discord-intelligent-bot)
+- [2026-05-11] [GLM自动] 观察: LiteLLM 4000端口返回auth_error无API key；4个user service处于failed状态(discord-bot/ai-rules-sync等)；/mnt/ai磁盘32%正常；OP连接守护5/4全天正常

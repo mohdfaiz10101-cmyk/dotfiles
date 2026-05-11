@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-11 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-11 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,16 +9,15 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
-| 1053 | *:* |
+| 1053 | users:(("mihomo",pid=1933608,fd=7)) |
 | 1080 | users:(("ssh",pid=6139,fd=4)) |
 | 1080 | users:(("ssh",pid=6139,fd=5)) |
-| 2223 | *:* |
 | 3000 | (v1",pid=8247,fd=22)) |
 | 4000 | users:(("python3.13",pid=1773,fd=6)) |
 | 4001 | users:(("python3.13",pid=1687,fd=6)) |
 | 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=1780,fd=11)) |
-| 4747 | users:(("opencode",pid=1272238,fd=36)) |
+| 4747 | users:(("opencode",pid=2519877,fd=71)) |
 | 5001 | users:(("python3.13",pid=3634484,fd=13)) |
 | 5037 | users:(("adb",pid=397432,fd=11)) |
 | 5054 | users:((".ulauncher-wrap",pid=534205,fd=16)) |
@@ -38,30 +37,30 @@
 | 7697 | users:(("ttyd",pid=1840,fd=13)) |
 | 7699 | users:(("caddy",pid=4046,fd=6)) |
 | 7700 | users:(("ttyd",pid=1856,fd=13)) |
-| 7890 | *:* |
-| 7891 | *:* |
+| 7890 | users:(("mihomo",pid=1933608,fd=11)) |
+| 7891 | users:(("mihomo",pid=1933608,fd=3)) |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:(("opencode",pid=1273861,fd=15)) |
-| 8090 | users:(("opencode",pid=1271666,fd=19)) |
+| 8003 | users:(("python3.13",pid=1506843,fd=14)) |
+| 8080 | users:(("opencode",pid=3556256,fd=19)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
-| 8284 | users:(("python3.13",pid=1600083,fd=3)) |
+| 8284 | users:(("python3.13",pid=3933594,fd=3)) |
 | 8286 | users:(("python3.13",pid=4149,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8787 | users:(("python3.13",pid=4022,fd=3)) |
 | 8789 | users:(("python3.13",pid=1752,fd=3)) |
 | 9090 | *:* |
-| 9091 | 0.0.0.0:* |
+| 9091 | users:(("mihomo",pid=1933608,fd=6)) |
 | 9099 | users:(("python3.13",pid=5963,fd=3)) |
 | 9222 | users:(("chrome",pid=2188,fd=59)) |
 | 9800 | users:(("python3.13",pid=1761,fd=6)) |
-| 9801 | users:(("python3.13",pid=1915,fd=6)) |
+| 9801 | users:(("python3.13",pid=2958821,fd=6)) |
 | 9810 | users:(("python3.13",pid=1787,fd=6)) |
-| 9811 | users:(("python3.13",pid=1736,fd=13)) |
+| 9811 | users:(("python3.13",pid=2947124,fd=13)) |
 | 9875 | users:(("python3.13",pid=1766,fd=3)) |
 | 9876 | users:(("python3.13",pid=4025,fd=3)) |
-| 9900 | users:(("python3.13",pid=1648,fd=13)) |
+| 9900 | users:(("python3.13",pid=2268502,fd=13)) |
 | 9910 | users:(("python3.13",pid=1776,fd=14)) |
 | 9922 | users:(("node",pid=3731215,fd=21)) |
 | 9977 | users:(("python3",pid=1700,fd=3)) |
@@ -69,10 +68,8 @@
 | 9980 | users:(("python3.13",pid=1659,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 17699 | *:* |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=3249,fd=4)) |
-| 36451 | users:(("claude",pid=1372204,fd=29)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -139,7 +136,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（473个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（484个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -229,7 +226,7 @@ static
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
 **op-*** (19个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +9更多`
-**opencode-*** (12个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-integrity-check, opencode-intent-detector, opencode-memwatch.sh, opencode-run-agent.sh, opencode-session, opencode-session-recorder.py, opencode-sisyphus-guard, opencode-stuck-watch.sh... +2更多`
+**opencode-*** (20个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-cost-monitor, opencode-deep, opencode-format-compaction, opencode-integrity-check, opencode-intent-detector, opencode-memwatch.sh, opencode-normal, opencode-quick... +10更多`
 **other-*** (54个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +44更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
@@ -259,7 +256,7 @@ static
 **screenshot-*** (3个): `screenshot-now, screenshot-pin, screenshot-watcher.sh`
 **selflearn-*** (1个): `selflearn-health-check.sh`
 **service-*** (1个): `service-zombie-cleaner.sh`
-**session-*** (1个): `session-switch`
+**session-*** (3个): `session-embedder.py, session-rag-server.py, session-switch`
 **setup-*** (2个): `setup-0011, setup-letta-telegram-alert`
 **sisy-*** (1个): `sisy-tmux-wrap`
 **skill-*** (1个): `skill-auto-extract.py`
@@ -272,6 +269,7 @@ static
 **tablet-*** (1个): `tablet-adb-watch`
 **task-*** (1个): `task-complete`
 **terminal-*** (1个): `terminal-pet`
+**test-*** (1个): `test-opencode-modes`
 **tg-*** (5个): `tg-bot-tasks, tg-command, tg-push, tg-saved-reader, tg-screenshot`
 **tiny-*** (1个): `tiny-agents`
 **todo-*** (1个): `todo_sync.py`
@@ -302,9 +300,11 @@ static
 
 ### /mnt/ai/apps/ — 应用数据
 ```
+123pan
 QtScrcpy-x86_64.AppImage
 agi-control-plane
 aider-venv
+alist
 android-sdk
 cc-op-graph
 comfyui
@@ -320,6 +320,7 @@ mcp-shared-memory
 mem0
 mem0-data
 mem0-venv
+migration
 musetalk
 musetalk-models
 nginx
@@ -359,7 +360,7 @@ tech-researcher
 ```
 
 ### ~/.claude/skills/ — Skills
-共 128 个 skill 目录
+共 129 个 skill 目录
 
 ### memory/ — 记忆系统
 ```
@@ -371,6 +372,7 @@ app-dev-journal.md
 cc-queue.md
 codebase-map.md
 command-reference.md
+compaction-output-format.md
 data-recovery-deployment.md
 feedback_phone_operations.md
 ideas-roadmap.md
@@ -388,6 +390,8 @@ op-tasks-archive-202604.md
 op-tasks-archive-20260423.md
 op-tasks-archive-202605.md
 op-tasks.md
+opencode-architecture-audit.md
+opencode-cost-optimization.md
 opencode-session-log.md
 pending-tasks.md
 rules-secondary.md
@@ -397,7 +401,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（403个注册，88个运行中）
+## 三、systemd 用户服务（405个注册，86个运行中）
 
 ### 当前运行中
 ```
@@ -453,8 +457,6 @@ opencode-intent-detector
 opencode-memwatch
 opencode-stuck-watch
 opencode-telegram-processor
-opencode-web
-opencode-web-sisy
 otp-sync
 overcode-loop-watch
 paperclip-report-daemon
@@ -491,7 +493,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（103个 timer）
+## 四、定时任务（105个 timer）
 ```
 aggregate-marketing-research
 agi-cognitive-engine
@@ -504,6 +506,7 @@ ai-rules-sync-windows
 ai-scheduler
 auto-fix-services
 backup-cleanup
+baidu-123-migration
 cc-autonomous-runner
 cc-op-verifier
 cc-task-auditor
@@ -584,6 +587,7 @@ push-tunnel-url
 rebuild-system-index
 recoll-idle-index
 selflearn-check
+session-embedder
 sync-memory-ntfs
 sync-obsidian
 system-health-monitor
