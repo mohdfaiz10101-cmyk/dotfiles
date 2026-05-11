@@ -3,4 +3,4 @@ Description=GLM glm-health Task
 
 [Service]
 Type=oneshot
-ExecStart=/home/charlie/.local/bin/opencode run "运行系统健康检查，检查所有关键服务和容器状态" --dir /home/charlie
+ExecStart=/home/charlie/.local/bin/opencode-wrapper.sh run "运行系统健康检查，检查所有关键服务和容器状态" --dir /home/charlie

@@ -5,6 +5,7 @@ import subprocess
 import urllib.parse
 import json
 import glob
+import shlex
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import os
 import re
@@ -49,7 +50,13 @@ def _check_auth(handler):
 
 
 # ── GLM-4.7 统一高质量系统提示 ────────────────────────────────────────────────
-_GLM_SYSTEM_BASE = """Charlie 的 NixOS 系统助手。背景：NixOS 26.05 / RTX 3060Ti / 12核 / 24GB，CC（Claude Code规划层）+ OP（OpenCode执行层），服务：LiteLLM:4000 / Letta:8283 / AGI Brain / charlie-hub:9875。直接用中文给出行动建议，不复述任务，不分析提示词，不说"作为AI"，回答完整不截断。"""
+_GLM_SYSTEM_BASE = """Charlie 的 NixOS 系统助手。背景：NixOS 26.05 / RTX 3060Ti / 12核 / 24GB，CC（Claude Code规划层）+ OP（OpenCode执行层），服务：LiteLLM:4000 / Letta:8283 / AGI Brain / charlie-hub:9875。直接用中文给出行动建议，不复述任务，不分析提示词，不说"作为AI"，回答完整不截断。
+
+【压缩输出格式（opencode/诊断）】
+- 禁止：寒暄、"符合 R1-R8"、"继续"、重复状态
+- 只用：[OK] [FAIL] [SKIP] [INFO] 状态标记
+- 格式：[STATUS] 结果概述 | 关键数据列表
+- 例子：[OK] 数据库健康 | 282MB 34454条消息 | 所有消息60天内"""
 
 
 def _build_glm_system(context: str = "", extra: str = "") -> str:
@@ -1528,7 +1535,7 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             }
         try:
             result = subprocess.run(
-                cmd_stripped, shell=True, capture_output=True, text=True, timeout=15
+                shlex.split(cmd_stripped), capture_output=True, text=True, timeout=15
             )
             output = (result.stdout + result.stderr).strip()
             return {"ok": result.returncode == 0, "output": output[:2000] or "(无输出)"}

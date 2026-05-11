@@ -1,0 +1,10 @@
+[Unit]
+Description=百度网盘 → 123云盘 自动迁移定时器
+
+[Timer]
+# 每天凌晨2点执行（避开白天时段规则）
+OnCalendar=*-*-* 02:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

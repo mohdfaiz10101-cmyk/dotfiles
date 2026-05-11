@@ -8,6 +8,7 @@
 - [必须提供访问入口](feedback_entry_point.md) — 部署服务后 MUST 给出 URL 和启动命令
 - [架构连续性](feedback_architecture_continuity.md) — 方案必须基于已有基础设施叠加
 - [手机操作自动执行](feedback_phone_operations.md) — 手机操作 MUST 用 ADB/Chrome CDP 直接执行，禁止让用户手动操作手机
+- [压缩输出格式](compaction-output-format.md) — opencode/诊断输出遵循 R1-R8 规则，禁用过渡句
 
 ## 系统信息
 - OS: NixOS 26.05 (Yarara) | Kernel: 6.18.12 | KDE Plasma (Wayland)

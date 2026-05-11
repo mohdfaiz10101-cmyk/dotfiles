@@ -3,4 +3,4 @@ Description=GLM glm-docker Task
 
 [Service]
 Type=oneshot
-ExecStart=/home/charlie/.local/bin/opencode run "检查所有 Docker 容器状态，报告异常容器" --dir /home/charlie
+ExecStart=/home/charlie/.local/bin/opencode-wrapper.sh run "检查所有 Docker 容器状态，报告异常容器" --dir /home/charlie
