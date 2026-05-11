@@ -1,0 +1,11 @@
+[Unit]
+Description=Mihomo Proxy Health Check Timer
+Requires=mihomo.service
+
+[Timer]
+OnCalendar=*-*-* *:00/5
+Persistent=true
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target
