@@ -6,9 +6,10 @@
   "agents": {
     "sisyphus": {
       "description": "主编排器 — 任务分解、委派子 agent、验证结果闭环",
-      "model": "openai-compatible/glm-5.1",
+      "model": "openai-compatible/step-3.5-flash-2603",
       "temperature": 0.1,
       "fallback_models": [
+        "openai-compatible/step-3.5-flash",
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ],
@@ -165,12 +166,12 @@
     }
   },
   "category_mapping": {
+    "ultrabrain": "openai-compatible/step-3.5-flash-2603",
+    "deep": "openai-compatible/step-3.5-flash-2603",
+    "unspecified-high": "openai-compatible/step-3.5-flash-2603",
     "quick": "openai-compatible/deepseek-v4-flash",
     "unspecified-low": "openai-compatible/glm-5-turbo",
-    "unspecified-high": "openai-compatible/glm-5.1",
-    "deep": "openai-compatible/gpt-4.1",
     "visual-engineering": "openai-compatible/glm-5.1",
-    "ultrabrain": "openai-compatible/deepseek-v4-pro",
     "writing": "openai-compatible/glm-5-turbo",
     "artistry": "openai-compatible/qwen3-235b"
   },

@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-12 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-12 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -12,6 +12,7 @@
 | 1053 | users:(("mihomo",pid=1697,fd=9)) |
 | 1080 | users:(("ssh",pid=972750,fd=4)) |
 | 1080 | users:(("ssh",pid=972750,fd=5)) |
+| 2224 | *:* |
 | 3000 | (v1",pid=6822,fd=22)) |
 | 4000 | users:(("python3.13",pid=1692,fd=6)) |
 | 4001 | users:(("python3.13",pid=1608,fd=6)) |
@@ -39,7 +40,7 @@
 | 7891 | users:(("mihomo",pid=1697,fd=7)) |
 | 8080 | users:(("opencode",pid=2347,fd=18)) |
 | 8090 | users:(("opencode",pid=197868,fd=19)) |
-| 8284 | users:(("python3.13",pid=934301,fd=3)) |
+| 8284 | users:(("python3.13",pid=1768422,fd=3)) |
 | 8286 | users:(("python3.13",pid=4078,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8787 | users:(("python3.13",pid=3919,fd=3)) |
@@ -444,6 +445,7 @@ launcher
 letta-mcp
 litellm-strip-proxy
 macg-api
+mem0-bridge
 memory-evolution
 mihomo
 mihomo-watch
@@ -469,7 +471,6 @@ pipewire-pulse
 proxy-403-monitor
 python-crash-guard
 screenshot-watcher
-ssh-winpc-tunnel
 sunshine
 tablet-control-panel
 telegram-userbot

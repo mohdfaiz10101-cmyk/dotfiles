@@ -175,6 +175,41 @@ model_list:
       api_key: none
       timeout: 120
 
+  # === StepFun 模型（中国区，支持规划任务）===
+  - model_name: step-3.5-flash-2603
+    litellm_params:
+      model: openai/step-3.5-flash-2603
+      api_base: https://api.stepfun.com/v1
+      api_key: os.environ/STEPFUN_API_KEY
+      temperature: 0.7
+      timeout: 60
+      rpm: 30
+      max_retries: 2
+      drop_params: false
+
+  - model_name: step-3.5-flash
+    litellm_params:
+      model: openai/step-3.5-flash
+      api_base: https://api.stepfun.com/v1
+      api_key: os.environ/STEPFUN_API_KEY
+      temperature: 0.7
+      timeout: 60
+      rpm: 30
+      max_retries: 2
+      drop_params: false
+
+  - model_name: step-2
+    litellm_params:
+      model: openai/step-2
+      api_base: https://api.stepfun.com/v1
+      api_key: os.environ/STEPFUN_API_KEY
+      temperature: 0.7
+      timeout: 60
+      rpm: 30
+      max_retries: 2
+      drop_params: false
+
+
 router_settings:
   routing_strategy: "simple-shuffle"
   allowed_fails: 3
