@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenCode Memory to Letta Sync Service
+Documentation=https://github.com/charlie/opencode-letta-sync
+After=network.target letta.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/opencode-letta-sync
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

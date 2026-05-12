@@ -2,6 +2,7 @@
   "$schema": "https://opencode.ai/opencode.json",
   "version": "3.17.2",
   "disable_telemetry": true,
+  "include_subagent_descriptions_in_system_prompt": false,
   "agents": {
     "sisyphus": {
       "description": "主编排器 — 任务分解、委派子 agent、验证结果闭环",

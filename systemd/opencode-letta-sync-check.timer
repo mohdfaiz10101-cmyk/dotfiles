@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode-Letta Sync Health Check Timer
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenCode-Letta Sync Health Check
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env python3 -c "import requests; r=requests.get('http://localhost:8283/health'); print('OK' if r.status_code==200 else 'FAIL')"
+StandardOutput=journal
+StandardError=journal

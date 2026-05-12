@@ -590,7 +590,7 @@
 - [ ] [SELF-IMPROVE] kanban.html: 代码在CSS部分截断，需要补充完整缺失的样式以及实现看板核心交互的JavaScript逻辑。
 - [ ] [SELF-IMPROVE] launcher-server.py: Tailscale IP 校验逻辑使用 `client_ip.startswith("100.")` 过于宽泛，应改为使用 `ipaddress.ip_address` 进行严谨的 CIDR（100.64.0.0/10）子网匹配以防止 IP 欺骗。
 - [ ] [SELF-IMPROVE] hub-api.py: 将全局可变列表 `_ws_clients` 替换为线程安全的异步结构（如 `asyncio.Lock` 结合列表），以防止 WebSocket 并发连接/断开时引发竞态条件。
-- [ ] [AGI→OP] [2026-05-11 00:29] [low] 检查letta进程538521是否正常处理任务，非异常则忽略
+- [!]  [AGI→OP] [2026-05-11 00:29] [low] 检查letta进程538521是否正常处理任务，非异常则忽略 [DECAY:遗忘率20%]
 
 ### [SELF-IMPROVE 2026-05-11] GLM 自动代码审查
 - [ ] [SELF-IMPROVE] brain.py: 第89行存在未完成的类型注解语法错误（`_last_proactive_time: f`），应将其修正为正确的类型如 `float` 或直接删除该行注解。
@@ -598,4 +598,4 @@
 - [ ] [SELF-IMPROVE] kanban.html: 截断的CSS代码（`.wip-bar`的`var(--`）导致样式表解析错误且后续样式全部失效，需要补全或移除该残缺属性。
 - [ ] [SELF-IMPROVE] launcher-server.py: 将硬编码的敏感令牌生成和打印逻辑替换为从安全存储（如密钥管理服务或加密配置文件）读取令牌，避免令牌泄露到日志或环境变量中。
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接使用sqlite3模块的内联数据库查询逻辑重构为独立的数据库访问层（如使用SQLAlchemy或封装DAO类），以解决代码耦合度高、难以维护和测试的问题。
-- [ ] [AGI→OP] [2026-05-11 10:43] [medium] 若进程异常，则kill并报告；若为正常业务进程，则记录为已知模式
+- [!]  [AGI→OP] [2026-05-11 10:43] [medium] 若进程异常，则kill并报告；若为正常业务进程，则记录为已知模式 [DECAY:遗忘率2%]
