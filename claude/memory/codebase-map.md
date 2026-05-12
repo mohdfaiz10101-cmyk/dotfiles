@@ -828,3 +828,5 @@ Docker data-root 在 NTFS
   相关文件：opencode/opencode.json
 - [2026-05-10] [Aider] feat: 新增 Agent 生命周期优化规则（任务原子化/上下文管理/Token经济/会话接力）
   相关文件：ai-shared-rules.md
+- [2026-05-12] [Aider] feat: OpenCode × StepClaw 配置同步初始化
+  相关文件：README.md, openclaw-config/agents/agi-mentor.md, openclaw-config/agents/cc-autonomous.md, openclaw-config/agents/charlie-ego.md, openclaw-config/agents/content-creator.md

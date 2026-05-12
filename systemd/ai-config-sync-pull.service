@@ -1,0 +1,8 @@
+[Unit]
+Description=AI Config Sync Pull from GitHub
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/bin/ai-config-sync-pull.sh
