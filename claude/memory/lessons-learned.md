@@ -651,3 +651,4 @@ eve
 ### 会话摘要 [2026-05-12] [Sonnet/自动]
 - 对话轮次: 107 | 被纠正: 1次
   - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
+- [2026-05-13] [GLM自动] 观察: LiteLLM 4000端口运行正常(需API key); /mnt/ai磁盘使用33%(281G/920G); 9个systemd user单元失败(含adb/agi/discord/cc等)

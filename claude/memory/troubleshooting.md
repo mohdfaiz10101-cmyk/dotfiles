@@ -400,3 +400,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - [2026-05-11] [GLM] 症状→原因→状态: op-connection-guard timeout→可能是timer配置或脚本本身卡死→failed; discord-bot反复exit-code→4月22日后未恢复→failed; /mnt/ai磁盘32%→健康
 - [2026-05-12] [GLM] 症状→原因→状态: LiteLLM 401→api_key配置丢失/未传入→需检查环境变量或配置文件
 - [2026-05-12] [GLM] 症状→原因→状态: ai-config-guard退出码2→参数错误，service-nurse日志中有snip命令残留→需清理脚本
+- [2026-05-13] [GLM] 症状→9个systemd user单元持续失败→原因: 多为旧服务未清理或配置过期→状态: 未修复，需人工排查
