@@ -599,3 +599,10 @@
 - [ ] [SELF-IMPROVE] launcher-server.py: 将硬编码的敏感令牌生成和打印逻辑替换为从安全存储（如密钥管理服务或加密配置文件）读取令牌，避免令牌泄露到日志或环境变量中。
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接使用sqlite3模块的内联数据库查询逻辑重构为独立的数据库访问层（如使用SQLAlchemy或封装DAO类），以解决代码耦合度高、难以维护和测试的问题。
 - [!]  [AGI→OP] [2026-05-11 10:43] [medium] 若进程异常，则kill并报告；若为正常业务进程，则记录为已知模式 [DECAY:遗忘率2%]
+
+### [SELF-IMPROVE 2026-05-13] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 文件末尾的 `_last_proactive_time: f` 是不完整的语法错误，需要修复或删除。
+- [ ] [SELF-IMPROVE] think.py: 将硬编码的MEMORY_FILES列表改为通过glob模式动态扫描MEMORY_DIR目录下的.md文件，避免新增记忆文件时需手动修改代码。
+- [ ] [SELF-IMPROVE] kanban.html: 将内联CSS和JavaScript提取到外部文件中以提高可维护性和缓存效率。
+- [ ] [SELF-IMPROVE] launcher-server.py: 将硬编码的 `LAUNCHER_TOKEN` 回退逻辑改为从文件或更安全的环境变量读取，避免每次启动时随机生成导致重启后客户端无法认证。
+- [ ] [SELF-IMPROVE] hub-api.py: 将多个微信数据库路径硬编码和重复定义重构为单一配置源，避免路径不一致和冗余。
