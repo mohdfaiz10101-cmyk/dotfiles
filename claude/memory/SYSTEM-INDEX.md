@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-12 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-13 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -20,6 +20,7 @@
 | 4533 | users:(("navidrome",pid=1708,fd=9)) |
 | 5001 | users:(("python3.13",pid=1836,fd=13)) |
 | 5037 | users:(("adb",pid=2664,fd=11)) |
+| 5054 | users:((".ulauncher-wrap",pid=1069433,fd=18)) |
 | 5900 | users:(("wayvnc",pid=3329,fd=11)) |
 | 5998 | users:((".websockify-wra",pid=3330,fd=4)) |
 | 6379 | 0.0.0.0:* |
@@ -38,9 +39,11 @@
 | 7700 | users:(("ttyd",pid=1832,fd=13)) |
 | 7890 | users:(("mihomo",pid=1697,fd=11)) |
 | 7891 | users:(("mihomo",pid=1697,fd=7)) |
-| 8080 | users:(("opencode",pid=2347,fd=18)) |
+| 8080 | users:(("opencode",pid=2030092,fd=19)) |
 | 8090 | users:(("opencode",pid=197868,fd=19)) |
-| 8284 | users:(("python3.13",pid=1768422,fd=3)) |
+| 8283 | 0.0.0.0:* |
+| 8283 | [::]:* |
+| 8284 | users:(("python3.13",pid=1179872,fd=3)) |
 | 8286 | users:(("python3.13",pid=4078,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8787 | users:(("python3.13",pid=3919,fd=3)) |
@@ -63,6 +66,9 @@
 | 9980 | users:(("python3.13",pid=1580,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
+| 18789 | users:(("node",pid=1803638,fd=25)) |
+| 18789 | users:(("node",pid=1803638,fd=26)) |
+| 18791 | users:(("node",pid=1803638,fd=27)) |
 | 20241 | users:(("cloudflared",pid=42847,fd=6)) |
 | 22000 | *:* |
 | 24801 | users:(("python3.13",pid=3335,fd=4)) |
@@ -401,7 +407,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（410个注册，90个运行中）
+## 三、systemd 用户服务（412个注册，91个运行中）
 
 ### 当前运行中
 ```
@@ -455,8 +461,8 @@ office-agent
 op-push
 op-tasks-watcher
 op-watchdog
+openclaw-gateway
 opencode-intent-detector
-opencode-letta-sync
 opencode-memwatch
 opencode-stuck-watch
 opencode-telegram-processor
@@ -489,6 +495,7 @@ web-ai-proxy
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
+wechat-uos
 wireplumber
 xdg-desktop-portal
 xdg-document-portal
@@ -497,7 +504,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（104个 timer）
+## 四、定时任务（105个 timer）
 ```
 aggregate-marketing-research
 agi-cognitive-engine
@@ -506,6 +513,7 @@ agi-feedback-bus
 agi-self-improve
 agi-wechat-learn
 ai-architecture-audit
+ai-config-sync-pull
 ai-rules-sync-windows
 ai-scheduler
 auto-fix-services
