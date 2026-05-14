@@ -176,7 +176,7 @@
     "artistry": "openai-compatible/qwen3-235b"
   },
   "background": {
-    "max_concurrent": 3,
+    "max_concurrent": 2,
     "provider_limits": {
       "openai-compatible": {
         "max_parallel": 2
@@ -249,7 +249,7 @@
   },
   "ralph_loop": {
     "enabled": true,
-    "max_iterations": 10
+    "max_iterations": 25
   },
   "experimental": {
     "preemptive_compaction": true

@@ -102,6 +102,11 @@
           "text": "StepFun API 已成功配置到 OpenCode：\n- API Key: 4GY0L5jyGZlZUrTO8JZlQ5TYHTW5HVett\n- 基础 URL: https://api.stepfun.com/v1\n- 可用模型: step-1, step-1-32k, step-1-vision, step-2-16k, step-3.5-flash, step-3.5-flash-2603\n- 配置文件: ~/.config/opencode/.env 和 opencode.json 已更新\n- 服务已重启并生效",
           "tags": "opencode, stepfun, 配置更新",
           "timestamp": "1778581986"
+        },
+        {
+          "text": "Windows 主机信息：主机名 WIN-S2D8GP89FU1，局域网 IP 192.168.2.36，Tailscale IP 100.91.93.99，SSH 用户 G 密码 1。Barrier 安装在 C:\\Users\\G\\AppData\\Local\\Barrier\\，但 barrier.exe 不在 PATH 中，需要确认具体可执行文件路径。NixOS 端使用 input-leap（barrier 分支），配置文件 ~/.config/barrier/barrier.conf，NixOS 作为服务端（屏幕左），Windows 作为客户端（屏幕右）。",
+          "tags": "windows, barrier, tailscale, network",
+          "timestamp": "1778755153"
         }
       ]
     },
