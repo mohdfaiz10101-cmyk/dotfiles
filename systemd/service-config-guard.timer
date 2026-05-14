@@ -1,0 +1,11 @@
+[Unit]
+Description=Service Config Guard - 30min interval
+Requires=service-config-guard.service
+
+[Timer]
+OnCalendar=*-*-* 08:00..22:00:00
+OnUnitActiveSec=30min
+Persistent=false
+
+[Install]
+WantedBy=default.target

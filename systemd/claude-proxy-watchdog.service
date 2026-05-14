@@ -1,0 +1,13 @@
+[Unit]
+Description=Claude Proxy Watchdog — auto-switch mihomo proxy when claude.ai unreachable
+After=network-online.target mihomo.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/claude-proxy-watchdog
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

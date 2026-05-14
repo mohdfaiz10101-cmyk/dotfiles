@@ -606,3 +606,4 @@
 - [ ] [SELF-IMPROVE] kanban.html: 将内联CSS和JavaScript提取到外部文件中以提高可维护性和缓存效率。
 - [ ] [SELF-IMPROVE] launcher-server.py: 将硬编码的 `LAUNCHER_TOKEN` 回退逻辑改为从文件或更安全的环境变量读取，避免每次启动时随机生成导致重启后客户端无法认证。
 - [ ] [SELF-IMPROVE] hub-api.py: 将多个微信数据库路径硬编码和重复定义重构为单一配置源，避免路径不一致和冗余。
+- [ ] [AGI→OP] [2026-05-14 19:18] [medium] 检查nix进程详情：ps aux | grep 1024270 和 1021216，确认是否为正常构建任务

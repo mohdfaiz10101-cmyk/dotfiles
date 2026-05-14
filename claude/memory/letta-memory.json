@@ -107,6 +107,11 @@
           "text": "Windows 主机信息：主机名 WIN-S2D8GP89FU1，局域网 IP 192.168.2.36，Tailscale IP 100.91.93.99，SSH 用户 G 密码 1。Barrier 安装在 C:\\Users\\G\\AppData\\Local\\Barrier\\，但 barrier.exe 不在 PATH 中，需要确认具体可执行文件路径。NixOS 端使用 input-leap（barrier 分支），配置文件 ~/.config/barrier/barrier.conf，NixOS 作为服务端（屏幕左），Windows 作为客户端（屏幕右）。",
           "tags": "windows, barrier, tailscale, network",
           "timestamp": "1778755153"
+        },
+        {
+          "text": "[2026-05-14] 新增 service-config-guard timer（30min间隔，08:00-22:00），检测：telegram-userbot 代理配置/连通性、op-push 日志刷屏、Letta 服务指向、Docker Letta 健康。脚本位置 ~/.local/bin/service-config-guard，systemd 文件 dotfiles/systemd/service-config-guard.{service,timer}",
+          "tags": "systemd,timer,service-config-guard,auto-fix",
+          "timestamp": "1778758699"
         }
       ]
     },
