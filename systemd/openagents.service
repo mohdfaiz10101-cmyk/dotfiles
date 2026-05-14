@@ -1,0 +1,28 @@
+[Unit]
+Description=OpenAgents Network Daemon — Unified Agent Orchestration Layer
+After=network-online.target openclaw-gateway.service
+Wants=network-online.target openclaw-gateway.service
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/openagents network start %h/.openagents
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+TimeoutStartSec=90
+SuccessExitStatus=0 143
+KillMode=control-group
+Environment=HOME=%h
+Environment=USER=%u
+Environment=PATH=%h/.local/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin
+Environment=OPENAGENTS_PORT=8700
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=HTTP_PROXY=http://127.0.0.1:7890
+StandardInput=null
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=default.target

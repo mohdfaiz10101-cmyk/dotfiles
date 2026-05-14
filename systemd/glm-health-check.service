@@ -1,0 +1,9 @@
+[Unit]
+Description=GLM API Health Check
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/glm-health-check.sh

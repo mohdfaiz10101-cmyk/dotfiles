@@ -149,3 +149,6 @@
 - systemd 用户服务: `frpc.service` + `ydotool-bridge.service`（enabled）
 - Tailscale SSH 因 OpenSSH 版本不兼容，走 frpc 隧道绕过
 - 2026-05-10 验证通过
+
+## CLI 偏好
+- `session_list` 默认 `limit=500`（之前是50），alias: `ses` / `ses-new` / `ses-old`

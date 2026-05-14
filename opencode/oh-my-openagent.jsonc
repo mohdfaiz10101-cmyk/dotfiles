@@ -1,6 +1,8 @@
 {
   "$schema": "https://opencode.ai/opencode.json",
   "version": "3.17.2",
+  "new_task_system_enabled": true,
+  "default_run_agent": "sisyphus",
   "disable_telemetry": true,
   "include_subagent_descriptions_in_system_prompt": false,
   "agents": {
@@ -9,9 +11,9 @@
       "model": "openai-compatible/step-3.5-flash-2603",
       "temperature": 0.1,
       "fallback_models": [
-        "openai-compatible/step-3.5-flash",
         "openai-compatible/deepseek-v4-pro",
-        "openai-compatible/glm-5-turbo"
+        "openai-compatible/glm-5-turbo",
+        "openai-compatible/step-3.5-flash"
       ],
       "permission": {
         "task": {
@@ -40,8 +42,8 @@
       },
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [atlas | GLM-5-Turbo]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
-        "openai-compatible/deepseek-v4-pro",
-        "openai-compatible/glm-5-turbo"
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
       ]
     },
     "prometheus": {
@@ -58,6 +60,7 @@
       },
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [prometheus | GLM-5.1]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ]
@@ -76,16 +79,17 @@
       },
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [hephaestus | DeepSeek-V4-Pro]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。\n编码规则：改前先 read_file 读完整内容，改后重启→curl→日志→前端验证。\n3000控制台 HMR 自动生效，禁止 bun run build。\nFALSE_POSITIVE_GUARD：systemctl is-active 返回 inactive≠失败，用 show --property=Result 验证。",
       "fallback_models": [
-        "openai-compatible/deepseek-v4-pro",
+        "openai-compatible/step-3.5-flash-2603",
         "openai-compatible/glm-5-turbo"
       ]
     },
     "oracle": {
-      "description": "只读顾问 — 架构决策、疑难 bug 诊断（GPT-4.1，Claude key 暂缺）",
-      "model": "openai-compatible/gpt-4.1",
+      "description": "只读顾问 — 架构决策、疑难 bug 诊断（GLM-5.1，替代 GPT-4.1）",
+      "model": "openai-compatible/glm-5.1",
       "temperature": 0.2,
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [oracle | GPT-4.1]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ]
@@ -96,8 +100,8 @@
       "temperature": 0.1,
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [librarian | GLM-5-Turbo]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
-        "openai-compatible/deepseek-v4-pro",
-        "openai-compatible/glm-5-turbo"
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
       ]
     },
     "explore": {
@@ -106,6 +110,7 @@
       "temperature": 0.1,
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [explore | DeepSeek-V4-Flash]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ]
@@ -114,25 +119,41 @@
       "description": "🌐 Web AI 免费聊天 — 自动选最快可用网页AI",
       "model": "web-ai/auto",
       "temperature": 0.3,
-      "prompt_append": "你正在使用免费的网页版AI工具。回复中不要提及你是使用网页版工具。直接回答用户问题。"
+      "prompt_append": "你正在使用免费的网页版AI工具。回复中不要提及你是使用网页版工具。直接回答用户问题。",
+      "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
+      ]
     },
     "web-deepseek": {
       "description": "DeepSeek Chat (web免费版) — 适合代码/技术问题",
       "model": "web-ai/deepseek-chat",
       "temperature": 0.3,
-      "prompt_append": "直接回答用户问题，不要提及你是网页版。"
+      "prompt_append": "直接回答用户问题，不要提及你是网页版。",
+      "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
+      ]
     },
     "web-merged": {
       "description": "📊 Web AI 综合 — 同时查全部网页AI工具",
       "model": "web-ai/merged",
       "temperature": 0.3,
-      "prompt_append": "直接回答用户问题。"
+      "prompt_append": "直接回答用户问题。",
+      "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
+      ]
     },
     "web-merged-smart": {
       "description": "🧠 Web AI 综合(GLM合成) — 查全部后用GLM智能汇总",
       "model": "web-ai/merged-smart",
       "temperature": 0.3,
-      "prompt_append": "直接回答用户问题。"
+      "prompt_append": "直接回答用户问题。",
+      "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
+      ]
     },
     "metis": {
       "description": "预规划顾问 — 识别隐含意图、歧义、AI 失败模式",
@@ -140,16 +161,17 @@
       "temperature": 0.2,
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [metis | GLM-5-Turbo]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
-        "openai-compatible/deepseek-v4-pro",
-        "openai-compatible/glm-5-turbo"
+        "openai-compatible/step-3.5-flash-2603",
+        "openai-compatible/deepseek-v4-pro"
       ]
     },
     "momus": {
-      "description": "评审员 — 代码审查（Qwen3-235B）",
-      "model": "openai-compatible/qwen3-235b",
+      "description": "评审员 — 代码审查（GLM-5.1，替代 Qwen3-235B）",
+      "model": "openai-compatible/glm-5.1",
       "temperature": 0.3,
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [momus | Qwen3-235B]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ]
@@ -160,6 +182,7 @@
       "temperature": 0.1,
       "prompt_append": "输出开头标注当前 agent 和模型，例如 [multimodal-looker | GLM-4.6V-Flash]。\nMUST 始终使用中文回复，输出≤20行，格式 [OK/FAIL/WARN] 操作→结果。",
       "fallback_models": [
+        "openai-compatible/step-3.5-flash-2603",
         "openai-compatible/deepseek-v4-pro",
         "openai-compatible/glm-5-turbo"
       ]
@@ -174,6 +197,34 @@
     "visual-engineering": "openai-compatible/glm-5.1",
     "writing": "openai-compatible/glm-5-turbo",
     "artistry": "openai-compatible/qwen3-235b"
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "openai-compatible/glm-5.1",
+      "variant": "high"
+    },
+    "ultrabrain": {
+      "model": "openai-compatible/step-3.5-flash-2603"
+    },
+    "deep": {
+      "model": "openai-compatible/step-3.5-flash-2603"
+    },
+    "artistry": {
+      "model": "openai-compatible/glm-5.1",
+      "variant": "high"
+    },
+    "quick": {
+      "model": "openai-compatible/deepseek-v4-flash"
+    },
+    "unspecified-low": {
+      "model": "openai-compatible/glm-5-turbo"
+    },
+    "unspecified-high": {
+      "model": "openai-compatible/step-3.5-flash-2603"
+    },
+    "writing": {
+      "model": "openai-compatible/glm-5-turbo"
+    }
   },
   "background": {
     "max_concurrent": 2,

@@ -89,6 +89,33 @@ autoExecute: true
 
 ---
 
+## 自动路由规则（INTENT → AGENT/CATEGORY）
+
+根据 Intent Gate 分类结果，**自动路由**到对应 agent 或 category：
+
+| Intent / 关键词 | 路由目标 | 执行方式 |
+|---|---|---|
+| 前端 / UI / 组件 / CSS / React / Tailwind | `task(category="visual-engineering", ...)` | `run_in_background=true` |
+| 架构 / 疑难 bug / 复杂诊断 | `task(subagent_type="oracle", ...)` | `run_in_background=false`（等结果） |
+| 代码搜索 / 找文件 / grep | `task(subagent_type="explore", ...)` | `run_in_background=true` |
+| 文档 / OSS / 外部库 / 最佳实践 | `task(subagent_type="librarian", ...)` | `run_in_background=true` |
+| 深度研究 / 大任务 / 复杂实现 | `task(category="deep", ...)` | `run_in_background=true` |
+| 简单 / 快速 / 单一文件修改 | `task(category="quick", ...)` | `run_in_background=false` |
+| 规划 / 需求分析 / 方案设计 | `task(subagent_type="prometheus", ...)` | `run_in_background=false` |
+| 执行编排 / 多任务并行 | `task(subagent_type="atlas", ...)` | `run_in_background=false` |
+| 预规划 / 意图澄清 / 歧义识别 | `task(subagent_type="metis", ...)` | `run_in_background=false` |
+| 评审 / 审查 / QA | `task(subagent_type="momus", ...)` | `run_in_background=false` |
+| 图片 / PDF / 图表分析 | `task(subagent_type="multimodal-looker", ...)` | `run_in_background=false` |
+
+**路由原则**：
+1. 任务描述中出现对应关键词 → 直接路由，无需确认
+2. 无法确定 Intent → 先 `task(subagent_type="metis", ...)` 澄清，再执行
+3. 多个关键词命中 → 选最具体的一个（`visual-engineering` > `deep` > `quick`）
+4. 涉及 ≥2 个独立模块 → 按类别拆成多个 `run_in_background=true` 并行执行
+5. 结果汇聚后自己整合输出，不层层转交
+
+---
+
 ## 身份与职责
 - 执行 `~/op-tasks.md` 中的 `- [ ]` 任务（正常待办）和 `- [!]` 任务（失败重试）
 - [low] 标注的任务：先检查 CPU idle（`vmstat 1 1 | tail -1 | awk '{print $15}'`），idle <60% 则跳过，下次再试
