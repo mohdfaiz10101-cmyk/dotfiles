@@ -657,3 +657,4 @@ eve
 - [2026-05-15] [GLM自动] 观察: Hub API/FastAPI/Next.js:3000均正常，Letta:8283返回Not Found(路径变更?)，/mnt/ai磁盘33%充足
 - [2026-05-15] [GLM自动] 观察: LiteLLM 4000端口响应401 auth_error，服务运行但api key缺失/失效；OP connection-guard日志停于5/4已11天无巡检
 - [2026-05-15] [GLM自动] 观察: 4个systemd服务失败(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)；service-nurse停于4/22
+- [2026-05-15] [GLM自动] 观察: LiteLLM 4000端口从401退化为完全无响应(状态变化)；service-nurse日志含snip命令残留，导致巡检脚本异常退出
