@@ -658,3 +658,4 @@ eve
 - [2026-05-15] [GLM自动] 观察: LiteLLM 4000端口响应401 auth_error，服务运行但api key缺失/失效；OP connection-guard日志停于5/4已11天无巡检
 - [2026-05-15] [GLM自动] 观察: 4个systemd服务失败(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)；service-nurse停于4/22
 - [2026-05-15] [GLM自动] 观察: LiteLLM 4000端口从401退化为完全无响应(状态变化)；service-nurse日志含snip命令残留，导致巡检脚本异常退出
+- [2026-05-15] [GLM自动] 观察: LiteLLM(4000)运行但返回401认证错误，无api_key传入。Letta(8283)端口可达但无/health端点。Hub API和mihomo正常。/mnt/ai磁盘33%充裕。9个user服务处于failed状态。OP守护日志最后更新停在5月4日，service-nurse日志停在4月22日，巡检链路可能已断。

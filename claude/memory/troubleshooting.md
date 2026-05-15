@@ -404,3 +404,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - [2026-05-15] [GLM] 症状→原因→状态: 根分区84%→接近85%死规则警戒线→需nix-collect-garbage清理 | LiteLLM /health返回401→服务运行但无api key传入→非致命但需关注
 - [2026-05-15] [GLM] 症状→原因→状态: 6个服务failed→长期未修复(非本次引起)→aggregate-marketing-research/discord-bot/rules-sync-windows/cloudflared/health-monitor/resolvconf
 - [2026-05-15] [GLM] 症状→原因→状态: LiteLLM 401→api key配置丢失→需检查litellm配置文件；connection-guard 11天无日志→守护进程可能被kill→需重启
+- [2026-05-15] [GLM] 症状→原因→状态: LiteLLM 401认证错误→未传入api_key→需检查litellm-config.yml的master_key配置。OP守护日志停滞11天(5/4后无更新)→定时器可能已停止或脚本异常退出→需检查op-connection-guard.service状态。service-nurse日志停滞23天(4/22后)→巡检定时器失效→需检查service-nurse.timer状态。9个failed服务长期未清理→systemd资源浪费。
