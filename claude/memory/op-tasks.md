@@ -608,3 +608,4 @@
 - [ ] [SELF-IMPROVE] hub-api.py: 将多个微信数据库路径硬编码和重复定义重构为单一配置源，避免路径不一致和冗余。
 - [!]  [AGI→OP] [2026-05-14 19:18] [medium] 检查nix进程详情：ps aux | grep 1024270 和 1021216，确认是否为正常构建任务 [DECAY:遗忘率19%]
 - [2026-05-14 22:34] [GLM] GLM API 不可用 → 已 fallback 到 Step
+- [2026-05-15 09:30] [GLM] GLM API 不可用 → 已 fallback 到 Step

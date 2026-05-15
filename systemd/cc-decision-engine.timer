@@ -1,0 +1,14 @@
+# CC 自主决策引擎定时器
+# 每10分钟执行一次（白天时段：08:00-22:00）
+
+[Unit]
+Description=CC 自主决策引擎 - 定时执行
+
+[Timer]
+# 每10分钟执行一次，限制在白天 08:00-22:00
+OnCalendar=*-*-* 08-22:00/10:00
+Persistent=true
+Unit=cc-decision-engine.service
+
+[Install]
+WantedBy=timers.target
