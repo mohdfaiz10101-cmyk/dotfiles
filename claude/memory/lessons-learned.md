@@ -652,3 +652,8 @@ eve
 - 对话轮次: 107 | 被纠正: 1次
   - 用户纠正: 以后都不要tailscale 只有解决不了的时候才启用。我就用运营商的frp啊 我可以接受telegram每天推送isp分配的ip
 - [2026-05-13] [GLM自动] 观察: LiteLLM 4000端口运行正常(需API key); /mnt/ai磁盘使用33%(281G/920G); 9个systemd user单元失败(含adb/agi/discord/cc等)
+- [2026-05-15] [GLM自动] 观察: 根分区84%逼近85%警戒线，LiteLLM可达但报401认证错误(无api key)，connection-guard日志停在5月4日后无新巡检记录
+- [2026-05-15] [GLM自动] 观察: 4个用户服务failed(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)，2个系统服务failed(health-monitor/resolvconf)
+- [2026-05-15] [GLM自动] 观察: Hub API/FastAPI/Next.js:3000均正常，Letta:8283返回Not Found(路径变更?)，/mnt/ai磁盘33%充足
+- [2026-05-15] [GLM自动] 观察: LiteLLM 4000端口响应401 auth_error，服务运行但api key缺失/失效；OP connection-guard日志停于5/4已11天无巡检
+- [2026-05-15] [GLM自动] 观察: 4个systemd服务失败(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)；service-nurse停于4/22

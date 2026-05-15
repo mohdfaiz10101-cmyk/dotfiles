@@ -2,7 +2,7 @@
 # 注意：OnCalendar 时间必须在 08:00-22:00 之间（TIMER_HOURS 规则）
 
 [Unit]
-Description=CC 自主决策引擎 - 分析状态并派发 OP 任务
+Description=CC 诊断引擎 - 生成系统诊断任务
 After=network.target
 
 [Service]

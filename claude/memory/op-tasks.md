@@ -609,3 +609,34 @@
 - [!]  [AGI→OP] [2026-05-14 19:18] [medium] 检查nix进程详情：ps aux | grep 1024270 和 1021216，确认是否为正常构建任务 [DECAY:遗忘率19%]
 - [2026-05-14 22:34] [GLM] GLM API 不可用 → 已 fallback 到 Step
 - [2026-05-15 09:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
+- [2026-05-15 10:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
+
+### [SELF-IMPROVE 2026-05-15] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 修复第73行未完成的类型注解 `_last_proactive_time: f` 为正确的类型如 `float`。
+- [ ] [SELF-IMPROVE] think.py: `SYSTEM_PROMPT`中硬编码了工具名（如`letta_recall`），但代码中并未实现标准的工具调用解析与分发机制，应补充工具定义及对应的执行路由逻辑以实现真正的工具感知。
+- [ ] [SELF-IMPROVE] launcher-server.py: Tailscale 100.64.0.0/10 子网放行逻辑使用 `startswith("100.")` 校验不严谨，应改用正则或 `ipaddress` 模块精确匹配以防止 IP 欺骗。
+- [ ] [SELF-IMPROVE] hub-api.py: 将数据库连接逻辑封装为独立的上下文管理器或工具模块，避免在API路由中直接混用sqlite3和业务查询逻辑，以提升可维护性和连接安全性。
+
+
+- [ ] [CC→OP] [2026-05-15 10:04] OP任务跟进：检查 op-tasks.md 中未完成任务进展，更新状态
+
+
+- [ ] [CC] [2026-05-15 10:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-15 10:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-15 10:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-15 10:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-15 10:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-15 10:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-15 11:02] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY

@@ -51,3 +51,11 @@
 {"time": "18:34", "from": "CC", "to": "OP", "content": "discord-bot-check 有OP通知。", "type": "auto-response", "trigger": "discord-bot-check"}
 {"time": "08:52", "from": "CC", "to": "OP", "content": "CC自主决策完成。防火墙已配置正确(minipc离线等验证)，放弃YourMemory/Mem0(Hub API替代)，pi Web UI选择FastAPI+RPC方案待CC编码，双机热备份Step4-7需CC出架构方案", "type": "autonomous"}
 {"ts":"2026-04-26T15:43:58+08:00","from":"cc","to":"op","msg":"DeepSeek余额不足+Claude ECONNRESET，已写入2个OP任务：切换免费路由+检查代理链路","status":"dispatched"}
+{"timestamp": "2026-05-15T10:04:13.671019", "role": "CC", "content": "生成 1 个任务 | 待处理总数: 58", "actions": []}
+{"timestamp": "2026-05-15T10:10:00.286613", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 59", "actions": []}
+{"timestamp": "2026-05-15T10:10:14.649205", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 60", "actions": []}
+{"timestamp": "2026-05-15T10:20:01.280509", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 61", "actions": []}
+{"timestamp": "2026-05-15T10:30:00.282550", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 62", "actions": []}
+{"timestamp": "2026-05-15T10:40:00.637008", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 63", "actions": []}
+{"timestamp": "2026-05-15T10:50:00.541734", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 64", "actions": []}
+{"timestamp": "2026-05-15T11:02:54.249985", "role": "CC", "content": "生成 1 个诊断任务 | 待处理总数: 65", "actions": []}

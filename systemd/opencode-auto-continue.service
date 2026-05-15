@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenCode 自动恢复中断任务
+After=network-online.target opencode-litellm.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=charlie
+Environment="PATH=/home/charlie/.npm-global/bin:/run/current-system/sw/bin:/home/charlie/.nix-profile/bin:$PATH"
+Environment="HOME=/home/charlie"
+WorkingDirectory=/home/charlie
+# 开机后 60 秒执行，避免资源竞争
+ExecStartPre=/run/current-system/sw/bin/sleep 60
+ExecStart=/home/charlie/.config/opencode/scripts/auto-continue.sh
+# 仅执行一次
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
