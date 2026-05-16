@@ -830,3 +830,17 @@ Docker data-root 在 NTFS
   相关文件：ai-shared-rules.md
 - [2026-05-12] [Aider] feat: OpenCode × StepClaw 配置同步初始化
   相关文件：README.md, openclaw-config/agents/agi-mentor.md, openclaw-config/agents/cc-autonomous.md, openclaw-config/agents/charlie-ego.md, openclaw-config/agents/content-creator.md
+
+### [2026-05-16] GLM扫描更新
+- 变更文件: hub-api.py（唯一近7天修改的.py）
+- 新增功能: hub-api.py 已扩展至 85+ 路由/函数，新增端点包括：
+  - /api/social/graph, /api/social/profile, /api/social/insights, /api/social/analyze（社交图谱）
+  - /api/copilotkit, /api/intake（AI copilot + 信息采集）
+  - /ws/dialogue, /api/dialogue/post, /api/dialogue/history（三方对话室 WebSocket）
+  - /api/knowledge/stats, /api/knowledge/search, /api/knowledge/store（知识库）
+  - /api/projects（项目进度管理）
+  - /api/ai-news, /api/feed-ingest（AI新闻 + RSS采集）
+  - /api/office/command, /api/office/history, /api/office/start（Office自动化）
+  - /api/memory/context, /api/memory/store（记忆管理）
+  - /api/glm/competitive, /api/glm/codebase（GLM专用端点）
+- 架构变化: Hub API 从微信面板演进为统一网关，覆盖微信/CRM/社交图谱/知识库/Office/记忆/GLM 共7大模块

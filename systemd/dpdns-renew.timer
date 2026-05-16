@@ -1,0 +1,10 @@
+[Unit]
+Description=dpdns.org 域名月度自动续期
+
+[Timer]
+# 每月1日 09:00 执行
+OnCalendar=*-*-* 09:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

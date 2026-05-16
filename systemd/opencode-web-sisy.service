@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode web --port 8090 --cors http://localhost:7699 --cors http://100.91.93.99:17699 --cors http://localhost:8090 --cors http://100.91.93.99:18090
+ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode web --port 8090 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8090
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie
