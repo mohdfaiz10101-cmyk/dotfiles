@@ -407,3 +407,4 @@ curl -sf http://localhost:11434/api/tags | jq '.models | length'
 - [2026-05-15] [GLM] 症状→原因→状态: LiteLLM 401认证错误→未传入api_key→需检查litellm-config.yml的master_key配置。OP守护日志停滞11天(5/4后无更新)→定时器可能已停止或脚本异常退出→需检查op-connection-guard.service状态。service-nurse日志停滞23天(4/22后)→巡检定时器失效→需检查service-nurse.timer状态。9个failed服务长期未清理→systemd资源浪费。
 - [2026-05-16] [GLM] 症状→原因→状态: LiteLLM /health 返回401 auth_error → 可能.env中api key被清空或过期 → 需检查/mnt/ai-cluster/litellm/.env确认key状态
 - [2026-05-16] [GLM] 症状→原因→状态: 4个user service failed但未被auto-reset → 可能Restart=on-failure且exit code 0不触发重启 → 建议reset-failed后disable不需要的服务
+- [2026-05-16] [GLM] snip echo不拦截→重复写入→lessons-learned.md出现重复条目。状态:已知问题,不影响功能,等memory-maintenance清理

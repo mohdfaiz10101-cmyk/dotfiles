@@ -662,3 +662,9 @@ eve
 - [2026-05-16] [GLM自动] 观察: LiteLLM 4000端口存活但返回401 auth_error(无api key)，服务进程在跑但配置可能缺少默认key或上游key过期
 - [2026-05-16] [GLM自动] 观察: 4个systemd user service持续failed(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)，需disable或修复
 - [2026-05-16] [GLM自动] 观察: op-connection-guard.log最后记录停在2026-05-04已停更12天，守护进程可能已死需检查service状态
+- [2026-05-16] [GLM自动] 观察: LiteLLM 4000端口健康但/health返回401 auth error，需检查API Key配置。Hub API 9800正常。Letta 8283端口监听但/health返回404。
+- [2026-05-16] [GLM自动] 观察: 13个systemd user服务处于failed状态(mihomo-guardian/letta-health-guard/op-precheck等)，大量历史遗留僵尸服务未清理。/mnt/ai磁盘33%健康。
+- [2026-05-16] [GLM自动] 观察: op-connection-guard日志停留在2026-05-04，service-nurse日志停留在4月22日，两个巡检守护进程均已停止运行超过10天。
+- [2026-05-16] [GLM自动] 观察: LiteLLM 4000端口健康但/health返回401 auth error，需检查API Key配置。Hub API 9800正常。Letta 8283端口监听但/health返回404。
+- [2026-05-16] [GLM自动] 观察: 13个systemd user服务处于failed状态(mihomo-guardian/letta-health-guard/op-precheck等)，大量历史遗留僵尸服务未清理。/mnt/ai磁盘33%健康。
+- [2026-05-16] [GLM自动] 观察: op-connection-guard日志停留在2026-05-04，service-nurse日志停留在4月22日，两个巡检守护进程均已停止运行超过10天。
