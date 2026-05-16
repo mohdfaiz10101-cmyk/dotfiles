@@ -659,3 +659,6 @@ eve
 - [2026-05-15] [GLM自动] 观察: 4个systemd服务失败(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)；service-nurse停于4/22
 - [2026-05-15] [GLM自动] 观察: LiteLLM 4000端口从401退化为完全无响应(状态变化)；service-nurse日志含snip命令残留，导致巡检脚本异常退出
 - [2026-05-15] [GLM自动] 观察: LiteLLM(4000)运行但返回401认证错误，无api_key传入。Letta(8283)端口可达但无/health端点。Hub API和mihomo正常。/mnt/ai磁盘33%充裕。9个user服务处于failed状态。OP守护日志最后更新停在5月4日，service-nurse日志停在4月22日，巡检链路可能已断。
+- [2026-05-16] [GLM自动] 观察: LiteLLM 4000端口存活但返回401 auth_error(无api key)，服务进程在跑但配置可能缺少默认key或上游key过期
+- [2026-05-16] [GLM自动] 观察: 4个systemd user service持续failed(aggregate-marketing-research/agi-discord-bot/ai-rules-sync-windows/cloudflared)，需disable或修复
+- [2026-05-16] [GLM自动] 观察: op-connection-guard.log最后记录停在2026-05-04已停更12天，守护进程可能已死需检查service状态
