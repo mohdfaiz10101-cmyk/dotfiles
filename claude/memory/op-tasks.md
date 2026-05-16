@@ -1,3 +1,4 @@
+- [ ] [CC] [2026-05-16] [high] Docker容器 Exited (127) 4 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 4 weeks ago --tail 30
 - [!]  [CC] [2026-05-09] [high] Docker容器 Exited (0) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (0) 12 hours ago --tail 30 [DECAY:遗忘率25%]
 - [!]  [CC] [2026-05-09] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30 [DECAY:遗忘率25%]
 - [!]  [CC] [2026-05-08] [high] Docker容器 Exited (127) 3 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 3 weeks ago --tail 30 [DECAY:遗忘率23%]
@@ -932,3 +933,19 @@
 
 
 - [ ] [CC] [2026-05-16 21:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-16 21:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-16 21:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-16 21:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-16 21:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-16 21:51] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [2026-05-16 22:06] [GLM] GLM API 不可用 → 已 fallback 到 Step
