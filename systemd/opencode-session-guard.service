@@ -1,0 +1,6 @@
+[Unit]
+Description=OpenCode Session Guard — 清理损坏 session 记录
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-session-guard

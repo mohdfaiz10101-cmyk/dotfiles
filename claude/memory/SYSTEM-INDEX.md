@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-16 10:39 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-16 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,67 +10,66 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
-| 1080 | users:(("ssh",pid=6604,fd=4)) |
-| 1080 | users:(("ssh",pid=6604,fd=5)) |
-| 3000 | (v1",pid=5903,fd=22)) |
-| 4000 | users:(("python3.13",pid=2661,fd=6)) |
-| 4001 | users:(("python3.13",pid=2575,fd=6)) |
+| 1080 | users:(("ssh",pid=4728,fd=4)) |
+| 1080 | users:(("ssh",pid=4728,fd=5)) |
+| 3000 | (v1",pid=5701,fd=22)) |
+| 4000 | users:(("python3.13",pid=2316,fd=6)) |
+| 4001 | users:(("python3.13",pid=4076,fd=6)) |
 | 4002 | 0.0.0.0:* |
-| 4533 | users:(("navidrome",pid=2688,fd=9)) |
-| 5001 | users:(("python3.13",pid=2867,fd=13)) |
-| 5037 | users:(("adb",pid=3163,fd=11)) |
-| 5900 | users:(("wayvnc",pid=3966,fd=11)) |
-| 5998 | users:((".websockify-wra",pid=3968,fd=4)) |
+| 4533 | users:(("navidrome",pid=2336,fd=9)) |
+| 5001 | users:(("python3.13",pid=4159,fd=13)) |
+| 5037 | users:(("adb",pid=2972,fd=11)) |
+| 5900 | users:(("wayvnc",pid=4743,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=4744,fd=4)) |
 | 6379 | 0.0.0.0:* |
 | 7000 | *:* |
 | 7500 | *:* |
-| 7681 | users:(("ttyd",pid=2229,fd=13)) |
-| 7690 | users:(("ttyd",pid=2835,fd=13)) |
-| 7691 | users:(("ttyd",pid=2832,fd=13)) |
-| 7692 | users:(("ttyd",pid=2854,fd=13)) |
-| 7693 | users:(("ttyd",pid=2830,fd=13)) |
-| 7694 | users:(("ttyd",pid=2852,fd=13)) |
-| 7695 | users:(("ttyd",pid=2847,fd=13)) |
-| 7696 | users:(("ttyd",pid=2865,fd=13)) |
-| 7697 | users:(("ttyd",pid=2850,fd=13)) |
-| 7699 | users:(("caddy",pid=4091,fd=6)) |
-| 7700 | users:(("ttyd",pid=2856,fd=13)) |
+| 7681 | users:(("ttyd",pid=1994,fd=13)) |
+| 7690 | users:(("ttyd",pid=2444,fd=13)) |
+| 7691 | users:(("ttyd",pid=2442,fd=13)) |
+| 7692 | users:(("ttyd",pid=2452,fd=13)) |
+| 7693 | users:(("ttyd",pid=2435,fd=13)) |
+| 7694 | users:(("ttyd",pid=2451,fd=13)) |
+| 7695 | users:(("ttyd",pid=2446,fd=13)) |
+| 7696 | users:(("ttyd",pid=2462,fd=13)) |
+| 7697 | users:(("ttyd",pid=2447,fd=13)) |
+| 7699 | users:(("caddy",pid=4968,fd=6)) |
+| 7700 | users:(("ttyd",pid=2454,fd=13)) |
 | 7890 | *:* |
 | 7891 | *:* |
-| 8080 | users:(("opencode",pid=12775,fd=18)) |
-| 8090 | users:(("opencode",pid=13146,fd=18)) |
+| 8080 | users:(("opencode",pid=21698,fd=18)) |
+| 8090 | users:(("opencode",pid=26294,fd=18)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
-| 8284 | users:(("python3.13",pid=13000,fd=3)) |
-| 8286 | users:(("python3.13",pid=4232,fd=3)) |
+| 8284 | users:(("python3.13",pid=614145,fd=3)) |
+| 8286 | users:(("python3.13",pid=5236,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8700 | users:(("python3.13",pid=2746,fd=7)) |
-| 8787 | users:(("python3.13",pid=35133,fd=3)) |
-| 8789 | users:(("python3.13",pid=2643,fd=3)) |
+| 8700 | users:(("python3.13",pid=84233,fd=7)) |
+| 8787 | users:(("python3.13",pid=4917,fd=3)) |
+| 8789 | users:(("python3.13",pid=2298,fd=3)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
-| 9099 | users:(("python3.13",pid=5265,fd=3)) |
-| 9222 | users:(("chrome",pid=3176,fd=59)) |
-| 9800 | users:(("python3.13",pid=2653,fd=6)) |
-| 9801 | users:(("python3.13",pid=2976,fd=6)) |
-| 9810 | users:(("python3.13",pid=2699,fd=6)) |
-| 9811 | users:(("python3.13",pid=2619,fd=13)) |
-| 9875 | users:(("python3.13",pid=2654,fd=3)) |
-| 9876 | users:(("python3.13",pid=4081,fd=3)) |
-| 9900 | users:(("python3.13",pid=2513,fd=13)) |
-| 9910 | users:(("python3.13",pid=2663,fd=14)) |
-| 9922 | users:(("MainThread",pid=2645,fd=21)) |
-| 9977 | users:(("python3",pid=2579,fd=3)) |
-| 9979 | users:(("python3.13",pid=4062,fd=3)) |
-| 9980 | users:(("python3.13",pid=2547,fd=3)) |
+| 9099 | users:(("python3.13",pid=5512,fd=3)) |
+| 9222 | users:(("chrome",pid=4299,fd=58)) |
+| 9800 | users:(("python3.13",pid=2302,fd=6)) |
+| 9801 | users:(("python3.13",pid=4181,fd=6)) |
+| 9810 | users:(("python3.13",pid=2346,fd=6)) |
+| 9811 | users:(("python3.13",pid=4097,fd=13)) |
+| 9875 | users:(("python3.13",pid=2311,fd=3)) |
+| 9876 | users:(("python3.13",pid=4962,fd=3)) |
+| 9900 | users:(("python3.13",pid=4038,fd=13)) |
+| 9910 | users:(("python3.13",pid=4104,fd=14)) |
+| 9922 | users:(("MainThread",pid=2299,fd=21)) |
+| 9977 | users:(("python3",pid=2235,fd=3)) |
+| 9979 | users:(("python3.13",pid=4912,fd=3)) |
+| 9980 | users:(("python3.13",pid=2206,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 18789 | users:(("node",pid=2735,fd=25)) |
-| 18789 | users:(("node",pid=2735,fd=26)) |
-| 18791 | users:(("node",pid=2735,fd=28)) |
-| 20241 | users:(("cloudflared",pid=6253,fd=6)) |
+| 18789 | users:(("node",pid=2367,fd=25)) |
+| 18789 | users:(("node",pid=2367,fd=26)) |
+| 18791 | users:(("node",pid=2367,fd=28)) |
+| 20241 | users:(("cloudflared",pid=5428,fd=6)) |
 | 22000 | *:* |
-| 24801 | users:(("python3.13",pid=3969,fd=4)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -412,7 +411,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（418个注册，95个运行中）
+## 三、systemd 用户服务（418个注册，93个运行中）
 
 ### 当前运行中
 ```
@@ -495,7 +494,6 @@ ttyd-claudep
 ttyd-foc
 ttyd-macg
 ttyd-opencode
-ttyd-overcode
 ttyd-overtab
 ttyd-ulwh
 voxtype
@@ -509,7 +507,6 @@ wireplumber
 xdg-desktop-portal
 xdg-document-portal
 xdg-permission-store
-ydotool-bridge
 ydotoold
 ```
 
