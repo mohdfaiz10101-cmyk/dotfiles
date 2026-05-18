@@ -1,5 +1,6 @@
 ---
 description: "技术架构师 — 系统设计、技术选型、方案评审，只读不写代码"
+model: "openai-compatible/glm-5.1"
 tools:
   edit: false
   bash: true
@@ -59,6 +60,11 @@ NixOS 24.11 + Flake
 ```
 
 MUST 始终使用中文。
+
+## 强制输出文件（每次执行 MUST 写入）
+执行完成后 MUST 运行 bash 命令将结果写入：
+~/Desktop/巡检报告/tech-architect-latest.json
+格式：{"dept": "tech-architect", "timestamp": "ISO时间", "status": "ok/fail", "summary": "一句话", "items": [...最多10条]}
 
 ## 标准流程
 <!-- 每次执行任务后，将成功的操作步骤记录在此区域 -->

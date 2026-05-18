@@ -1,5 +1,6 @@
 ---
 description: "服务护士 — Docker 容器健康、systemd 服务自愈、日志异常检测"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: false
   bash: true

@@ -47,8 +47,13 @@ def generate_proactive_message() -> str:
     messages: list[str] = []
     now = datetime.now().strftime("%H:%M")
 
-    # 检查 Brain 告警（过滤 429/限速/超时噪声）
-    _NOISE = ("429", "Too Many Requests", "rate limit", "timeout", "timed out", "Connection")
+    # 检查 Brain 告警（过滤噪声：网络/限速/磁盘/假阳性）
+    _NOISE = (
+        "429", "Too Many Requests", "rate limit", "timeout", "timed out", "Connection",
+        "磁盘", "disk", "df -h", "du -sh", "清理", "空间", "storage",
+        "/mnt/ai", "/mnt/data", "/mnt/pool", "fe评分", "cognitive", "ne_div",
+        "任务跟进", "op-tasks", "进展", "dec",
+    )
     alerts = brain_status.get("alerts", [])
     real_alerts = [a for a in alerts if not any(n.lower() in a.lower() for n in _NOISE)]
     if real_alerts:

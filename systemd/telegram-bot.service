@@ -1,17 +1,17 @@
 [Unit]
-Description=HyperChat Telegram Bot
-After=hyperchat.service
+Description=OpenAgents Telegram Bot
+After=network-online.target openagents.service
+Wants=network-online.target openagents.service
 
 [Service]
 Type=simple
-WorkingDirectory=/mnt/ai/ai-cluster/hyperchat
-ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/ai-cluster/hyperchat/telegram_bot.py
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/telegram_bot.py
 Restart=always
 RestartSec=10
-Environment=PYTHONUNBUFFERED=1
-Environment=HTTPS_PROXY=http://127.0.0.1:7890
-Environment=TELEGRAM_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks
-Environment=TELEGRAM_ALLOWED_CHATS=5036541266
+Environment=HOME=%h
+Environment=USER=%u
+Environment=PATH=%h/.local/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin
+Environment=OPENAGENTS_URL=http://127.0.0.1:8700
 
 [Install]
 WantedBy=default.target

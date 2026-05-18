@@ -1,9 +1,10 @@
 ---
 description: "运营调度员 — 直接执行 op-tasks.md 中的所有待办任务，无需确认"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: true
   bash: true
-temperature: 0.2
+temperature: 0.1
 hidden: true
 ---
 **【强制执行规则】（手机Web适配）**:
@@ -77,6 +78,11 @@ op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
 - 结果文件写到 `~/Desktop/巡检报告/` 或 `/tmp/`
 - bun 安装必须用 `/mnt/ai/cache/bun/bin/bun`（NTFS 禁令）
 - 修改 NixOS 配置前先 `nix flake check` 验证
+
+## 强制输出文件（每次执行 MUST 写入）
+执行完成后 MUST 运行 bash 命令将结果写入：
+~/Desktop/巡检报告/ops-dispatcher-latest.json
+格式：{"dept": "ops-dispatcher", "timestamp": "ISO时间", "status": "ok/fail", "summary": "一句话", "items": [...最多10条]}
 
 ## 标准流程
 <!-- 每次执行任务后，将成功的操作步骤记录在此区域 -->

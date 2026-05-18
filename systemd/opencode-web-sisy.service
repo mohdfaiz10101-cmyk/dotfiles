@@ -7,7 +7,11 @@ Type=simple
 ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode web --port 8090 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8090
 Restart=on-failure
 RestartSec=5
+TimeoutStopSec=300
+KillSignal=SIGTERM
+KillMode=mixed
 Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
 WorkingDirectory=/home/charlie
 
 [Install]

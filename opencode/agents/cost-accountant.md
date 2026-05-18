@@ -1,5 +1,6 @@
 ---
 description: "成本审计员 — 追踪 token 消耗、API 调用次数、预算预警"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: false
   bash: true

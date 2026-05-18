@@ -1,6 +1,6 @@
 ---
 description: "OP运维执行Agent — 执行系统运维任务、健康巡检、服务监控"
-model: "glm-5-turbo"
+model: "openai-compatible/glm-5-turbo"
 temperature: 0.2
 tools:
   edit: true

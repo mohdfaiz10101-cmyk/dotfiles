@@ -112,6 +112,11 @@
           "text": "[2026-05-14] 新增 service-config-guard timer（30min间隔，08:00-22:00），检测：telegram-userbot 代理配置/连通性、op-push 日志刷屏、Letta 服务指向、Docker Letta 健康。脚本位置 ~/.local/bin/service-config-guard，systemd 文件 dotfiles/systemd/service-config-guard.{service,timer}",
           "tags": "systemd,timer,service-config-guard,auto-fix",
           "timestamp": "1778758699"
+        },
+        {
+          "text": "OpenCode 故障诊断经验（2026-05-17）：\n1. sisyphus-guard 每5分钟重建 tmux → opencode 启动即崩 → 死循环\n2. 根因：opencode-worktree 插件是 CLI 工具不是可加载插件，package.json 无 main/module 入口\n3. 次要原因：oh-my-openagent npm 代理配置异常\n4. 修复：从 opencode.json plugin 数组移除 opencode-worktree\n5. 预防机制建议：\n   - 安装新插件后检查日志确认无 ERROR\n   - sisyphus-guard 应加连续失败检测（3次失败暂停+通知）\n   - stuck-watch.sh 监控 rg 进程卡死（CPU>80% + 运行>30s）\n   - session 数据库完好（447个session），丢失的是 tmux 运行时\n\nOP 自动管理 Agent 清单：\n- sisyphus-guard.timer: 每5分钟检测 sisyphus tmux\n- session-guard.timer: 每天08:30清理\n- stuck-watch.service: SSE 事件流监控，30分钟超时重启\n- memwatch.service: 内存监控\n- scheduler jobs: security-watchdog, cost-accountant, codebase-mapper, glm-knowledge-writer, memory-curator, service-nurse, aider-refactor, heartbeat-task-check",
+          "tags": "opencode,故障诊断,插件,sisyphus,agi-brain学习,自动管理",
+          "timestamp": "1778990176"
         }
       ]
     },

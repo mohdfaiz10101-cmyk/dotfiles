@@ -1,14 +1,1 @@
-[Unit]
-Description=OpenCode Job (CC Autonomous): cc-autonomous
-
-[Service]
-Type=oneshot
-WorkingDirectory=/home/charlie
-Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin"
-ExecStart=/home/charlie/.local/bin/opencode-wrapper.sh run --model openai-compatible/glm-5-turbo --dir /home/charlie "你是 CC 自主决策引擎。读 /tmp/op-status.json 和 /tmp/op-task-results.json，分析真实异常数据，有 fixes_failed/disk_warn/任务积压>5 才写新任务到 op-tasks.md，写一条对话到 cc-op-dialog.jsonl，输出≤10行摘要。禁止虚空任务和询问用户。"
-StandardOutput=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/cc-autonomous.log
-StandardError=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/cc-autonomous.log
-TimeoutStartSec=200
-
-[Install]
-WantedBy=default.target
+/dev/null

@@ -1,9 +1,10 @@
 ---
 description: "Discord 管家 — Bot 自愈 + 技能学习 + 消息路由 + 状态监控"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: true
   bash: true
-temperature: 0.2
+temperature: 0.1
 hidden: true
 ---
 **【强制执行规则】（手机Web适配）**:

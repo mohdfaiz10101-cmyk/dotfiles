@@ -9,6 +9,7 @@
 - [架构连续性](feedback_architecture_continuity.md) — 方案必须基于已有基础设施叠加
 - [手机操作自动执行](feedback_phone_operations.md) — 手机操作 MUST 用 ADB/Chrome CDP 直接执行，禁止让用户手动操作手机
 - [压缩输出格式](compaction-output-format.md) — opencode/诊断输出遵循 R1-R8 规则，禁用过渡句
+- [Waybar 管理](feedback_waybar-management.md) — 只用 systemctl --user 管理，禁止手动启动
 - [OpenCode Token 消耗优化](opencode-cost-optimization.md) — L1+L2 已完成（MCP 裁剪、模型降级、快捷指令）
 - [OpenCode 架构审计](opencode-architecture-audit.md) — 诊断不合理配置，L3 优化方案已执行
 - **L3 完成**：自动降级链 + 成本监控 + 权限加固（成本从 ¥240/天 → ¥18/天，降幅 92.5%）
@@ -36,6 +37,7 @@
 - [AI 三套系统详情](ai-cluster-architecture.md) — CC/Aider/Paperclip + 端口 + Letta
 - [OP Agent 巡查体系](op-agent-system.md) — Skill 路由 + Letta Agents + Timer 调度
 - [AI 工具对比](ai-tools.md) — OpenCode/Aider/Cline 等
+- [OP 升级 1.15.3 + 记忆修复](opencode-upgrade-1.15.3.md) — 2026-05-17 全面升级记录
 
 ## OpenCode Agents（别名速查）
 - **sisy / sisyphus** = opencode `--agent sisyphus`，OP 运维执行 Agent，配置：`~/.config/opencode/agents/sisyphus.md`，模型：glm-5.1
@@ -124,6 +126,9 @@
 ├── glm-tasks/               # GLM 任务
 └── GLM-Output/              # GLM 输出
 ```
+
+## OpenCode 审计
+- [配置审计 2026-05-17](opencode-audit-2026-05-17.md) — P0/P1/P2 问题 + 社区 Bug 匹配 + config-auditor 方案
 
 ## 知识库索引
 - [踩坑日志](lessons-learned.md) — 错误修复经验（append-only）

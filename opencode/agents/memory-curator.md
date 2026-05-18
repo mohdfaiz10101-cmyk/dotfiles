@@ -1,9 +1,10 @@
 ---
 description: "记忆策展人 — 整理 memory/ 文件、归档过老条目、检测矛盾、维护索引"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: true
   bash: true
-temperature: 0.2
+temperature: 0.1
 hidden: true
 ---
 **【强制执行规则】（手机Web适配）**:

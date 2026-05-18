@@ -7,7 +7,7 @@ StartLimitIntervalSec=60
 
 [Service]
 Type=simple
-ExecStart=/mnt/ai/hermes-venv/bin/hermes gateway run
+ExecStart=/home/charlie/.local/bin/hermes gateway run
 Restart=always
 RestartSec=10
 TimeoutStopSec=30

@@ -1,5 +1,6 @@
 ---
 description: "定期 Git 备份 — 检查所有仓库变更并自动 commit + push"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: false
   bash: true

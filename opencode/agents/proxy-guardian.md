@@ -1,6 +1,7 @@
 ---
 description: "代理守护者 — FlClash 代理可用性验证 + 关键服务测试"
-temperature: 0.3
+model: "openai-compatible/glm-5-turbo"
+temperature: 0.1
 tools:
   edit: false
   bash: true

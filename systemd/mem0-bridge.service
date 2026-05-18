@@ -1,14 +1,1 @@
-[Unit]
-Description=Mem0 Short-term Memory Bridge
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/mnt/ai/apps/mem0-venv/bin/run-mem0.sh /home/charlie/agi/mem0_bridge.py
-Environment=MEM0_PORT=8285
-Environment=MEM0_DATA=/mnt/ai/apps/mem0-data
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=default.target
+/dev/null

@@ -4,6 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
+Environment=PATH=/usr/bin:/bin:/run/current-system/sw/bin
 ExecStart=/home/charlie/.local/bin/numlock-guard
 Restart=always
 RestartSec=10

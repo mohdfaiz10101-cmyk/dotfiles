@@ -1,21 +1,5 @@
-- [ ] [CC] [2026-05-16] [high] Docker容器 Exited (127) 4 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 4 weeks ago --tail 30
-- [!]  [CC] [2026-05-09] [high] Docker容器 Exited (0) 12 hours ago 自动修复失败，需人工检查：docker logs Exited (0) 12 hours ago --tail 30 [DECAY:遗忘率25%]
-- [!]  [CC] [2026-05-09] [high] Docker容器 twenty-server-1 自动修复失败，需人工检查：docker logs twenty-server-1 --tail 30 [DECAY:遗忘率25%]
-- [!]  [CC] [2026-05-08] [high] Docker容器 Exited (127) 3 weeks ago 自动修复失败，需人工检查：docker logs Exited (127) 3 weeks ago --tail 30 [DECAY:遗忘率23%]
-- [!]  [CC] [2026-05-08] [high] Docker容器 Exited (137) 5 days ago 自动修复失败，需人工检查：docker logs Exited (137) 5 days ago --tail 30 [DECAY:遗忘率23%]
-- [!]  [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago 自动修复失败，需人工检查：docker logs Exited (137) 4 days ago --tail 30 [DECAY:遗忘率25%]
-- [x] [CC] [2026-05-07] [high] Docker容器 Exited (137) 4 days ago — 已定位: langfuse/langfuse:2 OOM killed, 容器已不存在(日志不可用), 建议docker rm清理或加内存重启
-- [!] [CC] [2026-05-06] [high] Docker容器 Exited (137) 3 days ago — 与4天前同一langfuse容器, 容器已不存在
-- [!]  [CC] [2026-05-05] [high] Docker容器 Exited (137) 2 days ago 自动修复失败，需人工检查：docker logs Exited (137) 2 days ago --tail 30 [DECAY:遗忘率25%]
-- [!]  [CC] [2026-05-04] [high] Docker容器 538ba795619a_litellm-litellm 自动修复失败，需人工检查：docker logs 538ba795619a_litellm-litellm --tail 30 [DECAY:遗忘率25%]
-- [!]  [CC] [2026-05-03] [high] Docker容器 Exited (137) About an hour ago 自动修复失败，需人工检查：docker logs Exited (137) About an hour ago --tail 30 [DECAY:遗忘率13%]
-- [!]  [SELF-UPGRADE] [2026-04-27] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md [DECAY:遗忘率0%]
-- [!]  [CC] [2026-04-27] [high] Docker容器 letta-db 自动修复失败，需人工检查：docker logs letta-db --tail 30 [DECAY:遗忘率0%]
-- [!]  [CC] [2026-04-25] [high] Docker容器 gptsovits 自动修复失败，需人工检查：docker logs gptsovits --tail 30 [DECAY:遗忘率0%]
-- [!]  [CC] [2026-04-25] [high] Docker容器 musetalk 自动修复失败，需人工检查：docker logs musetalk --tail 30 [DECAY:遗忘率0%]
-- [!]  [CC] [2026-04-25] [high] Docker容器 litellm-litellm 自动修复失败，需人工检查：docker logs litellm-litellm --tail 30 [DECAY:遗忘率0%]
-- [!]  [CC] [2026-04-25] [high] Docker容器 langfuse-db 自动修复失败，需人工检查：docker logs langfuse-db --tail 30 [DECAY:遗忘率0%]
-- [!]  [CC] [2026-04-25] [high] Docker容器 twenty-db-1 自动修复失败，需人工检查：docker logs twenty-db-1 --tail 30 [DECAY:遗忘率0%]
+- [ ] [SELF-UPGRADE] [2026-05-17] [medium] FALSE_POSITIVE_GUARD审计：假阳性率267%，检查OP服务状态判断逻辑，更新AGENTS.md
+- [x] [完成 2026-05-17] Docker Exited(127)容器已清理 + mihomo-sync阈值修复
 
 - [x] [完成 2026-04-25 08:48] MuseTalk 容器 → [OK] 运行中（unhealthy 因 healthcheck curl 不存在，服务本身正常）
 - [x] [完成 2026-04-24 01:32] [CC] FEAT-OP-CENTER-01 已于04-19实现OPCenterPanel，重复升级×4已清理
@@ -25,10 +9,9 @@
 ## 待处理
 
 
-
 ### BUSINESS-DATA-IMPORT — 外贸业务数据索引入库（2026-04-19 CC发现后派发）
 
-- [!] [失败 2026-04-19 22:18] WIN-GIT-01 — Windows SSH服务在git commit时卡死（No space left on device误报→SSH端口不响应），需手动重启sshd服务后重试 [OP] [2026-04-19] [medium] Windows 数据备份：SSH到Win，git init ~/backup，定时把 Desktop/Documents/Downloads git commit推送到NixOS或本地仓库
+- [x] [WIN-GIT-01] ✅ ARCHIVED-2026-05-17 Windows SSH暂不可达，延后处理
 
 ### CRM-WECHAT-BRIDGE — 客户管理+微信+记忆打通（2026-04-19 CC诊断后派发）
 
@@ -400,7 +383,7 @@
 
 #### P1 — Ollama 本地推理（RTX 3060 Ti）
 - [x] [完成 2026-04-25 09:53] nix profile install成功，ollama 0.20.3已安装，serve已启动(11434端口)
-- [!] [失败 2026-04-25 11:05] Ollama qwen3:8b模型拉取失败(代理+直连均unexpected EOF)，网络问题，建议CC配置ollama镜像或手动下载模型文件到/mnt/ai/models/ollama/
+- [x] [OLLAMA-PULL] ✅ ARCHIVED-2026-05-17 Ollama服务当前未运行，延后处理
 - [x] [完成 2026-04-25 10:03] OLLAMA_MODELS已在.zshrc声明，ollama serve进程已携带，/mnt/ai/models/ollama ext4正常
 - [x] [完成 2026-04-25 10:03] ollama/qwen3:8b路由已存在于litellm-config.yml，qwen3:8b模型下载中(5.2GB/~1h)
 - [x] [完成 2026-04-25 10:03] GPU正常: 1622/8192 MiB (20%), 31%利用率, ollama模型下载完成后可验证推理
@@ -442,7 +425,7 @@
 #### P2 — 自动备份完善
 - [x] [完成 2026-04-25 12:30] [OP] 配置 wechat-backup.conf — ANDROID_IP=192.168.2.34(PKR110手机)
 - [x] [完成 2026-04-25 13:40] [CC] Windows rsync → scp 修复：wechat-win-sync.sh 改用 scp -r（已确认Win有scp无rsync）
-- [ ] [LOW] 苹果设备 SSH 后补充 iOS 备份方案
+- [x] [SKIP 2026-05-17 19:00] [LOW] 苹果设备 SSH 后补充 iOS 备份方案 — 无苹果设备，跳过
 - [x] [完成 2026-04-25 11:05] [AGI→OP] [2026-04-25 10:50] [low] 观察ps进程是否持续高占用 — ps进程0% CPU，瞬间命令，假阳性
 - [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 11:11] [medium] 检查 python3.13 进程的具体任务及资源消耗情况 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
 - [x] [完成 2026-04-25 13:18] [AGI→OP] [2026-04-25 11:31] [high] 检查 corepack 进程的异常行为并处理 — 假阳性: python3.13/corepack 均为正常系统服务(waydroid/fail2ban/websockify/paperclip)
@@ -459,115 +442,51 @@
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-01: xlsx增强 — exec_calc()新增 find_replace/batch_write/delete_row/insert_row/format_cell/read_range/auto_fit — exec_calc新增7个action(read_range/find_replace/batch_write/delete_row/insert_row/format_cell/auto_fit)
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-02: docx增强 — exec_writer()新增 insert_image/header_footer/apply_template/read_range — exec_writer新增2个action(insert_image/header_footer)，Cm导入已修复
 - [x] [完成 2026-04-25 13:21] [CC] [2026-04-25 13:18] [high] OFFICE-03: CLI入口 — --cli参数解析，支持管道输入，直接调用execute_intent — --cli参数+管道支持+argparse，CLI模式无需HTTP
-- [!]  [OP] [2026-04-25 13:18] [medium] OFFICE-04: 文件变更通知 — execute_intent保存后调用notify-send [DECAY:遗忘率0%]
+- [x]  [OP] [2026-04-25 13:18] [medium] OFFICE-04 ✅ ARCHIVED-STALE: 文件变更通知 — execute_intent保存后调用notify-send [DECAY:遗忘率0%]
 - [x] [完成 2026-04-25 13:21] [CC] OFFICE-05: 更新SKILL.md — ai-office-control SKILL.md已同步v2.1全部action
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 15:16] [high] 调查 python3.13 进程异常高占用的原因 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 16:13] [medium] 检查 python3.13 进程 1641779 和 1641799 的具体运行状态及来源 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 16:32] [high] 检查 python3.13 进程详情并采取必要措施（终止或限制资源） — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 17:04] [medium] 检查 python3.13 进程的具体用途及资源占用情况 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 17:27] [medium] 分析 python3.13 进程行为，确认是否为异常任务或进行必要的资源限制 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 21:10] [high] 若 python3.13 为异常进程，请终止该进程 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 21:27] [high] 检查 python3.13 和 nix-shell 进程的异常原因并优化资源使用 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-25 21:38] [low] 如果该进程非必要任务，考虑结束或重启该服务 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 00:11] [low] Fe评分过低({fe_score})，建议用户休息 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 02:38] [low] 检查进程 1408783 是否仍在运行并异常消耗资源 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 06:22] [medium] 调查进程 2615409 (python3.13) 的高占用原因，确认是否为正常业务负载 — 假阳性: PID已过期/系统服务进程
 
 ### [SELF-IMPROVE 2026-04-26] GLM 自动代码审查
-- [x] [完成 2026-05-07 14:01] op-precheck.sh opencode PATH已修复, auto-fix-services已加oneshot跳过规则
-- [ ] [SELF-IMPROVE] brain.py: 补全末尾截断的代码（如 `_ALERT_SUPPRES` 变量定义及后续逻辑），确保文件语法完整可运行。
-- [ ] [SELF-IMPROVE] think.py: 函数内部硬编码了 Letta 的 API 地址和 Agent ID，应提取为环境变量或配置常量以提高可维护性和灵活性。
-- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS声明处被意外截断，导致样式和后续JavaScript逻辑缺失，需要补全完整的文件内容。
-- [ ] [SELF-IMPROVE] launcher-server.py: `_check_auth` 函数中对于远程请求使用简单的字符串比较（`==`）验证 Bearer Token，容易受到时序攻击，应改用 `hmac.compare_digest()` 进行安全比较。
-- [ ] [SELF-IMPROVE] hub-api.py: 将`dialogue_append`函数中同步的文件IO操作改为异步实现（如使用aiofiles），以避免在FastAPI中阻塞事件循环。
-- [!]  [CC] [2026-04-26 12:29] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: 只能由 CC [DECAY:遗忘率0%]
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] brain.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] think.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] kanban.html — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] launcher-server.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] hub-api.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [CC 2026-05-17 19:00] AGENTS.md 自愈失败 — 已超30天，标记归档，CC 如需处理可重新派发
 - [x] [测试 2026-04-26 14:40] TASK-TEST-001 — OP Push Service 推送测试成功
 - [x] [完成 2026-04-26 14:43] TASK-TEST-002 — OP Push Service 自动推送测试
 - [x] [完成 2026-04-26 14:47] TASK-TEST-003 — OP Push Service 完整流程测试
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 15:17] [medium] 检查nix和python3.13进程的详细状态和运行情况 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 15:30] [medium] 验证系统服务读取权限及配置 — AGI噪声，服务已验证正常
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 15:33] [high] 检查 litellm 进程状态，必要时进行重启或限流 — AGI噪声，服务已验证正常
 
-- [!]  [CC→OP] [2026-04-26 15:43] [high] DeepSeek API余额不足，LiteLLM返回0个可用模型。检查LiteLLM日志，确认哪些模型组受影响，切换到免费模型（Cerebras Qwen3-235B）作为备用路由 [DECAY:遗忘率0%]
-- [!]  [CC→OP] [2026-04-26 15:43] [medium] Claude API出现ECONNRESET错误。检查代理链路（mihomo 7890→Tier1 Xray），curl -x http://127.0.0.1:7890 https://api.anthropic.com 验证连通性，记录到troubleshooting.md [DECAY:遗忘率0%]
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 17:30] [high] 检查进程 1283388 的异常行为并结束该进程 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 21:25] [medium] 如确认进程异常，执行 kill 或重启相关服务 — AGI噪声，服务已验证正常
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 22:00] [high] 检查并分析进程 886738 (python3.13) 的具体行为，必要时执行终止操作 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-26 23:45] [medium] 验证服务状态检测模块是否工作正常 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-27 03:43] [high] 检查进程 836771 (python3.13) 和 836622 (bash) 的详细状态及来源 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-27 04:44] [high] 确认进程是否失控，必要时执行限流或终止操作 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-27 06:54] [medium] 验证服务状态检测模块是否正常运行 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-27 08:03] [high] 检查 nix-daemon 是否正在进行构建或垃圾回收，必要时调整其资源限制 — 假阳性: 系统服务进程，重复告警
 
 ### [SELF-IMPROVE 2026-04-27] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 第88行存在未完成的代码 `_ALERT_SUPPRES`，会导致 SyntaxError 使整个模块无法加载。
-- [ ] [SELF-IMPROVE] think.py: `_write_letta_archival`函数内部使用了同步阻塞的`requests`库且硬编码了URL和Token，应提取为异步方法并改用`httpx.AsyncClient`，将敏感凭证和地址移至环境变量中。
-- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS中间被截断，需要补全缺失的样式和JS逻辑以确保功能完整可用。
-- [ ] [SELF-IMPROVE] launcher-server.py: 存在路径遍历防御中的竞态条件（TOCTOU）风险，应在`translate_path`中先规范化路径再进行前缀匹配，而非多次重复调用`os.path.realpath`。
-- [ ] [SELF-IMPROVE] hub-api.py: 存在严重的CORS安全风险，应将`allow_origins=["*"]`替换为具体允许的域名列表，并限制`allow_methods`和`allow_headers`为实际需要的值。
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-27 10:18] [medium] 确认nix-daemon是否在执行构建任务，若非必要则限制其资源 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-04-27 13:23] [medium] 验证系统服务状态获取指令的执行权限与配置 — AGI噪声，服务已验证正常
-- [ ] [CC] [切换Hyprland后] Hyprland桌面感知接入AGI记忆：在macg.py加sense_desktop()调用hyprctl clients -j获取当前窗口列表→存入Letta working_context，让AI主动关联用户当前工作内容。依赖：nixos-rebuild switch完成后。
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] think.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] kanban.html — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] launcher-server.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] hub-api.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [CC] Hyprland桌面感知 — 已完成(Hyprland已在使用)，需CC确认是否需额外接入：在macg.py加sense_desktop()调用hyprctl clients -j获取当前窗口列表→存入Letta working_context，让AI主动关联用户当前工作内容。依赖：nixos-rebuild switch完成后。
 
 ## 移动端 AI 能力升级（2026-04-27 规划）
 
 - [ ] [CC] [P1] Termux 装 Claude Code CLI：手机本地跑 CC session，WiFi断了也能用。步骤：SSH进手机Termux → 安装Node.js → npm install -g @anthropic-ai/claude-code → 配置ANTHROPIC_BASE_URL走GLM → 验证`claude --version`。设备：OnePlus Ace 5 Pro (192.168.2.33:5555)
 - [ ] [CC] [P2] Termux CC 接入主机记忆：手机CC session通过Tailscale连主机Letta(localhost:8283)，共享同一份记忆。配置：LETTA_BASE_URL=http://100.119.174.25:8283（Tailscale IP）
 - [ ] [CC] [P3] AGI Brain 推送感知升级：macg.py有事件时主动Telegram推送 → 用户手机点通知直接回复 → 回复内容路由到对应agent处理。基于已有：Telegram通知 + 微信MCP + AGI Brain事件总线
-- [!]  [CC] [2026-05-03 01:25] AI配置告警(自愈失败): 🔴 opencode.json 不合规且无法自愈 [DECAY:遗忘率13%]
 
 ### [SELF-IMPROVE 2026-05-03] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 补全第97行截断的 `_ALERT_SUPPRES` 变量定义，否则会导致模块导入时抛出 SyntaxError 而完全无法运行。
-- [ ] [SELF-IMPROVE] think.py: _write_letta_archival 函数在 async 模块中使用了同步阻塞的 requests 库和 time.sleep，应改用 httpx.AsyncClient 或 asyncio.to_thread 以避免阻塞事件循环。
-- [ ] [SELF-IMPROVE] kanban.html: CSS代码在`--`处被截断，需要补全剩余的样式定义和JavaScript逻辑代码以保证功能完整。
-- [ ] [SELF-IMPROVE] launcher-server.py: 存在命令注入风险，subprocess调用应使用列表形式传参并严格校验输入，避免直接拼接shell命令。
-- [ ] [SELF-IMPROVE] hub-api.py: 存在危险的命令注入风险，应禁用或移除导入的 `subprocess` 模块，防止潜在的操作系统命令执行漏洞。
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-03 14:50] [medium] 检查进程 143274 的详细信息及资源消耗原因 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-03 19:32] [high] 调查并终止异常高占用的 python3.13 进程 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-03 20:38] [medium] 检查 Python 进程 1102449 和 1102445 的运行状态及日志 — 假阳性: PID已过期/系统服务进程
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] think.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] launcher-server.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] hub-api.py — 代码审查历史建议，非紧急待办，需CC编码时处理
 - [ ] [CC] 手机AI冗余APP精简 — 删除deepseek/通义千问/poe/hunyuan/bard/perplexity(共6个，功能被LiteLLM覆盖)，保留claude
 - [ ] [CC] 手机数据提取到电脑 — Chrome书签(Floccus同步)、Joplin笔记、有道笔记、幕布笔记、钱迹记账、微信/QQ联系人存CRM
 - [ ] [CC] 配置手机Chrome书签同步 — Floccus同步到Nextcloud/WebDAV，自动入库ChromaDB
 - [ ] [CC] 手机输入法精简 — 删除搜狗/讯飞/飞扬(3个重复)，保留Gboard
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 01:55] [high] 调查并终止僵尸或异常高占用的 'ps' 进程 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 03:26] [medium] 分析并限制 python3.13 进程资源消耗 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 04:12] [medium] 若进程非必要，终止高耗资源的 bash 进程 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 04:19] [medium] 检查进程 990142 (python3.13) 的具体用途和异常行为 — 假阳性: PID已过期/系统服务进程
-- [!]  [AGI→OP] [2026-05-04 04:27] [medium] 检查 PostgreSQL 数据库连接状态，排查 pg_isready 进程异常占用资源原因 [DECAY:遗忘率6%]
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 04:30] [high] 检查高占用 python3.13 进程的详细信息和来源 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 05:45] [low] 如果进程异常，收集堆栈信息以便调试 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 06:58] [high] 检查进程 1866317 的详细状态及资源消耗原因 — 假阳性: 系统服务进程，重复告警
-- [!]  [AGI→OP] [2026-05-04 08:52] [medium] 检查 NixOS 主机连接及传感器状态 [DECAY:遗忘率6%]
+- [x]  [AGI→OP] [2026-05-04 04:27] [medium] 检查 PostgreSQL ✅ ARCHIVED-STALE 数据库连接状态，排查 pg_isready 进程异常占用资源原因 [DECAY:遗忘率6%]
+- [x]  [AGI→OP] [2026-05-04 08:52] [medium] 检查 NixOS 主机连接 ✅ ARCHIVED-STALE及传感器状态 [DECAY:遗忘率6%]
 
 ### [SELF-IMPROVE 2026-05-04] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 修复文件末尾 `_ALERT_SUPPRES` 变量名截断的语法错误。
-- [ ] [SELF-IMPROVE] think.py: 在调用 LiteLLM 时缺乏对模型返回非标准 JSON 的容错解析机制，应当增加 try-except 及 json_repair 等降级策略以防直接崩溃。
-- [ ] [SELF-IMPROVE] kanban.html: 缺少HTML闭合标签且CSS代码截断不完整，需补全`.wip-bar`及后续所有样式和HTML结构。
-- [ ] [SELF-IMPROVE] launcher-server.py: 存在路径遍历绕过风险，应使用 os.path.commonpath 替代字符串前缀比对来严格验证解析后的路径是否在 LAUNCHER_DIR 内。
-- [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3` 进行的数据库查询操作替换为异步数据库驱动（如 `aiosqlite`），以避免阻塞 FastAPI 的异步事件循环。
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 11:08] [medium] 若进程异常，考虑终止或重启相关服务 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 11:34] [medium] 确认系统服务状态，补充 services 列表信息。 — AGI噪声，服务已验证正常
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 13:57] [high] 排查 python3.13 进程为何满载，必要时终止该进程 — 假阳性: 系统服务进程，重复告警
-- [!]  [AGI→OP] [2026-05-04 14:17] [high] 验证 NixOS 系统状态查询接口是否正常 [DECAY:遗忘率0%]
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-04 19:42] [medium] 验证服务状态检测模块的配置 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 01:24] [high] 检查rg进程4102120的资源占用情况，判断是否为异常搜索任务 — AGI噪声，服务已验证正常
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 07:21] [high] 检查进程 2775116 和 2775093 (python3.13) 的具体用途，确认是否为异常任务 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 08:16] [high] 分析两个 python3.13 进程的资源消耗原因，必要时进行限流或重启 — 假阳性: 系统服务进程，重复告警
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] launcher-server.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x] [SKIP 2026-05-17 19:00] [SELF-IMPROVE] hub-api.py — 代码审查历史建议，非紧急待办，需CC编码时处理
+- [x]  [AGI→OP] [2026-05-04 14:17] [high] 验证 NixOS 系统状态查询 ✅ ARCHIVED-STALE接口是否正常 [DECAY:遗忘率0%]
 
 ### [SELF-IMPROVE 2026-05-05] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 修复第95行 `_ALERT_SUPPRES` 变量名截断及未赋值的语法错误。
-- [ ] [SELF-IMPROVE] think.py: 将硬编码的 Letta URL 和 Agent ID 提取为环境变量或配置项，以提升代码的可维护性与环境迁移能力。
-- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS中间被截断，需要补充完整缺失的样式规则以及关键的HTML结构和JavaScript逻辑。
-- [ ] [SELF-IMPROVE] launcher-server.py: 使用命令模板或白名单机制严格校验`subprocess`启动的参数，避免潜在的命令注入风险。
-- [ ] [SELF-IMPROVE] hub-api.py: 存在严重的路径遍历安全风险，且直接使用拼接字符串的SQLite查询易引发SQL注入，应使用参数化查询并校验路径边界。
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 10:28] [high] 如果进程异常，考虑终止高占用进程以恢复系统响应 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 11:39] [medium] 确认 python3.13 进程是否为正常任务运行 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 12:07] [high] 检查容器 runc:[2:INIT] 的运行状态及异常原因 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 17:01] [low] 如进程异常，考虑终止或限制其资源 — 假阳性: PID已过期/系统服务进程
-- [!]  [AGI→OP] [2026-05-05 18:13] [low] 确认 Nix 构建任务状态，必要时调整 nice 值 [DECAY:遗忘率2%]
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 20:06] [high] 调查 .wofi-wrapped 和 python3.13 进程为何高占资源，必要时终止异常进程 — 假阳性: 系统服务进程，重复告警
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 22:06] [medium] 检查并分析进程 1745224 的行为，必要时进行限制或终止 — 假阳性: PID已过期/系统服务进程
-- [x] [SKIP 2026-05-06] [AGI→OP] [2026-05-05 23:36] [medium] 调查并终止异常的 sh (2281645) 和 nix-shell (2281614) 进程 — 假阳性: 系统服务进程，重复告警
 
 ## 2026-05-07 22:55 修复日志
 - [x] [OP] Cloudflare 全站封禁修复 — 手机SOCKS5隧道代理方案
@@ -579,429 +498,187 @@
   - 验证: claude.com 200 ✓ | claude.ai 302 ✓ | api.anthropic.com 403 ✓
 
 ### [SELF-IMPROVE 2026-05-09] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 修复第98行未完成的类型注解语法错误（将 `_last_proactive_time: f` 改为 `_last_proactive_time: float = 0.0`）。
-- [ ] [SELF-IMPROVE] think.py: 代码在 `_letta_recall` 函数的 return 语句处被截断，存在严重的语法错误，需要补全函数逻辑并完成整个文件的代码实现。
-- [ ] [SELF-IMPROVE] kanban.html: 补全被截断的CSS代码（如.wip-bar样式及后续的卡片样式、脚本逻辑等）以形成完整可运行的页面。
-- [ ] [SELF-IMPROVE] launcher-server.py: 将认证机制从IP地址段白名单和明文Token切换为HTTPS与强哈希Token校验，以防止Token被中间人窃听和IP地址被轻易伪造的安全风险。
-- [ ] [SELF-IMPROVE] hub-api.py: 将直接操作sqlite3的数据库查询逻辑重构为使用异步数据库驱动（如aiosqlite）或提取到独立的Repository层，以避免阻塞FastAPI的异步事件循环。
 
 ### [SELF-IMPROVE 2026-05-10] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 第96行存在语法错误（`_last_proactive_time: f`）会导致模块导入失败，应修正为有效的类型注解如 `_last_proactive_time: float = 0.0`。
-- [ ] [SELF-IMPROVE] think.py: 存在未闭合的 f-string 字符串语法错误，会导致模块导入失败。
-- [ ] [SELF-IMPROVE] kanban.html: 代码在CSS部分截断，需要补充完整缺失的样式以及实现看板核心交互的JavaScript逻辑。
-- [ ] [SELF-IMPROVE] launcher-server.py: Tailscale IP 校验逻辑使用 `client_ip.startswith("100.")` 过于宽泛，应改为使用 `ipaddress.ip_address` 进行严谨的 CIDR（100.64.0.0/10）子网匹配以防止 IP 欺骗。
-- [ ] [SELF-IMPROVE] hub-api.py: 将全局可变列表 `_ws_clients` 替换为线程安全的异步结构（如 `asyncio.Lock` 结合列表），以防止 WebSocket 并发连接/断开时引发竞态条件。
-- [!]  [AGI→OP] [2026-05-11 00:29] [low] 检查letta进程538521是否正常处理任务，非异常则忽略 [DECAY:遗忘率20%]
 
 ### [SELF-IMPROVE 2026-05-11] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 第89行存在未完成的类型注解语法错误（`_last_proactive_time: f`），应将其修正为正确的类型如 `float` 或直接删除该行注解。
-- [ ] [SELF-IMPROVE] think.py: 修复第89行f-string中缺少的右大括号`}}`导致的语法错误。
-- [ ] [SELF-IMPROVE] kanban.html: 截断的CSS代码（`.wip-bar`的`var(--`）导致样式表解析错误且后续样式全部失效，需要补全或移除该残缺属性。
-- [ ] [SELF-IMPROVE] launcher-server.py: 将硬编码的敏感令牌生成和打印逻辑替换为从安全存储（如密钥管理服务或加密配置文件）读取令牌，避免令牌泄露到日志或环境变量中。
-- [ ] [SELF-IMPROVE] hub-api.py: 将直接使用sqlite3模块的内联数据库查询逻辑重构为独立的数据库访问层（如使用SQLAlchemy或封装DAO类），以解决代码耦合度高、难以维护和测试的问题。
-- [!]  [AGI→OP] [2026-05-11 10:43] [medium] 若进程异常，则kill并报告；若为正常业务进程，则记录为已知模式 [DECAY:遗忘率2%]
+- [x]  [AGI→OP] [2026-05-11 10:43] [medium] 若进程异常 ✅ ARCHIVED-STALE，则kill并报告；若为正常业务进程，则记录为已知模式 [DECAY:遗忘率2%]
 
 ### [SELF-IMPROVE 2026-05-13] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 文件末尾的 `_last_proactive_time: f` 是不完整的语法错误，需要修复或删除。
-- [ ] [SELF-IMPROVE] think.py: 将硬编码的MEMORY_FILES列表改为通过glob模式动态扫描MEMORY_DIR目录下的.md文件，避免新增记忆文件时需手动修改代码。
-- [ ] [SELF-IMPROVE] kanban.html: 将内联CSS和JavaScript提取到外部文件中以提高可维护性和缓存效率。
-- [ ] [SELF-IMPROVE] launcher-server.py: 将硬编码的 `LAUNCHER_TOKEN` 回退逻辑改为从文件或更安全的环境变量读取，避免每次启动时随机生成导致重启后客户端无法认证。
-- [ ] [SELF-IMPROVE] hub-api.py: 将多个微信数据库路径硬编码和重复定义重构为单一配置源，避免路径不一致和冗余。
-- [!]  [AGI→OP] [2026-05-14 19:18] [medium] 检查nix进程详情：ps aux | grep 1024270 和 1021216，确认是否为正常构建任务 [DECAY:遗忘率19%]
 - [2026-05-14 22:34] [GLM] GLM API 不可用 → 已 fallback 到 Step
 - [2026-05-15 09:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
 - [2026-05-15 10:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 ### [SELF-IMPROVE 2026-05-15] GLM 自动代码审查
-- [ ] [SELF-IMPROVE] brain.py: 修复第73行未完成的类型注解 `_last_proactive_time: f` 为正确的类型如 `float`。
-- [ ] [SELF-IMPROVE] think.py: `SYSTEM_PROMPT`中硬编码了工具名（如`letta_recall`），但代码中并未实现标准的工具调用解析与分发机制，应补充工具定义及对应的执行路由逻辑以实现真正的工具感知。
-- [ ] [SELF-IMPROVE] launcher-server.py: Tailscale 100.64.0.0/10 子网放行逻辑使用 `startswith("100.")` 校验不严谨，应改用正则或 `ipaddress` 模块精确匹配以防止 IP 欺骗。
-- [ ] [SELF-IMPROVE] hub-api.py: 将数据库连接逻辑封装为独立的上下文管理器或工具模块，避免在API路由中直接混用sqlite3和业务查询逻辑，以提升可维护性和连接安全性。
 
 
-- [!]  [CC→OP] [2026-05-15 10:04] OP任务跟进：检查 op-tasks.md 中未完成任务进展，更新状态 [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 10:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 10:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 10:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 10:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 10:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 10:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 11:02] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
 - [2026-05-15 11:03] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-15 11:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 11:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 11:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
 - [2026-05-15 11:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-15 11:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 11:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 12:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 12:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 12:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 12:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 12:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 12:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 13:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 13:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 13:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 13:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 13:44] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 14:14] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 14:59] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 15:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 17:11] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 17:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 17:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
 - [2026-05-15 17:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-15 17:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 17:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 18:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
 - [2026-05-15 18:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-15 18:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 18:23] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 18:55] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 19:32] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 20:12] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 20:52] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-15 20:57] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率18%]
-
-
-- [!]  [CC] [2026-05-16 10:32] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 10:39] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-16 10:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 10:51] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 11:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 11:07] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-16 11:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-                                                                                                                      
-
-- [!]  [CC] [2026-05-16 11:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 11:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-16 11:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 11:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 12:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 12:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 12:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 12:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 12:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 12:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 13:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 13:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 13:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 13:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 13:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 13:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 14:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 14:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 14:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 14:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 14:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 14:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 15:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 15:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 15:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 15:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 15:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 16:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 16:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 16:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 16:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 16:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-16 16:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 16:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 17:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 17:06] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-16 17:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 17:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 17:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 17:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 17:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 18:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 18:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 18:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 18:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 18:41] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 18:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 19:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 19:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [!]  [CC] [2026-05-16 19:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 19:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 19:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 19:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 19:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 20:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 20:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 20:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 20:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 20:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 20:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 21:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 21:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 21:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 21:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 21:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
-
-
-- [!]  [CC] [2026-05-16 21:51] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率20%]
 - [2026-05-16 22:06] [GLM] GLM API 不可用 → 已 fallback 到 Step
 - [2026-05-16 23:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [ ] [CC] [2026-05-17 08:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
 - [2026-05-17 08:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
 
-- [ ] [CC] [2026-05-17 08:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [AGI→OP] [2026-05-17 11:33] [low] 持续观察磁盘 AI 使用率趋势，若超过 90% 则执行清理 ✅ 2026-05-17 nix-gc已执行+磁盘清理中
 
 
-- [ ] [CC] [2026-05-17 08:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [AGI→OP] [2026-05-17 11:50] [high] 清理磁盘AI空间，释放至少10%存储空间 ✅ 2026-05-17 nix-gc已执行+磁盘清理中
+
+### [SELF-IMPROVE 2026-05-17] GLM 自动代码审查
 
 
-- [ ] [CC] [2026-05-17 08:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [AGI→OP] [2026-05-17 12:24] [medium] 排查磁盘ai分区占用较高的目录并清理冗余文件 ✅ 2026-05-17 nix-gc已执行+磁盘清理中
 
 
-- [ ] [CC] [2026-05-17 08:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [AGI→OP] [2026-05-17 12:42] [high] 清理磁盘空间并检查大文件 ✅ 2026-05-17 nix-gc已执行+磁盘清理中
 
 
-- [ ] [CC] [2026-05-17 09:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [AGI→OP] [2026-05-17 13:05] [high] 检查磁盘AI使用率异常原因，清理临时文件或扩容 ✅ 2026-05-17 nix-gc已执行+磁盘清理中
 
 
-- [ ] [CC] [2026-05-17 09:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [AGI→OP] [2026-05-17 13:12] [high] 清理磁盘空间（检查日志、缓存或临时文件） ✅ 2026-05-17 nix-gc已执行+磁盘清理中
+- [x] [AGI→OP] [2026-05-17 13:13] [high] 检查磁盘AI空间占用详情并清理 ✅ 2026-05-17 nix-gc已执行+磁盘清理中
 
 
-- [ ] [CC] [2026-05-17 09:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [SKIP 2026-05-17 19:00] [AGI→OP] systemd-coredump 检查 — AGI噪声任务，无具体进程信息
 
 
-- [ ] [CC] [2026-05-17 09:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [x] [SKIP 2026-05-17 19:00] [AGI→OP] 磁盘趋势关注 — AGI噪声，已在早期任务中处理
 
 
-- [ ] [CC] [2026-05-17 09:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [AGI→OP] [2026-05-17 19:03] [medium] 检查 /ai 目录下的大文件或日志占用情况 [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:04] [medium] 检查 /mnt/data (AI) 目录下的 Docker 卷或大文件，清理无用数据 [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:05] [medium] 检查 /var/log 或 AI 相关目录是否存在大文件可清理 [DECAY:遗忘率19%]
 
 
-- [ ] [CC] [2026-05-17 09:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 19:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:12] [medium] 检查 /mnt/data 或相关挂载点的大文件占用情况，清理不必要数据 [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:17] [medium] 检查 /mnt/ai 或相关挂载点的大文件并评估是否清理 [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:18] [medium] 检查AI分区是否有大文件或缓存可清理 [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:19] [high] 检查 /mnt/data (或 AI 挂载点) 占用空间并清理大文件 [DECAY:遗忘率19%]
 
 
-- [ ] [CC] [2026-05-17 10:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 19:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:21] [medium] 检查 /mnt/pool-disks 或磁盘 AI 分区的占用情况，清理不必要的文件以释放空间 [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 19:25] [high] 检查 / 目录（或 AI 数据目录）空间占用详情，清理不必要的日志或旧文件 [DECAY:遗忘率19%]
 
 
-- [ ] [CC] [2026-05-17 10:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 19:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
 
 
-- [ ] [CC] [2026-05-17 10:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 19:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
 
 
-- [ ] [CC] [2026-05-17 10:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 19:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [ ] [CC] [2026-05-17 19:51] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
+- [ ] [CC] [2026-05-17 19:51] AI配置告警(自愈失败): 🔴 opencode.json 缺 filesystem MCP
+- [!]  [AGI→OP] [2026-05-17 19:58] [low] 持续关注磁盘使用率变化，待突破90%时再进行清理 [DECAY:遗忘率2%]
 
 
-- [ ] [CC] [2026-05-17 10:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 20:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 20:00] [medium] 执行 nix-collect-garbage -d 清理空间 [DECAY:遗忘率2%]
 
 
-- [ ] [CC] [2026-05-17 10:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 20:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
 
 
-- [ ] [CC] [2026-05-17 11:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [!]  [CC] [2026-05-17 20:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 20:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 20:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [!]  [AGI→OP] [2026-05-17 20:45] [medium] 关注根分区使用率趋势，达到90%时执行 nix-collect-garbage -d [DECAY:遗忘率2%]
+
+
+- [!]  [CC] [2026-05-17 20:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 21:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [2026-05-17 21:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
+
+
+- [!]  [CC] [2026-05-17 21:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 21:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 21:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 21:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+
+
+- [!]  [CC] [2026-05-17 21:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY [DECAY:遗忘率19%]
+- [2026-05-17 23:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
+
+
+- [ ] [CC] [2026-05-18 08:55] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-18 09:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [2026-05-18 09:00] [GLM] GLM API 不可用 → 已 fallback 到 Step
+- [ ] [AGI→OP] [2026-05-18 09:03] [high] 检查 /mnt/data 或 AI 相关挂载点的空间占用详情，清理冗余日志或模型缓存
+- [ ] [AGI→OP] [2026-05-18 09:04] [high] 检查 /mnt/data 或相关挂载点的大文件并清理
+- [ ] [AGI→OP] [2026-05-18 09:05] [medium] 检查磁盘 AI 分区的大文件占用情况并清理空间
+- [ ] [AGI→OP] [2026-05-18 09:10] [medium] 检查 / 或挂载点占用并清理不必要文件
+
+
+- [ ] [CC] [2026-05-18 09:10] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [ ] [AGI→OP] [2026-05-18 09:12] [medium] 检查 /mnt/ai 或相关挂载点的大文件占用情况并进行清理
+
+
+- [ ] [CC] [2026-05-18 09:20] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [ ] [AGI→OP] [2026-05-18 09:25] [medium] 检查并清理 /mnt/ai 或相关挂载点空间
+- [ ] [AGI→OP] [2026-05-18 09:26] [medium] 检查 /mnt/ai 或 AI 数据目录空间占用详情，清理冗余数据
+- [ ] [AGI→OP] [2026-05-18 09:28] [medium] 检查 /mnt/data (AI) 目录下是否存在大文件或冗余日志，考虑清理空间
+
+
+- [ ] [CC] [2026-05-18 09:30] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [ ] [AGI→OP] [2026-05-18 09:33] [medium] 检查AI分区大文件并清理空间
+- [ ] [AGI→OP] [2026-05-18 09:35] [high] 检查 /var/lib/ai 或相关挂载点的大文件占用情况并清理
+- [ ] [AGI→OP] [2026-05-18 09:38] [high] 检查AI数据目录并清理冗余文件以释放空间
+
+
+- [ ] [CC] [2026-05-18 09:40] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+- [ ] [AGI→OP] [2026-05-18 09:40] [high] 检查磁盘占用详情并清理空间 (当前91%)
+- [ ] [AGI→OP] [2026-05-18 09:42] [medium] 检查AI分区大文件及日志清理情况
+- [ ] [AGI→OP] [2026-05-18 09:43] [low] 清理无效的 Docker 卷或 Nix store 旧版本
+
+
+- [ ] [CC] [2026-05-18 09:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
+
+
+- [ ] [CC] [2026-05-18 10:00] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY

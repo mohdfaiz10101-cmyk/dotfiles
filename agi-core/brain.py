@@ -84,7 +84,7 @@ DISCORD_BOT_TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "")
 DISCORD_ALERTS_CHANNEL_ID = os.environ.get("DISCORD_ALERTS_CHANNEL_ID", "")
 
 LOOP_INTERVAL = 60  # 主循环间隔（秒，自适应：无变化时逐步延长）
-PROACTIVE_INTERVAL = 30 * 60  # 主动推送间隔（秒）
+PROACTIVE_INTERVAL = 2 * 60 * 60  # 主动推送间隔（秒，2小时）
 ADAPTIVE_MAX_INTERVAL = 300  # 自适应最大间隔（5分钟）
 ADAPTIVE_NOCHANGE_THRESHOLD = 5  # 连续N次无变化后开始延长间隔
 TRIGGER_FILE = "/tmp/agi-brain-trigger"  # 热触发文件：touch此文件立即执行一轮
@@ -92,13 +92,28 @@ TRIGGER_FILE = "/tmp/agi-brain-trigger"  # 热触发文件：touch此文件立�
 _last_proactive_time: float = 0.0
 _last_sense_hash: str = ""
 _alert_last_sent: dict = {}  # key → timestamp，告警去重
-_ALERT_COOLDOWN = 3600  # 同类告警最短间隔1小时
+_ALERT_COOLDOWN = {
+    "letta": 900,      # 15分钟
+    "litellm": 900,    # 15分钟
+    "default": 3600    # 1小时
+}
+# 上次已知服务状态（用于检测恢复）
+_last_known_service_status: dict = {}
 # 不推 Telegram 的噪声告警关键词（仅记日志）
 _ALERT_SUPPRESS_PATTERNS = (
+    # 网络/限速
     "429", "Too Many Requests", "rate limit", "RateLimit",
     "timeout", "timed out", "Connection", "connect",
+    # CPU/内存正常波动
     "CPU 占用", "CPU占用", "CPU 占用率", "CPU 数据未知", "内存数据未知",
     "服务列表为空", "无法获取CPU", "ps 进程",
+    # 磁盘/存储（低于90%为正常波动，不推送）
+    "磁盘", "disk", "df -h", "du -sh", "清理", "空间", "storage",
+    "/mnt/ai", "/mnt/data", "/mnt/pool",
+    # 认知/假阳性
+    "fe评分", "cognitive", "ne_div",
+    # 泛化检查
+    "任务跟进", "op-tasks", "进展", "dec",
 )
 
 
@@ -106,12 +121,12 @@ def _sense_hash(data: dict) -> str:
     """计算感知数据的关键字段 hash（忽略时间戳等噪声）。
 
     Why: 状态未变化时跳过 LLM 调用，节省 token
-    What: 对 service_status/cpu_hogs/alerts 做 MD5
+    What: 对 service_status/cpu_hogs/alerts/disk_ai/cognitive 做 MD5
     Test: 相同数据返回相同 hash，数据变化后 hash 不同
     """
     import hashlib
 
-    key = {k: data[k] for k in ["services", "cpu_hogs"] if k in data}
+    key = {k: data[k] for k in ["services", "cpu_hogs", "alerts", "disk_ai", "cognitive"] if k in data}
     return hashlib.md5(json.dumps(key, sort_keys=True).encode()).hexdigest()
 
 
@@ -135,6 +150,50 @@ def _run_cmd(cmd: str, timeout: int = 5) -> str:
     except Exception as e:
         return f"错误:{e}"
 
+
+def _quick_service_check(service_name: str) -> str:
+    """快速检查 Docker 容器或 systemd 服务当前状态。
+
+    Why: 推送告警前二次验证，避免推送已修复的过时告警
+    What: 优先查 Docker，再查 systemd user service
+    Test: _quick_service_check("letta") → "running" 或 "exited" 或 "unknown"
+    """
+    # Docker 容器
+    r = subprocess.run(
+        ["docker", "inspect", "-f", "{{.State.Status}}", service_name],
+        capture_output=True, text=True, timeout=3,
+    )
+    if r.returncode == 0:
+        status = r.stdout.strip()
+        if status:
+            return status
+    # systemd user service
+    r2 = subprocess.run(
+        ["systemctl", "--user", "is-active", f"{service_name}.service"],
+        capture_output=True, text=True, timeout=3,
+    )
+    if r2.returncode == 0:
+        return r2.stdout.strip()
+    return "unknown"
+
+
+def _extract_service_from_alert(alert: str) -> str | None:
+    """从告警文本中提取服务名。
+
+    Why: 推送前二次验证需要知道告警涉及哪个服务
+    What: 匹配 "service:xxx=down" 或 "xxx 异常" 等模式
+    Test: _extract_service_from_alert("service:letta=down") → "letta"
+    """
+    import re
+    # 匹配 service:name=status 格式
+    m = re.match(r"service:(\S+?)=", alert)
+    if m:
+        return m.group(1)
+    # 匹配 "xxx 服务异常" 或 "xxx is down"
+    m = re.search(r"(\w+)\s*(服务异常|is down|failed|unhealthy)", alert, re.I)
+    if m:
+        return m.group(1)
+    return None
 
 def _run_sensors() -> dict:
     """遍历 sensors/ 下所有 .py（排除 __init__.py），subprocess 执行并合并 JSON。"""
@@ -239,15 +298,36 @@ def sense() -> dict:
 
 # ── Act 阶段 ──────────────────────────────────────────────────────────────────
 
-_alert_cooldown_map: dict[str, float] = {}
-ALERT_COOLDOWN_SECS = 3600
+_ALERT_COOLDOWN_FILE = Path(OP_TASKS_FILE).parent / "alert_cooldown.json"
+ALERT_COOLDOWN_SECS = 14400  # 4小时，防止进程重启后重复告警
+
+
+def _load_cooldown() -> dict:
+    try:
+        import json
+        return json.loads(_ALERT_COOLDOWN_FILE.read_text()) if _ALERT_COOLDOWN_FILE.exists() else {}
+    except Exception:
+        return {}
+
+
+def _save_cooldown(m: dict) -> None:
+    try:
+        import json
+        # 只保留4小时内的记录，防止文件膨胀
+        cutoff = time.time() - ALERT_COOLDOWN_SECS
+        trimmed = {k: v for k, v in m.items() if v > cutoff}
+        _ALERT_COOLDOWN_FILE.write_text(json.dumps(trimmed))
+    except Exception:
+        pass
 
 
 def _should_trigger_alert(key: str) -> bool:
     now = time.time()
-    if now - _alert_cooldown_map.get(key, 0) < ALERT_COOLDOWN_SECS:
+    m = _load_cooldown()
+    if now - m.get(key, 0) < ALERT_COOLDOWN_SECS:
         return False
-    _alert_cooldown_map[key] = now
+    m[key] = now
+    _save_cooldown(m)
     return True
 
 
@@ -324,6 +404,22 @@ _TASK_BLACKLIST = [
     "数据返回",
     "数据为空",
     "采集为空",
+    # 磁盘检查 — OP 自动处理，不应生成人工任务
+    "磁盘ai",            # 磁盘AI分区检查
+    "磁盘空间",          # 泛化磁盘空间
+    "disk_ai",
+    "mnt/ai.*清理",
+    "/mnt/ai.*占用",
+    "分区.*清理",
+    "清理.*磁盘",
+    "扩容",              # 扩容建议不派给OP
+    "释放.*存储",
+    "存储空间",
+    # 任务跟进 — 不应递归生成跟进任务
+    "任务跟进",
+    "op-tasks.*进展",
+    "未完成任务.*进展",
+    "标记.*decay",
 ]
 
 
@@ -784,24 +880,50 @@ async def main_loop(once: bool = False) -> None:
         # 记录本轮摘要到审计日志
         log_brain_cycle(summary, alerts)
 
-        # 有告警 → 过滤噪声 + 去重后发 Telegram + Discord
+        # 有告警 → 过滤噪声 + 推送前实时验证 + 去重后发 Telegram + Discord
         if alerts:
             now_ts = time.time()
             actionable = []
+            recovered_services = []  # 检测到恢复的服务
+
             for a in alerts:
                 # 过滤限速/超时等非用户可处理的噪声
                 if any(p.lower() in a.lower() for p in _ALERT_SUPPRESS_PATTERNS):
                     print(f"[ALERT_SKIP] 噪声告警已过滤（不推送）: {a[:80]}")
                     continue
-                # 去重：同类告警1小时内只推一次
+
+                # 方案A：推送前实时验证服务状态
+                svc_name = _extract_service_from_alert(a)
+                if svc_name:
+                    current_status = _quick_service_check(svc_name)
+                    if current_status in ("running", "active", "online", "ok"):
+                        print(f"[ALERT_SKIP] 服务已恢复，跳过推送: {a[:80]}")
+                        # 方案B：检测到恢复 → 清除冷却 + 记录恢复状态
+                        _alert_last_sent.pop(a[:60], None)
+                        _last_known_service_status[svc_name] = current_status
+                        recovered_services.append(svc_name)
+                        continue
+                    _last_known_service_status[svc_name] = current_status
+
+                # 方案C：差异化冷却时间
+                cooldown = _ALERT_COOLDOWN.get("default")
+                if svc_name:
+                    cooldown = _ALERT_COOLDOWN.get(svc_name, _ALERT_COOLDOWN["default"])
                 key = a[:60]
                 val = _alert_last_sent.get(key, 0)
                 if not isinstance(val, (int, float)): val = 0
-                if now_ts - val < _ALERT_COOLDOWN:
-                    print(f"[ALERT_SKIP] 冷却中（{int(now_ts - val)}s）: {key}")
+                if now_ts - val < cooldown:
+                    print(f"[ALERT_SKIP] 冷却中（{int(now_ts - val)}s/{cooldown}s）: {key}")
                     continue
                 _alert_last_sent[key] = now_ts
                 actionable.append(a)
+
+            # 方案D：推送恢复通知
+            if recovered_services:
+                recovery_msg = "✅ 服务恢复通知\n" + "\n".join(f"• {s} 已恢复正常" for s in recovered_services)
+                await _send_telegram(recovery_msg)
+                await _send_discord(recovery_msg)
+
             if actionable:
                 alert_msg = "🧠 AGI Brain 告警\n" + "\n".join(f"• {a}" for a in actionable)
                 await _send_telegram(alert_msg)

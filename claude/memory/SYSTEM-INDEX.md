@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-17 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-18 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,60 +9,63 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
-| 1053 | users:(("mihomo",pid=2106,fd=7)) |
-| 1080 | users:(("ssh",pid=5635,fd=4)) |
-| 1080 | users:(("ssh",pid=5635,fd=5)) |
-| 2223 | *:* |
-| 4000 | users:(("python3.13",pid=2100,fd=6)) |
+| 1053 | *:* |
+| 1080 | users:(("ssh",pid=151388,fd=4)) |
+| 1080 | users:(("ssh",pid=151388,fd=5)) |
+| 4000 | users:(("python3.13",pid=150936,fd=6)) |
 | 4002 | 0.0.0.0:* |
-| 4533 | users:(("navidrome",pid=2130,fd=11)) |
-| 5037 | users:(("adb",pid=2853,fd=13)) |
-| 5900 | users:(("wayvnc",pid=6937,fd=15)) |
-| 5998 | users:((".websockify-wra",pid=6938,fd=8)) |
+| 4533 | users:(("navidrome",pid=150953,fd=8)) |
+| 4747 | users:(("opencode",pid=395611,fd=43)) |
+| 5037 | users:(("adb",pid=153056,fd=13)) |
+| 5432 | users:(("postgres",pid=158078,fd=6)) |
+| 5432 | users:(("postgres",pid=158078,fd=7)) |
+| 5900 | users:(("wayvnc",pid=152558,fd=15)) |
+| 5998 | users:((".websockify-wra",pid=152559,fd=8)) |
 | 6379 | 0.0.0.0:* |
 | 7000 | *:* |
 | 7500 | *:* |
-| 7681 | users:(("ttyd",pid=2150,fd=13)) |
-| 7690 | users:(("ttyd",pid=2245,fd=13)) |
-| 7691 | users:(("ttyd",pid=2242,fd=13)) |
-| 7692 | users:(("ttyd",pid=481567,fd=13)) |
-| 7693 | users:(("ttyd",pid=2238,fd=13)) |
-| 7694 | users:(("ttyd",pid=2265,fd=13)) |
-| 7695 | users:(("ttyd",pid=2256,fd=13)) |
-| 7696 | users:(("ttyd",pid=2282,fd=13)) |
-| 7697 | users:(("ttyd",pid=2263,fd=13)) |
-| 7700 | users:(("ttyd",pid=2276,fd=13)) |
-| 7890 | users:(("mihomo",pid=2106,fd=10)) |
-| 7891 | users:(("mihomo",pid=2106,fd=6)) |
-| 8284 | users:(("python3.13",pid=3652687,fd=3)) |
+| 7681 | users:(("ttyd",pid=2038,fd=13)) |
+| 7690 | users:(("ttyd",pid=151096,fd=13)) |
+| 7691 | users:(("ttyd",pid=151095,fd=13)) |
+| 7692 | users:(("ttyd",pid=151109,fd=13)) |
+| 7693 | users:(("ttyd",pid=151078,fd=13)) |
+| 7694 | users:(("ttyd",pid=151105,fd=13)) |
+| 7695 | users:(("ttyd",pid=151097,fd=13)) |
+| 7696 | users:(("ttyd",pid=151119,fd=13)) |
+| 7697 | users:(("ttyd",pid=151102,fd=13)) |
+| 7700 | users:(("ttyd",pid=151115,fd=13)) |
+| 7890 | *:* |
+| 7891 | *:* |
+| 8000 | users:((".uvicorn-wrappe",pid=153770,fd=6)) |
+| 8080 | users:(("opencode",pid=151168,fd=18)) |
+| 8090 | users:(("opencode",pid=151026,fd=18)) |
+| 8283 | users:(("python3.13",pid=157775,fd=7)) |
+| 8283 | users:(("python3.13",pid=157775,fd=8)) |
+| 8284 | users:(("python3.13",pid=417334,fd=3)) |
+| 8285 | users:(("python3.13",pid=153824,fd=11)) |
 | 8384 | 0.0.0.0:* |
-| 8787 | users:(("python3.13",pid=501535,fd=3)) |
-| 8789 | users:(("python3.13",pid=2083,fd=3)) |
+| 8787 | users:(("python3.13",pid=444218,fd=3)) |
+| 8789 | users:(("python3.13",pid=153563,fd=3)) |
 | 9090 | *:* |
-| 9091 | users:(("mihomo",pid=2106,fd=3)) |
-| 9099 | users:(("python3.13",pid=3975,fd=3)) |
-| 9800 | users:(("python3.13",pid=2092,fd=6)) |
-| 9810 | users:(("python3.13",pid=2141,fd=6)) |
-| 9875 | users:(("python3.13",pid=2096,fd=3)) |
-| 9876 | users:(("python3.13",pid=13441,fd=3)) |
-| 9922 | users:(("MainThread",pid=2090,fd=21)) |
-| 9977 | users:(("python3",pid=2016,fd=3)) |
-| 9979 | users:(("python3.13",pid=45963,fd=3)) |
-| 9980 | users:(("python3.13",pid=1985,fd=3)) |
+| 9091 | 0.0.0.0:* |
+| 9099 | users:(("python3.13",pid=4151,fd=3)) |
+| 9800 | users:(("python3.13",pid=150909,fd=6)) |
+| 9801 | users:(("python3.13",pid=151204,fd=6)) |
+| 9810 | users:(("python3.13",pid=150961,fd=6)) |
+| 9875 | users:(("python3.13",pid=153812,fd=3)) |
+| 9876 | users:(("python3.13",pid=153842,fd=3)) |
+| 9922 | users:(("MainThread",pid=150906,fd=21)) |
+| 9977 | users:(("python3",pid=153794,fd=3)) |
+| 9979 | users:(("python3.13",pid=153775,fd=3)) |
+| 9980 | users:(("python3.13",pid=153771,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 17699 | *:* |
-| 18090 | *:* |
-| 18789 | users:(("node",pid=2164,fd=25)) |
-| 18789 | users:(("node",pid=2164,fd=26)) |
-| 18791 | users:(("node",pid=2164,fd=28)) |
-| 19890 | *:* |
-| 19891 | *:* |
-| 19892 | *:* |
-| 19893 | *:* |
+| 11434 | users:(("ollama",pid=150967,fd=3)) |
+| 18789 | users:(("node",pid=150991,fd=25)) |
+| 18791 | users:(("node",pid=150991,fd=27)) |
 | 22000 | *:* |
-| 24801 | *:* |
-| 24802 | users:(("python3.13",pid=54431,fd=3)) |
+| 24801 | users:(("python3.13",pid=152560,fd=8)) |
+| 24802 | users:(("python3.13",pid=153828,fd=3)) |
 | 40544 | 0.0.0.0:* |
 | 47984 | *:* |
 | 47989 | *:* |
@@ -74,6 +77,42 @@
 
 ### ~/agi/ — AGI Brain 核心
 ```
+android_sensor.py
+audit_log.py
+brain.py
+browser_sense.py
+cognitive_engine.py
+context_graph.py
+conversation.py
+copywriting_collector.py
+daily_summary.py
+discord_bot_enhanced.py
+discord_cc_push.py
+doc_knowledge.py
+doc_pipeline.py
+email_sync.py
+embedding_server.py
+letta-sync.py
+mac.py
+macg.py
+macg_api.py
+macg_mcp.py
+macg_tui_demo.py
+mem0_bridge.py
+op_push_service.py
+proactive.py
+report_generator.py
+self_improve.py
+sensor-bridge.py
+social_relations.py
+telegram_bot.py
+telegram_bot_enhanced.py
+tg_logger.py
+tg_user_client.py
+think.py
+video_pipeline.py
+wechat-learn.py
+wechat_agent.py
 ```
 
 ### ~/hub/ — Hub API
@@ -84,7 +123,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（504个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（525个，按前缀分组）
 
 **adb-*** (2个): `adb-autoconnect.sh, adb-tablet-keepalive.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
@@ -106,6 +145,7 @@ static
 **cf-*** (2个): `cf-tunnel-7699, cf-tunnel-setup`
 **charlie-*** (1个): `charlie-ego-record.sh`
 **check-*** (3个): `check-idle-simple.sh, check-idle.sh, check-ttyd.sh`
+**chroma-*** (3个): `chroma-server.py, chroma-server.sh, chroma_server.py`
 **chrome-*** (2个): `chrome-stable-login-setup.sh, chrome-stable-login.sh`
 **claude-*** (37个): `claude-api-autoheal.sh, claude-api-manager, claude-api-unified, claude-auto-fix, claude-auto-login, claude-cad.py, claude-dual, claude-esp, claude-failover.sh, claude-free-api-auto... +27更多`
 **claudep-*** (1个): `claudep-tmux-wrap`
@@ -163,6 +203,7 @@ static
 **mcp-*** (1个): `mcp-health-check`
 **media-*** (1个): `media-crawler`
 **mem-*** (1个): `mem-stats`
+**mem0-*** (1个): `mem0-bridge-wrapper`
 **memory-*** (10个): `memory-backup, memory-bootstrap.sh, memory-decay-engine.py, memory-dream, memory-episodic.py, memory-evolution-engine, memory-kg-populator.py, memory-router, memory-tg-push.sh, memory-working-decay.py`
 **meta-*** (2个): `meta-cognition.py, meta-monitor.sh`
 **mihomo-*** (4个): `mihomo-anthropic-check, mihomo-config-sync, mihomo-config-validate, mihomo-guardian`
@@ -177,8 +218,8 @@ static
 **numlock-*** (1个): `numlock-guard`
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
-**op-*** (19个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph, op-launch.sh... +9更多`
-**opencode-*** (23个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-format-compaction, opencode-integrity-check, opencode-intent-detector, opencode-letta-sync, opencode-memwatch.sh... +13更多`
+**op-*** (22个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-dispatch, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph... +12更多`
+**opencode-*** (24个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-format-compaction, opencode-health-check.sh, opencode-integrity-check, opencode-intent-detector, opencode-letta-sync... +14更多`
 **other-*** (56个): `PyGPT.AppImage, ai, aider, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code, consensus.sh... +46更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
@@ -214,7 +255,7 @@ static
 **skill-*** (1个): `skill-auto-extract.py`
 **smart-*** (4个): `smart-ip, smart-memory-classifier, smart-router.py, smart-search`
 **sqlite-*** (2个): `sqlite_web, sqlite_wsgi`
-**start-*** (3个): `start-desktop-pet.sh, start-session-rag-server.sh, start-wechat`
+**start-*** (4个): `start-chromadb, start-desktop-pet.sh, start-session-rag-server.sh, start-wechat`
 **switch-*** (1个): `switch-claude-provider.sh`
 **sync-*** (8个): `sync-all-browser-cookies, sync-claude-export-to-letta, sync-cookies-to-chrome, sync-md-to-letta, sync-memory-to-ntfs, sync-session-to-letta, sync-session-to-letta-v1-backup, sync-to-obsidian`
 **system-*** (4个): `system-call-check, system-healer, system-health-check, system-sentry-check.sh`
@@ -235,7 +276,7 @@ static
 **voice-*** (3个): `voice-input, voice-push, voice-test`
 **vpn-*** (1个): `vpn-watchdog`
 **warp-*** (10个): `warp-auto, warp-auto-fold, warp-claude-attach, warp-claude-auto, warp-claude-launch, warp-dual-view, warp-launch-claude, warp-multi, warp-session, warp-split-now`
-**waybar-*** (1个): `waybar-wifi.sh`
+**waybar-*** (13个): `waybar-adb.sh, waybar-chroma.sh, waybar-clipsync.sh, waybar-disk.sh, waybar-frp.sh, waybar-guardian.py, waybar-letta.sh, waybar-mem0.sh, waybar-opencode.sh, waybar-pg.sh... +3更多`
 **wayland-*** (1个): `wayland-screenshot`
 **web-*** (2个): `web-ai-proxy, web-ai-proxy-wrapper`
 **wechat-*** (14个): `wechat-android-backup.sh, wechat-contact-sync.py, wechat-finance, wechat-kanban-push.sh, wechat-live-monitor.py, wechat-merge.py, wechat-msg-sync-wrapper.sh, wechat-msg-sync.py, wechat-reply-consumer.py, wechat-send.sh... +4更多`
@@ -254,7 +295,11 @@ static
 ```
 agi-control-plane
 letta-venv
+mem0-data
+mem0-venv
 ollama
+postgresql
+wechat-agent
 ```
 
 ### ~/.config/opencode/agents/ — Agent 定义
@@ -301,6 +346,7 @@ command-reference.md
 compaction-output-format.md
 data-recovery-deployment.md
 feedback_phone_operations.md
+feedback_waybar-management.md
 ideas-roadmap.md
 lessons-learned-7699.md
 lessons-learned-archive.md
@@ -315,12 +361,16 @@ op-review-report.md
 op-tasks-archive-202604.md
 op-tasks-archive-20260423.md
 op-tasks-archive-202605.md
+op-tasks-archive.md
 op-tasks.md
 opencode-architecture-audit.md
+opencode-audit-2026-05-17.md
 opencode-cost-optimization.md
+opencode-health.md
 opencode-letta-sync.md
 opencode-memory-analysis.md
 opencode-session-log.md
+opencode-upgrade-1.15.3.md
 pending-tasks.md
 rules-secondary.md
 session-notes.md
@@ -330,16 +380,19 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（417个注册，80个运行中）
+## 三、systemd 用户服务（419个注册，94个运行中）
 
 ### 当前运行中
 ```
 agent-orchestrator
+agi-brain
+ai-config-watcher
 ai-rules-sync
 ai-watchdog
 app-remmina\x2dapplet@autostart
 at-spi-dbus-bus
 cf-tunnel-7699
+chromadb
 chronos-biofeedback
 chronos-sensory
 claude-esp
@@ -362,11 +415,14 @@ github-action-trigger
 glm-monitor
 glm-proxy
 headless-browser
+hermes-agent
 hub-api
 kunifiedpush-distributor
 launcher
+letta
 letta-mcp
 litellm-strip-proxy
+mem0-bridge
 memory-evolution
 mihomo
 mihomo-watch
@@ -374,40 +430,48 @@ navidrome
 nix-voice-agent
 numlock-guard
 office-agent
+ollama
+op-push
 op-tasks-watcher
 op-watchdog
 openclaw-gateway
 opencode-intent-detector
 opencode-letta-sync
 opencode-memwatch
+opencode-stuck-watch
 opencode-telegram-processor
+opencode-web
+opencode-web-sisy
 otp-sync
 overcode-loop-watch
 paperclip-report-daemon
 phone-socks-tunnel
 pipewire
 pipewire-pulse
+postgresql
 proxy-403-monitor
 python-crash-guard
 screenshot-watcher
 speech-dispatcher
 sunshine
 tablet-control-panel
+telegram-bot
 ttyd-aider
 ttyd-cct
 ttyd-claude
 ttyd-claudep
 ttyd-foc
 ttyd-macg
-ttyd-overcode
+ttyd-opencode
 ttyd-overtab
 ttyd-ulwh
 voxtype
 waybar
-wayland-session-bindpid@6628
+waybar-guardian
+wayland-session-bindpid@150813
 wayland-wm@hyprland\x2duwsm.desktop
+wechat-agent
 wechat-reply-consumer
-wechat-uos
 wireplumber
 xdg-desktop-portal
 xdg-document-portal
@@ -504,7 +568,6 @@ opencode-job-charlie-b445f233ebb8-cost-accountant
 opencode-job-charlie-b445f233ebb8-glm-knowledge-writer
 opencode-job-charlie-b445f233ebb8-security-watchdog
 opencode-session-guard
-opencode-sisyphus-guard
 push-tunnel-url
 rebuild-system-index
 recoll-idle-index
@@ -515,6 +578,7 @@ sync-obsidian
 system-health-monitor
 systemd-tmpfiles-clean
 task-review-weekly
+waybar-guardian
 wechat-backup
 wechat-backup-reminder
 wechat-contact-sync

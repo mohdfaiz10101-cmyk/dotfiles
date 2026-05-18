@@ -16,7 +16,9 @@ model_list:
       rpm: 5
       tpm: 100000
       max_retries: 1
-      drop_params: false
+      drop_params: true
+      extra_body:
+        enable_thinking: false
 
   - model_name: glm-5-turbo
     litellm_params:
@@ -120,6 +122,8 @@ model_list:
       api_base: https://api.siliconflow.cn/v1
       api_key: os.environ/SILICONFLOW_API_KEY
       timeout: 60
+      extra_body:
+        enable_thinking: false
 
   # === Groq Whisper 语音转文字（免费，超快，替代本地 whisper-server） ===
   - model_name: groq-whisper-large

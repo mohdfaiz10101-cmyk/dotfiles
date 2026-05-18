@@ -1,9 +1,10 @@
 ---
 description: "CC 自主决策 — 读取 OP 运行数据，分析系统状态，生成具体任务指令"
+model: "openai-compatible/glm-5.1"
 tools:
   edit: true
   bash: true
-temperature: 0.3
+temperature: 0.2
 hidden: true
 ---
 **【强制执行规则】（手机Web适配）**:

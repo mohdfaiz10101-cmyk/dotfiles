@@ -1,14 +1,1 @@
-[Unit]
-Description=OpenCode Job (adaptive): discord-butler
-
-[Service]
-Type=oneshot
-WorkingDirectory=/home/charlie
-Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin"
-ExecStart=/home/charlie/.local/bin/op-adaptive-gate discord-butler /run/current-system/sw/bin/perl /home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/discord-butler.json
-StandardOutput=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/discord-butler.log
-StandardError=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/discord-butler.log
-TimeoutStartSec=600
-
-[Install]
-WantedBy=default.target
+/dev/null

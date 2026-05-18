@@ -1,5 +1,6 @@
 ---
 description: "安全哨兵 — 实时监控异常登录、端口扫描、密钥泄露、异常进程"
+model: "openai-compatible/glm-5-turbo"
 tools:
   edit: false
   bash: true
