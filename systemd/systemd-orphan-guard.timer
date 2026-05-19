@@ -1,0 +1,10 @@
+[Unit]
+Description=每小时检测僵尸 systemd 服务
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+AccuracySec=5min
+
+[Install]
+WantedBy=timers.target

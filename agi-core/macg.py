@@ -14,7 +14,6 @@ from typing_extensions import TypedDict
 
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
-from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.graph.message import add_messages
@@ -26,7 +25,7 @@ DB_PATH = Path.home() / ".local/share/macg/state.db"
 OP_TASKS_FILE = Path.home() / ".claude/projects/-home-charlie/memory/op-tasks.md"
 MEM_DIR = Path.home() / ".claude/projects/-home-charlie/memory"
 
-CLAUDE_MODEL = "claude-opus-4-6"
+DEEPSEEK_MODEL = "deepseek-v4-pro"
 GLM_MODEL = "glm-5-turbo"
 
 ANSI = {
@@ -34,6 +33,7 @@ ANSI = {
     "bold": "\033[1m",
     "glm": "\033[36m",
     "claude": "\033[35m",
+    "deepseek": "\033[35m",
     "tool": "\033[33m",
     "err": "\033[31m",
     "dim": "\033[2m",
@@ -272,23 +272,26 @@ def web_search(query: str) -> str:
 
 
 @tool
-def call_cc(prompt: str, timeout_sec: int = 60) -> str:
-    """实时调用 CC（Claude Code）执行复杂任务。返回执行结果。
-    适合：架构设计、NixOS 配置、多文件分析、深度调试。"""
+def call_cc(prompt: str, timeout_sec: int = 120) -> str:
+    """调用 OP（OpenCode）执行复杂任务，同步返回结果。
+    适合：架构设计、NixOS 配置、多文件分析、深度调试、代码重构。
+    等价于旧版 call_cc（Claude Code），但走 OpenCode 免费模型。"""
     try:
         r = subprocess.run(
-            ["claude", "-p", prompt, "--model", "opus", "--output-format", "text"],
+            ["opencode", "-p", prompt],
             capture_output=True,
             text=True,
             timeout=timeout_sec,
-            env={**os.environ, "CLAUDE_CODE_ENTRYPOINT": "cli"},
+            cwd=str(Path.home()),
         )
         out = (r.stdout + r.stderr).strip()
-        return out[:4000] if out else "(CC 无输出)"
+        return out[:6000] if out else "(OP 无输出)"
     except subprocess.TimeoutExpired:
-        return f"[CC 超时 {timeout_sec}s]"
+        return f"[OP 超时 {timeout_sec}s] — 已自动写入 op-tasks.md 异步执行"
+    except FileNotFoundError:
+        return "[OP 不可用] opencode 命令未找到，改用 op_delegate 异步委托"
     except Exception as e:
-        return f"[CC 调用失败] {e}"
+        return f"[OP 调用失败] {e}"
 
 
 @tool
@@ -311,6 +314,34 @@ def call_op(task: str, timeout_sec: int = 60) -> str:
         return "[OP 不可用] opencode 命令未找到，改用 op_delegate 异步委托"
     except Exception as e:
         return f"[OP 调用失败] {e}"
+
+
+@tool
+def call_crewai(task: str, timeout_sec: int = 120) -> str:
+    """调用 CrewAI LangGraph Gateway 执行多 Agent 协作任务。
+    适合：调研报告、内容生成、数据分析、多角色协作任务。
+    CrewAI 会依次经过 researcher → coder → pm → human_review 节点。"""
+    try:
+        r = subprocess.run(
+            [
+                "curl", "-s", "-X", "POST",
+                "http://localhost:8701/workflow/run",
+                "-H", "Content-Type: application/json",
+                "-d", json.dumps({"topic": task}),
+            ],
+            capture_output=True,
+            text=True,
+            timeout=timeout_sec,
+        )
+        data = json.loads(r.stdout)
+        result = data.get("result", "")
+        if result:
+            return result[:6000]
+        return f"[CrewAI] status={data.get('status')}, error={data.get('error')}"
+    except subprocess.TimeoutExpired:
+        return f"[CrewAI 超时 {timeout_sec}s]"
+    except Exception as e:
+        return f"[CrewAI 调用失败] {e}"
 
 
 @tool
@@ -481,6 +512,7 @@ TOOLS = [
     wechat_reply,
     call_cc,
     call_op,
+    call_crewai,
     schedule_followup,
     send_batch_message,
     get_wechat_messages,
@@ -493,16 +525,26 @@ TOOLS = [
 
 
 def make_models():
-    claude = ChatAnthropic(model=CLAUDE_MODEL, max_tokens=4096)
+    deepseek = ChatOpenAI(
+        model=DEEPSEEK_MODEL,
+        base_url="http://localhost:4000/v1",
+        api_key="sk-litellm-charlie-2026",
+        max_tokens=4096,
+    )
     glm = ChatOpenAI(
         model=GLM_MODEL,
         base_url="http://localhost:4000/v1",
         api_key="sk-litellm-charlie-2026",
         max_tokens=2000,
     )
-    # Supervisor 用 Sonnet 做路由决策，判断更准确
-    supervisor = ChatAnthropic(model="claude-sonnet-4-6", max_tokens=100)
-    return claude, glm, supervisor
+    # Supervisor 用 GLM 5-turbo 做路由决策（非推理模型，直接输出）
+    supervisor = ChatOpenAI(
+        model="glm-5-turbo",
+        base_url="http://localhost:4000/v1",
+        api_key="sk-litellm-charlie-2026",
+        max_tokens=100,
+    )
+    return deepseek, glm, supervisor
 
 
 # ── LangGraph 状态定义 ────────────────────────────────────────────────────────
@@ -510,7 +552,7 @@ def make_models():
 
 class AgentState(TypedDict):
     messages: Annotated[list, add_messages]
-    next: str  # "glm" | "claude" | "end"
+    next: str  # "glm" | "deepseek" | "end"
     route_reason: str  # 路由原因，显示给用户
     cognitive_profile: dict  # 八维认知评分，由 cognitive_sense 节点写入
 
@@ -529,11 +571,11 @@ SUPERVISOR_PROMPT = """你是多Agent系统的调度员。
 分析用户请求，决定路由到哪个 Agent：
 
 - **glm**：日常问答、中文对话、简单命令、运维查询、文件读写、bash操作、微信操作、系统感知、执行工作流、状态检查、配置查询
-- **claude**：复杂代码重构、架构设计、NixOS系统级操作、多文件分析、深度推理、多步骤实现、调试复杂bug、修改生产代码
+- **deepseek**：复杂代码重构、架构设计、NixOS系统级操作、多文件分析、深度推理、多步骤实现、调试复杂bug、修改生产代码
 - **end**：用户说退出/再见
 
-## Claude 路由降低阈值（重要）
-以下场景 MUST 路由到 claude，不要过度节省：
+## DeepSeek 路由降低阈值（重要）
+以下场景 MUST 路由到 deepseek，不要过度节省：
 - 用户要求修改/新增代码文件（不是查看）
 - 涉及 3 个以上文件的操作
 - 需要理解业务逻辑才能实现的功能
@@ -553,20 +595,21 @@ SUPERVISOR_PROMPT = """你是多Agent系统的调度员。
 - sense_system: 查看系统实时状态
 - wechat_status/wechat_reply: 微信消息管理
 - list_flows: 列出可用工作流
-- **call_cc**: 实时调用 Claude Code（Opus）执行复杂任务 — 架构/NixOS/多文件分析
+- **call_cc**: 实时调用 OpenCode 执行复杂任务 — 架构/NixOS/多文件分析/代码重构（已迁移，原 Claude Code）
 - **call_op**: 实时调用 OpenCode 执行运维任务 — 服务修复/部署/检查
 - op_delegate: 异步委托（写 op-tasks.md，适合不急的任务）
 
 ## 调用决策
 - 能自己用工具解决 → 自己做（GLM 免费）
-- 需要深度分析/架构/代码重构 → call_cc
+- 需要深度分析/架构/代码重构 → call_cc（走 OpenCode）
 - 需要运维/修服务/改配置 → call_op
+- 需要多角色协作（调研/内容生成/数据分析） → call_crewai
 - 不急的后台任务 → op_delegate（异步）
 
 ## 用户基础设施（方案必须基于此，禁止重复建设）
 - AGI Brain: ~/agi/macg.py + systemd（主调度）
 - Letta: localhost:8283（语义记忆）
-- LiteLLM: localhost:4000（43个模型统一入口）
+- LiteLLM: localhost:4000（模型统一入口）
 - FastAPI Gateway: localhost:9900（AGI控制层）
 - OP任务系统: op-tasks.md + systemd timers（异步协作）
 - Paperclip: localhost:3100（Agent调度）
@@ -576,16 +619,16 @@ SUPERVISOR_PROMPT = """你是多Agent系统的调度员。
 ## 用户决策习惯（强制学习规则）
 - **实时优先**：用户要求所有操作立刻/马上/即时生效，禁止回复"建议""下次""等一会儿"
 - **强制执行**：用户倾向直接落地，不喜欢只给建议而不行动
-- **GLM优先**：状态查询/方案讨论/进度确认 → glm；只有真正需要写文件/改系统才用 claude
+- **GLM优先**：状态查询/方案讨论/进度确认 → glm；只有真正需要写文件/改系统才用 deepseek
 - **断了即恢复**：服务中断要立即自动恢复，不等定时器
 
 ## 认知引擎规则（基于 cognitive_profile）
 - Ne收敛: 如果 cognitive_profile.ne_divergence > 0.8 且 completion_rate < 0.3，优先路由到执行任务而非创建新任务
-- 深夜降级: 如果当前时间 0-5 点，降低 claude 路由频率，优先 glm
+- 深夜降级: 如果当前时间 0-5 点，降低 deepseek 路由频率，优先 glm
 - Fe检查: 如果 Fe 评分 < 50，提醒用户休息
 
 只回复格式：{路由}|{一句话原因}
-示例：glm|日常运维查询  /  claude|多文件代码修改  /  end|用户退出
+示例：glm|日常运维查询  /  deepseek|多文件代码修改  /  end|用户退出
 禁止其他文字，只输出这一行。"""
 
 
@@ -618,17 +661,17 @@ def supervisor_node(state: AgentState, supervisor_model) -> AgentState:
     else:
         route = raw.split()[0]
         reason = ""
-    if route not in ("glm", "claude", "end"):
+    if route not in ("glm", "deepseek", "end"):
         route = "glm"
     return {**state, "next": route, "route_reason": reason}
 
 
 def route_after_supervisor(
     state: AgentState,
-) -> Literal["glm_agent", "claude_agent", "__end__"]:
+) -> Literal["glm_agent", "deepseek_agent", "__end__"]:
     n = state.get("next", "glm")
-    if n == "claude":
-        return "claude_agent"
+    if n == "deepseek":
+        return "deepseek_agent"
     if n == "end":
         return "__end__"
     return "glm_agent"
@@ -796,7 +839,7 @@ def _startup_sense() -> str:
 
 
 def build_graph(checkpointer):
-    claude, glm, supervisor = make_models()
+    deepseek, glm, supervisor = make_models()
 
     INFRA_CONTEXT = f"""
 ## 用户已有基础设施（方案必须基于此，在已有组件上叠加）
@@ -822,7 +865,7 @@ def build_graph(checkpointer):
 {NO_HALLUCINATION}
 {CLAUDE_MD_RULES}"""
 
-    claude_system = f"""你是 MAC 的 Claude 执行层，处理复杂任务。
+    claude_system = f"""你是 MAC 的 DeepSeek 执行层，处理复杂任务。
 你拥有完整对话历史。直接用工具完成任务，不废话。
 运维类任务用 op_delegate 委托 OP。
 {OUTPUT_FORMAT}
@@ -831,20 +874,20 @@ def build_graph(checkpointer):
 {CLAUDE_MD_RULES}"""
 
     glm_agent = create_react_agent(glm, TOOLS, prompt=glm_system)
-    claude_agent = create_react_agent(claude, TOOLS, prompt=claude_system)
+    deepseek_agent = create_react_agent(deepseek, TOOLS, prompt=claude_system)
 
     graph = StateGraph(AgentState)
 
     graph.add_node("cognitive_sense", cognitive_sense_node)
     graph.add_node("supervisor", lambda s: supervisor_node(s, supervisor))
     graph.add_node("glm_agent", glm_agent)
-    graph.add_node("claude_agent", claude_agent)
+    graph.add_node("deepseek_agent", deepseek_agent)
 
     graph.add_edge(START, "cognitive_sense")
     graph.add_edge("cognitive_sense", "supervisor")
     graph.add_conditional_edges("supervisor", route_after_supervisor)
     graph.add_edge("glm_agent", END)
-    graph.add_edge("claude_agent", END)
+    graph.add_edge("deepseek_agent", END)
 
     return graph.compile(checkpointer=checkpointer)
 
@@ -1055,8 +1098,8 @@ def repl():
                     if isinstance(msg, AIMessage) and msg.content:
                         route = result.get("next", "glm")
                         reason = result.get("route_reason", "")
-                        color = c["claude"] if route == "claude" else c["glm"]
-                        label = "Claude" if route == "claude" else "GLM"
+                        color = c["deepseek"] if route == "deepseek" else c["glm"]
+                        label = "DeepSeek" if route == "deepseek" else "GLM"
                         reason_str = f" | {reason}" if reason else ""
                         print(f"\n{color}▸ {label}{reason_str}{c['reset']}")
                         print(msg.content)
@@ -1075,4 +1118,34 @@ def repl():
 
 
 if __name__ == "__main__":
-    repl()
+    import argparse
+    parser = argparse.ArgumentParser(description="MACG — LangGraph Multi-Agent")
+    parser.add_argument("-p", "--prompt", help="单次 prompt 模式（非交互），调用 supervisor 后输出结果并退出")
+    parser.add_argument("--thread", default="telegram", help="thread_id（默认 telegram）")
+    args = parser.parse_args()
+
+    if args.prompt:
+        # 单次调用模式：供 brain.py / Telegram / 外部脚本调用
+        import asyncio
+        from langgraph.checkpoint.sqlite import SqliteSaver
+
+        DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+        thread_id = args.thread
+
+        try:
+            with SqliteSaver.from_conn_string(str(DB_PATH)) as checkpointer:
+                app = build_graph(checkpointer)
+                config = {"configurable": {"thread_id": thread_id}}
+                result = app.invoke(
+                    {"messages": [HumanMessage(content=args.prompt)]}, config=config
+                )
+                # 找最后一条 AI 回复
+                for msg in reversed(result.get("messages", [])):
+                    if isinstance(msg, AIMessage) and msg.content:
+                        print(msg.content)
+                        break
+        except Exception as e:
+            print(f"[FAIL] supervisor error: {e}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        repl()

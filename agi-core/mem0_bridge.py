@@ -6,6 +6,7 @@ ChromaDB 向量存储 + LiteLLM GLM-4-flash 摘要
 
 import json
 import os
+import sqlite3
 import uuid
 from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -14,6 +15,16 @@ from urllib.parse import urlparse, parse_qs
 
 import chromadb
 from openai import OpenAI
+
+# === Memory Pulse DB ===
+PULSE_DB = Path(os.environ.get("PULSE_DB", "/mnt/ai/data/memory-pulse/pulse.db"))
+
+
+def get_pulse_db():
+    PULSE_DB.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(PULSE_DB))
+    conn.row_factory = sqlite3.Row
+    return conn
 
 PORT = int(os.environ.get("MEM0_PORT", 8285))
 DATA_DIR = Path(os.environ.get("MEM0_DATA", "/mnt/ai/apps/mem0-data"))
@@ -110,8 +121,81 @@ class Handler(BaseHTTPRequestHandler):
         length = int(self.headers.get("Content-Length", 0))
         return json.loads(self.rfile.read(length)) if length else {}
 
+    def _pulse_handler(self, method, path, body=None):
+        """处理 /pulse/* 路由"""
+        db = get_pulse_db()
+        try:
+            if path == "/pulse/summary" and method == "GET":
+                rows = db.execute(
+                    "SELECT status, COUNT(*) as cnt FROM pulse GROUP BY status"
+                ).fetchall()
+                summary = {r["status"]: r["cnt"] for r in rows}
+                return 200, {"summary": summary, "total": sum(summary.values())}
+
+            elif path == "/pulse/list" and method == "GET":
+                status = parse_qs(urlparse(self.path).query).get("status", [None])[0]
+                limit = int(parse_qs(urlparse(self.path).query).get("limit", [50])[0])
+                if status:
+                    rows = db.execute(
+                        "SELECT * FROM pulse WHERE status=? ORDER BY pulse_score ASC LIMIT ?",
+                        (status, limit),
+                    ).fetchall()
+                else:
+                    rows = db.execute(
+                        "SELECT * FROM pulse ORDER BY pulse_score ASC LIMIT ?", (limit,)
+                    ).fetchall()
+                return 200, {"items": [dict(r) for r in rows], "count": len(rows)}
+
+            elif path == "/pulse/access" and method == "POST":
+                pulse_id = (body or {}).get("pulse_id", "")
+                if not pulse_id:
+                    return 400, {"error": "missing pulse_id"}
+                row = db.execute("SELECT id FROM pulse WHERE id=?", (pulse_id,)).fetchone()
+                if not row:
+                    return 404, {"error": "not found"}
+                now = datetime.now().isoformat()
+                db.execute(
+                    """UPDATE pulse SET pulse_score=1.0, last_accessed_at=?,
+                       access_count=access_count+1, status='green' WHERE id=?""",
+                    (now, pulse_id),
+                )
+                db.execute(
+                    "INSERT INTO pulse_log (pulse_id, event, ts) VALUES (?,?,?)",
+                    (pulse_id, "access", now),
+                )
+                db.commit()
+                return 200, {"status": "accessed", "pulse_id": pulse_id, "score": 1.0}
+
+            elif path == "/pulse/stats" and method == "GET":
+                total = db.execute("SELECT COUNT(*) as c FROM pulse").fetchone()["c"]
+                avg = db.execute(
+                    "SELECT AVG(pulse_score) as a FROM pulse WHERE status!='archived'"
+                ).fetchone()["a"]
+                oldest = db.execute(
+                    """SELECT id, source, last_accessed_at, pulse_score
+                       FROM pulse WHERE status!='archived'
+                       ORDER BY last_accessed_at ASC LIMIT 5"""
+                ).fetchall()
+                by_source = db.execute(
+                    "SELECT source, COUNT(*) as c FROM pulse GROUP BY source"
+                ).fetchall()
+                return 200, {
+                    "total": total,
+                    "avg_score": round(avg, 3) if avg else 0,
+                    "oldest_unaccessed": [dict(r) for r in oldest],
+                    "by_source": {r["source"]: r["c"] for r in by_source},
+                }
+
+            else:
+                return 404, {"error": "not found"}
+        finally:
+            db.close()
+
     def do_GET(self):
         p = urlparse(self.path)
+        if p.path.startswith("/pulse"):
+            code, data = self._pulse_handler("GET", p.path)
+            return self._json(code, data)
         if p.path == "/health":
             count = col.count()
             self._json(200, {"status": "ok", "service": "mem0-lite", "backend": "chromadb-onnx", "count": count})
@@ -130,6 +214,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         p = urlparse(self.path)
         body = self._body()
+        if p.path.startswith("/pulse"):
+            code, data = self._pulse_handler("POST", p.path, body)
+            return self._json(code, data)
         if p.path == "/add":
             text = body.get("text", "")
             if not text:

@@ -26,7 +26,10 @@ services:
       - NLTK_DATA=/root/nltk_data
       - HTTPS_PROXY=http://172.19.0.1:7890
       - HTTP_PROXY=http://172.19.0.1:7890
+      - https_proxy=http://172.19.0.1:7890
+      - http_proxy=http://172.19.0.1:7890
       - NO_PROXY=localhost,127.0.0.1,postgres,chromadb,172.19.0.1
+      - no_proxy=localhost,127.0.0.1,postgres,chromadb,172.19.0.1
     depends_on:
       postgres:
         condition: service_healthy
@@ -64,6 +67,12 @@ services:
       - "8000:8000"
     volumes:
       - chroma-data:/chroma/chroma
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo > /dev/tcp/localhost/8000"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     networks:
       - letta-net
 

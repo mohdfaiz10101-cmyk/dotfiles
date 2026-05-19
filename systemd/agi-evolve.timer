@@ -1,0 +1,9 @@
+[Unit]
+Description=AGI 自主进化引擎（每周日凌晨）
+
+[Timer]
+OnCalendar=Sun 08:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

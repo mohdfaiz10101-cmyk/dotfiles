@@ -32,16 +32,16 @@
 - **备注**: NixOS flake 配置中有 `nixosConfigurations.minipc`，由大主机统一管理
 
 ## Windows 主机 (WIN-S2D8GP89FU1)
-- **SSH**: `G@192.168.2.36` 密码 `1` | Tailscale 组网
+- **SSH**: `ssh winpc` 密码 `1` | FRP:2222 (主力) / Tailscale:100.91.93.99 (备用)
 - **Python**: 3.12.10 (`C:\Users\G\AppData\Local\Programs\Python\Python312\`)
 - **无 Docker** — 文件管理用 Python 脚本 + SMB 共享
 - **角色**: 文件存档库、数据库备份、商业文档中心
-- **共享路径**: `\\192.168.2.36\共享` 或 Tailscale IP 访问
+- **共享路径**: 通过 Tailscale 或同网段访问 Windows 共享文件夹
 - **同步**: Syncthing 双向同步 memory/ + documents/
 
 ## 双机记忆同步（DUAL_MACHINE_SYNC — 死规则）
 - **NixOS (192.168.2.100)** = 主力机，所有 AI Agent 运行于此
-- **Windows (192.168.2.36)** = 存档机，文档数据库 + 记忆副本
+- **Windows** = 存档机，文档数据库 + 记忆副本 | 连接: ssh winpc
 - **同步工具**: Syncthing（双向实时同步）
 - **同步目录**:
   | 目录 | NixOS | Windows | 说明 |
@@ -62,7 +62,7 @@
 - 路由器: 192.168.2.1
 - NixOS大主机: 192.168.2.100 (wlp0s20f0u5 WiFi) + eno1有线(待配置)
 - NixOS小主机: 192.168.2.101 (wlp0s20f0u4 WiFi)
-- Windows: 192.168.2.36
+- Windows: ssh winpc (DHCP 192.168.123.x)
 - Tailscale + Syncthing + mihomo 代理
 - **minipc 有4个 I226-V 千兆口**（enp1s0~4s0），建议插网线稳定在线
 

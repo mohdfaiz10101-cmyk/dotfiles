@@ -942,12 +942,20 @@ def _write_complex_task(talker: str, name: str, task_type: str, content: str) ->
 
 
 def _notify_human(name: str, task_type: str, content: str) -> None:
+    """桌面通知（限流：同分钟内最多1条）"""
+    import time as _time
+    if not hasattr(_notify_human, "_last"):
+        _notify_human._last = 0.0
+    now = _time.time()
+    if now - _notify_human._last < 60:
+        return
+    _notify_human._last = now
     try:
         msg_text = (
             f"📬 微信复杂任务\n来源: {name}\n类型: {task_type}\n内容: {content[:80]}"
         )
         subprocess.Popen(
-            ["notify-send", "微信待处理", msg_text],
+            ["notify-send", "-t", "5000", "微信待处理", msg_text],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )

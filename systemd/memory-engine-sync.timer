@@ -1,0 +1,9 @@
+[Unit]
+Description=Memory Engine: 每30分钟同步changelog到图谱
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=false
+
+[Install]
+WantedBy=timers.target

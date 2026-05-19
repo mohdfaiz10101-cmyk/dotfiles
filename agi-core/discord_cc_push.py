@@ -8,8 +8,7 @@ import json, os, sys, re, time, subprocess, urllib.request, urllib.error
 from pathlib import Path
 from datetime import datetime, date
 
-DISCORD_TOKEN   = "MTQ5MDY0MTY3ODEzNzAzMjg0NA.G7dnjb.8XnDoykFr9O8SRsQH1nnCXiV0Ge2LEOGTI47f8"
-CC_CHANNEL_ID   = "1490986400747884585"
+DISCORD_CC_CH   = "1490986400747884585"
 PROXY           = os.getenv("https_proxy", os.getenv("HTTPS_PROXY", "http://127.0.0.1:7890"))
 LITELLM         = "http://localhost:4000/v1"
 LITELLM_KEY     = "sk-litellm-charlie-2026"
@@ -20,25 +19,25 @@ OP_RESULTS      = Path("/tmp/op-task-results.json")
 LESSONS         = Path.home() / ".claude/projects/-home-charlie/memory/lessons-learned.md"
 TODAY           = date.today().strftime("%Y-%m-%d")
 
-# ── Discord 发消息 ────────────────────────────────────────────────────
+# ── Discord 发消息（通过统一通知中心） ────────────────────────────────────────
 def discord_send(content: str) -> dict:
-    chunks = [content[i:i+1990] for i in range(0, len(content), 1990)]
-    last = {}
-    for chunk in chunks:
-        payload = json.dumps({"content": chunk})
-        result = subprocess.run([
-            "curl", "-s", "--proxy", PROXY,
-            "-X", "POST",
-            f"https://discord.com/api/v10/channels/{CC_CHANNEL_ID}/messages",
-            "-H", f"Authorization: Bot {DISCORD_TOKEN}",
-            "-H", "Content-Type: application/json",
-            "-d", payload,
-        ], capture_output=True, text=True, timeout=20)
-        try:
-            last = json.loads(result.stdout)
-        except:
-            print(f"[discord_send] curl stdout: {result.stdout[:200]}", file=sys.stderr)
-    return last
+    """发送到 Discord #cc 频道"""
+    import asyncio, sys
+    sys.path.insert(0, os.path.dirname(__file__))
+    from notify import _send_discord, _DISCORD_TOKEN
+
+    if not _DISCORD_TOKEN:
+        print("[discord_send] DISCORD_BOT_TOKEN 未配置", file=sys.stderr)
+        return {}
+
+    try:
+        loop = asyncio.new_event_loop()
+        result = loop.run_until_complete(_send_discord(content, DISCORD_CC_CH))
+        loop.close()
+        return {"ok": True}
+    except Exception as e:
+        print(f"[discord_send] 失败: {e}", file=sys.stderr)
+        return {}
 
 # ── 读取今日完成任务 ──────────────────────────────────────────────────
 def get_completed_tasks() -> list[str]:

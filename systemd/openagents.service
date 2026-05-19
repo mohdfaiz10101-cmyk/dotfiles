@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.local/bin/openagents up
+ExecStart=/home/charlie/.local/bin/openagents up --foreground
 Restart=always
 RestartSec=5
 Environment=HOME=/home/charlie

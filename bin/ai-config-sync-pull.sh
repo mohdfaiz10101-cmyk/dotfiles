@@ -16,16 +16,18 @@ cd "$SYNC_DIR"
 if git pull origin main 2>&1 | tee -a "$LOG_FILE"; then
     log "pull ok"
 else
-    # 冲突处理
+    # 冲突处理 — 永不自动覆盖，仅备份+通知
     if git status | grep -q "both modified"; then
-        log "CONFLICT detected, backing up"
+        log "CONFLICT detected — 本地有手动修改，放弃自动合并"
         mkdir -p "$CONFLICT_DIR"
         git diff > "$CONFLICT_DIR/conflict-$(date '+%Y%m%d-%H%M%S').patch"
-        git checkout --theirs .
-        git add -A
-        git commit -m "conflict-resolve: auto-merge $(date '+%Y-%m-%d %H:%M')" || true
-        # 通知 A2A
-        echo "CONFLICT: $(date '+%Y-%m-%d %H:%M') — config sync conflict, auto-resolved with theirs" >> "$HOME/.claude/projects/-home-charlie/memory/conflict-log.md"
+        git merge --abort 2>/dev/null || git checkout --ours . 2>/dev/null || true
+        log "conflict aborted, local changes preserved"
+        # 通知
+        echo "CONFLICT: $(date '+%Y-%m-%d %H:%M') — 检测到冲突，保留本地修改未自动合并" >> "$HOME/.claude/projects/-home-charlie/memory/conflict-log.md"
+        notify-send "⚠️ ai-config-sync 冲突" "检测到冲突，本地修改已保留，需人工审查" 2>/dev/null || true
+    else
+        log "pull failed (non-conflict), check manually"
     fi
 fi
 

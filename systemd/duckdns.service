@@ -1,0 +1,7 @@
+[Unit]
+Description=DuckDNS DDNS Update
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'curl -4 -sL "https://www.duckdns.org/update?domains=charlie1990&token=1e66570c-983c-4c0d-b776-03d1ae3a9aa6&ip=" -o /tmp/duckdns-last'

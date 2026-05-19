@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# kanban-workspace.sh — 在 workspace 9 打开看板
+# 策略：先切到 ws9，再启动 kitty（新窗口出生在当前位置）
+
+WS=9
+CLASS="kanban-tui"
+
+# 检查 workspace 9 是否已有看板窗口
+existing=$(hyprctl clients -j 2>/dev/null | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+for c in data:
+    wid = c.get('workspace', {}).get('id', 0)
+    cls = c.get('initialClass', c.get('class', ''))
+    title = c.get('initialTitle', '')
+    if wid == $WS and ('kanban' in cls.lower() or 'kanban' in title.lower()):
+        print(c['address'])
+        break
+" 2>/dev/null)
+
+if [ -n "$existing" ]; then
+    hyprctl dispatch workspace "$WS"
+    exit 0
+fi
+
+# 先切到 ws9
+hyprctl dispatch workspace "$WS"
+sleep 0.3
+
+# 在 ws9 上启动 kitty（新窗口出生在此）
+kitty --class "$CLASS" --title "Kanban" -o initial_window_width=110 -o initial_window_height=30 -e /mnt/ai/apps/kanban-tui/run-kanban.sh &

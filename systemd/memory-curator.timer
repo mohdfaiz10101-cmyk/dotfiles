@@ -1,8 +1,8 @@
 [Unit]
-Description=记忆策展定期巡检（每周日10:00）
+Description=记忆清理（每日22:00）
 
 [Timer]
-OnCalendar=Sun *-*-* 10:00:00
+OnCalendar=*-*-* 22:00:00
 Persistent=true
 
 [Install]

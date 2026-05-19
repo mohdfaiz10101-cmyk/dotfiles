@@ -5,11 +5,11 @@ After=network.target
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
-WorkingDirectory=/home/charlie/agi/finance
-ExecStart=/home/charlie/agi/.venv/bin/python3 -m uvicorn finance_agent:app --host 0.0.0.0 --port 9811 --log-level warning
+Environment=PYTHONPATH=/home/charlie/agi/finance
+Environment=HOME=/home/charlie
+ExecStart=/run/current-system/sw/bin/python3 -m uvicorn finance_agent:app --app-dir /home/charlie/agi/finance --host 0.0.0.0 --port 9811 --log-level warning
 Restart=on-failure
 RestartSec=10
-Environment=HOME=/home/charlie
 
 [Install]
 WantedBy=default.target

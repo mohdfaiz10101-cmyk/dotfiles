@@ -8,6 +8,7 @@ Test: 运行后检查 /tmp/agi-brain-status.json 被创建且包含 summary 字�
 import asyncio
 import json
 import os
+from notify import Notifier, Channel, Message, Priority, get_notifier
 import subprocess
 import sys
 import time
@@ -84,7 +85,7 @@ DISCORD_BOT_TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "")
 DISCORD_ALERTS_CHANNEL_ID = os.environ.get("DISCORD_ALERTS_CHANNEL_ID", "")
 
 LOOP_INTERVAL = 60  # 主循环间隔（秒，自适应：无变化时逐步延长）
-PROACTIVE_INTERVAL = 2 * 60 * 60  # 主动推送间隔（秒，2小时）
+PROACTIVE_INTERVAL = 4 * 60 * 60  # 主动推送间隔（秒，4小时）
 ADAPTIVE_MAX_INTERVAL = 300  # 自适应最大间隔（5分钟）
 ADAPTIVE_NOCHANGE_THRESHOLD = 5  # 连续N次无变化后开始延长间隔
 TRIGGER_FILE = "/tmp/agi-brain-trigger"  # 热触发文件：touch此文件立即执行一轮
@@ -93,9 +94,9 @@ _last_proactive_time: float = 0.0
 _last_sense_hash: str = ""
 _alert_last_sent: dict = {}  # key → timestamp，告警去重
 _ALERT_COOLDOWN = {
-    "letta": 900,      # 15分钟
-    "litellm": 900,    # 15分钟
-    "default": 3600    # 1小时
+    "letta": 1800,     # 30分钟
+    "litellm": 1800,   # 30分钟
+    "default": 10800   # 3小时
 }
 # 上次已知服务状态（用于检测恢复）
 _last_known_service_status: dict = {}
@@ -299,7 +300,7 @@ def sense() -> dict:
 # ── Act 阶段 ──────────────────────────────────────────────────────────────────
 
 _ALERT_COOLDOWN_FILE = Path(OP_TASKS_FILE).parent / "alert_cooldown.json"
-ALERT_COOLDOWN_SECS = 14400  # 4小时，防止进程重启后重复告警
+ALERT_COOLDOWN_SECS = 21600  # 6小时，防止进程重启后重复告警
 
 
 def _load_cooldown() -> dict:
@@ -472,55 +473,8 @@ def _write_op_tasks(actions: list[dict]) -> None:
         print(f"[ACT] 全部 {skipped} 个任务已存在，跳过写入")
 
 
-async def _send_telegram(message: str) -> None:
-    """发送 Telegram 通知（仅在有 token 时生效）。
-
-    Why: 主动推送重要告警给用户，不依赖用户主动查询
-    What: 调用 Telegram Bot API sendMessage
-    Test: mock httpx，验证调用参数包含正确的 chat_id 和 message
-    """
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return
-    import httpx
-
-    try:
-        async with httpx.AsyncClient(
-            timeout=10.0, proxy="http://127.0.0.1:7890"
-        ) as client:
-            await client.post(
-                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
-                json={
-                    "chat_id": TELEGRAM_CHAT_ID,
-                    "text": message,
-                    "parse_mode": "HTML",
-                },
-            )
-    except Exception as e:
-        print(f"[ACT] Telegram 发送失败：{e}")
-
-
-async def _send_discord(message: str) -> None:
-    """发送 Discord 告警到 alerts 频道。
-
-    Why: AGI Brain 告警同时推送 Telegram 和 Discord，双通道覆盖
-    What: 调用 Discord Bot API 发消息到 alerts 频道
-    Test: 确认 DISCORD_BOT_TOKEN 和 DISCORD_ALERTS_CHANNEL_ID 已配置后调用
-    """
-    if not DISCORD_BOT_TOKEN or not DISCORD_ALERTS_CHANNEL_ID:
-        return
-    import httpx
-
-    try:
-        async with httpx.AsyncClient(
-            timeout=10.0, proxy="http://127.0.0.1:7890"
-        ) as client:
-            await client.post(
-                f"https://discord.com/api/v10/channels/{DISCORD_ALERTS_CHANNEL_ID}/messages",
-                headers={"Authorization": f"Bot {DISCORD_BOT_TOKEN}"},
-                json={"content": message},
-            )
-    except Exception as e:
-        print(f"[ACT] Discord 发送失败：{e}")
+# ── 统一通知器（替代旧的 _send_telegram / _send_discord） ──────────────
+_n: Notifier = get_notifier()
 
 
 def _write_status(sense_data: dict, think_result: dict) -> None:
@@ -704,6 +658,26 @@ async def _auto_trigger_flows(sense_data: dict, loop_count: int) -> None:
                 print("[FLOW] social_intelligence 超时180s，跳过")
             except Exception as e:
                 print(f"[FLOW] social_intelligence 执行失败: {e}")
+
+    # 每600轮触发自主进化引擎（约10小时，每周日也可由 timer 单独触发）
+    EVOLVE_INTERVAL = int(os.environ.get("EVOLVE_INTERVAL", "600"))
+    if loop_count % EVOLVE_INTERVAL == 0:
+        evolve_file = flows_dir / "learn_evolve.py"
+        if evolve_file.exists():
+            print("[FLOW] 定时触发 learn_evolve 进化引擎")
+            try:
+                proc = await asyncio.create_subprocess_exec(
+                    sys.executable, str(evolve_file),
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                )
+                await asyncio.wait_for(proc.wait(), timeout=300)
+                _increment_flow_runs("learn_evolve")
+                print(f"[FLOW] learn_evolve 完成 (exit={proc.returncode})")
+            except asyncio.TimeoutError:
+                print("[FLOW] learn_evolve 超时300s，跳过")
+            except Exception as e:
+                print(f"[FLOW] learn_evolve 执行失败: {e}")
 
 
 # ── 主循环 ────────────────────────────────────────────────────────────────────
@@ -918,25 +892,40 @@ async def main_loop(once: bool = False) -> None:
                 _alert_last_sent[key] = now_ts
                 actionable.append(a)
 
-            # 方案D：推送恢复通知
+            # 方案D：合并推送（恢复+告警合并为一条消息）
+            parts = []
             if recovered_services:
-                recovery_msg = "✅ 服务恢复通知\n" + "\n".join(f"• {s} 已恢复正常" for s in recovered_services)
-                await _send_telegram(recovery_msg)
-                await _send_discord(recovery_msg)
-
+                parts.append("✅ 服务恢复\n" + "\n".join(f"• {s} 已恢复" for s in recovered_services))
             if actionable:
-                alert_msg = "🧠 AGI Brain 告警\n" + "\n".join(f"• {a}" for a in actionable)
-                await _send_telegram(alert_msg)
-                await _send_discord(alert_msg)
+                # 同服务告警合并
+                svc_alerts: dict[str, list[str]] = {}
+                for a in actionable:
+                    svc = _extract_service_from_alert(a) or "other"
+                    svc_alerts.setdefault(svc, []).append(a)
+                merged_lines = []
+                for svc, items in svc_alerts.items():
+                    if len(items) == 1:
+                        merged_lines.append(f"• {items[0]}")
+                    else:
+                        merged_lines.append(f"• [{svc}] {len(items)}个告警")
+                        for i in items:
+                            merged_lines.append(f"  - {i}")
+                parts.append("⚠️ 告警\n" + "\n".join(merged_lines))
+            if parts:
+                combined_msg = "🧠 AGI Brain\n" + "\n\n".join(parts)
+                await _n.send(Message(
+                    text=combined_msg,
+                    priority=Priority.HIGH,
+                    channels=[Channel.TELEGRAM, Channel.DISCORD],
+                ))
 
-        # 主动推送（每30分钟）
+        # 主动推送（间隔已延长至4h，通过统一通知中心限流）
         now_ts = time.time()
         if now_ts - _last_proactive_time >= PROACTIVE_INTERVAL:
             proactive_msg = generate_proactive_message()
             if proactive_msg:
                 print(f"[PROACTIVE] {proactive_msg}")
-                await _send_telegram(f"📡 AGI 主动推送\n{proactive_msg}")
-                await _send_discord(f"📡 AGI 主动推送\n{proactive_msg}")
+                await _n.info(f"📡 AGI 主动推送\n{proactive_msg}")
             _last_proactive_time = now_ts
 
         if once:

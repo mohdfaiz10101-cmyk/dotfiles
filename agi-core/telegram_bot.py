@@ -7,8 +7,11 @@ import asyncio
 import json
 import logging
 import os
+import sys
+import time
 import httpx
 from datetime import datetime
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -114,9 +117,10 @@ async def handle_message(text: str, message_id: int) -> str | None:
     elif cmd == "chat":
         return await _handle_ask(text)
     elif cmd == "help":
-        return "📋 命令:\n/status - 系统状态\n/check <服务> - 检查服务\n/restart <docker容器> - 重启\n/ask <问题> - 询问\n/help - 帮助"
+        return "📋 命令:\n/status 状态\n/check <服务> 检查\n/restart 重启\n任意文本 → supervisor 调度\n/help 帮助"
     
-    return None
+    # 普通文本消息 → 走 supervisor（不要求 /ask 前缀）
+    return await _handle_ask(text)
 
 
 async def _handle_status() -> str:
@@ -221,30 +225,54 @@ async def _handle_restart(container: str) -> str:
 
 
 async def _handle_ask(question: str) -> str:
-    """处理 /ask 命令：调用 LLM 回答问题。"""
+    """处理 /ask 命令：路由到 macg.py supervisor（LangGraph 多 Agent 调度）。
+    supervisor 会自动判断：简单问题→GLM直接答，运维→call_op，架构→call_cc，协作→call_crewai"""
     if not question:
         return "用法: /ask <问题>"
     
     try:
-        import httpx as _httpx
-        async with _httpx.AsyncClient(timeout=30.0) as client:
-            resp = await client.post(
-                "http://localhost:4000/v1/chat/completions",
-                headers={"Authorization": "Bearer sk-litellm-charlie-2026"},
-                json={
-                    "model": "glm-5-turbo",
-                    "messages": [
-                        {"role": "system", "content": "你是Charlie的AGI Brain助手。用中文简洁回复，不超过3行。"},
-                        {"role": "user", "content": question},
-                    ],
-                    "max_tokens": 300,
-                    "temperature": 0.5,
-                },
-            )
-            resp.raise_for_status()
-            return resp.json()["choices"][0]["message"]["content"].strip()
+        proc = await asyncio.create_subprocess_exec(
+            sys.executable, str(Path(__file__).parent / "macg.py"),
+            "-p", question, "--thread", "telegram",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            cwd=str(Path(__file__).parent),
+        )
+        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=120)
+        if proc.returncode == 0:
+            # 记录 supervisor 最后成功调用时间（供 waybar 调度呼吸灯检测）
+            try:
+                Path("/tmp/macg-supervisor-last-ok").write_text(str(int(time.time())))
+            except Exception:
+                pass
+            result = stdout.decode().strip()
+            return result[:4000] if result else "(supervisor 无输出)"
+        else:
+            return f"[supervisor error] {stderr.decode().strip()[:300]}"
+    except asyncio.TimeoutError:
+        return "[supervisor 超时 120s]"
     except Exception as e:
-        return f"LLM调用失败: {e}"
+        # 降级：supervisor 不可用时直接调 LLM
+        try:
+            import httpx as _httpx
+            async with _httpx.AsyncClient(timeout=30.0) as client:
+                resp = await client.post(
+                    "http://localhost:4000/v1/chat/completions",
+                    headers={"Authorization": "Bearer sk-litellm-charlie-2026"},
+                    json={
+                        "model": "glm-5-turbo",
+                        "messages": [
+                            {"role": "system", "content": "你是Charlie的AGI Brain助手。用中文简洁回复，不超过3行。"},
+                            {"role": "user", "content": question},
+                        ],
+                        "max_tokens": 300,
+                        "temperature": 0.5,
+                    },
+                )
+                resp.raise_for_status()
+                return resp.json()["choices"][0]["message"]["content"].strip()
+        except Exception:
+            return f"supervisor 不可用，LLM 降级也失败: {e}"
 
 
 async def listener_loop() -> None:

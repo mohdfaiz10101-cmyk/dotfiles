@@ -4,6 +4,12 @@ After=network.target
 
 [Service]
 Type=simple
+# 清除代理，FRP 直连 frps，不走 mihomo
+Environment="http_proxy="
+Environment="https_proxy="
+Environment="HTTP_PROXY="
+Environment="HTTPS_PROXY="
+Environment="no_proxy=127.0.0.1,localhost,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10"
 ExecStart=%h/.local/bin/frpc -c %h/.config/frpc/frpc.toml
 Restart=always
 RestartSec=15

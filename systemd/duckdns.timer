@@ -1,0 +1,9 @@
+[Unit]
+Description=DuckDNS DDNS Update Timer
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

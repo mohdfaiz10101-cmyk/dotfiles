@@ -828,7 +828,7 @@ Docker data-root 在 NTFS
   相关文件：opencode/opencode.json
 - [2026-05-10] [Aider] feat: 新增 Agent 生命周期优化规则（任务原子化/上下文管理/Token经济/会话接力）
   相关文件：ai-shared-rules.md
-- [2026-05-12] [Aider] feat: OpenCode × StepClaw 配置同步初始化
+- [2026-05-12] [Aider] feat: OpenCode 配置同步初始化（StepClaw 已移除）
   相关文件：README.md, openclaw-config/agents/agi-mentor.md, openclaw-config/agents/cc-autonomous.md, openclaw-config/agents/charlie-ego.md, openclaw-config/agents/content-creator.md
 
 ### [2026-05-16] GLM扫描更新
@@ -844,3 +844,5 @@ Docker data-root 在 NTFS
   - /api/memory/context, /api/memory/store（记忆管理）
   - /api/glm/competitive, /api/glm/codebase（GLM专用端点）
 - 架构变化: Hub API 从微信面板演进为统一网关，覆盖微信/CRM/社交图谱/知识库/Office/记忆/GLM 共7大模块
+- [2026-05-19] [Aider] feat: 配置完整性守护 + 记忆注入门禁系统
+  相关文件：bin/change-recorder.sh, bin/change-watcher, bin/integrity/baseline-auto-update.sh, bin/integrity/dead-component-detect.sh, bin/integrity/integrity-check.py

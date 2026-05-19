@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram auto-copy listener
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/tg-copy-listener.py
+Restart=always
+RestartSec=3
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=default.target

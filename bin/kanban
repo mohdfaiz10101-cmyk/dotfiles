@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec /mnt/ai/apps/kanban-tui/.venv/bin/python3 /mnt/ai/apps/kanban-tui/kanban.py "$@"

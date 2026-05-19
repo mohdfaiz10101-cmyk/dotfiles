@@ -15,7 +15,7 @@ import httpx
 # ── 配置 ───────────────────────────────────────────
 OP_TASKS_FILE = "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
 OP_RESULTS_FILE = "/tmp/op-task-results.json"
-STATE_FILE = "/tmp/op-push-state.json"
+STATE_FILE = "/home/charlie/.local/share/op-push/state.json"
 
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
@@ -24,6 +24,10 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 
 # 推送间隔（秒）
 POLL_INTERVAL = 30
+# 去抖窗口（秒）：文件变化后等待这么久再推送，期间变化合并
+DEBOUNCE_SECONDS = 60
+# 最小推送间隔（秒）：两次推送之间至少间隔
+MIN_PUSH_INTERVAL = 300  # 5分钟
 
 
 def _read_file_hash(filepath: str) -> Optional[str]:
@@ -161,39 +165,6 @@ async def _push_to_telegram(message: str) -> bool:
         traceback.print_exc()
         return False
 
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = {
-        "chat_id": TELEGRAM_CHAT_ID,
-        "text": message,
-    }
-
-    try:
-        # 不使用代理，直接连接
-        async with httpx.AsyncClient(timeout=30, trust_env=False) as client:
-            resp = await client.post(url, json=payload)
-            print(
-                f"[OP-PUSH] Telegram 响应: {resp.status_code} {resp.text[:100]}",
-                flush=True,
-            )
-            return resp.status_code == 200
-    except Exception as e:
-        import traceback
-
-        print(f"[OP-PUSH] Telegram 推送失败: {e}", flush=True)
-        traceback.print_exc()
-        return False
-
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "HTML"}
-
-    try:
-        async with httpx.AsyncClient(timeout=30) as client:
-            resp = await client.post(url, json=payload)
-            return resp.status_code == 200
-    except Exception as e:
-        print(f"[OP-PUSH] Telegram 推送失败: {e}")
-        return False
-
 
 async def _push_to_discord(message: str) -> bool:
     """推送到 Discord"""
@@ -213,6 +184,8 @@ async def _push_to_discord(message: str) -> bool:
 
 async def main():
     """主循环：监控 op-tasks.md 变化并推送"""
+    import time
+
     print(f"[OP-PUSH] 启动 — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     sys.stdout.flush()
 
@@ -222,66 +195,77 @@ async def main():
         return
 
     state = _load_state()
-    last_hash = state["last_hash"]
-    print(f"[OP-PUSH] 初始状态: last_hash={last_hash}")
-    sys.stdout.flush()
+    last_hash = state.get("last_hash")
+    last_push_time = state.get("last_push_time", 0)
+    pending_hash = None  # 去抖：等待合并的 hash
+    debounce_until = 0   # 去抖截止时间
+    print(f"[OP-PUSH] 初始状态: last_hash={last_hash}, last_push={last_push_time}", flush=True)
 
     while True:
         try:
-            # 检测文件变化
+            now = time.time()
             current_hash = _read_file_hash(OP_TASKS_FILE)
-            print(
-                f"[OP-PUSH] 检查: current={current_hash[:8] if current_hash else 'None'}, last={last_hash[:8] if last_hash else 'None'}",
-                flush=True,
-            )
-            if current_hash and current_hash != last_hash:
-                print(f"[OP-PUSH] 检测到文件变化: {current_hash[:8]}", flush=True)
 
-                # 解析任务
+            if current_hash and current_hash != last_hash:
+                # 有变化 — 进入去抖窗口
+                if pending_hash is None:
+                    print(f"[OP-PUSH] 检测到变化: {current_hash[:8]}，进入去抖 {DEBOUNCE_SECONDS}s", flush=True)
+                    debounce_until = now + DEBOUNCE_SECONDS
+                    pending_hash = current_hash
+                elif current_hash != pending_hash:
+                    # 去抖窗口内文件又变了，重置计时器
+                    pending_hash = current_hash
+                    debounce_until = now + DEBOUNCE_SECONDS
+                # else: 同一个 hash，不重置计时器
+
+            # 去抖窗口结束，执行推送
+            if pending_hash and now >= debounce_until:
                 content = Path(OP_TASKS_FILE).read_text()
                 tasks = _parse_op_tasks(content)
-                print(f"[OP-PUSH] 解析到 {len(tasks)} 个任务", flush=True)
+                print(f"[OP-PUSH] 去抖结束，解析到 {len(tasks)} 个任务", flush=True)
 
-                # 过滤：只推送刚完成/失败的任务（不在 last_pushed_tasks 中）
+                # 只推送新完成的任务
                 all_new_tasks = [
-                    t
-                    for t in tasks
+                    t for t in tasks
                     if t["status"] in ("ok", "fail")
                     and t["task_id"] not in state["last_pushed_tasks"]
                 ]
-                # 限制最多推送 5 个，避免历史任务刷屏
-                new_tasks = sorted(
-                    all_new_tasks, key=lambda x: x["line"], reverse=True
-                )[:5]
-                print(
-                    f"[OP-PUSH] 新任务: {len(all_new_tasks)} 个（推送最新 {len(new_tasks)} 个）",
-                    flush=True,
-                )
+                # 最新5条
+                new_tasks = sorted(all_new_tasks, key=lambda x: x["line"], reverse=True)[:5]
+                print(f"[OP-PUSH] 新任务: {len(all_new_tasks)} 个（推送最新 {len(new_tasks)} 个）", flush=True)
 
-                if new_tasks:
+                # 最小推送间隔检查
+                time_since_last = now - last_push_time
+                if new_tasks and time_since_last >= MIN_PUSH_INTERVAL:
                     message = _format_message(new_tasks)
                     print(f"[OP-PUSH] 推送 {len(new_tasks)} 个任务", flush=True)
-                    print(f"[OP-PUSH] 消息预览: {message[:100]}...", flush=True)
 
-                    # 推送到 Telegram 和 Discord
                     tg_ok = await _push_to_telegram(message)
-                    print(f"[OP-PUSH] Telegram: {'✅' if tg_ok else '❌'}", flush=True)
                     dc_ok = await _push_to_discord(message)
-                    print(f"[OP-PUSH] Discord: {'✅' if dc_ok else '❌'}", flush=True)
 
                     if tg_ok or dc_ok:
-                        # 更新状态
-                        state["last_hash"] = current_hash
-                        state["last_pushed_tasks"].extend(
-                            [t["task_id"] for t in new_tasks]
-                        )
+                        state["last_hash"] = pending_hash
+                        state["last_pushed_tasks"].extend([t["task_id"] for t in new_tasks])
+                        state["last_push_time"] = now
+                        last_hash = pending_hash
+                        last_push_time = now
                         _save_state(state)
                     else:
-                        print("[OP-PUSH] 推送全部失败，保留状态等待下次重试")
-                else:
-                    print("[OP-PUSH] 无新任务需要推送")
-                    state["last_hash"] = current_hash
+                        print("[OP-PUSH] 推送失败，保留状态", flush=True)
+                        last_hash = pending_hash
+                elif new_tasks:
+                    skip = int(MIN_PUSH_INTERVAL - time_since_last)
+                    print(f"[OP-PUSH] 跳过推送（距上次仅 {int(time_since_last)}s，需等 {skip}s）", flush=True)
+                    last_hash = pending_hash
+                    state["last_hash"] = pending_hash
                     _save_state(state)
+                else:
+                    print("[OP-PUSH] 无新任务需要推送", flush=True)
+                    last_hash = pending_hash
+                    state["last_hash"] = pending_hash
+                    _save_state(state)
+
+                pending_hash = None
 
             await asyncio.sleep(POLL_INTERVAL)
 

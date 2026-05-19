@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-letta-sync.py — memory/*.md → Letta archival 增量同步
-每日运行，只注入新增条目（基于 hash 去重）
+letta-sync.py — memory/*.md + changelog.jsonl → Letta archival 增量同步
+v2: 新增 changelog 事件流增量写入，hash 去重
 """
 import hashlib, json, os, re, requests, time
 from pathlib import Path
@@ -12,6 +12,8 @@ SYSADMIN = "agent-8651643c-e753-47ed-9759-bd955c6ac240"
 CODE = "agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea"
 MEM = Path.home() / ".claude/projects/-home-charlie/memory"
 HASH_CACHE = Path("/tmp/letta-sync-hashes.json")
+CHANGELOG = MEM / "changelog.jsonl"
+CL_SYNC_POS = Path("/tmp/letta-sync-cl-pos")  # changelog 读取位置
 
 def load_hashes():
     return json.loads(HASH_CACHE.read_text()) if HASH_CACHE.exists() else {}
@@ -31,9 +33,57 @@ def count_letta(agent_id):
     r = requests.get(f"{BASE}/agents/{agent_id}/archival-memory?limit=2000", headers=HEADERS, timeout=15)
     return len(r.json()) if r.ok else -1
 
+def get_agent(scope):
+    """根据 scope 路由到 Letta agent"""
+    s = scope.lower()
+    if any(k in s for k in ('nixos','systemd','service','proxy','security','docker')):
+        return SYSADMIN
+    if any(k in s for k in ('agi','frontend','openclaw','opencode','code','api')):
+        return CODE
+    return SYSADMIN  # 默认
+
+def sync_changelog(hashes):
+    """增量同步 changelog.jsonl 新事件到 Letta"""
+    if not CHANGELOG.exists():
+        return 0
+    lines = CHANGELOG.read_text().strip().split('\n')
+    pos = int(CL_SYNC_POS.read_text()) if CL_SYNC_POS.exists() else 0
+    if pos >= len(lines):
+        return 0
+
+    added = 0
+    for line in lines[pos:]:
+        try:
+            ev = json.loads(line)
+        except json.JSONDecodeError:
+            pos += 1
+            continue
+        text = f"[event:{ev['type']}] {ev['desc']}"
+        if ev.get('scope'):
+            text += f" (scope: {ev['scope']})"
+        text = text[:800]
+        h = entry_hash(text)
+        if h not in hashes:
+            agent = get_agent(ev.get('scope', ''))
+            if write_letta(agent, text):
+                hashes[h] = True
+                added += 1
+        pos += 1
+
+    CL_SYNC_POS.write_text(str(pos))
+    return added
+
+# 主流程
 hashes = load_hashes()
 new_total = 0
 
+# 1. changelog 增量（优先，最新数据）
+cl_added = sync_changelog(hashes)
+if cl_added > 0:
+    print(f"[SYNC] changelog.jsonl: +{cl_added} 条事件")
+    new_total += cl_added
+
+# 2. memory/*.md 全量扫描（兜底）
 ROUTES = [
     (MEM / "lessons-learned.md",    SYSADMIN, "[lessons]",      r"^- \[20\d\d"),
     (MEM / "nixos-config.md",       SYSADMIN, "[nixos-config]", r"^##"),
@@ -61,4 +111,4 @@ for fpath, agent_id, prefix, pattern in ROUTES:
         print(f"[SYNC] {fpath.name}: +{added} 条新增")
 
 save_hashes(hashes)
-print(f"[SYNC] 完成: +{new_total} 条 | nixos-sysadmin={count_letta(SYSADMIN)} | code-assistant={count_letta(CODE)}")
+print(f"[SYNC] 完成: +{new_total} 条 | changelog={cl_added} | nixos-sysadmin={count_letta(SYSADMIN)} | code-assistant={count_letta(CODE)}")

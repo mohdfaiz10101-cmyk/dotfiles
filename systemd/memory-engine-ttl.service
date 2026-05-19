@@ -1,0 +1,7 @@
+[Unit]
+Description=Memory Engine: TTL过期清理
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/data/memory-engine/memory-engine.py cleanup 60
+TimeoutStartSec=15

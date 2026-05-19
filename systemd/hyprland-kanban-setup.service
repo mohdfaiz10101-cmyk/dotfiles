@@ -1,0 +1,13 @@
+[Unit]
+Description=Hyprland Kanban Workspace Setup
+After=graphical-session.target
+Requires=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash -c 'sleep 3 && hyprctl keyword bind "$mod,9,exec,/home/charlie/bin/kanban-workspace" && hyprctl keyword bind "$mod SHIFT,9,movetoworkspace,9"'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target

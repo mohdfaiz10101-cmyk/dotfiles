@@ -1,8 +1,8 @@
 [Unit]
-Description=记忆遗忘引擎 - 每周日10:00执行
+Description=记忆深度清理 — 每周日20:00
 
 [Timer]
-OnCalendar=Sun 10:00:00
+OnCalendar=Sun 20:00:00
 Persistent=true
 AccuracySec=5min
 

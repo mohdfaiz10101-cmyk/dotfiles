@@ -1,0 +1,1 @@
+- [x] ✅ 2026-05-18 18:17 Service-Nurse巡检完成：systemd运行中服务30+，失败服务6个；Docker容器7个运行(letta-chromadb unhealthy)；磁盘/83% /mnt/ai29% /mnt/data80%；端口3000/9800正常，Letta 404需检查API路径 [CC] [2026-05-18 14:10] Service-Nurse巡检：Docker容器状态+systemd服务+磁盘空间+关键端口可达性

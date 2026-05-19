@@ -49,6 +49,12 @@
 - 命令：`cmd /c "..."` | 代理：mihomo `192.168.2.100:7890`
 - Python 3.12：`C:\Users\G\AppData\Local\Programs\Python\Python312\`
 
+## OP 禁止委托 CC（NO_CC — 死规则）
+- OP/Sisyphus 禁止将任务委托给 CC（cc-autonomous）处理
+- 所有任务 OP 直接执行，包括 `/etc/nixos/` 配置修改
+- 连续失败 ≥2 次 → 标记 [!] 写原因，交 Charlie 人工决策，不交给 CC
+- 违反时 → 写入 lessons-learned.md
+
 ## NixOS 专项
 - 路径禁令：NEVER 硬编码 `/nix/store/xxx/bin/xxx`，用 `/run/current-system/sw/bin/xxx`
 - NEVER TOUCH：不得随意修改 `/etc/nixos/`，除非用户明确要求且先验证
@@ -74,6 +80,22 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 4. 禁止直接跳过记忆系统
 5. Letta 恢复后优先使用 `macg_macg_letta_*` 工具
 
+## 变更自动记忆（CHANGE_AUTO_MEMORY — 死规则）
+**事件溯源**：所有配置/服务/架构变更 MUST 写入 `memory/changelog.jsonl`。
+- **自动**：`change-watcher.service`（inotify）监控配置文件变更，自动记录
+- **手动**：修改 daemon.yaml/systemd service/agent 配置后，MUST 执行：
+  ```
+  ~/.local/bin/change-recorder.sh <类型> "<描述>" "<范围>"
+  ```
+  类型：`config-change` | `service-change` | `agent-remove` | `file-change`
+- **组件移除 MUST 三步**：
+  1. `grep -ri "组件名" memory/*.md` → 清理所有引用
+  2. `change-recorder.sh agent-remove "移除xxx" "scope"`
+  3. `letta_store` 写归档确认
+- **session-notes.md 不再手写**：由 `rebuild-session-notes.timer` 每30分钟从 changelog 自动重建
+- **调取记忆用 `recall.sh "关键词"`**：自动标注 [已验证]/[未验证]/[过期]
+- **Letta 同步**：`letta-sync.py` v2 优先从 changelog 增量写入，兜底扫 md 文件
+
 ## 模型路由决策表
 | 任务类型 | 执行方式 |
 |---------|---------|
@@ -88,6 +110,12 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 **Deep 路由自动升级（DEEP_ROUTE_UPGRADE）**：Router `Route: deep | Confidence: 80%+` 且当前为 Turbo → `glm` 委派
 
 **失败升级链**：连续2次失败 → 传递原始任务+失败原因，格式 `[ESCALATION] 从X升级到Y`
+
+**任务失败升级（TASK_FAILBACK — Sisyphus 专用）**：
+- 批次失败率 >50% → `[ESCALATE→arch] 本轮失败率{N}%，疑似系统级问题`
+- 单任务连续≥3轮 SKIP/FAIL → `[ESCALATE→arch] 任务{N}卡死，请诊断根因`
+- 每批结束输出决策摘要：完成/跳过/失败/失败率/决策
+- arch 诊断回来后 MUST 根据诊断调整策略，不得原样重试
 
 ## 基础设施清单（SOLUTION_FIRST — 死规则）
 方案第一行输出：`[SOLUTION_FIRST] 基于已有: {组件} → 叠加: {新增}`
@@ -105,6 +133,7 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 | mihomo 代理 | `localhost:7890` |
 | **3000 控制台** | `localhost:3000` — Next.js dev模式（HMR） |
 | memory/ | `~/.claude/projects/-home-charlie/memory/` |
+| changelog | `memory/changelog.jsonl`（事件溯源） |
 | L2/L3规则 | `memory/rules-secondary.md` |
 
 ## 自动验证
@@ -132,3 +161,20 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 - - 代码索引: `code-search "关键词"` (FTS5全文), `code-indexer` (重建索引) | DB: `~/.local/share/code-index/codebase.db` | timer: 每小时自动更新
 - 上下文快照: `~/.claude/projects/-home-charlie/memory/.current-context.md`
 - 会话历史: `~/.claude/projects/-home-charlie/memory/.last-session.md`
+
+## 空壳防护（SHELL_GUARD — 死规则）
+
+**建成 ≠ 完成，跑通才算。**
+
+搭建任何组件（服务/面板/API/agent）后 MUST 执行：
+1. `smoke-test.sh` — 冒烟测试，验证端口+真实请求+链路
+2. `dead-component-detect.sh` — 死组件检测，发现搭了没用的空壳
+3. 端到端测试：从入口发真实请求，走完全链路，检查出口结果
+
+**判定标准**：
+- 端口 200 但 API 返回 404 = 空壳（路由没接）
+- 服务 active 但 CPU 0%、无连接 = 空壳（从未被调用）
+- 面板能渲染但数据源不存在 = 空壳（假数据或无 API）
+- 搭建时说"已打通"但没有 curl 验证记录 = 空壳
+
+**修复流程**：发现空壳 → 定位断点 → 修复 → 重跑 smoke-test → 通过才标记完成

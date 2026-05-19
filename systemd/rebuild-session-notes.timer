@@ -1,0 +1,9 @@
+[Unit]
+Description=每30分钟从 changelog 重建 session-notes.md
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

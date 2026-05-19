@@ -5,7 +5,7 @@ macg_mcp.py — macg 工具的 MCP Server
 CC 用 Claude 思考，macg 用 GLM 执行 — 各司其职，只开一个终端
 """
 
-import os, sys, json, subprocess
+import os, sys, json, subprocess, urllib.request, urllib.error, urllib.parse
 from pathlib import Path
 import requests
 from datetime import datetime
@@ -53,19 +53,20 @@ def macg_services() -> str:
     """检查 macg 生态服务状态：LiteLLM/Letta/AGI-GW/mihomo/Paperclip。"""
     import urllib.request
     checks = {
-        "LiteLLM": "http://localhost:4000/health",
-        "Letta": "http://localhost:8283/v1/agents",
-        "AGI-GW": "http://localhost:9900/health",
-        "Paperclip": "http://localhost:3100/health",
-        "mihomo": "http://localhost:9090/",
+        "LiteLLM": ("http://localhost:4000/health", {}),
+        "Letta": ("http://localhost:8283/v1/agents/", LETTA_HEADERS),
+        "AGI-GW": ("http://localhost:9900/health", {}),
+        "Paperclip": ("http://localhost:3100/health", {}),
+        "mihomo": ("http://localhost:9090/", {}),
     }
     results = {}
-    for name, url in checks.items():
+    for name, (url, hdrs) in checks.items():
         try:
-            urllib.request.urlopen(url, timeout=2)
+            req = urllib.request.Request(url, headers=hdrs)
+            urllib.request.urlopen(req, timeout=2)
             results[name] = "OK"
-        except Exception:
-            results[name] = "DOWN"
+        except Exception as e:
+            results[name] = f"DOWN({e})"
     return json.dumps(results, ensure_ascii=False)
 
 
@@ -108,7 +109,8 @@ def macg_letta_search(query: str) -> str:
     """搜索 Letta 语义记忆。查询历史经验、踩坑记录、架构决策。"""
     import urllib.request, urllib.error
     try:
-        with urllib.request.urlopen("http://localhost:8283/v1/agents", timeout=2) as r:
+        req = urllib.request.Request(f"{LETTA_BASE}/v1/agents/", headers=LETTA_HEADERS)
+        with urllib.request.urlopen(req, timeout=2) as r:
             agents = json.loads(r.read().decode())
         agent_list = agents if isinstance(agents, list) else agents.get("agents", [])
         agent_id = None
@@ -121,14 +123,17 @@ def macg_letta_search(query: str) -> str:
         if not agent_id:
             return "[FAIL] 无可用 Letta agent"
 
-        payload = json.dumps({"query": query, "limit": 5}).encode()
+        from urllib.parse import quote
         req = urllib.request.Request(
-            f"http://localhost:8283/v1/agents/{agent_id}/archival-memory/search",
-            data=payload, headers={"Content-Type": "application/json"}, method="POST"
+            f"{LETTA_BASE}/v1/agents/{agent_id}/archival-memory/search",
+            headers=LETTA_HEADERS, method="GET"
         )
-        with urllib.request.urlopen(req, timeout=3) as r:
+        # append query params to URL
+        sep = "?" if "?" not in req.full_url else "&"
+        req.full_url = f"{req.full_url}{sep}query={quote(query)}&limit=5"
+        with urllib.request.urlopen(req, timeout=5) as r:
             result = json.loads(r.read().decode())
-        memories = result if isinstance(result, list) else result.get("memories", [])
+        memories = result if isinstance(result, list) else result.get("results", result.get("memories", []))
         if not memories:
             return "Letta 无相关记忆"
         hits = [m.get("text", m.get("content", ""))[:300] for m in memories[:5] if m.get("text") or m.get("content")]
@@ -142,7 +147,8 @@ def macg_letta_store(text: str, tags: str = "") -> str:
     """向 Letta 写入新记忆。text: 内容，tags: 逗号分隔标签。"""
     import urllib.request
     try:
-        with urllib.request.urlopen("http://localhost:8283/v1/agents", timeout=2) as r:
+        req = urllib.request.Request(f"{LETTA_BASE}/v1/agents/", headers=LETTA_HEADERS)
+        with urllib.request.urlopen(req, timeout=2) as r:
             agents = json.loads(r.read().decode())
         agent_list = agents if isinstance(agents, list) else agents.get("agents", [])
         agent_id = agent_list[0].get("id") if agent_list else None
@@ -151,10 +157,10 @@ def macg_letta_store(text: str, tags: str = "") -> str:
 
         payload = json.dumps({"text": text}).encode()
         req = urllib.request.Request(
-            f"http://localhost:8283/v1/agents/{agent_id}/archival-memory",
-            data=payload, headers={"Content-Type": "application/json"}, method="POST"
+            f"{LETTA_BASE}/v1/agents/{agent_id}/archival-memory/",
+            data=payload, headers=LETTA_HEADERS, method="POST"
         )
-        with urllib.request.urlopen(req, timeout=3) as r:
+        with _LETTA_OPENER.open(req, timeout=3) as r:
             return "[OK] 已写入 Letta"
     except Exception as e:
         return f"[FAIL] {e}"
@@ -246,10 +252,25 @@ def macg_cc_delegate(task: str, timeout_sec: int = 120) -> str:
 # ── Prompt 优化器 ─────────────────────────────────────────────────────────────
 
 LETTA_BASE = "http://localhost:8283"
-LETTA_HEADERS = {"Content-Type": "application/json"}
+LETTA_API_KEY = os.environ.get("LETTA_API_KEY", "letta")
+LETTA_HEADERS = {
+    "Content-Type": "application/json",
+    "Authorization": f"Bearer {LETTA_API_KEY}",
+}
 LETTA_AGENTS = ["nixos-sysadmin", "code-assistant", "opus-analyst"]
 LITELLM_URL = "http://localhost:4000"
 LITELLM_KEY = "sk-litellm-charlie-2026"
+
+
+class _LettaRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Letta 返回 307 但 urllib 不跟随 POST 重定向，需要手动处理。"""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        # 307 Temporary Redirect: 保持 POST method 和 body
+        new_req = urllib.request.Request(newurl, data=req.data, headers=req.headers, method=req.method)
+        return new_req
+
+
+_LETTA_OPENER = urllib.request.build_opener(_LettaRedirectHandler)
 
 # 排除的 memory 文件（过旧/无关）
 _SKIP_FILES = {"MEMORY.md", "rules-secondary.md", "lessons-learned-archive.md",
@@ -261,7 +282,8 @@ def _letta_search_multi(query: str, limit: int = 3) -> list[dict]:
     import urllib.request, urllib.error
     results = []
     try:
-        with urllib.request.urlopen(f"{LETTA_BASE}/v1/agents", timeout=2) as r:
+        req = urllib.request.Request(f"{LETTA_BASE}/v1/agents/", headers=LETTA_HEADERS)
+        with urllib.request.urlopen(req, timeout=2) as r:
             agents = json.loads(r.read().decode())
         agent_list = agents if isinstance(agents, list) else agents.get("agents", [])
         agent_map = {a["name"].lower(): a["id"] for a in agent_list if a.get("name")}
@@ -273,14 +295,13 @@ def _letta_search_multi(query: str, limit: int = 3) -> list[dict]:
         if not aid:
             continue
         try:
-            payload = json.dumps({"query": query, "limit": limit}).encode()
-            req = urllib.request.Request(
-                f"{LETTA_BASE}/v1/agents/{aid}/archival-memory/search",
-                data=payload, headers=LETTA_HEADERS, method="POST"
-            )
+            from urllib.parse import quote
+            search_url = f"{LETTA_BASE}/v1/agents/{aid}/archival-memory/search?query={quote(query)}&limit={limit}"
+            req = urllib.request.Request(search_url, headers=LETTA_HEADERS, method="GET")
             with urllib.request.urlopen(req, timeout=5) as r:
                 data = json.loads(r.read().decode())
-            for m in (data if isinstance(data, list) else data.get("memories", []))[:limit]:
+            items = data if isinstance(data, list) else data.get("results", data.get("memories", []))
+            for m in items[:limit]:
                 text = m.get("text", m.get("content", ""))
                 if text:
                     results.append({"source": f"letta:{target_name}", "text": text[:500]})

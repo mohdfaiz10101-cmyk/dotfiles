@@ -1,16 +1,1 @@
-[Unit]
-Description=SSH Persistent Tunnel to Windows PC
-After=network-online.target tailscaled.service
-Wants=network-online.target
-
-[Service]
-Type=simple
-ExecStart=/run/current-system/sw/bin/ssh -MN -o ControlPath=/tmp/ssh-mux-G@192.168.2.36:22 -o ServerAliveInterval=15 -o ServerAliveCountMax=6 -o TCPKeepAlive=yes -o ExitOnForwardFailure=no G@192.168.2.36
-Restart=always
-RestartSec=10
-StandardOutput=journal
-StandardError=journal
-Environment=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
-
-[Install]
-WantedBy=default.target
+/dev/null

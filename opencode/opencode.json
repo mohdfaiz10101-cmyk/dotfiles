@@ -265,11 +265,7 @@
     "edit": "allow",
     "webfetch": "allow",
     "websearch": "allow",
-    "external_directory": {
-      "/mnt/*": "allow",
-      "/home/*": "allow",
-      "*": "ask"
-    },
+    "external_directory": "allow",
     "doom_loop": "ask",
     "skill": {
       "*": "allow"

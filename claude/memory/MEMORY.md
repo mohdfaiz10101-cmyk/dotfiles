@@ -9,6 +9,7 @@
 - [架构连续性](feedback_architecture_continuity.md) — 方案必须基于已有基础设施叠加
 - [手机操作自动执行](feedback_phone_operations.md) — 手机操作 MUST 用 ADB/Chrome CDP 直接执行，禁止让用户手动操作手机
 - [压缩输出格式](compaction-output-format.md) — opencode/诊断输出遵循 R1-R8 规则，禁用过渡句
+- [AI工具决策必须联网搜最新](feedback_ai_tools_search_first.md) — OpenCode/LiteLLM/MCP等方案前MUST WebSearch验证当前版本行为
 - [Waybar 管理](feedback_waybar-management.md) — 只用 systemctl --user 管理，禁止手动启动
 - [OpenCode Token 消耗优化](opencode-cost-optimization.md) — L1+L2 已完成（MCP 裁剪、模型降级、快捷指令）
 - [OpenCode 架构审计](opencode-architecture-audit.md) — 诊断不合理配置，L3 优化方案已执行
@@ -23,7 +24,7 @@
 - **Android 手机** — OnePlus Ace 5 Pro (PKR110) Android 16，**已 Root (Magisk)**，**ADB WiFi 已连接** (port 5555)，Termux + Tailscale
 - **Android 平板** — 小米平板5 (24117RK2CC)，Obsidian 同步，SSH 连接主机，**已 Root (Magisk)**，ADB WiFi Tailscale IP: 100.104.211.70:5555
 - **VR 头显** — Meta Quest，串流待定
-- **Windows** — SSH `G@192.168.2.36` 密码 `1` | Tailscale 组网
+- **Windows** — SSH 密码 `1` | 192.168.2.36 已失效 | 连接方式: `ssh winpc`(FRP:2222) > `ssh winpc-ts`(Tailscale:100.91.93.99) > `ssh winpc-wifi`(192.168.123.136 DHCP)
 - 网络：Tailscale + Syncthing + mihomo
 - **代理订阅源**：
   - 良心云（主）：`https://liangxin.xyz/api/v1/liangxin?OwO=648440cdc61b35fff7e4176ba7dac827`
@@ -157,3 +158,10 @@
 
 ## CLI 偏好
 - `session_list` 默认 `limit=500`（之前是50），alias: `ses` / `ses-new` / `ses-old`
+
+## FRP 状态 (2026-05-18 更新)
+- frps: NixOS 本机 :7000, dashboard :7500, token=frp-token-charlie-2026
+- NixOS frpc: 10个代理(ssh:2223/tty:17699/mosh×3/opencode:19890/hub:19891/letta:19892/openclaw:19893/sisy:18090/crewai:18091/bridge:24801)
+- Windows frpc: 2个代理(ssh:2222/rdp:3389), 路径 C:\Toolsrpc\, 开机自启 schtasks FRPClient
+- Win IP: DHCP 192.168.123.x (WiFi), 连 frps 用 192.168.123.209:7000
+- 关键修复: frpc.service 必须清除 http_proxy(防 mihomo 拦截 FRP 协议)

@@ -1,10 +1,10 @@
 [Unit]
-Description=记忆遗忘引擎 - Memory Decay Engine
+Description=记忆深度清理 — Letta distill + 日志轮转 + 归档压缩
 After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/memory-decay-engine.py --force --layer all --report
+ExecStart=/home/charlie/.local/bin/memory-cron.sh weekly
 WorkingDirectory=%h
 Environment=HOME=%h
-Environment=PATH=/run/current-system/sw/bin:%h/.local/bin
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin

@@ -135,33 +135,15 @@ def format_report(stats: dict, detail_level: str = "summary") -> str:
     return "\n".join(lines)
 
 
-async def _send_telegram(text: str) -> None:
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return
-    import httpx
-    try:
-        async with httpx.AsyncClient(timeout=10.0) as c:
-            await c.post(
-                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
-                json={"chat_id": TELEGRAM_CHAT_ID, "text": text, "parse_mode": "HTML"},
-            )
-    except Exception as e:
-        print(f"[REPORT] Telegram 失败：{e}")
-
-
-async def _send_discord(text: str) -> None:
-    if not DISCORD_BOT_TOKEN or not DISCORD_ALERTS_CHANNEL_ID:
-        return
-    import httpx
-    try:
-        async with httpx.AsyncClient(timeout=10.0, proxy="http://127.0.0.1:7890") as c:
-            await c.post(
-                f"https://discord.com/api/v10/channels/{DISCORD_ALERTS_CHANNEL_ID}/messages",
-                headers={"Authorization": f"Bot {DISCORD_BOT_TOKEN}"},
-                json={"content": text[:1900]},
-            )
-    except Exception as e:
-        print(f"[REPORT] Discord 失败：{e}")
+async def _send_report(text: str) -> None:
+    """通过统一通知中心推送报告"""
+    from notify import get_notifier, Channel, Message, Priority
+    n = get_notifier()
+    await n.send(Message(
+        text=text,
+        priority=Priority.LOW,
+        channels=[Channel.TELEGRAM, Channel.DISCORD],
+    ))
 
 
 def save_desktop_report(stats: dict, report_text: str) -> Path:
@@ -205,8 +187,7 @@ async def generate_and_send(detail_level: str = "summary") -> str:
     print(f"[REPORT] 已写入 {fpath}")
 
     # 推送
-    await _send_telegram(report_text)
-    await _send_discord(report_text)
+    await _send_report(report_text)
 
     return report_text
 

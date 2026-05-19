@@ -2,7 +2,7 @@
 # 磁盘卫兵 v2 - 智能多层清理 + 大目录迁移检测
 # 每 5 分钟执行，实时防护根分区爆满
 
-set -euo pipefail
+set -euo
 
 LOG="/home/charlie/.local/share/disk-sentinel.log"
 MIGRATE_REPORT="/home/charlie/.local/share/disk-migrate-report.txt"
@@ -109,7 +109,7 @@ detect_large_dirs() {
             fi
             report_content+="  ${size}MB  $dir  $target_hint\n"
         fi
-    done < <(du -sm "$HOME"/.* "$HOME"/* 2>/dev/null | sort -rn | head -20)
+    done < <(du -sm "$HOME"/.* "$HOME"/* 2>/dev/null | sort -rn | awk 'NR<=20')
 
     if [ "$report_needed" = true ]; then
         {
