@@ -3,7 +3,7 @@
 # 覆盖所有 ~/ 下的 git 仓库，自动 commit + push
 # 路径: ~/bin/git-backup.sh (git tracked by dotfiles)
 
-set -euo pipefail
+set -uo pipefail
 LOG="/tmp/git-backup-$(date +%Y%m%d).log"
 DATE=$(date '+%Y-%m-%d %H:%M')
 OK=0; FAIL=0; SKIP=0
@@ -18,7 +18,13 @@ backup_repo() {
         log "[SKIP] $desc — 非 git 仓库"; ((SKIP++)); return
     fi
 
-    cd "$path" || { log "[FAIL] $desc — 无法进入目录"; ((FAIL++)); return; }
+    cd "$path" 2>/dev/null || { log "[FAIL] $desc — 无法进入目录 (权限?)"; ((FAIL++)); return; }
+
+    # 设置安全远程URL（优先SSH）
+    local remote=$(git remote get-url origin 2>/dev/null || echo "")
+    if [[ "$remote" == https://* ]]; then
+        git remote set-url origin "git@github.com:${remote#https://github.com/}" 2>/dev/null || true
+    fi
 
     local changes
     changes=$(git status --porcelain 2>/dev/null || true)
