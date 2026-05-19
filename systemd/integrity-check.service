@@ -1,0 +1,15 @@
+[Unit]
+Description=Config Integrity Guard — 每日配置完整性巡检
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/bin/integrity/integrity-check.py
+StandardOutput=journal
+StandardError=journal
+Environment="HOME=%h"
+WorkingDirectory=%h
+Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin"
+
+[Install]
+WantedBy=default.target

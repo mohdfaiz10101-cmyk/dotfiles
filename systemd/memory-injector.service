@@ -1,0 +1,13 @@
+[Unit]
+Description=Memory Injector — 每30分钟将最新记忆注入agent配置
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/bin/integrity/memory-injector.py
+StandardOutput=journal
+StandardError=journal
+Environment="HOME=%h"
+
+[Install]
+WantedBy=default.target

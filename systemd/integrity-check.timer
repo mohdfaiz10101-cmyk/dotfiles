@@ -1,0 +1,12 @@
+[Unit]
+Description=Config Integrity Guard Timer — 早晚各一次巡检
+Requires=integrity-check.service
+
+[Timer]
+OnCalendar=09:00
+OnCalendar=21:00
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

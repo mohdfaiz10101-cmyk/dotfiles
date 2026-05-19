@@ -1,0 +1,10 @@
+[Unit]
+Description=Memory Injector Timer — 每30分钟执行
+Requires=memory-injector.service
+
+[Timer]
+OnCalendar=*:00,30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

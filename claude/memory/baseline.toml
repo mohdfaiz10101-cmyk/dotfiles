@@ -1,0 +1,66 @@
+# Config Integrity Baseline — 配置不变性基线
+# 修改此文件需通过 baseline-auto-update.sh，禁止手动编辑
+# 生成时间: 2026-05-19
+
+[meta]
+version = "1.0"
+created = "2026-05-19"
+last_check = "2026-05-19"
+
+# ===== 受保护端口 =====
+# 这些端口绑定不可漂移，变更需自动归因
+[ports]
+litellm       = { port = 4000, proto = "tcp", desc = "LiteLLM API网关" }
+litellm-ui    = { port = 4001, proto = "tcp", desc = "LiteLLM管理界面" }
+letta         = { port = 8283, proto = "tcp", desc = "Letta记忆系统" }
+chromadb      = { port = 8000, proto = "tcp", desc = "ChromaDB向量库" }
+agi-gateway   = { port = 9900, proto = "tcp", desc = "AGI FastAPI网关" }
+hub-api       = { port = 9801, proto = "tcp", desc = "Hub API" }
+mihomo-proxy  = { port = 7890, proto = "tcp", desc = "mihomo HTTP代理" }
+mihomo-mixed  = { port = 7891, proto = "tcp", desc = "mihomo混合代理" }
+mihomo-api    = { port = 9090, proto = "tcp", desc = "mihomo API" }
+paperclip     = { port = 3100, proto = "tcp", desc = "Paperclip控制面" }
+console-3000  = { port = 3000, proto = "tcp", desc = "Next.js控制台" }
+redis         = { port = 6379, proto = "tcp", desc = "Redis缓存" }
+memgraph      = { port = 7687, proto = "tcp", desc = "Memgraph图数据库" }
+frps          = { port = 7000, proto = "tcp", desc = "FRP服务端" }
+
+# ===== 关键配置文件 =====
+# 变更时对比checksum，漂移需归因
+[configs]
+mihomo       = { path = "/etc/mihomo/config.yaml", sha256 = "6218976fb6db4385", desc = "代理配置" }
+opencode     = { path = "/home/charlie/.config/opencode/opencode.json", sha256 = "34455f7029f40e7c", desc = "OpenCode配置" }
+macg         = { path = "/home/charlie/agi/macg.py", sha256 = "bd697a5e49f67db7", desc = "AGI Brain主程序" }
+claude-agents = { path = "/home/charlie/CLAUDE.md", sha256 = "auto", desc = "Claude规则" }
+open-agents   = { path = "/home/charlie/.config/opencode/AGENTS.md", sha256 = "auto", desc = "OpenCode规则" }
+zshrc         = { path = "/home/charlie/.zshrc", sha256 = "auto", desc = "Shell配置" }
+nixos-flake   = { path = "/etc/nixos/flake.nix", sha256 = "auto", desc = "NixOS Flake" }
+
+# ===== 架构约束 =====
+# 关键依赖链不可断
+[constraints]
+
+[constraints.agi-chain]
+desc = "AGI消息链路"
+chain = ["telegram-bot → macg.py → LiteLLM:4000 → 模型API"]
+
+[constraints.memory-chain]
+desc = "记忆系统链路"
+chain = ["agent → Letta:8283 → embedding:8286 → ChromaDB:8000"]
+
+[constraints.proxy-chain]
+desc = "代理链路"
+chain = ["应用 → mihomo:7890/7891 → 境外节点"]
+
+[constraints.wechat-chain]
+desc = "微信桥接"
+chain = ["macg.py → 微信Bridge(Windows) → 微信客户端"]
+
+# ===== 用户偏好久久不变 =====
+# 这些设置 agent 启动前自动注入
+[preferences]
+no_cc_delegate = "2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务"
+usb_windows    = "2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线"
+global_proxy   = "mihomo GLOBAL必须保持自动选择，禁止DIRECT"
+real_time      = "所有操作立刻生效，禁止'建议''下次'"
+disk_rule      = "/mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun"
