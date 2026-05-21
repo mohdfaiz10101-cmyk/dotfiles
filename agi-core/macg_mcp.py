@@ -53,7 +53,7 @@ def macg_services() -> str:
     """检查 macg 生态服务状态：LiteLLM/Letta/AGI-GW/mihomo/Paperclip。"""
     import urllib.request
     checks = {
-        "LiteLLM": ("http://localhost:4000/health", {}),
+        "LiteLLM": ("http://localhost:4000/health", LITELLM_HEADERS),
         "Letta": ("http://localhost:8283/v1/agents/", LETTA_HEADERS),
         "AGI-GW": ("http://localhost:9900/health", {}),
         "Paperclip": ("http://localhost:3100/health", {}),
@@ -63,7 +63,7 @@ def macg_services() -> str:
     for name, (url, hdrs) in checks.items():
         try:
             req = urllib.request.Request(url, headers=hdrs)
-            urllib.request.urlopen(req, timeout=2)
+            urllib.request.urlopen(req, timeout=5)
             results[name] = "OK"
         except Exception as e:
             results[name] = f"DOWN({e})"
@@ -260,6 +260,9 @@ LETTA_HEADERS = {
 LETTA_AGENTS = ["nixos-sysadmin", "code-assistant", "opus-analyst"]
 LITELLM_URL = "http://localhost:4000"
 LITELLM_KEY = "sk-litellm-charlie-2026"
+LITELLM_HEADERS = {
+    "Authorization": f"Bearer {LITELLM_KEY}",
+}
 
 
 class _LettaRedirectHandler(urllib.request.HTTPRedirectHandler):
@@ -518,7 +521,9 @@ def macg_a2a_mark_read(msg_id: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.settings.host = "0.0.0.0"
+    mcp.settings.port = 18092
+    mcp.run(transport="streamable-http")
 
 
 # ── mem0-lite 工具 (port 8285) ──

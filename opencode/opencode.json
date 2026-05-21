@@ -171,6 +171,11 @@
       }
     }
   },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 8192
+  },
   "model": "openai-compatible/step-3.5-flash-2603-plan",
   "small_model": "openai-compatible/step-3.5-flash-2603-plan",
   "default_agent": "sisyphus",
@@ -182,14 +187,6 @@
         "python3",
         "/home/charlie/.local/bin/letta-mcp",
         "--stdio"
-      ]
-    },
-    "context7": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@upstash/context7-mcp@latest"
       ]
     },
     "ref": {
@@ -231,13 +228,46 @@
         "/run/current-system/sw/bin/google-chrome-stable"
       ]
     },
-    "memory": {
+    "memory-engine": {
       "type": "local",
       "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-memory"
+        "python3",
+        "/mnt/ai/data/memory-engine/memory-mcp-server.py"
       ]
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "/home/charlie/.npm-global/bin/mcp-server-github"
+      ],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "sqlite": {
+      "type": "local",
+      "command": [
+        "/home/charlie/.npm-global/bin/db-mcp",
+        "--sqlite-native",
+        "/home/charlie/Desktop/crm.db"
+      ]
+    },
+    "fetch": {
+      "type": "local",
+      "command": [
+        "/home/charlie/.npm-global/bin/mcp-fetch-server"
+      ]
+    },
+    "vision": {
+      "type": "local",
+      "command": [
+        "/home/charlie/.npm-global/bin/vision-mcp"
+      ],
+      "environment": {
+        "VISION_API_BASE_URL": "http://localhost:4000/v1",
+        "VISION_API_KEY": "sk-litellm-charlie-2026",
+        "VISION_MODEL": "glm-4.6v-flash"
+      }
     }
   },
   "plugin": [
@@ -273,7 +303,7 @@
     "mcp": {
       "*": "allow"
     },
-    "memory": "allow",
+    "memory-engine": "allow",
     "todo": "allow",
     "schedule": "allow"
   },

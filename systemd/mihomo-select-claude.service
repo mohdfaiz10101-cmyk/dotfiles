@@ -5,7 +5,7 @@ Requires=mihomo.service
 
 [Service]
 Type=oneshot
-ExecStart=/run/current-system/sw/bin/bash -c 'sleep 5 && curl -X PUT http://127.0.0.1:9091/proxies/GLOBAL -H "Content-Type: application/json" -d "{\"name\": \"B - 🇺🇸 US 15 TG: @nodpai\"}"'
+ExecStart=/home/charlie/.config/systemd/user/mihomo-select-claude.sh
 
 [Install]
 WantedBy=default.target

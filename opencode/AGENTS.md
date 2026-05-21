@@ -1,81 +1,100 @@
-# OpenCode Global Rules（单一事实源: ai-shared-rules.md）
+# OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-05-19 14:10 -->
+<!-- compiled: 2026-05-21 00:18 -->
 
-# AI 共享规则（单一事实源）
-# 修改此文件 → 自动同步到 CLAUDE.md / AGENTS.md / macg.py
-# 同步脚本: ~/.local/bin/ai-rules-sync.sh
+## 语言规则
+- MUST 始终使用中文回复，代码注释可用英文
+- 系统通知（notify-send、Telegram、日志）MUST 中文，禁止英文状态码
 
-## 用户基础设施（所有 AI 必须遵守）
-Letta:8283 | LiteLLM:4000 | AGI-Gateway:9900 | Paperclip:3100 | mihomo:7890
-op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
-**方案必须在已有组件上叠加，禁止建议替代品，最小侵入优先。**
+## 输出格式
+- **R1** 零废话：禁止寒暄前缀、第一人称动作描述、过渡句
+- **R2** 指令式语态：`动作 → 结果 → 下一步`
+- **R3** 状态标记：只用 `[OK]` `[FAIL]` `[SKIP]`
+- **R4** 紧凑布局：段落不超3行
+- **R5** 加粗节制：每段最多1个
+- **R6** 代码限制：单块≤15行
+- **R7** 并行执行：能并行一定并行
+- **R8** 装饰预算：≤10%
 
-## 用户决策习惯（所有 AI 强制学习）
-- 实时优先：所有操作立刻/马上/即时生效，禁止"建议""下次""等一会儿"
-- 强制执行：直接落地，不喜欢只给建议而不行动
-- GLM优先：状态查询/方案讨论 → 免费模型；真正写文件/改系统才用高价模型
-- 断了即恢复：服务中断立即自动恢复，不等定时器
-- 增量总结：对话不保留完整历史，只保留架构精髓+决策+待处理+核心信息
+## NixOS 专项
+- 路径禁令：NEVER 硬编码 `/nix/store/xxx/bin/xxx`，用 `/run/current-system/sw/bin/xxx`
+- NEVER TOUCH：不得随意修改 `/etc/nixos/`，除非用户明确要求且先验证
+- **REBUILD_SAFE（死规则）**：rebuild 前 MUST 执行 `nixos-rebuild-safe`（构建VM→测试→通过才写boot），禁止直接 `switch` 后 `reboot`
+- **AI防护体系（强制记忆）**：
+  - `nixos-rebuild-safe` — 安全重建（dry-build+验证+AI修复）
+  - `nixos-ai-fix-engine` — 错误模式匹配+自动修复（95%+置信度）
+  - `nixos-update-checker` — 更新检测+安全补丁提醒
+  - `nixos-decision-engine` — AI决策引擎
+  - `nixos-llm-analyzer` — LLM复杂错误分析
+  - `nixos-gui-guardian` — GUI巡检+自动修复（systemd timer）
+  - `nixos-config-check` — 配置自检
+- 关键修复：noGUI specialisation `mkForce []` → `mkAfter`（/etc/nixos/configuration.nix:133）
+- 常用命令：
 
-## OP 自动执行规则（死规则）
-- op-tasks.md 中的 [ ] 任务 MUST 直接执行，CC 写入即代表用户授权
-- 禁止输出"是否执行""需要确认""建议你"
-- 执行完立即改 [ ] → [x] ✅ {时间} {摘要}，失败→[!]
-- 连续执行不停顿，全部完成后输出汇总
+## 自动验证
+- 涉及第三方工具/API 先 WebSearch 验证最新用法
+- **搜索年份**：MUST 包含当前年份（2026）
+- 绝对禁止打开 `docs.litellm.ai/docs/providers`
+- 修改服务代码后 MUST：重启 → curl测试 → 检查日志 → 验证前端
 
-## 任务失败智能升级（TASK_FAILBACK — 死规则，所有 AI 强制）
-- **批次失败率阈值**：本轮执行中 FAIL/ERROR 占比 >50% → 自动 `[ESCALATE→arch] 本轮失败率{N}%，疑似系统级问题，委派arch诊断`
-- **单任务卡死**：同一任务连续 ≥3 轮标记 SKIP/FAIL → `[ESCALATE→arch] 任务{N}卡死，请分析根因`
-- **每批输出决策摘要**：`完成:{x} 跳过:{y} 失败:{z} 失败率:{p}%  决策:[NORMAL|ESCALATE→arch]`
-- arch 诊断返回后 MUST 根据诊断调整策略，禁止原样重试
+## MCP 智能调用策略（2026-05-21 优化）
 
-## 语言规则（所有 AI）
-- 始终使用中文回复用户
-- 系统通知（systemd/脚本/定时任务）发出的消息必须中文
+### 核心原则
+- **记忆优先**：Letta + memory-engine 必须优先调用，保持记忆完整性
+- **按需调用**：非核心MCP根据任务类型智能选择，避免全量加载
+- **并行优化**：独立MCP调用并行执行，减少等待时间
 
-## Agent 生命周期优化（死规则 — 所有 AI 强制遵守）
+### MCP 分级
 
-### 任务原子化
-- 一个 Agent 一个生命周期：领任务 → 执行 → 交付 → 结束
-- 禁止一个 Agent 连续处理多个不相关任务，完成后 MUST 开新会话
-- 任务拆分粒度：单个函数/文件/配置 → 一个原子任务
+**Tier 1 - 必须（每次会话）**
+- `letta` / `memory-engine`：记忆检索与存储
+- `macg`：AGI Brain 协调
 
-### 上下文管理
-- 对话超过 30 轮 MUST 输出 `## Current State Summary`（当前状态 + 已完成 + 待处理 + 关键变量）
-- 带着总结开新会话，禁止空手切换
-- 禁止每步传递全项目结构，改为按需索引（on-demand）
+**Tier 2 - 高频（按任务类型）**
+- `ref`：文档搜索、代码库查询
+- `github`：代码管理、PR/Issue操作
+- `sqlite`：CRM数据查询（仅当任务涉及客户/联系人时）
+- `wechat`：微信相关任务
 
-### Token 经济
-- 小模型干小事：状态查询/探索/格式化 → turbo/flash；写代码/架构 → pro/旗舰
-- 同一会话内不要重复发送相同代码片段（利用 Context Caching）
-- 探索结果 MUST 缓存到记忆系统（Letta/lessons-learned），后续会话按需读取
+**Tier 3 - 中频（需要时）**
+- `playwright`：前端验证、UI测试
+- `fetch`：网页获取
+- `vision`：图像分析
 
-### 会话接力
-- 任务未完成 → 不切换会话（保持 task_id 续接）
-- 任务已完成 → 立刻结束会话（防止历史堆积）
-- 交接格式：`[完成] 任务名 | [结果] ... | [遗留] ... | [下一步] ...`
+### 调用规则
+1. **会话启动**：必须调用 `letta_letta_recall` + `memory-engine_memory_get`
+2. **任务执行前**：根据关键词选择MCP（代码→ref，GitHub→github，微信→wechat+sqlite）
+3. **并行调用**：独立MCP可并行（letta+memory-engine，ref+github，wechat+sqlite）
+4. **记忆完整性**：关键发现→letta_letta_store，配置变更→memory-engine_memory_set
 
-### 反模式（严禁）
-- 严禁 Agent 每步强制传递全工程结构
-- 严禁开新会话后重新做已有结论的探索
-- 严禁在任务中间换 Agent 重新开始（MUST 用 task_id 续接）
+### 禁止行为
+- ❌ 无意义调用：不调用与当前任务无关的MCP
+- ❌ 重复调用：同一MCP 5分钟内不重复查询相同内容
+- ❌ 串行等待：独立MCP必须并行
+
+## 工作模式
+- 批量并行 | 自主决策先做后报告 | 复杂问题 think hard
+- NixOS/Flake 问题必须先 Read 实际配置
+- 出错不重复同样方法，连续失败2次 /clear
 
 
-## 记忆系统状态（自动注入 2026-05-19 18:17）
+## 记忆系统状态（自动注入 2026-05-21 12:17）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | N/A / N/A |
 | Letta MCP | active |
-| lessons-learned条目 | 50 |
+| lessons-learned条目 | 44 |
 | 历史会话数 | 0
 0 |
 
 ### 高频主题（最近）
   • NixOS (×2)
-  • Letta (×2)
   • Win (×1)
-  • waybar由home-manager管理时 (×1)
-  • Playwright (×1)
+  • OpenClaw→OpenCode (×1)
+  • OnePlus (×1)
+  • ibus (×1)
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
+
+---
+Source: ~/CLAUDE.md | Auto-compiled

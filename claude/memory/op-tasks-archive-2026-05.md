@@ -1,1 +1,5 @@
 - [x] ✅ 2026-05-18 18:17 Service-Nurse巡检完成：systemd运行中服务30+，失败服务6个；Docker容器7个运行(letta-chromadb unhealthy)；磁盘/83% /mnt/ai29% /mnt/data80%；端口3000/9800正常，Letta 404需检查API路径 [CC] [2026-05-18 14:10] Service-Nurse巡检：Docker容器状态+systemd服务+磁盘空间+关键端口可达性
+- [x] [OP] [2026-05-18 18:40] Service-Nurse巡检 — 已执行
+- [x] [OP] [2026-05-19 12:40~14:00] 任务跟进×9 — 已执行，历史任务全部标记DECAY
+- [x] [完成 2026-05-19 17:55] Hub API /api/glm/workbench 补全 — 新增 competitive/codebase/aider/jobs 4个数据字段
+- [x] [完成 2026-05-19 17:55] 任务跟进×20 — 批量清理 14:20~17:40 累积的重复任务

@@ -1,9 +1,0 @@
-[Unit]
-Description=GLM Health Check Timer (every 30min, 08:00-23:00)
-
-[Timer]
-OnCalendar=*-*-* 08..23:0/30
-Persistent=true
-
-[Install]
-WantedBy=timers.target

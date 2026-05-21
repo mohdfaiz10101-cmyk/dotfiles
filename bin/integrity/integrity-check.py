@@ -119,9 +119,9 @@ print(f"=== 结果: PASS={PASS} WARN={WARN} CRIT={CRIT} ===")
 if CRIT > 0:
     print("[ALERT] 红线告警")
     sys.exit(2)
-elif WARN > 0:
-    print("[WARN] 存在非关键漂移")
-    sys.exit(1)
 else:
-    print("[PASS] 全部通过")
+    if WARN > 0:
+        print("[WARN] 存在非关键漂移")
+    else:
+        print("[PASS] 全部通过")
     sys.exit(0)

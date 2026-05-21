@@ -11,6 +11,7 @@
 - [压缩输出格式](compaction-output-format.md) — opencode/诊断输出遵循 R1-R8 规则，禁用过渡句
 - [AI工具决策必须联网搜最新](feedback_ai_tools_search_first.md) — OpenCode/LiteLLM/MCP等方案前MUST WebSearch验证当前版本行为
 - [Waybar 管理](feedback_waybar-management.md) — 只用 systemctl --user 管理，禁止手动启动
+- [Hyprland配置错误诊断](feedback_hyprland_configerrors.md) — 报错先 `hyprctl configerrors`；windowrule 0.54+ 块语法
 - [OpenCode Token 消耗优化](opencode-cost-optimization.md) — L1+L2 已完成（MCP 裁剪、模型降级、快捷指令）
 - [OpenCode 架构审计](opencode-architecture-audit.md) — 诊断不合理配置，L3 优化方案已执行
 - **L3 完成**：自动降级链 + 成本监控 + 权限加固（成本从 ¥240/天 → ¥18/天，降幅 92.5%）
@@ -35,7 +36,7 @@
   - claude.com/anthropic.com 路由到 🌟 付费专线 → 📱 手机移动（SOCKS5）
 
 ## AI 架构（详见独立文件）
-- [AI 三套系统详情](ai-cluster-architecture.md) — CC/Aider/Paperclip + 端口 + Letta
+- [AI 双系统详情](ai-cluster-architecture.md) — CC/Aider + 端口 + Letta
 - [OP Agent 巡查体系](op-agent-system.md) — Skill 路由 + Letta Agents + Timer 调度
 - [AI 工具对比](ai-tools.md) — OpenCode/Aider/Cline 等
 - [OP 升级 1.15.3 + 记忆修复](opencode-upgrade-1.15.3.md) — 2026-05-17 全面升级记录

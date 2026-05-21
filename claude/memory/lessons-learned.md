@@ -15,6 +15,20 @@
 - [2026-04-27] Hyprland 黑屏 → render.explicit_sync 在 0.54+ 已废弃，删除该配置
 - [2026-05-03] Hyprland+KDE 双桌面冲突 → 避免同时启用
 - [2026-05-10] Hyprland Super+D 全屏冲突 → 只保留 `fullscreen,1`，删除 `fullscreen`
+- [2026-05-21] **Hyprland windowrule 语法大改（0.42→0.54 三代变迁）**：
+  - ❌ 旧（已废弃）：`windowrulev2 = float, class:^(name)$`
+  - ❌ 旧中间版（也废弃）：`windowrule = float, class:^(name)$`
+  - ✅ 新（0.54+ 块语法）：
+    ```
+    windowrule {
+      name = fcitx-rules     # 必须第一行
+      match:class = ^(name)$
+      float = 1
+      no_anim = 1            # 注意：是 no_anim 不是 noanim
+    }
+    ```
+  - 诊断命令：`hyprctl configerrors`（直接返回具体行号和错误原因，优先用这个）
+  - 遇到 Hyprland 配置错误红色覆盖层 → 先 `hyprctl configerrors` 再修
 
 ## Docker/服务
 - [2026-05-03] Docker 16 容器同时启动 → 用 docker-ordered-start.sh 分层启动（Tier1→Tier4）
@@ -48,24 +62,39 @@
 - [2026-05-18] [OP] 待办: FRP 端口 18091 需添加到 NixOS frps allowPorts（受保护配置，需 CC 或 nixos-rebuild）
 - [2026-05-18] [OP] 成功记录: Windows frpc | 调用: scp+ssh G@192.168.123.136 | 结果: 成功 | 场景: Win frpc 部署到 C:\Toolsrpc\, 版本 0.66.0, 开机自启 schtasks FRPClient, 隧道 win-ssh:2222 win-rdp:3389 | 注意: Win IP 是 DHCP(192.168.123.x), NixOS frpc 连 frps 用 192.168.123.209:7000
 - [2026-05-18] [OP] 用户偏好: Charlie要求不再委派CC(macg_cc_delegate)，OP自行完成所有任务，CC委托路由永久禁用
-- [2026-05-18] [OP] Windows↔NixOS连接稳定性诊断 | 根因: 无网线+3条路径全走WiFi+WiFi波动大(22-300ms抖动)+Windows无有线网卡IP | 修复: (1)SSH config多路径回退winpc(frp)/winpc-ts(Tailscale)/winpc-wifi (2)Windows frpc心跳10s/超时30s/连接池2 (3)WiFi BSSID锁定FC:FC:43:26:60:B8+功率管理关闭 (4)frp-watchdog v3自动通过Tailscale触发Windows frpc重启 (5)ssh-win脚本自动回退3路径 (6)Windows侧win-frpc-watchdog.ps1待推送 | 注意: 192.168.2.36已失效, Windows当前IP是192.168.123.136(WiFi), Tailscale 100.91.93.99
-- [2026-05-18] [OP] 成功记录: Letta API | 调用: archival-memory/search改GET+query参数 | 结果: 成功 | 场景: Letta v0.x API, POST→GET, 返回{results:[...]}非数组
-- [2026-05-18] [OP] 成功记录: embedding-server.service | 调用: systemd user service运行ONNX MiniLM-L6-v2 | 结果: 端口8286稳定运行 | 场景: Letta Docker需要宿主机embedding API, venv路径/home/charlie/agi/.venv
-- [2026-05-18] [OP] 成功记录: Letta Docker no_proxy | 调用: docker-compose.yml添加小写no_proxy | 结果: Letta容器可访问宿主机8286 | 场景: Docker内大小写proxy env不一致导致连接拒绝
-- [2026-05-19] [OP] 失败学习: systemd服务重启风暴 | 错误: letta.service/obsidian.service ExecStart路径不存在导致10秒重启循环 | 正确: disable无效服务 + 安装systemd-orphan-guard.timer每小时自动清理 | 原因: venv清理/路径迁移后服务文件未同步
+- [2026-05-21] [OP] cc-decision-engine.py 每10分钟生成"任务跟进" → memory op-tasks.md 堆积，需定期清理或修复生成逻辑
+- [2026-05-21] [OP] Service-Nurse巡检: letta-chromadb 持续 unhealthy，需排查 ChromaDB 容器健康检查配置
+- [2026-05-21] [OP] NixOS frp.nix 配置已包含 18092，但需 sudo nixos-rebuild switch 激活防火墙规则
+- [2026-05-19] [OP] 成功记录: ibus Hyprland修复 | 调用: windowrule float=yes + Ctrl+Space bind + ibus-daemon --cache=refresh | 结果: config ok, dispatch works | 场景: ibus popup focus stealing + Ctrl+Space not switching
+- [2026-05-20] [OP] 成功记录: ibus Ctrl+Space修复 | 调用: NixOS home-manager配置 + windowrule浮动 + hyprland keybind + /home/charlie/.local/bin/ibus-toggle.sh | 结果: config ok, dispatch works, rebuild成功 | 场景: Ctrl+Space不触发ibus切换
 
-- [2026-05-19] [OP] 用户偏好: Charlie的USB线常插Windows不在NixOS | 场景: ADB连接手机时 | 正确做法: SSH到Windows(G@100.91.93.99)执行adb tcpip 5555激活无线调试，然后NixOS直连 | 根因: NixOS USB口不够用，Charlie习惯USB线插Windows
-- [2026-05-19] [OP] 成功记录: otp-sync多元连接方案 | 场景: 手机ADB连接失败时 | 调用: 4层连接优先级 WiFi直连→USB→Windows SSH中转→局域网扫描 | 注意: 手机当前WiFi IP 192.168.123.22，子网192.168.123.0/24
-- [2026-05-19] [OP] 成功记录: waybar自定义模块添加 | 场景: waybar由home-manager管理时 | 调用: 生成config.override覆盖符号链接+kill -SIGUSR2重载 | 注意: /etc/nixos/home/charlie.nix已同步更新OTP模块，下次nixos-rebuild后无需override
-- [2026-05-19] [OP] 记忆修正: StepClaw 已从架构移除但记忆未更新 | 错误: session-notes.md 仍引用 StepClaw 4-agent/待办/文档 | 修正: 清除 StepClaw 引用，标注为 3-agent，写入 Letta 归档 | 原因: 组件移除时未同步清理记忆文件
-- [2026-05-19] [OP] 成功记录: NixOS systemd python3 | 调用: ExecStart=/run/current-system/sw/bin/python3 (不用.venv) | 结果: 成功 | 场景: NixOS systemd服务需导入nix store中的Python包(fastapi等)时，必须用系统python而非.venv wrapper
-- [2026-05-19] [OP] 空壳防护: smoke-test.sh + dead-component-detect.sh | 修复: CrewAI 8701 挂死(旧进程未释放端口) | CLAUDE.md 新增 SHELL_GUARD 死规则 | 根因: AI 搭建完不验证链路，建成≠完成
-- [2026-05-19] [OP] 调度打通: telegram_bot._handle_ask → macg.py -p supervisor → GLM/Claude/CrewAI | 修复: make_models全部走LiteLLM(ChatOpenAI替代ChatAnthropic) | 模型名: claude-opus-4-6-20250514, claude-sonnet-4-5-20250514 | waybar调度呼吸灯: dispatch-green/yellow/red | agi.venv需pip install langchain-core/openai/anthropic/langgraph
-- [2026-05-19] [OP] 记忆一致性教训 | 问题: MEMORY.md/command-reference.md等5个文件残留旧IP 192.168.2.36, 新会话读到旧信息直接执行导致连接失败 | 根因: lessons-learned记录了变更但未自动回刷到其他文件, 模型默认先读MEMORY.md | 修复: (1)全局替换17处旧IP为ssh winpc (2)以后关键基础设施变更(IP/端口/路径)写入lessons-learned时MUST同步grep全目录替换 | 场景: 任何跨文件一致性问题
-- [2026-05-19] [OP] 工具: Playwright MCP | 调用: navigate platform.stepfun.com | 结果: 失败(ERR_EMPTY_RESPONSE) | 场景: Playwright MCP不走系统代理，被墙站点无法访问
-- [2026-05-19] [OP] 成功记录: opencode闪退恢复 | 调用: SIGILL崩溃后自动重启 | 结果: opencode --continue + web服务正常运行 | 场景: Node.js v24.14.0 + opencode 1.15.3 偶发SIGILL
+## NixOS rebuild 安全规则 (2026-05-21)
+- rebuild 前 MUST 执行 `nixos-rebuild-safe`（构建→VM测试→通过才写boot）
+- 禁止直接 `sudo nixos-rebuild switch` 后立刻 `sudo reboot`
+- 禁止直接 `sudo nixos-rebuild boot && sudo reboot` 跳过 VM 测试
+- VM 测试失败 → 不写 boot，先修配置
+- AI agent 读到 `last-result.json` 中 overall=FAIL → 自动分析 failed_units 并建议修复
+- 结果文件: `~/.cache/nixos-vm-test/last-result.json`
+- MCP 查询: `nixos-vm-result --fail` 获取失败服务列表- [2026-05-21] [OP] 成功记录: chromadb健康检查修复 | 根因: chromadb/chroma镜像不含curl,健康检查test用curl导致持续unhealthy(OCI runtime exec failed: curl not found) | 修复: 改用CMD-SHELL + bash /dev/tcp端口检测 | 文件: /mnt/ai/ai-cluster/letta/docker-compose.yml
 
-- [2026-05-19] [OP] 永久禁用配置回滚 | 根因: 3个定时器脚本 (ai-config-sync-pull/12min, ai-config-guard/10min, opencode-config-guard/11min) 自动检测"异常"并用 git restore/checkout --theirs/json.dump 覆盖用户手动修改 | 修复: 全部改为仅检测+通知, 永不自动覆盖 | 文件: ~/bin/ai-config-sync-pull.sh, ~/.local/bin/ai-config-guard.sh, ~/.local/bin/opencode-config-guard.sh | 新增: config-lock.sh 手动锁定工具
-- [2026-05-19] [OP] 失败学习: 记忆调用纪律 | 错误: 执行手机ADB任务时跳过了记忆检索步骤,直接尝试本地ADB,忽略了已知的"USB线插在Windows上"和"手机已Root"信息 | 正确: 执行前MUST调用macg_context_probe + 读取lessons-learned.md | 触发条件: 涉及手机/外部设备/Windows等跨系统操作时
-- [2026-05-19] [OP] Tailwind v4修复: @tailwindcss/oxide Scanner的`**/*` glob在NixOS/ext4项目路径下不递归子目录。根因: native Rust walker bug。解决: 在globals.css中用brace expansion显式列举每个组件子目录 `@source "../app/components/{dir1,dir2,...}/*.{ts,tsx}"`。深度嵌套目录(如dashboard/charts)需单独`@source`。`@source "../app"`(Auto模式)不工作，必须用Pattern+单层`*`。修复后CSS从7.6KB→42KB，200+工具类生成。- [2026-05-19] [Aider] fix: 全系统git备份覆盖所有仓库+修复路径
-  相关文件：bin/git-backup.sh, systemd/git-backup.service
+- [2026-05-21] [OP] 成功记录: Letta Telegram告警彻底修复 | 调用: 移除letta.service + 批量修复agent ID + 修复health-monitor hook检查 | 结果: health-monitor 0问题, Telegram通知正常 | 场景: 遗留systemd服务crash-loop + 硬编码错误agent ID导致API检查失败
+
+- [2026-05-21] [OP] 修复 nixos-sysadmin agent ID 错误 | 错误ID: agent-f7473a7f / agent-8651643c | 正确ID: agent-0040ded4-1831-4b76-a4a4-62519a416a5a | 修复脚本: letta-distill, memory-router, glm-proxy | 根因: agent ID 变更后未同步更新所有引用
+- [2026-05-21] [OP] 成功记录: 手机剪贴板同步 | 调用: phone-clip-sync + systemd user service + FRP 15555 | 结果: 服务已启动，等待手机上线 | 场景: NixOS ↔ Android 剪贴板双向同步
+- [2026-05-21] [OP] 成功记录: 手机 FRP 隧道 | 调用: frpc 0.66.0 + Magisk service.d + TOML配置修复 | 结果: 15555端口开放，ADB over TCP可用 | 场景: OnePlus Ace 5 Pro 通过FRP隧道实现永远在线调试
+- [2026-05-21] [OP] frpc TOML格式坑 | 错误: frpc.toml包含[common]节头导致配置不解析 | 修复: 必须省略[common]节头，直接写proxy/client配置 | 场景: frpc 0.66.0 TOML解析器不支持[common]节，需扁平化配置
+- [2026-05-21] [OP] 修复 nixos-sysadmin agent ID 错误 | 错误ID: agent-8651643c-e753-47ed-9759-bd955c6ac240 | 正确ID: agent-0040ded4-1831-4b76-a4a4-62519a416a5a | 修复文件: discord_bot.py, hub-api.py | 根因: agent ID 变更后未同步更新所有引用
+
+- [2026-05-21] [OP] 停用 glm-proxy 及相关服务 | 原因: 使用率极低(2天1次请求), 频繁崩溃, 有更好替代方案 | 停用: glm-proxy.service, agent-orchestrator.service, ai-watchdog.service, glm-monitor.service | 删除: glm-float, glm-task, glm-watch, glm-monitor, glm-health-check.sh, glm, glm-enhanced | 保留: LiteLLM(localhost:4000)作为统一模型路由
+- [2026-05-21] [OP] 成功记录: opencode-autoupgrade修复 | 调用: 移除SOCKS5代理+增强重试逻辑 | 结果: GitHub下载正常(47M/32s)，复制重试3次 | 场景: GitHub下载通过SOCKS5代理超时，需直连
+- [2026-05-21] [OP] 成功记录: opencode-session-guard验证 | 调用: dry-run检查+SQL查询 | 结果: 0损坏session(总525)，问题已恢复 | 场景: 之前报告3个损坏session，实际已自行清理
+
+- [2026-05-21] [OP] 成功记录: OpenCode上下文优化 | 调用: 停止cc-decision-engine.timer + AGENTS.md添加MCP智能路由 + 创建opencode-smart-mcp启动器 | 结果: 任务跟进死循环已停止, MCP分级策略已定义 | 场景: OpenCode上下文被填满的根因是MCP调用爆炸+任务跟进死循环
+- [2026-05-21] [OP] 成功记录: PipeWire Qt 警告修复 | 调用: 设置 LD_LIBRARY_PATH + 创建 playwright-mcp.service | 结果: 服务启动正常，qt.multimedia 警告消失 | 场景: Chrome Qt 组件加载 PipeWire 库失败
+- [2026-05-21] [OP] 成功记录: Vector VRL 语法修复 | 调用: 简化 condition 为 .status == "failed" | 结果: 服务启动正常，日志流写入 /var/lib/ai-context/live-errors.json | 场景: VRL 不支持 ?? // unwrap_or coalesce 等操作符，需简化表达式
+- [2026-05-21] [OP] 成功记录: FRP phone-adb 代理修复 | 调用: frpc localPort=5555 + remotePort=60004 | 结果: 双代理(phone-adb+phone-ssh)均注册成功, ADB over FRP可用 | 场景: phone-adb localPort必须匹配adbd实际监听端口5555, remotePort选未占用allowPorts(60004)
+- [2026-05-21] [OP] 成功记录: OpenCode呼吸灯监控 | 调用: opencode-health-monitor.sh + systemd timer 5min | 结果: 7项检查全通过，呼吸灯green | 场景: OpenCode Web/LiteLLM/Letta/磁盘/内存多探针监控
+- [2026-05-21] [OP] 失败学习: Windows USB设备修复 | 错误调用: Disable-PnpDevice + Enable-PnpDevice 循环20+次 | 错误: CM_PROB_PHANTOM 持续Unknown | 正确用法: 需人工检查USB线/驱动/设备本身 | 原因: 软件层面无法修复Phantom设备，可能是硬件接触不良或驱动深度问题
+- [2026-05-21] [OP] 成功记录: waybar ck_opencode race condition 修复 | 调用: 移除 ss -tlnp | grep 检查，改用 curl 直接探测 | 结果: 并行执行稳定，不再误报 CRITICAL | 场景: waybar-health.sh 10项并行检查，ss 命令在后台并行时偶发返回空
+- [2026-05-21] [OP] 成功记录: claude-knowledge MCP 恢复 | 调用: opencode.json 添加 claude-knowledge 配置 + 验证 mcp list | 结果: 11个MCP全部connected，claude-knowledge提供本地记忆访问 | 场景: 替代context7云端文档库，免费离线访问memory/*.md
+- [2026-05-21] [OP] 失败学习: 手机ADB连接 | 错误调用: adb connect 192.168.123.136:5555 | 错误: 连接被拒绝10061 | 正确用法: 需在手机上确认ADB over TCP已启用且防火墙允许5555 | 原因: 手机端网络/防火墙/ADB配置问题，Windows侧已完成(防火墙规则+ADB服务)

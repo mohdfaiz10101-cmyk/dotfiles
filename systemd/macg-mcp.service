@@ -1,0 +1,16 @@
+[Unit]
+Description=macg MCP Server (HTTP) — Windows OpenCode 记忆桥接
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py
+Restart=always
+RestartSec=5
+Environment="HOME=%h"
+WorkingDirectory=/home/charlie/agi
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

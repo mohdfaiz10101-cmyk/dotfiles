@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenCode Health Monitor Timer (every 5 minutes)
+Requires=opencode-health-monitor.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Unit=opencode-health-monitor.service
+
+[Install]
+WantedBy=timers.target

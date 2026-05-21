@@ -58,13 +58,22 @@ def build_injection_block():
     block += "<!-- /memory-gate-inject -->\n"
     return block
 
+MAX_AGENT_SIZE_KB = 30  # agent 文件超过此值立即报警
+
 def inject_into_file(filepath, block):
     """注入到 agent 文件"""
     with open(filepath, 'r') as f:
         content = f.read()
-    
+
     # 替换旧注入（如果有）
-    content = re.sub(r'<!-- memory-gate-inject:.*?</memory-gate-inject -->', '', content, flags=re.DOTALL)
+    content = re.sub(r'<!-- memory-gate-inject:.*?<!-- /memory-gate-inject -->', '', content, flags=re.DOTALL)
+
+    # 验证清理是否彻底（防止正则失效重演）
+    remaining = len(re.findall(r'<!-- memory-gate-inject:', content))
+    if remaining > 0:
+        import sys
+        print(f"[ERROR] {filepath}: 清理失败，仍有 {remaining} 个旧块！停止注入", file=sys.stderr)
+        return False
     
     # 找到第一个 ## 或 # 标题后注入
     lines = content.split('\n')
@@ -99,6 +108,14 @@ def main():
             inject_into_file(fpath, block)
             count += 1
     
+    # 注入后检查文件大小
+    for fname in key_agents:
+        fpath = os.path.join(AGENTS_DIR, fname)
+        if os.path.exists(fpath):
+            size_kb = os.path.getsize(fpath) // 1024
+            if size_kb > MAX_AGENT_SIZE_KB:
+                print(f"[WARN] {fname} 大小 {size_kb}KB 超过 {MAX_AGENT_SIZE_KB}KB 阈值！")
+
     print(f"[ok] memory-injector: 已注入 {count} 个 agent 配置文件")
 
 if __name__ == "__main__":

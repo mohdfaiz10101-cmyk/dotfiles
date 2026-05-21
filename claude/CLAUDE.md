@@ -58,9 +58,12 @@
 ## NixOS 专项
 - 路径禁令：NEVER 硬编码 `/nix/store/xxx/bin/xxx`，用 `/run/current-system/sw/bin/xxx`
 - NEVER TOUCH：不得随意修改 `/etc/nixos/`，除非用户明确要求且先验证
+- **REBUILD_SAFE（死规则）**：rebuild 前 MUST 执行 `nixos-rebuild-safe`（构建VM→测试→通过才写boot），禁止直接 `switch` 后 `reboot`
 - 常用命令：
 ```bash
-sudo nixos-rebuild switch --flake /etc/nixos#charlie
+nixos-rebuild-safe                    # 安全rebuild：VM测试→boot→可重启
+nixos-rebuild-safe --dry              # 只测试不写boot
+sudo nixos-rebuild switch --flake /etc/nixos#charlie   # 仅紧急热切换
 nix flake check /etc/nixos
 ```
 

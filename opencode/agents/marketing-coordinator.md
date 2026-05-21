@@ -89,18 +89,6 @@ hidden: true
 - 严禁蹭政治热点
 - 毛利低于 20% 的产品不得促销
 
-## 每日技术热点接入（MUST 执行）
-
-每次运行 MUST 先读取 `~/Desktop/巡检报告/tech-digest-latest.json`（若文件不存在则跳过）
-提取与 SpectrAI 产品相关的技术热点（AI/agent/llm 相关），转化为营销机会
-写入 ~/Desktop/巡检报告/marketing-latest.json
-
-## 强制输出文件（每次执行 MUST 写入）
-
-执行完成后 MUST 运行 bash 命令将结果写入：
-~/Desktop/巡检报告/marketing-latest.json
-格式：{"dept": "marketing", "timestamp": "ISO时间", "status": "ok/fail", "summary": "一句话", "items": [...最多10条]}
-
 ## 输出规范
 
 - 所有输出用中文

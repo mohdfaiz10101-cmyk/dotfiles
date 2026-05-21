@@ -1,0 +1,12 @@
+[Unit]
+Description=ADB Device Monitor (auto-connect USB/WiFi)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/adb-device-monitor.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

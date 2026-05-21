@@ -1,0 +1,290 @@
+{
+  "$schema": "https://opencode.ai/opencode.json",
+  "provider": {
+    "openai-compatible": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM",
+      "options": {
+        "baseURL": "http://localhost:4000/v1",
+        "apiKey": "sk-litellm-charlie-2026",
+        "timeout": 120000,
+        "maxRetries": 2
+      },
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V3 Pro (官方)",
+          "limit": {
+            "context": 163840,
+            "output": 8192
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V3 Flash (官方)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "glm-5.1": {
+          "name": "GLM-5.1 旗舰 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-5-turbo": {
+          "name": "GLM-5-Turbo (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4.7": {
+          "name": "GLM-4.7 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4.6v-flash": {
+          "name": "GLM-4.6V-Flash（Z.AI，视觉理解）",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "glm-4-plus": {
+          "name": "GLM-4-Plus (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "gpt-4.1": {
+          "name": "GPT-4.1 (GitHub 免费)",
+          "limit": {
+            "context": 1047576,
+            "output": 32768
+          }
+        },
+        "qwen3-235b": {
+          "name": "Qwen3-235B (SiliconFlow 免费)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "step-3.5-flash-2603": {
+          "name": "Step 3.5 Flash 2603（阶跃星辰，Agent优化）",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "step-3.5-flash": {
+          "name": "Step 3.5 Flash（阶跃星辰，高速推理）",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "step-3": {
+          "name": "Step 3（阶跃星辰，通用推理）",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
+        "step-3.5-flash-2603-plan": {
+          "name": "Step 3.5 Flash 2603 Plan（阶跃星辰，Coding Plan）",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        },
+        "step-3.5-flash-plan": {
+          "name": "Step 3.5 Flash Plan（阶跃星辰，Coding Plan）",
+          "limit": {
+            "context": 256000,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "stepfun": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "StepFun",
+      "options": {
+        "baseURL": "https://api.stepfun.com/step_plan/v1",
+        "apiKey": "4GY0L5jyGZlZUrTO8JZlQ5TYHTW5HVettJ9ls7ymImw3nalmM1rGO6CFV0DwayuiC",
+        "timeout": 120000,
+        "maxRetries": 2
+      },
+      "models": {
+        "step-1-32k": {
+          "name": "Step 1 32K",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "step-1-8k": {
+          "name": "Step 1 8K",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        },
+        "step-1v-32k": {
+          "name": "Step 1V 32K (Vision)",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "step-1v-8k": {
+          "name": "Step 1V 8K (Vision)",
+          "limit": {
+            "context": 8192,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "anthropic": {
+      "name": "Anthropic Direct",
+      "models": {
+        "claude-3-5-sonnet-20241022": {
+          "name": "Claude 3.5 Sonnet",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        },
+        "claude-3-5-haiku-20241022": {
+          "name": "Claude 3.5 Haiku",
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": false,
+    "reserved": 20000
+  },
+  "model": "openai-compatible/step-3.5-flash-2603-plan",
+  "small_model": "openai-compatible/step-3.5-flash-2603-plan",
+  "default_agent": "sisyphus",
+  "mcp": {
+    "letta": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "python3",
+        "/home/charlie/.local/bin/letta-mcp",
+        "--stdio"
+      ]
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    },
+    "ref": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "ref-tools-mcp@latest"
+      ],
+      "environment": {
+        "REF_API_KEY": "${REF_API_KEY}"
+      }
+    },
+    "wechat": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
+        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
+        "--stdio"
+      ],
+      "environment": {
+        "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
+      }
+    },
+    "macg": {
+      "type": "local",
+      "command": [
+        "/mnt/ai/home-offload/agi/.venv/bin/python3",
+        "/home/charlie/agi/macg_mcp.py"
+      ]
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "mcp-server-playwright",
+        "--browser",
+        "chrome",
+        "--executable-path",
+        "/run/current-system/sw/bin/google-chrome-stable"
+      ]
+    },
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    }
+  },
+  "plugin": [
+    "oh-my-openagent",
+    "opencode-snip",
+    "opencode-vibeguard",
+    "opencode-pty",
+    "opencode-scheduler"
+  ],
+  "experimental": {
+    "continue_loop_on_deny": true
+  },
+  "theme": "dark",
+  "hide_thinking": true,
+  "permission": {
+    "*": "allow",
+    "bash": {
+      "*": "allow",
+      "rm -rf *": "ask",
+      "sudo *": "ask",
+      "chmod *": "ask",
+      "mkfs *": "deny",
+      "dd *": "deny"
+    },
+    "edit": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "external_directory": "allow",
+    "doom_loop": "ask",
+    "skill": {
+      "*": "allow"
+    },
+    "mcp": {
+      "*": "allow"
+    },
+    "memory": "allow",
+    "todo": "allow",
+    "schedule": "allow"
+  },
+  "instructions": [
+    "/home/charlie/Documents/memory/lessons.md",
+    "/home/charlie/Documents/memory/lessons-nix.md",
+    "/home/charlie/Documents/memory/context.md"
+  ]
+}

@@ -13,66 +13,18 @@ model: openai-compatible/cerebras-qwen3-235b
 
 # Charlie-Ego — 决策镜像
 
-<!-- memory-gate-inject: 18:30 -->
+<!-- memory-gate-inject: 15:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
 **偏好**: - global_proxy: mihomo GLOBAL必须保持自动选择，禁止DIRECT
 **教训**: - real_time: 所有操作立刻生效，禁止'建议''下次'
 **教训**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
-**教训**: - [2026-05-19] [OP] 工具: Playwright MCP | 调用: navigate platform.stepfun.com | 结果: 失败(ERR_EMPTY_RESPONSE) | 场景: Playwright MCP不走系统代理，被墙站点无法访问
-**教训**: - [2026-05-19] [OP] 成功记录: opencode闪退恢复 | 调用: SIGILL崩溃后自动重启 | 结果: opencode --continue + web服务正常运行 | 场景: Node.js v24.14.0 + opencode 1.15.3 偶发SIGILL
-**教训**: - [2026-05-19] [OP] 永久禁用配置回滚 | 根因: 3个定时器脚本 (ai-config-sync-pull/12min, ai-config-guard/10min, opencode-config-guard/11min) 自动检测"异常"并用 git restore/chec
-**教训**: - [2026-05-19] [OP] 失败学习: 记忆调用纪律 | 错误: 执行手机ADB任务时跳过了记忆检索步骤,直接尝试本地ADB,忽略了已知的"USB线插在Windows上"和"手机已Root"信息 | 正确: 执行前MUST调用macg_context_probe + 读取lessons-
-**教训**: - [2026-05-19] [OP] Tailwind v4修复: @tailwindcss/oxide Scanner的`**/*` glob在NixOS/ext4项目路径下不递归子目录。根因: native Rust walker bug。解决: 在globals.css中用brace exp
-
-> 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
-<!-- /memory-gate-inject -->
-
-<!-- memory-gate-inject: 18:29 -->
-## 已知上下文 (gate自动注入，强制执行)
-**偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
-**偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
-**偏好**: - global_proxy: mihomo GLOBAL必须保持自动选择，禁止DIRECT
-**教训**: - real_time: 所有操作立刻生效，禁止'建议''下次'
-**教训**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
-**教训**: - [2026-05-19] [OP] 工具: Playwright MCP | 调用: navigate platform.stepfun.com | 结果: 失败(ERR_EMPTY_RESPONSE) | 场景: Playwright MCP不走系统代理，被墙站点无法访问
-**教训**: - [2026-05-19] [OP] 成功记录: opencode闪退恢复 | 调用: SIGILL崩溃后自动重启 | 结果: opencode --continue + web服务正常运行 | 场景: Node.js v24.14.0 + opencode 1.15.3 偶发SIGILL
-**教训**: - [2026-05-19] [OP] 永久禁用配置回滚 | 根因: 3个定时器脚本 (ai-config-sync-pull/12min, ai-config-guard/10min, opencode-config-guard/11min) 自动检测"异常"并用 git restore/chec
-**教训**: - [2026-05-19] [OP] 失败学习: 记忆调用纪律 | 错误: 执行手机ADB任务时跳过了记忆检索步骤,直接尝试本地ADB,忽略了已知的"USB线插在Windows上"和"手机已Root"信息 | 正确: 执行前MUST调用macg_context_probe + 读取lessons-
-**教训**: - [2026-05-19] [OP] Tailwind v4修复: @tailwindcss/oxide Scanner的`**/*` glob在NixOS/ext4项目路径下不递归子目录。根因: native Rust walker bug。解决: 在globals.css中用brace exp
-
-> 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
-<!-- /memory-gate-inject -->
-
-<!-- memory-gate-inject: 18:22 -->
-## 已知上下文 (gate自动注入，强制执行)
-**偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
-**偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
-**偏好**: - global_proxy: mihomo GLOBAL必须保持自动选择，禁止DIRECT
-**教训**: - real_time: 所有操作立刻生效，禁止'建议''下次'
-**教训**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
-**教训**: - [2026-05-19] [OP] 记忆一致性教训 | 问题: MEMORY.md/command-reference.md等5个文件残留旧IP 192.168.2.36, 新会话读到旧信息直接执行导致连接失败 | 根因: lessons-learned记录了变更但未自动回刷到其他文件, 模型默
-**教训**: - [2026-05-19] [OP] 工具: Playwright MCP | 调用: navigate platform.stepfun.com | 结果: 失败(ERR_EMPTY_RESPONSE) | 场景: Playwright MCP不走系统代理，被墙站点无法访问
-**教训**: - [2026-05-19] [OP] 成功记录: opencode闪退恢复 | 调用: SIGILL崩溃后自动重启 | 结果: opencode --continue + web服务正常运行 | 场景: Node.js v24.14.0 + opencode 1.15.3 偶发SIGILL
-**教训**: - [2026-05-19] [OP] 永久禁用配置回滚 | 根因: 3个定时器脚本 (ai-config-sync-pull/12min, ai-config-guard/10min, opencode-config-guard/11min) 自动检测"异常"并用 git restore/chec
-**教训**: - [2026-05-19] [OP] 失败学习: 记忆调用纪律 | 错误: 执行手机ADB任务时跳过了记忆检索步骤,直接尝试本地ADB,忽略了已知的"USB线插在Windows上"和"手机已Root"信息 | 正确: 执行前MUST调用macg_context_probe + 读取lessons-
-
-> 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
-<!-- /memory-gate-inject -->
-
-<!-- memory-gate-inject: 18:22 -->
-## 已知上下文 (gate自动注入，强制执行)
-**偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
-**偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
-**偏好**: - global_proxy: mihomo GLOBAL必须保持自动选择，禁止DIRECT
-**教训**: - real_time: 所有操作立刻生效，禁止'建议''下次'
-**教训**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
-**教训**: - [2026-05-19] [OP] 记忆一致性教训 | 问题: MEMORY.md/command-reference.md等5个文件残留旧IP 192.168.2.36, 新会话读到旧信息直接执行导致连接失败 | 根因: lessons-learned记录了变更但未自动回刷到其他文件, 模型默
-**教训**: - [2026-05-19] [OP] 工具: Playwright MCP | 调用: navigate platform.stepfun.com | 结果: 失败(ERR_EMPTY_RESPONSE) | 场景: Playwright MCP不走系统代理，被墙站点无法访问
-**教训**: - [2026-05-19] [OP] 成功记录: opencode闪退恢复 | 调用: SIGILL崩溃后自动重启 | 结果: opencode --continue + web服务正常运行 | 场景: Node.js v24.14.0 + opencode 1.15.3 偶发SIGILL
-**教训**: - [2026-05-19] [OP] 永久禁用配置回滚 | 根因: 3个定时器脚本 (ai-config-sync-pull/12min, ai-config-guard/10min, opencode-config-guard/11min) 自动检测"异常"并用 git restore/chec
-**教训**: - [2026-05-19] [OP] 失败学习: 记忆调用纪律 | 错误: 执行手机ADB任务时跳过了记忆检索步骤,直接尝试本地ADB,忽略了已知的"USB线插在Windows上"和"手机已Root"信息 | 正确: 执行前MUST调用macg_context_probe + 读取lessons-
+**教训**: - [2026-05-21] [OP] 成功记录: OpenCode呼吸灯监控 | 调用: opencode-health-monitor.sh + systemd timer 5min | 结果: 7项检查全通过，呼吸灯green | 场景: OpenCode Web/LiteLLM/Letta/
+**教训**: - [2026-05-21] [OP] 失败学习: Windows USB设备修复 | 错误调用: Disable-PnpDevice + Enable-PnpDevice 循环20+次 | 错误: CM_PROB_PHANTOM 持续Unknown | 正确用法: 需人工检查USB线/驱动/设备本
+**教训**: - [2026-05-21] [OP] 成功记录: waybar ck_opencode race condition 修复 | 调用: 移除 ss -tlnp | grep 检查，改用 curl 直接探测 | 结果: 并行执行稳定，不再误报 CRITICAL | 场景: waybar-health
+**教训**: - [2026-05-21] [OP] 成功记录: claude-knowledge MCP 恢复 | 调用: opencode.json 添加 claude-knowledge 配置 + 验证 mcp list | 结果: 11个MCP全部connected，claude-knowledge提供本
+**教训**: - [2026-05-21] [OP] 失败学习: 手机ADB连接 | 错误调用: adb connect 192.168.123.136:5555 | 错误: 连接被拒绝10061 | 正确用法: 需在手机上确认ADB over TCP已启用且防火墙允许5555 | 原因: 手机端网络/防火墙/A
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->

@@ -62,6 +62,36 @@
           "text": "2026-05-19 记忆引擎MCP上线: memory-mcp-server.py 完成，已注册到 opencode.json mcpServers。8个工具: memory_get/search/set/relation/graph/dependencies/sync/stats。Memgraph同步修复esc_cypher转义(反斜杠/引号/中文)，56/56条成功。changelog→graph自动同步timer每30分钟，TTL清理每周日03:00(60天过期)。图谱当前61节点+29关系。",
           "tags": "op-exec,memory-engine,mcp,memgraph",
           "timestamp": "1779170424"
+        },
+        {
+          "text": "2026-05-21 OP执行: 手机剪贴板同步 | 结果: 服务已启动，等待手机上线 | 关键发现: FRP端口15555已添加到frps allowPorts + firewall，phone-clip-sync.service已enable并运行，通过FRP隧道ADB连接192.168.2.100:15555，轮询间隔1s，MD5防回弹",
+          "tags": "op-exec,clipboard,frp,phone",
+          "timestamp": "1779333440"
+        },
+        {
+          "text": "2026-05-21 OP执行: 手机 FRP 隧道部署完成 | 结果: 成功 | 关键发现: 1) frpc TOML配置必须省略[common]节头才能正确解析 2) Magisk service.d + start.sh实现开机自启 3) 双ADB通道: 直连WiFi 192.168.123.229:5555 + FRP隧道 192.168.123.209:15555 4) phone-clip-sync已切换到直连WiFi，更稳定",
+          "tags": "op-exec,frp,phone-adb,tunnel",
+          "timestamp": "1779334886"
+        },
+        {
+          "text": "[Hyprland windowrule 语法变迁 - 2026-05-21]\n\n诊断命令（必须第一步）：hyprctl configerrors → 直接返回文件名+行号+错误原因\n\n版本对照：\n- ❌ 废弃：windowrulev2 = float, class:^(fcitx)$\n- ❌ 废弃：windowrule = float, class:^(fcitx)$\n- ✅ 0.54+ 正确块语法：\n  windowrule {\n    name = fcitx-rules    # name 必须第一行\n    match:class = ^(fcitx)$\n    float = 1\n    no_anim = 1           # 是 no_anim 不是 noanim\n  }\n\n操作流程：修改 hyprland.conf → hyprctl reload → hyprctl configerrors（空=无错误）\n\n教训：遇到 Hyprland 红色错误覆盖层，先 hyprctl configerrors，禁止盲猜语法。本次盲猜三轮才修对。",
+          "tags": "hyprland,windowrule,配置错误,语法,lessons-learned",
+          "timestamp": "1779336044"
+        },
+        {
+          "text": "GitHub PAT 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 stored in git credential store. Created and pushed obsidian-vault repo (mohdfaiz10101-cmyk/obsidian-vault) with 24 files.",
+          "tags": "github,git,credentials,obsidian",
+          "timestamp": "1779336780"
+        },
+        {
+          "text": "2026-05-21 OP执行: OpenCode升级脚本修复 | 结果: 成功 | 关键发现: 1)autoupgrade移除SOCKS5代理后GitHub下载正常(47M/32s) 2)session-guard验证0损坏session(总525)问题已恢复 3)脚本增强:强制杀进程+3次重试复制解决\"文本文件忙\"",
+          "tags": "op-exec,opencode,upgrade,fix",
+          "timestamp": "1779337991"
+        },
+        {
+          "text": "2026-05-21 OP执行: 修复 waybar ck_opencode ss 命令 race condition | 结果: 成功 | 关键发现: 移除 ss -tlnp | grep 端口检查，改用 curl 直接探测 HTTP 200，避免并行后台执行时 ss 命令竞争导致误报 CRITICAL",
+          "tags": "op-exec,waybar,opencode,race-condition",
+          "timestamp": "1779345371"
         }
       ]
     },
@@ -192,6 +222,26 @@
           "text": "2026-05-19 OP执行: waybar custom/quota 模块上线 | 结果: 框架完成，登录态待解决 | 关键发现: (1) 智谱GLM和StepFun都没有公开余额查询API，SDK源码也没有balance模块 (2) Playwright MCP不走系统代理，被墙站点(platform.stepfun.com, open.bigmodel.cn)无法访问 (3) update-api-quota.sh用uv run --with playwright + 系统google-chrome可以走代理抓取 (4) 两个平台Dashboard都需要登录态才能看余额 (5) waybar custom/quota已注册到charlie.nix modules-right，位于mem-pulse和optasks之间",
           "tags": "op-exec,waybar,quota,stepfun,glm,playwright",
           "timestamp": "1779170781"
+        },
+        {
+          "text": "NixOS AI智能防护体系部署完成（2026-05-20）\n\n## 变更内容\n\n### 1. noGUI specialisation 修复\n- 文件: /etc/nixos/configuration.nix\n- 改动: boot.kernelParams 从 `lib.mkForce []` 改为 `lib.mkAfter [\"nomodeset\" \"systemd.unit=multi-user.target\"]`\n- 原因: mkForce [] 会清空父配置并影响 Default entry，导致 nomodeset 泄漏\n\n### 2. 三层防护体系\n\n**Layer 1: 变更前预防（Git Hook）**\n- 路径: /etc/nixos/.git/hooks/pre-commit-nixos-check\n- 检查项: dry-build → flake check → mkForce 扫描 → specialisation 冲突检测\n- 阻止有风险的 commit\n\n**Layer 2: 激活后验证（nixos-rebuild-safe）**\n- 路径: ~/.local/bin/nixos-rebuild-safe\n- 流程: dry-build → 激活 → 关键服务检查 → 失败自动回滚\n- 用法: nixos-rebuild-safe test|switch\n\n**Layer 3: 定时巡检（systemd timer）**\n- 模块: /etc/nixos/modules/nixos-ai-guard.nix\n- 频率: 每30分钟（08:00-23:00）\n- 检测: GUI会话 → SDDM → kernel cmdline → Hyprland/Waybar\n- 自动修复: 尝试重启 SDDM、回滚 generation\n\n### 3. 配置自检工具\n- 命令: nixos-config-check\n- 输出: Generation、Kernel Cmdline、服务状态、磁盘使用\n\n## 使用习惯\n\n```bash\n# 推荐重建流程\nnixos-rebuild-safe test    # 先测试\nnixos-rebuild-safe switch  # 确认后切换\n\n# 手动巡检\nsudo nixos-gui-guardian --fix\n\n# 配置自检\nnixos-config-check\n```\n\n## 预防措施总结\n- mkForce 使用纪律: 不超过3处，优先用 mkAfter/mkBefore\n- specialisation 只追加不替换\n- rebuild 前必须 dry-build\n- 优先用 nixos-rebuild test 验证\n- git commit 前自动检查",
+          "tags": "nixos,ai-guard,automation,prevention",
+          "timestamp": "1779292066"
+        },
+        {
+          "text": "NixOS AI智能防护体系 - 强制记忆（2026-05-20）\n\n## 已部署工具清单\n\n### 核心工具\n1. **nixos-rebuild-safe** — 安全重建脚本\n   - 路径: ~/.local/bin/nixos-rebuild-safe\n   - 用法: nixos-rebuild-safe test|switch [--skip-dry-build] [--ai-fix] [--vm-test]\n   - 功能: dry-build → 激活 → 服务验证 → AI修复 → 自动回滚\n\n2. **nixos-ai-fix-engine** — AI错误修复引擎\n   - 路径: ~/.local/bin/nixos-ai-fix-engine\n   - 用法: nixos-ai-fix-engine [error_log]\n   - 功能: 模式匹配(95%+置信度) → 自动修复 → 记录记忆\n\n3. **nixos-update-checker** — 更新检测器\n   - 路径: ~/.local/bin/nixos-update-checker\n   - 用法: nixos-update-checker [--auto-task]\n   - 功能: nixpkgs版本检测 → 安全补丁RSS → flake.lock检查 → 自动创建任务\n\n4. **nixos-decision-engine** — AI决策引擎\n   - 路径: ~/.local/bin/nixos-decision-engine\n   - 用法: nixos-decision-engine {analyze|should-rebuild|next-action|full-check}\n   - 功能: 状态收集 → 决策树 → 执行建议\n\n5. **nixos-llm-analyzer** — LLM错误分析器\n   - 路径: ~/.local/bin/nixos-llm-analyzer\n   - 用法: nixos-llm-analyzer [error_log] [--provider glm|deepseek]\n   - 功能: 复杂错误 → LLM分析 → 修复建议 → 记忆归档\n\n6. **nixos-gui-guardian** — GUI巡检脚本\n   - 路径: ~/.local/bin/nixos-gui-guardian\n   - 用法: sudo nixos-gui-guardian [--fix]\n   - 功能: 每30分钟检测GUI → SDDM/Hyprland/Waybar → 自动修复\n\n7. **nixos-config-check** — 配置自检工具\n   - 路径: ~/.local/bin/nixos-config-check\n   - 功能: Generation/Kernel/SDDM/Network/Disk状态汇总\n\n### NixOS模块\n- **nixos-ai-guard.nix** — 系统级集成\n  - 路径: /etc/nixos/modules/nixos-ai-guard.nix\n  - 包含: systemd service + timer + 所有工具\n  - Timer: 每30分钟(08:00-23:00)\n\n### Git Hook\n- **pre-commit-nixos-check** — 变更前检查\n  - 路径: /etc/nixos/.git/hooks/pre-commit-nixos-check\n  - 检查: dry-build → flake check → mkForce扫描 → specialisation冲突\n\n## 关键修复\n- noGUI specialisation: boot.kernelParams mkForce [] → mkAfter [\"nomodeset\" \"systemd.unit=multi-user.target\"]\n- 文件: /etc/nixos/configuration.nix:133\n\n## 使用习惯（强制）\n```bash\n# 推荐重建流程\nnixos-rebuild-safe test --ai-fix      # 先测试+AI修复\nnixos-rebuild-safe switch --ai-fix    # 确认后切换\n\n# 日常巡检\nnixos-config-check                    # 配置自检\nsudo nixos-gui-guardian --fix         # 手动巡检\n\n# AI分析\nnixos-decision-engine full-check      # 完整决策\nnixos-llm-analyzer                    # LLM分析复杂错误\n```\n\n## 决策逻辑\n- 置信度≥90% → 自动修复\n- 置信度70-90% → 半自动（建议+确认）\n- 置信度<70% → 记录+提示用户\n- 安全补丁 → 立即创建任务\n- 功能更新 → 每周汇总",
+          "tags": "nixos,ai-guard,automation,prevention,decision-engine",
+          "timestamp": "1779293755"
+        },
+        {
+          "text": "[2026-05-21] OP任务系统维护完成：\n- 清理 memory op-tasks.md 中 92 个陈旧\"任务跟进\"条目（cc-decision-engine.py 每10分钟自动生成）\n- 执行 Service-Nurse 巡检：Docker 5容器运行（letta-chromadb unhealthy），磁盘 / 85% /mnt/ai 30% /mnt/data 80%，关键端口正常\n- 验证 NixOS 防火墙 18092 端口已在 frp.nix:107 配置中，需 sudo nixos-rebuild switch 激活\n- 主 op-tasks.md 和 memory op-tasks.md 待处理任务归零",
+          "tags": "op-tasks, maintenance, cleanup",
+          "timestamp": "1779293844"
+        },
+        {
+          "text": "[Hyprland windowrule 语法变迁 - 2026-05-21]\n\n诊断命令（必须第一步）：hyprctl configerrors → 直接返回文件名+行号+错误原因\n\n版本对照：\n- ❌ 废弃：windowrulev2 = float, class:^(fcitx)$\n- ❌ 废弃：windowrule = float, class:^(fcitx)$\n- ✅ 0.54+ 正确块语法：\n  windowrule {\n    name = fcitx-rules    # name 必须第一行\n    match:class = ^(fcitx)$\n    float = 1\n    no_anim = 1           # 是 no_anim 不是 noanim\n  }\n\n操作流程：修改 hyprland.conf → hyprctl reload → hyprctl configerrors（空=无错误）\n\n教训：遇到 Hyprland 红色错误覆盖层，先 hyprctl configerrors，禁止盲猜语法。本次盲猜三轮才修对。",
+          "tags": "hyprland,windowrule,配置错误,语法,lessons-learned",
+          "timestamp": "1779336038"
         }
       ]
     },

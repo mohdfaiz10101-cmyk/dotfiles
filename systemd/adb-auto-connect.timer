@@ -1,0 +1,11 @@
+[Unit]
+Description=ADB WiFi Auto-Connect Timer
+After=network-online.target
+
+[Timer]
+OnBootSec=30sec
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

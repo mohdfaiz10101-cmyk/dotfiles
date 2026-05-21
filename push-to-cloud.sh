@@ -31,7 +31,10 @@ rsync -a --delete ~/launcher/ "$DOTFILES/launcher/"
 rsync -a --delete ~/.config/systemd/user/ "$DOTFILES/systemd/"
 
 echo "[4/4] 同步配置文件..."
-cp -f ~/CLAUDE.md "$DOTFILES/claude/CLAUDE.md"
+# Skip if source and destination are the same (symlink/hardlink)
+if [ ! "$(realpath ~/CLAUDE.md)" = "$(realpath "$DOTFILES/claude/CLAUDE.md")" ]; then
+  cp -f ~/CLAUDE.md "$DOTFILES/claude/CLAUDE.md"
+fi
 
 # OpenCode 配置（排除重文件）
 # 注意：opencode.json 和 AGENTS.md 是软链接指向 dotfiles，不能 rsync 回来（会创建循环链接）

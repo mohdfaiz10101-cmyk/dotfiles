@@ -1,0 +1,14 @@
+[Unit]
+Description=Phone Clipboard Sync (ADB over FRP)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/phone-clip-sync
+Restart=on-failure
+RestartSec=5
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=default.target
