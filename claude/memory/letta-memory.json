@@ -247,6 +247,16 @@
           "text": "[Hyprland windowrule 语法变迁 - 2026-05-21]\n\n诊断命令（必须第一步）：hyprctl configerrors → 直接返回文件名+行号+错误原因\n\n版本对照：\n- ❌ 废弃：windowrulev2 = float, class:^(fcitx)$\n- ❌ 废弃：windowrule = float, class:^(fcitx)$\n- ✅ 0.54+ 正确块语法：\n  windowrule {\n    name = fcitx-rules    # name 必须第一行\n    match:class = ^(fcitx)$\n    float = 1\n    no_anim = 1           # 是 no_anim 不是 noanim\n  }\n\n操作流程：修改 hyprland.conf → hyprctl reload → hyprctl configerrors（空=无错误）\n\n教训：遇到 Hyprland 红色错误覆盖层，先 hyprctl configerrors，禁止盲猜语法。本次盲猜三轮才修对。",
           "tags": "hyprland,windowrule,配置错误,语法,lessons-learned",
           "timestamp": "1779336038"
+        },
+        {
+          "text": "2026-05-21 OP验证: DuckDNS端口转发已就绪 | 域名charlie1990.duckdns.org(非charlie-nixos) | 路由器WAN 125.110.221.37 | 端口17699→192.168.123.209:17699 TCP已存在VSList | DuckDNS每小时更新,外部测试200 OK",
+          "tags": "duckdns,router,port-forward,ddns",
+          "timestamp": "1779355172"
+        },
+        {
+          "text": "【永久固化】DuckDNS & FRP 外网穿透架构 (2026-05-21 验证稳定)\n\n域名: charlie1990.duckdns.org (非charlie-nixos)\nWAN IP: 125.110.221.37 (PPPoE, 动态)\nDDNS更新: duckdns.timer 每小时 (token: 1e66570c-983c-4c0d-b776-03d1ae3a9aa6)\n\n路由器 (Padavan RT-N56U_B1, 192.168.123.1):\n- 端口转发 17699 → 192.168.123.209:17699 TCP (VSList \"nixos-ai\")\n- 同列表含 2222/2223/24801/17698/7681 等 20+条规则\n- 路由器自身FRPS: 0.0.0.0:7000 (与NixOS FRPS独立)\n\nNixOS FRP架构:\n- FRPS: ~/ai-deploy/frps.toml, bindPort=7000, dashboard:7500, auth:token\n- FRPC: ~/.config/frpc/frpc.toml, 连本地FRPS 192.168.123.209:7000\n- 关键隧道: nixos-tty(17699→7699 Caddy), nixos-ssh(2223→22), nixos-opencode-web(19890→8080)等13条\n\n外网访问链路:\ncharlie1990.duckdns.org:17699 → 路由器NAT → 192.168.123.209:17699 → FRPS → frpc隧道 → localhost:7699(Caddy Launcher Gateway)\n\n测试: curl http://charlie1990.duckdns.org:17699 → 200 OK (Server: Caddy)",
+          "tags": "duckdns,frp,router,port-forward,ddns,permanent",
+          "timestamp": "1779355688"
         }
       ]
     },

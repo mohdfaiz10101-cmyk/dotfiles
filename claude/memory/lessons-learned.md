@@ -100,3 +100,7 @@
 - [2026-05-21] [OP] 成功记录: claude-knowledge MCP 恢复 | 调用: opencode.json 添加 claude-knowledge 配置 + 验证 mcp list | 结果: 11个MCP全部connected，claude-knowledge提供本地记忆访问 | 场景: 替代context7云端文档库，免费离线访问memory/*.md
 - [2026-05-21] [OP] 失败学习: 手机ADB连接 | 错误调用: adb connect 192.168.123.136:5555 | 错误: 连接被拒绝10061 | 正确用法: 需在手机上确认ADB over TCP已启用且防火墙允许5555 | 原因: 手机端网络/防火墙/ADB配置问题，Windows侧已完成(防火墙规则+ADB服务)
 - [2026-05-21] [OP] 成功记录: 手机 ADB over TCP 诊断 | 调用: adb shell ip addr show + nc -zv + Test-NetConnection | 结果: 手机 IP 为 192.168.123.229（非 192.168.123.136），ADB over TCP 正常 | 场景: 手机 PKR110 OnePlus ADB 调试
+- [2026-05-21] [OP] 成功记录: GLOBAL代理DIRECT修复 | 调用: PUT /proxies/GLOBAL name=AUTO | 结果: GLOBAL now=AUTO, waybar显示代理● | 场景: waybar显示直连⚠, GLOBAL被设DIRECT导致Claude 403
+
+- [2026-05-21] [OP] 成功记录: 失效代理服务清理 | 调用: 删除mihomo-select-claude.service+修复force-claude-proxy.sh+删除claude-proxy-watchdog | 结果: 3个失效服务已清理, GLOBAL保持AUTO | 场景: mihomo-select-claude.sh引用不存在的节点名"美国-US-3-流量倍率"(实际带:1后缀), force-claude-proxy.sh引用不存在的"🚀 选择代理", claude-proxy-watchdog监控不存在的"🤖 Claude AI"策略组
+- [2026-05-21] [OP] 成功记录: opencode-health-monitor增强 | 调用: 添加GLOBAL代理模式检查(第7项) | 结果: 8项检查全通过, GLOBAL=AUTO | 场景: 防止GLOBAL被意外改为DIRECT导致Claude 403
