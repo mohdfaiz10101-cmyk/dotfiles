@@ -2435,3 +2435,20 @@
 {"ts": "2026-05-21 16:35", "type": "cycle", "summary": "系统资源占用低，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-21 16:37", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-21 16:38", "type": "cycle", "summary": "系统运行正常，资源空闲，无待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:40", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:41", "type": "cycle", "summary": "系统各项指标正常，无服务异常或资源压力", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:42", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 16:44", "type": "cycle", "summary": "系统运行正常，各项指标处于健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:46", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:47", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:48", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:49", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:50", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:51", "type": "cycle", "summary": "系统运行正常，资源使用率平稳，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:52", "type": "cycle", "summary": "系统运行平稳，各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:53", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:54", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:55", "type": "cycle", "summary": "系统各项指标正常，无异常或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:56", "type": "cycle", "summary": "系统运行平稳，负载正常，无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:57", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 16:59", "type": "cycle", "summary": "系统各项指标正常，无服务异常或资源告警", "alert_count": 0, "skipped_llm": false}

@@ -62,7 +62,7 @@
 - 路由器: 192.168.2.1
 - NixOS大主机: 192.168.2.100 (wlp0s20f0u5 WiFi) + eno1有线(待配置)
 - NixOS小主机: 192.168.2.101 (wlp0s20f0u4 WiFi)
-- Windows: ssh winpc (DHCP 192.168.123.x)
+- Windows: ssh winpc (静态IP 192.168.123.100, DHCP已关闭)
 - Tailscale + Syncthing + mihomo 代理
 - **minipc 有4个 I226-V 千兆口**（enp1s0~4s0），建议插网线稳定在线
 

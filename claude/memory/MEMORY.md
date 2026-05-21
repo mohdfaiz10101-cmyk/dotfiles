@@ -25,7 +25,7 @@
 - **Android 手机** — OnePlus Ace 5 Pro (PKR110) Android 16，**已 Root (Magisk)**，**ADB WiFi 已连接** (port 5555)，Termux + Tailscale
 - **Android 平板** — 小米平板5 (24117RK2CC)，Obsidian 同步，SSH 连接主机，**已 Root (Magisk)**，ADB WiFi Tailscale IP: 100.104.211.70:5555
 - **VR 头显** — Meta Quest，串流待定
-- **Windows** — SSH 密码 `1` | 192.168.2.36 已失效 | 连接方式: `ssh winpc`(FRP:2222) > `ssh winpc-ts`(Tailscale:100.91.93.99) > `ssh winpc-wifi`(192.168.123.136 DHCP)
+- **Windows** — SSH 密码 `1` | 192.168.2.36 已失效 | 连接方式: `ssh winpc`(FRP:2222) > `ssh winpc-ts`(Tailscale:100.91.93.99) > `ssh winpc-wifi`(192.168.123.100 静态)
 - 网络：Tailscale + Syncthing + mihomo
 - **代理订阅源**：
   - 良心云（主）：`https://liangxin.xyz/api/v1/liangxin?OwO=648440cdc61b35fff7e4176ba7dac827`
@@ -150,9 +150,9 @@
 
 ## NixOS FRP 隧道（永久）
 - frps: `192.168.123.1:7000`, token=`12345`
-- `192.168.123.1:2223` → NixOS:22 (SSH) — `ssh -p 2223 charlie@192.168.123.1`
-- `192.168.123.1:24801` → NixOS:24801 (KVM ydotool-bridge)
-- `192.168.123.1:17699` → NixOS:7699 (TTY/AI Launcher)
+- `192.168.123.209:2223` → NixOS:22 (SSH) — `ssh -p 2223 charlie@192.168.123.209`
+- `192.168.123.209:24801` → NixOS:24801 (KVM ydotool-bridge)
+- `192.168.123.209:17699` → NixOS:7699 (Caddy AI Launcher)
 - systemd 用户服务: `frpc.service` + `ydotool-bridge.service`（enabled）
 - Tailscale SSH 因 OpenSSH 版本不兼容，走 frpc 隧道绕过
 - 2026-05-10 验证通过
@@ -160,9 +160,12 @@
 ## CLI 偏好
 - `session_list` 默认 `limit=500`（之前是50），alias: `ses` / `ses-new` / `ses-old`
 
-## FRP 状态 (2026-05-18 更新)
-- frps: NixOS 本机 :7000, dashboard :7500, token=frp-token-charlie-2026
-- NixOS frpc: 10个代理(ssh:2223/tty:17699/mosh×3/opencode:19890/hub:19891/letta:19892/openclaw:19893/sisy:18090/crewai:18091/bridge:24801)
+## FRP 状态 (2026-05-21 更新)
+- frps: NixOS 本机 (192.168.123.209) :7000, dashboard :7500, token=frp-token-charlie-2026
+- NixOS frpc: 11个代理(ssh:2223/tty:17699/mosh×3/opencode:19890/hub:19891/letta:19892/openclaw:19893/sisy:18090/crewai:18091/agi:18300/openagents:18093/adb:15555)
 - Windows frpc: 2个代理(ssh:2222/rdp:3389), 路径 C:\Toolsrpc\, 开机自启 schtasks FRPClient
-- Win IP: DHCP 192.168.123.x (WiFi), 连 frps 用 192.168.123.209:7000
+- Win IP: **静态 192.168.123.100** (WLAN, DHCP已关闭), 连 frps 用 192.168.123.209:7000
+- **固定公网地址**: https://nixos-1.tail60cff7.ts.net (Tailscale Funnel → :7699 Launcher)
+- NixOS Tailscale IP: 100.119.174.25
 - 关键修复: frpc.service 必须清除 http_proxy(防 mihomo 拦截 FRP 协议)
+- 注意: openagents 用18093(18092被macg_mcp.py占用)
