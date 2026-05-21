@@ -1,0 +1,6 @@
+[Unit]
+Description=WAN IP 变更检测 (每60秒)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wan-ip-monitor.sh

@@ -104,3 +104,7 @@
 
 - [2026-05-21] [OP] 成功记录: 失效代理服务清理 | 调用: 删除mihomo-select-claude.service+修复force-claude-proxy.sh+删除claude-proxy-watchdog | 结果: 3个失效服务已清理, GLOBAL保持AUTO | 场景: mihomo-select-claude.sh引用不存在的节点名"美国-US-3-流量倍率"(实际带:1后缀), force-claude-proxy.sh引用不存在的"🚀 选择代理", claude-proxy-watchdog监控不存在的"🤖 Claude AI"策略组
 - [2026-05-21] [OP] 成功记录: opencode-health-monitor增强 | 调用: 添加GLOBAL代理模式检查(第7项) | 结果: 8项检查全通过, GLOBAL=AUTO | 场景: 防止GLOBAL被意外改为DIRECT导致Claude 403
+- [2026-05-21] [OP] cc-decision-engine 输出隔离 | 修改: 输出从 op-tasks.md 改为 /tmp/cc-diagnosis.md（独立文件，MAX 10条目自维护）| 清理: op-tasks.md 298→92行（移除206条重复任务跟进）| 根因: 每10分钟追加导致任务文件膨胀
+- [2026-05-21] [OP] 成功记录: 链路安全加固 v2 | 调用: 5项修复全部完成 | 结果: 永久化优先规则建立, /tmp→~/.local/state/, credential脱敏, FRPS系统级修复, wan-ip-monitor每60秒IP检测, 路由器NVRAM备份文档 | 场景: DuckDNS+FRP+NAT全链路
+- [2026-05-21] [OP] 成功记录: 手机Tailscale+FRP双隧道ADB | 调用: frpc(phone)→Tailscale→frps(NixOS):60004→ADB | 结果: ADB over Tailscale打通,延迟~45ms | 场景: AP隔离WiFi下ADB远程接入
+- [2026-05-21] [OP] 失败学习: frpc nixos-tty localPort 被改成7698导致Launcher tab消失 | 错误: localPort=7698(ttyd终端)而非7699(Caddy) | 正确用法: 7699=Caddy Launcher页面 | 预防: opencode-health-monitor第9项检查 + frpc.toml顶部注释警告

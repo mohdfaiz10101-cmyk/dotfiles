@@ -97,6 +97,11 @@
           "text": "2026-05-21 OP执行: 手机 ADB over TCP 诊断 | 结果: 成功 | 关键发现: 手机 IP 为 192.168.123.229（非 192.168.123.136），ADB over TCP 正常工作；Windows WiFi 接口 IP 为 192.168.123.136，之前混淆导致连接失败",
           "tags": "op-exec,adb,frp,network",
           "timestamp": "1779348394"
+        },
+        {
+          "text": "2026-05-21 链路安全加固v2: (1) FRPS改为系统级sudo systemctl检查+重启 (2) DuckDNS token迁移到~/.local/share/credentials/duckdns.env(chmod 600) (3) 所有state从/tmp迁移到~/.local/state/{chain-watchdog,frp-watchdog,duckdns,wan-ip-monitor}/ (4) 新增wan-ip-monitor每60秒检测WAN IP变更+即时DDNS更新 (5) 路由器NVRAM备份文档: memory/router-padavan-backup.md (6) baseline新增perm_state规则:永久化优先,/tmp禁用",
+          "tags": "duckdns,frp,router,permanent-state,credential-security",
+          "timestamp": "1779366427"
         }
       ]
     },

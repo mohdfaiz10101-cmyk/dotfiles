@@ -4,4 +4,5 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c 'curl -4 -sL --noproxy "*" "https://www.duckdns.org/update?domains=charlie1990&token=1e66570c-983c-4c0d-b776-03d1ae3a9aa6&ip=" -o /tmp/duckdns-last'
+EnvironmentFile=%h/.local/share/credentials/duckdns.env
+ExecStart=/bin/sh -c 'curl -4 -sL --noproxy "*" "https://www.duckdns.org/update?domains=${DUCKDNS_DOMAIN}&token=${DUCKDNS_TOKEN}&ip=" -o %h/.local/state/duckdns/last-update'

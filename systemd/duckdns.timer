@@ -2,7 +2,7 @@
 Description=DuckDNS DDNS Update Timer
 
 [Timer]
-OnCalendar=*:0/10:00
+OnCalendar=*:0/10:30
 Persistent=true
 
 [Install]
