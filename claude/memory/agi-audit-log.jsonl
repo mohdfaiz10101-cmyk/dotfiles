@@ -2489,3 +2489,73 @@
 {"ts": "2026-05-21 17:36", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘资源使用率均在合理区间，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-21 17:38", "type": "cycle", "summary": "当前系统运行状态正常，CPU、磁盘资源使用率处于合理区间，无异常服务与待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-21 17:39", "type": "cycle", "summary": "系统运行状态正常，CPU、内存、磁盘及服务指标均处于健康区间", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:40", "type": "cycle", "summary": "当前系统运行平稳，各项资源指标均在正常范围内，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:41", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘资源使用率均在合理区间，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:42", "type": "cycle", "summary": "系统运行正常，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:43", "type": "cycle", "summary": "当前系统运行平稳，CPU、磁盘使用率正常，无异常服务告警，无待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:44", "type": "cycle", "summary": "系统当前运行状态正常，各项指标均在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:45", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:46", "type": "cycle", "summary": "当前系统运行状态正常，各项指标均在合理范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:47", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:49", "type": "cycle", "summary": "当前系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:50", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常服务或高占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:51", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源使用率均处于正常区间，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:52", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:53", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源使用率均处于正常区间，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:54", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:55", "type": "cycle", "summary": "当前系统各项运行指标正常，无异常告警，运行状态平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:56", "type": "cycle", "summary": "当前系统运行平稳，各项资源指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:57", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘资源使用率均处于健康区间，无异常服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:58", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源使用率均处于正常范围，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 17:59", "type": "cycle", "summary": "当前系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:01", "type": "cycle", "summary": "当前系统运行平稳，各项指标均处于正常范围，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:02", "type": "cycle", "summary": "当前系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:03", "type": "cycle", "summary": "当前系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:04", "type": "cycle", "summary": "当前系统运行正常，CPU、内存、磁盘使用率均处于健康区间，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:05", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘及服务状态均无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:06", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源占用均处于正常水平，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:07", "type": "cycle", "summary": "当前系统运行状态正常，各项资源指标均处于健康区间，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:08", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:14", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:15", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:16", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:17", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:18", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:19", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘使用率均处于健康区间，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:20", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting ':' delimiter: line 2 column 2768 (char 2769)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:21", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常服务与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:22", "type": "cycle", "summary": "系统各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:24", "type": "cycle", "summary": "当前系统CPU、内存、磁盘使用率均处于正常区间，无异常服务与待处理任务，运行状态平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:25", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源使用率均处于正常水平，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:26", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘及服务指标均无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:27", "type": "cycle", "summary": "当前系统CPU、内存、磁盘使用率均处于正常水平，无异常服务告警，运行状态平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:28", "type": "cycle", "summary": "当前系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:29", "type": "cycle", "summary": "当前系统运行状态正常，各项资源指标均在合理范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:30", "type": "cycle", "summary": "当前系统运行平稳，各项资源指标正常，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:31", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源占用均处于健康水平，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:32", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:33", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘资源使用率均处于健康水平，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:34", "type": "cycle", "summary": "当前系统各项指标运行平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:35", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常告警及待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:36", "type": "cycle", "summary": "当前系统运行正常，CPU、内存、磁盘资源占用平稳，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:38", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:39", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting ',' delimiter: line 2 column 2548 (char 2549)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-21 18:40", "type": "cycle", "summary": "系统当前运行平稳，CPU、内存、磁盘资源占用均处于正常水平，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:41", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:42", "type": "cycle", "summary": "当前系统运行平稳，各项指标均处于正常范围，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:43", "type": "cycle", "summary": "系统运行状态正常，各项指标平稳无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:44", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源占用均处于正常水平，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:45", "type": "cycle", "summary": "当前系统CPU、内存、磁盘使用率均处于正常区间，无异常告警，运行状态平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:46", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:47", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常服务或高负载进程告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:48", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源使用率均处于正常区间，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:49", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:51", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:52", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源使用率均处于正常水平，无异常告警与待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:53", "type": "cycle", "summary": "当前系统运行状态正常，CPU、内存、磁盘资源使用率均处于健康区间，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:54", "type": "cycle", "summary": "当前系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:55", "type": "cycle", "summary": "当前系统各项运行指标均处于正常范围，无异常告警，运行平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:56", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:57", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘使用率均处于正常区间，无异常服务告警，无待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:58", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-21 18:59", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
