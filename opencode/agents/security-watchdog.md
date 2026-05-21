@@ -15,13 +15,14 @@ hidden: true
 
 # Security Watchdog — 安全哨兵
 
-<!-- memory-gate-inject: 19:00 -->
+<!-- memory-gate-inject: 20:02 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
 **偏好**: - global_proxy: mihomo GLOBAL必须保持自动选择，禁止DIRECT
-**教训**: - real_time: 所有操作立刻生效，禁止'建议''下次'
-**教训**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
+**偏好**: - real_time: 所有操作立刻生效，禁止'建议''下次'
+**偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
+**偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E)
 **教训**: - [2026-05-21] [OP] 失败学习: 手机ADB连接 | 错误调用: adb connect 192.168.123.136:5555 | 错误: 连接被拒绝10061 | 正确用法: 需在手机上确认ADB over TCP已启用且防火墙允许5555 | 原因: 手机端网络/防火墙/A
 **教训**: - [2026-05-21] [OP] 成功记录: 手机 ADB over TCP 诊断 | 调用: adb shell ip addr show + nc -zv + Test-NetConnection | 结果: 手机 IP 为 192.168.123.229（非 192.168.123.13
 **教训**: - [2026-05-21] [OP] 成功记录: GLOBAL代理DIRECT修复 | 调用: PUT /proxies/GLOBAL name=AUTO | 结果: GLOBAL now=AUTO, waybar显示代理● | 场景: waybar显示直连⚠, GLOBAL被设DIRECT导致C
@@ -30,6 +31,14 @@ hidden: true
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

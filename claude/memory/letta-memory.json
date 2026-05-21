@@ -257,6 +257,11 @@
           "text": "【永久固化】DuckDNS & FRP 外网穿透架构 (2026-05-21 验证稳定)\n\n域名: charlie1990.duckdns.org (非charlie-nixos)\nWAN IP: 125.110.221.37 (PPPoE, 动态)\nDDNS更新: duckdns.timer 每小时 (token: 1e66570c-983c-4c0d-b776-03d1ae3a9aa6)\n\n路由器 (Padavan RT-N56U_B1, 192.168.123.1):\n- 端口转发 17699 → 192.168.123.209:17699 TCP (VSList \"nixos-ai\")\n- 同列表含 2222/2223/24801/17698/7681 等 20+条规则\n- 路由器自身FRPS: 0.0.0.0:7000 (与NixOS FRPS独立)\n\nNixOS FRP架构:\n- FRPS: ~/ai-deploy/frps.toml, bindPort=7000, dashboard:7500, auth:token\n- FRPC: ~/.config/frpc/frpc.toml, 连本地FRPS 192.168.123.209:7000\n- 关键隧道: nixos-tty(17699→7699 Caddy), nixos-ssh(2223→22), nixos-opencode-web(19890→8080)等13条\n\n外网访问链路:\ncharlie1990.duckdns.org:17699 → 路由器NAT → 192.168.123.209:17699 → FRPS → frpc隧道 → localhost:7699(Caddy Launcher Gateway)\n\n测试: curl http://charlie1990.duckdns.org:17699 → 200 OK (Server: Caddy)",
           "tags": "duckdns,frp,router,port-forward,ddns,permanent",
           "timestamp": "1779355688"
+        },
+        {
+          "text": "【三态连通性监控体系】2026-05-21 部署\n\n三层防御:\n1. duckdns.timer → 每10分钟主动更新 (原每小时)\n2. connectivity-chain-watchdog.timer → 每5分钟全链路巡检 (L1 DDNS/L2 NAT/L3 FRP/L3b E2E)\n3. frp-watchdog.timer → 每5分钟 FRPS+frpc自愈\n\n链路检测逻辑:\n- DuckDNS DNS→WAN IP不匹配 → 自动强制更新\n- WAN端口不可达 → 记录+通知\n- FRPS异常 → frp-watchdog自动重启\n- 端到端(DuckDNS域名→服务) → 200 OK验证\n\n文件: ~/.local/bin/connectivity-chain-watchdog.sh\ntimer: *:0/5:15 (与frp-watchdog *:0/5 错开15秒)",
+          "tags": "duckdns,frp,router,monitoring,watchdog,permanent",
+          "timestamp": "1779364557"
         }
       ]
     },

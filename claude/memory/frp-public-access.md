@@ -1,46 +1,45 @@
 ---
-name: FRP 公网访问诊断 2026-05-21
-description: 17699 端口映射修复 + DuckDNS 配置 + 公网访问方案
-type: project
+name: DuckDNS + FRP + 路由器 公网穿透 — 已验证2026-05-21
+description: 三态连通性全链路配置 (DDNS→NAT→FRP), 已通过端到端验证
+type: permanent-reference
+verified: 2026-05-21
 ---
 
-## 端口映射修复
-- **17699** → 7699 (Caddy AI Launcher) — 原来错误映射到 7700(ttyd)
-- **17700** → 7700 (ttyd Web终端) — 新增
-- frpc.toml 已修复, NixOS allowPorts+防火墙 已更新并 rebuild
-
 ## DuckDNS
-- 域名: `charlie1990.duckdns.org`
+- 域名: `charlie1990.duckdns.org` (非 charlie-nixos)
+- WAN IP: `125.110.221.37` (PPPoE 动态)
 - Token: `1e66570c-983c-4c0d-b776-03d1ae3a9aa6`
-- **修复**: service 加入 `--noproxy "*"` 防止 mihomo 拦截
-- Timer: 已 enabled, 每小时更新
+- 更新: duckdns.timer 每10分钟 (curl --noproxy "*")
+- ✅ 已验证: curl charlie1990.duckdns.org:17699 → 200 OK
 
-## dpdns.org
-- 域名: `charlie1990.dpdns.org`
-- Timer: 每月1日 09:00 续期
+## 路由器 (Padavan RT-N56U_B1, 192.168.123.1)
+- 管理员: admin/admin, UI: http://192.168.123.1
+- 端口转发 (VSList): **17699 → 192.168.123.209:17699 TCP** (已存在, 描述"nixos-ai")
+- ✅ 已验证: 规则正常运行, NVRAM持久化
 
-## 公网IP
-- 真实ISP IP: `125.110.221.37` (DuckDNS 检测)
-- 代理IP(mihomo): `185.37.253.247`
-- IPv6: `2a04:6f00:1::ee:b:1025`
+## FRPS (服务端, NixOS)
+- 配置: `~/ai-deploy/frps.toml`, bindPort=7000, dashboard:7500
+- 认证: token=frp-token-charlie-2026, dashboard user=admin pass=frp@charlie2026
+- 暴露端口: 17699/2223/60000-60005/19890-19893
+- 系统管理: NixOS rebuild (frps Nix store路径)
 
-## 公网访问状态
-- `charlie1990.duckdns.org:17699` → HTTP 000 (不通)
-- 可能原因: 路由器未配置端口转发 / ISP CGNAT
+## FRPC (客户端, NixOS)
+- 配置: `~/.config/frpc/frpc.toml`, 连接本地FRPS 192.168.123.209:7000
+- 13条隧道含: nixos-tty(17699→7699 Caddy), nixos-ssh(2223→22), opencode等
+- systemd: frpc.service (Restart=always, RestartSec=15)
 
-## 路由器端口转发规则(需在 192.168.123.1 管理页配置)
-| 外部端口 | 内部IP | 内部端口 | 服务 |
-|---------|--------|---------|------|
-| 17699 | 192.168.123.209 | 17699 | Caddy AI Launcher |
-| 17700 | 192.168.123.209 | 17700 | ttyd Web终端 |
-| 2223 | 192.168.123.209 | 2223 | SSH |
-| 18090 | 192.168.123.209 | 18090 | OpenCode Sisy |
-| 19890-19893 | 192.168.123.209 | 19890-19893 | OpenCode/Letta |
+## 外网访问链路 (已验证)
+```
+charlie1990.duckdns.org:17699 → 路由器NAT → 192.168.123.209:17699
+  → NixOS FRPS → frpc隧道(nixos-tty) → localhost:7699 → Caddy Launcher
+```
 
-## 待办
-- [ ] 从 Windows 登录路由器(192.168.123.1)配置端口转发
-- [ ] 确认 ISP 是否 CGNAT (端口转发是否生效)
-- [ ] 如 CGNAT → 考虑 Cloudflare Tunnel 或 Tailscale Funnel
+## 监控体系 (三层防御)
+1. **duckdns.timer** → 每10分钟主动DDNS更新
+2. **connectivity-chain-watchdog.timer** → 每5分钟 L1 DNS/L2 NAT/L3 FRP/L3b E2E
+3. **frp-watchdog.timer** → 每5分钟 frps+frpc自愈
+- 脚本: `~/.local/bin/connectivity-chain-watchdog.sh`
 
-**Why:** 2026-05-21 全面排查发现端口映射错误、DuckDNS 被代理拦截、公网不通
-**How to apply:** 端口映射已修复，需用户在路由器配置转发规则才能公网访问
+## 过去误判 (已修正)
+- 2026-05-21 早期: 以为DuckDNS不通 (HTTP 000), 实际是mihomo代理拦截了DNS
+- 修复: DuckDNS service + watchdog 均使用 `--noproxy '*'`

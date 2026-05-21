@@ -9,8 +9,9 @@ AGENTS_DIR = os.path.expanduser("~/.config/opencode/agents")
 BASELINE = os.path.expanduser("~/.claude/projects/-home-charlie/memory/baseline.toml")
 
 def get_latest_memories():
-    """提取最近关键记忆"""
+    """提取最近关键记忆, 返回 (memories, pref_count)"""
     memories = []
+    pref_count = 0
     
     # 1. 用户偏好 (从 baseline)
     if os.path.exists(BASELINE):
@@ -25,6 +26,7 @@ def get_latest_memories():
                 if in_prefs and "=" in line:
                     k, v = line.split("=", 1)
                     memories.append(f"- {k.strip()}: {v.strip().strip('\"')}")
+                    pref_count += 1
     
     # 2. 最近教训 (last 5 entries)
     lessons_file = os.path.join(MEMORY_DIR, "lessons-learned.md")
@@ -37,11 +39,11 @@ def get_latest_memories():
             if short.endswith("---"): short = short[:-3]
             memories.append(short)
     
-    return memories
+    return memories, pref_count
 
 def build_injection_block():
     """构建注入文本块"""
-    memories = get_latest_memories()
+    memories, pref_count = get_latest_memories()
     if not memories:
         return ""
     
@@ -49,7 +51,7 @@ def build_injection_block():
     block += "## 已知上下文 (gate自动注入，强制执行)\n"
     
     for i, m in enumerate(memories):
-        if i < 3:  # 前3条是偏好
+        if i < pref_count:
             block += f"**偏好**: {m}\n"
         else:
             block += f"**教训**: {m}\n"

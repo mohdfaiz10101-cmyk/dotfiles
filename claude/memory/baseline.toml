@@ -64,3 +64,4 @@ usb_windows    = "2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无
 global_proxy   = "mihomo GLOBAL必须保持自动选择，禁止DIRECT"
 real_time      = "所有操作立刻生效，禁止'建议''下次'"
 disk_rule      = "/mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun"
+ddns_frp       = "DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E)"
