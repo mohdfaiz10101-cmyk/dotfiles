@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-21 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-22 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,14 +10,21 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | *:* |
-| 2222 | *:* |
 | 2223 | *:* |
 | 3000 | (v1",pid=3701,fd=21)) |
-| 3389 | *:* |
+| 3001 | 0.0.0.0:* |
+| 3001 | [::]:* |
+| 3002 | 0.0.0.0:* |
+| 3002 | [::]:* |
+| 3010 | 0.0.0.0:* |
 | 4000 | users:(("python3.13",pid=2980,fd=6)) |
 | 4001 | users:(("python3.13",pid=2883,fd=6)) |
+| 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=2994,fd=11)) |
+| 5000 | users:(("wineserver",pid=4129359,fd=515)) |
 | 5037 | users:(("adb",pid=3637,fd=11)) |
+| 5432 | 0.0.0.0:* |
+| 5432 | [::]:* |
 | 5678 | 0.0.0.0:* |
 | 5678 | [::]:* |
 | 5900 | users:(("wayvnc",pid=8006,fd=11)) |
@@ -34,12 +41,15 @@
 | 7695 | users:(("ttyd",pid=3083,fd=13)) |
 | 7696 | users:(("ttyd",pid=3133,fd=13)) |
 | 7697 | users:(("ttyd",pid=3086,fd=13)) |
-| 7699 | users:(("caddy",pid=8867,fd=6)) |
-| 7700 | users:(("ttyd",pid=3130,fd=13)) |
+| 7698 | users:(("ttyd",pid=1712198,fd=13)) |
+| 7699 | users:(("caddy",pid=2170444,fd=7)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
+| 8010 | 0.0.0.0:* |
+| 8010 | [::]:* |
+| 8050 | users:(("python3.13",pid=23848,fd=6)) |
 | 8080 | users:(("opencode",pid=3208,fd=18)) |
 | 8090 | users:(("opencode",pid=3048,fd=15)) |
 | 8283 | 0.0.0.0:* |
@@ -48,17 +58,19 @@
 | 8285 | users:(("python3.13",pid=8845,fd=11)) |
 | 8286 | users:(("python3.13",pid=2928,fd=3)) |
 | 8384 | 0.0.0.0:* |
+| 8600 | users:(("python3.13",pid=34243,fd=14)) |
+| 8700 | users:(("python3.13",pid=34243,fd=7)) |
 | 9090 | *:* |
 | 9091 | 0.0.0.0:* |
 | 9099 | users:(("python3.13",pid=4135,fd=3)) |
 | 9222 | users:(("chrome",pid=8147,fd=60)) |
-| 9800 | users:(("python3.13",pid=2961,fd=6)) |
+| 9800 | users:(("python3.13",pid=2162484,fd=6)) |
 | 9801 | users:(("python3.13",pid=3180,fd=6)) |
 | 9810 | users:(("python3.13",pid=3011,fd=6)) |
 | 9811 | users:(("python3.13",pid=2932,fd=6)) |
 | 9875 | users:(("python3.13",pid=2967,fd=3)) |
 | 9876 | users:(("python3.13",pid=8847,fd=3)) |
-| 9900 | users:(("python3.13",pid=2837,fd=6)) |
+| 9900 | users:(("python3.13",pid=1936885,fd=6)) |
 | 9922 | users:(("MainThread",pid=2959,fd=21)) |
 | 9977 | users:(("python3",pid=2889,fd=3)) |
 | 9979 | users:(("python3.13",pid=8844,fd=3)) |
@@ -75,6 +87,7 @@
 | 18093 | *:* |
 | 18300 | *:* |
 | 18789 | users:(("node",pid=3031,fd=25)) |
+| 18791 | users:(("node",pid=3031,fd=27)) |
 | 19890 | *:* |
 | 19891 | *:* |
 | 19892 | *:* |
@@ -83,6 +96,7 @@
 | 24801 | users:(("python3.13",pid=7831,fd=3)) |
 | 24802 | users:(("python3.13",pid=7830,fd=3)) |
 | 40544 | 0.0.0.0:* |
+| 47584 | users:(("wineserver",pid=4129359,fd=378)) |
 | 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
@@ -138,7 +152,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（565个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（568个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (3个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh`
@@ -171,6 +185,7 @@ static
 **cloudflared-*** (4个): `cloudflared-bin, cloudflared-happy, cloudflared-launcher, cloudflared-ttyd`
 **code-*** (4个): `code-dual, code-indexer, code-search, code-watcher`
 **config-*** (1个): `config-lock.sh`
+**connectivity-*** (1个): `connectivity-chain-watchdog.sh`
 **cookie-*** (1个): `cookie-watcher.py`
 **crush-*** (1个): `crush-wrapper.sh`
 **cursor-*** (1个): `cursor-setup-check`
@@ -216,6 +231,7 @@ static
 **kilo-*** (1个): `kilo-profile`
 **lag-*** (1个): `lag-detector.sh`
 **latest-*** (1个): `latest-img`
+**launcher-*** (1个): `launcher-health-check.sh`
 **letta-*** (11个): `letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh, letta-precheck.py... +1更多`
 **libreoffice-*** (1个): `libreoffice-x11`
 **litellm-*** (2个): `litellm-error-guard.sh, litellm-startup.sh`
@@ -301,6 +317,7 @@ static
 **version-*** (1个): `version-check`
 **voice-*** (3个): `voice-input, voice-push, voice-test`
 **vpn-*** (1个): `vpn-watchdog`
+**wan-*** (1个): `wan-ip-monitor.sh`
 **warp-*** (10个): `warp-auto, warp-auto-fold, warp-claude-attach, warp-claude-auto, warp-claude-launch, warp-dual-view, warp-launch-claude, warp-multi, warp-session, warp-split-now`
 **waybar-*** (20个): `waybar-adb.sh, waybar-agent.sh, waybar-api-quota.sh, waybar-chroma.sh, waybar-clipsync.sh, waybar-disk.sh, waybar-dispatch.sh, waybar-frp.sh, waybar-guardian.py, waybar-health-menu.sh... +10更多`
 **wayland-*** (1个): `wayland-screenshot`
@@ -434,6 +451,7 @@ opencode-session-log.md
 opencode-upgrade-1.15.3.md
 package-watchlist.md
 pending-tasks.md
+router-padavan-backup.md
 rules-secondary.md
 session-notes.md
 setup-plan.md
@@ -442,7 +460,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（417个注册，85个运行中）
+## 三、systemd 用户服务（420个注册，83个运行中）
 
 ### 当前运行中
 ```
@@ -453,7 +471,6 @@ agi-frontend
 agi-gateway
 ai-rules-sync
 ai-watchdog
-caddy-launcher
 change-watcher
 chrome-cdp
 chronos-sensory
@@ -524,7 +541,6 @@ wayland-wm@hyprland\x2duwsm.desktop
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
-wechat-uos
 wireplumber
 xdg-desktop-portal
 xdg-document-portal
@@ -533,7 +549,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（107个 timer）
+## 四、定时任务（111个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -549,6 +565,7 @@ auto-fix-services
 backup-cleanup
 baidu-123-migration
 cc-autonomous-runner
+cc-decision-engine
 cc-op-verifier
 cc-task-auditor
 cf-url-notify
@@ -556,6 +573,7 @@ check-ttyd
 chronos-subconscious
 claude-orphan-killer
 code-indexer
+connectivity-chain-watchdog
 copywriting-collector
 daily-summary
 discord-bot-healthcheck
@@ -633,6 +651,7 @@ system-health-monitor
 systemd-orphan-guard
 systemd-tmpfiles-clean
 task-review-weekly
+wan-ip-monitor
 waybar-guardian
 wechat-backup
 wechat-backup-reminder
@@ -642,6 +661,7 @@ wechat-msg-sync
 wechat-version-guard
 win-deploy
 wol-windows
+workspace-scheduler
 ```
 
 ## 五、故障快速定位

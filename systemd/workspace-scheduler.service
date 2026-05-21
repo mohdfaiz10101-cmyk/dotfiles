@@ -1,0 +1,13 @@
+[Unit]
+Description=Workspace Scheduler — 智能分类创建主题 workspace
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/opencode/skills/workspace-scheduler/scripts/run-all.sh
+WorkingDirectory=%h/.openclaw/workspace
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

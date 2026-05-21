@@ -78,21 +78,17 @@
 - 出错不重复同样方法，连续失败2次 /clear
 
 
-## 记忆系统状态（自动注入 2026-05-21 18:17）
+## 记忆系统状态（自动注入 2026-05-22 00:17）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | N/A / N/A |
-| Letta MCP | inactive |
-| lessons-learned条目 | 62 |
+| Letta MCP | active |
+| lessons-learned条目 | 23 |
 | 历史会话数 | 0
 0 |
 
 ### 高频主题（最近）
-  • NixOS (×2)
-  • Win (×1)
-  • waybar-health.sh (×1)
-  • waybar显示直连⚠, (×1)
-  • VRL (×1)
+
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
 

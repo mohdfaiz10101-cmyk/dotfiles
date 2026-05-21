@@ -1,0 +1,10 @@
+[Unit]
+Description=Workspace Scheduler Timer — 每周一 09:00 执行
+
+[Timer]
+OnCalendar=Mon 09:00:00
+Persistent=true
+Unit=workspace-scheduler.service
+
+[Install]
+WantedBy=timers.target

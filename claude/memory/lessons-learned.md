@@ -48,3 +48,4 @@
 ## 系统稳定性
 - [2026-05-03] krdpserver-desktop.service 反复 SIGABRT → disable，远程桌面改用 wayvnc
 - [2026-05-07] auto-fix-services 不区分 oneshot timer → SKIP_PATTERNS 加 oneshot 服务名
+- [2026-05-21] [OP] 修复: sisyphus 任务穿插 | 原因: 身份与职责里无条件执行op-tasks.md导致接到任意任务都扫描穿插 | 修复: 仅当用户明确说执行op-tasks时才扫描，否则只执行当前分配任务

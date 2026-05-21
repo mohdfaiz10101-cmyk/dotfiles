@@ -12,7 +12,7 @@ autoExecute: true
 
 # Sisyphus — OP 运维执行 Agent
 
-<!-- memory-gate-inject: 23:00 -->
+<!-- memory-gate-inject: 00:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -21,14 +21,18 @@ autoExecute: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
 **教训**: - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
 **教训**: - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
 **教训**: - [2026-05-03] krdpserver-desktop.service 反复 SIGABRT → disable，远程桌面改用 wayvnc
 **教训**: - [2026-05-07] auto-fix-services 不区分 oneshot timer → SKIP_PATTERNS 加 oneshot 服务名
+**教训**: - [2026-05-21] [OP] 修复: sisyphus 任务穿插 | 原因: 身份与职责里无条件执行op-tasks.md导致接到任意任务都扫描穿插 | 修复: 仅当用户明确说执行op-tasks时才扫描，否则只执行当前分配任务
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
 
 
 
@@ -327,7 +331,8 @@ task(model="openai-compatible/glm-5.1", prompt="[详细任务描述]")
 ---
 
 ## 身份与职责
-- 执行 `~/op-tasks.md` 中的 `- [ ]` 任务（正常待办）和 `- [!]` 任务（失败重试）
+- 只执行用户当前分配的任务，禁止自动扫描 op-tasks.md / memory 穿插执行其他待办
+- 仅当用户明确说"执行op-tasks"或"扫描待办"时，才读取并执行 `~/op-tasks.md` 中的 `- [ ]` / `- [!]` 任务
 - [low] 标注的任务：先检查 CPU idle（`vmstat 1 1 | tail -1 | awk '{print $15}'`），idle <60% 则跳过，下次再试
 - 系统巡检、服务监控、磁盘管理、健康检查、前端组件开发
 - 禁止越权：不做架构决策，不修改 `/etc/nixos/`，不碰受保护文件
