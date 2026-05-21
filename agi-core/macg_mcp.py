@@ -5,7 +5,7 @@ macg_mcp.py — macg 工具的 MCP Server
 CC 用 Claude 思考，macg 用 GLM 执行 — 各司其职，只开一个终端
 """
 
-import os, sys, json, subprocess, urllib.request, urllib.error, urllib.parse
+import os, sys, json, subprocess, urllib.request, urllib.error, urllib.parse, sqlite3
 from pathlib import Path
 import requests
 from datetime import datetime
@@ -222,6 +222,52 @@ def macg_memory_write(filename: str, content: str) -> str:
     with open(p, "a") as f:
         f.write("\n" + content)
     return f"[OK] 已追加到 {p}"
+
+
+@mcp.tool()
+def macg_search_code(query: str, limit: int = 10) -> str:
+    """搜索代码库 FTS5 全文索引。返回匹配文件路径+代码片段。
+    覆盖: ~/launcher ~/hub ~/agi ~/repos /mnt/ai/apps/agi-control-plane /mnt/ai/apps/wechat-agent"""
+    CODE_INDEX = Path.home() / ".local/share/code-index/codebase.db"
+    if not CODE_INDEX.exists():
+        return "[FAIL] 代码索引不存在，运行 code-indexer 重建"
+    try:
+        conn = sqlite3.connect(str(CODE_INDEX))
+        # FTS5 搜索，用 snippet 高亮匹配片段
+        rows = conn.execute(
+            "SELECT file_path, project, snippet(code_idx, 2, '<mark>', '</mark>', '...', 40) "
+            "FROM code_idx WHERE code_idx MATCH ? ORDER BY rank LIMIT ?",
+            (query.replace("'", "''"), limit)
+        ).fetchall()
+        conn.close()
+        if not rows:
+            return "[OK] 无匹配代码文件"
+        lines = []
+        for fp, proj, snip in rows:
+            lines.append(f"📁 {proj}/{fp}")
+            lines.append(f"   {snip[:200]}")
+            lines.append("")
+        return f"[OK] {len(rows)} 个匹配:\n" + "\n".join(lines)
+    except Exception as e:
+        return f"[FAIL] 代码搜索异常: {e}"
+
+
+@mcp.tool()
+def macg_list_indexed_projects() -> str:
+    """列出代码索引覆盖的所有项目和文件数。"""
+    CODE_INDEX = Path.home() / ".local/share/code-index/codebase.db"
+    if not CODE_INDEX.exists():
+        return "[FAIL] 代码索引不存在"
+    try:
+        conn = sqlite3.connect(str(CODE_INDEX))
+        rows = conn.execute(
+            "SELECT project, COUNT(*) as cnt FROM code_idx GROUP BY project ORDER BY cnt DESC"
+        ).fetchall()
+        conn.close()
+        lines = [f"{proj}: {cnt} 文件" for proj, cnt in rows]
+        return "[OK] 已索引项目:\n" + "\n".join(lines)
+    except Exception as e:
+        return f"[FAIL] {e}"
 
 
 @mcp.tool()

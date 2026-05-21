@@ -1,0 +1,24 @@
+[Unit]
+Description=OpenAgents MCP Bridge — CrewAI
+After=network.target crewai-gateway.service openagents.service
+Requires=crewai-gateway.service openagents.service
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent crewai --channel development
+WorkingDirectory=/home/charlie/crewai-project
+Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
+Environment=PYTHONUNBUFFERED=1
+Environment=http_proxy=
+Environment=https_proxy=
+Environment=HTTP_PROXY=
+Environment=HTTPS_PROXY=
+Environment=ALL_PROXY=
+Environment=all_proxy=
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=10
+
+[Install]
+WantedBy=default.target

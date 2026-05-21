@@ -99,45 +99,17 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 - **调取记忆用 `recall.sh "关键词"`**：自动标注 [已验证]/[未验证]/[过期]
 - **Letta 同步**：`letta-sync.py` v2 优先从 changelog 增量写入，兜底扫 md 文件
 
-## 模型路由决策表
-| 任务类型 | 执行方式 |
-|---------|---------|
-| 简单问答、格式化 | `glm "<prompt>"` 或直接处理 |
-| 中文对话、翻译 | `glm "<prompt>"` |
-| Bug修复、功能实现 | 直接处理 |
-| 代码生成（长上下文） | `glm` 或 LiteLLM `glm-4-flash` |
-| 架构设计、方案对比 | `glm` 完整版 |
+**模型路由决策表** → 见 `memory/infra-reference.md`（按需加载，减少 token）
+**基础设施清单** → 见 `memory/infra-reference.md`（按需加载，减少 token）
 
-**外部模型**：GLM=`glm "<prompt>"` | DeepSeek=LiteLLM `localhost:4000` key `sk-litellm-charlie-2026` model `silicon/deepseek-v3.2`
+## SOLUTION_FIRST — 死规则
+方案第一行输出：`[SOLUTION_FIRST] 基于已有: {组件} → 叠加: {新增}`
 
-**Deep 路由自动升级（DEEP_ROUTE_UPGRADE）**：Router `Route: deep | Confidence: 80%+` 且当前为 Turbo → `glm` 委派
-
-**失败升级链**：连续2次失败 → 传递原始任务+失败原因，格式 `[ESCALATION] 从X升级到Y`
-
-**任务失败升级（TASK_FAILBACK — Sisyphus 专用）**：
+## 任务失败升级（TASK_FAILBACK — Sisyphus 专用）
 - 批次失败率 >50% → `[ESCALATE→arch] 本轮失败率{N}%，疑似系统级问题`
 - 单任务连续≥3轮 SKIP/FAIL → `[ESCALATE→arch] 任务{N}卡死，请诊断根因`
 - 每批结束输出决策摘要：完成/跳过/失败/失败率/决策
 - arch 诊断回来后 MUST 根据诊断调整策略，不得原样重试
-
-## 基础设施清单（SOLUTION_FIRST — 死规则）
-方案第一行输出：`[SOLUTION_FIRST] 基于已有: {组件} → 叠加: {新增}`
-
-| 组件 | 地址/路径 |
-|------|---------|
-| AGI Brain | `~/agi/macg.py` + systemd |
-| Letta 记忆 | `localhost:8283` |
-| LiteLLM 网关 | `localhost:4000` |
-| FastAPI Gateway | `localhost:9900` |
-| Hub API | `localhost:9800` |
-| OP 任务系统 | `op-tasks.md` + systemd timers |
-| ChromaDB | `localhost:8000` |
-| Paperclip | `localhost:3100` |
-| mihomo 代理 | `localhost:7890` |
-| **3000 控制台** | `localhost:3000` — Next.js dev模式（HMR） |
-| memory/ | `~/.claude/projects/-home-charlie/memory/` |
-| changelog | `memory/changelog.jsonl`（事件溯源） |
-| L2/L3规则 | `memory/rules-secondary.md` |
 
 ## 自动验证
 - 涉及第三方工具/API 先 WebSearch 验证最新用法

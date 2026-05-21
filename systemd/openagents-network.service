@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenAgents Network Hub (port 8700/8600)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/oa-venv/bin/openagents network start /home/charlie/.openagents/network --port 8700
+WorkingDirectory=/home/charlie/.openagents/network
+Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
+Environment=PYTHONUNBUFFERED=1
+Environment=http_proxy=
+Environment=https_proxy=
+Environment=HTTP_PROXY=
+Environment=HTTPS_PROXY=
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

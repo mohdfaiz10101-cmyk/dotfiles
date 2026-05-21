@@ -272,6 +272,11 @@
           "text": "【三态连通性监控体系】2026-05-21 部署\n\n三层防御:\n1. duckdns.timer → 每10分钟主动更新 (原每小时)\n2. connectivity-chain-watchdog.timer → 每5分钟全链路巡检 (L1 DDNS/L2 NAT/L3 FRP/L3b E2E)\n3. frp-watchdog.timer → 每5分钟 FRPS+frpc自愈\n\n链路检测逻辑:\n- DuckDNS DNS→WAN IP不匹配 → 自动强制更新\n- WAN端口不可达 → 记录+通知\n- FRPS异常 → frp-watchdog自动重启\n- 端到端(DuckDNS域名→服务) → 200 OK验证\n\n文件: ~/.local/bin/connectivity-chain-watchdog.sh\ntimer: *:0/5:15 (与frp-watchdog *:0/5 错开15秒)",
           "tags": "duckdns,frp,router,monitoring,watchdog,permanent",
           "timestamp": "1779364557"
+        },
+        {
+          "text": "2026-05-22 OP执行: 系统索引优化四合一 | 结果: 成功 | 关键: (1)memory-engine补8条服务依赖relation (2)macg_mcp.py新增macg_search_code/macg_list_indexed_projects两个代码搜索工具 (3)CLAUDE.md从183行精简到155行，基础设施表和模型路由表抽到infra-reference.md (4)新建sys-info-mcp(:18094)统一系统状态查询，含service/port/disk/proxy/all五个工具",
+          "tags": "op-exec,system-index,mcp,optimization",
+          "timestamp": "1779381807"
         }
       ]
     },
