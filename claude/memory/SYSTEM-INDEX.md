@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-22 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-22 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,7 +9,8 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
-| 1053 | *:* |
+| 1053 | users:(("mihomo",pid=2127746,fd=10)) |
+| 2222 | *:* |
 | 2223 | *:* |
 | 3000 | (v1",pid=3701,fd=21)) |
 | 3001 | 0.0.0.0:* |
@@ -17,11 +18,11 @@
 | 3002 | 0.0.0.0:* |
 | 3002 | [::]:* |
 | 3010 | 0.0.0.0:* |
+| 3389 | *:* |
 | 4000 | users:(("python3.13",pid=2980,fd=6)) |
 | 4001 | users:(("python3.13",pid=2883,fd=6)) |
 | 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=2994,fd=11)) |
-| 5000 | users:(("wineserver",pid=4129359,fd=515)) |
 | 5037 | users:(("adb",pid=3637,fd=11)) |
 | 5432 | 0.0.0.0:* |
 | 5432 | [::]:* |
@@ -43,8 +44,8 @@
 | 7697 | users:(("ttyd",pid=3086,fd=13)) |
 | 7698 | users:(("ttyd",pid=1712198,fd=13)) |
 | 7699 | users:(("caddy",pid=2170444,fd=7)) |
-| 7890 | *:* |
-| 7891 | *:* |
+| 7890 | users:(("mihomo",pid=2127746,fd=8)) |
+| 7891 | users:(("mihomo",pid=2127746,fd=6)) |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
 | 8010 | 0.0.0.0:* |
@@ -58,10 +59,11 @@
 | 8285 | users:(("python3.13",pid=8845,fd=11)) |
 | 8286 | users:(("python3.13",pid=2928,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8600 | users:(("python3.13",pid=34243,fd=14)) |
-| 8700 | users:(("python3.13",pid=34243,fd=7)) |
+| 8600 | users:(("python3.13",pid=325283,fd=14)) |
+| 8700 | users:(("python3.13",pid=325283,fd=7)) |
+| 8701 | users:(("python3.13",pid=290552,fd=13)) |
 | 9090 | *:* |
-| 9091 | 0.0.0.0:* |
+| 9091 | users:(("mihomo",pid=2127746,fd=3)) |
 | 9099 | users:(("python3.13",pid=4135,fd=3)) |
 | 9222 | users:(("chrome",pid=8147,fd=60)) |
 | 9800 | users:(("python3.13",pid=2162484,fd=6)) |
@@ -83,8 +85,9 @@
 | 17700 | *:* |
 | 18090 | *:* |
 | 18091 | *:* |
-| 18092 | users:(("python3.13",pid=2983,fd=6)) |
+| 18092 | users:(("python3.13",pid=327983,fd=6)) |
 | 18093 | *:* |
+| 18094 | users:(("python3.13",pid=391456,fd=6)) |
 | 18300 | *:* |
 | 18789 | users:(("node",pid=3031,fd=25)) |
 | 18791 | users:(("node",pid=3031,fd=27)) |
@@ -96,7 +99,6 @@
 | 24801 | users:(("python3.13",pid=7831,fd=3)) |
 | 24802 | users:(("python3.13",pid=7830,fd=3)) |
 | 40544 | 0.0.0.0:* |
-| 47584 | users:(("wineserver",pid=4129359,fd=378)) |
 | 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
@@ -152,7 +154,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（568个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（569个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (3个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh`
@@ -297,6 +299,7 @@ static
 **start-*** (5个): `start-chromadb, start-desktop-pet.sh, start-hyprland-fixed, start-session-rag-server.sh, start-wechat`
 **switch-*** (1个): `switch-claude-provider.sh`
 **sync-*** (8个): `sync-all-browser-cookies, sync-claude-export-to-letta, sync-cookies-to-chrome, sync-md-to-letta, sync-memory-to-ntfs, sync-session-to-letta, sync-session-to-letta-v1-backup, sync-to-obsidian`
+**sys-*** (1个): `sys-info-mcp.py`
 **system-*** (4个): `system-call-check, system-healer, system-health-check, system-sentry-check.sh`
 **systemd-*** (1个): `systemd-orphan-guard.sh`
 **tablet-*** (1个): `tablet-adb-watch`
@@ -424,6 +427,7 @@ feedback_phone_operations.md
 feedback_waybar-management.md
 frp-public-access.md
 ideas-roadmap.md
+infra-reference.md
 lessons-learned-7699.md
 lessons-learned-archive.md
 lessons-learned-backup-20260518.md
@@ -460,7 +464,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（420个注册，83个运行中）
+## 三、systemd 用户服务（424个注册，86个运行中）
 
 ### 当前运行中
 ```
@@ -481,6 +485,8 @@ clip-sync
 code-watcher
 content-router
 cookie-sync-server
+crewai-gateway
+crewai-openagents-bridge
 dbus
 disk-watchdog
 dotfiles-symlink-watch
@@ -523,6 +529,7 @@ proxy-403-monitor
 python-crash-guard
 screenshot-watcher
 speech-dispatcher
+sys-info-mcp
 tablet-control-panel
 ttyd-aider
 ttyd-cct

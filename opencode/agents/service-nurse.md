@@ -15,7 +15,7 @@ hidden: true
 
 # Service Nurse — 服务护士
 
-<!-- memory-gate-inject: 05:00 -->
+<!-- memory-gate-inject: 06:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -32,6 +32,10 @@ hidden: true
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
 
 
 
