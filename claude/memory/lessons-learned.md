@@ -108,3 +108,4 @@
 - [2026-05-21] [OP] 成功记录: 链路安全加固 v2 | 调用: 5项修复全部完成 | 结果: 永久化优先规则建立, /tmp→~/.local/state/, credential脱敏, FRPS系统级修复, wan-ip-monitor每60秒IP检测, 路由器NVRAM备份文档 | 场景: DuckDNS+FRP+NAT全链路
 - [2026-05-21] [OP] 成功记录: 手机Tailscale+FRP双隧道ADB | 调用: frpc(phone)→Tailscale→frps(NixOS):60004→ADB | 结果: ADB over Tailscale打通,延迟~45ms | 场景: AP隔离WiFi下ADB远程接入
 - [2026-05-21] [OP] 失败学习: frpc nixos-tty localPort 被改成7698导致Launcher tab消失 | 错误: localPort=7698(ttyd终端)而非7699(Caddy) | 正确用法: 7699=Caddy Launcher页面 | 预防: opencode-health-monitor第9项检查 + frpc.toml顶部注释警告
+- [2026-05-21] [OP] 成功记录: phone-clip-sync地址修复+Magisk frpc.sh升级 | 调用: edit PHONE_ADB→127.0.0.1:60004, Magisk frpc.sh→frpc_new+setsid | 结果: phone-clip-sync已重启 | 场景: Tailscale FRP隧道下剪贴板同步
