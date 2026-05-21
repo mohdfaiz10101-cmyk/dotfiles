@@ -92,6 +92,11 @@
           "text": "2026-05-21 OP执行: 修复 waybar ck_opencode ss 命令 race condition | 结果: 成功 | 关键发现: 移除 ss -tlnp | grep 端口检查，改用 curl 直接探测 HTTP 200，避免并行后台执行时 ss 命令竞争导致误报 CRITICAL",
           "tags": "op-exec,waybar,opencode,race-condition",
           "timestamp": "1779345371"
+        },
+        {
+          "text": "2026-05-21 OP执行: 手机 ADB over TCP 诊断 | 结果: 成功 | 关键发现: 手机 IP 为 192.168.123.229（非 192.168.123.136），ADB over TCP 正常工作；Windows WiFi 接口 IP 为 192.168.123.136，之前混淆导致连接失败",
+          "tags": "op-exec,adb,frp,network",
+          "timestamp": "1779348394"
         }
       ]
     },

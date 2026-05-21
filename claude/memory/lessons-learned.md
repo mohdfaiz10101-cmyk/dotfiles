@@ -81,6 +81,7 @@
 
 - [2026-05-21] [OP] 修复 nixos-sysadmin agent ID 错误 | 错误ID: agent-f7473a7f / agent-8651643c | 正确ID: agent-0040ded4-1831-4b76-a4a4-62519a416a5a | 修复脚本: letta-distill, memory-router, glm-proxy | 根因: agent ID 变更后未同步更新所有引用
 - [2026-05-21] [OP] 成功记录: 手机剪贴板同步 | 调用: phone-clip-sync + systemd user service + FRP 15555 | 结果: 服务已启动，等待手机上线 | 场景: NixOS ↔ Android 剪贴板双向同步
+- [2026-05-21] [OP] 修复 phone-clip-sync WAYLAND_DISPLAY 不匹配 | 错误: systemd service 设置 WAYLAND_DISPLAY=wayland-0，但实际显示是 wayland-1，导致 wl-paste 失败，脚本 set -e 退出 | 修复: 将 Environment=WAYLAND_DISPLAY=wayland-0 改为 wayland-1 | 场景: systemd user service 环境变量必须与实际 Wayland 显示匹配
 - [2026-05-21] [OP] 成功记录: 手机 FRP 隧道 | 调用: frpc 0.66.0 + Magisk service.d + TOML配置修复 | 结果: 15555端口开放，ADB over TCP可用 | 场景: OnePlus Ace 5 Pro 通过FRP隧道实现永远在线调试
 - [2026-05-21] [OP] frpc TOML格式坑 | 错误: frpc.toml包含[common]节头导致配置不解析 | 修复: 必须省略[common]节头，直接写proxy/client配置 | 场景: frpc 0.66.0 TOML解析器不支持[common]节，需扁平化配置
 - [2026-05-21] [OP] 修复 nixos-sysadmin agent ID 错误 | 错误ID: agent-8651643c-e753-47ed-9759-bd955c6ac240 | 正确ID: agent-0040ded4-1831-4b76-a4a4-62519a416a5a | 修复文件: discord_bot.py, hub-api.py | 根因: agent ID 变更后未同步更新所有引用
@@ -98,3 +99,4 @@
 - [2026-05-21] [OP] 成功记录: waybar ck_opencode race condition 修复 | 调用: 移除 ss -tlnp | grep 检查，改用 curl 直接探测 | 结果: 并行执行稳定，不再误报 CRITICAL | 场景: waybar-health.sh 10项并行检查，ss 命令在后台并行时偶发返回空
 - [2026-05-21] [OP] 成功记录: claude-knowledge MCP 恢复 | 调用: opencode.json 添加 claude-knowledge 配置 + 验证 mcp list | 结果: 11个MCP全部connected，claude-knowledge提供本地记忆访问 | 场景: 替代context7云端文档库，免费离线访问memory/*.md
 - [2026-05-21] [OP] 失败学习: 手机ADB连接 | 错误调用: adb connect 192.168.123.136:5555 | 错误: 连接被拒绝10061 | 正确用法: 需在手机上确认ADB over TCP已启用且防火墙允许5555 | 原因: 手机端网络/防火墙/ADB配置问题，Windows侧已完成(防火墙规则+ADB服务)
+- [2026-05-21] [OP] 成功记录: 手机 ADB over TCP 诊断 | 调用: adb shell ip addr show + nc -zv + Test-NetConnection | 结果: 手机 IP 为 192.168.123.229（非 192.168.123.136），ADB over TCP 正常 | 场景: 手机 PKR110 OnePlus ADB 调试
