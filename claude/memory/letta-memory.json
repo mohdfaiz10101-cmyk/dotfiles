@@ -102,6 +102,11 @@
           "text": "2026-05-21 链路安全加固v2: (1) FRPS改为系统级sudo systemctl检查+重启 (2) DuckDNS token迁移到~/.local/share/credentials/duckdns.env(chmod 600) (3) 所有state从/tmp迁移到~/.local/state/{chain-watchdog,frp-watchdog,duckdns,wan-ip-monitor}/ (4) 新增wan-ip-monitor每60秒检测WAN IP变更+即时DDNS更新 (5) 路由器NVRAM备份文档: memory/router-padavan-backup.md (6) baseline新增perm_state规则:永久化优先,/tmp禁用",
           "tags": "duckdns,frp,router,permanent-state,credential-security",
           "timestamp": "1779366427"
+        },
+        {
+          "text": "2026-05-21 OP执行: Launcher三残留修复 | 结果: 全部成功 | 关键发现: (1) Caddy CORS header对Letta反代生效 (2) Python glob()返回generator需list()转换 (3) hub-api.py FastAPI路由注意/与无/前缀区分，不能混用",
+          "tags": "op-exec,launcher,caddy,hub-api,letta",
+          "timestamp": "1779369728"
         }
       ]
     },
