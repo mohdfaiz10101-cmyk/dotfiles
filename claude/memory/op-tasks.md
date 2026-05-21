@@ -251,7 +251,7 @@
   - frp.nix:107 已包含 18092 在 allowedTCPPorts
   - [!] 需 sudo nixos-rebuild switch 激活，当前无法执行（权限限制）
 
-- [ ] [OP] [2026-05-21 10:49] Service-Nurse巡检：Docker容器状态+systemd服务+磁盘空间+关键端口可达性
+- [x] [完成 2026-05-21 16:38] Service-Nurse巡检：15容器全部healthy, /:78%(↓), 端口全通, 4个failed服务非关键
 
 
 - [ ] [OP] [2026-05-21 10:50] 任务跟进：检查 op-tasks.md 未完成任务进展，更新状态或标记 DECAY
