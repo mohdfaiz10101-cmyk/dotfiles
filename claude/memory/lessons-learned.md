@@ -57,3 +57,5 @@
 
 - [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.timer+删脚本，停用 cc-task-runner.timer+删内联 sisyphus 调用，保留 op-exec.sh 作为唯一入口+check-ttyd.timer不动- [2026-05-22] [OP] 成功记录: FRP 8700端口 | 调用: 新增nixos-openagents-net代理(8700→18700), 更新frps.toml allowPorts, 手动启动FRPS | 结果: 成功 | 场景: OpenAgents Network公网访问
 - [2026-05-22] [OP] 修复: macg MCP Not connected — OpenCode config stdio→HTTP | 原因: opencode.json中macg用stdio + /mnt/ai/home-offload路径Python导致D状态挂死 | 修复: 改为streamable-http指向127.0.0.1:18092/mcp，杀掉3个僵尸进程 | 验证: JSON valid + MCP initialize返回200
+- [2026-05-22] [Aider] fix: floorp fcitx5 desktop fix + agent sync禁用
+  相关文件：claude/memory/agi-audit-log.jsonl, claude/memory/cc-op-dialog.jsonl, claude/memory/changelog.jsonl, claude/memory/lessons-learned.md, claude/memory/letta-memory.json

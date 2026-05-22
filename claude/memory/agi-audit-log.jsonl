@@ -3880,3 +3880,9 @@
 {"ts": "2026-05-22 18:50", "type": "cycle", "summary": "CPU使用率高但无服务异常，系统整体健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-22 18:51", "type": "cycle", "summary": "系统运行正常，服务全健康，无告警或异常进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-22 18:52", "type": "cycle", "summary": "系统负载较高但服务全健康，无异常需处理", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 18:53", "type": "cycle", "summary": "系统运行平稳，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 18:54", "type": "cycle", "summary": "系统负载较高但服务全健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 18:55", "type": "cycle", "summary": "系统运行正常，CPU与内存负载较高但服务全健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 18:56", "type": "cycle", "summary": "系统处于高负载状态，但服务健康且无其他异常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-22 18:58", "type": "cycle", "summary": "系统CPU负载较高但服务健康，无待处理告警或任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 18:59", "type": "cycle", "summary": "系统负载较高但服务全健康，无明显异常", "alert_count": 0, "skipped_llm": false}
