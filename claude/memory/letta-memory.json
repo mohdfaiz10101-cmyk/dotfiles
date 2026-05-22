@@ -277,6 +277,11 @@
           "text": "2026-05-22 OP执行: 系统索引优化四合一 | 结果: 成功 | 关键: (1)memory-engine补8条服务依赖relation (2)macg_mcp.py新增macg_search_code/macg_list_indexed_projects两个代码搜索工具 (3)CLAUDE.md从183行精简到155行，基础设施表和模型路由表抽到infra-reference.md (4)新建sys-info-mcp(:18094)统一系统状态查询，含service/port/disk/proxy/all五个工具",
           "tags": "op-exec,system-index,mcp,optimization",
           "timestamp": "1779381807"
+        },
+        {
+          "text": "2026-05-22 OP执行: 手机网络修复 | 结果: 成功 | 关键发现: 手机USB连Win后WiFi被关闭，wlan0 DOWN导致路由表为空无法上网，adb shell svc wifi enable恢复",
+          "tags": "op-exec,phone,network,wifi",
+          "timestamp": "1779415921"
         }
       ]
     },
