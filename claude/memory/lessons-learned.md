@@ -52,4 +52,4 @@
 - [2026-05-21] [OP] 修复: sisyphus 任务穿插 | 原因: 身份与职责里无条件执行op-tasks.md导致接到任意任务都扫描穿插 | 修复: 仅当用户明确说执行op-tasks时才扫描，否则只执行当前分配任务
 - [2026-05-22] [OP] 修复: macg MCP -32000 Connection closed | 原因: macg_mcp.py硬编码HTTP transport，OpenCode spawn stdio实例与systemd HTTP实例端口冲突 | 修复: 添加--http参数分离transport mode，无参数默认stdio
 
-- [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.timer+删脚本，停用 cc-task-runner.timer+删内联 sisyphus 调用，保留 op-exec.sh 作为唯一入口+check-ttyd.timer不动
+- [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.timer+删脚本，停用 cc-task-runner.timer+删内联 sisyphus 调用，保留 op-exec.sh 作为唯一入口+check-ttyd.timer不动- [2026-05-22] [OP] 成功记录: FRP 8700端口 | 调用: 新增nixos-openagents-net代理(8700→18700), 更新frps.toml allowPorts, 手动启动FRPS | 结果: 成功 | 场景: OpenAgents Network公网访问
