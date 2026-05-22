@@ -567,9 +567,13 @@ def macg_a2a_mark_read(msg_id: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.settings.host = "0.0.0.0"
-    mcp.settings.port = 18092
-    mcp.run(transport="streamable-http")
+    import sys as _sys
+    if "--http" in _sys.argv:
+        mcp.settings.host = "0.0.0.0"
+        mcp.settings.port = 18092
+        mcp.run(transport="streamable-http")
+    else:
+        mcp.run(transport="stdio")
 
 
 # ── mem0-lite 工具 (port 8285) ──

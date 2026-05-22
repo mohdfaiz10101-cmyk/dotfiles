@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py --http
 Restart=always
 RestartSec=5
 Environment="HOME=%h"

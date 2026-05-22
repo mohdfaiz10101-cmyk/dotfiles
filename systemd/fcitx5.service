@@ -7,7 +7,7 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/fcitx5 --replace
-Restart=always
+Restart=no
 RestartSec=3
 Environment="GTK_IM_MODULE=fcitx"
 Environment="QT_IM_MODULE=fcitx"

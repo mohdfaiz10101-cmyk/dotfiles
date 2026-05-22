@@ -282,6 +282,21 @@
           "text": "2026-05-22 OP执行: 手机网络修复 | 结果: 成功 | 关键发现: 手机USB连Win后WiFi被关闭，wlan0 DOWN导致路由表为空无法上网，adb shell svc wifi enable恢复",
           "tags": "op-exec,phone,network,wifi",
           "timestamp": "1779415921"
+        },
+        {
+          "text": "2026-05-22 OP执行: OpenAgents 8700社区最佳配置 | 结果: 成功 | 关键发现: 禁用了openagents-network.service(与daemon端口冲突); network.yaml加入model_provider指向LiteLLM:4000; daemon.yaml按v2 schema重写含sisyphus/cc-architect/crewai-orchestrator/opencode-engine 4个agent; crewai-bridge认证由disable_agent_secret_verification:true兼容; 三频道general/ops/arch; encryption+password已启用",
+          "tags": "op-exec,openagents,network,configuration",
+          "timestamp": "1779420797"
+        },
+        {
+          "text": "2026-05-22 手机网络诊断: OnePlus Ace 5 Pro (PKR110) — WiFi修复(svc wifi enable)恢复。移动数据诊断: 三卡，联通LTE(rmnet_data1)/移动5G(rmnet_data2)纯IPv6无CLAT，Nat464Xlat未启动无法访问IPv4。电信LTE(rmnet_data3)有IPv4(100.123.135.21)可用。根因: oplus-netd BPF过滤器(/sys/fs/bpf/prog_oplus-netd_skfilter_reject_*)在fw_INPUT链阻止CLAT/464XLAT，属OnePlus已知iptables问题。iwconfig命令无效，用ip addr show替代。",
+          "tags": "op-exec,phone,oneplus,iptables,clat,464xlat",
+          "timestamp": "1779422559"
+        },
+        {
+          "text": "2026-05-22 OP修复: macg MCP -32000 Connection closed — macg_mcp.py硬编码HTTP transport导致OpenCode stdio spawn失败，修复为--http参数分离模式（无参数默认stdio）",
+          "tags": "op-exec,macg,mcp,fix",
+          "timestamp": "1779423278"
         }
       ]
     },

@@ -8,10 +8,11 @@ ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -I /home/charlie/.local/share/
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie
-Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.npm-global/bin:/home/charlie/.nix-profile/bin
 Environment=OLLAMA_HOST=http://127.0.0.1:11434
 Environment=TERM=xterm-256color
 Environment=COLORTERM=truecolor
+Environment=OPENCODE_EXPERIMENTAL_WORKSPACES=1
 
 [Install]
 WantedBy=default.target

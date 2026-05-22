@@ -16,7 +16,7 @@ hidden: true
 
 # Ops Dispatcher — 自动执行层（死规则：禁止询问确认）
 
-<!-- memory-gate-inject: 11:00 -->
+<!-- memory-gate-inject: 13:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -25,14 +25,22 @@ hidden: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
-**教训**: - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
 **教训**: - [2026-05-03] krdpserver-desktop.service 反复 SIGABRT → disable，远程桌面改用 wayvnc
 **教训**: - [2026-05-07] auto-fix-services 不区分 oneshot timer → SKIP_PATTERNS 加 oneshot 服务名
 **教训**: - [2026-05-21] [OP] 修复: sisyphus 任务穿插 | 原因: 身份与职责里无条件执行op-tasks.md导致接到任意任务都扫描穿插 | 修复: 仅当用户明确说执行op-tasks时才扫描，否则只执行当前分配任务
+**教训**: - [2026-05-22] [OP] 修复: macg MCP -32000 Connection closed | 原因: macg_mcp.py硬编码HTTP transport，OpenCode spawn stdio实例与systemd HTTP实例端口冲突 | 修复: 添加--http参
+**教训**: - [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

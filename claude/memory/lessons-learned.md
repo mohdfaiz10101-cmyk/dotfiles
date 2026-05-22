@@ -44,8 +44,12 @@
 - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
 - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
 - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
+- [2026-05-22] OnePlus Ace 5 Pro (PKR110) 三卡：联通/移动纯IPv6无CLAT，Nat464Xlat未启动→移动数据仅电信卡有IPv4可用。oplus-netd BPF REJECT规则（/sys/fs/bpf/prog_oplus-netd_skfilter_reject_*）阻止CLAT，fw_INPUT链6条规则。WiFi正常
 
 ## 系统稳定性
 - [2026-05-03] krdpserver-desktop.service 反复 SIGABRT → disable，远程桌面改用 wayvnc
 - [2026-05-07] auto-fix-services 不区分 oneshot timer → SKIP_PATTERNS 加 oneshot 服务名
 - [2026-05-21] [OP] 修复: sisyphus 任务穿插 | 原因: 身份与职责里无条件执行op-tasks.md导致接到任意任务都扫描穿插 | 修复: 仅当用户明确说执行op-tasks时才扫描，否则只执行当前分配任务
+- [2026-05-22] [OP] 修复: macg MCP -32000 Connection closed | 原因: macg_mcp.py硬编码HTTP transport，OpenCode spawn stdio实例与systemd HTTP实例端口冲突 | 修复: 添加--http参数分离transport mode，无参数默认stdio
+
+- [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.timer+删脚本，停用 cc-task-runner.timer+删内联 sisyphus 调用，保留 op-exec.sh 作为唯一入口+check-ttyd.timer不动

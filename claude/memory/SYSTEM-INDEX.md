@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-22 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-22 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -36,7 +36,7 @@
 | 7681 | users:(("ttyd",pid=2029,fd=13)) |
 | 7690 | users:(("ttyd",pid=3080,fd=13)) |
 | 7691 | users:(("ttyd",pid=3077,fd=13)) |
-| 7692 | users:(("ttyd",pid=3090,fd=13)) |
+| 7692 | users:(("ttyd",pid=4003460,fd=13)) |
 | 7693 | users:(("ttyd",pid=3075,fd=13)) |
 | 7694 | users:(("ttyd",pid=3088,fd=13)) |
 | 7695 | users:(("ttyd",pid=3083,fd=13)) |
@@ -44,6 +44,7 @@
 | 7697 | users:(("ttyd",pid=3086,fd=13)) |
 | 7698 | users:(("ttyd",pid=1712198,fd=13)) |
 | 7699 | users:(("caddy",pid=2170444,fd=7)) |
+| 7699 | users:(("caddy",pid=51095,fd=7)) |
 | 7890 | users:(("mihomo",pid=2127746,fd=8)) |
 | 7891 | users:(("mihomo",pid=2127746,fd=6)) |
 | 8000 | 0.0.0.0:* |
@@ -59,8 +60,8 @@
 | 8285 | users:(("python3.13",pid=8845,fd=11)) |
 | 8286 | users:(("python3.13",pid=2928,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8600 | users:(("python3.13",pid=325283,fd=14)) |
-| 8700 | users:(("python3.13",pid=325283,fd=7)) |
+| 8600 | users:(("python3.13",pid=4013985,fd=14)) |
+| 8700 | users:(("python3.13",pid=4013985,fd=7)) |
 | 8701 | users:(("python3.13",pid=290552,fd=13)) |
 | 9090 | *:* |
 | 9091 | users:(("mihomo",pid=2127746,fd=3)) |
@@ -79,13 +80,12 @@
 | 9980 | users:(("python3.13",pid=2860,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 11434 | users:(("ollama",pid=3012,fd=3)) |
 | 15555 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
 | 18090 | *:* |
 | 18091 | *:* |
-| 18092 | users:(("python3.13",pid=327983,fd=6)) |
+| 18092 | users:(("python3.13",pid=377624,fd=6)) |
 | 18093 | *:* |
 | 18094 | users:(("python3.13",pid=391456,fd=6)) |
 | 18300 | *:* |
@@ -135,6 +135,7 @@ report_generator.py
 self_improve.py
 sensor-bridge.py
 social_relations.py
+telegram-userbot.py
 telegram_bot.py
 telegram_bot_enhanced.py
 tg_logger.py
@@ -464,7 +465,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（424个注册，86个运行中）
+## 三、systemd 用户服务（427个注册，92个运行中）
 
 ### 当前运行中
 ```
@@ -473,8 +474,10 @@ agent-orchestrator
 agi-brain
 agi-frontend
 agi-gateway
+agi-telegram-bot
 ai-rules-sync
 ai-watchdog
+caddy-launcher
 change-watcher
 chrome-cdp
 chronos-sensory
@@ -498,21 +501,23 @@ frpc
 gcr-ssh-agent
 headless-browser
 hub-api
+input-switcher
 launcher
 letta-mcp
 litellm-strip-proxy
 macg-mcp
 mem0-bridge
+memory-evolution
 mihomo
 mihomo-watch
 navidrome
 nix-voice-agent
 numlock-guard
 office-agent
-ollama
 op-tasks-watcher
 op-watchdog
 openagents
+openagents-network
 openclaw-gateway
 opencode-intent-detector
 opencode-memwatch
@@ -531,6 +536,8 @@ screenshot-watcher
 speech-dispatcher
 sys-info-mcp
 tablet-control-panel
+telegram-bot
+telegram-userbot
 ttyd-aider
 ttyd-cct
 ttyd-claude
