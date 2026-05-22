@@ -45,6 +45,9 @@ rsync -a --exclude='node_modules' --exclude='plugins' --exclude='.env' \
 
 rsync -a --delete ~/.config/opencode/agents/ "$DOTFILES/opencode/agents/" 2>/dev/null || true
 
+# 应用层 desktop 文件（输入法修复等）
+rsync -a --delete ~/.local/share/applications/ "$DOTFILES/local-share/applications/" 2>/dev/null || true
+
 echo ""
 echo "=== Git 推送 ==="
 

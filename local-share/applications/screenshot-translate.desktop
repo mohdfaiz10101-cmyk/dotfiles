@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=截图翻译
+Comment=截图 OCR 识别并翻译
+Exec=/home/charlie/launcher/screenshot-translate.sh
+Icon=preferences-desktop-locale
+Terminal=false
+Categories=Utility;

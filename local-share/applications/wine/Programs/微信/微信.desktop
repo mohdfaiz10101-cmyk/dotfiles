@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=微信
+Exec=env "WINEPREFIX=/mnt/ai/data/wine-wechat" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\微信\\\\微信.lnk"
+Type=Application
+StartupNotify=true
+Path=/mnt/ai/data/wine-wechat/drive_c/Program Files/Tencent/WeChat
+Icon=E282_WeChat.0
+StartupWMClass=wechat.exe

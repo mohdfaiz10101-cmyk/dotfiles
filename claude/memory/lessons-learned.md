@@ -46,6 +46,9 @@
 - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
 - [2026-05-22] OnePlus Ace 5 Pro (PKR110) 三卡：联通/移动纯IPv6无CLAT，Nat464Xlat未启动→移动数据仅电信卡有IPv4可用。oplus-netd BPF REJECT规则（/sys/fs/bpf/prog_oplus-netd_skfilter_reject_*）阻止CLAT，fw_INPUT链6条规则。WiFi正常
 
+## Chrome/NVIDIA
+- [2026-05-22] Chrome 147 + NVIDIA 595 + Wayland 每个 tab 崩溃 → 加 `--use-angle=gl --ignore-gpu-blocklist --disable-gpu-sandbox` 修复。ANGLE 默认后端在 NVIDIA Wayland 下 GPU 进程崩溃导致所有 tab 显示"喔唷，崩溃啦"。
+
 ## 系统稳定性
 - [2026-05-03] krdpserver-desktop.service 反复 SIGABRT → disable，远程桌面改用 wayvnc
 - [2026-05-07] auto-fix-services 不区分 oneshot timer → SKIP_PATTERNS 加 oneshot 服务名
@@ -53,3 +56,4 @@
 - [2026-05-22] [OP] 修复: macg MCP -32000 Connection closed | 原因: macg_mcp.py硬编码HTTP transport，OpenCode spawn stdio实例与systemd HTTP实例端口冲突 | 修复: 添加--http参数分离transport mode，无参数默认stdio
 
 - [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.timer+删脚本，停用 cc-task-runner.timer+删内联 sisyphus 调用，保留 op-exec.sh 作为唯一入口+check-ttyd.timer不动- [2026-05-22] [OP] 成功记录: FRP 8700端口 | 调用: 新增nixos-openagents-net代理(8700→18700), 更新frps.toml allowPorts, 手动启动FRPS | 结果: 成功 | 场景: OpenAgents Network公网访问
+- [2026-05-22] [OP] 修复: macg MCP Not connected — OpenCode config stdio→HTTP | 原因: opencode.json中macg用stdio + /mnt/ai/home-offload路径Python导致D状态挂死 | 修复: 改为streamable-http指向127.0.0.1:18092/mcp，杀掉3个僵尸进程 | 验证: JSON valid + MCP initialize返回200

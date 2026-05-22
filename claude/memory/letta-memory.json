@@ -107,6 +107,11 @@
           "text": "2026-05-21 OP执行: Launcher三残留修复 | 结果: 全部成功 | 关键发现: (1) Caddy CORS header对Letta反代生效 (2) Python glob()返回generator需list()转换 (3) hub-api.py FastAPI路由注意/与无/前缀区分，不能混用",
           "tags": "op-exec,launcher,caddy,hub-api,letta",
           "timestamp": "1779369728"
+        },
+        {
+          "text": "2026-05-22 OP修复: Chrome 147 + NVIDIA 595 + Wayland 每个tab崩溃 | 根因: ANGLE默认后端在NVIDIA Wayland下GPU进程崩溃 | 修复: 添加 --use-angle=gl --ignore-gpu-blocklist --disable-gpu-sandbox 启动参数 | 持久化: 需更新桌面启动器",
+          "tags": "chrome,nvidia,wayland,gpu-crash,fix",
+          "timestamp": "1779445295"
         }
       ]
     },

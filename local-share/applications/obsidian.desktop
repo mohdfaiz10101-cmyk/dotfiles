@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Obsidian
+Exec=rm -f ~/.config/obsidian/SingletonLock ~/.config/obsidian/SingletonCookie ~/.config/obsidian/SingletonSocket && obsidian --no-sandbox --password-store=basic --disable-gpu
+Type=Application
+Icon=obsidian
+Categories=Office;
+Comment=Obsidian note-taking app (nix)

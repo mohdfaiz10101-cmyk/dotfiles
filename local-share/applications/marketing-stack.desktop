@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=营销工作台
+GenericName=Marketing Stack
+Comment=Mastra + Medusa 营销自动化开发环境
+Exec=windsurf /home/charlie/Projects/marketing-stack
+Icon=applications-internet
+Type=Application
+Terminal=false
+Categories=Development;
+Keywords=marketing;mastra;medusa;营销;

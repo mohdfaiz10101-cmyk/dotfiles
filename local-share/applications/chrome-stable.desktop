@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Chrome (稳定登录)
+Exec=/home/charlie/.local/bin/chrome-stable-login.sh %U
+Icon=google-chrome
+Type=Application
+Categories=Network;WebBrowser;

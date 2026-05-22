@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zen Browser (Cookie Sync)
+Comment=启动 Zen Browser 并同步最新 cookies
+Exec=/home/charlie/.local/bin/browser-launch-with-cookies zen %U
+Icon=zen-beta
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;

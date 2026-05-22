@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=重启
+Name[zh_CN]=重启
+Comment=重启系统
+Comment[zh_CN]=重启系统
+Exec=systemctl reboot
+Icon=system-reboot
+Type=Application
+Categories=System;
+OnlyShowIn=KDE;

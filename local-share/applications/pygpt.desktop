@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyGPT
+Comment=AI 聊天客户端（5 个预设已升级）
+Exec=env QT_QPA_PLATFORM=xcb QT_QUICK_BACKEND=software QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" appimage-run /home/charlie/.local/bin/PyGPT.AppImage
+Icon=ai
+Terminal=false
+Categories=Development;Utility;AI;
+Keywords=ai;gpt;chat;openai;
+StartupNotify=true

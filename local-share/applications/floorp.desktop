@@ -1,0 +1,25 @@
+[Desktop Entry]
+Actions=new-private-window;new-window;profile-manager-window
+Categories=Network;WebBrowser
+Exec=env GTK_IM_MODULE= /home/charlie/.local/bin/floorp --disable-gpu-compositing --name floorp %U
+GenericName=Web Browser
+Icon=floorp
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https
+Name=Floorp
+StartupNotify=true
+StartupWMClass=floorp
+Terminal=false
+Type=Application
+Version=1.5
+
+[Desktop Action new-private-window]
+Exec=env GTK_IM_MODULE= /home/charlie/.local/bin/floorp --private-window %U
+Name=New Private Window
+
+[Desktop Action new-window]
+Exec=env GTK_IM_MODULE= /home/charlie/.local/bin/floorp --new-window %U
+Name=New Window
+
+[Desktop Action profile-manager-window]
+Exec=/home/charlie/.local/bin/floorp --ProfileManager
+Name=Profile Manager

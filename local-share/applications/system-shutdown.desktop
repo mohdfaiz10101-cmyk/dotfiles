@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=关机
+Name[zh_CN]=关机
+Comment=关闭系统
+Comment[zh_CN]=关闭系统
+Exec=systemctl poweroff
+Icon=system-shutdown
+Type=Application
+Categories=System;
+OnlyShowIn=KDE;

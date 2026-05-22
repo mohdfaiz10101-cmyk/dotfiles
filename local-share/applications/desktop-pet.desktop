@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Desktop Pet 🐮
+Comment=AGI Brain 浮动聊天窗口
+Exec=nix-shell -p python3Packages.tkinter python3Packages.requests --run "python3 /home/charlie/.local/bin/desktop-pet.py"
+Icon=applications-science
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false

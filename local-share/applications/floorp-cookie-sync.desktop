@@ -1,0 +1,21 @@
+[Desktop Entry]
+Actions=new-private-window;new-window;profile-manager-window
+Categories=Network;WebBrowser
+Exec=/home/charlie/.local/bin/browser-launch-with-cookies floorp %U
+GenericName=Web Browser (with Cookie Sync)
+Icon=floorp
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;x-scheme-handler/http;x-scheme-handler/https
+Name=Floorp (Cookie Sync)
+StartupNotify=true
+StartupWMClass=floorp
+Terminal=false
+Type=Application
+Version=1.5
+
+[Desktop Action new-private-window]
+Exec=/home/charlie/.local/bin/browser-launch-with-cookies floorp --private-window %U
+Name=New Private Window
+
+[Desktop Action new-window]
+Exec=/home/charlie/.local/bin/browser-launch-with-cookies floorp --new-window %U
+Name=New Private Window

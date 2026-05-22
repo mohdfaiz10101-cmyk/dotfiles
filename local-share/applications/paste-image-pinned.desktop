@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=粘贴图片并置顶
+Name[zh_CN]=粘贴图片并置顶
+Comment=从剪贴板粘贴图片并置顶显示
+Comment[zh_CN]=从剪贴板粘贴图片并置顶显示
+Exec=/home/charlie/.local/bin/paste-image-pinned
+Icon=image-x-generic
+Terminal=false
+Categories=Utility;Graphics;
+Keywords=clipboard;paste;image;screenshot;
+StartupNotify=false

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Network;WebBrowser
+Comment=Google Chrome with Cookie Sync
+Exec=/home/charlie/.local/bin/browser-launch-with-cookies chrome %U
+GenericName=Web Browser (with Cookie Sync)
+Icon=google-chrome
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https
+Name=Google Chrome (Cookie Sync)
+StartupNotify=true
+StartupWMClass=google-chrome
+Terminal=false
+Type=Application

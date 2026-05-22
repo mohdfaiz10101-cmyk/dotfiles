@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=微信双开
+GenericName=WeChat Dual Launcher
+Comment=启动一个或两个微信实例
+Exec=/home/charlie/launcher/wechat-launcher.sh
+Icon=com.tencent.wechat
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Network;InstantMessaging;Chat;
+Keywords=微信;wechat;聊天;dual;双开;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Spectacle
+Exec=env QT_QPA_PLATFORM=xcb /run/current-system/sw/bin/spectacle %U
+Icon=spectacle
+Categories=Qt;KDE;Graphics;
+X-KDE-Wayland-Interfaces=zkde_screencast_unstable_v1
+X-DBUS-ServiceName=org.kde.Spectacle

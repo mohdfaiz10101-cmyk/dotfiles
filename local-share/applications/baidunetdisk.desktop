@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Baidu Netdisk
+Name[zh_CN]=百度网盘
+Comment=Baidu Netdisk Linux Client
+Comment[zh_CN]=百度网盘 Linux 客户端
+Exec=/mnt/ai/apps/baidunetdisk/run-baidunetdisk.sh
+Icon=/mnt/ai/apps/baidunetdisk/opt/baidunetdisk/baidunetdisk.svg
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;
+StartupWMClass=baidunetdisk

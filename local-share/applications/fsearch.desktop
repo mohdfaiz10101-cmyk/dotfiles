@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=FSearch
+Name[zh_CN]=FSearch 文件搜索
+Comment=Fast file search utility
+Comment[zh_CN]=快速文件搜索工具
+Exec=/home/charlie/.local/bin/fsearch
+Icon=system-search
+Categories=Utility;FileTools;
+Keywords=search;find;file;搜索;查找;
+StartupNotify=true

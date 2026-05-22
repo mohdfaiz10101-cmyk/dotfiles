@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=微信
+GenericName=WeChat
+Exec=env QT_QPA_PLATFORM=xcb QT_SCALE_FACTOR=1.0 QT_FONT_DPI=96 GDK_DPI_SCALE=1.0 QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx wechat-uos %U
+StartupNotify=true
+Terminal=false
+Icon=com.tencent.wechat
+Type=Application
+Categories=Chat;
+Comment=微信桌面版（放大）

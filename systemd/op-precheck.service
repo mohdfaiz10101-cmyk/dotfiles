@@ -1,9 +1,1 @@
-[Unit]
-Description=OP 空跑防护：有异常才启动 LLM
-After=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=%h/.local/bin/op-precheck.sh
-StandardOutput=journal
-StandardError=journal
+/dev/null

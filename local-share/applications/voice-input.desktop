@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=语音输入
+Comment=Whisper 语音转文字（中英混合+温州话）
+Exec=/home/charlie/.local/bin/voice-input
+Icon=audio-input-microphone
+Terminal=true
+Categories=Utility;Audio;
+X-KDE-GlobalAccel-CommandURL=true

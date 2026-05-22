@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BrowserOS
+Comment=AI-Native Browser with Ollama Integration
+Exec=appimage-run /home/charlie/Apps/BrowserOS.AppImage --ozone-platform=x11
+Icon=web-browser
+Type=Application
+Categories=Network;WebBrowser;
+StartupWMClass=BrowserOS
