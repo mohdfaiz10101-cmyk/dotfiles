@@ -1,0 +1,7 @@
+[Unit]
+Description=Push Cloudflare Tunnel URL to Telegram
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/bin/cf-tunnel-url.sh
