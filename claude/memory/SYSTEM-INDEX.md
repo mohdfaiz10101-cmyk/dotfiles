@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-22 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-22 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -52,7 +52,7 @@
 | 8010 | 0.0.0.0:* |
 | 8010 | [::]:* |
 | 8050 | users:(("python3.13",pid=23848,fd=6)) |
-| 8080 | users:(("opencode",pid=3208,fd=18)) |
+| 8080 | users:(("opencode",pid=2670608,fd=22)) |
 | 8090 | users:(("opencode",pid=3048,fd=15)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
@@ -67,7 +67,7 @@
 | 9091 | users:(("mihomo",pid=2127746,fd=3)) |
 | 9099 | users:(("python3.13",pid=4135,fd=3)) |
 | 9222 | users:(("chrome",pid=8147,fd=60)) |
-| 9800 | users:(("python3.13",pid=2162484,fd=6)) |
+| 9800 | users:(("python3.13",pid=2252397,fd=6)) |
 | 9801 | users:(("python3.13",pid=3180,fd=6)) |
 | 9810 | users:(("python3.13",pid=3011,fd=6)) |
 | 9811 | users:(("python3.13",pid=2932,fd=6)) |
@@ -89,6 +89,7 @@
 | 18093 | *:* |
 | 18094 | users:(("python3.13",pid=391456,fd=6)) |
 | 18300 | *:* |
+| 18700 | *:* |
 | 18789 | users:(("node",pid=3031,fd=25)) |
 | 18791 | users:(("node",pid=3031,fd=27)) |
 | 19890 | *:* |
@@ -155,7 +156,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（569个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（567个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (3个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh`
@@ -257,7 +258,7 @@ static
 **numlock-*** (1个): `numlock-guard`
 **oc-*** (1个): `oc-chat-watch`
 **office-*** (1个): `office-agent-runner.sh`
-**op-*** (22个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-dispatch, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph... +12更多`
+**op-*** (20个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-dialogue-broadcast.sh, op-dispatch, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh, op-graph... +10更多`
 **opencode-*** (29个): `opencode-autoupgrade, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-export, opencode-format-compaction, opencode-health-check.sh, opencode-health-monitor, opencode-integrity-check... +19更多`
 **other-*** (58个): `PyGPT.AppImage, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code... +48更多`
 **otp-*** (1个): `otp-sync`
@@ -465,7 +466,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（427个注册，92个运行中）
+## 三、systemd 用户服务（428个注册，93个运行中）
 
 ### 当前运行中
 ```
@@ -491,6 +492,7 @@ cookie-sync-server
 crewai-gateway
 crewai-openagents-bridge
 dbus
+dconf
 disk-watchdog
 dotfiles-symlink-watch
 embedding-server
@@ -501,7 +503,6 @@ frpc
 gcr-ssh-agent
 headless-browser
 hub-api
-input-switcher
 launcher
 letta-mcp
 litellm-strip-proxy
@@ -538,6 +539,7 @@ sys-info-mcp
 tablet-control-panel
 telegram-bot
 telegram-userbot
+thunar
 ttyd-aider
 ttyd-cct
 ttyd-claude
@@ -582,6 +584,7 @@ cc-autonomous-runner
 cc-decision-engine
 cc-op-verifier
 cc-task-auditor
+cf-tunnel-url
 cf-url-notify
 check-ttyd
 chronos-subconscious
@@ -644,7 +647,6 @@ ocr-indexer
 op-lock-watchdog
 op-precheck
 op-self-upgrade
-op-task-runner
 op-tasks-archive
 opencode-autoupgrade
 opencode-config-guard

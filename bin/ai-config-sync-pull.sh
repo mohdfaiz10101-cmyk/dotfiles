@@ -31,12 +31,8 @@ else
     fi
 fi
 
-# 推送 agents 到 OpenCode（只推送 agents 目录，不影响运行中的配置）
-AGENTS_SRC="$SYNC_DIR/openclaw-config/agents"
-AGENTS_DST="$HOME/.config/opencode/agents"
-if [ -d "$AGENTS_SRC" ] && [ -d "$AGENTS_DST" ]; then
-    rsync -av --ignore-existing "$AGENTS_SRC/" "$AGENTS_DST/" 2>/dev/null || true
-    log "agents synced to local opencode"
-fi
+# agents 同步已禁用 — rsync --ignore-existing 会恢复已删除的 agent，改为手动管理
+# AGENTS_SRC="$SYNC_DIR/openclaw-config/agents"
+# AGENTS_DST="$HOME/.config/opencode/agents"
 
 log "pull complete"
