@@ -59,3 +59,4 @@
 - [2026-05-22] [OP] 修复: macg MCP Not connected — OpenCode config stdio→HTTP | 原因: opencode.json中macg用stdio + /mnt/ai/home-offload路径Python导致D状态挂死 | 修复: 改为streamable-http指向127.0.0.1:18092/mcp，杀掉3个僵尸进程 | 验证: JSON valid + MCP initialize返回200
 - [2026-05-22] [Aider] fix: floorp fcitx5 desktop fix + agent sync禁用
   相关文件：claude/memory/agi-audit-log.jsonl, claude/memory/cc-op-dialog.jsonl, claude/memory/changelog.jsonl, claude/memory/lessons-learned.md, claude/memory/letta-memory.json
+- [2026-05-22] [OP] 修复: macg MCP SSE 502 | 原因: mihomo代理拦截127.0.0.1:18092请求返回502，no_proxy使用CIDR 127.0.0.0/8但Python urllib/Node.js不认CIDR格式 | 修复: no_proxy显式添加127.0.0.1，更新~/.config/environment.d/20-proxy.conf + systemd set-environment

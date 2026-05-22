@@ -173,7 +173,7 @@
   },
   "compaction": {
     "auto": true,
-    "prune": true,
+    "prune": false,
     "reserved": 8192
   },
   "model": "openai-compatible/step-3.5-flash-2603-plan",

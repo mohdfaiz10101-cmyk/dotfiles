@@ -302,6 +302,16 @@
           "text": "2026-05-22 OP修复: macg MCP -32000 Connection closed — macg_mcp.py硬编码HTTP transport导致OpenCode stdio spawn失败，修复为--http参数分离模式（无参数默认stdio）",
           "tags": "op-exec,macg,mcp,fix",
           "timestamp": "1779423278"
+        },
+        {
+          "text": "2026-05-22 OP执行: 修改 opencode-workspaces 插件 store.ts，在 syncSessionCounts() 后按 session 数量降序排列 workspaces，数量相同按字母序。修改位置: ~/.npm-global/lib/node_modules/opencode-workspaces/src/store.ts:82-91。重启 OpenCode 后生效。",
+          "tags": "op-exec,opencode,workspace",
+          "timestamp": "1779451190"
+        },
+        {
+          "text": "2026-05-22 OP执行: Windows开机自动点击微信登录按钮 | 结果: 成功 | 关键发现: 通过Windows计划任务(AtLogon触发器)+PowerShell Win32 API脚本(FindWindow+EnumChildWindows+SendMessage BM_CLICK)实现，脚本等待微信窗口标题\"微信\"出现后枚举子窗口查找\"登录\"/\"进入微信\"按钮并点击；WeChat.exe已加入Startup文件夹自动启动",
+          "tags": "op-exec,wechat,windows,autologin",
+          "timestamp": "1779451725"
         }
       ]
     },
