@@ -83,3 +83,10 @@
   - 升级脚本增强: 强制杀进程+3次重试复制，解决"文本文件忙"
 
 
+
+### [SELF-IMPROVE 2026-05-22] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 修复文件末尾截断的语法错误（`TRIGGER_FI`不完整）。
+- [ ] [SELF-IMPROVE] think.py: `_letta_recall` 函数被截断，缺少完整的返回语句及异常处理闭合，导致语法错误与潜在的下标越界风险。
+- [ ] [SELF-IMPROVE] kanban.html: CSS代码在`var(--`处被截断，需要补全WIP进度条样式及后续缺失的样式和JavaScript逻辑。
+- [ ] [SELF-IMPROVE] launcher-server.py: `Tailscale 100.x.x.x` 子网判断过于宽泛且硬编码，应改用 `ipaddress.ip_network("100.64.0.0/10")` 进行严格的 CIDR 网段校验。
+- [ ] [SELF-IMPROVE] hub-api.py: 应将复杂的全局数据库路径配置和文件IO操作（如dialogue_append）抽取为独立的配置类或依赖注入模块，以降低主入口文件的全局状态耦合度并提升可测试性。

@@ -3400,3 +3400,7 @@
 {"ts": "2026-05-22 09:57", "type": "cycle", "summary": "系统运行平稳，负载低，无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-22 09:58", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-22 09:59", "type": "cycle", "summary": "系统运行正常，资源负载低且无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 10:00", "type": "cycle", "summary": "系统资源负载低，所有服务运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 10:01", "type": "cycle", "summary": "系统运行正常，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 10:02", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-22 10:04", "type": "cycle", "summary": "系统运行平稳，负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
