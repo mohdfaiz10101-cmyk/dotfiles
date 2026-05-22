@@ -1,0 +1,11 @@
+[Unit]
+Description=Gmail Bridge — 检查新邮件推送到 Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/mnt/ai/apps/gmail-bridge/gmail-bridge.py watch
+Environment=HOME=%h
+StandardOutput=journal
+StandardError=journal

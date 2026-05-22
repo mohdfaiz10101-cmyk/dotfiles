@@ -14,7 +14,10 @@ import sqlite3
 import urllib.request as ureq
 from datetime import datetime
 
+import ipaddress
+
 PORT = 9875
+TAILSCALE_NET = ipaddress.ip_network("100.64.0.0/10")
 LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "")
 if not LAUNCHER_TOKEN:
     import secrets
@@ -34,8 +37,11 @@ def _check_auth(handler):
         if client_ip in ("127.0.0.1", "::1", "localhost"):
             return True
         # Tailscale 子网 100.64.0.0/10 直接放行
-        if client_ip.startswith("100."):
-            return True
+        try:
+            if ipaddress.ip_address(client_ip) in TAILSCALE_NET:
+                return True
+        except ValueError:
+            pass
     auth = handler.headers.get("Authorization", "")
     if auth == f"Bearer {LAUNCHER_TOKEN}":
         return True
@@ -510,6 +516,17 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                 self._json_response(result)
             except Exception as e:
                 self._json_response({"error": str(e), "ok": False}, 500)
+            return
+
+        if parsed.path == "/api/task-tts":
+            try:
+                data = json.loads(body)
+                text = data.get("text", "").strip()
+                if text:
+                    self._append_task_result(text)
+                self._json_response({"ok": True})
+            except Exception as e:
+                self._json_response({"error": str(e)}, 500)
             return
 
         self.send_response(404)
@@ -1708,6 +1725,31 @@ Git Diff（前3000字符）：
         except Exception:
             pass
         self._json_response({"results": results[-20:]})
+
+    def _append_task_result(self, text):
+        """追加任务结果到 /tmp/op-task-results.json，供前端 TTS 轮询"""
+        import fcntl
+        import time as _time
+        res_file = "/tmp/op-task-results.json"
+        entry = {"time": _time.strftime("%H:%M:%S"), "result": text, "task": text[:50]}
+        try:
+            with open(res_file, "a+", encoding="utf-8") as f:
+                fcntl.flock(f, fcntl.LOCK_EX)
+                f.seek(0)
+                content = f.read().strip()
+                results = []
+                if content:
+                    try:
+                        results = json.loads(content) if content.startswith("[") else []
+                    except Exception:
+                        pass
+                results.append(entry)
+                f.seek(0)
+                f.truncate()
+                json.dump(results, f, ensure_ascii=False)
+                fcntl.flock(f, fcntl.LOCK_UN)
+        except Exception as ex:
+            print(f"[launcher-server] _append_task_result failed: {ex}")
 
     def _serve_op_tasks_pending(self):
         """返回 op-tasks.md 中未完成任务列表"""

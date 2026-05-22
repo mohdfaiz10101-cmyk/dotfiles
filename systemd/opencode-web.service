@@ -14,10 +14,11 @@ TimeoutStopSec=300
 KillSignal=SIGTERM
 KillMode=mixed
 RestartSec=15
-MemoryMax=2G
-MemoryHigh=1800M
+MemoryMax=3G
+MemoryHigh=2500M
+TasksMax=512
 OOMScoreAdjust=-500
-Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin" "http_proxy=" "https_proxy=" "HTTP_PROXY=" "HTTPS_PROXY=" "no_proxy=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn" "NO_PROXY=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn"
+Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin" "NODE_OPTIONS=--max-old-space-size=1536" "http_proxy=" "https_proxy=" "HTTP_PROXY=" "HTTPS_PROXY=" "no_proxy=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn" "NO_PROXY=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn"
 
 [Install]
 WantedBy=default.target

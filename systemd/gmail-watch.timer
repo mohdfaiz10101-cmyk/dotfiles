@@ -1,0 +1,8 @@
+[Unit]
+Description=Gmail Bridge Watch Timer (每分钟)
+
+[Timer]
+OnCalendar=*:*:00
+
+[Install]
+WantedBy=timers.target
