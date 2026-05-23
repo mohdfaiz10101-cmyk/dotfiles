@@ -60,3 +60,6 @@
 - [2026-05-22] [Aider] fix: floorp fcitx5 desktop fix + agent sync禁用
   相关文件：claude/memory/agi-audit-log.jsonl, claude/memory/cc-op-dialog.jsonl, claude/memory/changelog.jsonl, claude/memory/lessons-learned.md, claude/memory/letta-memory.json
 - [2026-05-22] [OP] 修复: macg MCP SSE 502 | 原因: mihomo代理拦截127.0.0.1:18092请求返回502，no_proxy使用CIDR 127.0.0.0/8但Python urllib/Node.js不认CIDR格式 | 修复: no_proxy显式添加127.0.0.1，更新~/.config/environment.d/20-proxy.conf + systemd set-environment
+
+- [2026-05-23] [OP] DuckDNS:17699缓慢 | 根因: 用户nproc limit 2048被2407线程打满 | 修复: kill Chrome(PID 8015 CDP, PID 353351 opencode), ulimit -u 4096 | 持久化: 需在/etc/security/limits.d/或systemd user.conf设置nproc=8192
+- [2026-05-23] [OP] 工具: plocate文件索引 | 路径: plocate -d ~/.local/state/plocate/plocate.db 'pattern' | 覆盖: 全/home/charlie | 规则: 找文件时MUST先plocate再find/glob，毫秒级响应 | 更新: systemd timer每日自动

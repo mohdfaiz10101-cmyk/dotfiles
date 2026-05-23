@@ -34,6 +34,7 @@ from telegram.ext import (
     MessageHandler,
     ContextTypes,
     filters,
+    CallbackQueryHandler,
 )
 from conversation import chat
 
@@ -392,8 +393,65 @@ def main() -> None:
     app.add_handler(MessageHandler(filters.PHOTO, handle_image))
     app.add_handler(MessageHandler(filters.Document.IMAGE, handle_image))
 
-    # 注册普通消息处理器
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    # 注册 Gmail 回复命令（优先于对话 handler）
+    async def handle_gmail_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        import subprocess, re
+        text = update.message.text.strip()
+        m = re.match(r'回\s*#(\S+)\s+(.+)', text)
+        if not m:
+            return  # 不是回复命令，继续传递
+        uid = m.group(1)
+        reply_text = m.group(2).strip()
+        use_uid = not uid.isdigit() or len(uid) > 10
+        args = ["reply-uid", uid, reply_text] if use_uid else ["reply", uid, reply_text]
+        result = subprocess.run(
+            ["python3", "/mnt/ai/apps/gmail-bridge/gmail-bridge.py"] + args,
+            capture_output=True, text=True, timeout=30
+        )
+        if result.returncode == 0:
+            await update.message.reply_text(f"✅ 已回复 #{uid}")
+        else:
+            await update.message.reply_text(f"❌ 回复失败: {result.stderr[:200]}")
+
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_gmail_reply), group=0)
+    
+    # 注册普通消息处理器（对话，group=1 确保回复命令先匹配）
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message), group=1)
+
+    # 注册 Gmail inline 键盘回调处理器
+    async def handle_gmail_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        import subprocess
+        query = update.callback_query
+        await query.answer()
+        data = query.data
+        if not data or not data.startswith("mail:"):
+            return
+        
+        parts = data.split(":", 2)
+        if len(parts) < 3:
+            return
+        
+        action = parts[1]
+        uid = parts[2]
+        
+        if action == "reply":
+            await query.message.reply_text(
+                f"请输入回复内容:\n<code>回 #{uid} 你的回复</code>",
+                parse_mode="HTML"
+            )
+        elif action == "read":
+            subprocess.run(["python3", "/mnt/ai/apps/gmail-bridge/gmail-bridge.py", "mark-read", uid], timeout=10)
+            await query.answer("✓ 已标记已读")
+        elif action == "attach":
+            subprocess.run(["python3", "/mnt/ai/apps/gmail-bridge/gmail-bridge.py", "attachments", uid], timeout=30)
+            await query.answer("📎 附件处理完成")
+        elif action == "forward":
+            await query.message.reply_text(
+                f"请输入转发目标:\n<code>转发 #{uid} 目标@email.com</code>",
+                parse_mode="HTML"
+            )
+    
+    app.add_handler(CallbackQueryHandler(handle_gmail_callback))
 
     # 全局 update 日志（排查群消息）
     async def log_all_updates(update, context):
@@ -402,8 +460,8 @@ def main() -> None:
 
     # 启动 polling
     app.run_polling(
-        allowed_updates=["message"],
-        drop_pending_updates=False,  # 不丢弃积压消息
+        allowed_updates=["message", "callback_query"],
+        drop_pending_updates=False,
     )
 
 

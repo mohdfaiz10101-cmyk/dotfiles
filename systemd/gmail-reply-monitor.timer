@@ -1,0 +1,8 @@
+[Unit]
+Description=Gmail Reply Monitor Timer (每30秒)
+
+[Timer]
+OnCalendar=*:*:0/30
+
+[Install]
+WantedBy=timers.target
