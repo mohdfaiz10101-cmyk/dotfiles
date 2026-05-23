@@ -71,3 +71,11 @@ MUST 始终使用中文。
 
 ## 经验积累
 <!-- 每次完成任务后，将踩坑经验、优化思路、用户偏好记录在此区域 -->
+
+## 视觉验证（VISUAL_VERIFY — 死规则）
+修改前端文件(.tsx/.css/.jsx)后，MUST执行：
+1. bun run build 编译通过
+2. playwright browser_snapshot DOM检查
+3. playwright browser_take_screenshot 截图
+4. vision_analyze_data_visualization AI验证
+禁止只凭build成功标完成。

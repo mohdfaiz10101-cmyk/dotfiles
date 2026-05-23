@@ -97,3 +97,6 @@
 - [ ] [SELF-IMPROVE] kanban.html: 代码在 `.wip-bar` 样式定义处被意外截断，需要补全缺失的样式代码并确保HTML结构和JS逻辑完整闭合。
 - [ ] [SELF-IMPROVE] launcher-server.py: 命令启动逻辑中未对传入参数进行严格的白名单校验，存在严重的命令注入风险，应仅允许预定义的安全命令而非直接拼接执行。
 - [ ] [SELF-IMPROVE] hub-api.py: 将数据库查询逻辑及全局变量（如`_ws_clients`、`REPLY_QUEUE`）重构为独立的依赖注入服务或类模块，以降低路由函数的耦合度并提升代码的可测试性与可维护性。
+- [ ] 测试TTS：验证语音播报功能是否正常工作
+- [ ] 快速测试：echo hello
+- [ ] 快速TTS测试：验证spd-say语音播报

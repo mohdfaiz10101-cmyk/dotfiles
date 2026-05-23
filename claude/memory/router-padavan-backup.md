@@ -24,6 +24,7 @@ priority: critical
 | 19891 | 192.168.123.209 | 19891 | TCP | OpenCode |
 | 19892 | 192.168.123.209 | 19892 | TCP | OpenCode |
 | 19893 | 192.168.123.209 | 19893 | TCP | Letta |
+| 8080 | 192.168.123.209 | 8080 | TCP | OpenCode Web (2026-05-23新增) |
 
 ## NVRAM CLI 命令 (SSH登录路由器后)
 ```bash

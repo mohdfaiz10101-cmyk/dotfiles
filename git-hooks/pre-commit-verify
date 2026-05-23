@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# pre-commit-verify v2 — 读取 verify-state.json 判断验证是否有效
+STATE_FILE="$HOME/.local/state/verify/verify-state.json"
+FRONTEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.(tsx|jsx|css|scss|html|vue|svelte)$' || true)
+[ -z "$FRONTEND_FILES" ] && exit 0
+
+if [ ! -f "$STATE_FILE" ]; then
+    echo "=============================================="
+    echo "  VISUAL_VERIFY BLOCKED: 无验证记录"
+    echo "  变更文件: $(echo $FRONTEND_FILES | wc -l) 个前端文件"
+    echo "  运行: ~/.local/bin/verify-pipeline.sh 然后重新 commit"
+    echo "=============================================="
+    exit 1
+fi
+
+# 读取验证状态
+OVERALL=$(python3 -c "import json; print(json.load(open('$STATE_FILE')).get('overall','unknown'))" 2>/dev/null || echo "unknown")
+LAST_TIME=$(python3 -c "import json; print(json.load(open('$STATE_FILE')).get('timestamp',''))" 2>/dev/null)
+
+# 检查是否30分钟内的验证
+AGE_SEC=$(python3 -c "
+import json, time
+try:
+    ts = json.load(open('$STATE_FILE')).get('timestamp','')
+    then = __import__('datetime').datetime.fromisoformat(ts).timestamp()
+    print(int(time.time() - then))
+except: print(9999)
+" 2>/dev/null)
+
+if [ "$AGE_SEC" -gt 1800 ] 2>/dev/null; then
+    echo "=============================================="
+    echo "  VISUAL_VERIFY BLOCKED: 验证记录过期"
+    echo "  最后验证: $LAST_TIME (${AGE_SEC}秒前，超过30分钟)"
+    echo "  运行: ~/.local/bin/verify-pipeline.sh 然后重新 commit"
+    echo "=============================================="
+    exit 1
+fi
+
+if [ "$OVERALL" != "pass" ]; then
+    echo "=============================================="
+    echo "  VISUAL_VERIFY BLOCKED: 验证未通过"
+    echo "  状态: $OVERALL"
+    echo "  详情: $(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('vision_errors','unknown'))" 2>/dev/null)"
+    echo "=============================================="
+    exit 1
+fi
+
+echo "[OK] VISUAL_VERIFY: $OVERALL ($AGE_SEC秒前)"
+exit 0

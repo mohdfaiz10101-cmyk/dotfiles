@@ -1,0 +1,10 @@
+[Unit]
+Description=自动前端视觉验证（防抖5秒）
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 5
+ExecStart=/home/charlie/.local/bin/verify-pipeline.sh "" "/mnt/ai/apps/agi-control-plane/frontend" "auto-watchdog"
+StandardOutput=journal
+StandardError=journal

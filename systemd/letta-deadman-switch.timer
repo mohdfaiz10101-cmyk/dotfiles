@@ -1,0 +1,11 @@
+[Unit]
+Description=Letta Dead Man's Switch Timer — 每小时检查记忆写入
+After=network.target
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=120
+Persistent=true
+
+[Install]
+WantedBy=timers.target

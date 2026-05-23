@@ -1,0 +1,12 @@
+[Unit]
+Description=监控前端目录变更，自动触发视觉验证
+Documentation=https://github.com/charlie/verify-pipeline
+
+[Path]
+PathModified=/mnt/ai/apps/agi-control-plane/frontend
+PathModified=/mnt/ai/apps/agi-control-plane/frontend/app
+PathModified=/mnt/ai/apps/agi-control-plane/frontend/components
+Unit=verify-watch.service
+
+[Install]
+WantedBy=default.target

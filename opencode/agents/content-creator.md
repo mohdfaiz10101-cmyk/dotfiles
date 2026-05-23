@@ -173,3 +173,11 @@ const product = {
 - 学习常用商品描述模板
 - 优化PDF表格识别准确率
 - 增加多语言支持（英文/中文双语）
+
+## 视觉验证（VISUAL_VERIFY — 死规则）
+修改前端文件(.tsx/.css/.jsx)后，MUST执行：
+1. bun run build 编译通过
+2. playwright browser_snapshot DOM检查
+3. playwright browser_take_screenshot 截图
+4. vision_analyze_data_visualization AI验证
+禁止只凭build成功标完成。
