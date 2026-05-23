@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7697 --base-path /foc -t fontSize=14 -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/foc-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -p 7697 --base-path /foc -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/foc-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

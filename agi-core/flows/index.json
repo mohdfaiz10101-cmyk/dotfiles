@@ -48,7 +48,7 @@
       ],
       "created": "2026-04-18",
       "success_rate": 0.0,
-      "runs": 10
+      "runs": 11
     },
     {
       "name": "workflow_gen",
@@ -74,7 +74,7 @@
       ],
       "created": "2026-04-21",
       "success_rate": 0.0,
-      "runs": 218
+      "runs": 219
     },
     {
       "name": "doc_pipeline",

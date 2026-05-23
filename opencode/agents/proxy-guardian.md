@@ -14,7 +14,7 @@ tools:
 
 # Proxy Guardian — 代理守护者（FlClash 版本）
 
-<!-- memory-gate-inject: 10:00 -->
+<!-- memory-gate-inject: 11:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -23,14 +23,18 @@ tools:
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-22] [OP] 修复: macg MCP Not connected — OpenCode config stdio→HTTP | 原因: opencode.json中macg用stdio + /mnt/ai/home-offload路径Python导致D状态挂死 | 修复:
-**教训**: - [2026-05-22] [Aider] fix: floorp fcitx5 desktop fix + agent sync禁用
-**教训**: - [2026-05-22] [OP] 修复: macg MCP SSE 502 | 原因: mihomo代理拦截127.0.0.1:18092请求返回502，no_proxy使用CIDR 127.0.0.0/8但Python urllib/Node.js不认CIDR格式 | 修复: no_prox
 **教训**: - [2026-05-23] [OP] DuckDNS:17699缓慢 | 根因: 用户nproc limit 2048被2407线程打满 | 修复: kill Chrome(PID 8015 CDP, PID 353351 opencode), ulimit -u 4096 | 持久化: 需在/e
 **教训**: - [2026-05-23] [OP] 工具: plocate文件索引 | 路径: plocate -d ~/.local/state/plocate/plocate.db 'pattern' | 覆盖: 全/home/charlie | 规则: 找文件时MUST先plocate再find/glob
+**教训**: - [2026-05-23] [OP] 修复: 17699 opentab serve模式 | 原因: opencode-tmux-wrap会话名用sisyphus但实际session叫sisy, opencode TUI退出后会话终止 | 修复: session名改为sisy, opencode命
+**教训**: - [2026-05-23] [OP] VNC桌面Tab全链路验证通过: wayvnc:5900→websockify:5998→Caddy:7699→FRP:17699→DuckDNS→外网浏览器 | 本地200 + LAN 200 + DuckDNS 200 | 无需rebuild: /etc/
+**教训**: - [2026-05-23] [OP] 8080通过DuckDNS暴露 | 路径: charlie1990.duckdns.org:17699/oc/ → Caddy(7699) → 127.0.0.1:8080 | FRP: nixos-opencode-web(8080→19890)已配置但路由
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
 
 
 

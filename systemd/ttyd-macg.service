@@ -8,6 +8,7 @@ ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/ind
   --port 7694 \
   --writable \
   --title "MACG LangGraph" \
+  -t disableLeaveAlert=true \
   /run/current-system/sw/bin/bash -c "cd /home/charlie/agi && source .venv/bin/activate && while true; do python3 macg.py; echo '按 Enter 重启 macg...'; read; done"
 Restart=on-failure
 RestartSec=5

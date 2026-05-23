@@ -1,10 +1,11 @@
 [Unit]
-Description=ttyd - Overtab Terminal (:7699)
-After=network.target
+Description=ttyd - Overtab Terminal (:7698)
+After=network.target overtab-serve.service
+Requires=overtab-serve.service
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 7698 -w /home/charlie/.openclaw/workspace -t fontSize=14 -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/overtab-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -p 7698 -w /home/charlie/.openclaw/workspace -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/overtab-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

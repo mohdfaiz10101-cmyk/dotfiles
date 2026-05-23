@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -b /cc -p 7695 -P 10 -t fontSize=13 -t scrollback=50000 -W /home/charlie/.local/bin/claudep-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -b /cc -p 7695 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -W /home/charlie/.local/bin/claudep-tmux-wrap
 Restart=on-failure
 RestartSec=5
 Environment=HOME=/home/charlie

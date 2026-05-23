@@ -90,3 +90,10 @@
 - [x] [SELF-IMPROVE] kanban.html: 101KB完整(</html>闭合)，CSS未截断 — 误报
 - [x] [SELF-IMPROVE] launcher-server.py: 已修复 — 20行`ipaddress.ip_network("100.64.0.0/10")` + 41行`ip_address in TAILSCALE_NET`，CIDR校验正确
 - [x] [完成 2026-05-23 02:15] [SELF-IMPROVE] hub-api.py: 全局db配置+文件IO耦合 — 抽取到hub_config.py HubConfig类
+
+### [SELF-IMPROVE 2026-05-23] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 修复文件末尾的语法截断错误（补全 `TRIGGER_FI` 等未写完的代码）。
+- [ ] [SELF-IMPROVE] think.py: `_letta_recall` 函数缺少右括号和 `return` 语句导致语法截断不完整。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在 `.wip-bar` 样式定义处被意外截断，需要补全缺失的样式代码并确保HTML结构和JS逻辑完整闭合。
+- [ ] [SELF-IMPROVE] launcher-server.py: 命令启动逻辑中未对传入参数进行严格的白名单校验，存在严重的命令注入风险，应仅允许预定义的安全命令而非直接拼接执行。
+- [ ] [SELF-IMPROVE] hub-api.py: 将数据库查询逻辑及全局变量（如`_ws_clients`、`REPLY_QUEUE`）重构为独立的依赖注入服务或类模块，以降低路由函数的耦合度并提升代码的可测试性与可维护性。

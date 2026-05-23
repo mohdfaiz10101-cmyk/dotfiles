@@ -62,4 +62,10 @@
 - [2026-05-22] [OP] 修复: macg MCP SSE 502 | 原因: mihomo代理拦截127.0.0.1:18092请求返回502，no_proxy使用CIDR 127.0.0.0/8但Python urllib/Node.js不认CIDR格式 | 修复: no_proxy显式添加127.0.0.1，更新~/.config/environment.d/20-proxy.conf + systemd set-environment
 
 - [2026-05-23] [OP] DuckDNS:17699缓慢 | 根因: 用户nproc limit 2048被2407线程打满 | 修复: kill Chrome(PID 8015 CDP, PID 353351 opencode), ulimit -u 4096 | 持久化: 需在/etc/security/limits.d/或systemd user.conf设置nproc=8192
-- [2026-05-23] [OP] 工具: plocate文件索引 | 路径: plocate -d ~/.local/state/plocate/plocate.db 'pattern' | 覆盖: 全/home/charlie | 规则: 找文件时MUST先plocate再find/glob，毫秒级响应 | 更新: systemd timer每日自动
+- [2026-05-23] [OP] 工具: plocate文件索引 | 路径: plocate -d ~/.local/state/plocate/plocate.db 'pattern' | 覆盖: 全/home/charlie | 规则: 找文件时MUST先plocate再find/glob，毫秒级响应 | 更新: systemd timer每日自动- [2026-05-23] [OP] 修复: overtab tmux serve模式 | 原因: ttyd连接时tmux session才创建，断开即销毁 | 修复: 新增overtab-serve.service(oneshot+RemainAfterExit)维持tmux会话，ttyd-wrapper改为attach已有session | 文件: overtab-serve.service, overtab-serve-start, overtab-serve-stop, overtab-tmux-wrap, ttyd-overtab.service
+
+- [2026-05-23] [OP] 修复: 17699 opentab serve模式 | 原因: opencode-tmux-wrap会话名用sisyphus但实际session叫sisy, opencode TUI退出后会话终止 | 修复: session名改为sisy, opencode命令包裹在while true循环中, tmux remain-on-exit on + destroy-unattached off | 文件: ~/.local/bin/opencode-tmux-wrap, ~/.local/bin/overtab-serve-start- [2026-05-23] [OP] 修复: ttyd beforeunload "留在此页"弹窗 | 原因: ttyd默认beforeunload handler，切换/关闭页面时触发 | 修复: 9个ttyd service全部添加 -t disableLeaveAlert=true 客户端选项，控制台日志 "Leave site alert disabled"
+
+- [2026-05-23] [OP] VNC桌面Tab全链路验证通过: wayvnc:5900→websockify:5998→Caddy:7699→FRP:17699→DuckDNS→外网浏览器 | 本地200 + LAN 200 + DuckDNS 200 | 无需rebuild: /etc/frps.toml已含17698-17699, frp.nix已同步但rebuild受eeb限制 | mihomo代理曾干扰curl测试(HTTP 000), no_proxy绕过即可- [2026-05-23] [OP] 修复: FRPC port not allowed 错误刷屏 | 错误: nixos-tty(17698)和nixos-openagents-net(18700)不在FRPS allowPorts中，每30秒刷屏 | 修复: 禁用frpc.toml中两个无效proxy(17698重复7699端口;18700需等NixOS rebuild添加FRPS allowPorts) | 验证: FRPC重启后所有proxy正常启动无报错
+
+- [2026-05-23] [OP] 8080通过DuckDNS暴露 | 路径: charlie1990.duckdns.org:17699/oc/ → Caddy(7699) → 127.0.0.1:8080 | FRP: nixos-opencode-web(8080→19890)已配置但路由器未转发19890 | 方案: 可复用/oc/路径或等路由器可用后添加19890转发

@@ -312,6 +312,11 @@
           "text": "2026-05-22 OP执行: Windows开机自动点击微信登录按钮 | 结果: 成功 | 关键发现: 通过Windows计划任务(AtLogon触发器)+PowerShell Win32 API脚本(FindWindow+EnumChildWindows+SendMessage BM_CLICK)实现，脚本等待微信窗口标题\"微信\"出现后枚举子窗口查找\"登录\"/\"进入微信\"按钮并点击；WeChat.exe已加入Startup文件夹自动启动",
           "tags": "op-exec,wechat,windows,autologin",
           "timestamp": "1779451725"
+        },
+        {
+          "text": "2026-05-23 OP执行: overtab tmux serve模式修复 | 结果: 成功 | 关键发现: ttyd启动时才会运行wrapper创建tmux session，断开即销毁导致\"任务终止\"。修复: 新增overtab-serve.service(oneshot+RemainAfterExit)独立维护tmux会话，ttyd-wrapper改为attach已有session。服务文件: overtab-serve.service/start/stop + 更新ttyd-overtab.service依赖",
+          "tags": "op-exec,overtab,serve,systemd,tmux",
+          "timestamp": "1779503299"
         }
       ]
     },
