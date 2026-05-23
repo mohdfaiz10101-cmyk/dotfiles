@@ -91,6 +91,7 @@ ROUTES = [
     (MEM / "codebase-map.md",       CODE,     "[codebase-map]", r"^- \[20\d\d"),
     (MEM / "app-dev-journal.md",    CODE,     "[app-dev]",      r"^## "),
     (MEM / "ai-tools.md",           CODE,     "[ai-tools]",     r"^## "),
+    (MEM / "router-infra.md",       SYSADMIN, "[router-infra]", r"^##"),
 ]
 
 for fpath, agent_id, prefix, pattern in ROUTES:

@@ -10,3 +10,8 @@
 - [x] [完成 2026-05-21 16:38] Service-Nurse巡检：15容器全部healthy, /:78%(↓), 端口全通, 4个failed服务非关键
 - [x] [完成 2026-05-21 12:33] 任务跟进：巡检发现2个问题并修复
 - [x] [完成 2026-05-21 14:24] OpenCode呼吸灯监控 — 7项检查全通过，systemd timer 5min，呼吸灯green
+- [x] [SELF-IMPROVE] brain.py: 语法验证通过(976行)，文件完整未截断 — 误报
+- [x] [SELF-IMPROVE] think.py: 语法验证通过(421行)，文件完整未截断 — 误报
+- [x] [SELF-IMPROVE] kanban.html: 101KB完整(</html>闭合)，CSS未截断 — 误报
+- [x] [SELF-IMPROVE] launcher-server.py: 已修复 — 20行`ipaddress.ip_network("100.64.0.0/10")` + 41行`ip_address in TAILSCALE_NET`，CIDR校验正确
+- [x] [完成 2026-05-23 02:15] [SELF-IMPROVE] hub-api.py: 全局db配置+文件IO耦合 — 抽取到hub_config.py HubConfig类

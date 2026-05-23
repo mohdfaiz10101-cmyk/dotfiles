@@ -1,0 +1,7 @@
+[Unit]
+Description=Router Port Forward Snapshot + Auto-Discovery
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/router-config-snapshot.sh
+ExecStartPost=/home/charlie/.local/bin/auto-discovery.py

@@ -1,1 +1,13 @@
-/dev/null
+[Unit]
+Description=OpenCode Job: heartbeat-memory-maintain
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie
+Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin"
+ExecStart="/run/current-system/sw/bin/perl" "/home/charlie/.config/opencode/scheduler/supervisor.pl" "/home/charlie/.config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-memory-maintain.json"
+StandardOutput=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/heartbeat-memory-maintain.log
+StandardError=append:/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8/heartbeat-memory-maintain.log
+
+[Install]
+WantedBy=default.target

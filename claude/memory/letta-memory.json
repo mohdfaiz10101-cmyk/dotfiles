@@ -117,6 +117,11 @@
           "text": "2026-05-23 OP执行: ops-infra v2 scorer修复 + runbook扩展 | 结果: 整体评分91%→97% 🟡良好 | 关键发现: (1) SERVICE_LIST修复4个路径/端口错误 -> agi-gateway:/docs, hub-api:9800, chromadb:/api/v2/heartbeat, mihomo返回HTML非JSON (2) Letta L4=FAIL ✗ | 根因: /embeddings端点\"Authentication Error\"导致POST写入超时 | runbook新增RB-20260523-04: LiteLLM Embed DB错误自动重启 | 唯一问题: litellm的NOOP合理(无health端点)",
           "tags": "op-exec,health-scorer,letta,litellm",
           "timestamp": "1779520941"
+        },
+        {
+          "text": "router-infra: Padavan路由器21条端口转发规则已缓存。17698→192.168.123.209:17698 TCP(Sunshine-Moonlight/win-ai), 17699→192.168.123.209:17699 TCP(nixos-ai), 7000→192.168.123.209:7000 TCP(frps), 7681→192.168.123.209:7681 TCP(ttyd), 8080→192.168.123.209:8080 TCP(OpenCode-Sisy)等。VTS已启用。DuckDNS→WAN 125.110.214.173。每小时自动快照到router-infra.md",
+          "tags": "router,padavan,port-forward,infra",
+          "timestamp": "1779542640"
         }
       ]
     },

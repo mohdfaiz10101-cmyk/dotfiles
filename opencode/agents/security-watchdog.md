@@ -15,7 +15,7 @@ hidden: true
 
 # Security Watchdog — 安全哨兵
 
-<!-- memory-gate-inject: 21:00 -->
+<!-- memory-gate-inject: 23:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -24,14 +24,22 @@ hidden: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-23] [OP] 部署: Chrome 登录态自动备份 | 每小时备份 Cookies/Web Data(token_service)/Preferences/Local State 到 ~/.local/state/chrome-backup/ (保留24份) | syste
-**教训**: - [2026-05-23] [OP] Padavan nvram路径: /usr/sbin/nvram (非 /sbin/nvram) | commit成功持久化18条端口转发规则 | 诊断: DuckDNS误判 — https测试http端口 + 未加--noproxy被mihomo拦截
-**教训**: - [2026-05-23] [OP] 失误: 搜索命中router-padavan-backup.md但未读取 | 后果: 绕弯路分析iptables/Web API，浪费多轮 | 规则: 搜索命中备份/恢复类文件时MUST第一时间read全文，不得跳过
-**教训**: - [2026-05-23] [OP] 修复: DuckDNS全链路监控停滞1h37min | 根因: (1) OnCalendar=*:0/5:15 的:15秒规范导致systemd无法计算下一次触发 (2) RemainAfterExit=yes 导致oneshot服务保持active状态阻止t
-**教训**: - [2026-05-23] [OP] 修复: opencode-health-monitor脚本2个bug | 1) ISSUE_FILE从未清空导致历史问题累积 修复: 运行前>截断 | 2) curl检查8080未加-L导致302被误报 修复: curl -sL | 3) caddy-open
+**教训**: - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
+**教训**: - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
+**教训**: - [2026-05-22] OnePlus Ace 5 Pro (PKR110) 三卡：联通/移动纯IPv6无CLAT，Nat464Xlat未启动→移动数据仅电信卡有IPv4可用。oplus-netd BPF REJECT规则（/sys/fs/bpf/prog_oplus-netd_skfilte
+**教训**: - [2026-05-23] [OP] 系统架构搭建 | 修复hermes-agent(inactive→active/enabled) + openclaw-gateway(全局npm损坏→重装→active/enabled) | 全6服务active: openagents:18093, cre
+**教训**: - [2026-05-23] [OP] ttyd自定义index.html陷阱: -I 覆盖内置页面导致终端空白 | 原因: 自定义index.html缺少xterm.js库和WebSocket连接代码 | 方案: 移除-I参数使用ttyd内置页面，-t选项格式为key=value（非key val
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

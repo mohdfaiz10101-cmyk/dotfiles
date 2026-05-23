@@ -48,70 +48,72 @@
 - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
 - [2026-05-22] OnePlus Ace 5 Pro (PKR110) 三卡：联通/移动纯IPv6无CLAT，Nat464Xlat未启动→移动数据仅电信卡有IPv4可用。oplus-netd BPF REJECT规则（/sys/fs/bpf/prog_oplus-netd_skfilter_reject_*）阻止CLAT，fw_INPUT链6条规则。WiFi正常
 
-## Chrome/NVIDIA
-- [2026-05-22] Chrome 147 + NVIDIA 595 + Wayland 每个 tab 崩溃 → 加 `--use-angle=gl --ignore-gpu-blocklist --disable-gpu-sandbox` 修复。ANGLE 默认后端在 NVIDIA Wayland 下 GPU 进程崩溃导致所有 tab 显示"喔唷，崩溃啦"。
 
-## 系统稳定性
-- [2026-05-03] krdpserver-desktop.service 反复 SIGABRT → disable，远程桌面改用 wayvnc
-- [2026-05-07] auto-fix-services 不区分 oneshot timer → SKIP_PATTERNS 加 oneshot 服务名
-- [2026-05-21] [OP] 修复: sisyphus 任务穿插 | 原因: 身份与职责里无条件执行op-tasks.md导致接到任意任务都扫描穿插 | 修复: 仅当用户明确说执行op-tasks时才扫描，否则只执行当前分配任务
-- [2026-05-22] [OP] 修复: macg MCP -32000 Connection closed | 原因: macg_mcp.py硬编码HTTP transport，OpenCode spawn stdio实例与systemd HTTP实例端口冲突 | 修复: 添加--http参数分离transport mode，无参数默认stdio
+- [auto] 发现: router.port_forward.19891 = TCP 19891→192.168.123.209:19891 (Sisy-19891)
 
-- [2026-05-22] [OP] 修复: sisyphus 任务穿插根因 — 不是 agent 配置问题，而是 3 个 systemd timer+脚本在后台独立调用 opencode --agent sisyphus 处理 op-tasks.md。操作: 停用 op-task-runner.timer+删脚本，停用 cc-task-runner.timer+删内联 sisyphus 调用，保留 op-exec.sh 作为唯一入口+check-ttyd.timer不动- [2026-05-22] [OP] 成功记录: FRP 8700端口 | 调用: 新增nixos-openagents-net代理(8700→18700), 更新frps.toml allowPorts, 手动启动FRPS | 结果: 成功 | 场景: OpenAgents Network公网访问
-- [2026-05-22] [OP] 修复: macg MCP Not connected — OpenCode config stdio→HTTP | 原因: opencode.json中macg用stdio + /mnt/ai/home-offload路径Python导致D状态挂死 | 修复: 改为streamable-http指向127.0.0.1:18092/mcp，杀掉3个僵尸进程 | 验证: JSON valid + MCP initialize返回200
-- [2026-05-22] [Aider] fix: floorp fcitx5 desktop fix + agent sync禁用
-  相关文件：claude/memory/agi-audit-log.jsonl, claude/memory/cc-op-dialog.jsonl, claude/memory/changelog.jsonl, claude/memory/lessons-learned.md, claude/memory/letta-memory.json
-- [2026-05-22] [OP] 修复: macg MCP SSE 502 | 原因: mihomo代理拦截127.0.0.1:18092请求返回502，no_proxy使用CIDR 127.0.0.0/8但Python urllib/Node.js不认CIDR格式 | 修复: no_proxy显式添加127.0.0.1，更新~/.config/environment.d/20-proxy.conf + systemd set-environment
+- [auto] 发现: router.port_forward.8080 = TCP 8080→192.168.123.209:8080 (OpenCode-Sisy)
 
-- [2026-05-23] [OP] DuckDNS:17699缓慢 | 根因: 用户nproc limit 2048被2407线程打满 | 修复: kill Chrome(PID 8015 CDP, PID 353351 opencode), ulimit -u 4096 | 持久化: 需在/etc/security/limits.d/或systemd user.conf设置nproc=8192
-- [2026-05-23] [OP] 工具: plocate文件索引 | 路径: plocate -d ~/.local/state/plocate/plocate.db 'pattern' | 覆盖: 全/home/charlie | 规则: 找文件时MUST先plocate再find/glob，毫秒级响应 | 更新: systemd timer每日自动- [2026-05-23] [OP] 修复: overtab tmux serve模式 | 原因: ttyd连接时tmux session才创建，断开即销毁 | 修复: 新增overtab-serve.service(oneshot+RemainAfterExit)维持tmux会话，ttyd-wrapper改为attach已有session | 文件: overtab-serve.service, overtab-serve-start, overtab-serve-stop, overtab-tmux-wrap, ttyd-overtab.service
+- [auto] 发现: router.port_forward.8888 = TCP 8888→192.168.123.209:18789 (OpenClaw-GW)
 
-- [2026-05-23] [OP] 修复: 17699 opentab serve模式 | 原因: opencode-tmux-wrap会话名用sisyphus但实际session叫sisy, opencode TUI退出后会话终止 | 修复: session名改为sisy, opencode命令包裹在while true循环中, tmux remain-on-exit on + destroy-unattached off | 文件: ~/.local/bin/opencode-tmux-wrap, ~/.local/bin/overtab-serve-start- [2026-05-23] [OP] 修复: ttyd beforeunload "留在此页"弹窗 | 原因: ttyd默认beforeunload handler，切换/关闭页面时触发 | 修复: 9个ttyd service全部添加 -t disableLeaveAlert=true 客户端选项，控制台日志 "Leave site alert disabled"
+- [auto] 发现: router.port_forward.19893 = TCP 19893→192.168.123.209:19893 (Sisy-19893)
 
-- [2026-05-23] [OP] VNC桌面Tab全链路验证通过: wayvnc:5900→websockify:5998→Caddy:7699→FRP:17699→DuckDNS→外网浏览器 | 本地200 + LAN 200 + DuckDNS 200 | 无需rebuild: /etc/frps.toml已含17698-17699, frp.nix已同步但rebuild受eeb限制 | mihomo代理曾干扰curl测试(HTTP 000), no_proxy绕过即可- [2026-05-23] [OP] 修复: FRPC port not allowed 错误刷屏 | 错误: nixos-tty(17698)和nixos-openagents-net(18700)不在FRPS allowPorts中，每30秒刷屏 | 修复: 禁用frpc.toml中两个无效proxy(17698重复7699端口;18700需等NixOS rebuild添加FRPS allowPorts) | 验证: FRPC重启后所有proxy正常启动无报错
+- [auto] 发现: router.port_forward.17698 = TCP 17698→192.168.123.209:17698 (win-ai)
 
-- [2026-05-23] [OP] 8080通过DuckDNS暴露 | 路径: charlie1990.duckdns.org:17699/oc/ → Caddy(7699) → 127.0.0.1:8080 | FRP: nixos-opencode-web(8080→19890)已配置但路由器未转发19890 | 方案: 可复用/oc/路径或等路由器可用后添加19890转发
-- [2026-05-23] [OP] 路由器Padavan端口转发: vts_srcip_x*=* → iptables源限制变为0.0.0.0/24致外部不通 | 修复: 清空为"" → 0.0.0.0/0 | 受影响的端口: 7681,2222:22,24801,8080,3456:9800,8283:8284,8888:18789 | 方法: SSH nvram set vts_srcip_xN="" → nvram commit → restart_firewall
-- [2026-05-23] [OP] 路由器Web API: 端口转发页面是Advanced_VirtualServer_Content.asp(非DMZ页Advanced_Exposed_Content.asp) | 表单字段名: vts_port_x_0(有额外下划线) | VSList变量格式: [外部端口,内部IP,内部端口,协议,protono,源IP,描述]
-- [2026-05-23] [OP] 修复: DuckDNS:17699 浏览器刷新缓存 | 原因: Caddyfile launcher首页和/multi页面设置Cache-Control "no-cache, no-store, must-revalidate"完全禁止浏览器缓存 | 修复: 改为 "no-cache"（仅此词，保留ETag/Last-Modified验证），浏览器发If-None-Match→资源未变返回304用缓存 | 文件: /mnt/ai/apps/launcher/Caddyfile
-- [2026-05-23] [OP] 再犯: 问答后自动穿插无关任务 | 场景: 回答ChinaNet问题后无指令执行bun run build | 根因: 回答完成后自动扫描/执行了无关操作 | 强制规则: 对话结束后禁止执行任何命令，除非用户明确指定下一个操作
-- [2026-05-23] [OP] GELab-Zero部署: 框架/依赖/ADB就绪，阻塞在模型推理 | 根因: NixOS Ollama 0.20.3是CPU-only构建(无CUDA)，所有模型运行在CPU导致超时 | gelab(Qwen3VL)崩溃因架构不兼容 | StepFun API quota exceeded | 解决方向: 安装CUDA版Ollama binary或nixpkgs-unstable
-- [2026-05-23 12:20] [OP] 发现: macg_cc_delegate 永久失效 | 原因: claude CLI 未登录(403 Forbidden)，无API key，Pro/Max OAuth不可用于CLI | 影响: 所有CC委托调用实际返回错误但被静默捕获 | 修复: 改用task subagent(arch+glm-5.1)替代，见sisyphus.md更新
-- [2026-05-23] [OP] 再犯: macg MCP SSE 502复发 | 原因: .zshrc未显式设置no_proxy含127.0.0.1，仅靠environment.d文件但shell不读取 | 修复: .zshrc直接export no_proxy='127.0.0.1,...'合并所有值，删除旧的追加行
-- [2026-05-23] [Aider] feat: 验证体系 v3 — 前后端全覆盖
-  相关文件：git-hooks/pre-commit-verify, systemd/verify-watch.path, systemd/verify-watch.service
-- [2026-05-23] [OP] 验证体系v3 | 变更: verify-pipeline.sh(修复白屏检测+路径)+post-edit-verify.sh(--auto+state)+pre-commit-verify(前后端双检)+verify-watch(后端目录监控) | 结果: 提交e2b0a6e已推送 | 关键: 前端build→screenshot→PIL白屏检测→diff, 后端syntax→test→service→HTTP, 统一verify-state.json{frontend,backend}
-- [2026-05-23] [OP] 修复: 呼吸灯exit28连续失败 | 根因: opencode:8080进程D状态(393线程/2.6G/3.3Gswap)无HTTP响应 + caddy-launcher死(12:03起) | 修复: restart opencode-web + restart caddy-launcher | 预防: opencode内存上限3G偏低，swap 3.6G峰值需监控
-- [2026-05-23] [OP] opencode-config-guard优化: timer轮询→inotify事件驱动 | MCP缺失检查已移除 | 仅监听opencode.json循环链接+JSON无效两项
-- [2026-05-23] [OP] 微信Waybar闪烁修复: Hyprland添加 windowrulev2 = nourgency, class:wechat | 原因: 微信UOS发送X11 urgency hint导致Waybar工作区图标变为!并闪烁
-- [2026-05-23] [OP] keyring静默: gnome-keyring取消密码提示 | 方法: rm keyring文件 + echo "" | gnome-keyring-daemon --unlock重建空密码keyring | 结果: login.keyring空密码创建成功，不再弹窗
-- [2026-05-23] [OP] 修复: GitHub ERR_NO_SUPPORTED_PROXIES | 原因: ~/.config/kioslaverc 中 httpProxy/httpsProxy 端口为17890(应为7890)，socksProxy 格式错误使用了 socks:// 前缀 | 修复: 端口改为7890/7891，去除协议前缀(统一KDE格式)
+- [auto] 发现: router.port_forward.18091 = TCP 18091→192.168.123.209:18091 (Sisy-18091)
 
-### 会话摘要 [2026-05-23] [Sonnet/自动]
-- 对话轮次: 15 | 被纠正: 1次
-  - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
-- [2026-05-23] [OP] Moonlight FRP: NixOS Sunshine→FRP隧道→17698配置完成 | 路由器端口转发HTML表单不响应POST，需手动添加 | Moonlight连接: charlie1990.duckdns.org:17698
+- [auto] 发现: router.port_forward.7681 = TCP 7681→192.168.123.209:7681 (ttyd)
 
-### 会话摘要 [2026-05-23] [Sonnet/自动]
-- 对话轮次: 29 | 被纠正: 1次
-  - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
-- [2026-05-23] [OP] Padavan DHCP静态绑定: 两步法 | Step1: POST到start_apply.htm action_mode=+Add+ → done_validating | Step2: POST action_mode=+Restart+ → done_committing | MAC格式: 无分隔符大写(8CEA12957E14) | 表单含sid_list=LANHostConfig%3B和所有dhcp字段
+- [auto] 发现: router.port_forward.17699 = TCP 17699→192.168.123.209:17699 (nixos-ai)
 
-### 会话摘要 [2026-05-23] [Sonnet/自动]
-- 对话轮次: 47 | 被纠正: 1次
-  - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
-- [2026-05-23] [OP] 成功: Moonlight FRP 远程串流 | NixOS Sunshine→FRP 17698→DuckDNS→路由器 全链路 | 平板连接: charlie1990.duckdns.org:17698 | 路由器Padavan HTML表单POST/start_apply.htm + fetch API 提交 VSList 成功
+- [auto] 发现: router.port_forward.2223 = TCP 2223→192.168.123.209:2223 (nixos-ssh)
 
-- [2026-05-23] [OP] 失败学习: systemd用户实例fork失败 | 现象: "Failed to spawn executor: Resource temporarily unavailable" 导致45个用户服务失败 | 根因: systemd --user实例运行21h后累积资源压力，无法fork新进程 | 修复: systemctl --user daemon-reexec | 影响: waybar无法重启导致呼吸灯/记忆灯等UI模块全部消失，frpc/phone-clip-sync/wan-ip-monitor等关键服务也被波及- [2026-05-23] [OP] 发现: Moonlight远程配对失败根因 | Sunshine 47984端口要求mTLS客户端证书(TLSV13_ALERT_CERTIFICATE_REQUIRED) | 配对需通过HTTP 47989端口(无证书要求) | 远程方案: 平板先本地WiFi配对待机一次获取客户端证书，之后远程FRP串流可直连47984
+- [auto] 发现: router.port_forward.19892 = TCP 19892→192.168.123.209:19892 (Sisy-19892)
 
-- [2026-05-23] [OP] GitHub Token: 用户 mohdfaiz10101-cmyk / 存放路径 ~/.local/share/credentials/github-token (chmod 600) / git credential.helper 已配置
-- [2026-05-23] [OP] 预防: systemd-reexec.timer | 每日04:00执行systemctl --user daemon-reexec | 目的: 防止systemd用户实例长时间运行后fork饱和导致所有服务无法启动 | 服务文件: ~/.config/systemd/user/systemd-reexec.{service,timer}
-- [2026-05-23] [OP] 成功: Chrome Google账号反复提示登录 | 根因: chrome-fix.sh + chrome-stable-login.sh 使用 --password-store-disabled 阻止了 OAuth2 刷新令牌持久化 | 修复: 两个脚本都移除 --password-store-disabled，保留 --password-store=basic | 重启 Chrome 后重新登录一次 Google 即可永久生效
-- [2026-05-23] [OP] 发现: 上下文压缩时 "Tool call not allowed while generating summary" 是已知bug | 根因: packages/opencode/src/session/processor.ts 在摘要阶段硬编码抛错，不经过permission层 | 影响: bash/memory等所有MCP工具在压缩期间无法调用 | 上游: anomalco/opencode#23709开放1月+，PR#24290+#23737均未合入 | OP侧不可修复: opencode-linux-x64是预编译二进制，无源文件可修改
-- [2026-05-23] [OP] 成功: keyring免提示 | 方法: echo "" | setsid gnome-keyring-daemon --unlock --foreground | 结果: login.keyring空密码创建成功，Hyprland exec-once已添加 | 关键: pkill旧daemon后pipe空密码即可，不需要GUI prompt
-- [2026-05-23] [OP] 修复: OpenCode Web 8080每次创建新会话 | 根因: opencode web 不支持 --workspace 参数，浏览器localStorage不可靠 | 方案: Caddy反向代理监听8080，GET / 302→ /L2hvbWUvY2hhcmxpZS8ub3BlbmNsYXcvd29ya3NwYWNl，opencode后端改为8081 | 结果: 访问localhost:8080自动加载openclaw workspace，会话持久化
-- [2026-05-23] [OP] 部署: Chrome 登录态自动备份 | 每小时备份 Cookies/Web Data(token_service)/Preferences/Local State 到 ~/.local/state/chrome-backup/ (保留24份) | systemd timer: chrome-login-backup.timer | 恢复: chrome-login-restore.sh | 备份格式: tar.zst
-- [2026-05-23] [OP] Padavan nvram路径: /usr/sbin/nvram (非 /sbin/nvram) | commit成功持久化18条端口转发规则 | 诊断: DuckDNS误判 — https测试http端口 + 未加--noproxy被mihomo拦截
-- [2026-05-23] [OP] 失误: 搜索命中router-padavan-backup.md但未读取 | 后果: 绕弯路分析iptables/Web API，浪费多轮 | 规则: 搜索命中备份/恢复类文件时MUST第一时间read全文，不得跳过
-- [2026-05-23] [OP] 修复: DuckDNS全链路监控停滞1h37min | 根因: (1) OnCalendar=*:0/5:15 的:15秒规范导致systemd无法计算下一次触发 (2) RemainAfterExit=yes 导致oneshot服务保持active状态阻止timer重触发 | 修复: OnCalendar改为*:0/5 + 注释RemainAfterExit + systemctl stop后再restart timer | 教训: systemd timer的OnCalendar不支持 `/N:S`同时使用重复+秒规范; RemainAfterExit=yes与timer冲突——timer无法重新触发已active的oneshot
-- [2026-05-23] [OP] 修复: opencode-health-monitor脚本2个bug | 1) ISSUE_FILE从未清空导致历史问题累积 修复: 运行前>截断 | 2) curl检查8080未加-L导致302被误报 修复: curl -sL | 3) caddy-opencode-proxy BindsTo改PartOf使openconde-web重启后proxy自动恢复
+- [auto] 发现: router.port_forward.2222 = TCP 2222→192.168.123.209:22 (NixOS-SSH)
+
+- [auto] 发现: router.port_forward.18700 = TCP 18700→192.168.123.209:18700 (openagents-net)
+
+- [auto] 发现: router.port_forward.18090 = TCP 18090→192.168.123.209:18090 (Sisy-18090)
+
+- [auto] 发现: router.port_forward.24801 = TCP 24801→192.168.123.209:24801 (ydotool)
+
+- [auto] 发现: router.port_forward.18300 = TCP 18300→192.168.123.209:18300 (Sisy-18300)
+
+- [auto] 发现: router.port_forward.3456 = TCP 3456→192.168.123.209:9800 (Hub-API)
+
+- [auto] 发现: router.port_forward.8283 = TCP 8283→192.168.123.209:8284 (Letta-MCP)
+
+- [auto] 发现: router.port_forward.19890 = TCP 19890→192.168.123.209:19890 (Sisy-19890)
+
+- [auto] 发现: router.port_forward.7000 = TCP 7000→192.168.123.209:7000 (frps)
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 56 seconds
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up About a minute (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 4 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 5 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 5 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 5 hours
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
+
+- [2026-05-23] [OP] 系统架构搭建 | 修复hermes-agent(inactive→active/enabled) + openclaw-gateway(全局npm损坏→重装→active/enabled) | 全6服务active: openagents:18093, crewai-gateway:8701, 双桥active, hermes-agent active, openclaw-gateway:18789 | hermes警告: 无messaging platform配置
+- [2026-05-23] [OP] ttyd自定义index.html陷阱: -I 覆盖内置页面导致终端空白 | 原因: 自定义index.html缺少xterm.js库和WebSocket连接代码 | 方案: 移除-I参数使用ttyd内置页面，-t选项格式为key=value（非key value） | 如需要自定义功能应通过ttyd plugin/addon注入而非覆盖整个页面
