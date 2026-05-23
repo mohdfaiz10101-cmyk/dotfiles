@@ -1,0 +1,9 @@
+[Unit]
+Description=每日凌晨 daemon-reexec 防 fork 饱和
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Chrome 登录态每10分钟检测
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target

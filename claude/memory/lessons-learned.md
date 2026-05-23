@@ -1,5 +1,7 @@
 # 核心经验（≤50行，2026-05-18 精简）
 
+<!-- DEAD_RULE: search命中backup/恢复/灾难/永久化类文件名时，MUST先read该文件全文再执行任何操作 -->
+
 ## 代理/网络
 - [2026-05-04] mihomo GLOBAL 必须保持 `⚡ 自动选择`，禁止 DIRECT。Cloudflare 全站封禁时用手机 SOCKS5 隧道 `ssh -D 1080 phone` 绕过
 - [2026-05-04] Claude 403 `Request not allowed` = GLOBAL 被设 DIRECT，国内 IP 直连 anthropic 被封
@@ -99,3 +101,16 @@
 - 对话轮次: 47 | 被纠正: 1次
   - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
 - [2026-05-23] [OP] 成功: Moonlight FRP 远程串流 | NixOS Sunshine→FRP 17698→DuckDNS→路由器 全链路 | 平板连接: charlie1990.duckdns.org:17698 | 路由器Padavan HTML表单POST/start_apply.htm + fetch API 提交 VSList 成功
+
+- [2026-05-23] [OP] 失败学习: systemd用户实例fork失败 | 现象: "Failed to spawn executor: Resource temporarily unavailable" 导致45个用户服务失败 | 根因: systemd --user实例运行21h后累积资源压力，无法fork新进程 | 修复: systemctl --user daemon-reexec | 影响: waybar无法重启导致呼吸灯/记忆灯等UI模块全部消失，frpc/phone-clip-sync/wan-ip-monitor等关键服务也被波及- [2026-05-23] [OP] 发现: Moonlight远程配对失败根因 | Sunshine 47984端口要求mTLS客户端证书(TLSV13_ALERT_CERTIFICATE_REQUIRED) | 配对需通过HTTP 47989端口(无证书要求) | 远程方案: 平板先本地WiFi配对待机一次获取客户端证书，之后远程FRP串流可直连47984
+
+- [2026-05-23] [OP] GitHub Token: 用户 mohdfaiz10101-cmyk / 存放路径 ~/.local/share/credentials/github-token (chmod 600) / git credential.helper 已配置
+- [2026-05-23] [OP] 预防: systemd-reexec.timer | 每日04:00执行systemctl --user daemon-reexec | 目的: 防止systemd用户实例长时间运行后fork饱和导致所有服务无法启动 | 服务文件: ~/.config/systemd/user/systemd-reexec.{service,timer}
+- [2026-05-23] [OP] 成功: Chrome Google账号反复提示登录 | 根因: chrome-fix.sh + chrome-stable-login.sh 使用 --password-store-disabled 阻止了 OAuth2 刷新令牌持久化 | 修复: 两个脚本都移除 --password-store-disabled，保留 --password-store=basic | 重启 Chrome 后重新登录一次 Google 即可永久生效
+- [2026-05-23] [OP] 发现: 上下文压缩时 "Tool call not allowed while generating summary" 是已知bug | 根因: packages/opencode/src/session/processor.ts 在摘要阶段硬编码抛错，不经过permission层 | 影响: bash/memory等所有MCP工具在压缩期间无法调用 | 上游: anomalco/opencode#23709开放1月+，PR#24290+#23737均未合入 | OP侧不可修复: opencode-linux-x64是预编译二进制，无源文件可修改
+- [2026-05-23] [OP] 成功: keyring免提示 | 方法: echo "" | setsid gnome-keyring-daemon --unlock --foreground | 结果: login.keyring空密码创建成功，Hyprland exec-once已添加 | 关键: pkill旧daemon后pipe空密码即可，不需要GUI prompt
+- [2026-05-23] [OP] 修复: OpenCode Web 8080每次创建新会话 | 根因: opencode web 不支持 --workspace 参数，浏览器localStorage不可靠 | 方案: Caddy反向代理监听8080，GET / 302→ /L2hvbWUvY2hhcmxpZS8ub3BlbmNsYXcvd29ya3NwYWNl，opencode后端改为8081 | 结果: 访问localhost:8080自动加载openclaw workspace，会话持久化
+- [2026-05-23] [OP] 部署: Chrome 登录态自动备份 | 每小时备份 Cookies/Web Data(token_service)/Preferences/Local State 到 ~/.local/state/chrome-backup/ (保留24份) | systemd timer: chrome-login-backup.timer | 恢复: chrome-login-restore.sh | 备份格式: tar.zst
+- [2026-05-23] [OP] Padavan nvram路径: /usr/sbin/nvram (非 /sbin/nvram) | commit成功持久化18条端口转发规则 | 诊断: DuckDNS误判 — https测试http端口 + 未加--noproxy被mihomo拦截
+- [2026-05-23] [OP] 失误: 搜索命中router-padavan-backup.md但未读取 | 后果: 绕弯路分析iptables/Web API，浪费多轮 | 规则: 搜索命中备份/恢复类文件时MUST第一时间read全文，不得跳过
+- [2026-05-23] [OP] 修复: DuckDNS全链路监控停滞1h37min | 根因: (1) OnCalendar=*:0/5:15 的:15秒规范导致systemd无法计算下一次触发 (2) RemainAfterExit=yes 导致oneshot服务保持active状态阻止timer重触发 | 修复: OnCalendar改为*:0/5 + 注释RemainAfterExit + systemctl stop后再restart timer | 教训: systemd timer的OnCalendar不支持 `/N:S`同时使用重复+秒规范; RemainAfterExit=yes与timer冲突——timer无法重新触发已active的oneshot

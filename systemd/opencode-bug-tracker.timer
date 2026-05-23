@@ -1,0 +1,9 @@
+[Unit]
+Description=每日检查 opencode summary bug 修复状态
+
+[Timer]
+OnCalendar=*-*-01,15 00:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

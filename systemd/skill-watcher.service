@@ -3,5 +3,5 @@ Description=Skill Watcher — 自动知识监控
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/env python3 /home/charlie/.claude/skills/skill-watcher.py --scan
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.claude/skills/skill-watcher.py --scan
 WorkingDirectory=/home/charlie/.claude/skills

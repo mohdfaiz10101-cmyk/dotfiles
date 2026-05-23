@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/env python3 /home/charlie/launcher/tablet-control-api.py
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/tablet-control-api.py
 WorkingDirectory=/home/charlie/launcher
 Restart=on-failure
 RestartSec=5s

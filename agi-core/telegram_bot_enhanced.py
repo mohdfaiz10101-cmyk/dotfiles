@@ -388,6 +388,32 @@ def main() -> None:
     app.add_handler(CommandHandler("status", cmd_status))
     app.add_handler(CommandHandler("tasks", cmd_tasks))
     app.add_handler(CommandHandler("help", cmd_help))
+    
+    # 获取群组 chat_id（在群里发 /gid）
+    async def cmd_gid(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        cid = update.effective_chat.id
+        ctype = update.effective_chat.type
+        title = update.effective_chat.title or ''
+        await update.message.reply_text(f"chat_id={cid}\ntype={ctype}\ntitle={title}")
+        # 同时更新 gmail-bridge 环境变量
+        env_file = Path.home() / ".local/state/gmail-bridge/gmail.env"
+        env_file.parent.mkdir(parents=True, exist_ok=True)
+        old = env_file.read_text() if env_file.exists() else "TG_CHAT_ID=5036541266\n"
+        new = ""
+        for line in old.split("\n"):
+            if line.startswith("GMAIL_TG_CHAT="):
+                new += f"GMAIL_TG_CHAT={cid}\n"
+            elif line.startswith("# GMAIL_TG_CHAT="):
+                new += f"GMAIL_TG_CHAT={cid}\n"
+            else:
+                new += line + "\n"
+        if "GMAIL_TG_CHAT=" not in new:
+            new += f"GMAIL_TG_CHAT={cid}\n"
+        env_file.write_text(new.strip() + "\n")
+        # 重启 watch timer 使新环境变量生效
+        import subprocess
+        subprocess.run(["systemctl", "--user", "restart", "gmail-watch.timer"], timeout=5)
+    app.add_handler(CommandHandler("gid", cmd_gid))
 
     # 注册图片处理器（photo + document 图片，优先于文字 handler）
     app.add_handler(MessageHandler(filters.PHOTO, handle_image))

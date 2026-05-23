@@ -6,6 +6,6 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/mnt/ai/apps/gmail-bridge/gmail-bridge.py watch
-Environment=HOME=%h
+EnvironmentFile=%h/.local/state/gmail-bridge/gmail.env
 StandardOutput=journal
 StandardError=journal

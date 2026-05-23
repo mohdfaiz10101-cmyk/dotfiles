@@ -2,7 +2,7 @@
 Description=全链路连通性巡检 (每5分钟)
 
 [Timer]
-OnCalendar=*:0/5:15
+OnCalendar=*:0/5
 Persistent=true
 
 [Install]

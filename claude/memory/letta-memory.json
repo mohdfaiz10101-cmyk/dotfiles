@@ -342,6 +342,16 @@
           "text": "2026-05-23 OP执行: Moonlight FRP远程串流全链路打通 | Sunshine(NixOS) → FRPC隧道 → FRPS(17698) → 路由器端口转发 → DuckDNS → 公网 | Moonlight平板连接地址: charlie1990.duckdns.org:17698 | 关键: 路由器Padavan的端口转发HTML表单需通过fetch API直接POST VSList到/start_apply.htm，传统curl/form-submit方式不可靠",
           "tags": "op-exec, sunshine, moonlight, frp, 远程串流, 路由器",
           "timestamp": "1779522964"
+        },
+        {
+          "text": "2026-05-23 OP执行: GitHub Personal Access Token 永存 | 用户: mohdfaiz10101-cmyk | 路径: ~/.local/share/credentials/github-token (chmod 600) | git credential.helper store 已配置",
+          "tags": "credentials,github,git",
+          "timestamp": "1779527949"
+        },
+        {
+          "text": "2026-05-23 OP: 部署 opencode-bug-tracker 定时追踪 | 监控 PR#24290+#23737 \"Tool call not allowed while generating summary\" 修复合入 | systemd timer daily | 合入后 notify-send 提醒更新 opencode-linux-x64",
+          "tags": "opencode,bug-tracker,systemd,op-exec",
+          "timestamp": "1779528706"
         }
       ]
     },

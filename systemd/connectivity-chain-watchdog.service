@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-RemainAfterExit=yes
+#RemainAfterExit=yes (禁用-oneshot timer需此选项才能重复触发)
 ExecStart=%h/.local/bin/connectivity-chain-watchdog.sh
 Environment="http_proxy="
 Environment="https_proxy="
