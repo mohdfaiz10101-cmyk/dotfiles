@@ -1,24 +1,33 @@
 #!/usr/bin/env bash
-# pre-commit-verify v2 — 读取 verify-state.json 判断验证是否有效
+# pre-commit-verify v3 — 硬拦截：未通过验证禁止 commit
+# 前端检查 verify-state.json 的 frontend.build + vision
+# 后端检查 verify-state.json 的 backend.overall
 STATE_FILE="$HOME/.local/state/verify/verify-state.json"
-FRONTEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.(tsx|jsx|css|scss|html|vue|svelte)$' || true)
-[ -z "$FRONTEND_FILES" ] && exit 0
 
-if [ ! -f "$STATE_FILE" ]; then
+# 检测变更文件类型
+FRONTEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.(tsx|jsx|css|scss|html|vue|svelte)$' || true)
+BACKEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -vE '\.(tsx|jsx|css|scss|html|vue|svelte)$' | grep -v node_modules | head -20 || true)
+
+HAS_FRONTEND=false
+HAS_BACKEND=false
+[[ -n "$FRONTEND_FILES" ]] && HAS_FRONTEND=true
+[[ -n "$BACKEND_FILES" ]] && HAS_BACKEND=true
+
+[[ "$HAS_FRONTEND" == "false" && "$HAS_BACKEND" == "false" ]] && exit 0
+
+# 无状态文件 = 首次验证未跑
+if [[ ! -f "$STATE_FILE" ]]; then
     echo "=============================================="
-    echo "  VISUAL_VERIFY BLOCKED: 无验证记录"
-    echo "  变更文件: $(echo $FRONTEND_FILES | wc -l) 个前端文件"
-    echo "  运行: ~/.local/bin/verify-pipeline.sh 然后重新 commit"
+    echo "  VERIFY BLOCKED: 无验证记录"
+    echo "  前端: $(echo "$FRONTEND_FILES" | wc -l) 文件"
+    echo "  后端: $(echo "$BACKEND_FILES" | wc -l) 文件"
+    echo "  运行: verify-pipeline.sh && post-edit-verify.sh --auto"
     echo "=============================================="
     exit 1
 fi
 
-# 读取验证状态
-OVERALL=$(python3 -c "import json; print(json.load(open('$STATE_FILE')).get('overall','unknown'))" 2>/dev/null || echo "unknown")
-LAST_TIME=$(python3 -c "import json; print(json.load(open('$STATE_FILE')).get('timestamp',''))" 2>/dev/null)
-
-# 检查是否30分钟内的验证
-AGE_SEC=$(python3 -c "
+# 检查过期（30分钟）
+AGE=$(python3 -c "
 import json, time
 try:
     ts = json.load(open('$STATE_FILE')).get('timestamp','')
@@ -27,23 +36,41 @@ try:
 except: print(9999)
 " 2>/dev/null)
 
-if [ "$AGE_SEC" -gt 1800 ] 2>/dev/null; then
+if [[ "$AGE" -gt 1800 ]] 2>/dev/null; then
     echo "=============================================="
-    echo "  VISUAL_VERIFY BLOCKED: 验证记录过期"
-    echo "  最后验证: $LAST_TIME (${AGE_SEC}秒前，超过30分钟)"
-    echo "  运行: ~/.local/bin/verify-pipeline.sh 然后重新 commit"
-    echo "=============================================="
-    exit 1
-fi
-
-if [ "$OVERALL" != "pass" ]; then
-    echo "=============================================="
-    echo "  VISUAL_VERIFY BLOCKED: 验证未通过"
-    echo "  状态: $OVERALL"
-    echo "  详情: $(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('vision_errors','unknown'))" 2>/dev/null)"
+    echo "  VERIFY BLOCKED: 验证过期 (${AGE}秒)"
+    echo "  运行: verify-pipeline.sh && post-edit-verify.sh --auto"
     echo "=============================================="
     exit 1
 fi
 
-echo "[OK] VISUAL_VERIFY: $OVERALL ($AGE_SEC秒前)"
+# 前端检查
+if [[ "$HAS_FRONTEND" == "true" ]]; then
+    FE_BUILD=$(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('frontend',{}).get('build','unknown'))" 2>/dev/null)
+    FE_VISION=$(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('frontend',{}).get('vision_check','unknown'))" 2>/dev/null)
+    if [[ "$FE_BUILD" != "pass" || "$FE_VISION" != "pass" ]]; then
+        echo "=============================================="
+        echo "  FRONTEND VERIFY BLOCKED"
+        echo "  build=$FE_BUILD vision=$FE_VISION"
+        echo "  verify-pipeline.sh 未通过，禁止commit"
+        echo "=============================================="
+        exit 1
+    fi
+    echo "[OK] frontend: build=$FE_BUILD vision=$FE_VISION"
+fi
+
+# 后端检查
+if [[ "$HAS_BACKEND" == "true" ]]; then
+    BE=$(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('backend',{}).get('overall','unknown'))" 2>/dev/null)
+    if [[ "$BE" != "pass" && "$BE" != "unknown" ]]; then
+        echo "=============================================="
+        echo "  BACKEND VERIFY BLOCKED: $BE"
+        echo "  post-edit-verify.sh --auto 未通过"
+        echo "=============================================="
+        exit 1
+    fi
+    echo "[OK] backend: $BE"
+fi
+
+echo "[OK] VERIFY: $(date +%H:%M:%S) — age=${AGE}s"
 exit 0
