@@ -75,3 +75,27 @@
 - [2026-05-23] [OP] 再犯: 问答后自动穿插无关任务 | 场景: 回答ChinaNet问题后无指令执行bun run build | 根因: 回答完成后自动扫描/执行了无关操作 | 强制规则: 对话结束后禁止执行任何命令，除非用户明确指定下一个操作
 - [2026-05-23] [OP] GELab-Zero部署: 框架/依赖/ADB就绪，阻塞在模型推理 | 根因: NixOS Ollama 0.20.3是CPU-only构建(无CUDA)，所有模型运行在CPU导致超时 | gelab(Qwen3VL)崩溃因架构不兼容 | StepFun API quota exceeded | 解决方向: 安装CUDA版Ollama binary或nixpkgs-unstable
 - [2026-05-23 12:20] [OP] 发现: macg_cc_delegate 永久失效 | 原因: claude CLI 未登录(403 Forbidden)，无API key，Pro/Max OAuth不可用于CLI | 影响: 所有CC委托调用实际返回错误但被静默捕获 | 修复: 改用task subagent(arch+glm-5.1)替代，见sisyphus.md更新
+- [2026-05-23] [OP] 再犯: macg MCP SSE 502复发 | 原因: .zshrc未显式设置no_proxy含127.0.0.1，仅靠environment.d文件但shell不读取 | 修复: .zshrc直接export no_proxy='127.0.0.1,...'合并所有值，删除旧的追加行
+- [2026-05-23] [Aider] feat: 验证体系 v3 — 前后端全覆盖
+  相关文件：git-hooks/pre-commit-verify, systemd/verify-watch.path, systemd/verify-watch.service
+- [2026-05-23] [OP] 验证体系v3 | 变更: verify-pipeline.sh(修复白屏检测+路径)+post-edit-verify.sh(--auto+state)+pre-commit-verify(前后端双检)+verify-watch(后端目录监控) | 结果: 提交e2b0a6e已推送 | 关键: 前端build→screenshot→PIL白屏检测→diff, 后端syntax→test→service→HTTP, 统一verify-state.json{frontend,backend}
+- [2026-05-23] [OP] 修复: 呼吸灯exit28连续失败 | 根因: opencode:8080进程D状态(393线程/2.6G/3.3Gswap)无HTTP响应 + caddy-launcher死(12:03起) | 修复: restart opencode-web + restart caddy-launcher | 预防: opencode内存上限3G偏低，swap 3.6G峰值需监控
+- [2026-05-23] [OP] opencode-config-guard优化: timer轮询→inotify事件驱动 | MCP缺失检查已移除 | 仅监听opencode.json循环链接+JSON无效两项
+- [2026-05-23] [OP] 微信Waybar闪烁修复: Hyprland添加 windowrulev2 = nourgency, class:wechat | 原因: 微信UOS发送X11 urgency hint导致Waybar工作区图标变为!并闪烁
+- [2026-05-23] [OP] keyring静默: gnome-keyring取消密码提示 | 方法: rm keyring文件 + echo "" | gnome-keyring-daemon --unlock重建空密码keyring | 结果: login.keyring空密码创建成功，不再弹窗
+- [2026-05-23] [OP] 修复: GitHub ERR_NO_SUPPORTED_PROXIES | 原因: ~/.config/kioslaverc 中 httpProxy/httpsProxy 端口为17890(应为7890)，socksProxy 格式错误使用了 socks:// 前缀 | 修复: 端口改为7890/7891，去除协议前缀(统一KDE格式)
+
+### 会话摘要 [2026-05-23] [Sonnet/自动]
+- 对话轮次: 15 | 被纠正: 1次
+  - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
+- [2026-05-23] [OP] Moonlight FRP: NixOS Sunshine→FRP隧道→17698配置完成 | 路由器端口转发HTML表单不响应POST，需手动添加 | Moonlight连接: charlie1990.duckdns.org:17698
+
+### 会话摘要 [2026-05-23] [Sonnet/自动]
+- 对话轮次: 29 | 被纠正: 1次
+  - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
+- [2026-05-23] [OP] Padavan DHCP静态绑定: 两步法 | Step1: POST到start_apply.htm action_mode=+Add+ → done_validating | Step2: POST action_mode=+Restart+ → done_committing | MAC格式: 无分隔符大写(8CEA12957E14) | 表单含sid_list=LANHostConfig%3B和所有dhcp字段
+
+### 会话摘要 [2026-05-23] [Sonnet/自动]
+- 对话轮次: 47 | 被纠正: 1次
+  - 用户纠正: 检查下opencode设置和配置哪里不对 要联网
+- [2026-05-23] [OP] 成功: Moonlight FRP 远程串流 | NixOS Sunshine→FRP 17698→DuckDNS→路由器 全链路 | 平板连接: charlie1990.duckdns.org:17698 | 路由器Padavan HTML表单POST/start_apply.htm + fetch API 提交 VSList 成功

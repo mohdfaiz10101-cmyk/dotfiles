@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStartPre=/bin/sleep 5
 ExecStart=/home/charlie/.local/bin/verify-pipeline.sh --project /mnt/ai/apps/agi-control-plane/frontend --agent auto-watchdog
 ExecStart=/home/charlie/.local/bin/post-edit-verify.sh --auto

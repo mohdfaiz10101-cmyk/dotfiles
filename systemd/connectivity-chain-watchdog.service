@@ -4,6 +4,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=%h/.local/bin/connectivity-chain-watchdog.sh
 Environment="http_proxy="
 Environment="https_proxy="

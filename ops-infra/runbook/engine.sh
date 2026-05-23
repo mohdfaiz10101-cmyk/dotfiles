@@ -105,11 +105,35 @@ import sys,json; d=json.load(sys.stdin); print(d.get('mode',''))
 " 2>/dev/null | grep -q "Rule"
 }
 
+# --- RB-20260523-04: LiteLLM Embedding No connected db ---
+rb_litellm_embed_nodb() {
+    curl -s --max-time 5 http://localhost:4000/embeddings \
+        -H "Content-Type: application/json" \
+        -d '{"model":"all-MiniLM-L6-v2","input":"test"}' 2>/dev/null \
+        | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('error',{}).get('message',''))" 2>/dev/null \
+        | grep -q "No connected db"
+}
+
+rb_litellm_embed_nodb_fix() {
+    echo "重启LiteLLM容器修复DB连接"
+    docker restart litellm-litellm 2>/dev/null && sleep 5
+    return 0
+}
+
+rb_litellm_embed_nodb_verify() {
+    curl -s --max-time 5 http://localhost:4000/embeddings \
+        -H "Content-Type: application/json" \
+        -d '{"model":"all-MiniLM-L6-v2","input":"test"}' 2>/dev/null \
+        | python3 -c "import sys,json; d=json.load(sys.stdin); print('ERROR' if 'error' in d else 'OK')" 2>/dev/null \
+        | grep -q "OK"
+}
+
 # ====== Runbook注册表 ======
 declare -A RUNBOOKS=(
     ["RB-20260523-01"]="rb_letta_silent_failure|CRITICAL|Letta记忆写入静默停止"
     ["RB-20260523-02"]="rb_duckdns_nproc_exhaustion|WARNING|nproc线程数接近上限"
     ["RB-20260523-03"]="rb_mihomo_global_direct|CRITICAL|mihomo GLOBAL误设DIRECT"
+    ["RB-20260523-04"]="rb_litellm_embed_nodb|WARNING|LiteLLM Embedding返回No connected db"
 )
 
 # ====== 执行引擎 ======

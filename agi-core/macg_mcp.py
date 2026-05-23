@@ -632,3 +632,27 @@ def macg_mem0_delete(memory_id: str) -> str:
     """mem0 删除指定记忆。输入 memory_id。"""
     result = _mem0_post("/delete", {"memory_id": memory_id})
     return f"[OK] 删除 {memory_id}" if result.get("status") == "deleted" else f"[FAIL] {result}"
+
+@mcp.tool()
+def image_search(query: str, limit: int = 10) -> str:
+    """搜索本地图片库。用自然语言描述图片内容（如"白色包包""海边的日落""和妈妈的合影"）。返回匹配图片路径和相似度分数。图片库含手机照片、截图、微信图片。"""
+    try:
+        q = urllib.parse.quote(query)
+        resp = requests.get(f"http://localhost:9890/search?q={q}&limit={limit}", timeout=30)
+        if resp.status_code != 200:
+            return f"[FAIL] 搜索服务异常: {resp.status_code}"
+        results = resp.json()
+        if not results:
+            return "[OK] 未找到匹配图片"
+        lines = []
+        for r in results:
+            path = r["path"]
+            # 缩短路径显示
+            short = path.replace("/mnt/ai/apps/image-search/images/phone/", "📱").replace("/home/charlie/Pictures/", "🖥️")
+            fname = short.split("/")[-1]
+            lines.append(f"{r['score']:.3f} | {r['caption'][:30]} | {fname}")
+        return f"[OK] {len(results)} 张匹配:\n" + "\n".join(lines[:min(limit, 10)])
+    except requests.exceptions.ConnectionError:
+        return "[FAIL] 图片搜索服务未运行 (localhost:9890)"
+    except Exception as e:
+        return f"[FAIL] {e}"

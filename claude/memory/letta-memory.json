@@ -112,6 +112,11 @@
           "text": "2026-05-22 OP修复: Chrome 147 + NVIDIA 595 + Wayland 每个tab崩溃 | 根因: ANGLE默认后端在NVIDIA Wayland下GPU进程崩溃 | 修复: 添加 --use-angle=gl --ignore-gpu-blocklist --disable-gpu-sandbox 启动参数 | 持久化: 需更新桌面启动器",
           "tags": "chrome,nvidia,wayland,gpu-crash,fix",
           "timestamp": "1779445295"
+        },
+        {
+          "text": "2026-05-23 OP执行: ops-infra v2 scorer修复 + runbook扩展 | 结果: 整体评分91%→97% 🟡良好 | 关键发现: (1) SERVICE_LIST修复4个路径/端口错误 -> agi-gateway:/docs, hub-api:9800, chromadb:/api/v2/heartbeat, mihomo返回HTML非JSON (2) Letta L4=FAIL ✗ | 根因: /embeddings端点\"Authentication Error\"导致POST写入超时 | runbook新增RB-20260523-04: LiteLLM Embed DB错误自动重启 | 唯一问题: litellm的NOOP合理(无health端点)",
+          "tags": "op-exec,health-scorer,letta,litellm",
+          "timestamp": "1779520941"
         }
       ]
     },
@@ -317,6 +322,26 @@
           "text": "2026-05-23 OP执行: overtab tmux serve模式修复 | 结果: 成功 | 关键发现: ttyd启动时才会运行wrapper创建tmux session，断开即销毁导致\"任务终止\"。修复: 新增overtab-serve.service(oneshot+RemainAfterExit)独立维护tmux会话，ttyd-wrapper改为attach已有session。服务文件: overtab-serve.service/start/stop + 更新ttyd-overtab.service依赖",
           "tags": "op-exec,overtab,serve,systemd,tmux",
           "timestamp": "1779503299"
+        },
+        {
+          "text": "2026-05-23 OP执行: opencode-config-guard 优化 | timer轮询→inotify事件驱动常驻守护 | 移除MCP缺失检查(噪音) | 仅监听opencode.json循环链接+JSON无效 | 结果: 成功",
+          "tags": "op-exec,opencode-guard,inotify",
+          "timestamp": "1779520978"
+        },
+        {
+          "text": "2026-05-23 15:15 OP修复: 17699打不开 | 根因: Caddy D状态(swap满+cgroup限流) | 修复: kill Caddy重启, 重启FRPC | 遗留: 路由器TCP全挂, DuckDNS不可用 | 替代: CF tunnel有效",
+          "tags": "op-exec,outage,17699,router",
+          "timestamp": "1779521016"
+        },
+        {
+          "text": "2026-05-23 OP执行: Windows WiFi IP固定为192.168.123.136 | 方法: Padavan路由器静态DHCP绑定(MAC: 8C-EA-12-95-7E-14) | Windows DHCP已启用, 旧静态IP 192.168.123.100已解除 | 验证: SSH G@192.168.123.136 可达",
+          "tags": "op-exec,windows,network,dhcp",
+          "timestamp": "1779522131"
+        },
+        {
+          "text": "2026-05-23 OP执行: Moonlight FRP远程串流全链路打通 | Sunshine(NixOS) → FRPC隧道 → FRPS(17698) → 路由器端口转发 → DuckDNS → 公网 | Moonlight平板连接地址: charlie1990.duckdns.org:17698 | 关键: 路由器Padavan的端口转发HTML表单需通过fetch API直接POST VSList到/start_apply.htm，传统curl/form-submit方式不可靠",
+          "tags": "op-exec, sunshine, moonlight, frp, 远程串流, 路由器",
+          "timestamp": "1779522964"
         }
       ]
     },

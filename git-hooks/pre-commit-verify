@@ -6,7 +6,7 @@ STATE_FILE="$HOME/.local/state/verify/verify-state.json"
 
 # 检测变更文件类型
 FRONTEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.(tsx|jsx|css|scss|html|vue|svelte)$' || true)
-BACKEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -vE '\.(tsx|jsx|css|scss|html|vue|svelte)$' | grep -v node_modules | head -20 || true)
+BACKEND_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -vE '\.(tsx|jsx|css|scss|html|vue|svelte)$' | grep -v node_modules || true)
 
 HAS_FRONTEND=false
 HAS_BACKEND=false
@@ -26,15 +26,27 @@ if [[ ! -f "$STATE_FILE" ]]; then
     exit 1
 fi
 
-# 检查过期（30分钟）
-AGE=$(python3 -c "
+# 一次 python3 读取所有需要的字段（AGE / FE_BUILD / FE_VISION / BE）
+_STATE=$(python3 -c "
 import json, time
 try:
-    ts = json.load(open('$STATE_FILE')).get('timestamp','')
-    then = __import__('datetime').datetime.fromisoformat(ts).timestamp()
-    print(int(time.time() - then))
-except: print(9999)
+    s = json.load(open('$STATE_FILE'))
+    fe = s.get('frontend', {})
+    be = s.get('backend', {})
+    ts = s.get('timestamp', '')
+    from datetime import datetime
+    age = int(time.time() - datetime.fromisoformat(ts).timestamp())
+except Exception:
+    age, fe, be = 9999, {}, {}
+print(age)
+print(fe.get('build', 'unknown') if isinstance(fe, dict) else 'unknown')
+print(fe.get('vision_check', 'unknown') if isinstance(fe, dict) else 'unknown')
+print(be.get('overall', 'unknown') if isinstance(be, dict) else 'unknown')
 " 2>/dev/null)
+AGE=$(echo "$_STATE" | sed -n '1p')
+FE_BUILD=$(echo "$_STATE" | sed -n '2p')
+FE_VISION=$(echo "$_STATE" | sed -n '3p')
+BE=$(echo "$_STATE" | sed -n '4p')
 
 if [[ "$AGE" -gt 1800 ]] 2>/dev/null; then
     echo "=============================================="
@@ -46,8 +58,6 @@ fi
 
 # 前端检查
 if [[ "$HAS_FRONTEND" == "true" ]]; then
-    FE_BUILD=$(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('frontend',{}).get('build','unknown'))" 2>/dev/null)
-    FE_VISION=$(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('frontend',{}).get('vision_check','unknown'))" 2>/dev/null)
     if [[ "$FE_BUILD" != "pass" || "$FE_VISION" != "pass" ]]; then
         echo "=============================================="
         echo "  FRONTEND VERIFY BLOCKED"
@@ -61,7 +71,6 @@ fi
 
 # 后端检查
 if [[ "$HAS_BACKEND" == "true" ]]; then
-    BE=$(python3 -c "import json; s=json.load(open('$STATE_FILE')); print(s.get('backend',{}).get('overall','unknown'))" 2>/dev/null)
     if [[ "$BE" != "pass" && "$BE" != "unknown" ]]; then
         echo "=============================================="
         echo "  BACKEND VERIFY BLOCKED: $BE"

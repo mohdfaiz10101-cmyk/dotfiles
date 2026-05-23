@@ -5,6 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 User=charlie
 WorkingDirectory=/mnt/ai/apps/migration
 ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/migration/migrate.py

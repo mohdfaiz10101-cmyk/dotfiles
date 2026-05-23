@@ -14,9 +14,12 @@ import sqlite3
 import urllib.request as ureq
 from datetime import datetime
 
+import fcntl
+import time
 import ipaddress
 
 PORT = 9875
+_TASK_RESULTS_FILE = "/tmp/op-task-results.json"
 TAILSCALE_NET = ipaddress.ip_network("100.64.0.0/10")
 LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "")
 if not LAUNCHER_TOKEN:
@@ -1727,27 +1730,11 @@ Git Diff（前3000字符）：
         self._json_response({"results": results[-20:]})
 
     def _append_task_result(self, text):
-        """追加任务结果到 /tmp/op-task-results.json，供前端 TTS 轮询"""
-        import fcntl
-        import time as _time
-        res_file = "/tmp/op-task-results.json"
-        entry = {"time": _time.strftime("%H:%M:%S"), "result": text, "task": text[:50]}
+        """追加任务结果到 _TASK_RESULTS_FILE，供前端 TTS 轮询（JSONL 格式）"""
+        entry = {"time": time.strftime("%H:%M:%S"), "result": text, "task": text[:50]}
         try:
-            with open(res_file, "a+", encoding="utf-8") as f:
-                fcntl.flock(f, fcntl.LOCK_EX)
-                f.seek(0)
-                content = f.read().strip()
-                results = []
-                if content:
-                    try:
-                        results = json.loads(content) if content.startswith("[") else []
-                    except Exception:
-                        pass
-                results.append(entry)
-                f.seek(0)
-                f.truncate()
-                json.dump(results, f, ensure_ascii=False)
-                fcntl.flock(f, fcntl.LOCK_UN)
+            with open(_TASK_RESULTS_FILE, "a", encoding="utf-8") as f:
+                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
         except Exception as ex:
             print(f"[launcher-server] _append_task_result failed: {ex}")
 

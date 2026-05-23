@@ -100,3 +100,7 @@
 - [ ] 测试TTS：验证语音播报功能是否正常工作
 - [ ] 快速测试：echo hello
 - [ ] 快速TTS测试：验证spd-say语音播报
+
+## TTS 测试任务
+
+- [ ] TTS-TEST-001 — 测试TTS播报：执行echo "TTS测试成功"并验证spd-say播报

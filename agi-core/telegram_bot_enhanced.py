@@ -450,6 +450,12 @@ def main() -> None:
                 f"请输入转发目标:\n<code>转发 #{uid} 目标@email.com</code>",
                 parse_mode="HTML"
             )
+        elif action == "block":
+            result = subprocess.run(["python3", "/mnt/ai/apps/gmail-bridge/gmail-bridge.py", "block", uid], capture_output=True, text=True, timeout=10)
+            await query.answer("🚫 已拉黑" if result.returncode == 0 else f"失败: {result.stderr[:50]}")
+        elif action == "unsub":
+            result = subprocess.run(["python3", "/mnt/ai/apps/gmail-bridge/gmail-bridge.py", "unsub", uid], capture_output=True, text=True, timeout=30)
+            await query.answer("✕ 退订处理中" if result.returncode == 0 else f"失败: {result.stderr[:50]}")
     
     app.add_handler(CallbackQueryHandler(handle_gmail_callback))
 

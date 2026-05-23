@@ -1,7 +1,14 @@
 [Unit]
-Description=OpenCode 配置文件循环链接检测修复
+Description=OpenCode 配置文件循环链接 inotify 守护
 After=default.target
 
 [Service]
-Type=oneshot
-ExecStart=/home/charlie/.local/bin/opencode-config-guard.sh
+Type=simple
+ExecStart=/home/charlie/.local/bin/opencode-config-guard.sh --daemon
+Restart=always
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin
+
+[Install]
+WantedBy=default.target

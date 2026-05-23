@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync phone images to local
+
+[Service]
+Type=oneshot
+ExecStart=/mnt/ai/apps/image-search/sync-all.sh

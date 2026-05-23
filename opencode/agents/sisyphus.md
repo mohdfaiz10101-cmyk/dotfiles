@@ -12,7 +12,7 @@ autoExecute: true
 
 # Sisyphus — OP 运维执行 Agent
 
-<!-- memory-gate-inject: 15:00 -->
+<!-- memory-gate-inject: 17:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -21,14 +21,22 @@ autoExecute: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-23] [OP] 路由器Web API: 端口转发页面是Advanced_VirtualServer_Content.asp(非DMZ页Advanced_Exposed_Content.asp) | 表单字段名: vts_port_x_0(有额外下划线) | VSList变量格
-**教训**: - [2026-05-23] [OP] 修复: DuckDNS:17699 浏览器刷新缓存 | 原因: Caddyfile launcher首页和/multi页面设置Cache-Control "no-cache, no-store, must-revalidate"完全禁止浏览器缓存 | 修复: 
-**教训**: - [2026-05-23] [OP] 再犯: 问答后自动穿插无关任务 | 场景: 回答ChinaNet问题后无指令执行bun run build | 根因: 回答完成后自动扫描/执行了无关操作 | 强制规则: 对话结束后禁止执行任何命令，除非用户明确指定下一个操作
-**教训**: - [2026-05-23] [OP] GELab-Zero部署: 框架/依赖/ADB就绪，阻塞在模型推理 | 根因: NixOS Ollama 0.20.3是CPU-only构建(无CUDA)，所有模型运行在CPU导致超时 | gelab(Qwen3VL)崩溃因架构不兼容 | StepFun AP
-**教训**: - [2026-05-23 12:20] [OP] 发现: macg_cc_delegate 永久失效 | 原因: claude CLI 未登录(403 Forbidden)，无API key，Pro/Max OAuth不可用于CLI | 影响: 所有CC委托调用实际返回错误但被静默捕获 | 修复:
+**教训**: - [2026-05-23] [OP] keyring静默: gnome-keyring取消密码提示 | 方法: rm keyring文件 + echo "" | gnome-keyring-daemon --unlock重建空密码keyring | 结果: login.keyring空密码创建成功
+**教训**: - [2026-05-23] [OP] 修复: GitHub ERR_NO_SUPPORTED_PROXIES | 原因: ~/.config/kioslaverc 中 httpProxy/httpsProxy 端口为17890(应为7890)，socksProxy 格式错误使用了 socks://
+**教训**: - [2026-05-23] [OP] Moonlight FRP: NixOS Sunshine→FRP隧道→17698配置完成 | 路由器端口转发HTML表单不响应POST，需手动添加 | Moonlight连接: charlie1990.duckdns.org:17698
+**教训**: - [2026-05-23] [OP] Padavan DHCP静态绑定: 两步法 | Step1: POST到start_apply.htm action_mode=+Add+ → done_validating | Step2: POST action_mode=+Restart+ → done
+**教训**: - [2026-05-23] [OP] 成功: Moonlight FRP 远程串流 | NixOS Sunshine→FRP 17698→DuckDNS→路由器 全链路 | 平板连接: charlie1990.duckdns.org:17698 | 路由器Padavan HTML表单POST/st
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

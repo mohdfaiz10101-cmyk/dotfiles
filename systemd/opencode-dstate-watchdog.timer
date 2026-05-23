@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenCode D-State Watchdog Timer
+Requires=opencode-dstate-watchdog.service
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+
+[Install]
+WantedBy=timers.target
