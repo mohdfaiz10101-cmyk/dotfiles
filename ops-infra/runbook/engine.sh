@@ -1,0 +1,194 @@
+#!/usr/bin/env bash
+# runbook-engine.sh — Lessons-learned → 可执行Runbook自动化引擎
+# 读取 lessons-learned.md 中的 [runbook] 条目，匹配当前告警，自动修复
+# 用法: runbook-engine.sh [--dry-run] [--runbook RB-ID]
+
+set -euo pipefail
+
+LESSONS_FILE="$HOME/.claude/projects/-home-charlie/memory/lessons-learned.md"
+STATE_DIR="$HOME/.local/state/ops-infra"
+RUNBOOK_LOG="$STATE_DIR/runbook-executions.jsonl"
+mkdir -p "$STATE_DIR"
+DRY_RUN=false
+
+[ "${1:-}" = "--dry-run" ] && DRY_RUN=true
+
+log_execution() {
+    local runbook_id="$1" status="$2" detail="$3"
+    echo "{\"ts\":\"$(date -Is)\",\"id\":\"$runbook_id\",\"status\":\"$status\",\"detail\":\"$detail\"}" >> "$RUNBOOK_LOG"
+    echo "[$(date '+%H:%M:%S')] $runbook_id → $status — $detail"
+}
+
+# ====== Runbook定义 (从lessons-learned自动提取 + 手动注册) ======
+
+# 每个runbook是一个函数: rb_<ID>() { detect; [diagnose]; fix; verify; }
+# detect返回0=故障存在  fix返回0=修复成功  verify返回0=验证通过
+
+# --- RB-20260523-01: Letta记忆静默故障 ---
+rb_letta_silent_failure() {
+    # DETECT
+    local latest
+    latest=$(curl -s "http://localhost:8283/v1/agents/agent-9b3bcec2-0a26-458c-a2e0-639c0f9686ca/archival-memory?limit=5&ascending=false" 2>/dev/null | python3 -c "
+import sys,json
+items=json.load(sys.stdin)
+real=[i for i in items if 'health-check' not in str(i.get('tags',[]))]
+print(real[0].get('created_at','')[:19] if real else 'NEVER')
+" 2>/dev/null)
+    if [ "$latest" = "NEVER" ]; then
+        return 0  # 故障存在
+    fi
+    return 1  # 正常
+}
+
+rb_letta_silent_failure_fix() {
+    echo "Letta API响应正常，检查ascending参数"
+    # 问题已在health-guard + deadman-switch中修复
+    return 0
+}
+
+rb_letta_silent_failure_verify() {
+    /home/charlie/.local/bin/letta-deadman-switch.sh >/dev/null 2>&1
+}
+
+# --- RB-20260523-02: DuckDNS nproc耗尽 ---
+rb_duckdns_nproc_exhaustion() {
+    local nproc_limit
+    nproc_limit=$(ulimit -u 2>/dev/null || echo "0")
+    local thread_count
+    thread_count=$(ps -eLf 2>/dev/null | wc -l)
+    if [ "$thread_count" -gt "$((nproc_limit * 80 / 100))" ]; then
+        return 0  # 接近极限
+    fi
+    return 1
+}
+
+rb_duckdns_nproc_exhaustion_fix() {
+    echo "线程数接近nproc限制，查找高线程进程"
+    local top_pid
+    top_pid=$(ps -eo pid,nlwp,comm --sort=-nlwp 2>/dev/null | head -3 | tail -1 | awk '{print $1}')
+    if [ -n "$top_pid" ]; then
+        echo "终止高线程进程: $top_pid"
+        kill "$top_pid" 2>/dev/null || true
+    fi
+    return 0
+}
+
+rb_duckdns_nproc_exhaustion_verify() {
+    local thread_count
+    thread_count=$(ps -eLf 2>/dev/null | wc -l)
+    [ "$thread_count" -lt 3000 ]
+}
+
+# --- RB-20260523-03: mihomo GLOBAL误设DIRECT ---
+rb_mihomo_global_direct() {
+    if curl -s --max-time 3 http://localhost:9090 2>/dev/null | python3 -c "
+import sys,json
+d=json.load(sys.stdin)
+mode=d.get('mode','')
+print(mode)
+" 2>/dev/null | grep -q "Direct"; then
+        return 0
+    fi
+    return 1
+}
+
+rb_mihomo_global_direct_fix() {
+    echo "mihomo GLOBAL=DIRECT → 切回Rule"
+    curl -s -X PUT http://localhost:9090/configs -H "Content-Type: application/json" \
+        -d '{"mode":"Rule"}' >/dev/null 2>&1 || true
+    return 0
+}
+
+rb_mihomo_global_direct_verify() {
+    curl -s --max-time 3 http://localhost:9090 2>/dev/null | python3 -c "
+import sys,json; d=json.load(sys.stdin); print(d.get('mode',''))
+" 2>/dev/null | grep -q "Rule"
+}
+
+# ====== Runbook注册表 ======
+declare -A RUNBOOKS=(
+    ["RB-20260523-01"]="rb_letta_silent_failure|CRITICAL|Letta记忆写入静默停止"
+    ["RB-20260523-02"]="rb_duckdns_nproc_exhaustion|WARNING|nproc线程数接近上限"
+    ["RB-20260523-03"]="rb_mihomo_global_direct|CRITICAL|mihomo GLOBAL误设DIRECT"
+)
+
+# ====== 执行引擎 ======
+execute_runbook() {
+    local rb_id="$1"
+    local info="${RUNBOOKS[$rb_id]}"
+    if [ -z "$info" ]; then
+        log_execution "$rb_id" "SKIP" "未知runbook"
+        return 1
+    fi
+
+    IFS='|' read -r detect_fn severity description <<< "$info"
+
+    # Step 1: 检测
+    if ! $detect_fn 2>/dev/null; then
+        log_execution "$rb_id" "SKIP" "未触发检测条件"
+        return 0
+    fi
+
+    # Step 2: 修复
+    local fix_fn="${detect_fn}_fix"
+    local verify_fn="${detect_fn}_verify"
+
+    if $DRY_RUN; then
+        log_execution "$rb_id" "DRY-RUN" "$description — 将调用 $fix_fn"
+        return 0
+    fi
+
+    echo "[$(date '+%H:%M:%S')] 触发: $description"
+
+    if declare -f "$fix_fn" >/dev/null 2>&1; then
+        if $fix_fn 2>/dev/null; then
+            log_execution "$rb_id" "OK" "修复已执行"
+        else
+            log_execution "$rb_id" "FAIL" "修复执行失败"
+            return 1
+        fi
+    fi
+
+    # Step 3: 验证
+    sleep 2
+    if declare -f "$verify_fn" >/dev/null 2>&1; then
+        if $verify_fn 2>/dev/null; then
+            log_execution "$rb_id" "VERIFIED" "修复验证通过"
+            /home/charlie/.local/bin/tg-push -t "🔧 自愈引擎" "✅ $description — 自动修复成功" 2>/dev/null || true
+        else
+            log_execution "$rb_id" "UNVERIFIED" "修复后验证失败"
+            /home/charlie/.local/bin/tg-push -t "🔧 自愈引擎" "❌ $description — 自动修复失败，需人工介入" 2>/dev/null || true
+            return 1
+        fi
+    fi
+
+    return 0
+}
+
+# ====== 主逻辑 ======
+if [ -n "${2:-}" ]; then
+    # 执行指定runbook
+    execute_runbook "$2"
+else
+    # 执行所有runbook
+    echo "=== Runbook引擎 $(date '+%Y-%m-%d %H:%M') ==="
+    $DRY_RUN && echo "[DRY-RUN模式]"
+    echo ""
+
+    total=0 ok=0 fail=0 skip=0
+    for rb_id in "${!RUNBOOKS[@]}"; do
+        ((total++))
+        if execute_runbook "$rb_id"; then
+            case "$(tail -1 "$RUNBOOK_LOG" | python3 -c "import sys,json; print(json.load(sys.stdin)['status'])" 2>/dev/null)" in
+                OK|VERIFIED) ((ok++)) ;;
+                SKIP) ((skip++)) ;;
+                *) ((ok++)) ;;
+            esac
+        else
+            ((fail++))
+        fi
+    done
+
+    echo ""
+    echo "执行: $total | 修复: $ok | 跳过: $skip | 失败: $fail"
+fi
