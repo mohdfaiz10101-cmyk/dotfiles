@@ -1,7 +1,7 @@
 [Unit]
 Description=Caddy workspace redirect proxy (:8080→:8081)
 After=network.target opencode-web.service
-BindsTo=opencode-web.service
+PartOf=opencode-web.service
 
 [Service]
 Type=simple

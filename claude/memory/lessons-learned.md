@@ -114,3 +114,4 @@
 - [2026-05-23] [OP] Padavan nvram路径: /usr/sbin/nvram (非 /sbin/nvram) | commit成功持久化18条端口转发规则 | 诊断: DuckDNS误判 — https测试http端口 + 未加--noproxy被mihomo拦截
 - [2026-05-23] [OP] 失误: 搜索命中router-padavan-backup.md但未读取 | 后果: 绕弯路分析iptables/Web API，浪费多轮 | 规则: 搜索命中备份/恢复类文件时MUST第一时间read全文，不得跳过
 - [2026-05-23] [OP] 修复: DuckDNS全链路监控停滞1h37min | 根因: (1) OnCalendar=*:0/5:15 的:15秒规范导致systemd无法计算下一次触发 (2) RemainAfterExit=yes 导致oneshot服务保持active状态阻止timer重触发 | 修复: OnCalendar改为*:0/5 + 注释RemainAfterExit + systemctl stop后再restart timer | 教训: systemd timer的OnCalendar不支持 `/N:S`同时使用重复+秒规范; RemainAfterExit=yes与timer冲突——timer无法重新触发已active的oneshot
+- [2026-05-23] [OP] 修复: opencode-health-monitor脚本2个bug | 1) ISSUE_FILE从未清空导致历史问题累积 修复: 运行前>截断 | 2) curl检查8080未加-L导致302被误报 修复: curl -sL | 3) caddy-opencode-proxy BindsTo改PartOf使openconde-web重启后proxy自动恢复
