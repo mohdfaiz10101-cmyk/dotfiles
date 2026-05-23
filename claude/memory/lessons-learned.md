@@ -73,3 +73,5 @@
 - [2026-05-23] [OP] 路由器Web API: 端口转发页面是Advanced_VirtualServer_Content.asp(非DMZ页Advanced_Exposed_Content.asp) | 表单字段名: vts_port_x_0(有额外下划线) | VSList变量格式: [外部端口,内部IP,内部端口,协议,protono,源IP,描述]
 - [2026-05-23] [OP] 修复: DuckDNS:17699 浏览器刷新缓存 | 原因: Caddyfile launcher首页和/multi页面设置Cache-Control "no-cache, no-store, must-revalidate"完全禁止浏览器缓存 | 修复: 改为 "no-cache"（仅此词，保留ETag/Last-Modified验证），浏览器发If-None-Match→资源未变返回304用缓存 | 文件: /mnt/ai/apps/launcher/Caddyfile
 - [2026-05-23] [OP] 再犯: 问答后自动穿插无关任务 | 场景: 回答ChinaNet问题后无指令执行bun run build | 根因: 回答完成后自动扫描/执行了无关操作 | 强制规则: 对话结束后禁止执行任何命令，除非用户明确指定下一个操作
+- [2026-05-23] [OP] GELab-Zero部署: 框架/依赖/ADB就绪，阻塞在模型推理 | 根因: NixOS Ollama 0.20.3是CPU-only构建(无CUDA)，所有模型运行在CPU导致超时 | gelab(Qwen3VL)崩溃因架构不兼容 | StepFun API quota exceeded | 解决方向: 安装CUDA版Ollama binary或nixpkgs-unstable
+- [2026-05-23 12:20] [OP] 发现: macg_cc_delegate 永久失效 | 原因: claude CLI 未登录(403 Forbidden)，无API key，Pro/Max OAuth不可用于CLI | 影响: 所有CC委托调用实际返回错误但被静默捕获 | 修复: 改用task subagent(arch+glm-5.1)替代，见sisyphus.md更新

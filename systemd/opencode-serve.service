@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenCode Serve Mode (headless HTTP server)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/home/charlie/.local/bin/opencode-integrity-check
+ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode serve --port 4096 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8080 --cors http://localhost:8090
+Restart=always
+TimeoutStopSec=300
+KillSignal=SIGTERM
+KillMode=mixed
+RestartSec=15
+MemoryMax=2G
+MemoryHigh=1500M
+TasksMax=512
+OOMScoreAdjust=-500
+Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin" "NODE_OPTIONS=--max-old-space-size=1024" "http_proxy=" "https_proxy=" "HTTP_PROXY=" "HTTPS_PROXY=" "no_proxy=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn" "NO_PROXY=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn"
+
+[Install]
+WantedBy=default.target

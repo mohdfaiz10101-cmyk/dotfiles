@@ -6,32 +6,9 @@
       "name": "LiteLLM",
       "options": {
         "baseURL": "http://localhost:4000/v1",
-        "apiKey": "sk-litellm-charlie-2026",
-        "timeout": 120000,
-        "maxRetries": 2
+        "apiKey": "sk-litellm-charlie-2026"
       },
       "models": {
-        "deepseek-v4-pro": {
-          "name": "DeepSeek V3 Pro (官方)",
-          "limit": {
-            "context": 163840,
-            "output": 8192
-          }
-        },
-        "deepseek-v4-flash": {
-          "name": "DeepSeek V3 Flash (官方)",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
-        },
-        "glm-5.1": {
-          "name": "GLM-5.1 旗舰 (Z.AI)",
-          "limit": {
-            "context": 128000,
-            "output": 8192
-          }
-        },
         "glm-5-turbo": {
           "name": "GLM-5-Turbo (Z.AI)",
           "limit": {
@@ -47,141 +24,78 @@
           }
         },
         "glm-4.6v-flash": {
-          "name": "GLM-4.6V-Flash（Z.AI，视觉理解）",
-          "limit": {
-            "context": 128000,
-            "output": 8192
-          }
-        },
-        "glm-4-plus": {
-          "name": "GLM-4-Plus (Z.AI)",
-          "limit": {
-            "context": 128000,
-            "output": 8192
-          }
-        },
-        "gpt-4.1": {
-          "name": "GPT-4.1 (GitHub 免费)",
-          "limit": {
-            "context": 1047576,
-            "output": 32768
-          }
-        },
-        "qwen3-235b": {
-          "name": "Qwen3-235B (SiliconFlow 免费)",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
-        },
-        "step-3.5-flash-2603": {
-          "name": "Step 3.5 Flash 2603（阶跃星辰，Agent优化）",
-          "limit": {
-            "context": 256000,
-            "output": 8192
-          }
-        },
-        "step-3.5-flash": {
-          "name": "Step 3.5 Flash（阶跃星辰，高速推理）",
-          "limit": {
-            "context": 256000,
-            "output": 8192
-          }
-        },
-        "step-3": {
-          "name": "Step 3（阶跃星辰，通用推理）",
+          "name": "GLM-4.6V-Flash 视觉 (Z.AI)",
           "limit": {
             "context": 128000,
             "output": 8192
           }
         },
         "step-3.5-flash-2603-plan": {
-          "name": "Step 3.5 Flash 2603 Plan（阶跃星辰，Coding Plan）",
+          "name": "Step 3.5 Flash 2603 Plan (StepFun)",
           "limit": {
-            "context": 256000,
+            "context": 128000,
             "output": 8192
           }
         },
         "step-3.5-flash-plan": {
-          "name": "Step 3.5 Flash Plan（阶跃星辰，Coding Plan）",
+          "name": "Step 3.5 Flash Plan (StepFun)",
           "limit": {
-            "context": 256000,
-            "output": 8192
-          }
-        }
-      }
-    },
-    "stepfun": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "StepFun",
-      "options": {
-        "baseURL": "https://api.stepfun.com/step_plan/v1",
-        "apiKey": "4GY0L5jyGZlZUrTO8JZlQ5TYHTW5HVettJ9ls7ymImw3nalmM1rGO6CFV0DwayuiC",
-        "timeout": 120000,
-        "maxRetries": 2
-      },
-      "models": {
-        "step-1-32k": {
-          "name": "Step 1 32K",
-          "limit": {
-            "context": 32768,
+            "context": 128000,
             "output": 8192
           }
         },
-        "step-1-8k": {
-          "name": "Step 1 8K",
+        "step-router-v1": {
+          "name": "Step Router V1 (StepFun)",
           "limit": {
-            "context": 8192,
-            "output": 8192
-          }
-        },
-        "step-1v-32k": {
-          "name": "Step 1V 32K (Vision)",
-          "limit": {
-            "context": 32768,
-            "output": 8192
-          }
-        },
-        "step-1v-8k": {
-          "name": "Step 1V 8K (Vision)",
-          "limit": {
-            "context": 8192,
-            "output": 8192
-          }
-        }
-      }
-    },
-    "anthropic": {
-      "name": "Anthropic Direct",
-      "models": {
-        "claude-3-5-sonnet-20241022": {
-          "name": "Claude 3.5 Sonnet",
-          "limit": {
-            "context": 200000,
-            "output": 8192
-          }
-        },
-        "claude-3-5-haiku-20241022": {
-          "name": "Claude 3.5 Haiku",
-          "limit": {
-            "context": 200000,
+            "context": 128000,
             "output": 8192
           }
         }
       }
     }
   },
+  "model": "openai-compatible/step-3.5-flash-plan",
+  "small_model": "openai-compatible/glm-4.7",
+  "default_agent": "sisyphus",
   "compaction": {
     "auto": true,
     "prune": false,
     "reserved": 8192
   },
-  "model": "openai-compatible/step-3.5-flash-2603-plan",
-  "small_model": "openai-compatible/step-3.5-flash-2603-plan",
-  "default_agent": "sisyphus",
+  "agent": {
+    "build": {
+      "model": "openai-compatible/step-3.5-flash-2603-plan",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n\n## 视觉验证（VISUAL_VERIFY — 死规则）\n每次修改前端/UI/样式/CSS/组件代码后，MUST 执行验证链而非仅凭编译成功就标记完成：\n\n### 智能场景判断（修改前执行）\n```bash\n~/.local/bin/playwright-smart.sh --detect \"<任务描述>\"\n```\n- 输出 headed → 涉及视觉/动画/布局，需 headed 截图验证\n- 输出 headless → 纯后端/API/数据层，快速 headless 检查即可\n\n### 验证链（按场景执行）\n场景A 前端/UI变更（playwright-smart返回headed）：\n1. bun run build → 编译通过\n2. curl -s http://localhost:3000 | head -20 → 页面可访问\n3. Playwright browser_snapshot → DOM结构正确\n4. Playwright browser_take_screenshot → 截图\n5. vision_analyze_data_visualization 判断截图是否符合需求\n6. 不通过 → 修复后重试（最多3轮）→ 仍失败则标记[!]交人工\n\n场景B 后端/API变更（playwright-smart返回headless）：\n1. 语法检查（bash -n / node --check / py_compile）\n2. systemctl --user restart <服务> → Result=success\n3. curl -s http://localhost:<端口>/health → 返回200\n4. 端到端curl测试 → 验证返回数据正确\n\n### 禁止行为\n- 禁止只凭bun run build成功就标记完成\n- 禁止只凭端口200就声称已验证\n- 禁止在未截图的情况下声称GUI正确\n\n## 任务完成验收（VERIFY_GATE — 死规则）\n修改前端文件(.tsx/.jsx/.css/.scss)后，MUST 执行验证：\n```bash\nverify-check --require || verify-pipeline.sh \"\" \"/mnt/ai/apps/agi-control-plane/frontend\" \"AGENT_NAME\"\n```\n返回非0=未通过 → 修复后重试 → 通过后才允许输出 [完成]。",
+      "description": "代码构建器 — 代码生成、功能实现、测试编写"
+    },
+    "plan": {
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。\n\n## 视觉验证（VISUAL_VERIFY — 死规则）\n每次修改前端/UI/样式/CSS/组件代码后，MUST 执行验证链而非仅凭编译成功标记完成。\n1. bun run build -- 编译通过\n2. playwright browser_navigate + browser_snapshot -- DOM结构正确\n3. playwright browser_take_screenshot -- 截图保存\n4. vision_analyze_data_visualization -- AI判断截图是否符合需求\n5. 不通过→修复后重试（最多3轮）→仍失败标记[!]交人工\n禁止行为：只凭build成功就标记完成 | 只凭端口200声称已验证 | 未截图声称GUI正确\n\n## 任务完成验收（VERIFY_GATE — 死规则）\n修改前端文件(.tsx/.jsx/.css/.scss)后，MUST 执行验证：\n```bash\nverify-check --require || verify-pipeline.sh \"\" \"/mnt/ai/apps/agi-control-plane/frontend\" \"AGENT_NAME\"\n```\n返回非0=未通过 → 修复后重试 → 通过后才允许输出 [完成]。",
+      "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）"
+    },
+    "explore": {
+      "model": "openai-compatible/glm-4.7",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。\n\n## 视觉验证（VISUAL_VERIFY — 死规则）\n每次修改前端/UI/样式/CSS/组件代码后，MUST 执行验证链而非仅凭编译成功标记完成。\n1. bun run build -- 编译通过\n2. playwright browser_navigate + browser_snapshot -- DOM结构正确\n3. playwright browser_take_screenshot -- 截图保存\n4. vision_analyze_data_visualization -- AI判断截图是否符合需求\n5. 不通过→修复后重试（最多3轮）→仍失败标记[!]交人工\n禁止行为：只凭build成功就标记完成 | 只凭端口200声称已验证 | 未截图声称GUI正确\n\n## 任务完成验收（VERIFY_GATE — 死规则）\n修改前端文件(.tsx/.jsx/.css/.scss)后，MUST 执行验证：\n```bash\nverify-check --require || verify-pipeline.sh \"\" \"/mnt/ai/apps/agi-control-plane/frontend\" \"AGENT_NAME\"\n```\n返回非0=未通过 → 修复后重试 → 通过后才允许输出 [完成]。",
+      "description": "代码搜索员 — 定位文件、函数、实现模式"
+    },
+    "chat": {
+      "model": "openai-compatible/glm-5-turbo",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。\n\n## 视觉验证（VISUAL_VERIFY — 死规则）\n每次修改前端/UI/样式/CSS/组件代码后，MUST 执行验证链而非仅凭编译成功标记完成。\n1. bun run build -- 编译通过\n2. playwright browser_navigate + browser_snapshot -- DOM结构正确\n3. playwright browser_take_screenshot -- 截图保存\n4. vision_analyze_data_visualization -- AI判断截图是否符合需求\n5. 不通过→修复后重试（最多3轮）→仍失败标记[!]交人工\n禁止行为：只凭build成功就标记完成 | 只凭端口200声称已验证 | 未截图声称GUI正确\n\n## 任务完成验收（VERIFY_GATE — 死规则）\n修改前端文件(.tsx/.jsx/.css/.scss)后，MUST 执行验证：\n```bash\nverify-check --require || verify-pipeline.sh \"\" \"/mnt/ai/apps/agi-control-plane/frontend\" \"AGENT_NAME\"\n```\n返回非0=未通过 → 修复后重试 → 通过后才允许输出 [完成]。",
+      "description": "对话模式 — 日常问答、知识查询、翻译总结"
+    },
+    "refactor": {
+      "model": "openai-compatible/step-3.5-flash-2603-plan",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。\n\n## 视觉验证（VISUAL_VERIFY — 死规则）\n每次修改前端/UI/样式/CSS/组件代码后，MUST 执行验证链而非仅凭编译成功标记完成。\n1. bun run build -- 编译通过\n2. playwright browser_navigate + browser_snapshot -- DOM结构正确\n3. playwright browser_take_screenshot -- 截图保存\n4. vision_analyze_data_visualization -- AI判断截图是否符合需求\n5. 不通过→修复后重试（最多3轮）→仍失败标记[!]交人工\n禁止行为：只凭build成功就标记完成 | 只凭端口200声称已验证 | 未截图声称GUI正确\n\n## 任务完成验收（VERIFY_GATE — 死规则）\n修改前端文件(.tsx/.jsx/.css/.scss)后，MUST 执行验证：\n```bash\nverify-check --require || verify-pipeline.sh \"\" \"/mnt/ai/apps/agi-control-plane/frontend\" \"AGENT_NAME\"\n```\n返回非0=未通过 → 修复后重试 → 通过后才允许输出 [完成]。",
+      "description": "重构器 — 代码优化、架构改进、模式重构"
+    },
+    "arch": {
+      "model": "openai-compatible/step-router-v1",
+      "prompt_append": "## 语言规则\nMUST 始终使用中文回复用户，所有对话、解释、报告均用中文。代码注释可用英文，但面向用户的输出必须中文。\n\n## 视觉验证（VISUAL_VERIFY — 死规则）\n每次修改前端/UI/样式/CSS/组件代码后，MUST 执行验证链而非仅凭编译成功标记完成。\n1. bun run build -- 编译通过\n2. playwright browser_navigate + browser_snapshot -- DOM结构正确\n3. playwright browser_take_screenshot -- 截图保存\n4. vision_analyze_data_visualization -- AI判断截图是否符合需求\n5. 不通过→修复后重试（最多3轮）→仍失败标记[!]交人工\n禁止行为：只凭build成功就标记完成 | 只凭端口200声称已验证 | 未截图声称GUI正确\n\n## 任务完成验收（VERIFY_GATE — 死规则）\n修改前端文件(.tsx/.jsx/.css/.scss)后，MUST 执行验证：\n```bash\nverify-check --require || verify-pipeline.sh \"\" \"/mnt/ai/apps/agi-control-plane/frontend\" \"AGENT_NAME\"\n```\n返回非0=未通过 → 修复后重试 → 通过后才允许输出 [完成]。",
+      "description": "架构师 — 系统设计、技术选型、方案评审"
+    }
+  },
   "mcp": {
     "letta": {
-      "enabled": true,
       "type": "local",
       "command": [
         "python3",
@@ -189,60 +103,21 @@
         "--stdio"
       ]
     },
-    "ref": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "ref-tools-mcp@latest"
-      ],
-      "environment": {
-        "REF_API_KEY": "${REF_API_KEY}"
-      }
-    },
-    "wechat": {
-      "type": "local",
-      "command": [
-        "/mnt/ai/apps/wechat-agent/mcp-server/venv/bin/python3",
-        "/mnt/ai/apps/wechat-agent/mcp-server/wechat-mcp-server",
-        "--stdio"
-      ],
-      "environment": {
-        "WECHAT_BRIDGE_URL": "http://192.168.123.200:9527"
-      }
-    },
     "macg": {
-      "type": "local",
-      "command": [
-        "/mnt/ai/home-offload/agi/.venv/bin/python3",
-        "/home/charlie/agi/macg_mcp.py"
-      ]
+      "type": "remote",
+      "url": "http://127.0.0.1:18092/mcp",
+      "enabled": true
     },
     "playwright": {
       "type": "local",
       "command": [
-        "mcp-server-playwright",
+        "/home/charlie/.npm-global/bin/playwright-mcp",
         "--browser",
         "chrome",
         "--executable-path",
-        "/run/current-system/sw/bin/google-chrome-stable"
+        "/run/current-system/sw/bin/google-chrome-stable",
+        "--headless"
       ]
-    },
-    "memory-engine": {
-      "type": "local",
-      "command": [
-        "python3",
-        "/mnt/ai/data/memory-engine/memory-mcp-server.py"
-      ]
-    },
-    "github": {
-      "type": "local",
-      "command": [
-        "/home/charlie/.npm-global/bin/mcp-server-github"
-      ],
-      "environment": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
-      }
     },
     "sqlite": {
       "type": "local",
@@ -268,48 +143,70 @@
         "VISION_API_KEY": "sk-litellm-charlie-2026",
         "VISION_MODEL": "glm-4.6v-flash"
       }
+    },
+    "memory-engine": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/mnt/ai/data/memory-engine/memory-mcp-server.py"
+      ]
+    },
+    "claude-knowledge": {
+      "type": "local",
+      "command": [
+        "node",
+        "/home/charlie/.local/lib/windsurf-knowledge-mcp/server.js"
+      ],
+      "environment": {
+        "MEMORY_PATH": "/home/charlie/.claude/projects/-home-charlie/memory",
+        "SKILLS_PATH": "/home/charlie/.claude/skills",
+        "RULES_PATH": "/home/charlie/CLAUDE.md"
+      }
     }
   },
-  "plugin": [
-    "oh-my-openagent",
-    "opencode-snip",
-    "opencode-vibeguard",
-    "opencode-pty",
-    "opencode-scheduler"
-  ],
-  "experimental": {
-    "continue_loop_on_deny": true
-  },
-  "theme": "dark",
-  "hide_thinking": true,
   "permission": {
     "*": "allow",
     "bash": {
       "*": "allow",
-      "rm -rf *": "ask",
-      "sudo *": "ask",
-      "chmod *": "ask",
+      "rm -rf *": "deny",
+      "sudo *": "deny",
       "mkfs *": "deny",
       "dd *": "deny"
     },
     "edit": "allow",
+    "read": "allow",
+    "write": "allow",
+    "glob": "allow",
+    "grep": "allow",
     "webfetch": "allow",
     "websearch": "allow",
-    "external_directory": "allow",
-    "doom_loop": "ask",
+    "question": "allow",
+    "task": "allow",
+    "todowrite": "allow",
+    "external_directory": {
+      "*": "allow"
+    },
+    "doom_loop": "allow",
     "skill": {
       "*": "allow"
     },
     "mcp": {
       "*": "allow"
     },
-    "memory-engine": "allow",
+    "memory": "allow",
     "todo": "allow",
-    "schedule": "allow"
+    "schedule": "allow",
+    "lsp": "allow"
   },
-  "instructions": [
-    "/home/charlie/Documents/memory/lessons.md",
-    "/home/charlie/Documents/memory/lessons-nix.md",
-    "/home/charlie/Documents/memory/context.md"
-  ]
+  "plugin": [
+    "/home/charlie/.config/opencode/plugins/agent-notify.ts",
+    "/home/charlie/.config/opencode/plugins/post-build-review.ts"
+  ],
+  "theme": {
+    "hide_thinking": true
+  },
+  "tui": {
+    "code_blocks": "collapsed",
+    "tool_output": "collapsed"
+  }
 }

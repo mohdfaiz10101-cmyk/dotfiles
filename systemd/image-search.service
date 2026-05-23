@@ -1,0 +1,14 @@
+[Unit]
+Description=Image Search API (CLIP)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/apps/image-search
+ExecStart=/mnt/ai/apps/image-search/.venv/bin/python3 server.py
+Restart=on-failure
+RestartSec=10
+Environment=HF_HOME=/home/charlie/.cache/huggingface
+
+[Install]
+WantedBy=default.target

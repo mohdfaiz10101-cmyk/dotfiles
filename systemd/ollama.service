@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.nix-profile/bin/ollama serve
+ExecStart=/home/charlie/.local/bin/ollama-cuda serve
 Environment=OLLAMA_MODELS=/mnt/ai/models/ollama
 Restart=on-failure
 RestartSec=5

@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-23 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-23 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -29,16 +29,16 @@
 | 7000 | *:* |
 | 7500 | *:* |
 | 7681 | users:(("ttyd",pid=2033,fd=13)) |
-| 7690 | users:(("ttyd",pid=3107,fd=13)) |
-| 7691 | users:(("ttyd",pid=3103,fd=13)) |
-| 7692 | users:(("ttyd",pid=3123,fd=13)) |
-| 7693 | users:(("ttyd",pid=3097,fd=13)) |
-| 7694 | users:(("ttyd",pid=3119,fd=13)) |
-| 7695 | users:(("ttyd",pid=3113,fd=13)) |
-| 7696 | users:(("ttyd",pid=3134,fd=13)) |
-| 7697 | users:(("ttyd",pid=3115,fd=13)) |
-| 7698 | users:(("ttyd",pid=3130,fd=13)) |
-| 7699 | users:(("caddy",pid=1259339,fd=7)) |
+| 7690 | users:(("ttyd",pid=2253053,fd=13)) |
+| 7691 | users:(("ttyd",pid=2253076,fd=13)) |
+| 7692 | users:(("ttyd",pid=2253068,fd=13)) |
+| 7693 | users:(("ttyd",pid=2253046,fd=13)) |
+| 7694 | users:(("ttyd",pid=2253065,fd=13)) |
+| 7695 | users:(("ttyd",pid=2253056,fd=13)) |
+| 7696 | users:(("ttyd",pid=2253077,fd=13)) |
+| 7697 | users:(("ttyd",pid=2253059,fd=13)) |
+| 7698 | users:(("ttyd",pid=2253074,fd=13)) |
+| 7699 | users:(("caddy",pid=3880754,fd=7)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8000 | 0.0.0.0:* |
@@ -70,6 +70,7 @@
 | 9980 | users:(("python3.13",pid=2863,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
+| 11434 | users:(("ollama",pid=3872353,fd=3)) |
 | 15555 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
@@ -151,7 +152,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（571个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（579个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (3个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh`
@@ -209,6 +210,7 @@ static
 **foc-*** (1个): `foc-tmux-wrap`
 **force-*** (2个): `force-claude-proxy, force-claude-proxy.sh`
 **four-*** (1个): `four-tool-dispatch.sh`
+**frontend-*** (1个): `frontend-verify.sh`
 **frp-*** (1个): `frp-watchdog.sh`
 **fsearch-*** (1个): `fsearch-idle-update.sh`
 **git-*** (2个): `git-backup.sh, git-codebase-update`
@@ -232,7 +234,7 @@ static
 **lag-*** (1个): `lag-detector.sh`
 **latest-*** (1个): `latest-img`
 **launcher-*** (1个): `launcher-health-check.sh`
-**letta-*** (11个): `letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh, letta-precheck.py... +1更多`
+**letta-*** (12个): `letta-deadman-switch.sh, letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh... +2更多`
 **libreoffice-*** (1个): `libreoffice-x11`
 **litellm-*** (2个): `litellm-error-guard.sh, litellm-startup.sh`
 **marketing-*** (1个): `marketing-web-workflow.sh`
@@ -259,7 +261,7 @@ static
 **other-*** (60个): `PyGPT.AppImage, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code... +50更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
-**overtab-*** (1个): `overtab-tmux-wrap`
+**overtab-*** (3个): `overtab-serve-start, overtab-serve-stop, overtab-tmux-wrap`
 **panel-*** (1个): `panel-nurse`
 **paperclip-*** (6个): `paperclip-aider-worker, paperclip-auto-sync, paperclip-dispatcher, paperclip-report-daemon.sh, paperclip-resolve-conflicts, paperclip-restore`
 **paste-*** (1个): `paste-image-pinned`
@@ -314,7 +316,7 @@ static
 **update-*** (1个): `update-api-quota.sh`
 **upload-*** (1个): `upload-cookies-to-server`
 **vastai-*** (2个): `vastai-auto-list.sh, vastai-setup.sh`
-**verify-*** (1个): `verify-chromadb-letta`
+**verify-*** (5个): `verify-banner, verify-check, verify-chromadb-letta, verify-pipeline.sh, verify-stats`
 **version-*** (1个): `version-check`
 **voice-*** (3个): `voice-input, voice-push, voice-test`
 **vpn-*** (1个): `vpn-watchdog`
@@ -352,8 +354,10 @@ content-router
 crm
 embed-server
 embed-venv
+gelab-zero
 gmail-bridge
 hub-mobile
+image-search
 kanban-tui
 latentsync
 launcher
@@ -463,7 +467,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（430个注册，93个运行中）
+## 三、systemd 用户服务（433个注册，93个运行中）
 
 ### 当前运行中
 ```
@@ -475,7 +479,6 @@ agi-gateway
 agi-telegram-bot
 ai-rules-sync
 ai-watchdog
-caddy-launcher
 cf-tunnel-7699
 change-watcher
 chronos-sensory
@@ -511,6 +514,7 @@ nix-voice-agent
 numlock-guard
 oa-crewai-bridge
 office-agent
+ollama
 op-tasks-watcher
 op-watchdog
 openagents
@@ -562,7 +566,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（112个 timer）
+## 四、定时任务（113个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -612,6 +616,7 @@ health-check
 iflytek-dict-sync
 image-captioner
 integrity-check
+letta-deadman-switch
 letta-health-check
 letta-health-guard
 letta-health-monitor

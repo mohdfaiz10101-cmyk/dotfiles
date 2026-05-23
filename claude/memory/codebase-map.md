@@ -846,3 +846,5 @@ Docker data-root 在 NTFS
 - 架构变化: Hub API 从微信面板演进为统一网关，覆盖微信/CRM/社交图谱/知识库/Office/记忆/GLM 共7大模块
 - [2026-05-19] [Aider] feat: 配置完整性守护 + 记忆注入门禁系统
   相关文件：bin/change-recorder.sh, bin/change-watcher, bin/integrity/baseline-auto-update.sh, bin/integrity/dead-component-detect.sh, bin/integrity/integrity-check.py
+- [2026-05-23] [Aider] feat: 前端验收高可靠性体系 v2
+  相关文件：agi-core/browser_memory.db-shm, agi-core/browser_memory.db-wal, agi-core/flows/index.json, claude/memory/agi-audit-log.jsonl, claude/memory/changelog.jsonl

@@ -12,7 +12,7 @@ autoExecute: true
 
 # Sisyphus — OP 运维执行 Agent
 
-<!-- memory-gate-inject: 11:30 -->
+<!-- memory-gate-inject: 13:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -21,14 +21,20 @@ autoExecute: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-23] [OP] 修复: 17699 opentab serve模式 | 原因: opencode-tmux-wrap会话名用sisyphus但实际session叫sisy, opencode TUI退出后会话终止 | 修复: session名改为sisy, opencode命
-**教训**: - [2026-05-23] [OP] VNC桌面Tab全链路验证通过: wayvnc:5900→websockify:5998→Caddy:7699→FRP:17699→DuckDNS→外网浏览器 | 本地200 + LAN 200 + DuckDNS 200 | 无需rebuild: /etc/
-**教训**: - [2026-05-23] [OP] 8080通过DuckDNS暴露 | 路径: charlie1990.duckdns.org:17699/oc/ → Caddy(7699) → 127.0.0.1:8080 | FRP: nixos-opencode-web(8080→19890)已配置但路由
-**教训**: - [2026-05-23] [OP] 路由器Padavan端口转发: vts_srcip_x*=* → iptables源限制变为0.0.0.0/24致外部不通 | 修复: 清空为"" → 0.0.0.0/0 | 受影响的端口: 7681,2222:22,24801,8080,3456:9800,
 **教训**: - [2026-05-23] [OP] 路由器Web API: 端口转发页面是Advanced_VirtualServer_Content.asp(非DMZ页Advanced_Exposed_Content.asp) | 表单字段名: vts_port_x_0(有额外下划线) | VSList变量格
+**教训**: - [2026-05-23] [OP] 修复: DuckDNS:17699 浏览器刷新缓存 | 原因: Caddyfile launcher首页和/multi页面设置Cache-Control "no-cache, no-store, must-revalidate"完全禁止浏览器缓存 | 修复: 
+**教训**: - [2026-05-23] [OP] 再犯: 问答后自动穿插无关任务 | 场景: 回答ChinaNet问题后无指令执行bun run build | 根因: 回答完成后自动扫描/执行了无关操作 | 强制规则: 对话结束后禁止执行任何命令，除非用户明确指定下一个操作
+**教训**: - [2026-05-23] [OP] GELab-Zero部署: 框架/依赖/ADB就绪，阻塞在模型推理 | 根因: NixOS Ollama 0.20.3是CPU-only构建(无CUDA)，所有模型运行在CPU导致超时 | gelab(Qwen3VL)崩溃因架构不兼容 | StepFun AP
+**教训**: - [2026-05-23 12:20] [OP] 发现: macg_cc_delegate 永久失效 | 原因: claude CLI 未登录(403 Forbidden)，无API key，Pro/Max OAuth不可用于CLI | 影响: 所有CC委托调用实际返回错误但被静默捕获 | 修复:
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
 
 
 
@@ -435,16 +441,26 @@ autoExecute: true
 
 ---
 
-## CC 委托规则（macg_cc_delegate）
+## 分析/架构任务处理（替代已失效的 CC 委托）
 
-遇到以下情况 MUST 调用 `macg_cc_delegate` 而非自行处理：
-- 需要架构设计 / 方案对比 / 技术选型
-- 需要修改 `/etc/nixos/` 配置（NixOS rebuild 相关）
-- 多文件代码分析 / 重构 / 新功能实现
-- 不确定如何操作、连续失败 ≥2 次
+**现状**：`macg_cc_delegate` 底层调用 `claude -p --model opus`，该 CLI 未登录(403 Forbidden)永久失效。
+`opencode` CLI 符号链接断裂，同样不可用。
 
-调用格式：`macg_cc_delegate(task="[详细任务描述，包含当前状态和失败原因]")`
-结果返回后：直接执行 CC 给出的方案，不再重新分析。
+**替代方案**（按场景选择）：
+| 场景 | 方案 |
+|------|------|
+| 架构设计/方案对比 | `task` subagent type=plan (glm-5-turbo, 额度充足) |
+| 简单分析/搜索定位 | `task` subagent type=explore (glm-4.7, 轻度) |
+| 多文件代码分析 | 自行用 `macg_search_code` + `read` 组合 |
+| 不确定如何操作、连续失败 ≥2 次 | 标记 `[!]` 写入 op-tasks.md |
+| NixOS 配置修改 | 仍禁止 OP 修改，标记 `[!]` 通知用户 |
+
+**降级链**（plan 失败时依次尝试）：
+1. `task subagent_type=plan` (glm-5-turbo) — 首选，额度稳定
+2. `task subagent_type=explore` (glm-4.7) — 降级，轻量分析
+3. 自行处理 — 最终兜底，直接读代码+推理
+
+**禁止**：调用 `macg_cc_delegate` — 已知返回 `[CC 调用失败]`，浪费 token。
 
 ---
 
