@@ -497,3 +497,4 @@
 {"ts": "2026-05-25 02:18", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-25 02:19", "type": "cycle", "summary": "系统资源占用正常，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:20", "type": "cycle", "summary": "系统处于低负载状态，Docker及Python进程虽有高CPU占用但属正常业务或系统活动，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 02:22", "type": "cycle", "summary": "系统资源正常，存在已知高CPU进程但无服务异常", "alert_count": 0, "skipped_llm": false}
