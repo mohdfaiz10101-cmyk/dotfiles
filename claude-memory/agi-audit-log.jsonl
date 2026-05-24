@@ -426,3 +426,4 @@
 {"ts": "2026-05-25 00:48", "type": "cycle", "summary": "系统资源正常，CPU占用高但进程符合常规", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:49", "type": "cycle", "summary": "凌晨时段系统负载低，服务全健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:51", "type": "cycle", "summary": "系统负载正常，但检测到python3进程CPU异常高（309%），需确认是否为已知问题。", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 00:53", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知进程，无需告警。", "alert_count": 0, "skipped_llm": false}
