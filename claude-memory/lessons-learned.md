@@ -172,3 +172,5 @@
 # cis-debug
 # t1
 # t2
+
+- [2026-05-25] [OP] nixos_persistence: 创建/修改系统服务MUST用systemctl --user + ~/.config/systemd/user/，禁止往/etc/systemd/system/写文件。脚本MUST放~/bin/或~/.local/bin/，禁止放/usr/local/bin/。每次nixos-rebuild后自动跑systemctl --user list-units --state=failed验证。
