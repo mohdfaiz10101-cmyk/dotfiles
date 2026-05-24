@@ -510,3 +510,4 @@
 {"ts": "2026-05-25 02:37", "type": "cycle", "summary": "凌晨系统状态平稳，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:38", "type": "cycle", "summary": "系统运行平稳，Python进程占用较高但在可控范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:39", "type": "cycle", "summary": "系统运行正常，服务全健康，存在偶发的高CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 02:40", "type": "cycle", "summary": "系统运行平稳，CPU出现单进程瞬时占用", "alert_count": 0, "skipped_llm": false}
