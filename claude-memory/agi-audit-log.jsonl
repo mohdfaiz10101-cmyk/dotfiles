@@ -724,3 +724,4 @@
 {"ts": "2026-05-25 06:36", "type": "cycle", "summary": "当前系统运行平稳，CPU、内存、磁盘资源占用均处于正常水平，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 06:37", "type": "cycle", "summary": "系统运行正常，Python3.13进程属于正常系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 06:39", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 06:41", "type": "cycle", "summary": "系统运行平稳，各项指标均处于正常范围", "alert_count": 0, "skipped_llm": false}
