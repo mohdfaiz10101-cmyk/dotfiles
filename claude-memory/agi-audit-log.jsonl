@@ -570,3 +570,4 @@
 {"ts": "2026-05-25 03:44", "type": "cycle", "summary": "系统运行正常，凌晨时段存在Python进程CPU占用", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:45", "type": "cycle", "summary": "系统运行正常，CPU负载合理，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:46", "type": "cycle", "summary": "系统运行正常，存在单进程CPU占高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 03:47", "type": "cycle", "summary": "系统运行正常，CPU存在短时高负载进程", "alert_count": 0, "skipped_llm": false}
