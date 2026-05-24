@@ -413,3 +413,4 @@
 {"ts": "2026-05-25 00:30", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知正常进程，无异常告警。", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:31", "type": "cycle", "summary": "当前系统整体运行平稳，无持续异常，CPU/内存/磁盘资源占用均处于健康区间", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:33", "type": "cycle", "summary": "凌晨时段系统负载正常，高CPU进程属于系统常规服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 00:34", "type": "cycle", "summary": "系统资源充足，CPU负载正常，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
