@@ -555,3 +555,4 @@
 {"ts": "2026-05-25 03:27", "type": "cycle", "summary": "系统负载低，资源充足，无异常服务状态", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:28", "type": "cycle", "summary": "系统运行正常，高CPU进程为常规系统服务或开发环境进程，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:29", "type": "cycle", "summary": "系统资源使用正常，检测到 Python 进程短暂 CPU 占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 03:31", "type": "cycle", "summary": "系统运行平稳，凌晨时段CPU占用略高但属正常波动", "alert_count": 0, "skipped_llm": false}
