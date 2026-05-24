@@ -175,18 +175,8 @@
 
 - [2026-05-25] [OP] nixos_persistence: 创建/修改系统服务MUST用systemctl --user + ~/.config/systemd/user/，禁止往/etc/systemd/system/写文件。脚本MUST放~/bin/或~/.local/bin/，禁止放/usr/local/bin/。每次nixos-rebuild后自动跑systemctl --user list-units --state=failed验证。# final-cis-test 1779639485
 # final-cis-test2 1779639540
-# direct-test 1779639564
-# minimal-test 1779639594
 
 - [2026-05-25] [OP] 记忆系统故障根因: opencode-session-recorder.py 脚本存在但无systemd服务, tmux kill后会话内容全部丢失。mem0-file-sync/mem0-watchdog timer未启用。daily/目录存在但无自动生成机制。修复: 创建recorder service(daemon模式)+mem0 timers启用+TimeoutStartSec→300+daily-log-generator定时器。# array-test 1779639613
-# mape-test 1779639630
-# big-test 1779641550
-# cis-final 1779641625
-# trace-test 1779641648
-# cis-verify 1779641684
-# direct 1779641723
-# no-sete-test 1779641756
-# cis-done 1779641970
 
 - [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 5 hours
 
@@ -213,4 +203,5 @@
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 43 minutes (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 13 hours (healthy)
-# mac-final 1779642017
+
+- [2026-05-25] [OP] 失败学习: config-immutable-snapshot | 错误: inotifywait+while-read管道中set -eo pipefail导致while循环静默退出 | 正确: 移除set -e，用显式错误处理替代 | 原因: pipefail+set -e组合在管道子命令返回非零时立即终止管道，不产生任何输出或日志
