@@ -169,3 +169,4 @@
 - [2026-05-25] [OP] opencode-web端口已改为8081（非8080），但dstate-watchdog/health-monitor脚本仍检查8080导致持续失败。修复：禁用旧watchdog+创建8080→8081 TCP代理。
 - [2026-05-25] [OP] mem0-file-sync/mem0-watchdog因mem0-bridge Docker未运行导致TimeoutError持续失败 — 已禁用timer。
 - [2026-05-25] [OP] waybar双bar恢复: 第二bar(24px)含custom/chain(链路呼吸灯)+custom/finance(财务还款), CSS加到style.override.css。永久化: waybar.service用--config config.override绕开home-manager symlink覆盖。# cis-test
+# cis-debug
