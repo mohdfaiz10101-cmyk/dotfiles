@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-25 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-25 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,13 +9,15 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
-| 1053 | users:(("mihomo",pid=2535,fd=9)) |
+| 1053 | users:(("mihomo",pid=1931095,fd=11)) |
 | 1716 | users:((".kdeconnectd-wr",pid=8579,fd=18)) |
+| 2222 | *:* |
 | 2223 | *:* |
 | 3000 | (v1",pid=4898,fd=21)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
 | 3010 | 0.0.0.0:* |
+| 3389 | *:* |
 | 3721 | users:(("MainThread",pid=2758029,fd=21)) |
 | 4000 | users:(("python3.13",pid=2512,fd=6)) |
 | 4001 | users:(("python3.13",pid=2428,fd=6)) |
@@ -40,11 +42,11 @@
 | 7697 | users:(("ttyd",pid=2671,fd=13)) |
 | 7698 | users:(("ttyd",pid=3262,fd=13)) |
 | 7699 | users:(("caddy",pid=2793,fd=6)) |
-| 7890 | users:(("mihomo",pid=2535,fd=10)) |
-| 7891 | users:(("mihomo",pid=2535,fd=6)) |
+| 7890 | users:(("mihomo",pid=1931095,fd=8)) |
+| 7891 | users:(("mihomo",pid=1931095,fd=6)) |
 | 8000 | users:((".uvicorn-wrappe",pid=24173,fd=6)) |
 | 8080 | users:(("python3.13",pid=1222216,fd=3)) |
-| 8081 | users:(("opencode",pid=522400,fd=24)) |
+| 8081 | users:(("opencode",pid=1974248,fd=22)) |
 | 8088 | users:(("python3.13",pid=3065544,fd=3)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
@@ -53,7 +55,7 @@
 | 8286 | users:(("python3.13",pid=2463,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 9090 | *:* |
-| 9091 | users:(("mihomo",pid=2535,fd=3)) |
+| 9091 | users:(("mihomo",pid=1931095,fd=3)) |
 | 9099 | users:(("python3.13",pid=5559,fd=3)) |
 | 9800 | users:(("python3.13",pid=1729439,fd=6)) |
 | 9801 | users:(("python3.13",pid=3216,fd=6)) |
@@ -404,6 +406,7 @@ onlyoffice
 openagents
 openclaw-tg-canvas
 opencode
+pywxdump
 sadtalker
 wav2lip
 web-ai-proxy
@@ -501,7 +504,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（472个注册，96个运行中）
+## 三、systemd 用户服务（472个注册，93个运行中）
 
 ### 当前运行中
 ```
@@ -510,7 +513,6 @@ agent-orchestrator
 agi-brain
 agi-frontend
 agi-gateway
-agi-telegram-bot
 ai-config-watcher
 ai-rules-sync
 ai-watchdog
@@ -546,7 +548,6 @@ mem0-bridge
 memory-auto-commit
 memory-evolution
 mihomo
-mihomo-watch
 navidrome
 nix-voice-agent
 numlock-guard
@@ -574,7 +575,6 @@ smart-redirector
 speech-dispatcher
 sunshine
 tablet-control-panel
-telegram-bot
 telegram-desktop
 telegram-userbot
 ttyd-aider
@@ -603,7 +603,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（125个 timer）
+## 四、定时任务（126个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -667,6 +667,8 @@ letta-sync
 litellm-error-guard
 maintenance-learner
 mem0-decay
+mem0-file-sync
+mem0-watchdog
 memory-backup
 memory-curator
 memory-injector
@@ -689,7 +691,6 @@ op-lock-watchdog
 op-precheck
 op-self-upgrade
 op-tasks-archive
-opencode-autoupgrade
 opencode-bug-tracker
 opencode-job-charlie-b445f233ebb8-aider-refactor
 opencode-job-charlie-b445f233ebb8-codebase-mapper
