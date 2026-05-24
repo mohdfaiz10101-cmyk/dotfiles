@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # git-backup.sh — 全系统 Git 备份
 # 覆盖所有 ~/ 下的 git 仓库，自动 commit + push
 # 路径: ~/bin/git-backup.sh (git tracked by dotfiles)

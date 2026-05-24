@@ -4,17 +4,14 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/mnt/ai/oa-venv/bin/openagents network start /home/charlie/.openagents/network --port 8700
+ExecStart=/home/charlie/.local/bin/openagents-network-wrapper.sh
 WorkingDirectory=/home/charlie/.openagents/network
-Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
+Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin:/home/charlie/.nix-profile/bin
 Environment=PYTHONUNBUFFERED=1
-Environment=LD_LIBRARY_PATH=/nix/store/j2kgllgds4w7na8zqv1msi0mpvpjxda8-gcc-15.2.0-lib/lib
+Environment=LD_LIBRARY_PATH=/nix/store/ab3753m6i7isgvzphlar0a8xb84gl96i-gcc-15.2.0-lib/lib
 Environment=http_proxy=
 Environment=https_proxy=
-Environment=HTTP_PROXY=
-Environment=HTTPS_PROXY=
-Environment=ALL_PROXY=
-Environment=all_proxy=
+Environment=HOME=/home/charlie
 Restart=on-failure
 RestartSec=10
 

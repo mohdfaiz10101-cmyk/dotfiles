@@ -50,17 +50,17 @@
 > 此规则填补TOOL_LEARN(只记工具调用)与Letta写回(只记任务完成)之间的盲区：系统状态被动发现。
 
 
-## 记忆系统状态（自动注入 2026-05-23 18:17）
+## 记忆系统状态（自动注入 2026-05-24 12:17）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | N/A / N/A |
 | Letta MCP | active |
-| lessons-learned条目 | 62 |
-| 历史会话数 | 3 |
+| lessons-learned条目 | 30 |
+| 历史会话数 | 0
+0 |
 
 ### 高频主题（最近）
-  • OpenAgents (×1)
-  • 回答ChinaNet问题后无指令执行bun (×1)
+  • 已完成session显示绿色.done样式, (×1)
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
 

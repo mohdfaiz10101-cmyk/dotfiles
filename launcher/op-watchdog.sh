@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # op-watchdog.sh — OP 断开即时恢复守护进程
 # 监控 op-task-runner 的 lock 文件，一旦消失且还有未完成任务，立即重新触发
 

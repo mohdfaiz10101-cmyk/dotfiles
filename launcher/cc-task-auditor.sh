@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # cc-task-auditor.sh — CC 定期审计 OP 任务执行状态
 # Why: 防止任务被静默跳过或卡死，实现失败自动回流
 # How: 扫描 op-tasks.md → 分类超时/失败任务 → 生成报告 → 写回流任务给 CC

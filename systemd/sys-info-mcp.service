@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
 Restart=always
 RestartSec=5
 Environment="HOME=%h"

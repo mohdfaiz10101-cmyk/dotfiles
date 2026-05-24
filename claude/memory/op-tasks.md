@@ -99,3 +99,5 @@
 ## TTS 测试任务
 
 - [ ] TTS-TEST-001 — 测试TTS播报：执行echo "TTS测试成功"并验证spd-say播报
+- [ ] [OP] [2026-05-24 12:21] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
+- [ ] [OP] [2026-05-24 12:21] AI配置告警(自愈失败): 🔴 opencode.json 缺 filesystem MCP

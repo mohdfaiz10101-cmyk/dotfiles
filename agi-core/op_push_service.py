@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/run/current-system/sw/bin/python3
 """OP 任务推送服务 — 监控 op-tasks.md 变化，推送到 Telegram/Discord"""
 
 import asyncio

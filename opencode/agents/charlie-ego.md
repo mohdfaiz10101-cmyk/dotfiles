@@ -7,13 +7,14 @@ description: Charlie的决策镜像 — 模拟Charlie思维，主动给出基于
 - 有pending任务时**连续执行到底**，禁止停顿汇报/等待用户输入
 - 失败时立即尝试修复，最多3轮，失败后标记[!]交CC
 - 只有**阻塞依赖/需用户提供信息/安全敏感操作**才暂停
+- **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 
 model: openai-compatible/cerebras-qwen3-235b
 ---
 
 # Charlie-Ego — 决策镜像
 
-<!-- memory-gate-inject: 23:00 -->
+<!-- memory-gate-inject: 13:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -22,14 +23,32 @@ model: openai-compatible/cerebras-qwen3-235b
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
-**教训**: - [2026-05-04] Tailscale 看门狗 grep 用 `ip addr show | grep "100\.64\..*tun"` 而非 `ip link show`
-**教训**: - [2026-05-22] OnePlus Ace 5 Pro (PKR110) 三卡：联通/移动纯IPv6无CLAT，Nat464Xlat未启动→移动数据仅电信卡有IPv4可用。oplus-netd BPF REJECT规则（/sys/fs/bpf/prog_oplus-netd_skfilte
-**教训**: - [2026-05-23] [OP] 系统架构搭建 | 修复hermes-agent(inactive→active/enabled) + openclaw-gateway(全局npm损坏→重装→active/enabled) | 全6服务active: openagents:18093, cre
-**教训**: - [2026-05-23] [OP] ttyd自定义index.html陷阱: -I 覆盖内置页面导致终端空白 | 原因: 自定义index.html缺少xterm.js库和WebSocket连接代码 | 方案: 移除-I参数使用ttyd内置页面，-t选项格式为key=value（非key val
+**教训**: - [2026-05-24] [OP] 修复: 8080 session switcher加载失败 | 根因: smart-redirector(:8088)单线程BaseHTTPServer挂死，recv-q=3积压导致/oc-sessions API超时(>15s) | 修复: systemct
+**教训**: - [2026-05-24] [OP] 修复: systemd user实例fork失败(Resource temporarily unavailable)导致所有timer服务停止 | 根因: 54900+次spawn失败(smart-redirector 6400+次auto-restart等)
+**教训**: - [2026-05-24] [OP] Chrome页面全部崩溃 | 根因: earlyoom --prefer含chrome，内存<5%(834MB)时优先杀Chrome renderer进程 | 修复: 从earlyoom.service移除chrome关键词，重启服务 | 证据: ~/.loc
+**教训**: - [2026-05-24] [OP] 失败学习: Playwright MCP timeout | 错误: 11个僵尸playwright-mcp进程共享同一Chrome user-data-dir导致profile锁冲突 | 正确用法: 定期运行 `playwright-mcp-cleanup`
+**教训**: - [2026-05-24] [OP] Chrome页面崩溃永久修复 | 三层防护: (1)earlyoom.service移除chrome prefer (2)停用opencode-web-sisy:8090释放172MB (3)清理openclaw tmux自动重启循环释放500MB | 23G
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

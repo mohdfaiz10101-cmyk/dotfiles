@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.nix-profile/bin/earlyoom -m 5 -s 10 -r 60 --prefer '(^|/)(chrome|opencode|node|java)$' --avoid '(^|/)(X|Xorg|Hyprland|systemd|dbus|init)$'
+ExecStart=%h/.nix-profile/bin/earlyoom -m 5 -s 10 -r 60 --prefer '(^|/)(opencode|node|java)$' --avoid '(^|/)(X|Xorg|Hyprland|systemd|dbus|init)$'
 Restart=always
 RestartSec=10
 StandardOutput=append:%h/.local/state/earlyoom/earlyoom.log

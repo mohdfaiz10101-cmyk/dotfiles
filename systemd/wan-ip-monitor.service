@@ -1,4 +1,6 @@
 [Unit]
+StartLimitBurst=3
+StartLimitIntervalSec=120
 Description=WAN IP 变更检测 (每60秒)
 
 [Service]

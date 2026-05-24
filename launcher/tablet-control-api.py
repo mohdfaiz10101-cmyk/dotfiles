@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/run/current-system/sw/bin/python3
 """
 平板控制面板 API 服务器
 提供命令执行和状态检查接口

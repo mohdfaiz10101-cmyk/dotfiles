@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # op-connection-guard.sh — OP 连接守护（纯 bash，不依赖 LLM）
 # 检测 OP agent 任务失败（Unable to connect），自动重试失败的服务
 # 部署为 systemd timer，每 10 分钟检查一次

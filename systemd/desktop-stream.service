@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=%h/.local/bin/desktop-stream.py
+ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/desktop-stream.py
 Restart=on-failure
 RestartSec=5
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/run/current-system/sw/bin/python3
 """memory-injector.py — 将记忆注入所有 agent 配置文件
 每30分钟由 timer 触发，确保 agent 总是带着最新记忆启动
 """

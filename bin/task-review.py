@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/run/current-system/sw/bin/python3
 """
 Task Review Analyzer — 解析 op-tasks.md，分类任务并输出 JSON 报告。
 

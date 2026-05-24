@@ -4,7 +4,7 @@ After=network.target litellm.service
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/crewai-venv/bin/python /home/charlie/crewai-project/crew_server.py
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/crewai-venv/bin/python /home/charlie/crewai-project/crew_server.py
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/home/charlie/crewai-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1

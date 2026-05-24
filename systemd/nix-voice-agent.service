@@ -3,7 +3,7 @@ Description=NixOS Voice Agent
 After=network.target
 
 [Service]
-ExecStart=/home/charlie/.local/bin/nix_voice_agent.py
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/nix_voice_agent.py
 Restart=always
 RestartSec=3
 

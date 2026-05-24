@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/run/current-system/sw/bin/python3
 """
 Claude ESP (Extended Session Persistence) - 简化版
 实时同步 Claude Code 操作结果到平板浏览器

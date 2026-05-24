@@ -1,4 +1,6 @@
 [Unit]
+StartLimitBurst=3
+StartLimitIntervalSec=120
 Description=Chronos Bio-feedback — Screen Time & Eye Protection
 After=graphical-session.target
 Wants=graphical-session.target

@@ -35,7 +35,7 @@ echo "change-watcher 启动，监控 ${#DIRS[@]} 个目录" >&2
 
 inotifywait -m -r -q \
     --format '%w%f %e' \
-    --exclude '(/\.git/|/node_modules/|/__pycache__|/dist/|/build/|/\.next/|changelog\.jsonl$|\.lock$|\.pyc$)' \
+    --exclude '(/\.git/|/node_modules/|/__pycache__|/dist/|/build/|/\.next/|changelog\.jsonl$|daemon\.status\.json$|\.lock$|\.pyc$)' \
     -e 'modify,create,delete,move' \
     "${DIRS[@]}" | while read -r FILEPATH EVENT; do
 

@@ -9,7 +9,7 @@ After=network.target
 Type=oneshot
 User=charlie
 Environment="PATH=/run/current-system/sw/bin"
-ExecStart=/home/charlie/.local/bin/cc-decision-engine.py
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/cc-decision-engine.py
 WorkingDirectory=/home/charlie
 
 # 超时保护

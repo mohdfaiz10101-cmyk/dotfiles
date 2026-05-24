@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # cc-op-verifier.sh — CC 主动验证 OP 已完成任务（互审阶段自动启用）
 RESULTS="/tmp/op-task-results.json"
 LOG="$HOME/.local/share/cc-auditor/verify.log"

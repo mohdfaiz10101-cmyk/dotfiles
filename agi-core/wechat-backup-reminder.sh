@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # wechat-backup-reminder.sh — 提醒用户手动备份微信聊天记录
 # 触发：systemd timer 每3天运行一次
 # 输出：Telegram 消息 + KDE 桌面通知

@@ -5,7 +5,7 @@ After=network.target chromadb.service ollama.service
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/semantic-cache
-ExecStart=/mnt/ai/semantic-cache/.venv/bin/python cache_server_simple.py
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/semantic-cache/.venv/bin/python cache_server_simple.py
 Restart=on-failure
 RestartSec=10
 StandardOutput=journal

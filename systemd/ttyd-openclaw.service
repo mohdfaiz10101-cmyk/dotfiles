@@ -4,9 +4,11 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -t fontSize=10 -t disableLeaveAlert=true -t 'theme={"background":"#1a1a2e","foreground":"#e0e0e8"}' -t scrollback=50000 -W /home/charlie/.local/bin/openclaw-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -I /home/charlie/.local/share/ttyd-custom/index.html -t fontSize=10 -t disableLeaveAlert=true -t 'theme={"background":"#1a1a2e","foreground":"#e0e0e8"}' -t scrollback=50000 -W /home/charlie/.local/bin/openclaw-tmux-wrap
 Restart=on-failure
 RestartSec=5
+MemoryHigh=1200M
+MemoryMax=2G
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.npm-global/bin:/home/charlie/.nix-profile/bin
 Environment=OLLAMA_HOST=http://127.0.0.1:11434

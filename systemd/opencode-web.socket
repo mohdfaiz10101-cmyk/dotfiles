@@ -1,0 +1,7 @@
+[Unit]
+Description=OpenCode Web Socket (:8081) — 按需激活
+PartOf=opencode-web.service
+
+[Socket]
+ListenStream=8081
+NoDelay=true

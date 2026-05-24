@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/run/current-system/sw/bin/python3
 """
 letta-sync.py — memory/*.md + changelog.jsonl → Letta archival 增量同步
 v2: 新增 changelog 事件流增量写入，hash 去重

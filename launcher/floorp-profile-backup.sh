@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # Full Floorp profile backup - critical files for crash recovery
 # Restores: bookmarks, cookies, login state, preferences
 # Keeps last 7 daily backups

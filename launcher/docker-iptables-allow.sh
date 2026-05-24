@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 # Allow Docker bridge networks to access host Ollama (11434) and other services
 # This is needed because NixOS firewall blocks Docker bridge -> host traffic
 # Created: 2026-04-09

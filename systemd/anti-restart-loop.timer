@@ -1,0 +1,10 @@
+[Unit]
+Description=Anti Restart Loop Watchdog Timer (every 60s)
+
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=60
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -122,6 +122,11 @@
           "text": "router-infra: Padavan路由器21条端口转发规则已缓存。17698→192.168.123.209:17698 TCP(Sunshine-Moonlight/win-ai), 17699→192.168.123.209:17699 TCP(nixos-ai), 7000→192.168.123.209:7000 TCP(frps), 7681→192.168.123.209:7681 TCP(ttyd), 8080→192.168.123.209:8080 TCP(OpenCode-Sisy)等。VTS已启用。DuckDNS→WAN 125.110.214.173。每小时自动快照到router-infra.md",
           "tags": "router,padavan,port-forward,infra",
           "timestamp": "1779542640"
+        },
+        {
+          "text": "2026-05-24 OP执行: 路由器新增端口转发8700→192.168.123.209:8700 (OpenAgents Web) | nvram vts_rule18已commit + iptables DNAT已添加 | DuckDNS外网验证200通过",
+          "tags": "router,port-forward,openagents,padavan",
+          "timestamp": "1779557687"
         }
       ]
     },
@@ -357,6 +362,36 @@
           "text": "2026-05-23 OP: 部署 opencode-bug-tracker 定时追踪 | 监控 PR#24290+#23737 \"Tool call not allowed while generating summary\" 修复合入 | systemd timer daily | 合入后 notify-send 提醒更新 opencode-linux-x64",
           "tags": "opencode,bug-tracker,systemd,op-exec",
           "timestamp": "1779528706"
+        },
+        {
+          "text": "2026-05-23 OP: 磁盘防护全面分析 | 根分区: 修复前90%(9G) 修复后83%(15G) | 旧方案失效原因: (1) disk-guard.sh目标/mnt/pool未挂载→L2迁移层完全跳过 (2) 白名单缺失uv/huggingface/chroma (3) disk-sentinel/disk-cleanup脚本不存在 (4) disk-space-monitor仅告警不清理 | 修复: disk-guard.sh→目标改/mnt/ai/cache, 新增uv/hf/chroma/pi-lens/openagents等6项白名单; 新增cache-guard.sh每日自动发现>100MB目录迁移",
+          "tags": "op-exec,disk,protection-audit,root-cause",
+          "timestamp": "1779549894"
+        },
+        {
+          "text": "2026-05-23 OP执行: 8088端口smart-redirector改造为Session Switcher | 结果: 成功 | 关键发现: 将原有302跳转改为带session切换按钮的HTML页面，嵌入ttyd iframe，通过tmux switch-client API切换session。三个session: openclaw/cct/sisy",
+          "tags": "op-exec,opencode,session-switcher,smart-redirector",
+          "timestamp": "1779550614"
+        },
+        {
+          "text": "2026-05-24 OP部署: AlManak自托管链接记忆系统 | 结果: 成功 | 位置: /mnt/ai/apps/almanak | 端口: 8443(Caddy HTTPS), 8765(MCP), 8766(Ingest) | API Key: 7d5438dc... | MCP端点: https://localhost:8443/mcp | 健康检查: https://localhost:8443/health",
+          "tags": "almanak,deployment,docker,mcp,link-memory",
+          "timestamp": "1779552835"
+        },
+        {
+          "text": "THINKING_CLEANUP规则: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以\"任务已完成\"为由遗留未解决的问题。已写入CLAUDE.md和lessons-learned.md。",
+          "tags": "rule, meta, thinking-cleanup, self-healing",
+          "timestamp": "1779588690"
+        },
+        {
+          "text": "2026-05-24 OP执行: 修复8080 ttyd session切换面板加载失败 | 根因: ttyd-openclaw.service因systemd资源限制持续失败5500+次, -t选项格式错误(-t fontSize 10应为-t fontSize=10) | 修复: 手动setsid启动 | 服务状态: 8080(200), 8088 API正常(20 sessions)",
+          "tags": "op-exec,ttyd,8080,session-switcher",
+          "timestamp": "1779589247"
+        },
+        {
+          "text": "OP执行: 屏蔽Konsole系统通知 | 结果: 成功 | 关键发现: 通知守护进程是mako不是dunst，配置~/.config/mako/config用invisible=1过滤Konsole。副作用: plasmashell被kquitapp6误杀后无法重启(invalid corona)，重启Hyprland会话可恢复。",
+          "tags": "op-exec,notification,konsole,incident",
+          "timestamp": "1779593630"
         }
       ]
     },
