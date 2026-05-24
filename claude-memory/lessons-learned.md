@@ -205,3 +205,28 @@
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 13 hours (healthy)
 
 - [2026-05-25] [OP] 失败学习: config-immutable-snapshot | 错误: inotifywait+while-read管道中set -eo pipefail导致while循环静默退出 | 正确: 移除set -e，用显式错误处理替代 | 原因: pipefail+set -e组合在管道子命令返回非零时立即终止管道，不产生任何输出或日志
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 6 hours
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 14 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 14 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 14 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 14 hours (healthy)
