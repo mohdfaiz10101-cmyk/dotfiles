@@ -564,3 +564,4 @@
 {"ts": "2026-05-25 03:37", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘指标均在健康范围内，无活跃服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:38", "type": "cycle", "summary": "系统运行正常，存在例行进程CPU占用", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:40", "type": "cycle", "summary": "系统运行正常，凌晨低流量期CPU短时波动属正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 03:41", "type": "cycle", "summary": "系统处于凌晨低负载期，CPU/内存/磁盘均正常，无服务异常", "alert_count": 0, "skipped_llm": false}
