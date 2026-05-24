@@ -500,3 +500,4 @@
 {"ts": "2026-05-25 02:22", "type": "cycle", "summary": "系统资源正常，存在已知高CPU进程但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:23", "type": "cycle", "summary": "系统凌晨运行正常，CPU存在瞬时峰值但整体负载低", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:24", "type": "cycle", "summary": "系统空闲，但检测到单进程 python3 (PID 1320272) 疑似死循环导致 CPU 飙升", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 02:25", "type": "cycle", "summary": "凌晨时段系统负载极低，无服务异常，暂存进程波动属正常范围", "alert_count": 0, "skipped_llm": false}
