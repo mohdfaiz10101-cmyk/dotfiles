@@ -106,7 +106,14 @@ def macg_wechat_reply(talker: str, content: str) -> str:
 
 @mcp.tool()
 def macg_letta_search(query: str) -> str:
-    """搜索 Letta 语义记忆。查询历史经验、踩坑记录、架构决策。"""
+    """搜索 Letta 语义记忆。优先 ChromaDB，Fallback Letta Docker。查询历史经验、踩坑记录、架构决策。"""
+    # Layer 1: ChromaDB (AI 优先)
+    chroma_hits = _chromadb_search(query, limit=5)
+    if chroma_hits:
+        hits = [f"[chromadb] {h['text'][:300]}" for h in chroma_hits]
+        return "\n---\n".join(hits)
+
+    # Layer 2: Letta Docker
     import urllib.request, urllib.error
     try:
         req = urllib.request.Request(f"{LETTA_BASE}/v1/agents/", headers=LETTA_HEADERS)
@@ -128,18 +135,17 @@ def macg_letta_search(query: str) -> str:
             f"{LETTA_BASE}/v1/agents/{agent_id}/archival-memory/search",
             headers=LETTA_HEADERS, method="GET"
         )
-        # append query params to URL
         sep = "?" if "?" not in req.full_url else "&"
         req.full_url = f"{req.full_url}{sep}query={quote(query)}&limit=5"
         with urllib.request.urlopen(req, timeout=5) as r:
             result = json.loads(r.read().decode())
         memories = result if isinstance(result, list) else result.get("results", result.get("memories", []))
         if not memories:
-            return "Letta 无相关记忆"
-        hits = [m.get("text", m.get("content", ""))[:300] for m in memories[:5] if m.get("text") or m.get("content")]
+            return "ChromaDB 无结果，Letta 也无相关记忆"
+        hits = [f"[letta] {m.get('text', m.get('content', ''))[:300]}" for m in memories[:5] if m.get("text") or m.get("content")]
         return "\n---\n".join(hits)
     except Exception as e:
-        return f"[FAIL] Letta 不可达: {e}"
+        return f"[FAIL] ChromaDB 无结果，Letta 不可达: {e}"
 
 
 @mcp.tool()
@@ -326,6 +332,26 @@ _SKIP_FILES = {"MEMORY.md", "rules-secondary.md", "lessons-learned-archive.md",
                "op-tasks-archive-20260423.md", "SYSTEM-INDEX.md"}
 
 
+def _chromadb_search(query: str, limit: int = 3) -> list[dict]:
+    """搜索 ChromaDB 语义向量记忆（mem0-bridge :8285）。"""
+    results = []
+    try:
+        from urllib.parse import quote
+        url = f"http://127.0.0.1:8285/search?q={quote(query)}&limit={limit}"
+        req = urllib.request.Request(url)
+        with urllib.request.urlopen(req, timeout=5) as r:
+            data = json.loads(r.read().decode())
+        for item in data.get("results", [])[:limit]:
+            text = item.get("memory", "")
+            meta = item.get("metadata", {}) or {}
+            source = meta.get("file", meta.get("source", "chromadb"))
+            if text:
+                results.append({"source": f"chromadb:{source}", "text": text[:500]})
+    except Exception:
+        pass
+    return results
+
+
 def _letta_search_multi(query: str, limit: int = 3) -> list[dict]:
     """并行搜索多个 Letta agent 的归档记忆。"""
     import urllib.request, urllib.error
@@ -424,10 +450,14 @@ def _litellm_generate(system_prompt: str, user_prompt: str, model: str = "glm-4-
 
 @mcp.tool()
 def macg_context_probe(query: str) -> str:
-    """探查某话题在记忆系统中有多少上下文可用。双路并行搜索 Letta + 本地文件，返回原始匹配片段。"""
+    """探查某话题在记忆系统中有多少上下文可用。三路并行搜索 ChromaDB → Letta → 本地文件，返回原始匹配片段。"""
+    # Layer 1: ChromaDB 语义搜索（AI 优先）
+    chroma_hits = _chromadb_search(query, limit=3)
+    # Layer 2: Letta 归档搜索
     letta_hits = _letta_search_multi(query, limit=2)
+    # Layer 3: 本地文件搜索
     local_hits = _local_search(query)
-    all_hits = letta_hits + local_hits
+    all_hits = chroma_hits + letta_hits + local_hits
     if not all_hits:
         return json.dumps({"found": 0, "message": "无相关记忆"}, ensure_ascii=False)
     # 合并输出
@@ -571,6 +601,8 @@ if __name__ == "__main__":
     if "--http" in _sys.argv:
         mcp.settings.host = "0.0.0.0"
         mcp.settings.port = 18092
+        mcp.settings.json_response = True  # 纯JSON模式，无需text/event-stream Accept header
+        mcp.settings.stateless_http = True  # 无状态模式，不依赖持久化session
         mcp.run(transport="streamable-http")
     else:
         mcp.run(transport="stdio")

@@ -4,6 +4,9 @@
 # 用法: runbook-engine.sh [--dry-run] [--runbook RB-ID]
 
 set -euo pipefail
+# 注意: pipefail 会在内嵌 pipeline 失败时触发 set -e，
+# execute_runbook 的 case 语句依赖 pipeline，故放宽为仅 pipefail 关闭
+set +o pipefail
 
 LESSONS_FILE="$HOME/.claude/projects/-home-charlie/memory/lessons-learned.md"
 STATE_DIR="$HOME/.local/state/ops-infra"
@@ -28,7 +31,7 @@ log_execution() {
 rb_letta_silent_failure() {
     # DETECT
     local latest
-    latest=$(curl -s "http://localhost:8283/v1/agents/agent-9b3bcec2-0a26-458c-a2e0-639c0f9686ca/archival-memory?limit=5&ascending=false" 2>/dev/null | python3 -c "
+    latest=$(curl -s --max-time 5 "http://localhost:8283/v1/agents/agent-9b3bcec2-0a26-458c-a2e0-639c0f9686ca/archival-memory?limit=5&ascending=false" 2>/dev/null | python3 -c "
 import sys,json
 items=json.load(sys.stdin)
 real=[i for i in items if 'health-check' not in str(i.get('tags',[]))]
@@ -201,15 +204,16 @@ else
 
     total=0 ok=0 fail=0 skip=0
     for rb_id in "${!RUNBOOKS[@]}"; do
-        ((total++))
+        total=$((total + 1))
         if execute_runbook "$rb_id"; then
-            case "$(tail -1 "$RUNBOOK_LOG" | python3 -c "import sys,json; print(json.load(sys.stdin)['status'])" 2>/dev/null)" in
-                OK|VERIFIED) ((ok++)) ;;
-                SKIP) ((skip++)) ;;
-                *) ((ok++)) ;;
+            _status=$(tail -1 "$RUNBOOK_LOG" | python3 -c "import sys,json; print(json.load(sys.stdin).get('status',''))" 2>/dev/null || true)
+            case "$_status" in
+                OK|VERIFIED) ok=$((ok + 1)) ;;
+                SKIP) skip=$((skip + 1)) ;;
+                *) ok=$((ok + 1)) ;;
             esac
         else
-            ((fail++))
+            fail=$((fail + 1))
         fi
     done
 

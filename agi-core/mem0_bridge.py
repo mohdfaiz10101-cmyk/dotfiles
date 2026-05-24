@@ -59,6 +59,24 @@ def llm_extract(title: str, content: str) -> str:
         return content[:200]
 
 
+def add_memory_batch_raw(items: list) -> dict:
+    """批量添加记忆（跳过LLM提取）"""
+    if not items:
+        return {"count": 0}
+    docs, metas, ids = [], [], []
+    for item in items:
+        mid = str(uuid.uuid4())[:8]
+        meta = item.get("metadata", {}) or {}
+        meta["ts"] = datetime.now().isoformat()
+        meta["id"] = mid
+        meta["raw"] = True
+        docs.append(item.get("text", "")[:2000])
+        metas.append(meta)
+        ids.append(mid)
+    col.add(documents=docs, metadatas=metas, ids=ids)
+    return {"count": len(ids)}
+
+
 def add_memory_raw(text: str, metadata: dict = None) -> dict:
     """添加记忆（跳过LLM提取，直接存储原文）"""
     mem_id = str(uuid.uuid4())[:8]
@@ -245,6 +263,12 @@ class Handler(BaseHTTPRequestHandler):
                     return self._json(400, {"error": "missing items"})
                 results = [add_memory(it.get("text", ""), it.get("metadata")) for it in items]
                 self._json(200, {"status": "ok", "count": len(results)})
+            elif p.path == "/add_batch_raw":
+                items = body.get("items", [])
+                if not items:
+                    return self._json(400, {"error": "missing items"})
+                result = add_memory_batch_raw(items)
+                self._json(200, {"status": "ok", "count": result["count"]})
             elif p.path == "/delete":
                 mid = body.get("memory_id", "")
                 if not mid:

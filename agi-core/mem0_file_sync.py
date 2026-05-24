@@ -78,25 +78,37 @@ def index_file(filepath: Path, dry_run: bool = False) -> dict:
     if dry_run:
         return {"file": rel_path, "status": "dry_run", "chunks": len(chunks)}
 
+    # 批量模式：每批50块
+    BATCH_SIZE = 50
     indexed = 0
     errors = 0
-    for i, chunk in enumerate(chunks):
-        meta = {
-            "source": "file-sync",
-            "file": rel_path,
-            "chunk": i,
-            "total_chunks": len(chunks),
-        }
-        payload = json.dumps({"text": chunk, "metadata": meta}).encode()
-        req = Request(f"{BRIDGE_URL}/add_raw", data=payload,
+
+    for batch_start in range(0, len(chunks), BATCH_SIZE):
+        batch = chunks[batch_start:batch_start + BATCH_SIZE]
+        items = []
+        for j, chunk in enumerate(batch):
+            i = batch_start + j
+            items.append({
+                "text": chunk,
+                "metadata": {
+                    "source": "file-sync",
+                    "file": rel_path,
+                    "chunk": i,
+                    "total_chunks": len(chunks),
+                }
+            })
+
+        payload = json.dumps({"items": items}).encode()
+        req = Request(f"{BRIDGE_URL}/add_batch_raw", data=payload,
                        headers={"Content-Type": "application/json"})
         try:
-            urlopen(req, timeout=10)
-            indexed += 1
+            resp = urlopen(req, timeout=30)
+            data = json.loads(resp.read())
+            indexed += data.get("count", len(items))
         except URLError as e:
-            errors += 1
-            if errors <= 3:
-                print(f"  [!] chunk {i} 失败: {e}", file=sys.stderr)
+            errors += len(items)
+            if errors <= 50:
+                print(f"  [!] batch {batch_start} 失败: {e}", file=sys.stderr)
 
     return {"file": rel_path, "status": "indexed", "chunks": indexed, "errors": errors}
 
@@ -140,7 +152,14 @@ def main():
         print(f"  [{status}] {rel} — {result.get('chunks', 0)} 块")
 
     save_state(state)
-    print(f"[mem0-file-sync] 完成: {len(to_index)} 文件, {total_chunks} 块, {total_errors} 错误")
+    summary = f"同步: {len(to_index)} 文件, {total_chunks} 块, {total_errors} 错误"
+    print(f"[mem0-file-sync] 完成: {summary}")
+
+    # Telegram通知
+    tg = os.path.expanduser("~/agi/tg_monitor.py")
+    if os.path.exists(tg):
+        import subprocess
+        subprocess.run([sys.executable, tg, "sync", summary], timeout=10, capture_output=True)
 
 
 if __name__ == "__main__":

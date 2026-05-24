@@ -398,7 +398,11 @@ async def scan_and_heal() -> list[dict]:
         parts = line.split()
         if not parts:
             continue
-        svc_name = parts[0].replace(".service", "")
+        # systemd 255+ 在 --no-legend 输出中也带 ● 前缀
+        if parts[0] == "●" and len(parts) > 1:
+            svc_name = parts[1].replace(".service", "")
+        else:
+            svc_name = parts[0].replace(".service", "")
         result = await heal_service(svc_name)
         results.append(result)
 

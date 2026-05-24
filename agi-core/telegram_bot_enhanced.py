@@ -69,6 +69,8 @@ except ImportError:
 # Forum 群组（通知中心），master 在群中可免授权操作
 FORUM_GROUP_ID = int(os.environ.get("TG_FORUM_GROUP", "-1003988580955"))
 FINANCE_GROUP_ID = int(os.environ.get("TG_FINANCE_GROUP", "-1003943958531"))
+GMAIL_GROUP_ID = int(os.environ.get("TG_GMAIL_GROUP", "-1003754366054"))
+MEMORY_TOPIC_ID = 52  # 🧠 记忆系统监控 topic，供 CC/OP 讨论
 
 
 def _check_auth(update: Update) -> bool:

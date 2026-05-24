@@ -14,7 +14,7 @@ model: openai-compatible/cerebras-qwen3-235b
 
 # Charlie-Ego — 决策镜像
 
-<!-- memory-gate-inject: 17:00 -->
+<!-- memory-gate-inject: 19:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -23,14 +23,22 @@ model: openai-compatible/cerebras-qwen3-235b
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-03] 记忆遗忘引擎：lessons-learned 45天衰减，codebase-map 30天，一次性报告 7天
-**教训**: - [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
-**教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
 **教训**: - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
+**教训**: - [2026-05-24] ADB 连接稳定性：通过 Windows 跳板机 SSH 时，`adb connect` 和后续 `adb` 命令必须在**同一 SSH 会话**执行，否则 ADB server 重启导致连接丢失。已创建 `adb-windows.sh` 包装脚本自动保持连接
+**教训**: - [2026-05-24] 手机 WiFi IP 动态变化：从 `192.168.123.229` 变为 `192.168.123.241`（DHCP 租约更新）。已更新 `adb-known-devices`、`adb-device-monitor.py`、`adb-auto-connect.s
 **教训**: - [2026-05-24] [OP] 手机无网络修复 | 根因：ip rule策略路由表97-99为空，unmarked流量→空表→unreachable(32000)丢弃 | 修复：(1) ip rule add from all lookup main pref 5000 绕过空表 (2) i
+**教训**: - [2026-05-24] [OP] 修复: 8088/8080 session切换不生效 | 根因: switch-client只改已有客户端视图,新attach(ttyd iframe刷新)看到window 0而非目标窗口 | 修复: _switch_clients_to增加select-wi
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

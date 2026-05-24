@@ -1,0 +1,10 @@
+[Unit]
+Description=Mem0 记忆完整性看门狗
+After=mem0-bridge.service
+Wants=mem0-bridge.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/mem0_watchdog.py
+StandardOutput=journal
+StandardError=journal

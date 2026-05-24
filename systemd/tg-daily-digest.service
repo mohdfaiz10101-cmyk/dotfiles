@@ -1,0 +1,13 @@
+[Unit]
+Description=TG每日摘要 — 扫描私聊消息提取关键信息
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/tg-daily-digest-wrapper.sh
+Environment=PYTHONUNBUFFERED=1
+Environment=http_proxy=http://127.0.0.1:7890
+Environment=https_proxy=http://127.0.0.1:7890
+Environment=all_proxy=socks5://127.0.0.1:7890
+WorkingDirectory=%h
+StandardOutput=journal
+StandardError=journal

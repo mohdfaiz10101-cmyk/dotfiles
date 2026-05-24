@@ -1,0 +1,10 @@
+[Unit]
+Description=Memory File → ChromaDB 增量同步 (每30分钟)
+After=mem0-bridge.service
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

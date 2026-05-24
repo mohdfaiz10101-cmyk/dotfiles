@@ -1,0 +1,9 @@
+[Unit]
+Description=Mem0 记忆完整性检查 (每15分钟)
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+
+[Install]
+WantedBy=timers.target

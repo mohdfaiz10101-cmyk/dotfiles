@@ -1,0 +1,10 @@
+[Unit]
+Description=每日系统评分归档 + 通知
+Wants=waybar-score-finalize.service
+
+[Timer]
+OnCalendar=*-*-* 23:59:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
