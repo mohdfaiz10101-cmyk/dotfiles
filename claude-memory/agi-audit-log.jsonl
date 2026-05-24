@@ -547,3 +547,4 @@
 {"ts": "2026-05-25 03:19", "type": "cycle", "summary": "系统处于凌晨闲时状态，资源占用低，无明显异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:20", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:21", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均处于健康区间，服务全活跃", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 03:22", "type": "cycle", "summary": "系统资源负载低，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
