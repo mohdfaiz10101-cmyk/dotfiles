@@ -15,9 +15,13 @@ import os
 import sys
 import urllib.request
 
+# Proxy for Telegram API access
+PROXY = "http://127.0.0.1:7890"
+
 BOT_TOKEN = "8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks"
-FORUM_ID = -1003988580955
-MEMORY_TOPIC_ID = 52  # 🧠 记忆系统监控
+FORUM_ID = -1003835605605  # 🧠 记忆系统监控·讨论组
+MEMORY_TOPIC_ID = 15       # 📊 系统报告 topic
+DISCUSSION_TOPIC_ID = 16   # 💬 CC·OP 讨论 topic
 
 EMOJI = {
     "watchdog": "🐕",

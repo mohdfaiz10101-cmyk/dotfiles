@@ -45,6 +45,7 @@ def tg_notify(module: str, msg: str, silent: bool = True):
         subprocess.run(
             [sys.executable, str(TG_MONITOR), module, msg],
             timeout=10, capture_output=True,
+            env={**os.environ, "http_proxy": "http://127.0.0.1:7890"},
         )
     except Exception:
         pass

@@ -1,0 +1,13 @@
+[Unit]
+Description=Cloudflare Tunnel for TG Canvas
+After=network-online.target tg-canvas.service
+Wants=network-online.target tg-canvas.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.nix-profile/bin/cloudflared tunnel --url http://localhost:3721 --no-autoupdate
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

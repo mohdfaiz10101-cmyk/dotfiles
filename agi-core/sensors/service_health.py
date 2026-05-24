@@ -23,7 +23,7 @@ def collect() -> dict:
     # Docker/HTTP services
     checks = {
         "letta": "http://localhost:8283/v1/health",
-        "litellm": "http://localhost:4000/health",
+        "litellm": "http://localhost:4000/health/readiness",
         "chromadb": "http://localhost:8000/api/v2/heartbeat",
     }
     for name, url in checks.items():

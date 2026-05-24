@@ -53,7 +53,7 @@ def macg_services() -> str:
     """检查 macg 生态服务状态：LiteLLM/Letta/AGI-GW/mihomo/Paperclip。"""
     import urllib.request
     checks = {
-        "LiteLLM": ("http://localhost:4000/health", LITELLM_HEADERS),
+        "LiteLLM": ("http://localhost:4000/health/readiness", {}),
         "Letta": ("http://localhost:8283/v1/agents/", LETTA_HEADERS),
         "AGI-GW": ("http://localhost:9900/health", {}),
         "Paperclip": ("http://localhost:3100/health", {}),
@@ -602,7 +602,6 @@ if __name__ == "__main__":
         mcp.settings.host = "0.0.0.0"
         mcp.settings.port = 18092
         mcp.settings.json_response = True  # 纯JSON模式，无需text/event-stream Accept header
-        mcp.settings.stateless_http = True  # 无状态模式，不依赖持久化session
         mcp.run(transport="streamable-http")
     else:
         mcp.run(transport="stdio")

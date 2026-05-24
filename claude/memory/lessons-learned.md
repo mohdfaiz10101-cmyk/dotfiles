@@ -165,3 +165,33 @@
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 7 hours (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 7 hours (healthy)
+- [2026-05-24] [OP] 修复: LiteLLM健康检查误报 | 根因: macg_services和service_health.py请求 /health(需认证→401超时)而非 /health/readiness(免认证→200) | 修复: 两处URL均改为 /health/readiness，移除LITELLM_HEADERS
+- [2026-05-24] [OP] 修复: macg MCP Session not found | 根因: MCP SDK 1.27.1 streamable-http 要求 Accept: text/event-stream header，OpenCode 客户端不发送导致 406 | 修复: macg_mcp.py 添加 mcp.settings.json_response=True 绕过 SSE header 检查 | 注意: 修复后需重启 OpenCode 会话让客户端重新 initialize
+- [2026-05-24] [OP] session切换根因修复: opencode实际window命名oc_ses_{session_id[:12]}，非oc_{session_id[:16]} | 命名不匹配导致每次切换创建空窗口 | 修复: _find_oc_window搜索匹配 + openclaw-tmux-wrap读取/tmp/ttyd-target-window | 去iframe重载: switch-client即时切换16ms | 8088/8080页面均去掉location.reload
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 25 minutes
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 59 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 8 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 8 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 8 hours (healthy)
+- [2026-05-24] [OP] 成功: adb-disable-tailscale | 命令: pm disable + setprop persist.tailscale.enabled=0 | 结果: 成功 | 场景: OnePlus Ace 5 Pro 禁用 Tailscale app
