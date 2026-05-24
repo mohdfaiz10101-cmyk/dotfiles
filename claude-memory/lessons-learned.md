@@ -332,3 +332,29 @@
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 6 hours (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 18 hours (healthy)
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 11 hours
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 12 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 19 hours (healthy)
