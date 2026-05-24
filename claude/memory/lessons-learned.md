@@ -190,3 +190,51 @@
 - [2026-05-24] [OP] Chrome页面崩溃永久修复 | 三层防护: (1)earlyoom.service移除chrome prefer (2)停用opencode-web-sisy:8090释放172MB (3)清理openclaw tmux自动重启循环释放500MB | 23GB内存基线: 11GB used / 2.9GB free | 关键服务保护: opencode-web:8081(OOMScoreAdjust=-500), earlyoom只杀opencode/node/java
 - [2026-05-24] [OP] 修复: smart-redirector iframe DuckDNS回环导致8080 session切换失败 | 根因: _detect_url()检测DuckDNS可达→iframe src=DuckDNS:8080 → session switcher JS用location.hostname构建API URL=DuckDNS:8088/api/ → 不可达(路由器未转发8088) | 修复: (1) smart-redirector.py用请求Host构建iframe URL (2) ttyd custom index.html加localhost fallback
 - [2026-05-24] [OP] 通知系统: notify-send wrapper v5 → 全量TG路由 + 桌面静音 | mako已mask | hyprland exec-once=mako已注释 | tg-push自带限速6条/h防止刷屏
+- [2026-05-24] [OP] 修复: 系统通知错误处理 | waybar-guardian.py letta.service → docker restart (lett不存在systemd单元) | cc-blocker-resolver.sh check_letta 同修复 | dead-component-detect.sh 移除letta.service | verify-watch.path 临时停止: playwright chromium需要FHS(NixOS限制)，需Nix配置安装chromium或用buildFHSEnv- [2026-05-24] [Aider] fix: git-backup.sh 添加 launcher/hub 仓库备份
+  相关文件：bin/git-backup.sh
+
+- [2026-05-24] [OP] 工具: tg_group_router | 调用: python3 tg_group_router.py --send/--classify | 结果: 成功 | 场景: Telegram通知自动分类路由，8个预定义类别（系统/服务/安全/微信/巡检/代理/任务/一般），基于关键词自动分类，支持Forum话题模式+私聊降级
+- [2026-05-24] [OP] 工具: playwright-chromium-nix wrapper | 解决NixOS上playwright chromium缺少FHS库问题 | 原理: 收集所有nix store lib路径设置LD_LIBRARY_PATH后exec chromium | 用法: verify-pipeline.sh通过executablePath指向此wrapper | 库列表: glib/nss/nspr/cups/libdrm/gtk3/pango/libX*/mesa/alsa/gdk-pixbuf/at-spi2/dbus/expat/libxcb/libxkbcommon/systemd
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 2 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 2 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 3 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 3 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 3 hours (healthy)

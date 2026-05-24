@@ -88,6 +88,7 @@ class Message:
     channels: list[Channel] = field(default_factory=lambda: [Channel.TELEGRAM, Channel.DISCORD])
     group: str = ""           # 合并分组 key（空=不合并）
     dedup_key: str = ""       # 去重 key（空=自动用 text[:80]）
+    category: str = ""        # TG 分类路由 key（空=自动分类）
 
 
 # ── 核心通知器 ────────────────────────────────────────────────────────
@@ -225,7 +226,7 @@ class Notifier:
         # 并发发送所有通道
         tasks = []
         if Channel.TELEGRAM in msg.channels:
-            tasks.append(_send_telegram(msg.text))
+            tasks.append(_send_telegram(msg.text, msg.category))
         if Channel.DISCORD in msg.channels:
             tasks.append(_send_discord(msg.text, _DISCORD_ALERTS_CH))
         if Channel.DISCORD_CC in msg.channels:
@@ -272,11 +273,24 @@ class Notifier:
 
 # ── 底层传输层 ────────────────────────────────────────────────────────
 
-async def _send_telegram(text: str) -> None:
-    """Telegram Bot API 发送"""
-    if not _TELEGRAM_TOKEN or not _TELEGRAM_CHAT:
+async def _send_telegram(text: str, category: str = "info") -> None:
+    """Telegram Bot API 发送 — 自动分类路由到 Forum 话题"""
+    if not _TELEGRAM_TOKEN:
         return
+    try:
+        # 优先使用 TG Router（支持 Forum 话题分类）
+        from tg_group_router import route_message as tg_route
+        ok = await tg_route(text, category)
+        if ok:
+            print(f"[NOTIFY] Telegram OK ({len(text)} chars) → {category}")
+            return
+    except ImportError:
+        pass
+    
+    # 降级：直接发送到私聊
     import httpx
+    if not _TELEGRAM_CHAT:
+        return
     try:
         async with httpx.AsyncClient(timeout=15.0, proxy=_PROXY) as c:
             resp = await c.post(

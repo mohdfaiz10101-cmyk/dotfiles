@@ -1,7 +1,11 @@
 #!/home/charlie/bin/.notify-venv/bin/python3
-"""Telegram 通知网关 — 带 cooldown/dedup/分级
-用法: echo "内容" | python3 ~/bin/notify-telegram.py P1 "标题"
+"""Telegram 通知网关 — 带 cooldown/dedup/分级 + 自动分类路由
+用法:
+  echo "内容" | python3 ~/bin/notify-telegram.py P1 "标题"
+  echo "内容" | python3 ~/bin/notify-telegram.py P1 "标题" --cat wechat
+  echo "内容" | python3 ~/bin/notify-telegram.py --classify     # 仅分类
 级别: P0(立即) P1(15min内) P2(每日摘要) P3(仅存档)
+分类: system/service/security/wechat/patrol/proxy/task/info (自动)
 """
 
 import asyncio, hashlib, json, sys, os
@@ -14,6 +18,14 @@ BOT_TOKEN = os.environ.get(
 CHAT_ID = os.environ.get("TG_CHAT_ID", "5036541266")
 PROXY = os.environ.get("HTTPS_PROXY", "http://127.0.0.1:7890")
 STATE_FILE = Path(os.environ.get("NOTIFY_STATE_FILE", "/tmp/notify-state.json"))
+
+# 尝试加载 TG Router（分类路由）
+try:
+    sys.path.insert(0, str(Path.home() / "dotfiles/agi-core"))
+    from tg_group_router import get_router as _get_router, Category as _Category
+    _TG_ROUTER = True
+except ImportError:
+    _TG_ROUTER = False
 
 COOLDOWN_SEC = {"P0": 60, "P1": 300, "P2": 1800, "P3": 86400}
 EMOJI = {"P0": "🔴", "P1": "⚠️", "P2": "📋", "P3": "📝"}
@@ -49,9 +61,19 @@ def should_notify(level, content_hash, state):
     return True, 0
 
 
-async def send_telegram(text):
+async def send_telegram(text, category=""):
+    """发送到 Telegram，支持分类路由"""
+    # 优先使用 TG Router
+    if _TG_ROUTER:
+        router = _get_router()
+        cat = category or _Category.classify(text)
+        ok = await router.route_message(text, cat)
+        if ok:
+            print(f"[OK] → {_Category.get_emoji(cat)} {_Category.get_name(cat)}")
+            return True
+    
+    # 降级：直接发送到私聊
     import aiohttp
-
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     payload = {"chat_id": CHAT_ID, "text": text[:4000], "parse_mode": "HTML"}
 
@@ -87,11 +109,42 @@ async def send_telegram(text):
 
 
 async def main():
-    level = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] in COOLDOWN_SEC else "P2"
-    title = sys.argv[2] if len(sys.argv) > 2 else ""
+    # 解析参数：--cat category, --classify, 以及 P0-P3 和标题
+    args = sys.argv[1:]
+    level = "P2"
+    title = ""
+    category = ""
+    classify_only = False
+    
+    # 解析命名参数
+    filtered_args = []
+    i = 0
+    while i < len(args):
+        if args[i] == "--cat" and i + 1 < len(args):
+            category = args[i + 1]
+            i += 2
+        elif args[i] == "--classify":
+            classify_only = True
+            i += 1
+        else:
+            filtered_args.append(args[i])
+            i += 1
+    
+    # 位置参数
+    if filtered_args and filtered_args[0] in COOLDOWN_SEC:
+        level = filtered_args[0]
+        title = filtered_args[1] if len(filtered_args) > 1 else ""
+    elif filtered_args:
+        title = filtered_args[0]
 
     content = sys.stdin.read().strip()
     if not content:
+        return
+
+    # 仅分类模式
+    if classify_only and _TG_ROUTER:
+        cat = _Category.classify(content)
+        print(f"{_Category.get_emoji(cat)} {_Category.get_name(cat)}: {content[:50]}")
         return
 
     content_hash = hashlib.md5(content.encode()).hexdigest()[:12]
@@ -110,7 +163,7 @@ async def main():
 
     msg = f"<b>{header}</b>\n\n{content[:3900]}"
 
-    if await send_telegram(msg):
+    if await send_telegram(msg, category):
         state[f"{level}:{content_hash}"] = {
             "time": datetime.now().isoformat(),
             "title": title,

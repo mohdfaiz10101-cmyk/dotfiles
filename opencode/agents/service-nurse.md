@@ -16,7 +16,7 @@ hidden: true
 
 # Service Nurse — 服务护士
 
-<!-- memory-gate-inject: 13:00 -->
+<!-- memory-gate-inject: 15:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -25,14 +25,22 @@ hidden: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-24] [OP] 修复: 8080 session switcher加载失败 | 根因: smart-redirector(:8088)单线程BaseHTTPServer挂死，recv-q=3积压导致/oc-sessions API超时(>15s) | 修复: systemct
-**教训**: - [2026-05-24] [OP] 修复: systemd user实例fork失败(Resource temporarily unavailable)导致所有timer服务停止 | 根因: 54900+次spawn失败(smart-redirector 6400+次auto-restart等)
-**教训**: - [2026-05-24] [OP] Chrome页面全部崩溃 | 根因: earlyoom --prefer含chrome，内存<5%(834MB)时优先杀Chrome renderer进程 | 修复: 从earlyoom.service移除chrome关键词，重启服务 | 证据: ~/.loc
-**教训**: - [2026-05-24] [OP] 失败学习: Playwright MCP timeout | 错误: 11个僵尸playwright-mcp进程共享同一Chrome user-data-dir导致profile锁冲突 | 正确用法: 定期运行 `playwright-mcp-cleanup`
-**教训**: - [2026-05-24] [OP] Chrome页面崩溃永久修复 | 三层防护: (1)earlyoom.service移除chrome prefer (2)停用opencode-web-sisy:8090释放172MB (3)清理openclaw tmux自动重启循环释放500MB | 23G
+**教训**: - [2026-05-24] [OP] 修复: smart-redirector iframe DuckDNS回环导致8080 session切换失败 | 根因: _detect_url()检测DuckDNS可达→iframe src=DuckDNS:8080 → session switcher 
+**教训**: - [2026-05-24] [OP] 通知系统: notify-send wrapper v5 → 全量TG路由 + 桌面静音 | mako已mask | hyprland exec-once=mako已注释 | tg-push自带限速6条/h防止刷屏
+**教训**: - [2026-05-24] [OP] 修复: 系统通知错误处理 | waybar-guardian.py letta.service → docker restart (lett不存在systemd单元) | cc-blocker-resolver.sh check_letta 同修复 | dea
+**教训**: - [2026-05-24] [OP] 工具: tg_group_router | 调用: python3 tg_group_router.py --send/--classify | 结果: 成功 | 场景: Telegram通知自动分类路由，8个预定义类别（系统/服务/安全/微信/巡检/代理/任
+**教训**: - [2026-05-24] [OP] 工具: playwright-chromium-nix wrapper | 解决NixOS上playwright chromium缺少FHS库问题 | 原理: 收集所有nix store lib路径设置LD_LIBRARY_PATH后exec chromium
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 
