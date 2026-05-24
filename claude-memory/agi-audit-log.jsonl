@@ -647,3 +647,4 @@
 {"ts": "2026-05-25 05:10", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 05:12", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 05:13", "type": "cycle", "summary": "系统状态正常，Python3.13 进程为常规系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 05:14", "type": "cycle", "summary": "当前系统各项指标均正常，仅ps查询进程短暂占用100%CPU属正常现象", "alert_count": 0, "skipped_llm": false}
