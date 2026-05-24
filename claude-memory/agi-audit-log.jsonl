@@ -576,3 +576,4 @@
 {"ts": "2026-05-25 03:51", "type": "cycle", "summary": "系统状态正常，无活跃服务与告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:52", "type": "cycle", "summary": "系统处于低负载状态，服务运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:54", "type": "cycle", "summary": "系统资源使用正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 03:55", "type": "cycle", "summary": "系统资源占用正常，高CPU进程为系统服务忽略", "alert_count": 0, "skipped_llm": false}
