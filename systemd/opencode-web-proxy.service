@@ -1,14 +1,11 @@
 [Unit]
-Description=OpenCode Web — 智能代理（按需启停）
-After=network.target
-BindsTo=opencode-web.socket
-StopWhenUnneeded=yes
+Description=OpenCode Web Proxy (:8081→:18081)
 
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-web-proxy
 Restart=no
 Environment="HOME=/home/charlie"
-Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin"
+Environment="PATH=/run/current-system/sw/bin"
 StandardOutput=journal
 StandardError=journal

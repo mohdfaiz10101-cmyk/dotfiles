@@ -1,0 +1,9 @@
+[Unit]
+Description=Playwright MCP zombie cleanup timer (every 10 min)
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target

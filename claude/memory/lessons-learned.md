@@ -188,3 +188,5 @@
 - [2026-05-24] [OP] Chrome页面全部崩溃 | 根因: earlyoom --prefer含chrome，内存<5%(834MB)时优先杀Chrome renderer进程 | 修复: 从earlyoom.service移除chrome关键词，重启服务 | 证据: ~/.local/state/earlyoom/earlyoom.log明确记录"SIGTERM to process xxx chrome: VmRSS 110 MiB"
 - [2026-05-24] [OP] 失败学习: Playwright MCP timeout | 错误: 11个僵尸playwright-mcp进程共享同一Chrome user-data-dir导致profile锁冲突 | 正确用法: 定期运行 `playwright-mcp-cleanup` 清理僵尸进程 | 原因: opencode MCP stdio bridge在session结束时未正确清理子进程
 - [2026-05-24] [OP] Chrome页面崩溃永久修复 | 三层防护: (1)earlyoom.service移除chrome prefer (2)停用opencode-web-sisy:8090释放172MB (3)清理openclaw tmux自动重启循环释放500MB | 23GB内存基线: 11GB used / 2.9GB free | 关键服务保护: opencode-web:8081(OOMScoreAdjust=-500), earlyoom只杀opencode/node/java
+- [2026-05-24] [OP] 修复: smart-redirector iframe DuckDNS回环导致8080 session切换失败 | 根因: _detect_url()检测DuckDNS可达→iframe src=DuckDNS:8080 → session switcher JS用location.hostname构建API URL=DuckDNS:8088/api/ → 不可达(路由器未转发8088) | 修复: (1) smart-redirector.py用请求Host构建iframe URL (2) ttyd custom index.html加localhost fallback
+- [2026-05-24] [OP] 通知系统: notify-send wrapper v5 → 全量TG路由 + 桌面静音 | mako已mask | hyprland exec-once=mako已注释 | tg-push自带限速6条/h防止刷屏

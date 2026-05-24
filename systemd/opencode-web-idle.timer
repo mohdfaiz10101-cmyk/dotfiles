@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode Web 活跃检测 — 每1分钟
+
+[Timer]
+OnUnitActiveSec=1min
+Persistent=yes
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenCode Web Backend (:18081)
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.npm-global/bin/opencode web --port 18081
+Restart=no
+Environment="HOME=/home/charlie"
+Environment="PATH=/home/charlie/.npm-global/bin:/run/current-system/sw/bin:/home/charlie/.local/bin"
+StandardOutput=journal
+StandardError=journal
