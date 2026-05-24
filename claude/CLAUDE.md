@@ -55,6 +55,15 @@
 - 连续失败 ≥2 次 → 标记 [!] 写原因，交 Charlie 人工决策，不交给 CC
 - 违反时 → 写入 lessons-learned.md
 
+## 思考过程问题强制清理（THINKING_CLEANUP — 死规则）
+任务完成后 MUST 回溯思考过程中遇到的阻碍并强制解决：
+- 工具调用失败 → 分析根因 + 修复 + 验证
+- 配置缺失/路径错误 → 补全配置 + 记录到 lessons-learned
+- 权限不足 → 申请/调整权限 + 记录
+- 依赖缺失 → 安装依赖 + 验证
+- 禁止以"任务已完成"为由遗留未解决的思考过程问题
+- 每完成一批任务后自检：本轮思考中是否有未解决的阻碍？有则立即处理
+
 ## NixOS 专项
 - 路径禁令：NEVER 硬编码 `/nix/store/xxx/bin/xxx`，用 `/run/current-system/sw/bin/xxx`
 - NEVER TOUCH：不得随意修改 `/etc/nixos/`，除非用户明确要求且先验证
