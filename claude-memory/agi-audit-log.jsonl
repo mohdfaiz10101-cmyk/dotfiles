@@ -517,3 +517,4 @@
 {"ts": "2026-05-25 02:45", "type": "cycle", "summary": "凌晨时段系统负载低，服务健康，存在瞬时高CPU进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:46", "type": "cycle", "summary": "系统运行平稳，CPU负载较低，进程高占用符合正常业务特征", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:47", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均无异常，python3进程在夜间处于正常波动范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 02:48", "type": "cycle", "summary": "系统资源压力正常，存在预期内的Python进程高负载", "alert_count": 0, "skipped_llm": false}
