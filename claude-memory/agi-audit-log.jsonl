@@ -690,3 +690,4 @@
 {"ts": "2026-05-25 05:57", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 05:58", "type": "cycle", "summary": "系统运行平稳，负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 06:00", "type": "cycle", "summary": "系统运行正常，CPU占用偏高但处于凌晨低峰期", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 06:01", "type": "cycle", "summary": "系统运行正常，CPU占用突增属正常系统服务", "alert_count": 0, "skipped_llm": false}
