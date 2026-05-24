@@ -494,3 +494,4 @@
 {"ts": "2026-05-25 02:13", "type": "cycle", "summary": "系统整体运行正常，凌晨时段无紧急异常，高CPU进程为系统内核及后台Python任务，总负载可控", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:15", "type": "cycle", "summary": "系统负载正常，高CPU进程符合历史经验", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:16", "type": "cycle", "summary": "系统整体运行正常，各项资源占用处于合理区间，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 02:18", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
