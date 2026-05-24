@@ -100,3 +100,4 @@
 # test 1779638866
 # test 1779639005
 # test2 1779639080
+- [ ] [OP] [2026-05-25 00:53] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
