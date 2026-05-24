@@ -634,3 +634,4 @@
 {"ts": "2026-05-25 04:57", "type": "cycle", "summary": "系统运行平稳，负载正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 04:58", "type": "cycle", "summary": "系统运行平稳，无异常服务告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 04:59", "type": "cycle", "summary": "系统运行平稳，CPU负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 05:00", "type": "cycle", "summary": "系统各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
