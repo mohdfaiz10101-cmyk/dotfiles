@@ -403,3 +403,4 @@
 {"ts": "2026-05-25 00:17", "type": "cycle", "summary": "系统负载较高但服务健康，正处于凌晨低峰期", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:18", "type": "cycle", "summary": "系统整体运行平稳，CPU与内存负载在正常范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:19", "type": "cycle", "summary": "系统负载较高但服务全健康，进程行为符合预期", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 00:20", "type": "cycle", "summary": "系统负载较高但服务正常，检测到 systemd-coredum 活跃", "alert_count": 0, "skipped_llm": false}
