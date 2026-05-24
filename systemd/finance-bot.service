@@ -1,0 +1,15 @@
+[Unit]
+Description=财务管理 Telegram Bot（论坛交互）
+After=network.target finance-agent.service
+
+[Service]
+Type=simple
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Environment=PYTHONPATH=/home/charlie/dotfiles/agi-core/finance
+Environment=HOME=/home/charlie
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/dotfiles/agi-core/finance/tg-finance-bot.py
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=default.target

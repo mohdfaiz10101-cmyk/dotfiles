@@ -1,0 +1,11 @@
+[Unit]
+Description=TG Pilot L4 自愈扫描 (每5分钟)
+
+[Timer]
+OnUnitActiveSec=5min
+OnBootSec=60s
+Persistent=true
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

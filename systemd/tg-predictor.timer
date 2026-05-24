@@ -1,0 +1,11 @@
+[Unit]
+Description=TG Pilot L5 指标采集+异常检测 (每30分钟)
+
+[Timer]
+OnUnitActiveSec=30min
+OnBootSec=120s
+Persistent=true
+AccuracySec=60s
+
+[Install]
+WantedBy=timers.target

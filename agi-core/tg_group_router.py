@@ -387,7 +387,8 @@ class TGRouter:
     # ── 消息路由 ────────────────────────────────────────────────────────
 
     async def route_message(
-        self, text: str, category: Optional[str] = None, priority: str = "normal"
+        self, text: str, category: Optional[str] = None,
+        priority: str = "normal", analyze: bool = False
     ) -> bool:
         """
         发送消息到正确的分类话题。
@@ -396,6 +397,7 @@ class TGRouter:
             text: 消息内容
             category: 分类（None=自动分类）
             priority: 优先级 "low"/"normal"/"high"/"critical"
+            analyze: 是否启用 AI 分析 + 内联按钮（L3）
         
         Returns: 是否发送成功
         """
@@ -407,7 +409,6 @@ class TGRouter:
         if category not in Category.CATEGORIES:
             category = "info"
         
-        # 如果没有 Forum 群组，回退到私聊（带分类标签）
         group_id = self._registry.get("forum_group_id")
         topic_id = self._registry.get("topics", {}).get(category)
         
@@ -421,21 +422,39 @@ class TGRouter:
         try:
             client = await self._get_client()
             
+            # L3: AI 分析 + 内联按钮
+            reply_markup = None
+            formatted_text = f"{tag}\n{text[:4000]}"
+            
+            if analyze:
+                try:
+                    from tg_pilot import analyze_notification, format_notification_with_analysis
+                    analysis = await analyze_notification(text)
+                    formatted_text, keyboard = format_notification_with_analysis(text, analysis)
+                    if keyboard:
+                        reply_markup = keyboard
+                except ImportError:
+                    pass  # 降级：不发按钮
+            
             if group_id and topic_id:
-                # Forum 话题模式
-                resp = await client.post(f"{API}/sendMessage", json={
+                payload = {
                     "chat_id": group_id,
-                    "text": f"{tag}\n{text[:4000]}",
+                    "text": formatted_text,
                     "message_thread_id": topic_id,
                     "parse_mode": "HTML",
-                })
+                }
+                if reply_markup:
+                    payload["reply_markup"] = reply_markup
+                resp = await client.post(f"{API}/sendMessage", json=payload)
             else:
-                # 降级：私聊 + 分类标签
-                resp = await client.post(f"{API}/sendMessage", json={
+                payload = {
                     "chat_id": PRIVATE_CHAT_ID,
-                    "text": f"{tag}\n{text[:4000]}",
+                    "text": formatted_text,
                     "parse_mode": "HTML",
-                })
+                }
+                if reply_markup:
+                    payload["reply_markup"] = reply_markup
+                resp = await client.post(f"{API}/sendMessage", json=payload)
             
             return resp.status_code == 200
         except Exception as e:
@@ -499,9 +518,10 @@ def get_router() -> TGRouter:
     return _router
 
 
-async def route_message(text: str, category: Optional[str] = None, priority: str = "normal") -> bool:
+async def route_message(text: str, category: Optional[str] = None,
+                       priority: str = "normal", analyze: bool = False) -> bool:
     """快捷函数：分类路由一条消息"""
-    return await get_router().route_message(text, category, priority)
+    return await get_router().route_message(text, category, priority, analyze)
 
 
 async def classify_and_send(text: str) -> dict:

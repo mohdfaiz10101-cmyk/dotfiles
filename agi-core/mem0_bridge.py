@@ -59,6 +59,17 @@ def llm_extract(title: str, content: str) -> str:
         return content[:200]
 
 
+def add_memory_raw(text: str, metadata: dict = None) -> dict:
+    """添加记忆（跳过LLM提取，直接存储原文）"""
+    mem_id = str(uuid.uuid4())[:8]
+    meta = metadata or {}
+    meta["ts"] = datetime.now().isoformat()
+    meta["id"] = mem_id
+    meta["raw"] = True
+    col.add(documents=[text[:2000]], metadatas=[meta], ids=[mem_id])
+    return {"id": mem_id, "text": text[:200]}
+
+
 def add_memory(text: str, metadata: dict = None) -> dict:
     """添加记忆"""
     mem_id = str(uuid.uuid4())[:8]
@@ -212,32 +223,40 @@ class Handler(BaseHTTPRequestHandler):
             self._json(404, {"error": "not found"})
 
     def do_POST(self):
-        p = urlparse(self.path)
-        body = self._body()
-        if p.path.startswith("/pulse"):
-            code, data = self._pulse_handler("POST", p.path, body)
-            return self._json(code, data)
-        if p.path == "/add":
-            text = body.get("text", "")
-            if not text:
-                return self._json(400, {"error": "missing text"})
-            self._json(200, {"status": "ok", "result": add_memory(text, body.get("metadata"))})
-        elif p.path == "/add_batch":
-            items = body.get("items", [])
-            if not items:
-                return self._json(400, {"error": "missing items"})
-            results = [add_memory(it.get("text", ""), it.get("metadata")) for it in items]
-            self._json(200, {"status": "ok", "count": len(results)})
-        elif p.path == "/delete":
-            mid = body.get("memory_id", "")
-            if not mid:
-                return self._json(400, {"error": "missing memory_id"})
-            self._json(200, {"status": "deleted" if delete_memory(mid) else "not found"})
-        elif p.path == "/reset":
-            reset_all()
-            self._json(200, {"status": "reset"})
-        else:
-            self._json(404, {"error": "not found"})
+        try:
+            p = urlparse(self.path)
+            body = self._body()
+            if p.path.startswith("/pulse"):
+                code, data = self._pulse_handler("POST", p.path, body)
+                return self._json(code, data)
+            if p.path == "/add":
+                text = body.get("text", "")
+                if not text:
+                    return self._json(400, {"error": "missing text"})
+                self._json(200, {"status": "ok", "result": add_memory(text, body.get("metadata"))})
+            elif p.path == "/add_raw":
+                text = body.get("text", "")
+                if not text:
+                    return self._json(400, {"error": "missing text"})
+                self._json(200, {"status": "ok", "result": add_memory_raw(text, body.get("metadata"))})
+            elif p.path == "/add_batch":
+                items = body.get("items", [])
+                if not items:
+                    return self._json(400, {"error": "missing items"})
+                results = [add_memory(it.get("text", ""), it.get("metadata")) for it in items]
+                self._json(200, {"status": "ok", "count": len(results)})
+            elif p.path == "/delete":
+                mid = body.get("memory_id", "")
+                if not mid:
+                    return self._json(400, {"error": "missing memory_id"})
+                self._json(200, {"status": "deleted" if delete_memory(mid) else "not found"})
+            elif p.path == "/reset":
+                reset_all()
+                self._json(200, {"status": "reset"})
+            else:
+                self._json(404, {"error": "not found"})
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            pass
 
     def log_message(self, *args):
         pass

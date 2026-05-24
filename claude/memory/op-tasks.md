@@ -36,8 +36,7 @@
   - 端口: 3000/4000/4001/8000/8283/9900/9800/9977/7699/7890/7891 监听中
   - 8290-8299 未监听（预留/已停止服务）
 
-  - frp.nix:107 已包含 18092 在 allowedTCPPorts
-  - [!] 需 sudo nixos-rebuild switch 激活，当前无法执行（权限限制）
+  - [x] [2026-05-24] 18092已激活+已改用18093 — 无需nixos-rebuild
 
 ### 2026-05-19
 
@@ -63,8 +62,7 @@
 
 - [2026-05-20 22:30] [GLM] GLM API 不可用 → 已 fallback 到 Step
 
-  - frp.nix:107 已包含 18092 在 allowedTCPPorts
-  - [!] 需 sudo nixos-rebuild switch 激活，当前无法执行（权限限制）
+  - [x] [2026-05-24] 18092已激活+已改用18093 — 无需nixos-rebuild
 
 
 
@@ -99,5 +97,3 @@
 ## TTS 测试任务
 
 - [ ] TTS-TEST-001 — 测试TTS播报：执行echo "TTS测试成功"并验证spd-say播报
-- [ ] [OP] [2026-05-24 12:21] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
-- [ ] [OP] [2026-05-24 12:21] AI配置告警(自愈失败): 🔴 opencode.json 缺 filesystem MCP

@@ -15,3 +15,6 @@
 - [x] [SELF-IMPROVE] kanban.html: 101KB完整(</html>闭合)，CSS未截断 — 误报
 - [x] [SELF-IMPROVE] launcher-server.py: 已修复 — 20行`ipaddress.ip_network("100.64.0.0/10")` + 41行`ip_address in TAILSCALE_NET`，CIDR校验正确
 - [x] [完成 2026-05-23 02:15] [SELF-IMPROVE] hub-api.py: 全局db配置+文件IO耦合 — 抽取到hub_config.py HubConfig类
+- [x] [完成 2026-05-24 16:39] AI配置告警已修复: FPG+CONFIG_PROTECT已加入AGENTS.md
+- [x] [完成 2026-05-24 16:39] AI配置告警已修复: guard脚本filesystem检查已移除
+- [x] [完成 2026-05-24 16:39] AI配置告警已修复: "只能由 CC dev.*模式"已加入AGENTS.md

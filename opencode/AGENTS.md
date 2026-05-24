@@ -75,7 +75,7 @@ Source: ~/CLAUDE.md | Auto-compiled
 - 看到 "连续3次重启失败" 且目标是 opencode timer job → **先验证 Result 再上报**，禁止直接标记 [!]
 
 ## CONFIG_PROTECT（配置保护边界 — 死规则）
-以下文件禁止修改，修改会破坏自身运行环境：
+以下文件禁止修改，修改会破坏自身运行环境，只能由 CC dev.*模式处理：
 - `~/.config/opencode/opencode.json`
 - `~/dotfiles/opencode/opencode.json`
 - `~/.config/opencode/agents/*.md`
