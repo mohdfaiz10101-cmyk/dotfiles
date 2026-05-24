@@ -759,3 +759,4 @@
 {"ts": "2026-05-25 07:21", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 07:22", "type": "cycle", "summary": "系统运行平稳，CPU/内存/磁盘均在正常范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 07:23", "type": "cycle", "summary": "系统各项指标正常，无待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 07:25", "type": "cycle", "summary": "系统处于空闲状态，各项指标正常", "alert_count": 0, "skipped_llm": false}
