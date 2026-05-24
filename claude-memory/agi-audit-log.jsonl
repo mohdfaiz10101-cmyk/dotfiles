@@ -498,3 +498,4 @@
 {"ts": "2026-05-25 02:19", "type": "cycle", "summary": "系统资源占用正常，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:20", "type": "cycle", "summary": "系统处于低负载状态，Docker及Python进程虽有高CPU占用但属正常业务或系统活动，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 02:22", "type": "cycle", "summary": "系统资源正常，存在已知高CPU进程但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 02:23", "type": "cycle", "summary": "系统凌晨运行正常，CPU存在瞬时峰值但整体负载低", "alert_count": 0, "skipped_llm": false}
