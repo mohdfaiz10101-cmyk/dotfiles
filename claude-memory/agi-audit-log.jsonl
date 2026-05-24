@@ -409,3 +409,4 @@
 {"ts": "2026-05-25 00:24", "type": "cycle", "summary": "系统负载较高但服务健康，属于夜间计算任务或进程波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:25", "type": "cycle", "summary": "CPU高负载但服务正常，python3进程活跃", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 00:26", "type": "cycle", "summary": "系统CPU负载较高（70.5%）但服务健康，无严重异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 00:28", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知代理进程，无新告警。", "alert_count": 0, "skipped_llm": false}
