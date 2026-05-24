@@ -66,3 +66,19 @@
 
 ---
 Source: ~/CLAUDE.md | Auto-compiled
+
+## FALSE_POSITIVE_GUARD（假阳性识别 — 死规则）
+
+以下情况 **不是失败**，禁止误报为故障：
+- `opencode-job-*` systemd service 显示 failed/重启 → 先检查 `systemctl --user show xxx --property=Result`，`Result=success` = **正常结束**（oneshot timer job），无需处理
+- `ExecMainStatus=0` = 成功退出，不视为异常
+- 看到 "连续3次重启失败" 且目标是 opencode timer job → **先验证 Result 再上报**，禁止直接标记 [!]
+
+## CONFIG_PROTECT（配置保护边界 — 死规则）
+以下文件禁止修改，修改会破坏自身运行环境：
+- `~/.config/opencode/opencode.json`
+- `~/dotfiles/opencode/opencode.json`
+- `~/.config/opencode/agents/*.md`
+- `~/dotfiles/opencode/agents/*.md`
+- `~/dotfiles/opencode/oh-my-openagent.jsonc`
+违反 → 标记 [!] 交 CC 处理，不得自行回滚
