@@ -670,3 +670,4 @@
 {"ts": "2026-05-25 05:36", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 05:37", "type": "cycle", "summary": "系统运行平稳，负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 05:38", "type": "cycle", "summary": "系统运行正常，python3.13 属于系统进程无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 05:39", "type": "cycle", "summary": "系统运行正常，单核CPU短暂满载属正常波动", "alert_count": 0, "skipped_llm": false}
