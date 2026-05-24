@@ -177,3 +177,5 @@
 # final-cis-test2 1779639540
 # direct-test 1779639564
 # minimal-test 1779639594
+
+- [2026-05-25] [OP] 记忆系统故障根因: opencode-session-recorder.py 脚本存在但无systemd服务, tmux kill后会话内容全部丢失。mem0-file-sync/mem0-watchdog timer未启用。daily/目录存在但无自动生成机制。修复: 创建recorder service(daemon模式)+mem0 timers启用+TimeoutStartSec→300+daily-log-generator定时器。
