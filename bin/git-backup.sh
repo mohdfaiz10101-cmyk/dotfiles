@@ -92,8 +92,12 @@ backup_repo ~/Desktop                 "桌面文件"
 backup_repo ~/cline-workspace         "Cline工作区"
 backup_repo ~/.openclaw/workspace     "OpenClaw工作区"
 
+# 项目（已有 GitHub remote）
+backup_repo ~/launcher               "launcher(服务管理)"
+backup_repo ~/hub                    "hub(API服务)"
+
 # 已确认的遗留非git目录（不报SKIP）
-# ~/agi ~/hub ~/launcher ~/crewai-project 非git — 仅数据目录
+# ~/agi ~/crewai-project 非git — 仅数据目录
 
 log "=== 完成: OK=$OK SKIP=$SKIP LOCAL=$LOCAL FAIL=$FAIL ==="
 
