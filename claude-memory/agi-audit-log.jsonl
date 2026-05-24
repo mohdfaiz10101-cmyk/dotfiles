@@ -567,3 +567,4 @@
 {"ts": "2026-05-25 03:41", "type": "cycle", "summary": "系统处于凌晨低负载期，CPU/内存/磁盘均正常，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:42", "type": "cycle", "summary": "系统运行正常，凌晨时段存在CPU密集型Python进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 03:43", "type": "cycle", "summary": "系统运行正常，存在CPU进程占用但处于夜间低峰期", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 03:44", "type": "cycle", "summary": "系统运行正常，凌晨时段存在Python进程CPU占用", "alert_count": 0, "skipped_llm": false}
