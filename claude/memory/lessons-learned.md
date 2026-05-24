@@ -48,150 +48,93 @@
 ## 手机/ADB
 - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
 - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
-- [2026-05-24] ADB 连接稳定性：通过 Windows 跳板机 SSH 时，`adb connect` 和后续 `adb` 命令必须在**同一 SSH 会话**执行，否则 ADB server 重启导致连接丢失。已创建 `adb-windows.sh` 包装脚本自动保持连接
-- [2026-05-24] 手机 WiFi IP 动态变化：从 `192.168.123.229` 变为 `192.168.123.241`（DHCP 租约更新）。已更新 `adb-known-devices`、`adb-device-monitor.py`、`adb-auto-connect.service`。诊断方法：`ip neigh show <old-ip>` 显示 FAILED → `arp -a` 在跳板机找新 IP → `nc -zv <new-ip> 5555` 验证端口
-
-- [2026-05-24] [OP] 手机无网络修复 | 根因：ip rule策略路由表97-99为空，unmarked流量→空表→unreachable(32000)丢弃 | 修复：(1) ip rule add from all lookup main pref 5000 绕过空表 (2) ip route add default via 192.168.123.1 | 为什么发生：Karing/Tailscale VPN策略残留，netlink ip rule del被SELinux/内核阻止
-- [auto] 发现: router.port_forward.19891 = TCP 19891→192.168.123.209:19891 (Sisy-19891)
 
 - [auto] 发现: router.port_forward.17699 = TCP 17699→192.168.123.209:17699 (nixos-ai)
-
-- [auto] 发现: router.port_forward.18300 = TCP 18300→192.168.123.209:18300 (Sisy-18300)
-
-- [auto] 发现: router.port_forward.24801 = TCP 24801→192.168.123.209:24801 (ydotool)
-
-- [auto] 发现: router.port_forward.18700 = TCP 18700→192.168.123.209:18700 (openagents-net)
-
-- [auto] 发现: router.port_forward.19892 = TCP 19892→192.168.123.209:19892 (Sisy-19892)
-
-- [auto] 发现: router.port_forward.19893 = TCP 19893→192.168.123.209:19893 (Sisy-19893)
-
-- [auto] 发现: router.port_forward.7000 = TCP 7000→192.168.123.209:7000 (frps)
-
-- [auto] 发现: router.port_forward.8888 = TCP 8888→192.168.123.209:18789 (OpenClaw-GW)
-
-- [auto] 发现: router.port_forward.7681 = TCP 7681→192.168.123.209:7681 (ttyd)
-
-- [auto] 发现: router.port_forward.8283 = TCP 8283→192.168.123.209:8284 (Letta-MCP)
-
-- [auto] 发现: router.port_forward.18090 = TCP 18090→192.168.123.209:18090 (Sisy-18090)
 
 - [auto] 发现: router.port_forward.19890 = TCP 19890→192.168.123.209:19890 (Sisy-19890)
 
 - [auto] 发现: router.port_forward.3456 = TCP 3456→192.168.123.209:9800 (Hub-API)
 
-- [auto] 发现: router.port_forward.18091 = TCP 18091→192.168.123.209:18091 (Sisy-18091)
+- [auto] 发现: router.port_forward.7681 = TCP 7681→192.168.123.209:7681 (ttyd)
 
-- [auto] 发现: router.port_forward.8080 = TCP 8080→192.168.123.209:8080 (OpenCode-Sisy)
+- [auto] 发现: router.port_forward.19892 = TCP 19892→192.168.123.209:19892 (Sisy-19892)
 
-- [auto] 发现: router.port_forward.17698 = TCP 17698→192.168.123.209:17698 (win-ai)
+- [auto] 发现: router.port_forward.8888 = TCP 8888→192.168.123.209:18789 (OpenClaw-GW)
+
+- [auto] 发现: router.port_forward.7000 = TCP 7000→192.168.123.209:7000 (frps)
+
+- [auto] 发现: router.port_forward.18700 = TCP 18700→192.168.123.209:18700 (openagents-net)
+
+- [auto] 发现: router.port_forward.19891 = TCP 19891→192.168.123.209:19891 (Sisy-19891)
 
 - [auto] 发现: router.port_forward.2222 = TCP 2222→192.168.123.209:22 (NixOS-SSH)
 
+- [auto] 发现: router.port_forward.8080 = TCP 8080→192.168.123.209:8080 (OpenCode-Sisy)
+
+- [auto] 发现: router.port_forward.19893 = TCP 19893→192.168.123.209:19893 (Sisy-19893)
+
+- [auto] 发现: router.port_forward.18300 = TCP 18300→192.168.123.209:18300 (Sisy-18300)
+
+- [auto] 发现: router.port_forward.8283 = TCP 8283→192.168.123.209:8284 (Letta-MCP)
+
 - [auto] 发现: router.port_forward.2223 = TCP 2223→192.168.123.209:2223 (nixos-ssh)
 
-- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: router.port_forward.18090 = TCP 18090→192.168.123.209:18090 (Sisy-18090)
 
-- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: router.port_forward.24801 = TCP 24801→192.168.123.209:24801 (ydotool)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: router.port_forward.17698 = TCP 17698→192.168.123.209:17698 (win-ai)
 
-- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 5 hours
+- [auto] 发现: router.port_forward.18091 = TCP 18091→192.168.123.209:18091 (Sisy-18091)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 2 hours
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 5 hours
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 5 hours (healthy)
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 5 hours (healthy)
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 10 hours
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 10 hours (healthy)
 
-### 会话摘要 [2026-05-24] [Sonnet/自动]
-- 对话轮次: 95 | 被纠正: 1次
-  - 用户纠正: 8080端口 我加的自定义 session管理按钮 他sessions显示对应的workspace地址不对 跟我那个窗口的sessions是不同步的。。而且他不
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 10 hours (healthy)
 
-### 会话摘要 [2026-05-24] [Sonnet/自动]
-- 对话轮次: 117 | 被纠正: 2次
-  - 用户纠正: 8080端口 我加的自定义 session管理按钮 他sessions显示对应的workspace地址不对 跟我那个窗口的sessions是不同步的。。而且他不
-  - 用户纠正: 现在显示的session 对应的工作区不对 没有同步。同时他点击session 按钮他没办法跳转对应的session 按主页按钮没跳转首页 总的来说跟之前没改前
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 10 hours
 
-- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 6 hours
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 10 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 3 hours
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 6 hours
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 6 hours (healthy)
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 11 hours
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 6 hours (healthy)
-- [2026-05-24] [OP] 修复: 8088/8080 session切换不生效 | 根因: switch-client只改已有客户端视图,新attach(ttyd iframe刷新)看到window 0而非目标窗口 | 修复: _switch_clients_to增加select-window更新session默认窗口; 8080页面切换后加location.reload()刷新
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 7 hours (healthy)
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 7 hours (healthy)
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 7 hours (healthy)
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 11 hours
 
-- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 7 hours
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 7 hours (healthy)
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 11 hours (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 7 hours (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 7 hours (healthy)
-
-- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 7 hours
-
-- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 7 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 7 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 7 hours (healthy)
-- [2026-05-24] [OP] 修复: LiteLLM健康检查误报 | 根因: macg_services和service_health.py请求 /health(需认证→401超时)而非 /health/readiness(免认证→200) | 修复: 两处URL均改为 /health/readiness，移除LITELLM_HEADERS
-- [2026-05-24] [OP] 修复: macg MCP Session not found | 根因: MCP SDK 1.27.1 streamable-http 要求 Accept: text/event-stream header，OpenCode 客户端不发送导致 406 | 修复: macg_mcp.py 添加 mcp.settings.json_response=True 绕过 SSE header 检查 | 注意: 修复后需重启 OpenCode 会话让客户端重新 initialize
-- [2026-05-24] [OP] session切换根因修复: opencode实际window命名oc_ses_{session_id[:12]}，非oc_{session_id[:16]} | 命名不匹配导致每次切换创建空窗口 | 修复: _find_oc_window搜索匹配 + openclaw-tmux-wrap读取/tmp/ttyd-target-window | 去iframe重载: switch-client即时切换16ms | 8088/8080页面均去掉location.reload
-
-- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 25 minutes
-
-- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 59 minutes (healthy)
-
-- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 8 hours
-
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 8 hours
-
-- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 8 hours (healthy)
-- [2026-05-24] [OP] 成功: adb-disable-tailscale | 命令: pm disable + setprop persist.tailscale.enabled=0 | 结果: 成功 | 场景: OnePlus Ace 5 Pro 禁用 Tailscale app
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 11 hours (healthy)
