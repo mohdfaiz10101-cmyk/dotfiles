@@ -1322,3 +1322,4 @@
 {"ts": "2026-05-25 19:52", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无待处理异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 19:53", "type": "cycle", "summary": "系统运行正常，无异常或待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 19:54", "type": "cycle", "summary": "系统运行平稳，CPU存在瞬时峰值但服务整体健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 19:55", "type": "cycle", "summary": "系统运行正常，CPU存在瞬时波动", "alert_count": 0, "skipped_llm": false}
