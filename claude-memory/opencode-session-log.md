@@ -48286,3 +48286,6 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 | OpenCode Processor | bash 脚本 | 运行中 |
 
 **结论：完全能做，而且这是最成熟的方案。** Telegram Bot API 的 Inline Keyboard + Conve
+
+## 2026-05-25 21:20
+- [2026-05-25 21:20:13] **用户**: 我需要把19890这个？就是然后电脑的八。电脑的8080然后我那个open agent的不要了。或者那个东西，另外给他找一个端口。我的telegram他现在哦，他能不能到时候用一个窗口管理还是用多个窗口，你给最好的方案，然后直接做了
