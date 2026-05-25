@@ -101,3 +101,7 @@
 # test 1779639005
 # test2 1779639080
 - [ ] [OP] [2026-05-25 00:53] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
+
+### [SELF-IMPROVE 2026-05-25] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] launcher-server.py: `translate_path` 方法被意外截断且缺少目录遍历防御的完整实现，需补全安全校验逻辑。
+- [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3.connect` 的数据库查询逻辑重构为使用异步 ORM（如 SQLAlchemy）或放入后台线程池执行，以避免阻塞 FastAPI 的异步事件循环。
