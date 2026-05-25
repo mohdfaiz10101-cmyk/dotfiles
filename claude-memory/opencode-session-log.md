@@ -48224,3 +48224,19 @@ waybar 现在正常运行，config 用 `config.override`
 
 ## 2026-05-25 21:02
 - [2026-05-25 21:02:24] **用户**: 我需要在那个隐藏按钮旁边加一个那个增加一个新筛选的按钮，就。他就是在19890这里
+
+## 2026-05-25 21:03
+- [2026-05-25 21:02:55] **AI(sisyphus)**: [ok] 123云盘认证 -- open-api token 有效 (code=0)，可正常访问
+
+百度网盘需重新授权，请浏览器打开以下链接，授权后把**授权码**(code)发给我：
+
+```
+https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5MK00QMowVsARS0vq6uUl6pHI40vp&redirect_uri=oob&scope=basic,netdisk
+```
+
+拿到授权码后我会用它换取新的 refresh_token，保存到 config.json 里。
+- [2026-05-25 21:03:04] **用户**: mifki.com/df/setup on your desktop for server installation instructions.
+
+Then read important notes regarding connection and differences with the original game.
+
+If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞的那个这个iOS服务器的东西，你把我的这个厄game文件夹下面就是那个我的矮人要塞这个游戏根据这个方法来搭。拉起来，我这个iOS要连过去
