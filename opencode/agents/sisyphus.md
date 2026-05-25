@@ -12,7 +12,7 @@ autoExecute: true
 
 # Sisyphus — OP 运维执行 Agent
 
-<!-- memory-gate-inject: 15:00 -->
+<!-- memory-gate-inject: 17:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -21,14 +21,26 @@ autoExecute: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-25] [OP] 失败学习: config-immutable-snapshot | 错误: inotifywait+while-read管道中set -eo pipefail导致while循环静默退出 | 正确: 移除set -e，用显式错误处理替代 | 原因: pipefa
 **教训**: - [2026-05-25] [OP] 添加 git 桌面通知: memory-auto-commit → git commit 后弹出 "记忆备份: {文件名}"; git-backup.sh → 完成后弹出总结(失败时带 ⚠️ 警告)
 **教训**: - [2026-05-25] [OP] 修复"外网不通"频繁告警根因: (1) opencode-web hang导致8080/8081端口无响应 → 重启解决 (2) waybar-health.sh+waybar-score.sh的ck_ocpub检查走代理而非--noproxy'*'，代理慢时
 **教训**: - [2026-05-25] [OP] 8080恢复ttyd: 停用opencode-8080-proxy(masked) → systemd ttyd-8080.service(-I ttyd-custom/index.html -W openclaw-tmux-wrap) | 自定义HTML: 
 **教训**: - [2026-05-25] [OP] 全量/tmp→~/.local/state/迁移 | 修改了72个文件(30个Python+42个Shell)+6个systemd服务 | 状态文件从此永久化，不再因重启丢失 | AI脚本MUST使用~/.local/state/而非/tmp/存放持久化状态/
+**教训**: - [2026-05-25] [OP] 失败学习: litellm-error-guard误报 | 错误: grep匹配"Connection error"字符串导致Z.AI上游500也被计为连接错误 | 修复: 改用"APIConnectionError|ECONNRESET"只匹配TCP层真实连
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

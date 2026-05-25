@@ -539,3 +539,68 @@
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 26 minutes (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 27 hours (healthy)
+
+- [2026-05-25] [OP] 失败学习: litellm-error-guard误报 | 错误: grep匹配"Connection error"字符串导致Z.AI上游500也被计为连接错误 | 修复: 改用"APIConnectionError|ECONNRESET"只匹配TCP层真实连接错误 | 原因: Z.AI返回InternalServerError: OpenAIException - Connection error时，"Connection error"是错误消息内嵌字符，并非真实网络断开
+- [auto] 发现: router.port_forward.42111 = TCP 42111→192.168.123.209:42111 (Sisy-42111)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up Less than a second (health: starting)
+
+- [auto] 发现: docker.container.khoj-server-1 = 127.0.0.1:42110->42110/tcp | 状态: Up 2 hours
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 28 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 28 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 28 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 28 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 28 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 seconds (health: starting)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 8 minutes (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 28 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 28 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up About a minute (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 2 seconds (health: starting)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 22 seconds (health: starting)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 3 seconds (health: starting)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 24 seconds (health: starting)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 10 minutes (healthy)
+
+- [auto] 发现: docker.container.d4c5b1c9a6a0_letta-chromadb =  | 状态: Up About a minute (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 20 seconds (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 24 minutes (unhealthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 29 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 18 seconds (health: starting)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 9 seconds (health: starting)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 29 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 29 minutes (healthy)

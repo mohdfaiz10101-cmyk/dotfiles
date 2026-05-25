@@ -50,13 +50,12 @@ def macg_sense() -> str:
 
 @mcp.tool()
 def macg_services() -> str:
-    """检查 macg 生态服务状态：LiteLLM/Letta/AGI-GW/mihomo/Paperclip。"""
+    """检查 macg 生态服务状态：LiteLLM/Letta/AGI-GW/mihomo。"""
     import urllib.request
     checks = {
         "LiteLLM": ("http://localhost:4000/health/readiness", {}),
         "Letta": ("http://localhost:8283/v1/agents/", LETTA_HEADERS),
         "AGI-GW": ("http://localhost:9900/health", {}),
-        "Paperclip": ("http://localhost:3100/health", {}),
         "mihomo": ("http://localhost:9090/", {}),
     }
     results = {}

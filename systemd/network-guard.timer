@@ -1,0 +1,10 @@
+[Unit]
+Description=网络守护定时检查（每 2 分钟）
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target

@@ -5,3 +5,4 @@ Description=Router Port Forward Snapshot + Auto-Discovery
 Type=oneshot
 ExecStart=/home/charlie/.local/bin/router-config-snapshot.sh
 ExecStartPost=/home/charlie/.local/bin/auto-discovery.py
+SuccessExitStatus=0 28
