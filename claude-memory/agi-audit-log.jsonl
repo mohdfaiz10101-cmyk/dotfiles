@@ -917,3 +917,4 @@
 {"ts": "2026-05-25 10:38", "type": "cycle", "summary": "当前系统运行状态正常，无异常告警，CPU占用由正常运行的opencode工具及临时ps进程贡献，磁盘、内存使用率均处于安全区间", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:39", "type": "cycle", "summary": "系统运行平稳，服务健康，CPU和内存使用率正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:41", "type": "cycle", "summary": "系统运行正常，存在瞬时进程监控数据波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 10:42", "type": "cycle", "summary": "系统状态正常，CPU高占用为瞬时进程，无告警", "alert_count": 0, "skipped_llm": false}
