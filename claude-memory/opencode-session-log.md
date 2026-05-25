@@ -48535,3 +48535,16 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 02:09
 - [2026-05-26 02:09:36] **用户**: 是说请求失败。还是不行
+
+## 2026-05-26 02:10
+- [2026-05-26 02:10:19] **AI(sisyphus)**: [ok]  定位 coding plan -- `api.stepfun.com/step_plan/v1`，来自 5/16 会话
+[ok]  更新 stepfun_api.py -- 图像走 step_plan/v1（200），TTS/ASR 走 v1
+[ok]  端到端验证 -- 生成橘猫成功，返回有效图片 URL
+[ok]  Bot 重启 -- 运行中，/image 命令可用
+[fail] TTS/ASR -- v1 仍 402 配额超限，不在 Coding Plan 范围
+
+**最终状态**：
+
+| 功能 | 状态 | 端点 |
+|------|------|------|
+| 图像生
