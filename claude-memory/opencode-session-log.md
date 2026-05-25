@@ -48144,3 +48144,6 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 [!] 无人改 waybar — 19:27 被 systemd 停止后未自动重启，根因是 `PartOf=graphical-session.target` 可能在 Hyprland 重载时触发 stop，但 `Restart=always` 未生效（可能因当时 start-limit 机制）
 
 waybar 现在正常运行，config 用 `config.override`
+
+## 2026-05-25 20:32
+- [2026-05-25 20:31:53] **用户**: 没看到waybar
