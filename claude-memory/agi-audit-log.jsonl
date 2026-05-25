@@ -1366,3 +1366,4 @@
 {"ts": "2026-05-25 20:43", "type": "cycle", "summary": "系统运行正常，CPU存在已知瞬时高占用", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 20:44", "type": "cycle", "summary": "系统运行正常，CPU存在瞬时高载进程但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 20:46", "type": "cycle", "summary": "系统运行平稳，CPU与内存负载正常，无活跃服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 20:47", "type": "cycle", "summary": "系统运行正常，CPU存在短暂峰值但未触发告警", "alert_count": 0, "skipped_llm": false}
