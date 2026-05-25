@@ -48326,3 +48326,11 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 
 ## 2026-05-25 21:43
 - [2026-05-25 21:43:15] **用户**: o继续
+
+## 2026-05-25 21:45
+- [2026-05-25 21:45:01] **用户**: 他这个19890这个端口，它好像任务会停止，它不是Serve模式吗
+- [2026-05-25 21:45:06] **AI(sisyphus)**: [ok] session按钮跳转 -- tmux new-window 加 -d 修复阻塞
+[ok] 新增按钮 -- smart-redirector `/api/oc-new` + HTML `+ 新增` 按钮
+[ok] 端到端验证 -- API创建+切换正常，已清理测试窗口
+
+[完成] ttyd session管理增强 — 按钮跳转修复 + 一键新增session
