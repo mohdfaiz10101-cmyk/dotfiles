@@ -956,3 +956,4 @@
 {"ts": "2026-05-25 11:34", "type": "cycle", "summary": "系统运行正常，CPU使用率42.9%，内存使用率约81%，磁盘使用率34%，无服务异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:35", "type": "cycle", "summary": "系统运行正常，opencode 高负载属于历史已知正常波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:36", "type": "cycle", "summary": "系统运行正常，服务全健康，CPU与内存负载在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:38", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
