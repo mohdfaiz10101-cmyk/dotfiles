@@ -920,3 +920,4 @@
 {"ts": "2026-05-25 10:42", "type": "cycle", "summary": "系统状态正常，CPU高占用为瞬时进程，无告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:43", "type": "cycle", "summary": "系统运行正常，CPU利用率适中，无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:44", "type": "cycle", "summary": "系统运行正常，opencode进程占用高属预期行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 10:46", "type": "cycle", "summary": "系统负载较高但服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
