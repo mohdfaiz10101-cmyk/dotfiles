@@ -961,3 +961,4 @@
 {"ts": "2026-05-25 11:43", "type": "cycle", "summary": "系统整体运行正常，无需要干预的异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:44", "type": "cycle", "summary": "系统负载正常，opencode 进程高占用属于预期行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:45", "type": "cycle", "summary": "系统运行正常，opencode 存在短期计算负载", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:46", "type": "cycle", "summary": "系统运行正常，opencode进程存在瞬时高CPU占用", "alert_count": 0, "skipped_llm": false}
