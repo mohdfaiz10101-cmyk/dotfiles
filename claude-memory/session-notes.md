@@ -1,8 +1,9 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-25 09:30
+> 来源: changelog.jsonl | 重建时间: 2026-05-25 10:00
 
 ## 2026-05-25
 
+- [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
@@ -44,8 +45,14 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
@@ -83,11 +90,14 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.config**: .config/systemd/user/agi-telegram-bot.service MODIFY
 - [file-change] **.config**: .config/systemd/user/agi-telegram-bot.service MODIFY
 - [file-change] **.config**: .config/systemd/user/git-backup.timer MODIFY
+- [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
+- [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
@@ -133,6 +143,8 @@
 - [file-change] **.openclaw**: .openclaw/workspace/workspaces/session-migration-log.md MODIFY
 - [file-change] **.openclaw**: .openclaw/workspace/workspaces/session-migration-log.md MODIFY
 - [file-change] **.openclaw**: .openclaw/workspace/workspaces/wechat-crm/sessions/New_session_-_2026-05-05T14_00_02_392Z.md MODIFY
+- [file-create] **agi**: agi/data/copywriting-2026-05-25.json CREATE
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
@@ -147,6 +159,15 @@
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/pending-tasks.md MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
@@ -163,6 +184,7 @@
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/daily-log-generator.timer CREATE
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/mem0-file-sync.timer CREATE
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/mem0-watchdog.timer CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
