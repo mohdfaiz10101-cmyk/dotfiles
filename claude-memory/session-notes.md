@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-25 22:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-25 22:30
 
 ## 2026-05-25
 
@@ -289,11 +289,19 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
@@ -739,6 +747,7 @@
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-aider.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-aider.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-aider.service MODIFY
@@ -870,6 +879,7 @@
 - [file-change] **.openclaw**: .openclaw/workspace/workspaces/wechat-crm/sessions/New_session_-_2026-05-05T14_00_02_392Z.md MODIFY
 - [file-create] **agi**: agi/data/copywriting-2026-05-25.json CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md CREATE
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
@@ -1620,6 +1630,7 @@
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json CREATE
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-25T02-09-03-234Z-2390599-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-25T02-09-10-983Z-2394583-gateway.startup_failed.json MOVED_TO
@@ -1660,6 +1671,12 @@
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T09-49-24-054Z.yml CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T09-49-34-777Z.yml CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T13-07-00-476Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-08-56-797Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-19-47-852Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-20-45-020Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-24-10-136Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-25-03-503Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-25-53-501Z.yml CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/ttyd-all-filter.md CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/ttyd-done-filter.md CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/ttyd-filtered-snapshot.md CREATE
@@ -2301,6 +2318,7 @@
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/systemd/user/caddy-opencode-proxy.service DELETE
+- [file-delete] **.config**: .config/systemd/user/default.target.wants/agi-telegram-bot.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/cloudflared-ttyd.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/opencode-8080-proxy.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/sentinel-watch.service DELETE
