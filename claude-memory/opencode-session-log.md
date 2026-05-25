@@ -48099,3 +48099,10 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 ## 2026-05-25 20:01
 - [2026-05-25 20:01:36] **用户**: 这个手机的连通性 也要加入系统通知 和telegram通知 同时 如果手机不可达 win需要有端口绑定在duckdns上可以修复 或者是自动启动修复
+
+## 2026-05-25 20:07
+- [2026-05-25 20:07:03] **AI(sisyphus)**: [ok] phone-8080-monitor.sh -- ADB+Tailscale双路检测手机→DuckDNS:8080，失败3次触发修复
+[ok] phone-8080-monitor.timer -- 每5分钟巡检，enabled+active
+[ok] win-8080-relay.sh -- Windows TCP中继(8081→NixOS:8080)，自动修复时启动备用入口
+[ok] 修复链路 -- phone-network-fix → 重启Tailscale → DuckDNS强制更新 → Windows中继
+[ok] 通知双通道 -- notify-send + tg-pu
