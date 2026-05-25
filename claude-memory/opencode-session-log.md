@@ -48150,3 +48150,6 @@ waybar 现在正常运行，config 用 `config.override`
 
 ## 2026-05-25 20:34
 - [2026-05-25 20:34:17] **用户**: 19890可以 请加入记忆和配置永久化
+
+## 2026-05-25 20:35
+- [2026-05-25 20:34:57] **AI(sisyphus)**: waybar 被 `PartOf=graphical-session.target` 循环停止 — Hyprland `exec-once` 会 `stop/start hyprland-session.target`，触发级联 stop waybar，且 `Restart=always` 对显式 stop 无效。
