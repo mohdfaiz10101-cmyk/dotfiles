@@ -48334,3 +48334,6 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 [ok] 端到端验证 -- API创建+切换正常，已清理测试窗口
 
 [完成] ttyd session管理增强 — 按钮跳转修复 + 一键新增session
+
+## 2026-05-25 22:05
+- [2026-05-25 22:04:58] **用户**: 19890 tty没跟这个窗口同步啊
