@@ -48454,3 +48454,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 [ok] 重建+重启 -- agi-frontend 正常
 [ok] 验证代理 -- GET/POST 均返回正确数据
 [完成] 归档按钮修复 -- 无论本地还是外网(19890 FRP)访问，API 请求均由 Next.js 服务端代理到 9800
+
+## 2026-05-25 22:55
+- [2026-05-25 22:54:41] **用户**: 我有订阅啊，直接搭建。要对接open code和Telegram
