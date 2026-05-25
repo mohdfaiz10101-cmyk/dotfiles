@@ -47359,3 +47359,25 @@ conn.close()
 
 ## 2026-05-25 09:58
 - [2026-05-25 09:57:54] **用户**: Khoj 群组创建了吗 或者怎么访问和使用
+
+## 2026-05-25 09:58
+- [2026-05-25 09:58:07] **AI(sisyphus)**: [ok] 找到插件：`@gitdamnit/opencode-git-that-shit` v0.2.2，CLI 命令是 `gts`
+
+问题：**还没初始化**。先跑 `gts init`。
+
+```bash
+# 初始化影子仓库
+gts init
+
+# 然后就可以用了
+gts status          # 状态
+gts snapshot        # 手动快照
+gts list            # 列表
+gts diff <hash>     # 查看差异
+gts restore <hash>  # 恢复（默认dry-run）
+```
+
+也可以在 OpenCode 里直接用 `
+- [2026-05-25 09:58:21] **用户**: TypeError: Failed to fetch dynamically imported module: http://charlie1990.duckdns.org:8080/assets/session-gtDVIna3.js
+
+Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
