@@ -48118,3 +48118,6 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 **结果**: 
 - DuckDNS:8080 本身链路
+
+## 2026-05-25 20:21
+- [2026-05-25 20:21:08] **用户**: 什么意思 不可能啊 以前都可以访问的
