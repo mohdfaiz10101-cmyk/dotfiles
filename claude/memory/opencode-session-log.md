@@ -47837,3 +47837,50 @@ HTTP ERROR 502
 
 ## 2026-05-25 16:57
 - [2026-05-25 16:57:30] **用户**: 我的系统需要持续防护和扫描和杀毒木马 有什么方案吗
+
+## 2026-05-25 17:00
+- [2026-05-25 16:59:16] **AI(sisyphus)**: Windows 也连不上手机 WiFi ADB — 手机端 adbd 没在 5555 端口监听。
+
+## 2026-05-25 17:00
+- [2026-05-25 16:59:20] **用户**: 没有 SSH FRP 隧道到手机。手机端 frpc 只配了 ADB 隧道 这个以前不是说 让手机多重方案连接的吗 怎么没生效
+- [2026-05-25 16:59:25] **AI(sisyphus)**: 现有系统安全基线：
+
+| 项目 | 状态 |
+|------|------|
+| fail2ban | active |
+| nftables 防火墙 | inactive |
+| ClamAV/杀毒 | 未安装 |
+| rkhunter/rootkit检测 | 未安装 |
+| AIDE/文件完整性 | 未安装 |
+| 监听端口 | 95个（无防火墙暴露面大） |
+
+---
+
+## Linux 多层防护方案
+
+### 第一层：防火墙（立即生效）
+```nix
+# /etc/nixos/ 中添加（需用户自行操作）
+networking.nftables.enable = true;
+networ
+
+## 2026-05-25 17:01
+- [2026-05-25 17:00:55] **AI(sisyphus)**: [ok] waybar-health.sh name_map 精简 → 代理/组网/穿透/手机/记忆/剪贴/服务/AI/控制台/外网
+[ok] waybar-health.sh 摘要文本精简 → `8/11 ❌2` 去掉"系统""挂了"
+[ok] waybar-score.sh label_map 精简 → 同上
+[ok] waybar-pulse.sh tooltip → 单行 `记忆 X条 绿Y 黄Z 红R`
+[ok] waybar 重启 → 生效
+[完成] 呼吸灯文字精简 — 3脚本4处改动，全部2-4字
+- [2026-05-25 17:00:59] **AI(sisyphus)**: [ok] 根因：`caddy-opencode-proxy.service` 自动重启抢占 8080
+
+[ok] 修复：`systemctl stop + disable caddy-opencode-proxy`
+
+[ok] `ttyd-8080` 恢复运行 — 8080 侧边栏正常
+
+[ok] opencode-8080-proxy 之前已 masked
+
+[ok] caddy-opencode-proxy 已 disabled
+
+[ok] 记忆已写入 lessons-learned + memory-engine
+
+现在 8080 不会被抢了。

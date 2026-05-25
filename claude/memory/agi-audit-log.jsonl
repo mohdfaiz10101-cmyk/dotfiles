@@ -1176,3 +1176,5 @@
 {"ts": "2026-05-25 16:56", "type": "cycle", "summary": "系统运行正常，frpc 进程短暂 CPU 突升", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 16:57", "type": "cycle", "summary": "系统运行正常，frpc/frps 存在高 CPU 占用但属已知行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 16:59", "type": "cycle", "summary": "系统运行正常，frpc/frps存在合理CPU占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 17:00", "type": "cycle", "summary": "系统运行正常，CPU和内存使用率均在合理范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 17:01", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}

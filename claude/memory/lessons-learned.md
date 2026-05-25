@@ -604,3 +604,4 @@
 - [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 29 hours
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 29 minutes (healthy)
+- [2026-05-25] [OP] 8080端口冲突根因: caddy-opencode-proxy.service自动重启抢占8080(Caddyfile→8081) | 修复: systemctl stop+disable caddy-opencode-proxy | 持久化: ttyd-8080.service已enable, caddy-opencode-proxy已disabled | 注意: 未来如有自动恢复需再次禁用
