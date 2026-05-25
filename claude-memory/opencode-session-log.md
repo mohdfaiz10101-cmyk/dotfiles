@@ -48137,3 +48137,10 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 - FRP 已配置 `19890→8080`，路由器已端口转发，外部 webfetch 验证通过
 - 手机用 **http://charlie1990.duckdns.org:19890/** 替代 8080，永久不变
 - [2026-05-25 20:23:37] **AI(sisyphus)**: [ok] waybar.service 状态: inactive (dead) — 19:27:13 被 stop，未自动重启
+
+## 2026-05-25 20:24
+- [2026-05-25 20:24:02] **AI(sisyphus)**: [ok] waybar 已恢复 — active (running) PID 717117
+[ok] 修复 service 文件 — 移除 [Service] 段中错误的 `StartLimitIntervalSec`
+[!] 无人改 waybar — 19:27 被 systemd 停止后未自动重启，根因是 `PartOf=graphical-session.target` 可能在 Hyprland 重载时触发 stop，但 `Restart=always` 未生效（可能因当时 start-limit 机制）
+
+waybar 现在正常运行，config 用 `config.override`
