@@ -1651,3 +1651,4 @@
 {"ts": "2026-05-26 02:09", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 02:10", "type": "cycle", "summary": "系统凌晨时段运行平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 02:11", "type": "cycle", "summary": "系统运行正常，CPU负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 02:12", "type": "cycle", "summary": "系统运行正常，内存使用率76.2%，磁盘空间37%", "alert_count": 0, "skipped_llm": false}
