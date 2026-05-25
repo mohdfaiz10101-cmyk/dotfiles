@@ -852,3 +852,4 @@
 {"ts": "2026-05-25 09:08", "type": "cycle", "summary": "系统运行平稳，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 09:09", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-25 09:11", "type": "cycle", "summary": "系统负载正常，CPU突发占用已过滤", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 09:12", "type": "cycle", "summary": "系统资源使用正常，无服务异常或告警", "alert_count": 0, "skipped_llm": false}
