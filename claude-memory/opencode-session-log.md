@@ -48195,3 +48195,15 @@ waybar 现在正常运行，config 用 `config.override`
 
 - 18090当前FRPC→8090，但8090无服务运行（端口空闲）
 - 复用18090：改FRPC为 18090→8088 + 改ttyd HTML添加18090到API列表
+
+## 2026-05-25 20:56
+- [2026-05-25 20:55:56] **AI(sisyphus)**: [ok] 查进度 -- 百度网盘→123云盘迁移任务状态如下：
+
+**已完成**：
+- 项目结构 (`/mnt/ai/apps/migration/`) 搭建完毕
+- 百度网盘目录扫描完成（扫到了 /apps, /Factory IO, /STM32入门教程资料, /来自：iPhone, /我的资源 等16个目录）
+- systemd timer 配置已写好（每天02:00，但 disabled）
+
+**阻塞问题（从未执行过实际迁移）**：
+- 百度网盘 `refresh_token` 已过期（5/11 报 `refresh token has been used`）
+- 123云盘 Cook
