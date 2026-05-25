@@ -48153,3 +48153,6 @@ waybar 现在正常运行，config 用 `config.override`
 
 ## 2026-05-25 20:35
 - [2026-05-25 20:34:57] **AI(sisyphus)**: waybar 被 `PartOf=graphical-session.target` 循环停止 — Hyprland `exec-once` 会 `stop/start hyprland-session.target`，触发级联 stop waybar，且 `Restart=always` 对显式 stop 无效。
+
+## 2026-05-25 20:37
+- [2026-05-25 20:37:09] **用户**: 运营商为什么要封锁这个端口
