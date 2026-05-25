@@ -47410,3 +47410,6 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 [ok] 重启 opencode-web.service -- 新PID 2281688，8081恢复正常
 [ok] 验证 8080 代理 -- 返回 200
 [完成] OpenCode 前端 dynamic import 失败 — opencode-web 进程hung，重启后恢复正常
+
+## 2026-05-25 10:05
+- [2026-05-25 10:05:13] **用户**: 但是这个8080绑定的东西不正常啊 不是我昨天的
