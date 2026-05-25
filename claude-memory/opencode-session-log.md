@@ -48106,3 +48106,6 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 [ok] win-8080-relay.sh -- Windows TCP中继(8081→NixOS:8080)，自动修复时启动备用入口
 [ok] 修复链路 -- phone-network-fix → 重启Tailscale → DuckDNS强制更新 → Windows中继
 [ok] 通知双通道 -- notify-send + tg-pu
+
+## 2026-05-25 20:10
+- [2026-05-25 20:10:33] **用户**: 还是connection time out啊
