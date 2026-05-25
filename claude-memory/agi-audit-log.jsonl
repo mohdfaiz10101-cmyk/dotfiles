@@ -1270,3 +1270,4 @@
 {"ts": "2026-05-25 18:49", "type": "cycle", "summary": "系统资源正常，单核CPU占用已知非异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:50", "type": "cycle", "summary": "系统运行正常，Python3.13 进程占满单核属系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:51", "type": "cycle", "summary": "系统运行正常，存在python3.13高CPU进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 18:52", "type": "cycle", "summary": "系统运行正常，python3.13进程属于正常系统服务", "alert_count": 0, "skipped_llm": false}
