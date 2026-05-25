@@ -947,3 +947,4 @@
 {"ts": "2026-05-25 11:19", "type": "cycle", "summary": "系统运行正常，opencode进程CPU占用较高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:20", "type": "cycle", "summary": "系统负载正常，opencode进程CPU占用较高但属正常波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:22", "type": "cycle", "summary": "系统负载正常，单次 ps 命令导致瞬时 CPU 飙升", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:23", "type": "cycle", "summary": "系统负载正常，opencode进程短暂高CPU（符合开发特性）", "alert_count": 0, "skipped_llm": false}
