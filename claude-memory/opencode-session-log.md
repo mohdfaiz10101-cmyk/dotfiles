@@ -48519,3 +48519,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 | **Shadowrocket**（小火箭）| 自研 | 最流行，支持 Clash 规则导入，插件系统，$2.99 |
 | **Quantumult X**（圈X）| 自研 | 规则最强，支持 MITM/脚本/重写，$7.99 全家桶不限设备 |
 | **Loo
+
+## 2026-05-26 01:58
+- [2026-05-26 01:58:02] **用户**: 哪个，然后自动支持选择节点？n
