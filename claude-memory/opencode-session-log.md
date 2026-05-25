@@ -48275,3 +48275,14 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 
 ## 2026-05-25 21:17
 - [2026-05-25 21:17:19] **用户**: 那你能把它做成多个筛选可以哦。用它Telegram控制吗？就是功能丰富一点，就是有session管理啊session session切换啊呃这些。还有归档啊这些东西，然后按钮啊什么东西都有机器人按钮啊什么的都可以就是让telegram去实现，这样是不是呃是最强大的最成熟的方案
+
+## 2026-05-25 21:18
+- [2026-05-25 21:18:25] **AI(sisyphus)**: 你已经有 3 个 Telegram Bot 在跑了：
+
+| Bot | 文件 | 状态 |
+|-----|------|------|
+| AGI Brain 增强版 | `agi/telegram_bot_enhanced.py` | 运行中，有 vision + 对话 |
+| OpenAgents Bot | `telegram_bot.py` | 运行中，有 8700 转发 |
+| OpenCode Processor | bash 脚本 | 运行中 |
+
+**结论：完全能做，而且这是最成熟的方案。** Telegram Bot API 的 Inline Keyboard + Conve
