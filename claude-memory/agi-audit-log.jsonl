@@ -983,3 +983,4 @@
 {"ts": "2026-05-25 12:16", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 12:17", "type": "cycle", "summary": "系统运行正常，资源负载低", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 12:18", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 12:20", "type": "cycle", "summary": "系统运行正常，服务健康，CPU存在偶发尖刺", "alert_count": 0, "skipped_llm": false}
