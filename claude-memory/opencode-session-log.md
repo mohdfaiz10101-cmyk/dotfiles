@@ -48159,3 +48159,9 @@ waybar 现在正常运行，config 用 `config.override`
 
 ## 2026-05-25 20:41
 - [2026-05-25 20:41:23] **用户**: 我一九八九十这个端口怎么加那个自定义的这个session按钮，它加载失败，他是不是因为8080这个呃代理过来被改了
+
+## 2026-05-25 20:41
+- [2026-05-25 20:41:39] **AI(sisyphus)**: [ok] waybar 已恢复 — 运行43秒无中断
+[ok] 根因链: BindsTo=graphical-session.target → Hyprland exec-once 循环 stop/start → waybar 高频重启 → anti-restart-loop.sh 检测 >10次/60s → 自动 stop waybar
+[ok] 修复: 移除 BindsTo，改为 Restart=on-failure + RestartSec=3
+[完成] waybar 恢复 — 解除依赖循环+清空重启循环计数器，现已稳定运行
