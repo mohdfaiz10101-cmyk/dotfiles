@@ -48548,3 +48548,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 | 功能 | 状态 | 端点 |
 |------|------|------|
 | 图像生
+
+## 2026-05-26 02:12
+- [2026-05-26 02:11:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
