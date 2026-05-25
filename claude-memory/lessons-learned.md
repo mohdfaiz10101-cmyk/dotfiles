@@ -459,3 +459,5 @@
 - [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 24 hours (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 24 hours (healthy)
+
+- [2026-05-25] [OP] 修复"外网不通"频繁告警根因: (1) opencode-web hang导致8080/8081端口无响应 → 重启解决 (2) waybar-health.sh+waybar-score.sh的ck_ocpub检查走代理而非--noproxy'*'，代理慢时超时误报 (3) connectivity-chain-watchdog.sh wan_reachable变量未绑定导致set -euo pipefail崩溃 → 加${var:-default}保护
