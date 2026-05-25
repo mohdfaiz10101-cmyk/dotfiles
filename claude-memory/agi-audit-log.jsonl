@@ -974,3 +974,4 @@
 {"ts": "2026-05-25 12:02", "type": "cycle", "summary": "系统负载正常，opencode进程高CPU属于预期工作状态", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 12:04", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 12:05", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 12:07", "type": "cycle", "summary": "系统整体运行正常，无异常告警，高CPU占用进程均为正常服务或工具进程", "alert_count": 0, "skipped_llm": false}
