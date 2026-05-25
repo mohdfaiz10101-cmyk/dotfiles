@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-25 19:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-25 19:30
 
 ## 2026-05-25
 
@@ -78,6 +78,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
@@ -220,6 +222,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
@@ -247,6 +250,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -418,6 +422,7 @@
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
+- [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-strip-proxy.service MODIFY
 - [file-change] **.config**: .config/systemd/user/macg-api.service MODIFY
 - [file-change] **.config**: .config/systemd/user/macg-api.service MODIFY
@@ -521,6 +526,7 @@
 - [file-change] **.config**: .config/systemd/user/tmux-claude.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-aider.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-aider.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-cct.service MODIFY
@@ -565,6 +571,7 @@
 - [file-change] **.config**: .config/systemd/user/ydotoold.service MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
@@ -757,9 +764,11 @@
 - [file-create] **.config**: .config/systemd/user/default.target.wants/memory-auto-commit.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/opencode-8080-proxy.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/opencode-session-recorder.service CREATE
+- [file-create] **.config**: .config/systemd/user/default.target.wants/reset-graphical-session.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/sentinel-watch.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/syncthing.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/telegram-bot-enhanced.service CREATE
+- [file-create] **.config**: .config/systemd/user/default.target.wants/ttyd-8080.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/ttyd-8080.service CREATE
 - [file-create] **.config**: .config/systemd/user/desktop-stream.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/discord-bot@.service MOVED_TO
@@ -832,6 +841,8 @@
 - [file-create] **.config**: .config/systemd/user/proxy-403-monitor.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/python-crash-guard.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/refine-orchestrator.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/reset-graphical-session.service CREATE
+- [file-create] **.config**: .config/systemd/user/reset-graphical-session.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/restart-guard.conf.d/rate-limit.conf CREATE
 - [file-create] **.config**: .config/systemd/user/router-snapshot.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/screenshot-watcher.service MOVED_TO
@@ -900,6 +911,7 @@
 - [file-create] **.config**: .config/systemd/user/ydotool-bridge.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ydotool-bridge.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ydotoold.service MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
