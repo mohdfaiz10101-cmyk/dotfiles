@@ -412,6 +412,11 @@
           "text": "2026-05-25 OP修复: 任务审查面板归档按钮请求失败 | 根因: TaskReviewPanel.tsx HUB硬编码localhost:9800，外网(19890 FRP→ttyd)访问时localhost指向手机而非主机 | 修复: next.config.ts添加rewrites(/api/hub/*→localhost:9800/*)，前端改用相对路径/api/hub | 结果: 已验证通过",
           "tags": "op-exec,frontend,task-review,frp",
           "timestamp": "1779720730"
+        },
+        {
+          "text": "2026-05-26 OP: 修复19890端口iOS输入法问题，ttyd xterm.js textarea添加composition事件处理、防失焦、自动重聚焦，iOS输入法IME候选窗口现可正常使用",
+          "tags": "op-exec,ttyd,ios,ime",
+          "timestamp": "1779732425"
         }
       ]
     },
