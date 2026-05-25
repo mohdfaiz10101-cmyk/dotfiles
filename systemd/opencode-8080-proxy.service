@@ -6,6 +6,7 @@ Wants=opencode-web.service
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-8080-proxy.py
+OnFailure=sentinel-onfailure@opencode-8080-proxy.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

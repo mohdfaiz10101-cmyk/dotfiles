@@ -1,0 +1,25 @@
+[Unit]
+Description=AGI Brain Feishu Bot — Enhanced Conversational Assistant
+After=network.target agi-brain.service
+Requires=agi-brain.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/agi
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/feishu_bot_enhanced.py
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment="PYTHONUNBUFFERED=1"
+Environment="FEISHU_APP_ID="
+Environment="FEISHU_APP_SECRET="
+Environment="FEISHU_VERIFICATION_TOKEN="
+Environment="FEISHU_ENCRYPT_KEY="
+
+[Install]
+WantedBy=default.target
+

@@ -7,6 +7,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/phone-clip-sync
+OnFailure=sentinel-onfailure@phone-clip-sync.service
 Restart=on-failure
 StartLimitBurst=3
 StartLimitIntervalSec=60

@@ -1,0 +1,7 @@
+[Unit]
+Description=Windows脚本自动部署（WiFi恢复后）
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/win-deploy-on-wifi.sh

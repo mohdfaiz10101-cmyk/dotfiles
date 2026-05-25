@@ -1,0 +1,10 @@
+[Unit]
+Description=Letta Dead Man's Switch — 记忆写入停止检测
+After=network.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/letta-deadman-switch.sh
+StandardOutput=journal
+StandardError=journal
+Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin"

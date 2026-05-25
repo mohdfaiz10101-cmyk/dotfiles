@@ -1,0 +1,10 @@
+[Unit]
+Description=OP 连接守护 — 检测并自动修复 Unable to connect 错误
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/launcher/op-connection-guard.sh
+TimeoutStartSec=120
+CPUQuota=5%
+MemoryMax=50M

@@ -1,0 +1,33 @@
+[Unit]
+Description=AGI Brain — Sense→Think→Act 三环主循环
+After=network.target
+Wants=default.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4000 " && echo "PORT 4000 IN USE" && exit 1 || true'
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/brain.py --no-telegram
+WorkingDirectory=/home/charlie/agi
+Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitAction=none
+RestartSec=15
+StartLimitBurst=5
+Environment=PYTHONUNBUFFERED=1
+Environment=HOME=/home/charlie
+Environment=DISPLAY=:0
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+Environment=TELEGRAM_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks
+Environment=TELEGRAM_CHAT_ID=1591683076
+# LiteLLM 在 localhost:4000，清除代理避免干扰
+UnsetEnvironment=HTTP_PROXY HTTPS_PROXY http_proxy https_proxy
+Environment=NO_PROXY=localhost,127.0.0.1
+Environment=no_proxy=localhost,127.0.0.1
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agi-brain
+
+[Install]
+WantedBy=default.target
+
+

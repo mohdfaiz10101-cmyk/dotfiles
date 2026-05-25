@@ -6,6 +6,7 @@ After=network.target
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/launcher/op-watchdog.sh
+OnFailure=sentinel-onfailure@op-watchdog.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

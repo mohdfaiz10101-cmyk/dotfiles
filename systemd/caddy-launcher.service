@@ -4,6 +4,7 @@ WantedBy=default.target
 [Service]
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7699 " && echo "PORT 7699 IN USE" && exit 1 || true'
 ExecStart=%h/.nix-profile/bin/caddy run --config /mnt/ai/apps/launcher/Caddyfile
+OnFailure=sentinel-onfailure@caddy-launcher.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

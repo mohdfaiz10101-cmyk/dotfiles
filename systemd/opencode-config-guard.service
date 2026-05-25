@@ -5,6 +5,7 @@ After=default.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-config-guard.sh --daemon
+OnFailure=sentinel-onfailure@opencode-config-guard.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

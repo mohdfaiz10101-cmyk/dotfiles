@@ -6,6 +6,7 @@ Wants=pipewire.service
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/chronos-sensory.py
+OnFailure=sentinel-onfailure@chronos-sensory.service
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin
 ExecStartPre=/bin/sh -c 'echo PYTHONPATH=$(python3 -c "import numpy; import os; print(os.path.dirname(numpy.__path__[0]))" 2>/dev/null) > %h/.local/state/chronos-env'

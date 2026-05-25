@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":3456 " && echo "PORT 3456 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.bun/bin/the-companion start --foreground
+OnFailure=sentinel-onfailure@the-companion.service
 WorkingDirectory=/home/charlie
 Restart=always
 StartLimitAction=none

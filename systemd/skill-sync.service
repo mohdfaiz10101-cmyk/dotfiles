@@ -6,6 +6,7 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/bin/bash %h/.claude/skills/skill-sync.sh
+OnFailure=sentinel-onfailure@skill-sync.service
 # 设置工作目录
 WorkingDirectory=%h/.claude/skills
 # 环境变量

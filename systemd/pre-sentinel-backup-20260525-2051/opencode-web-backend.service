@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenCode Web Backend (:18081)
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":18081 " && echo "PORT 18081 IN USE" && exit 1 || true'
+ExecStart=/home/charlie/.npm-global/bin/opencode web --port 18081
+Restart=no
+Environment="HOME=/home/charlie"
+Environment="PATH=/home/charlie/.npm-global/bin:/run/current-system/sw/bin:/home/charlie/.local/bin"
+StandardOutput=journal
+StandardError=journal

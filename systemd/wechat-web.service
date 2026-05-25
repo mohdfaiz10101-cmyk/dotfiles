@@ -7,6 +7,7 @@ Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/wechat-sync
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9097 " && echo "PORT 9097 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 web.py
+OnFailure=sentinel-onfailure@wechat-web.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

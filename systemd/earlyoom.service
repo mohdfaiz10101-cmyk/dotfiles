@@ -6,6 +6,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=%h/.nix-profile/bin/earlyoom -m 5 -s 10 -r 60 --prefer '(^|/)(opencode|node|java)$' --avoid '(^|/)(X|Xorg|Hyprland|systemd|dbus|init)$'
+OnFailure=sentinel-onfailure@earlyoom.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=3

@@ -1,15 +1,15 @@
 [Unit]
 Description=ttyd terminal on port 8080 with custom session switcher
 After=network.target
+StartLimitIntervalSec=30
+StartLimitBurst=5
 
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8080 " && echo "PORT 8080 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap
+OnFailure=sentinel-onfailure@ttyd-8080.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

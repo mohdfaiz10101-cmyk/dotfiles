@@ -7,6 +7,7 @@ Type=simple
 
 WorkingDirectory=/home/charlie/agi
 ExecStart=/run/current-system/sw/bin/nix-shell -p python3Packages.telethon python3Packages.pysocks --command "python3 /home/charlie/agi/telegram-userbot.py"
+OnFailure=sentinel-onfailure@telegram-userbot.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

@@ -7,6 +7,7 @@ Type=simple
 WorkingDirectory=/home/charlie
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/tg-command
+OnFailure=sentinel-onfailure@tg-command.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

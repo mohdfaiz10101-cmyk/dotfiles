@@ -8,6 +8,7 @@ StartLimitIntervalSec=3600
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/.local/bin/memory-evolution-engine
+OnFailure=sentinel-onfailure@memory-evolution.service
 Restart=on-failure
 StartLimitBurst=3
 StartLimitIntervalSec=60

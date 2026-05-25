@@ -1,0 +1,29 @@
+[Unit]
+Description=AGI Brain Discord Bot — Enhanced Conversational Assistant
+After=network.target agi-brain.service
+Requires=agi-brain.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/agi
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/discord_bot_enhanced.py
+Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitAction=none
+RestartSec=10
+StartLimitInterval=3600
+StartLimitBurst=3
+StandardOutput=journal
+StandardError=journal
+Environment="PYTHONUNBUFFERED=1"
+Environment="PROXY=http://127.0.0.1:7890"
+Environment="HTTP_PROXY=http://127.0.0.1:7890"
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+Environment="DISCORD_BOT_TOKEN=MTQ5MDY0MTY3ODEzNzAzMjg0NA.G7dnjb.8XnDoykFr9O8SRsQH1nnCXiV0Ge2LEOGTI47f8"
+Environment="DISCORD_GUILD_ID=1490683033919950941"
+
+[Install]
+WantedBy=default.target
+
+

@@ -1,0 +1,15 @@
+[Unit]
+Description=OP Agent 永久 tmux session（feed 常驻）
+After=graphical-session.target
+
+[Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/charlie/.local/bin/op-session-init.sh
+Restart=no
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenCode Memory Watchdog
+After=opencode-web.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/opencode-memwatch.sh
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

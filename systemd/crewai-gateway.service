@@ -5,6 +5,7 @@ After=network.target litellm.service
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/crewai-venv/bin/python /home/charlie/crewai-project/crew_server.py
+OnFailure=sentinel-onfailure@crewai-gateway.service
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/home/charlie/crewai-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1

@@ -1,0 +1,6 @@
+[Unit]
+Description=定期重置 systemd 用户实例防止 fork 饱和
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/systemctl --user daemon-reexec

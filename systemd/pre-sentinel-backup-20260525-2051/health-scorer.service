@@ -1,0 +1,9 @@
+[Unit]
+Description=Ops-Infra 统一健康评分
+After=network.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/health-scorer
+StandardOutput=journal
+Environment="PATH=/run/current-system/sw/bin:%h/.local/bin"

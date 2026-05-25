@@ -1,0 +1,8 @@
+[Unit]
+Description=LiteLLM Error Guard — 自适应错误巡检
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/litellm-error-guard.sh
+TimeoutStartSec=120

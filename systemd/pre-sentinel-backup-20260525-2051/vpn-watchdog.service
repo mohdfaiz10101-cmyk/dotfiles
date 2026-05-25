@@ -1,0 +1,18 @@
+[Unit]
+Description=VPN Watchdog — 自动拉起手机/平板 Karing+Tailscale
+After=network-online.target tailscaled.service tablet-adb-watch.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/vpn-watchdog
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=15
+Environment=HOME=/home/charlie
+Environment=PATH=/home/charlie/.local/bin:/run/current-system/sw/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target
+

@@ -6,6 +6,7 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/waybar-guardian.py --daemon
+OnFailure=sentinel-onfailure@waybar-guardian.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

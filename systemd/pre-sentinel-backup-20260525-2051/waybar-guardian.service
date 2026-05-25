@@ -1,0 +1,19 @@
+[Unit]
+Description=Waybar Guardian Monitor
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/waybar-guardian.py --daemon
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/charlie/.Xauthority
+
+[Install]
+WantedBy=graphical-session.target
+

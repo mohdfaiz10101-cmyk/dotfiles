@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/telegram_bot_enhanced.py
+OnFailure=sentinel-onfailure@telegram-bot-enhanced.service
 WorkingDirectory=/home/charlie/agi
 Restart=always
 StartLimitAction=none

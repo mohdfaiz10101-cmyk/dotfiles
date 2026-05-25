@@ -5,6 +5,7 @@ Documentation=https://github.com/ReimuNotMoe/ydotool
 [Service]
 Type=simple
 Restart=always
+OnFailure=sentinel-onfailure@ydotoold.service
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30

@@ -1,0 +1,19 @@
+[Install]
+WantedBy=default.target
+
+[Service]
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7699 " && echo "PORT 7699 IN USE" && exit 1 || true'
+ExecStart=%h/.nix-profile/bin/caddy run --config /mnt/ai/apps/launcher/Caddyfile
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+TimeoutStopSec=10
+
+[Unit]
+After=mnt-ai.mount
+Description=Caddy Launcher Gateway (:7699)
+Wants=mnt-ai.mount
+
+

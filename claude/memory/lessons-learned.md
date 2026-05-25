@@ -632,3 +632,46 @@
 - [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 30 hours
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 36 minutes
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 37 minutes
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 37 minutes
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 38 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 38 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 38 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 38 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 37 minutes (healthy)
+- [2026-05-25] [OP] 失败学习: ttyd-8080 | 错误: StartLimitIntervalSec在[Service]段导致systemd忽略该key+服务disabled | 根因: StartLimitIntervalSec属于[Unit]段非[Service]段 | 修复: 移入[Unit]段+enable+start | 现象: 服务inactive(dead)且disabled
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.ad282c8d3ce0_litellm-litellm =  | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 39 minutes (healthy)
+
+- [2026-05-25] [OP] 永久规则: 手机访问 ttyd 用 19890 不用 8080 | 原因: 8080是运营商常见封锁端口，外部可达≠手机可达(运营商拦截) | FRP代理 nixos-opencode-web: 19890→localhost:8080 已验证外部可达 | 路由器已端口转发 TCP 19890→192.168.123.209:19890- [2026-05-25] [OP] waybar消失根因: anti-restart-loop.sh检测到waybar 60s内重启>10次自动stop | 根本原因: BindsTo=graphical-session.target + Hyprland exec-once每20s循环stop/start hyprland-session.target → waybar高频重启 | 修复: 移除BindsTo, 改用Restart=on-failure+RestartSec=3

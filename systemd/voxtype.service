@@ -6,6 +6,7 @@ After=graphical-session.target
 Type=simple
 Environment="YDOTOOL_SOCKET=/run/user/1000/.ydotool_socket"
 ExecStart=/run/current-system/sw/bin/voxtype -v daemon
+OnFailure=sentinel-onfailure@voxtype.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

@@ -7,6 +7,7 @@ Wants=network-online.target openagents.service
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8700 " && echo "PORT 8700 IN USE" && exit 1 || true'
 ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/telegram_bot.py
+OnFailure=sentinel-onfailure@telegram-bot.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

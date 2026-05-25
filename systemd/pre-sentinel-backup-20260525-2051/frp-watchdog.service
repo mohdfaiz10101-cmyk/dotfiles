@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/home/charlie/.local/bin/frp-watchdog.sh
+Type=oneshot
+
+[Unit]
+Description=FRP 隧道自愈守护

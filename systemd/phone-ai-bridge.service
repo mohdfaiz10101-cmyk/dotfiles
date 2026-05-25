@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=%h/.local/bin/phone-ai-bridge.sh
+OnFailure=sentinel-onfailure@phone-ai-bridge.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

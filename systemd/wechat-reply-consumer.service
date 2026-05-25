@@ -5,6 +5,7 @@ After=default.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/wechat-reply-consumer.py
+OnFailure=sentinel-onfailure@wechat-reply-consumer.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

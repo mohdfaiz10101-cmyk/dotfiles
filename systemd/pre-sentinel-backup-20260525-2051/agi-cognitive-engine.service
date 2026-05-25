@@ -1,0 +1,13 @@
+[Unit]
+Description=AGI 认知引擎 — 八维认知评分
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie/agi
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/cognitive_engine.py
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

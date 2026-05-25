@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/claude-free-api-auto daemon
+OnFailure=sentinel-onfailure@claude-free-api-auto.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

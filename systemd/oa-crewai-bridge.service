@@ -6,6 +6,7 @@ Requires=crewai-gateway.service openagents.service
 [Service]
 Type=simple
 ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent crewai --channel development
+OnFailure=sentinel-onfailure@oa-crewai-bridge.service
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1

@@ -1,0 +1,11 @@
+[Unit]
+Description=Home 大文件自动迁移守护
+After=mnt-pool-disks\x2dPOOL\x2dD1.mount
+Wants=mnt-pool-disks\x2dPOOL\x2dD1.mount
+
+[Service]
+Type=oneshot
+ExecStart=%h/launcher/home-offload-auto.sh
+Nice=10
+IOSchedulingClass=idle
+IOSchedulingPriority=7

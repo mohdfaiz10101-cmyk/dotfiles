@@ -5,6 +5,7 @@ After=default.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/claude-md-watcher.sh
+OnFailure=sentinel-onfailure@claude-md-sync.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

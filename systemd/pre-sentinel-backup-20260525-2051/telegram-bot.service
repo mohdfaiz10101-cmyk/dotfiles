@@ -1,0 +1,23 @@
+[Unit]
+Description=OpenAgents Telegram Bot
+After=network-online.target openagents.service
+Wants=network-online.target openagents.service
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8700 " && echo "PORT 8700 IN USE" && exit 1 || true'
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/telegram_bot.py
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=HOME=%h
+Environment=USER=%u
+Environment=PATH=%h/.local/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin
+Environment=OPENAGENTS_URL=http://127.0.0.1:8700
+
+[Install]
+WantedBy=default.target
+
+

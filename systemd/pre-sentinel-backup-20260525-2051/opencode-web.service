@@ -1,0 +1,23 @@
+[Unit]
+StartLimitIntervalSec=120
+StartLimitBurst=5
+Description=OpenCode Web Server (:8081)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/home/charlie/.local/bin/opencode-integrity-check
+ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode web --port 8081 --hostname 0.0.0.0
+Restart=no
+TimeoutStopSec=300
+KillSignal=SIGTERM
+KillMode=mixed
+RestartSec=15
+MemoryMax=3G
+MemoryHigh=2000M
+TasksMax=512
+OOMScoreAdjust=-500
+Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin" "NODE_OPTIONS=--max-old-space-size=1536" "http_proxy=http://127.0.0.1:7890" "https_proxy=http://127.0.0.1:7890" "HTTP_PROXY=http://127.0.0.1:7890" "HTTPS_PROXY=http://127.0.0.1:7890" "no_proxy=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn,api.opencode.cc" "NO_PROXY=127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10,100.100.100.100,localhost,*.local,*.ts.net,open.bigmodel.cn,api.opencode.cc"
+
+[Install]
+WantedBy=default.target

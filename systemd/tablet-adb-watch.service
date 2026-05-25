@@ -5,6 +5,7 @@ After=network-online.target tailscaled.service
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/tablet-adb-watch
+OnFailure=sentinel-onfailure@tablet-adb-watch.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

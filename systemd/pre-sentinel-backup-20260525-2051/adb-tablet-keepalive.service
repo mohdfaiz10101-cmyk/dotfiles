@@ -1,0 +1,6 @@
+[Unit]
+Description=ADB tablet keepalive
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/adb-tablet-keepalive.sh

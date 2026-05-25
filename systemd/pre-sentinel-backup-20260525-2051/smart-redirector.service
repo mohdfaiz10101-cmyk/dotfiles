@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenCode 智能路由跳转 (:8088)
+After=network.target
+StartLimitBurst=3
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8088 " && echo "PORT 8088 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/smart-redirector.py
+Restart=on-failure
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.npm-global/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target
+

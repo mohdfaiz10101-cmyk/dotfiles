@@ -1,0 +1,20 @@
+[Unit]
+Description=Early OOM Daemon — 主动防卡死
+Documentation=https://github.com/rfjakob/earlyoom
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.nix-profile/bin/earlyoom -m 5 -s 10 -r 60 --prefer '(^|/)(opencode|node|java)$' --avoid '(^|/)(X|Xorg|Hyprland|systemd|dbus|init)$'
+Restart=always
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=60
+RestartSec=10
+StandardOutput=append:%h/.local/state/earlyoom/earlyoom.log
+StandardError=append:%h/.local/state/earlyoom/earlyoom.log
+Environment=HOME=%h
+
+[Install]
+WantedBy=default.target
+

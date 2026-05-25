@@ -7,6 +7,7 @@ Wants=network-online.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4533 " && echo "PORT 4533 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/navidrome
+OnFailure=sentinel-onfailure@navidrome.service
 WorkingDirectory=%h/navidrome
 Environment=ND_SCANSCHEDULE=1h
 Environment=ND_LOGLEVEL=info

@@ -1,0 +1,14 @@
+[Unit]
+Description=Cross-Model Archival Memory Sync (GLM ↔ Letta + Memory → Letta)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.config/ai-shared/sync-all.sh
+Environment=HOME=/home/charlie
+StandardOutput=journal
+StandardError=journal
+TimeoutStartSec=180
+
+[Install]
+WantedBy=default.target

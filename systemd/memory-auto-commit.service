@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/memory-auto-commit
+OnFailure=sentinel-onfailure@memory-auto-commit.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

@@ -6,6 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/otp-sync
+OnFailure=sentinel-onfailure@otp-sync.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

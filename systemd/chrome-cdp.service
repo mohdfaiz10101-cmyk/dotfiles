@@ -6,6 +6,7 @@ After=graphical-session.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9222 " && echo "PORT 9222 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/google-chrome-stable \
+OnFailure=sentinel-onfailure@chrome-cdp.service
   --remote-debugging-port=9222 \
   --no-first-run \
   --no-default-browser-check \

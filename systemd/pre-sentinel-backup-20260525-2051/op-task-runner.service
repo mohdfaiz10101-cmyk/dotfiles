@@ -1,0 +1,15 @@
+[Unit]
+Description=OP Task Runner — 有任务才执行，无任务静默退出
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/op-task-runner.sh
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=OLLAMA_HOST=http://127.0.0.1:11434
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

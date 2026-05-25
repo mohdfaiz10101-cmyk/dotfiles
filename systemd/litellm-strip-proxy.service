@@ -6,6 +6,7 @@ Wants=docker.service
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /mnt/ai-cluster/litellm/strip_tools_proxy.py
+OnFailure=sentinel-onfailure@litellm-strip-proxy.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

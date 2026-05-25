@@ -1,0 +1,6 @@
+[Unit]
+Description=代码索引器 — FTS5 全文索引更新
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/code-indexer

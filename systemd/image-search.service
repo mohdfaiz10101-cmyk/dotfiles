@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 WorkingDirectory=/mnt/ai/apps/image-search
 ExecStart=/mnt/ai/apps/image-search/.venv/bin/python3 server.py
+OnFailure=sentinel-onfailure@image-search.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

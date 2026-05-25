@@ -1,0 +1,7 @@
+[Unit]
+Description=网络守护 — WiFi 断连自动恢复 + FRP 保障
+After=NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/network-guard.sh

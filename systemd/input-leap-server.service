@@ -5,6 +5,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.nix-profile/bin/input-leaps -f -c %h/.config/input-leap.conf --no-daemon
+OnFailure=sentinel-onfailure@input-leap-server.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

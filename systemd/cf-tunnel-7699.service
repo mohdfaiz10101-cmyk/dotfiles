@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/cf-tunnel-7699
+OnFailure=sentinel-onfailure@cf-tunnel-7699.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

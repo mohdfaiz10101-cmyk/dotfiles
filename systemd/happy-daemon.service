@@ -6,6 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.npm-global/bin/happy daemon start-sync
+OnFailure=sentinel-onfailure@happy-daemon.service
 ExecStopPost=/home/charlie/.local/bin/tg-push "⚠️ Happy daemon 重启，请在手机 App 开新会话"
 Restart=on-failure
 StartLimitAction=none

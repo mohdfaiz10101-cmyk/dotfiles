@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9876 " && echo "PORT 9876 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/crm/serve_crm.py
+OnFailure=sentinel-onfailure@crm-server.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=3

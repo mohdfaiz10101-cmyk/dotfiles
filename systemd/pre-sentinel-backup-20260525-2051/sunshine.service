@@ -1,0 +1,17 @@
+[Unit]
+After=graphical-session.target
+Description=Self-hosted game stream host for Moonlight
+PartOf=graphical-session.target
+StartLimitBurst=5
+StartLimitIntervalSec=500
+Wants=graphical-session.target
+
+[Service]
+Environment="LOCALE_ARCHIVE=/nix/store/s7627r57hh0hyb4ik6d92ms5zzclrawp-glibc-locales-2.42-51/lib/locale/locale-archive"
+Environment="TZDIR=/nix/store/h15ranlgwagilr6ajd7ich6d896kf9zd-tzdata-2026a/share/zoneinfo"
+ExecStart="/run/wrappers/bin/sunshine"
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=graphical-session.target

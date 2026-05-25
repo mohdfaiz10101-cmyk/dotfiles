@@ -1,0 +1,6 @@
+[Unit]
+Description=dpdns.org 域名续期（charlie1990.dpdns.org）
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/dpdns-renew

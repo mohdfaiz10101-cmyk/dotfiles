@@ -1,0 +1,6 @@
+[Unit]
+Description=Full Floorp profile backup (critical files for crash recovery)
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/launcher/floorp-profile-backup.sh

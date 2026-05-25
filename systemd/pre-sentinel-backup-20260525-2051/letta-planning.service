@@ -1,0 +1,6 @@
+[Unit]
+Description=每日 AI OS 规划报告（Letta sleeptime agent）
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/letta-planning-trigger.sh

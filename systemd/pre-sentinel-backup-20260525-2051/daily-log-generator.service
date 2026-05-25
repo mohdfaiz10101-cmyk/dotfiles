@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily Session Log Generator — 每日会话摘要
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/.local/bin/daily-log-generator.py
+StandardOutput=journal
+StandardError=journal

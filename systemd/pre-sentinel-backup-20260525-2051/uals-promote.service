@@ -1,0 +1,9 @@
+[Unit]
+Description=UALS Weekly Promoter
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 %h/.claude/uals/uals-promoter.py list
+StandardOutput=journal
+StandardError=journal

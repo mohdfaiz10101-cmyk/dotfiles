@@ -6,6 +6,7 @@ Requires=crewai-gateway.service
 [Service]
 Type=simple
 ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/openagents_bridge.py
+OnFailure=sentinel-onfailure@crewai-openagents-bridge.service
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1

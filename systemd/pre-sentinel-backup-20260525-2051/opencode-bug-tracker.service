@@ -1,0 +1,9 @@
+[Unit]
+Description=追踪 opencode summary bug 修复状态
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-bug-tracker.sh
+Environment="PATH=%h/.local/bin:/run/current-system/sw/bin:/usr/bin"
+Environment="http_proxy=http://127.0.0.1:7890"
+Environment="https_proxy=http://127.0.0.1:7890"

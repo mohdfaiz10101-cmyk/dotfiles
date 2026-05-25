@@ -1,0 +1,25 @@
+[Unit]
+Description=FRP Client (connect to router frps)
+After=network.target
+
+[Service]
+Type=simple
+# 清除代理，FRP 直连 frps，不走 mihomo
+Environment="http_proxy="
+Environment="https_proxy="
+Environment="HTTP_PROXY="
+Environment="HTTPS_PROXY="
+Environment="no_proxy=127.0.0.1,localhost,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10"
+ExecStart=%h/.local/bin/frpc -c %h/.config/frpc/frpc.toml
+Restart=always
+StartLimitAction=none
+RestartSec=15
+# 内存上限：frp 正常 <100MB，超过 400MB 说明异常，OOM killer 主动介入
+MemoryMax=400M
+MemoryHigh=300M
+# 崩溃重启限制：10分钟内最多5次，防止死循环
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Install]
+WantedBy=default.target

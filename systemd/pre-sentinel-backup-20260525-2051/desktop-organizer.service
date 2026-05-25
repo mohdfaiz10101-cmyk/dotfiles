@@ -1,0 +1,7 @@
+[Unit]
+Description=Desktop Organizer — 整理桌面散落文件
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/launcher/desktop-organizer.sh

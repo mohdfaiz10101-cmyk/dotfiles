@@ -1,0 +1,20 @@
+[Unit]
+Description=Knowledge Distiller - 对话蒸馏到 ChromaDB/Letta/Obsidian
+Documentation=https://github.com/local/knowledge-distiller
+After=docker.service network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/docker compose \
+  -f /mnt/ai/ai-cluster/knowledge-distiller/docker-compose.yml \
+  --profile run \
+  run --rm distiller \
+  --input /data/input --mode batch --skip-obsidian
+TimeoutStartSec=1800
+
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.nix-profile/bin
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=knowledge-distiller

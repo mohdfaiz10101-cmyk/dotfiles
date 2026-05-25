@@ -1,0 +1,21 @@
+[Unit]
+Description=Cloudflare Tunnel — opencode Web UI 手机入口 (port 8080)
+After=network-online.target opencode-web.service
+Wants=opencode-web.service
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8080 " || { echo "PORT 8080 未监听" && exit 1; }'
+ExecStart=/home/charlie/.local/bin/cloudflared-ttyd
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=30
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target
+
+

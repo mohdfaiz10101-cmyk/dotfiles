@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
+OnFailure=sentinel-onfailure@sys-info-mcp.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

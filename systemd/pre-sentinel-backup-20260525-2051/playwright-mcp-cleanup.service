@@ -1,0 +1,10 @@
+[Unit]
+Description=Playwright MCP zombie cleanup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/timeout 10 /home/charlie/.local/bin/playwright-mcp-cleanup
+TimeoutStartSec=15
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin

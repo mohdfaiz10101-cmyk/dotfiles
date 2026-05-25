@@ -1,0 +1,7 @@
+[Unit]
+Description=OpenCode Web 活跃检测
+
+[Service]
+Type=oneshot
+Environment="HOME=/home/charlie"
+ExecStart=/home/charlie/.local/bin/opencode-web-idle-check

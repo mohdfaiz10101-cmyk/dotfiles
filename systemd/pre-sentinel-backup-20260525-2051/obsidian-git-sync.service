@@ -1,0 +1,6 @@
+[Unit]
+Description=Obsidian Vault Git Sync
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/launcher/obsidian-git-sync.sh

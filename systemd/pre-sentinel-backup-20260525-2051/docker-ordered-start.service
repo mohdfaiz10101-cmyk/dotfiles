@@ -1,0 +1,16 @@
+[Unit]
+Description=Docker Compose 有序启动
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# 等待 Docker daemon 就绪
+ExecStartPre=/run/current-system/sw/bin/bash -c 'for i in $(seq 1 30); do docker info >/dev/null 2>&1 && exit 0; sleep 2; done; exit 1'
+# 先停掉 Docker 自动拉起的容器（避免无序启动），并等待完全移除
+ExecStartPre=-/run/current-system/sw/bin/bash -c 'containers=$(/run/current-system/sw/bin/docker ps -q); [ -n "$containers" ] && /run/current-system/sw/bin/docker stop $containers || true; sleep 3'
+# 有序启动
+ExecStart=/run/current-system/sw/bin/bash /mnt/ai/ai-cluster/start-all.sh
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Service Config Guard - detect config/logic regressions
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/service-config-guard
+Environment=PATH=/run/current-system/sw/bin:%h/.local/bin
+StandardOutput=journal
+StandardError=journal

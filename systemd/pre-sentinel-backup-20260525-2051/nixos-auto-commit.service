@@ -1,0 +1,6 @@
+[Unit]
+Description=NixOS 配置自动提交
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/nixos-auto-commit

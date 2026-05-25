@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py --http
+OnFailure=sentinel-onfailure@macg-mcp.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

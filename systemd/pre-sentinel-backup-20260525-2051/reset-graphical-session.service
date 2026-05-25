@@ -1,0 +1,13 @@
+[Unit]
+Description=Reset stale graphical-session.target on boot
+DefaultDependencies=no
+Before=graphical-session.target
+After=basic.target
+
+[Service]
+Type=oneshot
+ExecStart=-/run/current-system/sw/bin/systemctl --user stop graphical-session.target 2>/dev/null || true
+RemainAfterExit=no
+
+[Install]
+WantedBy=default.target

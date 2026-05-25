@@ -1,0 +1,9 @@
+[Unit]
+Description=Ops-Infra 每周故障报告
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/incident-reporter
+StandardOutput=journal
+Environment="PATH=/run/current-system/sw/bin:%h/.local/bin"

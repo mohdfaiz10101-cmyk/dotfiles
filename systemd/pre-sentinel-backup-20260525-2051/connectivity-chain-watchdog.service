@@ -1,0 +1,11 @@
+[Unit]
+Description=三态连通性全链路监控 (DuckDNS+NAT+FRP)
+After=network-online.target
+
+[Service]
+Type=oneshot
+#RemainAfterExit=yes (禁用-oneshot timer需此选项才能重复触发)
+ExecStart=%h/.local/bin/connectivity-chain-watchdog.sh
+Environment="http_proxy="
+Environment="https_proxy="
+Environment="no_proxy=127.0.0.1,localhost,192.168.0.0/16"

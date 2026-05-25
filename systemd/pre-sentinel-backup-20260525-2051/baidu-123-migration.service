@@ -1,0 +1,17 @@
+[Unit]
+Description=百度网盘 → 123云盘 自动迁移
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=charlie
+WorkingDirectory=/mnt/ai/apps/migration
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/migration/migrate.py
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

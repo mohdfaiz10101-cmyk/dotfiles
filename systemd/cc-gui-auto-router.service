@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/cc-gui-auto-router
+OnFailure=sentinel-onfailure@cc-gui-auto-router.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

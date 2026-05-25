@@ -1,0 +1,9 @@
+[Unit]
+Description=Ops-Infra Runbook自愈引擎
+After=network.target docker.service health-scorer.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/runbook-engine --dry-run
+StandardOutput=journal
+Environment="PATH=/run/current-system/sw/bin:%h/.local/bin"

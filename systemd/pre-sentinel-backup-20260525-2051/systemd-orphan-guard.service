@@ -1,0 +1,6 @@
+[Unit]
+Description=检测并清理僵尸 systemd 服务（ExecStart 路径不存在）
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/systemd-orphan-guard.sh

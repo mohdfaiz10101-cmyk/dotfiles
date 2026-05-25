@@ -1,0 +1,6 @@
+[Unit]
+Description=内存告警检查
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/mem-alert.sh

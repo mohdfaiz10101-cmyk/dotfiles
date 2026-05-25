@@ -5,6 +5,7 @@ After=network-online.target tailscaled.service tablet-adb-watch.service
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/vpn-watchdog
+OnFailure=sentinel-onfailure@vpn-watchdog.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

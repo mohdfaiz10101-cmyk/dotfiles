@@ -1,0 +1,8 @@
+[Unit]
+StartLimitBurst=3
+StartLimitIntervalSec=120
+Description=WAN IP 变更检测 (每60秒)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wan-ip-monitor.sh

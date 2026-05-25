@@ -1,0 +1,15 @@
+[Unit]
+Description=TG Pilot L5 指标采集+异常检测 (每30分钟)
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/dotfiles/agi-core/tg_predictor.py
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+StandardOutput=journal
+StandardError=journal
+WorkingDirectory=%h
+Nice=10
+
+[Install]
+WantedBy=default.target

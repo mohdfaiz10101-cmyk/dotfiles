@@ -1,0 +1,10 @@
+[Unit]
+Description=定期清理被取代的服务和架构部件
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/architecture-cleanup.sh
+
+[Install]
+WantedBy=timers.target

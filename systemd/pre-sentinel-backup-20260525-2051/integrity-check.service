@@ -1,0 +1,7 @@
+[Unit]
+Description=文件完整性检查 (每小时)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/integrity-check.sh
+StandardOutput=journal

@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7699 " && echo "PORT 7699 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode web --port 8090 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8090
+OnFailure=sentinel-onfailure@opencode-web-sisy.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

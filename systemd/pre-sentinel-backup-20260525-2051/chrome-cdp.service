@@ -1,0 +1,23 @@
+[Unit]
+Description=Headless Chrome with CDP (remote debugging)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9222 " && echo "PORT 9222 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/google-chrome-stable \
+  --remote-debugging-port=9222 \
+  --no-first-run \
+  --no-default-browser-check \
+  --user-data-dir=/mnt/ai/cache/chrome-cdp \
+  --headless=new
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=graphical-session.target
+
+

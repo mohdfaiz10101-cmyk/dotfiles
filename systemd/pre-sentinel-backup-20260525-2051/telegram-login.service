@@ -1,0 +1,16 @@
+[Unit]
+Description=Telegram Userbot Login Helper
+After=network.target
+
+[Service]
+Type=simple
+StandardInput=tty
+StandardOutput=append:/home/charlie/.local/share/opencode/logs/telegram-login.log
+StandardError=append:/home/charlie/.local/share/opencode/logs/telegram-login.log
+ExecStart=/run/current-system/sw/bin/nix-shell -p python3Packages.telethon python3Packages.pysocks --command "python3 /home/charlie/agi/telegram-login.py"
+TTYPath=/dev/tty2
+TTYReset=yes
+TTYVHangup=yes
+
+[Install]
+WantedBy=default.target

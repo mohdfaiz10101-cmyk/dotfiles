@@ -1,0 +1,10 @@
+[Unit]
+Description=每日安全扫描 (ClamAV + 完整性 + 端口)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/daily-security-scan.sh
+Environment="http_proxy="
+Environment="https_proxy="
+Environment="no_proxy=*"
+StandardOutput=journal

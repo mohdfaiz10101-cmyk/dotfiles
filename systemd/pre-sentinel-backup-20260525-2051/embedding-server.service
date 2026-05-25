@@ -1,0 +1,20 @@
+[Unit]
+Description=Embedding Server (all-MiniLM-L6-v2)
+After=network.target
+
+[Service]
+Type=simple
+Environment=PYTHONPATH=/nix/store/c28mw5x14za6k72zz1aac6apbwx7j3wr-python3.13-numpy-2.3.5/lib/python3.13/site-packages:/nix/store/8jdcmrq6ld4jkh8r0hc3gy5fhg6v8dvf-python3.13-numpy-2.4.2/lib/python3.13/site-packages:/nix/store/bjl4laiaspy4d4n1w2qj8knhi1iv9agg-python3.13-tokenizers-0.21.1/lib/python3.13/site-packages:/nix/store/kd0yrsmrslihfp66y2k88cyan1vjydl8-python3.13-pycparser-3.00/lib/python3.13/site-packages:/nix/store/wmlvs9fd81d6fw0shyapmp473iqyllp5-python3.13-cffi-2.0.0/lib/python3.13/site-packages
+Environment=EMBEDDING_PORT=8286
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8286 " && echo "PORT 8286 IN USE" && exit 1 || true'
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/dotfiles/agi-core/embedding_server.py
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+
+

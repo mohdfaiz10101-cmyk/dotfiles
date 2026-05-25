@@ -7,6 +7,7 @@ Type=simple
 WorkingDirectory=/mnt/ai/refine-orchestrator
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9820 " && echo "PORT 9820 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 -m uvicorn refine_api:app --host 127.0.0.1 --port 9820 --log-level warning
+OnFailure=sentinel-onfailure@refine-orchestrator.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

@@ -4,6 +4,7 @@ After=default.target
 
 [Service]
 ExecStart=/home/charlie/.local/bin/ai-rules-watch.sh
+OnFailure=sentinel-onfailure@ai-rules-sync.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

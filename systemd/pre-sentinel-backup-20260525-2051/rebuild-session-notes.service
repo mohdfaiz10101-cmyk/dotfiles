@@ -1,0 +1,9 @@
+[Unit]
+Description=从 changelog 重建 session-notes（每30分钟）
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/rebuild-session-notes.sh 7
+
+[Install]
+WantedBy=timers.target

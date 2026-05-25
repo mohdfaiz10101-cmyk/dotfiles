@@ -9,6 +9,7 @@ StartLimitIntervalSec=60
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4000 " && echo "PORT 4000 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/hermes gateway run
+OnFailure=sentinel-onfailure@hermes-agent.service
 Restart=always
 StartLimitBurst=3
 StartLimitIntervalSec=60

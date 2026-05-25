@@ -1,0 +1,6 @@
+[Unit]
+Description=Update plocate file index
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.nix-profile/bin/updatedb -o /home/charlie/.local/state/plocate/plocate.db -U /home/charlie --require-visibility no

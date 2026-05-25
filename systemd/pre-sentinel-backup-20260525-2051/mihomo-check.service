@@ -1,0 +1,9 @@
+[Unit]
+Description=Mihomo Proxy 定时健康检查
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/mihomo-guardian --check
+StandardOutput=journal
+StandardError=journal

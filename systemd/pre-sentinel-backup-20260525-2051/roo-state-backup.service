@@ -1,0 +1,9 @@
+[Unit]
+Description=Roo Code State Backup
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/roo-state-backup
+User=charlie
+Environment=DISPLAY=:0

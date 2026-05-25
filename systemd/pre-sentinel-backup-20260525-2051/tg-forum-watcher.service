@@ -1,0 +1,20 @@
+[Unit]
+Description=TG Forum Watcher — 自动发现新群组并创建话题
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/dotfiles/agi-core/tg_forum_watcher.py
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=30
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+Environment="TG_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks"
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+

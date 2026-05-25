@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7693 " && echo "PORT 7693 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/ttyd -b /aider -p 7693 -t fontSize=13 -t disableLeaveAlert=true -W /run/current-system/sw/bin/bash --login
+OnFailure=sentinel-onfailure@ttyd-aider.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

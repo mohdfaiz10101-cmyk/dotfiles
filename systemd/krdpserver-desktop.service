@@ -6,6 +6,7 @@ PartOf=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/krdpserver -u charlie -p charlie2026 --plasma --certificate /home/charlie/.config/krdp/cert.pem --certificate-key /home/charlie/.config/krdp/key.pem
+OnFailure=sentinel-onfailure@krdpserver-desktop.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

@@ -1,0 +1,16 @@
+[Unit]
+Description=系统状态 MCP — 服务/端口/磁盘/代理统一查询
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment="HOME=%h"
+
+[Install]
+WantedBy=default.target

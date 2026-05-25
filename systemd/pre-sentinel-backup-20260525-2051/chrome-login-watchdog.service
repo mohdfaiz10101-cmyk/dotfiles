@@ -1,0 +1,8 @@
+[Unit]
+Description=Chrome 登录态看门狗 — 每10分钟检测，掉线自动恢复
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/chrome-login-watchdog.sh
+StandardOutput=journal
+StandardError=journal

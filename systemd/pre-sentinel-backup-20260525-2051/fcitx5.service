@@ -1,0 +1,19 @@
+[Unit]
+Description=Fcitx5 input method (always running)
+After=graphical-session-pre.target
+Before=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/fcitx5 --replace
+Restart=no
+RestartSec=5
+Environment="GTK_IM_MODULE=fcitx"
+Environment="QT_IM_MODULE=fcitx"
+Environment="XMODIFIERS=@im=fcitx"
+Environment="INPUT_METHOD=fcitx"
+PassEnvironment=DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE
+
+[Install]
+WantedBy=graphical-session.target

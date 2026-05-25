@@ -1,0 +1,8 @@
+[Unit]
+Description=Weekly cleanup of stale git worktrees
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/worktree-cleanup
+Nice=19
+IOSchedulingClass=idle

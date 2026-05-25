@@ -8,6 +8,7 @@ Wants=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/chronos-biofeedback.py
+OnFailure=sentinel-onfailure@chronos-biofeedback.service
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus

@@ -1,0 +1,27 @@
+[Unit]
+Description=CrewAI Gateway - Multi-Agent Task Orchestrator
+After=network.target litellm.service
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/crewai-venv/bin/python /home/charlie/crewai-project/crew_server.py
+WorkingDirectory=/home/charlie/crewai-project
+Environment=PATH=/home/charlie/crewai-venv/bin:/run/current-system/sw/bin
+Environment=PYTHONUNBUFFERED=1
+Environment=LD_LIBRARY_PATH=/nix/store/j2kgllgds4w7na8zqv1msi0mpvpjxda8-gcc-15.2.0-lib/lib
+# 清除代理变量，避免 SOCKS 干扰 localhost LiteLLM
+Environment=http_proxy=
+Environment=https_proxy=
+Environment=HTTP_PROXY=
+Environment=HTTPS_PROXY=
+Environment=ALL_PROXY=
+Environment=all_proxy=
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

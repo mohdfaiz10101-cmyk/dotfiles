@@ -1,0 +1,12 @@
+[Unit]
+Description=聚合营销调研输出到记忆文件
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/aggregate-marketing-research.sh
+WorkingDirectory=%h/.claude/projects/-home-charlie/memory
+Environment="PATH=/home/charlie/.nix-profile/bin:/run/current-system/sw/bin"
+
+[Install]
+WantedBy=timers.target

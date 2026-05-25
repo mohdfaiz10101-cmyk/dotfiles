@@ -1,0 +1,5 @@
+[Unit]
+Description=Letta 健康检查
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/letta-health-check.sh

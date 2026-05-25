@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenCode D-State Watchdog
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-dstate-watchdog
+StandardOutput=journal
+StandardError=journal

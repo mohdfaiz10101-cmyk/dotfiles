@@ -1,0 +1,8 @@
+[Unit]
+Description=Letta Self-Heal
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/letta-selfheal
+Environment=PATH=/run/current-system/sw/bin

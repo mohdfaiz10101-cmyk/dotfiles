@@ -5,6 +5,7 @@ After=opencode-web.service
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-memwatch.sh
+OnFailure=sentinel-onfailure@opencode-memwatch.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

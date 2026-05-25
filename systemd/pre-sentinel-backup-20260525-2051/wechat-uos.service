@@ -1,0 +1,30 @@
+[Unit]
+Description=微信 (WeChat UOS) — safe launcher
+After=graphical-session.target xdg-desktop-portal.service
+Wants=graphical-session.target
+# Wait for KDE panel to be ready
+After=plasma-plasmashell.service
+StartLimitBurst=3
+StartLimitIntervalSec=120
+
+[Service]
+Type=exec
+ExitType=cgroup
+ExecStartPre=/run/current-system/sw/bin/sleep 8
+ExecStart=/home/charlie/.local/bin/wechat-uos-safe
+Restart=on-failure
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
+RestartSec=10
+RestartPreventExitStatus=0
+TimeoutStopSec=10
+Slice=app.slice
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=graphical-session.target
+

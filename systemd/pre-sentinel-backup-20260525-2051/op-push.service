@@ -1,0 +1,32 @@
+[Unit]
+Description=OP Task Push Service — 监控 op-tasks.md 变化推送到 Telegram/Discord
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/agi
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/op_push_service.py
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Telegram 配置
+Environment="TELEGRAM_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks"
+Environment="TELEGRAM_CHAT_ID=5036541266"
+
+# Discord Webhook（需要从 Discord 服务器设置获取，暂时禁用）
+# Environment="DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+Environment="DISCORD_WEBHOOK_URL="
+
+# 代理配置
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+
+[Install]
+WantedBy=default.target
+
+

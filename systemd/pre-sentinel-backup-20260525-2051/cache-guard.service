@@ -1,0 +1,12 @@
+[Unit]
+Description=Cache Guard — 自动发现大缓存目录迁移到 /mnt/ai/cache
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/cache-guard.sh
+Environment=HOME=%h
+Nice=19
+IOSchedulingClass=idle
+StandardOutput=journal
+StandardError=journal

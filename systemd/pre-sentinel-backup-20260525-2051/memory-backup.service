@@ -1,0 +1,12 @@
+[Unit]
+Description=Memory System Backup - Letta + ChromaDB + Files
+After=network.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/memory-backup
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

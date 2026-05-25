@@ -6,6 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/clip-sync watch
+OnFailure=sentinel-onfailure@clip-sync.service
 ExecStop=/home/charlie/.local/bin/clip-sync stop
 Restart=always
 StartLimitAction=none

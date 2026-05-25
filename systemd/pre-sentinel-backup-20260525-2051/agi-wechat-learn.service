@@ -1,0 +1,13 @@
+[Unit]
+Description=AGI 微信学习 — 消息→Letta记忆管道
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie/agi
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/wechat-learn.py
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

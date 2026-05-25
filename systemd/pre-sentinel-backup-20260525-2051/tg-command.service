@@ -1,0 +1,25 @@
+[Unit]
+Description=Telegram Unified Command Center
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/tg-command
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=TG_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks
+Environment=TG_CHAT_ID=5036541266
+Environment=TG_ALLOWED_CHATS=5036541266
+Environment=CHAT_MODEL=cloud/glm-4-flash
+
+[Install]
+WantedBy=default.target
+
+

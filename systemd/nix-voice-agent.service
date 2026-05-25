@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/nix_voice_agent.py
+OnFailure=sentinel-onfailure@nix-voice-agent.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

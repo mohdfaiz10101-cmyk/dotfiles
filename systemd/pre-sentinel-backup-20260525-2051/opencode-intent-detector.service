@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenCode 意图检测器（全自动触发 workflows/GitHub Actions）
+After=network.target opencode-telegram-processor.service
+
+[Service]
+Type=simple
+Environment="PATH=%h/.npm-global/bin:/run/current-system/sw/bin"
+ExecStart=%h/.local/bin/opencode-intent-detector
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

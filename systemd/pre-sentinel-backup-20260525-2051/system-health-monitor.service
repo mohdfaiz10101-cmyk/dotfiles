@@ -1,0 +1,11 @@
+[Unit]
+Description=System Health Monitor
+
+[Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Type=oneshot
+Environment=PATH=/run/current-system/sw/bin:/run/wrappers/bin
+ExecStart=/home/charlie/.local/bin/system-call-check
+StandardOutput=journal
+StandardError=journal
+MemoryMax=512M

@@ -1,0 +1,9 @@
+[Unit]
+Description=UALS Monthly Dashboard Report
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 %h/.claude/uals/uals-dashboard.py --full
+StandardOutput=journal
+StandardError=journal

@@ -5,6 +5,7 @@ After=network.target glm-proxy.service
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/lib/agent-orchestrator/orchestrator.py
+OnFailure=sentinel-onfailure@agent-orchestrator.service
 WorkingDirectory=/home/charlie/.local/lib/agent-orchestrator
 Restart=on-failure
 StartLimitIntervalSec=60

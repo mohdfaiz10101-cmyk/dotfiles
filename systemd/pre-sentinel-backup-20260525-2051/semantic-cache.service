@@ -1,0 +1,19 @@
+[Unit]
+Description=Semantic Cache Server
+After=network.target chromadb.service ollama.service
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/semantic-cache
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/semantic-cache/.venv/bin/python cache_server_simple.py
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+

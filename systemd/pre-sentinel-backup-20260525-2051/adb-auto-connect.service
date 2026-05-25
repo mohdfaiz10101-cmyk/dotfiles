@@ -1,0 +1,9 @@
+[Unit]
+Description=ADB WiFi Auto-Connect (OnePlus Ace 5 Pro)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/adb connect 192.168.123.241:5555
+RemainAfterExit=yes

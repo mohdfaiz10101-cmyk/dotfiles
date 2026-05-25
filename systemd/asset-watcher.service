@@ -5,6 +5,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 ExecStart=%h/.local/bin/asset-watcher
+OnFailure=sentinel-onfailure@asset-watcher.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

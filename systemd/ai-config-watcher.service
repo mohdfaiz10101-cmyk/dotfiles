@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/ai-config-watcher.sh
+OnFailure=sentinel-onfailure@ai-config-watcher.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

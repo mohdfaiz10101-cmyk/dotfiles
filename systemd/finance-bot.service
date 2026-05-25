@@ -8,6 +8,7 @@ EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Environment=PYTHONPATH=/home/charlie/dotfiles/agi-core/finance
 Environment=HOME=/home/charlie
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/dotfiles/agi-core/finance/tg-finance-bot.py
+OnFailure=sentinel-onfailure@finance-bot.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

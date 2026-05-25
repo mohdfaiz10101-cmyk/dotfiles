@@ -5,6 +5,7 @@ Description=TG Forum Watcher — 自动发现新群组并创建话题
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/dotfiles/agi-core/tg_forum_watcher.py
+OnFailure=sentinel-onfailure@tg-forum-watcher.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

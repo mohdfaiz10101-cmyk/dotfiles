@@ -1,0 +1,16 @@
+[Unit]
+Description=配置/服务文件变更事件记录器
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=%h/bin/change-watcher
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

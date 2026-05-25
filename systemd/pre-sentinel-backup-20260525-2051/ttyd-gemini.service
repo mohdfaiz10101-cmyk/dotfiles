@@ -1,0 +1,20 @@
+[Unit]
+Description=ttyd - Gemini CLI Terminal (:7691)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7691 " && echo "PORT 7691 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/index.html -p 7691 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -W /home/charlie/.local/bin/gemini
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+
+[Install]
+WantedBy=default.target
+
+

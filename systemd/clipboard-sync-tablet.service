@@ -14,6 +14,7 @@ Environment="TZDIR=/nix/store/h15ranlgwagilr6ajd7ich6d896kf9zd-tzdata-2026a/shar
 Environment="WAYLAND_DISPLAY=wayland-0"
 Environment="XDG_RUNTIME_DIR=/run/user/1000"
 ExecStart=/home/charlie/.local/bin/clipboard-sync-tablet
+OnFailure=sentinel-onfailure@clipboard-sync-tablet.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

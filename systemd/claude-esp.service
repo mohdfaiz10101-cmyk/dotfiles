@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/claude-esp-simple.py
+OnFailure=sentinel-onfailure@claude-esp.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

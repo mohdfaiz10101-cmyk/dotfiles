@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/.local/bin/opencode-session-recorder.py
+OnFailure=sentinel-onfailure@opencode-session-recorder.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

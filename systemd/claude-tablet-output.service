@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/claude-tablet-output
+OnFailure=sentinel-onfailure@claude-tablet-output.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

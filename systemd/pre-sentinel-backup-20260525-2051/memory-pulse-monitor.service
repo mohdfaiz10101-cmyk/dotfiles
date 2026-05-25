@@ -1,0 +1,11 @@
+[Unit]
+Description=Memory Pulse Monitor
+After=network.target mem0-bridge.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/memory_pulse_monitor.py sync
+WorkingDirectory=/home/charlie
+Environment=PULSE_DB=/mnt/ai/data/memory-pulse/pulse.db
+Environment=LETTA_TOKEN=letta
+TimeoutStartSec=300

@@ -1,0 +1,22 @@
+[Unit]
+Description=ttyd - Aider Terminal (:7693)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7693 " && echo "PORT 7693 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/ttyd -b /aider -p 7693 -t fontSize=13 -t disableLeaveAlert=true -W /run/current-system/sw/bin/bash --login
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
+
+[Install]
+WantedBy=default.target
+
+

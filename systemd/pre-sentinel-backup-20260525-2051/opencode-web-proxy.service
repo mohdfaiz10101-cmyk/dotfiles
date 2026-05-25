@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenCode Web Proxy (:8081→:18081)
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":18081 " && echo "PORT 18081 IN USE" && exit 1 || true'
+ExecStart=/home/charlie/.local/bin/opencode-web-proxy
+Restart=no
+Environment="HOME=/home/charlie"
+Environment="PATH=/run/current-system/sw/bin"
+StandardOutput=journal
+StandardError=journal

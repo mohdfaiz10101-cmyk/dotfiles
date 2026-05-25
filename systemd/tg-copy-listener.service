@@ -6,6 +6,7 @@ After=graphical-session.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/tg-copy-listener.py
+OnFailure=sentinel-onfailure@tg-copy-listener.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

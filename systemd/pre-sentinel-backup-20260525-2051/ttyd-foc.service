@@ -1,0 +1,22 @@
+[Unit]
+Description=ttyd - Foc Terminal (:7697)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7697 " && echo "PORT 7697 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/ttyd -p 7697 --base-path /foc -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/foc-tmux-wrap
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
+
+[Install]
+WantedBy=default.target
+
+

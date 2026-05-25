@@ -8,6 +8,7 @@ Environment=PYTHONPATH=/nix/store/c28mw5x14za6k72zz1aac6apbwx7j3wr-python3.13-nu
 Environment=EMBEDDING_PORT=8286
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8286 " && echo "PORT 8286 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/dotfiles/agi-core/embedding_server.py
+OnFailure=sentinel-onfailure@embedding-server.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

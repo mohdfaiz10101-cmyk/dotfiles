@@ -6,6 +6,7 @@ PartOf=opencode-web.service
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-stuck-watch.sh
+OnFailure=sentinel-onfailure@opencode-stuck-watch.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

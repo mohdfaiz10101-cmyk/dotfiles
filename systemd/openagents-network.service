@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8700 " && echo "PORT 8700 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/openagents-network-wrapper.sh
+OnFailure=sentinel-onfailure@openagents-network.service
 WorkingDirectory=/home/charlie/.openagents/network
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin:/home/charlie/.nix-profile/bin
 Environment=PYTHONUNBUFFERED=1

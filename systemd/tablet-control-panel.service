@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9876 " && echo "PORT 9876 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/tablet-control-api.py
+OnFailure=sentinel-onfailure@tablet-control-panel.service
 WorkingDirectory=/home/charlie/launcher
 Restart=on-failure
 StartLimitAction=none

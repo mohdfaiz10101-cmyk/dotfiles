@@ -1,0 +1,15 @@
+[Unit]
+Description=AI 三层规则同步监听（ai-shared-rules.md → CLAUDE.md + AGENTS.md + macg.py）
+After=default.target
+
+[Service]
+ExecStart=/home/charlie/.local/bin/ai-rules-watch.sh
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

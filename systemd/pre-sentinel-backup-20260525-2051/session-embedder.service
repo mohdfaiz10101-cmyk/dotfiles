@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenCode Session RAG 增量同步
+After=network.target letta-chromadb.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/session-embedder-wrapper.sh --once
+WorkingDirectory=/home/charlie
+User=charlie
+Environment=PATH=/home/charlie/.local/venv/session-rag/bin:/run/current-system/sw/bin
+
+[Install]
+WantedBy=multi-user.target

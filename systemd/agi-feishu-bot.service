@@ -7,6 +7,7 @@ Requires=agi-brain.service
 Type=simple
 WorkingDirectory=/home/charlie/agi
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/feishu_bot_enhanced.py
+OnFailure=sentinel-onfailure@agi-feishu-bot.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

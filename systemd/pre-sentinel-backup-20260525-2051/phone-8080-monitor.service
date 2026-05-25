@@ -1,0 +1,10 @@
+[Unit]
+Description=Phone 8080 connectivity monitor
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/phone-8080-monitor.sh
+User=charlie
+Group=users
+EnvironmentFile=/home/charlie/.local/share/credentials/duckdns.env

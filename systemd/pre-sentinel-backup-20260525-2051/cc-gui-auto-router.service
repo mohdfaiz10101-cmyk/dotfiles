@@ -1,0 +1,17 @@
+[Unit]
+Description=CC-GUI Auto Router (GLM/DeepSeek smart dispatch)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cc-gui-auto-router
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
+

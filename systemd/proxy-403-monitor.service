@@ -6,6 +6,7 @@ After=network.target
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=%h/.local/bin/proxy-403-monitor
+OnFailure=sentinel-onfailure@proxy-403-monitor.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

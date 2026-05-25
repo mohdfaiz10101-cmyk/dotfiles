@@ -1,0 +1,6 @@
+[Unit]
+Description=KDE Panel 图标巡检修复
+After=graphical-session.target plasma-plasmashell.service
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/panel-nurse check

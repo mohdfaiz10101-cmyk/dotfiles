@@ -1,0 +1,15 @@
+[Unit]
+Description=Letta Memory System Health Monitor with Auto-Fix
+After=network.target
+
+[Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Type=oneshot
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+Environment="https_proxy=http://127.0.0.1:7890"
+ExecStart=/home/charlie/.local/bin/letta-health-monitor
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

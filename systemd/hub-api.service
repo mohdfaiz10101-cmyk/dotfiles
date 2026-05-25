@@ -7,6 +7,7 @@ Type=simple
 WorkingDirectory=%h/hub
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9800 " && echo "PORT 9800 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 %h/hub/hub-api.py
+OnFailure=sentinel-onfailure@hub-api.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

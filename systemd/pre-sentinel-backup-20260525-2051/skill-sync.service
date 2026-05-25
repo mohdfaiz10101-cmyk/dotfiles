@@ -1,0 +1,26 @@
+[Unit]
+Description=Skill Sync Service (Git + Letta)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash %h/.claude/skills/skill-sync.sh
+# 设置工作目录
+WorkingDirectory=%h/.claude/skills
+# 环境变量
+Environment="PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin"
+# 运行超时时间（30 分钟，防止 Letta 连接超时）
+TimeoutStartSec=1800
+# 失败重试
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=60
+
+# 日志
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=skill-sync
+

@@ -9,6 +9,7 @@ Environment="STLOGFORMATTIMESTAMP="
 Environment="STLOGFORMATLEVELSTRING=false"
 Environment="STLOGFORMATLEVELSYSLOG=true"
 ExecStart=/nix/store/bpsw7adz29jg5124pjymf7clmmvjvr61-syncthing-2.0.15/bin/syncthing serve --no-browser --no-restart
+OnFailure=sentinel-onfailure@syncthing.service
 Restart=on-failure
 StartLimitBurst=3
 StartLimitIntervalSec=60

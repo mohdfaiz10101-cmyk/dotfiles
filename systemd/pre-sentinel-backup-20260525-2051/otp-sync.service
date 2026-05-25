@@ -1,0 +1,24 @@
+[Unit]
+Description=OTP SMS sync from OnePlus via ADB WiFi
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/otp-sync
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+# Give wl-copy access to the Wayland session
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+# Suppress stderr noise into journal only
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=otp-sync
+
+[Install]
+WantedBy=default.target
+

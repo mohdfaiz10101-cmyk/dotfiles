@@ -1,0 +1,27 @@
+[Unit]
+Description=Phone SOCKS5 Proxy Tunnel (via Tailscale)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/run/current-system/sw/bin/ssh -NT -D 1080 -f \
+    -o ServerAliveInterval=30 \
+    -o ServerAliveCountMax=3 \
+    -o TCPKeepAlive=yes \
+    -o StrictHostKeyChecking=no \
+    -o ExitOnForwardFailure=no \
+    -o ConnectTimeout=10 \
+    -o ConnectionAttempts=3 \
+    phone
+ExecStop=/run/current-system/sw/bin/pkill -f "ssh.*-D 1080"
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=15
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=default.target
+

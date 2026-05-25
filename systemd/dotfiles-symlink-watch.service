@@ -5,6 +5,7 @@ After=default.target
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/dotfiles-symlink-watch.sh
+OnFailure=sentinel-onfailure@dotfiles-symlink-watch.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

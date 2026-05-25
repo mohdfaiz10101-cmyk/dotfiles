@@ -1,0 +1,10 @@
+[Unit]
+StartLimitBurst=3
+StartLimitIntervalSec=120
+Description=Gmail Reply Monitor (解析 Telegram "回 #N" 命令)
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/gmail-bridge/gmail-reply-monitor.py
+StandardOutput=journal
+StandardError=journal

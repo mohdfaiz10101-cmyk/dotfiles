@@ -5,6 +5,7 @@ After=graphical-session.target
 [Service]
 Type=forking
 ExecStart=/run/current-system/sw/bin/tmux new-session -d -s claude-work -n "Claude工作"
+OnFailure=sentinel-onfailure@tmux-claude.service
 ExecStop=/run/current-system/sw/bin/tmux kill-session -t claude-work
 RemainAfterExit=yes
 Restart=on-failure

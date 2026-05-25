@@ -8,6 +8,7 @@ Type=simple
 WorkingDirectory=/mnt/ai/apps/openclaw-tg-canvas
 EnvironmentFile=/mnt/ai/apps/openclaw-tg-canvas/.env
 ExecStart=/run/current-system/sw/bin/node server.js
+OnFailure=sentinel-onfailure@tg-canvas.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

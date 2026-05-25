@@ -1,0 +1,22 @@
+[Unit]
+Description=Agent Danmaku — 桌面弹幕巡逻监控
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/agent-danmaku
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=60
+RestartSec=10
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin
+Environment=PYTHONPATH=/nix/store/avm7qjpgah6h11v3s5hdv7c6abfvirzp-python3.13-tkinter-3.13.12/lib/python3.13/site-packages
+
+[Install]
+WantedBy=graphical-session.target
+

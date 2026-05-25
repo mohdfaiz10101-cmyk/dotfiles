@@ -1,0 +1,23 @@
+[Unit]
+Description=Roo Code Index Backup Service
+Documentation=https://roocodeapp.com/docs
+
+# 不与 VSCode 服务强关联，仅作为辅助
+After=qdrant.service
+Wants=qdrant.service
+
+[Service]
+Type=oneshot
+User=charlie
+Group=users
+
+# 启动时加载索引
+ExecStart=%h/.local/bin/roo-index-load.sh
+
+# 日志输出
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=roo-index
+
+[Install]
+WantedBy=default.target

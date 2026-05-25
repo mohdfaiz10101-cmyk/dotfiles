@@ -1,0 +1,22 @@
+[Unit]
+Description=AGI Control Plane Frontend (Next.js :3000)
+After=network-online.target agi-gateway.service mnt-ai.mount
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/apps/agi-control-plane/frontend
+Environment=NEXT_PRIVATE_LOCAL_DIR=/home/charlie/.cache/agi-control-plane/dev
+ExecStartPre=/run/current-system/sw/bin/bash -c 'test -f .next/BUILD_ID && echo "build exists, skipping" || /home/charlie/.bun/bin/bun run build'
+ExecStart=/run/current-system/sw/bin/npx next start --port 3000 -H 0.0.0.0
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Environment=NODE_ENV=production
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
+

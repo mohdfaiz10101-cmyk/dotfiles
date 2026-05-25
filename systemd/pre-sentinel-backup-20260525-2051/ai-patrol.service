@@ -1,0 +1,19 @@
+[Unit]
+Description=AI Service Patrol Daemon
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/ai-patrol-daemon.sh --interval 120
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=30s
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.nix-profile/bin:/usr/bin
+Environment=DISPLAY=:0
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+[Install]
+WantedBy=default.target
+

@@ -7,6 +7,7 @@ EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 WorkingDirectory=/home/charlie/.local/discord-bot
 ExecStart=/home/charlie/.local/discord-bot/venv/bin/python3 /home/charlie/.local/discord-bot/discord_bot.py
+OnFailure=sentinel-onfailure@discord-intelligent-bot.service
 Restart=on-failure
 StartLimitIntervalSec=60
 StartLimitAction=none

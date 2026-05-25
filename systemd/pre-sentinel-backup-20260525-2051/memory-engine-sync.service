@@ -1,0 +1,7 @@
+[Unit]
+Description=Memory Engine: changelog→Memgraph同步
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/data/memory-engine/memory-engine.py changelog-graph
+TimeoutStartSec=30

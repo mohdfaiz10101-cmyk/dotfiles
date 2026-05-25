@@ -3,6 +3,7 @@ WantedBy=graphical-session.target
 
 [Service]
 ExecStart=/nix/store/sk77m499l2i1j370q8q6lnrpf1zbvqy3-disk-watchdog
+OnFailure=sentinel-onfailure@disk-watchdog.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

@@ -6,6 +6,7 @@ After=network.target opencode-telegram-processor.service
 Type=simple
 Environment="PATH=%h/.npm-global/bin:/run/current-system/sw/bin"
 ExecStart=%h/.local/bin/opencode-intent-detector
+OnFailure=sentinel-onfailure@opencode-intent-detector.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

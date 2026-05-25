@@ -1,0 +1,9 @@
+[Unit]
+Description=Compile AI Shared Config (YAML → prompt)
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.config/ai-shared/compiler.py --all
+Environment=HOME=/home/charlie
+StandardOutput=journal
+StandardError=journal

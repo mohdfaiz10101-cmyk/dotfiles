@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7691 " && echo "PORT 7691 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/index.html -p 7691 -t fontSize=14 -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -W /home/charlie/.local/bin/gemini
+OnFailure=sentinel-onfailure@ttyd-gemini.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

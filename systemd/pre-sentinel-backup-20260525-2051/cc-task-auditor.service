@@ -1,0 +1,9 @@
+[Unit]
+Description=CC 任务审计 — 检查 OP 跳过/失败任务并回流
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/launcher/cc-task-auditor.sh
+StandardOutput=journal
+StandardError=journal

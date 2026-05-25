@@ -6,6 +6,7 @@ After=charlie-hub.service
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9800 " && echo "PORT 9800 IN USE" && exit 1 || true'
 ExecStart=/nix/store/2s1j11arfkc11qr2w8mkb8k5mjqlg4k3-caddy-2.10.2/bin/caddy run --config /home/charlie/hub/Caddyfile
+OnFailure=sentinel-onfailure@hub-caddy.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

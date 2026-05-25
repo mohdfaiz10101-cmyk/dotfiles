@@ -1,0 +1,9 @@
+[Unit]
+Description=Roo Code Task Digest Extractor
+Documentation=https://github.com/charlie/ai-learning
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/roo-digest
+StandardOutput=journal
+StandardError=journal

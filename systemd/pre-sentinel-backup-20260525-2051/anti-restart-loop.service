@@ -1,0 +1,9 @@
+[Unit]
+Description=Anti Restart Loop Watchdog
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/anti-restart-loop.sh
+StandardOutput=journal
+StandardError=journal

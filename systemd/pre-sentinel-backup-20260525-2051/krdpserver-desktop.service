@@ -1,0 +1,21 @@
+[Unit]
+Description=KDE RDP Server (Wayland)
+After=graphical-session.target plasma-plasmashell.service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/krdpserver -u charlie -p charlie2026 --plasma --certificate /home/charlie/.config/krdp/cert.pem --certificate-key /home/charlie/.config/krdp/key.pem
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+Environment=KDE_FULL_SESSION=true
+
+[Install]
+WantedBy=graphical-session.target
+

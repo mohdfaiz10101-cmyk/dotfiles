@@ -6,6 +6,7 @@ Wants=network-online.target
 [Service]
 Type=forking
 ExecStart=/run/current-system/sw/bin/ssh -NT -D 1080 -f \
+OnFailure=sentinel-onfailure@phone-socks-tunnel.service
     -o ServerAliveInterval=30 \
     -o ServerAliveCountMax=3 \
     -o TCPKeepAlive=yes \

@@ -7,6 +7,7 @@ EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9810 " && echo "PORT 9810 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/office-agent-runner.sh
+OnFailure=sentinel-onfailure@office-agent.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

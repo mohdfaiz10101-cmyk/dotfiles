@@ -6,6 +6,7 @@ After=network.target
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/home/charlie/.local/bin/overtab-serve-start
+OnFailure=sentinel-onfailure@overtab-serve.service
 ExecStop=/home/charlie/.local/bin/overtab-serve-stop
 Restart=on-failure
 StartLimitAction=none

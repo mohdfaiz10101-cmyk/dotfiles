@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/tech-digest-viewer.py
+OnFailure=sentinel-onfailure@tech-digest-viewer.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=3

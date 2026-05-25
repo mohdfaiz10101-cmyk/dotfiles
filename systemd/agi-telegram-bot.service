@@ -7,6 +7,7 @@ Type=simple
 WorkingDirectory=/home/charlie/agi
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/telegram_bot_enhanced.py --mode polling --proactive
+OnFailure=sentinel-onfailure@agi-telegram-bot.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5

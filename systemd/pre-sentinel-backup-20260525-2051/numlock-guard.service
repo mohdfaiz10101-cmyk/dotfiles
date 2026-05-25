@@ -1,0 +1,17 @@
+[Unit]
+Description=NumLock Guard - 自动开启小键盘
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=PATH=/usr/bin:/bin:/run/current-system/sw/bin
+ExecStart=/home/charlie/.local/bin/numlock-guard
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

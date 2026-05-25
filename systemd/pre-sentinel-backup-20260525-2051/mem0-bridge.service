@@ -1,0 +1,16 @@
+[Unit]
+Description=Mem0 Bridge (轻量短期记忆服务)
+After=network.target embedding-server.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/mem0-bridge-wrapper
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

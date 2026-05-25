@@ -5,6 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/adb-device-monitor.py
+OnFailure=sentinel-onfailure@adb-device-monitor.service
 Restart=on-failure
 StartLimitAction=none
 RestartSec=30

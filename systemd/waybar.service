@@ -1,16 +1,13 @@
 [Unit]
 Description=Waybar status bar for Hyprland
 After=graphical-session.target
-PartOf=graphical-session.target
 
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/waybar --config /home/charlie/.config/waybar/config.override --style /home/charlie/.config/waybar/style.override.css
-Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
-RestartSec=10
+OnFailure=sentinel-onfailure@waybar.service
+Restart=on-failure
+RestartSec=3
 
 [Install]
 WantedBy=graphical-session.target

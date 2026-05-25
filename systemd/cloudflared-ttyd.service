@@ -5,8 +5,9 @@ Wants=opencode-web.service
 
 [Service]
 Type=simple
-ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8080 " && echo "PORT 8080 IN USE" && exit 1 || true'
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8080 " || { echo "PORT 8080 未监听" && exit 1; }'
 ExecStart=/home/charlie/.local/bin/cloudflared-ttyd
+OnFailure=sentinel-onfailure@cloudflared-ttyd.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5

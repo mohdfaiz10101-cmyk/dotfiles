@@ -1,0 +1,15 @@
+[Unit]
+Description=NixOS Voice Agent
+After=network.target
+
+[Service]
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/nix_voice_agent.py
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

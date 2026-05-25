@@ -1,0 +1,21 @@
+[Unit]
+Description=Finance Agent API
+After=network.target
+
+[Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Type=simple
+Environment=PYTHONPATH=/home/charlie/agi/finance
+Environment=HOME=/home/charlie
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9811 " && echo "PORT 9811 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/python3 -m uvicorn finance_agent:app --app-dir /home/charlie/agi/finance --host 0.0.0.0 --port 9811 --log-level warning
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+
+

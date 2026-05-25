@@ -1,0 +1,6 @@
+[Unit]
+Description=op-tasks 已完成任务归档
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/op-tasks-archive.sh

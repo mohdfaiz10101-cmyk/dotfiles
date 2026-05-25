@@ -1,0 +1,6 @@
+[Unit]
+Description=IDE Config Backup
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/backup-ide-configs

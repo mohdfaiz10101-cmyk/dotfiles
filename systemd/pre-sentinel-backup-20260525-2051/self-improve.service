@@ -1,0 +1,9 @@
+[Unit]
+Description=每日 GLM 自我改进 Agent
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/self_improve.py
+WorkingDirectory=/home/charlie
+Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin"
+TimeoutStartSec=120

@@ -1,0 +1,6 @@
+[Unit]
+Description=Kill orphaned Claude processes with deleted terminals
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/claude-orphan-killer.sh

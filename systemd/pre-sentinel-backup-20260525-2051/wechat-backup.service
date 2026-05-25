@@ -1,0 +1,14 @@
+[Unit]
+Description=WeChat Multi-Platform Backup (Android + iOS-from-Win)
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/wechat-android-backup.sh
+ExecStartPost=-/home/charlie/.local/bin/wechat-win-sync.sh
+Environment="ANDROID_IP="
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

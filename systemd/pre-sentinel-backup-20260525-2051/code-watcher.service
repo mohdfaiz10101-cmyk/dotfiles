@@ -1,0 +1,16 @@
+[Unit]
+Description=代码文件实时监控 — 变更即索引
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/code-watcher
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

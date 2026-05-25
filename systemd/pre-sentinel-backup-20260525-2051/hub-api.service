@@ -1,0 +1,20 @@
+[Unit]
+Description=Charlie Hub API (port 9800)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/hub
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9800 " && echo "PORT 9800 IN USE" && exit 1 || true'
+ExecStart=/run/current-system/sw/bin/python3 %h/hub/hub-api.py
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
+
+

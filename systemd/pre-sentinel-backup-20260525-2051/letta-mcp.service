@@ -1,0 +1,18 @@
+[Unit]
+Description=Letta Memory MCP Server (HTTP)
+After=network.target
+
+[Service]
+EnvironmentFile=%h/dotfiles/systemd/service-common.env
+Type=simple
+ExecStart=/home/charlie/.local/bin/letta-mcp-server
+Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
+

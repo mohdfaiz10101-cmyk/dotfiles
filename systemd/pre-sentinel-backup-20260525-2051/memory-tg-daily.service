@@ -1,0 +1,7 @@
+[Unit]
+Description=记忆日报推送到Telegram
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/memory-tg-push.sh daily
+StandardOutput=journal

@@ -1,0 +1,10 @@
+[Unit]
+Description=全系统 Git 备份（所有仓库自动 commit + push）
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/bash /home/charlie/bin/git-backup.sh
+StandardOutput=journal
+StandardError=journal
+Environment="HOME=%h"
+WorkingDirectory=%h
