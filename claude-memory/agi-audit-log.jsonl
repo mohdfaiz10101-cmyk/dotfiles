@@ -1243,3 +1243,4 @@
 {"ts": "2026-05-25 18:19", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-25 18:20", "type": "cycle", "summary": "系统运行平稳，CPU占用较高但无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:21", "type": "cycle", "summary": "系统负载低，CPU存在单进程满载但符合已知正常特征", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 18:22", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
