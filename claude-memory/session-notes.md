@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-25 08:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-25 08:30
 
 ## 2026-05-25
 
@@ -11,6 +11,7 @@
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-24.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -58,6 +59,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -105,6 +108,9 @@
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/systemd/user/config-immutable-snapshot.service CREATE
 - [file-create] **.config**: .config/systemd/user/daily-log-generator.service CREATE
 - [file-create] **.config**: .config/systemd/user/daily-log-generator.timer CREATE
@@ -134,7 +140,9 @@
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-24T16-10-10-358Z.yml CREATE
+- [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/systemd/user/timers.target.wants/opencode-autoupgrade.timer DELETE
 ## 2026-05-24
 
