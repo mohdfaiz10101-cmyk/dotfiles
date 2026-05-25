@@ -1729,3 +1729,4 @@
 {"ts": "2026-05-26 03:36", "type": "cycle", "summary": "系统运行平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 03:37", "type": "cycle", "summary": "系统处于低负载状态，服务健康，存在预期内的高CPU进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 03:38", "type": "cycle", "summary": "系统运行正常，CPU短暂波动，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 03:39", "type": "cycle", "summary": "系统运行平稳，凌晨时段无服务异常，高CPU进程为已知正常服务", "alert_count": 0, "skipped_llm": false}
