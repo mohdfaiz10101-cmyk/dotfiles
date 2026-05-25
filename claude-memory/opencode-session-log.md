@@ -47468,3 +47468,7 @@ wanted:
 3. Line 57-64: switchOC() calls switch API → location.reload()
 The key issue for the 8080 page: when it reloads 
 - [2026-05-25 12:16:51] **AI(sisyphus)**: 8080 以前是 ttyd，后来被 opencode 替代了。看现状：
+
+## 2026-05-25 12:17
+- [2026-05-25 12:17:16] **用户**: 检测哪些还ai改动会用tmp文件夹
+- [2026-05-25 12:17:35] **用户**: 这是误报吗还是怎么
