@@ -47394,3 +47394,6 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 | 方式 | 地址 | 状态 |
 |------|------|------|
 | Web UI | `http://localhost:42110` | 可
+
+## 2026-05-25 10:00
+- [2026-05-25 10:00:09] **用户**: 怎么跑 gts init
