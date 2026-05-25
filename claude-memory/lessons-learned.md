@@ -460,4 +460,4 @@
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 24 hours (healthy)
 
-- [2026-05-25] [OP] 修复"外网不通"频繁告警根因: (1) opencode-web hang导致8080/8081端口无响应 → 重启解决 (2) waybar-health.sh+waybar-score.sh的ck_ocpub检查走代理而非--noproxy'*'，代理慢时超时误报 (3) connectivity-chain-watchdog.sh wan_reachable变量未绑定导致set -euo pipefail崩溃 → 加${var:-default}保护
+- [2026-05-25] [OP] 修复"外网不通"频繁告警根因: (1) opencode-web hang导致8080/8081端口无响应 → 重启解决 (2) waybar-health.sh+waybar-score.sh的ck_ocpub检查走代理而非--noproxy'*'，代理慢时超时误报 (3) connectivity-chain-watchdog.sh wan_reachable变量未绑定导致set -euo pipefail崩溃 → 加${var:-default}保护- [2026-05-24] [OP] 8088页面加归档/删除按钮: smart-redirector.py PAGE_HTML加archive/delete JS函数+srow布局+sact样式+do_GET生成按钮行 | archive后端修复: 写opencode.db time_archived(旧版只写本地文件不写DB) + kill-window用_find_oc_window搜索(旧oc_{16}命名错误)
