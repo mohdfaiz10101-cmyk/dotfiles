@@ -47419,3 +47419,14 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 
 ## 2026-05-25 10:07
 - [2026-05-25 10:06:57] **用户**: 能把8080 恢复到这个窗口的版本吗 他把我改了
+
+## 2026-05-25 10:08
+- [2026-05-25 10:07:45] **AI(sisyphus)**: [ok] `/khoj` 命令已集成到 AGI Brain Telegram Bot
+[ok] systemd 服务已启动 — `telegram-bot-enhanced.service` running
+
+**Khoj 搜索已就绪**: 在 Telegram 私聊/群组发送 `/khoj 你的问题` 即可搜索知识库
+
+**话题群需你手动创建**（Bot API 无法创建群组）：
+1. Telegram → 新建群组 → 群设置 → 开启「话题/Topics」
+2. 将 `@charlie_1688_bot` 拉入群并设为管理员
+3. 告诉我群名，我用 API 创建 Khoj 话题并设置自动
