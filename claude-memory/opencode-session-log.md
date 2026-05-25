@@ -48096,3 +48096,6 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 ## 2026-05-25 20:00
 - [2026-05-25 20:00:44] **用户**: http://charlie1990.duckdns.org:8080/  手机无法访问 电脑可以
+
+## 2026-05-25 20:01
+- [2026-05-25 20:01:36] **用户**: 这个手机的连通性 也要加入系统通知 和telegram通知 同时 如果手机不可达 win需要有端口绑定在duckdns上可以修复 或者是自动启动修复
