@@ -687,3 +687,5 @@
 - [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 39 minutes
 
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 38 minutes (healthy)
+- [2026-05-25] [OP] 19890 session按钮修复: 根因=ttyd页面JS的8088 API端口在路由器未转发,WAN访问时DuckDNS:8088不可达 | 修复=复用FRPC空闲端口18090→8088(原8090无服务)+ttyd HTML APIS数组添加18090 fallback | 链路: WAN→路由器:19890→FRPS→FRPC→8080(ttyd渲染)+WAN→路由器:18090→FRPS→FRPC→8088(API)
+- [2026-05-25] [OP] session按钮不跳转根因: tmux new-window缺-d导致阻塞,subprocess.run timeout=5秒后kill进程,窗口未创建 | 修复: smart-redirector.py添加-d标志new-window立即返回+switch-client接管显示 | 验证: 两次switch测试均成功创建窗口并切换到对应opencode会话
