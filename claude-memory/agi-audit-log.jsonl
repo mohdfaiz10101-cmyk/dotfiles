@@ -897,3 +897,4 @@
 {"ts": "2026-05-25 10:07", "type": "cycle", "summary": "系统运行正常，CPU存在高负载进程但符合已知特征", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:08", "type": "cycle", "summary": "系统运行正常，CPU与内存负载处于健康范围，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:10", "type": "cycle", "summary": "系统运行状态正常，资源占用无异常，高CPU进程均为正常瞬时或系统服务进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 10:12", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载均在合理范围内", "alert_count": 0, "skipped_llm": false}
