@@ -1829,3 +1829,4 @@
 {"ts": "2026-05-26 05:26", "type": "cycle", "summary": "系统运行正常，CPU因查询进程瞬时升高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 05:27", "type": "cycle", "summary": "系统运行平稳，凌晨时段CPU负载稍高但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 05:29", "type": "cycle", "summary": "系统运行正常，存在高CPU进程但在凌晨时段非异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 05:30", "type": "cycle", "summary": "凌晨时段系统资源正常，无活跃异常", "alert_count": 0, "skipped_llm": false}
