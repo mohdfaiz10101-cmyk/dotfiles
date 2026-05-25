@@ -101,6 +101,13 @@ backup_repo ~/hub                    "hub(API服务)"
 
 log "=== 完成: OK=$OK SKIP=$SKIP LOCAL=$LOCAL FAIL=$FAIL ==="
 
+# 桌面通知
+if [ "$FAIL" -gt 0 ]; then
+    notify-send "Git备份完成 ⚠️" "成功:$OK 跳过:$SKIP 失败:$FAIL" --app-name="GitBackup" -t 5000 2>/dev/null || true
+else
+    notify-send "Git备份完成" "成功:$OK 跳过:$SKIP" --app-name="GitBackup" -t 3000 2>/dev/null || true
+fi
+
 # 复制到桌面
 mkdir -p ~/Desktop/日志/操作记录/
 cp "$LOG" ~/Desktop/日志/操作记录/git-backup-$(date +%Y%m%d).log 2>/dev/null || true

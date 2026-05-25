@@ -35,6 +35,7 @@ from telegram.ext import (
     ContextTypes,
     filters,
 )
+from telegram.request import HTTPXRequest
 from conversation import chat
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
@@ -380,7 +381,15 @@ def main() -> None:
 
     print(f"[TELEGRAM] Bot 启动 — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
-    app = Application.builder().token(BOT_TOKEN).build()
+    # 自定义 HTTP 请求：proxy + verify=False（httpx NixOS 系统版本 SSL over proxy 有 bug）
+    telegram_request = HTTPXRequest(
+        proxy="http://127.0.0.1:7890",
+        read_timeout=20.0,
+        write_timeout=20.0,
+        connect_timeout=20.0,
+        httpx_kwargs={"verify": False},
+    )
+    app = Application.builder().token(BOT_TOKEN).request(telegram_request).build()
 
     # 注册命令处理器
     app.add_handler(CommandHandler("start", cmd_start))
