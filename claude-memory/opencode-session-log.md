@@ -47430,3 +47430,6 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 1. Telegram → 新建群组 → 群设置 → 开启「话题/Topics」
 2. 将 `@charlie_1688_bot` 拉入群并设为管理员
 3. 告诉我群名，我用 API 创建 Khoj 话题并设置自动
+
+## 2026-05-25 10:08
+- [2026-05-25 10:08:09] **用户**: 需要启动
