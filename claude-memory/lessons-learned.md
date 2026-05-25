@@ -656,3 +656,4 @@
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 38 minutes (healthy)
 
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 37 minutes (healthy)
+- [2026-05-25] [OP] 失败学习: ttyd-8080 | 错误: StartLimitIntervalSec在[Service]段导致systemd忽略该key+服务disabled | 根因: StartLimitIntervalSec属于[Unit]段非[Service]段 | 修复: 移入[Unit]段+enable+start | 现象: 服务inactive(dead)且disabled
