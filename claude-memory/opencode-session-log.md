@@ -48437,3 +48437,6 @@ Return:
 ```
 https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5MK00QMowVsARS0vq6uUl6pHI40vp&redirect_uri=oob&scope=basic,netdisk
 ```
+
+## 2026-05-25 22:47
+- [2026-05-25 22:47:19] **用户**: 我不是，我是说那个就是这个自主决定系统，它这个19890也已经生效了，对吗？
