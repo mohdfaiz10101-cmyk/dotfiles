@@ -913,3 +913,4 @@
 {"ts": "2026-05-25 10:31", "type": "cycle", "summary": "系统运行正常，CPU与内存负载在合理范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:32", "type": "cycle", "summary": "系统资源占用适中，服务运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:34", "type": "cycle", "summary": "系统负载较高，opencode进程占用73% CPU，服务正常", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 10:36", "type": "cycle", "summary": "系统运行状态正常，无异常告警，opencode工具高CPU占用为用户主动使用的正常表现", "alert_count": 0, "skipped_llm": false}
