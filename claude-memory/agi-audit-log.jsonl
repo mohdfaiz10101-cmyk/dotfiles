@@ -1405,3 +1405,4 @@
 {"ts": "2026-05-25 21:29", "type": "cycle", "summary": "系统负载较高但服务健康，主要由Chrome浏览器和系统Python进程引起", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 21:31", "type": "cycle", "summary": "系统负载较高但服务健康，Chrome及Python进程占用资源", "alert_count": 2, "skipped_llm": false}
 {"ts": "2026-05-25 21:32", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 21:33", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无异常服务", "alert_count": 0, "skipped_llm": false}
