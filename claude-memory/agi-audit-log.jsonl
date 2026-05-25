@@ -1338,3 +1338,4 @@
 {"ts": "2026-05-25 20:12", "type": "cycle", "summary": "系统各项指标正常，存在瞬时高CPU进程但符合历史规则", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 20:13", "type": "cycle", "summary": "系统运行正常，CPU负载低，内存充足，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 20:14", "type": "cycle", "summary": "系统运行正常，CPU空闲率高，磁盘使用率健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 20:15", "type": "cycle", "summary": "系统负载较高但服务正常，CPU占用由python3.13进程导致", "alert_count": 0, "skipped_llm": false}
