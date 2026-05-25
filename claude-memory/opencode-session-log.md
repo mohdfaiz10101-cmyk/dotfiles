@@ -47459,3 +47459,12 @@ wanted:
 - [2026-05-25 12:15:07] **用户**: ⚡️ LiteLLM 巡检
 ---
 重启失败: 高频连接错误 (21次/30分钟)，重启并通知
+
+## 2026-05-25 12:17
+- [2026-05-25 12:16:51] **用户**: 现在检查 8080 ttyd-custom 页面的主页按钮，确保它也正确调用 API
+- Thought: The 8080 page:
+1. Line 123: Has a home button "⌂ 回到主页"
+2. Line 132: Home button calls api/oc-switch/__home__ POST → location.reload()
+3. Line 57-64: switchOC() calls switch API → location.reload()
+The key issue for the 8080 page: when it reloads 
+- [2026-05-25 12:16:51] **AI(sisyphus)**: 8080 以前是 ttyd，后来被 opencode 替代了。看现状：
