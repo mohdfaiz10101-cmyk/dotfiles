@@ -813,3 +813,4 @@
 {"ts": "2026-05-25 08:23", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 08:24", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 08:25", "type": "cycle", "summary": "系统各项指标正常，存在单核Python进程满载现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 08:26", "type": "cycle", "summary": "系统运行平稳，CPU占用偶有尖峰但服务状态正常", "alert_count": 0, "skipped_llm": false}
