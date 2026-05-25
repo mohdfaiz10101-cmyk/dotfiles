@@ -1400,3 +1400,4 @@
 {"ts": "2026-05-25 21:22", "type": "cycle", "summary": "系统负载较高但无服务异常，Chrome和Python3.13进程占用CPU较多", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 21:23", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常或待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 21:25", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 21:27", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无异常告警", "alert_count": 0, "skipped_llm": false}
