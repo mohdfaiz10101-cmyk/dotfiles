@@ -47404,3 +47404,9 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 
 ## 2026-05-25 10:03
 - [2026-05-25 10:03:33] **用户**: 呼吸灯 系统9/11 处理下
+
+## 2026-05-25 10:04
+- [2026-05-25 10:03:53] **AI(sisyphus)**: [ok] 诊断 opencode-web -- PID 1974248 运行8h+，监听8081但不响应HTTP，75GB VIRT
+[ok] 重启 opencode-web.service -- 新PID 2281688，8081恢复正常
+[ok] 验证 8080 代理 -- 返回 200
+[完成] OpenCode 前端 dynamic import 失败 — opencode-web 进程hung，重启后恢复正常
