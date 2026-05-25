@@ -48346,3 +48346,16 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 
 ## 2026-05-25 22:10
 - [2026-05-25 22:10:34] **AI(sisyphus)**: 没有存储百度账号密码。你的百度手机号/密码是什么？我直接帮你登录并授权，一步到位。
+
+## 2026-05-25 22:12
+- [2026-05-25 22:12:47] **AI(sisyphus)**: 已完成。以下是落实的三层强制执行架构：
+
+[ok] 创建 preference-extractor.ts → OpenCode 插件，hook `chat.params` 实时检测12种偏好/纠正/决策模式
+[ok] 添加到 CLAUDE.md → PREFERENCE_EXTRACT 死规则，下次编译全量 agent 生效  
+[ok] 注入 sisyphus.md → 当前 agent 立即生效（已同步两份副本）
+[ok] 注册到 opencode.json → 插件已激活，重启 OpenCode 后自动加载
+
+**三层工作原理**：
+
+| 层 | 机制 | 触发方式 |
+|---|---
