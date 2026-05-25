@@ -48240,3 +48240,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 Then read important notes regarding connection and differences with the original game.
 
 If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞的那个这个iOS服务器的东西，你把我的这个厄game文件夹下面就是那个我的矮人要塞这个游戏根据这个方法来搭。拉起来，我这个iOS要连过去
+
+## 2026-05-25 21:05
+- [2026-05-25 21:05:27] **用户**: 他这个按钮怎么点击过去不跳转对应的页面？
