@@ -48404,3 +48404,13 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 
 ## 2026-05-25 22:38
 - [2026-05-25 22:38:13] **用户**: 那你加上去，然后那个Telegram要开一个群，然后加上按钮，然后连接这个就是有些文章就可以啊，通过按钮来跟他互动
+
+## 2026-05-25 22:38
+- [2026-05-25 22:38:52] **用户**: Read the file /home/charlie/.local/share/opencode/tool-output/tool_e5f92e61e001RrSjQ8O5iBlAB2 and search for:
+1. Docker/docker-compose setup instructions
+2. Telegram integration or webhook capabilities
+3. API endpoints (for building a Telegram bot bridge)
+4. Self-hosting instructions
+
+Return: 
+- Exa
