@@ -48385,3 +48385,16 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 
 ## 2026-05-25 22:33
 - [2026-05-25 22:33:31] **用户**: 就是我电脑的rSS系统能不能跟那个kH那个联通啊，或者它自带这个k功能  k功能k  k功能kh  k功能kho  k功能khoj  能
+
+## 2026-05-25 22:35
+- [2026-05-25 22:35:07] **AI(sisyphus)**: [ok] Khoj 已安装 -- `/mnt/ai/apps/khoj/`，但当前未运行
+[ok] 确认 RSS 系统 -- 未安装任何 RSS 阅读器
+
+**结论：**
+
+1. **你没有装过 RSS 系统** -- 电脑上没有 FreshRSS、Miniflux 或任何 RSS 阅读器
+2. **Khoj 已安装但没运行** -- 它是个 AI 知识搜索引擎，不内置 RSS 订阅功能
+3. **Khoj 已配置 Telegram** -- 有 Telegram Bot Token（`8797063873:...`），可以 Telegram 对话
+
+**Khoj 能做什么：**
+- 索引你的
