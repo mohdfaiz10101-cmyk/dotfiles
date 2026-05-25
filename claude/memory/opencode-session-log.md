@@ -47353,3 +47353,47 @@ conn.close()
 - [2026-05-24 21:09:19] **AI(sisyphus)**: DNS 解析和 ping 都成功了！手机现在已联网。验证完整状态
 - [2026-05-24 21:09:43] **AI(sisyphus)**: 手机现在联网正常：默认路由在 main + table1028，DNS 解析正常 (
 - [2026-05-24 23:38:26] **用户**: 8080 无法访问
+
+## 2026-05-25 09:57
+- [2026-05-25 09:56:46] **用户**: 我装了git that shit插件 怎么打命令 没有烫出来
+
+## 2026-05-25 09:58
+- [2026-05-25 09:57:54] **用户**: Khoj 群组创建了吗 或者怎么访问和使用
+
+## 2026-05-25 09:58
+- [2026-05-25 09:58:07] **AI(sisyphus)**: [ok] 找到插件：`@gitdamnit/opencode-git-that-shit` v0.2.2，CLI 命令是 `gts`
+
+问题：**还没初始化**。先跑 `gts init`。
+
+```bash
+# 初始化影子仓库
+gts init
+
+# 然后就可以用了
+gts status          # 状态
+gts snapshot        # 手动快照
+gts list            # 列表
+gts diff <hash>     # 查看差异
+gts restore <hash>  # 恢复（默认dry-run）
+```
+
+也可以在 OpenCode 里直接用 `
+- [2026-05-25 09:58:21] **用户**: TypeError: Failed to fetch dynamically imported module: http://charlie1990.duckdns.org:8080/assets/session-gtDVIna3.js
+
+Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
+
+## 2026-05-25 09:59
+- [2026-05-25 09:58:37] **AI(sisyphus)**: **当前状态**：
+
+- **Khoj 群组**: 没有创建，Telegram bot 未集成
+- **原因**: 当前 Khoj Docker 镜像不含 Telegram 接口（`interface/` 目录只有 built/email/web）
+- **bot token 已配置** (`@charlie_1688_bot`)，token 在 `docker-compose.yml` 里，但 Khoj 不识别
+
+**访问方式**：
+
+| 方式 | 地址 | 状态 |
+|------|------|------|
+| Web UI | `http://localhost:42110` | 可
+
+## 2026-05-25 10:00
+- [2026-05-25 10:00:09] **用户**: 怎么跑 gts init
