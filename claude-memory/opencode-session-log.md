@@ -48127,3 +48127,13 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 ## 2026-05-25 20:22
 - [2026-05-25 20:22:51] **用户**: waybar哪里去了。。谁改的
+
+## 2026-05-25 20:23
+- [2026-05-25 20:23:25] **AI(sisyphus)**: [ok] 已停用 Cloudflare 临时隧道
+[ok] 已有永久方案 -- FRP `nixos-opencode-web`: **charlie1990.duckdns.org:19890** → ttyd:8080
+
+**说明**:
+- 8080 端口运营商常封锁（非标准端口），外部可访问不等于手机可达
+- FRP 已配置 `19890→8080`，路由器已端口转发，外部 webfetch 验证通过
+- 手机用 **http://charlie1990.duckdns.org:19890/** 替代 8080，永久不变
+- [2026-05-25 20:23:37] **AI(sisyphus)**: [ok] waybar.service 状态: inactive (dead) — 19:27:13 被 stop，未自动重启
