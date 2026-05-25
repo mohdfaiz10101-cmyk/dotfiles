@@ -47478,3 +47478,15 @@ The key issue for the 8080 page: when it reloads
 
 ## 2026-05-25 12:18
 - [2026-05-25 12:18:26] **用户**: 那有什么东西 可以自动让我有权限创建群组呢
+
+## 2026-05-25 12:20
+- [2026-05-25 12:19:44] **用户**: 服务挂了 怎么彻底避免 或者你脚本逻辑修复了吗
+- [2026-05-25 12:19:46] **AI(sisyphus)**: [ok] opencode-web 重启 → 8081端口恢复 200
+[ok] waybar-health.sh 修复 → ocpub检查加 `--noproxy '*'`
+[ok] waybar-score.sh 修复 → ocpub检查加 `--noproxy '*'`  
+[ok] connectivity-chain-watchdog.sh 修复 → `${var:-default}` 防未绑定变量崩溃
+
+**根因**: `opencode-web` 服务卡死 → 8081无响应 → 8080代理等待超时 → waybar每5秒超时显示"外网不通"。
+
+三个修复:
+1. 重启 ope
