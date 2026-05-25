@@ -930,3 +930,6 @@
 {"ts": "2026-05-25 10:56", "type": "cycle", "summary": "系统运行平稳，服务健康，opencode 周期性任务消耗资源正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:57", "type": "cycle", "summary": "系统负载正常，opencode进程高耗CPU符合预期", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:59", "type": "cycle", "summary": "当前系统运行正常，高CPU占用进程均为已知正常进程，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:01", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 11:03", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:05", "type": "cycle", "summary": "系统负载正常，opencode 进程存在高 CPU 占用但无服务告警", "alert_count": 0, "skipped_llm": false}

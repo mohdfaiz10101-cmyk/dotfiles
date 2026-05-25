@@ -412,3 +412,26 @@
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 21 hours (healthy)
 
 - [2026-05-25] [OP] 添加 git 桌面通知: memory-auto-commit → git commit 后弹出 "记忆备份: {文件名}"; git-backup.sh → 完成后弹出总结(失败时带 ⚠️ 警告)
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 15 hours
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 16 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 23 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 23 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 23 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 23 hours (healthy)
