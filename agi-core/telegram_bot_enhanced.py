@@ -232,12 +232,77 @@ async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "🧠 AGI Brain 使用指南\n\n"
         "命令：\n"
         "  /status — 系统状态摘要\n"
-        "  /tasks — OP 待执行任务\n\n"
+        "  /tasks — OP 待执行任务\n"
+        "  /khoj 问题 — 搜索 Khoj 知识库\n\n"
         "自然语言示例：\n"
         "  「系统状态如何？」\n"
         "  「派任务给OP：检查LiteLLM服务」\n"
         "  「今天有什么需要关注的？」"
     )
+
+
+async def cmd_khoj(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """处理 /khoj 命令 — 搜索 Khoj 知识库。
+
+    Why: 让用户通过 Telegram 查询已索引的知识库内容
+    What: 调用 Khoj API 搜索 → LLM 总结 → 回复
+    Test: 发送 /khoj hello 验证收到搜索回复
+    """
+    if not _check_auth(update, context):
+        return
+    query = " ".join(context.args) if context.args else ""
+    if not query:
+        await update.message.reply_text("用法: /khoj <问题>\n例如: /khoj 什么是 NixOS？")
+        return
+
+    await update.message.reply_text(f"🔍 正在搜索 Khoj 知识库...")
+
+    try:
+        async with httpx.AsyncClient(timeout=20) as client:
+            resp = await client.get("http://127.0.0.1:42110/api/search", params={"q": query})
+            results = resp.json() if resp.status_code == 200 else []
+    except Exception as e:
+        await update.message.reply_text(f"Khoj 搜索失败: {e}")
+        return
+
+    if not results:
+        await update.message.reply_text(f"未找到与「{query}」相关的内容。\n请先通过 Khoj Web UI (http://localhost:42110) 索引文档。")
+        return
+
+    # 构建上下文
+    context_str = "\n".join([
+        r.get("entry", r.get("title", str(r)[:200]))
+        for r in results[:5]
+    ])
+
+    # LLM 总结
+    try:
+        async with httpx.AsyncClient(timeout=60) as client:
+            llm_resp = await client.post(
+                "http://127.0.0.1:4000/v1/chat/completions",
+                json={
+                    "model": "glm-4-flash",
+                    "messages": [
+                        {"role": "system", "content": f"你是 Khoj 知识库助手。根据以下上下文回答用户问题。\n\n上下文：\n{context_str}"},
+                        {"role": "user", "content": query},
+                    ],
+                    "max_tokens": 2000,
+                    "temperature": 0.3,
+                },
+                headers={"Authorization": "Bearer sk-litellm-charlie-2026"},
+            )
+            if llm_resp.status_code == 200:
+                answer = llm_resp.json()["choices"][0]["message"]["content"]
+            else:
+                # LLM 失败，直接返回原始结果
+                answer = f"找到 {len(results)} 条结果：\n\n" + context_str[:1500]
+    except Exception:
+        answer = f"找到 {len(results)} 条结果：\n\n" + context_str[:1500]
+
+    preview = answer[:3500]
+    if len(answer) > 3500:
+        preview += "\n\n…(已截断)"
+    await update.message.reply_text(preview)
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -396,6 +461,7 @@ def main() -> None:
     app.add_handler(CommandHandler("status", cmd_status))
     app.add_handler(CommandHandler("tasks", cmd_tasks))
     app.add_handler(CommandHandler("help", cmd_help))
+    app.add_handler(CommandHandler("khoj", cmd_khoj))
 
     # 注册图片处理器（photo + document 图片，优先于文字 handler）
     app.add_handler(MessageHandler(filters.PHOTO, handle_image))
