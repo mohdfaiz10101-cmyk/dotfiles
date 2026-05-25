@@ -2181,3 +2181,4 @@
 {"ts":"2026-05-25T09:21:22+08:00","type":"file-create","desc":".claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO","scope":".claude","detail":"/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md","session":""}
 {"ts":"2026-05-25T09:23:43+08:00","type":"file-create","desc":".claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO","scope":".claude","detail":"/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md","session":""}
 {"ts":"2026-05-25T09:25:48+08:00","type":"file-create","desc":".claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO","scope":".claude","detail":"/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md","session":""}
+{"ts":"2026-05-25T09:26:53+08:00","type":"file-create","desc":".openclaw/agents/main/sessions/sessions.json MOVED_TO","scope":".openclaw","detail":"/home/charlie/.openclaw/agents/main/sessions/sessions.json","session":""}
