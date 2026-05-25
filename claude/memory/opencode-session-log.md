@@ -47445,3 +47445,6 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 wanted:
 - 8080 恢复显示 sidebar 会话按钮 + terminal？
 - 还是 8080 沿用 opencode 原生界面，其他不变？
+
+## 2026-05-25 12:05
+- [2026-05-25 12:05:04] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
