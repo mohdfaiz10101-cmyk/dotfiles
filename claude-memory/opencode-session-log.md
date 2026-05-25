@@ -48124,3 +48124,6 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 ## 2026-05-25 20:21
 - [2026-05-25 20:21:42] **用户**: 你这个cloudflare地址是临时的把
+
+## 2026-05-25 20:22
+- [2026-05-25 20:22:51] **用户**: waybar哪里去了。。谁改的
