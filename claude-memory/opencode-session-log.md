@@ -48426,3 +48426,14 @@ Return:
 
 ## 2026-05-25 22:43
 - [2026-05-25 22:43:04] **用户**: 他这个重启，我现在腰嗯，但但是现在这个状态，我的19890这个端口已经生效了吗？
+
+## 2026-05-25 22:44
+- [2026-05-25 22:43:35] **AI(sisyphus)**: [fail] 百度反机器人检测 -- Playwright 自动登录被拦截，要求手机验证
+
+只能手动授权。你之前在电脑上成功拿到过一次授权码，同样的方式再来一次：
+
+打开这个链接 → 应该已经登录了直接显示授权页 → 点同意 → 复制授权码给我
+
+```
+https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5MK00QMowVsARS0vq6uUl6pHI40vp&redirect_uri=oob&scope=basic,netdisk
+```
