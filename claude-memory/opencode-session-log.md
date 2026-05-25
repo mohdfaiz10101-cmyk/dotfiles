@@ -48320,3 +48320,6 @@ If you need help, visit mifki.com/df/support or us嗯，这个是矮人要要塞
 
 ## 2026-05-25 21:33
 - [2026-05-25 21:33:05] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-25 21:33
+- [2026-05-25 21:33:27] **用户**: 现在我这个嗯tTY19890这个端口它怎么不可以上下翻动或者触屏上下翻动？然后他也不能保持呃，保持连接，就是有时候会断开这样子，要我重新连。他没有离线缓存啊什么的吗？你有什么建议吗？优化一下
