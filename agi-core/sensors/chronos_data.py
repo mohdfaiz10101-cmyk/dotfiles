@@ -7,7 +7,7 @@ from pathlib import Path
 
 def collect() -> dict:
     chronos = {}
-    for f in sorted(glob.glob("/tmp/chronos/*.json")):
+    for f in sorted(glob.glob(Path.home() / ".local/state/chronos/*.json")):
         try:
             data = json.loads(Path(f).read_text())
             chronos[Path(f).stem] = data

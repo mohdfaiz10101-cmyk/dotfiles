@@ -18,7 +18,7 @@ from pathlib import Path
 OP_TASKS = Path.home() / ".claude/projects/-home-charlie/memory/op-tasks.md"
 AUDIT_LOG = Path.home() / ".local/share/macg/audit.log"
 LESSONS = Path.home() / ".claude/projects/-home-charlie/memory/lessons-learned.md"
-OUTPUT = Path("/tmp/cognitive-profile.json")
+OUTPUT = Path(Path.home() / ".local/state/cognitive-profile.json")
 
 
 def _read_file(path: Path) -> str:
@@ -168,7 +168,7 @@ def score_cognitive_functions() -> dict:
 
 def reflect_and_recommend() -> dict:
     """读取 agi-feedback-bus，输出调度建议（闭环反思层）"""
-    bus_file = Path("/tmp/agi-feedback-bus.json")
+    bus_file = Path(Path.home() / ".local/state/agi-feedback-bus.json")
     if not bus_file.exists():
         return {}
     try:
@@ -229,7 +229,7 @@ def reflect_and_recommend() -> dict:
     }
 
     # 写入反思输出
-    reflect_out = Path("/tmp/agi-reflect.json")
+    reflect_out = Path(Path.home() / ".local/state/agi-reflect.json")
     reflect_out.write_text(json.dumps(result, ensure_ascii=False, indent=2))
     return result
 

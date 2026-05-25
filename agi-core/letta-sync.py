@@ -11,9 +11,9 @@ HEADERS = {"Authorization": "Bearer letta", "Content-Type": "application/json"}
 SYSADMIN = "agent-8651643c-e753-47ed-9759-bd955c6ac240"
 CODE = "agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea"
 MEM = Path.home() / ".claude/projects/-home-charlie/memory"
-HASH_CACHE = Path("/tmp/letta-sync-hashes.json")
+HASH_CACHE = Path(Path.home() / ".local/state/letta-sync-hashes.json")
 CHANGELOG = MEM / "changelog.jsonl"
-CL_SYNC_POS = Path("/tmp/letta-sync-cl-pos")  # changelog 读取位置
+CL_SYNC_POS = Path(Path.home() / ".local/state/letta-sync-cl-pos")  # changelog 读取位置
 
 def load_hashes():
     return json.loads(HASH_CACHE.read_text()) if HASH_CACHE.exists() else {}

@@ -15,7 +15,7 @@ LITELLM_KEY     = "sk-litellm-charlie-2026"
 MODEL           = "glm-5-turbo"
 
 OP_TASKS        = Path.home() / ".claude/projects/-home-charlie/memory/op-tasks.md"
-OP_RESULTS      = Path("/tmp/op-task-results.json")
+OP_RESULTS      = Path(Path.home() / ".local/state/op-task-results.json")
 LESSONS         = Path.home() / ".claude/projects/-home-charlie/memory/lessons-learned.md"
 TODAY           = date.today().strftime("%Y-%m-%d")
 

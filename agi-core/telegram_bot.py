@@ -242,7 +242,7 @@ async def _handle_ask(question: str) -> str:
         if proc.returncode == 0:
             # 记录 supervisor 最后成功调用时间（供 waybar 调度呼吸灯检测）
             try:
-                Path("/tmp/macg-supervisor-last-ok").write_text(str(int(time.time())))
+                Path(Path.home() / ".local/state/macg-supervisor-last-ok").write_text(str(int(time.time())))
             except Exception:
                 pass
             result = stdout.decode().strip()

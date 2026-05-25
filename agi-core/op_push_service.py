@@ -14,7 +14,7 @@ import httpx
 
 # ── 配置 ───────────────────────────────────────────
 OP_TASKS_FILE = "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
-OP_RESULTS_FILE = "/tmp/op-task-results.json"
+OP_RESULTS_FILE = Path.home() / ".local/state/op-task-results.json"
 STATE_FILE = "/home/charlie/.local/share/op-push/state.json"
 
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")

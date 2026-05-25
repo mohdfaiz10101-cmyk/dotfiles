@@ -10,7 +10,7 @@
       "/home/charlie",
       "服务护士巡检：检查Docker容器、systemd服务、端口可达性、磁盘空间。异常服务自动修复（最多3次/小时）。用中文。简洁。\n\n⚠️ 格式约束：本任务禁止输出 📎 尾注、禁止 [自检] 行、禁止 CLAUDE.md 中的视觉模板和状态标记格式。只输出纯文本执行结果。\n\n⚠️ FALSE_POSITIVE_GUARD：systemctl is-active 返回 inactive ≠ 失败。必须用 systemctl --user show <svc> --property=Result 验证：Result=success → 正常完成，禁止升级为失败任务。opencode-job-* 均为 oneshot，inactive Result=success 是正常状态。"
     ],
-    "command": "/home/charlie/.local/bin/opencode"
+    "command": "/home/charlie/.npm-global/bin/opencode"
   },
   "lastRunAt": "2026-04-22T12:00:00+0800",
   "lastRunSource": "scheduled",

@@ -40,7 +40,10 @@ from conversation import chat
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 ALLOWED_CHAT_ID = int(os.environ.get("TELEGRAM_CHAT_ID", "0"))
-STATUS_FILE = os.environ.get("STATUS_FILE", "/tmp/agi-brain-status.json")
+# Khoj 群组额外授权
+KHOJ_GROUP_ID = -1003740356939  # Khoj 知识库 话题群
+ALLOWED_GROUP_IDS = {KHOJ_GROUP_ID}
+STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
 OP_TASKS_FILE = os.environ.get(
     "OP_TASKS_FILE", "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
 )
@@ -64,8 +67,10 @@ def _check_auth(update: Update) -> bool:
     if update.effective_chat.type == "private":
         return update.effective_chat.id == ALLOWED_CHAT_ID
 
-    # 群组/超级群组：检查是否@提及机器人
+    # 群组/超级群组：白名单直接放行，否则检查@提及
     if update.effective_chat.type in ("group", "supergroup"):
+        if update.effective_chat.id in ALLOWED_GROUP_IDS:
+            return True
         if not update.message:
             return False
 
@@ -110,11 +115,11 @@ def _check_auth(update: Update, context: ContextTypes.DEFAULT_TYPE = None) -> bo
     if update.effective_chat.type == "private":
         return update.effective_chat.id == ALLOWED_CHAT_ID
 
-    # 群组/超级群组：检查是否@提及机器人
+# 群组/超级群组：白名单直接放行，否则检查@提及
     if update.effective_chat.type in ("group", "supergroup"):
+        if update.effective_chat.id in ALLOWED_GROUP_IDS:
+            return True
         if not update.message:
-            return False
-        if not context or not hasattr(context, "application"):
             return False
 
         # 检查entities中是否有mention

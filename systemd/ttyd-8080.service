@@ -1,0 +1,12 @@
+[Unit]
+Description=ttyd terminal on port 8080 with custom session switcher
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

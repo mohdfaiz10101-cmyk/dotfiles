@@ -37,7 +37,7 @@ AGENTS = {
     "memory-curator": {"name": "📚 记忆策展人", "emoji": "🗃️"},
 }
 
-STATE_FILE = Path("/tmp/inspection-aggregate-state.json")
+STATE_FILE = Path(Path.home() / ".local/state/inspection-aggregate-state.json")
 
 # ── 状态管理 ────────────────────────────────────────────────────
 

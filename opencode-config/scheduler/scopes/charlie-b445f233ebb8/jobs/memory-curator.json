@@ -10,7 +10,7 @@
       "/home/charlie",
       "记忆策展人巡检：整理memory/文件、归档过期条目、检测矛盾、维护索引。>30天条目需确认后归档。用中文。简洁。"
     ],
-    "command": "/home/charlie/.local/bin/opencode"
+    "command": "/home/charlie/.npm-global/bin/opencode"
   },
   "lastRunAt": "",
   "lastRunSource": "",

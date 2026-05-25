@@ -1,16 +1,7 @@
 [Unit]
-Description=OpenCode Health Monitor with Breathing Light Status
-After=network.target
+Description=OpenCode Web 健康检查 — 检测 hang 自动重启
+After=opencode-web.service
 
 [Service]
 Type=oneshot
-EnvironmentFile=%h/dotfiles/systemd/service-common.env
-Environment="HTTPS_PROXY=http://127.0.0.1:7890"
-Environment="https_proxy=http://127.0.0.1:7890"
-ExecStart=%h/.local/bin/opencode-health-monitor
-StandardOutput=journal
-StandardError=journal
-MemoryMax=512M
-
-[Install]
-WantedBy=default.target
+ExecStart=/home/charlie/.local/bin/opencode-health-monitor.sh

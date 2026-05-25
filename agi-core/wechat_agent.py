@@ -53,11 +53,11 @@ WINE_ACCOUNTS = [
 ]
 
 # 状态 / 队列文件
-STATE_FILE = Path("/tmp/wechat-agent-state.json")
-QUEUE_FILE = Path("/tmp/wechat-reply-queue.jsonl")
-COUNTER_FILE = Path("/tmp/wechat-send-counter.json")
-STATUS_FILE = Path("/tmp/wechat-agent-status.json")
-AGI_STATUS = Path("/tmp/agi-brain-status.json")
+STATE_FILE = Path(Path.home() / ".local/state/wechat-agent-state.json")
+QUEUE_FILE = Path(Path.home() / ".local/state/wechat-reply-queue.jsonl")
+COUNTER_FILE = Path(Path.home() / ".local/state/wechat-send-counter.json")
+STATUS_FILE = Path(Path.home() / ".local/state/wechat-agent-status.json")
+AGI_STATUS = Path(Path.home() / ".local/state/agi-brain-status.json")
 
 # CRM
 CRM_DB = Path("/mnt/ai/apps/wechat-agent/data/crm.db")

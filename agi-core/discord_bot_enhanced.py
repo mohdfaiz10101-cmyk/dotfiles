@@ -22,7 +22,7 @@ load_dotenv(Path(__file__).parent / ".env")
 from conversation import chat
 
 BOT_TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "")
-STATUS_FILE = os.environ.get("STATUS_FILE", "/tmp/agi-brain-status.json")
+STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
 OP_TASKS_FILE = os.environ.get(
     "OP_TASKS_FILE", "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
 )

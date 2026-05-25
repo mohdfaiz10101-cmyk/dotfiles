@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# 百度网盘 → 本地 → Syncthing → 手机 离线音乐管线
+BY="/mnt/ai/apps/baidu-download/.venv/bin/bypy"
+DST="/mnt/ai/media/music"
+
+mkdir -p "$DST"
+
+case "${1:-list}" in
+  list)
+    echo "" | $BY list /apps/bypy 2>&1 | grep -v '^\s*$' | grep -v '^<E>' | grep -v 'Error'
+    ;;
+  down|download)
+    echo "[bypy-sync] 下载百度网盘 /apps/bypy/ → $DST"
+    echo "" | $BY download /apps/bypy "$DST" 2>&1 | tail -10
+    echo "[bypy-sync] 完成: $(find "$DST" -type f 2>/dev/null | wc -l) 个文件"
+    notify-send "百度云同步" "下载完成 $(du -sh "$DST" 2>/dev/null | cut -f1)" 2>/dev/null || true
+    ;;
+  watch)
+    echo "[bypy-sync] 监听模式未实现，请手动 bypy-sync download" ;;
+  *)
+    echo "用法: bypy-sync {list|download|watch}" ;;
+esac

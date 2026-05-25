@@ -21,7 +21,7 @@ from pathlib import Path
 # 将 agi/ 加入 sys.path，确保能 import 兄弟模块
 sys.path.insert(0, str(Path(__file__).parent))
 
-TELEMETRY_FILE = "/tmp/android-telemetry.jsonl"
+TELEMETRY_FILE = Path.home() / ".local/state/android-telemetry.jsonl"
 DB_PATH = Path(__file__).parent / "decision-log.db"
 COLLECT_INTERVAL = 300  # 5 分钟
 

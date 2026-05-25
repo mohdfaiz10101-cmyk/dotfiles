@@ -17,7 +17,7 @@ BOT_TOKEN = os.environ.get(
 )
 CHAT_ID = os.environ.get("TG_CHAT_ID", "5036541266")
 PROXY = os.environ.get("HTTPS_PROXY", "http://127.0.0.1:7890")
-STATE_FILE = Path(os.environ.get("NOTIFY_STATE_FILE", "/tmp/notify-state.json"))
+STATE_FILE = Path(os.environ.get("NOTIFY_STATE_FILE", Path.home() / ".local/state/notify-state.json"))
 
 # 尝试加载 TG Router（分类路由）
 try:

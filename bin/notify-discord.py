@@ -17,7 +17,7 @@ BOT_TOKEN = os.environ.get(
     "MTQ5MDY0MTY3ODEzNzAzMjg0NA.G7dnjb.8XnDoykFr9O8SRsQH1nnCXiV0Ge2LEOGTI47f8",
 )
 GUILD_ID = int(os.environ.get("DISCORD_GUILD_ID", "1490683033919950941"))
-STATE_FILE = Path(os.environ.get("NOTIFY_STATE_FILE", "/tmp/notify-state.json"))
+STATE_FILE = Path(os.environ.get("NOTIFY_STATE_FILE", Path.home() / ".local/state/notify-state.json"))
 CHANNEL_FILE = Path.home() / ".config" / "ai" / "discord-channels.json"
 
 # 角色定义：频道名 → { 显示名, 主题色 }

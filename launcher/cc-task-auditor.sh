@@ -6,7 +6,7 @@
 set -euo pipefail
 
 OP_TASKS="$HOME/.claude/projects/-home-charlie/memory/op-tasks.md"
-RESULTS_FILE="/tmp/op-task-results.json"
+RESULTS_FILE="$HOME/.local/state/op-task-results.json"
 REPORT_DIR="$HOME/Desktop/巡检报告/任务审计"
 CC_QUEUE="$HOME/.claude/projects/-home-charlie/memory/cc-queue.md"
 LOG="$HOME/.local/share/cc-auditor/audit.log"
@@ -139,7 +139,7 @@ if [[ -f "$cc_queue" ]] && [[ ! -f "$mutual_review_flag" ]]; then
         cat > "$HOME/launcher/cc-op-verifier.sh" << 'VERIFIER'
 #!/usr/bin/env bash
 # cc-op-verifier.sh — CC 主动验证 OP 已完成任务（互审阶段自动启用）
-RESULTS="/tmp/op-task-results.json"
+RESULTS="$HOME/.local/state/op-task-results.json"
 LOG="$HOME/.local/share/cc-auditor/verify.log"
 TASKS="$HOME/.claude/projects/-home-charlie/memory/op-tasks.md"
 [[ -f "$RESULTS" ]] || exit 0

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# 媒体下载器: yt-dlp → 本地 → Syncthing → 手机
+# 用法: media-dl music "歌手 歌名" | media-dl video "B站链接"
+DST_MUSIC="/mnt/ai/media/music"
+DST_VIDEO="/mnt/ai/media/video"
+
+case "${1:-}" in
+  music)
+    shift
+    mkdir -p "$DST_MUSIC"
+    echo "[media-dl] 下载音乐: $*"
+    yt-dlp -x --audio-format mp3 --embed-thumbnail \
+      -o "$DST_MUSIC/%(title)s.%(ext)s" \
+      "ytsearch:$*" 2>&1 | tail -5
+    echo "[media-dl] 完成 → $DST_MUSIC"
+    ;;
+  video)
+    shift
+    mkdir -p "$DST_VIDEO"
+    echo "[media-dl] 下载视频: $*"
+    yt-dlp -f "best[height<=1080]" \
+      -o "$DST_VIDEO/%(title)s.%(ext)s" \
+      "$1" 2>&1 | tail -5
+    ;;
+  *)
+    echo "用法: media-dl {music|video} <搜索词|链接>"
+    ;;
+esac

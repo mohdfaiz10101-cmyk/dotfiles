@@ -24,7 +24,7 @@ OP_TASKS_FILE = os.environ.get(
     "OP_TASKS_FILE",
     "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
 )
-STATUS_FILE = os.environ.get("STATUS_FILE", "/tmp/agi-brain-status.json")
+STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
 
 
 def _init_db() -> None:

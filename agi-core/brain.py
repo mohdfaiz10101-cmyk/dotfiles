@@ -25,7 +25,7 @@ from think import analyze
 from proactive import generate_proactive_message
 from audit_log import log_tasks_queued, log_brain_cycle
 
-STATUS_FILE = os.environ.get("STATUS_FILE", "/tmp/agi-brain-status.json")
+STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
 
 
 class RateGuard:
@@ -75,9 +75,9 @@ _rate_guard = RateGuard()
 OP_TASKS_FILE = os.environ.get(
     "OP_TASKS_FILE", "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
 )
-OP_STATUS_FILE = os.environ.get("OP_STATUS_FILE", "/tmp/op-status.json")
+OP_STATUS_FILE = os.environ.get("OP_STATUS_FILE", Path.home() / ".local/state/op-status.json")
 OP_TASK_RESULTS_FILE = os.environ.get(
-    "OP_TASK_RESULTS_FILE", "/tmp/op-task-results.json"
+    "OP_TASK_RESULTS_FILE", Path.home() / ".local/state/op-task-results.json"
 )
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
@@ -88,7 +88,7 @@ LOOP_INTERVAL = 60  # 主循环间隔（秒，自适应：无变化时逐步延�
 PROACTIVE_INTERVAL = 4 * 60 * 60  # 主动推送间隔（秒，4小时）
 ADAPTIVE_MAX_INTERVAL = 300  # 自适应最大间隔（5分钟）
 ADAPTIVE_NOCHANGE_THRESHOLD = 5  # 连续N次无变化后开始延长间隔
-TRIGGER_FILE = "/tmp/agi-brain-trigger"  # 热触发文件：touch此文件立即执行一轮
+TRIGGER_FILE = Path.home() / ".local/state/agi-brain-trigger"  # 热触发文件：touch此文件立即执行一轮
 
 _last_proactive_time: float = 0.0
 _last_sense_hash: str = ""
@@ -250,7 +250,7 @@ def sense() -> dict:
 
     # 读取 WeChat Agent 状态
     wechat_status: dict = {}
-    wechat_path = Path("/tmp/wechat-agent-status.json")
+    wechat_path = Path(Path.home() / ".local/state/wechat-agent-status.json")
     if wechat_path.exists():
         try:
             wechat_status = json.loads(wechat_path.read_text())
@@ -688,7 +688,7 @@ async def main_loop(once: bool = False) -> None:
     
     v2升级:
     - 自适应间隔：连续N次无变化后自动延长间隔（省CPU/token）
-    - 热触发文件：touch /tmp/agi-brain-trigger 立即执行一轮
+    - 热触发文件：touch ~/.local/state/agi-brain-trigger 立即执行一轮
     - --once模式：单次执行后退出（配合 systemd path units）
     
     Why: 持续感知并响应系统状态变化，实现自主运行

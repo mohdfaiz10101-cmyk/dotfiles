@@ -4,7 +4,7 @@ set -euo pipefail
 
 MEMORY_DIR="$HOME/.claude/projects/-home-charlie/memory"
 ARCHIVE_DIR="$MEMORY_DIR/archive"
-STATS_FILE="/tmp/chronos/memory_stats.json"
+STATS_FILE="$HOME/.local/state/chronos/memory_stats.json"
 DAYS_THRESHOLD=30
 
 mkdir -p "$ARCHIVE_DIR"

@@ -11,7 +11,7 @@ from pathlib import Path
 from datetime import datetime
 
 # 状态文件目录
-STATE_DIR = Path("/tmp/inspection-results")
+STATE_DIR = Path(Path.home() / ".local/state/inspection-results")
 STATE_DIR.mkdir(parents=True, exist_ok=True)
 
 

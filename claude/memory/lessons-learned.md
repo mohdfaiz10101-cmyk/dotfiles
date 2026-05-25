@@ -485,3 +485,57 @@
 - [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 25 hours (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 25 hours (healthy)
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 18 hours
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 26 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 26 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 28 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 26 hours (healthy)
+- [2026-05-25] [OP] 8080恢复ttyd: 停用opencode-8080-proxy(masked) → systemd ttyd-8080.service(-I ttyd-custom/index.html -W openclaw-tmux-wrap) | 自定义HTML: 右侧sidebar session切换+归档📦+删除🗑 | API: smart-redirector:8088 后端提供oc-archive/oc-delete/oc-switch
+
+- [2026-05-25] [OP] 全量/tmp→~/.local/state/迁移 | 修改了72个文件(30个Python+42个Shell)+6个systemd服务 | 状态文件从此永久化，不再因重启丢失 | AI脚本MUST使用~/.local/state/而非/tmp/存放持久化状态/日志
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp, [::]:42110->42110/tcp | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 27 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 27 hours
+
+- [auto] 发现: docker.container.letta-chromadb =  | 状态: Up 27 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 27 hours (healthy)

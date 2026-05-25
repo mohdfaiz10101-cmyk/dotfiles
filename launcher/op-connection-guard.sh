@@ -6,7 +6,7 @@
 set -euo pipefail
 
 LOG_DIR="/home/charlie/.config/opencode/logs/scheduler/charlie-b445f233ebb8"
-REPORT="/tmp/op-connection-guard-report.txt"
+REPORT="$HOME/.local/state/op-connection-guard-report.txt"
 RESTART_LOG="/home/charlie/.local/share/op-connection-guard.log"
 MAX_RETRIES=3
 
@@ -88,7 +88,7 @@ restart_failed_services() {
     local agents=($1)
     for agent in "${agents[@]}"; do
         local service_name="opencode-job-charlie-b445f233ebb8-${agent}.service"
-        local attempt_file="/tmp/op-guard-retry-${agent}"
+        local attempt_file="$HOME/.local/state/op-guard-retry-${agent}"
         local retries=0
 
         [[ -f "$attempt_file" ]] && retries=$(cat "$attempt_file" 2>/dev/null || echo "0")
@@ -127,7 +127,7 @@ escalate_to_cc() {
 reset_retry_counts() {
     local agents=($1)
     for agent in "${agents[@]}"; do
-        rm -f "/tmp/op-guard-retry-${agent}"
+        rm -f "$HOME/.local/state/op-guard-retry-${agent}"
     done
 }
 

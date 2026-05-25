@@ -115,7 +115,7 @@ def op_delegate(task: str, priority: str = "medium") -> str:
     # ── 反馈总线：低成功率任务自动降级优先级 ────────────────
     import json as _json
     from pathlib import Path as _Path
-    bus_file = _Path("/tmp/agi-feedback-bus.json")
+    bus_file = _Path(Path.home() / ".local/state/agi-feedback-bus.json")
     if bus_file.exists():
         try:
             bus = _json.loads(bus_file.read_text())

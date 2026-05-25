@@ -19,7 +19,7 @@ import time
 import ipaddress
 
 PORT = 9875
-_TASK_RESULTS_FILE = "/tmp/op-task-results.json"
+_TASK_RESULTS_FILE = Path.home() / ".local/state/op-task-results.json"
 TAILSCALE_NET = ipaddress.ip_network("100.64.0.0/10")
 LAUNCHER_TOKEN = os.environ.get("LAUNCHER_TOKEN", "")
 if not LAUNCHER_TOKEN:
@@ -79,7 +79,7 @@ def _build_glm_system(context: str = "", extra: str = "") -> str:
 
 
 LAUNCHER_DIR = os.path.dirname(os.path.abspath(__file__))
-CHRONOS_DIR = "/tmp/chronos"
+CHRONOS_DIR = Path.home() / ".local/state/chronos"
 MEMORY_DIR = os.path.expanduser("~/.claude/projects/-home-charlie/memory")
 DREAM_DIR = os.path.expanduser("~/.cache/chronos-subconscious/reports")
 
@@ -1281,7 +1281,7 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             pass
 
         # GLM call count from local counter
-        counter_file = "/tmp/glm-call-counter.json"
+        counter_file = Path.home() / ".local/state/glm-call-counter.json"
         glm_calls_today = 0
         glm_cost_today = 0.0
         try:
@@ -1717,7 +1717,7 @@ Git Diff（前3000字符）：
         """返回 OP 最近任务执行结果 /tmp/op-task-results.json"""
         results = []
         try:
-            with open("/tmp/op-task-results.json", "r", encoding="utf-8") as f:
+            with open(Path.home() / ".local/state/op-task-results.json", "r", encoding="utf-8") as f:
                 content = f.read().strip()
                 if content:
                     results = (
@@ -2284,7 +2284,7 @@ OP做：[1-2件事，动词开头，一行一件]
         data["dream_reports"] = reports
 
         # AGI Brain status
-        agi_status_file = "/tmp/agi-brain-status.json"
+        agi_status_file = Path.home() / ".local/state/agi-brain-status.json"
         try:
             with open(agi_status_file, "r") as f:
                 agi_data = json.load(f)
@@ -2347,8 +2347,8 @@ OP做：[1-2件事，动词开头，一行一件]
         dialog_file = os.path.expanduser(
             "~/.claude/projects/-home-charlie/memory/cc-op-dialog.jsonl"
         )
-        op_status_file = "/tmp/op-status.json"
-        op_results_file = "/tmp/op-task-results.json"
+        op_status_file = Path.home() / ".local/state/op-status.json"
+        op_results_file = Path.home() / ".local/state/op-task-results.json"
 
         # 读取 OP 最新状态数据（文件优先，POST body 补充）
         op_status = {}

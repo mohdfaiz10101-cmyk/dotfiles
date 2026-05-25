@@ -7,7 +7,7 @@ from pathlib import Path
 
 def run() -> dict:
     wechat_status = {}
-    wechat_path = Path("/tmp/wechat-agent-status.json")
+    wechat_path = Path(Path.home() / ".local/state/wechat-agent-status.json")
     if wechat_path.exists():
         try:
             wechat_status = json.loads(wechat_path.read_text())

@@ -10,10 +10,10 @@ import os
 from pathlib import Path
 from datetime import datetime
 
-STATUS_FILE = os.environ.get("STATUS_FILE", "/tmp/agi-brain-status.json")
-OP_STATUS_FILE = os.environ.get("OP_STATUS_FILE", "/tmp/op-status.json")
+STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
+OP_STATUS_FILE = os.environ.get("OP_STATUS_FILE", Path.home() / ".local/state/op-status.json")
 OP_TASK_RESULTS_FILE = os.environ.get(
-    "OP_TASK_RESULTS_FILE", "/tmp/op-task-results.json"
+    "OP_TASK_RESULTS_FILE", Path.home() / ".local/state/op-task-results.json"
 )
 
 

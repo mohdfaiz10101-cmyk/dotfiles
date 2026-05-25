@@ -9,4 +9,4 @@ Environment=HOME=/home/charlie
 Environment=DISPLAY=:0
 Environment=WAYLAND_DISPLAY=wayland-0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
-EnvironmentFile=-/tmp/wechat-agent-xauth.env
+EnvironmentFile=-%h/.local/state/wechat-agent-xauth.env

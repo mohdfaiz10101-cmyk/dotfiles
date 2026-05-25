@@ -17,7 +17,7 @@ try:
 except ImportError:
     HAS_NUMPY = False
 
-STATE_DIR = Path("/tmp/chronos")
+STATE_DIR = Path(Path.home() / ".local/state/chronos")
 STATE_DIR.mkdir(exist_ok=True)
 STATE_FILE = STATE_DIR / "sensory_state.json"
 

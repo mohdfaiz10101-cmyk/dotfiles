@@ -33,8 +33,8 @@ RULES_PATH = Path(os.environ.get(
     "RULES_FILE", "/home/charlie/CLAUDE.md"
 ))
 PULSE_DB = Path(os.environ.get("PULSE_DB", "/mnt/ai/data/memory-pulse/pulse.db"))
-EVOLVE_STATE = Path("/tmp/evolve-state.json")
-EVOLVE_LOG = Path("/tmp/evolve-log.jsonl")
+EVOLVE_STATE = Path(Path.home() / ".local/state/evolve-state.json")
+EVOLVE_LOG = Path(Path.home() / ".local/state/evolve-log.jsonl")
 LETTA_URL = os.environ.get("LETTA_BASE_URL", "http://localhost:8283")
 LETTA_TOKEN = os.environ.get("LETTA_TOKEN", "letta")
 MEM0_URL = os.environ.get("MEM0_URL", "http://localhost:8285")
@@ -472,7 +472,7 @@ def main():
     result = run_evolution(dry_run=args.dry_run, phase=args.phase)
 
     # 输出 JSON 供外部消费
-    out_path = Path("/tmp/evolve-result.json")
+    out_path = Path(Path.home() / ".local/state/evolve-result.json")
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2))
     print(f"[evolve] 结果写入 {out_path}")
 

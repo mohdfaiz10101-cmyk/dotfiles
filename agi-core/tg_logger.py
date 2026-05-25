@@ -8,7 +8,7 @@ import urllib.request, urllib.error
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN", "8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks")
 PROXY     = os.getenv("https_proxy", os.getenv("HTTPS_PROXY", "http://127.0.0.1:7890"))
 INBOX     = Path.home() / "agi/data/tg-inbox.jsonl"
-OFFSET_F  = Path("/tmp/tg-logger-offset.txt")
+OFFSET_F  = Path(Path.home() / ".local/state/tg-logger-offset.txt")
 API       = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")

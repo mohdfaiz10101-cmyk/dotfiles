@@ -65,7 +65,7 @@ def build_stats(entries: list[dict]) -> dict:
 
 def _read_op_results() -> list[dict]:
     """从 op-task-results.json 读取结果"""
-    p = Path("/tmp/op-task-results.json")
+    p = Path(Path.home() / ".local/state/op-task-results.json")
     if not p.exists():
         return []
     try:
