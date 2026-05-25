@@ -14,6 +14,9 @@ Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 Environment=DISPLAY=:0
 Environment=WAYLAND_DISPLAY=wayland-1
 Restart=on-failure
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=15
 StandardOutput=journal
 StandardError=journal
@@ -21,3 +24,4 @@ SyslogIdentifier=chronos-biofeedback
 
 [Install]
 WantedBy=graphical-session.target
+

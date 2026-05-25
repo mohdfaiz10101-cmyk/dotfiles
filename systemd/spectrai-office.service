@@ -7,8 +7,12 @@ Type=simple
 ExecStart=/mnt/pool-disks/POOL-B1/home-offload/data/bun/bin/bun /home/charlie/projects/spectrai-office/server.js
 WorkingDirectory=/home/charlie/projects/spectrai-office
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 
 [Install]
 WantedBy=default.target
+

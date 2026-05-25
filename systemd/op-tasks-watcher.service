@@ -6,9 +6,13 @@ After=default.target
 Type=simple
 ExecStart=/home/charlie/.local/bin/op-tasks-watcher.sh
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=DISPLAY=:0
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
 [Install]
 WantedBy=default.target
+

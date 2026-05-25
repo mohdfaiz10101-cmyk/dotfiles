@@ -605,3 +605,30 @@
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 29 minutes (healthy)
 - [2026-05-25] [OP] 8080端口冲突根因: caddy-opencode-proxy.service自动重启抢占8080(Caddyfile→8081) | 修复: systemctl stop+disable caddy-opencode-proxy | 持久化: ttyd-8080.service已enable, caddy-opencode-proxy已disabled | 注意: 未来如有自动恢复需再次禁用
+- [2026-05-25] [OP] 8080永久保护: caddy-opencode-proxy已masked(→/dev/null) | PartOf=opencode-web.service导致opencode-web重启时caddy自动复活 | mask前即使disabled也会被PartOf触发重启 | 当前opencode-web重启后caddy维持inactive | 同时opencode-8080-proxy(python)也已masked
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp | 状态: Up 9 minutes (healthy)
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 11 minutes (healthy)
+
+- [auto] 发现: docker.container.c0d2e3282ff0_letta-chromadb =  | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 30 hours
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 30 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 2 hours (healthy)

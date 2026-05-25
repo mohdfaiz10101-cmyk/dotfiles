@@ -6,7 +6,11 @@ After=network.target embedding-server.service
 Type=simple
 ExecStart=/home/charlie/.local/bin/mem0-bridge-wrapper
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

@@ -6,8 +6,11 @@ Requires=agi-brain.service
 [Service]
 Type=simple
 WorkingDirectory=/home/charlie/agi
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/discord_bot_enhanced.py
 Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=10
 StartLimitInterval=3600
 StartLimitBurst=3
@@ -22,3 +25,5 @@ Environment="DISCORD_GUILD_ID=1490683033919950941"
 
 [Install]
 WantedBy=default.target
+
+

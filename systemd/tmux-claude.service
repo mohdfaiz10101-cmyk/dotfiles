@@ -8,7 +8,11 @@ ExecStart=/run/current-system/sw/bin/tmux new-session -d -s claude-work -n "Clau
 ExecStop=/run/current-system/sw/bin/tmux kill-session -t claude-work
 RemainAfterExit=yes
 Restart=on-failure
-RestartSec=5s
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

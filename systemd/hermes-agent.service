@@ -7,8 +7,12 @@ StartLimitIntervalSec=60
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4000 " && echo "PORT 4000 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/hermes gateway run
 Restart=always
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=10
 TimeoutStopSec=30
 TimeoutStartSec=60
@@ -26,3 +30,5 @@ Environment=HTTP_PROXY=http://127.0.0.1:7890
 
 [Install]
 WantedBy=default.target
+
+

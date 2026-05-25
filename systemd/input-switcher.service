@@ -10,7 +10,11 @@ Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/charlie/.Xauthority
 ExecStart=/home/charlie/.config/input-switcher/input-switcher.sh
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=graphical-session.target
+

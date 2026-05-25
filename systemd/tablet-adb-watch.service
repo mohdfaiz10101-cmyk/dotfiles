@@ -6,9 +6,13 @@ After=network-online.target tailscaled.service
 Type=simple
 ExecStart=/home/charlie/.local/bin/tablet-adb-watch
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/home/charlie/.local/bin:/run/current-system/sw/bin:/usr/bin:/bin
 
 [Install]
 WantedBy=default.target
+

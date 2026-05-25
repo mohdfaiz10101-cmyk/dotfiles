@@ -6,9 +6,13 @@ StartLimitBurst=5
 StartLimitIntervalSec=60
 
 [Service]
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":18789 " && echo "PORT 18789 IN USE" && exit 1 || true'
 ExecStart=/nix/store/b7l2gabdzzp7cnizz14y99bw00hm67ky-nodejs-slim-22.22.2/bin/node /home/charlie/.npm-global/lib/node_modules/openclaw/dist/index.js gateway --port 18789 --bind lan
 Restart=always
-RestartSec=5
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
+RestartSec=10
 RestartPreventExitStatus=78
 TimeoutStopSec=30
 TimeoutStartSec=30
@@ -27,3 +31,5 @@ Environment=OPENCLAW_SERVICE_VERSION=2026.5.7
 
 [Install]
 WantedBy=default.target
+
+

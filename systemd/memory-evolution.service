@@ -9,9 +9,13 @@ EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/.local/bin/memory-evolution-engine
 Restart=on-failure
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=300
 StandardOutput=journal
 StandardError=journal
 
 [Install]
 WantedBy=default.target
+

@@ -6,7 +6,11 @@ After=network-online.target
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/tech-digest-viewer.py
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=60
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

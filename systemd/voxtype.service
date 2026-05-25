@@ -7,7 +7,11 @@ Type=simple
 Environment="YDOTOOL_SOCKET=/run/user/1000/.ydotool_socket"
 ExecStart=/run/current-system/sw/bin/voxtype -v daemon
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

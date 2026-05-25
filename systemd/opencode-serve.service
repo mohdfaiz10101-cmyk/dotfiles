@@ -7,6 +7,9 @@ Type=simple
 ExecStartPre=/home/charlie/.local/bin/opencode-integrity-check
 ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode serve --port 4096 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8080 --cors http://localhost:8090
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 TimeoutStopSec=300
 KillSignal=SIGTERM
 KillMode=mixed
@@ -19,3 +22,4 @@ Environment="HOME=/home/charlie" "PATH=/run/current-system/sw/bin:/home/charlie/
 
 [Install]
 WantedBy=default.target
+

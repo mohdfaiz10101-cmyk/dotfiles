@@ -8,7 +8,10 @@ RemainAfterExit=yes
 ExecStart=/home/charlie/.local/bin/overtab-serve-start
 ExecStop=/home/charlie/.local/bin/overtab-serve-stop
 Restart=on-failure
-RestartSec=3
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
 Environment=TERM=xterm-256color

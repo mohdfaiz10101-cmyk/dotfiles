@@ -6,7 +6,11 @@ After=network.target
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/claude-esp-simple.py
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

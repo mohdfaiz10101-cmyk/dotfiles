@@ -13,8 +13,12 @@ ExecStop=/home/charlie/.nix-profile/bin/pg_ctl -D ${PGDATA} stop
 ExecReload=/home/charlie/.nix-profile/bin/pg_ctl -D ${PGDATA} reload
 PIDFile=/mnt/ai/apps/postgresql/data/postmaster.pid
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]
 WantedBy=default.target
 WantedBy=letta.service
+

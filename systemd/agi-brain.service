@@ -5,9 +5,12 @@ Wants=default.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4000 " && echo "PORT 4000 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/brain.py --no-telegram
 WorkingDirectory=/home/charlie/agi
 Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=15
 StartLimitBurst=5
 Environment=PYTHONUNBUFFERED=1
@@ -26,3 +29,5 @@ SyslogIdentifier=agi-brain
 
 [Install]
 WantedBy=default.target
+
+

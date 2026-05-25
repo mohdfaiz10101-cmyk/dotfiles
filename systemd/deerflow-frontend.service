@@ -5,11 +5,17 @@ After=network.target deerflow-gateway.service
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/deerflow/frontend
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":3000 " && echo "PORT 3000 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/node /mnt/ai/ai-cluster/deerflow/frontend/node_modules/next/dist/bin/next dev --port 3000
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=15
 Environment=NODE_ENV=development
 Environment=NEXT_PUBLIC_API_URL=http://localhost:8001
 
 [Install]
 WantedBy=default.target
+
+

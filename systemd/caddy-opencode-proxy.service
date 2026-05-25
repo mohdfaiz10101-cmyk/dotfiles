@@ -1,15 +1,1 @@
-[Unit]
-Description=Caddy workspace redirect proxy (:8080→:8081)
-After=network.target opencode-web.service
-PartOf=opencode-web.service
-
-[Service]
-Type=simple
-ExecStart=/home/charlie/.nix-profile/bin/caddy run --config /home/charlie/.local/etc/caddy/Caddyfile
-ExecReload=/home/charlie/.nix-profile/bin/caddy reload --config /home/charlie/.local/etc/caddy/Caddyfile
-Restart=always
-RestartSec=5
-LimitNOFILE=4096
-
-[Install]
-WantedBy=default.target
+/dev/null

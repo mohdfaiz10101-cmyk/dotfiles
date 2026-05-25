@@ -11,13 +11,19 @@ Environment=OPENAI_API_BASE=http://localhost:4000/v1
 Environment=PAPERCLIP_API=http://localhost:3100
 Environment=PAPERCLIP_COMPANY_ID=aae8a73b-784f-4815-9511-bec8f2409b75
 
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":3100 " && echo "PORT 3100 IN USE" && exit 1 || true'
 ExecStart=/mnt/ai/ai-cluster/addf/.venv/bin/uvicorn bridge.main:app --host 0.0.0.0 --port 8002
 
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 StandardOutput=journal
 StandardError=journal
 
 [Install]
 WantedBy=default.target
+
+

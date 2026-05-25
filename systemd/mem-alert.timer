@@ -1,0 +1,11 @@
+[Unit]
+Description=内存告警定时检查（每10分钟）
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=10min
+# 允许时段：全天（内存告警任何时间都要知道）
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

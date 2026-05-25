@@ -7,7 +7,11 @@ Type=simple
 ExecStart=/home/charlie/.local/bin/ollama-cuda serve
 Environment=OLLAMA_MODELS=/mnt/ai/models/ollama
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

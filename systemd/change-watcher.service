@@ -6,7 +6,11 @@ After=default.target
 Type=simple
 ExecStart=%h/bin/change-watcher
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]
 WantedBy=default.target
+

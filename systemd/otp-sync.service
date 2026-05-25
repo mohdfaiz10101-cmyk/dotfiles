@@ -7,6 +7,9 @@ Wants=network-online.target
 Type=simple
 ExecStart=/home/charlie/.local/bin/otp-sync
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 # Give wl-copy access to the Wayland session
 Environment=WAYLAND_DISPLAY=wayland-1
@@ -18,3 +21,4 @@ SyslogIdentifier=otp-sync
 
 [Install]
 WantedBy=default.target
+

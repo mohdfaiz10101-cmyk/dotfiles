@@ -4,9 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7690 " && echo "PORT 7690 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/ttyd -b /ttyd -p 7690 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -W /home/charlie/.local/bin/claude-tmux-wrap
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
 Environment=TERM=xterm-256color
@@ -14,3 +18,5 @@ Environment=COLORTERM=truecolor
 
 [Install]
 WantedBy=default.target
+
+

@@ -12,6 +12,9 @@ ExecStartPre=/bin/sh -c 'echo PYTHONPATH=$(python3 -c "import numpy; import os; 
 EnvironmentFile=-%h/.local/state/chronos-env
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
@@ -19,3 +22,4 @@ SyslogIdentifier=chronos-sensory
 
 [Install]
 WantedBy=graphical-session.target
+

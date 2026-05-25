@@ -1,0 +1,10 @@
+[Unit]
+Description=微信 Windows 保活看门狗
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wechat-windows-watchdog.sh
+TimeoutStartSec=30
+Environment=HOME=%h

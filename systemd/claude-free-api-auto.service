@@ -6,7 +6,11 @@ After=network.target
 Type=simple
 ExecStart=/home/charlie/.local/bin/claude-free-api-auto daemon
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=60
 
 [Install]
 WantedBy=default.target
+

@@ -16,8 +16,12 @@ ExecStart=/run/current-system/sw/bin/ssh -NT -D 1080 -f \
     phone
 ExecStop=/run/current-system/sw/bin/pkill -f "ssh.*-D 1080"
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=15
 StartLimitIntervalSec=0
 
 [Install]
 WantedBy=default.target
+

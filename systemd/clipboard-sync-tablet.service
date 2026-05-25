@@ -1,1 +1,26 @@
-/nix/store/n970gqqqvy0wf53dvysnf9hgkh8y0xxx-unit-clipboard-sync-tablet.service/clipboard-sync-tablet.service
+[Unit]
+After=network-online.target
+Description=Clipboard Sync with Android Tablet
+Wants=network-online.target
+
+[Service]
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+Environment="DISPLAY=:0"
+Environment="HOME=/home/charlie"
+Environment="LOCALE_ARCHIVE=/nix/store/s7627r57hh0hyb4ik6d92ms5zzclrawp-glibc-locales-2.42-51/lib/locale/locale-archive"
+Environment="PATH=/nix/store/74sind1d6vf2bfwd7yklg8chsvzqxmmq-coreutils-9.10/bin:/nix/store/c89zz4vh8v9dbs8169wk8ahwxvrdxgm5-findutils-4.10.0/bin:/nix/store/h6hdbgkfh59np7bi7h8qa76pq27ixz8r-gnugrep-3.12/bin:/nix/store/jpsqy47rdl0j0dvyyzb4kw8gqajw8nx0-gnused-4.9/bin:/nix/store/ik8a7b32nqv2q5p4g86hmp65jklmrp3g-systemd-259.3/bin:/nix/store/74sind1d6vf2bfwd7yklg8chsvzqxmmq-coreutils-9.10/sbin:/nix/store/c89zz4vh8v9dbs8169wk8ahwxvrdxgm5-findutils-4.10.0/sbin:/nix/store/h6hdbgkfh59np7bi7h8qa76pq27ixz8r-gnugrep-3.12/sbin:/nix/store/jpsqy47rdl0j0dvyyzb4kw8gqajw8nx0-gnused-4.9/sbin:/nix/store/ik8a7b32nqv2q5p4g86hmp65jklmrp3g-systemd-259.3/sbin"
+Environment="PYTHONUNBUFFERED=1"
+Environment="TZDIR=/nix/store/h15ranlgwagilr6ajd7ich6d896kf9zd-tzdata-2026a/share/zoneinfo"
+Environment="WAYLAND_DISPLAY=wayland-0"
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+ExecStart=/home/charlie/.local/bin/clipboard-sync-tablet
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=30
+Type=simple
+
+[Install]
+WantedBy=default.target
+

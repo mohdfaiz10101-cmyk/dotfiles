@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8700 " && echo "PORT 8700 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/openagents-network-wrapper.sh
 WorkingDirectory=/home/charlie/.openagents/network
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin:/home/charlie/.nix-profile/bin
@@ -13,7 +14,12 @@ Environment=http_proxy=
 Environment=https_proxy=
 Environment=HOME=/home/charlie
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]
 WantedBy=default.target
+
+

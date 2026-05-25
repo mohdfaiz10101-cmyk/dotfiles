@@ -9,7 +9,11 @@ Environment="DISCORD_CHANNEL_ID=0"
 WorkingDirectory=%h/agi
 ExecStart=nix-shell -p python312Packages.discordpy --run "python3 %h/agi/discord-bot.py"
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]
 WantedBy=default.target
+

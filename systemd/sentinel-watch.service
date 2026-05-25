@@ -1,0 +1,14 @@
+[Unit]
+Description=Sentinel journald 实时故障监控
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/sentinel-watch
+Restart=always
+RestartSec=10
+Environment=HOME=%h
+Environment=XDG_RUNTIME_DIR=%t
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
+
+[Install]
+WantedBy=default.target

@@ -7,9 +7,13 @@ Wants=opencode-web.service
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-8080-proxy.py
 Restart=always
-RestartSec=3
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 StandardOutput=journal
 StandardError=journal
 
 [Install]
 WantedBy=default.target
+

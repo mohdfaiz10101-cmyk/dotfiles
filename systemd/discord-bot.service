@@ -6,6 +6,8 @@ After=network.target charlie-hub.service
 Type=simple
 ExecStart=/home/charlie/.local/discord-bot/venv/bin/python3 /home/charlie/.local/discord-bot/discord_bot.py
 Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=10
 StartLimitInterval=3600
 StartLimitBurst=3
@@ -16,3 +18,4 @@ EnvironmentFile=-%h/.config/api-keys/systemd.env
 
 [Install]
 WantedBy=default.target
+

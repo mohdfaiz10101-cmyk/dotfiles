@@ -4,9 +4,12 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment="HOME=%h"
 
 [Install]

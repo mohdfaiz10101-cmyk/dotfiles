@@ -16,7 +16,9 @@ Environment=HTTPS_PROXY=
 Environment=ALL_PROXY=
 Environment=all_proxy=
 Restart=on-failure
-RestartSec=5
+StartLimitIntervalSec=60
+StartLimitAction=none
+RestartSec=10
 StartLimitInterval=60
 StartLimitBurst=10
 

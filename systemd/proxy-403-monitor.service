@@ -7,7 +7,11 @@ EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=%h/.local/bin/proxy-403-monitor
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

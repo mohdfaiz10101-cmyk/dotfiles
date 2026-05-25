@@ -7,8 +7,12 @@ EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/launcher/op-watchdog.sh
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 
 [Install]
 WantedBy=default.target
+

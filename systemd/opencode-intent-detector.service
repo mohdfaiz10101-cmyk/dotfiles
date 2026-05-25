@@ -7,7 +7,11 @@ Type=simple
 Environment="PATH=%h/.npm-global/bin:/run/current-system/sw/bin"
 ExecStart=%h/.local/bin/opencode-intent-detector
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

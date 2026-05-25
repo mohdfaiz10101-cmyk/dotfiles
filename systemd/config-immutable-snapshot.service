@@ -6,6 +6,9 @@ After=network.target
 Type=simple
 ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/config-immutable-snapshot
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=15
 Environment="HOME=%h"
 WorkingDirectory=%h

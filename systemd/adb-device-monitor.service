@@ -6,7 +6,12 @@ After=network-online.target
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/adb-device-monitor.py
 Restart=on-failure
-RestartSec=10
+StartLimitAction=none
+RestartSec=30
+# 5分钟内最多3次重启，防止 SIGABRT 死循环
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Install]
 WantedBy=default.target
+

@@ -9,7 +9,11 @@ WorkingDirectory=/mnt/ai/apps/openclaw-tg-canvas
 EnvironmentFile=/mnt/ai/apps/openclaw-tg-canvas/.env
 ExecStart=/run/current-system/sw/bin/node server.js
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

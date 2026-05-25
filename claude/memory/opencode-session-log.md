@@ -47884,3 +47884,206 @@ networ
 [ok] 记忆已写入 lessons-learned + memory-engine
 
 现在 8080 不会被抢了。
+
+## 2026-05-25 17:13
+- [2026-05-25 17:12:56] **用户**: 都要执行 但是端口这个 你要智能 不要让我的其他设备断开
+
+## 2026-05-25 17:15
+- [2026-05-25 17:15:07] **用户**: 但是我粘贴了 他没任何回复
+
+## 2026-05-25 17:16
+- [2026-05-25 17:15:56] **用户**: 问题是我怎么知道他在正常运行 都没有提示和通知 也没有telegram可以对接 我设置过telegram群 但是没用啊 是我使用方案不对吗
+
+## 2026-05-25 17:16
+- [2026-05-25 17:16:32] **用户**: 要更精简
+
+## 2026-05-25 17:20
+- [2026-05-25 17:20:11] **用户**: 我插上usb了 请修复所有隧道和ssh多重方案 还有流量和wifi方案等 都要连接
+
+## 2026-05-25 17:21
+- [2026-05-25 17:20:46] **用户**: 让他默认用step plan router
+- [2026-05-25 17:20:46] **AI(sisyphus)**: USB ADB 通了！设备 `ff3ef385` 在线。现在全面修复。
+
+## 2026-05-25 17:23
+- [2026-05-25 17:22:36] **用户**: % WebFetch https://docs.khoj.dev/self-hosting/configuration
+StatusCode: non 2xx status code (404 GET https://docs.khoj.dev/self-hosting/configuration)
+- [2026-05-25 17:22:39] **AI(sisyphus)**: PowerShell 转义地狱。改用 cmd.exe。
+
+## 2026-05-25 17:23
+- [2026-05-25 17:23:15] **AI(sisyphus)**: [ok] health.sh 22处精简 → `AUTO 20/58` `24在线` `3异常` 代替 `20/58节点可用` `24设备在线` `3个服务异常`
+[ok] score.sh 18处精简 → `正常` `挂了` `通` `未运行` 代替 `记忆服务正常` `记忆服务挂了` `外网可访问` `Tailscale未运行`
+[ok] format → `●代理 正常` 代替 `● 代理: 记忆服务正常`
+[ok] waybar 重启生效
+- [2026-05-25 17:23:26] **用户**: 我是说出现这种错误的原因 为啥不能websearch
+
+## 2026-05-25 17:24
+- [2026-05-25 17:23:43] **AI(sisyphus)**: 404 原因很简单：Khoj 文档近期重构了 URL 结构，旧的 `/self-hosting/configuration` 路径不再存在，改成了 `/get-started/setup` 和 `/advanced/*`。
+
+关于为什么没用 websearch：我当前的工具集里**没有搜索引擎**（没有 Google/Bing/DuckDuckGo 搜索工具），只有 `webfetch`（直接抓取指定 URL）。所以当时只能逐个猜测 URL 去试，试了 3 次才找到正确的文档入口。如果能搜索，一步就能定位到。
+
+简单说：**URL 过期 + 无搜索工具 = 费了几步才找到正确页面**。
+- [2026-05-25 17:23:47] **用户**: 确定永久了吗好像出现多次了
+
+## 2026-05-25 17:24
+- [2026-05-25 17:24:17] **AI(sisyphus)**: 关键发现：
+- Termux sshd 可用，authorized_keys 已有 NixOS 公钥
+- frpc 有多套配置 (`frpc.toml`, `frpc_phone.toml`, `frpc_lan.toml`)
+- Magisk 模块 `adb_wifi` 已装
+- WiFi: `192.168.123.22`，移动数据上行
+
+## 2026-05-25 17:25
+- [2026-05-25 17:25:23] **用户**: 为啥重启风暴 都没有提醒的 这种不做系统通知的吗 从来没人告诉我后台有啥毛病 社区都是怎么做的
+
+## 2026-05-25 17:26
+- [2026-05-25 17:26:01] **用户**: 那怎么办 你不给自己配置搜索工具吗
+
+## 2026-05-25 17:26
+- [2026-05-25 17:26:19] **用户**: 是需要 firecrawl吗
+
+## 2026-05-25 17:28
+- [2026-05-25 17:27:41] **AI(sisyphus)**: ADB 已启动。SSH 和 frpc 未运行 — 继续修复。
+
+## 2026-05-25 17:28
+- [2026-05-25 17:28:16] **用户**: 我opencode cli不能像ttyd那样加上一个自定义的切换按钮吗
+
+## 2026-05-25 17:29
+- [2026-05-25 17:28:36] **AI(sisyphus)**: [ok] 根因定位：`caddy-opencode-proxy.service` 有 `PartOf=opencode-web.service`，opencode-web 每次重启自动拉它复活
+
+[ok] 修复：`rm service文件 → ln -s /dev/null` 正确 mask（之前 disable 挡不住 PartOf）
+
+[ok] 验证：重启 opencode-web → caddy 保持 inactive，8080 仍由 ttyd 占用
+
+[ok] 同时 opencode-8080-proxy（python版）已 masked
+
+[ok] 记忆已写入 lessons-lea
+- [2026-05-25 17:28:42] **用户**: 微信要保持打开啊 怎么被关闭了
+
+## 2026-05-25 17:29
+- [2026-05-25 17:29:07] **AI(sisyphus)**: 结论：Firecrawl MCP 已配置但 **FIRECRAWL_API_KEY 未设置**，所以从未启动。
+
+你现在没有 Firecrawl key，两个方案
+- [2026-05-25 17:29:17] **AI(sisyphus)**: 无本地搜索服务，两个选项：
+
+**A. Firecrawl MCP（推荐）**：去 [firecrawl.dev](https://firecrawl.dev) 注册拿免费 API key，我帮你存到 `~/.local/share/credentials/firecrawl`，重启 opencode 就能用。
+
+**B. DuckDuckGo 零配置兜底**：我现在就能写一个 shell wrapper，用 `webfetch` 访问 `https://html.duckduckgo.com/html/?q=关键词` 替代搜索，不依赖任何 key。
+
+选哪个？还是你有 Firecrawl k
+
+## 2026-05-25 17:31
+- [2026-05-25 17:30:34] **AI(sisyphus)**: frpc 用了 Tailscale IP 但手机 Tailscale 离线 — 改成 LAN IP！
+
+## 2026-05-25 17:31
+- [2026-05-25 17:31:21] **AI(sisyphus)**: [ok] frpc 启动 — WiFi LAN `192.168.123.209` 直连
+
+## 2026-05-25 17:32
+- [2026-05-25 17:31:49] **AI(sisyphus)**: `frpc` 是 x86-64 错误架构！`frpc_new` 才是 arm64。
+
+## 2026-05-25 17:32
+- [2026-05-25 17:32:15] **AI(sisyphus)**: [ok] FRP 双隧道在线：ADB:15555 + SSH:8022
+
+## 2026-05-25 17:33
+- [2026-05-25 17:33:04] **用户**: # Install and authenticate (one-time)
+npm install -g firecrawl-cli
+firecrawl login --api-key fc-d78b2e8ba4f246d38ad11b7b3ba11319
+
+# Scrape a URL (markdown, use --only-main-content for clean output)
+firecrawl scrape https://firecrawl.dev
+firecrawl https://firecrawl.dev --only-main-content fc-d78b2e8b
+
+## 2026-05-25 17:33
+- [2026-05-25 17:33:20] **AI(sisyphus)**: [ok] WeChat当前运行中 -- Windows PID 7056, 16:20启动, Responding=True
+[ok] 部署保活看门狗 -- wechat-windows-watchdog.timer 每5分钟SSH检查+自动重启
+[ok] 首次巡检通过 -- WeChat.exe存活,无需干预
+
+[完成] 微信保活部署 — 看门狗每5分钟检测Windows微信进程，发现关闭自动远程启动+桌面通知
+- [2026-05-25 17:33:24] **用户**: 两个都要
+
+## 2026-05-25 17:35
+- [2026-05-25 17:34:37] **用户**: 没看到打开 waybar没看到
+- [2026-05-25 17:34:40] **AI(sisyphus)**: [ok] firecrawl-cli 安装 -- 完成
+[ok] firecrawl login -- 成功
+[ok] API key 存 ~/.local/share/credentials/firecrawl -- chmod 600
+[ok] FIRECRAWL_API_KEY 写入 ~/.zshenv -- 永久生效
+[ok] scrape 测试 -- 正常返回 Khoj 文档
+[ok] search 测试 -- 正常返回 3 条结果
+
+**现在还差一步**：当前 opencode 进程看不到新环境变量，firecrawl MCP 未启动。需要**重启 opencode** 后 `fi
+
+## 2026-05-25 17:35
+- [2026-05-25 17:35:09] **用户**: 不是 我是说 我用konsole打开的时候加按钮
+
+## 2026-05-25 17:36
+- [2026-05-25 17:35:48] **AI(sisyphus)**: 要在 Konsole 里加类似 ttyd 的 toggle，只能用 tmux 实现。给你加一个 `Prefix + \` 快捷键，弹出 session 管理面板
+
+## 2026-05-25 17:37
+- [2026-05-25 17:36:35] **AI(sisyphus)**: [ok] 创建 tmux session 切换脚本 → `~/.local/bin/tmux-session-toggle`
+[ok] 绑定快捷键 → `Prefix + \` 弹出 session 管理面板
+[ok] 状态栏 → 显示 `\:切换` 提示
+[完成] Konsole 里按 `Ctrl+b` 然后 `\` 弹出面板，[Enter]切换 [d]删除 [q]关闭 — 和 ttyd 的 toggle 功能一样
+- [2026-05-25 17:36:41] **用户**: 正确 URL 映射
+目标	新地址
+安装/部署	https://docs.khoj.dev/get-started/setup (https://docs.khoj.dev/get-started/setup)
+高级配置总目	https://docs.khoj.dev/category/advanced-self-hosting (https://docs.khoj.dev/category/advanced-self-hosting)
+Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advanced/ad
+
+## 2026-05-25 17:39
+- [2026-05-25 17:39:01] **用户**: 需要 但是我要全部的智能架构 综合下
+
+## 2026-05-25 17:39
+- [2026-05-25 17:39:25] **用户**: 问题是我是小白吗 还是说 他们踩过坑才这样设置 我是新手？
+
+## 2026-05-25 17:41
+- [2026-05-25 17:40:43] **用户**: 不是在 duckdns上吗 但是模型 根据opencode agent角色分配？你自动把 khoj配置成社区最佳实践啊 然后telgram跟他的配合也优化啊 全面优化啊
+
+## 2026-05-25 17:41
+- [2026-05-25 17:41:05] **用户**: 而且他有必要通过telegram接入openclaw 吗
+- [2026-05-25 17:41:09] **AI(sisyphus)**: 现有基础设施已摸清：
+- `notify-send` → 全量走 TG（桌面静音）
+- `tg-push` → 自带去重(2h)、成功冷却(24h)、限速(6条/h)
+- `waybar-health.sh` → 已有健康模块位置
+- DBUS 可用，journald JSON 可用
+- 416 个 systemd 服务，0 个有 OnFailure
+
+开始构建 Sentinel 三层智能架构
+
+## 2026-05-25 17:42
+- [2026-05-25 17:41:59] **用户**: 执行推荐。
+
+## 2026-05-25 17:42
+- [2026-05-25 17:42:12] **AI(sisyphus)**: Tailscale 已安装！Magisk 脚本齐全。现在启动 Tailscale 并更新 frpc 脚本。
+
+## 2026-05-25 17:43
+- [2026-05-25 17:42:54] **用户**: 快速切换到已经完成任务的session
+
+## 2026-05-25 17:46
+- [2026-05-25 17:45:39] **AI(sisyphus)**: [ok] 重写 tmux session 面板 → 直接读 opencode.db，显示 ⚡WIP / ✅DONE
+[ok] 添加快捷键 `g` → 一键跳到第一个 DONE session
+[ok] 状态栏提示 → `\:切换(g=跳到DONE)`
+[ok] 测试 → 扫描到 17 个 session，全部 DONE
+
+用法：在 Konsole 里打开 opencode tmux 后，按 `Ctrl+b` 再按 `\`，弹出面板后按 `g` 直接切到最近完成的 session。
+- [2026-05-25 17:45:46] **AI(sisyphus)**: [ok] 8022 在监听！测试并通过 nc 验证。
+
+## 2026-05-25 17:54
+- [2026-05-25 17:54:24] **AI(sisyphus)**: [ok] ClamAV 1.4.3 -- 日库355K签名，freshclam 必须无代理(`http_proxy=""`)
+[ok] 文件完整性 -- find+sha256sum替代方案，9002文件基线，每小时检查
+[ok] Lynis 3.1.6 -- 硬化指数68/100，主要发现:SSH需加固
+[ok] 防火墙 -- NixOS iptables已运行，wlp0s20f0u5接口全放行，其余端口白名单+末尾DROP
+[ok] systemd timer -- 每日安全扫描00:00 + 每小时完整性检查:30
+
+---
+
+## 防火墙增强
+
+当前 NixOS iptables 已有
+
+## 2026-05-25 17:55
+- [2026-05-25 17:54:51] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-25 18:31
+- [2026-05-25 18:31:17] **用户**: "你是 CC 自主决策引擎。执行：
+1. 读 /home/charlie/.local/state/op-status.json 和 /home/charlie/.local/state/op-task-results.json
+2. 检查 /home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md 中 '- [ ]' 数量
+3. 根据真实数据写1-2个具体任务到 op-tasks.md（格式：- [ ] [CC→OP] [2026-05-25 18:31] 任务描述）
+4. 写1行对话到~/.claude/projects/

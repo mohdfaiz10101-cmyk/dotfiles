@@ -11,8 +11,12 @@ ExecStart=/run/current-system/sw/bin/npx next start --port 3000 -H 0.0.0.0
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Environment=NODE_ENV=production
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 TimeoutStartSec=300
 
 [Install]
 WantedBy=default.target
+

@@ -6,7 +6,10 @@ After=network-online.target
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py --http
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment="HOME=%h"
 WorkingDirectory=/home/charlie/agi
 StandardOutput=journal
@@ -14,3 +17,4 @@ StandardError=journal
 
 [Install]
 WantedBy=default.target
+

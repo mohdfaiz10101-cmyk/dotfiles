@@ -5,9 +5,12 @@ Wants=default.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9910 " && echo "PORT 9910 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python /home/charlie/agi/macg_api.py
 WorkingDirectory=/home/charlie/agi
 Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitAction=none
 RestartSec=15
 StartLimitBurst=5
 Environment=PYTHONUNBUFFERED=1
@@ -27,3 +30,5 @@ Environment=ANTHROPIC_DEFAULT_OPUS_MODEL=glm-5.1
 
 [Install]
 WantedBy=default.target
+
+

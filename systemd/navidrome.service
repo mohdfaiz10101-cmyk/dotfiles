@@ -5,6 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4533 " && echo "PORT 4533 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/navidrome
 WorkingDirectory=%h/navidrome
 Environment=ND_SCANSCHEDULE=1h
@@ -15,7 +16,12 @@ Environment=ND_PORT=4533
 Environment=ND_MUSICFOLDER=%h/navidrome/music
 Environment=ND_DATAFOLDER=%h/navidrome/data
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+
+

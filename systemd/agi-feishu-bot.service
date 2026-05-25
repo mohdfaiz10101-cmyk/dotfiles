@@ -8,6 +8,9 @@ Type=simple
 WorkingDirectory=/home/charlie/agi
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/feishu_bot_enhanced.py
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
@@ -19,3 +22,4 @@ Environment="FEISHU_ENCRYPT_KEY="
 
 [Install]
 WantedBy=default.target
+

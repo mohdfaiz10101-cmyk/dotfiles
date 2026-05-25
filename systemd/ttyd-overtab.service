@@ -5,9 +5,13 @@ Requires=overtab-serve.service
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7698 " && echo "PORT 7698 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/ttyd -p 7698 -w /home/charlie/.openclaw/workspace -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/overtab-tmux-wrap
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
 Environment=TERM=xterm-256color
@@ -15,3 +19,5 @@ Environment=COLORTERM=truecolor
 
 [Install]
 WantedBy=default.target
+
+

@@ -6,7 +6,11 @@ After=default.target
 Type=simple
 ExecStart=/home/charlie/.local/bin/dotfiles-symlink-watch.sh
 Restart=always
-RestartSec=3
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=default.target
+

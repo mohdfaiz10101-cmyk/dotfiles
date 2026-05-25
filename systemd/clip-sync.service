@@ -8,6 +8,9 @@ Type=simple
 ExecStart=/home/charlie/.local/bin/clip-sync watch
 ExecStop=/home/charlie/.local/bin/clip-sync stop
 Restart=always
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=60
 RestartSec=10
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/1000
@@ -17,3 +20,4 @@ SyslogIdentifier=clip-sync
 
 [Install]
 WantedBy=default.target
+

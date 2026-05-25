@@ -7,6 +7,9 @@ Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/telegram_bot_enhanced.py
 WorkingDirectory=/home/charlie/agi
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 Environment=HOME=/home/charlie

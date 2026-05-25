@@ -4,9 +4,15 @@ After=graphical-session.target
 PartOf=graphical-session.target
 
 [Service]
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":5900 " && echo "PORT 5900 IN USE" && exit 1 || true'
 ExecStart=/bin/sh -c 'exec websockify --web "$(find /nix/store -maxdepth 4 -path "*/share/webapps/novnc" -type d 2>/dev/null | tail -1)" 6090 localhost:5900'
 Restart=on-failure
-RestartSec=5s
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 
 [Install]
 WantedBy=graphical-session.target
+
+

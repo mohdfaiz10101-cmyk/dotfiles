@@ -14,9 +14,13 @@ Environment="PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin"
 TimeoutStartSec=1800
 # 失败重试
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=60
 
 # 日志
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=skill-sync
+

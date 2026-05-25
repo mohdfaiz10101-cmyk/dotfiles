@@ -6,9 +6,13 @@ After=network-online.target
 Type=simple
 ExecStart=/home/charlie/.local/bin/cf-tunnel-7699
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=30
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin
 
 [Install]
 WantedBy=default.target
+

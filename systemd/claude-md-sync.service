@@ -6,8 +6,12 @@ After=default.target
 Type=simple
 ExecStart=/home/charlie/.local/bin/claude-md-watcher.sh
 Restart=on-failure
-RestartSec=3
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 
 [Install]
 WantedBy=default.target
+

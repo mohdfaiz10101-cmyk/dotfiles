@@ -5,10 +5,16 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/charlie/launcher
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9875 " && echo "PORT 9875 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 launcher-server.py
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target
+
+

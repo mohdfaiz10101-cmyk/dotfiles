@@ -7,8 +7,12 @@ Wants=docker.service
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /mnt/ai-cluster/litellm/strip_tools_proxy.py
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target
+

@@ -5,10 +5,16 @@ After=network.target hub-api.service
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9810 " && echo "PORT 9810 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/office-agent-runner.sh
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 
 [Install]
 WantedBy=default.target
+
+

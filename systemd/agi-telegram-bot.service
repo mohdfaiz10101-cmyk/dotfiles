@@ -5,8 +5,12 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/charlie/agi
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/telegram_bot_enhanced.py --mode polling --proactive
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
@@ -20,3 +24,5 @@ Environment="http_proxy=http://127.0.0.1:7890"
 
 [Install]
 WantedBy=default.target
+
+

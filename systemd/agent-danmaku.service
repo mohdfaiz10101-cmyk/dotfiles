@@ -6,7 +6,10 @@ After=graphical-session.target
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/agent-danmaku
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=60
+RestartSec=10
 Environment=DISPLAY=:0
 Environment=WAYLAND_DISPLAY=wayland-0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
@@ -16,3 +19,4 @@ Environment=PYTHONPATH=/nix/store/avm7qjpgah6h11v3s5hdv7c6abfvirzp-python3.13-tk
 
 [Install]
 WantedBy=graphical-session.target
+

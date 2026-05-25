@@ -5,10 +5,16 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/wechat-sync
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9097 " && echo "PORT 9097 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 web.py
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target
+
+

@@ -1,1 +1,16 @@
-/nix/store/k846kaqfhkizxbqzkxvgkzy02p6jwxzf-home-manager-files/.config/systemd/user/disk-watchdog.service
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/nix/store/sk77m499l2i1j370q8q6lnrpf1zbvqy3-disk-watchdog
+Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
+Type=simple
+
+[Unit]
+After=graphical-session.target
+Description=外接磁盘状态监控与自动挂载
+

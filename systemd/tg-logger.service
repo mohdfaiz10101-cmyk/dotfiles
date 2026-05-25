@@ -3,11 +3,17 @@ Description=Telegram Bot Message Logger
 After=network-online.target
 
 [Service]
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/agi/tg_logger.py
 Restart=always
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 Environment=HTTPS_PROXY=http://127.0.0.1:7890
 Environment=https_proxy=http://127.0.0.1:7890
 
 [Install]
 WantedBy=default.target
+
+

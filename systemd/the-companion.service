@@ -4,10 +4,14 @@ After=network.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":3456 " && echo "PORT 3456 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.bun/bin/the-companion start --foreground
 WorkingDirectory=/home/charlie
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 SuccessExitStatus=42
 StandardOutput=append:/home/charlie/.companion/logs/companion.log
 StandardError=append:/home/charlie/.companion/logs/companion.error.log
@@ -18,3 +22,5 @@ Environment=PATH=/home/charlie/.bun/bin:/home/charlie/.local/bin:/home/charlie/g
 
 [Install]
 WantedBy=default.target
+
+

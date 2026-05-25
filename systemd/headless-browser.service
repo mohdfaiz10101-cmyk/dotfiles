@@ -7,8 +7,12 @@ Type=simple
 ExecStart=/run/current-system/sw/bin/node /home/charlie/launcher/headless-browser-server.js
 WorkingDirectory=/home/charlie/launcher
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=NODE_PATH=/tmp/node_modules
 
 [Install]
 WantedBy=default.target
+

@@ -4,9 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":11434 " && echo "PORT 11434 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -I /home/charlie/.local/share/ttyd/index.html -t fontSize=10 -t disableLeaveAlert=true -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -t scrollback=50000 -W /home/charlie/.local/bin/opencode-tmux-wrap
 Restart=on-failure
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.npm-global/bin:/home/charlie/.nix-profile/bin
 Environment=OLLAMA_HOST=http://127.0.0.1:11434
@@ -16,3 +20,5 @@ Environment=OPENCODE_EXPERIMENTAL_WORKSPACES=1
 
 [Install]
 WantedBy=default.target
+
+

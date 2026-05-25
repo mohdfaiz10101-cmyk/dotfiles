@@ -5,11 +5,17 @@ Requires=novnc-desktop.service
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":6080 " && echo "PORT 6080 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/cloudflared-bin tunnel --url http://localhost:6080
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=60
 RestartSec=10
 StandardOutput=append:/home/charlie/.local/share/cloudflared-novnc.log
 StandardError=append:/home/charlie/.local/share/cloudflared-novnc.log
 
 [Install]
 WantedBy=graphical-session.target
+
+

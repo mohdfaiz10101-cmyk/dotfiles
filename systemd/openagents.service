@@ -5,12 +5,18 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8700 " && echo "PORT 8700 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/openagents up --foreground
 Restart=always
-RestartSec=5
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/home/charlie/.local/bin:/run/current-system/sw/bin
 Environment=OPENAGENTS_PORT=8700
 
 [Install]
 WantedBy=default.target
+
+

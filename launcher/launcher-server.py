@@ -12,6 +12,7 @@ import re
 import hashlib
 import sqlite3
 import urllib.request as ureq
+from pathlib import Path
 from datetime import datetime
 
 import fcntl

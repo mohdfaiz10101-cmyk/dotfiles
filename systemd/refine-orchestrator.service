@@ -5,10 +5,16 @@ After=network.target litellm.service
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/refine-orchestrator
+ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9820 " && echo "PORT 9820 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 -m uvicorn refine_api:app --host 127.0.0.1 --port 9820 --log-level warning
 Restart=on-failure
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 RestartSec=10
 Environment="PATH=/run/current-system/sw/bin:/usr/bin"
 
 [Install]
 WantedBy=default.target
+
+
