@@ -1,9 +1,10 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-25 22:30
+> 来源: changelog.jsonl | 重建时间: 2026-05-25 23:00
 
 ## 2026-05-25
 
 - [file-change] **agi**: agi/finance/data/cards.json MODIFY
+- [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
@@ -33,6 +34,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/.last-session.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -95,6 +98,27 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
@@ -325,6 +349,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -649,6 +675,7 @@
 - [file-change] **.config**: .config/systemd/user/opencode-session-recorder.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-stuck-watch.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-stuck-watch.service MODIFY
+- [file-change] **.config**: .config/systemd/user/opencode-telegram-bot.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-telegram-processor.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-telegram-processor.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-web-backend.service MODIFY
@@ -821,6 +848,8 @@
 - [file-change] **.config**: .config/systemd/user/ydotoold.service MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
@@ -1631,6 +1660,7 @@
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json CREATE
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-25T02-09-03-234Z-2390599-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-25T02-09-10-983Z-2394583-gateway.startup_failed.json MOVED_TO
@@ -1677,6 +1707,9 @@
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-24-10-136Z.yml CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-25-03-503Z.yml CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-25-53-501Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-41-12-518Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-41-37-232Z.yml CREATE
+- [file-create] **.openclaw**: .openclaw/workspace/.playwright-mcp/page-2026-05-25T14-43-03-411Z.yml CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/ttyd-all-filter.md CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/ttyd-done-filter.md CREATE
 - [file-create] **.openclaw**: .openclaw/workspace/ttyd-filtered-snapshot.md CREATE
@@ -2321,6 +2354,7 @@
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/agi-telegram-bot.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/cloudflared-ttyd.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/opencode-8080-proxy.service DELETE
+- [file-delete] **.config**: .config/systemd/user/default.target.wants/opencode-telegram-processor.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/sentinel-watch.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/telegram-bot-enhanced.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/telegram-bot.service DELETE
