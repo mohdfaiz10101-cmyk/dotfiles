@@ -48507,3 +48507,15 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 01:31
 - [2026-05-26 01:30:41] **用户**: ios上有没有一个clsh 手机ioss强上有没有一个跟clash mata差不多的软件智能分流我已经越狱
+
+## 2026-05-26 01:31
+- [2026-05-26 01:31:15] **AI(sisyphus)**: 越狱 iOS 上 Clash Meta 级智能分流方案：
+
+## App Store 方案（越狱后也可装）
+
+| 客户端 | 内核 | 特点 |
+|--------|------|------|
+| **Stash** | Clash Meta 兼容 | 直接套用 Clash/Meta 配置，规则分流最接近 Meta，$3.99 |
+| **Shadowrocket**（小火箭）| 自研 | 最流行，支持 Clash 规则导入，插件系统，$2.99 |
+| **Quantumult X**（圈X）| 自研 | 规则最强，支持 MITM/脚本/重写，$7.99 全家桶不限设备 |
+| **Loo
