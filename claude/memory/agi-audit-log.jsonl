@@ -843,3 +843,8 @@
 {"ts": "2026-05-25 08:56", "type": "cycle", "summary": "系统运行正常，CPU高占用为瞬时采样", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 08:57", "type": "cycle", "summary": "系统运行正常，仅存在单次CPU突刺", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 08:59", "type": "cycle", "summary": "系统运行平稳，CPU与内存负载正常，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 09:00", "type": "cycle", "summary": "系统运行正常，CPU负载中等，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 09:01", "type": "cycle", "summary": "系统各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 09:02", "type": "cycle", "summary": "系统负载正常，python3.13 进程符合系统规则", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 09:04", "type": "cycle", "summary": "系统资源正常，CPU高占用进程为已知服务，无需告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 09:05", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
