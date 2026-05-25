@@ -48504,3 +48504,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 00:27
 - [2026-05-26 00:26:47] **用户**: 19890ios输入法有问题偶尔可以输入输入偶尔不可以
+
+## 2026-05-26 01:31
+- [2026-05-26 01:30:41] **用户**: ios上有没有一个clsh 手机ioss强上有没有一个跟clash mata差不多的软件智能分流我已经越狱
