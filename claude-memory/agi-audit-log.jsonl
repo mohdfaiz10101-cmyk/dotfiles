@@ -1478,3 +1478,4 @@
 {"ts": "2026-05-25 22:55", "type": "cycle", "summary": "系统整体运行正常，资源使用率均在安全范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 22:57", "type": "cycle", "summary": "系统运行正常，CPU资源由python3.13进程占用，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 22:58", "type": "cycle", "summary": "系统负载正常，CPU使用率适中，内存与磁盘空间充足，服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 22:59", "type": "cycle", "summary": "系统资源占用正常，CPU存在高负载进程但无异常", "alert_count": 0, "skipped_llm": false}
