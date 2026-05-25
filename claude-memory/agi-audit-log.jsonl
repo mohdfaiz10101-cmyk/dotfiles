@@ -1437,3 +1437,4 @@
 {"ts": "2026-05-25 22:06", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 22:08", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 22:09", "type": "cycle", "summary": "系统负载正常，CPU存在周期性峰值", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 22:10", "type": "cycle", "summary": "系统CPU负载较高但服务健康，核心进程运行正常", "alert_count": 0, "skipped_llm": false}
