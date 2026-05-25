@@ -48210,3 +48210,11 @@ waybar 现在正常运行，config 用 `config.override`
 
 ## 2026-05-25 20:58
 - [2026-05-25 20:58:16] **用户**: 那我百度已经登录了呀，我本地也有百度网盘，你给那个呃我给你授权，你给我地址，我给你授权码，然后继续配置。的方法
+
+## 2026-05-25 20:59
+- [2026-05-25 20:59:35] **AI(sisyphus)**: [ok] sentinel-core — 分级/风暴/冷却/确认/静音 7层决策引擎 ✅
+[ok] sentinel-dispatch — TG(tg-push) + Desktop(dbus-send mako) + Feed 三通道 ✅
+[ok] sentinel-onfailure + @.service — systemd OnFailure 钩子模板 ✅
+[ok] sentinel-inject — 161/162 服务注入 OnFailure (sunshine=NixOS只读跳过) ✅
+[ok] sentinel-ack — 告警确认 1h 静音 ✅
+[ok] waybar-se
