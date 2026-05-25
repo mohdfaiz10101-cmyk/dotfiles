@@ -1093,3 +1093,6 @@
 {"ts": "2026-05-25 15:03", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 15:04", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 15:06", "type": "cycle", "summary": "系统运行正常，CPU与内存负载较低，无服务异常或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 15:08", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-25 15:10", "type": "cycle", "summary": "系统运行正常，资源使用平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 15:11", "type": "cycle", "summary": "系统运行正常，存在预期的Python高负载进程", "alert_count": 0, "skipped_llm": false}
