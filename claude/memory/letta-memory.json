@@ -402,6 +402,16 @@
           "text": "NixOS持久化规则：用户服务统一放~/.config/systemd/user/，脚本放~/bin/或~/.local/bin/，状态放~/.local/state/。禁止写入系统路径(/etc/systemd/system/、/usr/local/bin/)，rebuild后会丢失。OP已添加此规则到lessons-learned。",
           "tags": "nixos,persistence,systemd,best-practice",
           "timestamp": "1779639486"
+        },
+        {
+          "text": "2026-05-25 OP执行: ttyd session manager 新增筛选按钮 | 结果: 成功 | 实现: 在隐藏面板按钮(≪)下方新增筛选按钮，三态循环: 全部→进行中(WIP 2h内)→已完成(24h+/done标记) | 文件: ~/.local/share/ttyd-custom/index.html",
+          "tags": "op-exec,ttyd,19890,session-switcher,filter",
+          "timestamp": "1779714635"
+        },
+        {
+          "text": "2026-05-25 OP修复: 任务审查面板归档按钮请求失败 | 根因: TaskReviewPanel.tsx HUB硬编码localhost:9800，外网(19890 FRP→ttyd)访问时localhost指向手机而非主机 | 修复: next.config.ts添加rewrites(/api/hub/*→localhost:9800/*)，前端改用相对路径/api/hub | 结果: 已验证通过",
+          "tags": "op-exec,frontend,task-review,frp",
+          "timestamp": "1779720730"
         }
       ]
     },

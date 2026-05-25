@@ -85,6 +85,19 @@ nix flake check /etc/nixos
 Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行，禁止回问确认。
 - 违反时 → 写入 lessons-learned.md
 
+## 偏好自动提取写入（PREFERENCE_EXTRACT — 死规则）
+**当用户消息包含以下模式时，MUST 在回复前自动调用 memory_set + 追加 lessons-learned：**
+- "下次不要..." / "以后都..." / "永远不要..." → 写入偏好
+- "不对，应该..." / "不是这样..." → 写入纠正
+- "记住..." / "别忘了..." → 写入提醒
+- "我还是想要..." / "改成..." → 写入决策
+- 同一纠正 ≥2 次 → 强制写入 lessons-learned.md + memory_set
+**写入格式**：
+- memory_set(entity="charlie", key="pref-{日期}", value="{标签}: {内容}", tags="auto,op-preference")
+- lessons-learned: `- [日期] [AUTO] {类型}: {标签} | 内容: {摘录}`
+**禁止**：只嘴上说"已记住"但没有实际写入 memory_set 或 lessons-learned
+**原因**：LLM 没有持久记忆，不写入文件 = 下次会话丢失
+
 ## 记忆系统强制降级（MEMORY_FALLBACK — 死规则）
 当检测到 `Letta MCP: inactive` 或 `curl localhost:8284/health` 失败时：
 1. MUST 调用 `macg_macg_memory_read` 读取本地记忆

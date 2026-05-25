@@ -16,7 +16,7 @@ hidden: true
 
 # CC Autonomous — CC 自主决策引擎
 
-<!-- memory-gate-inject: 21:00 -->
+<!-- memory-gate-inject: 23:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -25,14 +25,24 @@ hidden: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-25] [OP] 失败学习: litellm-error-guard误报 | 错误: grep匹配"Connection error"字符串导致Z.AI上游500也被计为连接错误 | 修复: 改用"APIConnectionError|ECONNRESET"只匹配TCP层真实连
-**教训**: - [2026-05-25] [OP] 8080端口冲突根因: caddy-opencode-proxy.service自动重启抢占8080(Caddyfile→8081) | 修复: systemctl stop+disable caddy-opencode-proxy | 持久化: ttyd-8
-**教训**: - [2026-05-25] [OP] 8080永久保护: caddy-opencode-proxy已masked(→/dev/null) | PartOf=opencode-web.service导致opencode-web重启时caddy自动复活 | mask前即使disabled也会被Part
-**教训**: - [2026-05-25] [OP] 失败学习: ttyd-8080 | 错误: StartLimitIntervalSec在[Service]段导致systemd忽略该key+服务disabled | 根因: StartLimitIntervalSec属于[Unit]段非[Service]段 |
-**教训**: - [2026-05-25] [OP] 永久规则: 手机访问 ttyd 用 19890 不用 8080 | 原因: 8080是运营商常见封锁端口，外部可达≠手机可达(运营商拦截) | FRP代理 nixos-opencode-web: 19890→localhost:8080 已验证外部可达 | 路
+**教训**: - [2026-05-10] Letta MCP 307 重定向 → macg_mcp.py 中 `/v1/agents` 改为 `/v1/agents/`
+**教训**: - [2026-05-03] 记忆遗忘引擎：lessons-learned 45天衰减，codebase-map 30天，一次性报告 7天
+**教训**: - [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
+**教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
+**教训**: - [2026-05-04] 截图 watcher 必须 `adb shell ls` 确认最新文件再 pull，不依赖 intent 缓存
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
 
 
 
