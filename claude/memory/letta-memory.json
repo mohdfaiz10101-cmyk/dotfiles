@@ -127,6 +127,11 @@
           "text": "2026-05-24 OP执行: 路由器新增端口转发8700→192.168.123.209:8700 (OpenAgents Web) | nvram vts_rule18已commit + iptables DNAT已添加 | DuckDNS外网验证200通过",
           "tags": "router,port-forward,openagents,padavan",
           "timestamp": "1779557687"
+        },
+        {
+          "text": "2026-05-25 OP恢复waybar双bar: 主bar(28px custom/agent+health+ai+pulse+mem-pulse+optasks+otp+score等16模块)+备用bar(24px custom/chain链路+custom/finance财务)。永久化: waybar.service ExecStart加--config config.override --style style.override.css, 绕开home-manager nix store symlink覆盖。",
+          "tags": "waybar,双bar,永久化,config.override",
+          "timestamp": "1779638856"
         }
       ]
     },
@@ -392,6 +397,11 @@
           "text": "OP执行: 屏蔽Konsole系统通知 | 结果: 成功 | 关键发现: 通知守护进程是mako不是dunst，配置~/.config/mako/config用invisible=1过滤Konsole。副作用: plasmashell被kquitapp6误杀后无法重启(invalid corona)，重启Hyprland会话可恢复。",
           "tags": "op-exec,notification,konsole,incident",
           "timestamp": "1779593630"
+        },
+        {
+          "text": "NixOS持久化规则：用户服务统一放~/.config/systemd/user/，脚本放~/bin/或~/.local/bin/，状态放~/.local/state/。禁止写入系统路径(/etc/systemd/system/、/usr/local/bin/)，rebuild后会丢失。OP已添加此规则到lessons-learned。",
+          "tags": "nixos,persistence,systemd,best-practice",
+          "timestamp": "1779639486"
         }
       ]
     },

@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Session Log — 每天23:55 + 每小时兜底
+
+[Timer]
+OnCalendar=*-*-* 23:55:00
+OnCalendar=*-*-* *:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

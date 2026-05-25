@@ -1,9 +1,10 @@
 [Unit]
-Description=每日 03:00 Git 备份
+Description=每5分钟 Git 全量备份（inotify实时+定时兜底）
 
 [Timer]
-OnCalendar=*-*-* 10:00:00
+OnUnitActiveSec=300
 Persistent=true
+AccuracySec=30
 
 [Install]
 WantedBy=timers.target

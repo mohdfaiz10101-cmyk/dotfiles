@@ -1,6 +1,6 @@
 # OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-05-22 00:39 -->
+<!-- compiled: 2026-05-25 00:53 -->
 
 ## 语言规则
 - MUST 始终使用中文回复，代码注释可用英文
@@ -15,6 +15,7 @@
 - **R6** 代码限制：单块≤15行
 - **R7** 并行执行：能并行一定并行
 - **R8** 装饰预算：≤10%
+- **R9** 思考总结：每次 think 结束后 MUST 输出 `[思考] {一句话结论}`，即使 thinking 被折叠也能看到推理结果
 
 ## NixOS 专项
 - 路径禁令：NEVER 硬编码 `/nix/store/xxx/bin/xxx`，用 `/run/current-system/sw/bin/xxx`
@@ -33,30 +34,15 @@
 - NixOS/Flake 问题必须先 Read 实际配置
 - 出错不重复同样方法，连续失败2次 /clear
 
-## DISCOVERY_RECORD（发现即记录 — 死规则）
-任何外部系统状态发现（路由器配置、Docker容器、远端服务、API响应中包含的未知配置）MUST在发现后立即写入三层记忆：
-1. `memory_write("lessons-learned.md", ...)` — 一行摘要
-2. `letta_store(...)` — 关键事实+标签
-3. `memory_set(...)` — 实体化到Memgraph（如有明确实体名）
 
-触发条件：
-- 查询外部系统时发现配置与预期不符（如"以为没有，实际已有"）
-- 发现新的端口/服务/端点/凭据
-- 任何"这个信息以后会用到的"系统状态
-
-记录格式（≤50字）：
-`[auto] 发现: {系统}.{属性} = {值} | 原预期: {预期}`
-
-> 此规则填补TOOL_LEARN(只记工具调用)与Letta写回(只记任务完成)之间的盲区：系统状态被动发现。
-
-
-## 记忆系统状态（自动注入 2026-05-24 18:17）
+## 记忆系统状态（自动注入 2026-05-25 06:17）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | 125 / 14 |
 | Letta MCP | active |
-| lessons-learned条目 | 21 |
-| 历史会话数 | 2 |
+| lessons-learned条目 | 27 |
+| 历史会话数 | 0
+0 |
 
 ### 高频主题（最近）
 
@@ -65,19 +51,3 @@
 
 ---
 Source: ~/CLAUDE.md | Auto-compiled
-
-## FALSE_POSITIVE_GUARD（假阳性识别 — 死规则）
-
-以下情况 **不是失败**，禁止误报为故障：
-- `opencode-job-*` systemd service 显示 failed/重启 → 先检查 `systemctl --user show xxx --property=Result`，`Result=success` = **正常结束**（oneshot timer job），无需处理
-- `ExecMainStatus=0` = 成功退出，不视为异常
-- 看到 "连续3次重启失败" 且目标是 opencode timer job → **先验证 Result 再上报**，禁止直接标记 [!]
-
-## CONFIG_PROTECT（配置保护边界 — 死规则）
-以下文件禁止修改，修改会破坏自身运行环境，只能由 CC dev.*模式处理：
-- `~/.config/opencode/opencode.json`
-- `~/dotfiles/opencode/opencode.json`
-- `~/.config/opencode/agents/*.md`
-- `~/dotfiles/opencode/agents/*.md`
-- `~/dotfiles/opencode/oh-my-openagent.jsonc`
-违反 → 标记 [!] 交 CC 处理，不得自行回滚

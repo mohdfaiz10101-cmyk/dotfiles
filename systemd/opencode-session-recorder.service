@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenCode Session Recorder — 实时记录所有对话
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/.local/bin/opencode-session-recorder.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

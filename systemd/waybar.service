@@ -5,7 +5,7 @@ PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/waybar
+ExecStart=/run/current-system/sw/bin/waybar --config /home/charlie/.config/waybar/config.override --style /home/charlie/.config/waybar/style.override.css
 Restart=always
 RestartSec=5
 

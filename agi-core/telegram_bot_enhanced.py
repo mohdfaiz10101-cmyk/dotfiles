@@ -811,13 +811,15 @@ def main() -> None:
 
     # 全局 update 日志（排查群消息）
     async def log_all_updates(update, context):
+        print(f'[DEBUG_UPDATE] received update: {update.update_id}', flush=True)
         logging.info("[UPDATE] %s", update.to_dict())
     app.add_handler(MessageHandler(filters.ALL, log_all_updates), group=99)
 
-    # 启动 polling
+    # 启动 polling (长超时容忍代理慢速)
     app.run_polling(
         allowed_updates=["message", "callback_query"],
         drop_pending_updates=False,
+        
     )
 
 
