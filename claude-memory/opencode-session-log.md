@@ -48109,3 +48109,12 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 ## 2026-05-25 20:10
 - [2026-05-25 20:10:33] **用户**: 还是connection time out啊
+
+## 2026-05-25 20:18
+- [2026-05-25 20:17:57] **AI(sisyphus)**: [ok] 根因分析 -- 外部webfetch可访问DuckDNS:8080，但手机运营商封锁8080端口
+[ok] cloudflared-ttyd 启动 -- tunnel: `mono-amsterdam-trigger-interactive.trycloudflare.com` (443端口，全网络可用)
+[ok] 修复ExecStartPre -- 原逻辑反向（8080在用时报错退出），改为8080未监听时报错
+[ok] tunnel常驻 -- cloudflared-ttyd.service enabled，跟随系统启动
+
+**结果**: 
+- DuckDNS:8080 本身链路
