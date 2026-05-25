@@ -1,8 +1,9 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-25 23:30
+> 来源: changelog.jsonl | 重建时间: 2026-05-26 00:00
 
 ## 2026-05-25
 
+- [agent-remove] **stepfun-telegram-bot, macg_mcp.py**: StepFun集成：图像+TTS+ASR MCP+TG Bot
 - [file-change] **agi**: agi/finance/data/cards.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
@@ -22,7 +23,10 @@
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-24.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md MODIFY
@@ -95,6 +99,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
@@ -326,6 +331,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
@@ -356,6 +362,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -1059,6 +1066,7 @@
 - [file-create] **.config**: .config/systemd/user/default.target.wants/reset-graphical-session.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/rss-bot.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/sentinel-watch.service CREATE
+- [file-create] **.config**: .config/systemd/user/default.target.wants/stepfun-tg-bot.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/syncthing.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/telegram-bot-enhanced.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/ttyd-8080.service CREATE
@@ -1571,6 +1579,7 @@
 - [file-create] **.config**: .config/systemd/user/session-rag-server.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/skill-sync.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/spectrai-office.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/stepfun-tg-bot.service CREATE
 - [file-create] **.config**: .config/systemd/user/syncthing.service CREATE
 - [file-create] **.config**: .config/systemd/user/syncthing.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/sys-info-mcp.service MOVED_TO
@@ -1629,6 +1638,7 @@
 - [file-create] **.config**: .config/systemd/user/ydotool-bridge.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ydotool-bridge.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ydotoold.service MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
