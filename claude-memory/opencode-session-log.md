@@ -48165,3 +48165,6 @@ waybar 现在正常运行，config 用 `config.override`
 [ok] 根因链: BindsTo=graphical-session.target → Hyprland exec-once 循环 stop/start → waybar 高频重启 → anti-restart-loop.sh 检测 >10次/60s → 自动 stop waybar
 [ok] 修复: 移除 BindsTo，改为 Restart=on-failure + RestartSec=3
 [完成] waybar 恢复 — 解除依赖循环+清空重启循环计数器，现已稳定运行
+
+## 2026-05-25 20:44
+- [2026-05-25 20:44:28] **用户**: ，有哪个软件可以？嗯，就是一个网站，比如说他有1000个页面，我怎么就是看过的页面就是屏蔽掉呢？有没有软件干这种事情？就是比如说呃，要只有RSS能干这件事吗？就是我看过的，我不想再看，有时候被我筛选掉的，就我不想再看
