@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-26 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-26 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -13,7 +13,7 @@
 | 1716 | users:((".kdeconnectd-wr",pid=10906,fd=18)) |
 | 2222 | *:* |
 | 2223 | *:* |
-| 3000 | (v1",pid=2387632,fd=21)) |
+| 3000 | (v1",pid=305925,fd=21)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
 | 3010 | 0.0.0.0:* |
@@ -45,7 +45,7 @@
 | 7891 | users:(("mihomo",pid=2420,fd=6)) |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:(("ttyd",pid=2574435,fd=13)) |
+| 8080 | users:(("ttyd",pid=118115,fd=13)) |
 | 8081 | users:(("opencode",pid=9370,fd=21)) |
 | 8088 | users:(("python3.13",pid=1511251,fd=3)) |
 | 8283 | 0.0.0.0:* |
@@ -507,7 +507,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（485个注册，95个运行中）
+## 三、systemd 用户服务（485个注册，96个运行中）
 
 ### 当前运行中
 ```
@@ -576,6 +576,7 @@ pipewire
 pipewire-pulse
 proxy-403-monitor
 python-crash-guard
+rss-bot
 screenshot-watcher
 smart-redirector
 speech-dispatcher
