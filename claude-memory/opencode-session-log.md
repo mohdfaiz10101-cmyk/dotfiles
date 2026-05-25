@@ -48090,3 +48090,6 @@ Admin 面板	https://docs.khoj.dev/advanced/admin (https://docs.khoj.dev/advance
 
 ## 2026-05-25 19:25
 - [2026-05-25 19:25:00] **用户**: http://charlie1990.duckdns.org:8080/  not ok]
+
+## 2026-05-25 19:30
+- [2026-05-25 19:30:19] **用户**: 怎么避免
