@@ -1267,3 +1267,4 @@
 {"ts": "2026-05-25 18:45", "type": "cycle", "summary": "系统运行平稳，CPU存在单核满载但进程符合规则", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:46", "type": "cycle", "summary": "系统运行平稳，资源利用率正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:48", "type": "cycle", "summary": "系统运行平稳，CPU存在短暂高负载进程但整体无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 18:49", "type": "cycle", "summary": "系统资源正常，单核CPU占用已知非异常", "alert_count": 0, "skipped_llm": false}
