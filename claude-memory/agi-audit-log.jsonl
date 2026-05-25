@@ -1006,3 +1006,4 @@
 {"ts": "2026-05-25 12:51", "type": "cycle", "summary": "系统运行正常，CPU、内存、磁盘使用率均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 12:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-25 12:55", "type": "cycle", "summary": "系统负载正常，CPU/内存/磁盘均处于健康范围，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 12:57", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
