@@ -47381,3 +47381,16 @@ gts restore <hash>  # 恢复（默认dry-run）
 - [2026-05-25 09:58:21] **用户**: TypeError: Failed to fetch dynamically imported module: http://charlie1990.duckdns.org:8080/assets/session-gtDVIna3.js
 
 Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
+
+## 2026-05-25 09:59
+- [2026-05-25 09:58:37] **AI(sisyphus)**: **当前状态**：
+
+- **Khoj 群组**: 没有创建，Telegram bot 未集成
+- **原因**: 当前 Khoj Docker 镜像不含 Telegram 接口（`interface/` 目录只有 built/email/web）
+- **bot token 已配置** (`@charlie_1688_bot`)，token 在 `docker-compose.yml` 里，但 Khoj 不识别
+
+**访问方式**：
+
+| 方式 | 地址 | 状态 |
+|------|------|------|
+| Web UI | `http://localhost:42110` | 可
