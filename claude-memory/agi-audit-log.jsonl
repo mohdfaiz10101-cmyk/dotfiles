@@ -1264,3 +1264,4 @@
 {"ts": "2026-05-25 18:42", "type": "cycle", "summary": "系统运行平稳，负载极低，服务均健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:43", "type": "cycle", "summary": "系统运行平稳，各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 18:44", "type": "cycle", "summary": "系统状态良好，CPU占用由Python3.13进程引起，属正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 18:45", "type": "cycle", "summary": "系统运行平稳，CPU存在单核满载但进程符合规则", "alert_count": 0, "skipped_llm": false}
