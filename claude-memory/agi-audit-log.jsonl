@@ -893,3 +893,4 @@
 {"ts": "2026-05-25 10:02", "type": "cycle", "summary": "系统运行正常，Python3.13 进程虽高占 CPU 但属已知正常服务，无需干预", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:03", "type": "cycle", "summary": "系统运行正常，CPU 因 opencode 任务负载较高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 10:05", "type": "cycle", "summary": "系统运行正常，存在Python进程短暂CPU高峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 10:06", "type": "cycle", "summary": "系统运行正常，存在Python3.13进程高CPU占用", "alert_count": 0, "skipped_llm": false}
