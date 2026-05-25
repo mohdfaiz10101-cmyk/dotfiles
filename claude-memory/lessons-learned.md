@@ -674,4 +674,4 @@
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 39 minutes (healthy)
 
-- [2026-05-25] [OP] 永久规则: 手机访问 ttyd 用 19890 不用 8080 | 原因: 8080是运营商常见封锁端口，外部可达≠手机可达(运营商拦截) | FRP代理 nixos-opencode-web: 19890→localhost:8080 已验证外部可达 | 路由器已端口转发 TCP 19890→192.168.123.209:19890
+- [2026-05-25] [OP] 永久规则: 手机访问 ttyd 用 19890 不用 8080 | 原因: 8080是运营商常见封锁端口，外部可达≠手机可达(运营商拦截) | FRP代理 nixos-opencode-web: 19890→localhost:8080 已验证外部可达 | 路由器已端口转发 TCP 19890→192.168.123.209:19890- [2026-05-25] [OP] waybar消失根因: anti-restart-loop.sh检测到waybar 60s内重启>10次自动stop | 根本原因: BindsTo=graphical-session.target + Hyprland exec-once每20s循环stop/start hyprland-session.target → waybar高频重启 | 修复: 移除BindsTo, 改用Restart=on-failure+RestartSec=3
