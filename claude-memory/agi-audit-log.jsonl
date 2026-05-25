@@ -1428,3 +1428,4 @@
 {"ts": "2026-05-25 21:57", "type": "cycle", "summary": "系统运行正常，CPU使用率低，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 21:58", "type": "cycle", "summary": "系统各项指标正常，服务健康，偶发CPU瞬时峰值但无持续影响", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 21:59", "type": "cycle", "summary": "系统负载较低，内存充足，所有服务健康，无明显异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 22:00", "type": "cycle", "summary": "系统资源压力正常，核心服务健康", "alert_count": 0, "skipped_llm": false}
