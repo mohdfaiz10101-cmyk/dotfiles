@@ -47692,3 +47692,6 @@ APK 已在手机 /data/local/tmp/deepseek.apk。
 
 ## 2026-05-25 15:04
 - [2026-05-25 15:03:44] **AI(sisyphus)**: 42110 即使 localhost-only 仍被 frps 拒。改用不同远程端口试试
+
+## 2026-05-25 15:21
+- [2026-05-25 15:21:28] **AI(sisyphus)**: nixos-rebuild 完成。验证 frps 新配置并测试 frpc
