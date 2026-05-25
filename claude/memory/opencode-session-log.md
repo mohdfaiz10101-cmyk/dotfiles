@@ -47416,3 +47416,32 @@ Copied from: OpenCode - <http://charlie1990.duckdns.org:8080/Lw/session>
 
 ## 2026-05-25 10:06
 - [2026-05-25 10:06:00] **用户**: 所以今天记忆系统 是正常的吗
+
+## 2026-05-25 10:07
+- [2026-05-25 10:06:57] **用户**: 能把8080 恢复到这个窗口的版本吗 他把我改了
+
+## 2026-05-25 10:08
+- [2026-05-25 10:07:45] **AI(sisyphus)**: [ok] `/khoj` 命令已集成到 AGI Brain Telegram Bot
+[ok] systemd 服务已启动 — `telegram-bot-enhanced.service` running
+
+**Khoj 搜索已就绪**: 在 Telegram 私聊/群组发送 `/khoj 你的问题` 即可搜索知识库
+
+**话题群需你手动创建**（Bot API 无法创建群组）：
+1. Telegram → 新建群组 → 群设置 → 开启「话题/Topics」
+2. 将 `@charlie_1688_bot` 拉入群并设为管理员
+3. 告诉我群名，我用 API 创建 Khoj 话题并设置自动
+
+## 2026-05-25 10:08
+- [2026-05-25 10:08:09] **用户**: 需要启动
+
+## 2026-05-25 10:09
+- [2026-05-25 10:08:43] **用户**: 怎么可能 你自己可以创建的 我有telegram api
+
+## 2026-05-25 10:10
+- [2026-05-25 10:09:50] **AI(sisyphus)**: 问题：8080 现在是 opencode 自带页面（proxy → 8081），不是 ttyd 的。`ttyd-custom/index.html` 的修改只对 8088 生效。
+
+8080 直接由 opencode 进程提供 HTML，我改不了它的内容。
+
+wanted:
+- 8080 恢复显示 sidebar 会话按钮 + terminal？
+- 还是 8080 沿用 opencode 原生界面，其他不变？

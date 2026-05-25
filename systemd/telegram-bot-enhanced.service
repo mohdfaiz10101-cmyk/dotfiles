@@ -1,0 +1,22 @@
+[Unit]
+Description=AGI Brain Telegram Bot (enhanced)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/telegram_bot_enhanced.py
+WorkingDirectory=/home/charlie/agi
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+Environment=HOME=/home/charlie
+Environment=TELEGRAM_BOT_TOKEN=8797063873:AAGvApEP9frmA74b6nmxODHshzo1TwJR5ks
+Environment=TELEGRAM_CHAT_ID=5036541266
+UnsetEnvironment=HTTP_PROXY HTTPS_PROXY http_proxy https_proxy
+Environment=NO_PROXY=localhost,127.0.0.1
+Environment=no_proxy=localhost,127.0.0.1
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

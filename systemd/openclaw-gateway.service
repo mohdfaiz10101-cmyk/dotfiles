@@ -24,6 +24,8 @@ Environment="OPENCLAW_WINDOWS_TASK_NAME=OpenClaw Gateway"
 Environment=OPENCLAW_SERVICE_MARKER=openclaw
 Environment=OPENCLAW_SERVICE_KIND=gateway
 Environment=OPENCLAW_SERVICE_VERSION=2026.5.7
+Environment="no_proxy=api.telegram.org,127.0.0.1,localhost,*.local"
+Environment="NO_PROXY=api.telegram.org,127.0.0.1,localhost,*.local"
 
 [Install]
 WantedBy=default.target
