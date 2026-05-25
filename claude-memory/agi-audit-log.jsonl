@@ -971,3 +971,4 @@
 {"ts": "2026-05-25 11:56", "type": "cycle", "summary": "系统资源正常，CPU负载处于健康区间，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:58", "type": "cycle", "summary": "系统运行正常，CPU有负载但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 12:00", "type": "cycle", "summary": "系统运行正常，资源使用率处于健康水平，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 12:02", "type": "cycle", "summary": "系统负载正常，opencode进程高CPU属于预期工作状态", "alert_count": 0, "skipped_llm": false}
