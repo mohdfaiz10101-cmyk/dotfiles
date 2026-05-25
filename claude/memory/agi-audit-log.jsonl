@@ -934,3 +934,21 @@
 {"ts": "2026-05-25 11:03", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:05", "type": "cycle", "summary": "系统负载正常，opencode 进程存在高 CPU 占用但无服务告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 11:06", "type": "cycle", "summary": "系统运行正常，CPU负载适中，核心服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:07", "type": "cycle", "summary": "系统运行正常，进程负载处于可接受范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:08", "type": "cycle", "summary": "系统运行平稳，服务全部健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:09", "type": "cycle", "summary": "系统运行正常，CPU存在短暂峰值但整体服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:11", "type": "cycle", "summary": "系统运行平稳，CPU与内存负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:12", "type": "cycle", "summary": "系统运行平稳，opencode 活跃，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:13", "type": "cycle", "summary": "系统运行正常，存在瞬时高CPU进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:14", "type": "cycle", "summary": "系统运行正常，opencode 任务处于高负载计算中", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:15", "type": "cycle", "summary": "系统运行平稳，服务全健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:16", "type": "cycle", "summary": "系统运行正常，存在已知误报CPU波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:18", "type": "cycle", "summary": "系统运行正常，高负载进程在预期范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:19", "type": "cycle", "summary": "系统运行正常，opencode进程CPU占用较高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:20", "type": "cycle", "summary": "系统负载正常，opencode进程CPU占用较高但属正常波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:22", "type": "cycle", "summary": "系统负载正常，单次 ps 命令导致瞬时 CPU 飙升", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:23", "type": "cycle", "summary": "系统负载正常，opencode进程短暂高CPU（符合开发特性）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:25", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘使用率均在安全范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:27", "type": "cycle", "summary": "系统当前运行状态正常，无真实异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:28", "type": "cycle", "summary": "系统运行正常，opencode 进程存在预期内的高 CPU 占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 11:30", "type": "cycle", "summary": "系统资源正常，无服务异常或重要告警", "alert_count": 0, "skipped_llm": false}
