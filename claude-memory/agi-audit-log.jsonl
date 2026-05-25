@@ -1663,3 +1663,4 @@
 {"ts": "2026-05-26 02:23", "type": "cycle", "summary": "系统运行正常，资源使用率低", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 02:24", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 02:25", "type": "cycle", "summary": "系统运行平稳，CPU负载较低，磁盘使用正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 02:26", "type": "cycle", "summary": "系统处于深夜空闲状态，各项指标正常，无异常", "alert_count": 0, "skipped_llm": false}
