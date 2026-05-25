@@ -1335,3 +1335,4 @@
 {"ts": "2026-05-25 20:09", "type": "cycle", "summary": "系统负载正常，CPU使用率中等偏高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 20:10", "type": "cycle", "summary": "系统负载正常，检测到python3.13进程短暂占用CPU", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-25 20:11", "type": "cycle", "summary": "系统运行正常，CPU 存在周期性波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-25 20:12", "type": "cycle", "summary": "系统各项指标正常，存在瞬时高CPU进程但符合历史规则", "alert_count": 0, "skipped_llm": false}
