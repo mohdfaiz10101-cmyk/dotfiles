@@ -410,3 +410,5 @@
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 9 hours (healthy)
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 21 hours (healthy)
+
+- [2026-05-25] [OP] 添加 git 桌面通知: memory-auto-commit → git commit 后弹出 "记忆备份: {文件名}"; git-backup.sh → 完成后弹出总结(失败时带 ⚠️ 警告)
