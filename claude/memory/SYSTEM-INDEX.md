@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-25 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-25 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,7 +9,7 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
-| 1053 | users:(("mihomo",pid=1931095,fd=11)) |
+| 1053 | users:(("mihomo",pid=2090518,fd=8)) |
 | 1716 | users:((".kdeconnectd-wr",pid=8579,fd=18)) |
 | 2222 | *:* |
 | 2223 | *:* |
@@ -42,11 +42,11 @@
 | 7697 | users:(("ttyd",pid=2671,fd=13)) |
 | 7698 | users:(("ttyd",pid=3262,fd=13)) |
 | 7699 | users:(("caddy",pid=2793,fd=6)) |
-| 7890 | users:(("mihomo",pid=1931095,fd=8)) |
-| 7891 | users:(("mihomo",pid=1931095,fd=6)) |
+| 7890 | users:(("mihomo",pid=2090518,fd=10)) |
+| 7891 | users:(("mihomo",pid=2090518,fd=6)) |
 | 8000 | users:((".uvicorn-wrappe",pid=24173,fd=6)) |
-| 8080 | users:(("python3.13",pid=1222216,fd=3)) |
-| 8081 | users:(("opencode",pid=1974248,fd=22)) |
+| 8080 | users:(("python3.13",pid=2001774,fd=3)) |
+| 8081 | users:(("opencode",pid=2281688,fd=22)) |
 | 8088 | users:(("python3.13",pid=3065544,fd=3)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
@@ -55,7 +55,7 @@
 | 8286 | users:(("python3.13",pid=2463,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 9090 | *:* |
-| 9091 | users:(("mihomo",pid=1931095,fd=3)) |
+| 9091 | users:(("mihomo",pid=2090518,fd=3)) |
 | 9099 | users:(("python3.13",pid=5559,fd=3)) |
 | 9800 | users:(("python3.13",pid=1729439,fd=6)) |
 | 9801 | users:(("python3.13",pid=3216,fd=6)) |
@@ -82,8 +82,6 @@
 | 18093 | *:* |
 | 18300 | *:* |
 | 18700 | *:* |
-| 18789 | users:(("node",pid=2725917,fd=25)) |
-| 18791 | users:(("node",pid=2725917,fd=26)) |
 | 19890 | *:* |
 | 19891 | *:* |
 | 19892 | *:* |
@@ -169,7 +167,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（623个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（624个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (4个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-windows.sh`
@@ -272,7 +270,7 @@ static
 **mutual-*** (1个): `mutual-review`
 **new-*** (1个): `new-api-manager`
 **nix-*** (3个): `nix-store-integrity-check.sh, nix-store-nurse, nix_voice_agent.py`
-**nixos-*** (14个): `nixos-ai-fix-engine, nixos-auto-commit, nixos-decision-engine, nixos-full-sync, nixos-gui-guardian, nixos-llm-analyzer, nixos-preflight-check.sh, nixos-rebuild-safe, nixos-smoketest.sh, nixos-stable-watch.sh... +4更多`
+**nixos-*** (15个): `nixos-ai-fix-engine, nixos-auto-commit, nixos-decision-engine, nixos-full-sync, nixos-gui-guardian, nixos-llm-analyzer, nixos-prebuild-audit.sh, nixos-preflight-check.sh, nixos-rebuild-safe, nixos-smoketest.sh... +5更多`
 **notif-*** (4个): `notif-btn-daemon.sh, notif-btn.sh, notif-floating-btn.sh, notif-tray-icon.sh`
 **notify-*** (3个): `notify-buf-dashboard, notify-screenshot-howto, notify-send`
 **ntfs-*** (1个): `ntfs-health-check`
@@ -504,7 +502,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（472个注册，93个运行中）
+## 三、systemd 用户服务（473个注册，92个运行中）
 
 ### 当前运行中
 ```
@@ -556,7 +554,6 @@ ollama
 op-tasks-watcher
 op-watchdog
 openagents
-openclaw-gateway
 opencode-8080-proxy
 opencode-config-guard
 opencode-intent-detector
@@ -575,8 +572,8 @@ smart-redirector
 speech-dispatcher
 sunshine
 tablet-control-panel
+telegram-bot-enhanced
 telegram-desktop
-telegram-userbot
 ttyd-aider
 ttyd-cct
 ttyd-claude

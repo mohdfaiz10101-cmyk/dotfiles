@@ -47448,3 +47448,45 @@ wanted:
 
 ## 2026-05-25 12:05
 - [2026-05-25 12:05:04] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-25 12:12
+- [2026-05-25 12:12:26] **用户**: 怎么老是提示外网不通
+- [2026-05-25 12:12:33] **用户**: 怎么老是提示外网不同
+- [2026-05-25 12:12:33] **用户**: 怎么老是提示外网不同
+- [2026-05-25 12:12:33] **用户**: 怎么老是提示外网不同
+
+## 2026-05-25 12:15
+- [2026-05-25 12:15:07] **用户**: ⚡️ LiteLLM 巡检
+---
+重启失败: 高频连接错误 (21次/30分钟)，重启并通知
+
+## 2026-05-25 12:17
+- [2026-05-25 12:16:51] **用户**: 现在检查 8080 ttyd-custom 页面的主页按钮，确保它也正确调用 API
+- Thought: The 8080 page:
+1. Line 123: Has a home button "⌂ 回到主页"
+2. Line 132: Home button calls api/oc-switch/__home__ POST → location.reload()
+3. Line 57-64: switchOC() calls switch API → location.reload()
+The key issue for the 8080 page: when it reloads 
+- [2026-05-25 12:16:51] **AI(sisyphus)**: 8080 以前是 ttyd，后来被 opencode 替代了。看现状：
+
+## 2026-05-25 12:17
+- [2026-05-25 12:17:16] **用户**: 检测哪些还ai改动会用tmp文件夹
+- [2026-05-25 12:17:35] **用户**: 这是误报吗还是怎么
+
+## 2026-05-25 12:18
+- [2026-05-25 12:18:04] **用户**: opencode官方推荐用什么方案 手机连接opencode
+
+## 2026-05-25 12:18
+- [2026-05-25 12:18:26] **用户**: 那有什么东西 可以自动让我有权限创建群组呢
+
+## 2026-05-25 12:20
+- [2026-05-25 12:19:44] **用户**: 服务挂了 怎么彻底避免 或者你脚本逻辑修复了吗
+- [2026-05-25 12:19:46] **AI(sisyphus)**: [ok] opencode-web 重启 → 8081端口恢复 200
+[ok] waybar-health.sh 修复 → ocpub检查加 `--noproxy '*'`
+[ok] waybar-score.sh 修复 → ocpub检查加 `--noproxy '*'`  
+[ok] connectivity-chain-watchdog.sh 修复 → `${var:-default}` 防未绑定变量崩溃
+
+**根因**: `opencode-web` 服务卡死 → 8081无响应 → 8080代理等待超时 → waybar每5秒超时显示"外网不通"。
+
+三个修复:
+1. 重启 ope
