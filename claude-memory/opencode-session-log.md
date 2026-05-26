@@ -49711,3 +49711,6 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 [ok] 清除 VPN 锁定 — always_on_vpn_app/lockdown 已删除
 [ok] 杀掉看门狗进程 — Tailscale/Karing 已停止
 [完成] 手机 Tailscale 自启 — 根因：Magisk service.d 中两个脚本（tailscale_keep.sh 每5分钟检测tun重启 + karing-boot.sh 开机启动IPNService），前次未
+
+## 2026-05-27 01:18
+- [2026-05-27 01:17:55] **用户**: 那你记忆对手机平板都没有划分 需要智能区分 以后避免
