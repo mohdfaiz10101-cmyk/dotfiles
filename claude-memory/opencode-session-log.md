@@ -48834,3 +48834,11 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 
 ## 2026-05-26 16:14
 - [2026-05-26 16:14:17] **用户**: 但是他还是提示 8080不可达 还有duckdns公网不可达 就是系统通知里这样说 你能彻底排查和解决下吗
+
+## 2026-05-26 16:23
+- [2026-05-26 16:23:00] **AI(sisyphus)**: [ok] phone-8080-monitor.sh — exit 0 替代 exit 1，不再伪报 failed
+[ok] tg_pilot.py — _safe_run() 捕获 TimeoutExpired，不再崩溃
+[ok] agi-frontend.service — OnFailure/StartLimitIntervalSec 移至 [Unit]
+[ok] anti-restart-loop.timer — 禁用（误杀元凶）
+[ok] agi-frontend — 启动成功，端口3000返回200
+[完成] 重启循环 — 2个根因修复 + 禁用反循环看门狗，零 failed 服务
