@@ -2962,3 +2962,4 @@
 {"ts": "2026-05-27 03:22", "type": "cycle", "summary": "系统运行平稳，CPU负载正常，无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 03:23", "type": "cycle", "summary": "系统运行正常，无异常告警，cpu_hogs 为正常系统进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 03:24", "type": "cycle", "summary": "系统运行正常，无服务异常，CPU负载较低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 03:25", "type": "cycle", "summary": "系统运行正常，偶发性 CPU 波动属夜间扫描任务", "alert_count": 0, "skipped_llm": false}
