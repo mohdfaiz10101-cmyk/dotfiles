@@ -49485,3 +49485,10 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 
 **根因**：`workspace-learn.sh` 在 5月26日 17:40 自动生成时把规则扩展到了 1~6，且该文件从未被 hyprland.conf 
 - [2026-05-27 00:25:27] **用户**: 那你安全重启当前窗口 保持任务不断
+
+## 2026-05-27 00:27
+- [2026-05-27 00:27:06] **AI(sisyphus)**: [ok] Sisyphus 已重启，session `sisy` 窗口 1 运行中
+[ok] transfer 上下文已保存到 `.session-transfer.md`
+[ok] `review-two-model` skill 重启后自动注册
+
+直接切到 tmux 窗口或用 `tmux attach -t sisy` 连接。
