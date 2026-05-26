@@ -48788,3 +48788,10 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 [ok] win-8080-relay -- 无进程残留
 
 当前系统通知中保留的是 16:03 最后一次执行产生的通知，需手动清除。不会再产生新的 8080 系统通知。
+
+## 2026-05-26 16:06
+- [2026-05-26 16:06:19] **AI(sisyphus)**: 构建成功。关于你的问题：
+
+**现状**：TaskReviewPanel 的状态标记只在浏览器内存中，刷新就丢失。`/task-review/feedback` API 只返回 `{"ok":true}` 没有真正持久化。
+
+让我实现完整同步：hub-api 存储状态 → task-review.py 读取 → 刷新不丢失。
