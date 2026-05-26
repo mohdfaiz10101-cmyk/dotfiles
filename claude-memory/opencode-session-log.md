@@ -48572,3 +48572,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 02:31
 - [2026-05-26 02:31:14] **AI(sisyphus)**: 验证语法并同步 dotfiles 备份
+
+## 2026-05-26 12:12
+- [2026-05-26 12:12:05] **用户**: 19890 connection refused 手机访问 。之前设置的 win修复脚本没奏效吗
