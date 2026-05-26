@@ -1976,3 +1976,4 @@
 {"ts": "2026-05-26 08:07", "type": "cycle", "summary": "系统运行正常，内存占用较高但无告警，CPU占用属系统服务正常波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:08", "type": "cycle", "summary": "系统运行正常，偶发 Python 进程 CPU 占用波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:09", "type": "cycle", "summary": "系统负载较高但服务健康，无故障需处理", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 08:10", "type": "cycle", "summary": "系统运行正常，存在高CPU进程但符合历史规则", "alert_count": 0, "skipped_llm": false}
