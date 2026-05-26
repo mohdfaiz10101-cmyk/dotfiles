@@ -49054,3 +49054,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 3. 重启服务，NixOS→手机推送不受影响（`clipper.set`广播独立于文件存储）
 
 以后手机→NixOS方向依赖于系统剪贴板API，OPPO ColorOS禁用此功能，除非换手机或刷原生系统否则无法恢复双向拉取。
+
+## 2026-05-26 18:03
+- [2026-05-26 18:03:06] **用户**: 乱讲 根本就搜不到tailscale app
