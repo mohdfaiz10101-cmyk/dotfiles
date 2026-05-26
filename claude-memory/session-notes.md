@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-26 23:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-26 23:30
 
 ## 2026-05-26
 
@@ -91,8 +91,19 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
@@ -274,6 +285,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -327,6 +339,9 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.config**: .config/systemd/user/agi-frontend.service MODIFY
 - [file-change] **.config**: .config/systemd/user/api-quota-updater.timer MODIFY
+- [file-change] **.config**: .config/systemd/user/cliphist.service MODIFY
+- [file-change] **.config**: .config/systemd/user/cliphist.service MODIFY
+- [file-change] **.config**: .config/systemd/user/cliphist.service MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
@@ -337,6 +352,16 @@
 - [file-change] **.config**: .config/systemd/user/security-scan.timer MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
 - [file-change] **.config**: .config/systemd/user/ttyd-8080.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-aider.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-cct.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-claudep.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-claude.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-foc.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-gemini.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-macg.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-overcode.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-overtab.service MODIFY
+- [file-change] **.config**: .config/systemd/user/ttyd-ulwh.service MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
@@ -357,6 +382,7 @@
 - [file-create] **.config**: .config/opencode/opencode.json MOVED_TO
 - [file-create] **.config**: .config/opencode/opencode.json MOVED_TO
 - [file-create] **.config**: .config/opencode/opencode.json MOVED_TO
+- [file-create] **.config**: .config/opencode/opencode.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
@@ -374,9 +400,14 @@
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/tui.json MOVED_TO
+- [file-create] **.config**: .config/opencode/tui.json MOVED_TO
 - [file-create] **.config**: .config/systemd/user/api-quota-updater.service CREATE
 - [file-create] **.config**: .config/systemd/user/api-quota-updater.timer CREATE
 - [file-create] **.config**: .config/systemd/user/caddy-launcher.service CREATE
+- [file-create] **.config**: .config/systemd/user/cliphist.service CREATE
+- [file-create] **.config**: .config/systemd/user/cliphist-store-test.service CREATE
+- [file-create] **.config**: .config/systemd/user/cliphist-test.service CREATE
 - [file-create] **.config**: .config/systemd/user/cookie-watcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/cookie-watcher.service CREATE
@@ -386,6 +417,7 @@
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/glm-monitor.service CREATE
+- [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/cliphist.service CREATE
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/primary-clip-bridge.service CREATE
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/wayvnc.service CREATE
@@ -401,6 +433,7 @@
 - [file-create] **.config**: .config/systemd/user/ttyd-8080.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-8080.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-8080.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/ttyd-8080.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-aider.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-audit.service CREATE
 - [file-create] **.config**: .config/systemd/user/ttyd-foc.service MOVED_TO
@@ -408,6 +441,8 @@
 - [file-create] **.config**: .config/systemd/user/ttyd-macg.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-macg.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-openclaw.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/ttyd-openclaw.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/ttyd-opencode.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-opencode.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-overcode.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ttyd-overtab.service MOVED_TO
@@ -415,6 +450,7 @@
 - [file-create] **.config**: .config/systemd/user/ttyd-strace-watcher.timer CREATE
 - [file-create] **.config**: .config/systemd/user/ttyd-ulwh.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/wayvnc.service CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
