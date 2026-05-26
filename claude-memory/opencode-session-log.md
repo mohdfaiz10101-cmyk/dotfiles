@@ -48905,3 +48905,7 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 ---
 
 ⚠️ **你需要做的：去 @BotFather 
+
+## 2026-05-26 16:42
+- [2026-05-26 16:42:33] **用户**: 那现在op也是每次可以读取 claude.md ?我不明白不是agent
+- [2026-05-26 16:42:41] **用户**: 那现在op也是每次可以读取 claude.md ?我不明白不是agent md吗
