@@ -49046,3 +49046,11 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 
 ## 2026-05-26 17:57
 - [2026-05-26 17:57:01] **用户**: 那以前就做过 后来失效了吗？
+
+## 2026-05-26 17:57
+- [2026-05-26 17:57:44] **AI(sisyphus)**: [ok] 彻底清除 — 三步到位：
+1. phone-clip-sync 删除octoclip文件读取（不再有污染源）
+2. 手机端 `rm -rf` 清除过期数据目录
+3. 重启服务，NixOS→手机推送不受影响（`clipper.set`广播独立于文件存储）
+
+以后手机→NixOS方向依赖于系统剪贴板API，OPPO ColorOS禁用此功能，除非换手机或刷原生系统否则无法恢复双向拉取。
