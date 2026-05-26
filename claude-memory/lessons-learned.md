@@ -759,3 +759,7 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 23 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 23 hours (healthy)
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 112 | 被纠正: 1次
+  - 用户纠正: 但是对应的工作区 不是我cli的版本 是要那个
