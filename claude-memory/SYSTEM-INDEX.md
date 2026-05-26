@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-26 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-27 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -13,7 +13,7 @@
 | 1716 | users:((".kdeconnectd-wr",pid=10906,fd=18)) |
 | 2222 | *:* |
 | 2223 | *:* |
-| 3000 | (v1",pid=4036010,fd=21)) |
+| 3000 | (v1",pid=4055476,fd=21)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
 | 3010 | 0.0.0.0:* |
@@ -33,7 +33,7 @@
 | 7681 | users:(("ttyd",pid=2128,fd=13)) |
 | 7690 | users:(("ttyd",pid=27633,fd=13)) |
 | 7691 | users:(("ttyd",pid=27688,fd=13)) |
-| 7692 | users:(("ttyd",pid=27616,fd=13)) |
+| 7692 | users:(("ttyd",pid=3904370,fd=13)) |
 | 7693 | users:(("ttyd",pid=27705,fd=13)) |
 | 7694 | users:(("ttyd",pid=837869,fd=13)) |
 | 7695 | users:(("ttyd",pid=27646,fd=13)) |
@@ -45,7 +45,7 @@
 | 7891 | users:(("mihomo",pid=2420,fd=6)) |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:(("ttyd",pid=4079109,fd=13)) |
+| 8080 | users:(("ttyd",pid=3909781,fd=13)) |
 | 8081 | users:(("opencode",pid=9370,fd=21)) |
 | 8088 | users:(("python3.13",pid=83150,fd=3)) |
 | 8283 | 0.0.0.0:* |
@@ -61,7 +61,7 @@
 | 9800 | users:(("python3.13",pid=3828051,fd=6)) |
 | 9810 | users:(("python3.13",pid=2947,fd=6)) |
 | 9811 | users:(("python3.13",pid=2683,fd=6)) |
-| 9876 | users:(("python3.13",pid=2737,fd=3)) |
+| 9876 | users:(("python3.13",pid=435227,fd=3)) |
 | 9900 | users:(("python3.13",pid=2631,fd=6)) |
 | 9922 | users:(("MainThread",pid=2371,fd=21)) |
 | 9977 | users:(("python3",pid=2312,fd=3)) |
@@ -165,7 +165,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（657个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（663个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (4个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-windows.sh`
@@ -200,6 +200,7 @@ static
 **clear-*** (2个): `clear-notifs, clear-notifs-btn`
 **clip-*** (1个): `clip-sync`
 **clipboard-*** (2个): `clipboard-sync-tablet, clipboard-sync-windows`
+**cliphist-*** (2个): `cliphist-health-check, cliphist-watchdog`
 **cloudflared-*** (4个): `cloudflared-bin, cloudflared-happy, cloudflared-launcher, cloudflared-ttyd`
 **code-*** (4个): `code-dual, code-indexer, code-search, code-watcher`
 **config-*** (2个): `config-immutable-snapshot, config-lock.sh`
@@ -255,6 +256,7 @@ static
 **kilo-*** (1个): `kilo-profile`
 **lag-*** (1个): `lag-detector.sh`
 **latest-*** (1个): `latest-img`
+**launch-*** (1个): `launch-via-tablet.sh`
 **launcher-*** (1个): `launcher-health-check.sh`
 **letta-*** (12个): `letta-deadman-switch.sh, letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh... +2更多`
 **libreoffice-*** (1个): `libreoffice-x11`
@@ -307,7 +309,7 @@ static
 **quick-*** (2个): `quick-run-cmd, quick-screenshot`
 **rebuild-*** (2个): `rebuild-session-notes.sh, rebuild-system-index`
 **recovery-*** (1个): `recovery-manager`
-**review-*** (1个): `review-op-branch`
+**review-*** (2个): `review-op-branch, review-two-model.py`
 **rofi-*** (2个): `rofi-drun-pinyin.sh, rofi-pinyin-cache-builder.py`
 **roo-*** (12个): `roo-apply-optimizations.sh, roo-backup-config.sh, roo-code-check, roo-digest, roo-enforce-rules, roo-export, roo-index-load.sh, roo-index-save.sh, roo-restore-config.sh, roo-state-backup... +2更多`
 **router-*** (2个): `router-config-snapshot.sh, router-port-list.py`
@@ -337,9 +339,9 @@ static
 **task-*** (1个): `task-complete`
 **terminal-*** (1个): `terminal-pet`
 **test-*** (2个): `test-claude-knowledge, test-opencode-modes`
-**tg-*** (10个): `tg-bot-tasks, tg-canvas, tg-command, tg-copy-listener.py, tg-daily-digest-wrapper.sh, tg-daily-digest.py, tg-finance-setup.sh, tg-push, tg-saved-reader, tg-screenshot`
+**tg-*** (11个): `tg-auth.py, tg-bot-tasks, tg-canvas, tg-command, tg-copy-listener.py, tg-daily-digest-wrapper.sh, tg-daily-digest.py, tg-finance-setup.sh, tg-push, tg-saved-reader... +1更多`
 **tiny-*** (1个): `tiny-agents`
-**tmux-*** (1个): `tmux-session-toggle`
+**tmux-*** (2个): `tmux-module, tmux-session-toggle`
 **todo-*** (1个): `todo_sync.py`
 **ttyd-*** (3个): `ttyd-dbus-audit.sh, ttyd-quick-check, ttyd-strace-watcher.sh`
 **ui-*** (1个): `ui-verify-chain.sh`
@@ -506,6 +508,7 @@ pending-tasks.md
 router-infra.md
 router-padavan-backup.md
 rules-secondary.md
+session-2026-05-26.md
 session-notes.md
 setup-plan.md
 trade-workflow-architecture.md
@@ -513,7 +516,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（490个注册，98个运行中）
+## 三、systemd 用户服务（495个注册，97个运行中）
 
 ### 当前运行中
 ```
@@ -546,7 +549,6 @@ disk-watchdog
 dotfiles-symlink-watch
 earlyoom
 embedding-server
-fcitx5
 finance-agent
 frpc
 gcr-ssh-agent
@@ -617,7 +619,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（130个 timer）
+## 四、定时任务（132个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -629,6 +631,7 @@ ai-architecture-audit
 ai-config-sync-pull
 ai-rules-sync-windows
 ai-scheduler
+api-quota-updater
 auto-fix-services
 backup-cleanup
 cache-guard
@@ -641,6 +644,7 @@ chrome-login-backup
 chrome-login-watchdog
 chronos-subconscious
 claude-orphan-killer
+cliphist-health
 code-indexer
 connectivity-chain-watchdog
 copywriting-collector
