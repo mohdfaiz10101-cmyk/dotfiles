@@ -49453,3 +49453,18 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 
 ## 2026-05-27 00:22
 - [2026-05-27 00:22:27] **用户**: 那你能帮我重启19890.。然后任务不断吗
+
+## 2026-05-27 00:22
+- [2026-05-27 00:22:42] **AI(sisyphus)**: ```
+[ok] karing-boot.sh — 已删除
+[ok] BOOT_COMPLETED接收器 — 已禁用 (RescheduleReceiver)
+[ok] 开机自启脚本 — service.d 干净
+[ok] Karing — 禁用+未运行
+[ok] Always-on VPN — 未设置
+[ok] Tailscale当前 — 未运行
+
+总结：找到并封堵了两个自启路径
+  (1) Magisk service.d/karing-boot.sh → 已删除
+  (2) APK BOOT_COMPLETED(RescheduleReceiver) → 已禁用
+
+下次重启验证一下，应该
