@@ -1994,3 +1994,4 @@
 {"ts": "2026-05-26 08:26", "type": "cycle", "summary": "系统运行正常，CPU轻载，服务全健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:27", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:28", "type": "cycle", "summary": "系统运行平稳，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 08:29", "type": "cycle", "summary": "系统负载正常，Python进程虽有占用但在合理范围内", "alert_count": 0, "skipped_llm": false}
