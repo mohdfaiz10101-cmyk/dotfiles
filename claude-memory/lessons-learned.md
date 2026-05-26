@@ -622,3 +622,4 @@
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 20 hours (healthy)
 
 - [2026-05-26] [OP] AUTO_SKILL_PROTOCOL 部署: CLAUDE.md 新增死规则 — CC 完成复杂任务后智能评估 → macg_op_delegate 委托 Sisyphus → Sisyphus 加载 auto-skill 判断 → 满足 ≥2 条标准则执行 create-skill.py 封装 | 全自动闭环，禁止询问确认
+- [2026-05-26] [OP] 发现: anti-restart-loop.sh | 机制: 每60秒扫描journal "Scheduled restart job"，>10次/60秒→systemctl stop | 今天15:59因strace调试导致14次崩溃→触发stop | strace已部署 --trace=signal --signal=SIGTERM -f 监控原始问题
