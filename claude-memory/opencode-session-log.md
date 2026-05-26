@@ -49346,3 +49346,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 - `Ctrl+b <` → 弹出主菜单（窗口/面板/复制模式操作）
 - `Ctrl+b Ctrl+s` → 会话切换器（列表选择切换 claude/openclaw/sisy）
 - `C
+
+## 2026-05-26 23:18
+- [2026-05-26 23:18:38] **用户**: 按下ctrl b没反应啊
