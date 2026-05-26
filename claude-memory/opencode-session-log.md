@@ -49213,3 +49213,7 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 22:22
 - [2026-05-26 22:22:36] **用户**: 剪贴板怎么无法使用
+
+## 2026-05-26 22:23
+- [2026-05-26 22:23:02] **AI(sisyphus)**: [ok] 修改 opencode-session → 直接 attach tmux openclaw 无需新建 session
+[完成] `opencode continue` 现在等价于 `tmux attach -t openclaw`，已修改 `~/.local/bin/opencode-session`
