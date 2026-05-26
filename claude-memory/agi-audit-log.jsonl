@@ -2251,3 +2251,4 @@
 {"ts": "2026-05-26 13:25", "type": "cycle", "summary": "系统运行正常，CPU/内存负载处于健康区间，无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 13:26", "type": "cycle", "summary": "系统状态正常，CPU和内存使用率在合理范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 13:27", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存和磁盘使用在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 13:29", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知正常进程。", "alert_count": 0, "skipped_llm": false}
