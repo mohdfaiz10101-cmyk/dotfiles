@@ -49379,3 +49379,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 **更致命的是：这个文件根本没被 hyprland 加载。** `hyprland.conf` 是 Nix home-manager 管理的只读软链接，里面没有任何 `source = workspace-rules.conf` 指令，所以不管文件里写了什么都无效。
 
 之前你看
+
+## 2026-05-27 00:07
+- [2026-05-27 00:07:37] **用户**: 我review agent想要设置成 让三个模型 stepfun 2603 glm 5.1 还有stepfun router都review这样合理吗 三者就是对话让review agent统一。他们三个觉得侧最终架构 这样设计合理吗 看下社区意见和方案
