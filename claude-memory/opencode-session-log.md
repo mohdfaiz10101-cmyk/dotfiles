@@ -48578,3 +48578,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 12:13
 - [2026-05-26 12:13:06] **用户**: 处理下 系统通知里的错误
+
+## 2026-05-26 12:18
+- [2026-05-26 12:18:03] **AI(sisyphus)**: 外部真实测试返回 **502 Bad Gateway**，不是 connection refused。FRP 隧道通了但 ttyd 8080 挂了。
