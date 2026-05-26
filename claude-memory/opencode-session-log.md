@@ -49670,3 +49670,17 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 ## 2026-05-27 01:02
 - [2026-05-27 01:01:45] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
 - [2026-05-27 01:01:45] **AI(sisyphus)**: 继续处理剩余的优化项
+
+## 2026-05-27 01:02
+- [2026-05-27 01:02:16] **AI(sisyphus)**: [ok] 根因：浏览器截获 `Ctrl+b`（书签栏），ttyd 永收不到
+[ok] 前缀改为 `Ctrl+t` — 浏览器不拦截
+[ok] 菜单：`Ctrl+t <` → 弹出按钮菜单（插件异步初始化，首次需等3秒）
+[ok] 状态栏右上角显示 `Ctrl+t │ CPU:38% │ 时间`
+
+**你的操作清单**（本地终端和 ttyd 都一样）:
+
+| 按键 | 功能 |
+|------|------|
+| `Ctrl+t <` | 弹出主菜单（窗口/面板/样式/布局） |
+| `Ctrl+t O` | 会话切换器（claude/openclaw/sisy 列表选） |
+| `Ctrl+t
