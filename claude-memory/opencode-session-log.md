@@ -49057,3 +49057,11 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 
 ## 2026-05-26 18:03
 - [2026-05-26 18:03:06] **用户**: 乱讲 根本就搜不到tailscale app
+
+## 2026-05-26 18:08
+- [2026-05-26 18:07:46] **AI(sisyphus)**: [ok] 根因定位 -- 之前的 Tailscale 是残缺版，只有 ShareActivity 无 MainActivity/桌面图标
+[ok] 重装完整 APK -- tailscale-android-universal-1.98.2 (96MB)，已覆盖安装
+[ok] Launcher 验证 -- `com.tailscale.ipn/.MainActivity` 已注册，桌面搜索可见
+[ok] Doze 白名单 + 保活 -- 保留未变
+
+之前装的 Tailscale 是个残缺包（可能从某个第三方商店下的），只有"分享到 Tailscale"功能，压根没主界面。现在从官网下载了完整版
