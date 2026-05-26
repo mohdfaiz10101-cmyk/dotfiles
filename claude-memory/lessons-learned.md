@@ -702,3 +702,4 @@
 
 - [2026-05-26] [OP] 失败学习: anti-restart-loop.sh | 错误: state文件持久化计数从不重置，超阈值后每轮timer重复kill/mask已停止的服务 | 修复: 在mask后unset计数并从state文件删除对应行 | 影响: 本次导致ttyd-8080被误杀22次(15:59-16:22)，同时影响glm-monitor(412次)、langchain-hub(315次)等多个服务
 - [2026-05-26] [OP] CLAUDE.md↔AGENTS.md 互享规则: ai-shared-rules.md 为单一事实源，ai-rules-sync 实时同步到 AGENTS.md(~/.config/opencode/AGENTS.md symlink)。CLAUDE.md 由 CC 读取，AGENTS.md 由 OP 读取。AUTO_SKILL 已写入三处(CLAUDE.md/AGENTS.md/ai-shared-rules.md)。
+- [2026-05-26] [偏好] GLM web reader: firecrawl搜索/抓取、webfetch等网页读取工具可在日常任务中主动使用，获取最新信息而非仅凭记忆
