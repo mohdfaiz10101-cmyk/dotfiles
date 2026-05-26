@@ -48700,3 +48700,6 @@ systemct
 
 **[ok
 - [2026-05-26 13:46:49] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 13:48
+- [2026-05-26 13:48:12] **用户**: 那之前的opencode session呢 还有以后其他的接入后也自动接管所有？那这个机器人怎么自动路由呢 通过opnnclaw？那telegram直接对接opencode不是冲突吗
