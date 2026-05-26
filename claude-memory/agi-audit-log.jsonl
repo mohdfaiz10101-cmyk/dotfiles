@@ -2643,3 +2643,4 @@
 {"ts": "2026-05-26 21:25", "type": "cycle", "summary": "系统负载正常，CPU因ps采样及python3.13进程出现瞬时峰值", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 21:26", "type": "cycle", "summary": "系统运行平稳，存在CPU占用较高的Python进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 21:27", "type": "cycle", "summary": "系统负载低，服务全健康，存在python3.13进程高CPU占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:29", "type": "cycle", "summary": "系统资源正常，存在瞬时CPU高占用进程", "alert_count": 0, "skipped_llm": false}
