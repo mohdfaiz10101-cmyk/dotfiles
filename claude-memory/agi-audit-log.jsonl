@@ -2777,3 +2777,4 @@
 {"ts": "2026-05-26 23:58", "type": "cycle", "summary": "系统运行正常，CPU占用高进程为正常系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:59", "type": "cycle", "summary": "系统运行正常，nix 构建任务导致CPU瞬时较高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 00:00", "type": "cycle", "summary": "凌晨系统负载正常，CPU占用源于runc容器初始化与系统Python进程，无故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 00:01", "type": "cycle", "summary": "凌晨系统负载正常，CPU存在短暂计算峰值", "alert_count": 0, "skipped_llm": false}
