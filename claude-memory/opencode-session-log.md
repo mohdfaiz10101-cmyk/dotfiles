@@ -49370,3 +49370,12 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-27 00:06
 - [2026-05-27 00:06:13] **用户**: 什么意思 那我和ai都用一个浏览器啊 以后用哪个playwright版本
+
+## 2026-05-27 00:07
+- [2026-05-27 00:06:51] **AI(sisyphus)**: 问题找到了。
+
+`/home/charlie/.config/hypr/workspace-rules.conf` 这个文件是 **5月26日** 被 `workspace-learn.sh` 生成/修改的——它把原本只有 1/2/5 的规则扩展成了 1~6，加了 WS3(编辑器)、WS4(浏览器)、WS6(监控)。
+
+**更致命的是：这个文件根本没被 hyprland 加载。** `hyprland.conf` 是 Nix home-manager 管理的只读软链接，里面没有任何 `source = workspace-rules.conf` 指令，所以不管文件里写了什么都无效。
+
+之前你看
