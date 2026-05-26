@@ -2775,3 +2775,4 @@
 {"ts": "2026-05-26 23:56", "type": "cycle", "summary": "系统负载略高但无服务异常，CPU占用主要来自构建任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:57", "type": "cycle", "summary": "系统运行正常，存在高CPU进程但符合系统常态", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:58", "type": "cycle", "summary": "系统运行正常，CPU占用高进程为正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 23:59", "type": "cycle", "summary": "系统运行正常，nix 构建任务导致CPU瞬时较高", "alert_count": 0, "skipped_llm": false}
