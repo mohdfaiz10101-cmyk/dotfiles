@@ -48981,3 +48981,7 @@ OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_
 | @charlie_1688_bot | 私聊/全局 | 全局入口 |
 | @charlie
 - [2026-05-26 17:35:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 17:36
+- [2026-05-26 17:36:00] **用户**: 那现在claude.md和agent md没有关联和增量同步吗 就是互享信息
+- [2026-05-26 17:36:24] **用户**: 互相提取 有用的 但是自己遵守自己的规则
