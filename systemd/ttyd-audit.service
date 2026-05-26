@@ -1,0 +1,14 @@
+[Unit]
+Description=ttyd-8080 D-Bus audit — 截获所有 stop/restart/kill 调用来源
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/ttyd-dbus-audit.sh
+Restart=always
+RestartSec=5
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=default.target

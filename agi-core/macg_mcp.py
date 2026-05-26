@@ -712,7 +712,7 @@ def stepfun_image_generate(prompt: str, size: str = "1024x1024", seed: int = Non
 
 @mcp.tool()
 def stepfun_tts(text: str, voice: str = "livelybreezy-female",
-                model: str = "step-tts-2", speed: float = 1.0,
+                model: str = "stepaudio-2.5-tts", speed: float = 1.0,
                 output_path: str = "") -> str:
     """阶跃星辰文字转语音。text: 转换文本。voice: 音色。model: step-tts-2|step-tts-mini|stepaudio-2.5-tts。output_path可选输出路径。"""
     from stepfun_api import tts_generate

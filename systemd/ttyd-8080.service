@@ -7,11 +7,11 @@ StartLimitBurst=20
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8080 " && echo "PORT 8080 IN USE" && exit 1 || true'
-ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap
+ExecStart=/usr/bin/env strace -f -e trace=signal -o /home/charlie/.local/state/ttyd-debug/strace.log /run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-8080.service
 Restart=always
 RestartSec=3
-ExecStopPost=-/bin/sh -c 'echo "[$(date -Iseconds)] ttyd-8080 stopping, dumping context" >> /tmp/ttyd-stop-debug.log; ps -eo ppid,pid,comm --forest --no-headers | head -50 >> /tmp/ttyd-stop-debug.log 2>&1; journalctl --user --since "10 seconds ago" -o cat --no-pager | grep -v ttyd | head -20 >> /tmp/ttyd-stop-debug.log 2>&1; echo "---" >> /tmp/ttyd-stop-debug.log'
+ExecStopPost=-/bin/sh -c 'mkdir -p ~/.local/state/ttyd-debug 2>/dev/null; echo "[$(date -Iseconds)] ttyd-8080 stopping, dumping context" >> ~/.local/state/ttyd-debug/stop-trace.log; ps -eo ppid,pid,comm --forest --no-headers | head -50 >> ~/.local/state/ttyd-debug/stop-trace.log 2>&1; journalctl --user --since "10 seconds ago" -o cat --no-pager 2>/dev/null | grep -v ttyd | head -20 >> ~/.local/state/ttyd-debug/stop-trace.log 2>&1; echo "---" >> ~/.local/state/ttyd-debug/stop-trace.log'
 
 [Install]
 WantedBy=default.target
