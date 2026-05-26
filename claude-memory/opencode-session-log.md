@@ -49407,3 +49407,17 @@ Sea
 - `chromium-launch` 启动带 `--remote-debugging-port=9223`（已有）
 - AI Playwright **连接已有浏览器**，不再单独启动
 - 同一个窗口、同一个登录态、同一套书签/cookie
+
+## 2026-05-27 00:14
+- [2026-05-27 00:14:29] **AI(sisyphus)**: 桌面入口正确：点 Chromium 图标 → `chromium-launch` → `google-chrome-stable` + CDP:9223。
+
+**你的日常**：打开 Chromium → 正常用
+
+**AI 操作时**：连接到你的浏览器，不会新开窗口
+
+```python
+# AI Playwright 脚本用这个
+browser = await chromium.connect_over_cdp("http://localhost:9223")
+```
+
+同一个窗口、同一套 cookie、同一套书签。headless 自动化脚本（verify-pipeline 等）保持独立，
