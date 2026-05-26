@@ -49771,3 +49771,12 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 需要重置 Web UI 凭据来解锁。方案如下：
 
 **禁用 Web UI 认证**：移除 `sunshine_state.json` 中的 auth 字段，让 Web UI 开放访问
+
+## 2026-05-27 04:34
+- [2026-05-27 04:34:31] **AI(sisyphus)**: [fail] `sudo systemctl restart sunshine` -- NixOS 环境中 systemd unit 不稳定，进程靠 systemd 自动重启存活
+
+[ok] 编辑 sunshine_state.json -- 移除 username/salt/password 字段，备份已存 `.bak.20260527`
+
+[ok] 验证 Web UI -- `307 → /welcome`，设置页已开放，无需密码即可访问
+
+[完成] Sunshine Web UI 解锁 — 凭据已移除，PIN 认证已禁用(`origin_pin_auth=false`)，Web UI 现
