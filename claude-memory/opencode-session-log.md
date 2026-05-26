@@ -48807,3 +48807,13 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 
 ## 2026-05-26 16:10
 - [2026-05-26 16:10:21] **用户**: 解决下重启循环问题 系统通知中很多重启循环问题
+
+## 2026-05-26 16:11
+- [2026-05-26 16:11:01] **AI(sisyphus)**: [ok] 三态标记UI -- 每个任务卡三按钮: 待办(灰)/进行中(黄)/已完成(绿)
+[ok] 颜色联动 -- 卡片边框+背景色随状态变化，已完成半透明
+[ok] 状态持久化 -- hub-api GET `/task-review` 合并feedbacks返回 `task_statuses`
+[ok] 前端同步 -- 页面加载时读取服务端状态，刷新不丢失
+[ok] 编译通过 -- 无TS错误，bundle含全部关键字符串
+[ok] E2E验证 -- POST status → GET返回task_statuses → Next.js代理200
+
+关于opencode web同步：当前Op
