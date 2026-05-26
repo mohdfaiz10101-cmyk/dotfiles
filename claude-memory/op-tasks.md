@@ -105,3 +105,10 @@
 ### [SELF-IMPROVE 2026-05-25] GLM 自动代码审查
 - [ ] [SELF-IMPROVE] launcher-server.py: `translate_path` 方法被意外截断且缺少目录遍历防御的完整实现，需补全安全校验逻辑。
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3.connect` 的数据库查询逻辑重构为使用异步 ORM（如 SQLAlchemy）或放入后台线程池执行，以避免阻塞 FastAPI 的异步事件循环。
+
+### [SELF-IMPROVE 2026-05-26] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 应将顶部散落的全局变量（如OP_TASKS_FILE、各种Token等）和单例实例（_rate_guard）封装到一个统一的配置类或Settings数据结构中，以提升可维护性与测试可控性。
+- [ ] [SELF-IMPROVE] think.py: 缺少 `async def think()` 主入口函数实现，代码在 `_letta_recall` 函数中间截断且未完成核心的工具感知推理逻辑。
+- [ ] [SELF-IMPROVE] kanban.html: CSS代码在`--`处被意外截断，需补充完整WIP进度条样式及后续缺失的样式和JavaScript逻辑。
+- [ ] [SELF-IMPROVE] launcher-server.py: 缺少 HTTPS/TLS 加密，在 Tailscale 等网络中传输 Bearer Token 和敏感数据存在被中间人攻击截获的风险，应强制使用 HTTPS 或依赖反向代理提供 TLS 终止。
+- [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3.connect` 的数据库查询逻辑提取为带连接池或上下文管理的独立数据访问层，避免SQL注入风险（如将 `f-string` 拼接改为参数化查询）并确保数据库连接被正确关闭。
