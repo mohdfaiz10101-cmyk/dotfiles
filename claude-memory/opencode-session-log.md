@@ -49025,3 +49025,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 
 ## 2026-05-26 17:43
 - [2026-05-26 17:43:14] **AI(sisyphus)**: [ok] 已记录偏好 → GLM web reader（firecrawl/webfetch）在平时任务中主动使用，获取最新信息而非仅凭记忆
+
+## 2026-05-26 17:46
+- [2026-05-26 17:46:01] **用户**: 我手机tailscale可以安装但是怎么让他隔离开来 不影响系统 但是电脑还是可以连他
