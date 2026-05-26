@@ -2712,3 +2712,4 @@
 {"ts": "2026-05-26 22:45", "type": "cycle", "summary": "系统资源使用正常，高CPU进程为系统服务属正常现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:46", "type": "cycle", "summary": "系统运行正常，高负载进程为已知系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:47", "type": "cycle", "summary": "系统运行正常，ClamAV 扫描导致 CPU 负载较高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:49", "type": "cycle", "summary": "系统运行正常，ClamAV 扫描导致 CPU 暂时性升高", "alert_count": 0, "skipped_llm": false}
