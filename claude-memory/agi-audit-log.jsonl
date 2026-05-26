@@ -2414,3 +2414,4 @@
 {"ts": "2026-05-26 16:46", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知Python3.13进程，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 16:47", "type": "cycle", "summary": "系统运行正常，Python/Nix 占用符合预期", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 16:49", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知正常进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 16:51", "type": "cycle", "summary": "系统负载正常，仅python3.13进程CPU占用102%为已知假阳性，无需处理", "alert_count": 0, "skipped_llm": false}
