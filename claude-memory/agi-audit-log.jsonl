@@ -2867,3 +2867,4 @@
 {"ts": "2026-05-27 01:37", "type": "cycle", "summary": "系统运行正常，存在高CPU Python进程（符合历史经验）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 01:38", "type": "cycle", "summary": "系统运行正常，Python进程在后台运行，无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 01:39", "type": "cycle", "summary": "系统运行正常，CPU 负载主要来自 python3.13 进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 01:41", "type": "cycle", "summary": "凌晨时段CPU占用较高，但服务健康且无显式告警，系统整体正常", "alert_count": 0, "skipped_llm": false}
