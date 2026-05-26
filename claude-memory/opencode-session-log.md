@@ -48682,3 +48682,6 @@ systemct
 1. **Docker 容器** — `docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"` 列出所有运行容器
 2. **systemd 用户服务** — `systemctl --user list-units --type=service --state=running | grep -v "dbus\|pipewire\|pulse\|wireplumber"` 过滤噪音
 3. **关键端口监听** — `ss -tlnp | grep -E "8[0-9]{3}|9[0-9
+
+## 2026-05-26 13:43
+- [2026-05-26 13:43:30] **用户**: tts和asr不包含在code plan里吗
