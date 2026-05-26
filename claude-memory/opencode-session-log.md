@@ -49065,3 +49065,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 [ok] Doze 白名单 + 保活 -- 保留未变
 
 之前装的 Tailscale 是个残缺包（可能从某个第三方商店下的），只有"分享到 Tailscale"功能，压根没主界面。现在从官网下载了完整版
+
+## 2026-05-26 20:56
+- [2026-05-26 20:55:54] **用户**: 我手机那个tailskills，他一直哦开机后就是不断的启动，然后他始终占用我的那个VPN到，他好像是开机后会占用我的那个vpnowithown那个功能，然后哦他也会不断地默认打开他的那个DNS设置，就是把我的额手机网络的其他DNS给覆盖掉 tailtailscale哦，需要彻底的解决
