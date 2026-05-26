@@ -2045,3 +2045,4 @@
 {"ts": "2026-05-26 09:22", "type": "cycle", "summary": "系统运行正常，存在少量CPU高占用进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:23", "type": "cycle", "summary": "系统运行正常，CPU存在高负载进程但属预期行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:24", "type": "cycle", "summary": "系统运行平稳，CPU、内存及磁盘使用率均在正常范围内，服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 09:25", "type": "cycle", "summary": "系统运行正常，存在CPU高占用进程但符合已知特征", "alert_count": 0, "skipped_llm": false}
