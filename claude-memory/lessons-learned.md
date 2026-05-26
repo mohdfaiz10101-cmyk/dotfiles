@@ -254,3 +254,30 @@
 
 - [2026-05-27] [OP] 失败学习: ADB设备混淆 | 错误: 声称删除手机脚本实际删了平板 | 根因: 未区分ADB连接目标设备, NixOS adb默认连平板(192.168.123.241:5555), 手机只能通过Windows USB(ff3ef385)访问 | 正确: 每次ADB操作前MUST执行 `adb devices -l` 确认当前设备, 手机操作必须走 `ssh G@192.168.123.136 "adb -s ff3ef385 shell su -c '...'"`
 - [2026-05-27] [PREF] 设备识别: 手机=OPPO PKR110(ff3ef385/USB/Windows), 平板=Xiaomi Pad 6 nabo(192.168.123.241:5555/WiFi/NixOS直连), ADB操作前必须明确目标设备
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 26 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 29 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 30 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 30 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 30 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 30 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 30 hours (healthy)
