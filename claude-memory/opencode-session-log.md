@@ -49436,3 +49436,14 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 
 ## 2026-05-27 00:19
 - [2026-05-27 00:19:01] **用户**: 还是有问题？请检查下
+
+## 2026-05-27 00:19
+- [2026-05-27 00:19:31] **AI(sisyphus)**: 菜单里三个 Chromium：
+
+| 名称 | 程序 | 说明 |
+|------|------|------|
+| **Chromium** ← 用这个 | `chromium-launch` | google-chrome-stable + CDP:9223，共享 AI |
+| Chromium (Playwright) | `playwright-chromium-headed` | 独立 profile，不要用 |
+| Chromium (系统) | `chromium %U` | beta 版，有"测试版"提示 |
+
+帮你把多余的藏掉：
