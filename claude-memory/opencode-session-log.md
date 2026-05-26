@@ -48795,3 +48795,6 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 **现状**：TaskReviewPanel 的状态标记只在浏览器内存中，刷新就丢失。`/task-review/feedback` API 只返回 `{"ok":true}` 没有真正持久化。
 
 让我实现完整同步：hub-api 存储状态 → task-review.py 读取 → 刷新不丢失。
+
+## 2026-05-26 16:07
+- [2026-05-26 16:07:44] **用户**: 以前选中文字就复制的功能 现在不见了？怎么不是正常运行
