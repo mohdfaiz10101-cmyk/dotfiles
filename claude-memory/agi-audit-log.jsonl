@@ -2905,3 +2905,4 @@
 {"ts": "2026-05-27 02:19", "type": "cycle", "summary": "系统负载正常，存在高CPU进程但属正常服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 02:20", "type": "cycle", "summary": "系统运行正常，CPU使用率略高由Python3.13进程引起", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 02:21", "type": "cycle", "summary": "系统运行正常，CPU有偶发峰值但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 02:22", "type": "cycle", "summary": "系统处于正常空闲状态，无服务异常或磁盘压力", "alert_count": 0, "skipped_llm": false}
