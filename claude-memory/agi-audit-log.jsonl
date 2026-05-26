@@ -3120,3 +3120,4 @@
 {"ts": "2026-05-27 06:43", "type": "cycle", "summary": "系统运行平稳，CPU暂有波动但无实质威胁", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:44", "type": "cycle", "summary": "系统运行正常，CPU占用稍高但无异常服务或告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:45", "type": "cycle", "summary": "系统资源低载，Python3.13 进程瞬时占用高属正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 06:46", "type": "cycle", "summary": "系统运行正常，CPU存在瞬时采样波动", "alert_count": 0, "skipped_llm": false}
