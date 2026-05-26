@@ -49389,3 +49389,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 Topic: Multi-model code review architecture - using 3 different LLMs (like GLM-5.1, StepFun-2603, router model) running in parallel to review code, then having a "review agent" unify their outputs into a final decision.
 
 Sea
+
+## 2026-05-27 00:10
+- [2026-05-27 00:10:23] **用户**: then plse design review agent to make it match the two models above
