@@ -49022,3 +49022,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 
 ## 2026-05-26 17:42
 - [2026-05-26 17:42:25] **用户**: 我glm的web reader工具平时也可以用上
+
+## 2026-05-26 17:43
+- [2026-05-26 17:43:14] **AI(sisyphus)**: [ok] 已记录偏好 → GLM web reader（firecrawl/webfetch）在平时任务中主动使用，获取最新信息而非仅凭记忆
