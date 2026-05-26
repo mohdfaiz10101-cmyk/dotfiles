@@ -49561,3 +49561,15 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-27 00:36
 - [2026-05-27 00:36:30] **用户**: 你自己决定
+
+## 2026-05-27 00:37
+- [2026-05-27 00:37:12] **AI(sisyphus)**: ```
+[ok] phone-8080-monitor.sh — 重命名为 .disabled
+[ok] phone-tailscale-guard — 重命名为 .disabled
+[ok] systemctl daemon-reload — 完成
+
+根因：phone-8080-monitor.sh 的 auto_repair() 函数每15分钟通过ADB执行
+  am start -n com.tailscale.ipn/.IPNActivity 启动 Tailscale
+  即使 timer 已禁用，service 类型为 static 仍被其他服务拉起来调用
+
+已彻底封死：两个脚本改名
