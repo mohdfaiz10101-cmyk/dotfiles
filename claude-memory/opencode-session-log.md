@@ -48817,3 +48817,11 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 [ok] E2E验证 -- POST status → GET返回task_statuses → Next.js代理200
 
 关于opencode web同步：当前Op
+
+## 2026-05-26 16:12
+- [2026-05-26 16:11:57] **AI(sisyphus)**: 找不到 "rofi drum" 的配置。系统中：
+- `/home/charlie/.config/rofi/` 只有 `launcher.rasi`（基本主题配置）
+- hyprland.conf 中没有 rofi 相关的 keybind
+- 无 rofi 自定义脚本/模式
+
+你说的 "rofi drum" 具体是指什么？是 rofi 的 **drun 模式**（`rofi -show drun`，显示 .desktop 应用）吗？还是有其他地方定义了这个名称？
