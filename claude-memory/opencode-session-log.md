@@ -49210,3 +49210,6 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 22:22
 - [2026-05-26 22:22:05] **AI(sisyphus)**: Now let me check the openclaw tmux session and look for any `opencode continue` reference:
+
+## 2026-05-26 22:22
+- [2026-05-26 22:22:36] **用户**: 剪贴板怎么无法使用
