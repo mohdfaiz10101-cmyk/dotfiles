@@ -507,3 +507,4 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 16 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 16 hours (healthy)
+- [2026-05-26] [OP] 失败学习: mem0_watchdog.py | 错误: UnboundLocalError "failed" used before definition (line 235 before line 244) | 修复: 将 failed = [...] 移到 Telegram通知块之前 | 原因: 变量定义在使用之后
