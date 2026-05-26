@@ -48608,3 +48608,9 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 13:16
 - [2026-05-26 13:16:16] **用户**: tmp是临时目录 不保险
+
+## 2026-05-26 13:17
+- [2026-05-26 13:16:43] **AI(sisyphus)**: 已改到 `~/.local/state/ttyd-debug/stop-trace.log`，永久化不怕重启。
+
+但 ExecStopPost 是被动取证，抓的是"事后现场"。要想主动拦到真凶，让我挂一个 **systemd D-Bus 监听器**——零延迟截获所有 `systemctl stop/restart ttyd-8080`，记录调用者进程名+PPID 链，一分钟写完。要不要我干？
+- [2026-05-26 13:16:51] **用户**: 永久加规则audit
