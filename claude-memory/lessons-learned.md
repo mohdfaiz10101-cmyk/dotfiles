@@ -118,3 +118,5 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 26 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 26 hours (healthy)
+
+- [2026-05-26] [OP] 失败学习: 手机Tailscale自启排查 | 走过弯路: 反复禁Karing、删service.d脚本、检查NixOS watchdog，都没解决 | 根因: /data/adb/service.d/karing-boot.sh 开机sleep 35后启动Tailscale IPNService — 文件名含karing导致被忽略 | 修复: rm karing-boot.sh → Tailscale不再自启
