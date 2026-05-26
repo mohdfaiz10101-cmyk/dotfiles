@@ -2972,3 +2972,4 @@
 {"ts": "2026-05-27 03:33", "type": "cycle", "summary": "系统运行平稳，服务全部健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 03:34", "type": "cycle", "summary": "系统运行正常，CPU和内存均在合理范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 03:36", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知正常进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 03:38", "type": "cycle", "summary": "LLM 返回无效 JSON：Unterminated string starting at: line 2 column 116 (char 117)", "alert_count": 1, "skipped_llm": false}
