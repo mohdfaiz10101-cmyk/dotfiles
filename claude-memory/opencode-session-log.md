@@ -49028,3 +49028,12 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 
 ## 2026-05-26 17:46
 - [2026-05-26 17:46:01] **用户**: 我手机tailscale可以安装但是怎么让他隔离开来 不影响系统 但是电脑还是可以连他
+
+## 2026-05-26 17:53
+- [2026-05-26 17:53:41] **AI(sisyphus)**: [ok] 诊断根因 — Octoclip文件存储停留在2025-11-12，`clipper.set`广播不写文件，phone-clip-sync持续拉取过期数据`1iqey301...`
+
+[fail] 手机端读取系统剪贴板 — OPPO ColorOS禁用了`cmd clipboard get-text`、`service call clipboard`、`dumpsys clipboard`，无可用方法
+
+[ok] 修复phone-clip-sync — 增加24h新鲜度检查，过期octoclip数据直接丢弃；空REMOTE不再计入FAIL_COUNT
+
+[ok] 修复notify-se
