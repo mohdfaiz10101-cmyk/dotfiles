@@ -668,3 +668,8 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 21 hours (healthy)
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 130 | 被纠正: 3次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
