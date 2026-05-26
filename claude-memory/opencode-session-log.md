@@ -49477,3 +49477,11 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 
 ## 2026-05-27 00:24
 - [2026-05-27 00:24:53] **用户**: 不重启 也可以用了？
+
+## 2026-05-27 00:25
+- [2026-05-27 00:25:04] **AI(sisyphus)**: [ok] workspace-rules.conf 恢复为 WS1/2/5 — 移除 WS3/4/6，`windowrulev2`→新版 `windowrule {}` 块语法
+[ok] Nix `extraConfig` 加 `source = ~/.config/hypr/workspace-rules.conf` — 永久化
+[ok] nixos-rebuild switch + hyprctl reload — 零配置错误
+
+**根因**：`workspace-learn.sh` 在 5月26日 17:40 自动生成时把规则扩展到了 1~6，且该文件从未被 hyprland.conf 
+- [2026-05-27 00:25:27] **用户**: 那你安全重启当前窗口 保持任务不断
