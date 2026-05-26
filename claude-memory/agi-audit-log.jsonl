@@ -1973,3 +1973,4 @@
 {"ts": "2026-05-26 08:04", "type": "cycle", "summary": "系统运行正常，CPU/内存负载低，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:05", "type": "cycle", "summary": "系统运行正常，CPU和内存使用率在合理范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:06", "type": "cycle", "summary": "系统运行正常，CPU负载低，服务全健康，无待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 08:07", "type": "cycle", "summary": "系统运行正常，内存占用较高但无告警，CPU占用属系统服务正常波动", "alert_count": 0, "skipped_llm": false}
