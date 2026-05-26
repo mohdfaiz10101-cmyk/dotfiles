@@ -49313,3 +49313,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-26 22:56
 - [2026-05-26 22:56:16] **用户**: charlie1990.d/seuckdns.org:19890 那这个窗口和本地 怎么看到这个插件增强呢
+
+## 2026-05-26 23:06
+- [2026-05-26 23:06:22] **用户**: charlie1990.d/seuckdns.org:19890 怎么没跟本地的session同步。。之前设置过的
