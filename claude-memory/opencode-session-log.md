@@ -49068,3 +49068,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 
 ## 2026-05-26 20:56
 - [2026-05-26 20:55:54] **用户**: 我手机那个tailskills，他一直哦开机后就是不断的启动，然后他始终占用我的那个VPN到，他好像是开机后会占用我的那个vpnowithown那个功能，然后哦他也会不断地默认打开他的那个DNS设置，就是把我的额手机网络的其他DNS给覆盖掉 tailtailscale哦，需要彻底的解决
+
+## 2026-05-26 20:57
+- [2026-05-26 20:56:46] **用户**: 就是他经常抢占我那个VB n always home那个功能，就是他会把它开起来要变成诊断一下，我需要我我手机已经root掉了ian always on
