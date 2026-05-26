@@ -2190,3 +2190,4 @@
 {"ts": "2026-05-26 12:14", "type": "cycle", "summary": "系统运行正常，CPU和内存负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 12:15", "type": "cycle", "summary": "系统运行正常，资源使用率低", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 12:16", "type": "cycle", "summary": "系统负载正常，CPU中等，服务全部健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 12:18", "type": "cycle", "summary": "系统运行正常，CPU占用略高但在预期范围内", "alert_count": 0, "skipped_llm": false}
