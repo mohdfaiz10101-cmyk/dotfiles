@@ -48764,3 +48764,9 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 ```
 
 [ok] 创建 `~/.local/bin/playwright-chromium-headed` — NixOS FHS 
+
+## 2026-05-26 16:00
+- [2026-05-26 16:00:28] **AI(sisyphus)**: [ok] 停止 phone-8080-monitor.timer -- 已 disabled
+[ok] 停止 phone-8080-monitor.service -- 已停止
+
+该脚本实际检测的 URL 就是 `charlie1990.duckdns.org:19890`（FRP代理），但通知文案写的是"手机8080"。如需改为仅19890通知，重新启用 timer 并修正通知文本即可。
