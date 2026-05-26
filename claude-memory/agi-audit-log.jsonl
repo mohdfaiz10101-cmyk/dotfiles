@@ -2822,3 +2822,4 @@
 {"ts": "2026-05-27 00:48", "type": "cycle", "summary": "凌晨时段系统资源占用中等，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 00:49", "type": "cycle", "summary": "系统运行正常，CPU占用主要来自nix和系统工具，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 00:50", "type": "cycle", "summary": "系统运行平稳，CPU占用处于正常水平，服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 00:51", "type": "cycle", "summary": "系统资源正常，CPU占用主要由Python进程产生，符合预期", "alert_count": 0, "skipped_llm": false}
