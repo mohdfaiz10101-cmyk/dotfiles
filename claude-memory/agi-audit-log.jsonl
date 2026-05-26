@@ -2673,3 +2673,4 @@
 {"ts": "2026-05-26 22:01", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting property name enclosed in double quotes: line 8 column 6 (char 241)", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-26 22:02", "type": "cycle", "summary": "系统负载正常，CPU占用略高，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:03", "type": "cycle", "summary": "系统运行正常，存在瞬时CPU尖峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:04", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无服务故障", "alert_count": 0, "skipped_llm": false}
