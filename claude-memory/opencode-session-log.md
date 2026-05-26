@@ -49299,3 +49299,7 @@ am startservice -n com.tailscale.ipn/.IPNService
 ## 2026-05-26 22:47
 - [2026-05-26 22:46:50] **用户**: 改成每日晚上七点钟
 - [2026-05-26 22:47:03] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 22:47
+- [2026-05-26 22:47:40] **AI(sisyphus)**: [ok] 改为 `OnCalendar=*-*-* 19:00:00` -- 每天19:00执行
+[ok] daemon-reload + restart -- 下次触发 2026-05-27 19:00
