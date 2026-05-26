@@ -49207,3 +49207,6 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 22:20
 - [2026-05-26 22:20:40] **用户**: 让我opencode continue命令 改成 tmux attache oplaw那个窗口
+
+## 2026-05-26 22:22
+- [2026-05-26 22:22:05] **AI(sisyphus)**: Now let me check the openclaw tmux session and look for any `opencode continue` reference:
