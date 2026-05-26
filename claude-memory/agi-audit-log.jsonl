@@ -2636,3 +2636,4 @@
 {"ts": "2026-05-26 21:14", "type": "cycle", "summary": "系统运行正常，CPU占用较高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 21:15", "type": "cycle", "summary": "系统运行正常，存在短暂的高CPU占用", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 21:17", "type": "cycle", "summary": "系统运行正常，CPU、内存、磁盘均处于健康范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:19", "type": "cycle", "summary": "系统资源正常，检测到高CPU进程但确认为正常系统服务", "alert_count": 0, "skipped_llm": false}
