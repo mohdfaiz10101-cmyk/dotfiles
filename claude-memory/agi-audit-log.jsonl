@@ -2421,3 +2421,4 @@
 {"ts": "2026-05-26 16:58", "type": "cycle", "summary": "当前系统整体资源使用率正常，无服务异常，存在1个用户态Python进程CPU占用较高，需确认是否为已知正常进程", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-26 17:00", "type": "cycle", "summary": "系统整体运行正常，各项指标无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 17:01", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无异常服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 17:03", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
