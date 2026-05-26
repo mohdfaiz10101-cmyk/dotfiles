@@ -2065,3 +2065,4 @@
 {"ts": "2026-05-26 09:44", "type": "cycle", "summary": "系统运行正常，CPU占用波动符合预期", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:45", "type": "cycle", "summary": "系统运行正常，无服务故障或异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:47", "type": "cycle", "summary": "系统运行正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 09:48", "type": "cycle", "summary": "系统运行正常，无告警，存在已知CPU占用进程", "alert_count": 0, "skipped_llm": false}
