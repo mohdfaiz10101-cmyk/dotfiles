@@ -49573,3 +49573,6 @@ am startservice -n com.tailscale.ipn/.IPNService
   即使 timer 已禁用，service 类型为 static 仍被其他服务拉起来调用
 
 已彻底封死：两个脚本改名
+
+## 2026-05-27 00:37
+- [2026-05-27 00:37:39] **用户**: 如何把opencode delete session行为变成删除session后就存入记忆用于消化 有必要吗 或者有没有更好的方案
