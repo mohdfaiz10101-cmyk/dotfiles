@@ -3147,3 +3147,4 @@
 {"ts": "2026-05-27 07:12", "type": "cycle", "summary": "系统运行正常，存在Python3.13进程CPU占用较高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 07:14", "type": "cycle", "summary": "系统运行平稳，CPU/内存/磁盘正常，服务全健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 07:15", "type": "cycle", "summary": "系统资源正常，CPU负载适中，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 07:16", "type": "cycle", "summary": "系统运行正常，无活跃服务但有后台进程", "alert_count": 0, "skipped_llm": false}
