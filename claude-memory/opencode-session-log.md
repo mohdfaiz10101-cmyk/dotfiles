@@ -48688,3 +48688,15 @@ systemct
 
 ## 2026-05-26 13:46
 - [2026-05-26 13:46:07] **用户**: /new
+
+## 2026-05-26 13:47
+- [2026-05-26 13:46:48] **AI(sisyphus)**: [ok] 全部修正完成。三个 API 都在 Coding Plan (`step_plan/v1`) 里，只是模型名不同：
+
+| API | 错误模型 | 正确模型 | 状态 |
+|-----|---------|---------|------|
+| 图像 | (不变) | `step-image-edit-2` | [ok] 200 |
+| TTS | `step-tts-2` | `stepaudio-2.5-tts` | [ok] 200, 52KB MP3 |
+| ASR | `step-asr-1` | `stepaudio-2.5-asr` | [ok] 200 |
+
+**[ok
+- [2026-05-26 13:46:49] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
