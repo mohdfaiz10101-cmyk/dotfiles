@@ -49003,3 +49003,19 @@ OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_
 
 ## 2026-05-26 17:40
 - [2026-05-26 17:40:02] **用户**: 那你捕获下
+
+## 2026-05-26 17:41
+- [2026-05-26 17:41:33] **AI(sisyphus)**: [ok] AGENTS.md 加入 AUTO_SKILL — Sisyphus 编译规则已含
+[ok] ai-shared-rules.md 加入 AUTO_SKILL — 单一事实源已更新
+
+**你问的互享机制**：
+
+```
+ai-shared-rules.md (单一事实源，59行)
+    │  inotify 实时同步 (ai-rules-sync.service，正在运行)
+    ▼
+AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
+    │  "compiled from CLAUDE.
+- [2026-05-26 17:41:34] **AI(sisyphus)**: [ok] WS2↔WS5 交换完成 -- WS2=通讯 / WS5=AI执行区
+[ok] hyprctl configerrors 无报错 -- 配置合法
+[ok] hyprctl reload -- 已生效
