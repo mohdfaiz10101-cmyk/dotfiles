@@ -2095,3 +2095,4 @@
 {"ts": "2026-05-26 10:19", "type": "cycle", "summary": "系统资源占用正常，CPU存在波动但服务健康且无告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 10:20", "type": "cycle", "summary": "系统运行正常，CPU负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 10:21", "type": "cycle", "summary": "系统运行平稳，CPU负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 10:22", "type": "cycle", "summary": "系统运行平稳，CPU存在瞬间峰值，无服务故障", "alert_count": 0, "skipped_llm": false}
