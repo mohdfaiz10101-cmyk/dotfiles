@@ -49755,3 +49755,19 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 
 ## 2026-05-27 04:09
 - [2026-05-27 04:09:12] **用户**: 手机无法联网好像是dns问题 usb插上了
+
+## 2026-05-27 04:29
+- [2026-05-27 04:29:00] **AI(sisyphus)**: [ok] 诊断 mihomo -- 服务运行中，节点 nl-4.tr202601.com 连接超时
+[ok] 诊断 Tailscale -- DNS 全上游超时 + "network is unreachable"
+[ok] 诊断恢复 -- 04:28 网络恢复正常，百度/Google 均可访问
+
+[结论] WAN级断网，约 04:25-04:28，持续 ~3分钟。同时触发 Tailscale DNS 全部超时（8.8.8.8/1.1.1.1/223.5.5.5 deadline exceeded）和 mihomo 节点 dial timeout。非本机网卡故障，ISP/路由器侧问题，已自行恢
+- [2026-05-27 04:29:01] **AI(sisyphus)**: 诊断完成。问题根因：
+
+- Sunshine Web UI (`https://localhost:47990`) 开启了 HTTP 认证，用户名 `charlie`，密码哈希存储
+- `origin_pin_auth = false`（PIN 配对已禁用），但 Web UI 本身被密码保护
+- 日志确认：`[::1] -- not authorized`（本地也拒绝）
+
+需要重置 Web UI 凭据来解锁。方案如下：
+
+**禁用 Web UI 认证**：移除 `sunshine_state.json` 中的 auth 字段，让 Web UI 开放访问
