@@ -215,3 +215,4 @@
 
 - [2026-05-27] [OP] 呼吸灯打分系统接入Telegram: waybar-score-finalize.sh(每日23:59 P2日报) + waybar-score.sh(<60分 P1告警, 30min cooldown)。之前只有notify-send桌面通知，现已补全Telegram通道。
 - [2026-05-27] [OP] 会话冷归档方案: OpenClaw session jsonl→~/.local/state/sessions-archive/, systemd timer每天归档, 30天自动清理。比"删除时消化"方案省90% token且不灌噪音
+- [2026-05-27] [OP] 配置: OpenClaw 多Bot路由 | main agent 改为分类路由入口 | 关键词分类: finance/ops/rss/coding/1688/general | 非1688消息→重定向用户到对应Bot | 已重启gateway
