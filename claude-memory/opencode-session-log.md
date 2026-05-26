@@ -48592,3 +48592,13 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 12:22
 - [2026-05-26 12:21:48] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 12:31
+- [2026-05-26 12:31:06] **AI(sisyphus)**: **Previous session work (from summary):**
+- 排查手机访问 19890 端口 "connection refused" → 确认 FRP 全链路正常（DuckDNS→FRPS→FRPC→ttyd），手机连接出现在 FRPS 日志
+- 外部 Firecrawl 测试返回 502（headless browser WebSocket 兼容问题，非真实故障）
+- Windows 中继部署被 SSH 编码问题阻塞
+
+**本次继续完成:**
+
+[ok] 修复 win-8080-relay.sh → 用 scp 替代 SSH heredoc，`cmd /c sta
