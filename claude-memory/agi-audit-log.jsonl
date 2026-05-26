@@ -2891,3 +2891,4 @@
 {"ts": "2026-05-27 02:03", "type": "cycle", "summary": "系统运行正常，CPU负载由Python3.13进程引起", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 02:04", "type": "cycle", "summary": "系统运行平稳，Python3.13 进程 CPU 占用高属于正常业务波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 02:05", "type": "cycle", "summary": "系统负载较高但服务健康，CPU占用集中在python3.13进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 02:06", "type": "cycle", "summary": "系统资源使用正常，CPU高负载为系统进程", "alert_count": 0, "skipped_llm": false}
