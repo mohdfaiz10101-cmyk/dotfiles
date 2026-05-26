@@ -49695,3 +49695,6 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 
 ## 2026-05-27 01:12
 - [2026-05-27 01:11:51] **AI(sisyphus)**: Windows ADB 刚启动，还没检测到手机。重新检测：
+
+## 2026-05-27 01:15
+- [2026-05-27 01:14:49] **AI(sisyphus)**: **找到了！** `/data/adb/service.d/tailscale_keep.sh` 和 `karing-boot.sh` 都在！之前根本没删掉！
