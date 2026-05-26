@@ -48751,3 +48751,16 @@ systemct
 
 ## 2026-05-26 15:59
 - [2026-05-26 15:59:01] **用户**: 取消手机8080 系统通知 因为这个端口封了。只检测19890端口通知
+
+## 2026-05-26 15:59
+- [2026-05-26 15:59:34] **用户**: 那我要让他智能分配给sisy让他智能判断和启动
+- [2026-05-26 15:59:35] **AI(sisyphus)**: 现在 rofi drun 搜 "chrome/chrom" 会看到：
+
+```
+Google Chrome                → 系统Chrome (走代理, 日常用)
+Google Chrome (Cookie Sync)  → Cookie同步版
+Chrome (稳定登录)            → 保持登录态
+Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
+```
+
+[ok] 创建 `~/.local/bin/playwright-chromium-headed` — NixOS FHS 
