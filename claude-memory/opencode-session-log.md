@@ -49319,3 +49319,13 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-26 23:15
 - [2026-05-26 23:15:33] **用户**: 需要默认是横屏
+
+## 2026-05-26 23:16
+- [2026-05-26 23:15:57] **用户**: 彻底避免了吗？
+- [2026-05-26 23:16:05] **AI(sisyphus)**: 两个问题根因：
+- chromium 147 是 beta 频道 → "测试版"提示
+- `chrome-headless-shell` 是精简版 → 不支持 F8/F12 窗口操作
+
+修复：
+1. `chromium-launch` 改用 `google-chrome-stable`
+2. `playwright-chromium-nix` 改用系统完整 Chromium
