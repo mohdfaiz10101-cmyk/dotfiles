@@ -49126,3 +49126,19 @@ AI操控键盘的核心价值是**把"AI生成的内容"直接注入到任意App
 
 ## 2026-05-26 21:12
 - [2026-05-26 21:12:19] **用户**: 我现在这个termius可以跟openopencode怎么配合切换sessession快速的他们有什么插件啊什么的可以配合吗？
+
+## 2026-05-26 21:13
+- [2026-05-26 21:13:17] **AI(sisyphus)**: Termius 和 OpenCode 没有官方插件，但可以这样配合快速切换 session：
+
+**1. Termius Snippets（最实用）**
+把常用 OpenCode 命令存为 Snippets，一键执行：
+```
+opencode run "执行巡检"
+opencode web          # 打开 Web 管理面板
+opencode chat "..."   # 对话模式
+```
+
+**2. 多 Session 快速切换**
+- `Ctrl+P` / `Cmd+P` 搜索 session 名
+- 给不同项目打标签分组（如 `nixos`、`win`、`docker`）
+-
