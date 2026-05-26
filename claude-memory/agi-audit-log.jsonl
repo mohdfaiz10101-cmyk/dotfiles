@@ -2072,3 +2072,4 @@
 {"ts": "2026-05-26 09:52", "type": "cycle", "summary": "系统负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:53", "type": "cycle", "summary": "系统运行正常，CPU和内存负载均处于健康范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:55", "type": "cycle", "summary": "系统运行正常，存在短暂监控快照产生的瞬时进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 09:56", "type": "cycle", "summary": "系统运行正常，Python进程高CPU占用在预期范围内", "alert_count": 0, "skipped_llm": false}
