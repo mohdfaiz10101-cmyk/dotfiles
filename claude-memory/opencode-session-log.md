@@ -49273,3 +49273,22 @@ opencode chat "..."   # 对话模式
 说明：
 - 脚本会打开 Chrome 窗口，StepFun 90s、GLM 90s，自动检测登录后继续
 - 登录成功后会话保存在 `~/.cache/quota-browser/`，后续 headless
+
+## 2026-05-26 22:42
+- [2026-05-26 22:42:26] **用户**: 继续啊  不是di电脑问题 是手机
+- [2026-05-26 22:42:26] **AI(sisyphus)**: 已经解决了。给你完整结论：
+
+**根因：`/data/adb/service.d/karing-boot.sh`**
+
+```
+#!/system/bin/sh
+# Karing 由 always-on VPN 系统接管，此处只启动 Tailscale
+sleep 35
+am startservice -n com.tailscale.ipn/.IPNService
+```
+
+这个脚本开机35秒后启动 Tailscale。文件名带 `karing` 导致之前排查 service.d 时被忽略。
+
+**修复**：
+- ✅ 已删除 `karing-boot.sh`
+- ✅ `service.d/`
