@@ -2536,3 +2536,4 @@
 {"ts": "2026-05-26 19:18", "type": "cycle", "summary": "系统运行平稳，CPU存在瞬时峰值但属正常服务行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:19", "type": "cycle", "summary": "系统运行正常，CPU因nix构建任务短暂升高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:20", "type": "cycle", "summary": "系统运行正常，Nix构建导致CPU负载短期上升", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 19:21", "type": "cycle", "summary": "系统负载正常，存在python3.13进程高CPU占用（历史记录为已知Nix兼容性问题，非异常）", "alert_count": 0, "skipped_llm": false}
