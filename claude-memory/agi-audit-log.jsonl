@@ -2343,3 +2343,4 @@
 {"ts": "2026-05-26 15:17", "type": "cycle", "summary": "系统运行正常，内存使用率约45%，高CPU进程为系统级服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 15:19", "type": "cycle", "summary": "系统负载正常，暂无服务故障或异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 15:20", "type": "cycle", "summary": "系统运行正常，CPU存在瞬时监控采样抖动，无实际风险", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 15:21", "type": "cycle", "summary": "系统运行正常，存在瞬时高CPU进程但服务健康", "alert_count": 0, "skipped_llm": false}
