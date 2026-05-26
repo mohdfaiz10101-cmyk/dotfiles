@@ -2627,3 +2627,4 @@
 {"ts": "2026-05-26 21:04", "type": "cycle", "summary": "系统正常，CPU存在间歇性峰值但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 21:05", "type": "cycle", "summary": "系统负载较高但服务正常，python3.13进程占用CPU显著", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 21:06", "type": "cycle", "summary": "系统资源正常，Python3.13进程属于预期行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:07", "type": "cycle", "summary": "系统负载正常，CPU占用高属正常服务进程", "alert_count": 0, "skipped_llm": false}
