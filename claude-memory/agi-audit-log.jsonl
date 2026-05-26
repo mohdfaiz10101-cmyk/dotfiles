@@ -3105,3 +3105,4 @@
 {"ts": "2026-05-27 06:26", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内，服务全健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:27", "type": "cycle", "summary": "系统负载正常，内存使用率适中，磁盘健康，服务无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:28", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在合理范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 06:29", "type": "cycle", "summary": "系统运行正常，服务健康，但有高CPU进程", "alert_count": 1, "skipped_llm": false}
