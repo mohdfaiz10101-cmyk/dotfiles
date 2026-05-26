@@ -2734,3 +2734,4 @@
 {"ts": "2026-05-26 23:11", "type": "cycle", "summary": "系统整体健康，opencode进程CPU瞬时高位属正常行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:12", "type": "cycle", "summary": "系统负载正常，服务健康，opencode 存在高 CPU 占用但符合历史特征", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:13", "type": "cycle", "summary": "系统运行正常，存在预期的CPU密集型任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 23:14", "type": "cycle", "summary": "系统负载正常，opencode进程存在高CPU占用，符合预期", "alert_count": 0, "skipped_llm": false}
