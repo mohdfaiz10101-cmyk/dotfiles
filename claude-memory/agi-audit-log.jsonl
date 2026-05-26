@@ -2498,3 +2498,4 @@
 {"ts": "2026-05-26 18:33", "type": "cycle", "summary": "系统运行平稳，CPU高占用为正常系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 18:34", "type": "cycle", "summary": "系统运行正常，CPU出现短期峰值但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 18:36", "type": "cycle", "summary": "系统运行平稳，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 18:37", "type": "cycle", "summary": "系统资源正常，高CPU进程为系统服务", "alert_count": 0, "skipped_llm": false}
