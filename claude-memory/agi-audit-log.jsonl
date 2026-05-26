@@ -2367,3 +2367,4 @@
 {"ts": "2026-05-26 15:46", "type": "cycle", "summary": "系统状态正常，CPU存在短期波动但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 15:48", "type": "cycle", "summary": "系统运行正常，存在瞬时高CPU进程但非异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 15:49", "type": "cycle", "summary": "系统运行正常，资源使用率低，CPU短暂波动属于正常范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 15:50", "type": "cycle", "summary": "系统运行正常，存在python3.13进程CPU占用高但属于正常系统服务", "alert_count": 0, "skipped_llm": false}
