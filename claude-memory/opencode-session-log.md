@@ -49618,3 +49618,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 | 可维护性 | 5.5 | **最低分，规则碎片化** |
 
 P0: Agent合并+Regis
+
+## 2026-05-27 00:43
+- [2026-05-27 00:42:42] **用户**: 1688 bot还是会收到一些消息 但是他没有自动归类到我的telegram下面 让他们选择对应的群啊 不要出现在1688 bot
