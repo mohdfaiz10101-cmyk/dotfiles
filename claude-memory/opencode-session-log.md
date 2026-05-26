@@ -49780,3 +49780,13 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 [ok] 验证 Web UI -- `307 → /welcome`，设置页已开放，无需密码即可访问
 
 [完成] Sunshine Web UI 解锁 — 凭据已移除，PIN 认证已禁用(`origin_pin_auth=false`)，Web UI 现
+
+## 2026-05-27 04:35
+- [2026-05-27 04:34:57] **AI(sisyphus)**: [fail] ADB检测手机 -- Windows上ADB无法发现设备(ff3ef385)
+[fail] WiFi探测 -- 手机不在192.168.123.x网段,无WiFi连接
+[ok] 网络诊断 -- Windows WiFi正常(DNS 192.168.123.1),平板192.168.123.241在线,手机完全脱网
+
+**结论**: USB插在Windows上，但手机处于"仅充电"模式，ADB无法访问。手机不在WiFi上，不在Tailscale上。DNS问题发生在手机移动数据端，无法远程修复。
+
+**需要你操作**:
+1. 解锁手机 → 下拉USB通知 → 切到"传输文件(MTP)
