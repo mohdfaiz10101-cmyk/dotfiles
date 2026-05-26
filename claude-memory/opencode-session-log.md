@@ -49447,3 +49447,6 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 | Chromium (系统) | `chromium %U` | beta 版，有"测试版"提示 |
 
 帮你把多余的藏掉：
+
+## 2026-05-27 00:20
+- [2026-05-27 00:20:35] **AI(sisyphus)**: 两个方法都失败（系统权限无法撤销）。直接禁用 BOOT_COMPLETED 接收器组件
