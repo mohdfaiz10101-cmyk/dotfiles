@@ -3150,3 +3150,4 @@
 {"ts": "2026-05-27 07:16", "type": "cycle", "summary": "系统运行正常，无活跃服务但有后台进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 07:17", "type": "cycle", "summary": "系统资源使用正常，存在高CPU进程但属已知非故障现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 07:18", "type": "cycle", "summary": "系统负载正常，CPU存在短期高消耗进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 07:19", "type": "cycle", "summary": "系统资源正常，存在高CPU进程但在预期范围内", "alert_count": 0, "skipped_llm": false}
