@@ -1,8 +1,8 @@
 [Unit]
-Description=每日安全扫描定时器 (03:00)
+Description=每日安全扫描定时器 (19:00)
 
 [Timer]
-OnCalendar=daily
+OnCalendar=*-*-* 19:00:00
 Persistent=true
 
 [Install]

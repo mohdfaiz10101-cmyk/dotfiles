@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Via 平板浏览器
+Name[en]=Via Browser (Tablet)
+Comment=在平板上启动 Via 浏览器
+Icon=applications-internet
+Exec=/home/charlie/.local/bin/launch-via-tablet.sh
+Terminal=false
+Categories=Utility;Network;
+Keywords=via;browser;tablet;平板;浏览器;

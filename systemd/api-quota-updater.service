@@ -1,0 +1,10 @@
+[Unit]
+Description=更新 StepFun/GLM API 额度缓存
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/update-api-quota.sh
+Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin"
+StandardOutput=journal
+StandardError=journal

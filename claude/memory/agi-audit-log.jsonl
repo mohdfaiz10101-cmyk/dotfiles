@@ -2621,3 +2621,104 @@
 {"ts": "2026-05-26 20:57", "type": "cycle", "summary": "系统整体运行平稳，服务正常，Python3.13 进程 CPU 占用较高但属正常系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 20:58", "type": "cycle", "summary": "系统运行正常，CPU存在高占用但符合历史经验", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 20:59", "type": "cycle", "summary": "系统资源占用正常，Python3.13 进程高属预期行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:00", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:01", "type": "cycle", "summary": "系统运行正常，CPU占用偏高但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:02", "type": "cycle", "summary": "系统运行平稳，CPU存在单进程高负载但符合预期，整体正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:04", "type": "cycle", "summary": "系统正常，CPU存在间歇性峰值但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:05", "type": "cycle", "summary": "系统负载较高但服务正常，python3.13进程占用CPU显著", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:06", "type": "cycle", "summary": "系统资源正常，Python3.13进程属于预期行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:07", "type": "cycle", "summary": "系统负载正常，CPU占用高属正常服务进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:08", "type": "cycle", "summary": "系统运行正常，服务全健康，CPU占用高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:10", "type": "cycle", "summary": "系统运行正常，CPU占用较高但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:11", "type": "cycle", "summary": "系统运行正常，存在短暂CPU峰值但无风险", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:12", "type": "cycle", "summary": "系统运行正常，Python3.13进程占用CPU较高但在可接受范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:13", "type": "cycle", "summary": "系统运行正常，CPU占用偏高但属正常服务，磁盘及内存健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:14", "type": "cycle", "summary": "系统运行正常，CPU占用较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:15", "type": "cycle", "summary": "系统运行正常，存在短暂的高CPU占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:17", "type": "cycle", "summary": "系统运行正常，CPU、内存、磁盘均处于健康范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:19", "type": "cycle", "summary": "系统资源正常，检测到高CPU进程但确认为正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:20", "type": "cycle", "summary": "系统运行正常，存在高CPU使用进程但未影响整体服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:22", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知进程，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:24", "type": "cycle", "summary": "系统运行平稳，内存和磁盘使用率正常，无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:25", "type": "cycle", "summary": "系统负载正常，CPU因ps采样及python3.13进程出现瞬时峰值", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:26", "type": "cycle", "summary": "系统运行平稳，存在CPU占用较高的Python进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:27", "type": "cycle", "summary": "系统负载低，服务全健康，存在python3.13进程高CPU占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:29", "type": "cycle", "summary": "系统资源正常，存在瞬时CPU高占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:30", "type": "cycle", "summary": "系统资源负载较高但服务健康，CPU主要由Python3.13进程占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:31", "type": "cycle", "summary": "系统运行正常，存在高CPU占用进程但符合已知经验", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:32", "type": "cycle", "summary": "系统运行正常，服务健康，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:33", "type": "cycle", "summary": "系统资源占用低，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:34", "type": "cycle", "summary": "系统运行正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:35", "type": "cycle", "summary": "系统整体状态健康，服务无异常，CPU负载存在短暂波动但内存和磁盘使用率正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:36", "type": "cycle", "summary": "系统运行正常，python3.13 进程 CPU 占用高属于已知正常行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:37", "type": "cycle", "summary": "系统整体运行平稳，CPU和内存资源充足，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:39", "type": "cycle", "summary": "系统运行正常，python3.13 进程高 CPU 属已知正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:40", "type": "cycle", "summary": "系统运行正常，CPU存在高负载进程但属已知情况", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:41", "type": "cycle", "summary": "系统运行正常，CPU占用略高但无告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:42", "type": "cycle", "summary": "系统状态正常，CPU存在瞬时波动但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:43", "type": "cycle", "summary": "系统负载正常，无活跃服务，CPU占用由监控进程触发", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:44", "type": "cycle", "summary": "系统运行正常，服务健康，CPU使用率低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:45", "type": "cycle", "summary": "系统运行正常，CPU存在单进程高峰但属已知现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:47", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:48", "type": "cycle", "summary": "系统运行正常，CPU占用较高但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:49", "type": "cycle", "summary": "系统运行正常，CPU有短暂峰值但整体负载低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:50", "type": "cycle", "summary": "系统运行正常，CPU占用较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:51", "type": "cycle", "summary": "系统资源正常，CPU负载较高但无明显服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:52", "type": "cycle", "summary": "系统运行正常，存在一个高CPU占用的python3.13进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:53", "type": "cycle", "summary": "系统运行正常，CPU占用较高但无异常服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:54", "type": "cycle", "summary": "系统运行正常，存在短期CPU占用波动但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:55", "type": "cycle", "summary": "系统运行正常，存在两个高CPU Python进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:56", "type": "cycle", "summary": "系统运行平稳，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 21:58", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知Python3.13进程，非异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:01", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting property name enclosed in double quotes: line 8 column 6 (char 241)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-26 22:02", "type": "cycle", "summary": "系统负载正常，CPU占用略高，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:03", "type": "cycle", "summary": "系统运行正常，存在瞬时CPU尖峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:04", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:05", "type": "cycle", "summary": "系统运行正常，CPU存在较高负载进程但无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:06", "type": "cycle", "summary": "系统负载较高，但服务正常，无磁盘或内存压力", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-26 22:08", "type": "cycle", "summary": "系统负载正常，存在高CPU Python3.13进程但判定为非异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:09", "type": "cycle", "summary": "系统运行正常，CPU占用略高但整体稳定", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:10", "type": "cycle", "summary": "系统运行正常，python3.13 进程 CPU 占用较高属于已知正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:13", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-26 22:14", "type": "cycle", "summary": "系统资源正常，发现高CPU进程但属预期行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:15", "type": "cycle", "summary": "系统运行正常，服务健康，存在CPU占用较高的进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:16", "type": "cycle", "summary": "系统运行正常，服务全健康，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:17", "type": "cycle", "summary": "系统运行正常，存在高CPU进程但符合历史经验", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:18", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:19", "type": "cycle", "summary": "系统运行正常，存在瞬时CPU占用但无实质风险", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:20", "type": "cycle", "summary": "系统资源正常，部分进程CPU占用较高但属正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:21", "type": "cycle", "summary": "系统运行正常，CPU负载较低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:22", "type": "cycle", "summary": "系统运行正常，仅瞬时ps进程占用CPU", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:23", "type": "cycle", "summary": "系统负载正常，Python进程偶发CPU占用较高但不影响整体健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:24", "type": "cycle", "summary": "系统运行正常，CPU和内存负载在合理范围内，无服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:26", "type": "cycle", "summary": "系统运行正常，CPU使用率适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:27", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:28", "type": "cycle", "summary": "系统服务健康，CPU存在短时负载高峰但无服务告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:29", "type": "cycle", "summary": "系统运行正常，CPU负载处于低水平，服务全部健康，部分Python进程有短暂CPU波峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:30", "type": "cycle", "summary": "系统运行正常，CPU负载可控且无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:31", "type": "cycle", "summary": "系统运行平稳，CPU 有瞬时峰值但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:32", "type": "cycle", "summary": "系统负载略高但服务健康，Python3.13 进程 CPU 占用显著", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:33", "type": "cycle", "summary": "系统运行正常，CPU负载波动源于Python3.13进程（已知正常服务）", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:34", "type": "cycle", "summary": "系统运行正常，CPU负载可控，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:36", "type": "cycle", "summary": "系统负载较高但服务健康，CPU资源被Python进程占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:37", "type": "cycle", "summary": "系统负载正常，监控进程瞬时高CPU，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:38", "type": "cycle", "summary": "系统运行正常，存在短暂的 CPU 占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:39", "type": "cycle", "summary": "系统运行正常，无告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:40", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:41", "type": "cycle", "summary": "系统负载较高但服务正常，Python进程导致CPU高占用", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-26 22:42", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:43", "type": "cycle", "summary": "系统运行正常，Python 进程 CPU 占用较高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:44", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:45", "type": "cycle", "summary": "系统资源使用正常，高CPU进程为系统服务属正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:46", "type": "cycle", "summary": "系统运行正常，高负载进程为已知系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:47", "type": "cycle", "summary": "系统运行正常，ClamAV 扫描导致 CPU 负载较高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:49", "type": "cycle", "summary": "系统运行正常，ClamAV 扫描导致 CPU 暂时性升高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:50", "type": "cycle", "summary": "系统运行正常，CPU负载极低，磁盘空间充足，无服务异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:51", "type": "cycle", "summary": "系统运行正常，CPU存在Python3.13进程高负载但属正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:52", "type": "cycle", "summary": "系统运行正常，CPU负载较高但有进程在执行任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:53", "type": "cycle", "summary": "系统资源负载正常，CPU临时峰值属业务范畴", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:54", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:55", "type": "cycle", "summary": "系统资源正常，存在高CPU进程但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:56", "type": "cycle", "summary": "系统负载正常，存在Python3.13进程占用较高CPU但属于正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:58", "type": "cycle", "summary": "系统运行状态正常，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:59", "type": "cycle", "summary": "系统运行正常，存在瞬时高CPU进程", "alert_count": 0, "skipped_llm": false}

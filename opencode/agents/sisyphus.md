@@ -12,7 +12,7 @@ autoExecute: true
 
 # Sisyphus — OP 运维执行 Agent
 
-<!-- memory-gate-inject: 21:00 -->
+<!-- memory-gate-inject: 23:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -21,14 +21,22 @@ autoExecute: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-26] [AUTO] 偏好: auto-restart | 内容: 需要重启服务才能生效的操作，OP自动重启，禁止询问"需要重启吗""要我重启吗"- [2026-05-26] [PREF] Telegram多Bot路由 | 规则: 每个群=独立Bot Token=独立Agent
-**教训**: - [2026-05-26] [OP] 失败学习: anti-restart-loop.sh | 错误: state文件持久化计数从不重置，超阈值后每轮timer重复kill/mask已停止的服务 | 修复: 在mask后unset计数并从state文件删除对应行 | 影响: 本次导致ttyd-80
-**教训**: - [2026-05-26] [OP] CLAUDE.md↔AGENTS.md 互享规则: ai-shared-rules.md 为单一事实源，ai-rules-sync 实时同步到 AGENTS.md(~/.config/opencode/AGENTS.md symlink)。CLAUDE.md 
-**教训**: - [2026-05-26] [偏好] GLM web reader: firecrawl搜索/抓取、webfetch等网页读取工具可在日常任务中主动使用，获取最新信息而非仅凭记忆
-**教训**: - [2026-05-26] [OP] 修复: 剪贴板污染循环 | 根因: phone-clip-sync读取octoclip过期文件存储(2025-11-12) → 推送到NixOS | 修复: (1) phone-clip-sync增加24h新鲜度检查,忽略过期octoclip数据 (2) 空R
+**教训**: - [2026-05-10] Letta MCP 307 重定向 → macg_mcp.py 中 `/v1/agents` 改为 `/v1/agents/`
+**教训**: - [2026-05-03] 记忆遗忘引擎：lessons-learned 45天衰减，codebase-map 30天，一次性报告 7天
+**教训**: - [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
+**教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
+**教训**: - [2026-05-26] [OP] 失败学习: 手机Tailscale自启排查 | 走过弯路: 反复禁Karing、删service.d脚本、检查NixOS watchdog，都没解决 | 根因: /data/adb/service.d/karing-boot.sh 开机sleep 35后启动T
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 
