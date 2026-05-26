@@ -2732,3 +2732,4 @@
 {"ts": "2026-05-26 23:08", "type": "cycle", "summary": "系统整体资源使用正常，opencode工作进程CPU占用异常达98.8%，其余指标均无异常", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-26 23:10", "type": "cycle", "summary": "系统负载波动较大，无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:11", "type": "cycle", "summary": "系统整体健康，opencode进程CPU瞬时高位属正常行为", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 23:12", "type": "cycle", "summary": "系统负载正常，服务健康，opencode 存在高 CPU 占用但符合历史特征", "alert_count": 0, "skipped_llm": false}
