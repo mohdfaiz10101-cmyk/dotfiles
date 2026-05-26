@@ -1983,3 +1983,4 @@
 {"ts": "2026-05-26 08:15", "type": "cycle", "summary": "系统资源正常，无活跃异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:16", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:17", "type": "cycle", "summary": "系统运行正常，存在高CPU进程但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 08:18", "type": "cycle", "summary": "系统资源负载低，服务健康，CPU占用属已知正常进程", "alert_count": 0, "skipped_llm": false}
