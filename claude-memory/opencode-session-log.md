@@ -48779,3 +48779,12 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 
 ## 2026-05-26 16:03
 - [2026-05-26 16:03:18] **用户**: 但是系统通知里重复出现这个
+
+## 2026-05-26 16:04
+- [2026-05-26 16:04:27] **用户**: 打开chromium playwright后出现auth keyring lgoin required. 你让他自己填入密码
+- [2026-05-26 16:04:38] **AI(sisyphus)**: [ok] `--password-store=basic` — 不再弹 keyring 认证，Chrome 自己管理密码
+- [2026-05-26 16:04:39] **AI(sisyphus)**: [ok] phone-8080-monitor.timer -- 已 disabled，不再触发
+[ok] phone-8080-monitor.service -- inactive，无运行进程
+[ok] win-8080-relay -- 无进程残留
+
+当前系统通知中保留的是 16:03 最后一次执行产生的通知，需手动清除。不会再产生新的 8080 系统通知。
