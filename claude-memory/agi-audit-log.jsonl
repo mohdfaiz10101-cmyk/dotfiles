@@ -2566,3 +2566,4 @@
 {"ts": "2026-05-26 19:53", "type": "cycle", "summary": "系统运行正常，CPU与内存负载低，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:54", "type": "cycle", "summary": "系统资源正常，Python3.13进程高CPU但无告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:55", "type": "cycle", "summary": "系统运行正常，CPU占用较低，内存与磁盘均在安全范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 19:56", "type": "cycle", "summary": "系统服务正常，但检测到 python3.13 进程异常占用 CPU", "alert_count": 2, "skipped_llm": false}
