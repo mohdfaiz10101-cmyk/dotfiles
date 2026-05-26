@@ -212,3 +212,5 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 28 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 28 hours (healthy)
+
+- [2026-05-27] [OP] 呼吸灯打分系统接入Telegram: waybar-score-finalize.sh(每日23:59 P2日报) + waybar-score.sh(<60分 P1告警, 30min cooldown)。之前只有notify-send桌面通知，现已补全Telegram通道。
