@@ -49656,3 +49656,6 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 
 ## 2026-05-27 00:55
 - [2026-05-27 00:54:50] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-27 00:55
+- [2026-05-27 00:55:18] **AI(sisyphus)**: NixOS 端已全部禁用。Windows 端 PowerShell 语法不对。让我用 cmd 查：
