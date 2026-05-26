@@ -49421,3 +49421,10 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 ```
 
 同一个窗口、同一套 cookie、同一套书签。headless 自动化脚本（verify-pipeline 等）保持独立，
+
+## 2026-05-27 00:15
+- [2026-05-27 00:15:04] **AI(sisyphus)**: 根因：LiteLLM 代理层已有 `glm-5.1`，但 OpenCode 的 `opencode.json` 里没有注册该模型条目，模型切换器只显示配置文件中声明的模型。
+
+已修复：在 `~/.config/opencode/opencode.json` 和 `~/dotfiles/opencode/opencode.json` 的 `provider.openai-compatible.models` 中添加了 `glm-5.1` 条目（context 128K / output 8192）。
+
+重启 OpenCode 或刷新 Web UI (localhost:8081) 后即可在模型切
