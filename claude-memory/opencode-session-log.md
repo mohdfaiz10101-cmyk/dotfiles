@@ -49511,3 +49511,34 @@ am startservice -n com.tailscale.ipn/.IPNService
 ```
 
 它藏在 `service.d/` 里从第一天就在，文件名误导了我们。**这才是真正的根因。**
+
+## 2026-05-27 00:31
+- [2026-05-27 00:31:02] **用户**: 之前也是这么说啊
+- [2026-05-27 00:31:26] **用户**: 你是一名资深AI Agent架构师。请深度评审以下个人AI Agent系统架构方案，输出评分和具体建议。
+
+## 架构概览
+
+**两层架构：CC（Claude Code/Sonnet 战略规划层）→ OP（Sisyphus 执行层）**
+
+### Agent体系（24个）
+- sisyphus: 主执行Agent (step-router-v1)
+- cc-autonomous: CC自主决策，读OP数据→生成任务 (glm-5.1)
+- service-nurse: Docker/systemd巡检自愈 (glm-5-turbo)
+- ops-dispatcher: 逐条执行op-tasks
+- [2026-05-27 00:31:27] **用户**: 你是一名资深DevOps/SRE工程师。请实战评审以下个人AI Agent系统的工程实现，找出具体的坑和浪费。
+
+## 系统关键配置
+
+### 1. Agent文件结构问题
+每个agent的md文件存在大量空白：
+```
+<!-- memory-gate-inject: 23:30 -->
+...注入内容(约30行)...
+<!-- /memory-gate-inject -->
+
+[这里开始有500-650行完全空白的行，每行只有一个换行符]
+[然后在文件末尾第665行才开始正文内容]
+```
+
+### 2. opencode.json关键配置
+- `"compaction": {"auto
