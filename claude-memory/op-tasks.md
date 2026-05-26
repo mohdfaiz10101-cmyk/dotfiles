@@ -1,5 +1,12 @@
 # OP 待办任务
 
+## 执行环境（2026-05-27 更新）
+**所有 OP 任务 MUST 在以下环境执行：**
+- 目录：`~/.openclaw/workspace`
+- 端口：FRP:19890 / 本地:8080 / tmux session: `openclaw`
+- 进入命令：`oc`（alias）或 `tmux attach-session -t openclaw`
+- Sisyphus agent 在 openclaw workspace 下运行
+
 ## DECAY（2026-05-19 批量清理 — 超30天未执行）
 
 以下任务派发于 2026-04-19~04-27，距今超30天未执行，标记 DECAY：
