@@ -2705,3 +2705,4 @@
 {"ts": "2026-05-26 22:38", "type": "cycle", "summary": "系统运行正常，存在短暂的 CPU 占用", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:39", "type": "cycle", "summary": "系统运行正常，无告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:40", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:41", "type": "cycle", "summary": "系统负载较高但服务正常，Python进程导致CPU高占用", "alert_count": 1, "skipped_llm": false}
