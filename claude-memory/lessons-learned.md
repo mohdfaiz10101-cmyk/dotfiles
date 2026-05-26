@@ -214,3 +214,4 @@
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 28 hours (healthy)
 
 - [2026-05-27] [OP] 呼吸灯打分系统接入Telegram: waybar-score-finalize.sh(每日23:59 P2日报) + waybar-score.sh(<60分 P1告警, 30min cooldown)。之前只有notify-send桌面通知，现已补全Telegram通道。
+- [2026-05-27] [OP] 会话冷归档方案: OpenClaw session jsonl→~/.local/state/sessions-archive/, systemd timer每天归档, 30天自动清理。比"删除时消化"方案省90% token且不灌噪音
