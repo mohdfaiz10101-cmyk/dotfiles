@@ -49542,3 +49542,7 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ### 2. opencode.json关键配置
 - `"compaction": {"auto
+
+## 2026-05-27 00:33
+- [2026-05-27 00:33:03] **用户**: openclaw gateway --port 18789 --bind lan &
+- [2026-05-27 00:33:22] **用户**: 还是有打开？请检查下
