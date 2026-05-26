@@ -2919,3 +2919,4 @@
 {"ts": "2026-05-27 02:34", "type": "cycle", "summary": "系统运行平稳，CPU占用由 python3.13 短暂拉高但属正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 02:35", "type": "cycle", "summary": "系统负载正常，CPU占用为后台进程，无异常服务告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 02:36", "type": "cycle", "summary": "系统运行正常，CPU有单进程突增", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 02:37", "type": "cycle", "summary": "系统运行平稳，CPU占用在预期范围内", "alert_count": 0, "skipped_llm": false}
