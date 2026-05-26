@@ -2982,3 +2982,4 @@
 {"ts": "2026-05-27 03:54", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-27 03:56", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-05-27 03:59", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-05-27 04:00", "type": "cycle", "summary": "凌晨04:00系统运行平稳，CPU/内存/磁盘资源均在正常范围内", "alert_count": 0, "skipped_llm": false}
