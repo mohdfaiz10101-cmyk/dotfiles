@@ -48920,3 +48920,6 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_PROTOCOL 是写在 CC 那边的规则里，CC 用它来判断什么时候委托 task 给 OP — OP 收到委托后用自己的 skill 执行。
 
 所以链路上只有一步通过 macg_op_delegate 传消息，各读各的文件，各干各的活。
+
+## 2026-05-26 16:53
+- [2026-05-26 16:53:16] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
