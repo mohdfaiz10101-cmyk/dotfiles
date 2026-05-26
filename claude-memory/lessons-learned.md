@@ -243,3 +243,7 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 29 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 29 hours (healthy)
+
+### 会话摘要 [2026-05-27] [Sonnet/自动]
+- 对话轮次: 119 | 被纠正: 1次
+  - 用户纠正: 我不懂啊 不是有api吗 之前opencode就能用api创建群
