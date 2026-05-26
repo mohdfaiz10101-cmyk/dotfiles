@@ -48605,3 +48605,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 13:15
 - [2026-05-26 13:14:49] **用户**: 怎么彻底避免 怎么那么多bug
+
+## 2026-05-26 13:16
+- [2026-05-26 13:16:16] **用户**: tmp是临时目录 不保险
