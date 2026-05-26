@@ -2238,3 +2238,4 @@
 {"ts": "2026-05-26 13:10", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知正常进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 13:12", "type": "cycle", "summary": "系统负载正常，服务全部健康，无明显异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 13:13", "type": "cycle", "summary": "系统运行正常，CPU使用率低，内存和磁盘均在健康范围内，无服务异常。", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 13:14", "type": "cycle", "summary": "系统资源占用正常，无服务故障或有效告警", "alert_count": 0, "skipped_llm": false}
