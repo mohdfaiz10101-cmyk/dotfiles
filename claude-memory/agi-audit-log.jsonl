@@ -3084,3 +3084,4 @@
 {"ts": "2026-05-27 06:01", "type": "cycle", "summary": "系统运行正常，服务健康，凌晨时段存在瞬时进程波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:02", "type": "cycle", "summary": "系统运行正常，高CPU进程均在允许范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:03", "type": "cycle", "summary": "系统运行平稳，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 06:04", "type": "cycle", "summary": "系统运行正常，CPU存在Python3.13进程短暂峰值，符合历史经验判定", "alert_count": 0, "skipped_llm": false}
