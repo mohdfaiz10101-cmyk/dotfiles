@@ -2365,3 +2365,4 @@
 {"ts": "2026-05-26 15:44", "type": "cycle", "summary": "系统运行平稳，CPU/内存/磁盘指标正常，服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 15:45", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 15:46", "type": "cycle", "summary": "系统状态正常，CPU存在短期波动但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 15:48", "type": "cycle", "summary": "系统运行正常，存在瞬时高CPU进程但非异常", "alert_count": 0, "skipped_llm": false}
