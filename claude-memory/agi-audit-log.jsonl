@@ -2320,3 +2320,4 @@
 {"ts": "2026-05-26 14:48", "type": "cycle", "summary": "系统资源占用低，服务运行正常，无待处理异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 14:49", "type": "cycle", "summary": "系统资源负载正常，存在瞬时扫描进程波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 14:50", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 14:51", "type": "cycle", "summary": "系统运行正常，CPU高占用进程符合已知经验", "alert_count": 0, "skipped_llm": false}
