@@ -3026,3 +3026,4 @@
 {"ts": "2026-05-27 04:58", "type": "cycle", "summary": "系统处于凌晨闲置状态，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 04:59", "type": "cycle", "summary": "系统资源负载低，服务全健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 05:00", "type": "cycle", "summary": "系统运行平稳，服务全健康，CPU与内存负载正常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 05:01", "type": "cycle", "summary": "系统运行正常，CPU负载波动但无服务异常", "alert_count": 0, "skipped_llm": false}
