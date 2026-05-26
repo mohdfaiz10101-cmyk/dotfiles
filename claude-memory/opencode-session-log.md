@@ -49019,3 +49019,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 - [2026-05-26 17:41:34] **AI(sisyphus)**: [ok] WS2↔WS5 交换完成 -- WS2=通讯 / WS5=AI执行区
 [ok] hyprctl configerrors 无报错 -- 配置合法
 [ok] hyprctl reload -- 已生效
+
+## 2026-05-26 17:42
+- [2026-05-26 17:42:25] **用户**: 我glm的web reader工具平时也可以用上
