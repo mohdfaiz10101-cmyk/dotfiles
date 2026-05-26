@@ -2746,3 +2746,4 @@
 {"ts": "2026-05-26 23:24", "type": "cycle", "summary": "系统负载正常，opencode 占用 CPU 较高但无服务中断", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:25", "type": "cycle", "summary": "系统运行正常，opencode 进程存在短暂 CPU 飙升", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 23:26", "type": "cycle", "summary": "系统负载正常，opencode进程出现短暂CPU占用高峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 23:27", "type": "cycle", "summary": "系统运行正常，进程 opencode CPU 占用高需关注", "alert_count": 1, "skipped_llm": false}
