@@ -48641,3 +48641,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 13:30
 - [2026-05-26 13:29:54] **用户**: 怎么解决
+
+## 2026-05-26 13:33
+- [2026-05-26 13:33:08] **用户**: 但是我给他发了消息 他出现这个🚀 要使用此机器人，您必须加入我们的频道： https://t.me/A_ToolsX
