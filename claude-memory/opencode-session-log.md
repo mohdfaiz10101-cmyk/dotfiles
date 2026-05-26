@@ -48602,3 +48602,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 **本次继续完成:**
 
 [ok] 修复 win-8080-relay.sh → 用 scp 替代 SSH heredoc，`cmd /c sta
+
+## 2026-05-26 13:15
+- [2026-05-26 13:14:49] **用户**: 怎么彻底避免 怎么那么多bug
