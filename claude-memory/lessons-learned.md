@@ -620,3 +620,5 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 20 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 20 hours (healthy)
+
+- [2026-05-26] [OP] AUTO_SKILL_PROTOCOL 部署: CLAUDE.md 新增死规则 — CC 完成复杂任务后智能评估 → macg_op_delegate 委托 Sisyphus → Sisyphus 加载 auto-skill 判断 → 满足 ≥2 条标准则执行 create-skill.py 封装 | 全自动闭环，禁止询问确认
