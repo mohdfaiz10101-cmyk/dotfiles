@@ -2710,3 +2710,4 @@
 {"ts": "2026-05-26 22:43", "type": "cycle", "summary": "系统运行正常，Python 进程 CPU 占用较高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:44", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:45", "type": "cycle", "summary": "系统资源使用正常，高CPU进程为系统服务属正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:46", "type": "cycle", "summary": "系统运行正常，高负载进程为已知系统服务", "alert_count": 0, "skipped_llm": false}
