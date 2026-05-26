@@ -699,3 +699,5 @@
   - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
   - 用户纠正: 我刚才用termux 连接了下 地址格式不对。连接后 connection failed
 [2026-05-26] [CONFIG] Telegram多Bot路由 | Bot: @charlie_op_bot→通知(-1003988580955) @charlie_rss_bot→RSS订阅(3725372254) @charlie_finbot→财务中心(-1003943958531) | 凭据: ~/.local/share/credentials/telegram-bots.json
+
+- [2026-05-26] [OP] 失败学习: anti-restart-loop.sh | 错误: state文件持久化计数从不重置，超阈值后每轮timer重复kill/mask已停止的服务 | 修复: 在mask后unset计数并从state文件删除对应行 | 影响: 本次导致ttyd-8080被误杀22次(15:59-16:22)，同时影响glm-monitor(412次)、langchain-hub(315次)等多个服务
