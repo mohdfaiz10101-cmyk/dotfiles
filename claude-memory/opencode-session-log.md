@@ -48825,3 +48825,6 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 - 无 rofi 自定义脚本/模式
 
 你说的 "rofi drum" 具体是指什么？是 rofi 的 **drun 模式**（`rofi -show drun`，显示 .desktop 应用）吗？还是有其他地方定义了这个名称？
+
+## 2026-05-26 16:12
+- [2026-05-26 16:12:26] **用户**: 什么意思 怎么操作
