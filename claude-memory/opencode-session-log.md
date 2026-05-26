@@ -48581,3 +48581,11 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 12:18
 - [2026-05-26 12:18:03] **AI(sisyphus)**: 外部真实测试返回 **502 Bad Gateway**，不是 connection refused。FRP 隧道通了但 ttyd 8080 挂了。
+
+## 2026-05-26 12:19
+- [2026-05-26 12:18:36] **AI(sisyphus)**: [ok] letta-sync + tg-healer → 假阳性复位 (oneshot Result=success)
+[ok] mem0_watchdog → 修复 UnboundLocalError (failed变量定义在使用之后)
+[ok] phone-8080-monitor → 添加 Tailscale SSH fallback (WiFi IP不可达)
+[ok] mem0-decay → 复位 (实测正常运行，exit 0)
+[ok] tg-daily-digest → 复位 (AuthKeyDuplicatedError 为瞬态，无其他Telethon客户端)
+[ok] sy
