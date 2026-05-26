@@ -2327,3 +2327,4 @@
 {"ts": "2026-05-26 14:56", "type": "cycle", "summary": "系统运行正常，CPU负载轻微，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 14:58", "type": "cycle", "summary": "系统运行正常，CPU使用率高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 14:59", "type": "cycle", "summary": "系统资源正常，服务健康，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 15:00", "type": "cycle", "summary": "系统负载较高但无服务异常，属于正常计算任务", "alert_count": 0, "skipped_llm": false}
