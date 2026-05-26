@@ -49303,3 +49303,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 ## 2026-05-26 22:47
 - [2026-05-26 22:47:40] **AI(sisyphus)**: [ok] 改为 `OnCalendar=*-*-* 19:00:00` -- 每天19:00执行
 [ok] daemon-reload + restart -- 下次触发 2026-05-27 19:00
+
+## 2026-05-26 22:54
+- [2026-05-26 22:53:52] **用户**: chromium 还是提示测试版 就是有个很大的一行字在bookmark下面
