@@ -48923,3 +48923,145 @@ OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_
 
 ## 2026-05-26 16:53
 - [2026-05-26 16:53:16] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 17:07
+- [2026-05-26 17:07:22] **AI(sisyphus)**: [ok] 创建 @charlie_op_bot -- 8942130653
+[ok] 创建 @charlie_rss_bot -- 8741460176
+[ok] 创建 @charlie_finbot -- 8814876417
+[ok] OpenClaw config 更新 -- 4 accounts + 4 bindings
+[ok] OpenClaw gateway 重启 -- active
+[ok] 凭据入库 -- telegram-bots.json (600)
+[ok] 记忆写回 -- memory_set + Letta
+
+---
+
+**最终架构：**
+
+| Bot | Agen
+
+## 2026-05-26 17:20
+- [2026-05-26 17:19:52] **用户**: 剪贴板复制的内容不正常 而且手机剪贴板没有同步 而且otp的呼吸灯不见了
+
+## 2026-05-26 17:20
+- [2026-05-26 17:20:50] **用户**: 1iqey301000d9pnaq4h35l2oza2btq9u 剪贴板一直复制这个
+
+## 2026-05-26 17:24
+- [2026-05-26 17:24:33] **用户**: 我手机如果同步hyperland桌面和workspace 就是手机操作 hyperland手机也多桌面 映射过去 然后如果手机也模拟点击操作 nixos
+
+## 2026-05-26 17:27
+- [2026-05-26 17:27:36] **AI(sisyphus)**: 现在汇总诊断结果
+
+## 2026-05-26 17:29
+- [2026-05-26 17:29:08] **用户**: 问题是 我这套方案太复杂现实吗 搜索下社区成熟方案 或者更好的建议
+
+## 2026-05-26 17:29
+- [2026-05-26 17:29:50] **用户**: 我不明白 你要我怎么做
+
+## 2026-05-26 17:30
+- [2026-05-26 17:30:05] **AI(sisyphus)**: OpenClaw 已在运行，配置已生效。
+
+下一步：去对应群把 Bot 拉进去就开始工作。
+- [2026-05-26 17:30:16] **用户**: 你直接拉群 以后不要问
+
+## 2026-05-26 17:32
+- [2026-05-26 17:32:20] **用户**: 用公网 duckdns
+
+## 2026-05-26 17:35
+- [2026-05-26 17:35:29] **AI(sisyphus)**: ```
+[ok] @charlie_op_bot -- 通知 (-1003988580955) 已加入
+[ok] @charlie_rss_bot -- RSS 订阅 (-1003725372254) 新建群+已加入
+[ok] @charlie_finbot -- 财务中心 (-1003943958531) 已加入
+[ok] 全部3个Bot发送测试消息 -- 成功
+```
+
+**Telegram 多Bot路由全部就绪：**
+
+| Bot | 群 | 角色 |
+|-----|-----|------|
+| @charlie_1688_bot | 私聊/全局 | 全局入口 |
+| @charlie
+- [2026-05-26 17:35:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 17:36
+- [2026-05-26 17:36:00] **用户**: 那现在claude.md和agent md没有关联和增量同步吗 就是互享信息
+- [2026-05-26 17:36:24] **用户**: 互相提取 有用的 但是自己遵守自己的规则
+
+## 2026-05-26 17:36
+- [2026-05-26 17:36:29] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 17:37
+- [2026-05-26 17:37:44] **AI(sisyphus)**: [ok] 诊断根因 → anti-restart-loop.sh 状态持久化 bug，计数永久累积导致每60s重复kill
+[ok] 修复脚本 → mask 后 unset 计数 + sed 删除 state 行
+[ok] 清空过期状态 → ~/.local/state/anti-restart-loop.state
+[ok] 恢复被误mask服务 → langchain-hub、glm-monitor 已 unmask
+[ok] ttyd-8080 → 自 16:25 稳定运行，strace+watcher 双监控
+[!] 原始 SIGTERM (13:56/14:03) — 非 anti-
+
+## 2026-05-26 17:39
+- [2026-05-26 17:39:03] **AI(sisyphus)**: Now I understand the full picture. Let me fix the contamination at its source — the stale octoclip file read in phone-clip-sync.
+- [2026-05-26 17:39:19] **用户**: 工作区2和5的分配内容需要换一下
+
+## 2026-05-26 17:40
+- [2026-05-26 17:40:02] **用户**: 那你捕获下
+
+## 2026-05-26 17:41
+- [2026-05-26 17:41:33] **AI(sisyphus)**: [ok] AGENTS.md 加入 AUTO_SKILL — Sisyphus 编译规则已含
+[ok] ai-shared-rules.md 加入 AUTO_SKILL — 单一事实源已更新
+
+**你问的互享机制**：
+
+```
+ai-shared-rules.md (单一事实源，59行)
+    │  inotify 实时同步 (ai-rules-sync.service，正在运行)
+    ▼
+AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
+    │  "compiled from CLAUDE.
+- [2026-05-26 17:41:34] **AI(sisyphus)**: [ok] WS2↔WS5 交换完成 -- WS2=通讯 / WS5=AI执行区
+[ok] hyprctl configerrors 无报错 -- 配置合法
+[ok] hyprctl reload -- 已生效
+
+## 2026-05-26 17:42
+- [2026-05-26 17:42:25] **用户**: 我glm的web reader工具平时也可以用上
+
+## 2026-05-26 17:43
+- [2026-05-26 17:43:14] **AI(sisyphus)**: [ok] 已记录偏好 → GLM web reader（firecrawl/webfetch）在平时任务中主动使用，获取最新信息而非仅凭记忆
+
+## 2026-05-26 17:46
+- [2026-05-26 17:46:01] **用户**: 我手机tailscale可以安装但是怎么让他隔离开来 不影响系统 但是电脑还是可以连他
+
+## 2026-05-26 17:53
+- [2026-05-26 17:53:41] **AI(sisyphus)**: [ok] 诊断根因 — Octoclip文件存储停留在2025-11-12，`clipper.set`广播不写文件，phone-clip-sync持续拉取过期数据`1iqey301...`
+
+[fail] 手机端读取系统剪贴板 — OPPO ColorOS禁用了`cmd clipboard get-text`、`service call clipboard`、`dumpsys clipboard`，无可用方法
+
+[ok] 修复phone-clip-sync — 增加24h新鲜度检查，过期octoclip数据直接丢弃；空REMOTE不再计入FAIL_COUNT
+
+[ok] 修复notify-se
+
+## 2026-05-26 17:54
+- [2026-05-26 17:54:53] **用户**: karing我都删除了 怎么还会有这个服务 问题是以前我装了tailscale他就不断的开打开
+
+## 2026-05-26 17:56
+- [2026-05-26 17:56:01] **用户**: 怎么彻底避免
+
+## 2026-05-26 17:57
+- [2026-05-26 17:57:01] **用户**: 那以前就做过 后来失效了吗？
+
+## 2026-05-26 17:57
+- [2026-05-26 17:57:44] **AI(sisyphus)**: [ok] 彻底清除 — 三步到位：
+1. phone-clip-sync 删除octoclip文件读取（不再有污染源）
+2. 手机端 `rm -rf` 清除过期数据目录
+3. 重启服务，NixOS→手机推送不受影响（`clipper.set`广播独立于文件存储）
+
+以后手机→NixOS方向依赖于系统剪贴板API，OPPO ColorOS禁用此功能，除非换手机或刷原生系统否则无法恢复双向拉取。
+
+## 2026-05-26 18:03
+- [2026-05-26 18:03:06] **用户**: 乱讲 根本就搜不到tailscale app
+
+## 2026-05-26 18:08
+- [2026-05-26 18:07:46] **AI(sisyphus)**: [ok] 根因定位 -- 之前的 Tailscale 是残缺版，只有 ShareActivity 无 MainActivity/桌面图标
+[ok] 重装完整 APK -- tailscale-android-universal-1.98.2 (96MB)，已覆盖安装
+[ok] Launcher 验证 -- `com.tailscale.ipn/.MainActivity` 已注册，桌面搜索可见
+[ok] Doze 白名单 + 保活 -- 保留未变
+
+之前装的 Tailscale 是个残缺包（可能从某个第三方商店下的），只有"分享到 Tailscale"功能，压根没主界面。现在从官网下载了完整版

@@ -15,7 +15,7 @@ tools:
 
 # Proxy Guardian — 代理守护者（FlClash 版本）
 
-<!-- memory-gate-inject: 17:00 -->
+<!-- memory-gate-inject: 19:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -24,14 +24,22 @@ tools:
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-26] [OP] 失败学习: mem0_watchdog.py | 错误: UnboundLocalError "failed" used before definition (line 235 before line 244) | 修复: 将 failed = [...] 移
-**教训**: - [2026-05-26] [OP] AUTO_SKILL_PROTOCOL 部署: CLAUDE.md 新增死规则 — CC 完成复杂任务后智能评估 → macg_op_delegate 委托 Sisyphus → Sisyphus 加载 auto-skill 判断 → 满足 ≥2 条标准则执行
-**教训**: - [2026-05-26] [OP] 发现: anti-restart-loop.sh | 机制: 每60秒扫描journal "Scheduled restart job"，>10次/60秒→systemctl stop | 今天15:59因strace调试导致14次崩溃→触发stop | st
-**教训**: - [2026-05-26] [OP] 失败学习: anti-restart-loop watchdog | 错误: 检测"Scheduled restart job"后stop服务，但Restart=on-failure触发重启→无限循环 | 修复: 禁用timer，改用systemd原生Star
 **教训**: - [2026-05-26] [AUTO] 偏好: auto-restart | 内容: 需要重启服务才能生效的操作，OP自动重启，禁止询问"需要重启吗""要我重启吗"- [2026-05-26] [PREF] Telegram多Bot路由 | 规则: 每个群=独立Bot Token=独立Agent
+**教训**: - [2026-05-26] [OP] 失败学习: anti-restart-loop.sh | 错误: state文件持久化计数从不重置，超阈值后每轮timer重复kill/mask已停止的服务 | 修复: 在mask后unset计数并从state文件删除对应行 | 影响: 本次导致ttyd-80
+**教训**: - [2026-05-26] [OP] CLAUDE.md↔AGENTS.md 互享规则: ai-shared-rules.md 为单一事实源，ai-rules-sync 实时同步到 AGENTS.md(~/.config/opencode/AGENTS.md symlink)。CLAUDE.md 
+**教训**: - [2026-05-26] [偏好] GLM web reader: firecrawl搜索/抓取、webfetch等网页读取工具可在日常任务中主动使用，获取最新信息而非仅凭记忆
+**教训**: - [2026-05-26] [OP] 修复: 剪贴板污染循环 | 根因: phone-clip-sync读取octoclip过期文件存储(2025-11-12) → 推送到NixOS | 修复: (1) phone-clip-sync增加24h新鲜度检查,忽略过期octoclip数据 (2) 空R
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

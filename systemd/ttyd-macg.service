@@ -5,17 +5,14 @@ After=network.target
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7694 " && echo "PORT 7694 IN USE" && exit 1 || true'
-ExecStart=/run/current-system/sw/bin/ttyd -I /home/charlie/.local/share/ttyd/index.html \
-OnFailure=sentinel-onfailure@ttyd-macg.service
+ExecStart=/run/current-system/sw/bin/ttyd \
+  -I /home/charlie/.local/share/ttyd/index.html \
   --port 7694 \
   --writable \
   --title "MACG LangGraph" \
   -t disableLeaveAlert=true \
   /run/current-system/sw/bin/bash -c "cd /home/charlie/agi && source .venv/bin/activate && while true; do python3 macg.py; echo '按 Enter 重启 macg...'; read; done"
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=TERM=xterm-256color
@@ -23,5 +20,3 @@ Environment=COLORTERM=truecolor
 
 [Install]
 WantedBy=default.target
-
-

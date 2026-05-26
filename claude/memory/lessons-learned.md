@@ -668,3 +668,66 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 21 hours (healthy)
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 130 | 被纠正: 3次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 129 | 被纠正: 3次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 128 | 被纠正: 2次
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+  - 用户纠正: 我刚才用termux 连接了下 地址格式不对。连接后 connection failed
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 130 | 被纠正: 2次
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+  - 用户纠正: 我刚才用termux 连接了下 地址格式不对。连接后 connection failed
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 129 | 被纠正: 2次
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+  - 用户纠正: 我刚才用termux 连接了下 地址格式不对。连接后 connection failed
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 126 | 被纠正: 2次
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+  - 用户纠正: 我刚才用termux 连接了下 地址格式不对。连接后 connection failed
+[2026-05-26] [CONFIG] Telegram多Bot路由 | Bot: @charlie_op_bot→通知(-1003988580955) @charlie_rss_bot→RSS订阅(3725372254) @charlie_finbot→财务中心(-1003943958531) | 凭据: ~/.local/share/credentials/telegram-bots.json
+
+- [2026-05-26] [OP] 失败学习: anti-restart-loop.sh | 错误: state文件持久化计数从不重置，超阈值后每轮timer重复kill/mask已停止的服务 | 修复: 在mask后unset计数并从state文件删除对应行 | 影响: 本次导致ttyd-8080被误杀22次(15:59-16:22)，同时影响glm-monitor(412次)、langchain-hub(315次)等多个服务
+- [2026-05-26] [OP] CLAUDE.md↔AGENTS.md 互享规则: ai-shared-rules.md 为单一事实源，ai-rules-sync 实时同步到 AGENTS.md(~/.config/opencode/AGENTS.md symlink)。CLAUDE.md 由 CC 读取，AGENTS.md 由 OP 读取。AUTO_SKILL 已写入三处(CLAUDE.md/AGENTS.md/ai-shared-rules.md)。
+- [2026-05-26] [偏好] GLM web reader: firecrawl搜索/抓取、webfetch等网页读取工具可在日常任务中主动使用，获取最新信息而非仅凭记忆
+- [2026-05-26] [OP] 修复: 剪贴板污染循环 | 根因: phone-clip-sync读取octoclip过期文件存储(2025-11-12) → 推送到NixOS | 修复: (1) phone-clip-sync增加24h新鲜度检查,忽略过期octoclip数据 (2) 空REMOTE不再计入FAIL_COUNT (3) notify-send v5 wrapper:critical urgency自动发送桌面通知恢复呼吸灯
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 18 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 22 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 22 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 22 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 22 hours (healthy)

@@ -1,0 +1,15 @@
+[Unit]
+Description=Wayland VNC Server (wayvnc)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/wayvnc -C %h/.local/state/wayvnc/config -o HDMI-A-1
+Restart=on-failure
+RestartSec=3
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=graphical-session.target
