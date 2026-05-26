@@ -49332,3 +49332,17 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-26 23:16
 - [2026-05-26 23:16:26] **用户**: z没看到啊
+
+## 2026-05-26 23:17
+- [2026-05-26 23:17:26] **AI(sisyphus)**: [ok] chromium-launch → google-chrome-stable（不再用 beta 频道）
+[ok] playwright-chromium-nix → google-chrome-stable（不再用 headless-shell）
+[完成] Chromium 测试版提示 + F8/F12 — 两个脚本都改用 `google-chrome-stable`(147 稳定版)，重开 Chromium 生效
+- [2026-05-26 23:17:42] **AI(sisyphus)**: [ok] 新 tmux 配置已全局激活 — 本地终端 + ttyd 远程 + SSH 均可见
+[fail] 19890 端口 — 实际是 frps 占用，非 ttyd；ttyd OpenCode 在 :7692
+[ok] CPU 状态栏 — 修复 shebang，现在显示 `CPU:38%`
+
+**现在能看到的增强**（在所有 tmux 会话中）:
+- 状态栏左侧：会话名，右侧：CPU 使用率 + 日期时间
+- `Ctrl+b <` → 弹出主菜单（窗口/面板/复制模式操作）
+- `Ctrl+b Ctrl+s` → 会话切换器（列表选择切换 claude/openclaw/sisy）
+- `C
