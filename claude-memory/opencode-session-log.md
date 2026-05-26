@@ -49558,3 +49558,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 - [2026-05-27 00:35:13] **AI(sisyphus)**: [ok] openclaw gateway -- 端口 18789 LAN 绑定，已启动 (pid 783823)
 
 加 `--allow-unconfigured` 绕过了 config 中 `mode:local` 与 `--bind lan` 的冲突。
+
+## 2026-05-27 00:36
+- [2026-05-27 00:36:30] **用户**: 你自己决定
