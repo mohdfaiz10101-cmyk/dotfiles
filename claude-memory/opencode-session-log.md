@@ -49500,3 +49500,14 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 ## 2026-05-27 00:29
 - [2026-05-27 00:29:32] **用户**: 但是现在还是两个
 - [2026-05-27 00:29:58] **用户**: 用两个模型 review下
+
+## 2026-05-27 00:30
+- [2026-05-27 00:30:31] **用户**: 这个之前就删除了 怎么还在呢？
+- [2026-05-27 00:30:31] **AI(sisyphus)**: 不是同一个文件。之前删的是 `tailscale-keepalive.sh`，这个是 `karing-boot.sh` — 名字带 `karing` 所以一直没被发现，但其实它开机启动 Tailscale：
+
+```bash
+# karing-boot.sh — 开机35秒后执行
+am startservice -n com.tailscale.ipn/.IPNService
+```
+
+它藏在 `service.d/` 里从第一天就在，文件名误导了我们。**这才是真正的根因。**
