@@ -2127,3 +2127,4 @@
 {"ts": "2026-05-26 10:56", "type": "cycle", "summary": "系统运行正常，CPU与内存使用率低，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 10:58", "type": "cycle", "summary": "当前系统运行状态正常，无异常指标", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 11:00", "type": "cycle", "summary": "系统负载正常，CPU占用高峰为正常系统进程，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 11:01", "type": "cycle", "summary": "系统运行正常，存在高CPU占用Python进程但属已知假阳性", "alert_count": 0, "skipped_llm": false}
