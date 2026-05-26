@@ -48965,3 +48965,19 @@ OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_
 
 ## 2026-05-26 17:32
 - [2026-05-26 17:32:20] **用户**: 用公网 duckdns
+
+## 2026-05-26 17:35
+- [2026-05-26 17:35:29] **AI(sisyphus)**: ```
+[ok] @charlie_op_bot -- 通知 (-1003988580955) 已加入
+[ok] @charlie_rss_bot -- RSS 订阅 (-1003725372254) 新建群+已加入
+[ok] @charlie_finbot -- 财务中心 (-1003943958531) 已加入
+[ok] 全部3个Bot发送测试消息 -- 成功
+```
+
+**Telegram 多Bot路由全部就绪：**
+
+| Bot | 群 | 角色 |
+|-----|-----|------|
+| @charlie_1688_bot | 私聊/全局 | 全局入口 |
+| @charlie
+- [2026-05-26 17:35:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
