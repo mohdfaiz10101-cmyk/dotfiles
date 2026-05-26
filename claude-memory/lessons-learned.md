@@ -625,3 +625,8 @@
 - [2026-05-26] [OP] 发现: anti-restart-loop.sh | 机制: 每60秒扫描journal "Scheduled restart job"，>10次/60秒→systemctl stop | 今天15:59因strace调试导致14次崩溃→触发stop | strace已部署 --trace=signal --signal=SIGTERM -f 监控原始问题
 - [2026-05-26] [OP] 失败学习: anti-restart-loop watchdog | 错误: 检测"Scheduled restart job"后stop服务，但Restart=on-failure触发重启→无限循环 | 修复: 禁用timer，改用systemd原生StartLimitBurst+StartLimitIntervalSec限流 | 原因: 看门狗与systemd重启机制冲突
 - [2026-05-26] [AUTO] 偏好: auto-restart | 内容: 需要重启服务才能生效的操作，OP自动重启，禁止询问"需要重启吗""要我重启吗"- [2026-05-26] [PREF] Telegram多Bot路由 | 规则: 每个群=独立Bot Token=独立Agent(ops/rss/finance)，OpenClaw bindings按accountId路由 | 主Bot @charlie_1688_bot 保留为全局入口
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 115 | 被纠正: 2次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
