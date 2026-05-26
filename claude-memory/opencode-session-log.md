@@ -48575,3 +48575,6 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 12:12
 - [2026-05-26 12:12:05] **用户**: 19890 connection refused 手机访问 。之前设置的 win修复脚本没奏效吗
+
+## 2026-05-26 12:13
+- [2026-05-26 12:13:06] **用户**: 处理下 系统通知里的错误
