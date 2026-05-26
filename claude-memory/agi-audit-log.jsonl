@@ -3158,3 +3158,4 @@
 {"ts": "2026-05-27 07:24", "type": "cycle", "summary": "系统负载正常，python3.13进程属预期行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 07:25", "type": "cycle", "summary": "系统运行正常，CPU高负载为已知进程，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 07:27", "type": "cycle", "summary": "系统运行正常，CPU轻负载，内存充足，无活跃服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 07:28", "type": "cycle", "summary": "系统负载正常，服务健康，CPU占用较高进程为系统常规服务", "alert_count": 0, "skipped_llm": false}
