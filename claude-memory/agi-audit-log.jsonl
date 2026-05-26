@@ -2820,3 +2820,4 @@
 {"ts": "2026-05-27 00:46", "type": "cycle", "summary": "凌晨时段系统负载低，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 00:47", "type": "cycle", "summary": "系统状态正常，CPU与内存负载处于健康范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 00:48", "type": "cycle", "summary": "凌晨时段系统资源占用中等，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 00:49", "type": "cycle", "summary": "系统运行正常，CPU占用主要来自nix和系统工具，无异常告警", "alert_count": 0, "skipped_llm": false}
