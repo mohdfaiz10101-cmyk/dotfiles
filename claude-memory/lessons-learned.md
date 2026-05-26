@@ -704,3 +704,30 @@
 - [2026-05-26] [OP] CLAUDE.md↔AGENTS.md 互享规则: ai-shared-rules.md 为单一事实源，ai-rules-sync 实时同步到 AGENTS.md(~/.config/opencode/AGENTS.md symlink)。CLAUDE.md 由 CC 读取，AGENTS.md 由 OP 读取。AUTO_SKILL 已写入三处(CLAUDE.md/AGENTS.md/ai-shared-rules.md)。
 - [2026-05-26] [偏好] GLM web reader: firecrawl搜索/抓取、webfetch等网页读取工具可在日常任务中主动使用，获取最新信息而非仅凭记忆
 - [2026-05-26] [OP] 修复: 剪贴板污染循环 | 根因: phone-clip-sync读取octoclip过期文件存储(2025-11-12) → 推送到NixOS | 修复: (1) phone-clip-sync增加24h新鲜度检查,忽略过期octoclip数据 (2) 空REMOTE不再计入FAIL_COUNT (3) notify-send v5 wrapper:critical urgency自动发送桌面通知恢复呼吸灯
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 18 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 22 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 22 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 22 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 22 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 22 hours (healthy)
