@@ -48724,3 +48724,18 @@ systemct
 
 ## 2026-05-26 14:10
 - [2026-05-26 14:10:42] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 15:24
+- [2026-05-26 15:23:54] **AI(sisyphus)**: 服务正常运转。总结当前调查结果与下一步：
+
+**已确认：**
+- D-Bus 审计 → 零 `StopUnit` 调用，排除 `systemctl stop` 外源
+- 全局搜索 → 无脚本显式 `kill ttyd`
+- `opencode-health-monitor` 每分钟运行 → 60 次中仅 1 次与 ttyd 死亡重合，排除
+- 恢复已足够快：`RestartSec=3` → 1-3 秒自愈
+
+**未解：** SIGTERM 来源不明。非 systemd D-Bus，非任何已知脚本，非健康检查。
+
+**建议方向**（2 选 1）：
+
+方案 A — 根因排查：部署 `strace`
