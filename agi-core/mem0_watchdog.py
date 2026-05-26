@@ -228,6 +228,9 @@ def run():
 
     save_state(state)
 
+    # 计算失败列表（必须在 Telegram 通知之前定义）
+    failed = [k for k, v in results.items() if not v.get("ok")]
+
     # Telegram通知（只发异常/自愈/连续失败）
     if healed:
         tg_notify("autoheal", f"自动同步完成，修复 {len(stale)} 个漂移文件")
@@ -241,7 +244,6 @@ def run():
 
     # 输出
     status_line = "OK" if all_ok else (f"DEGRADED{'(已自愈)' if healed else ''}")
-    failed = [k for k, v in results.items() if not v.get("ok")]
     print(f"[mem0-watchdog] {status_line} | chromadb={results['chromadb'].get('count','?')} "
           f"files={results['file_sync'].get('total_files','?')} "
           f"drift={results['file_sync'].get('drift_count','?')} "

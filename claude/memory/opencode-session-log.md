@@ -48572,3 +48572,33 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 
 ## 2026-05-26 02:31
 - [2026-05-26 02:31:14] **AI(sisyphus)**: 验证语法并同步 dotfiles 备份
+
+## 2026-05-26 12:12
+- [2026-05-26 12:12:05] **用户**: 19890 connection refused 手机访问 。之前设置的 win修复脚本没奏效吗
+
+## 2026-05-26 12:13
+- [2026-05-26 12:13:06] **用户**: 处理下 系统通知里的错误
+
+## 2026-05-26 12:18
+- [2026-05-26 12:18:03] **AI(sisyphus)**: 外部真实测试返回 **502 Bad Gateway**，不是 connection refused。FRP 隧道通了但 ttyd 8080 挂了。
+
+## 2026-05-26 12:19
+- [2026-05-26 12:18:36] **AI(sisyphus)**: [ok] letta-sync + tg-healer → 假阳性复位 (oneshot Result=success)
+[ok] mem0_watchdog → 修复 UnboundLocalError (failed变量定义在使用之后)
+[ok] phone-8080-monitor → 添加 Tailscale SSH fallback (WiFi IP不可达)
+[ok] mem0-decay → 复位 (实测正常运行，exit 0)
+[ok] tg-daily-digest → 复位 (AuthKeyDuplicatedError 为瞬态，无其他Telethon客户端)
+[ok] sy
+
+## 2026-05-26 12:22
+- [2026-05-26 12:21:48] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 12:31
+- [2026-05-26 12:31:06] **AI(sisyphus)**: **Previous session work (from summary):**
+- 排查手机访问 19890 端口 "connection refused" → 确认 FRP 全链路正常（DuckDNS→FRPS→FRPC→ttyd），手机连接出现在 FRPS 日志
+- 外部 Firecrawl 测试返回 502（headless browser WebSocket 兼容问题，非真实故障）
+- Windows 中继部署被 SSH 编码问题阻塞
+
+**本次继续完成:**
+
+[ok] 修复 win-8080-relay.sh → 用 scp 替代 SSH heredoc，`cmd /c sta
