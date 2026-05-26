@@ -3029,3 +3029,4 @@
 {"ts": "2026-05-27 05:01", "type": "cycle", "summary": "系统运行正常，CPU负载波动但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 05:02", "type": "cycle", "summary": "系统运行平稳，Python3.13进程高CPU属正常系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 05:03", "type": "cycle", "summary": "系统运行平稳，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 05:04", "type": "cycle", "summary": "系统运行正常，凌晨时段CPU占用短暂升高", "alert_count": 0, "skipped_llm": false}
