@@ -48909,3 +48909,14 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 ## 2026-05-26 16:42
 - [2026-05-26 16:42:33] **用户**: 那现在op也是每次可以读取 claude.md ?我不明白不是agent
 - [2026-05-26 16:42:41] **用户**: 那现在op也是每次可以读取 claude.md ?我不明白不是agent md吗
+
+## 2026-05-26 16:43
+- [2026-05-26 16:42:53] **用户**: 你自己用api创建
+- [2026-05-26 16:42:55] **AI(sisyphus)**: 你说得对，是两个独立 agent：
+
+- **CC** 读 `CLAUDE.md`（刚才加了 AUTO_SKILL 触发规则）
+- **OP/你** 读自己的 `AGENTS.md`（和你现在看到的系统提示词同一份）
+
+OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_PROTOCOL 是写在 CC 那边的规则里，CC 用它来判断什么时候委托 task 给 OP — OP 收到委托后用自己的 skill 执行。
+
+所以链路上只有一步通过 macg_op_delegate 传消息，各读各的文件，各干各的活。
