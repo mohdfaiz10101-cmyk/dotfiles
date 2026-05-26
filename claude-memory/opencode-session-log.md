@@ -49158,3 +49158,6 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 21:30
 - [2026-05-26 21:29:43] **AI(sisyphus)**: 找到真正根因了。`tailscale-keepalive.sh` 第8行：`settings put secure always_on_vpn_app $PKT` — **这就是每次重启自动开启 VPN Always-On 的元凶**。直接干掉整个模块
+
+## 2026-05-26 21:30
+- [2026-05-26 21:30:23] **AI(sisyphus)**: Tailscale 已彻底清除。Magisk 安装失败是因为已有更高版本（可能隐藏了
