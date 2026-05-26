@@ -216,3 +216,30 @@
 - [2026-05-27] [OP] 呼吸灯打分系统接入Telegram: waybar-score-finalize.sh(每日23:59 P2日报) + waybar-score.sh(<60分 P1告警, 30min cooldown)。之前只有notify-send桌面通知，现已补全Telegram通道。
 - [2026-05-27] [OP] 会话冷归档方案: OpenClaw session jsonl→~/.local/state/sessions-archive/, systemd timer每天归档, 30天自动清理。比"删除时消化"方案省90% token且不灌噪音
 - [2026-05-27] [OP] 配置: OpenClaw 多Bot路由 | main agent 改为分类路由入口 | 关键词分类: finance/ops/rss/coding/1688/general | 非1688消息→重定向用户到对应Bot | 已重启gateway
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 25 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 28 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 29 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 29 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 29 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 56 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 29 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 29 hours (healthy)
