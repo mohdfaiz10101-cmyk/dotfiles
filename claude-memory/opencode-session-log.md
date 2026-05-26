@@ -49217,3 +49217,6 @@ opencode chat "..."   # 对话模式
 ## 2026-05-26 22:23
 - [2026-05-26 22:23:02] **AI(sisyphus)**: [ok] 修改 opencode-session → 直接 attach tmux openclaw 无需新建 session
 [完成] `opencode continue` 现在等价于 `tmux attach -t openclaw`，已修改 `~/.local/bin/opencode-session`
+
+## 2026-05-26 22:23
+- [2026-05-26 22:23:44] **用户**: 系统通知可可不可以变成呼吸灯点击再弹出
