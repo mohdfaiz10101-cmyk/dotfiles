@@ -49552,3 +49552,9 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-27 00:34
 - [2026-05-27 00:34:04] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-27 00:35
+- [2026-05-27 00:35:06] **AI(sisyphus)**: NixOS timer 已死。日志里的 `am start` 一定还有其他来源。查 cron 和手机端脚本
+- [2026-05-27 00:35:13] **AI(sisyphus)**: [ok] openclaw gateway -- 端口 18789 LAN 绑定，已启动 (pid 783823)
+
+加 `--allow-unconfigured` 绕过了 config 中 `mode:local` 与 `--bind lan` 的冲突。
