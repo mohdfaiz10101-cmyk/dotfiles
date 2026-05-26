@@ -5,10 +5,13 @@ macg_mcp.py — macg 工具的 MCP Server
 CC 用 Claude 思考，macg 用 GLM 执行 — 各司其职，只开一个终端
 """
 
-import os, sys, json, subprocess, urllib.request, urllib.error, urllib.parse, sqlite3
+import os, sys, json, subprocess, urllib.request, urllib.error, urllib.parse, sqlite3, base64
 from pathlib import Path
 import requests
 from datetime import datetime
+
+# StepFun API 客户端路径
+sys.path.insert(0, "/mnt/ai/apps/stepfun-telegram-bot")
 
 # 确保 agi 目录在 path 中
 sys.path.insert(0, str(Path(__file__).parent))
@@ -686,3 +689,51 @@ def image_search(query: str, limit: int = 10) -> str:
         return "[FAIL] 图片搜索服务未运行 (localhost:9890)"
     except Exception as e:
         return f"[FAIL] {e}"
+
+# ── 阶跃星辰 StepFun API 工具 ─────────────────────────────────────────────
+
+@mcp.tool()
+def stepfun_image_generate(prompt: str, size: str = "1024x1024", seed: int = None,
+                           cfg_scale: float = 1.0, steps: int = 8,
+                           response_format: str = "url") -> str:
+    """阶跃星辰图像生成。prompt: 图片描述（最长512字）。size: 1024x1024|768x1360|896x1184|1360x768|1184x896。返回图片URL或base64。"""
+    from stepfun_api import image_generate
+    result = image_generate(
+        prompt=prompt, size=size, seed=seed, cfg_scale=cfg_scale,
+        steps=steps, response_format=response_format,
+    )
+    if result["success"]:
+        url = result.get("url", "")
+        b64 = result.get("b64_json", "")
+        preview = url if url else f"[base64, {len(b64)} chars]"
+        return f"[OK] 已生成 | size={size} | seed={result.get('seed')} | {preview}"
+    return f"[FAIL] {result.get('error', 'unknown')}"
+
+
+@mcp.tool()
+def stepfun_tts(text: str, voice: str = "livelybreezy-female",
+                model: str = "step-tts-2", speed: float = 1.0,
+                output_path: str = "") -> str:
+    """阶跃星辰文字转语音。text: 转换文本。voice: 音色。model: step-tts-2|step-tts-mini|stepaudio-2.5-tts。output_path可选输出路径。"""
+    from stepfun_api import tts_generate
+    result = tts_generate(
+        text=text, voice=voice, model=model, speed=speed,
+        output_path=output_path or None,
+    )
+    if result["success"]:
+        return f"[OK] TTS 已生成 → {result['audio_path']} ({result.get('format', 'mp3')})"
+    return f"[FAIL] {result.get('error', 'unknown')}"
+
+
+@mcp.tool()
+def stepfun_asr(audio_path: str, model: str = "stepaudio-2.5-asr",
+                language: str = "zh") -> str:
+    """阶跃星辰语音识别。audio_path: 音频文件路径。model: stepaudio-2.5-asr|stepaudio-2-asr-pro。language: zh|en|ja|ko。返回识别文本。"""
+    from stepfun_api import asr_transcribe
+    result = asr_transcribe(audio_path=audio_path, model=model, language=language)
+    if result["success"]:
+        text = result.get("text", "")
+        usage = result.get("usage", {})
+        tokens = usage.get("total_tokens", "?")
+        return f"[OK] 识别结果 ({tokens} tokens): {text}"
+    return f"[FAIL] {result.get('error', 'unknown')}"

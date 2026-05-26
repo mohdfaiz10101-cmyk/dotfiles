@@ -10,7 +10,8 @@ ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8080 " && echo "PORT 8080 IN USE"
 ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-8080.service
 Restart=always
-RestartSec=10
+RestartSec=3
+ExecStopPost=-/bin/sh -c 'echo "[$(date -Iseconds)] ttyd-8080 stopping, dumping context" >> /tmp/ttyd-stop-debug.log; ps -eo ppid,pid,comm --forest --no-headers | head -50 >> /tmp/ttyd-stop-debug.log 2>&1; journalctl --user --since "10 seconds ago" -o cat --no-pager | grep -v ttyd | head -20 >> /tmp/ttyd-stop-debug.log 2>&1; echo "---" >> /tmp/ttyd-stop-debug.log'
 
 [Install]
 WantedBy=default.target

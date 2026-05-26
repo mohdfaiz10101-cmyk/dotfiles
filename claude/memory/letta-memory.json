@@ -412,6 +412,16 @@
           "text": "2026-05-25 OP修复: 任务审查面板归档按钮请求失败 | 根因: TaskReviewPanel.tsx HUB硬编码localhost:9800，外网(19890 FRP→ttyd)访问时localhost指向手机而非主机 | 修复: next.config.ts添加rewrites(/api/hub/*→localhost:9800/*)，前端改用相对路径/api/hub | 结果: 已验证通过",
           "tags": "op-exec,frontend,task-review,frp",
           "timestamp": "1779720730"
+        },
+        {
+          "text": "2026-05-26 OP: 修复19890端口iOS输入法问题，ttyd xterm.js textarea添加composition事件处理、防失焦、自动重聚焦，iOS输入法IME候选窗口现可正常使用",
+          "tags": "op-exec,ttyd,ios,ime",
+          "timestamp": "1779732425"
+        },
+        {
+          "text": "2026-05-26: 部署FreshRSS RSS系统。Docker部署在/mnt/ai/apps/rss/，端口8420。4个RSS源(BBC/The Verge/Ars/FreshRSS)。Telegram Bot集成到opencode-telegram-bot.py v3，每5分钟轮询推送。关键经验: (1) Docker container无curl，healthcheck改用php脚本 (2) RSS摘要含HTML标签(figure)，必须strip后再发Telegram (3) Telegram callback_data限制64字节，不能用完整标题作数据 (4) AI摘要按钮改为动态从FreshRSS API获取文章内容。LiteLLM key: sk-litellm-charlie-2026, 模型: glm-4-flash。持久化: ~/.local/state/rss-bot/",
+          "tags": "rss,telegram,freshrss,bot,deployment",
+          "timestamp": "1779733181"
         }
       ]
     },

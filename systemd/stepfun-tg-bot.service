@@ -1,0 +1,17 @@
+[Unit]
+Description=StepFun Telegram Bot — 图像生成/TTS/ASR
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/mnt/ai/apps/stepfun-telegram-bot/.env
+ExecStart=/home/charlie/agi/.venv/bin/python /mnt/ai/apps/stepfun-telegram-bot/telegram_bot.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+WorkingDirectory=/mnt/ai/apps/stepfun-telegram-bot
+
+[Install]
+WantedBy=default.target
