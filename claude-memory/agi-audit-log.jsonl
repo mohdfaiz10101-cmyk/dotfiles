@@ -2540,3 +2540,4 @@
 {"ts": "2026-05-26 19:22", "type": "cycle", "summary": "系统运行正常，存在瞬时 CPU 占用但无实质性风险", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:24", "type": "cycle", "summary": "系统运行正常，CPU与内存负载处于健康水平", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:25", "type": "cycle", "summary": "系统负载正常，存在高CPU进程但属于常规服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 19:26", "type": "cycle", "summary": "系统负载正常，CPU存在短期波峰但无风险", "alert_count": 0, "skipped_llm": false}
