@@ -48886,3 +48886,22 @@ Chromium (Playwright)        → Playwright专用Chromium (148.0.7778.96)
 ## 2026-05-26 16:40
 - [2026-05-26 16:40:24] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
 - [2026-05-26 16:40:27] **用户**: 那怎么弄
+
+## 2026-05-26 16:42
+- [2026-05-26 16:42:08] **AI(sisyphus)**: 配置完成，验证通过。
+
+---
+
+```
+[ok] 备份旧配置 -- openclaw.json.bak
+[ok] 新增4个Agent -- main(全局)/ops(运维)/rss(订阅)/finance(财务)
+[ok] Telegram多账号路由 -- accounts:4 + bindings:4
+[ok] Discord/MCP/Skills -- 全部保留
+[ok] 规则写入 -- lessons-learned.md + memory_set
+```
+
+**OpenClaw 配置已生效，重启后进入多Bot路由模式。**
+
+---
+
+⚠️ **你需要做的：去 @BotFather 
