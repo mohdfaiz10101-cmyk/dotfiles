@@ -2475,3 +2475,4 @@
 {"ts": "2026-05-26 18:07", "type": "cycle", "summary": "系统各项指标正常，CPU负载较高由python3.13进程引起但属已知现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 18:08", "type": "cycle", "summary": "系统运行正常，存在Python3.13进程高CPU占用", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 18:09", "type": "cycle", "summary": "系统运行正常，存在Python高CPU进程但属已知背景服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 18:10", "type": "cycle", "summary": "系统运行正常，存在 Python3.13 高 CPU 占用但属于已知正常服务", "alert_count": 0, "skipped_llm": false}
