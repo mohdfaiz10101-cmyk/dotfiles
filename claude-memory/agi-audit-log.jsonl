@@ -3089,3 +3089,4 @@
 {"ts": "2026-05-27 06:06", "type": "cycle", "summary": "系统运行正常，CPU高占用为正常进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:07", "type": "cycle", "summary": "系统运行正常，Python3.13 进程 CPU 占用高属已知现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 06:08", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 06:09", "type": "cycle", "summary": "系统运行正常，Python 进程高负载属于历史已知模式", "alert_count": 0, "skipped_llm": false}
