@@ -49468,3 +49468,6 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
   (2) APK BOOT_COMPLETED(RescheduleReceiver) → 已禁用
 
 下次重启验证一下，应该
+
+## 2026-05-27 00:23
+- [2026-05-27 00:23:20] **用户**: 怎么用 切review agent吗
