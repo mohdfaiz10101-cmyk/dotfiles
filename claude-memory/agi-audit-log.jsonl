@@ -2679,3 +2679,4 @@
 {"ts": "2026-05-26 22:08", "type": "cycle", "summary": "系统负载正常，存在高CPU Python3.13进程但判定为非异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:09", "type": "cycle", "summary": "系统运行正常，CPU占用略高但整体稳定", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:10", "type": "cycle", "summary": "系统运行正常，python3.13 进程 CPU 占用较高属于已知正常现象", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:13", "type": "cycle", "summary": "LLM 返回无效 JSON：Expecting value: line 1 column 1 (char 0)", "alert_count": 1, "skipped_llm": false}
