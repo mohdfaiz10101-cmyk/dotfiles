@@ -2686,3 +2686,4 @@
 {"ts": "2026-05-26 22:17", "type": "cycle", "summary": "系统运行正常，存在高CPU进程但符合历史经验", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:18", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无异常服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:19", "type": "cycle", "summary": "系统运行正常，存在瞬时CPU占用但无实质风险", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:20", "type": "cycle", "summary": "系统资源正常，部分进程CPU占用较高但属正常现象", "alert_count": 0, "skipped_llm": false}
