@@ -49329,3 +49329,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 修复：
 1. `chromium-launch` 改用 `google-chrome-stable`
 2. `playwright-chromium-nix` 改用系统完整 Chromium
+
+## 2026-05-26 23:16
+- [2026-05-26 23:16:26] **用户**: z没看到啊
