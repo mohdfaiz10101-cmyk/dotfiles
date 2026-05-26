@@ -48988,3 +48988,11 @@ OP 不会也没必要读 CLAUDE.md，它是 CC 专属。刚才加的 AUTO_SKILL_
 
 ## 2026-05-26 17:36
 - [2026-05-26 17:36:29] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-26 17:37
+- [2026-05-26 17:37:44] **AI(sisyphus)**: [ok] 诊断根因 → anti-restart-loop.sh 状态持久化 bug，计数永久累积导致每60s重复kill
+[ok] 修复脚本 → mask 后 unset 计数 + sed 删除 state 行
+[ok] 清空过期状态 → ~/.local/state/anti-restart-loop.state
+[ok] 恢复被误mask服务 → langchain-hub、glm-monitor 已 unmask
+[ok] ttyd-8080 → 自 16:25 稳定运行，strace+watcher 双监控
+[!] 原始 SIGTERM (13:56/14:03) — 非 anti-
