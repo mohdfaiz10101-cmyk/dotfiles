@@ -49235,3 +49235,6 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 22:27
 - [2026-05-26 22:27:09] **用户**: 我呼吸灯的glm额度和stepfun额度还没更新呢 playwright 能定期抓取吗 或者其他ca操作去率先你
+
+## 2026-05-26 22:27
+- [2026-05-26 22:27:34] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
