@@ -49263,3 +49263,13 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 22:40
 - [2026-05-26 22:40:37] **用户**: 需要镜像
+
+## 2026-05-26 22:42
+- [2026-05-26 22:41:50] **AI(sisyphus)**: [ok] systemd timer 已启用 -- 每2小时(08:00-22:00)自动抓取
+[ok] Playwright persistent context -- ~/.cache/quota-browser/ 保存登录态
+[需操作] 首次登录 -- 在终端运行: `update-api-quota.sh --headed`
+[需操作] 两个平台都需要手机/微信验证码登录，无法代劳
+
+说明：
+- 脚本会打开 Chrome 窗口，StepFun 90s、GLM 90s，自动检测登录后继续
+- 登录成功后会话保存在 `~/.cache/quota-browser/`，后续 headless
