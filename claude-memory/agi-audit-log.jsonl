@@ -2023,3 +2023,4 @@
 {"ts": "2026-05-26 08:57", "type": "cycle", "summary": "系统运行正常，服务健康，CPU占用偏高属预期", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 08:58", "type": "cycle", "summary": "系统运行正常，CPU负载较低，服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 09:00", "type": "cycle", "summary": "系统运行正常，CPU高占用为正常进程，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 09:01", "type": "cycle", "summary": "系统运行正常，有Python进程高CPU占用但属正常波动", "alert_count": 0, "skipped_llm": false}
