@@ -49361,3 +49361,6 @@ am startservice -n com.tailscale.ipn/.IPNService
 
 ## 2026-05-26 23:31
 - [2026-05-26 23:31:00] **AI(sisyphus)**: OpenCode 仓库已于2025年9月归档。让我搜索其他社区方案。
+
+## 2026-05-26 23:51
+- [2026-05-26 23:51:11] **用户**: cd ~/.openclaw/workspace && opencode --agent sisyphus --continue 2>/dev/null || opencode --agent sisyphus
