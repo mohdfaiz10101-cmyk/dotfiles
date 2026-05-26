@@ -176,3 +176,40 @@ Charlie 说过的话、做过的选择 → MUST 作为永久偏好自动执行�
 - 搭建时说"已打通"但没有 curl 验证记录 = 空壳
 
 **修复流程**：发现空壳 → 定位断点 → 修复 → 重跑 smoke-test → 通过才标记完成
+
+## 自动 Skill 封装（AUTO_SKILL_PROTOCOL — 死规则）
+
+完成复杂任务后 MUST 智能评估并委托 Sisyphus 封装为 skill：
+
+### CC 端（触发规则）
+以下情况完成时 MUST 用 auto-skill 标准评估（满足 ≥2 条即触发）：
+- 新搭建组件/服务/脚本 → 评估可复用性
+- 解决非平凡 bug/踩坑 → 评估知识密度
+- 多步骤操作流程（≥3步）→ 评估是否可标准化
+- 架构决策/方案对比 → 评估是否值得记录
+
+**auto-skill 判断标准**：① 可复用 ② 多步骤(≥3) ③ 知识密度高 ④ skills/ 中缺失
+
+**触发后执行**：
+```bash
+macg_op_delegate '
+auto-skill: 封装本次工作为 skill
+工作摘要: <3-5句描述完成了什么、踩了什么坑>
+建议名称: <kebab-case>
+建议分类: <system|code|devops|meta|ai>
+'
+```
+
+### Sisyphus 端（执行规则）
+收到 auto-skill 委托后：
+1. 加载 `skill("auto-skill")` 获取执行流程
+2. 基于 CC 传来的工作摘要 + 独立判断，评估是否满足 ≥2 条标准
+3. 不满足 → 回复 CC "无需封装，原因: {1句}"
+4. 满足 → 直接执行 `python3 ~/.claude/skills/create-skill.py`，不询问确认
+5. 输出 `[AUTO_SKILL] 已创建 → ~/.claude/skills/{name}/SKILL.md`
+
+### 禁止
+- ❌ CC 说"建议封装"但不 delegate
+- ❌ Sisyphus 问"要不要封装"
+- ❌ 以"任务已完成"为由跳过评估
+- ✅ CC 智能判断 → delegate → Sisyphus 智能执行，全自动闭环

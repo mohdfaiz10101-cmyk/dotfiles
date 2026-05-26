@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenClaw tmux session (background, ensures session always running)
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/run/current-system/sw/bin/bash -c 'tmux has-session -t openclaw 2>/dev/null || tmux new-session -d -s openclaw -c /home/charlie/.openclaw/workspace -e TERM=xterm-256color -e OPENCODE_EXPERIMENTAL_WORKSPACES=1 "while true; do opencode /home/charlie/.openclaw/workspace; echo \"[openclaw] $(date) — 退出，3s后重启...\"; sleep 3; done"'
+ExecStop=/run/current-system/sw/bin/bash -c 'tmux kill-session -t openclaw 2>/dev/null; true'
+Environment=OPENCODE_EXPERIMENTAL_WORKSPACES=1
+Environment=NODE_OPTIONS=--max-old-space-size=768
+
+[Install]
+WantedBy=default.target

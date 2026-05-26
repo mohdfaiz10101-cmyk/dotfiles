@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Chromium (Playwright)
+Comment=Playwright Chromium — 自动化测试专用，不与日常Chrome共享profile
+Exec=/home/charlie/.local/bin/playwright-chromium-headed %U
+Icon=google-chrome
+Type=Application
+Categories=Network;WebBrowser;
+StartupWMClass=chromium

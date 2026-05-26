@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":11434 " && echo "PORT 11434 IN USE" && exit 1 || true'
-ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -I /home/charlie/.local/share/ttyd/index.html -t fontSize=10 -t disableLeaveAlert=true -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -t scrollback=50000 -W /home/charlie/.local/bin/opencode-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -p 7692 -P 3 -I /home/charlie/.local/share/ttyd/index.html -t fontSize=10 -t disableLeaveAlert=true -t theme={"background":"#1a1a2e","foreground":"#e0e0e8"} -t scrollback=50000 -W /home/charlie/.local/bin/opencode-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-opencode.service
 Restart=on-failure
 StartLimitAction=none

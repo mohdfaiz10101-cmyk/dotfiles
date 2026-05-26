@@ -310,22 +310,26 @@ async def diagnose_failure(service_name: str) -> dict:
             }
 
 
+def _safe_run(cmd, timeout=15):
+    """safe subprocess.run with timeout handling"""
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return subprocess.CompletedProcess(cmd, -1, stdout="", stderr=f"timeout after {timeout}s")
+
+
 FIX_ACTIONS = {
-    "restart": lambda svc: subprocess.run(
-        ["systemctl", "--user", "restart", svc],
-        capture_output=True, text=True, timeout=15
+    "restart": lambda svc: _safe_run(
+        ["systemctl", "--user", "restart", svc], timeout=15
     ),
-    "docker_restart": lambda svc: subprocess.run(
-        ["docker", "restart", svc],
-        capture_output=True, text=True, timeout=15
+    "docker_restart": lambda svc: _safe_run(
+        ["docker", "restart", svc], timeout=15
     ),
-    "reset_failed": lambda svc: subprocess.run(
-        ["systemctl", "--user", "reset-failed", svc],
-        capture_output=True, text=True, timeout=10
+    "reset_failed": lambda svc: _safe_run(
+        ["systemctl", "--user", "reset-failed", svc], timeout=10
     ),
-    "docker_cleanup": lambda _: subprocess.run(
-        ["docker", "container", "prune", "-f"],
-        capture_output=True, text=True, timeout=30
+    "docker_cleanup": lambda _: _safe_run(
+        ["docker", "container", "prune", "-f"], timeout=30
     ),
 }
 

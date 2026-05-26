@@ -10,6 +10,7 @@
 - [手机操作自动执行](feedback_phone_operations.md) — 手机操作 MUST 用 ADB/Chrome CDP 直接执行，禁止让用户手动操作手机
 - [压缩输出格式](compaction-output-format.md) — opencode/诊断输出遵循 R1-R8 规则，禁用过渡句
 - [AI工具决策必须联网搜最新](feedback_ai_tools_search_first.md) — OpenCode/LiteLLM/MCP等方案前MUST WebSearch验证当前版本行为
+- [公网入口必须用 DuckDNS](feedback_public_access.md) — 公网地址 MUST 用 `charlie1990.duckdns.org`，不用 Tailscale Funnel
 - [Waybar 管理](feedback_waybar-management.md) — 只用 systemctl --user 管理，禁止手动启动
 - [Hyprland配置错误诊断](feedback_hyprland_configerrors.md) — 报错先 `hyprctl configerrors`；windowrule 0.54+ 块语法
 - [OpenCode Token 消耗优化](opencode-cost-optimization.md) — L1+L2 已完成（MCP 裁剪、模型降级、快捷指令）

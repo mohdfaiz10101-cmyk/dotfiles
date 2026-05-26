@@ -6,7 +6,7 @@ Requires=overtab-serve.service
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7698 " && echo "PORT 7698 IN USE" && exit 1 || true'
-ExecStart=/run/current-system/sw/bin/ttyd -p 7698 -w /home/charlie/.openclaw/workspace -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/overtab-tmux-wrap
+ExecStart=/run/current-system/sw/bin/ttyd -P 3 -p 7698 -w /home/charlie/.openclaw/workspace -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/overtab-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-overtab.service
 Restart=on-failure
 StartLimitAction=none

@@ -1,0 +1,6 @@
+[Unit]
+Description=ttyd strace SIGTERM watcher
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/ttyd-strace-watcher.sh

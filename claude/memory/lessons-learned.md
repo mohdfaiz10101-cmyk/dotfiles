@@ -564,3 +564,107 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 18 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 18 hours (healthy)
+
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 15 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 18 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 19 hours (healthy)
+
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 16 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 19 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 20 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 20 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 20 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 20 hours (healthy)
+
+- [2026-05-26] [OP] AUTO_SKILL_PROTOCOL 部署: CLAUDE.md 新增死规则 — CC 完成复杂任务后智能评估 → macg_op_delegate 委托 Sisyphus → Sisyphus 加载 auto-skill 判断 → 满足 ≥2 条标准则执行 create-skill.py 封装 | 全自动闭环，禁止询问确认
+- [2026-05-26] [OP] 发现: anti-restart-loop.sh | 机制: 每60秒扫描journal "Scheduled restart job"，>10次/60秒→systemctl stop | 今天15:59因strace调试导致14次崩溃→触发stop | strace已部署 --trace=signal --signal=SIGTERM -f 监控原始问题
+- [2026-05-26] [OP] 失败学习: anti-restart-loop watchdog | 错误: 检测"Scheduled restart job"后stop服务，但Restart=on-failure触发重启→无限循环 | 修复: 禁用timer，改用systemd原生StartLimitBurst+StartLimitIntervalSec限流 | 原因: 看门狗与systemd重启机制冲突
+- [2026-05-26] [AUTO] 偏好: auto-restart | 内容: 需要重启服务才能生效的操作，OP自动重启，禁止询问"需要重启吗""要我重启吗"- [2026-05-26] [PREF] Telegram多Bot路由 | 规则: 每个群=独立Bot Token=独立Agent(ops/rss/finance)，OpenClaw bindings按accountId路由 | 主Bot @charlie_1688_bot 保留为全局入口
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 115 | 被纠正: 2次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 120 | 被纠正: 3次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+
+### 会话摘要 [2026-05-26] [Sonnet/自动]
+- 对话轮次: 132 | 被纠正: 3次
+  - 用户纠正: 19890 端口什么问题 手机访问不稳定 还任务经常停止 我本地的cli模式 就不怎么断开 我用opencode continue打开的 跟19890什么区别 
+  - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
+
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 17 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 20 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 21 hours (healthy)

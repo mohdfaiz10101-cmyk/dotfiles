@@ -1,0 +1,13 @@
+[Unit]
+Description=Wayland PRIMARY to CLIPBOARD bridge (select-to-copy)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/wl-paste --primary --watch /run/current-system/sw/bin/wl-copy
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target
