@@ -49621,3 +49621,12 @@ P0: Agent合并+Regis
 
 ## 2026-05-27 00:43
 - [2026-05-27 00:42:42] **用户**: 1688 bot还是会收到一些消息 但是他没有自动归类到我的telegram下面 让他们选择对应的群啊 不要出现在1688 bot
+
+## 2026-05-27 00:44
+- [2026-05-27 00:44:11] **AI(sisyphus)**: [ok] waybar-score-finalize.sh — 每日23:59归档时 P2 推送 Telegram
+[ok] waybar-score.sh — <60分时 P1 告警 Telegram (30min cooldown防刷)
+[ok] 两文件语法校验通过，运行测试通过
+
+已接入两条Telegram通知通道：
+- **每日汇总**：`waybar-score-finalize.sh` → Telegram P2（"系统健康日报"）
+- **低分告警**：`waybar-score.sh` → 评分<60时 P1 推送（"⚠️ 系统健康告警"），同评分30分钟内不重复
