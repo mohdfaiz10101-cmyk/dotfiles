@@ -49037,3 +49037,6 @@ AGENTS.md (~/.config/opencode/ → dotfiles/opencode/AGENTS.md symlink)
 [ok] 修复phone-clip-sync — 增加24h新鲜度检查，过期octoclip数据直接丢弃；空REMOTE不再计入FAIL_COUNT
 
 [ok] 修复notify-se
+
+## 2026-05-26 17:54
+- [2026-05-26 17:54:53] **用户**: karing我都删除了 怎么还会有这个服务 问题是以前我装了tailscale他就不断的开打开
