@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-27 01:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-27 01:30
 
 ## 2026-05-27
 
@@ -8,6 +8,25 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
@@ -57,12 +76,19 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/.session-transfer.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.config**: .config/opencode/opencode.json MODIFY
+- [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
@@ -91,12 +117,16 @@
 - [file-create] **.config**: .config/systemd/user/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/caddy-launcher.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/default.target.wants/ops-bot.service CREATE
+- [file-create] **.config**: .config/systemd/user/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/disk-watchdog.service MOVED_TO
@@ -110,12 +140,15 @@
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/frp-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
+- [file-create] **.config**: .config/systemd/user/frp-watchdog.timer MOVED_TO
+- [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
@@ -132,7 +165,9 @@
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
+- [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/session-archive.timer CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-30-14-367Z-738606-gateway.startup_failed.json MOVED_TO
@@ -147,6 +182,14 @@
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-finance/0000000628522269.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-finance/0000000628522270.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-finance/0000000628522271.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440936.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440937.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440938.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440939.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440940.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440941.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440942.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440943.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-ops/0000000854600583.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-ops/0000000854600584.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-ops/0000000854600585.json MOVED_TO
@@ -154,13 +197,23 @@
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-rss/0000000708891940.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-rss/0000000708891941.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-rss/0000000708891942.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-rss/0000000708891943.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/ingress-spool-rss/0000000708891944.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-finance.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-finance.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/update-offset-main.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/update-offset-main.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/update-offset-main.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-ops.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-ops.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-rss.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-rss.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-rss.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/update-offset-rss.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/telegram/update-offset-rss.json MOVED_TO
+- [file-delete] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440939.json DELETE
+- [file-delete] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440941.json DELETE
+- [file-delete] **.openclaw**: .openclaw/telegram/ingress-spool-main/0000000199440943.json DELETE
 ## 2026-05-26
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
