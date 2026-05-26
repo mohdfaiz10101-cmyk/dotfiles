@@ -49492,3 +49492,7 @@ browser = await chromium.connect_over_cdp("http://localhost:9223")
 [ok] `review-two-model` skill 重启后自动注册
 
 直接切到 tmux 窗口或用 `tmux attach -t sisy` 连接。
+
+## 2026-05-27 00:29
+- [2026-05-27 00:28:59] **用户**: 我现在这个窗口直接用？
+- [2026-05-27 00:28:59] **AI(sisyphus)**: 对，你现在就是重启后的 S
