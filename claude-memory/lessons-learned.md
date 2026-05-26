@@ -251,3 +251,6 @@
 ### 会话摘要 [2026-05-27] [Sonnet/自动]
 - 对话轮次: 119 | 被纠正: 1次
   - 用户纠正: 我不懂啊 不是有api吗 之前opencode就能用api创建群
+
+- [2026-05-27] [OP] 失败学习: ADB设备混淆 | 错误: 声称删除手机脚本实际删了平板 | 根因: 未区分ADB连接目标设备, NixOS adb默认连平板(192.168.123.241:5555), 手机只能通过Windows USB(ff3ef385)访问 | 正确: 每次ADB操作前MUST执行 `adb devices -l` 确认当前设备, 手机操作必须走 `ssh G@192.168.123.136 "adb -s ff3ef385 shell su -c '...'"`
+- [2026-05-27] [PREF] 设备识别: 手机=OPPO PKR110(ff3ef385/USB/Windows), 平板=Xiaomi Pad 6 nabo(192.168.123.241:5555/WiFi/NixOS直连), ADB操作前必须明确目标设备
