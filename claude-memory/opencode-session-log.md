@@ -48633,3 +48633,8 @@ https://openapi.baidu.com/oauth/2.0/authorize?response_type=code&client_id=pFi5M
 - [2026-05-26 13:26:51] **AI(sisyphus)**: 没有。这个 bot 是 OpenCode Session 管理器 —— 你和它 1 对 1 私聊即可操作 OpenCode 会话（新建/切换/归档/执行命令）。不需要群。
 
 现在 bot 已在后台运行，你从手机 Telegram 直接发 `/start` 测试。
+
+## 2026-05-26 13:27
+- [2026-05-26 13:27:23] **AI(sisyphus)**: [ok] 终止旧ttyd(pid 2574435) -- 已重启，新PID 118115
+[ok] 19890链路验证 -- 19890→FRPS→FRPC→8080 全部200正常
+[ok] 新建session -- ttyd新会话已就绪，charlie1990.duckdns.org:19890 可访问
