@@ -2558,3 +2558,4 @@
 {"ts": "2026-05-26 19:43", "type": "cycle", "summary": "系统负载正常，CPU存在瞬时峰值但整体健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:44", "type": "cycle", "summary": "系统各项指标正常，Python3.13进程属正常服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 19:45", "type": "cycle", "summary": "系统负载正常，存在Python3.13高CPU进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 19:46", "type": "cycle", "summary": "系统负载正常，存在高CPU Python进程但不派发任务", "alert_count": 0, "skipped_llm": false}
