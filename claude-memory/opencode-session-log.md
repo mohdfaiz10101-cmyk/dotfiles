@@ -49247,3 +49247,12 @@ opencode chat "..."   # 对话模式
 
 ## 2026-05-26 22:34
 - [2026-05-26 22:34:17] **AI(sisyphus)**: 脚本正常，两个平台都检测到未登录。现在需要首次 headed 登录
+
+## 2026-05-26 22:35
+- [2026-05-26 22:35:17] **AI(sisyphus)**: [ok] 创建 NotificationContext.tsx — 全局通知状态管理 (addNotification/markRead/clearAll)
+[ok] 创建 NotificationCenter.tsx — 呼吸灯按钮 + 展开式灵动岛通知面板
+[ok] 添加 CSS 动画 — breathDot 呼吸 + islandSlideIn 弹出动画
+[ok] 集成 layout.tsx — NotificationProvider 包裹全应用
+[ok] 集成 TopBar.tsx — 右上角呼吸灯按钮
+[ok] bun run build — 编译通过无报错
+[ok] DOM 验证
