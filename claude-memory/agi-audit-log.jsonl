@@ -2675,3 +2675,4 @@
 {"ts": "2026-05-26 22:03", "type": "cycle", "summary": "系统运行正常，存在瞬时CPU尖峰", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:04", "type": "cycle", "summary": "系统运行正常，CPU负载较高但无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-26 22:05", "type": "cycle", "summary": "系统运行正常，CPU存在较高负载进程但无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-26 22:06", "type": "cycle", "summary": "系统负载较高，但服务正常，无磁盘或内存压力", "alert_count": 1, "skipped_llm": false}
