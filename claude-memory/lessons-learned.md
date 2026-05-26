@@ -698,3 +698,4 @@
 - 对话轮次: 126 | 被纠正: 2次
   - 用户纠正: 你这样不对的 19890恢复原来设置。 17699 overcode域名要改成 17699 opencode terminal
   - 用户纠正: 我刚才用termux 连接了下 地址格式不对。连接后 connection failed
+[2026-05-26] [CONFIG] Telegram多Bot路由 | Bot: @charlie_op_bot→通知(-1003988580955) @charlie_rss_bot→RSS订阅(3725372254) @charlie_finbot→财务中心(-1003943958531) | 凭据: ~/.local/share/credentials/telegram-bots.json
