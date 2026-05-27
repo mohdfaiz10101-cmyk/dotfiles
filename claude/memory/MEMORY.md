@@ -47,7 +47,9 @@
 - **atlas** = 大师编排器，多 agent 并行
 - **prometheus** = 规划器，Plan Mode
 - **hephaestus** = 深度执行器，长上下文代码生成
-- ttyd-opencode 端口 7692 → 启动命令：`opencode --agent sisyphus`（tmux session "sisyphus"）
+- **`oc` alias** = `tmux attach-session -t openclaw`（= FRP:19890 = 本地:8080，opencode工作区）
+- ttyd-opencode 端口 7692 / FRP:18090 → tmux session "sisy"（sisyphus agent）
+- ttyd-8080 / FRP:19890 → tmux session "openclaw"（opencode工作区，含oc_ses_*窗口）
 
 ## 架构决策
 - [Chronos-Zenith](codebase-map.md) — Sensory/Subconscious/Bio-feedback 三模块
@@ -132,6 +134,7 @@
 
 ## OpenCode 审计
 - [配置审计 2026-05-17](opencode-audit-2026-05-17.md) — P0/P1/P2 问题 + 社区 Bug 匹配 + config-auditor 方案
+- [会话变更 2026-05-26](session-2026-05-26.md) — ttyd端口修复/oc alias/FRP端口澄清/Telethon建群
 
 ## 知识库索引
 - [踩坑日志](lessons-learned.md) — 错误修复经验（append-only）
@@ -163,7 +166,7 @@
 
 ## FRP 状态 (2026-05-21 更新)
 - frps: NixOS 本机 (192.168.123.209) :7000, dashboard :7500, token=frp-token-charlie-2026
-- NixOS frpc: 11个代理(ssh:2223/tty:17699/mosh×3/opencode:19890/hub:19891/letta:19892/openclaw:19893/sisy:18090/crewai:18091/agi:18300/openagents:18093/adb:15555)
+- NixOS frpc: ssh:2223/tty:17699/mosh×3/**opencode-workspace:19890**(→本地8080,openclaw tmux)/hub:19891/letta:19892/openclaw-gw:19893/sisy:18090(→本地8088,sisy tmux)/crewai:18091/agi:18300/openagents:18093/adb:15555
 - Windows frpc: 2个代理(ssh:2222/rdp:3389), 路径 C:\Toolsrpc\, 开机自启 schtasks FRPClient
 - Win IP: **静态 192.168.123.100** (WLAN, DHCP已关闭), 连 frps 用 192.168.123.209:7000
 - **固定公网地址**: https://nixos-1.tail60cff7.ts.net (Tailscale Funnel → :7699 Launcher)

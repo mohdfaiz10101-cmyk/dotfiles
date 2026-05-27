@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenClaw 会话冷归档
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/session-archive.sh
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chromium (系统beta-不要用)
+Comment=系统自带的Chromium beta版，有测试版提示。请用"Chromium"替代。
+Exec=chromium %U
+Icon=chromium
+Type=Application
+Categories=Network;WebBrowser;
+NoDisplay=true
+Hidden=true

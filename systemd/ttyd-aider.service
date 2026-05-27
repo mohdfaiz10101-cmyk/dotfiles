@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7693 " && echo "PORT 7693 IN USE" && exit 1 || true'
+ExecStartPre=-/bin/sh -c 'fuser -k 7693/tcp 2>/dev/null; sleep 0.5; true'
 ExecStart=/run/current-system/sw/bin/ttyd -b /aider -p 7693 -t fontSize=13 -t disableLeaveAlert=true -W /run/current-system/sw/bin/bash --login
 OnFailure=sentinel-onfailure@ttyd-aider.service
 Restart=on-failure

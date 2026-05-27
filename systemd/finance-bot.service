@@ -1,19 +1,16 @@
 [Unit]
-Description=财务管理 Telegram Bot（论坛交互）
-After=network.target finance-agent.service
+Description=Finance Telegram Bot (@charlie_finbot)
+After=network.target
 
 [Service]
 Type=simple
-EnvironmentFile=%h/dotfiles/systemd/service-common.env
-Environment=PYTHONPATH=/home/charlie/dotfiles/agi-core/finance
-Environment=HOME=/home/charlie
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/dotfiles/agi-core/finance/tg-finance-bot.py
-OnFailure=sentinel-onfailure@finance-bot.service
+WorkingDirectory=/home/charlie/agi
+EnvironmentFile=-/home/charlie/agi/.env
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/finance_bot.py
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=15
+Environment=HOME=/home/charlie
+Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target

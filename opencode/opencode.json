@@ -9,6 +9,13 @@
         "apiKey": "sk-litellm-charlie-2026"
       },
       "models": {
+        "glm-5.1": {
+          "name": "GLM-5.1 (Z.AI)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
+          }
+        },
         "glm-5-turbo": {
           "name": "GLM-5-Turbo (Z.AI)",
           "limit": {
@@ -59,8 +66,8 @@
   "default_agent": "sisyphus",
   "compaction": {
     "auto": true,
-    "prune": false,
-    "reserved": 8192
+    "prune": true,
+    "reserved": 16384
   },
   "agent": {
     "build": {

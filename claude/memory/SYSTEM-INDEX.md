@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-26 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-27 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -13,7 +13,7 @@
 | 1716 | users:((".kdeconnectd-wr",pid=10906,fd=18)) |
 | 2222 | *:* |
 | 2223 | *:* |
-| 3000 | (v1",pid=4036010,fd=21)) |
+| 3000 | (v1",pid=4055476,fd=21)) |
 | 3001 | 0.0.0.0:* |
 | 3001 | [::]:* |
 | 3010 | 0.0.0.0:* |
@@ -33,7 +33,7 @@
 | 7681 | users:(("ttyd",pid=2128,fd=13)) |
 | 7690 | users:(("ttyd",pid=27633,fd=13)) |
 | 7691 | users:(("ttyd",pid=27688,fd=13)) |
-| 7692 | users:(("ttyd",pid=27616,fd=13)) |
+| 7692 | users:(("ttyd",pid=3904370,fd=13)) |
 | 7693 | users:(("ttyd",pid=27705,fd=13)) |
 | 7694 | users:(("ttyd",pid=837869,fd=13)) |
 | 7695 | users:(("ttyd",pid=27646,fd=13)) |
@@ -45,8 +45,8 @@
 | 7891 | users:(("mihomo",pid=2420,fd=6)) |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:(("ttyd",pid=4079109,fd=13)) |
-| 8081 | users:(("opencode",pid=9370,fd=21)) |
+| 8080 | users:(("ttyd",pid=3909781,fd=13)) |
+| 8081 | users:(("opencode",pid=914665,fd=22)) |
 | 8088 | users:(("python3.13",pid=83150,fd=3)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
@@ -61,7 +61,7 @@
 | 9800 | users:(("python3.13",pid=3828051,fd=6)) |
 | 9810 | users:(("python3.13",pid=2947,fd=6)) |
 | 9811 | users:(("python3.13",pid=2683,fd=6)) |
-| 9876 | users:(("python3.13",pid=2737,fd=3)) |
+| 9876 | users:(("python3.13",pid=435227,fd=3)) |
 | 9900 | users:(("python3.13",pid=2631,fd=6)) |
 | 9922 | users:(("MainThread",pid=2371,fd=21)) |
 | 9977 | users:(("python3",pid=2312,fd=3)) |
@@ -79,8 +79,8 @@
 | 18093 | *:* |
 | 18300 | *:* |
 | 18700 | *:* |
-| 18789 | users:(("node",pid=317194,fd=25)) |
-| 18791 | users:(("node",pid=317194,fd=26)) |
+| 18789 | users:(("node",pid=909787,fd=25)) |
+| 18791 | users:(("node",pid=909787,fd=26)) |
 | 19890 | *:* |
 | 19891 | *:* |
 | 19892 | *:* |
@@ -116,6 +116,7 @@ doc_knowledge.py
 doc_pipeline.py
 email_sync.py
 embedding_server.py
+finance_bot.py
 letta-sync.py
 mac.py
 macg.py
@@ -123,6 +124,7 @@ macg_api.py
 macg_mcp.py
 macg_memory_orchestrator.py
 macg_tui_demo.py
+marketing_bot.py
 mem0_bridge.py
 mem0_decay.py
 mem0_file_sync.py
@@ -130,8 +132,10 @@ mem0_watchdog.py
 memory_pulse_monitor.py
 notify.py
 op_push_service.py
+ops_bot.py
 proactive.py
 report_generator.py
+rss_bot.py
 self_improve.py
 sensor-bridge.py
 social_relations.py
@@ -165,10 +169,10 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（657个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（666个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
-**adb-*** (4个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-windows.sh`
+**adb-*** (5个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
 **agent-*** (3个): `agent-ask.py, agent-danmaku, agent-watch`
 **aggregate-*** (1个): `aggregate-marketing-research.sh`
 **agi-*** (2个): `agi-feedback-bus.sh, agi-persistent-monitor.sh`
@@ -200,6 +204,7 @@ static
 **clear-*** (2个): `clear-notifs, clear-notifs-btn`
 **clip-*** (1个): `clip-sync`
 **clipboard-*** (2个): `clipboard-sync-tablet, clipboard-sync-windows`
+**cliphist-*** (2个): `cliphist-health-check, cliphist-watchdog`
 **cloudflared-*** (4个): `cloudflared-bin, cloudflared-happy, cloudflared-launcher, cloudflared-ttyd`
 **code-*** (4个): `code-dual, code-indexer, code-search, code-watcher`
 **config-*** (2个): `config-immutable-snapshot, config-lock.sh`
@@ -239,7 +244,7 @@ static
 **health-*** (1个): `health-scorer`
 **hermes-*** (1个): `hermes-wrapper`
 **huggingface-*** (1个): `huggingface-cli`
-**hypr-*** (2个): `hypr-workspace-apply, hypr-workspace-learn`
+**hypr-*** (3个): `hypr-kdeconnect-portal, hypr-workspace-apply, hypr-workspace-learn`
 **ibus-*** (1个): `ibus-toggle.sh`
 **idea-*** (2个): `idea-2233, idea-boost.sh`
 **iflytek-*** (1个): `iflytek-dict-sync`
@@ -255,6 +260,7 @@ static
 **kilo-*** (1个): `kilo-profile`
 **lag-*** (1个): `lag-detector.sh`
 **latest-*** (1个): `latest-img`
+**launch-*** (1个): `launch-via-tablet.sh`
 **launcher-*** (1个): `launcher-health-check.sh`
 **letta-*** (12个): `letta-deadman-switch.sh, letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh... +2更多`
 **libreoffice-*** (1个): `libreoffice-x11`
@@ -285,7 +291,7 @@ static
 **openagents-*** (1个): `openagents-network-wrapper.sh`
 **openclaw-*** (1个): `openclaw-tmux-wrap`
 **opencode-*** (34个): `opencode-8080-proxy.py, opencode-autoupgrade, opencode-bug-tracker.sh, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-dstate-watchdog, opencode-export, opencode-format-compaction... +24更多`
-**other-*** (65个): `PyGPT.AppImage, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code... +55更多`
+**other-*** (67个): `PyGPT.AppImage, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code... +57更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
 **overtab-*** (3个): `overtab-serve-start, overtab-serve-stop, overtab-tmux-wrap`
@@ -295,7 +301,7 @@ static
 **permission-*** (1个): `permission_check.py`
 **pet-*** (1个): `pet-feeder`
 **petals-*** (1个): `petals-server.sh`
-**phone-*** (7个): `phone-8080-monitor.sh, phone-ai-bridge.sh, phone-clip-sync, phone-control.sh, phone-network-fix.sh, phone-screenshot, phone-tailscale-guard`
+**phone-*** (5个): `phone-ai-bridge.sh, phone-clip-sync, phone-control.sh, phone-network-fix.sh, phone-screenshot`
 **plasmashell-*** (1个): `plasmashell-crash-guard.sh`
 **playwright-*** (4个): `playwright-chromium-headed, playwright-chromium-nix, playwright-mcp-cleanup, playwright-smart.sh`
 **post-*** (1个): `post-edit-verify.sh`
@@ -307,7 +313,7 @@ static
 **quick-*** (2个): `quick-run-cmd, quick-screenshot`
 **rebuild-*** (2个): `rebuild-session-notes.sh, rebuild-system-index`
 **recovery-*** (1个): `recovery-manager`
-**review-*** (1个): `review-op-branch`
+**review-*** (2个): `review-op-branch, review-two-model.py`
 **rofi-*** (2个): `rofi-drun-pinyin.sh, rofi-pinyin-cache-builder.py`
 **roo-*** (12个): `roo-apply-optimizations.sh, roo-backup-config.sh, roo-code-check, roo-digest, roo-enforce-rules, roo-export, roo-index-load.sh, roo-index-save.sh, roo-restore-config.sh, roo-state-backup... +2更多`
 **router-*** (2个): `router-config-snapshot.sh, router-port-list.py`
@@ -319,7 +325,7 @@ static
 **selflearn-*** (1个): `selflearn-health-check.sh`
 **sentinel-*** (6个): `sentinel-ack, sentinel-core, sentinel-dispatch, sentinel-inject, sentinel-onfailure, sentinel-watch`
 **service-*** (3个): `service-config-guard, service-panel.sh, service-zombie-cleaner.sh`
-**session-*** (6个): `session-archive-cleanup.sh, session-archiver.sh, session-embedder-wrapper.sh, session-embedder.py, session-rag-server.py, session-switch`
+**session-*** (7个): `session-archive-cleanup.sh, session-archive.sh, session-archiver.sh, session-embedder-wrapper.sh, session-embedder.py, session-rag-server.py, session-switch`
 **setup-*** (2个): `setup-0011, setup-letta-telegram-alert`
 **sisy-*** (1个): `sisy-tmux-wrap`
 **skill-*** (1个): `skill-auto-extract.py`
@@ -337,9 +343,9 @@ static
 **task-*** (1个): `task-complete`
 **terminal-*** (1个): `terminal-pet`
 **test-*** (2个): `test-claude-knowledge, test-opencode-modes`
-**tg-*** (10个): `tg-bot-tasks, tg-canvas, tg-command, tg-copy-listener.py, tg-daily-digest-wrapper.sh, tg-daily-digest.py, tg-finance-setup.sh, tg-push, tg-saved-reader, tg-screenshot`
+**tg-*** (11个): `tg-auth.py, tg-bot-tasks, tg-canvas, tg-command, tg-copy-listener.py, tg-daily-digest-wrapper.sh, tg-daily-digest.py, tg-finance-setup.sh, tg-push, tg-saved-reader... +1更多`
 **tiny-*** (1个): `tiny-agents`
-**tmux-*** (1个): `tmux-session-toggle`
+**tmux-*** (2个): `tmux-module, tmux-session-toggle`
 **todo-*** (1个): `todo_sync.py`
 **ttyd-*** (3个): `ttyd-dbus-audit.sh, ttyd-quick-check, ttyd-strace-watcher.sh`
 **ui-*** (1个): `ui-verify-chain.sh`
@@ -506,6 +512,7 @@ pending-tasks.md
 router-infra.md
 router-padavan-backup.md
 rules-secondary.md
+session-2026-05-26.md
 session-notes.md
 setup-plan.md
 trade-workflow-architecture.md
@@ -513,7 +520,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（490个注册，98个运行中）
+## 三、systemd 用户服务（496个注册，100个运行中）
 
 ### 当前运行中
 ```
@@ -546,13 +553,14 @@ disk-watchdog
 dotfiles-symlink-watch
 earlyoom
 embedding-server
-fcitx5
 finance-agent
+finance-bot
 frpc
 gcr-ssh-agent
 headless-browser
 hermes-agent
 hub-api
+hypr-kdeconnect-portal
 letta-mcp
 litellm-strip-proxy
 macg-mcp
@@ -575,6 +583,7 @@ opencode-intent-detector
 opencode-memwatch
 opencode-session-recorder
 opencode-web
+ops-bot
 otp-sync
 overcode-loop-watch
 phone-clip-sync
@@ -588,6 +597,7 @@ screenshot-watcher
 speech-dispatcher
 sunshine
 tablet-control-panel
+telegram-bot-enhanced
 ttyd-8080
 ttyd-aider
 ttyd-audit
@@ -600,7 +610,6 @@ ttyd-opencode
 ttyd-overtab
 ttyd-ulwh
 voxtype
-waybar
 waybar-guardian
 wayland-session-bindpid@2920
 wayland-wm@hyprland\x2duwsm.desktop
@@ -617,7 +626,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（130个 timer）
+## 四、定时任务（133个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -629,6 +638,7 @@ ai-architecture-audit
 ai-config-sync-pull
 ai-rules-sync-windows
 ai-scheduler
+api-quota-updater
 auto-fix-services
 backup-cleanup
 cache-guard
@@ -641,6 +651,7 @@ chrome-login-backup
 chrome-login-watchdog
 chronos-subconscious
 claude-orphan-killer
+cliphist-health
 code-indexer
 connectivity-chain-watchdog
 copywriting-collector
@@ -724,6 +735,7 @@ runbook-engine
 security-scan
 selflearn-check
 service-config-guard
+session-archive
 sync-memory-ntfs
 sync-obsidian
 system-health-monitor

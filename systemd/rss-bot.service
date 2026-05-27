@@ -1,18 +1,16 @@
 [Unit]
-Description=RSS Telegram Bot — FreshRSS article pusher
-After=network-online.target docker.service
-Wants=network-online.target
+Description=RSS Telegram Bot (@charlie_rss_bot)
+After=network.target
 
 [Service]
 Type=simple
-User=charlie
-WorkingDirectory=/mnt/ai/apps/rss/tg-bot
-Environment="PATH=/run/current-system/sw/bin:/home/charlie/.local/bin"
-ExecStart=/mnt/ai/apps/rss/tg-bot/.venv/bin/python /mnt/ai/apps/rss/tg-bot/bot.py
-Restart=always
-RestartSec=10
-StandardOutput=journal
-StandardError=journal
+WorkingDirectory=/home/charlie/agi
+EnvironmentFile=-/home/charlie/agi/.env
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/rss_bot.py
+Restart=on-failure
+RestartSec=15
+Environment=HOME=/home/charlie
+Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=default.target

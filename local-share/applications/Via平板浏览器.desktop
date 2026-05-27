@@ -2,7 +2,7 @@
 Type=Application
 Name=Via 平板浏览器
 Name[en]=Via Browser (Tablet)
-Comment=在平板上启动 Via 浏览器
+Comment=在平板上启动 Via 浏览器并镜像到电脑（横屏）
 Icon=applications-internet
 Exec=/home/charlie/.local/bin/launch-via-tablet.sh
 Terminal=false

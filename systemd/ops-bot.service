@@ -1,0 +1,16 @@
+[Unit]
+Description=Ops Telegram Bot (@charlie_op_bot)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/charlie/agi
+EnvironmentFile=-/home/charlie/agi/.env
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/ops_bot.py
+Restart=on-failure
+RestartSec=15
+Environment=HOME=/home/charlie
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

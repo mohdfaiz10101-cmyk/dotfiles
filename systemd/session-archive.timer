@@ -1,0 +1,9 @@
+[Unit]
+Description=每日 OpenClaw 会话冷归档
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

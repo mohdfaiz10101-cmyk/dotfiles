@@ -1,0 +1,8 @@
+[Unit]
+Description=Cliphist clipboard health check
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/cliphist-health-check
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000

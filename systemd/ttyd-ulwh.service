@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7696 " && echo "PORT 7696 IN USE" && exit 1 || true'
+ExecStartPre=-/bin/sh -c 'fuser -k 7696/tcp 2>/dev/null; sleep 0.5; true'
 ExecStart=/run/current-system/sw/bin/ttyd -P 3 -p 7696 --base-path /ulwh -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/ulwh-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-ulwh.service
 Restart=on-failure

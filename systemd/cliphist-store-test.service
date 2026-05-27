@@ -1,0 +1,7 @@
+[Unit]
+Description=Test cliphist store
+[Service]
+Type=oneshot
+ExecStart=/tmp/test-store.sh
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7691 " && echo "PORT 7691 IN USE" && exit 1 || true'
+ExecStartPre=-/bin/sh -c 'fuser -k 7691/tcp 2>/dev/null; sleep 0.5; true'
 ExecStart=/run/current-system/sw/bin/ttyd -b /cct -p 7691 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -W /home/charlie/.local/bin/cct-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-cct.service
 Restart=on-failure

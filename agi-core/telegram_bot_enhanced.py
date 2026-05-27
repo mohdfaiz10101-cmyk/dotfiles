@@ -40,9 +40,14 @@ from conversation import chat
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 ALLOWED_CHAT_ID = int(os.environ.get("TELEGRAM_CHAT_ID", "0"))
-# Khoj 群组额外授权
-KHOJ_GROUP_ID = -1003740356939  # Khoj 知识库 话题群
-ALLOWED_GROUP_IDS = {KHOJ_GROUP_ID}
+# 授权群组列表
+KHOJ_GROUP_ID    = -1003740356939  # Khoj 知识库
+MAIN_GROUP_ID    = -1003961077444  # Charlie 主助手
+MARKETING_GROUP  = -1003941857965  # Charlie 营销中心
+VIDEO_GROUP      = -1003931658535  # Charlie 视频生产
+WEBSITE_GROUP    = -1003838796228  # Charlie 网站项目
+OPENCODE_GROUP   = -1003556594855  # Charlie OpenCode 管理
+ALLOWED_GROUP_IDS = {KHOJ_GROUP_ID, MAIN_GROUP_ID, MARKETING_GROUP, VIDEO_GROUP, WEBSITE_GROUP, OPENCODE_GROUP}
 STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
 OP_TASKS_FILE = os.environ.get(
     "OP_TASKS_FILE", "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
@@ -50,7 +55,7 @@ OP_TASKS_FILE = os.environ.get(
 
 LITELLM_BASE = os.environ.get("LITELLM_BASE", "http://localhost:4000/v1")
 LITELLM_KEY = os.environ.get("LITELLM_KEY", "sk-litellm-charlie-2026")
-VISION_MODEL = os.environ.get("VISION_MODEL", "doubao/vision")
+VISION_MODEL = os.environ.get("VISION_MODEL", "glm-4.6v-flash")
 
 
 def _check_auth(update: Update) -> bool:
@@ -385,6 +390,114 @@ async def _analyze_image_with_vision(image_bytes: bytes, caption: str) -> str:
         return data["choices"][0]["message"]["content"]
 
 
+async def _tts_reply(update: Update, text: str) -> None:
+    """用 edge-tts 合成语音并发送。
+    Why: 让 bot 支持语音回复，提升对话体验
+    What: edge-tts 合成 → 临时 mp3 → reply_voice → 删除临时文件
+    Test: 调用后验证消息中有语音消息，或降级为文字
+    """
+    import edge_tts
+    voice = "zh-CN-XiaoxiaoNeural"
+    with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as f:
+        tmp_path = f.name
+    try:
+        communicate = edge_tts.Communicate(text, voice)
+        await communicate.save(tmp_path)
+        with open(tmp_path, "rb") as f:
+            await update.message.reply_voice(voice=f)
+    except Exception:
+        await update.message.reply_text(text)
+    finally:
+        if os.path.exists(tmp_path):
+            os.unlink(tmp_path)
+
+
+async def cmd_gen(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """生成图片：/gen <提示词>。
+    Why: 让用户通过 Telegram 一键生成 AI 图片
+    What: 调用 Pollinations.ai 免费 API → 回复图片
+    Test: /gen 橘猫 → 60s 内收到图片
+    """
+    if not _check_auth(update, context):
+        return
+    prompt = " ".join(context.args) if context.args else ""
+    if not prompt:
+        await update.message.reply_text("用法：/gen <提示词>\n例：/gen 一只可爱的橘猫在草地上玩耍")
+        return
+    await update.message.chat.send_action("upload_photo")
+    import urllib.parse
+    url = (
+        f"https://image.pollinations.ai/prompt/{urllib.parse.quote(prompt)}"
+        f"?nologo=true&width=1024&height=1024&seed={hash(prompt) % 9999}"
+    )
+    try:
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            resp = await client.get(url)
+            resp.raise_for_status()
+        await update.message.reply_photo(photo=resp.content, caption=f"🎨 {prompt}")
+    except Exception as e:
+        await update.message.reply_text(f"生图失败: {e}")
+
+
+async def cmd_tts(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """文字转语音：/tts <文字>。
+    Why: 快捷合成语音，方便免手查场景
+    What: 解析参数 → 调用 _tts_reply
+    Test: /tts 你好世界 → 收到语音消息
+    """
+    if not _check_auth(update, context):
+        return
+    text = " ".join(context.args) if context.args else ""
+    if not text:
+        await update.message.reply_text("用法：/tts <文字>")
+        return
+    await update.message.chat.send_action("record_voice")
+    await _tts_reply(update, text)
+
+
+_whisper_model = None
+
+
+async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """处理语音消息：转文字后 AI 回复并 TTS 返回。
+    Why: 支持语音输入，实现真正的对话体验
+    What: 下载 ogg → ffmpeg 转 wav → whisper 识别 → LLM 回复 → TTS 语音
+    Test: 发送一段中文语音 → 先收到识别文字 → 再收到语音回复
+    """
+    if not _check_auth(update, context):
+        return
+    global _whisper_model
+    await update.message.chat.send_action("typing")
+    voice_file = await update.message.voice.get_file()
+    with tempfile.NamedTemporaryFile(suffix=".ogg", delete=False) as f:
+        ogg_path = f.name
+    wav_path = ogg_path.replace(".ogg", ".wav")
+    try:
+        await voice_file.download_to_drive(ogg_path)
+        import subprocess
+        subprocess.run(
+            ["ffmpeg", "-i", ogg_path, "-ar", "16000", "-ac", "1", wav_path, "-y", "-loglevel", "quiet"],
+            check=True,
+        )
+        if _whisper_model is None:
+            import whisper
+            _whisper_model = whisper.load_model("base")
+        result = _whisper_model.transcribe(wav_path, language="zh")
+        text = result["text"].strip()
+        if not text:
+            await update.message.reply_text("没有识别到语音内容")
+            return
+        await update.message.reply_text(f"🎤 识别：{text}")
+        session_id = f"telegram_{update.effective_chat.id}"
+        reply = await chat(text, session_id=session_id)
+        await _tts_reply(update, reply)
+    except Exception as e:
+        await update.message.reply_text(f"语音处理失败: {e}")
+    finally:
+        for p in [ogg_path, wav_path]:
+            Path(p).unlink(missing_ok=True)
+
+
 async def handle_image(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """处理用户发送的图片或文档图片（多模态理解）。
 
@@ -467,6 +580,10 @@ def main() -> None:
     app.add_handler(CommandHandler("tasks", cmd_tasks))
     app.add_handler(CommandHandler("help", cmd_help))
     app.add_handler(CommandHandler("khoj", cmd_khoj))
+
+    app.add_handler(CommandHandler("gen", cmd_gen))
+    app.add_handler(CommandHandler("tts", cmd_tts))
+    app.add_handler(MessageHandler(filters.VOICE, handle_voice))
 
     # 注册图片处理器（photo + document 图片，优先于文字 handler）
     app.add_handler(MessageHandler(filters.PHOTO, handle_image))
