@@ -3200,3 +3200,4 @@
 {"ts": "2026-05-27 08:10", "type": "cycle", "summary": "系统运行正常，CPU资源波动较高但无实质异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 08:11", "type": "cycle", "summary": "系统资源正常，Python进程CPU占用较高但在可接受范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 08:12", "type": "cycle", "summary": "系统运行平稳，CPU与内存处于正常范围，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 08:13", "type": "cycle", "summary": "系统运行正常，存在高CPU占用进程", "alert_count": 0, "skipped_llm": false}
