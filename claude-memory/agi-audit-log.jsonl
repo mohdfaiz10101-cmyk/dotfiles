@@ -3367,3 +3367,4 @@
 {"ts": "2026-05-27 11:25", "type": "cycle", "summary": "系统运行正常，CPU负载稍高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 11:26", "type": "cycle", "summary": "系统运行正常，CPU负载轻微波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 11:27", "type": "cycle", "summary": "系统资源正常，服务运行健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 11:28", "type": "cycle", "summary": "系统运行正常，CPU高占用为临时进程波动", "alert_count": 0, "skipped_llm": false}
