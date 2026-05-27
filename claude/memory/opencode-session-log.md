@@ -50343,3 +50343,147 @@ Haven 终端工具栏配置存储在 protobuf 文件中：
 
 ## 2026-05-27 18:58
 - [2026-05-27 18:57:45] **用户**: 问题是怎么opencode openclaw telegram操作 调用
+
+## 2026-05-27 19:00
+- [2026-05-27 18:59:48] **用户**: 什么意思 那些功能只能api付费吗
+
+## 2026-05-27 19:00
+- [2026-05-27 19:00:20] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-05-27 19:00:25] **AI(sisyphus)**: 对，总结就是：
+
+**Coding Plan 订阅 实际上只包了聊天 LLM**（step-3.5-flash-2603），其余全是画饼：
+
+| 功能 | Coding Plan 里 | 实际情况 |
+|------|:---:|------|
+| 聊天 LLM | ✅ | 正常工作 |
+| TTS | 模型在，但 voices 空列表 | 无法合成任何声音 |
+| ASR | 模型在，但端点 404 | 无法调用 |
+| 实时音频 | 模型在，但不是 chat API | 没有可用端点 |
+| 视觉识别 | 根本没有 | 不存在 |
+
+TTS/ASR/视觉这些只能走标准 v1 API —— 
+
+## 2026-05-27 19:01
+- [2026-05-27 19:00:41] **AI(sisyphus)**: ## RSSHub ✅ 已部署
+
+```
+[ok] RSSHub -- 127.0.0.1:1200, 知乎日报/B站/微博等全部可用
+```
+
+---
+
+## 你要的"全平台聚合"真相
+
+**社区不存在一键方案。** 但你提到的那个软件大概率是 **MediaCrawler** (12k⭐)：
+
+| 工具 | 覆盖平台 | 下载文件 | AI接口 |
+|------|----------|----------|--------|
+| **MediaCrawler** | 小红书/抖音/快手/B站/微博/知乎 | ❌ 只爬元数据JSON | ❌ |
+| **yt-dlp** (90k⭐) | 
+
+## 2026-05-27 19:01
+- [2026-05-27 19:01:33] **用户**: 那是我套餐不对 还是就是规定这些功能走api你要联网验证
+
+## 2026-05-27 19:04
+- [2026-05-27 19:04:06] **用户**: 全部一起上 然后telegram都要有对应服务和群
+
+## 2026-05-27 19:05
+- [2026-05-27 19:05:34] **用户**: 我记不住这些步骤和功能 telegram要推送他们的用法
+
+## 2026-05-27 19:07
+- [2026-05-27 19:07:13] **用户**: 有没有替代方案 glm包这些吗
+
+## 2026-05-27 19:09
+- [2026-05-27 19:08:53] **AI(sisyphus)**: 三种方式，全都能用：
+
+---
+
+**Telegram（直接对话查询）**
+
+给 `@charlie_op_bot` 或 `@charlie_1688_bot` 发消息：
+```
+查微信新吉力机械今天说了什么
+查今天所有微信消息
+微信上谁提到配件
+```
+Bot 会自动用 Hub API 查询并回复。刚已更新 system prompt 含 curl 命令模板。
+
+---
+
+**OpenClaw（ops agent）**
+
+ops agent 的 `exec` 工具可直接查询：
+```bash
+exec: curl -s "localhost:9800/api/wechat/messages?
+
+## 2026-05-27 19:14
+- [2026-05-27 19:14:04] **用户**: 那有没有必要接入khoj让他来处理
+
+## 2026-05-27 19:15
+- [2026-05-27 19:14:56] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-27 19:15
+- [2026-05-27 19:15:27] **用户**: 这样很消耗token吗
+
+## 2026-05-27 19:16
+- [2026-05-27 19:16:09] **AI(sisyphus)**: **Zhipu 全量验证结果**：
+
+模型 | coding plan (api.z.ai) | 标准API (open.bigmodel.cn) | 结论
+---|---|---|---
+glm-tts | ❌ 未知模型(1211) | ❌ 余额不足 | 均不可用
+glm-asr-2512 | ❌ 余额不足(1113) | ❌ 余额不足 | 均不可用  
+glm-4.6v-flash | ✅ 正常 | ❌ 余额不足 | coding plan可用
+glm-5v-turbo | ❌ 订阅不含 | — | 需另购
+
+**结论：Zhipu coding plan 和 StepFun coding 
+
+## 2026-05-27 19:26
+- [2026-05-27 19:26:14] **AI(sisyphus)**: [ok] ShellCrash 1.9.5alpha14 已安装在路由器
+[ok] Mihomo配置(17KB)已上传至路由器 /etc/storage/ShellCrash/providers/myproxy.yaml
+[ok] 提供者已配置：my → myproxy.yaml
+
+[fail] 核心二进制下载 → 路由器DNS无法解析外网(GFW)，telnet极不稳定
+[fail] 空间不足 → /tmp仅35.5MB空闲，mihomo解压后49MB装不下
+
+**当前状态**：ShellCrash已装好，配置就绪，缺少核心二进制。
+
+**可行方案**：
+1. UPX压缩mihomo → 约
+
+## 2026-05-27 19:28
+- [2026-05-27 19:28:20] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-27 19:33
+- [2026-05-27 19:33:15] **AI(sisyphus)**: **本次会话完成：媒体+信息栈全栈部署**
+
+[ok] Jellyfin :8096 — UP，需Web完成设置向导
+[ok] TubeArchivist :8001 — UP (ES+Redis+TA 三件套正常)
+[ok] RSSHub :1200 — UP，1000+订阅源可用
+[ok] FreshRSS :8420 — UP，RSS阅读器
+[ok] Telegram服务目录 — 已推送到 @charlie_op_bot
+[fail] Khoj — Docker镜像不存在，GHCR TLS超时，待pip方案
+
+**关键踩坑**:
+- TA_PORT=8001 导致容器nginx端口与do
+
+## 2026-05-27 20:35
+- [2026-05-27 20:34:43] **用户**: 19860今天下午的session都丢失了 什么情况
+
+## 2026-05-27 20:37
+- [2026-05-27 20:37:09] **用户**: 19890说错了
+
+## 2026-05-27 20:43
+- [2026-05-27 20:43:17] **用户**: 都需要
+
+## 2026-05-27 20:45
+- [2026-05-27 20:45:34] **AI(sisyphus)**: [ok] 备份 sessions.json → 已备份
+[ok] 清空卡住的旧session → 03c46cf2 已清除 (pendingFinalDelivery=184次)
+[ok] 重启 openclaw-gateway → 18789/19890 端口正常, HTTP 200
+[ok] Telegram bot 冲突已解决 → finance/ops/main/rss 4个bot全部正常启动
+[完成] 19890 session丢失修复 — 根因: 旧session卡住pendingFinalDelivery阻塞新session持久化。Gateway已重启，下次心跳会自动创建新ses
+
+## 2026-05-27 20:48
+- [2026-05-27 20:48:15] **用户**: 好像有备份的吧 你能在我haven手机找数据吗
+
+## 2026-05-27 20:51
+- [2026-05-27 20:51:23] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.

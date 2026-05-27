@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-27 19:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-27 21:00
 
 ## 2026-05-27
 
@@ -21,6 +21,8 @@
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
@@ -39,6 +41,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -69,6 +73,32 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/MEMORY.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
@@ -272,6 +302,11 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -328,6 +363,7 @@
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/video-call-agent.service MODIFY
+- [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
@@ -356,6 +392,16 @@
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
+- [file-change] **.openclaw**: .openclaw/openclaw.json MODIFY
+- [file-change] **.openclaw**: .openclaw/openclaw.json MODIFY
+- [file-change] **.openclaw**: .openclaw/openclaw.json MODIFY
 - [file-change] **.openclaw**: .openclaw/openclaw.json MODIFY
 - [file-change] **.openclaw**: .openclaw/openclaw.json MODIFY
 - [file-change] **.openclaw**: .openclaw/openclaw.json MODIFY
@@ -389,6 +435,8 @@
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
@@ -463,6 +511,7 @@
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/session-archive.timer CREATE
 - [file-create] **.config**: .config/systemd/user/tmux-voice-bridge.service CREATE
 - [file-create] **.config**: .config/systemd/user/video-call-agent.service CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/86d902d2-d3b6-46a0-8a6c-74209e311449.trajectory-path.json CREATE
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
@@ -501,6 +550,15 @@
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/exec-approvals.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/exec-approvals.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-30-14-367Z-738606-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-30-30-488Z-741279-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-30-46-158Z-743187-gateway.startup_failed.json MOVED_TO
@@ -508,6 +566,12 @@
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-32-27-494Z-768959-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-32-39-283Z-769788-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-26T16-33-34-696Z-775275-gateway.startup_failed.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-27T11-02-01-223Z-583318-gateway.startup_failed.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-27T11-02-16-315Z-590605-gateway.startup_failed.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-27T11-02-35-073Z-594033-gateway.startup_failed.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-27T11-02-46-721Z-598308-gateway.startup_failed.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-27T11-02-58-442Z-601030-gateway.startup_failed.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/logs/stability/openclaw-stability-2026-05-27T11-03-10-195Z-604234-gateway.startup_failed.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/openclaw.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/plugins/installs.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/bot-info-finance.json MOVED_TO

@@ -764,3 +764,61 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 47 hours (healthy)
 
 - [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 47 hours (healthy)
+
+- [auto] 发现: docker.container.tubearchivist = 127.0.0.1:8001->8000/tcp | 状态: Up 27 minutes
+
+- [auto] 发现: docker.container.tubearchivist-es = 127.0.0.1:9200->9200/tcp, 9300/tcp | 状态: Up 36 minutes
+
+- [auto] 发现: docker.container.tubearchivist-redis = 127.0.0.1:6380->6379/tcp | 状态: Up 42 minutes
+
+- [auto] 发现: docker.container.jellyfin = 127.0.0.1:8096->8096/tcp | 状态: Up 52 minutes (healthy)
+
+- [auto] 发现: docker.container.rsshub = 127.0.0.1:1200->1200/tcp | 状态: Up About an hour
+
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 44 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 47 hours
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 15 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-worker-1 =  | 状态: Up 2 days
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 2 days (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 2 days
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 2 days
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 2 days (healthy)
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 2 days (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 2 days (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 2 days (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 2 days (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 2 days (healthy)
+
+- [2026-05-27] [OP] 失败学习: OpenClaw session丢失 | 根因: sessions.json只存单一session元数据，旧session(03c46cf2)卡在pendingFinalDelivery(184次重试失败)，阻塞新session初始化。Gateway 17:13重启后加载旧session，下午新对话未持久化 | 修复: 备份→清空sessions.json(pendingFinalDelivery/status=idle)→重启gateway | 预防: 定期检查sessions.json的pendingFinalDelivery状态
+- [2026-05-27] [OP] Telegram bot冲突: 多gateway实例争抢getUpdates → 重启gateway后所有bot(finance/ops/main/rss)正常启动
+- [auto] 发现: docker.container.tubearchivist = 127.0.0.1:8001->8000/tcp | 状态: Up About an hour
+
+- [auto] 发现: docker.container.tubearchivist-es = 127.0.0.1:9200->9200/tcp, 9300/tcp | 状态: Up 2 hours
+
+- [auto] 发现: docker.container.tubearchivist-redis = 127.0.0.1:6380->6379/tcp | 状态: Up 2 hours
+
+- [auto] 发现: docker.container.jellyfin = 127.0.0.1:8096->8096/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.rsshub = 127.0.0.1:1200->1200/tcp | 状态: Up 2 hours
+
+- [auto] 发现: docker.container.rss-freshrss-1 = 127.0.0.1:8420->80/tcp | 状态: Up 45 hours (healthy)
+
+- [auto] 发现: docker.container.dfremote = 0.0.0.0:1235->1235/udp, [::]:1235->1235/udp | 状态: Up 2 days
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 16 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 hours (healthy)

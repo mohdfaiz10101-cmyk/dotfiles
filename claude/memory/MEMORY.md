@@ -173,3 +173,25 @@
 - NixOS Tailscale IP: 100.119.174.25
 - 关键修复: frpc.service 必须清除 http_proxy(防 mihomo 拦截 FRP 协议)
 - 注意: openagents 用18093(18092被macg_mcp.py占用)
+
+## 媒体+信息栈部署完成 (2026-05-27 19:30)
+
+### 已部署服务
+| 服务 | 端口 | 状态 | 备注 |
+|------|------|------|------|
+| RSSHub | :1200 | UP | 知乎/B站/微博等1000+源 |
+| TubeArchivist | :8001 | UP | YouTube离线下载，依赖ES+Redis |
+| Jellyfin | :8096 | UP | 媒体服务器，需Web设置向导 |
+| FreshRSS | :8420 | UP | RSS阅读器 |
+
+### TubeArchivist 踩坑
+- `TA_PORT=8001` 导致 nginx 内部端口和 Docker port mapping 不匹配，改为 `TA_PORT=8000` 解决
+- ES 需要 `vm.max_map_count=262144`
+- REDIS_HOST 已弃用，改用 REDIS_CON=redis://host:port
+- ES 需添加 `path.repo` 环境变量
+
+### Khoj (未完成)
+Docker 镜像拉取失败（khulnasoft/khoj、khojai/khoj 均不存在），GHCR 需认证且 TLS 超时。需改 pip install 或确认正确镜像名。
+
+### Telegram 服务目录
+已创建 ~/.local/bin/service-directory-push.sh，推送到 @charlie_op_bot

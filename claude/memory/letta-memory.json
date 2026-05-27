@@ -132,6 +132,11 @@
           "text": "2026-05-25 OP恢复waybar双bar: 主bar(28px custom/agent+health+ai+pulse+mem-pulse+optasks+otp+score等16模块)+备用bar(24px custom/chain链路+custom/finance财务)。永久化: waybar.service ExecStart加--config config.override --style style.override.css, 绕开home-manager nix store symlink覆盖。",
           "tags": "waybar,双bar,永久化,config.override",
           "timestamp": "1779638856"
+        },
+        {
+          "text": "2026-05-27 OP修复: 19890(OpenClaw) session丢失 | 根因: sessions.json中旧session 03c46cf2 卡在pendingFinalDelivery(184次)阻塞新session初始化 | 修复: 清空sessions.json后重启openclaw-gateway | 结果: Gateway正常，4个TG bot(finance/ops/main/rss)无冲突 | 教训: sessions.json只存单一session，旧session卡住会导致新session无法持久化",
+          "tags": "op-exec,openclaw,session-loss,telegram-conflict",
+          "timestamp": "1779885934"
         }
       ]
     },
