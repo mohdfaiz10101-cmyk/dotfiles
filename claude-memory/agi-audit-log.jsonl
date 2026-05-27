@@ -3318,3 +3318,4 @@
 {"ts": "2026-05-27 10:27", "type": "cycle", "summary": "系统运行平稳，CPU存在偶发高负载进程但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 10:28", "type": "cycle", "summary": "系统运行正常，CPU占用略高但属于预期范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 10:29", "type": "cycle", "summary": "系统运行正常，CPU占用略高但无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 10:30", "type": "cycle", "summary": "系统运行正常，存在瞬时高CPU进程", "alert_count": 0, "skipped_llm": false}
