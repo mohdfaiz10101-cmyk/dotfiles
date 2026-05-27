@@ -3273,3 +3273,4 @@
 {"ts": "2026-05-27 09:36", "type": "cycle", "summary": "系统运行正常，CPU有瞬时突刺但无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 09:37", "type": "cycle", "summary": "系统运行正常，检测到 python3.13 进程 CPU 占用较高", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 09:39", "type": "cycle", "summary": "系统运行正常，CPU占用较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 09:40", "type": "cycle", "summary": "系统运行正常，CPU存在短期峰值但无服务异常", "alert_count": 0, "skipped_llm": false}
