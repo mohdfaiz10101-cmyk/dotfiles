@@ -3435,3 +3435,4 @@
 {"ts": "2026-05-27 12:49", "type": "cycle", "summary": "系统各项指标正常，Python进程在合理范围内波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 12:51", "type": "cycle", "summary": "系统状态正常，CPU高占用为已知进程python3.13，无需告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 12:52", "type": "cycle", "summary": "系统运行正常，CPU与内存负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 12:53", "type": "cycle", "summary": "系统运行正常，CPU占比升高属于已知的兼容性检查行为", "alert_count": 0, "skipped_llm": false}
