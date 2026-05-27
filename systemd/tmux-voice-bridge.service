@@ -1,0 +1,14 @@
+[Unit]
+Description=Voice Bridge HTTP→tmux for opencode
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/tmux-voice-bridge.py
+Restart=always
+RestartSec=5
+Environment=VOICE_BRIDGE_PORT=18798
+Environment=VOICE_TMUX_TARGET=sisy:1
+
+[Install]
+WantedBy=default.target

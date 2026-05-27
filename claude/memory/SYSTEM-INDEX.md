@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-27 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-27 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -48,6 +48,7 @@
 | 8080 | users:(("ttyd",pid=3909781,fd=13)) |
 | 8081 | users:(("opencode",pid=914665,fd=22)) |
 | 8088 | users:(("python3.13",pid=83150,fd=3)) |
+| 8201 | users:(("python3",pid=3406535,fd=7)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | users:(("python3.13",pid=2406,fd=3)) |
@@ -55,6 +56,7 @@
 | 8286 | users:(("python3.13",pid=2679,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8420 | 0.0.0.0:* |
+| 8702 | users:(("python3.13",pid=72445,fd=13)) |
 | 9090 | *:* |
 | 9091 | users:(("mihomo",pid=2420,fd=3)) |
 | 9099 | users:(("python3.13",pid=6636,fd=3)) |
@@ -79,8 +81,9 @@
 | 18093 | *:* |
 | 18300 | *:* |
 | 18700 | *:* |
-| 18789 | users:(("node",pid=909787,fd=25)) |
-| 18791 | users:(("node",pid=909787,fd=26)) |
+| 18789 | users:(("node",pid=4110879,fd=25)) |
+| 18791 | users:(("node",pid=4110879,fd=26)) |
+| 18798 | users:(("python3.13",pid=4181069,fd=3)) |
 | 18999 | users:(("python3.13",pid=1579796,fd=3)) |
 | 19890 | *:* |
 | 19891 | *:* |
@@ -170,7 +173,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（666个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（668个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (5个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
@@ -226,6 +229,7 @@ static
 **download-*** (1个): `download-claude-export-from-email.py`
 **dpdns-*** (1个): `dpdns-renew`
 **event-*** (1个): `event_hooks_trigger.py`
+**evolve-*** (1个): `evolve-lessons-sync.py`
 **export-*** (1个): `export-claude-conversations.py`
 **fcitx5-*** (1个): `fcitx5-adaptive-check`
 **finance-*** (1个): `finance-reminder.sh`
@@ -346,7 +350,7 @@ static
 **test-*** (2个): `test-claude-knowledge, test-opencode-modes`
 **tg-*** (11个): `tg-auth.py, tg-bot-tasks, tg-canvas, tg-command, tg-copy-listener.py, tg-daily-digest-wrapper.sh, tg-daily-digest.py, tg-finance-setup.sh, tg-push, tg-saved-reader... +1更多`
 **tiny-*** (1个): `tiny-agents`
-**tmux-*** (2个): `tmux-module, tmux-session-toggle`
+**tmux-*** (3个): `tmux-module, tmux-session-toggle, tmux-voice-bridge.py`
 **todo-*** (1个): `todo_sync.py`
 **ttyd-*** (3个): `ttyd-dbus-audit.sh, ttyd-quick-check, ttyd-strace-watcher.sh`
 **ui-*** (1个): `ui-verify-chain.sh`
@@ -387,6 +391,7 @@ agi-control-plane
 aider-venv
 alist
 almanak
+altk-evolve
 android-sdk
 baidu-download
 baidunetdisk
@@ -423,6 +428,7 @@ pywxdump
 rss
 sadtalker
 stepfun-telegram-bot
+video-call-agent
 wav2lip
 web-ai-proxy
 wechat-agent
@@ -521,7 +527,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（496个注册，100个运行中）
+## 三、systemd 用户服务（499个注册，99个运行中）
 
 ### 当前运行中
 ```
@@ -554,8 +560,8 @@ disk-watchdog
 dotfiles-symlink-watch
 earlyoom
 embedding-server
+evolve-mcp
 finance-agent
-finance-bot
 frpc
 gcr-ssh-agent
 headless-browser
@@ -584,7 +590,6 @@ opencode-intent-detector
 opencode-memwatch
 opencode-session-recorder
 opencode-web
-ops-bot
 otp-sync
 overcode-loop-watch
 phone-clip-sync
@@ -593,12 +598,11 @@ pipewire-pulse
 primary-clip-bridge
 proxy-403-monitor
 python-crash-guard
-rss-bot
 screenshot-watcher
 speech-dispatcher
 sunshine
 tablet-control-panel
-telegram-bot-enhanced
+tmux-voice-bridge
 ttyd-8080
 ttyd-aider
 ttyd-audit
@@ -610,6 +614,7 @@ ttyd-macg
 ttyd-opencode
 ttyd-overtab
 ttyd-ulwh
+video-call-agent
 voxtype
 waybar-guardian
 wayland-session-bindpid@2920
@@ -627,7 +632,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（133个 timer）
+## 四、定时任务（134个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -670,6 +675,7 @@ dotfiles-integrity-check
 dotfiles-push
 dpdns-renew
 duckdns
+evolve-sync
 finance-reminder
 frp-watchdog
 git-backup

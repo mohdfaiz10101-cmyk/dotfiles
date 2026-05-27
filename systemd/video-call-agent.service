@@ -1,0 +1,20 @@
+[Unit]
+Description=AI Video Call Agent
+After=network-online.target docker.service litellm.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/apps/video-call-agent/.venv/bin/python3 /mnt/ai/apps/video-call-agent/server.py
+WorkingDirectory=/mnt/ai/apps/video-call-agent
+Restart=always
+RestartSec=3
+Environment=PYTHONPATH=/mnt/ai/apps/video-call-agent/.venv/lib/python3.13/site-packages
+Environment=HTTP_PROXY=http://127.0.0.1:7890
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=NO_PROXY=localhost,127.0.0.1,192.168.0.0/16
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
