@@ -119,3 +119,10 @@
 - [ ] [SELF-IMPROVE] kanban.html: CSS代码在`--`处被意外截断，需补充完整WIP进度条样式及后续缺失的样式和JavaScript逻辑。
 - [ ] [SELF-IMPROVE] launcher-server.py: 缺少 HTTPS/TLS 加密，在 Tailscale 等网络中传输 Bearer Token 和敏感数据存在被中间人攻击截获的风险，应强制使用 HTTPS 或依赖反向代理提供 TLS 终止。
 - [ ] [SELF-IMPROVE] hub-api.py: 将直接使用 `sqlite3.connect` 的数据库查询逻辑提取为带连接池或上下文管理的独立数据访问层，避免SQL注入风险（如将 `f-string` 拼接改为参数化查询）并确保数据库连接被正确关闭。
+
+### [SELF-IMPROVE 2026-05-27] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 将硬编码的绝对路径（如 op-tasks.md 的默认值）移除或改为完全依赖环境变量，以避免破坏代码的可移植性。
+- [ ] [SELF-IMPROVE] think.py: `_letta_recall` 函数体和文件末尾代码被截断，存在语法错误，需要补全缺失的代码逻辑。
+- [ ] [SELF-IMPROVE] kanban.html: 补全被截断的CSS代码（如`.wip-bar`等）以及缺失的HTML结构和完整的JavaScript逻辑，确保看板功能可用。
+- [ ] [SELF-IMPROVE] launcher-server.py: 存在未完成的 `translate_path` 方法及缺失的核心请求处理逻辑（如 `do_POST`），导致服务器实际上无法处理任何业务请求。
+- [ ] [SELF-IMPROVE] hub-api.py: 存在大量未捕获的数据库连接异常风险，应使用上下文管理器（with语句）或try-finally确保sqlite3连接在任何情况下都能被正确关闭，避免连接泄漏。
