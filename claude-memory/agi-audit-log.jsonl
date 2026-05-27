@@ -3401,3 +3401,4 @@
 {"ts": "2026-05-27 12:04", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载均在合理范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 12:06", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 12:07", "type": "cycle", "summary": "系统负载正常，CPU存在Python3.13短暂高峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 12:08", "type": "cycle", "summary": "系统资源正常，存在Python3.13进程高CPU占用", "alert_count": 0, "skipped_llm": false}
