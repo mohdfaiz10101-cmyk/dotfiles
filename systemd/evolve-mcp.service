@@ -1,0 +1,16 @@
+[Unit]
+Description=Evolve MCP Server (altk-evolve)
+After=network.target litellm.service
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/ai/apps/altk-evolve
+Environment=OPENAI_API_KEY=sk-litellm-charlie-2026
+Environment=OPENAI_BASE_URL=http://localhost:4000/v1
+Environment=EVOLVE_MODEL_NAME=openai/glm-5-turbo
+ExecStart=/mnt/ai/apps/altk-evolve/.venv/bin/python3 -m altk_evolve.frontend.mcp --transport sse --port 8201
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=每小时同步 evolve 和 lessons-learned
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

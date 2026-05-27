@@ -1,0 +1,7 @@
+[Unit]
+Description=evolve ↔ lessons-learned 双向同步桥
+After=evolve-mcp.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/evolve-lessons-sync.py
