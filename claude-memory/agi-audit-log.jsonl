@@ -3217,3 +3217,4 @@
 {"ts": "2026-05-27 08:30", "type": "cycle", "summary": "系统负载低，资源充裕，服务正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 08:31", "type": "cycle", "summary": "系统负载较高但服务健康，处于正常波动范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 08:32", "type": "cycle", "summary": "系统资源充足，检测到 python3.13 进程高 CPU 占用（根据规则视为正常系统服务），无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 08:33", "type": "cycle", "summary": "系统资源使用正常，CPU占用由系统进程引起，无服务异常", "alert_count": 0, "skipped_llm": false}
