@@ -1,0 +1,7 @@
+[Unit]
+Description=OpenClaw session watchdog — auto-fix stuck pendingFinalDelivery
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/openclaw-session-watchdog.sh
+Environment=HOME=%h

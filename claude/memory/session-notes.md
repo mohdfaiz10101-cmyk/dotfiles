@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-27 21:00
+> 来源: changelog.jsonl | 重建时间: 2026-05-27 23:45
 
 ## 2026-05-27
 
@@ -43,6 +43,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-27.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -287,6 +288,10 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
@@ -304,6 +309,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -412,6 +419,7 @@
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/MEMORY.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/MEMORY.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/MEMORY.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/openclaw-sessions.json CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
@@ -496,6 +504,8 @@
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/graphical-session.target.wants/disk-watchdog.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/openclaw-gateway.service.d/proxy.conf CREATE
+- [file-create] **.config**: .config/systemd/user/openclaw-watchdog.service CREATE
+- [file-create] **.config**: .config/systemd/user/openclaw-watchdog.timer CREATE
 - [file-create] **.config**: .config/systemd/user/ops-bot.service CREATE
 - [file-create] **.config**: .config/systemd/user/rss-bot.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/session-archive.service CREATE
@@ -508,6 +518,7 @@
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
+- [file-create] **.config**: .config/systemd/user/timers.target.wants/openclaw-watchdog.timer CREATE
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/session-archive.timer CREATE
 - [file-create] **.config**: .config/systemd/user/tmux-voice-bridge.service CREATE
 - [file-create] **.config**: .config/systemd/user/video-call-agent.service CREATE

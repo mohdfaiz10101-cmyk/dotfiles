@@ -50487,3 +50487,25 @@ glm-5v-turbo | ❌ 订阅不含 | — | 需另购
 
 ## 2026-05-27 20:51
 - [2026-05-27 20:51:23] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-27 21:03
+- [2026-05-27 21:02:59] **用户**: 那以后怎么彻底避免
+
+## 2026-05-27 21:04
+- [2026-05-27 21:03:55] **用户**: 你能当初开session让他们在这个工作区打开吗 重新开任务继续
+
+## 2026-05-27 21:04
+- [2026-05-27 21:04:24] **AI(sisyphus)**: [ok] watchdog 已部署 — `openclaw-watchdog.timer` 每5分钟自动检测+修复 stuck session
+
+关于重开会话：下午的 opencode 进程状态（agent 记忆/工具上下文）在 gateway 重启时已随进程消失，无法恢复。但所有对话内容在 `opencode-session-log.md` 中完整保留。
+
+**下午未完成的任务**：
+
+| 任务 | 状态 | 下一步 |
+|------|------|--------|
+| ShellCrash 路由器代理 | 已装好，缺二进制 | UPX 压缩 mihomo 后上传 |
+| Jellyfi
+- [2026-05-27 21:04:32] **用户**: 我不是有git that shit插件吗 没有git实时备份？
+
+## 2026-05-27 21:05
+- [2026-05-27 21:05:15] **用户**: 你单独让他们分配到不同的session里去 全都分session执行
