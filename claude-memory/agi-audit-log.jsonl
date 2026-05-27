@@ -3313,3 +3313,4 @@
 {"ts": "2026-05-27 10:21", "type": "cycle", "summary": "系统运行正常，CPU负载处于健康区间", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 10:22", "type": "cycle", "summary": "系统运行正常，存在Python3.13高CPU占用进程，但属已知正常现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 10:24", "type": "cycle", "summary": "系统运行正常，CPU使用率适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 10:25", "type": "cycle", "summary": "系统资源使用正常，存在Python高CPU占用但属常规现象", "alert_count": 0, "skipped_llm": false}
