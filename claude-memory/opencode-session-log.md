@@ -49796,3 +49796,18 @@ GLM-5.1 (Z.AI) 现在已在 OpenCode 模型切换器中可用，刷新浏览器�
 
 ## 2026-05-27 12:04
 - [2026-05-27 12:04:07] **用户**: 我duckdns ssh连接密码是什么 能不能设置成我手机登录 设备指纹验证就是匹配设备信息 0
+
+## 2026-05-27 12:05
+- [2026-05-27 12:04:58] **AI(sisyphus)**: SSH 密码就是你的 NixOS 用户 `charlie` 的登录密码（和 sudo 密码相同），没有单独的 "DuckDNS 密码"。
+
+当前 SSH 配置：密码认证已开启 (`PasswordAuthentication yes`)，密钥认证也开启，已有 7 个 authorized_keys。
+
+---
+
+**关于设备指纹验证**：
+
+SSH 原生支持设备指纹，就是**密钥认证** — 每个设备的私钥唯一不可伪造。实现方案：
+
+```
+手机上生成密钥 → ssh-keygen -t ed25519 -f ~/.ssh/phone_key
+把 pubkey 传到 NixOS → ssh-c
