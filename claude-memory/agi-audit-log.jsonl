@@ -3295,3 +3295,4 @@
 {"ts": "2026-05-27 10:01", "type": "cycle", "summary": "系统资源负载适中，检测到瞬时进程CPU采样异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 10:02", "type": "cycle", "summary": "系统运行平稳，CPU负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-27 10:03", "type": "cycle", "summary": "系统负载正常，CPU存在短暂的高进程活动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-27 10:04", "type": "cycle", "summary": "系统运行正常，存在 Python3.13 进程 CPU 占用较高但符合历史经验", "alert_count": 0, "skipped_llm": false}
