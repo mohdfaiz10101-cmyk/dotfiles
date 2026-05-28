@@ -50526,3 +50526,6 @@ glm-5v-turbo | ❌ 订阅不含 | — | 需另购
 2. 检查 /home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md 中 '- [ ]' 数量
 3. 根据真实数据写1-2个具体任务到 op-tasks.md（格式：- [ ] [CC→OP] [2026-05-28 11:40] 任务描述）
 4. 写1行对话到~/.claude/projects/
+
+## 2026-05-28 11:42
+- [2026-05-28 11:41:57] **用户**: 手机harven打开后他地址后都提示tmux session not found 远程连过去查
