@@ -1,0 +1,13 @@
+[Unit]
+Description=FRP Server (frps) - User Instance
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/frps -c /home/charlie/ai-deploy/frps.toml
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=1048576
+Type=simple
+
+[Install]
+WantedBy=default.target

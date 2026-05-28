@@ -1,0 +1,6 @@
+[Unit]
+Description=FRPS 19890 Health Watchdog
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/frps-watchdog.sh

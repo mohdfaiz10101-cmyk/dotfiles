@@ -50693,3 +50693,12 @@ OpenCode 原生支持在 Cursor 的集成终端中运行。
 
 ## 2026-05-28 20:50
 - [2026-05-28 20:50:19] **用户**: 我没开tailscale你连的是手机还是平板
+
+## 2026-05-28 21:03
+- [2026-05-28 21:02:42] **用户**: 我手机打开 怎一直reconencting. 你这个fprs怎么彻底避免这个问题
+
+## 2026-05-28 21:10
+- [2026-05-28 21:10:20] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-28 22:55
+- [2026-05-28 22:54:44] **用户**: 有步行了

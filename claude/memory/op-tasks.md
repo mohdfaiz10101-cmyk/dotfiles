@@ -126,3 +126,4 @@
 - [ ] [SELF-IMPROVE] kanban.html: 补全被截断的CSS代码（如`.wip-bar`等）以及缺失的HTML结构和完整的JavaScript逻辑，确保看板功能可用。
 - [ ] [SELF-IMPROVE] launcher-server.py: 存在未完成的 `translate_path` 方法及缺失的核心请求处理逻辑（如 `do_POST`），导致服务器实际上无法处理任何业务请求。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在大量未捕获的数据库连接异常风险，应使用上下文管理器（with语句）或try-finally确保sqlite3连接在任何情况下都能被正确关闭，避免连接泄漏。
+- [ ] [AGI→OP] [2026-05-28 21:36] [high] 检查 frps 日志，确认是否存在连接风暴或异常流量

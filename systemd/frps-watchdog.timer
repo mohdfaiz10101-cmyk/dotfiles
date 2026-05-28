@@ -1,0 +1,9 @@
+[Unit]
+Description=FRPS 19890 Health Watchdog Timer
+
+[Timer]
+OnCalendar=*:0/2
+Persistent=true
+
+[Install]
+WantedBy=timers.target
