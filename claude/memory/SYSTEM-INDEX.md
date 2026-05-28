@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-28 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-28 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -58,7 +58,7 @@
 | 9091 | users:(("mihomo",pid=2916,fd=3)) |
 | 9099 | users:(("python3.13",pid=9184,fd=3)) |
 | 9800 | users:(("python3.13",pid=4340,fd=6)) |
-| 9801 | users:(("python3.13",pid=79614,fd=6)) |
+| 9801 | users:(("python3.13",pid=972220,fd=6)) |
 | 9810 | users:(("python3.13",pid=5289,fd=6)) |
 | 9811 | users:(("python3.13",pid=4335,fd=6)) |
 | 9875 | users:(("python3.13",pid=4342,fd=3)) |
@@ -72,6 +72,7 @@
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
 | 11434 | users:((".ollama-wrapped",pid=2947,fd=3)) |
+| 15555 | *:* |
 | 17698 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
@@ -172,7 +173,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（671个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（675个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (5个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
@@ -248,7 +249,7 @@ static
 **health-*** (1个): `health-scorer`
 **hermes-*** (1个): `hermes-wrapper`
 **huggingface-*** (1个): `huggingface-cli`
-**hypr-*** (3个): `hypr-kdeconnect-portal, hypr-workspace-apply, hypr-workspace-learn`
+**hypr-*** (4个): `hypr-kdeconnect-portal, hypr-workspace-apply, hypr-workspace-learn, hypr-workspace-sort.sh`
 **ibus-*** (1个): `ibus-toggle.sh`
 **idea-*** (2个): `idea-2233, idea-boost.sh`
 **iflytek-*** (1个): `iflytek-dict-sync`
@@ -305,7 +306,7 @@ static
 **permission-*** (1个): `permission_check.py`
 **pet-*** (1个): `pet-feeder`
 **petals-*** (1个): `petals-server.sh`
-**phone-*** (5个): `phone-ai-bridge.sh, phone-clip-sync, phone-control.sh, phone-network-fix.sh, phone-screenshot`
+**phone-*** (6个): `phone-ai-bridge.sh, phone-clip-sync, phone-connect-mcp.py, phone-control.sh, phone-network-fix.sh, phone-screenshot`
 **plasmashell-*** (1个): `plasmashell-crash-guard.sh`
 **playwright-*** (4个): `playwright-chromium-headed, playwright-chromium-nix, playwright-mcp-cleanup, playwright-smart.sh`
 **post-*** (1个): `post-edit-verify.sh`
@@ -351,6 +352,7 @@ static
 **tiny-*** (1个): `tiny-agents`
 **tmux-*** (3个): `tmux-module, tmux-session-toggle, tmux-voice-bridge.py`
 **todo-*** (1个): `todo_sync.py`
+**tool-*** (2个): `tool-capture-hook.sh, tool-lookup.sh`
 **ttyd-*** (3个): `ttyd-dbus-audit.sh, ttyd-quick-check, ttyd-strace-watcher.sh`
 **ui-*** (1个): `ui-verify-chain.sh`
 **ulwh-*** (1个): `ulwh-tmux-wrap`
@@ -526,7 +528,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（500个注册，107个运行中）
+## 三、systemd 用户服务（500个注册，109个运行中）
 
 ### 当前运行中
 ```
@@ -594,6 +596,7 @@ opencode-web
 ops-bot
 otp-sync
 overcode-loop-watch
+phone-ai-bridge
 phone-clip-sync
 pipewire
 pipewire-pulse
@@ -608,6 +611,7 @@ stepfun-tg-bot
 sunshine
 sys-info-mcp
 tablet-control-panel
+telegram-userbot
 tmux-voice-bridge
 ttyd-8080
 ttyd-aider
