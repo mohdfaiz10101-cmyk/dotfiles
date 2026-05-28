@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-28 11:37 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-28 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -7,20 +7,98 @@
 |------|------|
 | 22 | 0.0.0.0:* |
 | 22 | [::]:* |
+| 443 | 0.0.0.0:* |
+| 443 | [::]:* |
+| 1053 | users:(("mihomo",pid=2916,fd=8)) |
+| 1716 | users:((".kdeconnectd-wr",pid=231332,fd=18)) |
+| 2222 | *:* |
+| 2223 | *:* |
+| 3000 | (v1",pid=8626,fd=21)) |
+| 3010 | 0.0.0.0:* |
+| 3389 | *:* |
+| 4000 | users:(("python3.13",pid=2878,fd=6)) |
+| 4001 | users:(("python3.13",pid=4328,fd=6)) |
+| 4002 | 0.0.0.0:* |
+| 4533 | users:(("navidrome",pid=4352,fd=11)) |
 | 5037 | users:(("adb",pid=2881,fd=11)) |
+| 5678 | 0.0.0.0:* |
+| 5678 | [::]:* |
+| 5900 | users:(("wayvnc",pid=231276,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=231277,fd=4)) |
+| 6379 | 0.0.0.0:* |
 | 7000 | *:* |
 | 7500 | *:* |
 | 7681 | users:(("ttyd",pid=2121,fd=13)) |
+| 7690 | users:(("ttyd",pid=5129,fd=13)) |
+| 7691 | users:(("ttyd",pid=5125,fd=13)) |
+| 7692 | users:(("ttyd",pid=5137,fd=13)) |
+| 7693 | users:(("ttyd",pid=5123,fd=13)) |
+| 7694 | users:(("ttyd",pid=5134,fd=13)) |
+| 7695 | users:(("ttyd",pid=5131,fd=13)) |
+| 7696 | users:(("ttyd",pid=5141,fd=13)) |
+| 7697 | users:(("ttyd",pid=5132,fd=13)) |
+| 7698 | users:(("ttyd",pid=5684,fd=13)) |
+| 7699 | users:(("caddy",pid=4320,fd=6)) |
+| 7890 | users:(("mihomo",pid=2916,fd=10)) |
+| 7891 | users:(("mihomo",pid=2916,fd=6)) |
+| 8000 | 0.0.0.0:* |
+| 8000 | [::]:* |
+| 8080 | users:(("ttyd",pid=5168,fd=13)) |
+| 8081 | users:(("opencode",pid=14138,fd=18)) |
+| 8088 | users:(("python3.13",pid=4359,fd=3)) |
+| 8201 | users:(("python3",pid=2765,fd=7)) |
+| 8283 | 0.0.0.0:* |
+| 8283 | [::]:* |
 | 8284 | users:(("python3.13",pid=2867,fd=3)) |
+| 8285 | users:(("python3.13",pid=5155,fd=11)) |
+| 8286 | users:(("python3.13",pid=4334,fd=3)) |
 | 8384 | 0.0.0.0:* |
+| 8702 | users:(("python3.13",pid=4225,fd=13)) |
 | 9090 | *:* |
+| 9091 | users:(("mihomo",pid=2916,fd=3)) |
+| 9099 | users:(("python3.13",pid=9184,fd=3)) |
+| 9800 | users:(("python3.13",pid=4340,fd=6)) |
+| 9801 | users:(("python3.13",pid=79614,fd=6)) |
+| 9810 | users:(("python3.13",pid=5289,fd=6)) |
+| 9811 | users:(("python3.13",pid=4335,fd=6)) |
+| 9875 | users:(("python3.13",pid=4342,fd=3)) |
+| 9876 | users:(("python3.13",pid=4362,fd=3)) |
+| 9890 | users:(("python3",pid=2844,fd=17)) |
+| 9900 | users:(("python3.13",pid=4306,fd=6)) |
+| 9922 | users:(("MainThread",pid=2814,fd=21)) |
 | 9977 | users:(("python3",pid=2698,fd=3)) |
 | 9979 | users:(("python3.13",pid=2665,fd=3)) |
 | 9980 | users:(("python3.13",pid=2663,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
+| 11434 | users:((".ollama-wrapped",pid=2947,fd=3)) |
+| 17698 | *:* |
+| 17699 | *:* |
+| 17700 | *:* |
+| 18090 | *:* |
+| 18091 | *:* |
+| 18092 | users:(("python3.13",pid=2882,fd=6)) |
+| 18093 | *:* |
+| 18094 | users:(("python3.13",pid=4169,fd=6)) |
+| 18300 | *:* |
+| 18700 | *:* |
+| 18789 | users:(("node",pid=4354,fd=25)) |
+| 18791 | users:(("node",pid=4354,fd=26)) |
+| 18798 | users:(("python3.13",pid=4188,fd=3)) |
+| 19890 | *:* |
+| 19891 | *:* |
+| 19892 | *:* |
+| 19893 | *:* |
 | 22000 | *:* |
+| 24801 | users:(("python3.13",pid=4270,fd=3)) |
 | 24802 | users:(("python3.13",pid=2927,fd=3)) |
+| 40544 | 0.0.0.0:* |
+| 42111 | *:* |
+| 47984 | *:* |
+| 47989 | *:* |
+| 47990 | *:* |
+| 48010 | *:* |
+| 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
 
@@ -448,33 +526,42 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（0个注册，64个运行中）
+## 三、systemd 用户服务（500个注册，107个运行中）
 
 ### 当前运行中
 ```
 adb-device-monitor
 agent-orchestrator
 agi-brain
+agi-frontend
 agi-gateway
 ai-config-watcher
+ai-rules-sync
 ai-watchdog
+app-org.kde.kdeconnect.daemon@autostart
 caddy-launcher
-cf-tunnel-7699
+change-watcher
+chrome-cdp
+chronos-sensory
 claude-esp
 claude-tablet-output
+claude-token-tray
 clip-sync
 clipboard-sync-tablet
+code-watcher
 config-immutable-snapshot
 content-router
 cookie-sync-server
 cookie-watcher
-crewai-openagents-bridge
 dbus
+disk-watchdog
+dotfiles-symlink-watch
 earlyoom
 embedding-server
 evolve-mcp
 fcitx5
 finance-agent
+finance-bot
 frpc
 gcr-ssh-agent
 headless-browser
@@ -485,41 +572,210 @@ launcher
 letta-mcp
 litellm-strip-proxy
 macg-mcp
+mem0-bridge
 memory-auto-commit
 memory-evolution
 mihomo
 mihomo-watch
 navidrome
 nix-voice-agent
+numlock-guard
+office-agent
 ollama
+op-tasks-watcher
 op-watchdog
+openagents
 openclaw-gateway
+opencode-config-guard
 opencode-intent-detector
+opencode-memwatch
 opencode-session-recorder
 opencode-web
+ops-bot
 otp-sync
 overcode-loop-watch
 phone-clip-sync
 pipewire
+pipewire-pulse
+primary-clip-bridge
 proxy-403-monitor
+python-crash-guard
+rss-bot
 screenshot-watcher
 smart-redirector
+speech-dispatcher
 stepfun-tg-bot
+sunshine
 sys-info-mcp
 tablet-control-panel
-telegram-userbot
-tg-forum-watcher
 tmux-voice-bridge
+ttyd-8080
+ttyd-aider
+ttyd-audit
+ttyd-cct
+ttyd-claude
+ttyd-claudep
+ttyd-foc
+ttyd-macg
+ttyd-opencode
+ttyd-overtab
+ttyd-ulwh
 video-call-agent
+voxtype
+waybar
+waybar-guardian
+wayland-session-bindpid@230015
+wayland-wm@hyprland\x2duwsm.desktop
 wechat-agent
 wechat-crm-archiver
-whisper
+wechat-reply-consumer
+wireplumber
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
+xdg-document-portal
+xdg-permission-store
 ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（0个 timer）
+## 四、定时任务（135个 timer）
 ```
+agi-cognitive-engine
+agi-daily-report
+agi-evolve
+agi-feedback-bus
+agi-self-improve
+agi-wechat-learn
+ai-architecture-audit
+ai-config-sync-pull
+ai-rules-sync-windows
+ai-scheduler
+api-quota-updater
+auto-fix-services
+backup-cleanup
+cache-guard
+cc-autonomous-runner
+cc-op-verifier
+cc-task-auditor
+cf-url-notify
+check-ttyd
+chrome-login-backup
+chrome-login-watchdog
+chronos-subconscious
+claude-orphan-killer
+cliphist-health
+code-indexer
+connectivity-chain-watchdog
+copywriting-collector
+daily-log-generator
+daily-summary
+discord-bot-healthcheck
+disk-cleanup
+disk-guard
+disk-sentinel
+disk-space-monitor
+docker-cleanup
+docker-health-nurse
+docker-prune
+dotfiles-integrity-check
+dotfiles-push
+dpdns-renew
+duckdns
+evolve-sync
+finance-reminder
+frp-watchdog
+git-backup
+github-ai-weekly
+happy-session-watchdog
+health-check
+health-scorer
+iflytek-dict-sync
+image-captioner
+incident-reporter
+integrity-check
+letta-deadman-switch
+letta-distill
+letta-health-check
+letta-health-guard
+letta-health-monitor
+letta-planning
+letta-sync
+litellm-error-guard
+maintenance-learner
+mem-alert
+mem0-decay
+mem0-file-sync
+mem0-watchdog
+memory-backup
+memory-curator
+memory-injector
+memory-pulse-monitor
+memory-tg-daily
+meta-cognition
+mihomo-backup
+mihomo-guardian
+mihomo-health
+mihomo-sync
+morning-brief
+network-guard
+nix-store-check
+nixos-auto-commit
+nixos-full-sync
+nixos-stable-watch
+nixos-test-notify
+ntfs-health-check
+ocr-indexer
+op-lock-watchdog
+op-precheck
+op-self-upgrade
+op-tasks-archive
+openclaw-watchdog
+opencode-bug-tracker
+opencode-health-monitor
+opencode-job-charlie-b445f233ebb8-aider-refactor
+opencode-job-charlie-b445f233ebb8-codebase-mapper
+opencode-job-charlie-b445f233ebb8-cost-accountant
+opencode-job-charlie-b445f233ebb8-heartbeat-system-sentry
+opencode-job-charlie-b445f233ebb8-security-watchdog
+opencode-session-guard
+opencode-web-idle
+playwright-mcp-cleanup
+plocate-update
+push-tunnel-url
+rebuild-session-notes
+rebuild-system-index
+router-snapshot
+runbook-engine
+security-scan
+selflearn-check
+service-config-guard
+session-archive
+sync-memory-ntfs
+sync-obsidian
+system-health-monitor
+systemd-orphan-guard
+systemd-reexec
+systemd-tmpfiles-clean
+task-review-weekly
+tg-daily-digest
+tg-healer
+tg-predictor
+ttyd-strace-watcher
+wan-ip-monitor
+waybar-guardian
+waybar-score-finalize
+wechat-backup
+wechat-backup-reminder
+wechat-contact-sync
+wechat-live-monitor
+wechat-msg-sync
+wechat-version-guard
+wechat-windows-watchdog
+win-deploy
+wol-windows
+workspace-scheduler
+worktree-cleanup
 ```
 
 ## 五、故障快速定位

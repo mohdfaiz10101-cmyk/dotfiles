@@ -427,6 +427,11 @@
           "text": "2026-05-26: 部署FreshRSS RSS系统。Docker部署在/mnt/ai/apps/rss/，端口8420。4个RSS源(BBC/The Verge/Ars/FreshRSS)。Telegram Bot集成到opencode-telegram-bot.py v3，每5分钟轮询推送。关键经验: (1) Docker container无curl，healthcheck改用php脚本 (2) RSS摘要含HTML标签(figure)，必须strip后再发Telegram (3) Telegram callback_data限制64字节，不能用完整标题作数据 (4) AI摘要按钮改为动态从FreshRSS API获取文章内容。LiteLLM key: sk-litellm-charlie-2026, 模型: glm-4-flash。持久化: ~/.local/state/rss-bot/",
           "tags": "rss,telegram,freshrss,bot,deployment",
           "timestamp": "1779733181"
+        },
+        {
+          "text": "2026-05-28 OP执行: Haven app连接到NixOS ttyd时所有address提示\"tmux session not found\" | 结果: 成功 | 关键发现: 5个tmux session缺失(claude-code/cct/claude-official/ulwh/foc)，ttyd wrapper脚本依赖tmux session存在但未自动创建，手动创建后API返回完整10个session",
+          "tags": "op-exec,tmux,haven,ttyd,phone",
+          "timestamp": "1779942594"
         }
       ]
     },
