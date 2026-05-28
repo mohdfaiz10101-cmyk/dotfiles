@@ -106,3 +106,21 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 32 seconds (health: starting)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up About a minute (healthy)
+
+- [auto] 发现: docker.container.twenty-server-1 = 0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp | 状态: Up 21 seconds (health: starting)
+
+- [auto] 发现: docker.container.tubearchivist = 127.0.0.1:8001->8000/tcp | 状态: Up 41 seconds
+
+- [auto] 发现: docker.container.tubearchivist-redis = 127.0.0.1:6380->6379/tcp | 状态: Up 47 seconds
+
+- [auto] 发现: docker.container.tubearchivist-es = 127.0.0.1:9200->9200/tcp, 9300/tcp | 状态: Up 46 seconds
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 52 seconds (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 52 seconds (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up About a minute
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 10 seconds (health: starting)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 36 seconds (health: starting)
