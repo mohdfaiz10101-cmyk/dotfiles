@@ -3899,3 +3899,4 @@
 {"ts": "2026-05-28 12:06", "type": "cycle", "summary": "系统运行正常，CPU负载中等，内存充足，无异常服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-28 12:07", "type": "cycle", "summary": "系统运行正常，各项指标均处于健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-28 12:08", "type": "cycle", "summary": "系统运行正常，CPU有短暂波峰但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-28 12:09", "type": "cycle", "summary": "系统运行正常，CPU出现单核满载波动", "alert_count": 0, "skipped_llm": false}
