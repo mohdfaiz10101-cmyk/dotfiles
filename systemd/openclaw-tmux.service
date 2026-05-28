@@ -9,6 +9,7 @@ ExecStart=/run/current-system/sw/bin/bash -c 'tmux has-session -t openclaw 2>/de
 ExecStop=/run/current-system/sw/bin/bash -c 'tmux kill-session -t openclaw 2>/dev/null; true'
 Environment=OPENCODE_EXPERIMENTAL_WORKSPACES=1
 Environment=NODE_OPTIONS=--max-old-space-size=768
+Environment=TMUX_TMPDIR=/tmp
 
 [Install]
 WantedBy=default.target

@@ -164,3 +164,25 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 16 minutes (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 17 minutes (healthy)
+- [2026-05-28] [OP] 诊断: 手机定位自动开启 | 根因: com.coloros.findmyphone + WRITE_SECURE_SETTINGS自启 | 修复: phone-connect-mcp建成(多路径ADB),FRP隧道重启用,phone-ai-bridge修复并启用 | 连接: 192.168.123.22:5555(LAN ADB WiFi)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 53 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up About an hour
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up About an hour
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up About an hour (healthy)
+- [2026-05-28] [OP] 架构: 三层工具调用优化 | 方案: 命令注册表+自动匹配+调用捕获 | 文件: commands.json(23条)+tool-lookup.sh+tool-capture-hook.sh | 效果: AI不再从零推理工具用法，意图→精确命令直出

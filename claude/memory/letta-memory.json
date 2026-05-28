@@ -137,6 +137,11 @@
           "text": "2026-05-27 OP修复: 19890(OpenClaw) session丢失 | 根因: sessions.json中旧session 03c46cf2 卡在pendingFinalDelivery(184次)阻塞新session初始化 | 修复: 清空sessions.json后重启openclaw-gateway | 结果: Gateway正常，4个TG bot(finance/ops/main/rss)无冲突 | 教训: sessions.json只存单一session，旧session卡住会导致新session无法持久化",
           "tags": "op-exec,openclaw,session-loss,telegram-conflict",
           "timestamp": "1779885934"
+        },
+        {
+          "text": "2026-05-28 OP执行: 三层工具调用优化体系建成 | 结果: 成功 | 核心: (1) 命令注册表23条意图→精确命令匹配, 解决\"每次从零推理工具用法\"问题 (2) tool-lookup.sh自动匹配并注入prompt (3) tool-capture-hook.sh自动捕获调用历史+失败模式 (4) sisyphus MEMORY_FIRST新增step 0强制查询注册表。体系路径: ~/.local/share/tool-registry/commands.json + ~/.local/bin/tool-lookup.sh + ~/.local/bin/tool-capture-hook.sh",
+          "tags": "op-exec,tool-optimization,registry",
+          "timestamp": "1779949292"
         }
       ]
     },
@@ -432,6 +437,11 @@
           "text": "2026-05-28 OP执行: Haven app连接到NixOS ttyd时所有address提示\"tmux session not found\" | 结果: 成功 | 关键发现: 5个tmux session缺失(claude-code/cct/claude-official/ulwh/foc)，ttyd wrapper脚本依赖tmux session存在但未自动创建，手动创建后API返回完整10个session",
           "tags": "op-exec,tmux,haven,ttyd,phone",
           "timestamp": "1779942594"
+        },
+        {
+          "text": "2026-05-28 OP排查: 手机\"网络连接闪退\" — 实际是Termius(com.server.auditor.ssh.client)而非Haven。根因: ssh_connections.db SQLite损坏(disk image malformed)，打开保存的连接时SshOptionsInteractor.collectSshKeyAsPasskeysData NPE崩溃。修复: pm clear重置应用数据。注意: termius_room_database.db的WAL/SHM文件即使force-stop后仍无法删除(权限拒绝)。ADB无线连接IP: 192.168.123.241:5555 (设备24117RK2CC)",
+          "tags": "op-exec,android,termius,crash-fix",
+          "timestamp": "1779948988"
         }
       ]
     },
