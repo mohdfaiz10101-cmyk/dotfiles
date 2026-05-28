@@ -3891,3 +3891,4 @@
 {"ts": "2026-05-28 11:57", "type": "cycle", "summary": "系统运行正常，CPU存在瞬间峰值但整体负载低", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-28 11:58", "type": "cycle", "summary": "系统运行正常，CPU内存负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-05-28 11:59", "type": "cycle", "summary": "系统运行正常，Python进程短暂高占用但无需干预", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-05-28 12:00", "type": "cycle", "summary": "系统运行正常，CPU短暂升高属于正常波动", "alert_count": 0, "skipped_llm": false}
