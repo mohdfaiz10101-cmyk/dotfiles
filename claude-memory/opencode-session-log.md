@@ -50529,3 +50529,6 @@ glm-5v-turbo | ❌ 订阅不含 | — | 需另购
 
 ## 2026-05-28 11:42
 - [2026-05-28 11:41:57] **用户**: 手机harven打开后他地址后都提示tmux session not found 远程连过去查
+
+## 2026-05-28 11:56
+- [2026-05-28 11:56:19] **用户**: 我当前的系统配置 办理一个curosr pro能配合opencode code openclaw还有telegram吗 能联动那 有嘛 适合梦接入opencode agent吗
