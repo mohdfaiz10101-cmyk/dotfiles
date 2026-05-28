@@ -286,3 +286,44 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 6 hours (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 6 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 7 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 7 hours
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 7 hours (healthy)
+- [2026-05-28] [OP] 修复: macg MCP 406 | 根因: MCP SDK 1.27.1 streamable_http.py 强制 Accept: text/event-stream 验证，即使 json_response=True 也拦截 | 修复: 编辑 ~/agi/.venv/lib/python3.13/site-packages/mcp/server/streamable_http.py L671-680，json_response 启用时跳过 SSE Accept 校验 | 验证: POST initialize 返回200 JSON
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 8 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 8 hours
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 8 hours (healthy)

@@ -442,6 +442,11 @@
           "text": "2026-05-28 OP排查: 手机\"网络连接闪退\" — 实际是Termius(com.server.auditor.ssh.client)而非Haven。根因: ssh_connections.db SQLite损坏(disk image malformed)，打开保存的连接时SshOptionsInteractor.collectSshKeyAsPasskeysData NPE崩溃。修复: pm clear重置应用数据。注意: termius_room_database.db的WAL/SHM文件即使force-stop后仍无法删除(权限拒绝)。ADB无线连接IP: 192.168.123.241:5555 (设备24117RK2CC)",
           "tags": "op-exec,android,termius,crash-fix",
           "timestamp": "1779948988"
+        },
+        {
+          "text": "2026-05-28 OP修复: macg MCP 406错误 | 根因 MCP SDK 1.27.1 streamable_http.py L671-680 强制校验 Accept: text/event-stream，json_response=True也无效 | 修复: 添加 if not self.is_json_response_enabled 条件跳过SSE校验 | 验证: POST initialize 200 OK JSON | opencode mcp list 502为缓存状态，重启session即可",
+          "tags": "op-exec,macg-mcp,fix",
+          "timestamp": "1779972337"
         }
       ]
     },
