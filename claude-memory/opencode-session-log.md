@@ -50550,3 +50550,11 @@ glm-5v-turbo | ❌ 订阅不含 | — | 需另购
 会话已启动。我是 OpenClaw，你的工作区助手。
 
 有什么需要处理的？
+
+## 2026-05-28 12:30
+- [2026-05-28 12:29:54] **AI(sisyphus)**: [ok] 诊断 — 5个tmux会话缺失: claude-code/cct/claude-official/ulwh/foc
+[ok] DuckDNS/WAN/API — 全部可达，端口转发正常
+[ok] 创建缺失tmux会话 ×5 — 全部成功
+[ok] API验证 — charlie1990.duckdns.org:18090/api/sessions 返回10个session
+
+根因：ttyd各wrapper脚本对应tmux session未创建，Haven连接时wrapper `attach-session` 找不到session。`has-session`检查失败后应触发`new-s
