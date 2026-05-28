@@ -15,7 +15,7 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Security Watchdog — 安全哨兵
 
-<!-- memory-gate-inject: 23:45 -->
+<!-- memory-gate-inject: 11:37 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -24,14 +24,20 @@ hidden: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-27] [OP] 成功记录: Telegram bot getUpdates冲突修复 | 方法: kill冲突进程 + logOut API + proxy配置 | 场景: OpenClaw gateway与手动运行的opencode-telegram-bot.py争抢main
-**教训**: - [2026-05-27 17:22] [OP] 语音→opencode桥接部署完成: tmux-voice-bridge.py(Python HTTP→tmux send-keys) + systemd user service | 端口18798 | 目标sisy:1 | 手机访问http:/
-**教训**: - [2026-05-27] [OP] 成功记录: UOS解密 | contact.db解密key: 3824a2d4e94e3b655370a45a794e91184c82bbb9cec0bc3539c43eb42ecd3c13 (#8/16) | 不同于message_1.db的key | 74
-**教训**: - [2026-05-27] [OP] 失败学习: OpenClaw session丢失 | 根因: sessions.json只存单一session元数据，旧session(03c46cf2)卡在pendingFinalDelivery(184次重试失败)，阻塞新session初始化。Gatewa
-**教训**: - [2026-05-27] [OP] Telegram bot冲突: 多gateway实例争抢getUpdates → 重启gateway后所有bot(finance/ops/main/rss)正常启动
+**教训**: - [2026-05-17] opencode-worktree 插件无 main 字段 → 从 plugin 数组移除，否则 sisyphus tmux 循环崩溃
+**教训**: - [2026-05-10] Letta MCP 307 重定向 → macg_mcp.py 中 `/v1/agents` 改为 `/v1/agents/`
+**教训**: - [2026-05-03] 记忆遗忘引擎：lessons-learned 45天衰减，codebase-map 30天，一次性报告 7天
+**教训**: - [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
+**教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
 
 
 

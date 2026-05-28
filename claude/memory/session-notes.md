@@ -1,6 +1,12 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-27 23:45
+> 来源: changelog.jsonl | 重建时间: 2026-05-28 11:37
 
+## 2026-05-28
+
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 ## 2026-05-27
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
@@ -79,6 +85,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/letta-memory.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/MEMORY.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
@@ -379,6 +386,7 @@
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
+- [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
