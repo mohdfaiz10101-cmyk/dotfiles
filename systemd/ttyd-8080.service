@@ -7,7 +7,7 @@ StartLimitBurst=20
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'fuser -k 8080/tcp 2>/dev/null; sleep 0.5; true'
-ExecStart=/bin/sh -c 'exec /run/current-system/sw/bin/strace -f --trace=signal --signal=SIGTERM -o /home/charlie/.local/state/ttyd-debug/strace-$$(date +%%Y%%m%%d-%%H%%M%%S).log /run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap'
+ExecStart=/run/current-system/sw/bin/ttyd -p 8080 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -I /home/charlie/.local/share/ttyd-custom/index.html -W /home/charlie/.local/bin/openclaw-tmux-wrap
 OnFailure=sentinel-onfailure@ttyd-8080.service
 Restart=always
 RestartSec=3

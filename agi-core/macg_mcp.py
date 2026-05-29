@@ -20,6 +20,54 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("macg")
 
+# ── 永久修复: MCP SDK 1.27.1 json_response 启用时仍强制校验 Accept: text/event-stream ──
+# 猴补丁: 当 is_json_response_enabled=True 时跳过 SSE Accept 头校验
+# pip install --upgrade mcp 后补丁自动重新生效，无需手动编辑 SDK 源码
+_original_handle_get = None
+
+def _patch_mcp_sdk():
+    global _original_handle_get
+    from mcp.server.streamable_http import StreamableHTTPServerTransport
+    if _original_handle_get is None:
+        _original_handle_get = StreamableHTTPServerTransport._handle_get_request
+    async def _patched_handle_get(self, request, send):
+        # json_response 模式下不需要 SSE，跳过 Accept 头校验
+        if getattr(self, 'is_json_response_enabled', False):
+            # 直接跳到 SSE Accept 校验之后：验证请求头 + 处理重连
+            if not await self._validate_request_headers(request, send):
+                return
+            from mcp.server.streamable_http import LAST_EVENT_ID_HEADER, CONTENT_TYPE_SSE, MCP_SESSION_ID_HEADER, GET_STREAM_KEY
+            from http import HTTPStatus
+            if last_event_id := request.headers.get(LAST_EVENT_ID_HEADER):
+                await self._replay_events(last_event_id, request, send)
+                return
+            headers = {
+                "Cache-Control": "no-cache, no-transform",
+                "Connection": "keep-alive",
+                "Content-Type": CONTENT_TYPE_SSE,
+            }
+            if self.mcp_session_id:
+                headers[MCP_SESSION_ID_HEADER] = self.mcp_session_id
+            if GET_STREAM_KEY in self._request_streams:
+                response = self._create_error_response(
+                    "Conflict: Only one SSE stream is allowed per session",
+                    HTTPStatus.CONFLICT,
+                )
+                await response(request.scope, request.receive, send)
+                return
+            self._request_streams[GET_STREAM_KEY] = send
+            await send({
+                "type": "http.response.start",
+                "status": 200,
+                "headers": [(k.lower().encode(), v.encode()) for k, v in headers.items()],
+            })
+            await self._handle_get_stream(request)
+        else:
+            await _original_handle_get(self, request, send)
+    StreamableHTTPServerTransport._handle_get_request = _patched_handle_get
+
+_patch_mcp_sdk()
+
 MEM_DIR = Path.home() / ".claude/projects/-home-charlie/memory"
 OP_TASKS_FILE = MEM_DIR / "op-tasks.md"
 

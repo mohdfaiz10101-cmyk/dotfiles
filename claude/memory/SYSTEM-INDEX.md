@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-28 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-05-29 06:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -43,7 +43,7 @@
 | 7891 | users:(("mihomo",pid=2916,fd=6)) |
 | 8000 | 0.0.0.0:* |
 | 8000 | [::]:* |
-| 8080 | users:(("ttyd",pid=5168,fd=13)) |
+| 8080 | users:(("ttyd",pid=3211610,fd=13)) |
 | 8081 | users:(("opencode",pid=14138,fd=18)) |
 | 8088 | users:(("python3.13",pid=4359,fd=3)) |
 | 8201 | users:(("python3",pid=2765,fd=7)) |
@@ -58,7 +58,7 @@
 | 9091 | users:(("mihomo",pid=2916,fd=3)) |
 | 9099 | users:(("python3.13",pid=9184,fd=3)) |
 | 9800 | users:(("python3.13",pid=4340,fd=6)) |
-| 9801 | users:(("python3.13",pid=972220,fd=6)) |
+| 9801 | users:(("python3.13",pid=3996388,fd=6)) |
 | 9810 | users:(("python3.13",pid=5289,fd=6)) |
 | 9811 | users:(("python3.13",pid=4335,fd=6)) |
 | 9875 | users:(("python3.13",pid=4342,fd=3)) |
@@ -72,13 +72,12 @@
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
 | 11434 | users:((".ollama-wrapped",pid=2947,fd=3)) |
-| 15555 | *:* |
 | 17698 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
 | 18090 | *:* |
 | 18091 | *:* |
-| 18092 | users:(("python3.13",pid=2882,fd=6)) |
+| 18092 | users:(("python3.13",pid=2627214,fd=6)) |
 | 18093 | *:* |
 | 18094 | users:(("python3.13",pid=4169,fd=6)) |
 | 18300 | *:* |
@@ -173,7 +172,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（675个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（678个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (5个): `adb-autoconnect.sh, adb-device-monitor.py, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
@@ -240,6 +239,7 @@ static
 **four-*** (1个): `four-tool-dispatch.sh`
 **frontend-*** (1个): `frontend-verify.sh`
 **frp-*** (1个): `frp-watchdog.sh`
+**frps-*** (1个): `frps-watchdog.sh`
 **fsearch-*** (1个): `fsearch-idle-update.sh`
 **git-*** (2个): `git-backup.sh, git-codebase-update`
 **github-*** (2个): `github-action-trigger, github-ai-weekly`
@@ -296,13 +296,14 @@ static
 **openagents-*** (1个): `openagents-network-wrapper.sh`
 **openclaw-*** (2个): `openclaw-session-watchdog.sh, openclaw-tmux-wrap`
 **opencode-*** (34个): `opencode-8080-proxy.py, opencode-autoupgrade, opencode-bug-tracker.sh, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-dstate-watchdog, opencode-export, opencode-format-compaction... +24更多`
-**other-*** (67个): `PyGPT.AppImage, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code... +57更多`
+**other-*** (68个): `PyGPT.AppImage, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline, code... +58更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
 **overtab-*** (3个): `overtab-serve-start, overtab-serve-stop, overtab-tmux-wrap`
 **panel-*** (1个): `panel-nurse`
 **paperclip-*** (6个): `paperclip-aider-worker, paperclip-auto-sync, paperclip-dispatcher, paperclip-report-daemon.sh, paperclip-resolve-conflicts, paperclip-restore`
 **paste-*** (1个): `paste-image-pinned`
+**pattern-*** (1个): `pattern-extract.sh`
 **permission-*** (1个): `permission_check.py`
 **pet-*** (1个): `pet-feeder`
 **petals-*** (1个): `petals-server.sh`
@@ -528,7 +529,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（500个注册，109个运行中）
+## 三、systemd 用户服务（502个注册，109个运行中）
 
 ### 当前运行中
 ```
@@ -611,7 +612,6 @@ stepfun-tg-bot
 sunshine
 sys-info-mcp
 tablet-control-panel
-telegram-userbot
 tmux-voice-bridge
 ttyd-8080
 ttyd-aider
@@ -633,6 +633,7 @@ wayland-wm@hyprland\x2duwsm.desktop
 wechat-agent
 wechat-crm-archiver
 wechat-reply-consumer
+wechat-uos
 wireplumber
 xdg-desktop-portal
 xdg-desktop-portal-gtk
@@ -689,6 +690,7 @@ duckdns
 evolve-sync
 finance-reminder
 frp-watchdog
+frps-watchdog
 git-backup
 github-ai-weekly
 happy-session-watchdog
@@ -765,7 +767,6 @@ task-review-weekly
 tg-daily-digest
 tg-healer
 tg-predictor
-ttyd-strace-watcher
 wan-ip-monitor
 waybar-guardian
 waybar-score-finalize

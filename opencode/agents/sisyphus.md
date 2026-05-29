@@ -11,7 +11,7 @@ autoExecute: true
 ---
 # Sisyphus — OP 运维执行 Agent
 
-<!-- memory-gate-inject: 23:00 -->
+<!-- memory-gate-inject: 09:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -20,14 +20,54 @@ autoExecute: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-17] opencode-worktree 插件无 main 字段 → 从 plugin 数组移除，否则 sisyphus tmux 循环崩溃
-**教训**: - [2026-05-10] Letta MCP 307 重定向 → macg_mcp.py 中 `/v1/agents` 改为 `/v1/agents/`
-**教训**: - [2026-05-03] 记忆遗忘引擎：lessons-learned 45天衰减，codebase-map 30天，一次性报告 7天
 **教训**: - [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
 **教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
+**教训**: - [2026-05-28] [OP] 永久修复: macg MCP 406 | 方案: macg_mcp.py 内置猴补丁 _patch_mcp_sdk() 在 import 时注入，跳过 json_response 模式下的 SSE Accept 校验 | 优势: pip install --u
+**教训**: - [2026-05-28 23:18] [AUTO-EXTRACT] correction: 不对，检查服务状态不能用systemctl is-active，要用systemctl --user show --property=Result
+**教训**: - [2026-05-28 23:18] [AUTO-EXTRACT] preference: 记住，以后所有ADB操作都要SSH到Windows中转，USB线插在Windows那边
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -70,6 +110,53 @@ autoExecute: true
 （首次任务时由tool-lookup.sh自动填充）
 {TOOL_LOOKUP_RESULT}
 <!-- /tool-gate-inject -->
+
+<!-- op-manual-inject: 操作手册强制注入 -->
+## Charlie 优化习惯（操作手册自动注入）
+- **触发**: 同一工具用法被推理≥2次
+- **行动**: 立即封装到 commands.json 注册表 + auto-skill
+- **原则**: "不要让AI猜两次同样的命令"
+- **触发**: Charlie说"不对"/"应该..."时
+- **行动**: 不修复单例，而是提取可复用规则
+- **示例**: "ADB要走SSH中转" → 不是记这一次，是记"所有手机操作必须SSH到Windows"
+- **原则**: "每一个纠正都代表一个缺失的系统规则"
+- **第1层**: 加注册表条目（最快，30秒）
+- **第2层**: 封装为 skill（标准化，2分钟）
+- **第3层**: 改 systemd/timer 自动化（彻底，5分钟）
+- **原则**: "能自动化的绝不手动，能手动的绝不让AI推理"
+- 第1次失败: 修复 + 记录到 lessons-learned
+- 第2次同类失败: 升级为 error_pattern 写入 commands.json
+- 第3次同类失败: 封装为自愈 skill
+- **原则**: "失败是系统缺失信号的体现，不是AI的错误"
+| 场景 | 选择 | 原因 |
+|------|------|------|
+| 工具调用 | tool-lookup注册表 > 自行推理 | 避免"失忆" |
+| 架构方案 | 在已有组件上叠加 > 新工具 | 最小侵入 |
+| 操作方式 | 直接执行 > 询问确认 | 实时优先 |
+| 记忆存储 | 文件持久化 > "记住了" | LLM无状态 |
+| 模式复用 | skill封装 > 临时脚本 | 长期可维护 |
+| 错误处理 | 自动修复 > 报告等待 | 断了即恢复 |
+| 成本控制 | 免费模型(GLM) > 付费模型 | 查询/讨论用免费 |
+| 上下文 | 精简注入 > 全量加载 | 防token膨胀 |
+- **usb_windows**: USB线常插Windows → 所有ADB操作必须SSH到Windows中转
+- **no_cc_delegate**: CC委托永久失效 → OP自行完成所有任务
+- **disk_rule**: NTFS禁npm/bun → 涉及包管理的操作强制检查分区类型
+- **false_positive_guard**: systemctl is-active对oneshot是假阳性 → 所有服务检查必须用show --property=Result
+- **leta_health_404**: Letta /health返回404是正常的 → 正确端点为/v1/agents/
+- **tool_amnesia**: AI每次重新推理工具用法 → 建commands.json注册表+强制step0查询
+- **encapsulate_twice**: 任何操作做两次就封装 → auto-skill触发阈值
+- **correction_is_rule**: 每次纠正都是缺失的系统规则 → 不仅修复实例，提取规则
+1. [done] 工具调用注册表 (commands.json + tool-lookup.sh)
+2. [done] 自动调用捕获 (tool-capture-hook.sh)
+3. [next] 自动skill封装触发 (检测≥2次同类操作→auto-skill)
+4. [next] 纠正模式自动提取 (检测"不对/应该"→提取规则→写入本文)
+5. [todo] 记忆蒸馏定时器 (每周从 lessons-learned 蒸馏到本文)
+6. [todo] 操作手册注入到所有agent (不仅是sisyphus)
+- **服务/systemctl/systemctl**: 不对，检查服务状态不能用systemctl is-active，要用systemctl --user show --property=Result
+- **ADB/SSH/Windows**: 记住，以后所有ADB操作都要SSH到Windows中转，USB线插在Windows那边
+- 2026-05-28: 初始创建 — 提取历史纠正中的元模式 + 三层优化体系
+> 以上为操作手册精简版，完整版见 ~/.config/opencode/operating-manual.md
+<!-- /op-manual-inject -->
 
 
 
