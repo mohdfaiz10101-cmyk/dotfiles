@@ -5346,3 +5346,5 @@
 {"ts":"2026-05-29T10:00:22+08:00","type":"file-change","desc":".claude/projects/-home-charlie/memory/op-tasks.md MODIFY","scope":".claude","detail":"/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md","session":""}
 {"ts":"2026-05-29T10:00:23+08:00","type":"file-change","desc":".claude/projects/-home-charlie/memory/lessons-learned.md MODIFY","scope":".claude","detail":"/home/charlie/.claude/projects/-home-charlie/memory/lessons-learned.md","session":""}
 {"ts":"2026-05-29T10:00:23+08:00","type":"file-change","desc":"agi/flows/index.json MODIFY","scope":"agi","detail":"/home/charlie/agi/flows/index.json","session":""}
+{"ts":"2026-05-29T10:22:30+08:00","type":"file-change","desc":"agi/flows/index.json MODIFY","scope":"agi","detail":"/home/charlie/agi/flows/index.json","session":""}
+{"ts":"2026-05-29T10:26:53+08:00","type":"file-create","desc":".openclaw/agents/main/sessions/sessions.json MOVED_TO","scope":".openclaw","detail":"/home/charlie/.openclaw/agents/main/sessions/sessions.json","session":""}
