@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-05-29 10:30
+> 来源: changelog.jsonl | 重建时间: 2026-05-29 11:00
 
 ## 2026-05-29
 
@@ -14,6 +14,7 @@
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-29.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-29.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-29.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-29.md MODIFY
@@ -60,6 +61,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
@@ -118,6 +121,7 @@
 - [file-create] **.config**: .config/systemd/user/haven-tablet-watch.timer CREATE
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/haven-sync.timer CREATE
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/haven-tablet-watch.timer CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
