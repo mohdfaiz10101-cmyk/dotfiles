@@ -447,6 +447,11 @@
           "text": "2026-05-28 OP修复: macg MCP 406错误 | 根因 MCP SDK 1.27.1 streamable_http.py L671-680 强制校验 Accept: text/event-stream，json_response=True也无效 | 修复: 添加 if not self.is_json_response_enabled 条件跳过SSE校验 | 验证: POST initialize 200 OK JSON | opencode mcp list 502为缓存状态，重启session即可",
           "tags": "op-exec,macg-mcp,fix",
           "timestamp": "1779972337"
+        },
+        {
+          "text": "2026-05-29 OP执行: Haven备份同步系统部署 | 结果: 成功 | 关键发现: 手机Haven数据451MB(proot 426M+终端录制24M)已备份到/mnt/ai/backups/haven/phone/，增量同步每5分钟运行，平板(Xiaomi Pad 5)离线待上线后自动发现ADB并同步",
+          "tags": "op-exec,haven,backup,sync",
+          "timestamp": "1780018491"
         }
       ]
     },

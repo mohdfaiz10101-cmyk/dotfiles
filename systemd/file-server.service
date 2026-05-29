@@ -1,0 +1,12 @@
+[Unit]
+Description=HTTP File Server for Router (Clash binary)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 -m http.server 19999 --directory /tmp --bind 0.0.0.0
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

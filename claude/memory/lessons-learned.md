@@ -17,8 +17,8 @@
 - [2026-05-03] NTFS 上禁止 Python venv install（不仅限 npm/bun），迁移到 /mnt/ai/apps/
 
 ## Hyprland/NVIDIA
-- [2026-04-28] Hyprland 启动崩溃 → 检查 egl-wayland 是否安装（NVIDIA 必需）
-- [2026-04-27] Hyprland 黑屏 → render.explicit_sync 在 0.54+ 已废弃，删除该配置
+- [ARCHIVED] [2026-04-28]] Hyprland 启动崩溃 → 检查 egl-wayland 是否安装（NVIDIA 必需）
+- [ARCHIVED] [2026-04-27]] Hyprland 黑屏 → render.explicit_sync 在 0.54+ 已废弃，删除该配置
 - [2026-05-03] Hyprland+KDE 双桌面冲突 → 避免同时启用
 - [2026-05-10] Hyprland Super+D 全屏冲突 → 只保留 `fullscreen,1`，删除 `fullscreen`
 - [2026-05-21] **Hyprland windowrule 语法大改（0.42→0.54 三代变迁）**：
@@ -333,3 +333,23 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 20 hours (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 20 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse = 127.0.0.1:3010->3000/tcp | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.n8n = 0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp | 状态: Up 21 hours
+
+- [auto] 发现: docker.container.twenty-db-1 = 5432/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 hours (healthy)

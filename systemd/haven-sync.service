@@ -1,0 +1,9 @@
+[Unit]
+Description=Haven 备份同步 — 手机/平板 → 电脑
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/haven-sync.sh all
+StandardOutput=journal
+StandardError=journal

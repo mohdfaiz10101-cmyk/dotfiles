@@ -1,0 +1,9 @@
+[Unit]
+Description=Haven 平板检测 (每2分钟)
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+
+[Install]
+WantedBy=timers.target

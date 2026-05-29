@@ -127,3 +127,10 @@
 - [ ] [SELF-IMPROVE] launcher-server.py: 存在未完成的 `translate_path` 方法及缺失的核心请求处理逻辑（如 `do_POST`），导致服务器实际上无法处理任何业务请求。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在大量未捕获的数据库连接异常风险，应使用上下文管理器（with语句）或try-finally确保sqlite3连接在任何情况下都能被正确关闭，避免连接泄漏。
 - [ ] [AGI→OP] [2026-05-28 21:36] [high] 检查 frps 日志，确认是否存在连接风暴或异常流量
+
+### [SELF-IMPROVE 2026-05-29] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 将硬编码的系统级路径（如/home/charlie/...）作为环境变量的默认值提取为统一的常量配置，避免代码与特定用户环境强耦合。
+- [ ] [SELF-IMPROVE] think.py: `_letta_recall` 函数体缺少 `return` 语句闭合，导致在正常请求时返回 `None` 而非拼接后的记忆文本。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在 `--` 处被截断，需要补充完整剩余的 CSS 样式和核心的 JavaScript 逻辑代码。
+- [ ] [SELF-IMPROVE] launcher-server.py: `_check_auth`函数在`LOCAL_ONLY_AUTH`开启且非本地/Tailscale IP时，直接跳过Bearer Token校验返回了401，应调整逻辑结构确保未携带有效Token的非本地请求必定被拒绝。
+- [ ] [SELF-IMPROVE] hub-api.py: 在`_query_messages`函数中直接使用f-string拼接SQL查询存在SQL注入风险，应改用参数化查询或更安全的查询构建方式。

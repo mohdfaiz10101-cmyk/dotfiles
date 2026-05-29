@@ -1,0 +1,6 @@
+[Unit]
+Description=Haven 平板检测 — 上线时自动发现 ADB
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/haven-detect-tablet.sh
