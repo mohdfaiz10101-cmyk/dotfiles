@@ -43,12 +43,12 @@ services:
       - --config
       - /app/config.yml
       - --port
-      - "4002"
+      - "4000"
       - --telemetry
       - "false"
       # --debug  # removed: pollutes /v1/models response with ANSI codes
     healthcheck:
-      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:4002/health/readiness').read()"]
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:4000/health/readiness').read()"]
       interval: 10s
       timeout: 5s
       retries: 3

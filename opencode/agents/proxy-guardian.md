@@ -14,7 +14,7 @@ tools:
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Proxy Guardian — 代理守护者（FlClash 版本）
 
-<!-- memory-gate-inject: 11:00 -->
+<!-- memory-gate-inject: 19:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -23,14 +23,22 @@ tools:
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
 **教训**: - [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
 **教训**: - [2026-05-28] [OP] 永久修复: macg MCP 406 | 方案: macg_mcp.py 内置猴补丁 _patch_mcp_sdk() 在 import 时注入，跳过 json_response 模式下的 SSE Accept 校验 | 优势: pip install --u
 **教训**: - [2026-05-28 23:18] [AUTO-EXTRACT] correction: 不对，检查服务状态不能用systemctl is-active，要用systemctl --user show --property=Result
 **教训**: - [2026-05-28 23:18] [AUTO-EXTRACT] preference: 记住，以后所有ADB操作都要SSH到Windows中转，USB线插在Windows那边
+**教训**: - [2026-05-31] 统一 AGI 入口已落地：`/home/charlie/.local/bin/agi`，用于 `status/task/tasks/ask/memory/flow/wechat/doctor/open`。后续新 AGI 能力应优先接入该入口，再考虑 Web/API。
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

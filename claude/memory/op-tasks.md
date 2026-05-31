@@ -157,3 +157,7 @@
 - openclaw pane 不再卡 connection reset，能接收并执行任务。
 - codex-op-delegate 创建测试任务后 10 秒内 openclaw/19890 有执行痕迹，且重复 task_id 不重复注入。
 - op-tasks.md 回写根因、改动和验证结果。
+- [ ] [AGI→OP] [2026-05-31 17:40:09] [medium] (agi-e9e768bf) 回答/处理用户问题：测试自动模型路由
+- [ ] [AGI→OP] [2026-05-31 18:21:00] [medium] (agi-9b0540f5) 回答/处理用户问题：ping
+- [ ] [AGI→OP] [2026-05-31 18:23:27] [medium] (agi-5c2271c5) 回答/处理用户问题：ping
+- [ ] [AGI→OP] [2026-05-31 18:23:49] [medium] (agi-7bf31536) 回答/处理用户问题：ping

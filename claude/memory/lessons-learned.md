@@ -373,3 +373,38 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 22 hours (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 22 hours (healthy)
+
+
+- [2026-05-31] 统一 AGI 入口已落地：`/home/charlie/.local/bin/agi`，用于 `status/task/tasks/ask/memory/flow/wechat/doctor/open`。后续新 AGI 能力应优先接入该入口，再考虑 Web/API。
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active
+
+- [auto] 发现: systemd.● = active

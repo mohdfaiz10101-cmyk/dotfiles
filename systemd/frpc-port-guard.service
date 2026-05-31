@@ -1,0 +1,6 @@
+[Unit]
+Description=FRP Port Guard - verify localPort listeners
+
+[Service]
+Type=oneshot
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/frpc-port-guard.py
