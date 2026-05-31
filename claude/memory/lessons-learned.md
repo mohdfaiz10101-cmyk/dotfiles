@@ -138,3 +138,6 @@
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
 
 - [auto] 发现: docker.container.letta =  | 状态: Restarting (1) 11 seconds ago
+
+
+- [2026-05-31] LiteLLM/Docker 修复：Docker RootDir `/mnt/pool-disks/POOL-D1/docker` 的 `network/files/local-kv.db` 写入 `input/output error` 会导致容器启动/重启失败。处理：停 `docker.service docker.socket` → `sudo mv .../local-kv.db .../local-kv.db.bak-20260531-1746` → 启动 Docker → compose 重建 LiteLLM。LiteLLM 后端固定 `4002`，strip proxy 占 `4000` 转发到 `4002`。POOL-D1 仍需离线 fsck。

@@ -51277,3 +51277,53 @@ Haven 连接配置（5个）:
 1. USB 线从 NixOS 拔掉
 2. 插到 Windows
 3. 回我，我立刻走 `ssh G@... adb` 连手机去改数据库
+
+## 2026-05-31 23:03
+- [2026-05-31 23:02:46] **AI(sisyphus)**: 修复 `torch.load` 的 `weights_only=False` 参数
+
+## 2026-05-31 23:04
+- [2026-05-31 23:04:20] **AI(compaction)**: ## Goal
+- 修复手机 Haven SSH 客户端所有连接不可达问题（平板正常，仅手机端故障）
+
+## Constraints & Preferences
+- 手机通过全局 HTTP 代理 `192.168.123.209:7890`(mihomo) 上网，代理会拦截 SSH 连接导致超时
+- 平板未设代理，故 Haven 连接正常
+- Haven 数据库密码为 `ENC:` 加密格式，不可直接修改
+
+## Progress
+### Done
+- 诊断出根因：手机全局代理 `192.168.123.209:7890` 拦截所有 TCP 连接（包括 SSH），导致 Haven 连接日志显示
+- [2026-05-31 23:04:38] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-31 23:05
+- [2026-05-31 23:04:56] **AI(sisyphus)**: 所有`torch.load`已修复。重启容器并测试
+
+## 2026-05-31 23:05
+- [2026-05-31 23:05:20] **AI(sisyphus)**: 文件修改未生效——容器用的是镜像内置代码(/app)，不是宿主机挂载。直接复制修改到容器
+
+## 2026-05-31 23:06
+- [2026-05-31 23:05:46] **AI(sisyphus)**: 错误可能来自库内部(如mmpose加载checkpoint)。在inference.py开头全局禁用weights_only
+
+## 2026-05-31 23:07
+- [2026-05-31 23:06:53] **AI(sisyphus)**: add_safe_globals不够，改用全局monkey-patch覆盖torch.load默认值
+
+## 2026-05-31 23:12
+- [2026-05-31 23:12:11] **AI(sisyphus)**: 推理在运行，但300秒超时。检查api_server.py超时设置
+
+## 2026-05-31 23:14
+- [2026-05-31 23:14:14] **AI(sisyphus)**: The tcpdump 确认 DNAT+SNAT 正常工作！TCP 握手完成。
+
+## 2026-05-31 23:15
+- [2026-05-31 23:14:41] **AI(sisyphus)**: Now restore the original database so passwords work correctly
+
+## 2026-05-31 23:17
+- [2026-05-31 23:17:11] **AI(sisyphus)**: ```
+[ok] 诊断根因 — 手机WiFi(192.168.100.0/24)无法直连公网125.110.221.37，Tailscale路由192.168.123.0/24可达
+[ok] 修复FRP 60002 — localPort: 7700→22，指向SSH而非ttyd
+[ok] iptables DNAT — 125.110.221.37→192.168.123.209 (全部TCP端口)
+[ok] iptables SNAT — 源地址→100.108.28.44 (Tailscale IP)
+[ok] tcpdump验证 — TCP握手完成，DNAT+SNAT生效
+[ok] 数
+
+## 2026-05-31 23:18
+- [2026-05-31 23:17:50] **AI(sisyphus)**: 容器需要重启才能加载新的api_server.py。重启
