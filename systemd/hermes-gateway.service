@@ -1,0 +1,23 @@
+[Unit]
+Description=Hermes Agent Gateway - Messaging Platform Integration
+After=network.target
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/python3.11 -m hermes_cli.main gateway run --replace
+WorkingDirectory=/mnt/pool-disks/POOL-B1/home-offload/auto-migrate/.hermes/hermes-agent
+Environment="PATH=/mnt/pool-disks/POOL-B1/home-offload/auto-migrate/.hermes/hermes-agent/venv/bin:/mnt/pool-disks/POOL-B1/home-offload/auto-migrate/.hermes/hermes-agent/node_modules/.bin:/nix/store/4pl6afcwfmv0xn65r7mqjy3avpb785j9-nodejs-slim-24.14.0/bin:/home/charlie/.local/bin:/home/charlie/.cargo/bin:/home/charlie/go/bin:/home/charlie/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="VIRTUAL_ENV=/mnt/pool-disks/POOL-B1/home-offload/auto-migrate/.hermes/hermes-agent/venv"
+Environment="HERMES_HOME=/mnt/pool-disks/POOL-B1/home-offload/auto-migrate/.hermes"
+Restart=on-failure
+RestartSec=30
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=60
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
