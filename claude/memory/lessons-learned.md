@@ -408,3 +408,9 @@
 - [auto] 发现: systemd.● = active
 
 - [auto] 发现: systemd.● = active
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 38 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 42 minutes (healthy)
+
+- [auto] 发现: docker.container.letta =  | 状态: Up 2 seconds
