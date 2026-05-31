@@ -452,6 +452,11 @@
           "text": "2026-05-29 OP执行: Haven备份同步系统部署 | 结果: 成功 | 关键发现: 手机Haven数据451MB(proot 426M+终端录制24M)已备份到/mnt/ai/backups/haven/phone/，增量同步每5分钟运行，平板(Xiaomi Pad 5)离线待上线后自动发现ADB并同步",
           "tags": "op-exec,haven,backup,sync",
           "timestamp": "1780018491"
+        },
+        {
+          "text": "2026-05-31 OP执行: 19890配置到Haven | 结果: 成功 | 关键发现: Haven数据库路径 /data/user/0/sh.haven.app/databases/haven.db，connection_profiles表存储SSH连接。原19890记录connectionType=SSH但port=19890(HTTP)无法工作，已修复为SSH连接22端口+DuckDNS域名，并添加postLoginCommand提示。",
+          "tags": "op-exec,haven,opencode",
+          "timestamp": "1780237285"
         }
       ]
     },

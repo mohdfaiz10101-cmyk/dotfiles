@@ -128,3 +128,13 @@
 - [auto] 发现: systemd.● = active
 
 - [auto] 发现: systemd.● = active
+- [2026-05-31] [OP] 修复: Haven连接全部不可达 | 根因: (1)Haven MCP 绑定127.0.0.1:8730外网不可达 (2)数据库4个连接指向不可达端口(60002公网closed/127.0.0.1:7700外网不通) | 修复: (1)ADB forward 8730→8730 (2)删除2个重复连接 (3)codex→Tailscale 100.119.174.25:22 (4)codex-ip→FRP charlie1990.duckdns.org:2223 (5)清理WAL残留 | 验证: 三个连接手机端nc全通
+- [2026-05-31] [OP] 修复: Haven连接全部不可达 (第2轮) | 根因: (1)nixos-codex-cli FRP映射60002→7700(ttyd)而非22(SSH)导致SSH连接握手失败 (2)19890/7700是HTTP服务配成SSH类型 (3)60002公网端口未转发 | 修复: (1)改FRP localPort 7700→22使60002指向SSH (2)删重复连接3个 (3)codex→Tailscale:22 (4)codex-ip→LAN FRP:60002 (5)恢复19890连接(原有) | 验证: NixOS+手机端4连接全部可达(SSH认证通过/HTTP200)
+
+- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 16 minutes
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.letta =  | 状态: Restarting (1) 11 seconds ago
