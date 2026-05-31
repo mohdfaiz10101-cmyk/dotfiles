@@ -50981,3 +50981,131 @@ Charlie 想根据他的系统架构，定期抓取相关技术文档到本地，
 
 ## 2026-05-29 10:41
 - [2026-05-29 10:40:46] **用户**: 19890怎么又不可以访问了 公网
+
+## 2026-05-31 21:40
+- [2026-05-31 21:39:41] **用户**: 是谁一直打开我的手机haven 界面一直弹出
+
+## 2026-05-31 21:43
+- [2026-05-31 21:42:47] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-31 21:49
+- [2026-05-31 21:48:41] **AI(sisyphus)**: [fail] Haven SSH 直连 192.168.123.209:22 — 密码认证失败 (Auth cancel for password)
+
+[ok] 手机浏览器打开 http://192.168.123.209:60002
+
+**诊断结论**：
+- **FRP 隧道正常**：60002→7700 (ttyd codex)，手机 curl 验证通过
+- **防火墙已修复**：60002 端口已添加 nft 规则（运行时，重启后需重新添加）
+- **公网 IP 不通**：路由器不支持 NAT loopback，手机无法通过 125.110.221.37 访问
+- **Haven SSH
+
+## 2026-05-31 22:03
+- [2026-05-31 22:03:23] **用户**: 问题是我不知道密码 好像是有要添加密钥和机器指纹匹配 你加防火墙规则 手机termiux里输入codex说没安装啊
+
+## 2026-05-31 22:06
+- [2026-05-31 22:06:03] **用户**: 为啥我用op step 3.7执行任务就停止了
+
+## 2026-05-31 22:07
+- [2026-05-31 22:06:46] **AI(sisyphus)**: [ok] SSH 密钥认证 — 测试通过，charlie@nixos 可登录
+[ok] codex 位置 — /home/charlie/.npm-global/bin/codex v0.135.0
+[ok] 私钥已推送 — Termux ~/.ssh/id_ed25519
+
+**你怎么用**：
+
+**方法一（Termux）**：
+```bash
+ssh -i ~/.ssh/id_ed25519 charlie@192.168.123.209
+codex   # 进去后直接打 codex
+```
+
+**方法二（浏览器）**：
+打开 http://192.168.123.209:60002 直接
+
+## 2026-05-31 22:08
+- [2026-05-31 22:07:44] **AI(sisyphus)**: 查完了。原因有两个：
+
+**1. LiteLLM 没有注册 step-3.7-flash**
+
+LiteLLM 里 step 模型只有：`step-3.5-flash-2603`、`step-3.5-flash`、`step-2`，没有 `step-3.7-flash`。配置中 build/refactor 等 subagent 走的是 `openai-compatible/step-3.7-flash`（经 LiteLLM），调用直接报 Invalid model name 就停了。
+
+**2. compaction prune=true 加剧问题**
+
+配置里 `prune: true, 
+
+## 2026-05-31 22:08
+- [2026-05-31 22:08:11] **用户**: 我系统已经安装了hermes了吧 大家怎么在安卓上使用hermes
+
+## 2026-05-31 22:09
+- [2026-05-31 22:09:09] **AI(sisyphus)**: **已安装，但服务未运行。**
+
+Hermes Agent 安装在 `~/.hermes/hermes-agent/`，v0.7.x，源码来自 NousResearch。当前状态：
+
+- `hermes-agent.service` → **inactive (dead)**，Result=success（正常停止）
+- Gateway 上次启动失败：Telegram + Discord token 被其他进程占用（大概率是 OpenClaw 在抢占）
+
+---
+
+**安卓上怎么用 Hermes？**
+
+Hermes **没有原生 Android 应用**。安卓端使用方式是通过消息平台接入：
+
+
+## 2026-05-31 22:11
+- [2026-05-31 22:11:10] **用户**: 用discord不行吗
+- [2026-05-31 22:11:19] **AI(sisyphus)**: 可以，Discord 完全支持。问题是 **token 被 OpenClaw 占着**。
+
+当前状态：
+- `openclaw-gateway.service` → **active (running)**，占着 Discord bot token
+- `hermes-agent.service` → 之前启动失败，报 `discord_token_lock`
+
+解决办法就一个：**停 OpenClaw gateway，启动 Hermes gateway**，Discord bot token 就让给 Hermes 用。之后在安卓 Discord 里跟 bot 对话就行。
+
+要现在切吗？
+
+## 2026-05-31 22:12
+- [2026-05-31 22:12:26] **用户**: telegram 给openclaw discord给hermes这样不行吗
+
+## 2026-05-31 22:14
+- [2026-05-31 22:14:27] **AI(sisyphus)**: 可以，完全没问题。查了一下：
+
+- **OpenClaw** 只用了 Telegram，没有配 Discord
+- **Hermes** 有自己的 Discord bot token（`~/.hermes/.env` 里 `DISCORD_BOT_TOKEN=MTQ...`）
+- 两个是不同的 bot，互不冲突
+
+之前报 `discord_token_lock` 是上次启动时的旧错误，现在没有任何进程在用那个 Discord token。
+
+要现在启动 Hermes gateway（只开 Discord）吗？
+
+## 2026-05-31 22:15
+- [2026-05-31 22:14:55] **用户**: 19890配置到haven里面去啊
+
+## 2026-05-31 22:16
+- [2026-05-31 22:15:51] **用户**: 听说hermes step 3.7jl免费一个月对吗
+
+## 2026-05-31 22:17
+- [2026-05-31 22:17:09] **用户**: 不会吧 真的假的 下午不是还在用吗 晚上就不行了吗
+- [2026-05-31 22:17:12] **AI(sisyphus)**: 两个说法混在一起了，帮你拆开：
+
+**Step 3.7 Flash**（阶跃星辰）
+- **没有"免费一个月"**，按量付费：输入 1.35元/M tokens，输出 8.1元/M tokens
+- 有 Step Plan 订阅套餐（Flash Mini/Plus/Pro/Max），月付/年付，但都是付费的
+- 新注册 V0 级别余额 ¥0，仍可调用但受限于 5 并发 / 10 RPM / 5M TPM
+- "JL"这个词在官方找不到，可能是误传
+
+**Hermes**（Nous Research）
+- Hermes Agent 框架本身是 **MIT 开源免费**
+- Hermes 模型调用
+
+## 2026-05-31 22:19
+- [2026-05-31 22:19:18] **用户**: 问题是haven 公网打开codex怎么就没成功
+
+## 2026-05-31 22:20
+- [2026-05-31 22:19:58] **AI(sisyphus)**: [ok] 本地 FRP 隧道 127.0.0.1:60002 → 200 (13714 bytes)
+[ok] 手机 WiFi 内网 192.168.123.209:60002 → 200
+[fail] 手机 WiFi → 公网 125.110.221.37:60002 → 连接失败
+[fail] 手机 WiFi → DuckDNS charlie1990.duckdns.org:60002 → 超时
+[ok] 对比：17699 端口转发正常 → 200
+
+**原因**：路由器 Padavan 只做了 17699 的端口转发，没做 60002。
+
+公网路径断在路由器这层：`手机 → 路由器(1
