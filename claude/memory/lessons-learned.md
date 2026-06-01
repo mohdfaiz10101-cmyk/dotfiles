@@ -61,3 +61,15 @@
 
 - [auto] 发现: systemd.● = active
 - [2026-06-01] [OP] 修复: hermes FRP端口 | 根因: 19800/18092不在VPS allowPorts白名单 | 修复: 换18700(已在frps.toml白名单) | 教训: 新增FRP端口前先查~/ai-deploy/frps.toml
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 38 minutes (healthy)
