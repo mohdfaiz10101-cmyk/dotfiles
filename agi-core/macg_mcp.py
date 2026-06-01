@@ -20,8 +20,8 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("macg")
 
-# ── 永久修复: MCP SDK 1.27.1 json_response 启用时仍强制校验 Accept: text/event-stream ──
-# 猴补丁: 当 is_json_response_enabled=True 时跳过 SSE Accept 头校验
+# ── 永久修复: MCP SDK json_response 启用时仍强制校验 Accept: text/event-stream ──
+# 猴补丁: 复用当前 SDK 的 _handle_get_request 逻辑，只放宽 Accept 头校验
 # pip install --upgrade mcp 后补丁自动重新生效，无需手动编辑 SDK 源码
 _original_handle_get = None
 
@@ -31,34 +31,85 @@ def _patch_mcp_sdk():
     if _original_handle_get is None:
         _original_handle_get = StreamableHTTPServerTransport._handle_get_request
     async def _patched_handle_get(self, request, send):
-        # json_response 模式下不需要 SSE，跳过所有验证直接返回 200 + 空 SSE
-        if getattr(self, 'is_json_response_enabled', False):
-            from http import HTTPStatus
-            from mcp.server.streamable_http import LAST_EVENT_ID_HEADER, CONTENT_TYPE_SSE, MCP_SESSION_ID_HEADER, GET_STREAM_KEY
-            # 直接建立 SSE 流，跳过 session/protocol 验证（json_response 模式下不强制要求 session ID）
-            headers = {
-                "Cache-Control": "no-cache, no-transform",
-                "Connection": "keep-alive",
-                "Content-Type": CONTENT_TYPE_SSE,
-            }
-            if self.mcp_session_id:
-                headers[MCP_SESSION_ID_HEADER] = self.mcp_session_id
-            if GET_STREAM_KEY in self._request_streams:
-                response = self._create_error_response(
-                    "Conflict: Only one SSE stream is allowed per session",
-                    HTTPStatus.CONFLICT,
-                )
-                await response(request.scope, request.receive, send)
-                return
-            self._request_streams[GET_STREAM_KEY] = send
-            await send({
-                "type": "http.response.start",
-                "status": 200,
-                "headers": [(k.lower().encode(), v.encode()) for k, v in headers.items()],
-            })
-            await self._handle_get_stream(request)
-        else:
+        if not getattr(self, "is_json_response_enabled", False):
             await _original_handle_get(self, request, send)
+            return
+
+        from http import HTTPStatus
+        from mcp.server import streamable_http as sh
+        import anyio
+        from sse_starlette import EventSourceResponse
+
+        writer = self._read_stream_writer
+        if writer is None:
+            raise ValueError("No read stream writer available. Ensure connect() is called first.")
+
+        _, has_sse = self._check_accept_headers(request)
+        if not has_sse:
+            has_sse = True
+
+        if not has_sse:
+            response = self._create_error_response(
+                "Not Acceptable: Client must accept text/event-stream",
+                HTTPStatus.NOT_ACCEPTABLE,
+            )
+            await response(request.scope, request.receive, send)
+            return
+
+        if not await self._validate_request_headers(request, send):
+            return
+
+        if last_event_id := request.headers.get(sh.LAST_EVENT_ID_HEADER):
+            await self._replay_events(last_event_id, request, send)
+            return
+
+        headers = {
+            "Cache-Control": "no-cache, no-transform",
+            "Connection": "keep-alive",
+            "Content-Type": sh.CONTENT_TYPE_SSE,
+        }
+
+        if self.mcp_session_id:
+            headers[sh.MCP_SESSION_ID_HEADER] = self.mcp_session_id
+
+        if sh.GET_STREAM_KEY in self._request_streams:
+            response = self._create_error_response(
+                "Conflict: Only one SSE stream is allowed per session",
+                HTTPStatus.CONFLICT,
+            )
+            await response(request.scope, request.receive, send)
+            return
+
+        sse_stream_writer, sse_stream_reader = anyio.create_memory_object_stream[dict[str, str]](0)
+
+        async def standalone_sse_writer():
+            try:
+                self._request_streams[sh.GET_STREAM_KEY] = anyio.create_memory_object_stream(0)
+                standalone_stream_reader = self._request_streams[sh.GET_STREAM_KEY][1]
+
+                async with sse_stream_writer, standalone_stream_reader:
+                    async for event_message in standalone_stream_reader:
+                        event_data = self._create_event_data(event_message)
+                        await sse_stream_writer.send(event_data)
+            except Exception:
+                sh.logger.exception("Error in standalone SSE writer")
+            finally:
+                sh.logger.debug("Closing standalone SSE writer")
+                await self._clean_up_memory_streams(sh.GET_STREAM_KEY)
+
+        response = EventSourceResponse(
+            content=sse_stream_reader,
+            data_sender_callable=standalone_sse_writer,
+            headers=headers,
+        )
+
+        try:
+            await response(request.scope, request.receive, send)
+        except Exception:
+            sh.logger.exception("Error in standalone SSE response")
+            await sse_stream_writer.aclose()
+            await sse_stream_reader.aclose()
+            await self._clean_up_memory_streams(sh.GET_STREAM_KEY)
     StreamableHTTPServerTransport._handle_get_request = _patched_handle_get
 
 _patch_mcp_sdk()

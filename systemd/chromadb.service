@@ -1,18 +1,17 @@
 [Unit]
 Description=ChromaDB Vector Database
 After=network.target
+OnFailure=sentinel-onfailure@chromadb.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 
 [Service]
 Type=simple
 Environment="HOME=/home/charlie"
 ExecStart=/home/charlie/.local/bin/chroma-server.sh
-OnFailure=sentinel-onfailure@chromadb.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]
 WantedBy=default.target
-

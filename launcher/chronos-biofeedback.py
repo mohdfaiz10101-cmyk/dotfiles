@@ -4,6 +4,7 @@
 import json
 import os
 import signal
+import shutil
 import subprocess
 import sys
 import time
@@ -82,26 +83,31 @@ class KDEController:
     """KDE Plasma brightness / Night Color / contrast control."""
 
     def __init__(self):
+        self.qdbus = shutil.which("qdbus6") or shutil.which("qdbus")
+        self.kde_available = bool(self.qdbus)
         self.original_brightness = self._get_brightness()
         self.night_active = False
         self.contrast_changed = False
 
-    @staticmethod
-    def _get_brightness() -> int:
+    def _get_brightness(self) -> int:
+        if not self.kde_available:
+            return 10000
         try:
             r = subprocess.run(
-                ["qdbus", "org.kde.ScreenBrightness",
+                [self.qdbus, "org.kde.ScreenBrightness",
                  "/org/kde/ScreenBrightness/display0",
                  "org.kde.ScreenBrightness.Display.Brightness"],
                 capture_output=True, text=True, timeout=5,
             )
             return int(r.stdout.strip())
-        except (ValueError, subprocess.TimeoutExpired):
+        except (ValueError, subprocess.TimeoutExpired, FileNotFoundError):
             return 10000
 
     def _set_brightness(self, value: int):
+        if not self.kde_available:
+            return
         subprocess.run(
-            ["qdbus", "org.kde.ScreenBrightness",
+            [self.qdbus, "org.kde.ScreenBrightness",
              "/org/kde/ScreenBrightness/display0",
              "org.kde.ScreenBrightness.Display.SetBrightness",
              str(value), "0"],
@@ -109,7 +115,7 @@ class KDEController:
         )
 
     def _enable_night_color(self):
-        if self.night_active:
+        if self.night_active or not self.kde_available:
             return
         self.night_active = True
         subprocess.run(
@@ -120,12 +126,12 @@ class KDEController:
             timeout=5, check=False,
         )
         subprocess.run(
-            ["qdbus", "org.kde.KWin", "/KWin", "org.kde.KWin.reconfigure"],
+            [self.qdbus, "org.kde.KWin", "/KWin", "org.kde.KWin.reconfigure"],
             timeout=5, check=False,
         )
 
     def _disable_night_color(self):
-        if not self.night_active:
+        if not self.night_active or not self.kde_available:
             return
         self.night_active = False
         subprocess.run(
@@ -134,12 +140,12 @@ class KDEController:
             timeout=5, check=False,
         )
         subprocess.run(
-            ["qdbus", "org.kde.KWin", "/KWin", "org.kde.KWin.reconfigure"],
+            [self.qdbus, "org.kde.KWin", "/KWin", "org.kde.KWin.reconfigure"],
             timeout=5, check=False,
         )
 
     def _lower_contrast(self):
-        if self.contrast_changed:
+        if self.contrast_changed or not self.kde_available:
             return
         self.contrast_changed = True
         globals_path = os.path.expanduser("~/.config/kdeglobals")
@@ -152,7 +158,7 @@ class KDEController:
         )
 
     def _restore_contrast(self):
-        if not self.contrast_changed:
+        if not self.contrast_changed or not self.kde_available:
             return
         self.contrast_changed = False
         globals_path = os.path.expanduser("~/.config/kdeglobals")
@@ -217,6 +223,8 @@ class BiofeedbackEngine:
         signal.signal(signal.SIGTERM, lambda *_: self._shutdown())
 
         print("[OK] Chronos Bio-feedback started", file=sys.stderr)
+        if not self.kde.kde_available:
+            print("[WARN] qdbus/qdbus6 不可用，KDE 调节功能降级为仅记录与通知", file=sys.stderr)
 
         while True:
             is_idle = self.idle.is_idle()

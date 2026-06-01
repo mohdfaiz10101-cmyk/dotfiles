@@ -12,6 +12,7 @@ import sys
 import httpx
 from pathlib import Path
 from datetime import datetime
+from urllib.parse import urljoin
 
 logger = logging.getLogger(__name__)
 
@@ -309,13 +310,14 @@ def _write_letta_archival(result: dict, ts: str) -> None:
     for attempt in range(3):
         try:
             resp = requests.post(
-                f"{LETTA_URL}/v1/agents/{LETTA_ARCHIVAL_AGENT}/archival-memory/",
+                urljoin(f"{LETTA_URL.rstrip('/')}/", f"v1/agents/{LETTA_ARCHIVAL_AGENT}/archival-memory/"),
                 headers={
                     "Authorization": f"Bearer {LETTA_TOKEN}",
                     "Content-Type": "application/json",
                 },
                 json={"text": text},
                 timeout=5,
+                allow_redirects=True,
             )
             resp.raise_for_status()
             return
