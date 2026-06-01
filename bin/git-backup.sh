@@ -4,7 +4,9 @@
 # 路径: ~/bin/git-backup.sh (git tracked by dotfiles)
 
 set -uo pipefail
-LOG="/tmp/git-backup-$(date +%Y%m%d).log"
+LOG_DIR="$HOME/.local/state/git-backup"
+mkdir -p "$LOG_DIR"
+LOG="$LOG_DIR/git-backup-$(date +%Y%m%d).log"
 DATE=$(date '+%Y-%m-%d %H:%M')
 OK=0; FAIL=0; SKIP=0; LOCAL=0
 
@@ -75,6 +77,8 @@ log "=== Git 备份开始 $DATE ==="
 
 # 核心配置（必须有 GitHub remote）
 backup_repo ~/dotfiles                "dotfiles(核心配置)"
+backup_repo ~/dotfiles/agi-core       "agi-core(AGI核心)"
+backup_repo ~/ai-config-sync          "ai-config-sync"
 backup_repo /etc/nixos                "NixOS系统配置"
 
 # 开发项目

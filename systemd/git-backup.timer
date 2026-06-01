@@ -2,7 +2,8 @@
 Description=每5分钟 Git 全量备份（inotify实时+定时兜底）
 
 [Timer]
-OnUnitActiveSec=300
+OnCalendar=*:0/5
+OnBootSec=60
 Persistent=true
 AccuracySec=30
 
