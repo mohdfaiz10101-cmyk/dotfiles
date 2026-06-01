@@ -51634,3 +51634,17 @@ HQSSH 现在试：**Password 认证**，密码 `charlie123`。
 
 ## 2026-06-01 12:58
 - [2026-06-01 12:58:17] **用户**: 有哪个ssh客户端可以轻松配置 key passowrd还能ai操控 公网连接等 太操心了 haven 怎么配置都不对
+
+## 2026-06-01 12:58
+- [2026-06-01 12:58:32] **AI(sisyphus)**: Haven 确实是个坑。从记录看，过去一周折腾了DB崩溃、NAT回流、端口类型配错、MCP keepalive撑爆数据库导致闪退——问题不在SSH协议本身，在Haven那个Protobuf数据库 + MCP层的复杂度。
+
+**推荐方案：Termux + openssh**
+
+| 需求 | Termux | Haven | Termius |
+|------|--------|-------|---------|
+| Key密码配置 | `ssh-agent` + `ssh-add` 标准流程 | 需手动写protobuf DB | UI配置 |
+| AI操控 | ADB shell直接执行ss
+- [2026-06-01 12:58:39] **AI(sisyphus)**: [ok] 修改 small_model → `stepfun-plan/step-3.5-flash-2603-plan`
+
+重启 opencode 后生效，新 session 会自动生成中文标题。已有的 "New session" 不会回溯改名。
+- [2026-06-01 12:58:41] **用户**: 同时还有降级链 不要用glm
