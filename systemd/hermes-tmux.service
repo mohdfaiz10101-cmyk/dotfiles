@@ -1,0 +1,14 @@
+[Unit]
+Description=Hermes tmux session (persistent)
+After=default.target
+
+[Service]
+Type=forking
+ExecStart=/run/current-system/sw/bin/tmux new-session -d -s hermes -c /home/charlie
+ExecStop=/run/current-system/sw/bin/tmux kill-session -t hermes
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

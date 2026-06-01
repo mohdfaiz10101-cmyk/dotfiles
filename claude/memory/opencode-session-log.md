@@ -52213,3 +52213,37 @@ ssh charlie@charlie1990.duckdns.org -p 17699
 
 **总结**：手机和平板端剪贴板同步都已断开。手机需重新插拔 USB 并在 W
 - [2026-06-01 16:02:54] **用户**: hermes也用17699吗17699不是ai launcher吗
+
+## 2026-06-01 16:05
+- [2026-06-01 16:03:29] **AI(sisyphus)**: [ok] 已修正，推送到手机剪贴板
+
+```
+ssh charlie@100.119.174.25
+```
+
+你是对的，17699 是 AI Launcher。公网 SSH 方式：
+- **Tailscale**（推荐）：`ssh charlie@100.119.174.25` — 刚才已推送
+- FRP 公网：`ssh charlie@charlie1990.duckdns.org -p 2223`
+- [2026-06-01 16:04:09] **用户**: 我要hermes公网和tailscale啊
+- [2026-06-01 16:04:38] **AI(sisyphus)**: 你说得对。Hermes 本身没有内置 Web/HTTP 服务，访问方式就两个：
+
+**公网**：Discord Bot（等 token 修好）
+**Tailscale**：SSH → `hermes`
+
+刚才已推送到你手机剪贴板：
+```
+ssh charlie@100.119.174.25
+```
+SSH 进去后直接 `hermes` 就行。
+
+Discord 是目前唯一公网方案，但卡在 bot token 过期——需要你去 https://discord.com/developers/applications 重置。
+
+## 2026-06-01 16:09
+- [2026-06-01 16:05:39] **用户**: 没有tmux地址吗
+- [2026-06-01 16:05:59] **AI(sisyphus)**: [ok] 已推送
+
+```
+ssh charlie@100.119.174.25 -t tmux new -A -s hermes
+```
+
+`new -A -s hermes` = 有就 attach，没有就新建。进去后 `hermes` 开聊。断线重连自动恢复，适合手机端。
