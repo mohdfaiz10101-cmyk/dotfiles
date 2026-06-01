@@ -51598,3 +51598,9 @@ Haven 手机 → SSH → 电
 - [2026-06-01 12:44:33] **AI(sisyphus)**: [ok] HQSSH 配置已推送到 Telegram
 
 私钥 + 连接信息都在消息里，iOS 上打开 Telegram 复制私钥导入 HQSSH 即可。
+
+## 2026-06-01 12:47
+- [2026-06-01 12:47:28] **用户**: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKzjjpF+/XrFEtqVzkFusf1CWCxUHxR1oW/uartz808+ KEY
+- [2026-06-01 12:47:46] **AI(sisyphus)**: [ok] 你的 KEY 已添加，临时 key 已清理
+
+HQSSH 现在用 `125.110.221.37:2223` + 你的私钥即可登录。
