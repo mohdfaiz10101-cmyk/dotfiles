@@ -5,7 +5,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.local/bin/hqsshd
+ExecStart=/home/charlie/.local/bin/hqsshd -socket %t/hqssh.sock
+ExecStartPost=/bin/sh -c 'ln -sf %t/hqssh.sock /tmp/hqssh.sock'
+ExecStopPost=/bin/sh -c 'rm -f /tmp/hqssh.sock'
 Restart=on-failure
 RestartSec=5
 Environment=HOME=%h

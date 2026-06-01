@@ -51991,3 +51991,15 @@ iPhone插上USB后告诉我，我直接在这边帮你一步完成。
 
 ## 2026-06-01 15:09
 - [2026-06-01 15:09:35] **用户**: 但是怎么提示damon not running
+
+## 2026-06-01 15:10
+- [2026-06-01 15:09:55] **AI(sisyphus)**: `PrivateTmp=true` 隔离了 `/tmp`，守护进程的 socket 在私有命名空间里，CLI 看不到。修复服务配置
+
+## 2026-06-01 15:11
+- [2026-06-01 15:11:30] **AI(sisyphus)**: ```
+[ok] 安装 hqsshd v1.1.0 — 二进制 ~/.local/bin/{hqsshd,hqssh}
+[fail] 初始: daemon not running — 根因: PrivateTmp=true 隔离 /tmp，socket 在私有命名空间
+[fix]  ExecStart 改为 -socket %t/hqssh.sock → 放到 XDG_RUNTIME_DIR
+[fix]  ExecStartPost 自动 symlink /tmp/hqssh.sock → CLI 零配置自动发现
+[ok] 验证: hqssh sessions 正常连接
+[完成] hqsshd

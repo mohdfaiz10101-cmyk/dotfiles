@@ -240,3 +240,4 @@
 - [2026-06-01] [OP] workspace-rules.conf语法修复 | 根因: 自定义DSL {name=...;match:class=...} 不是合法Hyprland语法，所有windowrule被静默忽略 | 修复: 转为windowrulev2 = <RULE>, class:^(regex)$ 格式 | 影响: 全部5个工作区分配规则+2条nourgency规则
 
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 38 minutes (healthy)
+- [2026-06-01] [OP] 成功记录: hqsshd安装修复 | 场景: PrivateTmp=true导致systemd服务/tmp隔离, CLI找不到socket | 修复: ExecStart用-socket %t/hqssh.sock + ExecStartPost symlink到/tmp/hqssh.sock

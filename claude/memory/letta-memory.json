@@ -472,6 +472,11 @@
           "text": "2026-05-31 OP执行: 修复 macg MCP 400错误 + systemd配置警告 + 添加/health端点 | 结果: 成功 | 关键发现: 1) json_response模式下GET /mcp的猴补丁需跳过_validate_request_headers(不跳过会导致400 Bad Request) 2) FastMCP.custom_route()可添加自定义HTTP端点 3) OnFailure和StartLimitIntervalSec属于[Unit]段非[Service]段",
           "tags": "op-exec,macg-mcp,systemd-fix,health-endpoint",
           "timestamp": "1780242473"
+        },
+        {
+          "text": "2026-06-01 OP执行: 安装hqsshd v1.1.0 | 遇到PrivateTmp=true导致/tmp/hqssh.sock不可见 | 修复: socket改到%t/hqssh.sock (XDG_RUNTIME_DIR) + ExecStartPost自动symlink到/tmp | systemd服务active/running",
+          "tags": "op-exec,hqsshd,systemd,private-tmp",
+          "timestamp": "1780297886"
         }
       ]
     },
