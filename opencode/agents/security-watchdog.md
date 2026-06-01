@@ -15,7 +15,7 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Security Watchdog — 安全哨兵
 
-<!-- memory-gate-inject: 14:00 -->
+<!-- memory-gate-inject: 15:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **偏好**: - no_cc_delegate: 2026-05-18: Charlie要求不再委派CC，OP自行完成所有任务
 **偏好**: - usb_windows: 2026-05-19: USB线常插Windows，ADB需SSH到Windows激活无线
@@ -24,14 +24,18 @@ hidden: true
 **偏好**: - disk_rule: /mnt/ai装应用数据，/mnt/data是NTFS禁npm/bun
 **偏好**: - ddns_frp: DuckDNS:charlie1990.duckdns.org→WAN动态IP; FRPS:7000+dashboard:7500(~ai-deploy/frps.toml); 路由器:Padavan端口转发17699→192.168.123.209:17699 TCP; 巡检:connectivity-chain-watchdog每5分钟全链路(DNS/NAT/FRP/E2E); wan-ip-monitor每60秒检测IP变更
 **偏好**: - perm_state: 永久化优先: /tmp禁用, state/log一律存~/.local/state/; credential存~/.local/share/credentials/(chmod 600); systemd用EnvironmentFile引用credential而非明文嵌入; watchdog重启后失败计数不丢失
-**教训**: - [2026-05-31] [OP] 修复: fetch/haven/sqlite/vision MCP不可用 | 根因: vision-mcp/mcp-fetch-server/db-mcp npm包未安装 | 修复: npm install -g安装三个包 | 附加: 修复letta-mcp和
 **教训**: - [2026-06-01] [OP] 成功记录: Haven闪退修复 | 根因: agent_audit_events表412条MCP keepalive记录导致启动崩溃 | 修复: DELETE FROM agent_audit_events保留其他表 | 场景: Haven 5.59.7版本不
 **教训**: - [2026-06-01] [OP] 修复: opencode small_model标题生成失败 | 根因: stepfun-plan/step-3.5-flash-plan在LiteLLM中不可用(issue #29734) | 修复: 改为stepfun-plan/step-3.5-flas
 **教训**: - [2026-06-01] [OP] 成功记录: Haven升级v5.59.7→v5.59.10 | 下载: GitHub releases 101MB APK via SOCKS5代理 | 安装: adb push /data/local/tmp/ + pm install | 修复: v5.5
 **教训**: - [2026-06-01] [OP] 新建: iOS MCP Server | 文件: ~/.local/bin/ios-connect-mcp.py | 工具: 12个(ios_shell/screenshot/info/list_apps/file_read/file_write/dpkg/s
+**教训**: - [2026-06-01] [OP] workspace-rules.conf语法修复 | 根因: 自定义DSL {name=...;match:class=...} 不是合法Hyprland语法，所有windowrule被静默忽略 | 修复: 转为windowrulev2 = <RULE>, c
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
 
 
 

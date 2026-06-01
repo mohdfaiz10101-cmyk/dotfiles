@@ -238,3 +238,5 @@
 - [2026-06-01] [OP] 成功记录: Haven升级v5.59.7→v5.59.10 | 下载: GitHub releases 101MB APK via SOCKS5代理 | 安装: adb push /data/local/tmp/ + pm install | 修复: v5.59.5 WireGuard MCP绑定, v5.59.6 多tab隧道修复, v5.59.10 Reticulum文件传输
 - [2026-06-01] [OP] 新建: iOS MCP Server | 文件: ~/.local/bin/ios-connect-mcp.py | 工具: 12个(ios_shell/screenshot/info/list_apps/file_read/file_write/dpkg/syslog/respring/uicache/install_ipa/connect) | 连接: USB(iproxy)+WiFi(SSH)双路径 | 需设备端: OpenSSH+AppSync Unified
 - [2026-06-01] [OP] workspace-rules.conf语法修复 | 根因: 自定义DSL {name=...;match:class=...} 不是合法Hyprland语法，所有windowrule被静默忽略 | 修复: 转为windowrulev2 = <RULE>, class:^(regex)$ 格式 | 影响: 全部5个工作区分配规则+2条nourgency规则
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 38 minutes (healthy)

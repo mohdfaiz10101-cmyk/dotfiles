@@ -1,0 +1,26 @@
+[Unit]
+Description=HQSSH Daemon - AI CLI Session Manager
+Documentation=https://github.com/Gelotto/hqsshd
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/hqsshd
+Restart=on-failure
+RestartSec=5
+Environment=HOME=%h
+
+# Logging goes to journald
+# View with: journalctl --user -u hqsshd -f
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+# NOTE: ProtectHome is intentionally omitted — AI tools (claude, codex, aider)
+# need write access to project directories under $HOME.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=default.target
