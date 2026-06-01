@@ -247,3 +247,4 @@
 - [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 35 minutes
 
 - [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 5 minutes
+- [2026-06-01] [OP] 修复: 截图后微信无法粘贴图片 | 根因: wl-copy只写Wayland剪贴板，微信(UOS/XWayland)需要X11剪贴板 | 修复: post-screenshot.sh双通道写入(wl-copy + xclip -t image/png -i file -display :1 &) | 关键: xclip必须后台运行&保持X11剪贴板持有者，且必须用 -i 参数而非重定向
