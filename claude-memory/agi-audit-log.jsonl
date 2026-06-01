@@ -5851,3 +5851,4 @@
 {"ts": "2026-06-01 11:39", "type": "cycle", "summary": "系统运行正常，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:40", "type": "cycle", "summary": "系统运行平稳，所有服务健康，资源负载正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:41", "type": "cycle", "summary": "系统运行正常，CPU和内存使用率均在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 11:42", "type": "cycle", "summary": "系统运行正常，Python3.13 进程占用 CPU 属于预期行为", "alert_count": 0, "skipped_llm": false}
