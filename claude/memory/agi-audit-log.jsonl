@@ -6136,3 +6136,7 @@
 {"ts": "2026-06-01 17:11", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:13", "type": "cycle", "summary": "系统运行正常，资源使用率低，无告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:14", "type": "cycle", "summary": "系统运行正常，仅 python3.13 进程暂居 CPU", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:16", "type": "cycle", "summary": "系统运行正常，CPU 负载较高但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:17", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:18", "type": "cycle", "summary": "系统负载正常，检测到ADB进程高CPU占用但符合历史预期", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:19", "type": "cycle", "summary": "系统运行正常，CPU负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
