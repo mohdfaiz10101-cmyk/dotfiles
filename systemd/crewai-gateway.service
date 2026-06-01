@@ -4,11 +4,11 @@ After=network.target litellm.service
 
 OnFailure=sentinel-onfailure@crewai-gateway.service
 StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
+StartLimitBurst=2
+StartLimitIntervalSec=900
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/crewai-venv/bin/python /home/charlie/crewai-project/crew_server.py
+ExecStart=/home/charlie/crewai-venv/bin/python /home/charlie/crewai-project/crew_server.py
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/home/charlie/crewai-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1
@@ -21,8 +21,7 @@ Environment=HTTPS_PROXY=
 Environment=ALL_PROXY=
 Environment=all_proxy=
 Restart=on-failure
-RestartSec=10
+RestartSec=120
 
 [Install]
 WantedBy=default.target
-
