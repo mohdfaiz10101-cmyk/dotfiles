@@ -51458,3 +51458,9 @@ Haven 连接配置（5个）:
 [ok] `systemctl --user daemon-reload && restart clipboard-sync-windows.service`
 [ok] 服务状态恢复 `active (running)`
 [ok] 本地剪贴板 `WAYLAND_DISPLAY=wayland-1` 可读可写，`wl-paste` 返回
+
+## 2026-06-01 11:16
+- [2026-06-01 11:16:34] **用户**: ni echo PROXY_CHECK: \
+
+## 2026-06-01 11:17
+- [2026-06-01 11:17:02] **用户**: export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 all_proxy=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890 ALL_PROXY=http://127.0.0.1:7890echo ENV_OK: \
