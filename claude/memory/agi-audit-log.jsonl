@@ -6222,3 +6222,7 @@
 {"ts": "2026-06-01 18:52", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 18:53", "type": "cycle", "summary": "系统运行正常，存在开发环境高CPU使用进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 18:54", "type": "cycle", "summary": "系统负载正常，存在高CPU进程但符合常规运行模式", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:55", "type": "cycle", "summary": "系统运行正常，暂无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:57", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:58", "type": "cycle", "summary": "系统运行正常，CPU高占用为已知系统进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:59", "type": "cycle", "summary": "系统运行平稳，服务健康，偶发CPU进程波动但无故障", "alert_count": 0, "skipped_llm": false}
