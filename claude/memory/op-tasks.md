@@ -162,3 +162,10 @@
 - [ ] [AGI→OP] [2026-05-31 18:23:27] [medium] (agi-5c2271c5) 回答/处理用户问题：ping
 - [ ] [AGI→OP] [2026-05-31 18:23:49] [medium] (agi-7bf31536) 回答/处理用户问题：ping
 - [ ] [AGI→OP] [2026-05-31 23:19:40] [high] (agi-640bcd86) 修复呼吸灯对记忆状态的误报：区分 Letta 连接失败、LiteLLM 500、桥接层异常，并把状态灯改成真实健康信号
+
+### [SELF-IMPROVE 2026-06-01] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 将模块级存在副作用的代码（如load_dotenv和全局变量初始化）移入if __name__ == "__main__":保护块中，以避免被其他模块导入时意外执行。
+- [ ] [SELF-IMPROVE] think.py: 缺少对LLM实际推理调用的封装实现，当前仅有记忆检索与Prompt定义，未完成核心的模型请求与JSON解析闭环。
+- [ ] [SELF-IMPROVE] kanban.html: CSS代码在`--`处被截断，需要补全完整的WIP进度条样式及后续缺失的HTML结构和JavaScript逻辑代码。
+- [ ] [SELF-IMPROVE] launcher-server.py: 必须补全 `translate_path` 方法并实现严格的路径边界检查，防止目录遍历攻击。
+- [ ] [SELF-IMPROVE] hub-api.py: 存在严重的SQL注入风险，应使用参数化查询替代f-string直接拼接用户输入（如search、talker等）到SQL语句中。

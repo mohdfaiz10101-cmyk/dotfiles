@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-06-01 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-06-01 09:21 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,108 +9,50 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
-| 1053 | users:(("mihomo",pid=2432627,fd=3)) |
-| 1054 | users:(("mihomo",pid=2373615,fd=9)) |
-| 1716 | users:((".kdeconnectd-wr",pid=863936,fd=17)) |
-| 2222 | users:(("frps",pid=469065,fd=10)) |
-| 2223 | users:(("frps",pid=469065,fd=17)) |
-| 3000 | (v1",pid=387371,fd=21)) |
-| 3002 | users:(("grafana",pid=2891928,fd=12)) |
-| 3389 | users:(("frps",pid=469065,fd=11)) |
-| 4000 | users:(("python3.13",pid=3049,fd=6)) |
-| 4001 | users:(("python3.13",pid=4034,fd=6)) |
+| 2222 | *:* |
+| 2223 | *:* |
+| 3389 | *:* |
 | 4002 | 0.0.0.0:* |
-| 4533 | users:(("navidrome",pid=4058,fd=8)) |
-| 5037 | users:(("adb",pid=4157084,fd=14)) |
-| 5900 | users:(("wayvnc",pid=863769,fd=11)) |
-| 5998 | users:((".websockify-wra",pid=863773,fd=4)) |
+| 5037 | users:(("adb",pid=192635,fd=11)) |
 | 6379 | 0.0.0.0:* |
-| 7000 | users:(("frps",pid=469065,fd=7)) |
-| 7500 | users:(("frps",pid=469065,fd=4)) |
+| 7000 | *:* |
+| 7500 | *:* |
 | 7681 | users:(("ttyd",pid=2059,fd=13)) |
-| 7690 | users:(("ttyd",pid=4441,fd=13)) |
-| 7691 | users:(("ttyd",pid=4422,fd=13)) |
-| 7692 | users:(("ttyd",pid=4405,fd=13)) |
-| 7693 | users:(("ttyd",pid=4404,fd=13)) |
-| 7694 | users:(("ttyd",pid=4402,fd=13)) |
-| 7695 | users:(("ttyd",pid=4412,fd=13)) |
-| 7696 | users:(("ttyd",pid=4396,fd=13)) |
-| 7697 | users:(("ttyd",pid=4393,fd=13)) |
-| 7698 | users:(("ttyd",pid=4538,fd=13)) |
-| 7699 | users:(("caddy",pid=4031,fd=6)) |
-| 7700 | users:(("ttyd",pid=1028646,fd=13)) |
 | 7890 | *:* |
 | 7891 | *:* |
-| 7892 | users:(("mihomo",pid=2373615,fd=12)) |
-| 7893 | users:(("mihomo",pid=2373615,fd=11)) |
-| 7896 | users:(("mihomo",pid=2373615,fd=6)) |
-| 8000 | users:((".uvicorn-wrappe",pid=3144560,fd=6)) |
-| 8022 | users:(("frps",pid=469065,fd=29)) |
-| 8080 | users:(("ttyd",pid=4381,fd=13)) |
-| 8081 | users:(("opencode",pid=2925697,fd=22)) |
-| 8088 | users:(("python3.13",pid=4064,fd=3)) |
-| 8201 | users:(("python3",pid=909684,fd=7)) |
-| 8284 | users:(("python3.13",pid=2382770,fd=3)) |
-| 8285 | users:(("python3.13",pid=3497914,fd=11)) |
-| 8286 | users:(("python3.13",pid=4036,fd=3)) |
+| 8022 | *:* |
+| 8283 | 0.0.0.0:* |
+| 8283 | [::]:* |
+| 8284 | users:(("python3.13",pid=192892,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8388 | users:(("gost",pid=318883,fd=3)) |
-| 8702 | users:(("python3.13",pid=3985,fd=13)) |
-| 8732 | users:(("python3.13",pid=495323,fd=3)) |
-| 8899 | users:(("python3.13",pid=663635,fd=6)) |
+| 8732 | users:(("python3.13",pid=192828,fd=3)) |
 | 9090 | *:* |
-| 9091 | users:(("mihomo",pid=2373615,fd=3)) |
-| 9095 | users:(("prometheus",pid=2891923,fd=7)) |
-| 9096 | users:(("alertmanager",pid=2944529,fd=3)) |
 | 9099 | users:(("python3.13",pid=6809,fd=3)) |
-| 9100 | users:(("node_exporter",pid=2887792,fd=4)) |
-| 9222 | users:(("chrome",pid=2005113,fd=62)) |
-| 9800 | users:(("python3.13",pid=265255,fd=6)) |
-| 9810 | users:(("python3.13",pid=4171,fd=6)) |
-| 9811 | users:(("python3.13",pid=4052,fd=6)) |
-| 9875 | users:(("python3.13",pid=4055,fd=3)) |
-| 9876 | users:(("python3.13",pid=4067,fd=3)) |
-| 9890 | users:(("python3",pid=3016,fd=17)) |
-| 9900 | users:(("python3.13",pid=308484,fd=6)) |
-| 9922 | users:(("MainThread",pid=3013,fd=21)) |
-| 9977 | users:(("python3",pid=2916,fd=3)) |
-| 9979 | users:(("python3.13",pid=2879,fd=3)) |
-| 9980 | users:(("python3.13",pid=2876,fd=3)) |
+| 9977 | users:(("python3",pid=192684,fd=3)) |
+| 9979 | users:(("python3.13",pid=192642,fd=3)) |
+| 9980 | users:(("python3.13",pid=192638,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 11434 | users:((".ollama-wrapped",pid=3061813,fd=3)) |
-| 15555 | users:(("frps",pid=469065,fd=30)) |
-| 15556 | users:(("python3.13",pid=467281,fd=13)) |
-| 15557 | users:(("frps",pid=469065,fd=15)) |
-| 17698 | users:(("frps",pid=469065,fd=24)) |
-| 17699 | users:(("frps",pid=469065,fd=23)) |
-| 17700 | users:(("frps",pid=469065,fd=21)) |
-| 18090 | users:(("frps",pid=469065,fd=26)) |
-| 18092 | users:(("python3.13",pid=768612,fd=6)) |
-| 18093 | users:(("frps",pid=469065,fd=18)) |
-| 18094 | users:(("python3.13",pid=3961,fd=6)) |
-| 18300 | users:(("frps",pid=469065,fd=19)) |
-| 18789 | users:(("node",pid=4085575,fd=25)) |
-| 18790 | users:(("MainThread",pid=2898,fd=21)) |
-| 18791 | users:(("node",pid=4085575,fd=26)) |
-| 18798 | users:(("python3.13",pid=3967,fd=3)) |
-| 18999 | users:(("python3.13",pid=1299344,fd=6)) |
-| 19890 | users:(("frps",pid=469065,fd=22)) |
-| 19891 | users:(("frps",pid=469065,fd=25)) |
-| 19892 | users:(("frps",pid=469065,fd=13)) |
-| 19893 | users:(("frps",pid=469065,fd=20)) |
-| 19999 | users:(("python3.13",pid=2969,fd=3)) |
+| 11434 | users:((".ollama-wrapped",pid=192836,fd=3)) |
+| 15555 | *:* |
+| 17698 | *:* |
+| 17699 | *:* |
+| 17700 | *:* |
+| 18000 | 0.0.0.0:* |
+| 18090 | *:* |
+| 18093 | *:* |
+| 18300 | *:* |
+| 19890 | *:* |
+| 19891 | *:* |
+| 19892 | *:* |
+| 19893 | *:* |
+| 19999 | users:(("python3.13",pid=192785,fd=3)) |
 | 22000 | *:* |
 | 22222 | 0.0.0.0:* |
 | 22222 | [::]:* |
-| 24801 | users:(("python3.13",pid=4013,fd=3)) |
-| 24802 | users:(("python3.13",pid=3079,fd=3)) |
+| 24802 | users:(("python3.13",pid=192969,fd=3)) |
 | 40544 | 0.0.0.0:* |
-| 47984 | *:* |
-| 47989 | *:* |
-| 47990 | *:* |
-| 48010 | *:* |
-| 60002 | users:(("frps",pid=469065,fd=14)) |
+| 60002 | *:* |
 | 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
@@ -555,68 +497,60 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（507个注册，121个运行中）
+## 三、systemd 用户服务（511个注册，74个运行中）
 
 ### 当前运行中
 ```
 adb-device-monitor
 agent-orchestrator
 agi-brain
-agi-frontend
 agi-gateway
 ai-config-watcher
-ai-rules-sync
 ai-watchdog
-app-org.kde.kdeconnect.daemon@autostart
 caddy-launcher
-change-watcher
-chromadb
-chrome-cdp
+cf-tunnel-7699
 claude-esp
 claude-tablet-output
-claude-token-tray
 clip-sync
 clipboard-sync-tablet
-code-watcher
+clipboard-sync-windows
 config-immutable-snapshot
 content-router
 cookie-sync-server
 cookie-watcher
+crewai-openagents-bridge
 dbus
-disk-watchdog
-dotfiles-symlink-watch
+discord-intelligent-bot
 earlyoom
 embedding-server
 evolve-mcp
+fcitx5
 file-server
 finance-agent
 finance-bot
 frpc
-frps
 gcr-ssh-agent
+haven-keepalive
+haven-mcp-proxy
+haven-mcp-telegram
+haven-mcp-telegram-user
 headless-browser
+hermes-agent
+hermes-gateway
 hub-api
 image-search
 launcher
 letta-mcp
 litellm-strip-proxy
 macg-mcp
-mem0-bridge
 memory-auto-commit
 memory-evolution
-mihomo
+mihomo-watch
 navidrome
 nix-voice-agent
-numlock-guard
-office-agent
-ollama
-op-tasks-watcher
 op-watchdog
-openagents
 openclaw-gateway
-opencode-config-guard
 opencode-intent-detector
-opencode-memwatch
 opencode-session-recorder
 opencode-web
 ops-bot
@@ -625,61 +559,22 @@ overcode-loop-watch
 phone-ai-bridge
 phone-clip-sync
 pipewire
-pipewire-pulse
-primary-clip-bridge
 proxy-403-monitor
-python-crash-guard
 rss-bot
 screenshot-watcher
 smart-redirector
-speech-dispatcher
 stepfun-tg-bot
-sunshine
+syncthing
 sys-info-mcp
 tablet-control-panel
-telegram-bot
+telegram-userbot
+tg-forum-watcher
 tmux-voice-bridge
-ttyd-8080
-ttyd-aider
-ttyd-audit
-ttyd-cct
-ttyd-claude
-ttyd-claudep
-ttyd-foc
-ttyd-macg
-ttyd-opencode
-ttyd-overtab
-ttyd-ulwh
 video-call-agent
-voxtype
-waybar
-waybar-guardian
-wayland-session-bindpid@862475
-wayland-wm@hyprland\x2duwsm.desktop
+wechat-agent
 wechat-crm-archiver
-wechat-reply-consumer
-wechat-uos
-wireplumber
-xdg-desktop-portal
-xdg-document-portal
-xdg-permission-store
 ydotool-bridge
 ydotoold
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
 ```
 
 ## 四、定时任务（133个 timer）
