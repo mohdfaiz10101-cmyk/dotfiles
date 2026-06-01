@@ -5777,3 +5777,4 @@
 {"ts": "2026-06-01 10:12", "type": "cycle", "summary": "系统运行正常，仅有 python3.13 进程短暂 CPU 飙升", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:13", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:14", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 10:15", "type": "cycle", "summary": "系统运行平稳，CPU高占用为系统级进程", "alert_count": 0, "skipped_llm": false}
