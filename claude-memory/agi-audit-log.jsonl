@@ -5822,3 +5822,4 @@
 {"ts": "2026-06-01 11:04", "type": "cycle", "summary": "系统负载正常，仅Python3.13进程暂居CPU，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:05", "type": "cycle", "summary": "系统负载正常，存在高CPU开发进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:06", "type": "cycle", "summary": "系统运行正常，无明显异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 11:08", "type": "cycle", "summary": "系统运行正常，存在瞬时 CPU 尖峰", "alert_count": 0, "skipped_llm": false}
