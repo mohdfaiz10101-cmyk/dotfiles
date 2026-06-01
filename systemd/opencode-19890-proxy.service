@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenCode 19890 Compatibility Proxy (:8082)
+After=network.target opencode-web.service
+Requires=opencode-web.service
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/opencode-19890-proxy.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
