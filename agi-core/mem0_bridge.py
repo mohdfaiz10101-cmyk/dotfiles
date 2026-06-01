@@ -9,7 +9,7 @@ import os
 import sqlite3
 import uuid
 from datetime import datetime
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
@@ -141,10 +141,13 @@ def reset_all():
 
 class Handler(BaseHTTPRequestHandler):
     def _json(self, code, data):
-        self.send_response(code)
-        self.send_header("Content-Type", "application/json")
-        self.end_headers()
-        self.wfile.write(json.dumps(data, ensure_ascii=False, default=str).encode())
+        try:
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(data, ensure_ascii=False, default=str).encode())
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            pass
 
     def _body(self):
         length = int(self.headers.get("Content-Length", 0))
@@ -221,24 +224,27 @@ class Handler(BaseHTTPRequestHandler):
             db.close()
 
     def do_GET(self):
-        p = urlparse(self.path)
-        if p.path.startswith("/pulse"):
-            code, data = self._pulse_handler("GET", p.path)
-            return self._json(code, data)
-        if p.path == "/health":
-            count = col.count()
-            self._json(200, {"status": "ok", "service": "mem0-lite", "backend": "chromadb-onnx", "count": count})
-        elif p.path == "/search":
-            q = parse_qs(p.query).get("q", [""])[0]
-            n = int(parse_qs(p.query).get("limit", [5])[0])
-            if not q:
-                return self._json(400, {"error": "missing q"})
-            self._json(200, {"results": search_memory(q, n)})
-        elif p.path == "/get_all":
-            n = int(parse_qs(p.query).get("limit", [50])[0])
-            self._json(200, {"memories": get_all(n)})
-        else:
-            self._json(404, {"error": "not found"})
+        try:
+            p = urlparse(self.path)
+            if p.path.startswith("/pulse"):
+                code, data = self._pulse_handler("GET", p.path)
+                return self._json(code, data)
+            if p.path == "/health":
+                count = col.count()
+                self._json(200, {"status": "ok", "service": "mem0-lite", "backend": "chromadb-onnx", "count": count})
+            elif p.path == "/search":
+                q = parse_qs(p.query).get("q", [""])[0]
+                n = int(parse_qs(p.query).get("limit", [5])[0])
+                if not q:
+                    return self._json(400, {"error": "missing q"})
+                self._json(200, {"results": search_memory(q, n)})
+            elif p.path == "/get_all":
+                n = int(parse_qs(p.query).get("limit", [50])[0])
+                self._json(200, {"memories": get_all(n)})
+            else:
+                self._json(404, {"error": "not found"})
+        except (BrokenPipeError, ConnectionResetError, OSError):
+            pass
 
     def do_POST(self):
         try:
@@ -287,6 +293,6 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = HTTPServer(("127.0.0.1", PORT), Handler)
+    server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
     print(f"[mem0-lite] 启动: http://127.0.0.1:{PORT} (chromadb-onnx + {LLM_MODEL})")
     server.serve_forever()
