@@ -52003,3 +52003,23 @@ iPhone插上USB后告诉我，我直接在这边帮你一步完成。
 [fix]  ExecStartPost 自动 symlink /tmp/hqssh.sock → CLI 零配置自动发现
 [ok] 验证: hqssh sessions 正常连接
 [完成] hqsshd
+
+## 2026-06-01 15:21
+- [2026-06-01 15:21:03] **用户**: 但是他的projexts怎么用还有任务系统
+
+## 2026-06-01 15:21
+- [2026-06-01 15:21:28] **AI(sisyphus)**: 已自动发现 23 个 git 项目，任务系统为空。用法：
+
+**项目 (projects)**：
+```
+hqssh projects                   # 列出已注册的 23 个项目
+hqssh projects add /path         # 手动注册
+hqssh projects discover ~/code   # 扫描目录自动注册
+hqssh projects tools <id>        # 查看项目可用的 AI 工具
+hqssh projects remove <id>       # 移除
+```
+
+**任务 (tasks)**：
+```
+hq
+- [2026-06-01 15:21:48] **用户**: 可以ai控制吗 我手机的hqssh
