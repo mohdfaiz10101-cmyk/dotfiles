@@ -5867,3 +5867,4 @@
 {"ts": "2026-06-01 11:57", "type": "cycle", "summary": "系统状态正常，存在单进程CPU高占但属非关键进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:58", "type": "cycle", "summary": "系统运行平稳，CPU存在短暂峰值，服务状态正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:59", "type": "cycle", "summary": "系统运行正常，存在瞬时 CPU 占用高峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 12:00", "type": "cycle", "summary": "系统运行正常，CPU 负载较高但属系统进程正常波动", "alert_count": 0, "skipped_llm": false}
