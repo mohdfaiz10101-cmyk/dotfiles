@@ -52113,3 +52113,29 @@ hqssh 唯一独有的是 **HQSSH 手机 app** 的推送启动 + 会话接力。�
 
 ## 2026-06-01 15:43
 - [2026-06-01 15:43:14] **用户**: 不需要卸载
+
+## 2026-06-01 15:46
+- [2026-06-01 15:44:26] **AI(sisyphus)**: [ok] NixOS — Cloudflare token已从206个commit中清除，force push成功
+[ok] git-backup timer — `OnCalendar=*:0/5` 下次触发 15:45
+[ok] 脚本永久化 — LOG: `~/.local/state/git-backup/`，新增2个仓库
+
+[!] agi-core / hub — GitHub仓库不存在，本地已commit但无法push
+
+**原因**: GitHub token `ghp_1sFY...` 已过期(401)，无法通过API创建仓库。两个仓库的SSH remote指向 `mohdfai
+
+## 2026-06-01 15:47
+- [2026-06-01 15:46:01] **用户**: 取消这个东西 haven不用了
+
+## 2026-06-01 15:49
+- [2026-06-01 15:46:56] **AI(sisyphus)**: [ok] Telegram Bot API 服务已停止并禁用
+[ok] FRP 代理已移除（frpc + frps）
+[ok] 服务文件已删除
+[ok] 代码目录已清理 `/mnt/ai/apps/telegram-bot`
+
+**清理完成：**
+- systemd 服务：`telegram-bot.service` 已停止/禁用/删除
+- FRP 客户端：移除了 `nixos-telegram-bot-api` 代理
+- FRP 服务端：移除了端口 18900 授权
+- 文件系统：`/mnt/ai/apps/telegram-bot/` 已删除
+
+Haven 和 Telegram Bot A
