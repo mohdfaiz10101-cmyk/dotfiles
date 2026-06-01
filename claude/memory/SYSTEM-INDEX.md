@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-06-01 09:21 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-06-01 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -9,49 +9,99 @@
 | 22 | [::]:* |
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
+| 1053 | users:(("mihomo",pid=198927,fd=7)) |
+| 1716 | users:((".kdeconnectd-wr",pid=275953,fd=17)) |
 | 2222 | *:* |
 | 2223 | *:* |
+| 3000 | (v1",pid=196170,fd=21)) |
 | 3389 | *:* |
+| 4000 | users:(("python3.13",pid=192907,fd=6)) |
+| 4001 | users:(("python3.13",pid=193616,fd=6)) |
 | 4002 | 0.0.0.0:* |
+| 4096 | users:(("opencode",pid=2428166,fd=18)) |
+| 4533 | users:(("navidrome",pid=193696,fd=8)) |
 | 5037 | users:(("adb",pid=192635,fd=11)) |
+| 5900 | users:(("wayvnc",pid=256654,fd=11)) |
+| 5998 | users:((".websockify-wra",pid=256655,fd=4)) |
 | 6379 | 0.0.0.0:* |
 | 7000 | *:* |
 | 7500 | *:* |
 | 7681 | users:(("ttyd",pid=2059,fd=13)) |
+| 7690 | users:(("ttyd",pid=195721,fd=13)) |
+| 7691 | users:(("ttyd",pid=195717,fd=13)) |
+| 7692 | users:(("ttyd",pid=195727,fd=13)) |
+| 7693 | users:(("ttyd",pid=195716,fd=13)) |
+| 7694 | users:(("ttyd",pid=195726,fd=13)) |
+| 7695 | users:(("ttyd",pid=195723,fd=13)) |
+| 7696 | users:(("ttyd",pid=195728,fd=13)) |
+| 7697 | users:(("ttyd",pid=195724,fd=13)) |
+| 7698 | users:(("ttyd",pid=195735,fd=13)) |
+| 7699 | users:(("caddy",pid=193606,fd=6)) |
+| 7700 | users:(("ttyd",pid=2687064,fd=13)) |
 | 7890 | *:* |
 | 7891 | *:* |
 | 8022 | *:* |
+| 8080 | users:(("ttyd",pid=195715,fd=13)) |
+| 8081 | users:(("opencode",pid=1922434,fd=22)) |
+| 8082 | users:(("python3.13",pid=2115728,fd=3)) |
+| 8088 | users:(("python3.13",pid=193706,fd=3)) |
+| 8201 | users:(("python3",pid=192770,fd=7)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | users:(("python3.13",pid=192892,fd=3)) |
+| 8285 | users:(("python3.13",pid=193803,fd=12)) |
+| 8286 | users:(("python3.13",pid=193625,fd=3)) |
 | 8384 | 0.0.0.0:* |
-| 8732 | users:(("python3.13",pid=192828,fd=3)) |
+| 8702 | users:(("python3.13",pid=193503,fd=13)) |
+| 8732 | users:(("python3.13",pid=1570556,fd=3)) |
 | 9090 | *:* |
+| 9091 | users:(("mihomo",pid=198927,fd=3)) |
 | 9099 | users:(("python3.13",pid=6809,fd=3)) |
+| 9800 | users:(("python3.13",pid=193677,fd=6)) |
+| 9801 | users:(("python3.13",pid=2904032,fd=6)) |
+| 9810 | users:(("python3.13",pid=195732,fd=6)) |
+| 9811 | users:(("python3.13",pid=193632,fd=6)) |
+| 9875 | users:(("python3.13",pid=193690,fd=3)) |
+| 9876 | users:(("python3.13",pid=193712,fd=3)) |
+| 9890 | users:(("python3",pid=258384,fd=17)) |
+| 9900 | users:(("python3.13",pid=193593,fd=6)) |
+| 9922 | users:(("MainThread",pid=192850,fd=21)) |
 | 9977 | users:(("python3",pid=192684,fd=3)) |
 | 9979 | users:(("python3.13",pid=192642,fd=3)) |
 | 9980 | users:(("python3.13",pid=192638,fd=3)) |
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
-| 11434 | users:((".ollama-wrapped",pid=192836,fd=3)) |
+| 11434 | users:((".ollama-wrapped",pid=198929,fd=3)) |
 | 15555 | *:* |
 | 17698 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
 | 18000 | 0.0.0.0:* |
 | 18090 | *:* |
+| 18091 | *:* |
+| 18092 | users:(("python3.13",pid=192914,fd=6)) |
 | 18093 | *:* |
+| 18094 | users:(("python3.13",pid=193439,fd=6)) |
 | 18300 | *:* |
+| 18789 | users:(("openclaw",pid=1256741,fd=25)) |
+| 18791 | users:(("openclaw",pid=1256741,fd=26)) |
+| 18798 | users:(("python3.13",pid=193465,fd=3)) |
 | 19890 | *:* |
 | 19891 | *:* |
 | 19892 | *:* |
 | 19893 | *:* |
 | 19999 | users:(("python3.13",pid=192785,fd=3)) |
+| 20241 | users:(("cloudflared",pid=197970,fd=6)) |
 | 22000 | *:* |
 | 22222 | 0.0.0.0:* |
 | 22222 | [::]:* |
+| 24801 | users:(("python3.13",pid=193578,fd=3)) |
 | 24802 | users:(("python3.13",pid=192969,fd=3)) |
 | 40544 | 0.0.0.0:* |
+| 47984 | *:* |
+| 47989 | *:* |
+| 47990 | *:* |
+| 48010 | *:* |
 | 60002 | *:* |
 | 60100 | [::]:* |
 
@@ -127,7 +177,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（743个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（745个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (6个): `adb-autoconnect.sh, adb-device-monitor.py, adb-reverse-haven.sh, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
@@ -259,7 +309,7 @@ static
 **op-*** (21个): `op-adaptive-gate, op-cc-bridge, op-cc-observer.sh, op-codex-plan, op-dialogue-broadcast.sh, op-dispatch, op-exec-viewer.sh, op-exec.sh, op-feed-viewer.sh, op-force.sh... +11更多`
 **openagents-*** (1个): `openagents-network-wrapper.sh`
 **openclaw-*** (2个): `openclaw-session-watchdog.sh, openclaw-tmux-wrap`
-**opencode-*** (36个): `opencode-8080-proxy.py, opencode-autoupgrade, opencode-bug-tracker.sh, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-dstate-watchdog, opencode-export, opencode-format-compaction... +26更多`
+**opencode-*** (37个): `opencode-19890-proxy.py, opencode-8080-proxy.py, opencode-autoupgrade, opencode-bug-tracker.sh, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-dstate-watchdog, opencode-export... +27更多`
 **other-*** (80个): `PyGPT.AppImage, agi, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude, claude-tmux-wrap.bak... +70更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
@@ -277,7 +327,7 @@ static
 **playwright-*** (4个): `playwright-chromium-headed, playwright-chromium-nix, playwright-mcp-cleanup, playwright-smart.sh`
 **post-*** (3个): `post-edit-verify.sh, post-task-summary.py, post-task-summary.sh`
 **project-*** (2个): `project-context-inject, project-context-save`
-**proxy-*** (6个): `proxy-403-monitor, proxy-db-init, proxy-learn, proxy-status-quick, proxy-status-widget, proxy-windows-discover`
+**proxy-*** (7个): `proxy-403-monitor, proxy-db-init, proxy-learn, proxy-port-guard.sh, proxy-status-quick, proxy-status-widget, proxy-windows-discover`
 **push-*** (2个): `push-apk, push-tunnel-url`
 **python-*** (1个): `python-crash-guard.sh`
 **query-*** (1个): `query-router.sh`
@@ -497,30 +547,38 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（511个注册，74个运行中）
+## 三、systemd 用户服务（514个注册，118个运行中）
 
 ### 当前运行中
 ```
 adb-device-monitor
 agent-orchestrator
 agi-brain
+agi-frontend
 agi-gateway
 ai-config-watcher
+ai-rules-sync
 ai-watchdog
+app-org.kde.kdeconnect.daemon@autostart
 caddy-launcher
 cf-tunnel-7699
+change-watcher
+chrome-cdp
+chronos-sensory
 claude-esp
 claude-tablet-output
+claude-token-tray
 clip-sync
 clipboard-sync-tablet
 clipboard-sync-windows
+code-watcher
 config-immutable-snapshot
 content-router
 cookie-sync-server
 cookie-watcher
-crewai-openagents-bridge
 dbus
-discord-intelligent-bot
+disk-watchdog
+dotfiles-symlink-watch
 earlyoom
 embedding-server
 evolve-mcp
@@ -535,23 +593,33 @@ haven-mcp-proxy
 haven-mcp-telegram
 haven-mcp-telegram-user
 headless-browser
-hermes-agent
-hermes-gateway
 hub-api
 image-search
 launcher
 letta-mcp
 litellm-strip-proxy
 macg-mcp
+mem0-bridge
 memory-auto-commit
 memory-evolution
+mihomo
 mihomo-watch
 navidrome
 nix-voice-agent
+numlock-guard
+office-agent
+ollama
+op-tasks-watcher
 op-watchdog
+openagents
 openclaw-gateway
+opencode-19890-proxy
+opencode-config-guard
 opencode-intent-detector
+opencode-memwatch
+opencode-serve
 opencode-session-recorder
+opencode-stuck-watch
 opencode-web
 ops-bot
 otp-sync
@@ -559,25 +627,51 @@ overcode-loop-watch
 phone-ai-bridge
 phone-clip-sync
 pipewire
+pipewire-pulse
+primary-clip-bridge
 proxy-403-monitor
+python-crash-guard
 rss-bot
 screenshot-watcher
 smart-redirector
+speech-dispatcher
 stepfun-tg-bot
-syncthing
+sunshine
 sys-info-mcp
 tablet-control-panel
 telegram-userbot
-tg-forum-watcher
 tmux-voice-bridge
+ttyd-8080
+ttyd-aider
+ttyd-audit
+ttyd-cct
+ttyd-claude
+ttyd-claudep
+ttyd-codex
+ttyd-foc
+ttyd-macg
+ttyd-opencode
+ttyd-overtab
+ttyd-ulwh
 video-call-agent
+voxtype
+waybar
+waybar-guardian
+wayland-session-bindpid@254700
+wayland-wm@hyprland\x2duwsm.desktop
 wechat-agent
 wechat-crm-archiver
+wechat-reply-consumer
+wechat-uos
+wireplumber
+xdg-desktop-portal
+xdg-document-portal
+xdg-permission-store
 ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（133个 timer）
+## 四、定时任务（134个 timer）
 ```
 agi-cognitive-engine
 agi-daily-report
@@ -680,6 +774,7 @@ opencode-session-guard
 opencode-web-idle
 playwright-mcp-cleanup
 plocate-update
+proxy-port-guard
 push-tunnel-url
 rebuild-session-notes
 rebuild-system-index

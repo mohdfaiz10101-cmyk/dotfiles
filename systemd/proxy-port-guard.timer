@@ -1,0 +1,9 @@
+[Unit]
+Description=Proxy Port Guard Timer - 每30分钟检查端口一致性
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

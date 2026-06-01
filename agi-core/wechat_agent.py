@@ -1028,6 +1028,56 @@ def lookup_display_name(wxid: str) -> str:
 # ─── 发送机制（xdotool --window 静默注入，XWayland 直接发送）───────────────────
 
 
+def _focus_wechat_workspace() -> bool:
+    """切换到微信所在工作区并聚焦微信窗口。
+    Why: 收到消息后自动跳转到微信窗口，让用户看到消息
+    What: hyprctl clients 查微信所在 workspace → hyprctl dispatch workspace → wmctrl 激活
+    Test: 微信运行时调用，hyprctl 切换工作区成功
+    """
+    try:
+        # Step 0: 从 hyprctl 查微信所在工作区
+        result = subprocess.run(
+            ["hyprctl", "clients", "-j"], capture_output=True, text=True, timeout=5,
+            env={**os.environ, "HYPRLAND_INSTANCE_SIGNATURE": os.environ.get("HYPRLAND_INSTANCE_SIGNATURE", ""),
+                 "XDG_RUNTIME_DIR": os.environ.get("XDG_RUNTIME_DIR", "/run/user/1000")},
+        )
+        ws_id = "2"  # 默认工作区2
+        if result.returncode == 0:
+            try:
+                clients = json.loads(result.stdout)
+                for c in clients:
+                    cls = c.get("class", "")
+                    if "wechat" in cls.lower():
+                        ws = c.get("workspace", {})
+                        ws_id = str(ws.get("id", "2"))
+                        break
+            except Exception:
+                pass
+
+        # Step 1: 切换到微信所在工作区
+        subprocess.run(
+            ["hyprctl", "dispatch", "workspace", ws_id],
+            capture_output=True, timeout=5,
+            env={**os.environ, "HYPRLAND_INSTANCE_SIGNATURE": os.environ.get("HYPRLAND_INSTANCE_SIGNATURE", ""),
+                 "XDG_RUNTIME_DIR": os.environ.get("XDG_RUNTIME_DIR", "/run/user/1000")},
+        )
+        time.sleep(0.3)
+    except Exception:
+        pass  # hyprctl 不可用时降级为 wmctrl
+
+    # Step 2: 找到微信窗口并激活（hyprctl 成功/失败都执行）
+    try:
+        win = _get_wechat_window()
+        if win:
+            xid = win[0]
+            subprocess.run(["wmctrl", "-ia", xid], capture_output=True, timeout=3)
+            time.sleep(0.3)
+            return True
+    except Exception as e:
+        log.debug("wmctrl 聚焦微信窗口失败: %s", e)
+    return False
+
+
 def _get_wechat_window() -> tuple[str, int, int, int, int] | None:
     """获取微信窗口 (xid_hex, x, y, w, h)。
     优先选最大窗口（主窗口），返回 None 表示未找到。
@@ -1204,9 +1254,9 @@ def send_reply_xdotool(wxid: str, reply: str, source: str) -> bool:
         search_term = display_name
         log.info("[SEND] 目标: %s (search=%s)", wxid, search_term)
 
-        # Step 1: 激活窗口（只用 wmctrl，不用 xdotool windowfocus 避免触发 KDE XTest 权限弹窗）
-        subprocess.run(["wmctrl", "-ia", xid], capture_output=True, timeout=3)
-        time.sleep(0.8)
+        # Step 1: 切换到微信工作区并聚焦窗口
+        _focus_wechat_workspace()
+        time.sleep(0.5)
 
         # Step 2: Escape 清空残留弹窗
         _xkey("Escape", 0.2)
@@ -1425,6 +1475,9 @@ async def poll_cycle(state: dict[str, Any]) -> dict[str, Any]:
         return state
 
     log.info("本轮新消息 %d 条", len(all_msgs))
+
+    # 收到消息时自动切换到微信工作区，让用户看到
+    _focus_wechat_workspace()
 
     processed = replied = silenced = 0
 

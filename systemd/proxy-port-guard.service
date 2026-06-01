@@ -1,0 +1,6 @@
+[Unit]
+Description=Proxy Port Guard - 验证 mihomo 端口与环境变量一致
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/proxy-port-guard.sh
