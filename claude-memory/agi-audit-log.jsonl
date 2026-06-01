@@ -5787,3 +5787,4 @@
 {"ts": "2026-06-01 10:23", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:24", "type": "cycle", "summary": "系统运行正常，资源使用平稳", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:25", "type": "cycle", "summary": "系统负载较高但服务正常，存在瞬时CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 10:26", "type": "cycle", "summary": "系统运行正常，存在短暂的高CPU进程但无服务告警", "alert_count": 0, "skipped_llm": false}
