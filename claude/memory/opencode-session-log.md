@@ -52466,3 +52466,21 @@ HQSSH 里：新建连接 → 认证选「密钥」→ 点文件夹图标导入 �
 
 ## 2026-06-01 17:46
 - [2026-06-01 17:46:07] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-01 17:51
+- [2026-06-01 17:50:57] **AI(sisyphus)**: [ok] 诊断 -- Hyprland 0.54 中 workspace-rules.conf 的 `windowrulev2` 已废弃，需改为新 `windowrule { }` 块语法
+[ok] 修复 -- 全部 27 条规则迁移到新语法（`match:class` / `match:title` / `workspace N silent` / `size` / `suppress_event`）
+[ok] 验证 -- `--verify-config` 0 错误
+
+[fail] `nixos-rebuild dry-build` -- flake 属性名 `nixos` 应为 `cha
+
+## 2026-06-01 17:53
+- [2026-06-01 17:53:20] **用户**: 进去后还是opencode
+
+## 2026-06-01 17:54
+- [2026-06-01 17:54:30] **AI(sisyphus)**: 根因：`.zshrc` 第 16-22 行 SSH 检测到后先 attach 到 `openclaw` tmux session 并 `exit`，导致后面的 hermes 段（第 30-37 行）永远不会执行。
+
+[ok] 注释掉 openclaw auto-attach（第 16-22 行）
+[ok] hermes SSH 检测（第 30-37 行）→ 现在排第一，attach 优先
+
+下次 SSH 进来直接进 hermes tmux 界面。

@@ -6164,3 +6164,8 @@
 {"ts": "2026-06-01 17:46", "type": "cycle", "summary": "系统运行正常，CPU与内存负载平稳，服务健康且无待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:48", "type": "cycle", "summary": "系统运行正常，CPU负载稍高但无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:49", "type": "cycle", "summary": "系统运行正常，CPU存在间歇性负载但整体健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:50", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:51", "type": "cycle", "summary": "系统运行正常，CPU负载轻微波动，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:52", "type": "cycle", "summary": "系统运行平稳，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:53", "type": "cycle", "summary": "系统运行正常，资源使用率低，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:54", "type": "cycle", "summary": "系统运行正常，CPU负载轻微，无服务异常", "alert_count": 0, "skipped_llm": false}
