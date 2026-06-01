@@ -10,10 +10,8 @@ StartLimitIntervalSec=900
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8178 " && echo "PORT 8178 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/whisper-server -m /mnt/pool/offload/whisper-models/ggml-medium.bin -l zh --host 127.0.0.1 --port 8178 -t 4 --inference-path /v1/audio/transcriptions --convert
-Restart=on-failure
-RestartSec=120
+Restart=no
 Environment=PYTHONUNBUFFERED=1
 
 [Install]
 # WantedBy=default.target  # 禁用自动启动，按需手动: systemctl --user start whisper
-

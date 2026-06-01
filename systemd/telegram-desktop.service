@@ -10,8 +10,7 @@ StartLimitIntervalSec=1800
 [Service]
 Type=simple
 ExecStart=/nix/store/axgks718p3s1pff1bhggz4y5p09pbcb2-telegram-desktop-6.6.2/bin/Telegram
-Restart=on-failure
-RestartSec=300
+Restart=no
 Environment=DISPLAY=:0
 Environment=QT_QPA_PLATFORM=wayland;xcb
 Environment=XDG_RUNTIME_DIR=/run/user/%U
