@@ -6082,3 +6082,8 @@
 {"ts": "2026-06-01 16:05", "type": "cycle", "summary": "系统负载正常，opencode 进程处于高算力活跃状态", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:07", "type": "cycle", "summary": "系统资源正常，opencode 间歇性高负载属预期行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:08", "type": "cycle", "summary": "系统负载较高但无服务故障，opencode 进程 CPU 占用偏高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:10", "type": "cycle", "summary": "系统运行正常，进程 opencode 存在高 CPU 占用但无其他异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:11", "type": "cycle", "summary": "系统负载适中，各项服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:12", "type": "cycle", "summary": "系统负载正常，opencode 占用 CPU 较高但无历史故障记录，整体运行平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:13", "type": "cycle", "summary": "系统负载正常，opencode进程高CPU属业务常态", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:14", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}

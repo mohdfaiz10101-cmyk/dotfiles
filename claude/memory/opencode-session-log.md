@@ -52247,3 +52247,33 @@ ssh charlie@100.119.174.25 -t tmux new -A -s hermes
 ```
 
 `new -A -s hermes` = 有就 attach，没有就新建。进去后 `hermes` 开聊。断线重连自动恢复，适合手机端。
+
+## 2026-06-01 16:11
+- [2026-06-01 16:06:38] **用户**: 你给我一个永久tmux公网和tailscale地址
+- [2026-06-01 16:07:12] **AI(sisyphus)**: [ok] systemd 保活服务 `hermes-tmux` 已创建，开机自启
+
+已推送手机剪贴板：
+
+```
+Tailscale: ssh charlie@100.119.174.25 -t tmux a -t hermes
+公网:     ssh charlie@charlie1990.duckdns.org -p 2223 -t tmux a -t hermes
+```
+
+两种地址都可 attach 到同一个永久 session，进去后 `hermes` 开聊，断线不丢。
+- [2026-06-01 16:08:37] **用户**: 那怎么弄 手机frp和mcp连接来保持剪贴板同步不行吗 或者tailscale shh你必须多套和降级方案啊
+- [2026-06-01 16:08:58] **用户**: 你能把这些包装一下不
+
+## 2026-06-01 16:14
+- [2026-06-01 16:09:47] **用户**: 我手机有哪些东西和服务可以包装集成下 有些服务太零散不好管理 社区有啥方案 封装mcp吗
+- [2026-06-01 16:11:47] **用户**: 你是技术调研员。搜索以下内容的社区方案和GitHub项目：
+
+1. MCP (Model Context Protocol) 封装移动端服务/Android服务的方案
+2. 手机上运行MCP server的方案（Termux MCP、Android MCP server等）
+3. 社区有没有把手机应用（如Tasker、Termux、KDE Connect等）封装成MCP工具的
+4. 移动端服务管理和编排的框架或方案
+
+搜索关键词建议：
+- "android mcp server" github
+- "termux mcp" site:github.com
+- "mobile mcp wrapp
+- [2026-06-01 16:11:48] **AI(explore)**: 我将帮你搜索 MCP 在移动端/Android 的相关方案。让我使用多个搜索关键词并行获取信息。

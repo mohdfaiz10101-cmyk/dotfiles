@@ -1,12 +1,12 @@
 [Unit]
 StartLimitBurst=3
 StartLimitIntervalSec=120
-Description=Phone Clipboard Sync (ADB over FRP)
+Description=Phone Clipboard Sync v2 (Multi-protocol Fallback)
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.local/bin/phone-clip-sync
+ExecStart=/home/charlie/.local/bin/phone-clip-sync-v2
 OnFailure=sentinel-onfailure@phone-clip-sync.service
 Restart=on-failure
 StartLimitBurst=3
