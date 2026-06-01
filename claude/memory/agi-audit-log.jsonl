@@ -6128,3 +6128,7 @@
 {"ts": "2026-06-01 17:02", "type": "cycle", "summary": "系统各项指标正常，瞬时高占用进程属短暂行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:03", "type": "cycle", "summary": "系统运行平稳，各项指标正常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:04", "type": "cycle", "summary": "系统各项指标正常，检测到瞬时CPU峰值进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:05", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:07", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:08", "type": "cycle", "summary": "系统运行平稳，各项指标均处于正常范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:09", "type": "cycle", "summary": "系统负载正常，存在已知良性CPU占用进程", "alert_count": 0, "skipped_llm": false}
