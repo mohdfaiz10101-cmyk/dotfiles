@@ -217,3 +217,4 @@
 - [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 37 minutes (healthy)
 
 - [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 37 minutes (healthy)
+- [2026-06-01] [OP] 成功记录: Haven闪退修复 | 根因: agent_audit_events表412条MCP keepalive记录导致启动崩溃 | 修复: DELETE FROM agent_audit_events保留其他表 | 场景: Haven 5.59.7版本不接受大量audit events | 教训: Haven MCP keepalive产生的事件需定期清理，否则积累过多导致应用启动崩溃
