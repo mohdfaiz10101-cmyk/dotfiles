@@ -5909,3 +5909,4 @@
 {"ts": "2026-06-01 12:45", "type": "cycle", "summary": "系统运行正常，瞬时CPU波动属于常规系统活动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 12:46", "type": "cycle", "summary": "系统运行正常，Python进程短暂高负载", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 12:47", "type": "cycle", "summary": "系统运行正常，CPU和内存负载低，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 12:48", "type": "cycle", "summary": "系统运行正常，CPU占用略高但无风险", "alert_count": 0, "skipped_llm": false}
