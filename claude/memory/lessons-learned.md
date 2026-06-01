@@ -1,229 +1,53 @@
-# 核心经验（≤50行，2026-05-18 精简）
-
-<!-- DEAD_RULE: search命中backup/恢复/灾难/永久化类文件名时，MUST先read该文件全文再执行任何操作 -->
-
-## 行为规则
-- [2026-05-26] [OP] 用户有 coding plan 时，MUST 先等 plan 再执行，禁止自行设计架构和实现。即使用户未主动提供 plan，也应先确认是否存在 plan。
-- [2026-05-24] [OP] THINKING_CLEANUP: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决的问题。
-
-## 代理/网络
-- [2026-05-04] mihomo GLOBAL 必须保持 `⚡ 自动选择`，禁止 DIRECT。Cloudflare 全站封禁时用手机 SOCKS5 隧道 `ssh -D 1080 phone` 绕过
-- [2026-05-04] Claude 403 `Request not allowed` = GLOBAL 被设 DIRECT，国内 IP 直连 anthropic 被封
-- [2026-05-09] mihomo 全部节点失效 → 更新订阅或切良心云
-
-## NixOS/Python
-- [2026-05-18] `.zshrc` 的 Nix Python3.13 PYTHONPATH for 循环必须排除含 C 扩展的包（numpy/scipy/chromadb/pydantic-core/pydantic），否则 uv/pip 的 Python3.11 沙箱会加载不兼容的 3.13 C 扩展崩溃
-- [2026-05-05] mem0-bridge 重 ML 依赖（torch 530MB）不适合 NixOS venv+pip，用 Docker
-- [2026-05-03] NTFS 上禁止 Python venv install（不仅限 npm/bun），迁移到 /mnt/ai/apps/
-
-## Hyprland/NVIDIA
-- [ARCHIVED] [2026-04-28]] Hyprland 启动崩溃 → 检查 egl-wayland 是否安装（NVIDIA 必需）
-- [ARCHIVED] [2026-04-27]] Hyprland 黑屏 → render.explicit_sync 在 0.54+ 已废弃，删除该配置
-- [2026-05-03] Hyprland+KDE 双桌面冲突 → 避免同时启用
-- [2026-05-10] Hyprland Super+D 全屏冲突 → 只保留 `fullscreen,1`，删除 `fullscreen`
-- [2026-05-21] **Hyprland windowrule 语法大改（0.42→0.54 三代变迁）**：
-  - ❌ 旧（已废弃）：`windowrulev2 = float, class:^(name)$`
-  - ❌ 旧中间版（也废弃）：`windowrule = float, class:^(name)$`
-  - ✅ 新（0.54+ 块语法）：
-    ```
-    windowrule {
-      name = fcitx-rules     # 必须第一行
-      match:class = ^(name)$
-      float = 1
-      no_anim = 1            # 注意：是 no_anim 不是 noanim
-    }
-    ```
-  - 诊断命令：`hyprctl configerrors`（直接返回具体行号和错误原因，优先用这个）
-  - 遇到 Hyprland 配置错误红色覆盖层 → 先 `hyprctl configerrors` 再修
-
-## Docker/服务
-- [2026-05-03] Docker 16 容器同时启动 → 用 docker-ordered-start.sh 分层启动（Tier1→Tier4）
-- [2026-05-18] NVIDIA GPU 崩溃后 Docker containerd 损坏 → 全量清理 `containers/network/rootfs` 重建，禁用宿主同名服务让 Docker 接管
-- [2026-05-17] opencode-worktree 插件无 main 字段 → 从 plugin 数组移除，否则 sisyphus tmux 循环崩溃
-
-## 记忆系统
-- [2026-05-10] Letta MCP 307 重定向 → macg_mcp.py 中 `/v1/agents` 改为 `/v1/agents/`
-- [2026-05-03] 记忆遗忘引擎：lessons-learned 45天衰减，codebase-map 30天，一次性报告 7天
-- [2026-05-09] memory-bootstrap.sh 正则 `场景[:\s]` 匹配高频主题，Letta 用 curl HTTP status 检测
-
-## 手机/ADB
-- [2026-05-03] OPPO PKR110 Tailscale 被 Karing VPN 抢占 → `pm disable com.nebula.karing` + 看门狗每5分钟 force-stop
-
-- [auto] 发现: router.port_forward.24801 = TCP 24801→192.168.123.209:24801 (ydotool)
-
-- [auto] 发现: router.port_forward.18300 = TCP 18300→192.168.123.209:18300 (Sisy-18300)
-
-- [auto] 发现: router.port_forward.19890 = TCP 19890→192.168.123.209:19890 (Sisy-19890)
-
-- [auto] 发现: router.port_forward.8080 = TCP 8080→192.168.123.209:8080 (OpenCode-Sisy)
-
-- [auto] 发现: router.port_forward.42111 = TCP 42111→192.168.123.209:42111 (Sisy-42111)
-
-- [auto] 发现: router.port_forward.17698 = TCP 17698→192.168.123.209:17698 (win-ai)
 
 - [auto] 发现: router.port_forward.18700 = TCP 18700→192.168.123.209:18700 (openagents-net)
 
-- [auto] 发现: router.port_forward.18090 = TCP 18090→192.168.123.209:18090 (Sisy-18090)
+- [auto] 发现: router.port_forward.17698 = TCP 17698→192.168.123.209:17698 (win-ai)
+
+- [auto] 发现: router.port_forward.7000 = TCP 7000→192.168.123.209:7000 (frps)
+
+- [auto] 发现: router.port_forward.42111 = TCP 42111→192.168.123.209:42111 (Sisy-42111)
+
+- [auto] 发现: router.port_forward.17699 = TCP 17699→192.168.123.209:17699 (nixos-ai)
+
+- [auto] 发现: router.port_forward.8283 = TCP 8283→192.168.123.209:8284 (Letta-MCP)
 
 - [auto] 发现: router.port_forward.7681 = TCP 7681→192.168.123.209:7681 (ttyd)
 
-- [auto] 发现: router.port_forward.2222 = TCP 2222→192.168.123.209:22 (NixOS-SSH)
+- [auto] 发现: router.port_forward.19890 = TCP 19890→192.168.123.209:19890 (Sisy-19890)
+
+- [auto] 发现: router.port_forward.19892 = TCP 19892→192.168.123.209:19892 (Sisy-19892)
 
 - [auto] 发现: router.port_forward.19893 = TCP 19893→192.168.123.209:19893 (Sisy-19893)
 
 - [auto] 发现: router.port_forward.8888 = TCP 8888→192.168.123.209:18789 (OpenClaw-GW)
 
-- [auto] 发现: router.port_forward.3456 = TCP 3456→192.168.123.209:9800 (Hub-API)
-
-- [auto] 发现: router.port_forward.8283 = TCP 8283→192.168.123.209:8284 (Letta-MCP)
-
-- [auto] 发现: router.port_forward.12399 = UDP 12399→192.168.123.209:1235 (DF-Remote)
-
-- [auto] 发现: router.port_forward.7000 = TCP 7000→192.168.123.209:7000 (frps)
-
-- [auto] 发现: router.port_forward.17699 = TCP 17699→192.168.123.209:17699 (nixos-ai)
+- [auto] 发现: router.port_forward.8080 = TCP 8080→192.168.123.209:8080 (OpenCode-Sisy)
 
 - [auto] 发现: router.port_forward.2223 = TCP 2223→192.168.123.209:2223 (nixos-ssh)
 
-- [auto] 发现: router.port_forward.18091 = TCP 18091→192.168.123.209:18091 (Sisy-18091)
+- [auto] 发现: router.port_forward.18090 = TCP 18090→192.168.123.209:18090 (Sisy-18090)
 
-- [auto] 发现: router.port_forward.19892 = TCP 19892→192.168.123.209:19892 (Sisy-19892)
+- [auto] 发现: router.port_forward.18091 = TCP 18091→192.168.123.209:18091 (Sisy-18091)
 
 - [auto] 发现: router.port_forward.19891 = TCP 19891→192.168.123.209:19891 (Sisy-19891)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 4 hours (healthy)
+- [auto] 发现: router.port_forward.18300 = TCP 18300→192.168.123.209:18300 (Sisy-18300)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 4 hours (healthy)
+- [auto] 发现: router.port_forward.2222 = TCP 2222→192.168.123.209:22 (NixOS-SSH)
 
-- [auto] 发现: docker.container.letta =  | 状态: Restarting (1) 3 seconds ago
+- [auto] 发现: router.port_forward.12399 = UDP 12399→192.168.123.209:1235 (DF-Remote)
 
-- [auto] 发现: systemd.● = active
+- [auto] 发现: router.port_forward.3456 = TCP 3456→192.168.123.209:9800 (Hub-API)
 
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-
-- [auto] 发现: systemd.● = active
-- [2026-05-31] [OP] 修复: Haven连接全部不可达 | 根因: (1)Haven MCP 绑定127.0.0.1:8730外网不可达 (2)数据库4个连接指向不可达端口(60002公网closed/127.0.0.1:7700外网不通) | 修复: (1)ADB forward 8730→8730 (2)删除2个重复连接 (3)codex→Tailscale 100.119.174.25:22 (4)codex-ip→FRP charlie1990.duckdns.org:2223 (5)清理WAL残留 | 验证: 三个连接手机端nc全通
-- [2026-05-31] [OP] 修复: Haven连接全部不可达 (第2轮) | 根因: (1)nixos-codex-cli FRP映射60002→7700(ttyd)而非22(SSH)导致SSH连接握手失败 (2)19890/7700是HTTP服务配成SSH类型 (3)60002公网端口未转发 | 修复: (1)改FRP localPort 7700→22使60002指向SSH (2)删重复连接3个 (3)codex→Tailscale:22 (4)codex-ip→LAN FRP:60002 (5)恢复19890连接(原有) | 验证: NixOS+手机端4连接全部可达(SSH认证通过/HTTP200)
-
-- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 16 minutes
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 5 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
-
-- [auto] 发现: docker.container.letta =  | 状态: Restarting (1) 11 seconds ago
-
-
-- [2026-05-31] LiteLLM/Docker 修复：Docker RootDir `/mnt/pool-disks/POOL-D1/docker` 的 `network/files/local-kv.db` 写入 `input/output error` 会导致容器启动/重启失败。处理：停 `docker.service docker.socket` → `sudo mv .../local-kv.db .../local-kv.db.bak-20260531-1746` → 启动 Docker → compose 重建 LiteLLM。LiteLLM 后端固定 `4002`，strip proxy 占 `4000` 转发到 `4002`。POOL-D1 仍需离线 fsck。
-- [2026-05-31] [OP] 修复: macg MCP GET /mcp 400 | 根因: 猴补丁未跳过session验证(validate_request_headers) | 修复: json_response模式下直接建立SSE流跳过验证 | 附加: 用custom_route添加/health端点 | 修复: 7个systemd unit文件的OnFailure/StartLimitIntervalSec从[Service]移到[Unit]
-- [2026-05-31] [OP] 成功记录: wechat-uos修复 | 根因: DISPLAY=:0→应改为:1 | 错误: SIGABRT coredump 788次循环 | 修复: 改service文件DISPLAY环境变量+修正OnFailure段位 | 场景: Xwayland display号变更或配置错误导致GUI应用无法连接X11
-- [2026-05-31] [OP] 修复: fcitx5候选窗消失 | 根因: Wayland text-input-v3协议在Hyprland+NVIDIA上不稳定，关闭窗口时compositor连接断开 | 修复: 禁用Wayland前端(waylandim.conf Enabled=False)→回退X11/dbus | 一键: ~/.local/bin/fcitx5-fix wayland
-- [2026-05-31] [OP] 修复: fetch/haven/sqlite/vision MCP不可用 | 根因: vision-mcp/mcp-fetch-server/db-mcp npm包未安装 | 修复: npm install -g安装三个包 | 附加: 修复letta-mcp和sys-info-mcp的systemd警告
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 6 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 6 hours (healthy)
-
-- [auto] 发现: docker.container.letta =  | 状态: Up Less than a second
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 37 minutes (healthy)
-
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 39 minutes (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 37 minutes (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 7 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 7 hours (healthy)
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 2 hours (healthy)
-
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 2 hours (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 2 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 8 hours (healthy)
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 3 hours (healthy)
-
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 3 hours (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 3 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 9 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 9 hours (healthy)
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 9 hours (healthy)
-
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 9 hours (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 9 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 15 hours (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 15 hours (healthy)
-
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 34 minutes (healthy)
-
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 34 minutes (healthy)
-
-- [auto] 发现: docker.container.e1a59656fe38_litellm-litellm =  | 状态: Up 34 minutes (healthy)
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 33 minutes (healthy)
-
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 34 minutes (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 34 minutes (healthy)
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 35 minutes (healthy)
-
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 36 minutes (healthy)
-
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 37 minutes (healthy)
-
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 38 minutes (healthy)
-
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 37 minutes (healthy)
-
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 37 minutes (healthy)
-
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 37 minutes (healthy)
-- [2026-06-01] [OP] 成功记录: Haven闪退修复 | 根因: agent_audit_events表412条MCP keepalive记录导致启动崩溃 | 修复: DELETE FROM agent_audit_events保留其他表 | 场景: Haven 5.59.7版本不接受大量audit events | 教训: Haven MCP keepalive产生的事件需定期清理，否则积累过多导致应用启动崩溃
+- [auto] 发现: router.port_forward.24801 = TCP 24801→192.168.123.209:24801 (ydotool)
 
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 37 minutes (healthy)
 
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 38 minutes (healthy)
 
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 38 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 38 minutes (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 38 minutes (healthy)
 
@@ -232,24 +56,8 @@
 - [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 38 minutes (healthy)
 
 - [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 38 minutes (healthy)
-- [2026-06-01] [OP] 修复: opencode small_model标题生成失败 | 根因: stepfun-plan/step-3.5-flash-plan在LiteLLM中不可用(issue #29734) | 修复: 改为stepfun-plan/step-3.5-flash-2603-plan | 场景: opencode session智能命名
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 37 minutes (healthy)
-- [2026-06-01] [OP] 成功记录: Haven升级v5.59.7→v5.59.10 | 下载: GitHub releases 101MB APK via SOCKS5代理 | 安装: adb push /data/local/tmp/ + pm install | 修复: v5.59.5 WireGuard MCP绑定, v5.59.6 多tab隧道修复, v5.59.10 Reticulum文件传输
-- [2026-06-01] [OP] 新建: iOS MCP Server | 文件: ~/.local/bin/ios-connect-mcp.py | 工具: 12个(ios_shell/screenshot/info/list_apps/file_read/file_write/dpkg/syslog/respring/uicache/install_ipa/connect) | 连接: USB(iproxy)+WiFi(SSH)双路径 | 需设备端: OpenSSH+AppSync Unified
-- [2026-06-01] [OP] workspace-rules.conf语法修复 | 根因: 自定义DSL {name=...;match:class=...} 不是合法Hyprland语法，所有windowrule被静默忽略 | 修复: 转为windowrulev2 = <RULE>, class:^(regex)$ 格式 | 影响: 全部5个工作区分配规则+2条nourgency规则
+- [auto] 发现: systemd.● = active
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 38 minutes (healthy)
-- [2026-06-01] [OP] 成功记录: hqsshd安装修复 | 场景: PrivateTmp=true导致systemd服务/tmp隔离, CLI找不到socket | 修复: ExecStart用-socket %t/hqssh.sock + ExecStartPost symlink到/tmp/hqssh.sock
-- [2026-06-01] [OP] 成功记录: session恢复+配置优化 | 根因: opencode-archiver插件导出.md后删除DB session | 修复: 取消归档65个+重新归属288个孤儿+移除opencode-archiver插件 | 配置: workspace/.opencode/opencode.json移除archiver保留archive-manager | 效果: 78→431个可见session
-- [2026-06-01] [OP] 修复: opencode session命名全是new session | 根因: small_model=stepfun-plan/step-3.5-flash-2603-plan(StepFun模型不会生成session标题) | 修复: 改为openai-compatible/glm-4.7 | 场景: opencode会话自动命名
-
-- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 35 minutes
-
-- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 5 minutes
-- [2026-06-01] [OP] 修复: 截图后微信无法粘贴图片 | 根因: wl-copy只写Wayland剪贴板，微信(UOS/XWayland)需要X11剪贴板 | 修复: post-screenshot.sh双通道写入(wl-copy + xclip -t image/png -i file -display :1 &) | 关键: xclip必须后台运行&保持X11剪贴板持有者，且必须用 -i 参数而非重定向
-
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 28 minutes (healthy)
-- [2026-06-01] [OP] 成功记录: 19890修复 | 根因: DuckDNS IP过期(125.110.221.37→185.37.253.247) | 修复: 手动curl DuckDNS API更新 | 验证: 外网200+WebSocket 101
-- [2026-06-01] [OP] 新建: ttyd-hermes | 端口: 7689 | 路由: /hermes/* | 功能: tmux hermes session终端 | 方式: 添加到Caddy launcher + systemd服务
-- [2026-06-01] [OP] 修复: hermes端口分配 | 根因: 错误占用了17699(Caddy launcher) | 修复: FRP 19800→7689独立端口, 移除Caddy /hermes路由
+- [auto] 发现: systemd.● = active
+- [2026-06-01] [OP] 修复: hermes FRP端口 | 根因: 19800/18092不在VPS allowPorts白名单 | 修复: 换18700(已在frps.toml白名单) | 教训: 新增FRP端口前先查~/ai-deploy/frps.toml
