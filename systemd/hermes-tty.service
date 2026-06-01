@@ -1,0 +1,14 @@
+[Unit]
+Description=Hermes TTY on port 19800
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/nix/store/p9q77mx4ikb18bf9mj6812vwyaz7r23j-socat-1.8.1.1/bin/socat TCP-LISTEN:19800,reuseaddr,fork EXEC:/home/charlie/.local/bin/hermes-tty.sh,pty,stderr,ctty
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

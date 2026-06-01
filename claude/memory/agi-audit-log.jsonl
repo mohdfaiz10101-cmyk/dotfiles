@@ -6090,3 +6090,8 @@
 {"ts": "2026-06-01 16:15", "type": "cycle", "summary": "系统运行正常，负载较低，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:17", "type": "cycle", "summary": "系统运行正常，存在非活跃进程占用CPU但无需干预", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:18", "type": "cycle", "summary": "系统运行正常，无告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:20", "type": "cycle", "summary": "系统运行平稳，无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:21", "type": "cycle", "summary": "系统运行平稳，CPU与内存负载在正常范围内，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:22", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-01 16:23", "type": "cycle", "summary": "系统运行平稳，资源使用正常，无待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:24", "type": "cycle", "summary": "系统负载正常，但有单进程Python3满载运行", "alert_count": 0, "skipped_llm": false}

@@ -52322,3 +52322,20 @@ Termux里: pkg install open
 | 自动化 | Tasker, MacroDroid, Zapier | 3个引擎 |
 | 远程控制 | RustDesk, Aird
 - [2026-06-01 16:17:24] **用户**: 我要端口和用户名啊 我要用hqssh
+
+## 2026-06-01 16:20
+- [2026-06-01 16:20:25] **用户**: 我要专门有个端口或者地址给他 一打开就启动
+
+## 2026-06-01 16:24
+- [2026-06-01 16:24:08] **AI(sisyphus)**: [ok] Hermes 直连端口已就绪，已推送手机
+
+```
+Tailscale: 100.119.174.25:19800
+公网:     charlie1990.duckdns.org:19800
+```
+
+- `hermes-tty.service` — socat 监听 19800，连上自动进 hermes，断线自动重连
+- `hermes-tmux.service` — 保活 tmux session，开机自启
+- FRP 代理已加，公网可达
+
+HQSSH 直接填地址端口就行，无需密码，一打开就是 hermes。
