@@ -1,0 +1,14 @@
+[Unit]
+Description=Haven MCP ADB Bridge
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/haven-mcp-adb-bridge.py 8732
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

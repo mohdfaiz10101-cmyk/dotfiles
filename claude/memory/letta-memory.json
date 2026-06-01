@@ -142,6 +142,11 @@
           "text": "2026-05-28 OP执行: 三层工具调用优化体系建成 | 结果: 成功 | 核心: (1) 命令注册表23条意图→精确命令匹配, 解决\"每次从零推理工具用法\"问题 (2) tool-lookup.sh自动匹配并注入prompt (3) tool-capture-hook.sh自动捕获调用历史+失败模式 (4) sisyphus MEMORY_FIRST新增step 0强制查询注册表。体系路径: ~/.local/share/tool-registry/commands.json + ~/.local/bin/tool-lookup.sh + ~/.local/bin/tool-capture-hook.sh",
           "tags": "op-exec,tool-optimization,registry",
           "timestamp": "1779949292"
+        },
+        {
+          "text": "2026-05-31 OP修复: wechat-uos 4.1.1持续coredump(SIGABRT) | 根因: service文件DISPLAY=:0错误，实际Xwayland在:1 | 修复: DISPLAY=:0→:1 + OnFailure/StartLimitIntervalSec从[Service]移至[Unit]段 | 修复后稳定运行60s+ | 崩溃计数器曾达788次",
+          "tags": "wechat-uos,fix,coredump",
+          "timestamp": "1780243018"
         }
       ]
     },
@@ -457,6 +462,11 @@
           "text": "2026-05-31 OP执行: 19890配置到Haven | 结果: 成功 | 关键发现: Haven数据库路径 /data/user/0/sh.haven.app/databases/haven.db，connection_profiles表存储SSH连接。原19890记录connectionType=SSH但port=19890(HTTP)无法工作，已修复为SSH连接22端口+DuckDNS域名，并添加postLoginCommand提示。",
           "tags": "op-exec,haven,opencode",
           "timestamp": "1780237285"
+        },
+        {
+          "text": "2026-05-31 OP执行: 修复 macg MCP 400错误 + systemd配置警告 + 添加/health端点 | 结果: 成功 | 关键发现: 1) json_response模式下GET /mcp的猴补丁需跳过_validate_request_headers(不跳过会导致400 Bad Request) 2) FastMCP.custom_route()可添加自定义HTTP端点 3) OnFailure和StartLimitIntervalSec属于[Unit]段非[Service]段",
+          "tags": "op-exec,macg-mcp,systemd-fix,health-endpoint",
+          "timestamp": "1780242473"
         }
       ]
     },

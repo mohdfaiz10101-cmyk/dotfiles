@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-05-31 18:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-06-01 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -12,17 +12,19 @@
 | 1053 | users:(("mihomo",pid=2432627,fd=3)) |
 | 1054 | users:(("mihomo",pid=2373615,fd=9)) |
 | 1716 | users:((".kdeconnectd-wr",pid=863936,fd=17)) |
-| 2222 | users:(("frps",pid=469065,fd=9)) |
-| 2223 | users:(("frps",pid=469065,fd=24)) |
+| 2222 | users:(("frps",pid=469065,fd=10)) |
+| 2223 | users:(("frps",pid=469065,fd=17)) |
 | 3000 | (v1",pid=387371,fd=21)) |
 | 3002 | users:(("grafana",pid=2891928,fd=12)) |
-| 3389 | users:(("frps",pid=469065,fd=10)) |
+| 3389 | users:(("frps",pid=469065,fd=11)) |
 | 4000 | users:(("python3.13",pid=3049,fd=6)) |
 | 4001 | users:(("python3.13",pid=4034,fd=6)) |
+| 4002 | 0.0.0.0:* |
 | 4533 | users:(("navidrome",pid=4058,fd=8)) |
 | 5037 | users:(("adb",pid=4157084,fd=14)) |
 | 5900 | users:(("wayvnc",pid=863769,fd=11)) |
 | 5998 | users:((".websockify-wra",pid=863773,fd=4)) |
+| 6379 | 0.0.0.0:* |
 | 7000 | users:(("frps",pid=469065,fd=7)) |
 | 7500 | users:(("frps",pid=469065,fd=4)) |
 | 7681 | users:(("ttyd",pid=2059,fd=13)) |
@@ -43,11 +45,11 @@
 | 7893 | users:(("mihomo",pid=2373615,fd=11)) |
 | 7896 | users:(("mihomo",pid=2373615,fd=6)) |
 | 8000 | users:((".uvicorn-wrappe",pid=3144560,fd=6)) |
-| 8022 | users:(("frps",pid=469065,fd=32)) |
+| 8022 | users:(("frps",pid=469065,fd=29)) |
 | 8080 | users:(("ttyd",pid=4381,fd=13)) |
 | 8081 | users:(("opencode",pid=2925697,fd=22)) |
 | 8088 | users:(("python3.13",pid=4064,fd=3)) |
-| 8201 | users:(("python3",pid=2950,fd=7)) |
+| 8201 | users:(("python3",pid=909684,fd=7)) |
 | 8284 | users:(("python3.13",pid=2382770,fd=3)) |
 | 8285 | users:(("python3.13",pid=3497914,fd=11)) |
 | 8286 | users:(("python3.13",pid=4036,fd=3)) |
@@ -77,26 +79,26 @@
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
 | 11434 | users:((".ollama-wrapped",pid=3061813,fd=3)) |
-| 15555 | users:(("frps",pid=469065,fd=33)) |
+| 15555 | users:(("frps",pid=469065,fd=30)) |
 | 15556 | users:(("python3.13",pid=467281,fd=13)) |
-| 15557 | users:(("frps",pid=469065,fd=26)) |
-| 17698 | users:(("frps",pid=469065,fd=22)) |
-| 17699 | users:(("frps",pid=469065,fd=20)) |
-| 17700 | users:(("frps",pid=469065,fd=25)) |
-| 18090 | users:(("frps",pid=469065,fd=23)) |
-| 18092 | users:(("python3.13",pid=3053,fd=6)) |
-| 18093 | users:(("frps",pid=469065,fd=17)) |
+| 15557 | users:(("frps",pid=469065,fd=15)) |
+| 17698 | users:(("frps",pid=469065,fd=24)) |
+| 17699 | users:(("frps",pid=469065,fd=23)) |
+| 17700 | users:(("frps",pid=469065,fd=21)) |
+| 18090 | users:(("frps",pid=469065,fd=26)) |
+| 18092 | users:(("python3.13",pid=768612,fd=6)) |
+| 18093 | users:(("frps",pid=469065,fd=18)) |
 | 18094 | users:(("python3.13",pid=3961,fd=6)) |
-| 18300 | users:(("frps",pid=469065,fd=16)) |
+| 18300 | users:(("frps",pid=469065,fd=19)) |
 | 18789 | users:(("node",pid=4085575,fd=25)) |
 | 18790 | users:(("MainThread",pid=2898,fd=21)) |
 | 18791 | users:(("node",pid=4085575,fd=26)) |
 | 18798 | users:(("python3.13",pid=3967,fd=3)) |
 | 18999 | users:(("python3.13",pid=1299344,fd=6)) |
-| 19890 | users:(("frps",pid=469065,fd=13)) |
-| 19891 | users:(("frps",pid=469065,fd=21)) |
-| 19892 | users:(("frps",pid=469065,fd=14)) |
-| 19893 | users:(("frps",pid=469065,fd=19)) |
+| 19890 | users:(("frps",pid=469065,fd=22)) |
+| 19891 | users:(("frps",pid=469065,fd=25)) |
+| 19892 | users:(("frps",pid=469065,fd=13)) |
+| 19893 | users:(("frps",pid=469065,fd=20)) |
 | 19999 | users:(("python3.13",pid=2969,fd=3)) |
 | 22000 | *:* |
 | 22222 | 0.0.0.0:* |
@@ -108,7 +110,7 @@
 | 47989 | *:* |
 | 47990 | *:* |
 | 48010 | *:* |
-| 60002 | users:(("frps",pid=469065,fd=18)) |
+| 60002 | users:(("frps",pid=469065,fd=14)) |
 | 60100 | [::]:* |
 
 ## 二、目录索引（按功能域）
@@ -183,7 +185,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（736个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（743个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (6个): `adb-autoconnect.sh, adb-device-monitor.py, adb-reverse-haven.sh, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
@@ -245,7 +247,7 @@ static
 **event-*** (1个): `event_hooks_trigger.py`
 **evolve-*** (1个): `evolve-lessons-sync.py`
 **export-*** (1个): `export-claude-conversations.py`
-**fcitx5-*** (1个): `fcitx5-adaptive-check`
+**fcitx5-*** (2个): `fcitx5-adaptive-check, fcitx5-fix`
 **finance-*** (1个): `finance-reminder.sh`
 **fix-*** (1个): `fix-screenshot-permission`
 **floorp-*** (3个): `floorp-clean-start, floorp-popup-fix, floorp-session-cleaner.py`
@@ -285,7 +287,7 @@ static
 **latest-*** (1个): `latest-img`
 **launch-*** (1个): `launch-via-tablet.sh`
 **launcher-*** (1个): `launcher-health-check.sh`
-**letta-*** (12个): `letta-deadman-switch.sh, letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh... +2更多`
+**letta-*** (13个): `letta-deadman-switch.sh, letta-distill, letta-health-check.sh, letta-health-guard, letta-health-monitor, letta-mcp, letta-mcp-health-check, letta-mcp-server, letta-monitor, letta-planning-trigger.sh... +3更多`
 **libreoffice-*** (1个): `libreoffice-x11`
 **litellm-*** (2个): `litellm-error-guard.sh, litellm-startup.sh`
 **llama-*** (1个): `llama-server.sh`
@@ -316,7 +318,7 @@ static
 **openagents-*** (1个): `openagents-network-wrapper.sh`
 **openclaw-*** (2个): `openclaw-session-watchdog.sh, openclaw-tmux-wrap`
 **opencode-*** (36个): `opencode-8080-proxy.py, opencode-autoupgrade, opencode-bug-tracker.sh, opencode-config-guard.sh, opencode-continue-safe, opencode-cost-monitor, opencode-deep, opencode-dstate-watchdog, opencode-export, opencode-format-compaction... +26更多`
-**other-*** (75个): `PyGPT.AppImage, agi, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude-tmux-wrap.bak, cline... +65更多`
+**other-*** (80个): `PyGPT.AppImage, agi, ai, aider, baidunetdisk, ccc, ccm, cerebras, claude, claude-tmux-wrap.bak... +70更多`
 **otp-*** (1个): `otp-sync`
 **overcode-*** (2个): `overcode-loop-watch.sh, overcode-tmux-wrap`
 **overtab-*** (3个): `overtab-serve-start, overtab-serve-stop, overtab-tmux-wrap`
@@ -553,7 +555,7 @@ troubleshooting.md
 wechat-merge-plan.md
 ```
 
-## 三、systemd 用户服务（506个注册，120个运行中）
+## 三、systemd 用户服务（507个注册，121个运行中）
 
 ### 当前运行中
 ```
@@ -656,6 +658,7 @@ wayland-session-bindpid@862475
 wayland-wm@hyprland\x2duwsm.desktop
 wechat-crm-archiver
 wechat-reply-consumer
+wechat-uos
 wireplumber
 xdg-desktop-portal
 xdg-document-portal

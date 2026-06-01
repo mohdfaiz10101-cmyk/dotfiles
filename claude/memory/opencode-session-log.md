@@ -51339,3 +51339,122 @@ Haven 连接配置（5个）:
 
 ## 2026-05-31 23:32
 - [2026-05-31 23:32:40] **用户**: 如何有个系统通知 点击它 就可以发送到ai让他处理错误 有没有类似的管理互动面板 就是审批一样
+
+## 2026-05-31 23:33
+- [2026-05-31 23:33:22] **AI(sisyphus)**: GPU可用！修复LD_LIBRARY_PATH并复制修改文件，然后测试推理
+
+## 2026-05-31 23:34
+- [2026-05-31 23:33:51] **AI(sisyphus)**: [ok] 停止 wechat-uos -- coredump循环已中断，SIGABRT(status=134)，已disable防止自动重启
+[ok] 清理 dotfiles git历史 -- filter-branch移除LangSmith PAT，force push成功
+[ok] 重置 tg-daily-digest -- session备份`userbot-session.txt.bak-20260531`，timer已恢复
+[ok] 重启 auto-fix-services -- Result=success
+[ok] 重启 connectivity-chain-watchdog -
+
+## 2026-05-31 23:34
+- [2026-05-31 23:34:31] **AI(sisyphus)**: [ok] 修改 waybar-health-menu.sh → 新增 "🤖 OpenCode 自动修复" 菜单项
+
+**工作机制**：
+
+1. **点击 Waybar 呼吸灯**（自定义/health 模块）→ 弹出 wofi 下拉菜单
+2. **选择 "🤖 OpenCode 自动修复"** → 自动收集所有 WARNING/CRITICAL 服务
+3. **打开 kitty 终端窗口** → 执行 `opencode run` 传入异常上下文
+4. **OpenCode 逐项诊断并修复** → 代理/DIRECT、磁盘86%、Letta挂了等，全部自动处理
+
+**当前异常示例**（实际传入 
+
+## 2026-05-31 23:35
+- [2026-05-31 23:35:08] **用户**: ⚠ Skipped loading 7 skill(s) due to invalid SKILL.md files.
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/everything-claude-code/skills/benchmark/SKILL.md:
+  missing YAML frontmatter delimited by ---
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/everything-claude-code/skills/browser-qa
+
+## 2026-05-31 23:35
+- [2026-05-31 23:35:23] **用户**: ⚠ Skipped loading 7 skill(s) due to invalid SKILL.md files.
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/everything-claude-code/skills/benchmark/SKILL.md:
+  missing YAML frontmatter delimited by ---
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/everything-claude-code/skills/browser-qa
+- [2026-05-31 23:35:31] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-05-31 23:38
+- [2026-05-31 23:38:05] **用户**: fctix same problem happend windows close and lose windwo
+
+## 2026-05-31 23:40
+- [2026-05-31 23:39:53] **用户**: fix my opencode mcp problems why it happened .. is it disk damaged?
+
+## 2026-05-31 23:45
+- [2026-05-31 23:44:43] **用户**: 最终是什么问题 这次是修复了 我需要 加入一键修复菜单
+
+## 2026-05-31 23:45
+- [2026-05-31 23:45:26] **用户**: 还需要多久
+
+## 2026-05-31 23:46
+- [2026-05-31 23:45:46] **用户**: 只有一个。。有这个选项 还有其他地方可以加吗
+
+## 2026-05-31 23:47
+- [2026-05-31 23:47:28] **AI(sisyphus)**: [ok] 修改 waybar config.override → 7个呼吸灯模块全部接入 OpenCode 修复
+
+[ok] waybar-health-menu.sh → 新增 "🤖 OpenCode自动修复" 菜单项
+
+**各模块点击行为**：
+
+| 模块 | 左键 | 右键（新增） |
+|------|------|-------------|
+| health | wofi菜单（含🤖修复） | 直接 OpenCode 全量修复 |
+| ai | 查看 Docker/systemd | OpenCode 修复 AI 服务 |
+| agent | 查看当前 Agent | OpenCode
+
+## 2026-05-31 23:50
+- [2026-05-31 23:49:59] **用户**: "读取~/.claude/projects/-home-charlie/memory/op-tasks.md，执行所有[ ]待办任务，完成后写回[x]"
+
+## 2026-05-31 23:50
+- [2026-05-31 23:50:12] **用户**: "读取~/.claude/projects/-home-charlie/memory/op-tasks.md，执行所有[ ]待办任务，完成后写回[x]"
+- [2026-05-31 23:50:39] **用户**: 我点击cc任务 没有执行 闪退
+
+## 2026-05-31 23:51
+- [2026-05-31 23:51:14] **用户**: "echo 测试"
+
+## 2026-05-31 23:53
+- [2026-05-31 23:52:52] **AI(sisyphus)**: [ok] 根因：`opencode run` 执行完 kitty 窗口立即关闭 → 闪退
+
+[ok] 修复：所有 8 个 on-click 命令加 `2>&1; echo; read -p "按回车关闭"` 保持窗口
+
+已修复的模块：health / ai / agent / optasks / pulse / otp / mem-pulse / chain + health-menu.sh
+
+重新登录 Hyprland 后生效。现在点击会打开 kitty 终端 → OpenCode 执行修复 → 窗口保持显示结果 → 按回车关闭。
+
+## 2026-05-31 23:53
+- [2026-05-31 23:53:39] **用户**: opencode 剪贴板怎么回事 剪贴板好像不能粘贴
+
+## 2026-05-31 23:54
+- [2026-05-31 23:54:08] **用户**: api凭证记忆里有的
+
+## 2026-05-31 23:55
+- [2026-05-31 23:54:42] **用户**: 排查 微信 uos 4.1.1 崩溃错误
+
+## 2026-05-31 23:57
+- [2026-05-31 23:57:04] **AI(sisyphus)**: [ok] 根因定位 -- `DISPLAY=:0` 错误，Xwayland实际运行在 `:1`
+[ok] 修复 service 文件 -- DISPLAY=:0→:1，OnFailure/StartLimitIntervalSec从[Service]移至[Unit]
+[ok] 重启 wechat-uos -- active(running) 60s+，内存峰值1GB，288进程，零崩溃
+[完成] 微信UOS崩溃排查 -- 根因: DISPLAY环境变量指向了不存在的X11 socket `:0` | 实际Xwayland在`:1` | 修复后已稳定运行，之前崩溃计数器达788次
+
+## 2026-05-31 23:57
+- [2026-05-31 23:57:13] **用户**: 那fetch haven 这两个qqlite vision mcp这些mcp还没修复呢
+
+## 2026-06-01 00:00
+- [2026-05-31 23:59:52] **AI(sisyphus)**: [ok] 安装 vision-mcp — npm i -g vision-mcp，`~/.npm-global/bin/vision-mcp` 已就绪，env vars 已配置在 opencode.json
+
+[ok] 安装 mcp-fetch-server — npm i -g mcp-fetch-server，`~/.npm-global/bin/mcp-fetch-server` 已就绪
+
+[ok] 安装 db-mcp — npm i -g db-mcp，`~/.npm-global/bin/db-mcp` 已就绪，连接 `~/Desktop/crm.db`
+
+[ok] haven MC
+
+## 2026-06-01 00:01
+- [2026-06-01 00:01:30] **AI(sisyphus)**: [ok] 修复 NixOS 剪贴板同步服务 — 改为 `ExecStart=/run/current-system/sw/bin/bash /home/charlie/.local/bin/clipboard-sync-windows`，绕过 PATH 解析失败
+[ok] `systemctl --user daemon-reload && restart clipboard-sync-windows.service`
+[ok] 服务状态恢复 `active (running)`
+[ok] 本地剪贴板 `WAYLAND_DISPLAY=wayland-1` 可读可写，`wl-paste` 返回

@@ -141,3 +141,43 @@
 
 
 - [2026-05-31] LiteLLM/Docker 修复：Docker RootDir `/mnt/pool-disks/POOL-D1/docker` 的 `network/files/local-kv.db` 写入 `input/output error` 会导致容器启动/重启失败。处理：停 `docker.service docker.socket` → `sudo mv .../local-kv.db .../local-kv.db.bak-20260531-1746` → 启动 Docker → compose 重建 LiteLLM。LiteLLM 后端固定 `4002`，strip proxy 占 `4000` 转发到 `4002`。POOL-D1 仍需离线 fsck。
+- [2026-05-31] [OP] 修复: macg MCP GET /mcp 400 | 根因: 猴补丁未跳过session验证(validate_request_headers) | 修复: json_response模式下直接建立SSE流跳过验证 | 附加: 用custom_route添加/health端点 | 修复: 7个systemd unit文件的OnFailure/StartLimitIntervalSec从[Service]移到[Unit]
+- [2026-05-31] [OP] 成功记录: wechat-uos修复 | 根因: DISPLAY=:0→应改为:1 | 错误: SIGABRT coredump 788次循环 | 修复: 改service文件DISPLAY环境变量+修正OnFailure段位 | 场景: Xwayland display号变更或配置错误导致GUI应用无法连接X11
+- [2026-05-31] [OP] 修复: fcitx5候选窗消失 | 根因: Wayland text-input-v3协议在Hyprland+NVIDIA上不稳定，关闭窗口时compositor连接断开 | 修复: 禁用Wayland前端(waylandim.conf Enabled=False)→回退X11/dbus | 一键: ~/.local/bin/fcitx5-fix wayland
+- [2026-05-31] [OP] 修复: fetch/haven/sqlite/vision MCP不可用 | 根因: vision-mcp/mcp-fetch-server/db-mcp npm包未安装 | 修复: npm install -g安装三个包 | 附加: 修复letta-mcp和sys-info-mcp的systemd警告
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 6 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 6 hours (healthy)
+
+- [auto] 发现: docker.container.letta =  | 状态: Up Less than a second
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 39 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 37 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 7 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 2 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 8 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 9 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 9 hours (healthy)

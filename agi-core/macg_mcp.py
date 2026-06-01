@@ -31,16 +31,11 @@ def _patch_mcp_sdk():
     if _original_handle_get is None:
         _original_handle_get = StreamableHTTPServerTransport._handle_get_request
     async def _patched_handle_get(self, request, send):
-        # json_response 模式下不需要 SSE，跳过 Accept 头校验
+        # json_response 模式下不需要 SSE，跳过所有验证直接返回 200 + 空 SSE
         if getattr(self, 'is_json_response_enabled', False):
-            # 直接跳到 SSE Accept 校验之后：验证请求头 + 处理重连
-            if not await self._validate_request_headers(request, send):
-                return
-            from mcp.server.streamable_http import LAST_EVENT_ID_HEADER, CONTENT_TYPE_SSE, MCP_SESSION_ID_HEADER, GET_STREAM_KEY
             from http import HTTPStatus
-            if last_event_id := request.headers.get(LAST_EVENT_ID_HEADER):
-                await self._replay_events(last_event_id, request, send)
-                return
+            from mcp.server.streamable_http import LAST_EVENT_ID_HEADER, CONTENT_TYPE_SSE, MCP_SESSION_ID_HEADER, GET_STREAM_KEY
+            # 直接建立 SSE 流，跳过 session/protocol 验证（json_response 模式下不强制要求 session ID）
             headers = {
                 "Cache-Control": "no-cache, no-transform",
                 "Connection": "keep-alive",
@@ -67,6 +62,14 @@ def _patch_mcp_sdk():
     StreamableHTTPServerTransport._handle_get_request = _patched_handle_get
 
 _patch_mcp_sdk()
+
+# ── 健康检查端点 ──
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health_check(request: Request) -> JSONResponse:
+    return JSONResponse({"status": "healthy", "version": "1.2.27"})
 
 MEM_DIR = Path.home() / ".claude/projects/-home-charlie/memory"
 OP_TASKS_FILE = MEM_DIR / "op-tasks.md"

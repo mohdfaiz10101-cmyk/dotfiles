@@ -97,17 +97,17 @@ op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
 |------|------|
 
 
-## 记忆系统状态（自动注入 2026-05-31 18:17）
+## 记忆系统状态（自动注入 2026-06-01 00:17）
 | 指标 | 值 |
 |------|-----|
 | KG实体/关系 | N/A / N/A |
 | Letta MCP | inactive |
-| lessons-learned条目 | 22 |
+| lessons-learned条目 | 25 |
 | 历史会话数 | 0
 0 |
 
 ### 高频主题（最近）
-
+  • Xwayland (×1)
 
 > 以上由 memory-bootstrap.sh 自动注入，每小时更新
 

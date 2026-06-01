@@ -1,15 +1,15 @@
 [Unit]
 Description=macg MCP Server (HTTP) — Windows OpenCode 记忆桥接
 After=network-online.target
+StartLimitIntervalSec=30
+OnFailure=sentinel-onfailure@macg-mcp.service
 
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py --http
-OnFailure=sentinel-onfailure@macg-mcp.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment="HOME=%h"
 WorkingDirectory=/home/charlie/agi

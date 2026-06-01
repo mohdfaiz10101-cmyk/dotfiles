@@ -1,15 +1,15 @@
 [Unit]
 Description=OpenCode Session Recorder — 实时记录所有对话
 After=network.target
+StartLimitIntervalSec=30
+OnFailure=sentinel-onfailure@opencode-session-recorder.service
 
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/.local/bin/opencode-session-recorder.py
-OnFailure=sentinel-onfailure@opencode-session-recorder.service
 Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal

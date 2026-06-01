@@ -26,7 +26,7 @@
 curl -s --connect-timeout 3 http://localhost:8283/v1/agents -w "%{http_code}" -o /dev/null
 ```
 - 返回 `307` 或 `200` → 正常
-- 连接失败/超时 → `docker restart letta-db && sleep 30 && docker restart letta && sleep 15`
+- 连接失败/超时 → `~/.local/bin/letta-recover-stack`（统一恢复 postgres/chromadb/Letta，带冷却窗口）
 
 ### Charlie-Ego 决策镜像（CHARLIE_EGO — L2）
 每次会话第一个实质性任务前，MUST 召唤 charlie-ego 获取决策建议。

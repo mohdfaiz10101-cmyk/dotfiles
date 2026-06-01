@@ -2,15 +2,15 @@
 Description=OpenCode Stuck Session Watchdog
 After=opencode-web.service
 PartOf=opencode-web.service
+StartLimitIntervalSec=30
+OnFailure=sentinel-onfailure@opencode-stuck-watch.service
 
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-stuck-watch.sh
-OnFailure=sentinel-onfailure@opencode-stuck-watch.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

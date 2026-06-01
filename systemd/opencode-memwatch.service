@@ -1,15 +1,15 @@
 [Unit]
 Description=OpenCode Memory Watchdog
 After=opencode-web.service
+StartLimitIntervalSec=30
+OnFailure=sentinel-onfailure@opencode-memwatch.service
 
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-memwatch.sh
-OnFailure=sentinel-onfailure@opencode-memwatch.service
 Restart=always
 StartLimitAction=none
 StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

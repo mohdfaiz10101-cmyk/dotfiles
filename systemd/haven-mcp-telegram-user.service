@@ -1,0 +1,15 @@
+[Unit]
+Description=Haven MCP Telegram User Bridge
+After=network-online.target haven-mcp-proxy.service
+Requires=haven-mcp-proxy.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/haven-mcp-user-launcher.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Haven MCP Keepalive
+After=network-online.target adb.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/haven-keepalive.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

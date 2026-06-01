@@ -4,10 +4,15 @@ services:
   letta:
     image: letta/letta:latest
     container_name: letta
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - "8283:8283"
-      - "8284:8284"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8283/v1/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
     environment:
       - HOST=0.0.0.0
       - PORT=8283
@@ -64,7 +69,9 @@ services:
     container_name: letta-chromadb
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      # Host 8000 is already owned by the user-level chromadb.service.
+      # Expose this compose instance on a non-conflicting localhost port.
+      - "127.0.0.1:18000:8000"
     volumes:
       - chroma-data:/chroma/chroma
     healthcheck:
