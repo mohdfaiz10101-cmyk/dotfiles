@@ -52370,3 +52370,15 @@ HQSSH 直接填地址端口就行，无需密码，一打开就是 hermes。
 
 **可行方案**：
 1. **在 GitHub 提 feature request** — 请求添加 "N
+
+## 2026-06-01 16:40
+- [2026-06-01 16:40:23] **AI(sisyphus)**: [ok] 音乐文件已复制 -- `/mnt/data/Music/` → `~/Music/`: 262个音频/4.1GB (CloudMusic 23M + NetEase 231M + NetEase_Decrypted 3.6G)
+
+[ok] 手机目录已创建 -- CloudMusic/NetEase/NetEase_Decrypted 三个子目录已同步到手机
+
+[fail] 文件传输未开始 -- 手机电量11% + 省电模式开启，syncthing进程反复被杀，ADB也掉线(`offline`)
+
+[!] 阻塞 -- 手机需充电。低电量下Android会杀后台进程，syncthing无
+
+## 2026-06-01 16:44
+- [2026-06-01 16:43:59] **用户**: .不方便啊 不能给密码吗

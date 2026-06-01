@@ -1,10 +1,10 @@
 [Unit]
-Description=Hermes TTY on port 19800
+Description=Hermes telnetd on port 19800
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.local/bin/hermes-pty-server.py
+ExecStart=/home/charlie/.local/bin/hermes-telnetd.py
 Restart=always
 RestartSec=5
 StandardOutput=journal
