@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/nix/store/p9q77mx4ikb18bf9mj6812vwyaz7r23j-socat-1.8.1.1/bin/socat TCP-LISTEN:19800,reuseaddr,fork EXEC:/home/charlie/.local/bin/hermes-tty.sh,pty,stderr,ctty
+ExecStart=/nix/store/p9q77mx4ikb18bf9mj6812vwyaz7r23j-socat-1.8.1.1/bin/socat TCP-LISTEN:19800,reuseaddr,fork EXEC:/home/charlie/.local/bin/hermes-tty.sh,pty,stderr
 Restart=always
-RestartSec=10
+RestartSec=5
 StandardOutput=journal
 StandardError=journal
 

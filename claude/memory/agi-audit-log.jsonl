@@ -6095,3 +6095,6 @@
 {"ts": "2026-06-01 16:22", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
 {"ts": "2026-06-01 16:23", "type": "cycle", "summary": "系统运行平稳，资源使用正常，无待处理告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:24", "type": "cycle", "summary": "系统负载正常，但有单进程Python3满载运行", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:25", "type": "cycle", "summary": "系统运行正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:26", "type": "cycle", "summary": "系统运行正常，存在短暂CPU尖峰", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:28", "type": "cycle", "summary": "系统运行正常，CPU使用率8.2%，内存使用67%，磁盘使用40%，所有服务健康", "alert_count": 0, "skipped_llm": false}
