@@ -6087,3 +6087,6 @@
 {"ts": "2026-06-01 16:12", "type": "cycle", "summary": "系统负载正常，opencode 占用 CPU 较高但无历史故障记录，整体运行平稳", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:13", "type": "cycle", "summary": "系统负载正常，opencode进程高CPU属业务常态", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:14", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:15", "type": "cycle", "summary": "系统运行正常，负载较低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:17", "type": "cycle", "summary": "系统运行正常，存在非活跃进程占用CPU但无需干预", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:18", "type": "cycle", "summary": "系统运行正常，无告警", "alert_count": 0, "skipped_llm": false}

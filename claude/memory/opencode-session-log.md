@@ -52277,3 +52277,48 @@ Tailscale: ssh charlie@100.119.174.25 -t tmux a -t hermes
 - "termux mcp" site:github.com
 - "mobile mcp wrapp
 - [2026-06-01 16:11:48] **AI(explore)**: 我将帮你搜索 MCP 在移动端/Android 的相关方案。让我使用多个搜索关键词并行获取信息。
+
+## 2026-06-01 16:17
+- [2026-06-01 16:12:13] **AI(explore)**: 让我获取几个关键项目的详细信息：
+- [2026-06-01 16:12:59] **AI(explore)**: 让我继续获取几个关键项目的详细信息：
+- [2026-06-01 16:13:31] **AI(explore)**: 基于搜索结果，我为你整理了 MCP 在移动端/Android 的社区方案调研报告：
+
+## 一、核心项目汇总
+
+### 1. **Mobile MCP** (最成熟) ⭐⭐⭐⭐⭐
+- **GitHub**: https://github.com/mobile-next/mobile-mcp
+- **Star数**: 5.1k
+- **语言**: TypeScript
+- **更新**: 2026-05-28（活跃）
+- **架构**: 
+  - 支持 iOS/Android/模拟器/真设备
+  - 原生 accessibility 树 + 截图分析
+  - 不需要 CV 模型
+  - SSE 
+
+## 2026-06-01 16:17
+- [2026-06-01 16:15:20] **AI(sisyphus)**: [ok] 多级降级方案封装完成 — phone-clip-sync-v2
+
+**降级链**：
+| 级别 | 通道 | 状态 |
+|------|------|------|
+| T1 | Tailscale SSH `100.108.28.44:8022` | 待手机装Termux sshd |
+| T2 | ADB FRP `127.0.0.1:15555` | 活跃，当前在用 |
+| T3 | Windows SSH中转ADB | 待命 |
+| T4 | 局域网扫描 | 待命 |
+
+**手机端需手动操作**（ADB断了没法远程）：
+```
+Termux里: pkg install open
+- [2026-06-01 16:15:51] **用户**: 问题是汽水音乐我喜欢的音乐都定期同步和下载了吗 以前磁盘有音乐文件很多的 win磁盘也有很多音乐 确认都找不到同步了吗 主要是汽水音乐我喜欢点赞的音乐都要同步到手机先docker ps
+- [2026-06-01 16:16:22] **AI(sisyphus)**: [ok] 手机盘点完成 — 识别出 50+ 可集成服务，分 10 类
+
+**你的手机零散服务清单**（同类并存多套）：
+
+| 类别 | 已安装 | 零散情况 |
+|------|--------|----------|
+| VPN/代理 | Tailscale, ZeroTier, ClashMeta, Karing, BraveDNS | 5个并存 |
+| Root/权限 | Magisk, Shizuku, IceBox, LSPosed | 4个工具 |
+| 自动化 | Tasker, MacroDroid, Zapier | 3个引擎 |
+| 远程控制 | RustDesk, Aird
+- [2026-06-01 16:17:24] **用户**: 我要端口和用户名啊 我要用hqssh

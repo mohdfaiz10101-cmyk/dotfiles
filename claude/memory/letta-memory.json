@@ -477,6 +477,11 @@
           "text": "2026-06-01 OP执行: 安装hqsshd v1.1.0 | 遇到PrivateTmp=true导致/tmp/hqssh.sock不可见 | 修复: socket改到%t/hqssh.sock (XDG_RUNTIME_DIR) + ExecStartPost自动symlink到/tmp | systemd服务active/running",
           "tags": "op-exec,hqsshd,systemd,private-tmp",
           "timestamp": "1780297886"
+        },
+        {
+          "text": "2026-06-01 OP执行: 手机服务盘点与MCP集成调研 | 结果: 完成 | 关键发现: 手机上有50+可集成服务，社区最成熟方案是PhonePi MCP(5.1k stars)在手机端运行暴露23+工具，Tasker MCP适合封装现有自动化。手机已安装Tailscale/ClashMeta/Tasker/KDE Connect/Syncthing/Immich等，Magisk模块有tailscale-keepalive和clash-watchdog。推荐方案：PhonePi MCP作为统一入口 + Tasker MCP暴露自动化 + Termux跑轻量API。",
+          "tags": "phone,android,mcp,integration,盘点",
+          "timestamp": "1780301782"
         }
       ]
     },
