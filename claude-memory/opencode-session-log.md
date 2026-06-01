@@ -51539,3 +51539,12 @@ Haven 连接配置（5个）:
 
 ## 2026-06-01 12:23
 - [2026-06-01 12:23:26] **用户**: 现在cpu 33那么高是怎么回事 是木马吗
+
+## 2026-06-01 12:23
+- [2026-06-01 12:23:42] **AI(sisyphus)**: 不是木马，是正常构建。
+
+**CPU 33% 根因**：`next build` 正在构建 agi-control-plane 前端，fork 了 10+ 个 jest-worker 子进程并行编译（每个 30-88% CPU），加起来约 300% 的 CPU 时间。
+
+**关键证据**：
+- 进程名：`/mnt/ai/apps/agi-control-plane/frontend/node_modules/next/dist/compiled/jest-worker/processChild.js` — Next.js 官方 worker
+- 父进程：`node .../next build
