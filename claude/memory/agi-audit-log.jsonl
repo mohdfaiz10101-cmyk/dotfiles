@@ -6026,3 +6026,4 @@
 {"ts": "2026-06-01 14:59", "type": "cycle", "summary": "系统运行正常，CPU 高占用为 python3.13 进程（符合用户偏好）", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 15:00", "type": "cycle", "summary": "系统运行正常，服务健康，CPU与内存负载适中", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 15:02", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘使用率均在安全范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:03", "type": "cycle", "summary": "系统运行正常，python3.13 进程属预期行为", "alert_count": 0, "skipped_llm": false}

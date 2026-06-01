@@ -51978,3 +51978,13 @@ iPhone插上USB后告诉我，我直接在这边帮你一步完成。
 
 ## 2026-06-01 15:01
 - [2026-06-01 15:01:31] **用户**: 问题是怎么彻底解决
+
+## 2026-06-01 15:04
+- [2026-06-01 15:04:25] **AI(sisyphus)**: [ok] timer修复 — `OnCalendar=*:0/5` 下次触发 15:05
+
+[ok] 脚本修复 — LOG: `/tmp` → `~/.local/state/git-backup/`；新增 `ai-config-sync`+`agi-core`
+
+[ok] 立即全量备份结果：
+- **已推送**: dotfiles(5) / ai-config-sync(2) / Obsidian(29)
+- **本地已commit** (无remote): Desktop(58) / OpenClaw(324)
+- **阻塞**: agi-core/hub — GitHub仓库不存在；Ni
