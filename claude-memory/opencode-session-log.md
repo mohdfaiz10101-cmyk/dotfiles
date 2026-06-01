@@ -51467,3 +51467,12 @@ Haven 连接配置（5个）:
 
 ## 2026-06-01 11:24
 - [2026-06-01 11:23:54] **用户**: 微信收到消息后 必须自己打开啊 之前的工作区分配没有生效  就是程序打开 要跳到对应的地方
+
+## 2026-06-01 11:27
+- [2026-06-01 11:27:38] **AI(sisyphus)**: [ok] 新增 `_focus_wechat_workspace()` -- hyprctl clients 动态查微信工作区 → dispatch workspace 切换 → wmctrl -ia 聚焦
+[ok] `poll_cycle` 检测到新消息时自动调用 -- 用户立即看到微信窗口
+[ok] `send_reply_xdotool` 发送前自动调用 -- 确保窗口在前台
+[ok] 重启 wechat-agent -- 服务运行正常
+
+**改动说明**：
+- 之前只有 `wmctrl -ia` 激活窗口，Hyprland 下不会切换工作区 → 微信窗口在别的 workspace 看不
