@@ -52409,3 +52409,11 @@ HQSSH 直接填地址端口就行，无需密码，一打开就是 hermes。
 - 6个 opencode 进程同时运行，合计 RSS ~2.4GB
 - `openclaw` 工作区独占 1.14GB，`opencode-web` 384MB
 - `opencode-
+
+## 2026-06-01 16:56
+- [2026-06-01 16:55:56] **AI(sisyphus)**: [ok] 镜像构建 -- musetalk:local 18.5GB, 所有依赖完整
+[ok] 容器启动 -- API /health 正常, CUDA: True
+[ok] GPU挂载 -- NixOS NVIDIA lib (595.58.03) → LD_LIBRARY_PATH
+[进行中] S3FD模型下载 -- 4% (3.5MB/85.7MB), 预计剩余71分钟
+
+**瓶颈**: 推理需下载S3FD人脸检测模型(85.7MB)，网速~20KB/s。下载完成后复制到容器 `/home/ubuntu/.cache/torch/hub/checkpoints/` 即可跳过下载，推理预计
