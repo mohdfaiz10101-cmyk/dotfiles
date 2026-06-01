@@ -52517,3 +52517,25 @@ HQSSH 里：新建连接 → 认证选「密钥」→ 点文件夹图标导入 �
 - [2026-06-01 18:09:40] **AI(sisyphus)**: 问题清楚了：截图 MCP 工具只返回文件路径，没有后续的编辑/保存/复制到剪贴板动作。
 
 修复方案：截图完成后自动复制到剪贴板 + 创建截图后处理工具。
+
+## 2026-06-01 18:16
+- [2026-06-01 18:15:54] **AI(sisyphus)**: Terminal selection:
+```
+[ok] 已复制到剪贴板: /tmp/test-screenshot.png
+[完成] /tmp/test-screenshot.png
+```
+
+验证通过。修改完成：
+
+[ok] 创建 post-screenshot.sh — Wayland 自动检测 + wl-copy + notify-send + 可选 spectacle 编辑器
+[ok] 修改 phone-connect-mcp.py — 截图后自动调用 post-screenshot.sh，返回 `clipboard: true`
+[ok] 修改 ios-connect-mcp.py
+
+## 2026-06-01 18:18
+- [2026-06-01 18:18:32] **AI(sisyphus)**: [ok] 清理 frps 旧日志 -- 1.8G → 9.8M
+[ok] 截断 memory-pulse.log -- 486M → 157K
+[ok] 迁移 .npm-global + .vscode + .xwechat → /mnt/ai/cache -- 释放 2.3G
+[ok] disk-guard L2 阈值 90%→88% -- 确保白名单迁移提前触发
+[ok] disk-guard L1 新增 coredump>3d 清理 + memory-pulse.log 自动截断
+[ok] frps 重启 -- maxDays=7 日志轮转已生效
+[ok] opencode 验证通过 -
