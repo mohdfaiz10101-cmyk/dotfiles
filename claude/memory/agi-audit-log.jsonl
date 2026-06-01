@@ -6050,3 +6050,8 @@
 {"ts": "2026-06-01 15:27", "type": "cycle", "summary": "系统运行正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 15:28", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 15:29", "type": "cycle", "summary": "系统运行平稳，CPU/内存/磁盘正常，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:30", "type": "cycle", "summary": "系统运行正常，CPU负载稍高但处于健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:31", "type": "cycle", "summary": "系统运行正常，CPU暂有波动但无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:32", "type": "cycle", "summary": "系统运行正常，内存和CPU负载均在健康范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:33", "type": "cycle", "summary": "系统运行正常，opencode 进程 CPU 占用较高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:34", "type": "cycle", "summary": "系统运行正常，主线程与 opencode 占用 CPU 处于预期范围内", "alert_count": 0, "skipped_llm": false}

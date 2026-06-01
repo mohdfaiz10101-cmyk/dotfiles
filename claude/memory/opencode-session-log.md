@@ -52057,3 +52057,14 @@ hqssh + 你的工具集成方案：
   hqssh new --tool codex --project <id>  # codex 原生
 
 任务 (tasks) — 只支
+
+## 2026-06-01 15:31
+- [2026-06-01 15:31:19] **用户**: 那他没有agent可以分配啊，那他用claude和codex 那我opencode都编辑好的 不就不能用了吗 问题是这个hqssh他是不是需要我codex全部配置好才好用 codex不是调用opencode吗 能包装吗
+
+## 2026-06-01 15:32
+- [2026-06-01 15:32:26] **AI(sisyphus)**: 你说得对，hqssh 服务端只认 `claude` 和 `codex` 两个工具，`shell` 被拒绝。它没法直接调用你配好的 opencode agent（CC/OP/Sisyphus）。
+
+但有个实用包装方案——在 PATH 优先级更高的位置放个脚本，截获 hqssh 对 codex 的调用转给 opencode
+
+## 2026-06-01 15:34
+- [2026-06-01 15:34:09] **用户**: 怎么优化配置
