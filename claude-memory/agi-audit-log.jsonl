@@ -5764,3 +5764,4 @@
 {"ts": "2026-06-01 09:58", "type": "cycle", "summary": "系统运行正常，无服务异常或资源告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 09:59", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:00", "type": "cycle", "summary": "系统运行平稳，资源负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 10:01", "type": "cycle", "summary": "系统运行正常，无服务异常或关键告警", "alert_count": 0, "skipped_llm": false}
