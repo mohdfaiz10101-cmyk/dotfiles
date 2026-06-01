@@ -6132,3 +6132,7 @@
 {"ts": "2026-06-01 17:07", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:08", "type": "cycle", "summary": "系统运行平稳，各项指标均处于正常范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:09", "type": "cycle", "summary": "系统负载正常，存在已知良性CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:10", "type": "cycle", "summary": "系统运行正常，仅存在短暂的 nix-shell CPU 占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:11", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:13", "type": "cycle", "summary": "系统运行正常，资源使用率低，无告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:14", "type": "cycle", "summary": "系统运行正常，仅 python3.13 进程暂居 CPU", "alert_count": 0, "skipped_llm": false}
