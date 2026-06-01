@@ -5739,3 +5739,4 @@
 {"ts": "2026-06-01 09:29", "type": "cycle", "summary": "系统运行正常，python3.13 占用高属预期行为", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 09:30", "type": "cycle", "summary": "系统运行正常，资源负载健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 09:31", "type": "cycle", "summary": "系统状态正常，负载较低且所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 09:33", "type": "cycle", "summary": "系统负载正常，检测到 ADB 相关进程高 CPU 占用但符合用户手机操作自动化规则", "alert_count": 0, "skipped_llm": false}
