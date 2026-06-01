@@ -5864,3 +5864,4 @@
 {"ts": "2026-06-01 11:53", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:54", "type": "cycle", "summary": "系统运行平稳，CPU/内存/磁盘均在正常范围内，无待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:55", "type": "cycle", "summary": "系统运行正常，资源使用率低，无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 11:57", "type": "cycle", "summary": "系统状态正常，存在单进程CPU高占但属非关键进程", "alert_count": 0, "skipped_llm": false}
