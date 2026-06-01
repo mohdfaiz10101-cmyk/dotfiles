@@ -6115,3 +6115,7 @@
 {"ts": "2026-06-01 16:47", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘使用率均在安全范围内，所有服务健康，python3.13进程CPU瞬时占用属正常系统活动。", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:48", "type": "cycle", "summary": "系统运行正常，存在 Python3.13 进程占用 CPU 但属已知现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 16:49", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:50", "type": "cycle", "summary": "系统运行正常，负载极低，存在瞬间CPU采样波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:51", "type": "cycle", "summary": "系统运行正常，Python3.13进程虽有CPU占用但属于已知系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:52", "type": "cycle", "summary": "系统运行正常，各项指标处于健康范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 16:54", "type": "cycle", "summary": "系统运行正常，无异常告警", "alert_count": 0, "skipped_llm": false}

@@ -52397,3 +52397,15 @@ HQSSH 直接填地址端口就行，无需密码，一打开就是 hermes。
 ```
 
 密码登录，连上自动进 hermes chat。本地终端不受影响，只有 SSH 远程连接才会触发。
+
+## 2026-06-01 16:50
+- [2026-06-01 16:49:59] **AI(sisyphus)**: [ok] 诊断完成 — 500错误的3个根因：
+
+**1. 高频 daemon-reload (42次/天)**
+`openclaw` tmux 会话每次 spawn 子进程都触发 `systemctl daemon-reload`，这导致 `opencode-serve`(端口4096) 被强制重启。重启期间请求=500。
+
+**2. 内存压力触顶**
+- swap 100%满 (5.8Gi/5.8Gi)
+- 6个 opencode 进程同时运行，合计 RSS ~2.4GB
+- `openclaw` 工作区独占 1.14GB，`opencode-web` 384MB
+- `opencode-
