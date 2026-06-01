@@ -51551,3 +51551,11 @@ Haven 连接配置（5个）:
 
 ## 2026-06-01 12:24
 - [2026-06-01 12:24:21] **用户**: 现在oPencode怎么不能智能命名session了
+
+## 2026-06-01 12:26
+- [2026-06-01 12:26:13] **AI(sisyphus)**: [ok] 找到 Telegram Bot Token（4个 bot）
+[fail] 未找到 Telethon API_ID/API_HASH（需要 my.telegram.org 申请）
+
+**改用 Bot API 方案（更简单，已有凭证）：**
+
+直接用现有 Bot Token 创建 HTTP API 服务，无需额外认证。
