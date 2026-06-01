@@ -147,6 +147,11 @@
           "text": "2026-05-31 OP修复: wechat-uos 4.1.1持续coredump(SIGABRT) | 根因: service文件DISPLAY=:0错误，实际Xwayland在:1 | 修复: DISPLAY=:0→:1 + OnFailure/StartLimitIntervalSec从[Service]移至[Unit]段 | 修复后稳定运行60s+ | 崩溃计数器曾达788次",
           "tags": "wechat-uos,fix,coredump",
           "timestamp": "1780243018"
+        },
+        {
+          "text": "2026-06-01 澄清: guardianproject/haven (6.8k星) 是安全摄像头App，和用户手机上的Haven SSH客户端(sh.haven.app)是完全不同的两个应用。GitHub Issues搜不到用户遇到的SSH连接崩溃/MCP问题。purple是NixOS桌面TUI工具，不解决Haven手机端问题。",
+          "tags": "ssh,haven,purple,clarification",
+          "timestamp": "1780290830"
         }
       ]
     },

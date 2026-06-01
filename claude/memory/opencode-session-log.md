@@ -51657,3 +51657,145 @@ HQSSH 现在试：**Password 认证**，密码 `charlie123`。
 - `explore` agent：降级链 → step-3.5-flash-2603-plan
 
 剩余的 GLM 引用（provider 定义 + vision-mcp）是基础设施层，不涉及降级链，未动。
+
+## 2026-06-01 13:00
+- [2026-06-01 13:00:19] **用户**: 我需要自动重启这个opencode tmux 以后 没生效吗 //
+
+## 2026-06-01 13:01
+- [2026-06-01 13:01:16] **用户**: 问题是没有多窗口啊 这三个都不喜欢
+
+## 2026-06-01 13:02
+- [2026-06-01 13:02:17] **用户**: 我重新连了 还是connection failed
+
+## 2026-06-01 13:02
+- [2026-06-01 13:02:34] **AI(sisyphus)**: 两个 tmux 会话都在正常运行，已持续 3h40min 无崩溃：
+
+[ok] `openclaw` — systemd 管理，while 循环自重启，当前你在用
+[ok] `sisy` — ttyd:7692 管理，while 循环自重启
+
+另外发现 `opencode-tmux-wrap` 里还硬编码了旧 small_model 环境变量，会覆盖刚才的 config 修复
+
+## 2026-06-01 13:03
+- [2026-06-01 13:03:03] **AI(sisyphus)**: [ok] 修复 opencode-tmux-wrap 的 small_model env → 同步为 `step-3.5-flash-2603-plan`
+
+当前状态：
+
+| 会话 | 自重启 | 运行时长 |
+|------|--------|---------|
+| openclaw | while循环 ✅ | 3h41min |
+| sisy | while循环 ✅ | 3h38min |
+| codex | 无 | zsh |
+
+你说的"没生效"是指哪个？`codex` 没有自重启，如果需要可以加上。
+
+## 2026-06-01 13:04
+- [2026-06-01 13:04:09] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-01 13:04
+- [2026-06-01 13:04:43] **AI(sisyphus)**: Tailscale 在 iOS 上断开了。公网 `125.110.221.37:2223` 应该是通的（我刚测过），但 iOS 端可能被墙或 HQSSH 兼容性问题。
+
+**换个方式** — 打开 iOS 上 Tailscale，保持后台运行，然后 HQSSH 改为：
+
+| 字段 | 值 |
+|------|-----|
+| Host | `100.119.174.25` |
+| 端口 | `22` |
+| 用户 | `charlie` |
+| 密码 | `charlie123` |
+
+走 Tailscale 内网直连，不经过 FRP 和公网，更稳定
+- [2026-06-01 13:04:52] **用户**: 问题是网友有什么管理方案 ssh管理系统是最完善的
+
+## 2026-06-01 13:05
+- [2026-06-01 13:05:00] **AI(sisyphus)**: [ok] 已推送到 Telegram
+
+总结：公网 2223 我这边能连，你那边被墙或 HQSSH 不兼容。Tailscale 内网 `100.119.174.25:22` 最稳，iOS 上保持 Tailscale 运行就行。
+
+## 2026-06-01 13:05
+- [2026-06-01 13:05:33] **用户**: 但是把我最近的session都改名啊
+
+## 2026-06-01 13:06
+- [2026-06-01 13:06:01] **用户**: 搜下最新社区方案
+
+## 2026-06-01 13:06
+- [2026-06-01 13:06:31] **AI(sisyphus)**: 社区搜完了，三个方案直接对应你的需求：
+
+---
+
+**🥇 purple** — 最精准匹配
+- `cargo install purple-ssh` 或 `nix profile install github:erickochen/purple`
+- **MCP Server 内置** → AI 直接操控（已有 OpenCode/Claude Code 集成）
+- 读 `~/.ssh/config` 直接管理，零数据库、零 daemon
+- OS Keychain / 1Password / Bitwarden 自动取密码，key 推送到多主机一键
+- 多窗口：TUI 内分屏 + 多 tab
+
+## 2026-06-01 13:08
+- [2026-06-01 13:08:01] **用户**: 什么意思 直接haven连接这个呢 purle吗
+- [2026-06-01 13:08:15] **AI(sisyphus)**: purple 不是手机 App，是跑在 NixOS 终端里的 TUI 工具，和 Haven 不互相替代。
+
+**正确架构**：
+
+```
+手机 (Haven/Termux)          NixOS 
+    │                          │
+    │  SSH 连接 (Tailscale/FRP) │
+    ├─────────────────────────►│
+    │                          ├─ tmux (多窗口)
+    │  你在这里看终端           ├─ purple (管理SSH配置)
+    │    
+
+## 2026-06-01 13:10
+- [2026-06-01 13:10:48] **用户**: df -h问题是网友有什么管理方案 ssh管理系统是最完善的
+
+## 2026-06-01 13:12
+- [2026-06-01 13:12:07] **AI(sisyphus)**: WAN 端口 2222（Windows SSH）也是通的。用 HQSSH 试连 `125.110.221.37:2222`，如果也连不上说明 iOS 运营商封了 SSH。
+
+换个 App 试试 — App Store 搜 **Termius**，比 HQSSH 稳定得多，而且免费版就够用。
+
+## 2026-06-01 13:13
+- [2026-06-01 13:13:19] **用户**: 什么意思 那haven有用吗  解决了haven什么问题 haven git issues没遇到我类似的问题吗 怎么配合
+
+## 2026-06-01 13:14
+- [2026-06-01 13:14:31] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-01 13:14:31] **AI(sisyphus)**: [ok] 本次会话总结：
+
+1. 搜索了手机端 SSH 多窗口方案，发现三个社区项目：purple（TUI+MCP）、mcp-ssh-manager、OxideTerm
+2. 明确了架构：多窗口由 NixOS 端 tmux 提供，手机上只需可靠 SSH 客户端；AI 在 NixOS 本机操作，不走 SSH 中转
+3. 澄清了 purple 的角色：NixOS 桌面 TUI，负责 SSH 配置管理和 MCP 操控，**不是手机 App**，与 Haven 不互相替代
+4. 发现关键误解：guardianproject/haven 是安全摄像头 App，和用户手机上 `sh.haven.app`（
+- [2026-06-01 13:14:36] **用户**: 问题是 我需要连接 opencode serve模式 需要ssh还是tty吗 需要怎么样的客户端 如果结合上面描述
+
+## 2026-06-01 13:15
+- [2026-06-01 13:14:59] **AI(sisyphus)**: **不需要 SSH，不需要终端 App。OpenCode serve 模式就是网页。**
+
+```
+手机浏览器 → http://NixOS的IP:8080 → 搞定
+```
+
+当前 8080 端口已经在跑（HTTP 200），你手机上只需要：
+- 连 Tailscale → 打开 `http://100.x.x.x:8080`
+- 或走 FRP → 打开 `http://charlie1990.duckdns.org:17699`
+
+前面的 Haven/purple/SSH 客户端讨论全跑偏了——serve 模式是 Web UI，跟终端App没关系。那些方案解决的是"手机端 SSH 连到 N
+
+## 2026-06-01 13:17
+- [2026-06-01 13:17:05] **用户**: 但是那些ssh客户端有snippets工具
+- [2026-06-01 13:17:22] **用户**: 我需要 opencode cli serve模式啊
+
+## 2026-06-01 13:17
+- [2026-06-01 13:17:29] **AI(sisyphus)**: 直截了当：
+
+**OpenCode serve 模式 = 浏览器打开 `http://IP:8080`。** 不需要 SSH，不需要 TTY，不需要任何客户端。
+
+当前 8080 端口已经在跑：
+
+```
+手机浏览器 → http://192.168.123.209:8080 （同WiFi）
+            → http://100.x.x.x:8080          （Tailscale）
+            → http://charlie1990.duckdns.org:17699 （FRP外网）
+```
+
+打开就是 OpenCode 对话界面，直接跟 AI 说话，AI 
+
+## 2026-06-01 13:19
+- [2026-06-01 13:19:09] **用户**: 但是我需要有个客户端带snippet 来管理 8080啊 19890是opencode web界面 不是serve模式吗

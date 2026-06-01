@@ -233,3 +233,5 @@
 
 - [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 38 minutes (healthy)
 - [2026-06-01] [OP] 修复: opencode small_model标题生成失败 | 根因: stepfun-plan/step-3.5-flash-plan在LiteLLM中不可用(issue #29734) | 修复: 改为stepfun-plan/step-3.5-flash-2603-plan | 场景: opencode session智能命名
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 37 minutes (healthy)
