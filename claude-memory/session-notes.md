@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-01 10:30
+> 来源: changelog.jsonl | 重建时间: 2026-06-01 11:00
 
 ## 2026-06-01
 
@@ -10,6 +10,7 @@
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md MODIFY
@@ -27,6 +28,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/rules-secondary.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -75,10 +77,14 @@
 - [file-create] **.config**: .config/systemd/user/default.target.wants/haven-mcp-proxy.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/haven-mcp-telegram.service CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/haven-mcp-telegram-user.service CREATE
+- [file-create] **.config**: .config/systemd/user/default.target.wants/opencode-19890-proxy.service CREATE
 - [file-create] **.config**: .config/systemd/user/haven-keepalive.service CREATE
 - [file-create] **.config**: .config/systemd/user/haven-mcp-proxy.service CREATE
 - [file-create] **.config**: .config/systemd/user/haven-mcp-telegram.service CREATE
 - [file-create] **.config**: .config/systemd/user/haven-mcp-telegram-user.service CREATE
+- [file-create] **.config**: .config/systemd/user/opencode-19890-proxy.service CREATE
+- [file-create] **.config**: .config/systemd/user/opencode-web.service MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
@@ -2556,7 +2562,6 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
-- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.config**: .config/opencode/opencode.json MODIFY
@@ -3000,7 +3005,6 @@
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
-- [file-create] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-05-25.md CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
@@ -3672,7 +3676,6 @@
 - [file-create] **.config**: .config/systemd/user/ydotool-bridge.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ydotool-bridge.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/ydotoold.service MOVED_TO
-- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
