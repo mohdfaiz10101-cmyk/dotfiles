@@ -242,3 +242,4 @@
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 38 minutes (healthy)
 - [2026-06-01] [OP] 成功记录: hqsshd安装修复 | 场景: PrivateTmp=true导致systemd服务/tmp隔离, CLI找不到socket | 修复: ExecStart用-socket %t/hqssh.sock + ExecStartPost symlink到/tmp/hqssh.sock
 - [2026-06-01] [OP] 成功记录: session恢复+配置优化 | 根因: opencode-archiver插件导出.md后删除DB session | 修复: 取消归档65个+重新归属288个孤儿+移除opencode-archiver插件 | 配置: workspace/.opencode/opencode.json移除archiver保留archive-manager | 效果: 78→431个可见session
+- [2026-06-01] [OP] 修复: opencode session命名全是new session | 根因: small_model=stepfun-plan/step-3.5-flash-2603-plan(StepFun模型不会生成session标题) | 修复: 改为openai-compatible/glm-4.7 | 场景: opencode会话自动命名

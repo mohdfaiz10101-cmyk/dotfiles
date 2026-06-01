@@ -52157,3 +52157,17 @@ Haven 和 Telegram Bot A
 **SSH 上用 Hermes CLI**
 ```bash
 ssh
+
+## 2026-06-01 15:55
+- [2026-06-01 15:54:04] **AI(sisyphus)**: 3个历史token全部401过期：
+
+| Token | 来源 | 状态 |
+|-------|------|------|
+| `ghp_gDzdd...0TPofW` | 5月21日你给的 | 5月23日已过期 |
+| `ghp_1sFYb...4N6mwU` | git-credentials | 过期 |
+| `ghp_oje9d...5R6SR` | LiteLLM .env | 过期 |
+
+本地数据安全 — agi-core和hub已commit，只差push。生成新token后我5秒内创建仓库+推送：https://github.com/settings/tokens/new（勾
+
+## 2026-06-01 15:58
+- [2026-06-01 15:57:11] **用户**: 我是说对话session名字被step model处理
