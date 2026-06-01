@@ -5840,3 +5840,4 @@
 {"ts": "2026-06-01 11:25", "type": "cycle", "summary": "系统运行正常，CPU利用率略高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:26", "type": "cycle", "summary": "系统运行平稳，CPU/内存/磁盘均在正常范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:27", "type": "cycle", "summary": "系统运行正常，CPU负载低，无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 11:28", "type": "cycle", "summary": "系统运行正常，无服务异常，存在瞬时进程高CPU占用", "alert_count": 0, "skipped_llm": false}
