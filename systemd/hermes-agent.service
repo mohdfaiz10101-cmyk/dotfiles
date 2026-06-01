@@ -10,7 +10,7 @@ StartLimitBurst=3
 StartLimitAction=none
 [Service]
 Type=simple
-ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4000 " && echo "PORT 4000 IN USE" && exit 1 || true'
+# ExecStartPre removed: port 4000 is LiteLLM (expected to be running)
 ExecStart=/home/charlie/.local/bin/hermes gateway run
 Restart=always
 RestartSec=10
