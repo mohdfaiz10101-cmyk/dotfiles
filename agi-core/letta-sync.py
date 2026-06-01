@@ -5,6 +5,7 @@ v2: 新增 changelog 事件流增量写入，hash 去重
 """
 import hashlib, json, os, re, requests, time
 from pathlib import Path
+from urllib.parse import urljoin
 
 BASE = "http://localhost:8283/v1"
 HEADERS = {"Authorization": "Bearer letta", "Content-Type": "application/json"}
@@ -25,9 +26,22 @@ def entry_hash(text):
     return hashlib.md5(text.encode()).hexdigest()[:12]
 
 def write_letta(agent_id, text):
-    r = requests.post(f"{BASE}/agents/{agent_id}/archival-memory",
-                      headers=HEADERS, json={"text": text}, timeout=10)
-    return r.ok
+    url = urljoin(f"{BASE.rstrip('/')}/", f"agents/{agent_id}/archival-memory/")
+    for attempt in range(3):
+        try:
+            r = requests.post(
+                url,
+                headers=HEADERS,
+                json={"text": text},
+                timeout=10,
+                allow_redirects=True,
+            )
+            if r.ok:
+                return True
+        except requests.RequestException:
+            pass
+        time.sleep(2 ** attempt)
+    return False
 
 def count_letta(agent_id):
     r = requests.get(f"{BASE}/agents/{agent_id}/archival-memory?limit=2000", headers=HEADERS, timeout=15)

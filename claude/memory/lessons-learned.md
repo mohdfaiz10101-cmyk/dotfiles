@@ -245,3 +245,5 @@
 - [2026-06-01] [OP] 修复: opencode session命名全是new session | 根因: small_model=stepfun-plan/step-3.5-flash-2603-plan(StepFun模型不会生成session标题) | 修复: 改为openai-compatible/glm-4.7 | 场景: opencode会话自动命名
 
 - [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 35 minutes
+
+- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 5 minutes

@@ -1,23 +1,21 @@
 [Unit]
-StartLimitBurst=3
-StartLimitIntervalSec=120
 Description=Chronos Bio-feedback — Screen Time & Eye Protection
 After=graphical-session.target
 Wants=graphical-session.target
+OnFailure=sentinel-onfailure@chronos-biofeedback.service
+StartLimitBurst=3
+StartLimitIntervalSec=60
+StartLimitAction=none
 
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/chronos-biofeedback.py
-OnFailure=sentinel-onfailure@chronos-biofeedback.service
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 Environment=DISPLAY=:0
 Environment=WAYLAND_DISPLAY=wayland-1
 Restart=on-failure
-StartLimitBurst=3
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=15
 StandardOutput=journal
 StandardError=journal
@@ -25,4 +23,3 @@ SyslogIdentifier=chronos-biofeedback
 
 [Install]
 WantedBy=graphical-session.target
-
