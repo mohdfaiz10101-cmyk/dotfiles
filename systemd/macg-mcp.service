@@ -4,12 +4,12 @@ After=network-online.target
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@macg-mcp.service
 
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/macg_mcp.py --http
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
 RestartSec=10
 Environment="HOME=%h"
 WorkingDirectory=/home/charlie/agi

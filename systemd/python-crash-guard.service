@@ -2,14 +2,14 @@
 Description=Python 关键服务崩溃实时监控
 After=default.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/python-crash-guard.sh
 OnFailure=sentinel-onfailure@python-crash-guard.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/python-crash-guard.sh
+Restart=always
 RestartSec=10
 
 [Install]

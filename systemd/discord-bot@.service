@@ -2,6 +2,9 @@
 Description=Discord Bot — OpenCode 多模态同步
 After=network.target
 
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 Environment="DISCORD_BOT_TOKEN=%i"
@@ -9,9 +12,6 @@ Environment="DISCORD_CHANNEL_ID=0"
 WorkingDirectory=%h/agi
 ExecStart=nix-shell -p python312Packages.discordpy --run "python3 %h/agi/discord-bot.py"
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

@@ -2,15 +2,15 @@
 Description=ttyd - Foc Terminal (:7697)
 After=network.target
 
+OnFailure=sentinel-onfailure@ttyd-foc.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'fuser -k 7697/tcp 2>/dev/null; sleep 0.5; true'
 ExecStart=/run/current-system/sw/bin/ttyd -P 3 -p 7697 --base-path /foc -t fontSize=14 -t disableLeaveAlert=true -t scrollback=50000 -t rendererType=canvas -W /home/charlie/.local/bin/foc-tmux-wrap
-OnFailure=sentinel-onfailure@ttyd-foc.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin

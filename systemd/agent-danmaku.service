@@ -2,14 +2,14 @@
 Description=Agent Danmaku — 桌面弹幕巡逻监控
 After=graphical-session.target
 
-[Service]
-Type=simple
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/agent-danmaku
 OnFailure=sentinel-onfailure@agent-danmaku.service
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=3
 StartLimitIntervalSec=60
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/agent-danmaku
+Restart=on-failure
 RestartSec=10
 Environment=DISPLAY=:0
 Environment=WAYLAND_DISPLAY=wayland-0

@@ -3,19 +3,19 @@ Description=Chronos Sensory — System Ambient Sound Engine
 After=graphical-session.target pipewire.service
 Wants=pipewire.service
 
+OnFailure=sentinel-onfailure@chronos-sensory.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/chronos-sensory.py
-OnFailure=sentinel-onfailure@chronos-sensory.service
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/usr/bin:/bin
 ExecStartPre=/bin/sh -c 'echo PYTHONPATH=$(python3 -c "import numpy; import os; print(os.path.dirname(numpy.__path__[0]))" 2>/dev/null) > %h/.local/state/chronos-env'
 EnvironmentFile=-%h/.local/state/chronos-env
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal

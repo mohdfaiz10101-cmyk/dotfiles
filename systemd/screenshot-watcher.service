@@ -2,15 +2,15 @@
 Description=Screenshot Intent Watcher (GLM-4.6V-Flash)
 After=network.target
 
+OnFailure=sentinel-onfailure@screenshot-watcher.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/.local/bin/screenshot-watcher.sh
-OnFailure=sentinel-onfailure@screenshot-watcher.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

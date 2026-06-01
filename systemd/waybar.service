@@ -2,10 +2,10 @@
 Description=Waybar status bar for Hyprland
 After=graphical-session.target
 
+OnFailure=sentinel-onfailure@waybar.service
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/waybar --config /home/charlie/.config/waybar/config.override --style /home/charlie/.config/waybar/style.override.css
-OnFailure=sentinel-onfailure@waybar.service
 Restart=on-failure
 RestartSec=3
 

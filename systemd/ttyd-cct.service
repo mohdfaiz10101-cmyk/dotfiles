@@ -2,15 +2,15 @@
 Description=ttyd - CCT GLM路由终端 (:7691)
 After=network.target
 
+OnFailure=sentinel-onfailure@ttyd-cct.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'fuser -k 7691/tcp 2>/dev/null; sleep 0.5; true'
 ExecStart=/run/current-system/sw/bin/ttyd -b /cct -p 7691 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -W /home/charlie/.local/bin/cct-tmux-wrap
-OnFailure=sentinel-onfailure@ttyd-cct.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin

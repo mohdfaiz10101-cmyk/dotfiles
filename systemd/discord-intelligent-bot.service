@@ -2,18 +2,17 @@
 Description=智能 Discord Bot — 三层架构
 After=network.target litellm-litellm.service letta.service
 
+OnFailure=sentinel-onfailure@discord-intelligent-bot.service
+StartLimitIntervalSec=60
+StartLimitAction=none
+StartLimitBurst=3
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 WorkingDirectory=/home/charlie/.local/discord-bot
 ExecStart=/home/charlie/.local/discord-bot/venv/bin/python3 /home/charlie/.local/discord-bot/discord_bot.py
-OnFailure=sentinel-onfailure@discord-intelligent-bot.service
 Restart=on-failure
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=10
-StartLimitInterval=3600
-StartLimitBurst=3
 Environment=DISCORD_BOT_TOKEN=MTQ5MDY0MTY3ODEzNzAzMjg0NA.GjZeCI.O1wwBWRbVZb8xGDe_4JGJ2fttneVQcCu9FR--M
 Environment=DISCORD_GUILD_ID=1490683033919950941
 Environment=PYTHONUNBUFFERED=1

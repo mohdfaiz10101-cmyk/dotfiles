@@ -4,16 +4,15 @@ Documentation=man:syncthing(1)
 StartLimitIntervalSec=60
 StartLimitBurst=4
 
+OnFailure=sentinel-onfailure@syncthing.service
+StartLimitBurst=3
+StartLimitAction=none
 [Service]
 Environment="STLOGFORMATTIMESTAMP="
 Environment="STLOGFORMATLEVELSTRING=false"
 Environment="STLOGFORMATLEVELSYSLOG=true"
 ExecStart=/nix/store/bpsw7adz29jg5124pjymf7clmmvjvr61-syncthing-2.0.15/bin/syncthing serve --no-browser --no-restart
-OnFailure=sentinel-onfailure@syncthing.service
 Restart=on-failure
-StartLimitBurst=3
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=10
 SuccessExitStatus=3 4
 RestartForceExitStatus=3 4

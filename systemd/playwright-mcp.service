@@ -2,15 +2,15 @@
 Description=Playwright MCP Server
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.npm-global/bin/playwright-mcp --browser chrome --executable-path /run/current-system/sw/bin/google-chrome-stable --headless
 OnFailure=sentinel-onfailure@playwright-mcp.service
-Environment="LD_LIBRARY_PATH=/nix/store/nn129jwsznqv7k888wb05m5whpyndqrf-pipewire-1.6.2/lib64:/nix/store/nn129jwsznqv7k888wb05m5whpyndqrf-pipewire-1.6.2/lib"
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.npm-global/bin/playwright-mcp --browser chrome --executable-path /run/current-system/sw/bin/google-chrome-stable --headless
+Environment="LD_LIBRARY_PATH=/nix/store/nn129jwsznqv7k888wb05m5whpyndqrf-pipewire-1.6.2/lib64:/nix/store/nn129jwsznqv7k888wb05m5whpyndqrf-pipewire-1.6.2/lib"
+Restart=on-failure
 RestartSec=10
 
 [Install]

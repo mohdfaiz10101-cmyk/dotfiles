@@ -2,15 +2,15 @@
 Description=AGI Brain Telegram Bot (enhanced)
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/telegram_bot_enhanced.py
 OnFailure=sentinel-onfailure@telegram-bot-enhanced.service
-WorkingDirectory=/home/charlie/agi
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/telegram_bot_enhanced.py
+WorkingDirectory=/home/charlie/agi
+Restart=always
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 Environment=HOME=/home/charlie

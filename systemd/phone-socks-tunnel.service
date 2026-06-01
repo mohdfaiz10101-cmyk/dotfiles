@@ -3,10 +3,14 @@ Description=Phone SOCKS5 Proxy Tunnel (via Tailscale)
 After=network-online.target tailscaled.service
 Wants=network-online.target
 
+OnFailure=sentinel-onfailure@phone-socks-tunnel.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+StartLimitIntervalSec=0
 [Service]
 Type=forking
 ExecStart=/run/current-system/sw/bin/ssh -NT -D 1080 -f \
-OnFailure=sentinel-onfailure@phone-socks-tunnel.service
     -o ServerAliveInterval=30 \
     -o ServerAliveCountMax=3 \
     -o TCPKeepAlive=yes \
@@ -17,11 +21,7 @@ OnFailure=sentinel-onfailure@phone-socks-tunnel.service
     phone
 ExecStop=/run/current-system/sw/bin/pkill -f "ssh.*-D 1080"
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=15
-StartLimitIntervalSec=0
 
 [Install]
 WantedBy=default.target

@@ -2,15 +2,15 @@
 Description=JetBrains AI Proxy (CLAUDE.md + Letta injection)
 After=network.target
 
+OnFailure=sentinel-onfailure@jetbrains-ai-proxy.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9802 " && echo "PORT 9802 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/jetbrains-ai-proxy --port 9802
-OnFailure=sentinel-onfailure@jetbrains-ai-proxy.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 

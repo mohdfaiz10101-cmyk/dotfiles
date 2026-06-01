@@ -3,17 +3,17 @@ Description=MACG API — OpenAI 兼容包装层 (port 9910)
 After=network.target litellm.service
 Wants=default.target
 
+OnFailure=sentinel-onfailure@macg-api.service
+StartLimitIntervalSec=60
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9910 " && echo "PORT 9910 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python /home/charlie/agi/macg_api.py
-OnFailure=sentinel-onfailure@macg-api.service
 WorkingDirectory=/home/charlie/agi
 Restart=on-failure
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=15
-StartLimitBurst=5
 Environment=PYTHONUNBUFFERED=1
 Environment=PYTHONPATH=/home/charlie/agi
 Environment=HOME=/home/charlie

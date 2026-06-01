@@ -3,18 +3,17 @@ Description=AGI Brain Discord Bot — Enhanced Conversational Assistant
 After=network.target agi-brain.service
 Requires=agi-brain.service
 
+OnFailure=sentinel-onfailure@agi-discord-bot.service
+StartLimitIntervalSec=60
+StartLimitAction=none
+StartLimitBurst=3
 [Service]
 Type=simple
 WorkingDirectory=/home/charlie/agi
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/discord_bot_enhanced.py
-OnFailure=sentinel-onfailure@agi-discord-bot.service
 Restart=on-failure
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=10
-StartLimitInterval=3600
-StartLimitBurst=3
 StandardOutput=journal
 StandardError=journal
 Environment="PYTHONUNBUFFERED=1"

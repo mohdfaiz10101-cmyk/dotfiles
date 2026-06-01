@@ -2,14 +2,14 @@
 Description=Overcode 循环检测器
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/overcode-loop-watch.sh
 OnFailure=sentinel-onfailure@overcode-loop-watch.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/overcode-loop-watch.sh
+Restart=always
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin

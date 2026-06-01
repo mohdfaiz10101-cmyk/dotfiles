@@ -3,17 +3,17 @@ Description=Input Method Auto-Switcher
 After=display-manager.service
 Wants=display-manager.service
 
+OnFailure=sentinel-onfailure@input-switcher.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 User=charlie
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/charlie/.Xauthority
 ExecStart=/home/charlie/.config/input-switcher/input-switcher.sh
-OnFailure=sentinel-onfailure@input-switcher.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

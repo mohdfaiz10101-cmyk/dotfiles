@@ -8,13 +8,13 @@ StartLimitBurst=5
 StartLimitIntervalSec=120
 OnFailure=sentinel-onfailure@wechat-uos.service
 
+StartLimitAction=none
 [Service]
 Type=exec
 ExitType=cgroup
 ExecStartPre=/run/current-system/sw/bin/sleep 8
 ExecStart=/home/charlie/.local/bin/wechat-uos-safe
 Restart=always
-StartLimitAction=none
 RestartSec=15
 TimeoutStopSec=10
 Slice=app.slice

@@ -4,14 +4,13 @@ StartLimitIntervalSec=120
 Description=Phone Clipboard Sync v2 (Multi-protocol Fallback)
 After=network.target
 
+OnFailure=sentinel-onfailure@phone-clip-sync.service
+StartLimitIntervalSec=60
+StartLimitAction=none
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/phone-clip-sync-v2
-OnFailure=sentinel-onfailure@phone-clip-sync.service
 Restart=on-failure
-StartLimitBurst=3
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=10
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/1000

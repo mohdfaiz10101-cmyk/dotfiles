@@ -4,12 +4,12 @@ After=network.target
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@opencode-session-recorder.service
 
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/.local/bin/opencode-session-recorder.py
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
 RestartSec=10
 StandardOutput=journal
 StandardError=journal

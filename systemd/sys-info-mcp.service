@@ -4,12 +4,12 @@ After=network-online.target
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@sys-info-mcp.service
 
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/.local/bin/sys-info-mcp.py
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
 RestartSec=10
 Environment="HOME=%h"
 

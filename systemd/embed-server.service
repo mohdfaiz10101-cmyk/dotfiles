@@ -3,15 +3,15 @@ Description=Local Embedding Server (ONNX MiniLM-L6-v2)
 After=network.target
 Wants=network-online.target
 
+OnFailure=sentinel-onfailure@embed-server.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 Environment=EMBED_MODEL_PATH=/mnt/ai/models/all-MiniLM-L6-v2
 ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/embed-venv/bin/python /mnt/ai/apps/embed-server/embed_server.py
-OnFailure=sentinel-onfailure@embed-server.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 WorkingDirectory=/mnt/ai/apps/embed-server
 

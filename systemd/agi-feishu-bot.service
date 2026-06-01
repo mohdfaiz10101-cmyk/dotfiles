@@ -3,15 +3,15 @@ Description=AGI Brain Feishu Bot — Enhanced Conversational Assistant
 After=network.target agi-brain.service
 Requires=agi-brain.service
 
+OnFailure=sentinel-onfailure@agi-feishu-bot.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 WorkingDirectory=/home/charlie/agi
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/feishu_bot_enhanced.py
-OnFailure=sentinel-onfailure@agi-feishu-bot.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal

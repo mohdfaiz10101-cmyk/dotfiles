@@ -2,15 +2,15 @@
 Description=OpenCode Session RAG 检索服务
 After=network.target letta-chromadb.service
 
+OnFailure=sentinel-onfailure@session-rag-server.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9812 " && echo "PORT 9812 IN USE" && exit 1 || true'
 ExecStart=%h/.local/venv/session-rag/bin/python3 %h/.local/bin/session-rag-server.py --port=9812
-OnFailure=sentinel-onfailure@session-rag-server.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

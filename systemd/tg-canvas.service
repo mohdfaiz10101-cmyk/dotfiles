@@ -3,16 +3,16 @@ Description=Telegram Mini App Canvas Server
 After=network-online.target
 Wants=network-online.target
 
+OnFailure=sentinel-onfailure@tg-canvas.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/apps/openclaw-tg-canvas
 EnvironmentFile=/mnt/ai/apps/openclaw-tg-canvas/.env
 ExecStart=/run/current-system/sw/bin/node server.js
-OnFailure=sentinel-onfailure@tg-canvas.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

@@ -2,14 +2,14 @@
 Description=Config Immutable Snapshot — 关键配置变更自动快照
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/config-immutable-snapshot
 OnFailure=sentinel-onfailure@config-immutable-snapshot.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/config-immutable-snapshot
+Restart=always
 RestartSec=15
 Environment="HOME=%h"
 WorkingDirectory=%h

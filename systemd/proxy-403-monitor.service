@@ -2,15 +2,15 @@
 Description=Claude API 403 Real-time Monitor
 After=network.target
 
+OnFailure=sentinel-onfailure@proxy-403-monitor.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=%h/.local/bin/proxy-403-monitor
-OnFailure=sentinel-onfailure@proxy-403-monitor.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

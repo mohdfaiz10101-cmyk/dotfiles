@@ -5,12 +5,12 @@ OnFailure=sentinel-onfailure@opencode-serve.service
 StartLimitBurst=5
 StartLimitIntervalSec=30
 
+StartLimitAction=none
 [Service]
 Type=simple
 ExecStartPre=/home/charlie/.local/bin/opencode-integrity-check
 ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode serve --port 4096 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8080 --cors http://localhost:8081 --cors http://localhost:8082 --cors http://localhost:8090
 Restart=always
-StartLimitAction=none
 TimeoutStopSec=300
 KillSignal=SIGTERM
 KillMode=mixed

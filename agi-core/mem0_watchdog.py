@@ -73,7 +73,7 @@ def check_chromadb() -> dict:
         health = json.loads(resp.read())
         if health.get("status") != "ok":
             return {"ok": False, "reason": "health非ok", "detail": health}
-    except URLError as e:
+    except (URLError, TimeoutError, OSError) as e:
         return {"ok": False, "reason": f"不可达: {e}"}
 
     # 2. 搜索可用性（验证向量搜索真的工作）
@@ -83,7 +83,7 @@ def check_chromadb() -> dict:
         data = json.loads(resp.read())
         if not data.get("results"):
             return {"ok": False, "reason": "搜索返回空（可能索引损坏）"}
-    except URLError as e:
+    except (URLError, TimeoutError, OSError) as e:
         return {"ok": False, "reason": f"搜索失败: {e}"}
 
     return {"ok": True, "count": health.get("count", 0)}
@@ -148,8 +148,8 @@ def check_letta() -> dict:
         resp = urlopen(f"{LETTA_URL}/health", timeout=3)
         data = json.loads(resp.read())
         return {"ok": data.get("status") == "healthy"}
-    except URLError:
-        return {"ok": False, "reason": "不可达"}
+    except (URLError, TimeoutError, OSError) as e:
+        return {"ok": False, "reason": f"不可达: {e}"}
 
 
 def autoheal(drift: dict) -> bool:

@@ -2,16 +2,16 @@
 Description=Tmux Claude 工作会话
 After=graphical-session.target
 
-[Service]
-Type=forking
-ExecStart=/run/current-system/sw/bin/tmux new-session -d -s claude-work -n "Claude工作"
 OnFailure=sentinel-onfailure@tmux-claude.service
-ExecStop=/run/current-system/sw/bin/tmux kill-session -t claude-work
-RemainAfterExit=yes
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=forking
+ExecStart=/run/current-system/sw/bin/tmux new-session -d -s claude-work -n "Claude工作"
+ExecStop=/run/current-system/sw/bin/tmux kill-session -t claude-work
+RemainAfterExit=yes
+Restart=on-failure
 RestartSec=10
 
 [Install]

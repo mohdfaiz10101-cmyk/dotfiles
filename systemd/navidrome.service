@@ -3,11 +3,14 @@ Description=Navidrome Music Server
 After=network-online.target
 Wants=network-online.target
 
+OnFailure=sentinel-onfailure@navidrome.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4533 " && echo "PORT 4533 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/.local/bin/navidrome
-OnFailure=sentinel-onfailure@navidrome.service
 WorkingDirectory=%h/navidrome
 Environment=ND_SCANSCHEDULE=1h
 Environment=ND_LOGLEVEL=info
@@ -17,9 +20,6 @@ Environment=ND_PORT=4533
 Environment=ND_MUSICFOLDER=%h/navidrome/music
 Environment=ND_DATAFOLDER=%h/navidrome/data
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

@@ -2,16 +2,16 @@
 Description=Overtab tmux session keeper (serve mode)
 After=network.target
 
+OnFailure=sentinel-onfailure@overtab-serve.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/home/charlie/.local/bin/overtab-serve-start
-OnFailure=sentinel-onfailure@overtab-serve.service
 ExecStop=/home/charlie/.local/bin/overtab-serve-stop
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin

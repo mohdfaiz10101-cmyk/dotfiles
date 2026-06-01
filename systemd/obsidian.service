@@ -3,17 +3,17 @@ Description=Obsidian via Wine
 After=graphical-session.target network.target
 Wants=graphical-session.target
 
+OnFailure=sentinel-onfailure@obsidian.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=forking
 PIDFile=/home/charlie/.obsidian/wine-obsidian.pid
 ExecStartPre=/bin/mkdir -p /home/charlie/.obsidian
 ExecStart=/bin/sh -c 'nohup wine /mnt/win_c/Programs/Obsidian/Obsidian.exe > /home/charlie/.obsidian/obsidian.log 2>&1 & echo $! > /home/charlie/.obsidian/wine-obsidian.pid'
-OnFailure=sentinel-onfailure@obsidian.service
 ExecStop=/bin/kill -15 $MAINPID
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=DISPLAY=:0
 Environment=WSL_INTEROP=/mnt/wsl

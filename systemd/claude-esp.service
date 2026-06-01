@@ -2,14 +2,14 @@
 Description=Claude ESP Server - 实时同步 Claude 操作到平板
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/claude-esp-simple.py
 OnFailure=sentinel-onfailure@claude-esp.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/launcher/claude-esp-simple.py
+Restart=always
 RestartSec=10
 
 [Install]

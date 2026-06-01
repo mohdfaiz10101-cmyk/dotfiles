@@ -2,15 +2,15 @@
 Description=Headless Browser API Server
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/run/current-system/sw/bin/node /home/charlie/launcher/headless-browser-server.js
 OnFailure=sentinel-onfailure@headless-browser.service
-WorkingDirectory=/home/charlie/launcher
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/node /home/charlie/launcher/headless-browser-server.js
+WorkingDirectory=/home/charlie/launcher
+Restart=on-failure
 RestartSec=10
 Environment=NODE_PATH=/tmp/node_modules
 

@@ -3,10 +3,13 @@ Description=OpenAgents MCP Bridge — CrewAI
 After=network.target crewai-gateway.service openagents.service
 Requires=crewai-gateway.service openagents.service
 
+OnFailure=sentinel-onfailure@oa-crewai-bridge.service
+StartLimitIntervalSec=60
+StartLimitAction=none
+StartLimitBurst=10
 [Service]
 Type=simple
 ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent crewai --channel development
-OnFailure=sentinel-onfailure@oa-crewai-bridge.service
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1
@@ -17,11 +20,7 @@ Environment=HTTPS_PROXY=
 Environment=ALL_PROXY=
 Environment=all_proxy=
 Restart=on-failure
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=10
-StartLimitInterval=60
-StartLimitBurst=10
 
 [Install]
 WantedBy=default.target

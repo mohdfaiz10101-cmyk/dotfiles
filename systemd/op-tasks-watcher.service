@@ -2,14 +2,14 @@
 Description=监听 op-tasks.md 变化自动触发 OP 执行
 After=default.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/op-tasks-watcher.sh
 OnFailure=sentinel-onfailure@op-tasks-watcher.service
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/op-tasks-watcher.sh
+Restart=on-failure
 RestartSec=10
 Environment=DISPLAY=:0
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus

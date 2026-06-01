@@ -2,16 +2,16 @@
 Description=WeChat Message Review Web UI (port 9097)
 After=network.target
 
+OnFailure=sentinel-onfailure@wechat-web.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/wechat-sync
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":9097 " && echo "PORT 9097 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 web.py
-OnFailure=sentinel-onfailure@wechat-web.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 

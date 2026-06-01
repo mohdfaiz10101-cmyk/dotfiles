@@ -2,14 +2,14 @@
 Description=Claude 输出同步到平板服务
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/claude-tablet-output
 OnFailure=sentinel-onfailure@claude-tablet-output.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/claude-tablet-output
+Restart=always
 RestartSec=10
 
 [Install]

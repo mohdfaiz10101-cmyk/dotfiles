@@ -2,15 +2,15 @@
 Description=Desktop Screenshot Stream (:5997)
 After=graphical-session.target
 
+OnFailure=sentinel-onfailure@desktop-stream.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":5997 " && echo "PORT 5997 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 %h/.local/bin/desktop-stream.py
-OnFailure=sentinel-onfailure@desktop-stream.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

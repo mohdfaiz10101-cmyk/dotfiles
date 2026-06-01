@@ -2,16 +2,16 @@
 Description=OP Task Push Service — 监控 op-tasks.md 变化推送到 Telegram/Discord
 After=network.target
 
+OnFailure=sentinel-onfailure@op-push.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 WorkingDirectory=/home/charlie/agi
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":7890 " && echo "PORT 7890 IN USE" && exit 1 || true'
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/op_push_service.py
-OnFailure=sentinel-onfailure@op-push.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 StandardOutput=journal
 StandardError=journal

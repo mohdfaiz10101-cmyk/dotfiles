@@ -2,14 +2,14 @@
 Description=Claude 免费 API 自动切换守护进程
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/claude-free-api-auto daemon
 OnFailure=sentinel-onfailure@claude-free-api-auto.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/claude-free-api-auto daemon
+Restart=always
 RestartSec=60
 
 [Install]

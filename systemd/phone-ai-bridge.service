@@ -5,11 +5,11 @@ StartLimitBurst=5
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@phone-ai-bridge.service
 
+StartLimitAction=none
 [Service]
 Type=simple
 ExecStart=%h/.local/bin/phone-ai-bridge.sh
 Restart=on-failure
-StartLimitAction=none
 RestartSec=30
 
 [Install]

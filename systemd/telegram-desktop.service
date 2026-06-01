@@ -3,14 +3,14 @@ Description=Telegram Desktop
 After=graphical-session.target network.target
 Wants=graphical-session.target
 
-[Service]
-Type=simple
-ExecStart=/nix/store/axgks718p3s1pff1bhggz4y5p09pbcb2-telegram-desktop-6.6.2/bin/Telegram
 OnFailure=sentinel-onfailure@telegram-desktop.service
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/nix/store/axgks718p3s1pff1bhggz4y5p09pbcb2-telegram-desktop-6.6.2/bin/Telegram
+Restart=on-failure
 RestartSec=10
 Environment=DISPLAY=:0
 Environment=QT_QPA_PLATFORM=xcb

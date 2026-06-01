@@ -2,15 +2,15 @@
 Description=Image Search API (CLIP)
 After=network.target
 
+OnFailure=sentinel-onfailure@image-search.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/apps/image-search
 ExecStart=/mnt/ai/apps/image-search/.venv/bin/python3 server.py
-OnFailure=sentinel-onfailure@image-search.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HF_HOME=/home/charlie/.cache/huggingface
 

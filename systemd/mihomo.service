@@ -2,15 +2,15 @@
 Description=Mihomo Proxy Service
 After=network.target
 
+OnFailure=sentinel-onfailure@mihomo.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 User=charlie
 ExecStart=/run/current-system/sw/bin/mihomo -d %h/.config/mihomo -f %h/.config/mihomo/config.yaml
-OnFailure=sentinel-onfailure@mihomo.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

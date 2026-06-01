@@ -2,15 +2,15 @@
 Description=ttyd - Claude Code Terminal (:7690)
 After=network.target
 
+OnFailure=sentinel-onfailure@ttyd-claude.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'fuser -k 7690/tcp 2>/dev/null; sleep 0.5; true'
 ExecStart=/run/current-system/sw/bin/ttyd -b /ttyd -p 7690 -P 10 -t fontSize=13 -t disableLeaveAlert=true -t scrollback=50000 -W /home/charlie/.local/bin/claude-tmux-wrap
-OnFailure=sentinel-onfailure@ttyd-claude.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.nix-profile/bin

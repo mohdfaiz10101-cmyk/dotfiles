@@ -4,13 +4,13 @@ After=network.target
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@letta-mcp.service
 
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/.local/bin/letta-mcp-server
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 

@@ -2,16 +2,16 @@
 Description=Opus + GLM 双 Agent 调度器
 After=network.target glm-proxy.service
 
+OnFailure=sentinel-onfailure@agent-orchestrator.service
+StartLimitIntervalSec=60
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/lib/agent-orchestrator/orchestrator.py
-OnFailure=sentinel-onfailure@agent-orchestrator.service
 WorkingDirectory=/home/charlie/.local/lib/agent-orchestrator
 Restart=on-failure
-StartLimitIntervalSec=60
-StartLimitAction=none
 RestartSec=15
-StartLimitBurst=5
 Environment=PYTHONUNBUFFERED=1
 Environment=HOME=/home/charlie
 Environment=DISPLAY=:0

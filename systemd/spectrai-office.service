@@ -2,15 +2,15 @@
 Description=SpectrAI Office - AI Employee Office Simulator
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/mnt/pool-disks/POOL-B1/home-offload/data/bun/bin/bun /home/charlie/projects/spectrai-office/server.js
 OnFailure=sentinel-onfailure@spectrai-office.service
-WorkingDirectory=/home/charlie/projects/spectrai-office
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/mnt/pool-disks/POOL-B1/home-offload/data/bun/bin/bun /home/charlie/projects/spectrai-office/server.js
+WorkingDirectory=/home/charlie/projects/spectrai-office
+Restart=on-failure
 RestartSec=10
 Environment=HOME=/home/charlie
 

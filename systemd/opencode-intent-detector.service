@@ -4,13 +4,13 @@ After=network.target opencode-telegram-processor.service
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@opencode-intent-detector.service
 
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 Environment="PATH=%h/.npm-global/bin:/run/current-system/sw/bin"
 ExecStart=%h/.local/bin/opencode-intent-detector
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
 RestartSec=10
 
 [Install]

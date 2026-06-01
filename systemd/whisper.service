@@ -2,15 +2,15 @@
 Description=Whisper Speech-to-Text Server (port 8178)
 After=network.target
 
+OnFailure=sentinel-onfailure@whisper.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8178 " && echo "PORT 8178 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/whisper-server -m /mnt/pool/offload/whisper-models/ggml-medium.bin -l zh --host 127.0.0.1 --port 8178 -t 4 --inference-path /v1/audio/transcriptions --convert
-OnFailure=sentinel-onfailure@whisper.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 

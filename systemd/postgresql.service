@@ -2,6 +2,10 @@
 Description=PostgreSQL + pgvector for Letta
 After=default.target
 
+OnFailure=sentinel-onfailure@postgresql.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=forking
 Environment=PATH=/home/charlie/.nix-profile/bin:/run/current-system/sw/bin
@@ -9,14 +13,10 @@ Environment=PGDATA=/mnt/ai/apps/postgresql/data
 Environment=PGLOG=/mnt/ai/apps/postgresql/logfile
 RuntimeDirectory=postgresql
 ExecStart=/home/charlie/.nix-profile/bin/pg_ctl -D ${PGDATA} -l ${PGLOG} -o "-c unix_socket_directories=/run/user/1000/postgresql" start
-OnFailure=sentinel-onfailure@postgresql.service
 ExecStop=/home/charlie/.nix-profile/bin/pg_ctl -D ${PGDATA} stop
 ExecReload=/home/charlie/.nix-profile/bin/pg_ctl -D ${PGDATA} reload
 PIDFile=/mnt/ai/apps/postgresql/data/postmaster.pid
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

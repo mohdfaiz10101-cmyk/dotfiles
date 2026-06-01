@@ -5,12 +5,12 @@ PartOf=opencode-web.service
 StartLimitIntervalSec=30
 OnFailure=sentinel-onfailure@opencode-stuck-watch.service
 
+StartLimitAction=none
+StartLimitBurst=5
 [Service]
 Type=simple
 ExecStart=/home/charlie/.local/bin/opencode-stuck-watch.sh
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
 RestartSec=10
 
 [Install]

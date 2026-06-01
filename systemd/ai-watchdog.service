@@ -2,14 +2,14 @@
 Description=AI Task Pipeline Watchdog
 After=network.target glm-proxy.service
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/ai-watchdog --daemon
 OnFailure=sentinel-onfailure@ai-watchdog.service
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/ai-watchdog --daemon
+Restart=on-failure
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 

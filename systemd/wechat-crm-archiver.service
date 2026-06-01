@@ -2,15 +2,15 @@
 Description=微信CRM自动归档
 After=network.target
 
+OnFailure=sentinel-onfailure@wechat-crm-archiver.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":8283 " && echo "PORT 8283 IN USE" && exit 1 || true'
 ExecStart=/run/current-system/sw/bin/python3 /mnt/ai/apps/crm/wechat_crm_archiver.py
-OnFailure=sentinel-onfailure@wechat-crm-archiver.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=30
 Environment=HUB_API=http://localhost:9875
 Environment=LETTA_API=http://localhost:8283

@@ -2,13 +2,13 @@
 Description=Ydotool Bridge for KVM
 After=ydotoold.service
 
-[Service]
-ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/ydotool-bridge.py
 OnFailure=sentinel-onfailure@ydotool-bridge.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+ExecStart=/run/current-system/sw/bin/python3 /home/charlie/.local/bin/ydotool-bridge.py
+Restart=always
 RestartSec=10
 
 [Install]

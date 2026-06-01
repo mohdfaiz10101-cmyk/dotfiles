@@ -2,14 +2,14 @@
 Description=CC-GUI Auto Router (GLM/DeepSeek smart dispatch)
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/cc-gui-auto-router
 OnFailure=sentinel-onfailure@cc-gui-auto-router.service
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/cc-gui-auto-router
+Restart=on-failure
 RestartSec=10
 Environment=PYTHONUNBUFFERED=1
 

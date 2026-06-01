@@ -2,14 +2,14 @@
 Description=Memory Auto Commit — 记忆文件变更即git commit (dotfiles)
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/memory-auto-commit
 OnFailure=sentinel-onfailure@memory-auto-commit.service
-Restart=always
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/run/current-system/sw/bin/bash %h/.local/bin/memory-auto-commit
+Restart=always
 RestartSec=15
 Environment="HOME=%h"
 WorkingDirectory=%h

@@ -2,6 +2,10 @@
 Description=ADDF Bridge - Paperclip to CrewAI orchestration service
 After=network.target
 
+OnFailure=sentinel-onfailure@addf-bridge.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/addf
@@ -13,12 +17,8 @@ Environment=PAPERCLIP_COMPANY_ID=aae8a73b-784f-4815-9511-bec8f2409b75
 
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":3100 " && echo "PORT 3100 IN USE" && exit 1 || true'
 ExecStart=/mnt/ai/ai-cluster/addf/.venv/bin/uvicorn bridge.main:app --host 0.0.0.0 --port 8002
-OnFailure=sentinel-onfailure@addf-bridge.service
 
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 StandardOutput=journal

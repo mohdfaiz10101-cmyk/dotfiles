@@ -2,16 +2,16 @@
 Description=WeChat Sync Daemon — auto-sync messages every 60s
 After=network.target
 
+OnFailure=sentinel-onfailure@wechat-sync.service
+StartLimitAction=none
+StartLimitBurst=3
+StartLimitIntervalSec=3600
 [Service]
 Type=simple
 WorkingDirectory=/mnt/ai/ai-cluster/wechat-sync
 ExecStart=/run/current-system/sw/bin/nix-shell -p python313Packages.httpx sqlcipher python313Packages.zstandard --run "python3 sync_daemon.py"
-OnFailure=sentinel-onfailure@wechat-sync.service
 Restart=on-failure
-StartLimitAction=none
 RestartSec=300
-StartLimitBurst=3
-StartLimitIntervalSec=3600
 Environment=HOME=/home/charlie
 
 [Install]

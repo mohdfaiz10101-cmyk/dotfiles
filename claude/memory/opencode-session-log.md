@@ -52539,3 +52539,17 @@ HQSSH 里：新建连接 → 认证选「密钥」→ 点文件夹图标导入 �
 [ok] disk-guard L1 新增 coredump>3d 清理 + memory-pulse.log 自动截断
 [ok] frps 重启 -- maxDays=7 日志轮转已生效
 [ok] opencode 验证通过 -
+
+## 2026-06-01 18:20
+- [2026-06-01 18:20:28] **用户**: 我系统 打开那个hermes tmux是输入什么命令
+- [2026-06-01 18:20:41] **AI(sisyphus)**: `~/.local/bin/hermes-attach.sh`
+
+已存在则attach，不存在则新建session并启动 `hermes chat`。
+
+## 2026-06-01 18:21
+- [2026-06-01 18:21:34] **用户**: 没有alias命令吗
+
+## 2026-06-01 18:23
+- [2026-06-01 18:23:04] **AI(sisyphus)**: [ok] 已添加 alias -- `hermes` → `~/.local/bin/hermes-attach.sh`
+
+新终端里直接输入 `hermes` 即可。当前终端先 `source ~/.zshrc` 生效。

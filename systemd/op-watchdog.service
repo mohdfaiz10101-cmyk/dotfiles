@@ -2,15 +2,15 @@
 Description=OP 任务守护进程 — 断开即时恢复
 After=network.target
 
+OnFailure=sentinel-onfailure@op-watchdog.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 EnvironmentFile=%h/dotfiles/systemd/service-common.env
 Type=simple
 ExecStart=/home/charlie/launcher/op-watchdog.sh
-OnFailure=sentinel-onfailure@op-watchdog.service
 Restart=always
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 Environment=HOME=/home/charlie
 

@@ -2,15 +2,15 @@
 Description=Voxtype Voice Input Daemon
 After=graphical-session.target
 
+OnFailure=sentinel-onfailure@voxtype.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
 [Service]
 Type=simple
 Environment="YDOTOOL_SOCKET=/run/user/1000/.ydotool_socket"
 ExecStart=/run/current-system/sw/bin/voxtype -v daemon
-OnFailure=sentinel-onfailure@voxtype.service
 Restart=on-failure
-StartLimitAction=none
-StartLimitBurst=5
-StartLimitIntervalSec=30
 RestartSec=10
 
 [Install]

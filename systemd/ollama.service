@@ -2,15 +2,15 @@
 Description=Ollama Local LLM Server
 After=network.target
 
-[Service]
-Type=simple
-ExecStart=/home/charlie/.local/bin/ollama-cuda serve
 OnFailure=sentinel-onfailure@ollama.service
-Environment=OLLAMA_MODELS=/mnt/ai/models/ollama
-Restart=on-failure
 StartLimitAction=none
 StartLimitBurst=5
 StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/ollama-cuda serve
+Environment=OLLAMA_MODELS=/mnt/ai/models/ollama
+Restart=on-failure
 RestartSec=10
 
 [Install]
