@@ -52139,3 +52139,21 @@ hqssh 唯一独有的是 **HQSSH 手机 app** 的推送启动 + 会话接力。�
 - 文件系统：`/mnt/ai/apps/telegram-bot/` 已删除
 
 Haven 和 Telegram Bot A
+
+## 2026-06-01 15:52
+- [2026-06-01 15:50:16] **AI(sisyphus)**: [ok] FRP修复 -- 旧实例PID 12258占用7500端口，杀死后重启成功
+[ok] DuckDNS更新 -- WAN IP 185.37.253.247，DNS解析恢复
+[ok] 19890公网访问 -- FRP代理 nixos-opencode-web 在线 (19890→7700 ttyd)
+[ok] op-status.json -- 已创建，含9服务/4磁盘/12端口/9Docker四维状态
+[fail] opencode session rename -- opencode.db为0字节(5月24日起)，session重命名无法持久化
+
+[诊断] opencode.db位
+- [2026-06-01 15:50:19] **用户**: 我以前给过的 搜下记忆
+
+## 2026-06-01 15:54
+- [2026-06-01 15:51:46] **用户**: 那如何在ssh上用hermes呢 或者接入opencode
+- [2026-06-01 15:52:51] **AI(sisyphus)**: 两种方式都很简单：
+
+**SSH 上用 Hermes CLI**
+```bash
+ssh

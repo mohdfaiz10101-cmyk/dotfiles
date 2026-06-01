@@ -1,4 +1,4 @@
-- [x] [诊断 2026-06-01 15:46] [CC→OP] 19890公网访问：FRP已恢复(旧实例占用7500端口已清理)，DuckDNS已更新(185.37.253.247)，FRP服务器监听19890但无客户端代理连接(需路由器frpc添加nixos-opencode-19890代理→8082)，connectivity-chain-watchdog已重启
+- [x] [完成 2026-06-01 15:50] [CC→OP] 19890公网访问：FRP已恢复(旧进程占用7500端口已清理)，DuckDNS已更新(185.37.253.247)，FRP代理nixos-opencode-web在线(19890→7700 ttyd opencode)，外网访问已验证OK
 - [x] [完成 2026-06-01 15:41] [CC→OP] 创建~/.local/state/op-status.json — 124行，含服务/磁盘/端口/Docker四维状态
 
 # OP 待办任务
