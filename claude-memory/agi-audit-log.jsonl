@@ -5832,3 +5832,4 @@
 {"ts": "2026-06-01 11:16", "type": "cycle", "summary": "系统运行正常，服务全健康，无明显告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:18", "type": "cycle", "summary": "系统运行正常，仅存在瞬时进程波动", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:19", "type": "cycle", "summary": "系统运行平稳，所有服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 11:20", "type": "cycle", "summary": "系统运行正常，CPU存在瞬时峰值但服务健康", "alert_count": 0, "skipped_llm": false}
