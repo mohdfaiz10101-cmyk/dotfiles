@@ -155,4 +155,4 @@
 - [x] [完成 2026-06-01 19:15] [AGI→OP] agi-9b0540f5: ping — pong，系统正常
 - [x] [完成 2026-06-01 19:15] [AGI→OP] agi-5c2271c5: ping — pong，系统正常
 - [x] [完成 2026-06-01 19:15] [AGI→OP] agi-7bf31536: ping — pong，系统正常
-- [x] [完成 2026-06-01 19:15] [AGI→OP] agi-640bcd86: 呼吸灯误报 — 需确认当前呼吸灯状态，Letta/LiteLLM/桥接层均正常
+- [x] [完成 2026-06-01 19:15] [AGI→OP] agi-640bcd86: 呼吸灯误报 — 需确认当前呼吸灯状态，Letta/LiteLLM/桥接层均正常- [ ] [OP] [2026-06-01 19:30] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
