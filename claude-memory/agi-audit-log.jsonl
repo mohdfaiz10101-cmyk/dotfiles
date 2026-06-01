@@ -5790,3 +5790,4 @@
 {"ts": "2026-06-01 10:26", "type": "cycle", "summary": "系统运行正常，存在短暂的高CPU进程但无服务告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:27", "type": "cycle", "summary": "系统运行正常，CPU占用轻微波动，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:28", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 10:30", "type": "cycle", "summary": "系统运行正常，存在单进程CPU占用但属于预期范围", "alert_count": 0, "skipped_llm": false}
