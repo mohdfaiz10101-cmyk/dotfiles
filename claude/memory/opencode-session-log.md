@@ -52715,3 +52715,18 @@ HQSSH 里：新建连接 → 认证选「密钥」→ 点文件夹图标导入 �
 
 ## 2026-06-01 19:33
 - [2026-06-01 19:32:41] **用户**: 那怎么都是打开都是herme是我用一个key的缘故吗 用的是一个hermes key
+
+## 2026-06-01 19:35
+- [2026-06-01 19:34:57] **用户**: 那你智能分配以后的软件和迁移
+
+## 2026-06-01 19:35
+- [2026-06-01 19:35:11] **AI(sisyphus)**: [ok] 创建 ttyd-hermes.service → 端口7689, tmux hermes终端
+[ok] 修复 FRP nixos-hermes-tty → localPort 19800→7689
+[ok] 撤销 Caddy /hermes路由 → 17699还给charlie ai
+
+不是key的问题。两个地址确实不同：
+
+| 地址 | 服务 | 页面标题 |
+|------|------|---------|
+| 18090 | OpenCode Sessions | "OpenCode Sessions" |
+| 19800 | Hermes ttyd | 纯终端(ttyd) 
