@@ -6229,3 +6229,8 @@
 {"ts": "2026-06-01 19:00", "type": "cycle", "summary": "系统运行正常，ClamAV 进行例行扫描占用 CPU", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 19:01", "type": "cycle", "summary": "系统整体运行正常，存在临时的高CPU进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 19:03", "type": "cycle", "summary": "系统运行平稳，无异常服务或告警，存在瞬时CPU峰值属正常范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:05", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘使用率均在安全范围内，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:06", "type": "cycle", "summary": "系统运行正常，CPU存在瞬时波动但整体健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:07", "type": "cycle", "summary": "系统运行平稳，无异常指标或服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:08", "type": "cycle", "summary": "系统运行平稳，无异常负载或服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:09", "type": "cycle", "summary": "系统运行平稳，CPU/内存正常，无服务异常或待处理任务", "alert_count": 0, "skipped_llm": false}
