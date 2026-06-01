@@ -52023,3 +52023,37 @@ hqssh projects remove <id>       # 移除
 ```
 hq
 - [2026-06-01 15:21:48] **用户**: 可以ai控制吗 我手机的hqssh
+
+## 2026-06-01 15:27
+- [2026-06-01 15:27:01] **用户**: session重命名没有生效啊 都是new session
+
+## 2026-06-01 15:28
+- [2026-06-01 15:28:20] **用户**: 那怎么配合我的opencode或者codex
+
+## 2026-06-01 15:28
+- [2026-06-01 15:28:38] **AI(sisyphus)**: hqssh 原生支持 `claude`、`codex`、`shell`，不支持 `opencode`。但你系统上三个都有。
+
+**codex — 原生集成**：
+```
+hqssh new --tool codex --project <项目id>
+hqssh task create --name "审查dotfiles" --tool codex --scope project --project 1610801392cee0e0 --prompt "审查最近的变更"
+```
+
+**opencode — 用 shell 包装**：
+```
+hqssh task create --name "
+
+## 2026-06-01 15:29
+- [2026-06-01 15:29:01] **AI(sisyphus)**: Build succeeded in 38s (all heavy layers cached).启动容器并测试推理
+- [2026-06-01 15:29:08] **AI(sisyphus)**: ```
+[注意] 任务系统 tool 只支持 codex / claude（shell 被服务端拒绝）
+[ok] 创建 OP巡检(codex) — 8ebdd06a
+[ok] 创建 dotfiles审查(codex) — 552cdfa
+
+hqssh + 你的工具集成方案：
+
+会话 (sessions) — 支持 claude/codex/shell:
+  hqssh new --tool shell           # 开终端，手动跑 opencode
+  hqssh new --tool codex --project <id>  # codex 原生
+
+任务 (tasks) — 只支
