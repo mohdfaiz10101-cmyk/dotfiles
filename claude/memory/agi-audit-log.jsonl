@@ -6177,3 +6177,7 @@
 {"ts": "2026-06-01 18:01", "type": "cycle", "summary": "系统运行正常，Python3.13进程为系统服务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 18:02", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载均衡", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 18:03", "type": "cycle", "summary": "系统运行正常，CPU占用略高但无风险", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:05", "type": "cycle", "summary": "系统运行正常，存在高CPU占用进程但属于正常开发场景", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:06", "type": "cycle", "summary": "系统运行正常，CPU轻负载，内存充裕，无活跃服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:07", "type": "cycle", "summary": "系统运行正常，python3.13进程为系统级服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 18:09", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘使用率均在安全范围内，所有服务健康，无待处理任务", "alert_count": 0, "skipped_llm": false}
