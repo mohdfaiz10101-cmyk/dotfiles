@@ -5912,3 +5912,4 @@
 {"ts": "2026-06-01 12:48", "type": "cycle", "summary": "系统运行正常，CPU占用略高但无风险", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 12:49", "type": "cycle", "summary": "系统运行平稳，无异常告警，CPU高占用为正常系统进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 12:50", "type": "cycle", "summary": "系统各项指标正常，存在瞬时CPU峰值", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 12:51", "type": "cycle", "summary": "系统运行正常，无活跃服务异常，CPU资源使用合理", "alert_count": 0, "skipped_llm": false}
