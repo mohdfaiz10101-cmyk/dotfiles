@@ -52686,3 +52686,29 @@ HQSSH 里：新建连接 → 认证选「密钥」→ 点文件夹图标导入 �
 
 ## 2026-06-01 19:17
 - [2026-06-01 19:17:07] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-01 19:21
+- [2026-06-01 19:20:38] **AI(sisyphus)**: [ok] 创建 ttyd-hermes.service → 端口 7689，自动 attach tmux hermes
+[ok] 添加 Caddy /hermes 路由 → 代理到 7689
+[ok] 重载 Caddy → /hermes/ 返回 200
+[ok] 启用开机自启 → ttyd-hermes
+
+四个地址：
+
+| 服务 | 公网 (FRP) | Tailscale (直连) |
+|------|-----------|-----------------|
+| **OpenCode** | http://125.110.221.37:18090 | http://100.119.17
+
+## 2026-06-01 19:22
+- [2026-06-01 19:22:16] **用户**: 17699本来是给charlie ai用的 你干嘛占用？难道我记得不对吗
+
+## 2026-06-01 19:23
+- [2026-06-01 19:23:20] **AI(sisyphus)**: [ok] 撤销 Caddy /hermes 路由 — 17699 还给 Caddy launcher
+[ok] 修复 FRP nixos-hermes-tty — localPort 19800→7689
+[ok] 重载 FRP — ttyd-hermes 独立 19800 端口
+
+最终四个地址：
+
+| 服务 | 公网 (FRP) | Tailscale (直连) |
+|------|-----------|-----------------|
+| **OpenCode** | http://125.110.221.37:18090 | http://100.119.174.25:8088 |

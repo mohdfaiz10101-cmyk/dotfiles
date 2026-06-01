@@ -251,3 +251,5 @@
 
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 28 minutes (healthy)
 - [2026-06-01] [OP] 成功记录: 19890修复 | 根因: DuckDNS IP过期(125.110.221.37→185.37.253.247) | 修复: 手动curl DuckDNS API更新 | 验证: 外网200+WebSocket 101
+- [2026-06-01] [OP] 新建: ttyd-hermes | 端口: 7689 | 路由: /hermes/* | 功能: tmux hermes session终端 | 方式: 添加到Caddy launcher + systemd服务
+- [2026-06-01] [OP] 修复: hermes端口分配 | 根因: 错误占用了17699(Caddy launcher) | 修复: FRP 19800→7689独立端口, 移除Caddy /hermes路由

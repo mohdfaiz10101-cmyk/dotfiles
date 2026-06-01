@@ -6243,3 +6243,7 @@
 {"ts": "2026-06-01 19:17", "type": "cycle", "summary": "系统运行正常，Python 3.13 进程占高 CPU 但属已知正常现象", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 19:18", "type": "cycle", "summary": "系统运行正常，CPU存在预期内的高负载进程", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 19:19", "type": "cycle", "summary": "系统运行正常，CPU有瞬时波动但整体稳定", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:20", "type": "cycle", "summary": "系统运行平稳，资源使用正常，CPU占用为系统进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:21", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-01 19:23", "type": "cycle", "summary": "系统负载正常，存在瞬时CPU高占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 19:24", "type": "cycle", "summary": "系统运行平稳，无异常告警", "alert_count": 0, "skipped_llm": false}
