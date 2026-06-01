@@ -1,8 +1,0 @@
-[Unit]
-Description=Mihomo Proxy Health Check
-After=network.target mihomo.service
-
-[Service]
-Type=oneshot
-ExecStart=%h/.config/mihomo/health_check.sh
-StandardOutput=journal
