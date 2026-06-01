@@ -6059,3 +6059,7 @@
 {"ts": "2026-06-01 15:37", "type": "cycle", "summary": "系统负载正常，opencode 进程处于高算力运行中", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 15:38", "type": "cycle", "summary": "系统运行正常，存在一个高CPU进程但无异常服务状态", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 15:39", "type": "cycle", "summary": "系统运行正常，存在已知的高CPU占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:40", "type": "cycle", "summary": "系统运行正常，opencode 占用较高但业务无异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:41", "type": "cycle", "summary": "系统运行正常，opencode 进程短暂高负载", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:42", "type": "cycle", "summary": "系统运行正常，CPU/内存负载健康，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 15:43", "type": "cycle", "summary": "系统运行正常，服务健康，无异常", "alert_count": 0, "skipped_llm": false}

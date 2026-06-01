@@ -52101,3 +52101,15 @@ hqssh 服务端只认 claude/codex，不支持 opencode agent。但通过包装�
 hqssh 唯一独有的是 **HQSSH 手机 app** 的推送启动 + 会话接力。如果你不用那个 app，hqssh 就是多余的——它的 tasks/runs 比你的 op-tasks.md + agent 体系弱得多。
 
 要不要卸载？
+
+## 2026-06-01 15:40
+- [2026-06-01 15:40:36] **用户**: 但是提示no such user
+- [2026-06-01 15:40:50] **AI(sisyphus)**: [ok] 已发Telegram — 用 `/var/mobile/.ssh/` 路径
+
+用 **root** 权限跑（先 `su` 输密码 alpine），普通用户写不了 `/var/mobile/`。
+
+## 2026-06-01 15:41
+- [2026-06-01 15:40:55] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-01 15:43
+- [2026-06-01 15:43:14] **用户**: 不需要卸载

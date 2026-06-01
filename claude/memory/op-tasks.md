@@ -1,5 +1,5 @@
 - [ ] [CC→OP] [2026-05-29 10:55] 修复19890公网访问：NAT层故障(WAN端口不可达)，DuckDNS IP频繁切换(195.245.219.15↔238)，connectivity-chain-watchdog连续37次失败。需诊断路由器端口转发+运营商限制。
-- [ ] [CC→OP] [2026-05-29 10:55] 创建~/.local/state/op-status.json状态文件，记录关键服务健康状态供CC决策引擎读取。
+- [x] [完成 2026-06-01 15:41] [CC→OP] 创建~/.local/state/op-status.json — 124行，含服务/磁盘/端口/Docker四维状态
 
 # OP 待办任务
 
