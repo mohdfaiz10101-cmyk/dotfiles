@@ -51648,3 +51648,12 @@ HQSSH 现在试：**Password 认证**，密码 `charlie123`。
 
 重启 opencode 后生效，新 session 会自动生成中文标题。已有的 "New session" 不会回溯改名。
 - [2026-06-01 12:58:41] **用户**: 同时还有降级链 不要用glm
+
+## 2026-06-01 12:59
+- [2026-06-01 12:59:21] **AI(sisyphus)**: [ok] explore agent 模型 → `openai-compatible/step-3.5-flash-2603-plan`（原 glm-4.7）
+
+改动汇总：
+- `small_model`：标题生成 → step-3.5-flash-2603-plan
+- `explore` agent：降级链 → step-3.5-flash-2603-plan
+
+剩余的 GLM 引用（provider 定义 + vision-mcp）是基础设施层，不涉及降级链，未动。
