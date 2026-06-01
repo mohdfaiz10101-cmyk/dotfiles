@@ -250,3 +250,4 @@
 - [2026-06-01] [OP] 修复: 截图后微信无法粘贴图片 | 根因: wl-copy只写Wayland剪贴板，微信(UOS/XWayland)需要X11剪贴板 | 修复: post-screenshot.sh双通道写入(wl-copy + xclip -t image/png -i file -display :1 &) | 关键: xclip必须后台运行&保持X11剪贴板持有者，且必须用 -i 参数而非重定向
 
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 28 minutes (healthy)
+- [2026-06-01] [OP] 成功记录: 19890修复 | 根因: DuckDNS IP过期(125.110.221.37→185.37.253.247) | 修复: 手动curl DuckDNS API更新 | 验证: 外网200+WebSocket 101
