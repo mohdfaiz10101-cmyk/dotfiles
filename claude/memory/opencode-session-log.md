@@ -52068,3 +52068,36 @@ hqssh + 你的工具集成方案：
 
 ## 2026-06-01 15:34
 - [2026-06-01 15:34:09] **用户**: 怎么优化配置
+
+## 2026-06-01 15:35
+- [2026-06-01 15:34:48] **AI(sisyphus)**: ```
+[ok] 包装器验证 — hqssh new --tool codex → 实际启动 opencode
+[ok] opencode 进程正常 — 1.8GB 内存，等待 attach
+
+结论：
+
+hqssh 服务端只认 claude/codex，不支持 opencode agent。但通过包装器截获：
+  ~/.npm-global/bin/codex   →  包装脚本 → opencode --agent sisyphus
+  原 codex 备份             →  codex.real
+
+现在 hqssh 的 --tool codex 实际运行的是你配好的 openc
+
+## 2026-06-01 15:36
+- [2026-06-01 15:35:20] **用户**: 解决下阻塞的
+
+## 2026-06-01 15:37
+- [2026-06-01 15:37:08] **用户**: 问题是我ssh打开了opencode一样执行任务中 hqssh这样做有啥好处
+
+## 2026-06-01 15:38
+- [2026-06-01 15:37:19] **AI(sisyphus)**: 说实话，你的场景下 hqssh 没啥额外好处。
+
+你已有的：
+- opencode + tmux → 持久会话，detach/attach 都有了
+- ttyd :7692 → 浏览器/手机都能连终端
+- CC/OP 代理 → 任务编排 + op-tasks.md 状态跟踪
+- systemd timer → 定时自动化
+- SSH → 远程访问
+
+hqssh 唯一独有的是 **HQSSH 手机 app** 的推送启动 + 会话接力。如果你不用那个 app，hqssh 就是多余的——它的 tasks/runs 比你的 op-tasks.md + agent 体系弱得多。
+
+要不要卸载？
