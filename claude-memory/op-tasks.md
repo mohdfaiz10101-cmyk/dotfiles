@@ -1,3 +1,6 @@
+- [ ] [CC→OP] [2026-05-29 10:55] 修复19890公网访问：NAT层故障(WAN端口不可达)，DuckDNS IP频繁切换(195.245.219.15↔238)，connectivity-chain-watchdog连续37次失败。需诊断路由器端口转发+运营商限制。
+- [ ] [CC→OP] [2026-05-29 10:55] 创建~/.local/state/op-status.json状态文件，记录关键服务健康状态供CC决策引擎读取。
+
 # OP 待办任务
 
 ## 执行环境（2026-05-27 更新）
@@ -126,3 +129,43 @@
 - [ ] [SELF-IMPROVE] kanban.html: 补全被截断的CSS代码（如`.wip-bar`等）以及缺失的HTML结构和完整的JavaScript逻辑，确保看板功能可用。
 - [ ] [SELF-IMPROVE] launcher-server.py: 存在未完成的 `translate_path` 方法及缺失的核心请求处理逻辑（如 `do_POST`），导致服务器实际上无法处理任何业务请求。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在大量未捕获的数据库连接异常风险，应使用上下文管理器（with语句）或try-finally确保sqlite3连接在任何情况下都能被正确关闭，避免连接泄漏。
+- [ ] [AGI→OP] [2026-05-28 21:36] [high] 检查 frps 日志，确认是否存在连接风暴或异常流量
+
+### [SELF-IMPROVE 2026-05-29] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 将硬编码的系统级路径（如/home/charlie/...）作为环境变量的默认值提取为统一的常量配置，避免代码与特定用户环境强耦合。
+- [ ] [SELF-IMPROVE] think.py: `_letta_recall` 函数体缺少 `return` 语句闭合，导致在正常请求时返回 `None` 而非拼接后的记忆文本。
+- [ ] [SELF-IMPROVE] kanban.html: 代码在 `--` 处被截断，需要补充完整剩余的 CSS 样式和核心的 JavaScript 逻辑代码。
+- [ ] [SELF-IMPROVE] launcher-server.py: `_check_auth`函数在`LOCAL_ONLY_AUTH`开启且非本地/Tailscale IP时，直接跳过Bearer Token校验返回了401，应调整逻辑结构确保未携带有效Token的非本地请求必定被拒绝。
+- [ ] [SELF-IMPROVE] hub-api.py: 在`_query_messages`函数中直接使用f-string拼接SQL查询存在SQL注入风险，应改用参数化查询或更安全的查询构建方式。
+- [ ] [CC→OP] [2026-05-31 17:17] [high] 紧急抢修：用户要求立即执行四项防止 /mnt/ai USB 掉盘导致 opencode 崩溃的措施，并修复 19890/openclaw 卡在 Connection reset by server 无法接收任务的问题。
+
+背景：2026-05-31 16:28 内核日志显示 usb 2-4 DATABUS C510-PM 外接双盘盒掉线，/mnt/ai 当时为 sdc1/后重连为 sdd1，出现 EXT4 I/O error -5、aborted journal、potential data loss。opencode-web 随后 SIGBUS，openclaw pane 当前卡在 Sisyphus LiteLLM Connection reset by server attempt #44。19890/8080 ttyd HTTP 可达，openclaw tmux pane dead=0，但 TUI 内部无法继续执行任务。
+
+请立即执行：
+1) 将 opencode 热路径从 /mnt/ai 隔离：~/.cache/opencode、~/.local/share/opencode 以及 session/db/lock/cache 等热写路径迁到 NVMe 本地 ext4；/mnt/ai 只保留冷归档/大文件。迁移前备份软链和原目录，避免丢数据。
+2) 增加 USB/EXT4 I/O 健康门禁：检测 journalctl -k 中 /mnt/ai 设备的 device offline error、EXT4-fs I/O error、aborted journal、potential data loss；命中时阻止 opencode 继续使用 /mnt/ai 热缓存，给出明确告警。
+3) 修正端口语义：19890/8080=openclaw ttyd，8081=opencode-web。修复 opencode-health-monitor、oc、相关 guard 中把 8080 当 opencode-web/serve 的错误；不要把 19890 改回 8081。
+4) 硬件/电源层面防掉盘：检查并配置外接 DATABUS C510-PM 硬盘盒省电/自动休眠策略，必要时为该 USB 存储禁用 autosuspend/UAS 或加 systemd/udev 持久配置；不要硬编码 /nix/store。
+5) 恢复 19890/openclaw：中断当前 stuck retry，确认 LiteLLM/模型 API 可达；如当前模型 Step 3.7 Flash 经 LiteLLM connection reset，临时切到可用模型或重启必要服务；确保 openclaw tmux 可接收新任务。
+6) 修复 codex-op-delegate 即时派发：当前只写 op-tasks 并等下次巡检，CODEX_OP_AUTO 也不保证进 19890。实现写工单后通过 dispatcher/tmux send-keys 注入 openclaw session，失败时写 ~/.local/state/codex-op-dispatch/ 日志；同时修复单引号/换行参数打断内部 Python 的转义问题。
+
+验收：
+- journalctl -k 最近 30 分钟无 /mnt/ai 对应 EXT4 I/O error。
+- opencode --version 连续 5 次成功；opencode-web 8081 连续 20 次 curl 成功，无 SIGBUS/Input/output error。
+- ~/.cache/opencode 与 ~/.local/share/opencode 热路径不再依赖 /mnt/ai，或有启动前强校验和自动隔离。
+- 19890 curl 仍为 ttyd，8081 为 opencode-web。
+- openclaw pane 不再卡 connection reset，能接收并执行任务。
+- codex-op-delegate 创建测试任务后 10 秒内 openclaw/19890 有执行痕迹，且重复 task_id 不重复注入。
+- op-tasks.md 回写根因、改动和验证结果。
+- [ ] [AGI→OP] [2026-05-31 17:40:09] [medium] (agi-e9e768bf) 回答/处理用户问题：测试自动模型路由
+- [ ] [AGI→OP] [2026-05-31 18:21:00] [medium] (agi-9b0540f5) 回答/处理用户问题：ping
+- [ ] [AGI→OP] [2026-05-31 18:23:27] [medium] (agi-5c2271c5) 回答/处理用户问题：ping
+- [ ] [AGI→OP] [2026-05-31 18:23:49] [medium] (agi-7bf31536) 回答/处理用户问题：ping
+- [ ] [AGI→OP] [2026-05-31 23:19:40] [high] (agi-640bcd86) 修复呼吸灯对记忆状态的误报：区分 Letta 连接失败、LiteLLM 500、桥接层异常，并把状态灯改成真实健康信号
+
+### [SELF-IMPROVE 2026-06-01] GLM 自动代码审查
+- [ ] [SELF-IMPROVE] brain.py: 将模块级存在副作用的代码（如load_dotenv和全局变量初始化）移入if __name__ == "__main__":保护块中，以避免被其他模块导入时意外执行。
+- [ ] [SELF-IMPROVE] think.py: 缺少对LLM实际推理调用的封装实现，当前仅有记忆检索与Prompt定义，未完成核心的模型请求与JSON解析闭环。
+- [ ] [SELF-IMPROVE] kanban.html: CSS代码在`--`处被截断，需要补全完整的WIP进度条样式及后续缺失的HTML结构和JavaScript逻辑代码。
+- [ ] [SELF-IMPROVE] launcher-server.py: 必须补全 `translate_path` 方法并实现严格的路径边界检查，防止目录遍历攻击。
+- [ ] [SELF-IMPROVE] hub-api.py: 存在严重的SQL注入风险，应使用参数化查询替代f-string直接拼接用户输入（如search、talker等）到SQL语句中。
