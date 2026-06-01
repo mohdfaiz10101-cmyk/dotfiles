@@ -5809,3 +5809,4 @@
 {"ts": "2026-06-01 10:49", "type": "cycle", "summary": "系统运行正常，CPU轻度负载，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:50", "type": "cycle", "summary": "系统运行正常，CPU和内存负载处于健康范围，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 10:51", "type": "cycle", "summary": "系统运行正常，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 10:52", "type": "cycle", "summary": "系统运行正常，CPU有瞬时进程但服务健康", "alert_count": 0, "skipped_llm": false}
