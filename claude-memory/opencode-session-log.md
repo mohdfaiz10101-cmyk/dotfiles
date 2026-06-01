@@ -51548,3 +51548,6 @@ Haven 连接配置（5个）:
 **关键证据**：
 - 进程名：`/mnt/ai/apps/agi-control-plane/frontend/node_modules/next/dist/compiled/jest-worker/processChild.js` — Next.js 官方 worker
 - 父进程：`node .../next build
+
+## 2026-06-01 12:24
+- [2026-06-01 12:24:21] **用户**: 现在oPencode怎么不能智能命名session了
