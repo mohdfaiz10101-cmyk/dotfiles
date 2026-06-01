@@ -5857,3 +5857,4 @@
 {"ts": "2026-06-01 11:45", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:47", "type": "cycle", "summary": "系统各项指标正常，无服务故障或告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 11:48", "type": "cycle", "summary": "系统运行平稳，无明显异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 11:49", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内", "alert_count": 0, "skipped_llm": false}
