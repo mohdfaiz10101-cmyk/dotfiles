@@ -52342,3 +52342,31 @@ HQSSH 直接填地址端口就行，无需密码，一打开就是 hermes。
 
 ## 2026-06-01 16:28
 - [2026-06-01 16:27:56] **用户**: 打开后不是hermes
+
+## 2026-06-01 16:32
+- [2026-06-01 16:32:11] **AI(sisyphus)**: [ok] 私钥已推送
+
+**HQSSH 配置**：
+```
+名称: Hermes
+主机: 100.119.174.25 (Tailscale) 或 charlie1990.duckdns.org (公网)
+端口: 22
+用户: charlie
+认证: 导入私钥
+```
+
+把剪贴板里的私钥粘贴保存为文件，HQSSH 里选密钥登录。一连上自动进 `hermes chat`，无需手动输入任何命令。
+
+## 2026-06-01 16:33
+- [2026-06-01 16:32:41] **用户**: 如何配置工具栏 让他知道一个按钮跳到下个sessio. hqssh工具栏
+
+## 2026-06-01 16:34
+- [2026-06-01 16:34:26] **AI(sisyphus)**: hqssh 的工具栏是 **iOS/Android app 内置的**，服务端（hqsshd）不提供工具栏配置。当前工具栏固定包含：ESC、TAB、Ctrl+C/D/Z、方向键。
+
+**现状**：
+- 服务端 proto/daemon.yaml 中没有 toolbar 相关配置
+- 工具栏是 app 端的 xterm 键盘，不可通过配置文件自定义按钮
+- 切换 session 目前只能通过 CLI：`hqssh sessions` 查看 → `hqssh attach <id>` 连接
+
+**可行方案**：
+1. **在 GitHub 提 feature request** — 请求添加 "N
