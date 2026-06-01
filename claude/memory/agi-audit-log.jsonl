@@ -6140,3 +6140,6 @@
 {"ts": "2026-06-01 17:17", "type": "cycle", "summary": "系统运行平稳，资源负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:18", "type": "cycle", "summary": "系统负载正常，检测到ADB进程高CPU占用但符合历史预期", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-01 17:19", "type": "cycle", "summary": "系统运行正常，CPU负载低，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:21", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-01 17:22", "type": "cycle", "summary": "系统运行正常，CPU/内存负载平稳，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-01 17:23", "type": "cycle", "summary": "系统运行平稳，所有服务健康，无异常指标", "alert_count": 0, "skipped_llm": false}
