@@ -52638,3 +52638,15 @@ HQSSH 里：新建连接 → 认证选「密钥」→ 点文件夹图标导入 �
 │ · 切块 2000字    │
 │ · 重叠 500字     │
 │ · 写入 doc-cach
+
+## 2026-06-01 18:53
+- [2026-06-01 18:53:17] **用户**: 我输入hermes没打开啊
+
+## 2026-06-01 18:54
+- [2026-06-01 18:54:04] **AI(sisyphus)**: [ok] 已修复 -- 原因是你在 openclaw tmux session 里，`tmux attach` 在 tmux 内部会报 `not a terminal`
+
+现在 `hermes` 会自动检测：
+- 在 tmux 内 → `switch-client` 切换过去
+- 在 tmux 外 → `attach-session` 
+
+再试一下 `hermes`。
