@@ -51988,3 +51988,6 @@ iPhone插上USB后告诉我，我直接在这边帮你一步完成。
 - **已推送**: dotfiles(5) / ai-config-sync(2) / Obsidian(29)
 - **本地已commit** (无remote): Desktop(58) / OpenClaw(324)
 - **阻塞**: agi-core/hub — GitHub仓库不存在；Ni
+
+## 2026-06-01 15:09
+- [2026-06-01 15:09:35] **用户**: 但是怎么提示damon not running
