@@ -741,3 +741,6 @@ Search frontend build for auth
 三个服务用途：
 - **3000**：AGI 统一控制台（看板/微信/终端/AI助手）
 - **8700**：Agent 通信网络（多 Agent 协作聊天室，当前在线 2 个 Agen
+
+## 2026-06-02 17:11
+- [2026-06-02 17:11:03] **用户**: 是必须用termius这种高级客户端吗 还是怎么解决 远程控制opencode openagent 社区最新方案
