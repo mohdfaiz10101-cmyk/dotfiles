@@ -1206,3 +1206,12 @@ Extract ONLY the following information:
 
 - **Mobile Apps:**
   - **Android** (v7.0+): Google Play St
+
+## 2026-06-02 20:15
+- [2026-06-02 20:14:53] **用户**: Search the file /home/charlie/.local/share/opencode/tool-output/tool_e88410e5a001RyTCmO06Umhul2 which is the scraped GitHub README for Termix-SSH/Termix.
+
+Extract ONLY:
+1. How to access the API? What are the API endpoints?
+2. How to configure hosts in bulk? Is there import/export?
+3. What are the en
+- [2026-06-02 20:14:59] **AI(explore)**: The file `/home/charlie/.local/share/opencode/tool-output/tool_e88410e5a001RyTCmO06Umhul2` is **truncated/corrupted**. It only contains GitHub page metadata and the first few lines of the README header — the actual README content (API docs, docker-compose config, credentials, CLI usage, etc.) is mis
