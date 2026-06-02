@@ -1873,3 +1873,16 @@ API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
 
 ## 2026-06-02 23:20
 - [2026-06-02 23:20:28] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:21
+- [2026-06-02 23:21:19] **AI(sisyphus)**: [ok] Cloudflare 隧道 — 公网直连，绕过 Tailscale DNS 问题
+
+**手机访问：**
+```
+https://dublin-third-delayed-geology.trycloudflare.com
+```
+登录：`charlie` / `termix2026!`
+
+**之前失败原因：** Tailscale serve/funnel 的 MagicDNS 在手机端解析超时（手机能 ping 通但 HTTPS 连接被阻断），换了 Cloudflare 临时隧道 → 公网 200 确认可用。
+
+**持久化：** 已创建 `cloudflared-termix.se
