@@ -2188,3 +2188,6 @@ sending request for url
 
 ## 2026-06-03 01:09
 - [2026-06-03 01:08:51] **AI(sisyphus)**: OpenClaw adapter 很复杂（WebSocket + 设备认证）。对于 opencode，我需要一个简单的 adapter：通过 `opencode run --format json` subprocess 调用。
+
+## 2026-06-03 01:09
+- [2026-06-03 01:09:31] **AI(sisyphus)**: Now verify brain.py and check the agi-brain service:
