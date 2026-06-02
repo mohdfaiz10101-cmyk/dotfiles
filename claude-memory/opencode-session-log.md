@@ -334,3 +334,6 @@ test only: print one line and exit
 
 ## 2026-06-02 13:40
 - [2026-06-02 13:40:16] **用户**: 不是ctrl space 是 win + space
+
+## 2026-06-02 13:42
+- [2026-06-02 13:42:22] **用户**: but my mobile musiclet have only 200+ songs
