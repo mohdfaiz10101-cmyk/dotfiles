@@ -2181,3 +2181,7 @@ sending request for url
 
 方案：合并同类模块，给呼吸灯加前缀标签，减少右侧数量。需要改 `charlie.nix` — 这是Nix管理的，我先列方案你确认：
 - [2026-06-03 01:08:19] **用户**: 升级好了吗
+
+## 2026-06-03 01:08
+- [2026-06-03 01:08:21] **AI(sisyphus)**: P0-2 done. Now P0-3 — Letta Agent ID de-hardcode with name lookup:
+- [2026-06-03 01:08:32] **AI(sisyphus)**: 找到根因了。`opencode.yaml` **缺少 `adapter` 段**，所以 Python daemon 不知道怎么给 opencode 类型创建网络 adapter。需要补上。
