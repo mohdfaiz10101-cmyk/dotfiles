@@ -376,3 +376,19 @@ The syncthing Music folder on the computer only has **175 music files**:
   - OpenCode Serve / Tailscale：http://100.119.174.25:4096
   - OpenCode Serve / 公网：http://charlie1990.duckdns.org:18091
 
+
+## 2026-06-02 13:59
+- [2026-06-02 13:58:50] **AI(sisyphus)**: [ok] hqssh config.yaml 已修正 — public-direct 端口 22→2223
+[ok] hqsshd 运行中 — 手机可连
+[完成] 配置总结：
+
+**手机 hqssh 快速连接**：
+| 入口 | 值 |
+|------|-----|
+| Tailscale SSH | `charlie@100.119.174.25:22` |
+| 公网 FRP SSH | `charlie@charlie1990.duckdns.org:2223` |
+
+**手机浏览器快速访问**：
+| 服务 | URL |
+|------|-----|
+| OpenCode Serve |
