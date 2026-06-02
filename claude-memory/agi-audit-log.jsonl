@@ -862,3 +862,4 @@
 {"ts": "2026-06-02 20:48", "type": "cycle", "summary": "系统运行平稳，各项指标均处于正常范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:49", "type": "cycle", "summary": "系统运行正常，CPU轻负载，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:52", "type": "cycle", "summary": "LLM 调用失败：", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 20:53", "type": "cycle", "summary": "系统运行正常，资源使用率低，无异常告警", "alert_count": 0, "skipped_llm": false}
