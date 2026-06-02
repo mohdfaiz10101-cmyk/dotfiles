@@ -901,3 +901,7 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 
 - `glm-proxy.service` → 已 mask（早就停了）
 - `glm-monitor.service` → 脚本 `~/.local/bin/glm-monitor` 已删除，但服务还在反复重试
+
+## 2026-06-02 18:10
+- [2026-06-02 18:10:08] **用户**: 打开后是白的 不能绑定到duckdns吗你自己操作浏览器
+- [2026-06-02 18:10:22] **用户**: 自己操作路由器
