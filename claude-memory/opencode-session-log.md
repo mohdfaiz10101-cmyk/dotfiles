@@ -1405,3 +1405,15 @@ source ~/.zshrc && oc51
 - [2026-06-02 20:52:39] **用户**: 我手机连上局域网了
 - [2026-06-02 20:52:40] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
 - [2026-06-02 20:52:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 20:54
+- [2026-06-02 20:53:55] **AI(sisyphus)**: [ok] 诊断完成 -- 根因确认
+
+**问题**: `tool not allowed while generating summary` — OpenCode 上下文压缩期间的已知行为
+
+**根因链**:
+1. AGENTS.md 系统提示词 ~2000 行 + 150 个 skill 清单 + 大量 MCP 工具定义 → 初始上下文已接近 16384 token 阈值
+2. 对话几轮后超阈值 → OpenCode 触发 `compaction.auto` 自动压缩
+3. 压缩期间模型调用工具辅助摘要 → OpenCode 拦截工具调用 → 报 `tool not allowed`
+
+**
