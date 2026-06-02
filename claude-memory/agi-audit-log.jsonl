@@ -606,3 +606,4 @@
 {"ts": "2026-06-02 16:03", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 16:04", "type": "cycle", "summary": "系统运行正常，无异常或告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 16:06", "type": "cycle", "summary": "系统整体资源使用正常（CPU 9.8%/内存 65%/磁盘 42%），但检测到 perl 和 adb 进程出现瞬时单核心 CPU 峰值占用", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-06-02 16:07", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
