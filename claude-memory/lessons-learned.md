@@ -176,3 +176,5 @@
 - [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 26 minutes (healthy)
 
 - [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 6 minutes (healthy)
+
+- [2026-06-02] [OP] 修复: phone-connect-mcp.py 设备选择逻辑缺陷 | 根因: (1) _dedup_devices返回标签(phone-tailscale1)而非实际地址(100.108.28.44:5555)，导致adb -s用无效设备ID (2) ensure_connected默认方法跳过tailscale1(100.108.28.44)直接试tailscale2(离线)和FRP(不通ADB) (3) force_method匹配用标签子串但设备列表已变为实际地址 | 修复: (1) _dedup_devices改为返回实际地址 (2) 新增DEVICE_PHYSICAL映射表用于物理设备去重 (3) 默认方法加入tailscale1作为第一优先 (4) force_method匹配改用_device_label()转换 | 教训: MCP连接地址≠标签名，_dedup_devices返回的值必须adb -s可直接使用
