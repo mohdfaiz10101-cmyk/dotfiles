@@ -475,3 +475,12 @@ hqssh现有3个系统:
 
 ## 2026-06-02 15:22
 - [2026-06-02 15:22:35] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 15:25
+- [2026-06-02 15:25:30] **AI(sisyphus)**: [ok] 解码Hive端口 -- 公网OPECODE=18091(HTTP) / HERMES-TAILSCALE=7689 / HERNES公网=18090~19800
+[ok] 修改端口18091→2223 -- charlie1990.duckdns.org 4帧全部替换
+[ok] 推送+重启app -- 3张卡片正常显示, 未崩溃
+
+端口问题就是根本原因：hqssh 三个系统存的都是HTTP/Web端口(7689/18090/18091/19800)，没有一个是SSH端口(22/2223)。
+
+已修复：**公网 OPECODE** → charlie1990.duckdns.org:*
