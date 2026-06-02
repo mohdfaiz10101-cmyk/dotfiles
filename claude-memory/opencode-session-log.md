@@ -2054,3 +2054,6 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 - [2026-06-02 23:57:22] **AI(sisyphus)**: [ok] Termix已就绪 -- DuckDNS公网+FRP隧道+Container+systemd -- 全部已配置并通过验证
 
 [完成] Termix部署 -- 公网`http://charlie1990.duckdns.org:19180` | admin登录`charlie/admin123` | FRP双tunnel + Cloudflare备用全部持久化
+
+## 2026-06-03 00:33
+- [2026-06-03 00:33:21] **用户**: 不是很满意 你需要联网搜索 社区怎么配置 或者让他更具有实用性 还有就是我的opencode hermes openclaw 怎么操作跟他对接 在哪里分配任务 你要参考官方文档把它再配置下 你配置的不够全面 我要实操和实用性 然后适配我的系统架构主题
