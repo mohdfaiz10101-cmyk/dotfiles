@@ -1933,3 +1933,6 @@ https://dublin-third-delayed-geology.trycloudflare.com
 
 ## 2026-06-02 23:30
 - [2026-06-02 23:30:00] **用户**: 给我地址 或者怎么使用
+
+## 2026-06-02 23:33
+- [2026-06-02 23:32:58] **用户**: 请给所有tailscale和duckdns地址
