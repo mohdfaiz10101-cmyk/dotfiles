@@ -2137,3 +2137,17 @@ global>body{font-family:Arial,Helvetica,sans-serif}.cont
 
 ## 2026-06-03 01:02
 - [2026-06-03 01:02:27] **用户**: 那你执行修复啊 现在没修复
+
+## 2026-06-03 01:04
+- [2026-06-03 01:03:58] **AI(sisyphus)**: 问题清楚了：**所有 agent 都是 "registered (no launch command)" + `(local)` 状态** — 进程活着但没有连接到 network hub，不会 poll 消息，不会响应 Studio 发来的任务。
+
+需要把 agent 连接到 workspace。
+- [2026-06-03 01:04:02] **AI(sisyphus)**: [ok] waybar.service 改回无参数 → 读Nix管理config
+[ok] daemon-reload + restart → Result=success
+[ok] 进程确认 → `/run/current-system/sw/bin/waybar`（无override参数）
+
+现在waybar用的是 `charlie.nix` 里GLM合并后的单栏版（health统一模块 + clip-otp + quota等）。你看下顶栏是不是恢复正常了？
+- [2026-06-03 01:04:12] **用户**: ■ stream disconnected
+before completion: error
+sending request for url
+(https://chatgpt.com/backend-api/codex/responses)
