@@ -1311,3 +1311,12 @@ disk   /mnt/ai/swapfile 4.0G   1      救急（zram满了才用）
 [ok] 已移动到 workspace 3 — 切到 workspace 3 即可看到两个微信窗口
 
 Windows微信其实一直在运行，只是被全屏Telegram遮住了。切换到 workspace 3（Mod+3 或 Hyprland 快捷键）就能
+
+## 2026-06-02 20:30
+- [2026-06-02 20:29:40] **AI(sisyphus)**: [ok] 恢复 rofi 原生 drun 模式 — 图标 + 分类侧栏 + fuzzy 搜索
+[ok] 拼音支持 — 生成 45 个 `pinyin-*.desktop` 文件，注入 Keywords 字段
+[ok] 英文搜索 — drun fuzzy 直接匹配 .desktop Name/Exec/Keywords
+[ok] 分类过滤 — `sidebar-mode: true` 启用左侧分类栏
+[ok] 缓存重建 — 189 行 dmenu 缓存（向后兼容）
+[ok] 语法检查 — Python + bash 均通过
+[ok] 视觉验证 — 截图确认 rofi 正常打开，无 "alread
