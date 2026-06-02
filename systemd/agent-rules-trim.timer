@@ -1,0 +1,9 @@
+[Unit]
+Description=每周审计 AGENTS.md 规则膨胀
+
+[Timer]
+OnCalendar=Mon 10:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

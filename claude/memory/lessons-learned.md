@@ -159,3 +159,14 @@
 - [2026-06-02] [OP] rofi恢复+增强: 之前被其他AI改回dmenu模式。修复: (1) 改用原生drun模式(图标+分类) (2) 拼音通过生成~/.local/share/applications/pinyin-*.desktop文件注入Keywords字段 (3) drun-match-fields包含keywords实现拼音搜索 (4) sidebar-mode: true启用分类侧栏。教训: rofi 2.0的kb-*配置会叠加默认键位导致冲突，不要自定义键位。拼音搜索通过生成desktop条目注入Keywords比dmenu缓存更优雅。- [2026-06-02] [OP] 根因定位: Connection reset | 根因: verify-watch.service每次bun build峰值2.4GB→zram 92%满→swap风暴→TCP超时RST | 修复: verify-pipeline.sh加内存守卫(可用<4G跳过)+并发锁(5分钟冷却) | 频率: 今天已触发110次
 
 - [2026-06-02] [OP] 诊断: "tool not allowed while generating summary" 反复出现 | 根因: OpenCode compaction 期间工具调用被拦截，系统提示词+工具定义过大(150+ skills, 大量MCP工具)导致频繁触发压缩 | 触发条件: 上下文超过 compaction.reserved=16384 tokens 阈值 | 影响: 任务执行中断，工具调用被拒绝 | 缓解方案: (1) 用户手动 /clear 重置会话 (2) 减少AGENTS.md体积(当前~2000行) (3) 增大reserved阈值延迟压缩 | 无法由OP自动修复: 需要修改opencode.json(CONFIG_PROTECT)或重构AGENTS.md
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp | 状态: Up 3 minutes (healthy)
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 5 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 5 minutes (healthy)
+
+- [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent- [2026-06-02] [OP] 修复: 剪贴板复制后粘贴内容不对(复发) | 根因: (1) clip-sync + clipboard-sync-windows 两个Windows同步同时运行竞争 (2) clipboard-sync-windows 的 get_win_clipboard() PowerShell命令引号嵌套在SSH传输中损坏，返回ParserError错误文本被当作"剪贴板内容"写入wl-copy | 修复: 停用clip-sync(duplicate)，修复PowerShell命令为简单的Get-Clipboard -Raw | 教训: 之前修过一次同类问题但clip-sync被重新启用，需要确保只有一个Windows同步服务
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 26 minutes (healthy)

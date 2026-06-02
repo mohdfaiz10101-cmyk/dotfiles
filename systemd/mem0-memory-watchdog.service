@@ -1,0 +1,10 @@
+[Unit]
+Description=Mem0 内存泄漏看门狗 (RSS>500MB自动重启)
+After=mem0-bridge.service
+Wants=mem0-bridge.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/mem0-memory-watchdog.sh
+StandardOutput=journal
+StandardError=journal

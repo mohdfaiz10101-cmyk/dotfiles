@@ -1,10 +1,9 @@
-[Unit]
-Description=Mem0 ChromaDB 记忆衰减 (每日摘要+TTL清理)
-After=mem0-bridge.service
-Wants=mem0-bridge.service
+[Timer]
+Description=Mem0 记忆衰减 — 每日清理旧条目
+OnCalendar=daily
+Persistent=true
 
 [Service]
 Type=oneshot
 ExecStart=/home/charlie/agi/.venv/bin/python3 /home/charlie/agi/mem0_decay.py
-StandardOutput=journal
-StandardError=journal
+

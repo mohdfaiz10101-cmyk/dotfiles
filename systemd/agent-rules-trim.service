@@ -1,0 +1,6 @@
+[Unit]
+Description=每周审计 AGENTS.md 规则膨胀
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/agent-rules-trim-audit.sh
