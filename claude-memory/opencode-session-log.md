@@ -1971,3 +1971,17 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 
 ## 2026-06-02 23:45
 - [2026-06-02 23:45:01] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:46
+- [2026-06-02 23:45:58] **AI(sisyphus)**: Hermes 没有手机 App。当前架构：
+
+**Hermes 运行在 NixOS 上**（tmux `hermes` 窗口），通过 MCP 工具控制手机：
+- `tmux attach -t hermes` — 进入 Hermes CLI
+- 在 Hermes 里用 `phone_shell` / `phone_screenshot` 等工具访问手机
+
+**手机端**：只有 ADB 连接（`100.108.28.44:5555`），没有 Hermes 客户端。
+
+你是想：
+1. 进入 tmux 的 Hermes 窗口操作？
+2. 还是想在手机上直接运行 Hermes（需要装 Hermes A
+- [2026-06-02 23:46:17] **用户**: 他要账号和密码
