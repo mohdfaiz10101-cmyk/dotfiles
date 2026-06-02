@@ -1612,3 +1612,6 @@ tmux attach -t oc-glm51
 [ok] 语法修复 → `except Exception` 缩进错误 + 使用 oa-venv Python (system python 只读无 pip)
 [ok] opencode.json 注册 → khoj 已加入 15 个 MCP 服务器列表
 [ok] OA Agent YAML 创建 → searcher / router / coder / ops-assi
+
+## 2026-06-02 22:44
+- [2026-06-02 22:44:10] **用户**: 排查下
