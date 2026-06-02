@@ -1666,3 +1666,6 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 
 ## 2026-06-02 22:50
 - [2026-06-02 22:49:55] **用户**: 我是在外面用随身wifi 用哪个地址
+
+## 2026-06-02 22:51
+- [2026-06-02 22:50:43] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
