@@ -816,3 +816,6 @@ tmux attach -t opserve
 - `agi-monitor` / `hermes` / `op-tasks` / `overtab` — 空闲
 
 如果 attach 失败，可能是 `$TERM` 不兼容或你已
+
+## 2026-06-02 17:43
+- [2026-06-02 17:42:48] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
