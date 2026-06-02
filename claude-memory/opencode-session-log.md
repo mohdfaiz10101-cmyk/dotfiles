@@ -1909,3 +1909,14 @@ https://dublin-third-delayed-geology.trycloudflare.com
 
 ## 2026-06-02 23:28
 - [2026-06-02 23:28:17] **AI(sisyphus)**: frps 已有 19980-19982 白名单，直接加 frpc 代理。
+
+## 2026-06-02 23:29
+- [2026-06-02 23:28:51] **AI(sisyphus)**: [ok] Nexterm 部署 -- Docker 容器 running，修复 ENCRYPTION_KEY（需 64 字符 hex）
+[ok] Nexterm FRP 代理 -- 19981 → 8090，健康检查 200
+[ok] ttyd FRP 代理 -- 19982 → 7681，健康检查 200
+[完成] "我都要"方案 — 三件套全部就绪，均可远程访问：
+
+| 服务 | 本地 | FRP 远程 |
+|------|------|---------|
+| Termix (Web SSH 客户端) | :9180 | :19980 |
+| Nexterm (服务器管理) | :809
