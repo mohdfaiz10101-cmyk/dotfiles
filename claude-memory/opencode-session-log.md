@@ -360,3 +360,6 @@ The syncthing Music folder on the computer only has **175 music files**:
 [ok] 触发 syncthing 扫描 -- 下次手机连接时自动同步
 
 **你的 200+ 首 = 175 首正规音乐，这是正确的。** 之前同步的只有 CloudMusic(3) + NetEase(14) + NetEase_Decrypted(158) = 175 首。有个 `TacticsOgre_OST`（84首，最终幻想战略版原声）在 `/mnt/data/Music/` 但没被纳入同步目录，现在已补上。等手机 WiFi 连上后自动同步，总计 259 首。
+
+## 2026-06-02 13:55
+- [2026-06-02 13:54:50] **用户**: 那我网易云音乐的歌单和汽水音乐歌单 都全部下载了吗？是双向实时同步的吗 能定期下载歌单吗
