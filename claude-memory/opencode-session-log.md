@@ -1906,3 +1906,6 @@ https://dublin-third-delayed-geology.trycloudflare.com
 
 ## 2026-06-02 23:27
 - [2026-06-02 23:26:56] **AI(sisyphus)**: Nexterm 缺少 `ENCRYPTION_KEY` 环境变量，修复中。
+
+## 2026-06-02 23:28
+- [2026-06-02 23:28:17] **AI(sisyphus)**: frps 已有 19980-19982 白名单，直接加 frpc 代理。
