@@ -1384,3 +1384,6 @@ source ~/.zshrc && oc51
 
 ## 2026-06-02 20:48
 - [2026-06-02 20:47:48] **用户**: 今天 多次出现 tool not allowed 在opencode压缩后 很多次了
+
+## 2026-06-02 20:49
+- [2026-06-02 20:48:50] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
