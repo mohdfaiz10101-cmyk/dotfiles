@@ -853,3 +853,6 @@ tmux attach -t opserve
 - MUSIC_U cookie 对应的是"喜欢"列表但未同步
 
 需要进一步操作吗？
+
+## 2026-06-02 17:55
+- [2026-06-02 17:55:15] **用户**: 能不能attach到duckdns上和tailscale对应的4096端口
