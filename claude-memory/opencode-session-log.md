@@ -1846,3 +1846,6 @@ API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
 
 ## 2026-06-02 23:15
 - [2026-06-02 23:14:55] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:15
+- [2026-06-02 23:15:29] **用户**: 那你的意思是wezterm让远程过来接收的界面更好看 更有插件?
