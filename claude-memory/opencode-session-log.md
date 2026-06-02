@@ -1486,3 +1486,19 @@ tmux attach -t oc-glm51
 
 ## 2026-06-02 21:02
 - [2026-06-02 21:02:28] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 21:04
+- [2026-06-02 21:02:56] **AI(sisyphus)**: 所有组件状态正常：
+
+```
+[ok] Studio UI → 302 (需登录)
+[ok] Khoj → 200 (http://localhost:42110)
+[ok] Wiki → 7 页全部可访问
+```
+
+可继续的方向：
+
+1. **Khoj 索引配置** — 指向实际目录（memory/、代码库、文档），让它能真正搜索
+2. **Khoj ↔ OpenAgents 桥接** — 通过 MCP Bridge 让 Wiki Agent 调用 Khoj 搜索
+3. **Wiki 内容补充** — 更多子系统文档（Hermes、Paperclip、前台面板等）
+4. **AGI Brai
