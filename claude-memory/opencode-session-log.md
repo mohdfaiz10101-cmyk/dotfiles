@@ -1595,3 +1595,14 @@ tmux attach -t oc-glm51
 
 ## 2026-06-02 22:30
 - [2026-06-02 22:29:44] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 22:31
+- [2026-06-02 22:31:12] **AI(sisyphus)**: [ok] 创建 `/home/charlie/.local/bin/mem0-memory-watchdog.sh` — 阈值 500MB
+
+[ok] 创建 service + timer — 每5分钟检查
+
+[ok] 首次运行即触发 — mem0_bridge 已从 2585MB 重启到 117MB
+
+[完成] mem0 内存泄漏看门狗已上线
+
+**发现一个严重问题**：mem0_bridge 泄漏速率远超预期——上次重启后仅 5 分钟就飙到 2585MB，不是 500MB/小时，是 **500MB/分钟**。这已经不是泄漏，是内存黑洞。watchdog 5 分钟间隔只能兜底，但 root 
