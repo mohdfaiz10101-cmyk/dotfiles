@@ -538,3 +538,15 @@ hqssh现有3个系统:
 |------|------|------|
 | Web终端 | `http://localhost:7689` | 浏览器打开，ttyd Web终端 |
 | 公网 | `http
+
+## 2026-06-02 15:48
+- [2026-06-02 15:48:01] **AI(sisyphus)**: [ok] Letta已恢复 — 3个容器健康运行
+
+根因: Docker网络被清理导致letta+chromadb退出(exit 128)，3分钟前同时挂掉。compose文件含n8n服务，docker.io TLS握手超时(代理不通)导致整个compose up失败。
+
+修复: 只启动 `letta postgres chromadb` 三项核心服务，NLTK数据检查较慢(约2分钟)但最终通过。
+
+[ok] letta healthy 端口8283
+[ok] letta-db healthy
+[ok] letta-chromadb healthy
+[ok] API /v1/agents/ →
