@@ -567,3 +567,14 @@ hqssh现有3个系统:
 
 ## 2026-06-02 16:02
 - [2026-06-02 16:02:21] **用户**: opencode 当前这个窗口 能不能写个restart命令 就是直接重启窗口这个 openclaw tmux wraapped
+
+## 2026-06-02 16:04
+- [2026-06-02 16:04:12] **AI(sisyphus)**: [ok] 创建 `~/.local/bin/openclaw-restart` -- 可执行
+
+脚本逻辑：
+- 从 `openclaw:1` tmux pane 找到 opencode 子进程 PID
+- `kill` 发送 SIGTERM，最多等 10 秒
+- 超时则 `kill -9` 强制
+- tmux 内的 `while true` 循环会在 opencode 退出后 3 秒自动拉起新实例
+
+用法：在终端里直接跑 `openclaw-restart` 即可（不能在 opencode 会话内跑，会把自己杀掉）。
