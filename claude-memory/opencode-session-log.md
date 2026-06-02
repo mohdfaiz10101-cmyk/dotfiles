@@ -1573,3 +1573,13 @@ tmux attach -t oc-glm51
 
 ## 2026-06-02 21:08
 - [2026-06-02 21:08:29] **用户**: 继续完善 然后连入我的所有Mcp包括 khoj mcp
+
+## 2026-06-02 21:11
+- [2026-06-02 21:11:09] **AI(sisyphus)**: ```
+[ok] 停用 clip-sync → 已 stop + mask 防复发
+[ok] 修复 get_win_clipboard → PowerShell 命令简化，加错误输出校验
+[ok] 重启 clipboard-sync-windows → 稳定运行，不再循环重建SSH
+[完成] 剪贴板修复 — 根因: 两个Windows同步服务竞争 + PowerShell命令损坏导致错误文本覆盖剪贴板
+```
+
+请在桌面复制一段文字，等2-3秒后粘贴，验证是否正常。
