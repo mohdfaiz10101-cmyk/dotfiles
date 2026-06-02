@@ -782,3 +782,14 @@ API调用
 
 ## 2026-06-02 17:32
 - [2026-06-02 17:31:48] **用户**: 其实openagent是不是配置好了已经 有launcher 和 后端 今天codex刚配置的 那个手机怎么弄 有qr二维码的
+
+## 2026-06-02 17:35
+- [2026-06-02 17:35:10] **AI(sisyphus)**: OpenAgent **已经配置好了**，Codex 今天搭的，正在跑着：
+
+```
+OpenAgents Network (0.9.3)    已运行 2小时
+├── Hub UI     → http://nixos:8700/studio    ← Web 聊天室
+├── gRPC       → :8600                       ← Agent 通信
+├── CrewAI桥接 → 已连接
+├── Codex桥接  → oa-codex-bridge.service    ← Codex接入
+└── Launcher   → http://nixos:9875   
