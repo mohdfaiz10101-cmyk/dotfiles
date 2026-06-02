@@ -860,3 +860,4 @@
 {"ts": "2026-06-02 20:46", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:47", "type": "cycle", "summary": "系统运行正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:48", "type": "cycle", "summary": "系统运行平稳，各项指标均处于正常范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 20:49", "type": "cycle", "summary": "系统运行正常，CPU轻负载，无服务异常", "alert_count": 0, "skipped_llm": false}
