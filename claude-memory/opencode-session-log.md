@@ -337,3 +337,7 @@ test only: print one line and exit
 
 ## 2026-06-02 13:42
 - [2026-06-02 13:42:22] **用户**: but my mobile musiclet have only 200+ songs
+
+## 2026-06-02 13:51
+- [2026-06-02 13:50:58] **用户**: 问题是 step或者code 的额度 像cli命令一样 显示额度 不能显示在waybar上吗或者我workspace的看板
+- [2026-06-02 13:51:10] **用户**: 就是cli 的status命令
