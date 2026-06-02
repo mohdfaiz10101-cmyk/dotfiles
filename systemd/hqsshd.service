@@ -11,6 +11,7 @@ ExecStopPost=/bin/sh -c 'rm -f /tmp/hqssh.sock'
 Restart=on-failure
 RestartSec=5
 Environment=HOME=%h
+Environment=PATH=%h/.local/bin:%h/.npm-global/bin:/run/current-system/sw/bin:/usr/bin:/bin
 
 # Logging goes to journald
 # View with: journalctl --user -u hqsshd -f

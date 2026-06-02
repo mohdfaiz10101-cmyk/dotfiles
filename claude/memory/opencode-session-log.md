@@ -93,3 +93,178 @@
 [ok] 手机 syncthing 配置 -- nixos 设备移除 `dynamic`，仅保留 `tcp://192.168.123.209:22000`
 
 [ok] 手机电池设置 -- `respect_battery_saving=false` + `always_run_i
+
+## 2026-06-01 23:25
+- [2026-06-01 23:24:45] **用户**: hermes 输入这个命令没启动
+
+## 2026-06-01 23:27
+- [2026-06-01 23:26:40] **用户**: 我那些巡检agents有没有把他们的任务迁移到 19890端口这个 tmux wrapped窗口呢
+
+## 2026-06-01 23:27
+- [2026-06-01 23:27:13] **AI(sisyphus)**: [ok] 19890端口 = ttyd 包装 `openclaw` tmux session，内部运行的是 OpenCode（Sisyphus 会话），不是巡检 agent
+
+巡检 agents 全部以 systemd 用户服务运行，**未迁移**到 19890：
+
+| Agent | 运行方式 | 状态 |
+|-------|----------|------|
+| ai-watchdog | systemd service | running |
+| mihomo-guardian | systemd service | running |
+| op-watchdog | systemd 
+
+## 2026-06-01 23:28
+- [2026-06-01 23:27:48] **用户**: 手机已经连上wifi
+
+## 2026-06-01 23:29
+- [2026-06-01 23:29:29] **用户**: 对啊 能十二支ctorb n/p 在工具栏吗 就是点击一下 他就 ctrl b n 或者control b p
+
+## 2026-06-01 23:31
+- [2026-06-01 23:31:04] **用户**: 方案a啊 我现在连wifi了 你能控制hqssh 他有电脑端控制吗 或者他能包装成mcp可以操控它的工具栏定制吗
+
+## 2026-06-01 23:32
+- [2026-06-01 23:31:51] **用户**: 但是这些agents的巡检结果 能推送到19890窗口吗
+
+## 2026-06-01 23:32
+- [2026-06-01 23:32:13] **AI(sisyphus)**: [ok] 巡检 agents 输出到 `~/Desktop/巡检报告/op-live-feed.jsonl`，目前没有推送到 19890
+
+现在在 `openclaw` tmux session 里加一个监控窗口，实时 tail 巡检 feed：
+- [2026-06-01 23:32:23] **AI(sisyphus)**: [ok] 在 `openclaw` tmux session 创建了第 2 个窗口 "巡检监控"
+
+现在 19890 端口里有两个窗口：
+- 窗口 1: zsh（OpenCode/Sisyphus 会话）
+- 窗口 2: 巡检监控（`tail -f` 实时输出巡检 feed）
+
+在 19890 网页里用 `Ctrl+b 1` / `Ctrl+b 2` 切换，或者底部状态栏点击切换。
+
+## 2026-06-01 23:36
+- [2026-06-01 23:36:19] **用户**: echo "hqssh tmux wrapper ready"
+
+## 2026-06-01 23:38
+- [2026-06-01 23:37:50] **AI(sisyphus)**: [ok] 创建 `hqssh-tmux` 脚本 — 管理 tmux 会话窗口切换
+[ok] 创建 `hqssh-tmux` MCP 服务器 — 暴露为工具调用
+[ok] tmux session `hqssh-main` 已运行 — 3 个窗口 (opencode, claude, shell)
+
+**关于 hqssh 工具栏：**
+- hqssh iOS app 工具栏**不支持自定义按钮**发送键序列
+- 服务端 daemon.yaml / gRPC proto 没有 toolbar 配置项
+- 这是 app 客户端限制，服务端无法绕过
+
+**当前方案：**
+
+| 方式 | 用法 |
+|-
+
+## 2026-06-01 23:39
+- [2026-06-01 23:39:25] **用户**: Claude Code v2.1.92
+▝▜█████▛▘  glm-5.1 · API Usage Billing
+  ▘▘ ▝▝    /home/charlie
+
+
+ ⚠Auth conflict: Both a token (claude.ai) and an API key (ANTHROPIC_API_KEY) are set. This may lead to unexpected behavior.
+    · Trying to use claude.ai? Unset the ANTHROPIC_API_KEY environment variable, or claude
+
+## 2026-06-01 23:45
+- [2026-06-01 23:44:59] **用户**: fix fctix problem lost windows search memory
+- [2026-06-01 23:45:19] **用户**: resume
+
+## 2026-06-01 23:47
+- [2026-06-01 23:47:12] **AI(sisyphus)**: [ok] 清理残留临时文件 -- user.dict_yamBgz(0字节)+user.history_V9hp0k
+[ok] 重启 fcitx5 -- 状态 Default，进程正常
+[ok] 诊断确认 -- Wayland前端已禁用，user.dict(59KB)+user.history(207KB)完整
+[ok] 写入 lessons-learned + Letta
+
+[完成] fcitx5搜索记忆丢失 -- 根因: 04:00崩溃残留0字节临时文件+Wayland前端不稳定，修复: 清理残留+重启，Wayland前端已禁用避免复发
+
+## 2026-06-02 00:07
+- [2026-06-02 00:06:37] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 00:17
+- [2026-06-02 00:16:44] **AI(sisyphus)**: [ok] 推送 22 个缺失文件 -- 全部成功 (458MB, ~60s)
+[ok] 清理临时文件 -- 18 个 .tmp 已删除
+[ok] 关闭屏幕常亮 -- svc power stayon false
+[完成] 音乐库同步 -- 660 文件/4.1GB，手机完成度 100%，needFiles=0
+
+**根因**: OPPO ColorOS 电池优化在拨号后 30-60 秒冻结 syncthing 网络活动，导致 22 个文件始终无法完成同步。ADB 直推绕过 syncthing 传输层解决。
+
+**遗留**: 手机 syncthing 在息屏后仍会被冻结，未来增量同步需要保持 a
+
+## 2026-06-02 00:50
+- [2026-06-02 00:49:50] **用户**: "你是 Charlie 的主执行器 opencode。
+
+优先遵守下面的上下文包，尤其是用户偏好、最近决策、相关 runbook。
+
+任务:
+test only: print one line and exit
+
+上下文包:
+# AI Context Pack
+
+生成时间: 2026-06-02 00:49:46
+主题: test only: print one line and exit
+
+## 用户偏好
+# 用户偏好
+
+更新时间: 2026-06-02
+
+## 核心偏好
+- 始终使用中文回复。
+- 优先修根因，不接受只重启掩盖问题。
+- 能整合就整合，避免碎片化配置和重复入口。
+- 默认本
+
+## 2026-06-02 01:20
+- [2026-06-02 01:20:40] **用户**: 你必须严格遵守以下上下文包，不能跳过其中的偏好、决策、runbook。
+
+# AI Context Pack
+
+生成时间: 2026-06-02 01:20:29
+主题: 交互式会话 /home/charlie/.openclaw/workspace
+
+## 用户偏好
+# 用户偏好
+
+更新时间: 2026-06-02
+
+## 核心偏好
+- 始终使用中文回复。
+- 优先修根因，不接受只重启掩盖问题。
+- 能整合就整合，避免碎片化配置和重复入口。
+- 默认本地优先、轻量优先、稳定优先。
+- `opencode` 是主执行器，其他 agent/服务应为它增强，而不是替代它。
+
+## 运维偏好
+- 网
+
+## 2026-06-02 01:27
+- [2026-06-02 01:27:34] **AI(sisyphus)**: [ok] 诊断完成 — OpenClaw 管理面板状态汇总：
+
+| 检查项 | 状态 | 详情 |
+|--------|------|------|
+| 服务进程 | 正常 | openclaw (node) PID 1256741 |
+| 对外入口 19890 | 200 | frps 转发正常 |
+| 本地入口 18789 | 200 | 静态页面正常 |
+| 内部API 18791 | 运行中 | 需认证 |
+| JS/CSS 资源 | 200 | 1.26MB bundle 正常 |
+| API 配置端点 | 401 | 需认证 token |
+
+**根因**: 前端 Web Comp
+
+## 2026-06-02 01:30
+- [2026-06-02 01:30:20] **用户**: 你必须严格遵守以下上下文包，不能跳过其中的偏好、决策、runbook。
+
+# AI Context Pack
+
+生成时间: 2026-06-02 01:30:02
+主题: 交互式会话 /mnt/ai/cache/auto-migrate/.openclaw/workspace
+
+## 用户偏好
+# 用户偏好
+
+更新时间: 2026-06-02
+
+## 核心偏好
+- 始终使用中文回复。
+- 优先修根因，不接受只重启掩盖问题。
+- 能整合就整合，避免碎片化配置和重复入口。
+- 默认本地优先、轻量优先、稳定优先。
+- `opencode` 是主执行器，其他 agent/服务应为它增强，而不是替代它。

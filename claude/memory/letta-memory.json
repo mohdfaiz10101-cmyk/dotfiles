@@ -1,0 +1,22 @@
+{
+  "agents": {
+    "nixos-sysadmin": {
+      "core_memory": {},
+      "archival_memory": []
+    },
+    "code-assistant": {
+      "core_memory": {},
+      "archival_memory": [
+        {
+          "text": "2026-06-01 OP执行: fcitx5搜索记忆丢失修复 | 结果: 成功 | 关键发现: 0字节临时文件user.dict_yamBgz(04:00)可能是崩溃导致搜索记忆丢失的根因，已清理+重启",
+          "tags": "op-exec,fcitx5,wayland",
+          "timestamp": "1780328832"
+        }
+      ]
+    },
+    "opus-analyst": {
+      "core_memory": {},
+      "archival_memory": []
+    }
+  }
+}

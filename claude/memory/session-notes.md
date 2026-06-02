@@ -1,16 +1,60 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-01 23:00
+> 来源: changelog.jsonl | 重建时间: 2026-06-02 10:58
 
+## 2026-06-02
+
+- [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **.config**: .config/systemd/user/hqsshd.service MODIFY
+- [file-change] **.config**: .config/systemd/user/opencode-serve.service MODIFY
+- [file-change] **.config**: .config/systemd/user/opencode-serve.service MODIFY
+- [file-delete] **.config**: .config/systemd/user/fcitx5-adaptive-check.service DELETE
+- [file-delete] **.config**: .config/systemd/user/fcitx5-adaptive-check.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/input-switcher.service DELETE
+- [file-delete] **.config**: .config/systemd/user/mihomo-health.service DELETE
+- [file-delete] **.config**: .config/systemd/user/mihomo-health.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/check-ttyd.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/chrome-login-watchdog.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/cliphist-health.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/connectivity-chain-watchdog.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/frps-watchdog.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/git-backup.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/haven-sync.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/haven-tablet-watch.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/health-scorer.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/mihomo-health.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/mihomo-sync.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/network-guard.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/openclaw-watchdog.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/opencode-health-monitor.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/playwright-mcp-cleanup.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/sync-obsidian.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/wan-ip-monitor.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/wechat-windows-watchdog.timer DELETE
+- [file-delete] **.config**: .config/systemd/user/timers.target.wants/win-deploy.timer DELETE
 ## 2026-06-01
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **.config**: .config/systemd/user/crewai-gateway.service MODIFY
+- [file-change] **.config**: .config/systemd/user/crewai-gateway.service MODIFY
+- [file-change] **.config**: .config/systemd/user/hermes-agent.service MODIFY
+- [file-change] **.config**: .config/systemd/user/hermes-gateway.service MODIFY
+- [file-change] **.config**: .config/systemd/user/telegram-desktop.service MODIFY
+- [file-change] **.config**: .config/systemd/user/telegram-desktop.service MODIFY
+- [file-change] **.config**: .config/systemd/user/telegram-desktop.service MODIFY
+- [file-change] **.config**: .config/systemd/user/whisper.service MODIFY
+- [file-change] **.config**: .config/systemd/user/whisper.service MODIFY
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/opencode-session-log.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MOVED_TO
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MOVED_TO
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO

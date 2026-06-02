@@ -7,14 +7,15 @@ StartLimitIntervalSec=30
 
 StartLimitAction=none
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=yes
 ExecStartPre=/home/charlie/.local/bin/opencode-integrity-check
-ExecStart=/home/charlie/dotfiles/scripts/wait-for-litellm.sh /home/charlie/.npm-global/bin/opencode serve --port 4096 --hostname 0.0.0.0 --cors http://localhost:7699 --cors http://localhost:8080 --cors http://localhost:8081 --cors http://localhost:8082 --cors http://localhost:8090
-Restart=always
+ExecStart=/home/charlie/.local/bin/opencode-serve-start
+ExecStop=/home/charlie/.local/bin/opencode-serve-stop
+Restart=no
 TimeoutStopSec=300
 KillSignal=SIGTERM
 KillMode=mixed
-RestartSec=15
 MemoryMax=2G
 MemoryHigh=1500M
 TasksMax=512
