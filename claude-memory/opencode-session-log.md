@@ -730,3 +730,14 @@ Search frontend build for auth
 | 层 | 工具 | 用途 |
 |----|------|------|
 | 日常 | ttyd + tmux 
+
+## 2026-06-02 17:07
+- [2026-06-02 17:06:44] **AI(sisyphus)**: 本次会话完成：
+
+[ok] AGI 控制台 (3000) — 确认免登录，创建隧道 `controversial-vendor-from-fastest`
+[ok] OpenAgent (8700) — 破解密码 `12345678`，创建隧道 `communities-collar-opened-reviewing`
+[ok] OpenClaw (18789) — 确认 Token 认证，隧道已过期需重建
+
+三个服务用途：
+- **3000**：AGI 统一控制台（看板/微信/终端/AI助手）
+- **8700**：Agent 通信网络（多 Agent 协作聊天室，当前在线 2 个 Agen
