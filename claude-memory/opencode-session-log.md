@@ -1920,3 +1920,13 @@ https://dublin-third-delayed-geology.trycloudflare.com
 |------|------|---------|
 | Termix (Web SSH 客户端) | :9180 | :19980 |
 | Nexterm (服务器管理) | :809
+
+## 2026-06-02 23:29
+- [2026-06-02 23:29:28] **AI(compaction)**: ## Goal
+- Expose Termix web terminal to public internet via Cloudflare tunnel to bypass Tailscale MagicDNS resolution timeout on phone
+
+## Constraints & Preferences
+- Phone access must work (previous Tailscale serve/funnel failed)
+- Service must persist across reboots (systemd user service)
+- Use cl
+- [2026-06-02 23:29:37] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
