@@ -156,3 +156,4 @@
 - [runbook] RB-20260602-fcitx5-crash: fcitx5崩溃后0字节残留文件 | detect: ls -la ~/.local/share/fcitx5/pinyin/user.dict_* | grep " 0 " | fix: 清理残留文件+重启fcitx5 | verify: pgrep fcitx5 && test -s ~/.local/share/fcitx5/pinyin/user.dict
 - [runbook] RB-20260602-frp-port: frp端口不在白名单 | detect: journalctl --user -u hermes -n 10 | grep "port.*not.*allowed" | fix: 查~/ai-deploy/frps.toml白名单，换已注册端口 | verify: systemctl --user restart hermes && sleep 2 && systemctl --user show hermes --property=Result | grep success
 - [2026-06-02] [OP] 修复: wechat-uos崩溃重启风暴 | 根因: DISPLAY=:1 但实际XWayland只有:0 | 修复: 改DISPLAY=:0后正常 | 教训: 检查X11显示号与实际情况是否匹配
+- [2026-06-02] [OP] rofi恢复+增强: 之前被其他AI改回dmenu模式。修复: (1) 改用原生drun模式(图标+分类) (2) 拼音通过生成~/.local/share/applications/pinyin-*.desktop文件注入Keywords字段 (3) drun-match-fields包含keywords实现拼音搜索 (4) sidebar-mode: true启用分类侧栏。教训: rofi 2.0的kb-*配置会叠加默认键位导致冲突，不要自定义键位。拼音搜索通过生成desktop条目注入Keywords比dmenu缓存更优雅。
