@@ -968,3 +968,8 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 | 路由器端口浪费重复配 | 没统一视图 | 22条规则手动维护 |
 | AI下次会话又忘 | memory-injector只注教训，不注拓扑 | 所有会话 |
 | 不知道端口被谁占了 | 没预检
+
+## 2026-06-02 18:29
+- [2026-06-02 18:28:48] **AI(sisyphus)**: [ok] MuseTalk float16推理 -- 视频生成成功
+[ok] 视频: 1080x1920, 7.08s, 236KB, 保存到 ~/agi/data/videos/niumoumou_test.mp4
+[skip] Telegram推送 -- Hermes无Telegram频道配置
