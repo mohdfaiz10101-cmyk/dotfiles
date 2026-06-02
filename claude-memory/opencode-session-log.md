@@ -1886,3 +1886,6 @@ https://dublin-third-delayed-geology.trycloudflare.com
 **之前失败原因：** Tailscale serve/funnel 的 MagicDNS 在手机端解析超时（手机能 ping 通但 HTTPS 连接被阻断），换了 Cloudflare 临时隧道 → 公网 200 确认可用。
 
 **持久化：** 已创建 `cloudflared-termix.se
+
+## 2026-06-02 23:22
+- [2026-06-02 23:21:48] **用户**: 所以我现在hermes手机怎么访问
