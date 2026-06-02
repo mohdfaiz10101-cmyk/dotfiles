@@ -2117,3 +2117,8 @@ global>body{font-family:Arial,Helvetica,sans-serif}.cont
 
 ## 2026-06-03 00:50
 - [2026-06-03 00:50:31] **用户**: 真的假的 继续联网验证
+
+## 2026-06-03 00:52
+- [2026-06-03 00:52:28] **AI(sisyphus)**: opencode adapter 使用 `opencode run --format json` 而非 `codex` CLI，通过 stdin 传入 prompt。opencode CLI 会读取自己的 `opencode.json` 配置连接 LiteLLM。
+
+现在重启 daemon 验证：
