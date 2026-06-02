@@ -181,3 +181,9 @@
 [2026-06-02] [OP] Termix Cloudflare 隧道: 用 cloudflared tunnel --url http://127.0.0.1:9180 暴露 Termix 到公网。之前 tailscale serve/funnel DNS 在手机端解析超时，换 Cloudflare 临时隧道绕过。域名: dublin-third-delayed-geology.trycloudflare.com。已创建 systemd 用户服务 cloudflared-termix.service 持久化。
 [2026-06-02] [OP] Termix 公网双隧道: (1) Cloudflare quick tunnel → dublin-third-delayed-geology.trycloudflare.com (2) FRP → charlie1990.duckdns.org:19180。Termix Docker 容器已设置 restart: always。frps 服务改为 systemd --user 管理，避免端口冲突。
 - [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 3 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 minutes (healthy)
