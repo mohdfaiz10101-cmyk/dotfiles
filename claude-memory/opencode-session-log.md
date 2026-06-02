@@ -1277,3 +1277,16 @@ Extract ONLY:
 - Papirus icon theme
 - Pinyin cache support for Chinese a
 - [2026-06-02 20:23:24] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 20:24
+- [2026-06-02 20:23:45] **AI(sisyphus)**: **已完成：**
+
+```
+层级   设备              大小   优先级   用途
+zram   /dev/zram0       5.8G   5      主力（压缩内存，快速）
+disk   /mnt/ai/swapfile 4.0G   1      救急（zram满了才用）
+```
+
+[ok] 创建 4GB swapfile → /mnt/ai/swapfile, priority=1
+[ok] zram 25%→35% → 配置文件已更新，重启后生效为8.1G
+[ok] nixos-rebuild switch → 成功，mnt-ai-swapfile.swap 已启
