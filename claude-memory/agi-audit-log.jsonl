@@ -484,3 +484,4 @@
 {"ts": "2026-06-02 13:49", "type": "cycle", "summary": "系统运行正常，CPU高占用进程符合白名单规则", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 13:50", "type": "cycle", "summary": "系统运行正常，CPU占用略高但属于预期范围", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 13:51", "type": "cycle", "summary": "系统运行正常，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 13:52", "type": "cycle", "summary": "系统运行正常，无异常服务或资源告警", "alert_count": 0, "skipped_llm": false}
