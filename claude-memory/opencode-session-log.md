@@ -1364,3 +1364,17 @@ source ~/.zshrc && oc51
 
 ## 2026-06-02 20:39
 - [2026-06-02 20:39:00] **用户**: openagents后台是裸的 能不能根据我的系统架构 把它配置下 比如项目 wiki 他的lancheer和后台或者啥的 就只有在8700吗 我还需要怎么操作 后台或者前端是空的啊 要配置下 我系统里的内容要配置进去 khoj能跟他协作吗
+
+## 2026-06-02 20:39
+- [2026-06-02 20:39:05] **AI(sisyphus)**: [完成] 自愈面板已接入 Next.js 前端 (3000)
+
+**问题**: 之前只修改了 hub.html (9800)，但用户实际用的是 AGI Control Plane (3000) Next.js 前端
+
+**修复**:
+- 新建 `SelfHealPanel.tsx` — 统计条 + 告警列表 + 执行记录 + 刷新
+- 注册到 `page.tsx` PANEL_MAP (`self-heal`)
+- 注册到 `NavBar.tsx` → 监控 → 自愈（Wrench 图标）
+- 填加到 TABS 数组
+- `bun run build` → 编译成功
+- `systemctl 
+- [2026-06-02 20:39:13] **AI(compaction)**: Now I see the issue. Port **9800** is a legacy hub that does have the self-heal tab, but you're looking at port **3000** — the Next.js AGI Control Plane with completely separate navigation (`NavBar.tsx`). Two different apps. I need to add the self-heal panel to the **Next.js frontend at port 3000**.
