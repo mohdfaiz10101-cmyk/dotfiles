@@ -436,3 +436,15 @@ The syncthing Music folder on the computer only has **175 music files**:
 
 ## 2026-06-02 15:12
 - [2026-06-02 15:12:03] **用户**: 我需要 把歌单全部导出和同步 不再依赖网易 和汽水 需要统一管理的终极工具
+
+## 2026-06-02 15:12
+- [2026-06-02 15:12:24] **AI(sisyphus)**: [ok] 验证FRP端口 -- 2223从手机可达
+[ok] 推送参考配置 -- /sdcard/Download/hqssh-config.txt
+[fail] 直接改Hive二进制 -- app崩溃(黑屏指纹锁), 同长度替换也crash
+[ok] 恢复原始备份 -- app正常工作
+
+hqssh现有3个系统:
+1. HERMES TAILSCALE → 100.119.174.25 (手机无Tailscale, 不能用)
+2. HERNES 公网 → 125.110.221.37 (旧IP, 废弃)
+3. 公网 OPECODE → charlie1990.duckdns.org ✅ (F
+- [2026-06-02 15:12:42] **用户**: 就是汽水音乐音乐可能会增加 只是用他的推荐 我应该怎么弄 但是必须歌单同步 或者歌单管理
