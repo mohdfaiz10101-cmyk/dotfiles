@@ -1036,3 +1036,9 @@ thunar &
 - [2026-06-02 19:47:44] **AI(sisyphus)**: Thunar 确实没有工作区规则。当前分配：WS1终端 WS2通讯 WS3编辑器 WS4浏览器 WS5-AI WS6-Dashboard WS7-任务台。
 
 先确认 Thunar 的 class 名，再加规则
+
+## 2026-06-02 19:48
+- [2026-06-02 19:48:23] **AI(sisyphus)**: [ok] Thunar 已加工作区规则 -- `WS3（编辑器区）`
+
+关闭 Thunar 重开，会自动落在 WS3。如果觉得放别的区更合适告诉我就换。
+- [2026-06-02 19:48:31] **用户**: 专门开个一个端口 tmux attach opencode 默认用glm 5.1 的 给个alias命令
