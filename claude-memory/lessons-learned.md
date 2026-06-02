@@ -166,3 +166,5 @@
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 27 minutes (healthy)
 
 - [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 5 minutes (healthy)
+
+- [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent
