@@ -2159,3 +2159,6 @@ sending request for url
 2. **openclaw-agent**: 连上了但 poll 404 — hub 的 events API 路径不对
 
 先修 daemon.yaml — JS daemon 的 network adapter 只支持有限类型：
+
+## 2026-06-03 01:06
+- [2026-06-03 01:05:55] **AI(sisyphus)**: `opencode` **在** ADAPTER_MAP 里！但 daemon 报 `Unknown agent type: opencode`。说明是 **Python daemon**（不是 JS）在处理 network 连接。
