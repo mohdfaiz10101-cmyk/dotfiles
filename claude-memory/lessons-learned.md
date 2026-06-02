@@ -152,3 +152,6 @@
 - [2026-06-02] [OP] 修复: 剪贴板不生效(node) | 根因: clip-sync 和 clipboard-sync-windows 两个服务同时运行，互相覆盖剪贴板内容 | 修复: 停用 clip-sync，保留 clipboard-sync-windows(直接PowerShell读Windows剪贴板更可靠) | 教训: 同类剪贴板同步服务只能保留一个- [2026-06-02] [OP] 部署 Termix | 端口: 9180 | 镜像: ghcr.io/lukegus/termix | 结果: 成功 | 位置: /mnt/ai/apps/termix/docker-compose.yml
 
 - [2026-06-02] [OP] rofi keybinding冲突: 自定义kb-*在config.rasi中与rofi默认键位冲突，报"already bound"错误。修复: 移除所有自定义键位，依赖rofi默认(vim键位通过rofi原生支持，无需手动配置)。教训: rofi 2.0的kb-*配置会叠加而非覆盖默认键位，添加自定义键位前必须验证无冲突。
+- [runbook] RB-20260602-wechat-crash: 微信uos coredump重启风暴 | detect: journalctl --user -u wechat-uos -n 5 | grep -c coredump | fix: systemctl --user stop wechat-uos && sleep 2 && systemctl --user start wechat-uos | verify: sleep 5 && systemctl --user show wechat-uos --property=ActiveState | grep -q active
+- [runbook] RB-20260602-fcitx5-crash: fcitx5崩溃后0字节残留文件 | detect: ls -la ~/.local/share/fcitx5/pinyin/user.dict_* | grep " 0 " | fix: 清理残留文件+重启fcitx5 | verify: pgrep fcitx5 && test -s ~/.local/share/fcitx5/pinyin/user.dict
+- [runbook] RB-20260602-frp-port: frp端口不在白名单 | detect: journalctl --user -u hermes -n 10 | grep "port.*not.*allowed" | fix: 查~/ai-deploy/frps.toml白名单，换已注册端口 | verify: systemctl --user restart hermes && sleep 2 && systemctl --user show hermes --property=Result | grep success
