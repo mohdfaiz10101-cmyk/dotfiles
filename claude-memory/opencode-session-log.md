@@ -1387,3 +1387,7 @@ source ~/.zshrc && oc51
 
 ## 2026-06-02 20:49
 - [2026-06-02 20:48:50] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 20:49
+- [2026-06-02 20:49:07] **用户**: 你不能终端直接执行？
+- [2026-06-02 20:49:31] **用户**: GLM 5.1 交互式会话
