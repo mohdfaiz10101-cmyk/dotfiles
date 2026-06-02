@@ -1606,3 +1606,9 @@ tmux attach -t oc-glm51
 [完成] mem0 内存泄漏看门狗已上线
 
 **发现一个严重问题**：mem0_bridge 泄漏速率远超预期——上次重启后仅 5 分钟就飙到 2585MB，不是 500MB/小时，是 **500MB/分钟**。这已经不是泄漏，是内存黑洞。watchdog 5 分钟间隔只能兜底，但 root 
+
+## 2026-06-02 22:37
+- [2026-06-02 22:36:46] **AI(sisyphus)**: [ok] Khoj MCP Server 桥接 → `/home/charlie/.local/bin/khoj-mcp-server.py` 创建完成，4 工具 (search/chat/health/sessions)
+[ok] 语法修复 → `except Exception` 缩进错误 + 使用 oa-venv Python (system python 只读无 pip)
+[ok] opencode.json 注册 → khoj 已加入 15 个 MCP 服务器列表
+[ok] OA Agent YAML 创建 → searcher / router / coder / ops-assi
