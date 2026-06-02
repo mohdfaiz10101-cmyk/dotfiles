@@ -170,3 +170,9 @@
 - [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent- [2026-06-02] [OP] 修复: 剪贴板复制后粘贴内容不对(复发) | 根因: (1) clip-sync + clipboard-sync-windows 两个Windows同步同时运行竞争 (2) clipboard-sync-windows 的 get_win_clipboard() PowerShell命令引号嵌套在SSH传输中损坏，返回ParserError错误文本被当作"剪贴板内容"写入wl-copy | 修复: 停用clip-sync(duplicate)，修复PowerShell命令为简单的Get-Clipboard -Raw | 教训: 之前修过一次同类问题但clip-sync被重新启用，需要确保只有一个Windows同步服务
 
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp | 状态: Up 25 minutes (healthy)
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 6 minutes (healthy)
