@@ -1233,3 +1233,10 @@ Extract ONLY:
 
 ## 2026-06-02 20:18
 - [2026-06-02 20:17:45] **用户**: 不对  请恢复 被你改混乱了 你恢复后重新改 不要改我原来的配置
+
+## 2026-06-02 20:19
+- [2026-06-02 20:18:37] **AI(sisyphus)**: [ok] 修复 wechat-uos -- DISPLAY=:1→:0，恢复运行 (uptime 43s)
+[fail] Windows微信 -- 192.168.2.36 不可达，无法检查
+[ok] 记录教训到 lessons-learned.md
+
+[完成] 微信UOS已修复 — 根因：DISPLAY=:1无效，实际XWayland只有:0。Windows机器不在线，无法检查Windows微信。
