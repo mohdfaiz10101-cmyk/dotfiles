@@ -1124,3 +1124,9 @@ WS5 🤖 AI      WS6 📊 仪表盘  WS7 📋 任务台
 
 ## 2026-06-02 20:01
 - [2026-06-02 20:01:34] **用户**: 那你给多套方案完善
+
+## 2026-06-02 20:02
+- [2026-06-02 20:01:48] **AI(sisyphus)**: [ok] 根因定位 — 两个剪贴板同步服务(clip-sync + clipboard-sync-windows)同时运行，互相覆盖内容
+[ok] 修复 — 停用并禁用 clip-sync，保留 clipboard-sync-windows
+[ok] 验证 — wl-copy → wl-paste 一致
+[完成] 剪贴板修复 — 冲突的双服务导致粘贴内容不是复制内容，已停用冗余的 clip-sync
