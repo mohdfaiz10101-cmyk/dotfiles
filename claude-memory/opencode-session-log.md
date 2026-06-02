@@ -2194,3 +2194,6 @@ sending request for url
 
 ## 2026-06-03 01:10
 - [2026-06-03 01:09:55] **AI(sisyphus)**: "Resource temporarily unavailable" — transient issue, not code-related. Wait a moment and retry:
+
+## 2026-06-03 01:10
+- [2026-06-03 01:10:31] **AI(sisyphus)**: 53 failed units. The resource exhaustion is likely from systemd user manager hitting delegate limits. Let me clean up and retry:
