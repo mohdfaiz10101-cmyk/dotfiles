@@ -392,3 +392,6 @@ The syncthing Music folder on the computer only has **175 music files**:
 | 服务 | URL |
 |------|-----|
 | OpenCode Serve |
+
+## 2026-06-02 14:13
+- [2026-06-02 14:12:45] **用户**: 那你不能配置文件推送到手机吗 我需草直接修改 你不能直接改？不想手打
