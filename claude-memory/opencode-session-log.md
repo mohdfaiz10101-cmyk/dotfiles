@@ -802,3 +802,17 @@ OpenAgents Network (0.9.3)    已运行 2小时
 
 ## 2026-06-02 17:42
 - [2026-06-02 17:42:02] **用户**: 我的4096窗口不能tmux attqch.l吗 就是serve模式
+
+## 2026-06-02 17:42
+- [2026-06-02 17:42:19] **AI(sisyphus)**: [ok] `opserve` 会话正在运行 `opencode server` 监听 0.0.0.0:4096，未被其他终端 attach，可以正常 attach：
+
+```
+tmux attach -t opserve
+```
+
+当前 tmux 会话状态：
+- `opserve` — **未 attach**，运行 opencode serve (端口 4096)
+- `openclaw` — 当前已 attach
+- `agi-monitor` / `hermes` / `op-tasks` / `overtab` — 空闲
+
+如果 attach 失败，可能是 `$TERM` 不兼容或你已
