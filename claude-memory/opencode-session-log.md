@@ -331,3 +331,6 @@ test only: print one line and exit
 
 ```nix
 # 把 Super+Space 改成 fcit
+
+## 2026-06-02 13:40
+- [2026-06-02 13:40:16] **用户**: 不是ctrl space 是 win + space
