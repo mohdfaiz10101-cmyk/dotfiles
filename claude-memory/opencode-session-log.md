@@ -1334,3 +1334,6 @@ source ~/.zshrc && oc51
 ```
 ~/.local/bin/opencode-glm51
 ```
+
+## 2026-06-02 20:32
+- [2026-06-02 20:32:02] **用户**: 这个有个紧急的optask怎么没人处理的 不能再我这个 openclaw workspace这里处理吗 以后这些optaks
