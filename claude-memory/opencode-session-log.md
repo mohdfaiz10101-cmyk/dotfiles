@@ -2277,3 +2277,6 @@ xterm 主题修复保留着，不影响。
 
 ## 2026-06-03 01:31
 - [2026-06-03 01:31:28] **AI(sisyphus)**: 问题根因：`clip-sync` 和 `clipboard-sync-windows` 同时运行互相覆盖剪贴板。记忆中已有此修复记录但 clip-sync 没被停掉。
+
+## 2026-06-03 01:36
+- [2026-06-03 01:35:55] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
