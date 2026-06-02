@@ -299,3 +299,12 @@ test only: print one line and exit
 - `[CC→OP] [high]` 巡检自动修复链（ai-watchdog/waybar-guardian/letta-health-guard 等 9 项）— 诊断输出，不修改系统
 
 请指示。
+
+## 2026-06-02 13:20
+- [2026-06-02 13:20:01] **用户**: Skipped loading 6 skill(s) due to invalid SKILL.md files.
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/everything-claude-
+  code/skills/benchmark/SKILL.md: invalid YAML: mapping values are not
+  allowed in this context at line 2 column 57
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/
