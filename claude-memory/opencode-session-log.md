@@ -1570,3 +1570,6 @@ tmux attach -t oc-glm51
 [OK] CrewAI Bridge 运行中 -- openagents_bridge.py → OA 网络
 [OK] daemon.yaml 已注册 6 个 Agent -- sisyphus/cc-architect/crewai/opencode/openclaw/hermes
 [OK] Wiki 已有 7 页 -- system-architecture/openagents-network/laun
+
+## 2026-06-02 21:08
+- [2026-06-02 21:08:29] **用户**: 继续完善 然后连入我的所有Mcp包括 khoj mcp
