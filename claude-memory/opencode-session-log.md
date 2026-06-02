@@ -1294,3 +1294,9 @@ disk   /mnt/ai/swapfile 4.0G   1      救急（zram满了才用）
 ## 2026-06-02 20:24
 - [2026-06-02 20:24:04] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
 - [2026-06-02 20:24:17] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 20:25
+- [2026-06-02 20:24:40] **用户**: 为什么本地终端不能做 tty tmux 然后加自定义按钮 有哪些支持 最先进的只能是浏览器吗 或者我最新的技术可以把tmux tty等可以自定义很多功能的
+- [2026-06-02 20:24:44] **AI(sisyphus)**: [ok] 全部恢复。当前改动只剩1条：`thunar → WS3`
+
+删掉了所有新加的文件（拼音缓存、cache builder），rofi 恢复为原生 drun，配置回到改动前。
