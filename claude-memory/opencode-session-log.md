@@ -1140,3 +1140,14 @@ WS5 🤖 AI      WS6 📊 仪表盘  WS7 📋 任务台
 
 ## 2026-06-02 20:03
 - [2026-06-02 20:03:20] **用户**: 什么意思 那怎么办 两个好像都要？
+
+## 2026-06-02 20:04
+- [2026-06-02 20:03:35] **AI(sisyphus)**: **本次会话总结：**
+
+[ok] 诊断 — "Connection reset by peer"根因为系统内存压力（16Gi/23Gi，swap 5.4/5.8Gi）
+[ok] 重启 agi-brain — 释放约1.4GB内存
+[ok] 重启 opencode serve — 旧PID 128453(414MB)→新PID 191525(248MB)
+[ok] 验证 LiteLLM→StepFun — API连通正常
+[ok] 服务健康检查 — opencode:404(正常) / letta:200 / litellm:401(正常)
+
+**内存变化**: 已用16Gi不变，swap从5
