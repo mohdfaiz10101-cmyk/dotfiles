@@ -701,3 +701,4 @@
 {"ts": "2026-06-02 17:53", "type": "cycle", "summary": "系统各项指标正常，无活跃服务运行", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 17:54", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 17:55", "type": "cycle", "summary": "系统运行正常，资源负载处于低位", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 17:57", "type": "cycle", "summary": "系统运行正常，资源消耗处于低水平", "alert_count": 0, "skipped_llm": false}
