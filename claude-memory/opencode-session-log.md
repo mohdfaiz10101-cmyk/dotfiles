@@ -657,3 +657,30 @@ ttyd 本质是**服务端常驻 shell + 浏览器终端渲染**。opencode 进�
 
 ## 2026-06-02 17:02
 - [2026-06-02 17:02:15] **用户**: 那ssh怎么这么难配置和管理
+
+## 2026-06-02 17:03
+- [2026-06-02 17:02:50] **AI(sisyphus)**: SSH 难在它不是"一个东西"，而是 **一堆零散协议的缝合体**：
+
+```
+真实路径：SSH = 认证层 × 传输层 × 连接层 × 隧道层 × 密钥层 × 权限层
+你以为的路径：SSH = 一条命令
+```
+
+**为什么烦，拆开看：**
+
+| 层 | 痛点 |
+|---|------|
+| 密钥管理 | 私钥权限不能是 644(太宽)也不能是 600 之外，差一个数字就拒绝 |
+| known_hosts | 重装系统后 host key 变了，"中间人攻击"警告，得手动删 |
+| authorized_keys | 每台机器单独维护，没有中心化管理 |
+| 网络层 | 防火墙 + Ta
+- [2026-06-02 17:02:50] **AI(compaction)**: <tool_call>
+<function=bash>
+<parameter=command>
+grep -ri "admin\|password\|login\|auth" /mnt/ai/apps/openagents/workspace/frontend/.next/server/app/ 2>/dev/null | grep -v "node_modules\|__pycache__" | head -10
+</parameter>
+<parameter=description>
+Search frontend build for auth
+</parameter>
+</functio
+- [2026-06-02 17:02:56] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
