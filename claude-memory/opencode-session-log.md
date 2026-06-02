@@ -1002,3 +1002,24 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 
 ## 2026-06-02 19:45
 - [2026-06-02 19:44:50] **用户**: hyperland 没文件管理器吗 我以前是dophine 但是没找到 用什么好
+
+## 2026-06-02 19:45
+- [2026-06-02 19:45:09] **AI(sisyphus)**: Dolphin 没装，但 **Thunar** 已经在系统里了。直接能用
+- [2026-06-02 19:45:23] **AI(sisyphus)**: Thunar 已装好，但当前终端没有 Wayland 环境变量。直接从 Hyprland 里启动即可：
+
+**打开终端（kitty/alacritty），输入**：
+```
+thunar &
+```
+
+或者在 Hyprland 里按快捷键绑 `$mod+E` 之类的执行 `thunar`。
+
+---
+
+**Hyprland 下文件管理器推荐**：
+
+| 管理器 | 状态 | 特点 |
+|--------|------|------|
+| **Thunar** | ✅ 已安装 | 轻量、GTK、缩略图、批量重命名 |
+| Dolphin | ❌ 需装 | KDE依赖多，但功能最全 |
+| PCM
