@@ -1717,3 +1717,12 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 
 ## 2026-06-02 22:55
 - [2026-06-02 22:55:35] **用户**: 为什么你说缺额度 用我litellm里面的step和glm不行 手机连tailscale了
+
+## 2026-06-02 22:56
+- [2026-06-02 22:56:03] **AI(sisyphus)**: [ok] 定位根因 — ChromaDB 累积 1.2M 条目（14GB），mem0_bridge 内存泄漏
+[ok] 重置 ChromaDB — 删除旧数据，重建空集合
+[ok] 重启 mem0_bridge — RSS 从 2.5GB 降到 123MB
+[ok] 重新索引 — mem0_file_sync 同步 16 文件 / 753 块，0 错误
+[ok] 创建衰减定时器 — mem0-decay.timer 每日 03:00 自动清理旧条目
+[ok] 验证服务 — openclaw:8080=200, opencode-web:8081=200
+[ok] 内存恢复 — 已用 13Gi，
