@@ -829,3 +829,6 @@ tmux attach -t opserve
 [ok] 修复 `get_latest_memories()` -- 新增读取 `user-preferences.md`（前6条核心偏好）和 `decision-memory.md`（最近3条决策）
 
 [ok] 修复旧注入块清理 -- 正则 `.*?</memory-gate-inject` 不匹配 `<!-- /memory-gate-
+
+## 2026-06-02 17:46
+- [2026-06-02 17:46:26] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
