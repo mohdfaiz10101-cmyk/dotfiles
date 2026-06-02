@@ -466,3 +466,6 @@ hqssh现有3个系统:
 ## 2026-06-02 15:16
 - [2026-06-02 15:16:01] **用户**: 问题是 都提示 connection failed
 - [2026-06-02 15:16:11] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 15:20
+- [2026-06-02 15:20:32] **用户**: 更新下 hermes hermes怎么用啊 不能切换模型啊
