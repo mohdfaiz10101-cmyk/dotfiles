@@ -1186,3 +1186,6 @@ WS5 🤖 AI      WS6 📊 仪表盘  WS7 📋 任务台
 - `hub-api.py`: 新增 `/api/runbook/history` `/api/runbook/summary` `/api/feed/alerts` `/api/health/scores` 四个端点
 - `hub/static/hub.html`: 新增🔧自愈标签页，含统计条/告警列表/执行记录/刷新按钮
 - `runbook-e
+
+## 2026-06-02 20:12
+- [2026-06-02 20:12:16] **用户**: 你改的是rofi drum吗 没看到 而且不支持拼音搜索
