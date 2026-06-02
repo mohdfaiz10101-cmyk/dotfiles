@@ -321,3 +321,13 @@ test only: print one line and exit
 
 ## 2026-06-02 13:21
 - [2026-06-02 13:21:20] **用户**: 为什么我按下 super + space后出来两个drum界面 我只需一个啊 你推荐用哪个
+
+## 2026-06-02 13:24
+- [2026-06-02 13:23:43] **AI(sisyphus)**: **根因**：`~/.config/hypr/hyprland.conf` 第16行 — `Super+Space` 绑定了 `wofi --show drun`（应用启动器），同时 fcitx5 也通过 Wayland input-method 协议响应这个按键弹出输入法选择器。两个界面同时出现。
+
+**文件是 Nix store 管理的只读文件，我无法直接修改。**
+
+**修复**（需要你手动改 `/etc/nixos/modules/hyprland.nix` 或 home-manager 里的 hyprland 配置源）：
+
+```nix
+# 把 Super+Space 改成 fcit
