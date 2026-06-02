@@ -695,3 +695,38 @@ Search frontend build for auth
 - [2026-06-02 17:05:06] **用户**: 那我应该怎么处理ssh吗难道下载一个支持tty的工具管理吗 社区怎么做
 - [2026-06-02 17:05:17] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
 - [2026-06-02 17:05:31] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:06
+- [2026-06-02 17:05:40] **AI(sisyphus)**: [完成] 密码恢复 + 隧道创建
+
+- OpenAgents Network Hub (port 8700) 密码已确认：**12345678**（SHA256 匹配）
+- 公网隧道已创建：**https://communities-collar-opened-reviewing.trycloudflare.com**
+- 登录时选择任意组（admin/worker/guest），输入密码 `12345678` 即可
+
+另外两个已有隧道：
+- AGI 控制台 (3000)：https://controversial-vendor-from-fastest.trycloudflare.com（无
+- [2026-06-02 17:05:40] **AI(sisyphus)**: 已完成。OpenAgent (port 8700) 的密码是 `12345678`，公网隧道已创建：`https://communities-collar-opened-reviewing.trycloudflare.com`。
+- [2026-06-02 17:05:44] **AI(sisyphus)**: [ok] AGI控制台(3000) → 无需登录，隧道: `controversial-vendor-from-fastest.trycloudflare.com`
+[ok] OpenAgent(8700) → 密码 `12345678`，隧道: `communities-collar-opened-reviewing.trycloudflare.com`
+[ok] OpenClaw(18789) → Token `0e9ec3e235...`，隧道: `auto-corps-living-surprise.trycloudflare.com`
+
+---
+
+**总结**：三个服务都已创建 Cl
+- [2026-06-02 17:05:50] **AI(sisyphus)**: 你已经有了所有工具，缺的是**默认使用习惯**。社区的真实做法：
+
+**不是"修好 SSH"，而是"少用 SSH"。**
+
+```
+你的工具箱（已齐备）：
+  ttyd (7681)     ← 主入口，浏览器即终端
+  tmux (3.6a)     ← 会话持久化，断开也不丢
+  mosh (1.4.0)    ← 弱网 SSH 替代品
+  SSH config v3   ← 已经配了 ControlMaster + 多路径回退
+```
+
+**社区分层策略（按使用频率）：**
+
+| 层 | 工具 | 用途 |
+|----|------|------|
+| 日常 | ttyd + tmux 
