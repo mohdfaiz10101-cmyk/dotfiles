@@ -1535,3 +1535,15 @@ tmux attach -t oc-glm51
 **当前 opencode 内存占用**：
 | PID | 用途 | RSS | 运行时间 |
 |-----|------|-----|------
+
+## 2026-06-02 21:05
+- [2026-06-02 21:04:49] **AI(sisyphus)**: [ok] 偏好已记录 — 以后op-tasks从OpenClaw直接执行
+
+**巡检自动修复链诊断报告：**
+
+| 组件 | 状态 | 类型 | 触发 | 自动修复 |
+|------|------|------|------|---------|
+| ai-watchdog | active | daemon | Restart=on-failure | 自动重启 |
+| waybar-guardian | active | daemon | 每5min timer | 自动重启 |
+| letta-health-guard | oneshot✓ | 只告警 | 每2h timer | 否(
+- [2026-06-02 21:04:54] **用户**: 都要 但是openagents 是空壳啊 需要配置和全面完善 这个优先 去搜下社区
