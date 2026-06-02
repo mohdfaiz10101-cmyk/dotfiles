@@ -1178,3 +1178,11 @@ WS5 🤖 AI      WS6 📊 仪表盘  WS7 📋 任务台
 
 ## 2026-06-02 20:11
 - [2026-06-02 20:10:41] **用户**: 社区还有更多的方案吗 有必要吗
+
+## 2026-06-02 20:12
+- [2026-06-02 20:11:40] **AI(sisyphus)**: [完成] 自愈面板已上线 — hub.html 加🔧自愈标签页 + hub-api 4个新端点 + runbook-engine 去dry-run + feed-to-runbook.sh 消费者 + 3条runbook条目
+
+**改动摘要**:
+- `hub-api.py`: 新增 `/api/runbook/history` `/api/runbook/summary` `/api/feed/alerts` `/api/health/scores` 四个端点
+- `hub/static/hub.html`: 新增🔧自愈标签页，含统计条/告警列表/执行记录/刷新按钮
+- `runbook-e
