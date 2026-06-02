@@ -2208,3 +2208,6 @@ sending request for url
 ## 2026-06-03 01:12
 - [2026-06-03 01:11:57] **AI(sisyphus)**: 2072 PIDs with no max limit — shouldn't be the problem. Let me try a clean manual start:
 - [2026-06-03 01:11:57] **AI(sisyphus)**: Agent 在线但在 poll hub 时 404。Hub 的 `/v1/events` 端点不存在。检查 hub 实际的 API：
+
+## 2026-06-03 01:13
+- [2026-06-03 01:13:31] **用户**: mihomo服务异常 彻底排查下 避免发生
