@@ -2090,3 +2090,6 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 initial-scale=1" />
                        <style
 global>body{font-family:Arial,Helvetica,sans-serif}.cont
+
+## 2026-06-03 00:43
+- [2026-06-03 00:43:32] **AI(sisyphus)**: 现在搜索用户说的 Step 3.7 和官网信息：
