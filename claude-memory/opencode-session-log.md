@@ -1547,3 +1547,9 @@ tmux attach -t oc-glm51
 | waybar-guardian | active | daemon | 每5min timer | 自动重启 |
 | letta-health-guard | oneshot✓ | 只告警 | 每2h timer | 否(
 - [2026-06-02 21:04:54] **用户**: 都要 但是openagents 是空壳啊 需要配置和全面完善 这个优先 去搜下社区
+
+## 2026-06-02 21:05
+- [2026-06-02 21:05:09] **AI(sisyphus)**: [ok] 已记录偏好 — 以后op-tasks从OpenClaw直接执行
+[fail] 无法标记 — 4个待办中2个是bridge测试消息，1个AI配置告警需CC处理
+
+[完成] 巡检自动修复链 — 9项全检：2个运行中、4个oneshot正常、1个disabled(tg-healer)、2个缺timer、1个不存在(periodic-recovery-check)
