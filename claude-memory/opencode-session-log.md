@@ -888,3 +888,6 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 验证：本地 `curl http://127.0.0.1:7699/oc-serve/` → 200 OK。
 
 之前单独开的 4096 tailscale serve 已关闭（多余，且 connection aborted 可能是 opencode serve 的 WebS
+
+## 2026-06-02 18:07
+- [2026-06-02 18:07:15] **用户**: glm proxy系统通知老是提示 这个到底对目前我系统架构有啥用
