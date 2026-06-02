@@ -758,3 +758,6 @@ Web UI    →  opencode 自带 Web 界面    ✅ 8080 端口已运行
 浏览器终端 →  ttyd / gotty             ✅ 7681 已运行  
 消息控制  →  Telegram/Discord Bot     ✅ Hermes 已接入
 API调用  
+
+## 2026-06-02 17:13
+- [2026-06-02 17:12:38] **用户**: 不能给个固定的duckdns吗
