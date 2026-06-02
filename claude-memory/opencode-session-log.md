@@ -988,3 +988,14 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 手机端选择"Saved Messages"发送后，桌面端Telegram自动同步可观看。
 
 推送方案：ADB推送+Telegram多端同步优于Hermes，因为Hermes无频道配置且需要额外bot token，ADB直达手机是最短路径。
+
+## 2026-06-02 19:36
+- [2026-06-02 19:35:49] **AI(sisyphus)**: [ok] 手机 Tailscale 验证 -- ADB curl `100.119.174.25:8700/studio` → 302 → 200 HTML 完整
+[ok] 路由器 DMZ -- 开启 DMZ 指向 192.168.123.209 → 公网 19876 通了
+[ok] 公网验证 -- `125.110.221.37:19876/studio` → 200 OpenAgents Studio 页面
+
+**手机两个访问入口都通了：**
+
+| 方式 | URL |
+|------|-----|
+| Tailscale | `http://100.119.174.25:8700/stu
