@@ -1750,3 +1750,7 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 [ok] agi-control-plane 重启 -- 端口 3000 返回 200
 
 API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
+
+## 2026-06-02 23:04
+- [2026-06-02 23:03:47] **用户**: 这个5.1公网访问哪个地址
+- [2026-06-02 23:03:47] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
