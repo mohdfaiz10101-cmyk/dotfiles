@@ -793,3 +793,6 @@ OpenAgents Network (0.9.3)    已运行 2小时
 ├── CrewAI桥接 → 已连接
 ├── Codex桥接  → oa-codex-bridge.service    ← Codex接入
 └── Launcher   → http://nixos:9875   
+
+## 2026-06-02 17:37
+- [2026-06-02 17:37:13] **用户**: 无法访问 19876
