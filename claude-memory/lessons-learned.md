@@ -142,3 +142,9 @@
 
 - [2026-06-02] [OP] 网络拓扑系统化 | 创建 network-topology.md (统一视图+决策树) + port-allocator.sh (自动预检) + memory-injector 增强 (网络拓扑注入所有agent) | 解决问题: 每次新会话AI重新推理网络连接方式，FRP端口/路由器/公网等反复踩坑
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.e45c798cf3d5_litellm-litellm =  | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 27 minutes (healthy)
