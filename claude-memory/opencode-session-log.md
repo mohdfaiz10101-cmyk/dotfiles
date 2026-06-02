@@ -422,3 +422,14 @@ The syncthing Music folder on the computer only has **175 music files**:
 
 ## 2026-06-02 15:11
 - [2026-06-02 15:10:59] **用户**: 我终端需要两个workspace去分配
+
+## 2026-06-02 15:11
+- [2026-06-02 15:11:26] **AI(sisyphus)**: 需要澄清一下：你说的"两个workspace"具体是指什么场景？
+
+几个可能的方向：
+
+1. **OpenCode 两个工作目录** — 创建两个独立项目目录，终端里分开处理不同任务
+2. **OpenClaw 两个 workspace** — 在 OpenClaw 中配置两个 agent workspace 分别管理不同上下文
+3. **tmux 双窗格** — 终端分两个窗格，各自跑不同的 workspace
+
+是哪种？
