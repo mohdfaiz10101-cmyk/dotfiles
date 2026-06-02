@@ -1031,3 +1031,8 @@ thunar &
 - [2026-06-02 19:47:19] **AI(sisyphus)**: [ok] 视频已保存到 ~/Videos/musetalk/niumoumou_clip1_fp16.mp4
 [fix] 从 agi/data/videos 移除，后续默认输出到 ~/Videos/musetalk/
 - [2026-06-02 19:47:33] **用户**: 我打开thunar后没有按工作区分类 以后我电脑所有软件都要分配工作区 你看下是否生效
+
+## 2026-06-02 19:48
+- [2026-06-02 19:47:44] **AI(sisyphus)**: Thunar 确实没有工作区规则。当前分配：WS1终端 WS2通讯 WS3编辑器 WS4浏览器 WS5-AI WS6-Dashboard WS7-任务台。
+
+先确认 Thunar 的 class 名，再加规则
