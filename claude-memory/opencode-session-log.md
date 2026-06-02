@@ -2034,3 +2034,18 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 | 底层模型 | base (英文only, 78MB) | multilingual-74 (中英+多语, 78MB) |
 | 语言配置 | en+zh / multilingual=true | 不变 |
 | 纠错层 | 无 | voice-memory:
+
+## 2026-06-02 23:54
+- [2026-06-02 23:54:22] **AI(compaction)**: ## Goal
+- 配置 Termix 公网访问，默认使用 DuckDNS + FRP 隧道，Cloudflare 隧道作备用
+
+## Constraints & Preferences
+- 用户要求默认公网用 DuckDNS
+- 手机访问必须可用（之前 Tailscale serve/funnel DNS 超时）
+- 服务需持久化（systemd 管理）
+- 路由器 MT7621 无法通过 SSH/UPnP 自动配置端口转发
+
+## Progress
+### Done
+- 配置 FRP 隧道：`frps.toml` 添加 19180 端口白名单，`frpc.toml` 添加 Termix 代
+- [2026-06-02 23:54:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
