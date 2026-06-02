@@ -433,3 +433,6 @@ The syncthing Music folder on the computer only has **175 music files**:
 3. **tmux 双窗格** — 终端分两个窗格，各自跑不同的 workspace
 
 是哪种？
+
+## 2026-06-02 15:12
+- [2026-06-02 15:12:03] **用户**: 我需要 把歌单全部导出和同步 不再依赖网易 和汽水 需要统一管理的终极工具
