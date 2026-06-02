@@ -2069,3 +2069,6 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 - [2026-06-03 00:35:58] **用户**: /home/charlie/.hermes/hermes-agent/venv/lib/python3.11/site-packages/firecrawl/v2/types.py:988: UserWarning: Field name "json" in "MonitorPageDiff" shadows an attribute in parent "BaseModel"
   class MonitorPageDiff(BaseModel):
 /home/charlie/.hermes/hermes-agent/venv/lib/python3.11/site-packages/fire
+
+## 2026-06-03 00:38
+- [2026-06-03 00:37:53] **用户**: hermes cli启动后提示错误 还有他 mcp都不在正常
