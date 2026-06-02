@@ -128,3 +128,5 @@
 
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 27 minutes (healthy)
 - [2026-06-02] [OP] 分析: SSH多路径管理 | 发现: 已有SSH config v3(ControlMaster+多路径回退)+tmux+mosh+ttyd | 建议: 用ttyd作主入口+tmux持久化，SSH仅用于传输/转发
+
+- [2026-06-02] [OP] 修复: context-pack未注入新任务 | 根因: memory-injector.py只从baseline.toml+lessons-learned提取，缺少user-preferences.md和decision-memory.md | 修复: 增强get_latest_memories()同时读取user-preferences.md(前6条偏好)+decision-memory.md(最近3条决策) | 教训: 任何新增的记忆文件类型都需要同步更新memory-injector的提取逻辑
