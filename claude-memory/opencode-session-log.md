@@ -1502,3 +1502,36 @@ tmux attach -t oc-glm51
 2. **Khoj ↔ OpenAgents 桥接** — 通过 MCP Bridge 让 Wiki Agent 调用 Khoj 搜索
 3. **Wiki 内容补充** — 更多子系统文档（Hermes、Paperclip、前台面板等）
 4. **AGI Brai
+
+## 2026-06-02 21:04
+- [2026-06-02 21:03:33] **AI(sisyphus)**: [ok] Termix 已就绪 — 6台主机，LAN可访问
+
+**手机连接步骤：**
+
+1. 安装 Termix Android 客户端（Play Store 搜 "Termix" 或从 GitHub 下载 APK）
+2. 打开后输入服务器地址：
+   - WiFi 下：`http://192.168.123.209:9180`
+   - 有线同网段：`http://192.168.2.201:9180`
+3. 登录：用户名 `charlie`，密码 `termix2026!`
+4. 登录后就能看到 6 台已导入的主机，点击即连
+
+试试看哪个 IP 通：在手机浏览器先打开 `http://19
+- [2026-06-02 21:03:53] **AI(sisyphus)**: [ok] 审计完成 -- 根因: `ai-rules-sync` 只增量不修剪, `claude-rules-audit` 从未执行
+
+**数据**:
+| 文件 | 行数 | tokens | 占比 |
+|------|------|--------|------|
+| AGENTS.md | 295 | 3,283 | 20% |
+| sisyphus.md | 746 | 5,247 | 32% |
+| **合计** | - | **8,530** | **52%** |
+
+规则注入 8,530 tokens → 已占 compaction 阈值(16,384)的 52%。加上 skill
+- [2026-06-02 21:04:05] **AI(sisyphus)**: [ok] 重启 mem0_bridge -- 从 890MB 降到 152MB，释放 738MB
+
+[fail] swap 仍 6.6Gi/9.8Gi -- zram 5.8G 满，swapfile 用 2G
+
+**根因**：不是 CPU/内存不够，是 swap thrashing。三个 opencode 实例 + mem0_bridge 泄漏吃满 zram → 所有进程被迫走磁盘 swap → 实测 iowait 5-8% → 操作延迟明显。
+
+**当前 opencode 内存占用**：
+| PID | 用途 | RSS | 运行时间 |
+|-----|------|-----|------
