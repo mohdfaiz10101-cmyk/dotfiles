@@ -931,3 +931,4 @@
 {"ts": "2026-06-02 22:10", "type": "cycle", "summary": "系统运行正常，无异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 22:11", "type": "cycle", "summary": "系统运行平稳，Python进程正常高负载", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 22:12", "type": "cycle", "summary": "系统运行正常，CPU使用率略高", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 22:13", "type": "cycle", "summary": "系统运行正常，CPU利用率低且无活跃告警", "alert_count": 0, "skipped_llm": false}
