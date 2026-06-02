@@ -690,3 +690,8 @@ Search frontend build for auth
 
 ## 2026-06-02 17:04
 - [2026-06-02 17:04:34] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:05
+- [2026-06-02 17:05:06] **用户**: 那我应该怎么处理ssh吗难道下载一个支持tty的工具管理吗 社区怎么做
+- [2026-06-02 17:05:17] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 17:05:31] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
