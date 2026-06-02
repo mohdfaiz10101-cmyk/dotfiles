@@ -874,3 +874,17 @@ tmux attach -t opserve
 
 ## 2026-06-02 18:01
 - [2026-06-02 18:01:10] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 18:02
+- [2026-06-02 18:02:13] **AI(sisyphus)**: [ok] 已经有了 — 不需要额外配置
+
+Caddy 里已经配好了 `/oc-serve/` → 4096 的反代（第256行），7699 端口已通过 Tailscale Funnel 公网暴露。
+
+**直接访问**：
+```
+https://nixos-1.tail60cff7.ts.net/oc-serve/
+```
+
+验证：本地 `curl http://127.0.0.1:7699/oc-serve/` → 200 OK。
+
+之前单独开的 4096 tailscale serve 已关闭（多余，且 connection aborted 可能是 opencode serve 的 WebS
