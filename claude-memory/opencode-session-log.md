@@ -2049,3 +2049,8 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 ### Done
 - 配置 FRP 隧道：`frps.toml` 添加 19180 端口白名单，`frpc.toml` 添加 Termix 代
 - [2026-06-02 23:54:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:57
+- [2026-06-02 23:57:22] **AI(sisyphus)**: [ok] Termix已就绪 -- DuckDNS公网+FRP隧道+Container+systemd -- 全部已配置并通过验证
+
+[完成] Termix部署 -- 公网`http://charlie1990.duckdns.org:19180` | admin登录`charlie/admin123` | FRP双tunnel + Cloudflare备用全部持久化
