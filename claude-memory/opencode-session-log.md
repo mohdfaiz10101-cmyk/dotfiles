@@ -1648,3 +1648,18 @@ tmux attach -t oc-glm51
 | fcitx5 | active | 中文输入法 |
 
 voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool 不支持 CJK）。我先下载模型并检查中文支持。
+
+## 2026-06-02 22:48
+- [2026-06-02 22:48:21] **AI(sisyphus)**: [ok] voxtype 切换到本地 Whisper base 模型 -- 中英混输可用
+[ok] 服务重启 -- active/Result=success
+
+**当前语音输入方案**：
+
+| 项目 | 详情 |
+|------|------|
+| 工具 | voxtype（开源 Rust，GPL-3.0） |
+| 引擎 | Whisper base（142MB，多语言） |
+| 触发 | 按住 ScrollLock → 说话 → 松开自动转写粘贴 |
+| 输出 | 剪贴板 + Shift+Insert 粘贴 |
+
+**关于"智能学习"**：voxtype 本身没有学习功能。如果要做智能学习
