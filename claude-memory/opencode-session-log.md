@@ -308,3 +308,13 @@ test only: print one line and exit
   allowed in this context at line 2 column 57
 
 ⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/
+
+## 2026-06-02 13:21
+- [2026-06-02 13:21:03] **AI(sisyphus)**: [ok] benchmark -- description 已加引号
+[ok] browser-qa -- description 已加引号
+[ok] canary-watch -- description 已加引号
+[ok] product-lens -- description 已加引号
+[ok] design-system -- description 已加引号
+[ok] safety-guard -- description 已加引号
+
+根因：6个SKILL.md的`description`字段含未引号冒号，YAML解析器将其误判为嵌套映射。修复：双引号包裹所有description值
