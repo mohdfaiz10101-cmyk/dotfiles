@@ -2185,3 +2185,6 @@ sending request for url
 ## 2026-06-03 01:08
 - [2026-06-03 01:08:21] **AI(sisyphus)**: P0-2 done. Now P0-3 — Letta Agent ID de-hardcode with name lookup:
 - [2026-06-03 01:08:32] **AI(sisyphus)**: 找到根因了。`opencode.yaml` **缺少 `adapter` 段**，所以 Python daemon 不知道怎么给 opencode 类型创建网络 adapter。需要补上。
+
+## 2026-06-03 01:09
+- [2026-06-03 01:08:51] **AI(sisyphus)**: OpenClaw adapter 很复杂（WebSocket + 设备认证）。对于 opencode，我需要一个简单的 adapter：通过 `opencode run --format json` subprocess 调用。
