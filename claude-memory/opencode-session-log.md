@@ -2151,3 +2151,11 @@ global>body{font-family:Arial,Helvetica,sans-serif}.cont
 before completion: error
 sending request for url
 (https://chatgpt.com/backend-api/codex/responses)
+
+## 2026-06-03 01:05
+- [2026-06-03 01:05:21] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-03 01:05:30] **AI(sisyphus)**: 两个问题：
+1. **sisyphus**: `Unknown agent type: opencode` — daemon 的 JS 层不认识 `opencode` 类型，只有 `claude/codex/cursor/nanoclaw/openclaw`
+2. **openclaw-agent**: 连上了但 poll 404 — hub 的 events API 路径不对
+
+先修 daemon.yaml — JS daemon 的 network adapter 只支持有限类型：
