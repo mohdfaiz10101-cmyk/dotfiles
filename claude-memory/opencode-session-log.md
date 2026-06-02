@@ -1965,3 +1965,6 @@ https://dublin-third-delayed-geology.trycloudflare.com
 - [2026-06-02 23:43:25] **AI(sisyphus)**: 用 DuckDNS：`http://charlie1990.duckdns.org:19180`
 
 Cloudflare 那个是临时域名，重启会变，仅作备用。
+
+## 2026-06-02 23:44
+- [2026-06-02 23:44:07] **用户**: 我手机hermes 不是有个tmux窗口啊 哪个地址用访问
