@@ -979,3 +979,12 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 
 ## 2026-06-02 18:35
 - [2026-06-02 18:34:44] **用户**: 为什么是herme推送 你直接adb推送不行吗 给个推送方案 telgram不是多端同步的吗
+
+## 2026-06-02 19:35
+- [2026-06-02 19:34:51] **AI(sisyphus)**: [ok] MuseTalk float16推理 -- 23帧生成，1080x1920，7.08s
+[ok] ADB推送到手机 -- /sdcard/Download/musetalk/niumoumou_test.mp4
+[ok] Telegram分享意图已发送 -- 手机应弹出联系人选择界面
+
+手机端选择"Saved Messages"发送后，桌面端Telegram自动同步可观看。
+
+推送方案：ADB推送+Telegram多端同步优于Hermes，因为Hermes无频道配置且需要额外bot token，ADB直达手机是最短路径。
