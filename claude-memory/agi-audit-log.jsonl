@@ -1099,3 +1099,4 @@
 {"ts": "2026-06-03 01:34", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-03 01:35", "type": "cycle", "summary": "系统运行平稳，CPU占用略高但服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-03 01:36", "type": "cycle", "summary": "系统运行平稳，正在进行 Nix 构建任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-03 01:37", "type": "cycle", "summary": "系统运行正常，mihomo 进程占用 CPU 较高但属正常波动", "alert_count": 0, "skipped_llm": false}
