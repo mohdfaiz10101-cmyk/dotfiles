@@ -2019,3 +2019,6 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 - 配置 FRP 隧道：`frps.toml` 添加 19180 端口白名单，`frpc.toml` 添加 Termix 代理
 - 解决 `frp
 - [2026-06-02 23:48:46] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:50
+- [2026-06-02 23:50:35] **用户**: 但是他没纠正 识别和准确率不高
