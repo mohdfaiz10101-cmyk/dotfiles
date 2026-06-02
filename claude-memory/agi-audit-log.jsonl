@@ -839,3 +839,4 @@
 {"ts": "2026-06-02 20:23", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:24", "type": "cycle", "summary": "系统运行正常，无服务异常，资源使用率低", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:25", "type": "cycle", "summary": "系统运行正常，资源使用率低，无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 20:26", "type": "cycle", "summary": "系统负载较高但核心服务正常，存在CPU占用异常进程", "alert_count": 2, "skipped_llm": false}
