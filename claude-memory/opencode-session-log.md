@@ -1215,3 +1215,15 @@ Extract ONLY:
 2. How to configure hosts in bulk? Is there import/export?
 3. What are the en
 - [2026-06-02 20:14:59] **AI(explore)**: The file `/home/charlie/.local/share/opencode/tool-output/tool_e88410e5a001RyTCmO06Umhul2` is **truncated/corrupted**. It only contains GitHub page metadata and the first few lines of the README header — the actual README content (API docs, docker-compose config, credentials, CLI usage, etc.) is mis
+
+## 2026-06-02 20:16
+- [2026-06-02 20:15:48] **用户**: Search the file /home/charlie/.local/share/opencode/tool-output/tool_e8842be910010m9g60KuD14fb2 which is the scraped GitHub README for GlassHaven/Haven.
+
+Extract ONLY:
+1. What is Haven? Brief description
+2. What protocols does it support? (SSH, VNC, RDP, SFTP, etc.)
+3. How to install? (F-Droid, Goog
+- [2026-06-02 20:15:50] **AI(explore)**: - **What is Haven?** Free SSH, VNC, RDP & SFTP client for Android
+- **Protocols supported:** SSH, VNC, RDP, SFTP
+- **How to install:** Not specified in the scraped file (F-Droid / Google Play / APK details not captured)
+- **Key features:** Not specified in the scraped file (README body content not c
