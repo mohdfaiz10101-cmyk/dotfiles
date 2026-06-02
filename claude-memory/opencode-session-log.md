@@ -2220,3 +2220,16 @@ sending request for url
 
 ## 2026-06-03 01:20
 - [2026-06-03 01:20:41] **AI(sisyphus)**: v0.15.1 已经够了（落后 v0.15.2 仅2个 commit，且网络问题拉不下来）。现在验证功能：
+
+## 2026-06-03 01:21
+- [2026-06-03 01:21:26] **AI(sisyphus)**: 两个问题都修了：
+
+**Nexterm 不在菜单**
+- Nexterm 是 Docker 容器（Web终端），端口 8090，不是原生桌面应用
+- 已创建 `.desktop` 文件 → rofi/菜单里现在能搜到 "Nexterm"
+- 点击会用 Floorp 打开 `http://localhost:8090`
+- 容器已设为 `restart=unless-stopped`，开机自启
+
+**xterm 字小看不清**
+- 原来没有 `~/.Xresources` 配置，xterm 用默认微型字体和裸色
+- 已创建 Solarized Dark 主题：字体 14px，深蓝底 + 浅灰字，
