@@ -868,3 +868,6 @@ tmux attach -t opserve
 | DuckDNS | `charlie1990.duckdns.org` | 需要 VPS 反代，但 VPS SSH 拒绝访问 |
 
 **关于 DuckDNS**：`charlie1990
+
+## 2026-06-02 18:01
+- [2026-06-02 18:00:39] **用户**: https://nixos-1.tail60cff7.ts.net:4096/ 这个connection aborted
