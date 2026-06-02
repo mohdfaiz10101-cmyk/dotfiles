@@ -550,3 +550,17 @@ hqssh现有3个系统:
 [ok] letta-db healthy
 [ok] letta-chromadb healthy
 [ok] API /v1/agents/ →
+
+## 2026-06-02 16:01
+- [2026-06-02 16:01:12] **用户**: 重启 OpenCode 会话，执行以下操作：
+1. `systemctl --user restart agi-brain.service`
+2. 清理 `~/.local/state/verify/verify-state.json`
+3. 运行 `bash ~/.local/bin/ai-rules-sync.sh`
+4. 输出提示：请按 Ctrl+C 退出当前会话，然后重新运行 `opencode`
+- [2026-06-02 16:01:22] **AI(sisyphus)**: [ok] agi-brain -- 已重启，active
+[ok] verify-state.json -- 已清理
+[ok] ai-rules-sync -- 同步完成，AGENTS.md 已编译
+
+---
+
+请按 **Ctrl+C** 退出当前 OpenCode 会话，然后重新运行 `opencode` 以加载新配置。
