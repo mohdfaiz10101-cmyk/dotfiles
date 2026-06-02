@@ -1400,3 +1400,8 @@ source ~/.zshrc && oc51
 
 ## 2026-06-02 20:52
 - [2026-06-02 20:52:07] **用户**: 什么意思 我手机要怎么连
+
+## 2026-06-02 20:53
+- [2026-06-02 20:52:39] **用户**: 我手机连上局域网了
+- [2026-06-02 20:52:40] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 20:52:41] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
