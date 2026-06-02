@@ -1739,3 +1739,14 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 ## 2026-06-02 23:02
 - [2026-06-02 23:02:30] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
 - [2026-06-02 23:02:34] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:03
+- [2026-06-02 23:02:44] **AI(sisyphus)**: [ok] SelfHealPanel 接入完毕 -- 端口 3000 可访问
+
+[ok] 新建 SelfHealPanel.tsx -- 6868 bytes, 统计条+告警+执行记录+刷新
+[ok] page.tsx PANEL_MAP -- self-heal 已注册
+[ok] NavBar.tsx -- 监控→自愈 (Wrench图标)
+[ok] bun run build -- 编译成功 23.1s
+[ok] agi-control-plane 重启 -- 端口 3000 返回 200
+
+API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
