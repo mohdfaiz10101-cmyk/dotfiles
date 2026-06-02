@@ -1804,3 +1804,12 @@ API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
 
 **Web 终端方案**（最灵活）：
 - ttyd：将终端暴露为 Web 
+
+## 2026-06-02 23:07
+- [2026-06-02 23:07:22] **AI(sisyphus)**: [ok] Hermes bridge — 去掉硬编码 provider/model，走 config.yaml 默认 litellm/step-3.5
+[ok] phone-connect-mcp.py — 修复3个根因缺陷，语法验证通过
+[fail] phone-connect MCP 进程 — 被杀后未重启，需重启 OpenCode 会话或手动启动
+
+**修复详情**：
+1. `_dedup_devices` 原来返回标签 (`phone-tailscale1`) → ADB 无法识别，现改为返回实际地址 (`100.108.28.44:5555`)
+2. 默认连接方法跳过 `100.10
