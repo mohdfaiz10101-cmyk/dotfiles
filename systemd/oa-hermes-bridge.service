@@ -1,0 +1,27 @@
+[Unit]
+Description=OpenAgents MCP Bridge — Hermes
+After=network.target hermes-gateway.service openagents-network.service
+Requires=hermes-gateway.service openagents-network.service
+
+OnFailure=sentinel-onfailure@oa-hermes-bridge.service
+StartLimitIntervalSec=60
+StartLimitAction=none
+StartLimitBurst=10
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent hermes --channel learn
+WorkingDirectory=/home/charlie/crewai-project
+Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin:/home/charlie/.local/bin
+Environment=PYTHONUNBUFFERED=1
+Environment=http_proxy=
+Environment=https_proxy=
+Environment=HTTP_PROXY=
+Environment=HTTPS_PROXY=
+Environment=ALL_PROXY=
+Environment=all_proxy=
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

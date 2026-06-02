@@ -268,3 +268,154 @@ test only: print one line and exit
 - 能整合就整合，避免碎片化配置和重复入口。
 - 默认本地优先、轻量优先、稳定优先。
 - `opencode` 是主执行器，其他 agent/服务应为它增强，而不是替代它。
+
+## 2026-06-02 13:06
+- [2026-06-02 13:05:56] **用户**: 你必须严格遵守以下上下文包，不能跳过其中的偏好、决策、runbook。
+
+# AI Context Pack
+
+生成时间: 2026-06-02 13:05:44
+主题: 交互式会话 /home/charlie/.openclaw/workspace
+
+## 用户偏好
+# 用户偏好
+
+更新时间: 2026-06-02
+
+## 核心偏好
+- 始终使用中文回复。
+- 优先修根因，不接受只重启掩盖问题。
+- 能整合就整合，避免碎片化配置和重复入口。
+- 默认本地优先、轻量优先、稳定优先。
+- `opencode` 是主执行器，其他 agent/服务应为它增强，而不是替代它。
+
+## 运维偏好
+- 网
+
+## 2026-06-02 13:07
+- [2026-06-02 13:07:12] **AI(sisyphus)**: 上下文包已加载。偏好、决策、教训已就绪。
+
+当前 `op-tasks.md` 有待办：
+- `[CC→OP] [high]` 巡检自动修复链（ai-watchdog/waybar-guardian/letta-health-guard 等 9 项）— 诊断输出，不修改系统
+
+请指示。
+
+## 2026-06-02 13:20
+- [2026-06-02 13:20:01] **用户**: Skipped loading 6 skill(s) due to invalid SKILL.md files.
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/everything-claude-
+  code/skills/benchmark/SKILL.md: invalid YAML: mapping values are not
+  allowed in this context at line 2 column 57
+
+⚠ /mnt/pool-disks/POOL-B1/home-offload/auto-migrate/
+
+## 2026-06-02 13:21
+- [2026-06-02 13:21:03] **AI(sisyphus)**: [ok] benchmark -- description 已加引号
+[ok] browser-qa -- description 已加引号
+[ok] canary-watch -- description 已加引号
+[ok] product-lens -- description 已加引号
+[ok] design-system -- description 已加引号
+[ok] safety-guard -- description 已加引号
+
+根因：6个SKILL.md的`description`字段含未引号冒号，YAML解析器将其误判为嵌套映射。修复：双引号包裹所有description值
+
+## 2026-06-02 13:21
+- [2026-06-02 13:21:20] **用户**: 为什么我按下 super + space后出来两个drum界面 我只需一个啊 你推荐用哪个
+
+## 2026-06-02 13:24
+- [2026-06-02 13:23:43] **AI(sisyphus)**: **根因**：`~/.config/hypr/hyprland.conf` 第16行 — `Super+Space` 绑定了 `wofi --show drun`（应用启动器），同时 fcitx5 也通过 Wayland input-method 协议响应这个按键弹出输入法选择器。两个界面同时出现。
+
+**文件是 Nix store 管理的只读文件，我无法直接修改。**
+
+**修复**（需要你手动改 `/etc/nixos/modules/hyprland.nix` 或 home-manager 里的 hyprland 配置源）：
+
+```nix
+# 把 Super+Space 改成 fcit
+
+## 2026-06-02 13:40
+- [2026-06-02 13:40:16] **用户**: 不是ctrl space 是 win + space
+
+## 2026-06-02 13:42
+- [2026-06-02 13:42:22] **用户**: but my mobile musiclet have only 200+ songs
+
+## 2026-06-02 13:51
+- [2026-06-02 13:50:58] **用户**: 问题是 step或者code 的额度 像cli命令一样 显示额度 不能显示在waybar上吗或者我workspace的看板
+- [2026-06-02 13:51:10] **用户**: 就是cli 的status命令
+
+## 2026-06-02 13:52
+- [2026-06-02 13:51:50] **AI(sisyphus)**: The phone went into deep sleep and ADB is unstable. Let me explain the actual situation:
+
+The syncthing Music folder on the computer only has **175 music files**:
+- CloudMusic: 3 首
+- NetEase: 14 首
+- NetEase_Decrypted: 158 首
+- Recordings: 85 个通话录音（不是音乐）
+
+200+ 歌曲 = 正确，因为实际只有 175 首正规音乐。
+
+但在 `/mnt/data/
+
+## 2026-06-02 13:52
+- [2026-06-02 13:52:17] **AI(sisyphus)**: [ok] 已复制 TacticsOgre_OST 到同步目录 -- 84 首歌曲
+[ok] 触发 syncthing 扫描 -- 下次手机连接时自动同步
+
+**你的 200+ 首 = 175 首正规音乐，这是正确的。** 之前同步的只有 CloudMusic(3) + NetEase(14) + NetEase_Decrypted(158) = 175 首。有个 `TacticsOgre_OST`（84首，最终幻想战略版原声）在 `/mnt/data/Music/` 但没被纳入同步目录，现在已补上。等手机 WiFi 连上后自动同步，总计 259 首。
+
+## 2026-06-02 13:55
+- [2026-06-02 13:54:50] **用户**: 那我网易云音乐的歌单和汽水音乐歌单 都全部下载了吗？是双向实时同步的吗 能定期下载歌单吗
+
+## 2026-06-02 13:58
+- [2026-06-02 13:57:45] **用户**: 在手机侧应使用这组值：
+
+  - HQSSH / Codex CLI / Tailscale：host=100.119.174.25 port=22
+    user=charlie
+
+  - HQSSH / Codex CLI / 公网 FRP：host=charlie1990.duckdns.org port=2223
+    user=charlie
+
+  - OpenCode Serve / Tailscale：http://100.119.174.25:4096
+  - OpenCode Serve / 公网：http://charlie1990.duckdns.org:18091
+
+
+## 2026-06-02 13:59
+- [2026-06-02 13:58:50] **AI(sisyphus)**: [ok] hqssh config.yaml 已修正 — public-direct 端口 22→2223
+[ok] hqsshd 运行中 — 手机可连
+[完成] 配置总结：
+
+**手机 hqssh 快速连接**：
+| 入口 | 值 |
+|------|-----|
+| Tailscale SSH | `charlie@100.119.174.25:22` |
+| 公网 FRP SSH | `charlie@charlie1990.duckdns.org:2223` |
+
+**手机浏览器快速访问**：
+| 服务 | URL |
+|------|-----|
+| OpenCode Serve |
+
+## 2026-06-02 14:13
+- [2026-06-02 14:12:45] **用户**: 那你不能配置文件推送到手机吗 我需草直接修改 你不能直接改？不想手打
+
+## 2026-06-02 14:52
+- [2026-06-02 14:51:52] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 14:52
+- [2026-06-02 14:52:41] **用户**: 完成了吗
+
+## 2026-06-02 14:53
+- [2026-06-02 14:53:35] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 14:54
+- [2026-06-02 14:53:59] **用户**: 怎么要那么久 是我选的工具不对吗
+
+## 2026-06-02 14:55
+- [2026-06-02 14:55:21] **AI(sisyphus)**: 现在重写脚本，用发现的 `QueryAccountBalance` API：
+
+## 2026-06-02 14:57
+- [2026-06-02 14:57:03] **AI(sisyphus)**: 数据抓取成功。现在更新 waybar 显示脚本，让它展示更丰富的信息：
+
+## 2026-06-02 15:01
+- [2026-06-02 15:00:51] **AI(sisyphus)**: 完美运行。现在验证waybar显示：
+
+## 2026-06-02 15:03
+- [2026-06-02 15:02:58] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.

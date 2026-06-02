@@ -1,15 +1,16 @@
 [Unit]
-Description=OpenAgents MCP Bridge — CrewAI
-After=network.target crewai-gateway.service openagents-network.service
-Requires=crewai-gateway.service openagents-network.service
+Description=OpenAgents MCP Bridge — AGI Brain
+After=network.target agi-brain.service openagents-network.service
+Requires=agi-brain.service openagents-network.service
 
-OnFailure=sentinel-onfailure@oa-crewai-bridge.service
+OnFailure=sentinel-onfailure@oa-agi-brain-bridge.service
 StartLimitIntervalSec=60
 StartLimitAction=none
 StartLimitBurst=10
+
 [Service]
 Type=simple
-ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent crewai --channel development
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent agi-brain --channel brain
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
 Environment=PYTHONUNBUFFERED=1
