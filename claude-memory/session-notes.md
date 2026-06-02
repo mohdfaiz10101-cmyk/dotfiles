@@ -1,13 +1,18 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-02 12:00
+> 来源: changelog.jsonl | 重建时间: 2026-06-02 12:30
 
 ## 2026-06-02
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **agi**: agi/flows/index.json MODIFY
+- [file-change] **agi**: agi/flows/index.json MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-02.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.config**: .config/systemd/user/hqsshd.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-serve.service MODIFY
 - [file-change] **.config**: .config/systemd/user/opencode-serve.service MODIFY
@@ -15,6 +20,11 @@
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/workspace/memory/2026-06-02.md MODIFY
+- [file-change] **.openclaw**: .openclaw/workspace/memory/2026-06-02.md MODIFY
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/telegram/bot-info-ops.json MOVED_TO
@@ -25,6 +35,7 @@
 - [file-create] **.openclaw**: .openclaw/telegram/update-offset-main.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/update-check.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/workspace/memory/2026-06-02.md CREATE
+- [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/systemd/user/fcitx5-adaptive-check.service DELETE
 - [file-delete] **.config**: .config/systemd/user/fcitx5-adaptive-check.timer DELETE
 - [file-delete] **.config**: .config/systemd/user/input-switcher.service DELETE
