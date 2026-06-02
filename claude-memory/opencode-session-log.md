@@ -2122,3 +2122,6 @@ global>body{font-family:Arial,Helvetica,sans-serif}.cont
 - [2026-06-03 00:52:28] **AI(sisyphus)**: opencode adapter 使用 `opencode run --format json` 而非 `codex` CLI，通过 stdin 传入 prompt。opencode CLI 会读取自己的 `opencode.json` 配置连接 LiteLLM。
 
 现在重启 daemon 验证：
+
+## 2026-06-03 00:55
+- [2026-06-03 00:55:22] **用户**: 我都要 但是你要全面提升 不要空壳 最好把我opencode openagent考虑进去 codex等这些基础的设施 也要得到全面前沿提升和升级
