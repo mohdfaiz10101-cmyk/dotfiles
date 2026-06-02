@@ -1754,3 +1754,34 @@ API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
 ## 2026-06-02 23:04
 - [2026-06-02 23:03:47] **用户**: 这个5.1公网访问哪个地址
 - [2026-06-02 23:03:47] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 23:06
+- [2026-06-02 23:05:47] **AI(sisyphus)**: [ok] voxtype + Ollama AI纠错完整方案已部署
+
+## 完成的工作
+
+### 核心组件
+| 文件 | 功能 |
+|------|------|
+| `~/.local/bin/voice-ai-pipeline` | 主脚本：剪贴板→Ollama纠错→粘贴 |
+| `~/.local/bin/voice-ai-correct` | 简化版：剪贴板纠错（不粘贴） |
+| `~/.local/bin/voice-ai-context` | 上下文感知包装器 |
+| `~/.local/bin/voice-dict-manage` | 个性化词典管理 |
+| `~/.local/
+- [2026-06-02 23:06:14] **用户**: 研究并整理以下技术方案，用中文回答，结构化输出：
+
+## 背景
+用户已有 ttyd + tmux 组合，想了解为什么本地终端不能像浏览器那样自定义按钮，以及有哪些支持自定义的终端方案。
+
+## 需要覆盖的维度
+
+### 1. 为什么本地终端难以自定义按钮？
+- 终端模拟器基于 ANSI 转义码协议，只能处理文本流
+- 没有原生 GUI 框架
+- 图形协议（Sixel、Kitty Graphics Protocol）的局限性
+- 六键协议（鼠标事件）的局限性
+
+### 2. 有哪些支持自定义的终端方案？（按灵活度排列）
+
+**Web 终端方案**（最灵活）：
+- ttyd：将终端暴露为 Web 
