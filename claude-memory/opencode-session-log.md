@@ -1892,3 +1892,11 @@ https://dublin-third-delayed-geology.trycloudflare.com
 
 ## 2026-06-02 23:23
 - [2026-06-02 23:22:46] **用户**: 以后默认公网用duckdns 请配置路由器做端口转发的
+
+## 2026-06-02 23:26
+- [2026-06-02 23:26:03] **AI(sisyphus)**: [ok] 手机 ADB 连接恢复 — 100.108.28.44:5555 (PKR110)
+[ok] FUTO Keyboard v0.1.28 已设为默认输入法
+[ok] FUTO Voice Input v1.3.7-1 已安装
+[ok] 发现 FUTO 无内置记忆/学习能力，需自建 voice-memory 后处理层
+[ok] Letta 记忆已写入
+[完成] 阶段总结 — 基础组件就绪，下一步启用语音输入并设计个性化记忆层
