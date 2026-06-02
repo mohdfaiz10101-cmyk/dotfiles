@@ -1417,3 +1417,14 @@ source ~/.zshrc && oc51
 3. 压缩期间模型调用工具辅助摘要 → OpenCode 拦截工具调用 → 报 `tool not allowed`
 
 **
+
+## 2026-06-02 20:55
+- [2026-06-02 20:54:53] **AI(sisyphus)**: [!] 这个操作需要你本地终端 — tmux attach 必须跑在真实 TTY 里，我这边 `not a terminal`。
+
+你在你的终端里跑：
+
+```
+tmux attach -t oc-glm51
+```
+
+进去后 opencode 已经加载好了 GLM 5.1，直接对话即可。
