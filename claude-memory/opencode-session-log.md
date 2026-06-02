@@ -1227,3 +1227,6 @@ Extract ONLY:
 - **Protocols supported:** SSH, VNC, RDP, SFTP
 - **How to install:** Not specified in the scraped file (F-Droid / Google Play / APK details not captured)
 - **Key features:** Not specified in the scraped file (README body content not c
+
+## 2026-06-02 20:17
+- [2026-06-02 20:16:49] **用户**: 没看到自愈标签页。下一步都做了。
