@@ -578,3 +578,6 @@ hqssh现有3个系统:
 - tmux 内的 `while true` 循环会在 opencode 退出后 3 秒自动拉起新实例
 
 用法：在终端里直接跑 `openclaw-restart` 即可（不能在 opencode 会话内跑，会把自己杀掉）。
+
+## 2026-06-02 16:07
+- [2026-06-02 16:06:57] **用户**: 他们不是说 opencode内部已经有restart命令了吗
