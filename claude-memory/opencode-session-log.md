@@ -1252,3 +1252,6 @@ Extract ONLY:
 - `~/.local/bin/runbook-engine`: 新增3条runbook（wechat-uos coredump/fcitx5残留/FRP端口）
 - `~/.local/bin/feed-to-runbook.sh`: 消费 op-live-feed.jsonl crit
 - [2026-06-02 20:19:28] **用户**: zram必须可以修复 或者保持正常 但是 disck backing 救急
+
+## 2026-06-02 20:21
+- [2026-06-02 20:20:37] **用户**: 真没看到 9800 你确定前端显示了吗
