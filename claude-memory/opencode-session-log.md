@@ -1698,3 +1698,19 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 - 检查系统现有语音服务：voxtype（active）、whisper（failed）、nix-voice-agent（active）、fcitx5（active）
 - 发现voxtype配置为远程Whisper模式，但
 - [2026-06-02 22:53:36] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 22:54
+- [2026-06-02 22:53:57] **AI(sisyphus)**: [ok] Tailscale 已配置 — 手机在外网可访问
+
+**连接方式：**
+
+1. 手机安装 **Tailscale**（Play Store 下载），登录同一个账号
+2. 打开 Termix 客户端，服务器地址填：
+   ```
+   https://nixos-1.tail60cff7.ts.net
+   ```
+3. 用户名 `charlie`，密码 `termix2026!`
+
+**前提：** 手机必须开 Tailscale 并保持后台运行，这样才会走 Tailscale 加密隧道连回家里。
+
+如果 Termix 客户端不支持 HTTPS 自签证书，可能需要先浏览器打开一次 `h
