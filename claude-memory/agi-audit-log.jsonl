@@ -378,3 +378,4 @@
 {"ts": "2026-06-02 11:58", "type": "cycle", "summary": "系统运行正常，CPU、内存及磁盘使用率均在合理范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 11:59", "type": "cycle", "summary": "系统运行正常，存在常规构建任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 12:00", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 12:01", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存使用率61%", "alert_count": 0, "skipped_llm": false}
