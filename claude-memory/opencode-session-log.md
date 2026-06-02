@@ -1840,3 +1840,6 @@ API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
 | 本质 | 网络渲染 | 原生 GPU | 本地 Chromium |
 
 **WezTerm 是唯一同时满足「原生性能 + 可编程 UI」的终端**。Hyper/
+
+## 2026-06-02 23:14
+- [2026-06-02 23:13:48] **用户**: 不行啊这个链接time out
