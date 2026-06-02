@@ -821,3 +821,4 @@
 {"ts": "2026-06-02 20:02", "type": "cycle", "summary": "系统运行平稳，CPU/内存负载正常，无服务异常或待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:03", "type": "cycle", "summary": "系统运行正常，CPU/内存负载低，无异常服务告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 20:04", "type": "cycle", "summary": "系统运行正常，CPU与内存负载均衡，磁盘空间充足", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 20:06", "type": "cycle", "summary": "系统运行正常，CPU瞬时波动属于正常范围", "alert_count": 0, "skipped_llm": false}
