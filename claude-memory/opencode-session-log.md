@@ -410,3 +410,6 @@ The syncthing Music folder on the computer only has **175 music files**:
 
 ## 2026-06-02 14:55
 - [2026-06-02 14:55:21] **AI(sisyphus)**: 现在重写脚本，用发现的 `QueryAccountBalance` API：
+
+## 2026-06-02 14:57
+- [2026-06-02 14:57:03] **AI(sisyphus)**: 数据抓取成功。现在更新 waybar 显示脚本，让它展示更丰富的信息：
