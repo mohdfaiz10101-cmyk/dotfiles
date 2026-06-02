@@ -960,3 +960,4 @@
 {"ts": "2026-06-02 22:45", "type": "cycle", "summary": "系统运行正常，资源使用率低，无待处理任务", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 22:46", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 22:47", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均处于健康水平", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 22:48", "type": "cycle", "summary": "系统运行平稳，存在Python进程短时CPU占用", "alert_count": 0, "skipped_llm": false}
