@@ -973,3 +973,6 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 - [2026-06-02 18:28:48] **AI(sisyphus)**: [ok] MuseTalk float16推理 -- 视频生成成功
 [ok] 视频: 1080x1920, 7.08s, 236KB, 保存到 ~/agi/data/videos/niumoumou_test.mp4
 [skip] Telegram推送 -- Hermes无Telegram频道配置
+
+## 2026-06-02 18:34
+- [2026-06-02 18:33:45] **用户**: 如果封装mcp或者加langgraph流程会不会好一点 看下社区方案
