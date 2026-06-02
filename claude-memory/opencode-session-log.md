@@ -1636,3 +1636,15 @@ tmux attach -t oc-glm51
 ### Done
 - 诊断 opencode 卡顿：CPU/内存本身正常，根因为 swap
 - [2026-06-02 22:47:06] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 22:47
+- [2026-06-02 22:47:24] **AI(sisyphus)**: 当前语音输入架构：
+
+| 组件 | 状态 | 说明 |
+|------|------|------|
+| voxtype | active | 开源语音输入，Whisper base.en，ydotool 输入 |
+| whisper | failed | 旧服务，模型缺失已停用 |
+| nix-voice-agent | active | Bridge 端口 24802 |
+| fcitx5 | active | 中文输入法 |
+
+voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool 不支持 CJK）。我先下载模型并检查中文支持。
