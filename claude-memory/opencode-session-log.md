@@ -1726,3 +1726,6 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 [ok] 创建衰减定时器 — mem0-decay.timer 每日 03:00 自动清理旧条目
 [ok] 验证服务 — openclaw:8080=200, opencode-web:8081=200
 [ok] 内存恢复 — 已用 13Gi，
+
+## 2026-06-02 22:58
+- [2026-06-02 22:58:31] **用户**: error code -6 connection closed
