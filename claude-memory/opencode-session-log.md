@@ -1714,3 +1714,6 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 **前提：** 手机必须开 Tailscale 并保持后台运行，这样才会走 Tailscale 加密隧道连回家里。
 
 如果 Termix 客户端不支持 HTTPS 自签证书，可能需要先浏览器打开一次 `h
+
+## 2026-06-02 22:55
+- [2026-06-02 22:55:35] **用户**: 为什么你说缺额度 用我litellm里面的step和glm不行 手机连tailscale了
