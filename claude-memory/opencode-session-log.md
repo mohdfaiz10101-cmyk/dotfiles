@@ -856,3 +856,15 @@ tmux attach -t opserve
 
 ## 2026-06-02 17:55
 - [2026-06-02 17:55:15] **用户**: 能不能attach到duckdns上和tailscale对应的4096端口
+
+## 2026-06-02 17:57
+- [2026-06-02 17:56:41] **AI(sisyphus)**: [ok] Tailscale Serve 已配置 — `https://nixos-1.tail60cff7.ts.net:4096/`
+
+**访问方式**：
+
+| 方式 | 地址 | 范围 |
+|------|------|------|
+| Tailscale tailnet | `https://nixos-1.tail60cff7.ts.net:4096/` | 所有 Tailscale 设备 |
+| DuckDNS | `charlie1990.duckdns.org` | 需要 VPS 反代，但 VPS SSH 拒绝访问 |
+
+**关于 DuckDNS**：`charlie1990
