@@ -1343,3 +1343,21 @@ source ~/.zshrc && oc51
 
 ## 2026-06-02 20:34
 - [2026-06-02 20:34:23] **AI(sisyphus)**: 有4个待办
+
+## 2026-06-02 20:35
+- [2026-06-02 20:34:40] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 20:34:40] **AI(sisyphus)**: ## 已完成工作总结
+
+**Termix 部署完成：**
+- Docker 容器运行在端口 9180，nginx 代理 → 后端 30001+
+- 数据库加密存储（`db.sqlite.encrypted`），启动时解密到内存
+
+**用户与认证：**
+- 管理员 `charlie` / `termix2026!` 已创建
+- JWT cookie 认证，session 有效期至 2026-06-03
+
+**SSH 主机已导入（6台）：**
+| 主机 | 连接 | 分组 |
+|------|------|------|
+| NixOS | charlie@127.0.0.1:22 | 本地 |
+
