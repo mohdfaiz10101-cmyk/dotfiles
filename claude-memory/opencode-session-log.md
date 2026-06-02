@@ -363,3 +363,16 @@ The syncthing Music folder on the computer only has **175 music files**:
 
 ## 2026-06-02 13:55
 - [2026-06-02 13:54:50] **用户**: 那我网易云音乐的歌单和汽水音乐歌单 都全部下载了吗？是双向实时同步的吗 能定期下载歌单吗
+
+## 2026-06-02 13:58
+- [2026-06-02 13:57:45] **用户**: 在手机侧应使用这组值：
+
+  - HQSSH / Codex CLI / Tailscale：host=100.119.174.25 port=22
+    user=charlie
+
+  - HQSSH / Codex CLI / 公网 FRP：host=charlie1990.duckdns.org port=2223
+    user=charlie
+
+  - OpenCode Serve / Tailscale：http://100.119.174.25:4096
+  - OpenCode Serve / 公网：http://charlie1990.duckdns.org:18091
+
