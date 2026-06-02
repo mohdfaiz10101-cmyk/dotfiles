@@ -94,7 +94,24 @@ op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
 
 ## 磁盘分配规则（DISK_ALLOCATION — 死规则）
 | 分区 | 用途 | 限制 |
-|------|------|------|
+|------|------|---
+
+
+## 记忆系统状态（自动注入 2026-06-02 18:17）
+| 指标 | 值 |
+|------|-----|
+| KG实体/关系 | N/A / N/A |
+| Letta MCP | active |
+| lessons-learned条目 | 5 |
+| 历史会话数 | 0
+0 |
+
+### 高频主题（最近）
+
+
+> 以上由 memory-bootstrap.sh 自动注入，每小时更新
+
+---|
 | `/` 根分区 (NVMe) | 仅系统级 | ❌禁装应用数据 |
 | `/mnt/ai` (HDD ext4) | AI应用+服务数据 | ✅可全操作 |
 | `/mnt/data` (HDD NTFS) | 个人数据 | ❌NTFS禁npm/bun |

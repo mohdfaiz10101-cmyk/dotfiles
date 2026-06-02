@@ -117,3 +117,27 @@
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 18 minutes (healthy)
 
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 24 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 15 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 15 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 27 minutes (healthy)
+- [2026-06-02] [OP] 分析: SSH多路径管理 | 发现: 已有SSH config v3(ControlMaster+多路径回退)+tmux+mosh+ttyd | 建议: 用ttyd作主入口+tmux持久化，SSH仅用于传输/转发
+
+- [2026-06-02] [OP] 修复: context-pack未注入新任务 | 根因: memory-injector.py只从baseline.toml+lessons-learned提取，缺少user-preferences.md和decision-memory.md | 修复: 增强get_latest_memories()同时读取user-preferences.md(前6条偏好)+decision-memory.md(最近3条决策) | 教训: 任何新增的记忆文件类型都需要同步更新memory-injector的提取逻辑
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 11 minutes (healthy)
+
+- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 20 minutes
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 27 minutes (healthy)
+
+- [2026-06-02] [OP] 网络拓扑系统化 | 创建 network-topology.md (统一视图+决策树) + port-allocator.sh (自动预检) + memory-injector 增强 (网络拓扑注入所有agent) | 解决问题: 每次新会话AI重新推理网络连接方式，FRP端口/路由器/公网等反复踩坑

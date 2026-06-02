@@ -16,14 +16,30 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Ops Dispatcher — 自动执行层（死规则：禁止询问确认）
 
-<!-- memory-gate-inject: 17:00 -->
+<!-- memory-gate-inject: 19:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
-**教训**: - [2026-06-01] [OP] 修复: hermes FRP端口 | 根因: 19800/18092不在VPS allowPorts白名单 | 修复: 换18700(已在frps.toml白名单) | 教训: 新增FRP端口前先查~/ai-deploy/frps.toml
 **教训**: - [2026-06-01] [OP] 修复: whisper重启风暴 | 根因: ggml-medium.bin缺失 | 修复: 停用服务 | 模型: 仅base可用 | 教训: 迁移后检查模型文件路径
 **教训**: - [2026-06-01] [OP] 修复: fcitx5搜索记忆丢失 | 根因: 0字节临时文件user.dict_yamBgz残留(04:00崩溃)+Wayland前端已知不稳定 | 修复: 清理残留文件+重启fcitx5+确认waylandim.conf已禁用 | 教训: fcitx5崩溃后
+**教训**: - [2026-06-02] [OP] 分析: SSH多路径管理 | 发现: 已有SSH config v3(ControlMaster+多路径回退)+tmux+mosh+ttyd | 建议: 用ttyd作主入口+tmux持久化，SSH仅用于传输/转发
+**教训**: - [2026-06-02] [OP] 修复: context-pack未注入新任务 | 根因: memory-injector.py只从baseline.toml+lessons-learned提取，缺少user-preferences.md和decision-memory.md | 修复: 增强
+**教训**: - [2026-06-02] [OP] 网络拓扑系统化 | 创建 network-topology.md (统一视图+决策树) + port-allocator.sh (自动预检) + memory-injector 增强 (网络拓扑注入所有agent) | 解决问题: 每次新会话AI重新推理网络连
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

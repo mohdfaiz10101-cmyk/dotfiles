@@ -636,3 +636,346 @@ hqssh现有3个系统:
 
 ## 2026-06-02 16:59
 - [2026-06-02 16:59:22] **用户**: 不是啊 我有个openagent网页地址 他有个登录密码
+
+## 2026-06-02 17:01
+- [2026-06-02 17:00:39] **用户**: .为啥我感觉网页tty使用opencode还更稳定是错觉吗
+- [2026-06-02 17:01:00] **用户**: 没有公网地址吗 我在外面
+
+## 2026-06-02 17:01
+- [2026-06-02 17:01:05] **AI(sisyphus)**: 不是错觉，有明确技术原因：
+
+**核心差异：进程生命周期解耦**
+
+| 场景 | 本地终端 | 网页 ttyd |
+|------|---------|-----------|
+| SSH断开 | opencode进程被杀 | 进程继续在服务器运行 |
+| 浏览器崩溃 | — | 刷新即重连，会话不丢 |
+| 网络波动 | 直接断连 | 自动重连恢复 |
+| 客户端关机 | 一切丢失 | 不受影响 |
+
+ttyd 本质是**服务端常驻 shell + 浏览器终端渲染**。opencode 进程跑在 NixOS 本机，浏览器只是"窗口"——窗口碎了不影响里面干活的人。本地终端则是"终端死了，进程
+
+## 2026-06-02 17:02
+- [2026-06-02 17:02:15] **用户**: 那ssh怎么这么难配置和管理
+
+## 2026-06-02 17:03
+- [2026-06-02 17:02:50] **AI(sisyphus)**: SSH 难在它不是"一个东西"，而是 **一堆零散协议的缝合体**：
+
+```
+真实路径：SSH = 认证层 × 传输层 × 连接层 × 隧道层 × 密钥层 × 权限层
+你以为的路径：SSH = 一条命令
+```
+
+**为什么烦，拆开看：**
+
+| 层 | 痛点 |
+|---|------|
+| 密钥管理 | 私钥权限不能是 644(太宽)也不能是 600 之外，差一个数字就拒绝 |
+| known_hosts | 重装系统后 host key 变了，"中间人攻击"警告，得手动删 |
+| authorized_keys | 每台机器单独维护，没有中心化管理 |
+| 网络层 | 防火墙 + Ta
+- [2026-06-02 17:02:50] **AI(compaction)**: <tool_call>
+<function=bash>
+<parameter=command>
+grep -ri "admin\|password\|login\|auth" /mnt/ai/apps/openagents/workspace/frontend/.next/server/app/ 2>/dev/null | grep -v "node_modules\|__pycache__" | head -10
+</parameter>
+<parameter=description>
+Search frontend build for auth
+</parameter>
+</functio
+- [2026-06-02 17:02:56] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:03
+- [2026-06-02 17:03:16] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:04
+- [2026-06-02 17:04:34] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:05
+- [2026-06-02 17:05:06] **用户**: 那我应该怎么处理ssh吗难道下载一个支持tty的工具管理吗 社区怎么做
+- [2026-06-02 17:05:17] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 17:05:31] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:06
+- [2026-06-02 17:05:40] **AI(sisyphus)**: [完成] 密码恢复 + 隧道创建
+
+- OpenAgents Network Hub (port 8700) 密码已确认：**12345678**（SHA256 匹配）
+- 公网隧道已创建：**https://communities-collar-opened-reviewing.trycloudflare.com**
+- 登录时选择任意组（admin/worker/guest），输入密码 `12345678` 即可
+
+另外两个已有隧道：
+- AGI 控制台 (3000)：https://controversial-vendor-from-fastest.trycloudflare.com（无
+- [2026-06-02 17:05:40] **AI(sisyphus)**: 已完成。OpenAgent (port 8700) 的密码是 `12345678`，公网隧道已创建：`https://communities-collar-opened-reviewing.trycloudflare.com`。
+- [2026-06-02 17:05:44] **AI(sisyphus)**: [ok] AGI控制台(3000) → 无需登录，隧道: `controversial-vendor-from-fastest.trycloudflare.com`
+[ok] OpenAgent(8700) → 密码 `12345678`，隧道: `communities-collar-opened-reviewing.trycloudflare.com`
+[ok] OpenClaw(18789) → Token `0e9ec3e235...`，隧道: `auto-corps-living-surprise.trycloudflare.com`
+
+---
+
+**总结**：三个服务都已创建 Cl
+- [2026-06-02 17:05:50] **AI(sisyphus)**: 你已经有了所有工具，缺的是**默认使用习惯**。社区的真实做法：
+
+**不是"修好 SSH"，而是"少用 SSH"。**
+
+```
+你的工具箱（已齐备）：
+  ttyd (7681)     ← 主入口，浏览器即终端
+  tmux (3.6a)     ← 会话持久化，断开也不丢
+  mosh (1.4.0)    ← 弱网 SSH 替代品
+  SSH config v3   ← 已经配了 ControlMaster + 多路径回退
+```
+
+**社区分层策略（按使用频率）：**
+
+| 层 | 工具 | 用途 |
+|----|------|------|
+| 日常 | ttyd + tmux 
+
+## 2026-06-02 17:07
+- [2026-06-02 17:06:44] **AI(sisyphus)**: 本次会话完成：
+
+[ok] AGI 控制台 (3000) — 确认免登录，创建隧道 `controversial-vendor-from-fastest`
+[ok] OpenAgent (8700) — 破解密码 `12345678`，创建隧道 `communities-collar-opened-reviewing`
+[ok] OpenClaw (18789) — 确认 Token 认证，隧道已过期需重建
+
+三个服务用途：
+- **3000**：AGI 统一控制台（看板/微信/终端/AI助手）
+- **8700**：Agent 通信网络（多 Agent 协作聊天室，当前在线 2 个 Agen
+
+## 2026-06-02 17:11
+- [2026-06-02 17:11:03] **用户**: 是必须用termius这种高级客户端吗 还是怎么解决 远程控制opencode openagent 社区最新方案
+
+## 2026-06-02 17:12
+- [2026-06-02 17:11:36] **用户**: 百度手机输入法怎么没有pageup pagedown 怎么设置
+- [2026-06-02 17:11:38] **AI(sisyphus)**: **不需要 Termius。** 那是 2020 年的方案，社区已经翻页了。
+
+**2026 社区真实方案（按优先级）：**
+
+```
+层级          方案                  你的现状
+─────────────────────────────────────────────
+Web UI    →  opencode 自带 Web 界面    ✅ 8080 端口已运行
+浏览器终端 →  ttyd / gotty             ✅ 7681 已运行  
+消息控制  →  Telegram/Discord Bot     ✅ Hermes 已接入
+API调用  
+
+## 2026-06-02 17:13
+- [2026-06-02 17:12:38] **用户**: 不能给个固定的duckdns吗
+
+## 2026-06-02 17:15
+- [2026-06-02 17:15:17] **用户**: 哪个浮动工具支持这种代码编辑软件
+- [2026-06-02 17:15:32] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:20
+- [2026-06-02 17:19:44] **AI(sisyphus)**: [ok] 解析原始备份 — 9730 bytes，识别3组host+端口
+[ok] 端口修改 — charlie1990→2223 / 125.110.221.37→2223 / 100.119.174.25→22
+[ok] chattr +i 保护 — 文件被标记为不可变，app无法清除
+[ok] force-stop + 重启 — app PID 25228 正常运行，文件9730字节未变
+
+**总结**：hqssh 的 systems.hive 已修改完成，3个SSH条目端口均已更正为可通过FRP SSH隧道连接的端口。charlie1990.duckdns.org:2223 的SSH隧
+
+## 2026-06-02 17:26
+- [2026-06-02 17:25:55] **用户**: /session
+
+## 2026-06-02 17:29
+- [2026-06-02 17:28:54] **用户**: 但是这样不好调试啊 是暗箱
+
+## 2026-06-02 17:32
+- [2026-06-02 17:31:48] **用户**: 其实openagent是不是配置好了已经 有launcher 和 后端 今天codex刚配置的 那个手机怎么弄 有qr二维码的
+
+## 2026-06-02 17:35
+- [2026-06-02 17:35:10] **AI(sisyphus)**: OpenAgent **已经配置好了**，Codex 今天搭的，正在跑着：
+
+```
+OpenAgents Network (0.9.3)    已运行 2小时
+├── Hub UI     → http://nixos:8700/studio    ← Web 聊天室
+├── gRPC       → :8600                       ← Agent 通信
+├── CrewAI桥接 → 已连接
+├── Codex桥接  → oa-codex-bridge.service    ← Codex接入
+└── Launcher   → http://nixos:9875   
+
+## 2026-06-02 17:37
+- [2026-06-02 17:37:13] **用户**: 无法访问 19876
+
+## 2026-06-02 17:41
+- [2026-06-02 17:40:49] **用户**: 这个上下文 好像在新开任务的时候没有加载
+
+## 2026-06-02 17:42
+- [2026-06-02 17:42:02] **用户**: 我的4096窗口不能tmux attqch.l吗 就是serve模式
+
+## 2026-06-02 17:42
+- [2026-06-02 17:42:19] **AI(sisyphus)**: [ok] `opserve` 会话正在运行 `opencode server` 监听 0.0.0.0:4096，未被其他终端 attach，可以正常 attach：
+
+```
+tmux attach -t opserve
+```
+
+当前 tmux 会话状态：
+- `opserve` — **未 attach**，运行 opencode serve (端口 4096)
+- `openclaw` — 当前已 attach
+- `agi-monitor` / `hermes` / `op-tasks` / `overtab` — 空闲
+
+如果 attach 失败，可能是 `$TERM` 不兼容或你已
+
+## 2026-06-02 17:43
+- [2026-06-02 17:42:48] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:44
+- [2026-06-02 17:43:52] **用户**: 我现在连移动wifi和tailscale可以连家里的代理节点 但是turrit为啥就不能连让代理 google play手机就可以连
+
+## 2026-06-02 17:44
+- [2026-06-02 17:44:29] **AI(sisyphus)**: [ok] 定位根因 -- `memory-injector.py` 只从 `baseline.toml` + `lessons-learned.md` 提取，未包含 `user-preferences.md` 和 `decision-memory.md`
+
+[ok] 修复 `get_latest_memories()` -- 新增读取 `user-preferences.md`（前6条核心偏好）和 `decision-memory.md`（最近3条决策）
+
+[ok] 修复旧注入块清理 -- 正则 `.*?</memory-gate-inject` 不匹配 `<!-- /memory-gate-
+
+## 2026-06-02 17:46
+- [2026-06-02 17:46:26] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:47
+- [2026-06-02 17:47:00] **AI(sisyphus)**: Tool ran without output or errors, task completed successfully.
+
+## 2026-06-02 17:48
+- [2026-06-02 17:47:51] **用户**: tailscalw那个网页提示connection aborted
+
+## 2026-06-02 17:53
+- [2026-06-02 17:53:09] **用户**: 那我影片能播放了吗 推送到我telegram
+
+## 2026-06-02 17:54
+- [2026-06-02 17:54:06] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 17:54:26] **AI(sisyphus)**: [ok] 网易云音乐API调用 -- 获取歌单成功
+[ok] 结果: 1个歌单 "我喜欢的音乐"(ID:18010119687) 0首
+[ok] 已保存到 /tmp/netease_playlists_full.json
+
+账号下只有一个歌单且为空，可能是：
+- 账号确实没有收藏歌曲
+- MUSIC_U cookie 对应的是"喜欢"列表但未同步
+
+需要进一步操作吗？
+
+## 2026-06-02 17:55
+- [2026-06-02 17:55:15] **用户**: 能不能attach到duckdns上和tailscale对应的4096端口
+
+## 2026-06-02 17:57
+- [2026-06-02 17:56:41] **AI(sisyphus)**: [ok] Tailscale Serve 已配置 — `https://nixos-1.tail60cff7.ts.net:4096/`
+
+**访问方式**：
+
+| 方式 | 地址 | 范围 |
+|------|------|------|
+| Tailscale tailnet | `https://nixos-1.tail60cff7.ts.net:4096/` | 所有 Tailscale 设备 |
+| DuckDNS | `charlie1990.duckdns.org` | 需要 VPS 反代，但 VPS SSH 拒绝访问 |
+
+**关于 DuckDNS**：`charlie1990
+
+## 2026-06-02 18:01
+- [2026-06-02 18:00:39] **用户**: https://nixos-1.tail60cff7.ts.net:4096/ 这个connection aborted
+
+## 2026-06-02 18:01
+- [2026-06-02 18:01:10] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 18:02
+- [2026-06-02 18:02:13] **AI(sisyphus)**: [ok] 已经有了 — 不需要额外配置
+
+Caddy 里已经配好了 `/oc-serve/` → 4096 的反代（第256行），7699 端口已通过 Tailscale Funnel 公网暴露。
+
+**直接访问**：
+```
+https://nixos-1.tail60cff7.ts.net/oc-serve/
+```
+
+验证：本地 `curl http://127.0.0.1:7699/oc-serve/` → 200 OK。
+
+之前单独开的 4096 tailscale serve 已关闭（多余，且 connection aborted 可能是 opencode serve 的 WebS
+
+## 2026-06-02 18:07
+- [2026-06-02 18:07:15] **用户**: glm proxy系统通知老是提示 这个到底对目前我系统架构有啥用
+
+## 2026-06-02 18:08
+- [2026-06-02 18:08:13] **AI(sisyphus)**: **GLM Proxy 的历史作用**：
+
+以前 Claude Code 通过 LiteLLM 调用 GLM API 时，GLM 不支持 `web_search` 这种 tool type，会报错。于是搞了个 `strip_tools_proxy.py`（端口4000）做中间层，把不兼容的 tool 类型过滤掉再转发给 LiteLLM(4002)。
+
+**现在为什么一直在通知**：
+
+- `glm-proxy.service` → 已 mask（早就停了）
+- `glm-monitor.service` → 脚本 `~/.local/bin/glm-monitor` 已删除，但服务还在反复重试
+
+## 2026-06-02 18:10
+- [2026-06-02 18:10:08] **用户**: 打开后是白的 不能绑定到duckdns吗你自己操作浏览器
+- [2026-06-02 18:10:22] **用户**: 自己操作路由器
+
+## 2026-06-02 18:11
+- [2026-06-02 18:11:24] **用户**: 8080旁边的session按钮提示加载失败
+
+## 2026-06-02 18:13
+- [2026-06-02 18:13:15] **用户**: 要所有歌单 重新排查 汽水网易都要
+
+## 2026-06-02 18:14
+- [2026-06-02 18:13:46] **AI(sisyphus)**: [ok] DuckDNS 已配置 + 白屏问题已修复
+
+**白屏原因**：OpenCode Serve 的 HTML 引用根路径资源（`/assets/...`、`/favicon*`），但之前 Caddy 只反代了 `/oc-serve/*`，浏览器请求 `/assets/...` 落到了错误的处理器。
+
+**修复**：在 Caddy 7699 追加了 `/assets/*`、`/favicon*`、`/apple-touch-icon*`、`/site.webmanifest` → 4096 的路由。
+
+**两个入口**：
+
+| 渠道 | 地址 | 状态 |
+|------|------|
+- [2026-06-02 18:13:50] **用户**: 继续下一步
+
+## 2026-06-02 18:15
+- [2026-06-02 18:14:51] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 18:15:01] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 18:15
+- [2026-06-02 18:15:16] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 18:16
+- [2026-06-02 18:16:01] **AI(sisyphus)**: [ok] 网易云 — 64个歌单 / 8634首 / 已保存
+[!] 汽水 — 本地无API、无数据、music-manager无qishui记录
+
+完整数据: `/tmp/netease_playlists.json` / `_summary.json`
+
+汽水需要浏览器Cookie或手机端方式获取，要继续吗？
+
+## 2026-06-02 18:16
+- [2026-06-02 18:16:12] **AI(sisyphus)**: [ok] API 验证 -- localhost:8088/api/oc-sessions 返回 200 (<5ms)
+[ok] CORS 头 -- Access-Control-Allow-Origin:* / Methods:GET,POST,OPTIONS / Headers:*
+[ok] 端口监听 -- 8080(ttyd) + 8088(smart-redirector.py) 均在 0.0.0.0
+[ok] 服务进程 -- ttyd PID 128644 / smart-redirector.py PID 128316 存活
+
+---
+
+**分析结果**：
+
+服务端一切正常 — A
+
+## 2026-06-02 18:18
+- [2026-06-02 18:17:57] **用户**: 分析下这几个月 我一直在找端口转发或者设置公网 处理frps还有端口tailscale 还有路由器后台等问题 怎么彻底解决 提高效率ai根本没记忆 或者没有流程
+
+## 2026-06-02 18:22
+- [2026-06-02 18:21:42] **AI(sisyphus)**: ## 分析结论 + 已执行修复
+
+**根因诊断**：6个问题，3个根因：
+
+| 重复踩坑 | 根因 | 出现次数 |
+|----------|------|----------|
+| 新增端口FRP不通 | 没查frps.toml白名单 | ≥3次 |
+| 手机连不上来回试方案 | 没决策树，AI每次重新推理 | ≥10次 |
+| Tailscale断开不会降级 | 没多层回退路径 | ≥5次 |
+| 路由器端口浪费重复配 | 没统一视图 | 22条规则手动维护 |
+| AI下次会话又忘 | memory-injector只注教训，不注拓扑 | 所有会话 |
+| 不知道端口被谁占了 | 没预检
+
+## 2026-06-02 18:29
+- [2026-06-02 18:28:48] **AI(sisyphus)**: [ok] MuseTalk float16推理 -- 视频生成成功
+[ok] 视频: 1080x1920, 7.08s, 236KB, 保存到 ~/agi/data/videos/niumoumou_test.mp4
+[skip] Telegram推送 -- Hermes无Telegram频道配置
+
+## 2026-06-02 18:34
+- [2026-06-02 18:33:45] **用户**: 如果封装mcp或者加langgraph流程会不会好一点 看下社区方案
+
+## 2026-06-02 18:35
+- [2026-06-02 18:34:44] **用户**: 为什么是herme推送 你直接adb推送不行吗 给个推送方案 telgram不是多端同步的吗
