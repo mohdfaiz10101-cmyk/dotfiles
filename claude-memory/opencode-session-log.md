@@ -999,3 +999,6 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 | 方式 | URL |
 |------|-----|
 | Tailscale | `http://100.119.174.25:8700/stu
+
+## 2026-06-02 19:45
+- [2026-06-02 19:44:50] **用户**: hyperland 没文件管理器吗 我以前是dophine 但是没找到 用什么好
