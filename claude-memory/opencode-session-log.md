@@ -2082,3 +2082,11 @@ Cloudflare 那个是临时域名，重启会变，仅作备用。
 
 ## 2026-06-03 00:41
 - [2026-06-03 00:41:14] **用户**: 为什么会被覆盖
+
+## 2026-06-03 00:42
+- [2026-06-03 00:42:37] **用户**: unexpected status 403 Forbidden: <html>
+                                           <head>
+                                                     <meta name="viewport" content="width=device-width,
+initial-scale=1" />
+                       <style
+global>body{font-family:Arial,Helvetica,sans-serif}.cont
