@@ -1300,3 +1300,14 @@ disk   /mnt/ai/swapfile 4.0G   1      救急（zram满了才用）
 - [2026-06-02 20:24:44] **AI(sisyphus)**: [ok] 全部恢复。当前改动只剩1条：`thunar → WS3`
 
 删掉了所有新加的文件（拼音缓存、cache builder），rofi 恢复为原生 drun，配置回到改动前。
+
+## 2026-06-02 20:25
+- [2026-06-02 20:25:07] **AI(sisyphus)**: [ok] 两个微信都在运行且可见
+- **Windows微信** (wechat.exe, PID 302472) — 通过Wine运行，已运行约1小时
+- **UOS微信** (wechat, PID 468721) — 刚修复启动，正常运行
+
+[fail] 窗口被遮挡 — 两个微信都在 workspace 2，但Telegram全屏覆盖在上面
+
+[ok] 已移动到 workspace 3 — 切到 workspace 3 即可看到两个微信窗口
+
+Windows微信其实一直在运行，只是被全屏Telegram遮住了。切换到 workspace 3（Mod+3 或 Hyprland 快捷键）就能
