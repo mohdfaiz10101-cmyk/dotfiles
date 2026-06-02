@@ -1320,3 +1320,17 @@ Windows微信其实一直在运行，只是被全屏Telegram遮住了。切换�
 [ok] 缓存重建 — 189 行 dmenu 缓存（向后兼容）
 [ok] 语法检查 — Python + bash 均通过
 [ok] 视觉验证 — 截图确认 rofi 正常打开，无 "alread
+
+## 2026-06-02 20:31
+- [2026-06-02 20:30:45] **用户**: 不行 输入后没出来窗口说 command not found
+- [2026-06-02 20:30:52] **AI(sisyphus)**: [ok] 脚本已就绪，alias 写入了但当前 shell 没加载。执行：
+
+```
+source ~/.zshrc && oc51
+```
+
+或者直接跑全路径：
+
+```
+~/.local/bin/opencode-glm51
+```
