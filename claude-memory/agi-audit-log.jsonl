@@ -1019,3 +1019,4 @@
 {"ts": "2026-06-02 23:52", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 23:53", "type": "cycle", "summary": "系统各项指标正常，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 23:54", "type": "cycle", "summary": "系统运行平稳，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 23:55", "type": "cycle", "summary": "系统状态正常，存在高CPU进程但均为已知系统服务", "alert_count": 0, "skipped_llm": false}
