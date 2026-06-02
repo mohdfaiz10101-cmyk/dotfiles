@@ -1852,3 +1852,18 @@ API 端点正常: summary(fixed=0 alerts=0) | alerts(有数据)
 
 ## 2026-06-02 23:17
 - [2026-06-02 23:17:05] **用户**: 那最先前沿的tty加强版大家用什么 问题是不要我自己定制啊 我要成熟方案
+
+## 2026-06-02 23:18
+- [2026-06-02 23:18:18] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+- [2026-06-02 23:18:25] **用户**: 还有个问题就是大家是不是习惯ssh什么的 都不折腾tty tty是不是小众 还是太极客 最极客最复杂功能最全的会是什么
+- [2026-06-02 23:18:27] **AI(sisyphus)**: [ok] 回答用户关于 ttyd 生态位的问题
+
+**ttyd 确实偏极客小众**。主流用户习惯分层：
+
+| 人群 | 习惯方案 | 原因 |
+|------|---------|------|
+| 普通运维 | SSH + 本地终端（iTerm2/Win Terminal） | 稳定、无需额外组件 |
+| 服务器管理 | Nexterm / WeTTY | 开箱 UI、文件管理、多协议 |
+| 极客/开发者 | tmux + ttyd/WezTerm | 可编程、session 持久化、远程复用 |
+
+**ttyd 的定位**：不是"服务器管理平台"，是"把本地终端暴露到浏览器"的轻量工具。
