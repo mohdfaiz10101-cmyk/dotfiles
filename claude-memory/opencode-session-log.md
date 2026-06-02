@@ -939,3 +939,15 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 完整数据: `/tmp/netease_playlists.json` / `_summary.json`
 
 汽水需要浏览器Cookie或手机端方式获取，要继续吗？
+
+## 2026-06-02 18:16
+- [2026-06-02 18:16:12] **AI(sisyphus)**: [ok] API 验证 -- localhost:8088/api/oc-sessions 返回 200 (<5ms)
+[ok] CORS 头 -- Access-Control-Allow-Origin:* / Methods:GET,POST,OPTIONS / Headers:*
+[ok] 端口监听 -- 8080(ttyd) + 8088(smart-redirector.py) 均在 0.0.0.0
+[ok] 服务进程 -- ttyd PID 128644 / smart-redirector.py PID 128316 存活
+
+---
+
+**分析结果**：
+
+服务端一切正常 — A
