@@ -1042,3 +1042,16 @@ thunar &
 
 关闭 Thunar 重开，会自动落在 WS3。如果觉得放别的区更合适告诉我就换。
 - [2026-06-02 19:48:31] **用户**: 专门开个一个端口 tmux attach opencode 默认用glm 5.1 的 给个alias命令
+
+## 2026-06-02 19:50
+- [2026-06-02 19:49:34] **AI(sisyphus)**: [ok] 创建脚本 `~/.local/bin/opencode-glm51` — tmux 会话 `oc-glm51`，默认模型 `openai-compatible/glm-5.1`
+[ok] 添加 alias `oc51` → `.zshrc`
+
+用法：
+```
+# 新终端执行（需先 source 或重开 shell）
+source ~/.zshrc
+oc51
+```
+
+首次运行创建 tmux 会话，之后 `oc51` 自动 attach 回去。和 `opencode` 一样走 `ai-context-compile` 上下文注入。
