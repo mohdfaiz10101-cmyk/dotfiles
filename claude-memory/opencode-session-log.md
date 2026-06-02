@@ -822,3 +822,10 @@ tmux attach -t opserve
 
 ## 2026-06-02 17:44
 - [2026-06-02 17:43:52] **用户**: 我现在连移动wifi和tailscale可以连家里的代理节点 但是turrit为啥就不能连让代理 google play手机就可以连
+
+## 2026-06-02 17:44
+- [2026-06-02 17:44:29] **AI(sisyphus)**: [ok] 定位根因 -- `memory-injector.py` 只从 `baseline.toml` + `lessons-learned.md` 提取，未包含 `user-preferences.md` 和 `decision-memory.md`
+
+[ok] 修复 `get_latest_memories()` -- 新增读取 `user-preferences.md`（前6条核心偏好）和 `decision-memory.md`（最近3条决策）
+
+[ok] 修复旧注入块清理 -- 正则 `.*?</memory-gate-inject` 不匹配 `<!-- /memory-gate-
