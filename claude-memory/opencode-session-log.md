@@ -318,3 +318,6 @@ test only: print one line and exit
 [ok] safety-guard -- description 已加引号
 
 根因：6个SKILL.md的`description`字段含未引号冒号，YAML解析器将其误判为嵌套映射。修复：双引号包裹所有description值
+
+## 2026-06-02 13:21
+- [2026-06-02 13:21:20] **用户**: 为什么我按下 super + space后出来两个drum界面 我只需一个啊 你推荐用哪个
