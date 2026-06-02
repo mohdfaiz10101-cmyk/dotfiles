@@ -891,3 +891,13 @@ https://nixos-1.tail60cff7.ts.net/oc-serve/
 
 ## 2026-06-02 18:07
 - [2026-06-02 18:07:15] **用户**: glm proxy系统通知老是提示 这个到底对目前我系统架构有啥用
+
+## 2026-06-02 18:08
+- [2026-06-02 18:08:13] **AI(sisyphus)**: **GLM Proxy 的历史作用**：
+
+以前 Claude Code 通过 LiteLLM 调用 GLM API 时，GLM 不支持 `web_search` 这种 tool type，会报错。于是搞了个 `strip_tools_proxy.py`（端口4000）做中间层，把不兼容的 tool 类型过滤掉再转发给 LiteLLM(4002)。
+
+**现在为什么一直在通知**：
+
+- `glm-proxy.service` → 已 mask（早就停了）
+- `glm-monitor.service` → 脚本 `~/.local/bin/glm-monitor` 已删除，但服务还在反复重试
