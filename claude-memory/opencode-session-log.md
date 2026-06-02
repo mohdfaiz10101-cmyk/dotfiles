@@ -1621,3 +1621,18 @@ tmux attach -t oc-glm51
 
 ## 2026-06-02 22:46
 - [2026-06-02 22:46:28] **用户**: 开源语音输入法智能学习
+
+## 2026-06-02 22:47
+- [2026-06-02 22:46:58] **AI(compaction)**: ## Goal
+- 解决 opencode 卡顿问题，根因定位为 mem0_bridge 内存泄漏导致 swap thrashing
+
+## Constraints & Preferences
+- 用户偏好中文回复、优先修根因不接受仅重启掩盖、本地优先轻量优先稳定优先
+- opencode 是主执行器，其他服务应为它增强
+- 网络稳定是最高优先级
+- 关键入口固定：8080=本地 openclaw/ttyd，8081=opencode-web，19890=对外 openclaw
+
+## Progress
+### Done
+- 诊断 opencode 卡顿：CPU/内存本身正常，根因为 swap
+- [2026-06-02 22:47:06] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
