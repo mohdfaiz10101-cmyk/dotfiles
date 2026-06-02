@@ -715,3 +715,4 @@
 {"ts": "2026-06-02 18:09", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康阈值内，无服务故障", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 18:10", "type": "cycle", "summary": "系统运行正常，CPU/内存负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 18:11", "type": "cycle", "summary": "系统运行正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 18:12", "type": "cycle", "summary": "系统运行正常，资源使用率均在健康范围内", "alert_count": 0, "skipped_llm": false}
