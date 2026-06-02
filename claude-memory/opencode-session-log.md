@@ -2204,3 +2204,7 @@ sending request for url
 ## 2026-06-03 01:11
 - [2026-06-03 01:11:22] **AI(sisyphus)**: 4个agent全部 **● online** + **chatroom** 网络，0个重启。现在测试端到端闭环：
 - [2026-06-03 01:11:28] **AI(sisyphus)**: Wait — `pgrep` found PID 2841591 and status is `activating`. The old process is still alive (previous instance)! Let me check:
+
+## 2026-06-03 01:12
+- [2026-06-03 01:11:57] **AI(sisyphus)**: 2072 PIDs with no max limit — shouldn't be the problem. Let me try a clean manual start:
+- [2026-06-03 01:11:57] **AI(sisyphus)**: Agent 在线但在 poll hub 时 404。Hub 的 `/v1/events` 端点不存在。检查 hub 实际的 API：
