@@ -819,3 +819,6 @@ tmux attach -t opserve
 
 ## 2026-06-02 17:43
 - [2026-06-02 17:42:48] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:44
+- [2026-06-02 17:43:52] **用户**: 我现在连移动wifi和tailscale可以连家里的代理节点 但是turrit为啥就不能连让代理 google play手机就可以连
