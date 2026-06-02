@@ -1118,3 +1118,6 @@ WS5 🤖 AI      WS6 📊 仪表盘  WS7 📋 任务台
 - [2026-06-02 19:59:10] **AI(sisyphus)**: 两个服务同时运行导致冲突：`clip-sync` 和 `clipboard-sync-windows` 都在同步 NixOS ↔ Windows 剪贴板，互相覆盖。
 - [2026-06-02 19:59:32] **用户**: 怎么又opencode cOnnection reset by server是不是不稳定
 今天出现多次了
+
+## 2026-06-02 20:00
+- [2026-06-02 19:59:49] **用户**: 启动后 报错
