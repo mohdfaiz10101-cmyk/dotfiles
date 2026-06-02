@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Telegram
+Exec=Telegram
+Icon=telegram
+Categories=Network;InstantMessaging;Qt;
+Keywords=tg
+NoDisplay=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=系统架构总览
+Exec=xdg-open "/home/charlie/Obsidian Vault/系统架构.md"
+Icon=network-workgroup
+Categories=
+Keywords=xitongjiagouzonglan;xtjgzl
+NoDisplay=false

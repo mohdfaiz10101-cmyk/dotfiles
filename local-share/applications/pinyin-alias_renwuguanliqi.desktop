@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=System Monitor
+Exec=plasma-systemmonitor
+Icon=utilities-system-monitor
+Categories=Qt;KDE;System;
+Keywords=renwuguanliqi
+NoDisplay=false

@@ -1,0 +1,9 @@
+[Unit]
+Description=每10分钟消费告警触发自愈
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=启动器（悬浮桌面模式）
+Exec=bash /home/charlie/launcher/launch-desktop-widget.sh
+Icon=applications-all
+Categories=
+Keywords=qdq（xfzmms）;qidongqi（xuanfuzhuomianmoshi）
+NoDisplay=false

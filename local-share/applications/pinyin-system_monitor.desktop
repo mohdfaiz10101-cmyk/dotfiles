@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=System Monitor
+Exec=plasma-systemmonitor
+Icon=utilities-system-monitor
+Categories=Qt;KDE;System;
+Keywords=task;manager;process;cpu;memory;;System Monitor;kongzhitai;renwuguanliqi
+NoDisplay=false

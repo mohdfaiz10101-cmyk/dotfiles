@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Claude自动登录-安装指南
+Exec=firefox http://localhost:9875/claude-auto-login.user.js
+Icon=firefox
+Categories=Network;WebBrowser;
+Keywords=Claudezddl-azzn;Claudezidongdenglu-anzhuangzhinan
+NoDisplay=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Via 平板浏览器
+Exec=/home/charlie/.local/bin/launch-via-tablet.sh
+Icon=applications-internet
+Categories=Utility;Network;
+Keywords=via;browser;tablet;平板;浏览器;;Via pbllq;Via pingbanliulanqi
+NoDisplay=false

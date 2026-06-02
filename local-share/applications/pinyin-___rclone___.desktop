@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=配置 rclone 网盘
+Exec=kitty -e bash -c "rclone config; read -p '按回车关闭'"
+Icon=folder-cloud
+Categories=
+Keywords=peizhi rclone wangpan;pz rclone wp
+NoDisplay=false

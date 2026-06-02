@@ -141,3 +141,21 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 27 minutes (healthy)
 
 - [2026-06-02] [OP] 网络拓扑系统化 | 创建 network-topology.md (统一视图+决策树) + port-allocator.sh (自动预检) + memory-injector 增强 (网络拓扑注入所有agent) | 解决问题: 每次新会话AI重新推理网络连接方式，FRP端口/路由器/公网等反复踩坑
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.e45c798cf3d5_litellm-litellm =  | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 27 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 27 minutes (healthy)
+
+- [2026-06-02] [OP] 修复: 剪贴板不生效(node) | 根因: clip-sync 和 clipboard-sync-windows 两个服务同时运行，互相覆盖剪贴板内容 | 修复: 停用 clip-sync，保留 clipboard-sync-windows(直接PowerShell读Windows剪贴板更可靠) | 教训: 同类剪贴板同步服务只能保留一个- [2026-06-02] [OP] 部署 Termix | 端口: 9180 | 镜像: ghcr.io/lukegus/termix | 结果: 成功 | 位置: /mnt/ai/apps/termix/docker-compose.yml
+
+- [2026-06-02] [OP] rofi keybinding冲突: 自定义kb-*在config.rasi中与rofi默认键位冲突，报"already bound"错误。修复: 移除所有自定义键位，依赖rofi默认(vim键位通过rofi原生支持，无需手动配置)。教训: rofi 2.0的kb-*配置会叠加而非覆盖默认键位，添加自定义键位前必须验证无冲突。
+- [runbook] RB-20260602-wechat-crash: 微信uos coredump重启风暴 | detect: journalctl --user -u wechat-uos -n 5 | grep -c coredump | fix: systemctl --user stop wechat-uos && sleep 2 && systemctl --user start wechat-uos | verify: sleep 5 && systemctl --user show wechat-uos --property=ActiveState | grep -q active
+- [runbook] RB-20260602-fcitx5-crash: fcitx5崩溃后0字节残留文件 | detect: ls -la ~/.local/share/fcitx5/pinyin/user.dict_* | grep " 0 " | fix: 清理残留文件+重启fcitx5 | verify: pgrep fcitx5 && test -s ~/.local/share/fcitx5/pinyin/user.dict
+- [runbook] RB-20260602-frp-port: frp端口不在白名单 | detect: journalctl --user -u hermes -n 10 | grep "port.*not.*allowed" | fix: 查~/ai-deploy/frps.toml白名单，换已注册端口 | verify: systemctl --user restart hermes && sleep 2 && systemctl --user show hermes --property=Result | grep success
+- [2026-06-02] [OP] 修复: wechat-uos崩溃重启风暴 | 根因: DISPLAY=:1 但实际XWayland只有:0 | 修复: 改DISPLAY=:0后正常 | 教训: 检查X11显示号与实际情况是否匹配
+- [2026-06-02] [OP] rofi恢复+增强: 之前被其他AI改回dmenu模式。修复: (1) 改用原生drun模式(图标+分类) (2) 拼音通过生成~/.local/share/applications/pinyin-*.desktop文件注入Keywords字段 (3) drun-match-fields包含keywords实现拼音搜索 (4) sidebar-mode: true启用分类侧栏。教训: rofi 2.0的kb-*配置会叠加默认键位导致冲突，不要自定义键位。拼音搜索通过生成desktop条目注入Keywords比dmenu缓存更优雅。- [2026-06-02] [OP] 根因定位: Connection reset | 根因: verify-watch.service每次bun build峰值2.4GB→zram 92%满→swap风暴→TCP超时RST | 修复: verify-pipeline.sh加内存守卫(可用<4G跳过)+并发锁(5分钟冷却) | 频率: 今天已触发110次
+
+- [2026-06-02] [OP] 诊断: "tool not allowed while generating summary" 反复出现 | 根因: OpenCode compaction 期间工具调用被拦截，系统提示词+工具定义过大(150+ skills, 大量MCP工具)导致频繁触发压缩 | 触发条件: 上下文超过 compaction.reserved=16384 tokens 阈值 | 影响: 任务执行中断，工具调用被拒绝 | 缓解方案: (1) 用户手动 /clear 重置会话 (2) 减少AGENTS.md体积(当前~2000行) (3) 增大reserved阈值延迟压缩 | 无法由OP自动修复: 需要修改opencode.json(CONFIG_PROTECT)或重构AGENTS.md

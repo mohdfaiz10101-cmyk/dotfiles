@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Wayland截图
+Exec=/home/charlie/.local/bin/wayland-screenshot
+Icon=spectacle
+Categories=Utility;
+Keywords=Waylandjietu;Waylandjt
+NoDisplay=false

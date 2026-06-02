@@ -4,6 +4,6 @@ After=network.target docker.service health-scorer.service
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/runbook-engine --dry-run
+ExecStart=%h/.local/bin/runbook-engine
 StandardOutput=journal
 Environment="PATH=/run/current-system/sw/bin:%h/.local/bin"

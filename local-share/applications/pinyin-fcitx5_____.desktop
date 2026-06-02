@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Fcitx5 一键修复
+Exec=/home/charlie/.local/bin/fcitx5-fix
+Icon=input-keyboard
+Categories=Utility;System;
+Keywords=fcitx5;input;fix;chinese;;Fcitx5 yijianxiufu;Fcitx5 yjxf
+NoDisplay=false

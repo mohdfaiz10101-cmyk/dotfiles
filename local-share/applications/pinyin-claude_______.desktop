@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Claude 平板监控地址
+Exec=konsole -e bash -c "claude-tablet-ip; echo; echo '按任意键关闭...'; read"
+Icon=network-wireless
+Categories=Utility;
+Keywords=Claude pbjkdz;Claude pingbanjiankongdizhi
+NoDisplay=false

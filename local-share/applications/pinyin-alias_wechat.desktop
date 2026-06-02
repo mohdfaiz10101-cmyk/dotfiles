@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=微信
+Exec=env "WINEPREFIX=/mnt/ai/data/wine-wechat" wine "C:\\\\users\\\\Public\\\\Desktop\\\\微信.lnk"
+Icon=E282_WeChat.0
+Categories=
+Keywords=wechat
+NoDisplay=false

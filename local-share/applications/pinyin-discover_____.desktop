@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Discover 应用商店
+Exec=plasma-discover
+Icon=plasmadiscover
+Categories=System;
+Keywords=Discover yingyongshangdian;Discover yysd
+NoDisplay=false

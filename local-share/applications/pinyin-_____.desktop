@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=营销工作台
+Exec=windsurf /home/charlie/Projects/marketing-stack
+Icon=applications-internet
+Categories=Development;
+Keywords=marketing;mastra;medusa;营销;;yingxiaogongzuotai;yxgzt
+NoDisplay=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=免费 Claude API 扫描
+Exec=konsole -e bash -c "claude-free-api-scan; echo; echo '按任意键关闭...'; read"
+Icon=network-server
+Categories=Network;Utility;
+Keywords=mf Claude API sm;mianfei Claude API saomiao
+NoDisplay=false

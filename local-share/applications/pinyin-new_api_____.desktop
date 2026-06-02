@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=New API 终端管理
+Exec=konsole --hold -e bash -c 'new-api-manager'
+Icon=utilities-terminal
+Categories=Utility;System;
+Keywords=New API zdgl;New API zhongduanguanli
+NoDisplay=false

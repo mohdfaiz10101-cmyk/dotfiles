@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=粘贴图片并置顶
+Exec=/home/charlie/.local/bin/paste-image-pinned
+Icon=image-x-generic
+Categories=Utility;Graphics;
+Keywords=clipboard;paste;image;screenshot;;zhantietupianbingzhiding;zttpbzd
+NoDisplay=false

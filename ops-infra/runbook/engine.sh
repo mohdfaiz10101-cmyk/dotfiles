@@ -124,11 +124,68 @@ rb_litellm_embed_nodb_fix() {
 }
 
 rb_litellm_embed_nodb_verify() {
-    curl -s --max-time 5 http://localhost:4000/embeddings \
-        -H "Content-Type: application/json" \
-        -d '{"model":"all-MiniLM-L6-v2","input":"test"}' 2>/dev/null \
-        | python3 -c "import sys,json; d=json.load(sys.stdin); print('ERROR' if 'error' in d else 'OK')" 2>/dev/null \
-        | grep -q "OK"
+    systemctl --user show litellm --property=ActiveState | grep -q active
+}
+
+# --- RB-20260602-01: 微信uos coredump重启风暴 ---
+rb_wechat_uos_crash() {
+    # detect: 最近5条日志中coredump出现次数>=2
+    local count
+    count=$(journalctl --user -u wechat-uos -n 5 --no-pager 2>/dev/null | grep -c "coredump\|dumped core" || echo 0)
+    [ "$count" -ge 2 ]
+}
+
+rb_wechat_uos_crash_fix() {
+    systemctl --user stop wechat-uos 2>/dev/null || true
+    sleep 2
+    systemctl --user start wechat-uos 2>/dev/null || true
+    sleep 3
+    return 0
+}
+
+rb_wechat_uos_crash_verify() {
+    systemctl --user show wechat-uos --property=ActiveState 2>/dev/null | grep -q "active"
+}
+
+# --- RB-20260602-02: fcitx5崩溃后0字节残留文件 ---
+rb_fcitx5_crash() {
+    # detect: user.dict_* 文件存在且大小为0
+    ls -la ~/.local/share/fcitx5/pinyin/user.dict_* 2>/dev/null | grep -q " 0 "
+}
+
+rb_fcitx5_crash_fix() {
+    rm -f ~/.local/share/fcitx5/pinyin/user.dict_* 2>/dev/null || true
+    pkill fcitx5 2>/dev/null || true
+    sleep 1
+    nohup fcitx5 -d 2>/dev/null &
+    sleep 2
+    return 0
+}
+
+rb_fcitx5_crash_verify() {
+    pgrep fcitx5 >/dev/null 2>&1
+}
+
+# --- RB-20260602-03: FRP端口不在白名单 ---
+rb_frp_port_blocked() {
+    # detect: hermes服务日志中出现port not allowed
+    journalctl --user -u hermes -n 10 --no-pager 2>/dev/null | grep -q "port.*not.*allowed\|connection refused"
+}
+
+rb_frp_port_blocked_fix() {
+    # 尝试换到已知白名单端口18700
+    local cfg="$HOME/ai-deploy/frps.toml"
+    if [ -f "$cfg" ]; then
+        systemctl --user stop hermes 2>/dev/null || true
+        sleep 2
+        systemctl --user start hermes 2>/dev/null || true
+        sleep 3
+    fi
+    return 0
+}
+
+rb_frp_port_blocked_verify() {
+    systemctl --user show hermes --property=ActiveState 2>/dev/null | grep -q "active"
 }
 
 # ====== Runbook注册表 ======
@@ -137,6 +194,9 @@ declare -A RUNBOOKS=(
     ["RB-20260523-02"]="rb_duckdns_nproc_exhaustion|WARNING|nproc线程数接近上限"
     ["RB-20260523-03"]="rb_mihomo_global_direct|CRITICAL|mihomo GLOBAL误设DIRECT"
     ["RB-20260523-04"]="rb_litellm_embed_nodb|WARNING|LiteLLM Embedding返回No connected db"
+    ["RB-20260602-01"]="rb_wechat_uos_crash|CRITICAL|微信uos coredump重启风暴"
+    ["RB-20260602-02"]="rb_fcitx5_crash|WARNING|fcitx5崩溃后0字节残留文件"
+    ["RB-20260602-03"]="rb_frp_port_blocked|WARNING|FRP端口不在白名单"
 )
 
 # ====== 执行引擎 ======

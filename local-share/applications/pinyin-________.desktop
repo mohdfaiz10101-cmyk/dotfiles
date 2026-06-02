@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=营销与网站工作流
+Exec=/home/charlie/.local/bin/marketing-web-workflow.sh
+Icon=applications-internet
+Categories=Development;WebDevelopment;Marketing;
+Keywords=marketing;web;website;yingxiao;wangzhan;gongzuoliu;;yingxiaoyuwangzhangongzuoliu;yxywzgzl
+NoDisplay=false

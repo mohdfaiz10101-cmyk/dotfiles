@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Windows软件对照表
+Exec=xdg-open "/home/charlie/Obsidian Vault/Windows软件清单与NixOS对照.md"
+Icon=application-x-executable
+Categories=
+Keywords=Windowsrjdzb;Windowsruanjianduizhaobiao
+NoDisplay=false

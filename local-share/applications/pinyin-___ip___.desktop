@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=智能 IP 管理
+Exec=konsole -e bash -c "smart-ip; echo; echo '按任意键关闭...'; read"
+Icon=network-wired
+Categories=Network;Settings;
+Keywords=zhineng IP guanli;zn IP gl
+NoDisplay=false

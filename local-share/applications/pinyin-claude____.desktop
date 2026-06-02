@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Claude 状态树
+Exec=konsole --fullscreen -e bash -c 'claude-watch; exec bash'
+Icon=view-list-tree
+Categories=Development;
+Keywords=Claude zhuangtaishu;Claude zts
+NoDisplay=false

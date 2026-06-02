@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=重启
+Exec=systemctl reboot
+Icon=system-reboot
+Categories=System;
+Keywords=chongqi;cq
+NoDisplay=false

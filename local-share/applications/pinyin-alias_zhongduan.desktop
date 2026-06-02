@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Konsole
+Exec=konsole
+Icon=utilities-terminal
+Categories=Qt;KDE;System;TerminalEmulator;
+Keywords=zhongduan
+NoDisplay=false

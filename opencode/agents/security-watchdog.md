@@ -15,16 +15,24 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Security Watchdog — 安全哨兵
 
-<!-- memory-gate-inject: 19:00 -->
+<!-- memory-gate-inject: 21:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
-**教训**: - [2026-06-01] [OP] 修复: whisper重启风暴 | 根因: ggml-medium.bin缺失 | 修复: 停用服务 | 模型: 仅base可用 | 教训: 迁移后检查模型文件路径
-**教训**: - [2026-06-01] [OP] 修复: fcitx5搜索记忆丢失 | 根因: 0字节临时文件user.dict_yamBgz残留(04:00崩溃)+Wayland前端已知不稳定 | 修复: 清理残留文件+重启fcitx5+确认waylandim.conf已禁用 | 教训: fcitx5崩溃后
-**教训**: - [2026-06-02] [OP] 分析: SSH多路径管理 | 发现: 已有SSH config v3(ControlMaster+多路径回退)+tmux+mosh+ttyd | 建议: 用ttyd作主入口+tmux持久化，SSH仅用于传输/转发
-**教训**: - [2026-06-02] [OP] 修复: context-pack未注入新任务 | 根因: memory-injector.py只从baseline.toml+lessons-learned提取，缺少user-preferences.md和decision-memory.md | 修复: 增强
-**教训**: - [2026-06-02] [OP] 网络拓扑系统化 | 创建 network-topology.md (统一视图+决策树) + port-allocator.sh (自动预检) + memory-injector 增强 (网络拓扑注入所有agent) | 解决问题: 每次新会话AI重新推理网络连
+**教训**: - [2026-06-02] [OP] 修复: 剪贴板不生效(node) | 根因: clip-sync 和 clipboard-sync-windows 两个服务同时运行，互相覆盖剪贴板内容 | 修复: 停用 clip-sync，保留 clipboard-sync-windows(直接PowerS
+**教训**: - [2026-06-02] [OP] rofi keybinding冲突: 自定义kb-*在config.rasi中与rofi默认键位冲突，报"already bound"错误。修复: 移除所有自定义键位，依赖rofi默认(vim键位通过rofi原生支持，无需手动配置)。教训: rofi 2.0的
+**教训**: - [2026-06-02] [OP] 修复: wechat-uos崩溃重启风暴 | 根因: DISPLAY=:1 但实际XWayland只有:0 | 修复: 改DISPLAY=:0后正常 | 教训: 检查X11显示号与实际情况是否匹配
+**教训**: - [2026-06-02] [OP] rofi恢复+增强: 之前被其他AI改回dmenu模式。修复: (1) 改用原生drun模式(图标+分类) (2) 拼音通过生成~/.local/share/applications/pinyin-*.desktop文件注入Keywords字段 (3) dru
+**教训**: - [2026-06-02] [OP] 诊断: "tool not allowed while generating summary" 反复出现 | 根因: OpenCode compaction 期间工具调用被拦截，系统提示词+工具定义过大(150+ skills, 大量MCP工具)导致频繁触发压
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 

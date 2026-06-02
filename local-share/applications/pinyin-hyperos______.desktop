@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=HyperOS 万物一张网
+Exec=xdg-open "http://127.0.0.1:8800"
+Icon=applications-internet
+Categories=
+Keywords=HyperOS wanwuyizhangwang;HyperOS wwyzw
+NoDisplay=false

@@ -1,0 +1,9 @@
+[Unit]
+Description=消费op-live-feed告警触发runbook
+After=runbook-engine.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/feed-to-runbook.sh
+StandardOutput=journal
+Environment="PATH=/run/current-system/sw/bin:%h/.local/bin"

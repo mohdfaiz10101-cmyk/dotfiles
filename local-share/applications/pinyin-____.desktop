@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=清理通知
+Exec=/home/charlie/.local/bin/clear-notifs
+Icon=edit-clear-all
+Categories=Utility;
+Keywords=qinglitongzhi;qltz
+NoDisplay=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=IDEA (NixOS配置)
+Exec=idea /etc/nixos
+Icon=idea
+Categories=Development;IDE;
+Keywords=IDEA (NixOSpeizhi);IDEA (NixOSpz)
+NoDisplay=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=System Settings
+Exec=systemsettings
+Icon=preferences-system
+Categories=Qt;KDE;Settings;
+Keywords=settings
+NoDisplay=false

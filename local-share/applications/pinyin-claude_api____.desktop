@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Claude API 管理器
+Exec=konsole --hold -e bash -c 'claude-api-manager'
+Icon=preferences-system
+Categories=Utility;System;
+Keywords=Claude API glq;Claude API guanliqi
+NoDisplay=false

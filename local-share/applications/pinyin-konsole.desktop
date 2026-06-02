@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Konsole
+Exec=konsole
+Icon=utilities-terminal
+Categories=Qt;KDE;System;TerminalEmulator;
+Keywords=terminal;console;script;run;execute;command;command-line;commandline;cli;bash;sh;shell;zsh;cmd;command prompt;Konsole;terminal;zhongduan
+NoDisplay=false

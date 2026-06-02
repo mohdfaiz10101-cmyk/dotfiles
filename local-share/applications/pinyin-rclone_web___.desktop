@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=rclone Web 管理
+Exec=bash -c "rclone rcd --rc-web-gui --rc-addr=127.0.0.1:5572 &; sleep 2; xdg-open http://127.0.0.1:5572"
+Icon=folder-cloud
+Categories=
+Keywords=rclone Web gl;rclone Web guanli
+NoDisplay=false

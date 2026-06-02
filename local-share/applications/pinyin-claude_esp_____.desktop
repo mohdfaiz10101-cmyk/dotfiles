@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Claude ESP 实时监控
+Exec=konsole --fullscreen -e bash -c 'claude-esp -n; exec bash'
+Icon=utilities-terminal
+Categories=Development;
+Keywords=Claude ESP shishijiankong;Claude ESP ssjk
+NoDisplay=false

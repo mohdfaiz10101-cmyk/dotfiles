@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Claude 待办挂件
+Exec=/home/charlie/launcher/start-todo-widget.sh
+Icon=view-task
+Categories=Utility;
+Keywords=Claude daibanguajian;Claude dbgj
+NoDisplay=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=🍷 微信 Wine版
+Exec=/home/charlie/.local/bin/wine-wechat
+Icon=wine
+Categories=Network;InstantMessaging;
+Keywords=wechat;weixin;wine;windows;;🍷 weixin Wineban;🍷 wx Wineb
+NoDisplay=false

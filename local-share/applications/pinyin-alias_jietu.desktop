@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=截图翻译
+Exec=/home/charlie/launcher/screenshot-translate.sh
+Icon=preferences-desktop-locale
+Categories=Utility;
+Keywords=jietu
+NoDisplay=false
