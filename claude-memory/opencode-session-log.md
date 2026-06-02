@@ -564,3 +564,6 @@ hqssh现有3个系统:
 ---
 
 请按 **Ctrl+C** 退出当前 OpenCode 会话，然后重新运行 `opencode` 以加载新配置。
+
+## 2026-06-02 16:02
+- [2026-06-02 16:02:21] **用户**: opencode 当前这个窗口 能不能写个restart命令 就是直接重启窗口这个 openclaw tmux wraapped
