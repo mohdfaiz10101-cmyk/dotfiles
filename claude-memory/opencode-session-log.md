@@ -462,3 +462,7 @@ hqssh现有3个系统:
 - [2026-06-02 15:15:15] **AI(sisyphus)**: `step-3.5-flash-2603-plan` 的 `-plan` 后缀 = 规划优化变体，只擅长代码执行规划，不擅长自由文本生成（如会话标题）。`step-3.7-flash` 无 plan 后缀，是通用 flash 模型，可以正常生成标题。
 
 已改为 `stepfun-plan/step-3.7-flash`，服务已重启。
+
+## 2026-06-02 15:16
+- [2026-06-02 15:16:01] **用户**: 问题是 都提示 connection failed
+- [2026-06-02 15:16:11] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
