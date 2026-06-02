@@ -1240,3 +1240,15 @@ Extract ONLY:
 [ok] 记录教训到 lessons-learned.md
 
 [完成] 微信UOS已修复 — 根因：DISPLAY=:1无效，实际XWayland只有:0。Windows机器不在线，无法检查Windows微信。
+
+## 2026-06-02 20:19
+- [2026-06-02 20:19:06] **用户**: 第二个 disk backing紧急情况下启用 但是zram 必须优先。
+- [2026-06-02 20:19:21] **AI(sisyphus)**: [完成] 自愈闭环已全部落地
+
+**改动**:
+- `hub-api.py`: 新增4个自愈API端点
+- `hub/static/hub.html`: 新增🔧自愈标签页（统计条/告警列表/执行记录/刷新按钮）
+- `runbook-engine.service`: 移除 `--dry-run`，真实执行修复
+- `~/.local/bin/runbook-engine`: 新增3条runbook（wechat-uos coredump/fcitx5残留/FRP端口）
+- `~/.local/bin/feed-to-runbook.sh`: 消费 op-live-feed.jsonl crit
+- [2026-06-02 20:19:28] **用户**: zram必须可以修复 或者保持正常 但是 disck backing 救急
