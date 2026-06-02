@@ -1378,3 +1378,6 @@ source ~/.zshrc && oc51
 - `bun run build` → 编译成功
 - `systemctl 
 - [2026-06-02 20:39:13] **AI(compaction)**: Now I see the issue. Port **9800** is a legacy hub that does have the self-heal tab, but you're looking at port **3000** — the Next.js AGI Control Plane with completely separate navigation (`NavBar.tsx`). Two different apps. I need to add the self-heal panel to the **Next.js frontend at port 3000**.
+
+## 2026-06-02 20:47
+- [2026-06-02 20:46:51] **用户**: 这个我不是之前装过吗
