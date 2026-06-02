@@ -291,3 +291,11 @@ test only: print one line and exit
 
 ## 运维偏好
 - 网
+
+## 2026-06-02 13:07
+- [2026-06-02 13:07:12] **AI(sisyphus)**: 上下文包已加载。偏好、决策、教训已就绪。
+
+当前 `op-tasks.md` 有待办：
+- `[CC→OP] [high]` 巡检自动修复链（ai-watchdog/waybar-guardian/letta-health-guard 等 9 项）— 诊断输出，不修改系统
+
+请指示。
