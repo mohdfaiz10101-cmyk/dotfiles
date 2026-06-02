@@ -150,3 +150,5 @@
 - [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 27 minutes (healthy)
 
 - [2026-06-02] [OP] 修复: 剪贴板不生效(node) | 根因: clip-sync 和 clipboard-sync-windows 两个服务同时运行，互相覆盖剪贴板内容 | 修复: 停用 clip-sync，保留 clipboard-sync-windows(直接PowerShell读Windows剪贴板更可靠) | 教训: 同类剪贴板同步服务只能保留一个- [2026-06-02] [OP] 部署 Termix | 端口: 9180 | 镜像: ghcr.io/lukegus/termix | 结果: 成功 | 位置: /mnt/ai/apps/termix/docker-compose.yml
+
+- [2026-06-02] [OP] rofi keybinding冲突: 自定义kb-*在config.rasi中与rofi默认键位冲突，报"already bound"错误。修复: 移除所有自定义键位，依赖rofi默认(vim键位通过rofi原生支持，无需手动配置)。教训: rofi 2.0的kb-*配置会叠加而非覆盖默认键位，添加自定义键位前必须验证无冲突。
