@@ -765,3 +765,11 @@ API调用
 ## 2026-06-02 17:15
 - [2026-06-02 17:15:17] **用户**: 哪个浮动工具支持这种代码编辑软件
 - [2026-06-02 17:15:32] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
+
+## 2026-06-02 17:20
+- [2026-06-02 17:19:44] **AI(sisyphus)**: [ok] 解析原始备份 — 9730 bytes，识别3组host+端口
+[ok] 端口修改 — charlie1990→2223 / 125.110.221.37→2223 / 100.119.174.25→22
+[ok] chattr +i 保护 — 文件被标记为不可变，app无法清除
+[ok] force-stop + 重启 — app PID 25228 正常运行，文件9730字节未变
+
+**总结**：hqssh 的 systems.hive 已修改完成，3个SSH条目端口均已更正为可通过FRP SSH隧道连接的端口。charlie1990.duckdns.org:2223 的SSH隧
