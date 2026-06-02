@@ -648,3 +648,4 @@
 {"ts": "2026-06-02 16:52", "type": "cycle", "summary": "系统运行正常，资源负载健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 16:53", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 16:54", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:56", "type": "cycle", "summary": "系统负载正常，CPU存在高占用进程但在可接受范围内", "alert_count": 0, "skipped_llm": false}
