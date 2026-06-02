@@ -1265,3 +1265,15 @@ Extract ONLY:
 
 ## 2026-06-02 20:23
 - [2026-06-02 20:22:36] **用户**: 还是没恢复
+
+## 2026-06-02 20:23
+- [2026-06-02 20:23:13] **用户**: 这个被ai改回去了 你能把我按上面的要求恢复下 然后需要分类和支持拼音和英文搜索
+- [2026-06-02 20:23:14] **AI(compaction)**: ## Goal
+- Fix rofi application launcher failing to open due to keybinding conflicts in Hyprland/Wayland
+
+## Constraints & Preferences
+- Hyprland on Wayland (WAYLAND_DISPLAY=wayland-1)
+- Native drun mode with fuzzy matching and icons preferred
+- Papirus icon theme
+- Pinyin cache support for Chinese a
+- [2026-06-02 20:23:24] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
