@@ -6,7 +6,7 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.hermes/hermes-agent/venv/bin/python3 -m hermes_cli.main gateway run --replace
+ExecStart=/home/charlie/.local/bin/python3.11 -m hermes_cli.main gateway run --replace
 WorkingDirectory=/home/charlie/.hermes/hermes-agent
 Environment="PATH=/home/charlie/.hermes/hermes-agent/venv/bin:/home/charlie/.hermes/hermes-agent/node_modules/.bin:/nix/store/4pl6afcwfmv0xn65r7mqjy3avpb785j9-nodejs-slim-24.14.0/bin:/home/charlie/.local/bin:/home/charlie/.cargo/bin:/home/charlie/go/bin:/home/charlie/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 Environment="VIRTUAL_ENV=/home/charlie/.hermes/hermes-agent/venv"

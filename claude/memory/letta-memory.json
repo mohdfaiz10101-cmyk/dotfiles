@@ -11,6 +11,11 @@
           "text": "2026-06-01 OP执行: fcitx5搜索记忆丢失修复 | 结果: 成功 | 关键发现: 0字节临时文件user.dict_yamBgz(04:00)可能是崩溃导致搜索记忆丢失的根因，已清理+重启",
           "tags": "op-exec,fcitx5,wayland",
           "timestamp": "1780328832"
+        },
+        {
+          "text": "2026-06-02 OP执行: Letta重启修复 | 结果: 成功 | 根因: Docker网络被清理导致letta+chromadb退出(exit 128)，compose up时n8n镜像拉取因docker.io TLS超时失败 | 修复: 仅启动letta/postgres/chromadb三项核心服务 | 关键发现: compose文件含n8n服务，n8n镜像拉取依赖代理，代理不通时compose整体失败",
+          "tags": "op-exec,letta,restart,fix",
+          "timestamp": "1780386481"
         }
       ]
     },

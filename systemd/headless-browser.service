@@ -12,7 +12,7 @@ ExecStart=/run/current-system/sw/bin/node /home/charlie/launcher/headless-browse
 WorkingDirectory=/home/charlie/launcher
 Restart=on-failure
 RestartSec=10
-Environment=NODE_PATH=/tmp/node_modules
+Environment=NODE_PATH=/mnt/ai/cache/node-modules/home-node_modules
 
 [Install]
 WantedBy=default.target

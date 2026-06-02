@@ -552,3 +552,103 @@
 {"ts": "2026-06-02 15:01", "type": "cycle", "summary": "系统运行正常，无服务异常", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 15:02", "type": "cycle", "summary": "系统运行正常，CPU负载适中，所有服务健康", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-02 15:03", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 15:05", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载均在合理范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:06", "type": "cycle", "summary": "系统运行平稳，资源使用正常，无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:07", "type": "cycle", "summary": "系统运行正常，CPU与内存负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:08", "type": "cycle", "summary": "系统运行正常，偶发瞬间CPU高占用进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:10", "type": "cycle", "summary": "系统整体运行正常，各项指标均处于健康区间", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:11", "type": "cycle", "summary": "系统运行正常，存在短暂的高CPU计算进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:12", "type": "cycle", "summary": "系统运行平稳，无异常告警，存在高CPU进程但属正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:13", "type": "cycle", "summary": "系统运行正常，CPU存在常规进程波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:15", "type": "cycle", "summary": "系统运行正常，CPU/内存/Disk均处于健康范围，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:16", "type": "cycle", "summary": "系统运行正常，CPU负载适中，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:17", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:18", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:19", "type": "cycle", "summary": "系统各项指标正常，存在单一Python进程满载", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:20", "type": "cycle", "summary": "系统运行正常，资源使用率低，服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:22", "type": "cycle", "summary": "系统运行正常，Python进程CPU使用较高但符合历史特征", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:23", "type": "cycle", "summary": "系统负载较高但服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:24", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存使用正常，无活跃服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:26", "type": "cycle", "summary": "系统运行正常，opencode 进程存在高 CPU 占用", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:27", "type": "cycle", "summary": "系统状态正常，服务健康，存在短暂CPU采样波动", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:28", "type": "cycle", "summary": "系统运行正常，CPU存在周期性波动但无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:29", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均在健康范围内，无活跃服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:30", "type": "cycle", "summary": "系统运行正常，CPU与内存负载健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:31", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 15:31", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 15:33", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 15:34", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 15:35", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 15:36", "type": "cycle", "summary": "系统运行正常，CPU和内存负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:37", "type": "cycle", "summary": "系统运行正常，资源负载健康，无待处理异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:38", "type": "cycle", "summary": "系统资源使用正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:39", "type": "cycle", "summary": "系统运行平稳，所有服务健康，无资源瓶颈或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:41", "type": "cycle", "summary": "系统运行平稳，各项指标均处于正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:42", "type": "cycle", "summary": "系统运行正常，服务全健康，存在CPU瞬时峰值", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:43", "type": "cycle", "summary": "系统运行正常，各项指标健康，无待处理任务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:44", "type": "cycle", "summary": "系统运行正常，无服务异常或关键告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:45", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘负载均处于健康范围，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:46", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:47", "type": "cycle", "summary": "系统运行正常，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:48", "type": "cycle", "summary": "系统运行正常，CPU负载低，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:50", "type": "cycle", "summary": "系统运行正常，仅发现 python3.13 进程占用较高但属正常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:51", "type": "cycle", "summary": "系统运行平稳，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:52", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘指标均处于健康范围", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:54", "type": "cycle", "summary": "系统运行正常，所有指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:55", "type": "cycle", "summary": "系统运行平稳，CPU占用略高但无异常服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:56", "type": "cycle", "summary": "系统运行正常，资源负载较低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:57", "type": "cycle", "summary": "系统运行正常，资源使用平稳", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:58", "type": "cycle", "summary": "系统运行正常，CPU与内存负载平稳，无服务故障", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 15:59", "type": "cycle", "summary": "系统运行平稳，无异常或性能瓶颈", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:00", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:01", "type": "cycle", "summary": "系统运行正常，CPU负载较高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:02", "type": "cycle", "summary": "系统运行正常，CPU负载适中，内存及磁盘使用率健康，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:03", "type": "cycle", "summary": "系统负载正常，服务健康，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:04", "type": "cycle", "summary": "系统运行正常，无异常或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:06", "type": "cycle", "summary": "系统整体资源使用正常（CPU 9.8%/内存 65%/磁盘 42%），但检测到 perl 和 adb 进程出现瞬时单核心 CPU 峰值占用", "alert_count": 2, "skipped_llm": false}
+{"ts": "2026-06-02 16:07", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:08", "type": "cycle", "summary": "系统运行平稳，资源负载正常，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:09", "type": "cycle", "summary": "系统各项指标正常，无服务异常或资源瓶颈", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:10", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:11", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:13", "type": "cycle", "summary": "系统运行正常，所有指标在安全范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:14", "type": "cycle", "summary": "系统各项指标正常，CPU有瞬时波动但在可控范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:15", "type": "cycle", "summary": "系统各项指标正常，负载低，无异常服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:17", "type": "cycle", "summary": "系统运行平稳，所有服务健康，资源负载低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:18", "type": "cycle", "summary": "系统运行正常，服务全健康，资源占用低", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:20", "type": "cycle", "summary": "系统运行正常，资源占用低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:21", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:22", "type": "cycle", "summary": "系统运行正常，CPU及内存负载低，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:23", "type": "cycle", "summary": "系统各项指标正常，无活跃告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:25", "type": "cycle", "summary": "系统负载正常，服务全健康，python3.13 为系统正常进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:26", "type": "cycle", "summary": "系统运行正常，Python3.13进程短时CPU占用高但属于正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:27", "type": "cycle", "summary": "系统运行正常，仅 python3.13 进程占用 CPU 较高，符合预期", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:28", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘均无异常，无待处理告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:29", "type": "cycle", "summary": "系统运行正常，CPU与内存负载平稳，无活跃服务或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:30", "type": "cycle", "summary": "系统负载正常，CPU占用处于健康范围，无活跃异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:31", "type": "cycle", "summary": "系统运行正常，存在预期内的高CPU进程", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:33", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:34", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:35", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:36", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:37", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:38", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:39", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:40", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:41", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:42", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:43", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:44", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:45", "type": "cycle", "summary": "LLM 调用失败：Server error '500 Internal Server Error' for url 'http://localhost:4000/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "alert_count": 1, "skipped_llm": false}
+{"ts": "2026-06-02 16:46", "type": "cycle", "summary": "系统运行平稳，各项指标均在正常范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:47", "type": "cycle", "summary": "系统运行正常，python3.13进程属正常系统服务", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:49", "type": "cycle", "summary": "", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:50", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:51", "type": "cycle", "summary": "系统运行正常，所有服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:52", "type": "cycle", "summary": "系统运行正常，资源负载健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:53", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:54", "type": "cycle", "summary": "系统运行正常，CPU负载适中，无服务异常", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:56", "type": "cycle", "summary": "系统负载正常，CPU存在高占用进程但在可接受范围内", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:57", "type": "cycle", "summary": "系统资源使用正常，无服务异常或告警", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:58", "type": "cycle", "summary": "系统运行正常，CPU占用略高但服务健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-02 16:59", "type": "cycle", "summary": "系统运行平稳，服务全部健康，资源利用率正常", "alert_count": 0, "skipped_llm": false}

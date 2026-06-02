@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Fcitx5 一键修复
+Comment=修复候选窗口丢失、搜索记忆丢失、崩溃残留
+Exec=/home/charlie/.local/bin/fcitx5-fix
+Icon=input-keyboard
+Terminal=true
+Type=Application
+Categories=Utility;System;
+Keywords=fcitx5;input;fix;chinese;

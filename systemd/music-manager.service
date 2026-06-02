@@ -1,0 +1,14 @@
+[Unit]
+Description=Music Manager API
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/nix/store/k3rx6f5iwj4qi3ax75zlnv5p3qib256j-python3-3.13.12-env/bin/python3 /mnt/ai/apps/music-manager/backend/api.py
+WorkingDirectory=/mnt/ai/apps/music-manager/backend
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

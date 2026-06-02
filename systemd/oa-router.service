@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenAgents MCP Bridge — Unified Router
+Description=OpenAgents Registered Agent — Unified Router
 After=network.target openagents-network.service
 Requires=openagents-network.service
 
@@ -10,7 +10,7 @@ StartLimitBurst=10
 
 [Service]
 Type=simple
-ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/mcp_bridge.py --agent router --channel general
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/oa_router_agent.py
 WorkingDirectory=/home/charlie/crewai-project
 Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin:/home/charlie/.local/bin
 Environment=PYTHONUNBUFFERED=1
