@@ -2169,3 +2169,6 @@ sending request for url
 
 ## 2026-06-03 01:07
 - [2026-06-03 01:06:59] **AI(sisyphus)**: Now I have full context. Let me execute P0-2 (TokenBucket) and P0-3 (Letta Agent ID de-hardcode) in parallel.
+
+## 2026-06-03 01:07
+- [2026-06-03 01:07:40] **AI(sisyphus)**: Now update all references from `rate_guard.check`/`record`/`pause`/`is_paused` to `consume`/`available`/`status`:
