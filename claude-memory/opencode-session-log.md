@@ -1681,3 +1681,20 @@ voxtype 目前 **模型未下载**（base.en），且不支持中文（ydotool �
 - 启用 `openagents-network.service`（停用旧 `openagents.service`），Studio 可访问 `:8700`
 - 搭建 6 个 bridge 服务：`crewai / opencode / agi
 - [2026-06-02 22:52:11] **用户**: 搜索这个月最新方案 需要配合ai
+
+## 2026-06-02 22:53
+- [2026-06-02 22:53:28] **AI(compaction)**: ## Goal
+- 搜索并实现一个开源语音输入法方案，配合AI实现智能学习（纠错、上下文感知、个性化词典）。
+
+## Constraints & Preferences
+- 开源方案优先
+- 需要配合AI进行智能学习
+- 支持中英混输
+- 适配NixOS + KDE Plasma + Wayland环境
+- 优先本地运行，隐私保护
+
+## Progress
+### Done
+- 检查系统现有语音服务：voxtype（active）、whisper（failed）、nix-voice-agent（active）、fcitx5（active）
+- 发现voxtype配置为远程Whisper模式，但
+- [2026-06-02 22:53:36] **用户**: Continue if you have next steps, or stop and ask for clarification if you are unsure how to proceed.
