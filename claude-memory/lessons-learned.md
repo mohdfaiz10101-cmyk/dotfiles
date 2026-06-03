@@ -243,3 +243,5 @@
 ### 会话摘要 [2026-06-03] [Sonnet/自动]
 - 对话轮次: 38 | 被纠正: 1次
   - 用户纠正: 处理下系统通知 看哪些没必要和重复出现
+
+- [2026-06-03] [OP] 系统通知审计 | 发现: (1) sentinel-dispatch suppress仍写feed致8018空alert (2) auto-discovery正则不匹配致156条docker重复发现 (3) 5个sentinel-onfailure连锁failed | 修复: (1) dispatch移到suppress检查之后+空msg过滤 (2) discovery增加docker.container.XXX匹配+hash前缀去重 (3) reset-failed所有sentinel-onfailure | 结果: lessons-learned 390→245行, 0个failed sentinel, 未来不再生成空alert
