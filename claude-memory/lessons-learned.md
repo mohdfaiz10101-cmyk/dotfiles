@@ -375,3 +375,7 @@
 
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 3 hours (healthy)
 - [2026-06-03] [OP] Termix配置: SSH主机管理 | 添加4台主机到Termix | 根因: NixOS-FRP(2223)被外部暴力破解, frpc代理SSH尝试导致127.0.0.1被SSH penalty封禁, 表现为"Not allowed at this time" | 教训: FRP代理的SSH端口会被外部扫描, 需在FRP层加访问控制
+
+- [auto] 发现: docker.container.termix =  | 状态: Up About a minute (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 4 hours (healthy)
