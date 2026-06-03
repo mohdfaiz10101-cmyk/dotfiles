@@ -64,6 +64,9 @@ def bash_safe(command: str, timeout: int = 30,
     except Exception as e:
         return f"[FAIL] {e}"
 
+# 原始函数版本（供 LangGraph 工作流直接调用，不走 StructuredTool 包装）
+bash_safe_call = bash_safe.func
+
 def check_generated_code(filepath: str) -> tuple[bool, str]:
     """检查 L3 生成的工作流代码安全性。
     返回 (is_safe, reason)"""

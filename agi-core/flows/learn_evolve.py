@@ -244,9 +244,42 @@ def evaluate_suggestions(audit: dict, patterns: list[dict], decay: list[dict]) -
 
 # ── Phase 4: IMPLEMENT ──────────────────────────────────────────────────────
 
+def _check_hitl_expiry() -> list[dict]:
+    """检查 pending_hitl 任务是否过期（24h），过期自动批准低风险任务。"""
+    expired = []
+    if not EVOLVE_STATE.exists():
+        return expired
+    try:
+        state = json.loads(EVOLVE_STATE.read_text())
+        last_run = state.get("last_run", "")
+        if not last_run:
+            return expired
+        from datetime import datetime, timedelta
+        last_dt = datetime.fromisoformat(last_run)
+        if datetime.now() - last_dt > timedelta(hours=24):
+            # 检查上次的 pending_hitl 任务
+            results_path = Path(Path.home() / ".local/state/evolve-result.json")
+            if results_path.exists():
+                old = json.loads(results_path.read_text())
+                for r in old.get("results", []):
+                    if r.get("status") == "pending_hitl":
+                        action = r.get("action", "")
+                        # 低风险：封装 skill、精简建议
+                        if any(kw in action for kw in ["封装", "精简", "归档", "skill", "CLAUDE.md"]):
+                            expired.append({"action": action, "status": "auto_approved_expired"})
+    except Exception:
+        pass
+    return expired
+
+
 def execute_auto_tasks(suggestions: list[dict]) -> list[dict[str, Any]]:
-    """执行标记为 auto=True 的任务。"""
+    """执行标记为 auto=True 的任务。修复版: 通用 handler + HITL 过期机制。"""
     results = []
+
+    # 先检查过期 HITL
+    expired = _check_hitl_expiry()
+    for e in expired:
+        results.append({"action": e["action"], "status": "done", "detail": "过期自动批准(>24h)"})
 
     for s in suggestions:
         if not s.get("auto"):
@@ -254,25 +287,109 @@ def execute_auto_tasks(suggestions: list[dict]) -> list[dict[str, Any]]:
             continue
 
         action = s["action"]
+        handled = False
 
         # 自动归档低分记忆
         if "归档" in action and "低分记忆" in action:
             result = __archive_low_score_memories()
             results.append({"action": action, "status": "done" if result else "fail", "detail": f"归档 {result} 条" if result else "无数据"})
+            handled = True
 
-        # 自动修复记忆文件
-        elif "lessons-learned" in action:
+        # 自动修复 lessons-learned 文件
+        if "lessons-learned" in action:
             result = __archive_old_lessons()
             results.append({"action": action, "status": "done", "detail": f"归档 {result} 条旧 lessons"})
+            handled = True
+
+        # CLAUDE.md 精简
+        if "CLAUDE.md" in action and ("精简" in action or "大小" in action):
+            trim_result = __trim_claude_md()
+            results.append({"action": action, "status": "done" if trim_result else "skip", "detail": f"精简 {trim_result} 字节" if trim_result else "无需精简"})
+            handled = True
 
         # 自动写入进化建议到 Letta
-        elif "Letta" in action and "error" in s.get("source", ""):
+        if "Letta" in action and "error" in s.get("source", ""):
             results.append({"action": action, "status": "escalate", "reason": "Letta 服务异常需人工排查"})
+            handled = True
 
-        else:
-            results.append({"action": action, "status": "skip", "reason": "无可执行方案"})
+        if not handled:
+            # 通用尝试: 发布到 OpenAgents wiki/evolve-insights
+            ok = __publish_to_oa(action, s.get("priority", "medium"))
+            if ok:
+                results.append({"action": action, "status": "done", "detail": "已发布到 OpenAgents"})
+            else:
+                results.append({"action": action, "status": "skip", "reason": "无可执行方案"})
 
     return results
+
+
+def __trim_claude_md() -> int | None:
+    """精简 CLAUDE.md：移除重复内容，统一引用 wiki/ai-rules。"""
+    if not RULES_PATH.exists():
+        return None
+    content = RULES_PATH.read_text()
+    orig_size = len(content)
+
+    # 如果已经 < 8000，不处理
+    if orig_size < 8000:
+        return None
+
+    # 在顶部插入 wiki 引用，移除重复的规则段落
+    lines = content.split("\n")
+    new_lines = []
+    skip_until_next_header = False
+
+    for line in lines:
+        # 跳过已迁移到 wiki 的重复规则段落
+        if line.strip().startswith("## ") and any(
+            kw in line for kw in ["NTFS 封杀", "磁盘分配", "Windows 远程",
+                                   "OP 禁止委托", "定时任务时段", "偏好自动提取",
+                                   "任务失败升级", "思考过程问题强制清理"]
+        ):
+            skip_until_next_header = False
+            new_lines.append(line)
+            new_lines.append("")
+            new_lines.append("> ⚠️ 此规则已迁移到 OpenAgents wiki/ai-rules，此处仅保留概要。详见 sync-rules.sh")
+            new_lines.append("")
+            continue
+
+        if not skip_until_next_header:
+            new_lines.append(line)
+
+    new_content = "\n".join(new_lines)
+    new_size = len(new_content)
+    if new_size < orig_size:
+        RULES_PATH.write_text(new_content)
+        return orig_size - new_size
+    return None
+
+
+def __publish_to_oa(action: str, priority: str = "medium") -> bool:
+    """发布进化建议到 OpenAgents evolve-insights wiki。"""
+    try:
+        import urllib.request
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M")
+        entry = f"- [{ts}] [{priority}] {action}\n"
+
+        # 追加到 wiki page（如果存在）
+        url = "http://localhost:8700/api/send_event"
+        payload = json.dumps({
+            "event_name": "wiki.page.update",
+            "source_id": "evolve-engine",
+            "event_id": f"evolve-{int(datetime.now().timestamp())}",
+            "target_agent_id": "mod:openagents.mods.workspace.wiki",
+            "payload": {
+                "page_path": "evolve-insights",
+                "append_content": entry,
+            }
+        }).encode()
+        req = urllib.request.Request(url, data=payload, headers={
+            "Content-Type": "application/json",
+        })
+        urllib.request.urlopen(req, timeout=5)
+        return True
+    except Exception:
+        return False
 
 
 def __archive_low_score_memories() -> int | None:

@@ -1,0 +1,14 @@
+[Unit]
+Description=Wiki ai-rules 变更监听 + 自动同步
+After=network.target openagents.service
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.local/bin/wiki-watch.sh
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

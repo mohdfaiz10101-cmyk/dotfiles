@@ -1,0 +1,10 @@
+[Unit]
+Description=AGI 自愈巡检定时器（每30分钟）
+Requires=agi-self-heal.service
+
+[Timer]
+OnCalendar=*:5/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

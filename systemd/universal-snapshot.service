@@ -1,0 +1,8 @@
+[Unit]
+Description=Universal Snapshot — 定时增量 git commit
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/universal-snapshot
+StandardOutput=journal
+StandardError=journal

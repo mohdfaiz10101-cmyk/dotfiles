@@ -1,0 +1,10 @@
+[Unit]
+Description=AGI 自愈巡检
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/charlie/agi
+ExecStart=/home/charlie/agi/.venv/bin/python3 -m flows.self_heal
+StandardOutput=journal
+StandardError=journal

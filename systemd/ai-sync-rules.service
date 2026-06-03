@@ -1,0 +1,9 @@
+[Unit]
+Description=AI规则自动同步（从OpenAgents wiki拉取）
+After=network.target openagents.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/sync-rules.sh --tool all
+StandardOutput=journal
+StandardError=journal

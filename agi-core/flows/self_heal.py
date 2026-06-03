@@ -1,7 +1,7 @@
 """
 self_heal.py — 自愈巡检工作流
 LangGraph StateGraph: Sense → Classify → 并行(DiskFix|ServiceFix|ProxyFix) → Verify → Report
-复用 brain.py sense()，所有 bash 执行走 safe_tools.bash_safe
+复用 brain.py sense()，所有 bash 执行走 safe_tools.bash_safe_call
 
 Usage:
     cd ~/agi && python3 -m flows.self_heal
@@ -20,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from flows.safe_tools import bash_safe
+from flows.safe_tools import bash_safe_call
 from brain import sense
 
 FLOW_NAME = "self_heal"
@@ -82,7 +82,7 @@ def node_classify(state: HealState) -> dict:
     # 代理检查（通过 curl 测试）
     if not issues:
         # 只在有磁盘/服务问题时并行检测代理，否则跳过
-        proxy_check = bash_safe(
+        proxy_check = bash_safe_call(
             "curl -s --connect-timeout 5 -x http://127.0.0.1:7890 https://www.google.com -o /dev/null -w '%{http_code}'",
             timeout=10,
             flow=FLOW_NAME,
@@ -111,7 +111,7 @@ def node_disk_fix(state: HealState) -> dict:
         result_parts.append(f"磁盘使用率 {pct}，尝试清理...")
 
         # 清理 apt 缓存
-        r1 = bash_safe(
+        r1 = bash_safe_call(
             "sudo apt-get clean 2>/dev/null || true",
             timeout=30,
             flow=FLOW_NAME,
@@ -120,7 +120,7 @@ def node_disk_fix(state: HealState) -> dict:
         result_parts.append(f"apt clean: {r1}")
 
         # 清理 pip 缓存
-        r2 = bash_safe(
+        r2 = bash_safe_call(
             "pip cache purge 2>/dev/null || true",
             timeout=30,
             flow=FLOW_NAME,
@@ -129,7 +129,7 @@ def node_disk_fix(state: HealState) -> dict:
         result_parts.append(f"pip cache: {r2}")
 
         # 清理 journal 日志
-        r3 = bash_safe(
+        r3 = bash_safe_call(
             "sudo journalctl --vacuum-time=3d 2>/dev/null | tail -1",
             timeout=15,
             flow=FLOW_NAME,
@@ -153,7 +153,7 @@ def node_service_fix(state: HealState) -> dict:
         svc_info = issue.replace("service:", "")
         svc_name = svc_info.split("=")[0] if "=" in svc_info else svc_info
         result_parts.append(f"服务 {svc_name} 异常，尝试重启...")
-        r = bash_safe(
+        r = bash_safe_call(
             f"systemctl restart {svc_name}",
             timeout=30,
             flow=FLOW_NAME,
@@ -175,7 +175,7 @@ def node_proxy_fix(state: HealState) -> dict:
     result_parts = ["代理异常，尝试修复..."]
 
     # 重启 mihomo
-    r1 = bash_safe(
+    r1 = bash_safe_call(
         "systemctl restart mihomo", timeout=30, flow=FLOW_NAME, node="ProxyFix"
     )
     result_parts.append(f"restart mihomo: {r1}")
@@ -184,7 +184,7 @@ def node_proxy_fix(state: HealState) -> dict:
     import time
 
     time.sleep(3)
-    r2 = bash_safe(
+    r2 = bash_safe_call(
         "curl -s --connect-timeout 5 -x http://127.0.0.1:7890 https://www.google.com -o /dev/null -w '%{http_code}'",
         timeout=10,
         flow=FLOW_NAME,
@@ -415,7 +415,7 @@ def build_graph():
 
     # Verify → Learn → 重试或报告
     graph.add_conditional_edges(
-        "verify", should_retry_v2, {"learn": "learn", "retry": "retry_classify"}
+        "verify", should_retry, {"learn": "learn", "retry": "retry_classify", "report": "report"}
     )
     graph.add_edge("learn", "report")
     graph.add_edge("retry_classify", "classify")

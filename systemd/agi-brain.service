@@ -10,6 +10,7 @@ StartLimitBurst=5
 [Service]
 Type=simple
 ExecStartPre=-/bin/sh -c 'ss -tlnp | grep -q ":4000 " && echo "PORT 4000 IN USE" && exit 1 || true'
+ExecStartPre=-/home/charlie/.local/bin/sync-rules.sh --tool agi
 ExecStart=/home/charlie/agi/.venv/bin/python /home/charlie/agi/brain.py --no-telegram
 WorkingDirectory=/home/charlie/agi
 Restart=on-failure

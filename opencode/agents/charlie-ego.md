@@ -11,16 +11,24 @@ model: openai-compatible/cerebras-qwen3-235b
 ---
 # Charlie-Ego — 决策镜像
 
-<!-- memory-gate-inject: 17:00 -->
+<!-- memory-gate-inject: 19:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
-**教训**: - [2026-06-02] [OP] 诊断: "tool not allowed while generating summary" 反复出现 | 根因: OpenCode compaction 期间工具调用被拦截，系统提示词+工具定义过大(150+ skills, 大量MCP工具)导致频繁触发压
-**教训**: - [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent- [2026-06-02] [OP] 修复: 剪贴板复制后粘贴内容不对(复发) | 根因: (1) clip-s
-**教训**: - [2026-06-02] [OP] 修复: phone-connect-mcp.py 设备选择逻辑缺陷 | 根因: (1) _dedup_devices返回标签(phone-tailscale1)而非实际地址(100.108.28.44:5555)，导致adb -s用无效设备ID (2) ens
 **教训**: - [2026-06-03] [OP] android-tailscale-keepalive 已部署: (1) Doze白名单已添加 com.tailscale.ipn (2) 看门狗脚本写入 /data/adb/service.d/tailscale_keep.sh (667B, 755) | 
 **教训**: - [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.to
+**教训**: - [2026-06-03] [OP] 教训: Termix数据库清空导致host配置丢失 | 根因: 为重置admin用户直接rm -f db.sqlite.encrypted，未先备份 | 教训: 操作数据库前必须备份，优先用API调整权限而非删库
+**教训**: - [2026-06-03] [AUTO] 偏好: AI误删防护 | 内容: 用户已有config-immutable-snapshot(监控8个关键文件)和memory-auto-commit(记忆目录)，但覆盖范围太窄，Termux配置未被保护。用户要求"git that shit"式的全量自动
+**教训**: - [2026-06-03] [OP] Termix配置: SSH主机管理 | 添加4台主机到Termix | 根因: NixOS-FRP(2223)被外部暴力破解, frpc代理SSH尝试导致127.0.0.1被SSH penalty封禁, 表现为"Not allowed at this time
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 
