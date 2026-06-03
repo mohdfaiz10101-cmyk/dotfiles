@@ -361,3 +361,6 @@
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 5 hours (healthy)
 
 - [2026-06-03] [OP] android-tailscale-keepalive 已部署: (1) Doze白名单已添加 com.tailscale.ipn (2) 看门狗脚本写入 /data/adb/service.d/tailscale_keep.sh (667B, 755) | 重启后生效，Magisk service.d 自动启动 | 每600秒检查 tailscaled 进程+隧道状态，异常自动恢复
+- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 10 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 37 minutes (healthy)
