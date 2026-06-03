@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-03 23:00
+> 来源: changelog.jsonl | 重建时间: 2026-06-03 23:31
 
 ## 2026-06-03
 
@@ -26,6 +26,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -124,6 +126,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
@@ -307,6 +310,44 @@
 - [file-change] **.openagents**: .openagents/identity.json MODIFY
 - [file-change] **.openagents**: .openagents/identity.json MODIFY
 - [file-change] **.openagents**: .openagents/identity.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
@@ -2405,10 +2446,14 @@
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_223435.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_224438.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_225438.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_230440.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_231441.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_232446.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.wiki/pages/ai-rules.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.wiki/pages/evolve-insights.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.wiki/versions/ai-rules.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.wiki/versions/evolve-insights.json CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
@@ -2544,6 +2589,9 @@
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_223419.json DELETE
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_224420.json DELETE
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_225423.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_230425.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_231428.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_232430.json DELETE
 ## 2026-06-02
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
