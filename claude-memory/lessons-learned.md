@@ -245,3 +245,8 @@
   - 用户纠正: 处理下系统通知 看哪些没必要和重复出现
 
 - [2026-06-03] [OP] 系统通知审计 | 发现: (1) sentinel-dispatch suppress仍写feed致8018空alert (2) auto-discovery正则不匹配致156条docker重复发现 (3) 5个sentinel-onfailure连锁failed | 修复: (1) dispatch移到suppress检查之后+空msg过滤 (2) discovery增加docker.container.XXX匹配+hash前缀去重 (3) reset-failed所有sentinel-onfailure | 结果: lessons-learned 390→245行, 0个failed sentinel, 未来不再生成空alert
+- [auto] 发现: docker.container.tubearchivist = 127.0.0.1:8001->8000/tcp | 状态: Up 29 minutes
+
+- [auto] 发现: docker.container.tubearchivist-redis = 127.0.0.1:6380->6379/tcp | 状态: Up 29 minutes
+
+- [auto] 发现: docker.container.tubearchivist-es = 127.0.0.1:9200->9200/tcp, 9300/tcp | 状态: Up 29 minutes
