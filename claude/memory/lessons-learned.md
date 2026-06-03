@@ -62,92 +62,52 @@
 - [auto] 发现: systemd.● = active
 - [2026-06-01] [OP] 修复: hermes FRP端口 | 根因: 19800/18092不在VPS allowPorts白名单 | 修复: 换18700(已在frps.toml白名单) | 教训: 新增FRP端口前先查~/ai-deploy/frps.toml
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 37 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 37 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 37 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 37 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 37 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 38 minutes (healthy)
 - [2026-06-01] [OP] 修复: whisper重启风暴 | 根因: ggml-medium.bin缺失 | 修复: 停用服务 | 模型: 仅base可用 | 教训: 迁移后检查模型文件路径
 - [2026-06-01] [OP] 修复: fcitx5搜索记忆丢失 | 根因: 0字节临时文件user.dict_yamBgz残留(04:00崩溃)+Wayland前端已知不稳定 | 修复: 清理残留文件+重启fcitx5+确认waylandim.conf已禁用 | 教训: fcitx5崩溃后可能留下0字节临时文件占用路径
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 45 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 46 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 46 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 40 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 40 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 56 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 56 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 56 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 49 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 56 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 56 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 56 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 56 minutes (healthy)
 
 - [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 3 minutes
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 55 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 24 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 26 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 27 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 27 minutes (healthy)
 - [2026-06-02] [OP] 分析: SSH多路径管理 | 发现: 已有SSH config v3(ControlMaster+多路径回退)+tmux+mosh+ttyd | 建议: 用ttyd作主入口+tmux持久化，SSH仅用于传输/转发
 
 - [2026-06-02] [OP] 修复: context-pack未注入新任务 | 根因: memory-injector.py只从baseline.toml+lessons-learned提取，缺少user-preferences.md和decision-memory.md | 修复: 增强get_latest_memories()同时读取user-preferences.md(前6条偏好)+decision-memory.md(最近3条决策) | 教训: 任何新增的记忆文件类型都需要同步更新memory-injector的提取逻辑
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 11 minutes (healthy)
 
-- [auto] 发现: docker.container.musetalk = 0.0.0.0:9881->8000/tcp, [::]:9881->8000/tcp | 状态: Up 20 minutes
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 27 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 27 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 27 minutes (healthy)
 
 - [2026-06-02] [OP] 网络拓扑系统化 | 创建 network-topology.md (统一视图+决策树) + port-allocator.sh (自动预检) + memory-injector 增强 (网络拓扑注入所有agent) | 解决问题: 每次新会话AI重新推理网络连接方式，FRP端口/路由器/公网等反复踩坑
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 26 minutes (healthy)
 
-- [auto] 发现: docker.container.e45c798cf3d5_litellm-litellm =  | 状态: Up 27 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 27 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 27 minutes (healthy)
 
 - [2026-06-02] [OP] 修复: 剪贴板不生效(node) | 根因: clip-sync 和 clipboard-sync-windows 两个服务同时运行，互相覆盖剪贴板内容 | 修复: 停用 clip-sync，保留 clipboard-sync-windows(直接PowerShell读Windows剪贴板更可靠) | 教训: 同类剪贴板同步服务只能保留一个- [2026-06-02] [OP] 部署 Termix | 端口: 9180 | 镜像: ghcr.io/lukegus/termix | 结果: 成功 | 位置: /mnt/ai/apps/termix/docker-compose.yml
 
@@ -163,219 +123,125 @@
 
 - [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 5 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 27 minutes (healthy)
 
 - [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 5 minutes (healthy)
 
 - [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent- [2026-06-02] [OP] 修复: 剪贴板复制后粘贴内容不对(复发) | 根因: (1) clip-sync + clipboard-sync-windows 两个Windows同步同时运行竞争 (2) clipboard-sync-windows 的 get_win_clipboard() PowerShell命令引号嵌套在SSH传输中损坏，返回ParserError错误文本被当作"剪贴板内容"写入wl-copy | 修复: 停用clip-sync(duplicate)，修复PowerShell命令为简单的Get-Clipboard -Raw | 教训: 之前修过一次同类问题但clip-sync被重新启用，需要确保只有一个Windows同步服务
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 26 minutes (healthy)
 
-- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp | 状态: Up 25 minutes (healthy)
 
-- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 26 minutes (healthy)
 
-- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 6 minutes (healthy)
 
 - [2026-06-02] [OP] 修复: phone-connect-mcp.py 设备选择逻辑缺陷 | 根因: (1) _dedup_devices返回标签(phone-tailscale1)而非实际地址(100.108.28.44:5555)，导致adb -s用无效设备ID (2) ensure_connected默认方法跳过tailscale1(100.108.28.44)直接试tailscale2(离线)和FRP(不通ADB) (3) force_method匹配用标签子串但设备列表已变为实际地址 | 修复: (1) _dedup_devices改为返回实际地址 (2) 新增DEVICE_PHYSICAL映射表用于物理设备去重 (3) 默认方法加入tailscale1作为第一优先 (4) force_method匹配改用_device_label()转换 | 教训: MCP连接地址≠标签名，_dedup_devices返回的值必须adb -s可直接使用
 [2026-06-02] [OP] Termix Cloudflare 隧道: 用 cloudflared tunnel --url http://127.0.0.1:9180 暴露 Termix 到公网。之前 tailscale serve/funnel DNS 在手机端解析超时，换 Cloudflare 临时隧道绕过。域名: dublin-third-delayed-geology.trycloudflare.com。已创建 systemd 用户服务 cloudflared-termix.service 持久化。
 [2026-06-02] [OP] Termix 公网双隧道: (1) Cloudflare quick tunnel → dublin-third-delayed-geology.trycloudflare.com (2) FRP → charlie1990.duckdns.org:19180。Termix Docker 容器已设置 restart: always。frps 服务改为 systemd --user 管理，避免端口冲突。
-- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 3 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 21 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 21 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 21 minutes (healthy)
 
-- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 21 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 20 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 18 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 19 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 16 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 14 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up About a minute (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 15 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 35 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 9 minutes (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up About an hour (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 3 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 2 hours (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 4 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 59 seconds (healthy)
 
-- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 5 hours (healthy)
 
-- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 5 hours (healthy)
 
-- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 5 hours (healthy)
 
-- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 5 hours (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
 
-- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 5 hours (healthy)
 
-- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 5 hours (healthy)
 
 - [2026-06-03] [OP] android-tailscale-keepalive 已部署: (1) Doze白名单已添加 com.tailscale.ipn (2) 看门狗脚本写入 /data/adb/service.d/tailscale_keep.sh (667B, 755) | 重启后生效，Magisk service.d 自动启动 | 每600秒检查 tailscaled 进程+隧道状态，异常自动恢复
-- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 10 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 37 minutes (healthy)
 - [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.toml更新9180→9080 | 结果: TCP连接正常, hosts down原因变为SSH认证失败(需用户配置凭证)
 
-- [auto] 发现: docker.container.termix =  | 状态: Up 21 minutes (healthy)
 
 - [2026-06-03] [OP] 教训: Termix数据库清空导致host配置丢失 | 根因: 为重置admin用户直接rm -f db.sqlite.encrypted，未先备份 | 教训: 操作数据库前必须备份，优先用API调整权限而非删库
 - [2026-06-03] [AUTO] 偏好: AI误删防护 | 内容: 用户已有config-immutable-snapshot(监控8个关键文件)和memory-auto-commit(记忆目录)，但覆盖范围太窄，Termux配置未被保护。用户要求"git that shit"式的全量自动快照，每步操作可时间回溯。当前缺口: ~/.termux/、~/.zshrc、~/.local/bin/等未纳入监控。- [2026-06-03] [OP] 修复: config-immutable-snapshot覆盖不足 | 根因: WATCH_MAP仅8个文件,Termux/shell配置未纳入 | 修复: 扩展WATCH_MAP增加termux.properties/bash.bashrc/zshrc/.zshrc/.bashrc | 教训: 每次新增关键配置目录需同步更新WATCH_MAP
 
-- [auto] 发现: docker.container.termix =  | 状态: Up 48 minutes (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 3 hours (healthy)
 - [2026-06-03] [OP] Termix配置: SSH主机管理 | 添加4台主机到Termix | 根因: NixOS-FRP(2223)被外部暴力破解, frpc代理SSH尝试导致127.0.0.1被SSH penalty封禁, 表现为"Not allowed at this time" | 教训: FRP代理的SSH端口会被外部扫描, 需在FRP层加访问控制
 
-- [auto] 发现: docker.container.termix =  | 状态: Up About a minute (healthy)
 
-- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 4 hours (healthy)
+
+
+
+### 会话摘要 [2026-06-03] [Sonnet/自动]
+- 对话轮次: 38 | 被纠正: 1次
+  - 用户纠正: 处理下系统通知 看哪些没必要和重复出现
+
+- [2026-06-03] [OP] 系统通知审计 | 发现: (1) sentinel-dispatch suppress仍写feed致8018空alert (2) auto-discovery正则不匹配致156条docker重复发现 (3) 5个sentinel-onfailure连锁failed | 修复: (1) dispatch移到suppress检查之后+空msg过滤 (2) discovery增加docker.container.XXX匹配+hash前缀去重 (3) reset-failed所有sentinel-onfailure | 结果: lessons-learned 390→245行, 0个failed sentinel, 未来不再生成空alert

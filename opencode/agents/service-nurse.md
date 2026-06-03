@@ -15,16 +15,26 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Service Nurse — 服务护士
 
-<!-- memory-gate-inject: 19:00 -->
+<!-- memory-gate-inject: 21:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
-**教训**: - [2026-06-03] [OP] android-tailscale-keepalive 已部署: (1) Doze白名单已添加 com.tailscale.ipn (2) 看门狗脚本写入 /data/adb/service.d/tailscale_keep.sh (667B, 755) | 
 **教训**: - [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.to
 **教训**: - [2026-06-03] [OP] 教训: Termix数据库清空导致host配置丢失 | 根因: 为重置admin用户直接rm -f db.sqlite.encrypted，未先备份 | 教训: 操作数据库前必须备份，优先用API调整权限而非删库
 **教训**: - [2026-06-03] [AUTO] 偏好: AI误删防护 | 内容: 用户已有config-immutable-snapshot(监控8个关键文件)和memory-auto-commit(记忆目录)，但覆盖范围太窄，Termux配置未被保护。用户要求"git that shit"式的全量自动
 **教训**: - [2026-06-03] [OP] Termix配置: SSH主机管理 | 添加4台主机到Termix | 根因: NixOS-FRP(2223)被外部暴力破解, frpc代理SSH尝试导致127.0.0.1被SSH penalty封禁, 表现为"Not allowed at this time
+**教训**: - [2026-06-03] [OP] 系统通知审计 | 发现: (1) sentinel-dispatch suppress仍写feed致8018空alert (2) auto-discovery正则不匹配致156条docker重复发现 (3) 5个sentinel-onfailure连锁fail
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
 
 
 

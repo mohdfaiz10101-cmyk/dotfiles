@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.nix-profile/bin/cloudflared tunnel --url http://127.0.0.1:9180 --no-autoupdate
+ExecStart=%h/.nix-profile/bin/cloudflared tunnel --url http://127.0.0.1:9443 --no-autoupdate
 Restart=always
 RestartSec=10
 
