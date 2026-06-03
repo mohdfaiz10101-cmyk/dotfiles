@@ -28,10 +28,11 @@ MAX_RETRIES = 2
 
 
 class HealState(TypedDict):
-    """自愈工作流状态。"""
+    """自愈工作流状态（有状态图）。"""
 
     sense_data: dict
-    issues: list[str]  # 分类后的问题列表
+    issues: list[str]
+    severity: str                          # "P0"/"P1"/"P2" — 问题严重度
     disk_result: str
     service_result: str
     proxy_result: str
@@ -39,6 +40,9 @@ class HealState(TypedDict):
     report: str
     retry_count: int
     success: bool
+    human_approved: bool                   # 人工审批结果
+    learn_outcome: str                     # 学习节点记录
+    fix_history: list[dict]                # 修复历史（用于 learn）
 
 
 # ── Sense ──────────────────────────────────────────────────────────────────
@@ -273,36 +277,147 @@ def node_retry_classify(state: HealState) -> dict:
     return {"retry_count": new_count}
 
 
+# ── Severity 分类 ─────────────────────────────────────────────────────────────
+
+
+def node_severity(state: HealState) -> dict:
+    """根据问题类型和数量评估严重度。"""
+    issues = state.get("issues", [])
+    if not issues:
+        return {"severity": "P2", "fix_history": []}
+
+    # P0: 服务全挂 / 磁盘 >95%
+    for issue in issues:
+        if issue.startswith("disk:") and _parse_disk_pct(issue) > 95:
+            return {"severity": "P0"}
+        if issue.startswith("service:") and len(issues) >= 3:
+            return {"severity": "P0"}
+
+    # P1: 单服务异常 / 磁盘 85-95%
+    for issue in issues:
+        if issue.startswith("disk:") and _parse_disk_pct(issue) > 85:
+            return {"severity": "P1"}
+        if issue.startswith("service:"):
+            return {"severity": "P1"}
+
+    return {"severity": "P2"}
+
+
+# ── Human-in-the-loop 审批 ────────────────────────────────────────────────────
+
+
+def node_human_check(state: HealState) -> dict:
+    """P0 问题需要人工审批才能修复。"""
+    severity = state.get("severity", "P2")
+    issues = state.get("issues", [])
+
+    if severity != "P0":
+        return {"human_approved": True}
+
+    # P0 问题：写入 op-tasks 等待人工审批
+    import asyncio
+    try:
+        from brain import _write_op_tasks
+        task = {
+            "task": f"[P0-紧急] 自愈需要人工审批: {', '.join(issues)}",
+            "priority": "high",
+            "context": f"severity={severity}, issues={issues}",
+        }
+        asyncio.get_event_loop().run_until_complete(_write_op_tasks([task]))
+    except Exception:
+        pass
+
+    return {"human_approved": False, "report": f"[P0] 需要人工审批: {', '.join(issues)}"}
+
+
+def should_human_approve(state: HealState) -> str:
+    """判断是否需要人工审批。"""
+    if state.get("human_approved", True):
+        return "fix"
+    return "report"
+
+
+# ── Learn 节点 ────────────────────────────────────────────────────────────────
+
+
+def node_learn(state: HealState) -> dict:
+    """从修复结果中学习，记录 fix_history + 更新 lessons-learned。"""
+    history = state.get("fix_history", [])
+    success = state.get("success", False)
+    severity = state.get("severity", "P2")
+    issues = state.get("issues", [])
+
+    outcome = "success" if success else "failed"
+    entry = {
+        "timestamp": __import__("datetime").datetime.now().isoformat(),
+        "severity": severity,
+        "issues": issues,
+        "outcome": outcome,
+        "retries": state.get("retry_count", 0),
+        "disk": state.get("disk_result", "")[:100],
+        "service": state.get("service_result", "")[:100],
+        "proxy": state.get("proxy_result", "")[:100],
+    }
+    history.append(entry)
+
+    # 写入 lessons-learned（仅失败时）
+    if not success:
+        try:
+            from datetime import datetime
+            ts = datetime.now().strftime("%Y-%m-%d %H:%M")
+            lesson = f"\n- [{ts}] [SELF_HEAL] 修复失败 severity={severity} issues={issues} retries={state.get('retry_count', 0)}\n"
+            lessons_path = Path.home() / ".claude/projects/-home-charlie/memory/lessons-learned.md"
+            with open(lessons_path, "a") as f:
+                f.write(lesson)
+        except Exception:
+            pass
+
+    return {"learn_outcome": outcome, "fix_history": history}
+
+
 # ── 构建图 ─────────────────────────────────────────────────────────────────
 
 
 def build_graph():
-    """构建自愈巡检 StateGraph。"""
+    """构建有状态自愈 StateGraph（v2 — conditional branching + learn）。"""
     graph = StateGraph(HealState)
 
+    # 节点
     graph.add_node("sense", node_sense)
     graph.add_node("classify", node_classify)
+    graph.add_node("severity", node_severity)
+    graph.add_node("human_check", node_human_check)
     graph.add_node("disk_fix", node_disk_fix)
     graph.add_node("service_fix", node_service_fix)
     graph.add_node("proxy_fix", node_proxy_fix)
     graph.add_node("verify", node_verify)
-    graph.add_node("retry_classify", node_retry_classify)
+    graph.add_node("learn", node_learn)
     graph.add_node("report", node_report)
+    graph.add_node("retry_classify", node_retry_classify)
 
+    # 线性流程: Sense → Classify → Severity → HumanCheck
     graph.add_edge(START, "sense")
     graph.add_edge("sense", "classify")
-    # 并行修复
-    graph.add_edge("classify", "disk_fix")
-    graph.add_edge("classify", "service_fix")
-    graph.add_edge("classify", "proxy_fix")
-    # 修复 → 验证
-    graph.add_edge("disk_fix", "verify")
-    graph.add_edge("service_fix", "verify")
-    graph.add_edge("proxy_fix", "verify")
-    # 验证 → 重试或报告
+    graph.add_edge("classify", "severity")
+    graph.add_edge("severity", "human_check")
+
+    # HumanCheck → 条件分支: approved → fix_chain / denied → report
     graph.add_conditional_edges(
-        "verify", should_retry, {"classify": "retry_classify", "report": "report"}
+        "human_check",
+        should_human_approve,
+        {"fix": "disk_fix", "report": "report"},
     )
+
+    # 修复链: disk → service → proxy → verify（各节点内部 SKIP 无关问题）
+    graph.add_edge("disk_fix", "service_fix")
+    graph.add_edge("service_fix", "proxy_fix")
+    graph.add_edge("proxy_fix", "verify")
+
+    # Verify → Learn → 重试或报告
+    graph.add_conditional_edges(
+        "verify", should_retry_v2, {"learn": "learn", "retry": "retry_classify"}
+    )
+    graph.add_edge("learn", "report")
     graph.add_edge("retry_classify", "classify")
     graph.add_edge("report", END)
 

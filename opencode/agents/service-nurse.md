@@ -15,16 +15,26 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Service Nurse — 服务护士
 
-<!-- memory-gate-inject: 14:30 -->
+<!-- memory-gate-inject: 17:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
-**教训**: - [2026-06-02] [OP] 修复: wechat-uos崩溃重启风暴 | 根因: DISPLAY=:1 但实际XWayland只有:0 | 修复: 改DISPLAY=:0后正常 | 教训: 检查X11显示号与实际情况是否匹配
-**教训**: - [2026-06-02] [OP] rofi恢复+增强: 之前被其他AI改回dmenu模式。修复: (1) 改用原生drun模式(图标+分类) (2) 拼音通过生成~/.local/share/applications/pinyin-*.desktop文件注入Keywords字段 (3) dru
 **教训**: - [2026-06-02] [OP] 诊断: "tool not allowed while generating summary" 反复出现 | 根因: OpenCode compaction 期间工具调用被拦截，系统提示词+工具定义过大(150+ skills, 大量MCP工具)导致频繁触发压
 **教训**: - [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent- [2026-06-02] [OP] 修复: 剪贴板复制后粘贴内容不对(复发) | 根因: (1) clip-s
 **教训**: - [2026-06-02] [OP] 修复: phone-connect-mcp.py 设备选择逻辑缺陷 | 根因: (1) _dedup_devices返回标签(phone-tailscale1)而非实际地址(100.108.28.44:5555)，导致adb -s用无效设备ID (2) ens
+**教训**: - [2026-06-03] [OP] android-tailscale-keepalive 已部署: (1) Doze白名单已添加 com.tailscale.ipn (2) 看门狗脚本写入 /data/adb/service.d/tailscale_keep.sh (667B, 755) | 
+**教训**: - [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.to
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
+
+
 
 
 

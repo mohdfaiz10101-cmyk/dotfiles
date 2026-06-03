@@ -343,3 +343,27 @@
 - [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 4 hours (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 4 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 59 seconds (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 5 hours (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 5 hours (healthy)
+
+- [2026-06-03] [OP] android-tailscale-keepalive 已部署: (1) Doze白名单已添加 com.tailscale.ipn (2) 看门狗脚本写入 /data/adb/service.d/tailscale_keep.sh (667B, 755) | 重启后生效，Magisk service.d 自动启动 | 每600秒检查 tailscaled 进程+隧道状态，异常自动恢复
+- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 10 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 37 minutes (healthy)
+- [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.toml更新9180→9080 | 结果: TCP连接正常, hosts down原因变为SSH认证失败(需用户配置凭证)
+
+- [auto] 发现: docker.container.termix =  | 状态: Up 21 minutes (healthy)

@@ -1,0 +1,18 @@
+[Unit]
+Description=ttyd - OpenCode GLM 5.1 Terminal (:7701)
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/sh -c 'fuser -k 7701/tcp 2>/dev/null; sleep 0.5; true'
+ExecStart=/run/current-system/sw/bin/ttyd -p 7701 -P 3 -I /home/charlie/.local/share/ttyd/index.html -t fontSize=10 -t disableLeaveAlert=true -t 'theme={"background":"#1a1a2e","foreground":"#e0e0e8"}' -t scrollback=50000 -W /home/charlie/.local/bin/oc-glm51-tmux-wrap
+ExecStop=/bin/sh -c 'fuser -k 7701/tcp 2>/dev/null || true'
+Restart=on-failure
+RestartSec=10
+Environment=HOME=/home/charlie
+Environment=PATH=/run/current-system/sw/bin:/home/charlie/.local/bin:/home/charlie/.npm-global/bin:/home/charlie/.nix-profile/bin
+Environment=TERM=xterm-256color
+Environment=COLORTERM=truecolor
+
+[Install]
+WantedBy=default.target

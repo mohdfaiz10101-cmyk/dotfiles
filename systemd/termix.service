@@ -1,0 +1,16 @@
+[Unit]
+Description=Termix SSH Manager (Docker)
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=-/usr/bin/env docker compose -f /mnt/ai/apps/termix/docker-compose.yml down
+ExecStart=/usr/bin/env docker compose -f /mnt/ai/apps/termix/docker-compose.yml up -d
+ExecStop=/usr/bin/env docker compose -f /mnt/ai/apps/termix/docker-compose.yml down
+ExecStartPost=/usr/bin/env sleep 3
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
