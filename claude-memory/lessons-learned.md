@@ -365,3 +365,5 @@
 
 - [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 37 minutes (healthy)
 - [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.toml更新9180→9080 | 结果: TCP连接正常, hosts down原因变为SSH认证失败(需用户配置凭证)
+
+- [auto] 发现: docker.container.termix =  | 状态: Up 21 minutes (healthy)
