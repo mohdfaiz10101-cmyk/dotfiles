@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-06-04 00:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-06-04 06:18 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -10,7 +10,6 @@
 | 443 | 0.0.0.0:* |
 | 443 | [::]:* |
 | 1053 | users:(("mihomo",pid=735450,fd=7)) |
-| 1716 | users:((".kdeconnectd-wr",pid=3960347,fd=13)) |
 | 2222 | *:* |
 | 2223 | *:* |
 | 3000 | (v1",pid=7344,fd=21)) |
@@ -48,11 +47,12 @@
 | 8080 | users:(("ttyd",pid=4936,fd=13)) |
 | 8081 | users:(("opencode",pid=4466,fd=19)) |
 | 8088 | users:(("python3.13",pid=4469,fd=3)) |
+| 8181 | users:(("node",pid=3187252,fd=22)) |
 | 8201 | users:(("python3",pid=2549,fd=7)) |
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | users:(("python3.13",pid=2648,fd=3)) |
-| 8285 | users:(("python3.13",pid=1248200,fd=11)) |
+| 8285 | users:(("python3.13",pid=3119381,fd=11)) |
 | 8286 | users:(("python3.13",pid=4435,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8600 | users:(("python3.13",pid=4456,fd=14)) |
@@ -66,7 +66,7 @@
 | 9200 | 0.0.0.0:* |
 | 9222 | users:(("chrome",pid=5164,fd=60)) |
 | 9443 | 0.0.0.0:* |
-| 9800 | users:(("python3.13",pid=4440,fd=6)) |
+| 9800 | users:(("python3.13",pid=3175104,fd=6)) |
 | 9801 | users:(("python3.13",pid=4476,fd=6)) |
 | 9820 | users:(("python3.13",pid=4345,fd=6)) |
 | 9875 | users:(("python3.13",pid=4447,fd=3)) |
@@ -80,10 +80,12 @@
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
 | 11434 | users:((".ollama-wrapped",pid=7466,fd=3)) |
+| 15555 | *:* |
 | 17698 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
 | 18000 | 0.0.0.0:* |
+| 18022 | users:(("adb",pid=2974,fd=21)) |
 | 18090 | *:* |
 | 18091 | *:* |
 | 18092 | users:(("python3.13",pid=2651,fd=6)) |
@@ -195,10 +197,10 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（795个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（798个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
-**adb-*** (6个): `adb-autoconnect.sh, adb-device-monitor.py, adb-reverse-haven.sh, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
+**adb-*** (7个): `adb-autoconnect.sh, adb-clipboard-helper.py, adb-device-monitor.py, adb-reverse-haven.sh, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
 **agent-*** (5个): `agent-ask.py, agent-danmaku, agent-events-sync.sh, agent-rules-trim-audit.sh, agent-watch`
 **aggregate-*** (1个): `aggregate-marketing-research.sh`
 **agi-*** (2个): `agi-feedback-bus.sh, agi-persistent-monitor.sh`
@@ -319,6 +321,7 @@ static
 **mutual-*** (1个): `mutual-review`
 **network-*** (1个): `network-guard.sh`
 **new-*** (1个): `new-api-manager`
+**night-*** (1个): `night-crew.sh`
 **nix-*** (3个): `nix-store-integrity-check.sh, nix-store-nurse, nix_voice_agent.py`
 **nixos-*** (15个): `nixos-ai-fix-engine, nixos-auto-commit, nixos-decision-engine, nixos-full-sync, nixos-gui-guardian, nixos-llm-analyzer, nixos-prebuild-audit.sh, nixos-preflight-check.sh, nixos-rebuild-safe, nixos-smoketest.sh... +5更多`
 **notif-*** (4个): `notif-btn-daemon.sh, notif-btn.sh, notif-floating-btn.sh, notif-tray-icon.sh`
@@ -376,6 +379,7 @@ static
 **skill-*** (1个): `skill-auto-extract.py`
 **smart-*** (6个): `smart-ip, smart-memory-classifier, smart-redirector.py, smart-redirector.sh, smart-router.py, smart-search`
 **smoke-*** (1个): `smoke-test.sh`
+**snap-*** (1个): `snap-auto-mark`
 **sqlite-*** (2个): `sqlite_web, sqlite_wsgi`
 **ssh-*** (1个): `ssh-win`
 **start-*** (5个): `start-chromadb, start-desktop-pet.sh, start-hyprland-fixed, start-session-rag-server.sh, start-wechat`
@@ -518,20 +522,12 @@ tech-researcher
 
 ### memory/ — 记忆系统
 ```
-SYSTEM-INDEX.md
-decision-memory.md
 lessons-learned.md
-network-topology.md
-op-tasks-archive-2026-06.md
-op-tasks-archive-202606.md
-op-tasks.md
-opencode-session-log.md
 router-infra.md
 session-notes.md
-user-preferences.md
 ```
 
-## 三、systemd 用户服务（531个注册，109个运行中）
+## 三、systemd 用户服务（534个注册，111个运行中）
 
 ### 当前运行中
 ```
@@ -543,6 +539,7 @@ agi-gateway
 ai-config-watcher
 ai-rules-sync
 ai-watchdog
+app-picom@autostart
 caddy-launcher
 cf-tunnel-7699
 change-watcher
@@ -556,6 +553,7 @@ claude-token-tray
 clipboard-sync-tablet
 clipboard-sync-windows
 cloudflared-termix
+code-server
 code-watcher
 config-immutable-snapshot
 content-router
@@ -611,11 +609,11 @@ proxy-403-monitor
 python-crash-guard
 rss-bot
 smart-redirector
+snap-auto-mark
 speech-dispatcher
 stepfun-tg-bot
 sys-info-mcp
 tablet-control-panel
-telegram-userbot
 ttyd-8080
 ttyd-aider
 ttyd-audit
@@ -646,7 +644,7 @@ ydotool-bridge
 ydotoold
 ```
 
-## 四、定时任务（121个 timer）
+## 四、定时任务（122个 timer）
 ```
 agent-rules-trim
 agi-cognitive-engine
@@ -719,6 +717,7 @@ meta-cognition
 mihomo-backup
 mihomo-guardian
 morning-brief
+night-crew
 nix-store-check
 nixos-auto-commit
 nixos-full-sync
