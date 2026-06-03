@@ -1,0 +1,1 @@
+- [x] [完成] [OP] [2026-06-01 20:30] AI配置告警(自愈失败) — FALSE_POSITIVE_GUARD已在编译版system prompt中生效，AGENTS.md受CONFIG_PROTECT保护: 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
