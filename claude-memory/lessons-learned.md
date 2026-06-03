@@ -62,3 +62,5 @@
 - [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 3 hours (healthy)
 
 - [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 3 hours (healthy)
+
+- [auto] 发现: docker.container.termix =  | 状态: Up 39 minutes (healthy)
