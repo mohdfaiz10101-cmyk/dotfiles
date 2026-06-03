@@ -5,7 +5,7 @@ After=graphical-session.target
 OnFailure=sentinel-onfailure@waybar.service
 [Service]
 Type=simple
-ExecStart=/run/current-system/sw/bin/waybar --config /home/charlie/.config/waybar/config.override --style /home/charlie/.config/waybar/style.override.css
+ExecStart=/run/current-system/sw/bin/waybar
 Restart=on-failure
 RestartSec=3
 

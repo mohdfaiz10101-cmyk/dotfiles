@@ -1,21 +1,25 @@
 [Unit]
 Description=Hermes Agent Gateway - Messaging Platform Integration
-After=network.target
-StartLimitIntervalSec=600
-StartLimitBurst=5
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-ExecStart=/home/charlie/.hermes/hermes-agent/venv/bin/python3 -m hermes_cli.main gateway run --replace
-WorkingDirectory=/home/charlie/.hermes/hermes-agent
-Environment="PATH=/home/charlie/.hermes/hermes-agent/venv/bin:/home/charlie/.hermes/hermes-agent/node_modules/.bin:/nix/store/4pl6afcwfmv0xn65r7mqjy3avpb785j9-nodejs-slim-24.14.0/bin:/home/charlie/.local/bin:/home/charlie/.cargo/bin:/home/charlie/go/bin:/home/charlie/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/home/charlie/.hermes/hermes-agent/venv/bin/python -m hermes_cli.main gateway run --replace
+WorkingDirectory=/mnt/ai/.hermes-backup
+Environment="PATH=/mnt/ai/.hermes-backup/hermes-agent/venv/bin:/mnt/ai/.hermes-backup/hermes-agent/node_modules/.bin:/nix/store/4pl6afcwfmv0xn65r7mqjy3avpb785j9-nodejs-slim-24.14.0/bin:/home/charlie/.local/bin:/home/charlie/.cargo/bin:/home/charlie/go/bin:/home/charlie/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 Environment="VIRTUAL_ENV=/home/charlie/.hermes/hermes-agent/venv"
-Environment="HERMES_HOME=/home/charlie/.hermes"
-Restart=on-failure
-RestartSec=30
+Environment="HERMES_HOME=/mnt/ai/.hermes-backup"
+Restart=always
+RestartSec=5
+RestartMaxDelaySec=300
+RestartSteps=5
+RestartForceExitStatus=75
 KillMode=mixed
 KillSignal=SIGTERM
-TimeoutStopSec=60
+ExecReload=/bin/kill -USR1 $MAINPID
+TimeoutStopSec=210
 StandardOutput=journal
 StandardError=journal
 

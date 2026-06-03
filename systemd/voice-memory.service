@@ -1,0 +1,15 @@
+[Unit]
+Description=Voice Memory Service
+After=network.target
+
+[Service]
+Type=simple
+User=charlie
+WorkingDirectory=/mnt/ai/apps/voice-memory
+ExecStart=/usr/bin/env python3 /mnt/ai/apps/voice-memory/server.py
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/home/charlie
+
+[Install]
+WantedBy=default.target

@@ -2,3 +2,4 @@
 - [x] [完成 2026-06-02 21:05] [CC→OP] [2026-06-02 11:51] [high] 巡检当前 NixOS / home user systemd 与本地脚本中的自动修复链，重点检查 ai-watchdog、waybar-guardian、letta-health-guard、letta-health-monitor、auto-fix-services、tg-healer、boot-recovery、periodic-recovery-check、nixos-gui-guardian。输出：1) 当前哪些正在运行 2) 哪些会自动 restart/recover/fix 3) 哪些只告警 4) 建议保留/禁用清单。不要直接改系统，只给诊断结果和具体 unit/script 路径。
 - [x] [完成] [看板注入] [2026-06-02 13:37] test from openagents bridge — 已确认
 - [x] [完成] [看板注入] [2026-06-02 16:38] 测试 registered router — 已接单，把这个任务派发给 opencode 并回复已接单
+- [ ] [AGI→OP] [2026-06-03 02:02] [high] TokenBucket: glm-4.7 水位过低(剩余5.0/30 tokens)，检查是否有异常循环

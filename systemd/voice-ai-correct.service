@@ -1,0 +1,14 @@
+[Unit]
+Description=Voice AI Post-Processing (Clipboard Monitor)
+Documentation=https://github.com/user/voice-ai
+After=voxtype.service ollama.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/voice-ai-correct
+Restart=no
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

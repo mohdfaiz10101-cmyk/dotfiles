@@ -19,12 +19,60 @@ logger = logging.getLogger(__name__)
 # ── Letta 配置 ──────────────────────────────────────────────────────────────────
 LETTA_URL = os.environ.get("LETTA_BASE_URL", "http://localhost:8283")
 LETTA_TOKEN = os.environ.get("LETTA_TOKEN", "letta")
-LETTA_CODE_AGENT = os.environ.get(
-    "LETTA_CODE_AGENT", "agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea"
-)
-LETTA_ARCHIVAL_AGENT = os.environ.get(
-    "LETTA_ARCHIVAL_AGENT", "agent-8651643c-e753-47ed-9759-bd955c6ac240"
-)
+
+# Agent ID 缓存（首次通过 name lookup 获取，后续复用）
+_agent_id_cache: dict[str, str] = {}
+
+
+async def _resolve_agent_id(agent_name: str, fallback_uuid: str = "") -> str:
+    """通过 agent name 动态查找 ID，避免硬编码 UUID。
+    
+    Why: Letta 重建/迁移后 UUID 会变，name 是稳定标识
+    What: 优先从 .env 读取 → 再通过 API name lookup → 最后用 fallback
+    Test: Letta 不可达时返回 fallback，不阻塞主流程
+    """
+    # 1. 缓存命中
+    if agent_name in _agent_id_cache:
+        return _agent_id_cache[agent_name]
+    
+    # 2. 环境变量覆盖（最高优先级）
+    env_key = f"LETTA_AGENT_{agent_name.upper().replace('-', '_')}"
+    env_val = os.environ.get(env_key, "")
+    if env_val and env_val.startswith("agent-"):
+        _agent_id_cache[agent_name] = env_val
+        return env_val
+    
+    # 3. API name lookup
+    try:
+        async with httpx.AsyncClient(timeout=5.0) as client:
+            resp = await client.get(
+                f"{LETTA_URL}/v1/agents/",
+                headers={"Authorization": f"Bearer {LETTA_TOKEN}"},
+            )
+            if resp.status_code == 200:
+                agents = resp.json()
+                if isinstance(agents, list):
+                    for a in agents:
+                        a_name = a.get("name", "")
+                        a_id = a.get("id", "")
+                        # 匹配：完全匹配 或 包含关系
+                        if a_name and (a_name == agent_name or agent_name in a_name or a_name in agent_name):
+                            _agent_id_cache[agent_name] = a_id
+                            return a_id
+    except Exception:
+        pass
+    
+    # 4. fallback（硬编码 UUID，最后手段）
+    if fallback_uuid:
+        _agent_id_cache[agent_name] = fallback_uuid
+        return fallback_uuid
+    
+    return ""
+
+
+# 旧变量保留兼容（但值为空，运行时动态解析）
+LETTA_CODE_AGENT = ""  # 运行时通过 _resolve_agent_id("nixos-sysadmin") 获取
+LETTA_ARCHIVAL_AGENT = ""  # 运行时通过 _resolve_agent_id("code-assistant") 获取
 
 # ── 本地知识库路径 ─────────────────────────────────────────────────────────────
 MEMORY_DIR = Path(os.environ.get(
@@ -76,13 +124,16 @@ async def _letta_recall(query: str, limit: int = 3) -> str:
     """查询 Letta 语义记忆，获取相关历史上下文。
     
     Why: 让 LLM 了解同类异常的历史处理方式，避免重复决策
-    What: 调用 Letta archival memory search API
+    What: 调用 Letta archival memory search API（动态解析 agent ID）
     Test: Letta不可达时静默返回空，不阻塞主流程
     """
     try:
+        agent_id = await _resolve_agent_id("nixos-sysadmin", "agent-02380eae-9ac2-45f4-b9b2-dabf40e0abea")
+        if not agent_id:
+            return ""
         async with httpx.AsyncClient(timeout=5.0) as client:
             resp = await client.get(
-                f"{LETTA_URL}/v1/agents/{LETTA_CODE_AGENT}/archival-memory/",
+                f"{LETTA_URL}/v1/agents/{agent_id}/archival-memory/",
                 params={"query": query, "limit": limit},
                 headers={"Authorization": f"Bearer {LETTA_TOKEN}"},
             )
@@ -296,6 +347,7 @@ def _write_letta_archival(result: dict, ts: str) -> None:
     """写入 Letta 归档记忆（形成闭环：分析→记录→下次检索可用）。"""
     import requests
     import time as _time
+    import asyncio
     
     summary = result.get("summary", "")
     severity = result.get("severity", "normal")
@@ -307,10 +359,26 @@ def _write_letta_archival(result: dict, ts: str) -> None:
     if reasoning:
         text += f" | 依据: {reasoning}"
     
+    # 动态解析 archival agent ID
+    try:
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            # 在 async 上下文中，使用缓存的 ID 或 fallback
+            agent_id = _agent_id_cache.get("code-assistant", "agent-8651643c-e753-47ed-9759-bd955c6ac240")
+        else:
+            agent_id = loop.run_until_complete(
+                _resolve_agent_id("code-assistant", "agent-8651643c-e753-47ed-9759-bd955c6ac240")
+            )
+    except Exception:
+        agent_id = "agent-8651643c-e753-47ed-9759-bd955c6ac240"
+    
+    if not agent_id:
+        return
+    
     for attempt in range(3):
         try:
             resp = requests.post(
-                urljoin(f"{LETTA_URL.rstrip('/')}/", f"v1/agents/{LETTA_ARCHIVAL_AGENT}/archival-memory/"),
+                urljoin(f"{LETTA_URL.rstrip('/')}/", f"v1/agents/{agent_id}/archival-memory/"),
                 headers={
                     "Authorization": f"Bearer {LETTA_TOKEN}",
                     "Content-Type": "application/json",

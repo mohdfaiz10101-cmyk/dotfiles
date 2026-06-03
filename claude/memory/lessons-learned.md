@@ -170,3 +170,98 @@
 - [2026-06-02] [AUTO] 偏好: op-tasks执行位置 | 内容: 用户要求以后所有op-tasks在OpenClaw workspace处理，不等待其他agent- [2026-06-02] [OP] 修复: 剪贴板复制后粘贴内容不对(复发) | 根因: (1) clip-sync + clipboard-sync-windows 两个Windows同步同时运行竞争 (2) clipboard-sync-windows 的 get_win_clipboard() PowerShell命令引号嵌套在SSH传输中损坏，返回ParserError错误文本被当作"剪贴板内容"写入wl-copy | 修复: 停用clip-sync(duplicate)，修复PowerShell命令为简单的Get-Clipboard -Raw | 教训: 之前修过一次同类问题但clip-sync被重新启用，需要确保只有一个Windows同步服务
 
 - [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.khoj-server-1 = 0.0.0.0:42110->42110/tcp | 状态: Up 25 minutes (healthy)
+
+- [auto] 发现: docker.container.khoj-database-1 = 5432/tcp | 状态: Up 26 minutes (healthy)
+
+- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 6 minutes (healthy)
+
+- [2026-06-02] [OP] 修复: phone-connect-mcp.py 设备选择逻辑缺陷 | 根因: (1) _dedup_devices返回标签(phone-tailscale1)而非实际地址(100.108.28.44:5555)，导致adb -s用无效设备ID (2) ensure_connected默认方法跳过tailscale1(100.108.28.44)直接试tailscale2(离线)和FRP(不通ADB) (3) force_method匹配用标签子串但设备列表已变为实际地址 | 修复: (1) _dedup_devices改为返回实际地址 (2) 新增DEVICE_PHYSICAL映射表用于物理设备去重 (3) 默认方法加入tailscale1作为第一优先 (4) force_method匹配改用_device_label()转换 | 教训: MCP连接地址≠标签名，_dedup_devices返回的值必须adb -s可直接使用
+[2026-06-02] [OP] Termix Cloudflare 隧道: 用 cloudflared tunnel --url http://127.0.0.1:9180 暴露 Termix 到公网。之前 tailscale serve/funnel DNS 在手机端解析超时，换 Cloudflare 临时隧道绕过。域名: dublin-third-delayed-geology.trycloudflare.com。已创建 systemd 用户服务 cloudflared-termix.service 持久化。
+[2026-06-02] [OP] Termix 公网双隧道: (1) Cloudflare quick tunnel → dublin-third-delayed-geology.trycloudflare.com (2) FRP → charlie1990.duckdns.org:19180。Termix Docker 容器已设置 restart: always。frps 服务改为 systemd --user 管理，避免端口冲突。
+- [auto] 发现: docker.container.termix = 30001-30006/tcp, 0.0.0.0:9180->8080/tcp, [::]:9180->8080/tcp | 状态: Up 3 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 21 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 20 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 18 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 18 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 18 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 18 minutes (healthy)
+
+- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 18 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 18 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 19 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 16 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-chromadb = 127.0.0.1:18000->8000/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.29cb7402b164_twenty-db-1 = 5432/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.twenty-redis-1 = 6379/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.langfuse-db = 5432/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.litellm-redis = 127.0.0.1:6379->6379/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.a33ac849549c_litellm-litellm =  | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.letta = 4317-4318/tcp, 5432/tcp, 6379/tcp, 0.0.0.0:8283->8283/tcp, [::]:8283->8283/tcp | 状态: Up 14 minutes (healthy)
+
+- [auto] 发现: docker.container.letta-db = 5432/tcp | 状态: Up 14 minutes (healthy)

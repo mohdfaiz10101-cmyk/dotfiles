@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Voice AI Correct
+Comment=AI-powered voice transcription correction
+Exec=/home/charlie/.local/bin/voice-ai-pipeline
+Icon=microphone
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
+NoDisplay=true

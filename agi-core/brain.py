@@ -28,50 +28,69 @@ from audit_log import log_tasks_queued, log_brain_cycle
 STATUS_FILE = os.environ.get("STATUS_FILE", Path.home() / ".local/state/agi-brain-status.json")
 
 
-class RateGuard:
-    """LLM 模型调用频率守卫 — 每模型 per-minute 滑动窗口计数。
-    Why: 防止异常循环导致 LLM API 被快速耗尽
-    What: 超阈值暂停该模型 + 写告警到 op-tasks.md
-    Test: 连续调用 check() 超过 max_calls 后返回 False
+class TokenBucket:
+    """Token Bucket 限流器 — 每模型独立桶，平滑速率控制。
+    Why: 替代 deque 滑窗，提供突发容忍 + 平均速率双保障
+    What: 每个模型一个桶，匀速补充 token，消耗时扣减，桶空则限流
+    Test: 连续 consume() 超过 capacity 后返回 False，等待 refill 后恢复
+    
+    升级自 RateGuard (deque 滑窗) → Token Bucket:
+    - 优势1: 突发容忍 — 允许短时间密集调用（只要桶里有 token）
+    - 优势2: 平滑速率 — 长期平均速率恒定为 refill_rate/s
+    - 优势3: 零暂停 — 不需要显式 pause/unpause，桶空自然限流
     """
 
-    def __init__(self, max_calls: int = 20, window: int = 60, pause_duration: int = 60):
-        self.max_calls = max_calls
-        self.window = window
-        self.pause_duration = pause_duration
-        self._calls: dict[str, deque] = {}  # model -> deque of timestamps
-        self._paused: dict[str, float] = {}  # model -> pause_until timestamp
+    def __init__(self, capacity: int = 30, refill_rate: float = 0.5, refill_interval: float = 1.0):
+        """
+        Args:
+            capacity: 桶容量（最大 token 数），对应最大突发量
+            refill_rate: 每次补充的 token 数
+            refill_interval: 补充间隔（秒），实际速率 = refill_rate / refill_interval
+        """
+        self.capacity = capacity
+        self.refill_rate = refill_rate
+        self.refill_interval = refill_interval
+        self._tokens: dict[str, float] = {}   # model -> current tokens
+        self._last_refill: dict[str, float] = {}  # model -> last refill timestamp
 
-    def record(self, model: str) -> None:
-        if model not in self._calls:
-            self._calls[model] = deque()
-        self._calls[model].append(time.time())
+    def _refill(self, model: str) -> None:
+        """补充 token（惰性计算，调用时触发）。"""
+        now = time.time()
+        last = self._last_refill.get(model, now)
+        elapsed = now - last
+        if elapsed >= self.refill_interval:
+            added = (elapsed / self.refill_interval) * self.refill_rate
+            current = self._tokens.get(model, self.capacity)
+            self._tokens[model] = min(current + added, self.capacity)
+            self._last_refill[model] = now
 
-    def check(self, model: str) -> bool:
-        """返回 True 表示允许调用，False 表示被限流。"""
-        # 检查是否在暂停期
-        if model in self._paused:
-            if time.time() < self._paused[model]:
-                return False
-            del self._paused[model]
+    def consume(self, model: str, tokens: int = 1) -> bool:
+        """消耗 token，返回 True 表示允许，False 表示被限流。"""
+        self._refill(model)
+        current = self._tokens.get(model, self.capacity)
+        if current >= tokens:
+            self._tokens[model] = current - tokens
+            return True
+        return False
 
-        # 清理过期记录
-        cutoff = time.time() - self.window
-        if model in self._calls:
-            while self._calls[model] and self._calls[model][0] < cutoff:
-                self._calls[model].popleft()
-            return len(self._calls[model]) < self.max_calls
-        return True
+    def available(self, model: str) -> float:
+        """返回当前可用 token 数。"""
+        self._refill(model)
+        return self._tokens.get(model, self.capacity)
 
-    def pause(self, model: str) -> None:
-        """暂停某模型调用 pause_duration 秒。"""
-        self._paused[model] = time.time() + self.pause_duration
+    def status(self, model: str) -> dict:
+        """返回桶状态（用于状态文件和监控面板）。"""
+        avail = self.available(model)
+        return {
+            "model": model,
+            "available_tokens": round(avail, 1),
+            "capacity": self.capacity,
+            "refill_rate": f"{self.refill_rate}/{self.refill_interval}s",
+            "throttled": avail < 1.0,
+        }
 
-    def is_paused(self, model: str) -> bool:
-        return model in self._paused and time.time() < self._paused[model]
 
-
-_rate_guard = RateGuard()
+_rate_guard = TokenBucket(capacity=30, refill_rate=0.5, refill_interval=1.0)
 OP_TASKS_FILE = os.environ.get(
     "OP_TASKS_FILE", "/home/charlie/.claude/projects/-home-charlie/memory/op-tasks.md"
 )
@@ -749,27 +768,26 @@ async def main_loop(once: bool = False) -> None:
         current_interval = LOOP_INTERVAL
         _last_sense_hash = h
         print("[THINK] 调用 LLM 分析...")
-        # RateGuard: 检查模型调用频率
+        # TokenBucket: 消耗一个 token，桶空则限流
         _model = os.environ.get("DEFAULT_MODEL", "glm-5.1")
-        if not _rate_guard.check(_model):
-            print(f"[THINK] RateGuard: {_model} 被限流，跳过本轮")
+        if not _rate_guard.consume(_model):
+            avail = _rate_guard.available(_model)
+            print(f"[THINK] TokenBucket: {_model} 被限流(可用{avail:.1f} tokens)，跳过本轮")
             _write_status(
                 sense_data,
-                {"summary": f"RateGuard: {_model} 被限流", "alerts": [], "actions": []},
+                {"summary": f"TokenBucket: {_model} 被限流(可用{avail:.1f})", "alerts": [], "actions": []},
             )
             await asyncio.sleep(LOOP_INTERVAL)
             continue
-        _rate_guard.record(_model)
         think_result = await analyze(sense_data)
-        # 超阈值告警（记录到 op-tasks）
-        call_count = len(_rate_guard._calls.get(_model, []))
-        if call_count >= _rate_guard.max_calls * 0.8:
-            _rate_guard.pause(_model)
+        # 桶水位监控（低于20%写入 op-tasks）
+        bucket_status = _rate_guard.status(_model)
+        if bucket_status["available_tokens"] < bucket_status["capacity"] * 0.2:
             _write_op_tasks(
                 [
                     {
                         "priority": "high",
-                        "task": f"RateGuard: {_model} 调用频率接近阈值({call_count}/{_rate_guard.max_calls}次/分)，已暂停60s",
+                        "task": f"TokenBucket: {_model} 水位过低(剩余{bucket_status['available_tokens']:.1f}/{bucket_status['capacity']} tokens)，检查是否有异常循环",
                         "assign_to": "op",
                     }
                 ]
@@ -954,6 +972,147 @@ async def _sleep_or_trigger(interval: int, loop_count: int) -> None:
             return
 
 
+# ── Reactor 事件驱动主循环 ────────────────────────────────────────────────────
+
+async def reactor_main() -> None:
+    """事件驱动模式：Reactor 替代 60s 轮询。
+    
+    Why: 轮询在无变化时浪费 CPU/token，Reactor 只在状态变化时触发
+    What: 多源事件(journal/docker/inotify/heartbeat) → 去重 → Sense→Think→Act
+    Test: 触发文件/docker restart/heartbeat 各触发一轮
+    
+    架构:
+    - HeartbeatSource (300s) → 兜底全量感知
+    - TriggerFileSource → 手动热触发
+    - DockerEventSource → 容器状态变化
+    - JournalWatchSource → systemd unit 状态变化
+    - FileWatchSource → 关键文件变化
+    """
+    from reactor import Reactor, Event, EventType
+
+    global _last_sense_hash, _last_proactive_time
+    loop_count = 0
+
+    print(f"[REACTOR] 事件驱动模式启动 — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("[REACTOR] 心跳: 300s | 事件源: journal+docker+file+trigger")
+
+    async def handle_event(event: Event) -> None:
+        nonlocal loop_count
+        loop_count += 1
+
+        # 事件类型决定感知深度
+        if event.type == EventType.HEARTBEAT:
+            print(f"[REACTOR] #{loop_count} HEARTBEAT → 全量感知")
+        elif event.type == EventType.TRIGGER:
+            print(f"[REACTOR] #{loop_count} TRIGGER → 即时感知")
+        elif event.type == EventType.DOCKER_EVENT:
+            action = event.payload.get("action", "")
+            container = event.payload.get("container", "")
+            print(f"[REACTOR] #{loop_count} DOCKER {container}:{action}")
+            # die 事件 → 高优先级，立即感知
+            if action == "die":
+                print(f"[REACTOR] 容器死亡 → 紧急感知")
+        elif event.type == EventType.SYSTEMD_CHANGE:
+            unit = event.payload.get("unit", "")
+            print(f"[REACTOR] #{loop_count} SYSTEMD {unit}")
+        else:
+            print(f"[REACTOR] #{loop_count} {event.type.value}")
+
+        # ── Sense ────
+        sense_data = sense()
+
+        # ── Hash 检查（heartbeat 时跳过无变化）──
+        h = _sense_hash(sense_data)
+        if event.type == EventType.HEARTBEAT and h == _last_sense_hash:
+            _write_status(sense_data, {"summary": "（无变化-心跳）", "alerts": [], "actions": []})
+            log_brain_cycle("（无变化-心跳）", [])
+            return
+        _last_sense_hash = h
+
+        # ── Think ────
+        _model = os.environ.get("DEFAULT_MODEL", "glm-5.1")
+        if not _rate_guard.consume(_model):
+            avail = _rate_guard.available(_model)
+            print(f"[REACTOR] TokenBucket 限流({avail:.1f})，跳过")
+            return
+
+        think_result = await analyze(sense_data)
+        summary = think_result.get("summary", "")
+        alerts = think_result.get("alerts", [])
+        actions = think_result.get("actions", [])
+        print(f"[REACTOR] Think: {summary}")
+
+        # ── Act ────
+        _write_status(sense_data, think_result)
+        if loop_count % 10 == 0:
+            _write_letta_snapshot(sense_data)
+
+        # 自主执行 + OP 派发
+        from think import execute_autonomous
+        auto_actions, manual_actions = [], []
+        for a in actions:
+            task_lower = a.get("task", "").lower()
+            if any(k in task_lower for k in ["docker restart", "docker logs", "systemctl", "curl", "journalctl"]):
+                auto_actions.append(a)
+            else:
+                manual_actions.append(a)
+        for a in auto_actions:
+            result = await execute_autonomous(a)
+            print(f"[AUTO] {a['task'][:40]} → {'OK' if result['success'] else 'FAIL'}")
+        if manual_actions:
+            _write_op_tasks(manual_actions)
+            log_tasks_queued(manual_actions)
+
+        log_brain_cycle(summary, alerts)
+
+        # 告警推送（复用现有过滤逻辑）
+        if alerts:
+            await _dispatch_alerts(alerts, sense_data)
+
+        # 主动推送
+        now_ts = time.time()
+        if now_ts - _last_proactive_time >= PROACTIVE_INTERVAL:
+            proactive_msg = generate_proactive_message()
+            if proactive_msg:
+                await _n.info(f"📡 AGI 主动推送\n{proactive_msg}")
+            _last_proactive_time = now_ts
+
+    async def _dispatch_alerts(alerts: list, sense_data: dict) -> None:
+        """告警推送（从 main_loop 提取，Reactor 复用）"""
+        now_ts = time.time()
+        actionable = []
+        for a in alerts:
+            if any(p.lower() in a.lower() for p in _ALERT_SUPPRESS_PATTERNS):
+                continue
+            svc_name = _extract_service_from_alert(a)
+            if svc_name:
+                status = _quick_service_check(svc_name)
+                if status in ("running", "active", "online", "ok"):
+                    continue
+            key = a[:60]
+            val = _alert_last_sent.get(key, 0)
+            if not isinstance(val, (int, float)):
+                val = 0
+            cooldown = _ALERT_COOLDOWN.get("default", 10800)
+            if svc_name:
+                cooldown = _ALERT_COOLDOWN.get(svc_name, cooldown)
+            if now_ts - val < cooldown:
+                continue
+            _alert_last_sent[key] = now_ts
+            actionable.append(a)
+        if actionable:
+            msg = "🧠 AGI Brain\n⚠️ 告警\n" + "\n".join(f"• {a}" for a in actionable[:5])
+            await _n.send(Message(text=msg, priority=Priority.HIGH, channels=[Channel.TELEGRAM, Channel.DISCORD]))
+
+    reactor = Reactor(
+        on_event=handle_event,
+        heartbeat_interval=300,
+        enable_journal=True,
+        enable_docker=True,
+    )
+    await reactor.run()
+
+
 if __name__ == "__main__":
     import argparse
     from telegram_bot import listener_loop
@@ -961,6 +1120,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AGI Brain v2")
     parser.add_argument("--once", action="store_true", help="单次执行后退出")
     parser.add_argument("--no-telegram", action="store_true", help="禁用Telegram监听")
+    parser.add_argument("--reactor", action="store_true", help="事件驱动模式（Reactor替代轮询）")
     args = parser.parse_args()
     
     async def run():
@@ -973,4 +1133,18 @@ if __name__ == "__main__":
                 listener_loop(),
             )
     
-    asyncio.run(run())
+    async def run_reactor():
+        """事件驱动模式（Reactor）— 替代轮询，事件触发 + 5min heartbeat 兜底"""
+        if args.no_telegram:
+            await reactor_main()
+        else:
+            await asyncio.gather(
+                reactor_main(),
+                listener_loop(),
+            )
+
+    # --reactor 参数选择事件驱动模式
+    if args.reactor:
+        asyncio.run(run_reactor())
+    else:
+        asyncio.run(run())
