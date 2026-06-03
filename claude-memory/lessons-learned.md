@@ -383,3 +383,7 @@
 - [auto] 发现: docker.container.termix =  | 状态: Up About an hour (healthy)
 
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 5 hours (healthy)
+
+### 会话摘要 [2026-06-03] [Sonnet/自动]
+- 对话轮次: 38 | 被纠正: 1次
+  - 用户纠正: 处理下系统通知 看哪些没必要和重复出现
