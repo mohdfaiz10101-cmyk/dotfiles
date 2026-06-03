@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-03 15:30
+> 来源: changelog.jsonl | 重建时间: 2026-06-03 16:01
 
 ## 2026-06-03
 
@@ -19,6 +19,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -128,6 +129,7 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md MODIFY
 - [file-change] **.config**: .config/opencode/opencode.json MODIFY
@@ -177,6 +179,7 @@
 - [file-change] **.config**: .config/systemd/user/letta-distill.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/letta-planning.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/letta-sync.timer.d/storm-fix.conf MODIFY
+- [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
@@ -1541,6 +1544,44 @@
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openclaw**: .openclaw/agents/main/sessions/sessions.json.telegram-messages.json MODIFY
 - [file-change] **.openclaw**: .openclaw/logs/config-health.json MODIFY
 - [file-change] **.openclaw**: .openclaw/workspace/skills/openagents-workspace-openclaw-agent/SKILL.md MODIFY
@@ -1569,6 +1610,9 @@
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/jobs/heartbeat-system-sentry.json MOVED_TO
+- [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
 - [file-create] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json MOVED_TO
@@ -1580,6 +1624,7 @@
 - [file-create] **.config**: .config/systemd/user/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/claude-orphan-killer.timer.d/storm-fix.conf CREATE
+- [file-create] **.config**: .config/systemd/user/cloudflared-termix.service.d/proxy-override.conf CREATE
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
@@ -1713,6 +1758,10 @@
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_151021.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_152024.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_153026.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_154027.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_155027.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_160027.json CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
@@ -1751,6 +1800,7 @@
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
+- [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/cookie-watcher.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/finance-agent.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/haven-mcp-proxy.service DELETE
@@ -1781,6 +1831,8 @@
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_150729.json DELETE
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_151731.json DELETE
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_152731.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_154259.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_155301.json DELETE
 ## 2026-06-02
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
