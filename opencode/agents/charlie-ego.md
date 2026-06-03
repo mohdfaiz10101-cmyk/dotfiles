@@ -11,7 +11,7 @@ model: openai-compatible/cerebras-qwen3-235b
 ---
 # Charlie-Ego — 决策镜像
 
-<!-- memory-gate-inject: 11:31 -->
+<!-- memory-gate-inject: 12:30 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **教训**: - [2026-06-02] [OP] 修复: wechat-uos崩溃重启风暴 | 根因: DISPLAY=:1 但实际XWayland只有:0 | 修复: 改DISPLAY=:0后正常 | 教训: 检查X11显示号与实际情况是否匹配
 **教训**: - [2026-06-02] [OP] rofi恢复+增强: 之前被其他AI改回dmenu模式。修复: (1) 改用原生drun模式(图标+分类) (2) 拼音通过生成~/.local/share/applications/pinyin-*.desktop文件注入Keywords字段 (3) dru
@@ -21,6 +21,10 @@ model: openai-compatible/cerebras-qwen3-235b
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
 
 
 
