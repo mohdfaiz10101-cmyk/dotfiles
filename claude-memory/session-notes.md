@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-03 16:01
+> 来源: changelog.jsonl | 重建时间: 2026-06-03 16:30
 
 ## 2026-06-03
 
@@ -19,6 +19,8 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-03.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md MODIFY
@@ -188,6 +190,7 @@
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
+- [file-change] **.config**: .config/systemd/user/litellm-error-guard.timer.d/override.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/maintenance-learner.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/mem0-decay.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/mem0-file-sync.timer.d/storm-fix.conf MODIFY
@@ -230,6 +233,7 @@
 - [file-change] **.config**: .config/systemd/user/systemd-reexec.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/systemd-tmpfiles-clean.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/task-review-weekly.timer.d/storm-fix.conf MODIFY
+- [file-change] **.config**: .config/systemd/user/termix.service MODIFY
 - [file-change] **.config**: .config/systemd/user/tg-daily-digest.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/tg-healer.timer.d/storm-fix.conf MODIFY
 - [file-change] **.config**: .config/systemd/user/tg-predictor.timer.d/storm-fix.conf MODIFY
@@ -260,6 +264,42 @@
 - [file-change] **.openagents**: .openagents/identity.json MODIFY
 - [file-change] **.openagents**: .openagents/identity.json MODIFY
 - [file-change] **.openagents**: .openagents/identity.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
+- [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
 - [file-change] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_history.json MODIFY
@@ -1629,6 +1669,7 @@
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
 - [file-create] **.config**: .config/systemd/user/default.target.wants/caddy-launcher.service MOVED_TO
+- [file-create] **.config**: .config/systemd/user/default.target.wants/termix.service CREATE
 - [file-create] **.config**: .config/systemd/user/discord-bot-healthcheck.timer.d/storm-fix.conf CREATE
 - [file-create] **.config**: .config/systemd/user/disk-sentinel.timer.d/storm-fix.conf CREATE
 - [file-create] **.config**: .config/systemd/user/disk-watchdog.service MOVED_TO
@@ -1658,6 +1699,7 @@
 - [file-create] **.config**: .config/systemd/user/ntfs-health-check.timer.d/storm-fix.conf CREATE
 - [file-create] **.config**: .config/systemd/user/opencode-bug-tracker.timer.d/storm-fix.conf CREATE
 - [file-create] **.config**: .config/systemd/user/runbook-engine.timer.d/storm-fix.conf CREATE
+- [file-create] **.config**: .config/systemd/user/termix.service CREATE
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
 - [file-create] **.config**: .config/systemd/user/timers.target.wants/frp-watchdog.timer MOVED_TO
@@ -1761,6 +1803,9 @@
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_154027.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_155027.json CREATE
 - [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_160027.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_161028.json CREATE
+- [file-create] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260603_162028.json CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
@@ -1801,6 +1846,7 @@
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
 - [file-delete] **.config**: .config/opencode/scheduler/scopes/charlie-b445f233ebb8/locks/heartbeat-system-sentry.json DELETE
+- [file-delete] **.config**: .config/systemd/user/default.target.wants/cloudflared-termix.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/cookie-watcher.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/finance-agent.service DELETE
 - [file-delete] **.config**: .config/systemd/user/default.target.wants/haven-mcp-proxy.service DELETE
@@ -1833,6 +1879,8 @@
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_152731.json DELETE
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_154259.json DELETE
 - [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_155301.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_160301.json DELETE
+- [file-delete] **.openagents**: .openagents/network/mods/openagents.mods.workspace.messaging/message_dump_20260602_161302.json DELETE
 ## 2026-06-02
 
 - [file-change] **agi**: agi/flows/index.json MODIFY
