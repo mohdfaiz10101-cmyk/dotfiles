@@ -1,5 +1,5 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-04 07:00
+> 来源: changelog.jsonl | 重建时间: 2026-06-04 07:30
 
 ## 2026-06-04
 
@@ -13,11 +13,13 @@
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
+- [file-change] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md MODIFY
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/op-tasks.md CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md CREATE
 - [file-create] **.claude**: .claude/projects/-home-charlie/memory/SYSTEM-INDEX.md CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
