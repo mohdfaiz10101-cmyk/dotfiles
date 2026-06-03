@@ -369,3 +369,4 @@
 - [auto] 发现: docker.container.termix =  | 状态: Up 21 minutes (healthy)
 
 - [2026-06-03] [OP] 教训: Termix数据库清空导致host配置丢失 | 根因: 为重置admin用户直接rm -f db.sqlite.encrypted，未先备份 | 教训: 操作数据库前必须备份，优先用API调整权限而非删库
+- [2026-06-03] [AUTO] 偏好: AI误删防护 | 内容: 用户已有config-immutable-snapshot(监控8个关键文件)和memory-auto-commit(记忆目录)，但覆盖范围太窄，Termux配置未被保护。用户要求"git that shit"式的全量自动快照，每步操作可时间回溯。当前缺口: ~/.termux/、~/.zshrc、~/.local/bin/等未纳入监控。
