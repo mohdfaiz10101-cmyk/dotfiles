@@ -1,8 +1,12 @@
 # Session Notes（自动重建，每 7 天）
-> 来源: changelog.jsonl | 重建时间: 2026-06-04 03:00
+> 来源: changelog.jsonl | 重建时间: 2026-06-04 03:30
 
 ## 2026-06-04
 
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/lessons-learned.md CREATE
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/router-infra.md CREATE
+- [file-create] **.claude**: .claude/projects/-home-charlie/memory/session-notes.md CREATE
+- [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-create] **.openclaw**: .openclaw/agents/main/sessions/sessions.json MOVED_TO
 - [file-delete] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-01.md DELETE
 - [file-delete] **.claude**: .claude/projects/-home-charlie/memory/daily/2026-06-02.md DELETE
