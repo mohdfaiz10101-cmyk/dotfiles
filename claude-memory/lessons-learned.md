@@ -379,3 +379,7 @@
 - [auto] 发现: docker.container.termix =  | 状态: Up About a minute (healthy)
 
 - [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 4 hours (healthy)
+
+- [auto] 发现: docker.container.termix =  | 状态: Up About an hour (healthy)
+
+- [auto] 发现: docker.container.litellm-litellm =  | 状态: Up 5 hours (healthy)
