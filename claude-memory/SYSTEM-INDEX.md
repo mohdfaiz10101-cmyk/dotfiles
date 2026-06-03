@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-06-03 06:18 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-06-03 12:18 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -21,6 +21,7 @@
 | 4096 | users:(("opencode",pid=3515593,fd=22)) |
 | 4533 | users:(("navidrome",pid=3515383,fd=8)) |
 | 5037 | users:(("adb",pid=3514582,fd=11)) |
+| 5174 | users:(("MainThread",pid=254514,fd=21)) |
 | 5900 | users:(("wayvnc",pid=3519752,fd=15)) |
 | 5998 | users:((".websockify-wra",pid=3519754,fd=8)) |
 | 6379 | 0.0.0.0:* |
@@ -50,7 +51,7 @@
 | 8283 | 0.0.0.0:* |
 | 8283 | [::]:* |
 | 8284 | users:(("python3.13",pid=3514728,fd=3)) |
-| 8285 | users:(("python3.13",pid=2206438,fd=11)) |
+| 8285 | users:(("python3.13",pid=1072800,fd=11)) |
 | 8286 | users:(("python3.13",pid=3515373,fd=3)) |
 | 8384 | 0.0.0.0:* |
 | 8600 | users:(("python3.13",pid=3515392,fd=14)) |
@@ -74,7 +75,6 @@
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
 | 11434 | users:((".ollama-wrapped",pid=3520731,fd=3)) |
-| 15555 | users:(("frps",pid=3514665,fd=33)) |
 | 15557 | users:(("frps",pid=3514665,fd=22)) |
 | 17698 | users:(("frps",pid=3514665,fd=29)) |
 | 17699 | users:(("frps",pid=3514665,fd=28)) |
@@ -509,6 +509,7 @@ SYSTEM-INDEX.md
 decision-memory.md
 lessons-learned.md
 network-topology.md
+op-tasks-archive-202606.md
 op-tasks.md
 opencode-session-log.md
 router-infra.md
