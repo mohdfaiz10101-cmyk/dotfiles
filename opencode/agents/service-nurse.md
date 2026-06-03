@@ -15,7 +15,7 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Service Nurse — 服务护士
 
-<!-- memory-gate-inject: 21:00 -->
+<!-- memory-gate-inject: 22:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **教训**: - [2026-06-03] [OP] Termix hosts down修复 | 根因: Docker bridge网络隔离导致容器无法访问宿主机网络(Tailscale/LAN) | 修复: docker-compose改用network_mode:host+PORT=9080, frpc.to
 **教训**: - [2026-06-03] [OP] 教训: Termix数据库清空导致host配置丢失 | 根因: 为重置admin用户直接rm -f db.sqlite.encrypted，未先备份 | 教训: 操作数据库前必须备份，优先用API调整权限而非删库
@@ -25,6 +25,10 @@ hidden: true
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
 
 
 
