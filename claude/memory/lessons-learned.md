@@ -1328,3 +1328,10 @@
 - [2026-06-04] [AUTO] 偏好: 设备互查资源池 | 内容: 手机和平板互为资源库。任何一台找不到文件/应用/资源时，自动从另一台搜索并复制推送。禁止只报告"未找到"，必须先尝试跨设备查询。查询链: 本地 → 对端设备(SSH/ADB) → 找到则推送 → 找不到才报告缺失。
 - [2026-06-04] [OP] 创建: device-resource-pool | 类型: skill+脚本 | 内容: 手机平板互为资源库，跨设备搜索推送系统。脚本: device-pool-search.sh / device-pool-push.sh，skill: ~/.claude/skills/device-resource-pool/
 - [2026-06-04] [AUTO] 纠正: MODEL_SELECT执行不严格 | Sisyphus遇到架构分析/方案推荐类问题应直接委托 task(model=glm-5.1) 作为主答，而不是自己(step-router-v1)先答再用5.1审查修正，多绕一轮浪费token- [2026-06-04] [OP] NocoDB部署完成 | 容器8085端口, charlie@agi.local已提权super | API Token: 3NhgHjFaFj3Pk3VZtvUTwwYUzTgqFfnI1ZPxDizc (xc-token header) | Base: pc8yaejk822spy1 | CRUD验证通过 | 注意: (1) Docker容器锁定DB时需stop容器再改 (2) DB文件属主root需chown (3) NocoDB v2 API用cookie或xc-token认证, Bearer不可用 (4) DELETE用body传Ids非路径参数
+
+- [2026-06-04] [OP] Hermes Telegram发送未配置 | hermes_messages_send → telegram 报错 "Platform 'telegram' is not configured" | config.yaml 缺少 bot token | 需在 ~/.hermes/config.yaml 添加 telegram bot_token 和 discord webhook- [2026-06-04] [OP] Telegram Bot图片→OCR→NocoDB集成完成 | stepfun bot新增: 发图自动OCR+tesseract写入NocoDB | /table查表 | /addtask加任务 | 同token不能起两个进程(409 Conflict), 不同token可共存 | systemd: stepfun-tg-bot.service
+
+- [2026-06-04] [OP] 平板代理诊断 | 根因: Android全局HTTP代理(global http_proxy)只对使用Java/OkHttp网络栈的App有效，Google Play/讯飞/游戏使用自有网络栈不走系统代理，必须用VPN模式(tun)拦截 | Clash Meta已启用但代理核心未启动(端口7890无监听)，需用户手动在App内点击启动
+- [2026-06-04] [OP] 修复: 8080 session按钮加载异常 | 根因: session-wheel-switcher.user.js插件调用不存在的/api/v1/sessions和/api/v1/session/switch端点，opencode serve对所有HTTP返回SPA HTML导致response.json()失败 | 修复: 将session-wheel-switcher.user.js和session-switcher.html移至plugins-disabled目录 | 教训: opencode插件中的用户脚本无法通过HTTP REST API获取session数据，opencode仅通过WebSocket通信
+- [2026-06-04] [OP] 修复: 8080 session按钮加载异常(根因2) | 根因: .git-that-shit/git-that-shit/snapshots/包含嵌套.git目录，导致opencode snapshot系统git索引失败，每数秒重试一次(日志中出现17+次)，持续占用资源使TUI响应变慢 | 修复: (1)删除嵌套.git目录 (2)添加.git-that-shit/到.gitignore (3)重启opencode TUI | 教训: 任何嵌套.git目录都会破坏opencode的snapshot系统，需确保插件数据目录不在git追踪范围内
+- [2026-06-04] [OP] 安装: haven客户端 | APK: /mnt/ai/cache/haven-apk/base.apk | 设备: 100.104.211.70:5555 | 包名: sh.haven.app | MCP端口: 8730 | 状态: 已安装+MCP已启用，待配对

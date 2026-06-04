@@ -1,68 +1,12 @@
-# OpenCode Global Rules（统一编译: ai-shared-rules.md + CLAUDE.md）
+# OpenCode Global Rules (compiled from CLAUDE.md)
 
-<!-- compiled: 2026-06-02 23:06 -->
+<!-- compiled: 2026-06-04 16:27 -->
 
-# AI 共享规则（单一事实源）
-# 修改此文件 → 自动同步到 CLAUDE.md / AGENTS.md / macg.py
-# 同步脚本: ~/.local/bin/ai-rules-sync.sh
+## 语言规则
+- MUST 始终使用中文回复，代码注释可用英文
+- 系统通知（notify-send、Telegram、日志）MUST 中文，禁止英文状态码
 
-## 用户基础设施（所有 AI 必须遵守）
-Letta:8283 | LiteLLM:4000 | AGI-Gateway:9900 | Paperclip:3100 | mihomo:7890
-op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
-**方案必须在已有组件上叠加，禁止建议替代品，最小侵入优先。**
-## 用户决策习惯（所有 AI 强制学习）
-- 实时优先：所有操作立刻/马上/即时生效，禁止"建议""下次""等一会儿"
-- 强制执行：直接落地，不喜欢只给建议而不行动
-- GLM优先：状态查询/方案讨论 → 免费模型；真正写文件/改系统才用高价模型
-- 断了即恢复：服务中断立即自动恢复，不等定时器
-- 增量总结：对话不保留完整历史，只保留架构精髓+决策+待处理+核心信息
-## 任务失败智能升级（TASK_FAILBACK — 死规则，所有 AI 强制）
-- **批次失败率阈值**：本轮执行中 FAIL/ERROR 占比 >50% → 自动 `[ESCALATE→arch] 本轮失败率{N}%，疑似系统级问题，委派arch诊断`
-- **单任务卡死**：同一任务连续 ≥3 轮标记 SKIP/FAIL → `[ESCALATE→arch] 任务{N}卡死，请分析根因`
-- **每批输出决策摘要**：`完成:{x} 跳过:{y} 失败:{z} 失败率:{p}%  决策:[NORMAL|ESCALATE→arch]`
-- arch 诊断返回后 MUST 根据诊断调整策略，禁止原样重试
-## 语言规则（所有 AI）
-- 始终使用中文回复用户
-- 系统通知（systemd/脚本/定时任务）发出的消息必须中文
-## Agent 生命周期优化（死规则 — 所有 AI 强制遵守）
-
-### 任务原子化
-- 一个 Agent 一个生命周期：领任务 → 执行 → 交付 → 结束
-- 禁止一个 Agent 连续处理多个不相关任务，完成后 MUST 开新会话
-- 任务拆分粒度：单个函数/文件/配置 → 一个原子任务
-
-### 上下文管理
-- 对话超过 30 轮 MUST 输出 `## Current State Summary`（当前状态 + 已完成 + 待处理 + 关键变量）
-- 带着总结开新会话，禁止空手切换
-- 禁止每步传递全项目结构，改为按需索引（on-demand）
-
-### Token 经济
-- 小模型干小事：状态查询/探索/格式化 → turbo/flash；写代码/架构 → pro/旗舰
-- 同一会话内不要重复发送相同代码片段（利用 Context Caching）
-- 探索结果 MUST 缓存到记忆系统（Letta/lessons-learned），后续会话按需读取
-
-### 会话接力
-- 任务未完成 → 不切换会话（保持 task_id 续接）
-- 任务已完成 → 立刻结束会话（防止历史堆积）
-- 交接格式：`[完成] 任务名 | [结果] ... | [遗留] ... | [下一步] ...`
-
-### 反模式（严禁）
-- 严禁 Agent 每步强制传递全工程结构
-- 严禁开新会话后重新做已有结论的探索
-- 严禁在任务中间换 Agent 重新开始（MUST 用 task_id 续接）
-## AUTO_SKILL 自动封装（CC⇄OP 共享协议）
-- CC 完成复杂任务后评估 4 项标准(可复用/多步骤/知识密度/缺失) ≥2 条 → macg_op_delegate 委托 OP
-- OP 收到后加载 auto-skill → 判断 → 执行 create-skill.py，全程不询问确认
-
----
-<!-- 以下从 CLAUDE.md 提取，未在 ai-shared-rules.md 中覆盖 -->
-
-## 规则分层说明
-- **L1**（本文件）：始终生效的核心规则，~15 条
-- **L2**（rules-secondary.md 上半）：会话启动 + 任务执行时加载
-- **L3**（rules-secondary.md 下半）：特定场景查询时参考
-
-## 输出格式（R1-R9）
+## 输出格式
 - **R1** 零废话：禁止寒暄前缀、第一人称动作描述、过渡句
 - **R2** 指令式语态：`动作 → 结果 → 下一步`
 - **R3** 状态标记：只用 `[OK]` `[FAIL]` `[SKIP]`
@@ -73,35 +17,22 @@ op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
 - **R8** 装饰预算：≤10%
 - **R9** 思考总结：每次 think 结束后 MUST 输出 `[思考] {一句话结论}`，即使 thinking 被折叠也能看到推理结果
 
-**模型标识**（仅首行）：`▸ {emoji} {模型} | {路由原因}`
-**已执行标记**：修改文件/重启服务 → `► 标记`
-**回复结尾**：有文件写入 → `► 写入: 文件名` | 纯对话 → 无尾注
+## NixOS 专项
+- 路径禁令：NEVER 硬编码 `/nix/store/xxx/bin/xxx`，用 `/run/current-system/sw/bin/xxx`
+- NEVER TOUCH：不得随意修改 `/etc/nixos/`，除非用户明确要求且先验证
+- **REBUILD_SAFE（死规则）**：rebuild 前 MUST 执行 `nixos-rebuild-safe`（构建VM→测试→通过才写boot），禁止直接 `switch` 后 `reboot`
+- 常用命令：
 
-## NTFS 封杀（NTFS_BAN — 死规则）
-禁止在 NTFS 上运行：npm/bun/cargo/git clone/Docker build
-检测：`df -T . | grep -i ntfs` → 命中则拒绝
+## 自动验证
+- 涉及第三方工具/API 先 WebSearch 验证最新用法
+- **搜索年份**：MUST 包含当前年份（2026）
+- 绝对禁止打开 `docs.litellm.ai/docs/providers`
+- 修改服务代码后 MUST：重启 → curl测试 → 检查日志 → 验证前端
 
-## 磁盘分配规则（DISK_ALLOCATION — 死规则）
-| 分区 | 用途 | 限制 |
-|------|------|
-
-
-## 记忆系统状态（自动注入 2026-06-04 12:17）
-| 指标 | 值 |
-|------|-----|
-| KG实体/关系 | N/A / N/A |
-| Letta MCP | active |
-| lessons-learned条目 | 224 |
-| 历史会话数 | 0
-0 |
-
-### 高频主题（最近）
-  • nixos-rebuild (×2)
-  • NixOS (×2)
-  • Ghostty (×2)
-  • voxtype.service (×1)
-  • `/tmp` (×1)
-
-> 以上由 memory-bootstrap.sh 自动注入，每小时更新
+## 工作模式
+- 批量并行 | 自主决策先做后报告 | 复杂问题 think hard
+- NixOS/Flake 问题必须先 Read 实际配置
+- 出错不重复同样方法，连续失败2次 /clear
 
 ---
+Source: ~/CLAUDE.md | Auto-compiled

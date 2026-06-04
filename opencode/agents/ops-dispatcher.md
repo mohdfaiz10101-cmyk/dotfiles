@@ -16,16 +16,22 @@ hidden: true
 - **THINKING_CLEANUP**: 任务完成后MUST回溯思考过程中遇到的工具调用失败/配置缺失/权限不足/依赖缺失等所有阻碍，强制解决并记录。禁止以"任务已完成"为由遗留未解决问题
 # Ops Dispatcher — 自动执行层（死规则：禁止询问确认）
 
-<!-- memory-gate-inject: 15:00 -->
+<!-- memory-gate-inject: 16:30 -->
 ## 已知上下文 (gate自动注入，强制执行)
-**教训**: - [2026-04-17] [Sonnet] WeChat DB 解密合并完成：(1) Windows 微信 4.x 密钥提取用 wechat-decrypt（非 pywxdump，后者不支持 4.x）(2) UOS 端密钥在 ~/.cache/wechat-finance/keys.json (
-**教训**: - [2026-04-17] [GLM-5.1] Wine 微信安装：(1) WeChatSetup.exe GUI 安装器在 Wayland 下闪退无报错 (2) 静默安装 wine /tmp/WeChatSetup.exe /S 成功 (3) 安装版本 3.9.12.57（非4.x），路径 /m
-**教训**: - [2026-06-04] [AUTO] 偏好: 设备互查资源池 | 内容: 手机和平板互为资源库。任何一台找不到文件/应用/资源时，自动从另一台搜索并复制推送。禁止只报告"未找到"，必须先尝试跨设备查询。查询链: 本地 → 对端设备(SSH/ADB) → 找到则推送 → 找不到才报告缺失。
 **教训**: - [2026-06-04] [OP] 创建: device-resource-pool | 类型: skill+脚本 | 内容: 手机平板互为资源库，跨设备搜索推送系统。脚本: device-pool-search.sh / device-pool-push.sh，skill: ~/.claude
 **教训**: - [2026-06-04] [AUTO] 纠正: MODEL_SELECT执行不严格 | Sisyphus遇到架构分析/方案推荐类问题应直接委托 task(model=glm-5.1) 作为主答，而不是自己(step-router-v1)先答再用5.1审查修正，多绕一轮浪费token- [2026
+**教训**: - [2026-06-04] [OP] Hermes Telegram发送未配置 | hermes_messages_send → telegram 报错 "Platform 'telegram' is not configured" | config.yaml 缺少 bot token | 需在 
+**教训**: - [2026-06-04] [OP] 平板代理诊断 | 根因: Android全局HTTP代理(global http_proxy)只对使用Java/OkHttp网络栈的App有效，Google Play/讯飞/游戏使用自有网络栈不走系统代理，必须用VPN模式(tun)拦截 | Clash Met
+**教训**: - [2026-06-04] [OP] 修复: 8080 session按钮加载异常 | 根因: session-wheel-switcher.user.js插件调用不存在的/api/v1/sessions和/api/v1/session/switch端点，opencode serve对所有HTTP
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
 
 
 

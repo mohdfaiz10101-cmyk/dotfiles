@@ -1,5 +1,5 @@
 [Unit]
-Description=StepFun Telegram Bot — 图像生成/TTS/ASR
+Description=StepFun Telegram Bot — 图像生成/TTS/ASR/OCR→NocoDB
 After=network-online.target
 Wants=network-online.target
 

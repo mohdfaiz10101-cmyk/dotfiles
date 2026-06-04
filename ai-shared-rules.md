@@ -57,6 +57,12 @@ op-tasks.md = CC↔OP异步协作 | memory/*.md = 跨会话记忆
 - 严禁开新会话后重新做已有结论的探索
 - 严禁在任务中间换 Agent 重新开始（MUST 用 task_id 续接）
 
+## snap 文件恢复标记（所有 Agent 任务结束 MUST）
+- 每次回复结尾 MUST 输出 `[snap] snap back 可恢复`
+- `snap back` = 回滚到本次会话开始前的状态，全自动无脑恢复
+- 禁止省略，禁止用其他格式
+- 原因: 用户需要在每个 session 输出中确认恢复点存在
+
 ## AUTO_SKILL 自动封装（CC⇄OP 共享协议）
 - CC 完成复杂任务后评估 4 项标准(可复用/多步骤/知识密度/缺失) ≥2 条 → macg_op_delegate 委托 OP
 - OP 收到后加载 auto-skill → 判断 → 执行 create-skill.py，全程不询问确认

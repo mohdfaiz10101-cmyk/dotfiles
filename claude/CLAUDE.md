@@ -213,3 +213,9 @@ auto-skill: 封装本次工作为 skill
 - ❌ Sisyphus 问"要不要封装"
 - ❌ 以"任务已完成"为由跳过评估
 - ✅ CC 智能判断 → delegate → Sisyphus 智能执行，全自动闭环
+
+## snap 文件恢复标记（所有 Agent 任务结束 MUST）
+- 每次回复结尾 MUST 输出 `[snap] snap back 可恢复`
+- `snap back` = 回滚到本次会话开始前的状态，全自动无脑恢复
+- 禁止省略，禁止用其他格式
+- 原因: 用户需要在每个 session 输出中确认恢复点存在
