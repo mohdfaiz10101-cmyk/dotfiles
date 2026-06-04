@@ -1,6 +1,8 @@
 """
 self_heal.py — 自愈巡检工作流
-LangGraph StateGraph: Sense → Classify → 并行(DiskFix|ServiceFix|ProxyFix) → Verify → Report
+LangGraph StateGraph: 
+  白天: Sense → Classify → Severity → HumanCheck → Fix → Verify → Learn → Report
+  夜间(22-06): Sense → NightDeepCheck → NightOptimize → Report
 复用 brain.py sense()，所有 bash 执行走 safe_tools.bash_safe_call
 
 Usage:
@@ -43,6 +45,8 @@ class HealState(TypedDict):
     human_approved: bool                   # 人工审批结果
     learn_outcome: str                     # 学习节点记录
     fix_history: list[dict]                # 修复历史（用于 learn）
+    night_deep_result: str                # 夜间深度扫描报告
+    night_optimize_result: str            # 夜间优化操作结果
 
 
 # ── Sense ──────────────────────────────────────────────────────────────────
@@ -61,6 +65,12 @@ def _parse_disk_pct(raw: str) -> int:
     """解析磁盘使用百分比字符串。"""
     m = re.search(r"(\d+)%", raw or "")
     return int(m.group(1)) if m else 0
+
+
+def _is_nighttime() -> bool:
+    """判断当前是否在夜间窗口 (22:00-06:00)。"""
+    hour = datetime.now().hour
+    return hour >= 22 or hour < 6
 
 
 def node_classify(state: HealState) -> dict:
@@ -231,7 +241,24 @@ def should_retry(state: HealState) -> str:
 
 
 def node_report(state: HealState) -> dict:
-    """生成修复报告。"""
+    """生成修复报告。夜间模式走深度扫描报告，白天走自愈报告。"""
+    night_deep = state.get("night_deep_result", "")
+    if night_deep:
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        optimize = state.get("night_optimize_result", "")
+        report = (
+            f"[夜间深度巡检报告] {ts}\n"
+            f"## 深度扫描\n{night_deep[:3000]}\n"
+            f"## 优化操作\n{optimize}"
+        )
+        try:
+            import asyncio
+            from brain import _send_telegram
+            asyncio.run(_send_telegram(report))
+        except Exception:
+            pass
+        return {"report": report}
+
     success = state.get("success", False)
     retries = state.get("retry_count", 0)
     issues = state.get("issues", [])
@@ -375,6 +402,135 @@ def node_learn(state: HealState) -> dict:
     return {"learn_outcome": outcome, "fix_history": history}
 
 
+# ── 夜间深度巡检 ──────────────────────────────────────────────────────────────
+
+
+def node_night_deep_check(state: HealState) -> dict:
+    """夜间深度扫描：磁盘碎片、systemd timer、Docker膨胀、Letta健康、内核日志、安全审计。"""
+    result_parts = []
+    issues = []
+
+    # 1. 磁盘碎片/使用率
+    disk_out = bash_safe_call(
+        "df -h / && echo '---INODE---' && df -i /",
+        timeout=15, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    result_parts.append(f"## 磁盘\n{disk_out}")
+    m = re.search(r"(\d+)%", disk_out)
+    if m and int(m.group(1)) > 90:
+        issues.append("disk_fragmented")
+
+    # 2. systemd timer 健康
+    timers_out = bash_safe_call(
+        "systemctl list-timers --all 2>/dev/null | head -30",
+        timeout=15, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    result_parts.append(f"## systemd Timers\n{timers_out}")
+    if "failed" in timers_out.lower():
+        issues.append("timer_failed")
+
+    # 3. Docker 膨胀
+    docker_out = bash_safe_call(
+        "docker system df 2>/dev/null || echo 'Docker 不可用'",
+        timeout=15, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    result_parts.append(f"## Docker\n{docker_out}")
+    stopped = bash_safe_call(
+        "docker ps -a --filter status=exited --format '{{.ID}}' 2>/dev/null | wc -l",
+        timeout=10, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    try:
+        if int(stopped.strip()) > 5:
+            issues.append("docker_stopped_containers")
+    except ValueError:
+        pass
+
+    # 4. Letta 记忆健康
+    letta_out = bash_safe_call(
+        "curl -s --connect-timeout 5 http://localhost:8283/api/v1/health 2>/dev/null || echo 'Letta 不可达'",
+        timeout=10, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    result_parts.append(f"## Letta\n{letta_out}")
+    if "unreachable" in letta_out.lower() or "不可达" in letta_out:
+        issues.append("letta_down")
+
+    # 5. 内核日志
+    dmesg_out = bash_safe_call(
+        "dmesg -T 2>/dev/null | tail -50",
+        timeout=15, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    result_parts.append(f"## dmesg (最近50行)\n{dmesg_out}")
+    error_keywords = ["error", "fail", "oom", "bug", "segfault", "panic"]
+    for line in dmesg_out.lower().split("\n"):
+        if any(kw in line for kw in error_keywords):
+            issues.append("kernel_errors")
+            break
+
+    # 6. 安全：失败登录
+    lastb_out = bash_safe_call(
+        "lastb -n 5 2>/dev/null || echo '无失败登录记录或 btmp 不可读'",
+        timeout=10, flow=FLOW_NAME, node="NightDeepCheck",
+    )
+    result_parts.append(f"## 安全 (lastb)\n{lastb_out}")
+    if lastb_out.strip() and "无失败" not in lastb_out and "No" not in lastb_out:
+        lines = [l for l in lastb_out.strip().split("\n") if l.strip()]
+        if len(lines) > 3:
+            issues.append("excessive_failed_logins")
+
+    night_deep_result = "\n\n".join(result_parts)
+    return {
+        "night_deep_result": night_deep_result,
+        "issues": issues,
+        "severity": "P2",
+    }
+
+
+def node_night_optimize(state: HealState) -> dict:
+    """夜间优化操作：清理 Docker、nix GC 评估、Letta 陈旧 agent 检测。"""
+    issues = state.get("issues", [])
+    result_parts = []
+
+    # Docker 容器清理
+    if "docker_stopped_containers" in issues:
+        prune_out = bash_safe_call(
+            "docker container prune -f 2>/dev/null",
+            timeout=30, flow=FLOW_NAME, node="NightOptimize",
+        )
+        result_parts.append(f"Docker container prune: {prune_out}")
+
+    # Nix 垃圾回收 dry-run
+    nix_out = bash_safe_call(
+        "nix-collect-garbage --dry-run 2>&1 | tail -20",
+        timeout=30, flow=FLOW_NAME, node="NightOptimize",
+    )
+    result_parts.append(f"Nix GC dry-run: {nix_out}")
+
+    # 磁盘碎片建议
+    if "disk_fragmented" in issues:
+        result_parts.append("建议: 磁盘使用率 >90%，考虑手动清理大文件或执行 nix-collect-garbage")
+
+    # Letta 陈旧 agent 检测
+    if "letta_down" not in issues:
+        agents_out = bash_safe_call(
+            "curl -s --connect-timeout 5 http://localhost:8283/api/v1/agents 2>/dev/null | python3 -c \"import sys,json; data=json.load(sys.stdin); print(f'Agents: {len(data)}')\" 2>/dev/null || echo '无法查询 agents'",
+            timeout=10, flow=FLOW_NAME, node="NightOptimize",
+        )
+        result_parts.append(f"Letta agents: {agents_out}")
+
+    # 定时器失败通知
+    if "timer_failed" in issues:
+        result_parts.append("警告: 存在失败的 systemd timer，需手动检查 systemctl list-timers")
+
+    return {"night_optimize_result": "\n".join(result_parts)}
+
+
+def should_night_mode(state: HealState) -> str:
+    """夜间 (22:00-06:00) 路由到深度巡检，白天走正常流程。"""
+    if _is_nighttime():
+        return "night"
+    return "day"
+
+
 # ── 构建图 ─────────────────────────────────────────────────────────────────
 
 
@@ -394,10 +550,24 @@ def build_graph():
     graph.add_node("learn", node_learn)
     graph.add_node("report", node_report)
     graph.add_node("retry_classify", node_retry_classify)
+    graph.add_node("night_deep_check", node_night_deep_check)
+    graph.add_node("night_optimize", node_night_optimize)
 
-    # 线性流程: Sense → Classify → Severity → HumanCheck
+    # 开始 → Sense
     graph.add_edge(START, "sense")
-    graph.add_edge("sense", "classify")
+
+    # Sense → 条件分支: 夜间深度巡检 或 白天正常流程
+    graph.add_conditional_edges(
+        "sense",
+        should_night_mode,
+        {"night": "night_deep_check", "day": "classify"},
+    )
+
+    # 夜间路径: night_deep_check → night_optimize → report
+    graph.add_edge("night_deep_check", "night_optimize")
+    graph.add_edge("night_optimize", "report")
+
+    # 白天路径: Classify → Severity → HumanCheck
     graph.add_edge("classify", "severity")
     graph.add_edge("severity", "human_check")
 

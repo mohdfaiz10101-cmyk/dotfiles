@@ -1,5 +1,5 @@
 # 系统全局索引（AI 冷启动必读）
-> 自动生成: 2026-06-04 06:18 | 用途: AI 会话启动时读此文件即可掌握全局架构
+> 自动生成: 2026-06-04 12:17 | 用途: AI 会话启动时读此文件即可掌握全局架构
 
 ## 一、端口地图（实时扫描）
 
@@ -46,6 +46,8 @@
 | 8022 | *:* |
 | 8080 | users:(("ttyd",pid=4936,fd=13)) |
 | 8081 | users:(("opencode",pid=4466,fd=19)) |
+| 8085 | 0.0.0.0:* |
+| 8085 | [::]:* |
 | 8088 | users:(("python3.13",pid=4469,fd=3)) |
 | 8181 | users:(("node",pid=3187252,fd=22)) |
 | 8201 | users:(("python3",pid=2549,fd=7)) |
@@ -80,12 +82,10 @@
 | 9993 | *:* |
 | 9993 | 0.0.0.0:* |
 | 11434 | users:((".ollama-wrapped",pid=7466,fd=3)) |
-| 15555 | *:* |
 | 17698 | *:* |
 | 17699 | *:* |
 | 17700 | *:* |
 | 18000 | 0.0.0.0:* |
-| 18022 | users:(("adb",pid=2974,fd=21)) |
 | 18090 | *:* |
 | 18091 | *:* |
 | 18092 | users:(("python3.13",pid=2651,fd=6)) |
@@ -197,7 +197,7 @@ office-agent.py
 static
 ```
 
-### ~/.local/bin/ — 运维脚本（798个，按前缀分组）
+### ~/.local/bin/ — 运维脚本（800个，按前缀分组）
 
 **BaiduPCS-*** (1个): `BaiduPCS-Go`
 **adb-*** (7个): `adb-autoconnect.sh, adb-clipboard-helper.py, adb-device-monitor.py, adb-reverse-haven.sh, adb-tablet-keepalive.sh, adb-whoami, adb-windows.sh`
@@ -248,6 +248,7 @@ static
 **deepseek-*** (3个): `deepseek-code, deepseek-mcp-server.py, deepseek-with-context`
 **deploy-*** (2个): `deploy-phone-frpc.sh, deploy-tasker-gateway.sh`
 **desktop-*** (3个): `desktop-pet.py, desktop-stream.py, desktop-tree-overlay`
+**device-*** (2个): `device-pool-push.sh, device-pool-search.sh`
 **discord-*** (4个): `discord-bot-healthcheck.sh, discord-bot-inspect.sh, discord-intelligent-bot.py, discord-roo-bridge`
 **disk-*** (1个): `disk-guard.sh`
 **doc-*** (3个): `doc-discover.sh, doc-fetch.sh, doc-search.py`
@@ -518,11 +519,14 @@ tech-researcher
 ```
 
 ### ~/.claude/skills/ — Skills
-共 130 个 skill 目录
+共 131 个 skill 目录
 
 ### memory/ — 记忆系统
 ```
+SYSTEM-INDEX.md
+auto-discovery.md
 lessons-learned.md
+op-tasks.md
 router-infra.md
 session-notes.md
 ```

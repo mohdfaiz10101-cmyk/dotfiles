@@ -1,0 +1,9 @@
+[Unit]
+Description=Night Operations Meta-Coordinator
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/night-ops/coordinator.sh
+StandardOutput=journal
+StandardError=journal
