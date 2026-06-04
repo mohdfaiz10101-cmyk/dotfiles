@@ -1,0 +1,11 @@
+[Unit]
+Description=Auto marker for opencode/claude sessions
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/snap-auto-mark
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Night Crew 夜间自主运维定时器（每晚22:00）
+Requires=night-crew.service
+
+[Timer]
+OnCalendar=*-*-* 22:00:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

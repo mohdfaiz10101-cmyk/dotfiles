@@ -1,0 +1,14 @@
+[Unit]
+Description=code-server (VS Code Web)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/charlie/.nix-profile/bin/code-server
+Restart=on-failure
+RestartSec=5
+Environment="PATH=/home/charlie/.nix-profile/bin:/run/current-system/sw/bin"
+
+[Install]
+WantedBy=default.target

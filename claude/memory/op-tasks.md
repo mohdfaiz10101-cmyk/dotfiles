@@ -1,1 +1,1 @@
-- [ ] [AGI→OP] [2026-06-03 02:02] [high] TokenBucket: glm-4.7 水位过低(剩余5.0/30 tokens)，检查是否有异常循环
+- [ ] [OP] [2026-06-04 06:18] AI配置告警(自愈失败): 🔴 AGENTS.md 处理后仍缺: FALSE_POSITIVE_GUARD 只能由 CC dev.*模式
