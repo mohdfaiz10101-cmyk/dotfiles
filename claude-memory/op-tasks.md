@@ -7,3 +7,4 @@
 - [ ] [SELF-IMPROVE] launcher-server.py: `translate_path` 方法未完整实现目录遍历防御，且存在命令注入风险，应在启动进程时严格使用参数列表而非拼接字符串，并补全路径校验逻辑。
 - [ ] [SELF-IMPROVE] hub-api.py: 存在SQL注入风险，应将f-string拼接的SQL语句改为参数化查询，并将表名通过白名单校验后再动态插入。
 - [x] [2026-06-04 13:30] Termix 外部访问修复 — ENABLE_SSL=false + socat 9443→9080 + FRP 链路通过
+- [ ] [AGI→OP] [2026-06-04 16:53] [high] TokenBucket: glm-4.7 水位过低(剩余5.0/30 tokens)，检查是否有异常循环
