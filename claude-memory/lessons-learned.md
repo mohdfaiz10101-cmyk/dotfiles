@@ -1326,3 +1326,4 @@
 - [2026-04-17] [GLM-5.1] Wine 微信安装：(1) WeChatSetup.exe GUI 安装器在 Wayland 下闪退无报错 (2) 静默安装 wine /tmp/WeChatSetup.exe /S 成功 (3) 安装版本 3.9.12.57（非4.x），路径 /mnt/ai/data/wine-wechat/drive_c/Program Files/Tencent/WeChat/WeChat.exe (4) 启动脚本 ~/.local/bin/wine-wechat (5) Wine prefix: /mnt/ai/data/wine-wechat/（ext4，riched20 已装）
 
 - [2026-06-04] [AUTO] 偏好: 设备互查资源池 | 内容: 手机和平板互为资源库。任何一台找不到文件/应用/资源时，自动从另一台搜索并复制推送。禁止只报告"未找到"，必须先尝试跨设备查询。查询链: 本地 → 对端设备(SSH/ADB) → 找到则推送 → 找不到才报告缺失。
+- [2026-06-04] [OP] 创建: device-resource-pool | 类型: skill+脚本 | 内容: 手机平板互为资源库，跨设备搜索推送系统。脚本: device-pool-search.sh / device-pool-push.sh，skill: ~/.claude/skills/device-resource-pool/
