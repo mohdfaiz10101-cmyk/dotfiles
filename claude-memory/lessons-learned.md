@@ -1332,3 +1332,4 @@
 - [2026-06-04] [OP] Hermes Telegram发送未配置 | hermes_messages_send → telegram 报错 "Platform 'telegram' is not configured" | config.yaml 缺少 bot token | 需在 ~/.hermes/config.yaml 添加 telegram bot_token 和 discord webhook- [2026-06-04] [OP] Telegram Bot图片→OCR→NocoDB集成完成 | stepfun bot新增: 发图自动OCR+tesseract写入NocoDB | /table查表 | /addtask加任务 | 同token不能起两个进程(409 Conflict), 不同token可共存 | systemd: stepfun-tg-bot.service
 
 - [2026-06-04] [OP] 平板代理诊断 | 根因: Android全局HTTP代理(global http_proxy)只对使用Java/OkHttp网络栈的App有效，Google Play/讯飞/游戏使用自有网络栈不走系统代理，必须用VPN模式(tun)拦截 | Clash Meta已启用但代理核心未启动(端口7890无监听)，需用户手动在App内点击启动
+- [2026-06-04] [OP] 修复: 8080 session按钮加载异常 | 根因: session-wheel-switcher.user.js插件调用不存在的/api/v1/sessions和/api/v1/session/switch端点，opencode serve对所有HTTP返回SPA HTML导致response.json()失败 | 修复: 将session-wheel-switcher.user.js和session-switcher.html移至plugins-disabled目录 | 教训: opencode插件中的用户脚本无法通过HTTP REST API获取session数据，opencode仅通过WebSocket通信
