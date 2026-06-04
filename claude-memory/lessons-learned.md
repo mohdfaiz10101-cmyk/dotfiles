@@ -1333,3 +1333,4 @@
 
 - [2026-06-04] [OP] 平板代理诊断 | 根因: Android全局HTTP代理(global http_proxy)只对使用Java/OkHttp网络栈的App有效，Google Play/讯飞/游戏使用自有网络栈不走系统代理，必须用VPN模式(tun)拦截 | Clash Meta已启用但代理核心未启动(端口7890无监听)，需用户手动在App内点击启动
 - [2026-06-04] [OP] 修复: 8080 session按钮加载异常 | 根因: session-wheel-switcher.user.js插件调用不存在的/api/v1/sessions和/api/v1/session/switch端点，opencode serve对所有HTTP返回SPA HTML导致response.json()失败 | 修复: 将session-wheel-switcher.user.js和session-switcher.html移至plugins-disabled目录 | 教训: opencode插件中的用户脚本无法通过HTTP REST API获取session数据，opencode仅通过WebSocket通信
+- [2026-06-04] [OP] 修复: 8080 session按钮加载异常(根因2) | 根因: .git-that-shit/git-that-shit/snapshots/包含嵌套.git目录，导致opencode snapshot系统git索引失败，每数秒重试一次(日志中出现17+次)，持续占用资源使TUI响应变慢 | 修复: (1)删除嵌套.git目录 (2)添加.git-that-shit/到.gitignore (3)重启opencode TUI | 教训: 任何嵌套.git目录都会破坏opencode的snapshot系统，需确保插件数据目录不在git追踪范围内
