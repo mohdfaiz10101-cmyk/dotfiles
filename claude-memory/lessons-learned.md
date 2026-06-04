@@ -1330,3 +1330,5 @@
 - [2026-06-04] [AUTO] 纠正: MODEL_SELECT执行不严格 | Sisyphus遇到架构分析/方案推荐类问题应直接委托 task(model=glm-5.1) 作为主答，而不是自己(step-router-v1)先答再用5.1审查修正，多绕一轮浪费token- [2026-06-04] [OP] NocoDB部署完成 | 容器8085端口, charlie@agi.local已提权super | API Token: 3NhgHjFaFj3Pk3VZtvUTwwYUzTgqFfnI1ZPxDizc (xc-token header) | Base: pc8yaejk822spy1 | CRUD验证通过 | 注意: (1) Docker容器锁定DB时需stop容器再改 (2) DB文件属主root需chown (3) NocoDB v2 API用cookie或xc-token认证, Bearer不可用 (4) DELETE用body传Ids非路径参数
 
 - [2026-06-04] [OP] Hermes Telegram发送未配置 | hermes_messages_send → telegram 报错 "Platform 'telegram' is not configured" | config.yaml 缺少 bot token | 需在 ~/.hermes/config.yaml 添加 telegram bot_token 和 discord webhook- [2026-06-04] [OP] Telegram Bot图片→OCR→NocoDB集成完成 | stepfun bot新增: 发图自动OCR+tesseract写入NocoDB | /table查表 | /addtask加任务 | 同token不能起两个进程(409 Conflict), 不同token可共存 | systemd: stepfun-tg-bot.service
+
+- [2026-06-04] [OP] 平板代理诊断 | 根因: Android全局HTTP代理(global http_proxy)只对使用Java/OkHttp网络栈的App有效，Google Play/讯飞/游戏使用自有网络栈不走系统代理，必须用VPN模式(tun)拦截 | Clash Meta已启用但代理核心未启动(端口7890无监听)，需用户手动在App内点击启动
