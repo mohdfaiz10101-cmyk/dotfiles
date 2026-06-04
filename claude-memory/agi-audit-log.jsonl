@@ -2,3 +2,4 @@
 {"ts": "2026-06-04 16:25", "type": "cycle", "summary": "系统整体运行正常，各项指标均在合理范围内，无异常告警", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-04 16:26", "type": "cycle", "summary": "系统运行正常，各项指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
 {"ts": "2026-06-04 16:27", "type": "cycle", "summary": "系统资源占用适中，CPU存在短时尖峰但服务整体健康", "alert_count": 0, "skipped_llm": false}
+{"ts": "2026-06-04 16:29", "type": "cycle", "summary": "系统运行正常，CPU/内存/磁盘指标均在健康范围内", "alert_count": 0, "skipped_llm": false}
