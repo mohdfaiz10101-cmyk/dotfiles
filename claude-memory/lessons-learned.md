@@ -1327,3 +1327,4 @@
 
 - [2026-06-04] [AUTO] 偏好: 设备互查资源池 | 内容: 手机和平板互为资源库。任何一台找不到文件/应用/资源时，自动从另一台搜索并复制推送。禁止只报告"未找到"，必须先尝试跨设备查询。查询链: 本地 → 对端设备(SSH/ADB) → 找到则推送 → 找不到才报告缺失。
 - [2026-06-04] [OP] 创建: device-resource-pool | 类型: skill+脚本 | 内容: 手机平板互为资源库，跨设备搜索推送系统。脚本: device-pool-search.sh / device-pool-push.sh，skill: ~/.claude/skills/device-resource-pool/
+- [2026-06-04] [AUTO] 纠正: MODEL_SELECT执行不严格 | Sisyphus遇到架构分析/方案推荐类问题应直接委托 task(model=glm-5.1) 作为主答，而不是自己(step-router-v1)先答再用5.1审查修正，多绕一轮浪费token
