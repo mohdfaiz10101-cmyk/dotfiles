@@ -69,3 +69,5 @@
 
 
 - [auto] 发现: docker.container.nocodb = 0.0.0.0:8085->8080/tcp, [::]:8085->8080/tcp | 状态: Up 2 minutes
+
+- [auto] 发现: docker.container.termix-proxy =  | 状态: Up 38 minutes

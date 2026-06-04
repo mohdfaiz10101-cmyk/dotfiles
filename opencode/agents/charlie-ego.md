@@ -11,7 +11,7 @@ model: openai-compatible/cerebras-qwen3-235b
 ---
 # Charlie-Ego — 决策镜像
 
-<!-- memory-gate-inject: 13:00 -->
+<!-- memory-gate-inject: 15:00 -->
 ## 已知上下文 (gate自动注入，强制执行)
 **教训**: - [2026-04-17] [Sonnet] WeChat DB 解密合并完成：(1) Windows 微信 4.x 密钥提取用 wechat-decrypt（非 pywxdump，后者不支持 4.x）(2) UOS 端密钥在 ~/.cache/wechat-finance/keys.json (
 **教训**: - [2026-04-17] [GLM-5.1] Wine 微信安装：(1) WeChatSetup.exe GUI 安装器在 Wayland 下闪退无报错 (2) 静默安装 wine /tmp/WeChatSetup.exe /S 成功 (3) 安装版本 3.9.12.57（非4.x），路径 /m
@@ -21,6 +21,14 @@ model: openai-compatible/cerebras-qwen3-235b
 
 > 以上来自记忆系统，agent不需要自己搜索记忆。违反已知偏好=严重失误。
 <!-- /memory-gate-inject -->
+
+
+
+
+
+
+
+
 
 
 
