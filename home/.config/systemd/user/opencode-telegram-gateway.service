@@ -1,0 +1,27 @@
+[Unit]
+Description=OpenCode Telegram Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.nvm/versions/node/v22.22.3/bin/node /var/home/charlie/opencode-telegram-gateway/dist/index.js
+WorkingDirectory=/var/home/charlie/opencode-telegram-gateway
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=HOME=/var/home/charlie
+Environment=PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/usr/bin:/bin
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=HTTP_PROXY=http://127.0.0.1:7890
+Environment=NO_PROXY=localhost,127.0.0.1
+Environment=TELEGRAM_POLL_TIMEOUT=0
+Environment=TELEGRAM_POLL_INTERVAL_MS=2000
+MemoryMax=256M
+CPUQuota=50%
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=opencode-telegram-gateway
+
+[Install]
+WantedBy=default.target

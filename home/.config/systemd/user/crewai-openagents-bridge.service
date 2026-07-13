@@ -1,0 +1,28 @@
+[Unit]
+Description=CrewAI ↔ OpenAgents Network Bridge
+After=network.target crewai-gateway.service
+Requires=crewai-gateway.service
+
+OnFailure=sentinel-onfailure@crewai-openagents-bridge.service
+StartLimitAction=none
+StartLimitBurst=5
+StartLimitIntervalSec=30
+[Service]
+Type=simple
+ExecStart=/mnt/ai/oa-venv/bin/python3 /home/charlie/crewai-project/openagents_bridge.py
+WorkingDirectory=/home/charlie/crewai-project
+Environment=PATH=/mnt/ai/oa-venv/bin:/run/current-system/sw/bin
+Environment=PYTHONUNBUFFERED=1
+Environment=LD_LIBRARY_PATH=/nix/store/j2kgllgds4w7na8zqv1msi0mpvpjxda8-gcc-15.2.0-lib/lib
+Environment=http_proxy=
+Environment=https_proxy=
+Environment=HTTP_PROXY=
+Environment=HTTPS_PROXY=
+Environment=ALL_PROXY=
+Environment=all_proxy=
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=Crush shared API (:7766)
+After=network-online.target tailscaled.service
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/crush server --host tcp://0.0.0.0:7766 --data-dir /var/home/charlie/.crush
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

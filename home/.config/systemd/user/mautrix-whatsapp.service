@@ -1,0 +1,14 @@
+[Unit]
+Description=Mautrix WhatsApp Bridge
+After=network.target matrix-synapse.service
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/.local/matrix-bridges/whatsapp
+ExecStart=/var/home/charlie/.local/matrix-bridges/whatsapp/mautrix-whatsapp -c /var/home/charlie/.local/matrix-bridges/whatsapp/config.yaml
+Restart=always
+RestartSec=10
+Environment=HOME=/var/home/charlie
+
+[Install]
+WantedBy=default.target

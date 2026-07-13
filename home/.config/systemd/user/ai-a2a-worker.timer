@@ -1,0 +1,10 @@
+[Unit]
+Description=Optional local AI A2A worker timer
+
+[Timer]
+OnUnitActiveSec=2m
+OnBootSec=3m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

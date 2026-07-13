@@ -1,0 +1,8 @@
+[Unit]
+Description=Smart-title bad OpenCode sessions
+After=opencode.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/op-session-title --apply --limit 80
+

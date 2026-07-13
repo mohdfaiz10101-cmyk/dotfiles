@@ -1,0 +1,20 @@
+[Unit]
+Description=Crush WebTTY with mobile buttons (:17766)
+After=network-online.target crush-ttyd-backend.service
+Wants=network-online.target crush-ttyd-backend.service
+
+[Service]
+Type=simple
+Environment=PORT=17766
+Environment=BIND=0.0.0.0
+Environment=TTYD_HOST=127.0.0.1
+Environment=TTYD_PORT=7767
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=DEVICE_COOKIE_NAME=duckdns_device
+ExecStart=/var/home/charlie/.local/share/crush-ttyd-proxy-venv/bin/python /var/home/charlie/.local/bin/crush-ttyd-proxy.py
+KillMode=process
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

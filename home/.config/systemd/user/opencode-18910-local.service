@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenCode LAN proxy (:18910 -> :4096)
+After=opencode-4096-proxy.service
+Requires=opencode-4096-proxy.service
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:4096
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

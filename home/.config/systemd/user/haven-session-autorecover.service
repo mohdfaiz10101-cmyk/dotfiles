@@ -1,0 +1,8 @@
+[Unit]
+Description=Recover disconnected Haven Codex SSH session
+After=network-online.target haven-mcp-bridge.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/haven-session-autorecover
+TimeoutStartSec=20

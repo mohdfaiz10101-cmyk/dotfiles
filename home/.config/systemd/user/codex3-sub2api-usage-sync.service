@@ -1,0 +1,8 @@
+[Unit]
+Description=Sync Codex 3 TTY token usage into Sub2API
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/codex3-sub2api-usage-sync
+

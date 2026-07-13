@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenClaw Launcher Proxy (:17699 -> :8088)
+After=default.target smart-redirector.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/launcher-17699-proxy.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

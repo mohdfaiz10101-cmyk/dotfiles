@@ -1,0 +1,676 @@
+{
+  "generated_at": "2026-07-13T13:19:15",
+  "mcp": [
+    {
+      "name": "baidu-netdisk",
+      "kind": "data",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "数据库",
+        "sqlite",
+        "查询",
+        "表"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "claude-knowledge",
+      "kind": "general",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "claude-knowledge"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "codegraph",
+      "kind": "code-intelligence",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "源码",
+        "代码",
+        "函数",
+        "调用链",
+        "重构"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "context7",
+      "kind": "research-ui",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "tech-researcher",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ],
+      "transport": "http",
+      "entry": "https://mcp.context7.com/mcp"
+    },
+    {
+      "name": "fetch",
+      "kind": "research-ui",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "tech-researcher",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "firecrawl",
+      "kind": "research-ui",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "grep_app",
+      "kind": "general",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "grep_app"
+      ],
+      "transport": "http",
+      "entry": "https://mcp.grep.app/mcp"
+    },
+    {
+      "name": "haven",
+      "kind": "device",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": false,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "hermes",
+      "kind": "general",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "hermes"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "ios-connect",
+      "kind": "device",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "khoj",
+      "kind": "memory",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "letta",
+      "kind": "memory",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "memory-engine",
+      "kind": "memory",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "ntfy",
+      "kind": "messaging",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "发送",
+        "通知",
+        "telegram",
+        "wechat",
+        "ntfy",
+        "消息"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "phone-connect",
+      "kind": "device",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": false,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "playwright",
+      "kind": "research-ui",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "server-memory",
+      "kind": "memory",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "sqlite",
+      "kind": "data",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "数据库",
+        "sqlite",
+        "查询",
+        "表"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "sys-info",
+      "kind": "general",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "sys-info"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "tablet",
+      "kind": "device",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "vision",
+      "kind": "research-ui",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "wechat",
+      "kind": "messaging",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "发送",
+        "通知",
+        "telegram",
+        "wechat",
+        "ntfy",
+        "消息"
+      ],
+      "transport": "local",
+      "entry": ""
+    },
+    {
+      "name": "win",
+      "kind": "device",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": false,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ],
+      "transport": "local",
+      "entry": ""
+    }
+  ],
+  "agents": [
+    {
+      "name": "arch",
+      "model": "openai-compatible/step-router-v1",
+      "description": "架构师 — 系统设计、技术选型、方案评审",
+      "permission_overrides": []
+    },
+    {
+      "name": "build",
+      "model": "openai-compatible/step-3.5-flash-2603",
+      "description": "代码构建器 — 代码生成、功能实现、测试编写",
+      "permission_overrides": []
+    },
+    {
+      "name": "chat",
+      "model": "zai/glm-5-turbo",
+      "description": "对话模式 — 日常问答、知识查询、翻译总结",
+      "permission_overrides": []
+    },
+    {
+      "name": "compaction",
+      "model": "openai-compatible/step-3.5-flash-plan",
+      "description": "",
+      "permission_overrides": [
+        "*"
+      ]
+    },
+    {
+      "name": "explore",
+      "model": "openai-compatible/step-3.5-flash-2603",
+      "description": "代码搜索员 — 定位文件、函数、实现模式",
+      "permission_overrides": []
+    },
+    {
+      "name": "marketing-auditor",
+      "model": "openai-compatible/step-3.5-flash-2603",
+      "description": "营销审计员 — 独立检查营销结论、证据与风险",
+      "permission_overrides": []
+    },
+    {
+      "name": "marketing-coordinator",
+      "model": "openai-compatible/step-router-v1",
+      "description": "营销协调器 — 统筹营销调研、内容与浏览器验证",
+      "permission_overrides": [
+        "playwright_*",
+        "vision_*"
+      ]
+    },
+    {
+      "name": "ops-dispatcher",
+      "model": "openai-compatible/step-3.5-flash-2603",
+      "description": "设备与外部操作调度器 — 手机、平板、Windows、消息与网盘",
+      "permission_overrides": [
+        "baidu-netdisk_*",
+        "ios-connect_*",
+        "phone-connect_*",
+        "tablet_*",
+        "wechat_*"
+      ]
+    },
+    {
+      "name": "plan",
+      "model": "openai-compatible/step-3.5-flash-2603-plan",
+      "description": "规划器 — 分析需求、生成可执行计划（Plan Mode）",
+      "permission_overrides": []
+    },
+    {
+      "name": "refactor",
+      "model": "openai-compatible/step-3.5-flash-2603",
+      "description": "重构器 — 代码优化、架构改进、模式重构",
+      "permission_overrides": []
+    },
+    {
+      "name": "router-auditor",
+      "model": "openai-compatible/step-router-v1",
+      "description": "Router 审计员 — 失败后第二意见、改道建议和 DeepSeek/Step 交叉判断",
+      "permission_overrides": []
+    },
+    {
+      "name": "sisyphus",
+      "model": "openai-compatible/step-router-v1",
+      "description": "Sisyphus — 主力编排 Agent，自动分解委派验证",
+      "permission_overrides": []
+    },
+    {
+      "name": "tech-architect",
+      "model": "openai-compatible/step-router-v1",
+      "description": "技术架构师 — 复杂跨组件设计与架构评审",
+      "permission_overrides": []
+    },
+    {
+      "name": "tech-researcher",
+      "model": "openai-compatible/step-router-v1",
+      "description": "技术研究员 — Web、文档、UI 和外部证据调查",
+      "permission_overrides": [
+        "firecrawl_*",
+        "haven_*",
+        "khoj_*",
+        "playwright_*",
+        "vision_*"
+      ]
+    },
+    {
+      "name": "telegram-operator",
+      "model": "openai-compatible/step-3.5-flash-2603",
+      "description": "Telegram 专用操作 Agent — 出站通知、群信息查询与经授权的消息操作",
+      "permission_overrides": [
+        "bash",
+        "edit",
+        "telegram_*",
+        "write"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "ai-memory-monitor.service",
+      "state": "static"
+    },
+    {
+      "name": "letta-health-check.service",
+      "state": "static"
+    },
+    {
+      "name": "letta-mcp.service",
+      "state": "disabled"
+    },
+    {
+      "name": "letta-podman-proxy.service",
+      "state": "enabled"
+    },
+    {
+      "name": "letta-stack.service",
+      "state": "enabled"
+    },
+    {
+      "name": "litellm-keepalive.service",
+      "state": "static"
+    },
+    {
+      "name": "litellm-strip-proxy.service",
+      "state": "enabled"
+    },
+    {
+      "name": "litellm.service",
+      "state": "generated"
+    },
+    {
+      "name": "memory-evolution.service",
+      "state": "disabled"
+    },
+    {
+      "name": "opencode-18910-local.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode-4096-proxy.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode-bridge.service",
+      "state": "disabled"
+    },
+    {
+      "name": "opencode-capability-adapter.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-codegraph-warmup.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-codex-escalator.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-crash-auditor.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-db-cleanup.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-health-watchdog.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-knowledge-maintainer.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-rag-ingester.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-recall-optimize.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-stuck-cleaner.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-stuck-detect.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-telegram-gateway.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode-telegram-watchdog.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-zulip-gateway.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode.service",
+      "state": "enabled"
+    },
+    {
+      "name": "openhands-letta-sync.service",
+      "state": "static"
+    },
+    {
+      "name": "termhive-daemon.service",
+      "state": "enabled"
+    },
+    {
+      "name": "termhive-web.service",
+      "state": "enabled"
+    }
+  ],
+  "codegraph_repositories": [
+    {
+      "name": "charlie",
+      "path": "/var/home/charlie"
+    },
+    {
+      "name": "workspace",
+      "path": "/var/mnt/ai/cache/auto-migrate/.openclaw/workspace"
+    }
+  ],
+  "rules": [
+    {
+      "path": "/var/home/charlie/.config/opencode/AGENTS.md",
+      "sha256": "41ddc3d0a1652e89677f0885b09cf4062f6845862334f4e7040db6c5ad64965a",
+      "lines": 59
+    },
+    {
+      "path": "/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/AGENTS.md",
+      "sha256": "b9a756230e062b1ee3fa5ea17b5d78fa938703938b1ce79bab6e34af41bfdbe4",
+      "lines": 212
+    },
+    {
+      "path": "/var/home/charlie/.config/opencode/agent-protocol.md",
+      "sha256": "5fb3d8e0ee929c7ae28780c4f70d2d79dfc209b17e9f41435ef3d569fe1a007f",
+      "lines": 75
+    }
+  ]
+}

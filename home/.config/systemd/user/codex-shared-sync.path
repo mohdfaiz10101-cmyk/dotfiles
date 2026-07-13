@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch shared primary Codex config for Codex 2 sync
+
+[Path]
+PathChanged=/var/home/charlie/.codex/config.toml
+PathChanged=/var/home/charlie/.codex/skills
+Unit=codex-shared-sync.service
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=System Info MCP Server (FastMCP HTTP)
+After=network-online.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/mnt/ai/oa-venv/bin/python3 /var/home/charlie/.local/bin/sys-info-mcp.py
+Restart=always
+RestartSec=10
+Environment=HOME=/var/home/charlie
+
+[Install]
+WantedBy=default.target

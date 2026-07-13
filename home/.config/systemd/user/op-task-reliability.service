@@ -1,0 +1,7 @@
+[Unit]
+Description=Classify OP delegated task reliability state
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/op-task-reliability --apply
+WorkingDirectory=%h

@@ -1,0 +1,13 @@
+[Unit]
+Description=Codex smart account/model/executor router
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/codex-router serve --host 127.0.0.1 --port 9828
+Restart=on-failure
+RestartSec=3
+WorkingDirectory=/var/home/charlie
+
+[Install]
+WantedBy=default.target

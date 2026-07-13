@@ -1,0 +1,14 @@
+[Unit]
+Description=TCP Keepalive Proxy for SSH 2225 (Codex)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/tcp-keepalive-proxy 22026 127.0.0.1 22025
+Restart=always
+RestartSec=5
+LimitNPROC=8192
+StandardOutput=journal
+
+[Install]
+WantedBy=default.target

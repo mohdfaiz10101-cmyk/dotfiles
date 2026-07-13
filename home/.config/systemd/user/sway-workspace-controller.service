@@ -1,0 +1,14 @@
+[Unit]
+Description=Declarative Sway workspace controller
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/sway-workspace-controller
+Restart=on-failure
+RestartSec=2
+Environment=HOME=%h
+
+[Install]
+WantedBy=graphical-session.target

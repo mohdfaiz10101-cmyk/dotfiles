@@ -1,0 +1,17 @@
+[Unit]
+Description=mem0 Memory Bridge (8285)
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=MEM0_PORT=8285
+Environment=MEM0_DATA=/mnt/ai/apps/mem0-data
+Environment=NO_PROXY=localhost,127.0.0.1
+ExecStartPre=/bin/bash -c 'mkdir -p /mnt/ai/apps/mem0-data'
+ExecStart=%h/.local/bin/mem0-bridge-wrapper
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

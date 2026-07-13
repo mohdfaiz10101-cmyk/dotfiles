@@ -1,0 +1,15 @@
+[Unit]
+Description=Memory Evolution - Self-Evolving AI Memory
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/memory-evolution-engine
+Restart=on-failure
+RestartSec=300
+StartLimitBurst=3
+Environment="HOME=%h"
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

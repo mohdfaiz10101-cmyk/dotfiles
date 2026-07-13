@@ -1,0 +1,11 @@
+[Unit]
+Description=Run OpenCode smart session title fixer
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=10m
+AccuracySec=1m
+Unit=op-session-title.service
+
+[Install]
+WantedBy=timers.target

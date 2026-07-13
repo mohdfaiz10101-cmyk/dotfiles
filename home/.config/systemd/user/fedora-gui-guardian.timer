@@ -1,0 +1,9 @@
+[Unit]
+Description=Fedora GUI Guardian (every 30min, 08:00-23:00)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+
+[Install]
+WantedBy=timers.target

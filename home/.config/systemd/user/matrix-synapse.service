@@ -1,0 +1,13 @@
+[Unit]
+Description=Matrix Synapse Homeserver
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/share/synapse
+ExecStart=%h/.local/matrix-synapse/bin/synapse_homeserver --config-path %h/.local/share/synapse/homeserver.yaml
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

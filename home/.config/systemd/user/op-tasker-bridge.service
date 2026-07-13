@@ -1,0 +1,15 @@
+[Unit]
+Description=Tasker to OpenCode manual handoff bridge
+After=network-online.target opencode.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/op-tasker-bridge
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

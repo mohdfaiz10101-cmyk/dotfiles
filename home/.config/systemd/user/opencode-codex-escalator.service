@@ -1,0 +1,7 @@
+[Unit]
+Description=Process OpenCode -> Codex planning -> OpenCode delegation queue
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-codex-escalator process
+WorkingDirectory=%h

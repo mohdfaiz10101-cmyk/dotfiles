@@ -1,0 +1,10 @@
+[Unit]
+Description=Disk sentinel (every 30min)
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

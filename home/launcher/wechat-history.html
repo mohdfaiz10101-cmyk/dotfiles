@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微信聊天记录</title>
+<style>
+:root {
+  --base: #1e1e2e;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --surface2: #585b70;
+  --text: #cdd6f4;
+  --subtext: #a6adc8;
+  --overlay: #6c7086;
+  --blue: #89b4fa;
+  --green: #a6e3a1;
+  --red: #f38ba8;
+  --lavender: #b4befe;
+  --peach: #fab387;
+  --mantle: #181825;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--base);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  height: 100vh;
+}
+.sidebar {
+  background: var(--mantle);
+  border-right: 1px solid var(--surface0);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--surface0);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lavender);
+  flex-shrink: 0;
+}
+.sidebar-search {
+  padding: 8px 16px;
+  flex-shrink: 0;
+}
+.sidebar-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--surface1);
+  border-radius: 6px;
+  background: var(--surface0);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+}
+.sidebar-search input:focus {
+  border-color: var(--blue);
+}
+.session-list {
+  flex: 1;
+  overflow-y: auto;
+}
+.session-list::-webkit-scrollbar { width: 4px; }
+.session-list::-webkit-scrollbar-thumb { background: var(--surface1); border-radius: 2px; }
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--surface0);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.session-item:hover { background: var(--surface0); }
+.session-item.active { background: var(--surface1); }
+.session-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.session-chatroom-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--overlay);
+  background: var(--surface1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.session-summary {
+  font-size: 12px;
+  color: var(--subtext);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.session-time {
+  font-size: 11px;
+  color: var(--overlay);
+}
+.session-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--surface1);
+}
+.session-avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: var(--surface1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lavender);
+}
+.session-info {
+  flex: 1;
+  min-width: 0;
+}
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.chat-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--surface0);
+  flex-shrink: 0;
+}
+.chat-header-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.chat-header-username {
+  font-size: 11px;
+  color: var(--overlay);
+  margin-top: 2px;
+}
+.chat-search {
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--surface0);
+  flex-shrink: 0;
+}
+.chat-search input {
+  width: 100%;
+  padding: 7px 12px;
+  border: 1px solid var(--surface1);
+  border-radius: 6px;
+  background: var(--surface0);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+}
+.chat-search input:focus { border-color: var(--blue); }
+.chat-search input::placeholder { color: var(--overlay); }
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+.messages::-webkit-scrollbar { width: 6px; }
+.messages::-webkit-scrollbar-thumb { background: var(--surface1); border-radius: 3px; }
+.time-header {
+  text-align: center;
+  margin: 16px 0 12px;
+  font-size: 12px;
+  color: var(--overlay);
+}
+.time-header span {
+  background: var(--surface0);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+.msg-row {
+  display: flex;
+  margin-bottom: 6px;
+  gap: 8px;
+  align-items: flex-start;
+}
+.msg-row.sent { justify-content: flex-end; }
+.msg-row.received { justify-content: flex-start; }
+.msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--surface1);
+  margin-top: 2px;
+}
+.msg-avatar-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--surface1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--subtext);
+  margin-top: 2px;
+}
+.msg-body {
+  max-width: 65%;
+  min-width: 0;
+}
+.msg-bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.msg-row.sent .msg-bubble {
+  background: var(--blue);
+  color: var(--base);
+  border-bottom-right-radius: 4px;
+}
+.msg-row.received .msg-bubble {
+  background: var(--surface0);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+.msg-sender {
+  font-size: 11px;
+  color: var(--overlay);
+  margin-bottom: 2px;
+}
+.msg-row.sent .msg-sender { text-align: right; }
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--overlay);
+  font-size: 14px;
+}
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--overlay);
+}
+.msg-count {
+  font-size: 11px;
+  color: var(--overlay);
+  padding: 4px 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar">
+    <div class="sidebar-header">微信聊天记录</div>
+    <div class="sidebar-search">
+      <input type="text" id="sessionFilter" placeholder="搜索联系人...">
+    </div>
+    <div class="session-list" id="sessionList"></div>
+  </div>
+  <div class="chat-panel">
+    <div id="chatArea">
+      <div class="empty-state">选择一个会话查看聊天记录</div>
+    </div>
+  </div>
+</div>
+<script>
+const MY_IDS = ["wxid_bjo2p0swoxm822", "w422417869"];
+let sessions = [];
+let currentChat = null;
+let searchTimer = null;
+
+function relativeTime(ts) {
+  if (!ts) return "";
+  const d = new Date(ts * 1000);
+  const now = new Date();
+  const diff = now - d;
+  const min = Math.floor(diff / 60000);
+  if (min < 1) return "刚刚";
+  if (min < 60) return min + "分钟前";
+  const hr = Math.floor(min / 60);
+  if (hr < 24) return hr + "小时前";
+  const day = Math.floor(hr / 24);
+  if (day < 7) return day + "天前";
+  if (day < 30) return Math.floor(day / 7) + "周前";
+  return d.getFullYear() + "/" + String(d.getMonth() + 1).padStart(2, "0") + "/" + String(d.getDate()).padStart(2, "0");
+}
+
+function formatTime(ts) {
+  if (!ts) return "";
+  const d = new Date(ts * 1000);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0") + " " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+}
+
+function escapeHtml(s) {
+  const el = document.createElement("span");
+  el.textContent = s;
+  return el.innerHTML;
+}
+
+async function loadSessions() {
+  try {
+    const res = await fetch("/api/wechat/sessions");
+    sessions = await res.json();
+    renderSessions(sessions);
+  } catch (e) {
+    document.getElementById("sessionList").innerHTML = '<div class="loading">加载失败: ' + escapeHtml(String(e)) + '</div>';
+  }
+}
+
+function renderSessions(list) {
+  const container = document.getElementById("sessionList");
+  if (!list.length) {
+    container.innerHTML = '<div class="loading">无匹配会话</div>';
+    return;
+  }
+  container.innerHTML = list.map(s => {
+    const active = s.username === currentChat ? " active" : "";
+    const badge = s.is_chatroom ? '<span class="session-chatroom-badge">群</span>' : "";
+    const initial = (s.display_name || s.username).charAt(0).toUpperCase();
+    const avatarHtml = s.avatar
+      ? '<img class="session-avatar" src="' + escapeHtml(s.avatar) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="session-avatar-placeholder" style="display:none">' + escapeHtml(initial) + '</div>'
+      : '<div class="session-avatar-placeholder">' + escapeHtml(initial) + '</div>';
+    return '<div class="session-item' + active + '" data-username="' + escapeHtml(s.username) + '">' +
+      avatarHtml +
+      '<div class="session-info">' +
+        '<div class="session-name">' + escapeHtml(s.display_name) + badge + '</div>' +
+        '<div class="session-summary">' + escapeHtml(s.summary || "") + '</div>' +
+        '<div class="session-time">' + relativeTime(s.last_timestamp) + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join("");
+
+  container.querySelectorAll(".session-item").forEach(el => {
+    el.addEventListener("click", () => {
+      currentChat = el.dataset.username;
+      renderSessions(getFilteredList());
+      loadMessages(currentChat);
+    });
+  });
+}
+
+function getFilteredList() {
+  const q = document.getElementById("sessionFilter").value.trim().toLowerCase();
+  if (!q) return sessions;
+  return sessions.filter(s =>
+    s.display_name.toLowerCase().includes(q) ||
+    s.username.toLowerCase().includes(q) ||
+    (s.summary || "").toLowerCase().includes(q)
+  );
+}
+
+document.getElementById("sessionFilter").addEventListener("input", () => {
+  renderSessions(getFilteredList());
+});
+
+async function loadMessages(chat, keyword) {
+  const area = document.getElementById("chatArea");
+  area.innerHTML = '<div class="loading">加载中...</div>';
+
+  let url = "/api/wechat/messages?chat=" + encodeURIComponent(chat) + "&limit=200";
+  if (keyword) url += "&keyword=" + encodeURIComponent(keyword);
+
+  try {
+    const res = await fetch(url);
+    const messages = await res.json();
+    const session = sessions.find(s => s.username === chat);
+    renderMessages(messages, session);
+  } catch (e) {
+    area.innerHTML = '<div class="loading">加载失败: ' + escapeHtml(String(e)) + '</div>';
+  }
+}
+
+function renderMessages(messages, session) {
+  const area = document.getElementById("chatArea");
+  if (!messages.length) {
+    area.innerHTML = '<div class="empty-state">无消息记录</div>';
+    return;
+  }
+
+  const name = session ? escapeHtml(session.display_name) : escapeHtml(currentChat);
+  const uname = escapeHtml(currentChat);
+
+  let html = '<div class="chat-header">' +
+    '<div class="chat-header-name">' + name + '</div>' +
+    '<div class="chat-header-username">' + uname + '</div>' +
+  '</div>' +
+  '<div class="chat-search">' +
+    '<input type="text" id="msgSearchInput" placeholder="在当前会话中搜索...">' +
+  '</div>' +
+  '<div class="messages" id="msgContainer"></div>' +
+  '<div class="msg-count" id="msgCount"></div>';
+
+  area.innerHTML = html;
+
+  const container = document.getElementById("msgContainer");
+  let html2 = "";
+  let lastTime = 0;
+
+  // Session-level avatar for non-sender side
+  const sessionAvatar = session && session.avatar ? session.avatar : "";
+  const myAvatar = ""; // self avatar not available yet
+
+  for (const m of messages) {
+    if (m.create_time - lastTime > 300) {
+      html2 += '<div class="time-header"><span>' + formatTime(m.create_time) + '</span></div>';
+    }
+    lastTime = m.create_time;
+
+    const isSent = MY_IDS.includes(m.sender_wxid || m.sender_name);
+    const cls = isSent ? "sent" : "received";
+
+    // Avatar: sent = right side (no left avatar), received = left side
+    const avatarInitial = (m.sender_name || "?").charAt(0).toUpperCase();
+    let leftAvatarHtml = "";
+    let rightAvatarHtml = "";
+    if (isSent) {
+      rightAvatarHtml = myAvatar
+        ? '<img class="msg-avatar" src="' + escapeHtml(myAvatar) + '" onerror="this.style.display=\'none\'">'
+        : '<div class="msg-avatar-placeholder">我</div>';
+    } else {
+      const avUrl = sessionAvatar;
+      leftAvatarHtml = avUrl
+        ? '<img class="msg-avatar" src="' + escapeHtml(avUrl) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="msg-avatar-placeholder" style="display:none">' + escapeHtml(avatarInitial) + '</div>'
+        : '<div class="msg-avatar-placeholder">' + escapeHtml(avatarInitial) + '</div>';
+    }
+
+    // Sender name: show for group chats (non-self), and for private chats (show contact name once)
+    const senderHtml = (!isSent && m.sender_name && session && session.is_chatroom)
+      ? '<div class="msg-sender">' + escapeHtml(m.sender_name) + '</div>' : "";
+
+    html2 += '<div class="msg-row ' + cls + '">' +
+      leftAvatarHtml +
+      '<div class="msg-body">' + senderHtml +
+        '<div class="msg-bubble">' + escapeHtml(m.message_content) + '</div>' +
+      '</div>' +
+      rightAvatarHtml +
+    '</div>';
+  }
+
+  container.innerHTML = html2;
+  document.getElementById("msgCount").textContent = messages.length + " 条消息";
+  container.scrollTop = container.scrollHeight;
+
+  document.getElementById("msgSearchInput").addEventListener("input", (e) => {
+    clearTimeout(searchTimer);
+    const val = e.target.value.trim();
+    searchTimer = setTimeout(() => {
+      loadMessages(currentChat, val || undefined);
+    }, 300);
+  });
+  if (document.getElementById("msgSearchInput") !== document.activeElement) {
+    document.getElementById("msgSearchInput").value = "";
+  }
+}
+
+loadSessions();
+</script>
+</body>
+</html>

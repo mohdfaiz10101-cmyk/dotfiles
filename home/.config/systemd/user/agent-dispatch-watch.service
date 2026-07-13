@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch automatic OP/Crush dispatch tasks and hand off failures
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/agent-dispatch watch
+WorkingDirectory=/var/home/charlie
+TimeoutStartSec=45

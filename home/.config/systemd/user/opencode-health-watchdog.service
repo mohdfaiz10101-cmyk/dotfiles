@@ -1,0 +1,7 @@
+[Unit]
+Description=Watch OpenCode backend health for 18910 stability
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-health-watchdog.sh
+WorkingDirectory=/var/home/charlie

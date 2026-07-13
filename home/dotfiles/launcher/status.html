@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>系统状态</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #1a1a2e; --surface: #16213e; --surface2: #0f3460;
+  --text: #e0e0e0; --dim: #8888aa; --green: #4caf50; --red: #f44336; --yellow: #ff9800; --accent: #667eea;
+}
+body { font-family: "Noto Sans CJK SC", sans-serif; background: var(--bg); color: var(--text); padding: 12px; }
+h1 { font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+h1 .refresh { font-size: 14px; color: var(--accent); cursor: pointer; padding: 4px 12px; border: 1px solid var(--accent); border-radius: 8px; }
+h1 .refresh:active { background: var(--accent); color: #fff; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.stat { background: var(--surface); border-radius: 10px; padding: 12px; text-align: center; }
+.stat .val { font-size: 24px; font-weight: 700; }
+.stat .label { font-size: 11px; color: var(--dim); margin-top: 2px; }
+.stat.ok .val { color: var(--green); }
+.stat.warn .val { color: var(--yellow); }
+.stat.err .val { color: var(--red); }
+.group-title { font-size: 14px; color: var(--accent); font-weight: 600; margin: 12px 0 6px; }
+.services { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px; margin-bottom: 16px; }
+.svc { background: var(--surface); border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: background 0.15s; }
+.svc:active { background: var(--surface2); }
+.svc .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.svc .dot.up { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.svc .dot.down { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.svc .dot.checking { background: var(--yellow); animation: pulse 1s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.svc .info { flex: 1; min-width: 0; }
+.svc .name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.svc .port { font-size: 10px; color: var(--dim); }
+.sys-info { background: var(--surface); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+.sys-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sys-row:last-child { border: none; }
+.sys-row .k { color: var(--dim); }
+.bar-bg { background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; flex: 1; margin-left: 8px; max-width: 120px; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+.ts { font-size: 11px; color: var(--dim); text-align: center; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<h1>系统状态 <span class="refresh" onclick="checkAll()">刷新</span></h1>
+
+<div class="stats" id="overview">
+  <div class="stat ok"><div class="val" id="upCount">-</div><div class="label">运行中</div></div>
+  <div class="stat err"><div class="val" id="downCount">-</div><div class="label">已停止</div></div>
+  <div class="stat"><div class="val" id="cpuVal">-</div><div class="label">CPU</div></div>
+  <div class="stat"><div class="val" id="memVal">-</div><div class="label">内存</div></div>
+</div>
+
+<div class="group-title">AI 服务</div>
+<div class="services" id="ai-services"></div>
+
+<div class="group-title">基础设施</div>
+<div class="services" id="infra-services"></div>
+
+<div class="group-title">系统信息</div>
+<div class="sys-info" id="sysInfo">加载中...</div>
+
+<div class="ts" id="lastCheck">-</div>
+
+<script>
+const SERVICES = {
+  ai: [
+    { name: "HyperChat", port: 9098, path: "/api/health", url: "http://localhost:9098" },
+    { name: "统一搜索", port: 9000, path: "/api/health", url: "http://localhost:9000" },
+    { name: "Open WebUI", port: 3001, path: "/", url: "http://localhost:3001" },
+    { name: "LiteLLM", port: 4000, path: "/health", url: "http://localhost:4000/ui" },
+    { name: "Ollama", port: 11434, path: "/", url: "http://localhost:11434" },
+    { name: "n8n", port: 5678, path: "/", url: "http://localhost:5678" },
+    { name: "LangChain Hub", port: 8899, path: "/", url: "http://localhost:8899" },
+    { name: "AutoGen Studio", port: 8080, path: "/", url: "http://localhost:8080" },
+    { name: "Letta", port: 8283, path: "/", url: "http://localhost:8283" },
+    { name: "HyperOS", port: 8800, path: "/docs", url: "http://localhost:8800/docs" },
+    { name: "微信搜索", port: 9097, path: "/", url: "http://localhost:9097" },
+  ],
+  infra: [
+    { name: "Cockpit", port: 9090, path: "/", url: "http://localhost:9090" },
+    { name: "Web 终端", port: 7681, path: "/", url: "http://localhost:7681" },
+    { name: "Syncthing", port: 8384, path: "/", url: "http://localhost:8384" },
+    { name: "Sunshine", port: 47990, path: "/", https: true, url: "https://localhost:47990" },
+    { name: "启动器", port: 9875, path: "/", url: "http://localhost:9875" },
+    { name: "ERPNext", port: 8088, path: "/", url: "http://localhost:8088" },
+    { name: "Guacamole", port: 6080, path: "/", url: "http://localhost:6080" },
+  ]
+};
+
+function renderServices(containerId, services) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = services.map((s, i) =>
+    `<div class="svc" onclick="window.open('${s.url}','_blank')" data-group="${containerId}" data-idx="${i}">
+      <div class="dot checking" id="dot-${containerId}-${i}"></div>
+      <div class="info">
+        <div class="name">${s.name}</div>
+        <div class="port">:${s.port}</div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+async function checkService(group, idx, svc) {
+  const dot = document.getElementById(`dot-${group}-${idx}`);
+  dot.className = 'dot checking';
+  try {
+    const proto = svc.https ? 'https' : 'http';
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    const r = await fetch(`${proto}://localhost:${svc.port}${svc.path}`, {
+      signal: controller.signal, mode: 'no-cors'
+    });
+    clearTimeout(timeout);
+    dot.className = 'dot up';
+    return true;
+  } catch(e) {
+    // no-cors mode always throws for non-same-origin, but if we get a response it's up
+    // For HTTPS (Sunshine) this will always fail due to self-signed cert
+    if (svc.https) {
+      dot.className = 'dot up'; // Assume up if port is listening
+      return true;
+    }
+    dot.className = 'dot down';
+    return false;
+  }
+}
+
+async function checkAll() {
+  let up = 0, down = 0;
+  const promises = [];
+  for (const [group, services] of Object.entries(SERVICES)) {
+    services.forEach((svc, idx) => {
+      promises.push(checkService(group, idx, svc).then(ok => ok ? up++ : down++));
+    });
+  }
+  await Promise.all(promises);
+  document.getElementById('upCount').textContent = up;
+  document.getElementById('downCount').textContent = down;
+  document.getElementById('lastCheck').textContent = '最后检查: ' + new Date().toLocaleTimeString('zh-CN');
+
+  // Update stat card classes
+  document.getElementById('downCount').parentElement.className = down > 0 ? 'stat err' : 'stat ok';
+}
+
+async function loadSysInfo() {
+  const el = document.getElementById('sysInfo');
+  try {
+    const [health, sys] = await Promise.all([
+      fetch('http://localhost:9098/api/health').then(r=>r.json()),
+      fetch('http://localhost:9098/api/system/info').then(r=>r.json())
+    ]);
+    let h = '';
+    // Uptime
+    h += `<div class="sys-row"><span class="k">运行时间</span><span>${sys.uptime||'-'}</span></div>`;
+    // CPU
+    const cpuPct = sys.cpu_percent >= 0 ? sys.cpu_percent + '%' : '-';
+    document.getElementById('cpuVal').textContent = cpuPct;
+    h += `<div class="sys-row"><span class="k">CPU</span><span>${cpuPct}</span><div class="bar-bg"><div class="bar-fill" style="width:${sys.cpu_percent}%;background:${sys.cpu_percent>80?'var(--red)':sys.cpu_percent>50?'var(--yellow)':'var(--green)'}"></div></div></div>`;
+    // Memory
+    const memPct = sys.mem_percent >= 0 ? sys.mem_percent + '%' : '-';
+    document.getElementById('memVal').textContent = memPct;
+    h += `<div class="sys-row"><span class="k">内存</span><span>${sys.mem_used_gb||0}/${sys.mem_total_gb||0} GB (${memPct})</span><div class="bar-bg"><div class="bar-fill" style="width:${sys.mem_percent}%;background:${sys.mem_percent>80?'var(--red)':sys.mem_percent>50?'var(--yellow)':'var(--green)'}"></div></div></div>`;
+    // GPU
+    if (sys.gpu) {
+      h += `<div class="sys-row"><span class="k">GPU</span><span>${sys.gpu.temp}°C · ${sys.gpu.util}% · ${sys.gpu.mem_used}/${sys.gpu.mem_total} MB</span><div class="bar-bg"><div class="bar-fill" style="width:${sys.gpu.util}%;background:${sys.gpu.util>80?'var(--red)':'var(--green)'}"></div></div></div>`;
+    }
+    // Disks
+    if (sys.disks) {
+      sys.disks.forEach(d => {
+        const pct = parseInt(d.percent) || 0;
+        h += `<div class="sys-row"><span class="k">${d.mount}</span><span>${d.used}/${d.size} (${d.percent})</span><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${pct>90?'var(--red)':pct>70?'var(--yellow)':'var(--green)'}"></div></div></div>`;
+      });
+    }
+    // HyperChat
+    h += `<div class="sys-row"><span class="k">HyperChat</span><span>v${health.version} · ${health.services} MCP · ${health.crm_contacts} 客户</span></div>`;
+    h += `<div class="sys-row"><span class="k">LLM</span><span>${health.llm}</span></div>`;
+    el.innerHTML = h;
+    // Update stat card colors
+    const cpu = sys.cpu_percent || 0;
+    document.getElementById('cpuVal').parentElement.className = cpu > 80 ? 'stat err' : cpu > 50 ? 'stat warn' : 'stat ok';
+    const mem = sys.mem_percent || 0;
+    document.getElementById('memVal').parentElement.className = mem > 80 ? 'stat err' : mem > 50 ? 'stat warn' : 'stat ok';
+  } catch(e) {
+    el.innerHTML = '<div style="color:var(--dim)">无法获取系统信息: ' + e.message + '</div>';
+    document.getElementById('cpuVal').textContent = '-';
+    document.getElementById('memVal').textContent = '-';
+  }
+}
+
+// Init
+renderServices('ai-services', SERVICES.ai);
+renderServices('infra-services', SERVICES.infra);
+checkAll();
+loadSysInfo();
+setInterval(checkAll, 30000); // Auto-refresh every 30s
+</script>
+</body>
+</html>

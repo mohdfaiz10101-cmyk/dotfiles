@@ -1,0 +1,11 @@
+[Unit]
+Description=Crush healthcheck and shared TUI recovery
+After=network-online.target litellm-strip-proxy.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/crush-healthcheck
+WorkingDirectory=/var/home/charlie
+KillMode=process
+TimeoutStartSec=25

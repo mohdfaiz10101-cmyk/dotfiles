@@ -1,0 +1,10 @@
+[Unit]
+Description=Ydotool Bridge KVM
+After=graphical-session.target
+PartOf=graphical-session.target
+[Service]
+ExecStart=/usr/bin/python3 /home/charlie/.local/bin/ydotool-bridge.py 24801
+Restart=always
+RestartSec=3
+[Install]
+WantedBy=graphical-session.target

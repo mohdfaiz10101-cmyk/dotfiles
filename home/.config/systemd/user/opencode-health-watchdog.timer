@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic OpenCode backend health check
+
+[Timer]
+OnBootSec=4m
+OnUnitActiveSec=3m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

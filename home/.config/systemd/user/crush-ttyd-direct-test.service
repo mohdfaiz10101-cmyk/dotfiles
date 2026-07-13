@@ -1,0 +1,14 @@
+[Unit]
+Description=Crush native ttyd direct test (:17767)
+After=network-online.target crush-tailscale.service
+Wants=network-online.target crush-tailscale.service
+
+[Service]
+Type=simple
+Environment=PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/local/bin/ttyd -W -t rendererType=dom -p 17767 -i 100.120.189.27 -T xterm-256color /var/home/charlie/.local/bin/crush-ttyd-entry
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

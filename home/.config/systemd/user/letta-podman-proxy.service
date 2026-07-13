@@ -1,0 +1,12 @@
+[Unit]
+Description=Letta proxy for rootful Podman OpenHands sandboxes
+After=letta-stack.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/letta-podman-proxy
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

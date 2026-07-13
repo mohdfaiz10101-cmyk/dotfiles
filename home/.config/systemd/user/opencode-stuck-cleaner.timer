@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic stuck OpenCode probe cleanup
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=1m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

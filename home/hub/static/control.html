@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>控制中心 · Charlie Hub</title>
+<style>
+:root {
+  --bg:#0f1720; --bg2:#111827; --card:#17212b; --line:#263445; --text:#e5eef8; --muted:#8da2b8;
+  --green:#74d39a; --yellow:#f2c66d; --red:#f07f90; --blue:#7db7ff; --cyan:#6ed3de;
+  --purple:#c4a7e7; --orange:#fab387;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; color:var(--text); font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+  background:radial-gradient(circle at top right, rgba(125,183,255,.18), transparent 26%),
+    radial-gradient(circle at left center, rgba(110,211,222,.12), transparent 24%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height:100vh;
+}
+.wrap { max-width:1400px; margin:0 auto; padding:20px; }
+
+/* ── 系统指标条 ── */
+.sysbar { display:flex; gap:16px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+.sysbar .score-badge {
+  display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:14px;
+  background:linear-gradient(135deg, rgba(125,183,255,.12), rgba(110,211,222,.06));
+  border:1px solid rgba(125,183,255,.15);
+}
+.sysbar .score-num { font-size:36px; font-weight:700; line-height:1; }
+.sysbar .score-grade { font-size:12px; color:var(--muted); }
+.sysmetric { display:flex; align-items:center; gap:6px; font-size:13px; }
+.sysmetric .label { color:var(--muted); }
+.sysmetric .value { font-weight:700; }
+.sysmetric .value.warn { color:var(--yellow); }
+.sysmetric .value.crit { color:var(--red); }
+
+/* ── Tab 面板 ── */
+.tabs { display:flex; gap:4px; margin-bottom:14px; flex-wrap:wrap; }
+.tab-btn {
+  padding:7px 16px; border-radius:8px; border:1px solid var(--line); background:transparent;
+  color:var(--muted); font-size:13px; cursor:pointer; transition:.15s;
+}
+.tab-btn:hover { color:var(--text); }
+.tab-btn.active { background:rgba(125,183,255,.1); border-color:var(--blue); color:var(--blue); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* ── 服务分组 ── */
+.svc-group { margin-bottom:14px; }
+.svc-group-title {
+  font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.5px;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.svc-group-title .count {
+  background:rgba(255,255,255,.06); padding:1px 7px; border-radius:99px; font-size:10px;
+}
+.svc-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px; }
+.svc {
+  display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.05); background:rgba(255,255,255,.025);
+  text-decoration:none; color:var(--text); transition:.15s;
+}
+.svc:hover { border-color:var(--blue); transform:translateY(-1px); background:rgba(125,183,255,.05); }
+.svc-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.svc-dot.on { background:var(--green); box-shadow:0 0 8px rgba(116,211,154,.5); }
+.svc-dot.off { background:var(--red); opacity:.5; }
+.svc-info { flex:1; min-width:0; }
+.svc-name { font-size:13px; font-weight:600; }
+.svc-port { font-size:10px; color:var(--muted); margin-top:2px; }
+.svc-actions { display:flex; gap:4px; margin-top:6px; }
+.svc-btn {
+  padding:3px 8px; border-radius:5px; border:1px solid var(--line); background:transparent;
+  color:var(--muted); font-size:10px; cursor:pointer; transition:.15s;
+}
+.svc-btn:hover { border-color:var(--blue); color:var(--blue); }
+.svc-btn.danger:hover { border-color:var(--red); color:var(--red); }
+
+/* ── AI 服务卡片 ── */
+.ai-card {
+  border:1px solid rgba(255,255,255,.05); border-radius:14px; padding:14px;
+  background:rgba(255,255,255,.025); transition:.15s;
+}
+.ai-card:hover { border-color:var(--blue); }
+.ai-card h3 { margin:0 0 6px; font-size:14px; font-weight:600; }
+.ai-card .ai-detail { color:var(--muted); font-size:12px; margin-bottom:8px; }
+.ai-card .ai-actions { display:flex; gap:6px; flex-wrap:wrap; }
+.ai-btn {
+  padding:5px 10px; border-radius:6px; border:1px solid var(--line); background:transparent;
+  color:var(--text); font-size:11px; cursor:pointer; transition:.15s; text-decoration:none;
+}
+.ai-btn:hover { border-color:var(--blue); color:var(--blue); }
+.ai-btn.primary { background:rgba(125,183,255,.1); border-color:var(--blue); color:var(--blue); }
+
+/* ── 告警 ── */
+.warnings { display:grid; gap:6px; }
+.warning-item {
+  border-left:3px solid var(--yellow); padding:8px 12px; border-radius:8px;
+  background:rgba(242,198,109,.07); color:var(--text); font-size:12px;
+}
+.warning-item.critical { border-left-color:var(--red); background:rgba(240,127,144,.08); }
+.warning-item.ok { border-left-color:var(--green); background:rgba(116,211,154,.06); color:var(--muted); }
+
+/* ── 列表 ── */
+.item-list { display:grid; gap:6px; }
+.item-row {
+  padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.04); font-size:12px;
+}
+.item-row .item-name { font-weight:600; font-size:13px; }
+.item-row .item-desc { color:var(--muted); margin-top:3px; font-size:11px; }
+
+@media (max-width: 900px) {
+  .svc-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .svc-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- 系统指标 -->
+    <div class="sysbar" id="sysbar"></div>
+
+    <!-- Tab 面板 -->
+    <div class="card" style="margin-bottom:16px">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="services">服务全景</button>
+        <button class="tab-btn" data-tab="ai">AI / Agent</button>
+        <button class="tab-btn" data-tab="alerts">告警</button>
+        <button class="tab-btn" data-tab="stability">稳定性</button>
+        <button class="tab-btn" data-tab="software">软件</button>
+        <button class="tab-btn" data-tab="projects">项目</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-services">
+        <div id="svc-groups"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-ai">
+        <div id="ai-services"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-alerts">
+        <div class="warnings" id="warnings"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-stability">
+        <div id="stability-panel"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-software">
+        <div class="item-list" id="software"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-projects">
+        <div class="item-list" id="projects"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const HOST = location.hostname;
+function urlFor(port, path='/', https=false) { 
+  return `${https ? 'https' : 'http'}://${HOST}:${port}${path}`; 
+}
+
+function goForService(name, fallback) {
+  const map = {
+    Hub: '/go/hub',
+    OpenAgents: '/go/openagents',
+    OpenCode: '/go/opencode',
+    TermHive: '/go/termhive',
+    LiteLLM: '/go/litellm',
+    ttyd: '/go/terminal',
+    Telegram: '/go/telegram',
+    Sunshine: '/go/sunshine',
+    Mihomo: '/go/mihomo',
+  };
+  return map[name] || fallback;
+}
+
+const SVC_REGISTRY = [
+  { group: '核心', items: [
+    { name: 'Hub', port: 9800, label: '看板+API', ext: true },
+    { name: 'OpenAgents', port: 8700, label: '协作层+Agent', ext: true },
+    { name: 'OpenCode', port: 4096, label: 'Web 控制台', ext: true, sub: '4097' },
+    { name: 'TermHive', port: 3200, label: '项目管理', ext: false, sub: '3210' },
+  ]},
+  { group: 'AI 基础设施', items: [
+    { name: 'LiteLLM', port: 4002, label: 'AI 网关', ext: false, url: '/v1/models' },
+    { name: 'Letta', port: 8283, label: '记忆服务', ext: false },
+    { name: 'Embedding', port: 8286, label: '向量嵌入', ext: false, url: '/health' },
+  ]},
+  { group: '开发工具', items: [
+    { name: 'ttyd', port: 8080, label: '终端入口', ext: false },
+    { name: 'Telegram', port: 9811, label: '消息网关', ext: false, url: '/health' },
+    { name: 'Sunshine', port: 47990, label: '游戏串流', ext: false, url: '/', https: true },
+    { name: 'Haven MCP', port: 8732, label: '手机桥接', ext: false, url: '/mcp' },
+  ]},
+  { group: '基建', items: [
+    { name: 'FRP', port: 19890, label: '公网映射', ext: true },
+    { name: 'Mihomo', port: 9091, label: '代理控制', ext: false, url: '/ui' },
+    { name: 'MemoryPulse', port: 8285, label: '记忆桥接', ext: false, url: '/pulse/summary' },
+  ]},
+];
+
+let SVC_STATUS = {};
+async function loadStatusMap() {
+  const res = await fetch('/api/dashboard/overview', { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  for (const svc of data.services) SVC_STATUS[svc.name] = svc.status;
+  SVC_STATUS['OpenCode'] = SVC_STATUS['OpenCode Web'] || SVC_STATUS['OpenCode Server'];
+  SVC_STATUS['TermHive'] = SVC_STATUS['TermHive Web'] || SVC_STATUS['TermHive Daemon'];
+  SVC_STATUS['ttyd'] = SVC_STATUS['OpenClaw TTYD'];
+  SVC_STATUS['Telegram'] = SVC_STATUS['Telegram Gateway'];
+  SVC_STATUS['Haven MCP'] = SVC_STATUS['Haven MCP Bridge'];
+  return data;
+}
+
+function renderSysbar(data) {
+  const sys = data.system;
+  const sc = data.score;
+  const valClass = (v, w=80, c=95) => v >= c ? 'crit' : v >= w ? 'warn' : '';
+  document.getElementById('sysbar').innerHTML = `
+    <div class="score-badge">
+      <div class="score-num">${sc.score}</div>
+      <div class="score-grade">${sc.grade} · 严重 ${sc.critical} · 警告 ${sc.warning}</div>
+    </div>
+    <div class="sysmetric"><span class="label">CPU</span><span class="value">${sys.cpu}%</span></div>
+    <div class="sysmetric"><span class="label">内存</span><span class="value ${valClass(sys.memory)}">${sys.memory}%</span></div>
+    <div class="sysmetric"><span class="label">Swap</span><span class="value ${valClass(sys.swap)}">${sys.swap}%</span></div>
+    <div class="sysmetric"><span class="label">存储</span><span class="value ${sys.root_disk>=95?'crit':sys.root_disk>=85?'warn':''}">${sys.root_disk}%</span></div>
+    <div class="sysmetric" style="margin-left:auto"><span class="label">可用内存</span><span class="value">${sys.memory_available_gb}GB</span></div>
+  `;
+}
+
+function renderServices() {
+  const el = document.getElementById('svc-groups');
+  let html = '';
+  for (const group of SVC_REGISTRY) {
+    const on = group.items.filter(s => SVC_STATUS[s.name] === 'online').length;
+    html += `<div class="svc-group">
+      <div class="svc-group-title">${group.group} <span class="count">${on}/${group.items.length}</span></div>
+      <div class="svc-grid">`;
+    for (const svc of group.items) {
+      const isOn = SVC_STATUS[svc.name] === 'online';
+      const href = isOn ? goForService(svc.name, urlFor(svc.port, svc.url || '/', svc.https)) : '#';
+      const sub = svc.sub ? `<span class="svc-tag" style="font-size:9px;padding:1px 5px;border-radius:4px;background:rgba(255,255,255,.06);color:var(--muted)">+${svc.sub}</span>` : '';
+      html += `<a class="svc" href="${href}" ${isOn ? 'target="_blank" rel="noreferrer"' : ''}>
+        <div class="svc-dot ${isOn ? 'on' : 'off'}"></div>
+        <div class="svc-info">
+          <div class="svc-name">${svc.name}</div>
+          <div class="svc-port">:${svc.port} ${svc.label}</div>
+          <div class="svc-actions">
+            <button class="svc-btn" onclick="svcAction('${svc.name}','restart',event)" title="重启">↻</button>
+            ${isOn ? `<button class="svc-btn danger" onclick="svcAction('${svc.name}','stop',event)" title="停止">■</button>` : `<button class="svc-btn" onclick="svcAction('${svc.name}','start',event)" title="启动">▶</button>`}
+          </div>
+        </div>
+        ${sub}${svc.ext ? '' : '<span style="font-size:9px;padding:1px 5px;border-radius:4px;background:rgba(255,255,255,.06);color:var(--muted)">内网</span>'}
+      </a>`;
+    }
+    html += `</div></div>`;
+  }
+  el.innerHTML = html;
+}
+
+const SVC_NAME_MAP = {
+  'Hub': 'hub-api',
+  'OpenAgents': 'openagents-network',
+  'OpenCode': 'opencode',
+  'TermHive': 'termhive-web',
+  'LiteLLM': 'litellm',
+  'Letta': 'letta-stack',
+  'Embedding': 'embedding-server',
+  'ttyd': 'ttyd-8080',
+  'Telegram': 'opencode-telegram-gateway',
+  'FRP': 'frpc',
+};
+
+async function svcAction(name, action, ev) {
+  if (ev) ev.preventDefault();
+  const svcName = SVC_NAME_MAP[name] || name;
+  const btn = ev?.target;
+  if (btn) { btn.disabled = true; btn.textContent = '...'; }
+  try {
+    const r = await fetch(`/api/service/${encodeURIComponent(svcName)}/${action}`, { method: 'POST' });
+    const data = await r.json();
+    alert(`${svcName}.service ${action}: ${data.ok ? '成功' : '失败'}\n${data.stderr || data.stdout || data.error || ''}`);
+  } catch (e) {
+    alert(`请求失败: ${e.message}`);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = action === 'restart' ? '↻' : action === 'stop' ? '■' : '▶'; }
+    refresh();
+  }
+}
+
+async function renderAI() {
+  const el = document.getElementById('ai-services');
+  try {
+    const res = await fetch('/api/ai/services', { cache: 'no-store' });
+    if (!res.ok) throw new Error('加载失败');
+    const data = await res.json();
+    const cats = {};
+    for (const s of data.services) {
+      (cats[s.category] = cats[s.category] || []).push(s);
+    }
+    let html = '';
+    for (const [cat, svcs] of Object.entries(cats)) {
+      html += `<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;letter-spacing:.5px">${cat.toUpperCase()}</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px">`;
+      for (const s of svcs) {
+        const on = s.status === 'online';
+        html += `<div class="ai-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div class="svc-dot ${on ? 'on' : 'off'}"></div>
+            <h3>${s.name}</h3>
+          </div>
+          <div class="ai-detail">${s.detail} · <a href="${s.host_url || s.url}" target="_blank" rel="noreferrer" style="color:var(--blue)">${s.listen}</a></div>
+          ${s.actions?.length ? `<div class="ai-actions">${s.actions.map(a => `<button class="ai-btn primary" onclick="aiAction('${a.endpoint}','${a.method}','${a.target || ''}')">${a.label}</button>`).join('')}</div>` : ''}
+        </div>`;
+      }
+      html += `</div></div>`;
+    }
+    el.innerHTML = html;
+  } catch (e) {
+    el.innerHTML = `<div class="warning-item critical">加载失败: ${e.message}</div>`;
+  }
+}
+
+async function aiAction(endpoint, method, target) {
+  try {
+    const r = await fetch(endpoint, {
+      method, headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ target, url: target ? `http://${HOST}:${target}` : '' })
+    });
+    const data = await r.json();
+    alert(`${endpoint}: ${data.ok ? '成功' : '失败'}\n${data.error || data.stdout || data.response || ''}`);
+  } catch (e) {
+    alert(`请求失败: ${e.message}`);
+  }
+  renderAI();
+}
+
+function renderAlerts(data) {
+  const el = document.getElementById('warnings');
+  const scoreItems = (data.score?.services || []).filter(x => x.status !== 'OK');
+  const offlineServices = (data.services || []).filter(s => s.status === 'offline');
+  const items = [
+    ...scoreItems.map(s => ({ ...s, _source: 'score' })),
+    ...offlineServices.map(s => ({ name: s.name, detail: `${s.detail} · ${s.url || ''}`.trim(), status: 'CRITICAL', _source: 'port' })),
+  ];
+  if (!items.length) { el.innerHTML = '<div class="warning-item ok">所有检查项正常</div>'; return; }
+  el.innerHTML = items.map(i => `<div class="warning-item ${i.status==='CRITICAL'?'critical':''}"><strong>${i.name}</strong> · ${i.detail}</div>`).join('');
+}
+
+async function renderStability() {
+  const el = document.getElementById('stability-panel');
+  try {
+    const res = await fetch('/api/services/stability', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const s = data.summary || {};
+    let html = `<div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+      <div class="score-badge"><div class="score-num">${s.total}</div><div class="score-grade">总服务</div></div>
+      <div class="score-badge"><div class="score-num" style="color:var(--green)">${s.healthy}</div><div class="score-grade">健康</div></div>
+      <div class="score-badge"><div class="score-num" style="color:var(--yellow)">${s.warning}</div><div class="score-grade">警告</div></div>
+      <div class="score-badge"><div class="score-num" style="color:var(--red)">${s.storm}</div><div class="score-grade">风暴</div></div>
+      <div class="score-badge"><div class="score-num" style="color:var(--red)">${s.failed}</div><div class="score-grade">失败</div></div>
+      <div class="score-badge"><div class="score-num" style="color:var(--muted)">${s.auto_restart}</div><div class="score-grade">自动重启中</div></div>
+    </div>`;
+    const storms = (data.storms || []).filter(x => x.health !== 'healthy');
+    if (!storms.length) {
+      html += '<div class="warning-item ok">无风暴，所有服务稳定</div>';
+    } else {
+      html += '<div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px">风暴 / 异常服务（按重启次数降序）</div>';
+      html += '<div style="display:grid;gap:6px">';
+      for (const svc of storms) {
+        const up = svc.uptime_sec != null ? `${svc.uptime_sec}s` : 'n/a';
+        const cls = svc.health === 'storm' ? 'critical' : svc.health === 'failed' ? 'critical' : 'warn';
+        html += `<div class="warning-item ${cls}" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div><strong>${svc.unit}</strong> · ${svc.description || ''} · 状态: ${svc.state}/${svc.substate} · 退出码: ${svc.exit_code}</div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <span>重启 <strong style="color:${svc.restarts>100?'var(--red)':'var(--yellow)'}">${svc.restarts}</strong></span>
+            <span>运行 ${up}</span>
+            <button class="svc-btn" onclick="svcAction('${svc.unit.replace('.service','')}','restart',event)" title="重启">↻</button>
+          </div>
+        </div>`;
+      }
+      html += '</div>';
+    }
+    el.innerHTML = html;
+  } catch (e) {
+    el.innerHTML = `<div class="warning-item critical">加载失败: ${e.message}</div>`;
+  }
+}
+
+async function loadSoftware() {
+  const el = document.getElementById('software');
+  try {
+    const res = await fetch('/api/dashboard/software', { cache: 'no-store' });
+    if (!res.ok) throw new Error('加载失败');
+    const data = await res.json();
+    let html = '';
+    for (const [cat, pkgs] of Object.entries(data)) {
+      const tags = pkgs.slice(0, 15).map(p => `<span class="pkg-tag" style="padding:3px 7px;border-radius:6px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:11px">${p.name}</span>`).join('');
+      html += `<div class="item-row"><div class="item-name">${cat} <span style="color:var(--muted)">(${pkgs.length})</span></div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${tags}</div></div>`;
+    }
+    el.innerHTML = html;
+  } catch (e) { el.innerHTML = `<div class="warning-item critical">加载失败: ${e.message}</div>`; }
+}
+
+async function loadProjects() {
+  const el = document.getElementById('projects');
+  try {
+    const res = await fetch('/api/dashboard/projects', { cache: 'no-store' });
+    if (!res.ok) throw new Error('加载失败');
+    const data = await res.json();
+    el.innerHTML = data.projects.map(p => `<div class="item-row"><div class="item-name">${p.name}</div><div class="item-desc">${p.description || p.path}</div></div>`).join('');
+  } catch (e) { el.innerHTML = `<div class="warning-item critical">加载失败: ${e.message}</div>`; }
+}
+
+/* ── Tab 切换 ── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+  });
+});
+
+/* ── 刷新 ── */
+async function refresh() {
+  try {
+    const data = await loadStatusMap();
+    renderSysbar(data);
+    renderServices();
+    renderAlerts(data);
+    renderStability();
+  } catch (e) { console.error(e); }
+}
+
+refresh();
+renderAI();
+loadSoftware();
+loadProjects();
+setInterval(refresh, 30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+[Unit]
+Description=Repair Haven phone MCP and local bridge
+After=network-online.target adb-phone-keepalive.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/haven-mcp-watchdog.sh
+TimeoutStartSec=90

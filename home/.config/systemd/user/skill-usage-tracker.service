@@ -1,0 +1,8 @@
+[Unit]
+Description=Skill Usage Tracker
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.config/ai-shared/skill_usage_tracker.py
+Environment=HOME=%h

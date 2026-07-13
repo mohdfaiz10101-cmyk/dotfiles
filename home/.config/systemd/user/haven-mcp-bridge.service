@@ -1,0 +1,16 @@
+[Unit]
+Description=Haven MCP ADB Bridge (phone → local :8732)
+After=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Type=simple
+Environment=PATH=/var/home/charlie/.local/bin:/var/home/charlie/.local/platform-tools:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/haven-mcp-adb-bridge.py 8732
+Restart=always
+RestartSec=10
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target

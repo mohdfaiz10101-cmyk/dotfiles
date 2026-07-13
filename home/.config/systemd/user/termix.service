@@ -1,0 +1,15 @@
+[Unit]
+Description=Termix Web SSH Client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+RestartSec=5
+ExecStartPre=/usr/bin/podman rm -f termix
+ExecStart=/usr/bin/podman run --rm --name termix --network=host -v /home/charlie/.local/share/termix:/app/data:Z -e PORT=18110 ghcr.io/lukegus/termix:latest
+ExecStop=/usr/bin/podman stop -t 10 termix
+Type=simple
+
+[Install]
+WantedBy=default.target

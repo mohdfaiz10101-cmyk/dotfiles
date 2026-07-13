@@ -1,0 +1,19 @@
+[Unit]
+Description=Sway Notification Center
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/swaync
+Environment=HOME=%h
+Environment=XDG_CONFIG_HOME=%h/.config
+Environment=XDG_CONFIG_DIRS=%h/.config:/etc/xdg
+Environment=LD_LIBRARY_PATH=%h/.local/lib
+Environment=XDG_DATA_HOME=%h/.local/share
+Environment=XDG_DATA_DIRS=%h/.local/share:/usr/share
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=graphical-session.target

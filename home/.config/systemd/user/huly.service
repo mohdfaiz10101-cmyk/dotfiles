@@ -1,0 +1,15 @@
+[Unit]
+Description=Huly self-hosted all-in-one workspace
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/home/charlie/apps/huly-selfhost
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker compose -f compose.yml --env-file huly_v7.conf up -d --pull if_not_present --quiet-pull
+ExecStop=/usr/bin/docker compose -f compose.yml --env-file huly_v7.conf down
+TimeoutStartSec=1800
+TimeoutStopSec=180
+
+[Install]
+WantedBy=default.target

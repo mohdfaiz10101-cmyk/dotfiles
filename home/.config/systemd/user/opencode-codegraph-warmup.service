@@ -1,0 +1,7 @@
+[Unit]
+Description=Warm up CodeGraphContext database for OpenCode and Codex MCP clients
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-lifecycle.py codegraph-warmup
+WorkingDirectory=/var/home/charlie

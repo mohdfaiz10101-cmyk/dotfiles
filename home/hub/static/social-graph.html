@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社交关系图谱</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --surface: #16213e;
+    --surface2: #0f3460;
+    --accent: #00d4aa;
+    --accent2: #00b894;
+    --text: #e8e8e8;
+    --text2: #a0a0b8;
+    --border: rgba(255,255,255,0.1);
+    --glow: rgba(0,212,170,0.15);
+    --radius: 12px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ── 顶部控制栏 ── */
+  .toolbar {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    height: 56px;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    background: rgba(22,33,62,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .toolbar h1 {
+    font-size: 16px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: .5px;
+    white-space: nowrap;
+  }
+  .toolbar .sep { width:1px; height:24px; background:var(--border); }
+  .search-box {
+    position: relative; flex: 0 1 260px;
+  }
+  .search-box input {
+    width: 100%; padding: 7px 12px 7px 32px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-box input:focus { border-color: var(--accent); }
+  .search-box::before {
+    content:'🔍'; position:absolute; left:10px; top:50%; transform:translateY(-50%);
+    font-size:13px; opacity:.5;
+  }
+  .slider-group {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--text2);
+    white-space: nowrap;
+  }
+  .slider-group input[type=range] {
+    width: 120px; accent-color: var(--accent);
+  }
+  .slider-val {
+    min-width: 28px; text-align: center;
+    color: var(--accent); font-weight: 600;
+  }
+  .stats-badge {
+    margin-left: auto;
+    font-size: 12px; color: var(--text2);
+    white-space: nowrap;
+  }
+  .stats-badge span { color: var(--accent); font-weight: 700; }
+
+  /* ── SVG 画布 ── */
+  #graph-container {
+    position: fixed; top:56px; left:0; right:0; bottom:0;
+    overflow: hidden;
+  }
+  #graph-container svg { width:100%; height:100%; }
+
+  /* ── 边 ── */
+  .link {
+    stroke: rgba(0,212,170,0.18);
+    stroke-width: 1;
+    transition: stroke .2s;
+  }
+  .link.highlight { stroke: rgba(0,212,170,0.6); }
+  .link.dim { stroke: rgba(255,255,255,0.04); }
+
+  /* ── 节点 ── */
+  .node { cursor: pointer; }
+  .node circle {
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    fill: var(--surface2);
+    transition: fill .2s, stroke-width .2s;
+  }
+  .node:hover circle,
+  .node.highlight circle { stroke-width: 3; fill: var(--accent); }
+  .node.dim circle { opacity: 0.15; }
+  .node text {
+    fill: var(--text2);
+    font-size: 11px;
+    text-anchor: middle;
+    pointer-events: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,.8);
+    transition: fill .2s;
+  }
+  .node.highlight text,
+  .node:hover text { fill: #fff; font-weight: 600; }
+  .node.dim text { opacity: 0.1; }
+
+  /* ── 右侧画像面板 ── */
+  .profile-panel {
+    position: fixed; top:56px; right:0; bottom:0;
+    width: 380px; z-index: 90;
+    background: rgba(22,33,62,0.88);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+    overflow-y: auto;
+    padding: 24px;
+  }
+  .profile-panel.open { transform: translateX(0); }
+  .profile-panel::-webkit-scrollbar { width:4px; }
+  .profile-panel::-webkit-scrollbar-thumb { background:var(--surface2); border-radius:2px; }
+
+  .panel-close {
+    position:absolute; top:16px; right:16px;
+    width:28px; height:28px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--border);
+    border-radius:50%;
+    color:var(--text2); font-size:16px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition: background .2s;
+  }
+  .panel-close:hover { background:rgba(255,255,255,0.12); }
+
+  .profile-name {
+    font-size: 22px; font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .profile-id {
+    font-size: 11px; color: var(--text2);
+    margin-bottom: 16px;
+    font-family: monospace;
+  }
+  .tag-list { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
+  .tag {
+    padding: 3px 10px;
+    background: rgba(0,212,170,0.12);
+    border: 1px solid rgba(0,212,170,0.25);
+    border-radius: 20px;
+    font-size: 12px; color: var(--accent);
+  }
+  .section-title {
+    font-size: 13px; font-weight: 600;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .profile-notes {
+    font-size: 13px; line-height: 1.6;
+    color: var(--text);
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── 关系列表 ── */
+  .relation-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .relation-item:hover { background: rgba(255,255,255,0.03); }
+  .relation-item .r-name {
+    flex: 1; font-size: 13px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .relation-item .r-type {
+    font-size: 11px; color: var(--text2);
+    flex-shrink: 0;
+  }
+  .strength-bar {
+    width: 60px; height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px; overflow: hidden;
+    flex-shrink: 0;
+  }
+  .strength-bar .fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width .4s;
+  }
+
+  /* ── 消息列表 ── */
+  .msg-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .msg-item .msg-time {
+    font-size: 11px; color: var(--text2);
+  }
+  .msg-item .msg-content {
+    font-size: 13px; line-height: 1.5;
+    margin-top: 2px;
+  }
+  .msg-item .msg-dir {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 4px;
+    font-weight: 600;
+  }
+  .msg-dir.sent { background: rgba(0,212,170,0.15); color: var(--accent); }
+  .msg-dir.recv { background: rgba(255,255,255,0.08); color: var(--text2); }
+
+  /* ── 统计卡片 ── */
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .stat-card {
+    padding: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .stat-card .stat-num {
+    font-size: 24px; font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-card .stat-label {
+    font-size: 11px; color: var(--text2);
+    margin-top: 2px;
+  }
+
+  /* ── 加载/空状态 ── */
+  .loading-overlay {
+    position: fixed; top:56px; left:0; right:0; bottom:0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg);
+    z-index: 50;
+    font-size: 14px; color: var(--text2);
+    transition: opacity .3s;
+  }
+  .loading-overlay.hidden { opacity:0; pointer-events:none; }
+  .spinner {
+    width: 32px; height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin-right: 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── 背景装饰 ── */
+  .bg-glow {
+    position: fixed; border-radius: 50%;
+    filter: blur(120px); opacity: .08;
+    pointer-events: none; z-index: 0;
+  }
+  .bg-glow.g1 { width:500px;height:500px;top:-100px;left:-100px;background:var(--accent); }
+  .bg-glow.g2 { width:400px;height:400px;bottom:-80px;right:-80px;background:#6c5ce7; }
+</style>
+</head>
+<body>
+
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+
+<!-- 工具栏 -->
+<div class="toolbar">
+  <h1>📡 社交关系图谱</h1>
+  <div class="sep"></div>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="搜索联系人...">
+  </div>
+  <div class="sep"></div>
+  <div class="slider-group">
+    最小强度
+    <input type="range" id="min-strength" min="0" max="1" step="0.05" value="0.1">
+    <span class="slider-val" id="strength-val">0.1</span>
+  </div>
+  <div class="stats-badge">
+    <span id="node-count">0</span> 节点 · <span id="edge-count">0</span> 关系
+  </div>
+</div>
+
+<!-- 图谱容器 -->
+<div id="graph-container"></div>
+
+<!-- 加载状态 -->
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <span>正在加载社交图谱…</span>
+</div>
+
+<!-- 右侧画像面板 -->
+<div class="profile-panel" id="profile-panel">
+  <button class="panel-close" id="panel-close">✕</button>
+  <div id="panel-content"></div>
+</div>
+
+<script>
+(async function() {
+  const API = '/api/social';
+  const container = document.getElementById('graph-container');
+  const searchInput = document.getElementById('search');
+  const strengthSlider = document.getElementById('min-strength');
+  const strengthVal = document.getElementById('strength-val');
+  const nodeCountEl = document.getElementById('node-count');
+  const edgeCountEl = document.getElementById('edge-count');
+  const loadingEl = document.getElementById('loading');
+  const panel = document.getElementById('profile-panel');
+  const panelContent = document.getElementById('panel-content');
+  const panelClose = document.getElementById('panel-close');
+
+  let currentMinStrength = 0.1;
+  let allData = null;
+  let simulation = null;
+  let svg, g, linkG, nodeG;
+
+  // ── 初始化SVG ──
+  function initSvg() {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    svg = d3.select(container).append('svg').attr('width', w).attr('height', h);
+    const defs = svg.append('defs');
+    const filter = defs.append('filter').attr('id','glow');
+    filter.append('feGaussianBlur').attr('stdDeviation','3').attr('result','coloredBlur');
+    const merge = filter.append('feMerge');
+    merge.append('feMergeNode').attr('in','coloredBlur');
+    merge.append('feMergeNode').attr('in','SourceGraphic');
+
+    g = svg.append('g');
+    linkG = g.append('g').attr('class','links');
+    nodeG = g.append('g').attr('class','nodes');
+
+    // 缩放
+    const zoom = d3.zoom()
+      .scaleExtent([0.1, 8])
+      .on('zoom', (e) => g.attr('transform', e.transform));
+    svg.call(zoom);
+    svg.on('dblclick.zoom', null);
+  }
+
+  // ── 获取数据 ──
+  async function fetchData(minStrength) {
+    try {
+      const res = await fetch(`${API}/graph?min_strength=${minStrength}`);
+      if (!res.ok) throw new Error(res.status);
+      return await res.json();
+    } catch(e) {
+      console.error('图谱加载失败:', e);
+      return null;
+    }
+  }
+
+  // ── 渲染力导向图 ──
+  function renderGraph(data) {
+    if (!data || !data.nodes.length) {
+      loadingEl.innerHTML = '<span>暂无社交数据</span>';
+      return;
+    }
+
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+
+    // 构建关系数映射
+    const nodeDegree = {};
+    data.nodes.forEach(n => nodeDegree[n.id] = 0);
+    data.edges.forEach(e => {
+      nodeDegree[e.source] = (nodeDegree[e.source]||0) + 1;
+      nodeDegree[e.target] = (nodeDegree[e.target]||0) + 1;
+    });
+
+    // 构建 links（用 id 索引）
+    const nodeMap = {};
+    data.nodes.forEach(n => nodeMap[n.id] = n);
+    const links = data.edges.map(e => ({
+      source: e.source,
+      target: e.target,
+      strength: e.strength,
+      type: e.type || '',
+      interactions: e.interactions || 0
+    }));
+
+    // 节点半径映射
+    const maxDeg = Math.max(1, d3.max(data.nodes, n => nodeDegree[n.id]||0));
+    const radiusScale = d3.scaleSqrt().domain([1, maxDeg]).range([6, 28]);
+
+    // 颜色映射（按标签）
+    const tagColors = {};
+    let colorIdx = 0;
+    const palette = ['#00d4aa','#fd79a8','#fdcb6e','#74b9ff','#a29bfe','#fab1a0','#55efc4','#e17055','#00cec9','#ff7675'];
+    data.nodes.forEach(n => {
+      const tag = (n.tags && n.tags[0]) || '默认';
+      if (!tagColors[tag]) tagColors[tag] = palette[colorIdx++ % palette.length];
+    });
+
+    // 清空
+    linkG.selectAll('*').remove();
+    nodeG.selectAll('*').remove();
+
+    // 边
+    const linkEls = linkG.selectAll('line').data(links).enter().append('line')
+      .attr('class','link')
+      .attr('stroke-width', d => Math.max(0.5, d.strength * 6));
+
+    // 节点组
+    const nodeEls = nodeG.selectAll('g').data(data.nodes).enter().append('g')
+      .attr('class','node');
+
+    nodeEls.append('circle')
+      .attr('r', d => radiusScale(nodeDegree[d.id]||1))
+      .attr('fill', d => {
+        const tag = (d.tags && d.tags[0]) || '默认';
+        return tagColors[tag] || '#00d4aa';
+      })
+      .attr('fill-opacity', 0.75)
+      .attr('stroke', d => tagColors[(d.tags&&d.tags[0])||'默认'] || '#00d4aa')
+      .attr('filter','url(#glow)');
+
+    nodeEls.append('text')
+      .text(d => d.name || d.id)
+      .attr('dy', d => -(radiusScale(nodeDegree[d.id]||1) + 6));
+
+    // 力模拟
+    if (simulation) simulation.stop();
+    simulation = d3.forceSimulation(data.nodes)
+      .force('link', d3.forceLink(links).id(d=>d.id).distance(d => 120 - d.strength * 80))
+      .force('charge', d3.forceManyBody().strength(-200))
+      .force('center', d3.forceCenter(w/2, h/2))
+      .force('collision', d3.forceCollide().radius(d => radiusScale(nodeDegree[d.id]||1) + 4))
+      .force('x', d3.forceX(w/2).strength(0.05))
+      .force('y', d3.forceY(h/2).strength(0.05));
+
+    simulation.on('tick', () => {
+      linkEls
+        .attr('x1', d=>d.source.x).attr('y1', d=>d.source.y)
+        .attr('x2', d=>d.target.x).attr('y2', d=>d.target.y);
+      nodeEls.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+
+    // 拖拽
+    nodeEls.call(d3.drag()
+      .on('start', (e,d) => { if(!e.active) simulation.alphaTarget(.3).restart(); d.fx=d.x; d.fy=d.y; })
+      .on('drag', (e,d) => { d.fx=e.x; d.fy=e.y; })
+      .on('end', (e,d) => { if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null; })
+    );
+
+    // 交互：高亮邻居
+    nodeEls.on('mouseenter.highlight', (e,d) => {
+      const neighbors = new Set();
+      links.forEach(l => {
+        if(l.source.id === d.id) neighbors.add(l.target.id);
+        if(l.target.id === d.id) neighbors.add(l.source.id);
+      });
+      neighbors.add(d.id);
+      nodeEls.classed('dim', n => !neighbors.has(n.id)).classed('highlight', n => n.id === d.id);
+      linkEls.classed('dim', l => l.source.id!==d.id && l.target.id!==d.id)
+             .classed('highlight', l => l.source.id===d.id || l.target.id===d.id);
+    }).on('mouseleave.highlight', () => {
+      nodeEls.classed('dim',false).classed('highlight',false);
+      linkEls.classed('dim',false).classed('highlight',false);
+    });
+
+    // 点击→画像
+    nodeEls.on('click', (e,d) => {
+      e.stopPropagation();
+      loadProfile(d.id);
+    });
+
+    // 更新计数
+    nodeCountEl.textContent = data.nodes.length;
+    edgeCountEl.textContent = links.length;
+  }
+
+  // ── 加载画像 ──
+  async function loadProfile(wxid) {
+    panelContent.innerHTML = '<div class="spinner" style="margin:40px auto"></div>';
+    panel.classList.add('open');
+    try {
+      const res = await fetch(`${API}/profile/${encodeURIComponent(wxid)}`);
+      if (!res.ok) throw new Error(res.status);
+      const p = await res.json();
+      renderProfile(p);
+    } catch(e) {
+      panelContent.innerHTML = `<p style="color:#ff7675;padding:20px">加载失败: ${e.message}</p>`;
+    }
+  }
+
+  function renderProfile(p) {
+    let html = '';
+    html += `<div class="profile-name">${esc(p.name||p.wxid)}</div>`;
+    html += `<div class="profile-id">${esc(p.wxid)}</div>`;
+
+    if (p.tags && p.tags.length) {
+      html += '<div class="tag-list">' + p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('') + '</div>';
+    }
+    if (p.notes) {
+      html += '<div class="section-title">备注</div>';
+      html += `<div class="profile-notes">${esc(p.notes)}</div>`;
+    }
+
+    // 统计
+    if (p.stats) {
+      const s = p.stats;
+      html += '<div class="section-title">统计</div><div class="stats-grid">';
+      if (s.total_messages != null) html += `<div class="stat-card"><div class="stat-num">${s.total_messages}</div><div class="stat-label">总消息数</div></div>`;
+      if (s.total_interactions != null) html += `<div class="stat-card"><div class="stat-num">${s.total_interactions}</div><div class="stat-label">互动次数</div></div>`;
+      if (s.first_contact) html += `<div class="stat-card"><div class="stat-num" style="font-size:14px">${esc(s.first_contact)}</div><div class="stat-label">首次联系</div></div>`;
+      if (s.last_contact) html += `<div class="stat-card"><div class="stat-num" style="font-size:14px">${esc(s.last_contact)}</div><div class="stat-label">最近联系</div></div>`;
+      html += '</div>';
+    }
+
+    // 关系
+    if (p.relations && p.relations.length) {
+      const sorted = [...p.relations].sort((a,b)=>(b.strength||0)-(a.strength||0));
+      html += '<div class="section-title">关系网络</div>';
+      sorted.forEach(r => {
+        const pct = Math.round((r.strength||0)*100);
+        html += `<div class="relation-item" onclick="window._navigateNode('${esc(r.wxid||r.id)}')">
+          <span class="r-name">${esc(r.name||r.wxid||r.id)}</span>
+          <span class="strength-bar"><span class="fill" style="width:${pct}%"></span></span>
+          <span class="r-type">${esc(r.type||'')}</span>
+        </div>`;
+      });
+    }
+
+    // 最近消息
+    if (p.recent_messages && p.recent_messages.length) {
+      html += '<div class="section-title">最近消息</div>';
+      p.recent_messages.forEach(m => {
+        const dir = m.direction === 'sent' ? 'sent' : 'recv';
+        const dirText = m.direction === 'sent' ? '发出' : '收到';
+        const time = m.timestamp ? new Date(m.timestamp).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+        html += `<div class="msg-item">
+          <span class="msg-dir ${dir}">${dirText}</span>
+          <span class="msg-time">${esc(time)}</span>
+          <div class="msg-content">${esc(m.content||'')}</div>
+        </div>`;
+      });
+    }
+
+    panelContent.innerHTML = html;
+  }
+
+  // 全局跳转
+  window._navigateNode = function(wxid) {
+    loadProfile(wxid);
+    // 高亮对应节点
+    nodeG.selectAll('.node').each(function(d) {
+      if (d.id === wxid) {
+        d3.select(this).dispatch('mouseenter.highlight');
+      }
+    });
+  };
+
+  // ── 搜索 ──
+  searchInput.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    if (!q) {
+      nodeG.selectAll('.node').classed('dim',false).classed('highlight',false);
+      linkG.selectAll('.link').classed('dim',false).classed('highlight',false);
+      return;
+    }
+    const matched = new Set();
+    nodeG.selectAll('.node').each(function(d) {
+      if (d.name.toLowerCase().includes(q) || d.id.toLowerCase().includes(q) ||
+          (d.tags && d.tags.some(t=>t.toLowerCase().includes(q)))) {
+        matched.add(d.id);
+      }
+    });
+    // 匹配节点的邻居也显示
+    const show = new Set(matched);
+    allData.edges.forEach(e => {
+      if (matched.has(e.source) || matched.has(e.target)) {
+        show.add(e.source);
+        show.add(e.target);
+      }
+    });
+    nodeG.selectAll('.node').classed('dim', d=>!show.has(d.id)).classed('highlight', d=>matched.has(d.id));
+    linkG.selectAll('.link').classed('dim', l=>!show.has(l.source.id)&&!show.has(l.target.id));
+  });
+
+  // ── 强度滑块 ──
+  let debounceTimer;
+  strengthSlider.addEventListener('input', function() {
+    currentMinStrength = parseFloat(this.value);
+    strengthVal.textContent = currentMinStrength.toFixed(1);
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => reloadGraph(), 300);
+  });
+
+  // ── 关闭面板 ──
+  panelClose.addEventListener('click', () => panel.classList.remove('open'));
+  svg && svg.on('click', () => panel.classList.remove('open'));
+
+  // ── 工具函数 ──
+  function esc(str) {
+    if (!str) return '';
+    const d = document.createElement('div');
+    d.textContent = String(str);
+    return d.innerHTML;
+  }
+
+  // ── 重新加载 ──
+  async function reloadGraph() {
+    const data = await fetchData(currentMinStrength);
+    if (data) { allData = data; renderGraph(data); }
+  }
+
+  // ── 窗口调整 ──
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    svg.attr('width',w).attr('height',h);
+    if (simulation) simulation.force('center', d3.forceCenter(w/2,h/2)).alpha(.3).restart();
+  });
+
+  // ── 启动 ──
+  initSvg();
+  svg.on('click', () => panel.classList.remove('open'));
+  const data = await fetchData(currentMinStrength);
+  loadingEl.classList.add('hidden');
+  if (data) { allData = data; renderGraph(data); }
+  else loadingEl.innerHTML = '<span>⚠ 无法连接 hub-api，请确认服务已启动</span>';
+})();
+</script>
+<script src="/static/hub-static.js?v=20260630-hubmenu3"></script>
+</body>
+</html>

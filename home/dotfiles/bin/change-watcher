@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# change-watcher — inotify 配置/服务文件变更监控
+# 变更 → 自动写入 changelog.jsonl
+# 不监控代码文件（code-watcher 已覆盖），只监控基础设施配置
+
+RECORDER="$HOME/.local/bin/change-recorder.sh"
+CHANGELOG="$HOME/.claude/projects/-home-charlie/memory/changelog.jsonl"
+
+# 监控目录：配置 + systemd + agent 定义
+WATCH_PATHS=(
+    "$HOME/.openagents"
+    "$HOME/.openclaw"
+    "$HOME/.config/opencode"
+    "$HOME/.config/systemd/user"
+    "$HOME/.claude/skills"
+    "$HOME/.claude/projects/-home-charlie/memory"
+    "$HOME/agi"
+    "$HOME/hub"
+    "$HOME/launcher"
+    "$HOME/crewai-project"
+)
+
+# 构建有效目录列表
+DIRS=()
+for d in "${WATCH_PATHS[@]}"; do
+    [[ -d "$d" ]] && DIRS+=("$d")
+done
+
+if (( ${#DIRS[@]} == 0 )); then
+    echo "无有效监控目录" >&2
+    exit 1
+fi
+
+echo "change-watcher 启动，监控 ${#DIRS[@]} 个目录" >&2
+
+inotifywait -m -r -q \
+    --format '%w%f %e' \
+    --exclude '(/\.git/|/node_modules/|/__pycache__|/dist/|/build/|/\.next/|changelog\.jsonl$|daemon\.status\.json$|\.lock$|\.pyc$)' \
+    -e 'modify,create,delete,move' \
+    "${DIRS[@]}" | while read -r FILEPATH EVENT; do
+
+    # 只关注配置文件
+    EXT="${FILEPATH##*.}"
+    case "$EXT" in
+        json|yaml|yml|toml|nix|conf|service|timer|env|md) ;;
+        *) continue ;;
+    esac
+
+    # 跳过 changelog 自身
+    [[ "$FILEPATH" == *changelog* ]] && continue
+
+    # 防抖：3秒内同一文件只记录一次
+    TS=$(date +%s)
+    CACHE_KEY=$(echo "$FILEPATH" | md5sum | cut -d' ' -f1)
+    CACHE="/tmp/chwatch-${CACHE_KEY}"
+
+    if [[ -f "$CACHE" ]]; then
+        LAST=$(cat "$CACHE")
+        if (( TS - LAST < 3 )); then
+            continue
+        fi
+    fi
+    echo "$TS" > "$CACHE"
+
+    # 判断事件类型
+    case "$EVENT" in
+        *DELETE*|*MOVED_FROM*)
+            ETYPE="file-delete" ;;
+        *CREATE*|*MOVED_TO*)
+            ETYPE="file-create" ;;
+        *)
+            ETYPE="file-change" ;;
+    esac
+
+    # 提取 scope（相对于 HOME）
+    REL="${FILEPATH#$HOME/}"
+    TOP_DIR="${REL%%/*}"
+
+    # 记录
+    "$RECORDER" "$ETYPE" "$REL $EVENT" "$TOP_DIR" "$FILEPATH"
+
+    # 检查是否为受保护配置 → 触发基线归因
+    BASELINE="$HOME/.claude/projects/-home-charlie/memory/baseline.toml"
+    if [[ -f "$BASELINE" ]]; then
+        PROTECTED_PATH=$(grep -o "path = \"$FILEPATH\"" "$BASELINE" 2>/dev/null || true)
+        if [[ -n "$PROTECTED_PATH" ]]; then
+            "$HOME/bin/integrity/baseline-auto-update.sh" "$FILEPATH" 2>/dev/null &
+        fi
+    fi
+done

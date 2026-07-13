@@ -1,0 +1,12 @@
+[Unit]
+Description=Local AI A2A artifact bus API
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/ai-a2a serve --host 127.0.0.1 --port 9826
+Restart=on-failure
+RestartSec=3
+WorkingDirectory=%h
+
+[Install]
+WantedBy=default.target

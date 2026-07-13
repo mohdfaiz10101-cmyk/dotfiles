@@ -1,0 +1,7 @@
+[Unit]
+Description=Clean stuck low-risk OpenCode probe subprocesses
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-stuck-cleaner.sh
+WorkingDirectory=/var/home/charlie

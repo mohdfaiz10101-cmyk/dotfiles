@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Codex 3 Sub2API usage sync every minute
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=60s
+AccuracySec=10s
+Unit=codex3-sub2api-usage-sync.service
+
+[Install]
+WantedBy=timers.target

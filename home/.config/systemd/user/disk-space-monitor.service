@@ -1,0 +1,6 @@
+[Unit]
+Description=Daily disk space monitor (alert at 80%)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'df -h --output=pcent,target | tail -n +2 | while read pct dir; do usage=${pct%%%}; if [ $usage -ge 80 ]; then echo "WARNING: $dir is at $pct usage"; notify-send "Disk Warning" "$dir at $pct" 2>/dev/null; fi; done'

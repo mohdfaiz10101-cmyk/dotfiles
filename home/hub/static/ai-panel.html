@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlie AI 工作台</title>
+<style>
+:root {
+  --bg:#0f1720; --bg2:#111827; --card:#17212b; --line:#263445; --text:#e5eef8; --muted:#8da2b8;
+  --green:#74d39a; --yellow:#f2c66d; --red:#f07f90; --blue:#7db7ff; --cyan:#6ed3de;
+  --purple:#c4a7e7;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; color:var(--text); font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(125,183,255,.18), transparent 26%),
+    radial-gradient(circle at left center, rgba(110,211,222,.12), transparent 24%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height:100vh;
+}
+.wrap { max-width:1500px; margin:0 auto; padding:24px; }
+.topbar { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:18px; }
+.title { display:flex; align-items:center; gap:12px; }
+.title h1 { margin:0; font-size:28px; letter-spacing:.4px; }
+.dot { width:10px; height:10px; border-radius:50%; background:var(--green); box-shadow:0 0 18px rgba(116,211,154,.55); }
+.meta { color:var(--muted); font-size:13px; }
+.actions { display:flex; gap:10px; }
+.btn {
+  border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--text);
+  padding:10px 14px; border-radius:12px; text-decoration:none; font-size:13px;
+}
+.btn:hover { border-color:var(--blue); color:var(--blue); }
+.mini-btn {
+  border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--text);
+  border-radius:6px; padding:6px 10px; font-size:12px; cursor:pointer; display:inline-flex; align-items:center; min-height:30px;
+}
+.mini-btn:hover { border-color:var(--blue); color:#d8f8ff; }
+.grid { display:grid; grid-template-columns:1fr; gap:18px; }
+.category { margin-bottom:24px; }
+.tab-bar { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.tab-btn {
+  padding:8px 16px; border-radius:10px; border:1px solid var(--line); background:rgba(255,255,255,.03);
+  color:var(--muted); font-size:13px; cursor:pointer; user-select:none;
+}
+.tab-btn:hover { border-color:var(--blue); color:var(--text); }
+.tab-btn.active { background:rgba(125,183,255,.12); border-color:var(--blue); color:var(--blue); }
+.tab-btn.tab-error { border-color:var(--red); color:var(--red); }
+.tab-btn.tab-error.active { background:rgba(240,127,144,.12); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.services { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:12px; }
+.service {
+  display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+  border:1px solid rgba(255,255,255,.05); border-radius:14px; padding:14px; text-decoration:none; color:var(--text);
+  background:rgba(255,255,255,.025);
+}
+.service:hover { border-color:var(--blue); transform:translateY(-1px); }
+.service-name { font-size:14px; font-weight:600; }
+.service-detail { color:var(--muted); font-size:12px; margin-top:4px; }
+.pill { font-size:11px; padding:4px 8px; border-radius:999px; white-space:nowrap; }
+.online { color:var(--green); background:rgba(116,211,154,.12); }
+.offline { color:var(--red); background:rgba(240,127,144,.12); }
+.not_deployed { color:var(--muted); background:rgba(141,162,184,.12); }
+.loopback { color:var(--yellow); background:rgba(242,198,109,.12); font-size:10px; padding:2px 6px; border-radius:999px; margin-left:6px; }
+.links { display:flex; flex-wrap:wrap; gap:10px; }
+.link-chip {
+  padding:10px 12px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--line);
+  text-decoration:none; color:var(--text); font-size:13px;
+}
+.link-chip:hover { color:var(--cyan); border-color:var(--cyan); }
+.summary { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:24px; }
+.metric {
+  border:1px solid rgba(255,255,255,.05); border-radius:14px; padding:14px;
+  background:rgba(255,255,255,.025); text-align:center;
+}
+.metric .label { color:var(--muted); font-size:12px; margin-bottom:6px; }
+.metric .value { font-size:28px; font-weight:700; }
+.metric .value.green { color:var(--green); }
+.metric .value.red { color:var(--red); }
+.command-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:18px; }
+.command-tile {
+  display:flex; align-items:center; gap:10px; min-height:62px; padding:12px;
+  border:1px solid rgba(255,255,255,.06); border-radius:12px;
+  background:rgba(255,255,255,.025); color:var(--text); text-decoration:none;
+}
+.command-tile:hover { border-color:var(--blue); background:rgba(125,183,255,.08); }
+.command-icon { width:28px; height:28px; display:grid; place-items:center; font-size:18px; flex-shrink:0; }
+.command-title { font-size:13px; font-weight:700; }
+.command-sub { color:var(--muted); font-size:11px; margin-top:2px; line-height:1.35; }
+.section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.section-head h2 { margin:0; }
+.section-note { color:var(--muted); font-size:12px; line-height:1.5; }
+.score-row { display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+.score-badge {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:72px; height:72px; border-radius:50%; border:3px solid;
+  font-size:26px; font-weight:800; flex-shrink:0;
+}
+.score-badge.s-good { border-color:var(--green); color:var(--green); }
+.score-badge.s-mid { border-color:var(--yellow); color:var(--yellow); }
+.score-badge.s-low { border-color:var(--red); color:var(--red); }
+.score-body { flex:1; min-width:400px; }
+.dim-bar { margin-bottom:6px; }
+.dim-bar-head { display:flex; justify-content:space-between; font-size:11px; margin-bottom:2px; }
+.dim-bar-head .name { color:var(--text); font-weight:600; }
+.dim-bar-head .val { color:var(--muted); }
+.dim-bar-track { height:6px; border-radius:3px; background:rgba(255,255,255,.06); overflow:hidden; }
+.dim-bar-fill { height:100%; border-radius:3px; transition:width .3s; }
+.score-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+.score-grid h3 { margin:0 0 6px; font-size:12px; color:var(--muted); font-weight:600; }
+.score-sessions li { font-size:12px; color:var(--muted); list-style:none; padding:3px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.score-sessions li:last-child { border:none; }
+.score-sessions details summary { cursor:pointer; font-size:12px; color:var(--muted); }
+.tool-row { display:flex; justify-content:space-between; font-size:11px; padding:3px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.tool-row:last-child { border:none; }
+.tool-bar { display:flex; align-items:center; gap:6px; }
+.tool-bar-bar { height:4px; border-radius:2px; background:var(--blue); }
+.cat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(80px,1fr)); gap:6px; }
+.cat-cell { text-align:center; padding:6px 4px; border-radius:8px; background:rgba(255,255,255,.03); }
+.cat-cell .cv { font-size:16px; font-weight:700; }
+.cat-cell .cl { font-size:10px; color:var(--muted); }
+.model-stats { display:flex; gap:10px; flex-wrap:wrap; }
+.model-card { border:1px solid rgba(255,255,255,.05); border-radius:10px; padding:10px 14px; background:rgba(255,255,255,.025); display:flex; align-items:center; gap:10px; }
+.model-card .model-name { font-size:13px; font-weight:600; color:var(--text); }
+.model-card .model-meta { font-size:11px; color:var(--muted); }
+.model-card .model-cost { font-size:11px; color:var(--yellow); }
+.ops-grid { display:grid; grid-template-columns:260px 1fr; gap:14px; align-items:start; }
+.ops-score { border:1px solid var(--line); border-radius:14px; padding:14px; background:rgba(255,255,255,.025); }
+.ops-score-num { font-size:46px; line-height:1; font-weight:800; }
+.ops-score-meta { color:var(--muted); font-size:12px; margin-top:6px; }
+.ops-domains { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+.ops-domain { border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:10px; background:rgba(255,255,255,.02); }
+.ops-domain-head { display:flex; justify-content:space-between; gap:8px; align-items:center; margin-bottom:8px; }
+.ops-domain-title { font-size:13px; font-weight:700; }
+.ops-domain-score { font-size:20px; font-weight:800; }
+.ops-check { font-size:11px; color:var(--muted); padding:4px 0; border-top:1px solid rgba(255,255,255,.04); line-height:1.35; }
+.ops-check.ok { color:rgba(116,211,154,.9); }
+.ops-check.warn { color:rgba(242,198,109,.95); }
+.ops-task-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:8px; margin-top:12px; }
+.ops-task { border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:10px; background:rgba(255,255,255,.02); }
+.ops-task-priority { font-size:10px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); }
+.ops-task-title { font-size:13px; font-weight:700; margin-top:4px; }
+.ops-task-detail { font-size:11px; color:var(--muted); margin-top:4px; line-height:1.45; }
+.score-dispatch-actions { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 12px; }
+.score-dispatch-note { color:var(--muted); font-size:12px; margin-top:6px; min-height:18px; }
+.category-overview { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:18px; }
+.category-card {
+  border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px;
+  background:rgba(255,255,255,.025); color:var(--text); cursor:pointer; text-align:left;
+}
+.category-card:hover, .category-card.active { border-color:var(--blue); background:rgba(125,183,255,.08); }
+.category-card-head { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.category-card-title { font-size:14px; font-weight:700; }
+.category-card-count { color:var(--blue); font-size:20px; font-weight:800; }
+.category-card-meta { color:var(--muted); font-size:11px; margin-top:6px; line-height:1.5; }
+.secondary-panel { margin-bottom:12px; }
+.secondary-panel summary { cursor:pointer; list-style:none; color:var(--muted); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.secondary-panel summary::-webkit-details-marker { display:none; }
+.secondary-panel summary:hover { color:var(--text); }
+.secondary-panel[open] summary { color:var(--blue); margin-bottom:10px; }
+.secondary-panel summary::after { content:'展开'; color:var(--muted); font-size:11px; font-weight:500; }
+.secondary-panel[open] summary::after { content:'收起'; }
+@media (max-width: 768px) {
+  .services { grid-template-columns:1fr; }
+  .summary { grid-template-columns:repeat(2, 1fr); }
+}
+.diag-list { list-style:none; padding:0; margin:10px 0 0; }
+.diag-list li { padding:7px 0; border-bottom:1px solid rgba(255,255,255,.04); font-size:12.5px; line-height:1.6; }
+.diag-list li:last-child { border-bottom:none; }
+.diag-list li b { font-size:13px; }
+.diag-list .hint { display:block; color:var(--muted); font-size:11.5px; margin-top:2px; }
+.diag-cmd { background:rgba(0,0,0,.35); padding:2px 7px; border-radius:5px; font-size:11.5px; color:#a5d6ff; cursor:pointer; border:1px solid rgba(255,255,255,.06); transition:background .15s; }
+.diag-cmd:hover { background:rgba(0,0,0,.55); }
+.diag-cmd.copied { background:rgba(80,200,120,.25); color:#7fffb0; }
+.diag-stat { border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:rgba(255,255,255,.025); }
+.diag-stat .k { font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+.diag-stat .v { font-size:18px; font-weight:700; margin-top:3px; }
+.diag-stat .sub { font-size:11px; color:var(--muted); margin-top:2px; }
+.app-layout { display:flex; gap:24px; }
+.sidebar { width:220px; flex-shrink:0; position:sticky; top:24px; align-self:flex-start; max-height:calc(100vh - 48px); overflow-y:auto; background:var(--bg2); border-left:3px solid var(--blue); border-radius:0 14px 14px 0; padding:12px 0; box-shadow:4px 0 24px rgba(0,0,0,.25); }
+.sidebar-title { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; margin:0 14px 8px; }
+.sidebar-link { display:block; padding:6px 14px; border-radius:8px; color:var(--muted); text-decoration:none; font-size:13px; margin-bottom:1px; }
+.sidebar-link:hover { color:var(--text); background:rgba(255,255,255,.05); }
+.sidebar-link.active { color:var(--blue); background:rgba(125,183,255,.1); }
+.sidebar-section { width:100%; margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,.06); }
+.sidebar-section-label { color:var(--muted); font-size:11px; padding:4px 10px; }
+.sidebar-primary-nav { display:flex; flex-direction:column; gap:4px; }
+.sidebar-category-nav { display:flex; flex-direction:column; gap:4px; }
+.hub-menu-group { border-top:1px solid rgba(255,255,255,.06); padding:6px 0; }
+.hub-menu-group:first-of-type { border-top:none; padding-top:0; }
+.hub-menu-group summary { list-style:none; cursor:pointer; color:var(--muted); font-size:11px; padding:6px 14px; text-transform:uppercase; letter-spacing:.5px; user-select:none; }
+.hub-menu-group summary::-webkit-details-marker { display:none; }
+.hub-menu-group summary:hover { color:var(--text); }
+.hub-menu-group[open] summary { color:var(--blue); }
+.hub-subnav { display:flex; flex-direction:column; gap:2px; }
+.sidebar-link.sub { padding-left:22px; font-size:12px; }
+.main-content { flex:1; min-width:0; }
+@media (max-width: 860px) {
+  .wrap { padding:12px; }
+  .topbar { align-items:flex-start; gap:10px; margin-bottom:12px; }
+  .title h1 { font-size:22px; }
+  .actions { width:100%; overflow-x:auto; padding-bottom:2px; }
+  .btn, .link-chip { padding:9px 11px; border-radius:10px; white-space:nowrap; }
+  .app-layout { flex-direction:column; }
+  .sidebar { display:none; }
+  .sidebar-title { display:none; }
+  .sidebar-link { font-size:12px; padding:7px 9px; }
+  .sidebar-section { display:flex; align-items:center; gap:4px; margin-top:0; padding-top:0; border-top:none; width:auto; flex-wrap:wrap; }
+  .sidebar-section-label { display:none; }
+  .sidebar-primary-nav { flex-direction:row; flex-wrap:wrap; gap:4px; }
+  .sidebar-category-nav { flex-direction:row; flex-wrap:wrap; gap:4px; }
+  .hub-menu-group { border-top:none; padding:0; }
+  .hub-menu-group summary { display:none; }
+  .hub-subnav { flex-direction:row; flex-wrap:wrap; gap:4px; }
+  .sidebar-link.sub { padding-left:9px; }
+  .metric { padding:10px; }
+  .metric .value { font-size:22px; }
+  .category-overview { grid-template-columns:1fr 1fr; gap:8px; }
+  .category-card { padding:10px; border-radius:12px; }
+  .service { padding:12px; border-radius:12px; }
+  .score-body { min-width:0; }
+  .score-grid { grid-template-columns:1fr; }
+  .ops-grid { grid-template-columns:1fr; }
+}
+@media (max-width: 430px) {
+  .wrap { padding:10px; }
+  .summary { grid-template-columns:1fr 1fr; gap:8px; }
+  .command-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .command-tile { min-height:58px; padding:10px; }
+  .click-badge { font-variant-numeric: tabular-nums; }
+  .section-head { display:block; margin-bottom:10px; }
+  .section-head h2 { white-space:nowrap; font-size:24px; margin-bottom:4px; }
+  .category-overview { grid-template-columns:1fr; }
+  .topbar { flex-direction:column; }
+  .title { align-items:flex-start; }
+  .service { flex-direction:column; }
+  .pill { align-self:flex-start; }
+  pre { white-space:pre-wrap; word-break:break-word; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="title">
+        <div class="dot"></div>
+        <div>
+          <h1>AI 工作台</h1>
+          <div class="meta" id="meta">加载中</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="fast-toggle-btn" onclick="toggleFastMode()">⚡ Fast</button>
+        <a class="btn" href="/">返回工作台</a>
+        <a class="btn" href="/dashboard">系统全景</a>
+        <a class="btn" href="/kanban" target="_blank" rel="noreferrer">Hub 看板</a>
+        <input id="global-search-input" type="text" placeholder="🔍 搜索页面所有入口..." style="padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font-size:12px;width:180px;outline:none" oninput="filterAll(this.value)" />
+      </div>
+    </div>
+
+    <div class="app-layout">
+      <div id="fast-panel" style="display:none;margin-bottom:18px">
+        <div class="card" style="margin-bottom:12px">
+          <div class="section-head">
+            <h2>⚡ Fast 面板</h2>
+            <div class="section-note">按点击热度排序，实时更新 · <span id="fast-count">0</span> 个入口</div>
+          </div>
+          <div class="command-grid" id="fast-grid"></div>
+        </div>
+      </div>
+      <nav class="sidebar">
+        <div class="sidebar-title">Hub 大菜单</div>
+        <div class="sidebar-primary-nav">
+          <details class="hub-menu-group" open>
+            <summary>总览</summary>
+            <div class="hub-subnav">
+              <a class="sidebar-link sub active" href="/" data-click-id="nav:home">🏠 总入口</a>
+              <a class="sidebar-link sub" href="#summary" data-section data-click-id="nav:summary">📊 状态概览</a>
+              <a class="sidebar-link sub" href="#category-overview-card" data-section data-click-id="nav:category-overview">🧭 分类总览</a>
+              <a class="sidebar-link sub" href="#quick-links" data-section data-click-id="nav:quick-links">🔗 快速入口</a>
+            </div>
+          </details>
+          <details class="hub-menu-group" open>
+            <summary>服务与系统</summary>
+            <div class="hub-subnav">
+              <a class="sidebar-link sub" href="/dashboard" data-click-id="nav:dashboard">📊 服务全景</a>
+              <a class="sidebar-link sub" href="/control" data-click-id="nav:control">🕹️ 控制中心</a>
+              <a class="sidebar-link sub" href="#diagnostics" data-section data-click-id="nav:diagnostics">🛠️ 排查清单</a>
+              <a class="sidebar-link sub" href="#mcp" data-section data-click-id="nav:mcp">📡 MCP 能力</a>
+              <a class="sidebar-link sub" href="/kanban" data-click-id="nav:kanban">📋 任务看板</a>
+              <a class="sidebar-link sub" href="/ai-panel.html" data-click-id="nav:ai-panel">🖥️ AI 服务面板</a>
+            </div>
+          </details>
+          <details class="hub-menu-group" open>
+            <summary>任务协作</summary>
+            <div class="hub-subnav">
+              <a class="sidebar-link sub" href="/kanban" data-click-id="nav:kanban">📋 任务看板</a>
+              <a class="sidebar-link sub" href="#opencode-task" data-section data-click-id="nav:opencode-task">🤖 OP 待确认</a>
+              <a class="sidebar-link sub" href="#tasks" data-section data-click-id="nav:tasks">📌 任务注册表</a>
+              <a class="sidebar-link sub" href="#n8n" data-section data-click-id="nav:n8n">⚡ n8n 状态</a>
+              <a class="sidebar-link sub" href="#inbox" data-section data-click-id="nav:inbox">📬 统一收件箱</a>
+            </div>
+          </details>
+          <details class="hub-menu-group" open>
+            <summary>数据与业务</summary>
+            <div class="hub-subnav">
+              <a class="sidebar-link sub" href="/wechat" data-click-id="nav:wechat">💬 微信查询</a>
+              <a class="sidebar-link sub" href="/search" data-click-id="nav:search">🔍 全局搜索</a>
+              <a class="sidebar-link sub" href="/social-graph" data-click-id="nav:social-graph">📡 社交图谱</a>
+              <a class="sidebar-link sub" href="/legacy-panel" data-click-id="nav:legacy-panel">🗂️ 旧盘融合面板</a>
+            </div>
+          </details>
+          <details class="hub-menu-group">
+            <summary>设备与串流</summary>
+            <div class="hub-subnav">
+              <a class="sidebar-link sub" href="#moonlight" data-section>🎮 Moonlight</a>
+              <a class="sidebar-link sub" href="javascript:void(0)" onclick="document.getElementById('content-filter').scrollIntoView({behavior:'smooth'})" data-click-id="nav:content-filter">🔎 内容筛选</a>
+              <a class="sidebar-link sub" href="/phone-health">📱 手机健康</a>
+            </div>
+          </details>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-label">服务分类</div>
+          <div class="sidebar-category-nav" id="category-nav"></div>
+        </div>
+      </nav>
+      <div class="main-content">
+
+    <div class="summary" id="summary"></div>
+
+    <div class="card" id="daily-improvement" style="margin-bottom:18px">
+      <div class="section-head">
+        <h2>每日提升</h2>
+        <div class="section-note">Fedora / 手机 / AI 服务 / 代码质量 / 定期维护 / 自主学习统一评分。</div>
+      </div>
+      <div class="score-dispatch-actions">
+        <button class="mini-btn" type="button" data-score-target="op" title="发送评分包到 OP 待确认队列，不触发执行">OP待确认</button>
+        <button class="mini-btn" type="button" data-score-target="crush" title="发送评分包到 Crush 优化队列">Crush优化</button>
+        <button class="mini-btn" type="button" data-score-target="codex" title="写入 Codex 评分优化任务包">Codex优化</button>
+        <button class="mini-btn" type="button" data-score-target="all" title="同时发送给 OP、Crush、Codex">三工具处理</button>
+      </div>
+      <div class="score-dispatch-note" id="score-dispatch-note">评分包会包含总分、分域评分、缺陷和建议验证命令。</div>
+      <div id="ops-improvement">加载中...</div>
+    </div>
+
+    <div class="card" id="category-overview-card" style="margin-bottom:18px">
+      <div class="section-head">
+        <h2>关键入口</h2>
+        <div class="section-note">只保留日常高频动作；完整目录在下方折叠区。</div>
+      </div>
+      <div class="command-grid">
+        <a class="command-tile" href="/kanban" data-click-id="cmd:kanban">
+          <span class="command-icon">📋</span>
+          <span><span class="command-title">任务看板</span><span class="command-sub">查看和推进任务</span></span>
+        </a>
+        <a class="command-tile" href="#opencode-task" data-open-detail="ops-tools" data-click-id="cmd:opencode-task">
+          <span class="command-icon">🚀</span>
+          <span><span class="command-title">OP 待确认</span><span class="command-sub">只投递不执行</span></span>
+        </a>
+        <a class="command-tile" href="/control" data-click-id="cmd:control">
+          <span class="command-icon">🎛</span>
+          <span><span class="command-title">控制中心</span><span class="command-sub">服务启停与检查</span></span>
+        </a>
+        <a class="command-tile" href="/wechat" data-click-id="cmd:wechat">
+          <span class="command-icon">💬</span>
+          <span><span class="command-title">微信查询</span><span class="command-sub">聊天记录检索</span></span>
+        </a>
+        <a class="command-tile" href="/search" data-click-id="cmd:search">
+          <span class="command-icon">🔍</span>
+          <span><span class="command-title">全局搜索</span><span class="command-sub">资料与服务搜索</span></span>
+        </a>
+        <a class="command-tile" href="#moonlight" data-open-detail="ops-tools" data-click-id="cmd:moonlight">
+          <span class="command-icon">🎮</span>
+          <span><span class="command-title">Moonlight</span><span class="command-sub">串流白名单</span></span>
+        </a>
+      </div>
+      <div class="section-head">
+        <h2>关注区域</h2>
+        <div class="section-note">优先展示核心和异常类别。</div>
+      </div>
+      <div class="category-overview" id="category-overview"></div>
+    </div>
+
+    <details class="card secondary-panel" id="service-directory">
+      <summary>服务目录</summary>
+      <div class="grid" id="categories"></div>
+    </details>
+
+    <details class="card secondary-panel" id="legacy-entry">
+      <summary>低频旧盘入口</summary>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:12px">
+        <a class="service" href="/legacy-panel" target="_blank" rel="noreferrer">
+          <div style="flex:1;min-width:0">
+            <div class="service-name">旧盘多服务融合面板</div>
+            <div class="service-detail">系统状态、服务全景、告警、项目入口</div>
+          </div>
+          <div class="pill online">打开</div>
+        </a>
+        <a class="service" href="/wechat" target="_blank" rel="noreferrer">
+          <div style="flex:1;min-width:0">
+            <div class="service-name">微信聊天记录查询</div>
+            <div class="service-detail">按联系人、日期、关键词查询消息</div>
+          </div>
+          <div class="pill online">打开</div>
+        </a>
+        <a class="service" href="/kanban" target="_blank" rel="noreferrer">
+          <div style="flex:1;min-width:0">
+            <div class="service-name">旧 Hub 看板</div>
+            <div class="service-detail">微信体系、外贸 CRM、OP 任务与项目看板</div>
+          </div>
+          <div class="pill online">打开</div>
+        </a>
+        <a class="service" href="/legacy-panel" target="_blank" rel="noreferrer">
+          <div style="flex:1;min-width:0">
+            <div class="service-name">CRM 静态面板</div>
+            <div class="service-detail">旧 crm-server.service，当前监听 9876</div>
+          </div>
+          <div class="pill online">打开</div>
+        </a>
+        <div class="service" style="cursor:default;opacity:.9">
+          <div style="flex:1;min-width:0">
+            <div class="service-name">Twenty CRM</div>
+            <div class="service-detail">旧盘记录为 twenty-server-1:3001；当前 3001 被 Open WebUI 使用，Twenty 未运行</div>
+          </div>
+          <div class="pill not_deployed">未部署</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card secondary-panel">
+      <summary>状态与统计（模型用量 / 评分 / 快速入口）</summary>
+      <div class="card" id="model-stats-card" style="margin-top:14px;display:none"></div>
+      <div class="card" id="score-card" style="margin-top:8px"></div>
+      <div class="card" id="score-history-card" style="margin-top:8px;display:none">
+        <h2 style="margin:0 0 10px;font-size:13px;color:var(--muted);font-weight:600">📈 评分趋势（日 / 周 / 月对比）</h2>
+        <div id="score-history" style="color:var(--muted);font-size:13px">加载中...</div>
+      </div>
+      <div class="card" id="click-stats-card" style="margin-top:8px">
+        <h2>面板点击统计</h2>
+        <div id="click-stats" style="margin-top:10px;color:var(--muted);font-size:13px">加载中...</div>
+      </div>
+      <div class="card" id="quick-links" style="margin-top:8px">
+        <h2>快速入口</h2>
+        <div class="links" id="links" style="margin-top:12px"></div>
+      </div>
+    </details>
+
+    <details class="card secondary-panel" id="ops-tools">
+      <summary>运维与任务工具（Moonlight / 任务派发 / 任务表 / n8n / 收件箱）</summary>
+      <div class="card" id="moonlight" style="margin-top:14px">
+      <h2>Moonlight 白名单</h2>
+      <div id="moonlight-devices" style="color:var(--muted);font-size:13px;margin-top:8px">检测中...</div>
+      <form id="moonlight-pair-form" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+        <input id="moonlight-pin-input" inputmode="numeric" maxlength="4" placeholder="4 位 PIN" style="width:120px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font-size:13px" />
+        <input id="moonlight-name-input" placeholder="设备名，例如 iPad / Phone" style="flex:1;min-width:180px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font-size:13px" />
+        <button type="submit" class="btn" style="cursor:pointer">配对并记住</button>
+        <button type="button" id="moonlight-import-android" class="btn" style="cursor:pointer">导入 Android</button>
+      </form>
+      <div id="moonlight-pair-result" style="margin-top:10px;font-size:13px;color:var(--muted)"></div>
+      </div>
+
+    <div class="card" id="content-filter" style="margin-top:14px">
+      <h2>🔎 内容筛选</h2>
+      <p style="color:var(--muted);font-size:13px;margin:8px 0 12px">游戏与内容收藏管理 (8765)</p>
+      <iframe id="content-filter-frame" src="" style="width:100%;height:520px;border:1px solid var(--line);border-radius:12px;background:#0f0f0f"></iframe>
+    </div>
+
+    <div class="card" id="opencode-task" style="margin-top:14px">
+      <h2>OpenCode / OP 待确认</h2>
+      <form id="opencode-task-form" style="display:flex;gap:10px;flex-wrap:wrap">
+        <input id="opencode-task-input" type="text" placeholder="输入任务描述..." style="flex:1;min-width:240px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font-size:13px" />
+        <button type="submit" class="btn" style="cursor:pointer">发OP待确认</button>
+      </form>
+      <div class="score-dispatch-actions">
+        <button class="mini-btn" type="button" data-score-target="op">评分给OP</button>
+        <button class="mini-btn" type="button" data-score-target="crush">评分给Crush</button>
+        <button class="mini-btn" type="button" data-score-target="codex">评分给Codex</button>
+        <button class="mini-btn" type="button" data-score-target="all">评分给三工具</button>
+      </div>
+      <div id="opencode-task-result" style="margin-top:10px;font-size:13px;color:var(--muted)"></div>
+    </div>
+
+    <div class="card" id="tasks" style="margin-top:14px">
+      <h2>统一任务注册表</h2>
+      <p style="color:var(--muted);font-size:13px;margin:8px 0 12px">创建任务并派发给 OpenCode / n8n / OpenAgents。</p>
+      <form id="task-create-form" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <input id="task-title-input" type="text" placeholder="任务标题..." required style="flex:1;min-width:200px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font-size:13px" />
+        <input id="task-msg-input" type="text" placeholder="任务描述（派发给 OpenCode 时用）..." style="flex:1;min-width:240px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font-size:13px" />
+        <button type="submit" class="btn" style="cursor:pointer">创建任务</button>
+      </form>
+      <div id="task-create-result" style="margin-top:6px;font-size:13px;color:var(--muted)"></div>
+      <div id="tasks-list" style="margin-top:14px"></div>
+    </div>
+
+    <div class="card" id="n8n" style="margin-top:14px">
+      <h2>n8n 工作流状态</h2>
+      <div id="n8n-status" style="color:var(--muted);font-size:13px;margin-top:8px">检测中...</div>
+    </div>
+
+    <div class="card" id="inbox" style="margin-top:14px">
+      <h2>📬 统一收件箱</h2>
+      <p style="color:var(--muted);font-size:13px;margin:8px 0 12px">Telegram / WeChat / Gmail / 系统通知 统一聚合。</p>
+      <div class="tab-bar" id="inbox-tabs" style="margin-bottom:12px"></div>
+      <div id="inbox-messages" style="color:var(--muted);font-size:13px;margin-top:8px">加载中...</div>
+    </div>
+    </details>
+
+    <div class="card" id="diagnostics" style="margin-top:24px">
+      <h2>🛠️ 系统排查与维护清单</h2>
+      <p style="color:var(--muted);font-size:13px;margin:8px 0 12px">整合 SRE 黄金信号 + USE 方法 (Brendan Gregg) + Linux 经典排查 + Silverblue 特性 + 本机历史故障。点击 ▸ 展开分类,每条命令可一键复制到终端。</p>
+
+      <div id="diag-overview" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px"></div>
+
+      <details open style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">⚡ 快速一键体检(复制粘贴到终端)</summary>
+        <div style="margin-top:10px;font-size:12px;color:var(--muted)">全套体检一条命令(只读,安全):</div>
+        <pre style="background:rgba(0,0,0,.3);padding:10px;border-radius:8px;overflow-x:auto;font-size:11px;margin:6px 0"><code class="diag-cmd">echo "=== UPTIME ===" ; uptime ; echo "=== MEM ===" ; free -h ; echo "=== DISK ===" ; df -hTx tmpfs ; echo "=== TOP5 MEM ===" ; ps aux --sort=-%mem | head -6 ; echo "=== TOP5 CPU ===" ; ps aux --sort=-%cpu | head -6 ; echo "=== FAILED USER SVC ===" ; systemctl --user --failed --no-legend ; echo "=== FAILED SYS SVC ===" ; systemctl --failed --no-legend ; echo "=== LISTEN PORTS ===" ; ss -tlnp 2>/dev/null | head -20 ; echo "=== PRESSURE ===" ; cat /proc/pressure/* 2>/dev/null</code></pre>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">💾 磁盘与存储 <span style="color:var(--muted);font-weight:400;font-size:11px">(USE: Utilization)</span></summary>
+        <ul class="diag-list">
+          <li><b>根/数据分区使用率</b> · <code class="diag-cmd">df -hTx tmpfs</code> <span class="hint">&gt;85% 告警;Silverblue 根分区需预留 ostree 部署空间</span></li>
+          <li><b>大文件 Top20</b> · <code class="diag-cmd">sudo du -ahx / 2>/dev/null | sort -rh | head -20</code></li>
+          <li><b>ostree 部署层</b> · <code class="diag-cmd">rpm-ostree status</code> <span class="hint">查看当前/历史部署,占用空间,是否待重启生效</span></li>
+          <li><b>journal 日志占用</b> · <code class="diag-cmd">journalctl --disk-usage</code> · 清理: <code class="diag-cmd">sudo journalctl --vacuum-time=7d --vacuum-size=500M</code></li>
+          <li><b>用户级 journal</b> · <code class="diag-cmd">journalctl --user --disk-usage</code> · 清理: <code class="diag-cmd">journalctl --user --vacuum-time=7d</code></li>
+          <li><b>Podman 卷占用</b> · <code class="diag-cmd">podman system df -v</code> <span class="hint">rootless 容器存储</span></li>
+          <li><b>包缓存清理(只查)</b> · <code class="diag-cmd">rpm-ostree cleanup -m --preview</code> · 执行: <code class="diag-cmd">rpm-ostree cleanup -m</code></li>
+          <li><b>inode 耗尽检查</b> · <code class="diag-cmd">df -i</code> <span class="hint">使用率不高但写入失败常因 inode 满</span></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">🧠 内存 <span style="color:var(--muted);font-weight:400;font-size:11px">(USE: Saturation/Errors)</span></summary>
+        <ul class="diag-list">
+          <li><b>内存使用</b> · <code class="diag-cmd">free -h</code> <span class="hint">关注 available 而非 free(含缓存可回收)</span></li>
+          <li><b>内存压力 PSI</b> · <code class="diag-cmd">cat /proc/pressure/memory</code> <span class="hint">some/full &gt; 10ms 表示真实压力</span></li>
+          <li><b>OOM 记录(内核)</b> · <code class="diag-cmd">sudo dmesg -T | grep -iE 'oom|killed process'</code></li>
+          <li><b>OOM 记录(用户服务)</b> · <code class="diag-cmd">journalctl --user -g 'out of memory|killed' --since '24h ago'</code></li>
+          <li><b>Top 内存进程</b> · <code class="diag-cmd">ps aux --sort=-%mem | head -11</code></li>
+          <li><b>swap 使用</b> · <code class="diag-cmd">swapon --show</code> · vmstat: <code class="diag-cmd">vmstat 1 5</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">⚡ CPU 与负载</summary>
+        <ul class="diag-list">
+          <li><b>系统负载</b> · <code class="diag-cmd">uptime &amp;&amp; cat /proc/loadavg</code> <span class="hint">负载 &gt; 核数 ×1.5 需关注</span></li>
+          <li><b>CPU 压力 PSI</b> · <code class="diag-cmd">cat /proc/pressure/cpu</code></li>
+          <li><b>核心数</b> · <code class="diag-cmd">nproc</code></li>
+          <li><b>Top CPU 进程</b> · <code class="diag-cmd">ps aux --sort=-%cpu | head -11</code></li>
+          <li><b>上下文切换/中断</b> · <code class="diag-cmd">vmstat -w 1 5</code> · 中断: <code class="diag-cmd">watch -n1 'cat /proc/interrupts'</code></li>
+          <li><b>进程树(僵尸检查)</b> · <code class="diag-cmd">ps -ef --forest | grep -w Z</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">🌐 网络 <span style="color:var(--muted);font-weight:400;font-size:11px">(黄金信号: 延迟/流量/错误)</span></summary>
+        <ul class="diag-list">
+          <li><b>接口概览</b> · <code class="diag-cmd">ip -br a</code></li>
+          <li><b>路由表</b> · <code class="diag-cmd">ip route</code> · 默认网关: <code class="diag-cmd">ip route show default</code></li>
+          <li><b>DNS 解析</b> · <code class="diag-cmd">resolvectl status</code> · 测试: <code class="diag-cmd">resolvectl query google.com</code></li>
+          <li><b>外网连通</b> · <code class="diag-cmd">ping -c3 -W2 1.1.1.1</code> · DNS: <code class="diag-cmd">ping -c3 8.8.8.8</code></li>
+          <li><b>Tailscale 状态</b> · <code class="diag-cmd">tailscale status</code> · 诊断: <code class="diag-cmd">tailscale netcheck</code></li>
+          <li><b>网卡错误/丢包</b> · <code class="diag-cmd">ip -s link</code> <span class="hint">关注 errors/dropped 持续增长</span></li>
+          <li><b>当前连接</b> · <code class="diag-cmd">ss -tunap | head -30</code></li>
+          <li><b>FRP 隧道日志</b> · <code class="diag-cmd">journalctl --user -u frpc -n 50 --no-pager</code></li>
+          <li><b>抓包诊断</b> · <code class="diag-cmd">sudo tcpdump -i any -n -c 50 port 80</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">⚙️ systemd 服务</summary>
+        <ul class="diag-list">
+          <li><b>失败的用户服务</b> · <code class="diag-cmd">systemctl --user --failed</code></li>
+          <li><b>失败的系统服务</b> · <code class="diag-cmd">systemctl --failed</code></li>
+          <li><b>重置失败计数</b> · <code class="diag-cmd">systemctl --user reset-failed</code></li>
+          <li><b>单服务详情</b> · <code class="diag-cmd">systemctl --user status NAME</code></li>
+          <li><b>服务启动日志</b> · <code class="diag-cmd">journalctl --user -u NAME -n 100 --no-pager</code></li>
+          <li><b>启动耗时分析</b> · <code class="diag-cmd">systemd-analyze blame | head</code> · <code class="diag-cmd">systemd-analyze critical-chain</code></li>
+          <li><b>oneshot 假阳性排查</b> · <span class="hint">is-active 对 oneshot 误报,改用: <code class="diag-cmd">systemctl --user show NAME --property=Result,ActiveState</code></span></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">🔌 端口与进程</summary>
+        <ul class="diag-list">
+          <li><b>监听端口</b> · <code class="diag-cmd">ss -tlnp</code> · 含 UDP: <code class="diag-cmd">ss -tulnp</code></li>
+          <li><b>端口被谁占用</b> · <code class="diag-cmd">sudo ss -tlnp | grep :9800</code> · <code class="diag-cmd">sudo lsof -i :9800</code></li>
+          <li><b>查进程</b> · <code class="diag-cmd">pgrep -af 'pattern'</code> · 详情: <code class="diag-cmd">ps -fp PID</code></li>
+          <li><b>僵尸进程</b> · <code class="diag-cmd">ps -eo pid,ppid,stat,cmd | awk '$3 ~ /Z/'</code></li>
+          <li><b>打开文件数</b> · <code class="diag-cmd">lsof | wc -l</code> · 单进程: <code class="diag-cmd">ls /proc/PID/fd | wc -l</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">📜 日志与错误</summary>
+        <ul class="diag-list">
+          <li><b>用户级近期错误</b> · <code class="diag-cmd">journalctl --user -p err -n 50 --no-pager</code></li>
+          <li><b>系统级近期错误</b> · <code class="diag-cmd">sudo journalctl -p err -n 50 --no-pager</code></li>
+          <li><b>按关键词搜</b> · <code class="diag-cmd">journalctl --user -g 'keyword' --since '1h ago'</code></li>
+          <li><b>内核日志</b> · <code class="diag-cmd">sudo dmesg -T --level=err,warn | tail -30</code></li>
+          <li><b>hub 服务日志</b> · <code class="diag-cmd">journalctl --user -u hub -n 100 --no-pager</code></li>
+          <li><b>实时跟踪</b> · <code class="diag-cmd">journalctl --user -f</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">🛡️ 安全与更新 <span style="color:var(--muted);font-weight:400;font-size:11px">(Silverblue)</span></summary>
+        <ul class="diag-list">
+          <li><b>检查可用升级</b> · <code class="diag-cmd">rpm-ostree upgrade --check</code></li>
+          <li><b>当前部署状态</b> · <code class="diag-cmd">rpm-ostree status</code> <span class="hint">看是否需重启生效</span></li>
+          <li><b>自动更新服务</b> · <code class="diag-cmd">systemctl status rpm-ostreed</code></li>
+          <li><b>已分层(layered)包</b> · <code class="diag-cmd">rpm-ostree status -b | grep layered</code></li>
+          <li><b>防火墙</b> · <code class="diag-cmd">sudo firewall-cmd --list-all</code> <span class="hint">Silverblue 用 firewalld</span></li>
+          <li><b>SELinux 状态</b> · <code class="diag-cmd">getenforce</code> · AVC 拒绝: <code class="diag-cmd">sudo ausearch -m avc -ts recent</code></li>
+          <li><b>最近登录</b> · <code class="diag-cmd">last -n 10</code> · 失败: <code class="diag-cmd">sudo lastb -n 10</code></li>
+          <li><b>SSHD 配置检查</b> · <code class="diag-cmd">sudo sshd -T 2&gt;\&amp;1 | grep -iE 'permitroot|passwordauth'</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,255,255,.02)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">💾 备份与快照</summary>
+        <ul class="diag-list">
+          <li><b>查看可回滚点</b> · <code class="diag-cmd">rpm-ostree status</code> <span class="hint">deployments 段列出当前/上一部署</span></li>
+          <li><b>回滚到上一部署</b> · <code class="diag-cmd">rpm-ostree rollback</code> <span class="hint">重启后生效;升级出问题时首选</span></li>
+          <li><b>修复 OP 代理</b> · <button class="mini-btn" type="button" onclick="restartOP(event)" title="只重启 OP 代理链">↻ 代理</button> <span class="hint">不会重启 opencode.service，不会杀正在执行的 OP 任务</span></li>
+          <li><b>部署差异</b> · <code class="diag-cmd">rpm-ostree db diff</code> <span class="hint">对比当前与上一部署的包变化</span></li>
+          <li><b>关键数据备份检查</b> · <code class="diag-cmd">du -sh /mnt/ai/* 2>/dev/null | head</code></li>
+        </ul>
+      </details>
+
+      <details style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:rgba(255,80,80,.06)">
+        <summary style="cursor:pointer;font-weight:600;font-size:14px">⚠️ 本机已知故障点 <span style="color:var(--muted);font-weight:400;font-size:11px">(从历史踩坑提取,优先排查)</span></summary>
+        <ul class="diag-list">
+          <li><b>hub.service 端口冲突</b> · <code class="diag-cmd">systemctl --user status hub &amp;&amp; ss -tlnp | grep :9800</code> <span class="hint">手动启动实例占用 9800 → systemd 实例 bind 失败循环重启。先 kill 手动进程再 systemctl restart</span></li>
+          <li><b>opencode.json 模型未注册</b> · <code class="diag-cmd">opencode run 'test' --print-logs 2&gt;\&amp;1 | grep -i 'not found\|error'</code> <span class="hint">ProviderModelNotFoundError = provider.models 缺该模型,需手动加</span></li>
+          <li><b>ydotool-bridge 双实例</b> · <code class="diag-cmd">pgrep -af ydotool-bridge</code> <span class="hint">应只有一个;Hyprland exec-once + systemd 双启动 → 端口 24801 冲突</span></li>
+          <li><b>FRP 代理未注册</b> · <code class="diag-cmd">journalctl --user -u frpc -g 'new proxy' --since '1h ago'</code> <span class="hint">本地能连不代表远端转发通,优先 Tailscale 直连</span></li>
+          <li><b>Letta NLTK 初始化阻塞</b> · <code class="diag-cmd">curl -s localhost:8283/v1/agents/ | head</code> <span class="hint">connection reset = NLTK 初始化,传 http_proxy 等 60s+</span></li>
+          <li><b>default_agent 大小写</b> · <code class="diag-cmd">opencode agent list | grep -i primary</code> <span class="hint">Bob ≠ bob;agent 名区分大小写</span></li>
+          <li><b>Silverblue /usr 只读</b> · <span class="hint">写操作用 rpm-ostree(需重启)或用户级 pip/cargo/npm;命令是 rpm-ostree(连字符)不是 rpm ostree</span></li>
+        </ul>
+      </details>
+
+      <div id="diag-services-detail" style="margin-top:8px;font-size:12px;color:var(--muted)"></div>
+    </div>
+
+    <div class="card" id="mcp" style="margin-top:24px">
+      <h2>MCP / Agent 能力说明</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px">
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">🤖 OpenCode (sisyphus)</div>
+          <div style="color:var(--muted);font-size:12px">主力编排 Agent，自动分解委派验证。支持 CodeGraph、memory-engine、letta、fetch、sys-info、haven、phone-connect 等 MCP。</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">📱 Haven MCP Bridge</div>
+          <div style="color:var(--muted);font-size:12px">手机 ADB 桥接 + MCP。支持设备截图、滑动、点击、输入、shell、剪贴板、dumpsys。当前主路径：192.168.123.22:5555。</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">💬 Telegram Gateway</div>
+          <div style="color:var(--muted);font-size:12px">Telegram 控制入口。支持 /ask、/task、/status、/list、/tasks、/close。OpenCode 任务派发 + 通知。</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">🧠 Letta + Embedding</div>
+          <div style="color:var(--muted);font-size:12px">长期记忆服务 + 向量嵌入。OpenCode lifecycle 自动同步记忆；Letta 归档 + 语义搜索。</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">🔧 LiteLLM</div>
+          <div style="color:var(--muted);font-size:12px">AI 网关，strip-proxy 4000 → 原生 4002。支持 StepFun、DeepSeek、GLM、Doubao 等 30+ 模型。</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">🖥️ TermHive</div>
+          <div style="color:var(--muted);font-size:12px">终端管理平台。Web 3200 + Daemon 3210。支持项目恢复、命令 Snippets、Local Shell、SSH 连接。</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025)">
+          <div style="font-weight:600;font-size:13px;margin-bottom:6px">🌐 OpenAgents</div>
+          <div style="color:var(--muted);font-size:12px">Agent 网络 + 事件总线 (8700)。14 个 agent 配置（sisyphus/cc-architect/night-guardian 等）。统一面板入口：<a href="/kanban" target="_blank" style="color:var(--blue)">Hub 看板</a> / <a href="/ai-panel" target="_blank" style="color:var(--blue)">AI Panel</a>。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+function goForService(name, fallback) {
+  const map = {
+    'Hub': '/go/hub',
+    'OpenCode Web': '/go/opencode',
+    'OpenCode Server': '/go/opencode',
+    'OpenClaw TTYD': '/go/terminal',
+    'TermHive Web': '/go/termhive',
+    'TermHive Daemon': '/go/termhive',
+    'LiteLLM': '/go/litellm',
+    'Telegram Gateway': '/go/telegram',
+    'OpenAgents': '/go/openagents',
+    'OpenAgents Network': '/go/openagents',
+    'Mihomo': '/go/mihomo',
+    'FastGPT': '/go/fastgpt',
+    'Sunshine': '/go/sunshine',
+  };
+  return map[name] || fallback || '#';
+}
+
+const CATEGORIES = {
+  core: { label: "核心执行", icon: "⚡" },
+  infra: { label: "AI 基础设施", icon: "🔧" },
+  agent: { label: "Agent 工具", icon: "🤖" },
+  apps: { label: "应用平台", icon: "📱" },
+  moonlight: { label: "Moonlight 启动器", icon: "🎮" },
+  legacy: { label: "旧盘遗留", icon: "🗂️" },
+  archive: { label: "归档服务", icon: "📦" },
+};
+
+const CLICK_PREFIX = 'hub-click:';
+
+function getClicks(id) {
+  return parseInt(localStorage.getItem(CLICK_PREFIX + id) || '0', 10);
+}
+
+function recordClick(id) {
+  const count = getClicks(id) + 1;
+  localStorage.setItem(CLICK_PREFIX + id, String(count));
+  fetch('/api/clicks', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({click_id: id})
+  }).catch(() => {});
+  return count;
+}
+
+function clickBadgeHtml(id) {
+  const n = getClicks(id);
+  return n > 0 ? ` <span class="click-badge" style="font-size:10px;color:var(--muted);margin-left:4px">(${n})</span>` : '';
+}
+
+function tagClickable(el, id) {
+  if (!el || el.dataset.clickId) return;
+  el.dataset.clickId = id;
+  const n = getClicks(id);
+  if (n > 0) {
+    const span = document.createElement('span');
+    span.className = 'click-badge';
+    span.style.cssText = 'font-size:10px;color:var(--muted);margin-left:4px';
+    span.textContent = `(${n})`;
+    el.appendChild(span);
+  }
+}
+
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-click-id]');
+  if (!el) return;
+  const id = el.dataset.clickId;
+  const count = recordClick(id);
+  let badge = el.querySelector('.click-badge');
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.className = 'click-badge';
+    badge.style.cssText = 'font-size:10px;color:var(--muted);margin-left:4px';
+    el.appendChild(badge);
+  }
+  badge.textContent = `(${count})`;
+});
+
+let SHOW_ARCHIVED_SERVICES = false;
+
+async function fetchJsonWithTimeout(url, timeoutMs = 8000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { cache: 'no-store', signal: controller.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function renderPanelError(err) {
+  document.getElementById('meta').textContent = `加载失败：${err.name === 'AbortError' ? 'Hub API 超时' : err.message}`;
+  const summary = document.getElementById('summary');
+  if (summary) {
+    summary.innerHTML = `
+      <div class="metric"><div class="label">Hub API</div><div class="value red">失败</div></div>
+      <div class="metric"><div class="label">建议</div><div class="value" style="font-size:18px">刷新</div></div>
+    `;
+  }
+  const overview = document.getElementById('category-overview');
+  if (overview) {
+    overview.innerHTML = `
+      <a class="command-tile" href="/ai-panel" style="min-height:70px">
+        <span class="command-icon">🔄</span>
+        <span><span class="command-title">重新加载</span><span class="command-sub">Hub API 暂无响应</span></span>
+      </a>
+      <a class="command-tile" href="/dashboard" style="min-height:70px">
+        <span class="command-icon">📊</span>
+        <span><span class="command-title">服务全景</span><span class="command-sub">查看 Hub 服务状态</span></span>
+      </a>
+    `;
+  }
+}
+
+async function loadPanel() {
+  const data = await fetchJsonWithTimeout('/api/ai/services' + (SHOW_ARCHIVED_SERVICES ? '?include_archived=1' : ''), 8000);
+
+  document.getElementById('meta').textContent = `最近刷新 ${new Date(data.generated_at).toLocaleString()}`;
+
+  const services = data.services || [];
+  const online = services.filter(s => s.status === 'online').length;
+  const total = services.length;
+  const visibleCount = data.visible_count ?? total;
+  const archivedCount = data.archived_count ?? 0;
+  const summary = document.getElementById('summary');
+  summary.innerHTML = `
+    <div class="metric"><div class="label">在线</div><div class="value green">${online}</div></div>
+    <div class="metric"><div class="label">离线</div><div class="value red">${total - online}</div></div>
+    <div class="metric"><div class="label">可用率</div><div class="value ${total ? (online/total > 0.8 ? 'green' : 'red') : ''}">${total ? Math.round(online/total*100) : 0}%</div></div>
+    <div class="metric"><div class="label">已归档</div><div class="value">${archivedCount}</div></div>
+  `;
+
+  const grouped = {};
+  for (const svc of services) {
+    const cat = svc.category || 'other';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(svc);
+  }
+  const categoryIds = Object.keys(grouped).sort((a, b) => {
+    const order = ['core', 'agent', 'infra', 'moonlight', 'legacy', 'old-business', 'old-tools', 'archive'];
+    const ai = order.indexOf(a);
+    const bi = order.indexOf(b);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi) || a.localeCompare(b);
+  });
+
+  const container = document.getElementById('categories');
+  container.innerHTML = '';
+  const categoryNav = document.getElementById('category-nav');
+  if (categoryNav) categoryNav.innerHTML = '';
+  const categoryOverview = document.getElementById('category-overview');
+  if (categoryOverview) categoryOverview.innerHTML = '';
+
+  const tabBar = document.createElement('div');
+  tabBar.className = 'tab-bar';
+  const panels = {};
+  const tabButtons = {};
+  const overviewButtons = {};
+  const focusCategories = new Set(['core', 'agent', 'infra', 'moonlight']);
+
+  for (const catId of categoryIds) {
+    const catServices = grouped[catId];
+    const catInfo = CATEGORIES[catId] || { label: catId, icon: "📦" };
+    const hasError = catServices.some(s => s.status !== 'online');
+    const isFirst = catId === categoryIds[0];
+
+    const tabBtn = document.createElement('div');
+    tabBtn.className = 'tab-btn' + (isFirst ? ' active' : '') + (hasError ? ' tab-error' : '');
+    tabBtn.textContent = `${catInfo.icon} ${catInfo.label} (${catServices.length})`;
+    tabBtn.dataset.cat = catId;
+    tabBtn.dataset.clickId = 'tab:' + catId;
+    tabBar.appendChild(tabBtn);
+    tagClickable(tabBtn, 'tab:' + catId);
+    tabButtons[catId] = tabBtn;
+
+    if (categoryOverview && (focusCategories.has(catId) || hasError)) {
+      const onlineCount = catServices.filter(s => s.status === 'online').length;
+      const archivedCount = catServices.filter(s => s.archived).length;
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'category-card' + (isFirst ? ' active' : '') + (hasError ? ' tab-error' : '');
+      card.dataset.cat = catId;
+      card.dataset.clickId = 'cat:' + catId;
+      card.innerHTML = `
+        <div class="category-card-head">
+          <div class="category-card-title">${catInfo.icon} ${catInfo.label}</div>
+          <div class="category-card-count">${catServices.length}</div>
+        </div>
+        <div class="category-card-meta">${onlineCount} 在线${archivedCount ? ` · ${archivedCount} 归档` : ''}</div>
+      `;
+      categoryOverview.appendChild(card);
+      tagClickable(card, 'cat:' + catId);
+      overviewButtons[catId] = card;
+    }
+
+    if (categoryNav) {
+      const sideBtn = document.createElement('a');
+      sideBtn.href = '#categories';
+      sideBtn.className = 'sidebar-link' + (isFirst ? ' active' : '');
+      sideBtn.dataset.cat = catId;
+      sideBtn.textContent = `${catInfo.icon} ${catInfo.label} (${catServices.length})`;
+      categoryNav.appendChild(sideBtn);
+      tagClickable(sideBtn, 'catnav:' + catId);
+    }
+
+    const panel = document.createElement('div');
+    panel.className = 'tab-panel card' + (isFirst ? ' active' : '');
+    panel.dataset.cat = catId;
+
+    const grid = document.createElement('div');
+    grid.className = 'services';
+    for (const svc of catServices) {
+      const href = goForService(svc.name, svc.host_url || svc.url || '#');
+      const isLinkable = svc.status === 'online' && href && href !== '#';
+      const el = document.createElement(isLinkable ? 'a' : 'div');
+      if (isLinkable) {
+        el.className = 'service';
+        el.href = href;
+        el.target = '_blank';
+        el.rel = 'noreferrer';
+      } else {
+        el.className = 'service';
+        el.style.cursor = 'default';
+        el.style.opacity = '0.85';
+      }
+      tagClickable(el, 'svc:' + svc.name);
+      const loopbackBadge = svc.listen === '127.0.0.1' ? '<span class="pill loopback">仅本机</span>' : '';
+      const statusText = svc.status === 'online' ? '在线' : (svc.status === 'not_deployed' ? '未部署' : '离线');
+      const archiveNote = svc.archived && svc.archive_reason ? `<div class="service-detail" style="color:var(--yellow);margin-top:6px">已归档：${svc.archive_reason}</div>` : '';
+      let actionsHtml = '';
+      if (svc.actions && svc.actions.length) {
+        actionsHtml = '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">';
+        for (const act of svc.actions) {
+          const click = act.endpoint ? `serviceAction('${act.endpoint}', '${act.method || 'POST'}', ${act.target ? `'${act.target}'` : 'null'})` : '';
+          actionsHtml += `<button class="btn" style="padding:6px 10px;font-size:12px;cursor:pointer" onclick="${click}" ${!isLinkable ? 'disabled' : ''}>${act.label}</button>`;
+        }
+        actionsHtml += '</div>';
+      }
+      const clickBadge = clickBadgeHtml('svc:' + svc.name);
+      el.innerHTML = `
+        <div style="flex:1;min-width:0">
+          <div class="service-name">${svc.name}${loopbackBadge}${clickBadge}</div>
+          <div class="service-detail">${svc.detail}</div>
+          ${archiveNote}
+          ${actionsHtml}
+        </div>
+        <div class="pill ${svc.status}">${statusText}</div>
+      `;
+      grid.appendChild(el);
+    }
+    panel.appendChild(grid);
+    container.appendChild(panel);
+    panels[catId] = panel;
+  }
+
+  tabBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    selectCategory(btn.dataset.cat);
+  });
+  categoryNav?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.sidebar-link[data-cat]');
+    if (!btn) return;
+    e.preventDefault();
+    selectCategory(btn.dataset.cat);
+    document.getElementById('service-directory')?.setAttribute('open', '');
+    document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  categoryOverview?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.category-card[data-cat]');
+    if (!btn) return;
+    selectCategory(btn.dataset.cat);
+    document.getElementById('service-directory')?.setAttribute('open', '');
+    document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  container.insertBefore(tabBar, container.firstChild);
+
+  function selectCategory(cat) {
+    tabBar.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    categoryNav?.querySelectorAll('.sidebar-link[data-cat]').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    categoryOverview?.querySelectorAll('.category-card[data-cat]').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    container.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.cat === cat));
+    tabButtons[cat]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+  }
+
+  const links = document.getElementById('links');
+  links.innerHTML = '';
+  const archiveToggle = document.createElement('button');
+  archiveToggle.className = 'link-chip';
+  archiveToggle.type = 'button';
+  archiveToggle.style.cursor = 'pointer';
+  archiveToggle.textContent = SHOW_ARCHIVED_SERVICES
+    ? `隐藏归档服务 (${archivedCount})`
+    : `显示归档服务 (${archivedCount})`;
+  archiveToggle.addEventListener('click', () => {
+    SHOW_ARCHIVED_SERVICES = !SHOW_ARCHIVED_SERVICES;
+    loadPanel().catch(err => alert('刷新失败: ' + err.message));
+  });
+  links.appendChild(archiveToggle);
+  for (const link of data.links || []) {
+    const el = document.createElement('a');
+    el.className = 'link-chip';
+    el.href = link.url;
+    el.target = '_blank';
+    el.rel = 'noreferrer';
+    el.textContent = link.name;
+    links.appendChild(el);
+  }
+
+  checkN8nStatus(data);
+  loadMoonlightDevices();
+  setupMoonlightPairForm();
+  setupOpenCodeTaskForm();
+  renderTasks();
+  loadClickStats();
+}
+
+async function serviceAction(endpoint, method, target) {
+  const body = target ? { target } : {};
+  try {
+    const r = await fetch(endpoint, {
+      method: method || 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+    });
+    const data = await r.json();
+    if (data.ok) {
+      alert('操作成功');
+function filterAll(q) {
+  q = (q || '').trim().toLowerCase();
+  const items = document.querySelectorAll('[data-click-id], .service, .command-tile, .category-card, .sidebar-link');
+  items.forEach(el => {
+    const text = (el.textContent || '').toLowerCase();
+    el.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+}
+
+refresh();
+    } else {
+      alert('操作失败: ' + (data.error || '未知错误'));
+    }
+  } catch (err) {
+    alert('操作失败: ' + err.message);
+  }
+}
+
+async function checkN8nStatus(data) {
+  const el = document.getElementById('n8n-status');
+  if (!el) return;
+  const n8nSvc = (data.services || []).find(s => s.name === 'n8n');
+  if (!n8nSvc) return;
+  if (n8nSvc.status === 'online') {
+    el.innerHTML = '<span style="color:var(--green)">● n8n 运行中</span> — <a href="' + n8nSvc.host_url + '" target="_blank" rel="noreferrer">打开 n8n</a>';
+  } else if (n8nSvc.status === 'offline') {
+    el.innerHTML = '<span style="color:var(--red)">● n8n 未运行</span> — <button class="btn" style="cursor:pointer;padding:6px 10px;font-size:12px" onclick="serviceAction(\'/api/ai/actions/start\', \'POST\', \'n8n\')">启动容器</button>';
+  } else {
+    el.innerHTML = '<span style="color:var(--muted)">● n8n 状态: ' + n8nSvc.status + '</span>';
+  }
+}
+
+let _moonlightFormBound = false;
+
+async function loadMoonlightDevices() {
+  const el = document.getElementById('moonlight-devices');
+  if (!el) return;
+  try {
+    const r = await fetch('/api/moonlight/devices', { cache: 'no-store' });
+    const data = await r.json();
+    const devices = data.devices || [];
+    const status = data.sunshine_online ? '<span style="color:var(--green)">Sunshine 在线</span>' : '<span style="color:var(--red)">Sunshine 离线</span>';
+    const dup = data.duplicate_cert_count ? ` · <span style="color:var(--yellow)">重复证书 ${data.duplicate_cert_count}</span>` : '';
+    let html = `<div>${status} · 授权条目 ${data.device_count || 0} · 唯一设备证书 ${data.unique_cert_count || 0}${dup}</div>`;
+    if (!devices.length) {
+      html += '<div style="margin-top:8px">没有已授权 Moonlight 设备。</div>';
+    } else {
+      html += '<div style="display:grid;gap:8px;margin-top:10px">';
+      for (const d of devices) {
+        const fp = d.fingerprint ? d.fingerprint.slice(0, 23) + '...' : '无指纹';
+        const warn = d.duplicate ? '<span style="color:var(--yellow);margin-left:6px">重复</span>' : '';
+        html += `<div style="border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:10px;background:rgba(255,255,255,.025)">
+          <div style="color:var(--text);font-weight:600">${d.name || d.uuid || 'Moonlight'}${warn}</div>
+          <div style="font-family:ui-monospace,monospace;font-size:11px;margin-top:4px">${fp}</div>
+        </div>`;
+      }
+      html += '</div>';
+    }
+    el.innerHTML = html;
+  } catch (err) {
+    el.innerHTML = '<span style="color:var(--red)">读取失败: ' + err.message + '</span>';
+  }
+}
+
+function setupMoonlightPairForm() {
+  if (_moonlightFormBound) return;
+  _moonlightFormBound = true;
+  const form = document.getElementById('moonlight-pair-form');
+  const pinInput = document.getElementById('moonlight-pin-input');
+  const nameInput = document.getElementById('moonlight-name-input');
+  const result = document.getElementById('moonlight-pair-result');
+  const importBtn = document.getElementById('moonlight-import-android');
+  if (!form || !pinInput || !nameInput || !result) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pin = pinInput.value.trim();
+    const name = nameInput.value.trim() || 'Moonlight Device';
+    result.textContent = '配对中...';
+    result.style.color = 'var(--muted)';
+    try {
+      const r = await fetch('/api/moonlight/pair', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({pin, name}),
+      });
+      const data = await r.json();
+      if (data.ok) {
+        result.innerHTML = '<span style="color:var(--green)">已配对并加入白名单</span>';
+        pinInput.value = '';
+        await loadMoonlightDevices();
+      } else {
+        result.innerHTML = '<span style="color:var(--red)">' + (data.error || '配对失败') + '</span>';
+      }
+    } catch (err) {
+      result.innerHTML = '<span style="color:var(--red)">' + err.message + '</span>';
+    }
+  });
+  importBtn?.addEventListener('click', async () => {
+    result.textContent = '读取 Android Moonlight 证书...';
+    result.style.color = 'var(--muted)';
+    try {
+      const r = await fetch('/api/moonlight/import-android', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: nameInput.value.trim() || 'Android Moonlight'}),
+      });
+      const data = await r.json();
+      if (data.ok) {
+        result.innerHTML = '<span style="color:var(--green)">' + (data.imported ? '已导入 Android 证书' : 'Android 已在白名单') + '</span>';
+        await loadMoonlightDevices();
+      } else {
+        result.innerHTML = '<span style="color:var(--red)">' + (data.error || '导入失败') + '</span>';
+      }
+    } catch (err) {
+      result.innerHTML = '<span style="color:var(--red)">' + err.message + '</span>';
+    }
+  });
+}
+
+let _opencodeFormBound = false;
+let _taskFormBound = false;
+
+function setupOpenCodeTaskForm() {
+  if (_opencodeFormBound) return;
+  _opencodeFormBound = true;
+  const form = document.getElementById('opencode-task-form');
+  const input = document.getElementById('opencode-task-input');
+  const result = document.getElementById('opencode-task-result');
+  if (!form || !input || !result) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = input.value.trim();
+    if (!msg) return;
+    result.textContent = '发送到 OP 待确认...';
+    result.style.color = 'var(--muted)';
+    try {
+      const r = await fetch('/api/ai/opencode-task', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message: msg}),
+      });
+      const data = await r.json();
+      if (data.ok) {
+        result.innerHTML = '<span style="color:var(--green)">✓ 已发送到 OP 待确认队列，不执行</span>';
+        input.value = '';
+      } else {
+        result.innerHTML = '<span style="color:var(--red)">✗ ' + (data.error || '失败') + '</span>';
+      }
+    } catch (err) {
+      result.innerHTML = '<span style="color:var(--red)">✗ ' + err.message + '</span>';
+    }
+  });
+}
+
+function setupTaskCreateForm() {
+  if (_taskFormBound) return;
+  _taskFormBound = true;
+  const form = document.getElementById('task-create-form');
+  const titleInput = document.getElementById('task-title-input');
+  const msgInput = document.getElementById('task-msg-input');
+  const result = document.getElementById('task-create-result');
+  if (!form || !titleInput || !result) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = titleInput.value.trim();
+    const msg = msgInput.value.trim();
+    if (!title) return;
+    result.textContent = '创建中...';
+    result.style.color = 'var(--muted)';
+    try {
+      const r = await fetch('/api/ai/tasks/create', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title, payload: {message: msg}}),
+      });
+      const data = await r.json();
+      if (data.id) {
+        result.innerHTML = '<span style="color:var(--green)">✓ 任务已创建</span> — ' + data.id;
+        titleInput.value = '';
+        msgInput.value = '';
+        renderTasks();
+      } else {
+        result.innerHTML = '<span style="color:var(--red)">✗ ' + (data.error || '失败') + '</span>';
+      }
+    } catch (err) {
+      result.innerHTML = '<span style="color:var(--red)">✗ ' + err.message + '</span>';
+    }
+  });
+}
+
+async function renderTasks() {
+  const el = document.getElementById('tasks-list');
+  if (!el) return;
+  try {
+    const r = await fetch('/api/ai/tasks?limit=20');
+    const data = await r.json();
+    const tasks = data.tasks || [];
+    if (!tasks.length) {
+      el.innerHTML = '<div style="color:var(--muted);font-size:13px">暂无任务</div>';
+      return;
+    }
+    el.innerHTML = tasks.map(t => {
+      const statusColor = t.status === 'assigned' ? 'var(--green)' : (t.status === 'done' ? 'var(--cyan)' : 'var(--yellow)');
+      const events = (t.events || []).slice(-3).map(e => `<div style="font-size:11px;color:var(--muted);margin-top:2px">${new Date(e.ts).toLocaleTimeString()} ${e.event} ${e.source}</div>`).join('');
+      return `<div style="border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:12px;background:rgba(255,255,255,.025);margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:600;font-size:13px">${t.title}</div>
+          <div style="font-size:11px;color:${statusColor}">${t.status}</div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">${t.id} ${t.assignee ? '→ ' + t.assignee : ''}</div>
+        ${events ? '<div style="margin-top:6px;border-top:1px solid rgba(255,255,255,.05);padding-top:6px">' + events + '</div>' : ''}
+        ${t.status === 'pending' ? `<button class="btn" style="margin-top:8px;padding:6px 10px;font-size:12px;cursor:pointer" onclick="assignTask('${t.id}')">派给 OpenCode</button>` : ''}
+      </div>`;
+    }).join('');
+  } catch (err) {
+    el.innerHTML = '<div style="color:var(--red);font-size:13px">任务加载失败</div>';
+  }
+}
+
+async function assignTask(taskId) {
+  const msg = prompt('输入任务描述（将作为 OpenCode prompt）:');
+  if (!msg) return;
+  try {
+    const r = await fetch('/api/ai/tasks/' + taskId + '/assign/opencode', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message: msg}),
+    });
+    const data = await r.json();
+    if (data.ok) {
+      renderTasks();
+    } else {
+      alert('派发失败: ' + (data.error || '未知错误'));
+    }
+  } catch (err) {
+    alert('派发失败: ' + err.message);
+  }
+}
+
+async function loadScore() {
+  const el = document.getElementById('score-card');
+  if (!el) return;
+  try {
+    const r = await fetch('/api/ai/opencode-score', { cache: 'no-store' });
+    if (!r.ok) { el.innerHTML = ''; el.style.display = 'none'; return; }
+    const d = await r.json();
+    if (d.error) { el.innerHTML = ''; el.style.display = 'none'; return; }
+    const cls = d.score >= 80 ? 's-good' : d.score >= 50 ? 's-mid' : 's-low';
+
+    // Dimension bars
+    const dimColors = {green:'#74d39a', yellow:'#f2c66d', red:'#f07f90', blue:'#7db7ff', cyan:'#6ed3de', purple:'#b48eff'};
+    const dimsHtml = Object.entries(d.dimensions || {}).map(([k, dim]) => {
+      const c = dim.score >= 80 ? dimColors.green : dim.score >= 50 ? dimColors.yellow : dimColors.red;
+      return `<div class="dim-bar">
+        <div class="dim-bar-head"><span class="name">${dim.label}</span><span class="val">${dim.detail} · ${dim.score}%</span></div>
+        <div class="dim-bar-track"><div class="dim-bar-fill" style="width:${dim.score}%;background:${c}"></div></div>
+      </div>`;
+    }).join('');
+
+    // Tool usage top-8
+    const maxTool = Math.max(...(d.tools?.top || []).map(t => t.count), 1);
+    const toolsHtml = (d.tools?.top || []).map(t =>
+      `<div class="tool-row"><span style="color:var(--text)">${t.name}</span>
+        <div class="tool-bar"><div class="tool-bar-bar" style="width:${Math.max(12, t.count/maxTool*60)}px"></div><span style="color:var(--muted)">${t.count}</span></div></div>`
+    ).join('');
+
+    // Capability categories
+    const cats = d.tools?.categories || {};
+    const catIcons = {memory:'🧠', letta:'📦', codegraph:'🕸️', delegation:'📤', phone:'📱', system:'🖥️', research:'🔍'};
+    const catsHtml = Object.entries(cats).map(([k, v]) =>
+      `<div class="cat-cell"><div class="cv">${v}</div><div class="cl">${catIcons[k]||''} ${k}</div></div>`
+    ).join('');
+
+    // Recent sessions
+    const sessionsHtml = (d.recent_sessions || []).map(s =>
+      `<li><b>${s.time}</b> ${s.title || '(无标题)'} — <span style="color:var(--cyan)">${s.agent}</span> · $${(s.cost||0).toFixed(3)}</li>`
+    ).join('');
+
+    // Overall stats line
+    const statsLine = `会话 ${d.sessions_24h} · 任务 ${d.todos.completed}/${d.todos.total} · 工具 ${d.tools?.total||0}调用 (${d.tools?.success_rate||100}%✓) · $${d.total_cost.toFixed(3)} · ${(d.tokens_in/1e6).toFixed(1)}M tokens`;
+
+    el.innerHTML = `
+      <h2>📊 OpenCode 每日综合评分 <span style="font-size:12px;color:var(--muted)">${d.date} · 近24h</span></h2>
+      <div class="score-row">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0">
+          <div class="score-badge ${cls}">${d.score}</div>
+          <div style="font-size:10px;color:var(--muted)">${d.score>=80?'优秀':d.score>=50?'中等':'需改进'}</div>
+        </div>
+        <div class="score-body">
+          ${dimsHtml}
+          <div style="font-size:11px;color:var(--muted);margin-top:6px">${statsLine}</div>
+        </div>
+      </div>
+      <div class="score-grid">
+        <div>
+          <h3>🔧 工具调用 TOP${d.tools?.top?.length||0}</h3>
+          <div>${toolsHtml || '<span style="font-size:11px;color:var(--muted)">无数据</span>'}</div>
+        </div>
+        <div>
+          <h3>🎯 能力分布</h3>
+          <div class="cat-grid">${catsHtml || '<span style="font-size:11px;color:var(--muted)">无数据</span>'}</div>
+          ${d.memory_engine ? `<div style="margin-top:8px;font-size:11px;color:var(--muted)">🧠 Memory: ${d.memory_engine.facts_total} facts (24h: +${d.memory_engine.facts_24h}) · ${d.memory_engine.relations_total} relations</div>` : ''}
+        </div>
+      </div>
+      ${sessionsHtml ? `<div style="margin-top:10px"><details><summary style="cursor:pointer;font-size:12px;color:var(--muted)">最近会话 (${d.recent_sessions.length})</summary><ul class="score-sessions" style="padding:0;margin:6px 0">${sessionsHtml}</ul></details></div>` : ''}
+    `;
+    el.style.display = '';
+  } catch (e) {
+    el.innerHTML = ''; el.style.display = 'none';
+  }
+}
+
+async function loadModelStats() {
+  const el = document.getElementById('model-stats-card');
+  if (!el) return;
+  try {
+    const r = await fetch('/api/ai/opencode-score', { cache: 'no-store' });
+    if (!r.ok) { el.style.display = 'none'; return; }
+    const d = await r.json();
+    const models = d.model_stats || [];
+    if (!models.length) { el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.innerHTML = `<h2 style="margin:0 0 10px;font-size:13px;color:var(--muted);font-weight:600">🤖 模型 (近24h)</h2>
+      <div class="model-stats">${models.map(m => `
+        <div class="model-card">
+          <div><div class="model-name">${(() => { try { return JSON.parse(m.model).id; } catch { return m.model; } })()}</div><div class="model-meta">${m.calls}次 · ${(m.tokens_in/1e6).toFixed(1)}M in / ${(m.tokens_out/1e3).toFixed(0)}K out</div></div>
+          <div class="model-cost">$${m.cost.toFixed(2)}</div>
+        </div>
+      `).join('')}</div>`;
+  } catch (e) {
+    el.style.display = 'none';
+  }
+}
+
+async function loadScoreHistory() {
+  const el = document.getElementById('score-history-card');
+  const container = document.getElementById('score-history');
+  if (!el || !container) return;
+  try {
+    const r = await fetch('/api/ai/opencode-score-history?days=30', { cache: 'no-store' });
+    if (!r.ok) { el.style.display = 'none'; return; }
+    const data = await r.json();
+    const daily = data.daily || [];
+    const weekly = data.weekly || [];
+    const monthly = data.monthly || [];
+    if (!daily.length && !weekly.length && !monthly.length) {
+      el.style.display = 'none';
+      return;
+    }
+    el.style.display = '';
+    const trend = (arr) => {
+      if (arr.length < 2) return '';
+      const cur = arr[arr.length - 1].score ?? arr[arr.length - 1].avg_score;
+      const prev = arr[arr.length - 2].score ?? arr[arr.length - 2].avg_score;
+      const diff = cur - prev;
+      if (diff > 0) return `<span style="color:var(--green)">↑ +${diff}</span>`;
+      if (diff < 0) return `<span style="color:var(--red)">↓ ${diff}</span>`;
+      return `<span style="color:var(--muted)">- 0</span>`;
+    };
+    const dailyLast = daily.length ? daily[daily.length - 1] : null;
+    const weeklyLast = weekly.length ? weekly[weekly.length - 1] : null;
+    const monthlyLast = monthly.length ? monthly[monthly.length - 1] : null;
+    container.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:10px">
+        <div style="border:1px solid var(--line);border-radius:12px;padding:10px;background:rgba(255,255,255,.02)">
+          <div style="font-size:11px;color:var(--muted)">今日</div>
+          <div style="font-size:22px;font-weight:800;color:${dailyLast && dailyLast.score >= 80 ? 'var(--green)' : dailyLast && dailyLast.score >= 50 ? 'var(--yellow)' : 'var(--red)'}">${dailyLast ? dailyLast.score : '-'}</div>
+          <div style="font-size:11px;color:var(--muted)">${dailyLast ? dailyLast.date : ''} ${daily.length ? trend(daily) : ''}</div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:12px;padding:10px;background:rgba(255,255,255,.02)">
+          <div style="font-size:11px;color:var(--muted)">本周均分</div>
+          <div style="font-size:22px;font-weight:800;color:${weeklyLast && weeklyLast.avg_score >= 80 ? 'var(--green)' : weeklyLast && weeklyLast.avg_score >= 50 ? 'var(--yellow)' : 'var(--red)'}">${weeklyLast ? weeklyLast.avg_score : '-'}</div>
+          <div style="font-size:11px;color:var(--muted)">${weeklyLast ? weeklyLast.label : ''} ${weekly.length ? trend(weekly) : ''}</div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:12px;padding:10px;background:rgba(255,255,255,.02)">
+          <div style="font-size:11px;color:var(--muted)">本月均分</div>
+          <div style="font-size:22px;font-weight:800;color:${monthlyLast && monthlyLast.avg_score >= 80 ? 'var(--green)' : monthlyLast && monthlyLast.avg_score >= 50 ? 'var(--yellow)' : 'var(--red)'}">${monthlyLast ? monthlyLast.avg_score : '-'}</div>
+          <div style="font-size:11px;color:var(--muted)">${monthlyLast ? monthlyLast.label : ''} ${monthly.length ? trend(monthly) : ''}</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--muted)">近30天 ${daily.length}天 · ${weekly.length}周 · ${monthly.length}月</div>
+    `;
+  } catch (e) {
+    el.style.display = 'none';
+  }
+}
+
+async function loadInbox() {
+  const tabsEl = document.getElementById('inbox-tabs');
+  const msgsEl = document.getElementById('inbox-messages');
+  if (!tabsEl || !msgsEl) return;
+  try {
+    const r = await fetch('/api/dialogue/inbox?limit=200', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    const sources = data.sources || [];
+    const bySource = data.by_source || {};
+    const messages = data.messages || [];
+
+    tabsEl.innerHTML = '';
+    const allBtn = document.createElement('div');
+    allBtn.className = 'tab-btn active';
+    allBtn.textContent = `全部 (${data.total})`;
+    allBtn.dataset.src = '';
+    tabsEl.appendChild(allBtn);
+
+    const srcLabels = { telegram: '💬 Telegram', wechat: '📱 WeChat', gmail: '📧 Gmail', system: '⚙️ 系统', email: '📧 Email' };
+    for (const src of sources) {
+      const btn = document.createElement('div');
+      btn.className = 'tab-btn';
+      btn.textContent = `${srcLabels[src] || src} (${(bySource[src] || []).length})`;
+      btn.dataset.src = src;
+      tabsEl.appendChild(btn);
+    }
+
+    function renderInbox(filterSrc) {
+      const list = filterSrc ? (bySource[filterSrc] || []) : messages;
+      if (!list.length) {
+        msgsEl.innerHTML = '<div style="color:var(--muted)">暂无消息</div>';
+        return;
+      }
+      const srcColors = { telegram: 'var(--blue)', wechat: 'var(--green)', gmail: 'var(--yellow)', system: 'var(--muted)', email: 'var(--orange)' };
+      msgsEl.innerHTML = list.slice().reverse().map(m => {
+        const src = m._source || 'system';
+        const color = srcColors[src] || 'var(--muted)';
+        const label = srcLabels[src] || src;
+        return `<div style="border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:10px 12px;background:rgba(255,255,255,.025);margin-bottom:6px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span style="font-size:11px;font-weight:700;color:${color}">${label}</span>
+            <span style="font-size:10px;color:var(--muted)">${m.time || ''}</span>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px">${m.from || ''}</div>
+          <div style="font-size:13px;color:var(--text);word-break:break-word">${escapeHtml(m.content || '')}</div>
+        </div>`;
+      }).join('');
+    }
+
+    tabsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      tabsEl.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+      renderInbox(btn.dataset.src);
+    });
+
+    renderInbox('');
+  } catch (err) {
+    msgsEl.innerHTML = `<div class="warning-item critical">加载失败: ${err.message}</div>`;
+  }
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function updateSidebar() {
+  const links = document.querySelectorAll('.sidebar-link[data-section]');
+  const ids = Array.from(links).map(l => l.getAttribute('href').slice(1)).filter(Boolean);
+  if (!ids.length) return;
+  let current = ids[0];
+  for (const id of ids) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 120) current = id;
+  }
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+}
+
+window.addEventListener('scroll', updateSidebar, { passive: true });
+document.querySelectorAll('.sidebar-link[data-section]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    const d = target && target.closest('details');
+    if (d && !d.open) d.open = true;
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+
+function openHashDetails() {
+  const id = location.hash.slice(1);
+  if (!id) return;
+  const el = document.getElementById(id);
+  const d = el && el.closest('details');
+  if (d && !d.open) d.open = true;
+}
+window.addEventListener('hashchange', openHashDetails);
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('[data-open-detail]');
+  if (!link) return;
+  const d = document.getElementById(link.dataset.openDetail);
+  if (d) d.open = true;
+});
+
+async function refresh() {
+  try {
+    await loadPanel();
+    loadOpsImprovement();
+    loadScore();
+    loadScoreHistory();
+    loadModelStats();
+    setupTaskCreateForm();
+    renderTasks();
+    loadInbox();
+    loadDiagnostics();
+  } catch (err) {
+    renderPanelError(err);
+  }
+}
+
+async function loadOpsImprovement() {
+  const el = document.getElementById('ops-improvement');
+  if (!el) return;
+  try {
+    const data = await fetchJsonWithTimeout('/api/ops/daily-improvement', 12000);
+    const scoreColor = data.score >= 80 ? 'var(--green)' : data.score >= 65 ? 'var(--yellow)' : 'var(--red)';
+    const domainHtml = (data.domains || []).map(domain => {
+      const c = domain.score >= 80 ? 'var(--green)' : domain.score >= 65 ? 'var(--yellow)' : 'var(--red)';
+      const checks = (domain.items || []).slice(0, 5).map(item =>
+        `<div class="ops-check ${item.status === 'ok' ? 'ok' : 'warn'}">${item.status === 'ok' ? 'OK' : '注意'} · ${escapeHtml(item.name)}<br><span style="color:var(--muted)">${escapeHtml(item.detail || '')}</span></div>`
+      ).join('');
+      return `<div class="ops-domain">
+        <div class="ops-domain-head"><div class="ops-domain-title">${escapeHtml(domain.label)}</div><div class="ops-domain-score" style="color:${c}">${domain.score}</div></div>
+        ${checks}
+      </div>`;
+    }).join('');
+    const taskHtml = (data.next_tasks || []).slice(0, 8).map(task => {
+      const pColor = task.priority === 'high' ? 'var(--red)' : task.priority === 'medium' ? 'var(--yellow)' : 'var(--muted)';
+      const cmd = task.command ? `<div style="margin-top:7px"><code class="diag-cmd">${escapeHtml(task.command)}</code></div>` : '';
+      return `<div class="ops-task">
+        <div class="ops-task-priority" style="color:${pColor}">${escapeHtml(task.priority || 'low')} · ${escapeHtml(task.area || '')}</div>
+        <div class="ops-task-title">${escapeHtml(task.title || '')}</div>
+        <div class="ops-task-detail">${escapeHtml(task.detail || '')}</div>
+        ${cmd}
+      </div>`;
+    }).join('');
+    const cadence = (data.cadence || []).map(c =>
+      `<div class="cat-cell"><div class="cv" style="font-size:13px">${escapeHtml(c.name)}</div><div class="cl">${(c.items || []).map(escapeHtml).join(' / ')}</div></div>`
+    ).join('');
+    el.innerHTML = `
+      <div class="ops-grid">
+        <div class="ops-score">
+          <div class="ops-score-num" style="color:${scoreColor}">${data.score}</div>
+          <div class="ops-score-meta">等级 ${data.grade} · ${new Date(data.generated_at).toLocaleString()}</div>
+          <div class="cat-grid" style="margin-top:12px">${cadence}</div>
+        </div>
+        <div>
+          <div class="ops-domains">${domainHtml}</div>
+          <div class="ops-task-list">${taskHtml}</div>
+        </div>
+      </div>`;
+  } catch (err) {
+    el.innerHTML = `<div class="warning-item critical">每日提升加载失败: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+async function dispatchScorePackage(target, button) {
+  const note = document.getElementById('score-dispatch-note') || document.getElementById('opencode-task-result');
+  const oldText = button ? button.textContent : '';
+  if (button) {
+    button.disabled = true;
+    button.textContent = '发送中...';
+  }
+  if (note) note.textContent = `正在发送评分包到 ${target}...`;
+  try {
+    const r = await fetch(`/api/ops/score-dispatch/${encodeURIComponent(target)}`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({intent: 'optimize'}),
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+    const detail = data.results ? Object.entries(data.results).map(([k, v]) => `${k}:${v.status || 'ok'}`).join(' · ') : data.status;
+    if (note) note.textContent = `已发送评分包 ${data.score}/${data.grade} · ${detail}`;
+  } catch (err) {
+    if (note) note.textContent = `发送失败: ${err.message}`;
+  } finally {
+    if (button) {
+      setTimeout(() => {
+        button.disabled = false;
+        button.textContent = oldText;
+      }, 1800);
+    }
+  }
+}
+
+// ponytail: global delegate, bound once — handles all .diag-cmd copies
+function setupCopyButtons() {
+  if (window.__diagCopyBound) return;
+  window.__diagCopyBound = true;
+  document.addEventListener('click', (e) => {
+    const scoreBtn = e.target.closest('[data-score-target]');
+    if (scoreBtn) {
+      dispatchScorePackage(scoreBtn.dataset.scoreTarget, scoreBtn);
+      return;
+    }
+    const el = e.target.closest('.diag-cmd');
+    if (!el) return;
+    const txt = el.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt);
+    }
+    const orig = el.textContent;
+    el.classList.add('copied');
+    el.textContent = '✓ 已复制';
+    setTimeout(() => { el.classList.remove('copied'); el.textContent = orig; }, 900);
+  });
+}
+
+async function loadDiagnostics() {
+  setupCopyButtons();
+  const box = document.getElementById('diag-overview');
+  const detail = document.getElementById('diag-services-detail');
+  if (!box) return;
+  const stat = (k, v, sub, color) => `<div class="diag-stat"><div class="k">${k}</div><div class="v" style="${color?'color:'+color:''}">${v}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  try {
+    const [stabRes, tunRes] = await Promise.allSettled([
+      fetch('/api/services/stability').then(r => r.json()),
+      fetch('/api/tunnels/status').then(r => r.json()),
+    ]);
+    const stab = stabRes.status === 'fulfilled' ? stabRes.value : null;
+    const tun = tunRes.status === 'fulfilled' ? tunRes.value : null;
+    let html = '';
+    if (stab && stab.summary) {
+      const s = stab.summary;
+      const failColor = s.failed ? '#ff6b6b' : (s.storm ? '#ffa94d' : '#7fffb0');
+      html += stat('用户服务', `${s.failed||0} 失败 / ${s.storm||0} 风暴`, `共 ${s.total} 个`, failColor);
+      html += stat('健康', s.healthy || 0, `告警 ${s.warning||0}`, '#7fffb0');
+    } else {
+      html += stat('服务', 'N/A', 'stability API 异常', '#8da2b8');
+    }
+    if (tun) {
+      const list = tun.tunnels || tun.proxies || [];
+      html += stat('隧道/代理', Array.isArray(list) ? list.length : '—', tun.status || (Array.isArray(list) && list.length ? list.map(x=>x.name||x).slice(0,3).join(',') : ''), '#a5d6ff');
+    }
+    box.innerHTML = html;
+    if (stab && stab.storms && stab.storms.length) {
+      const top = stab.storms.slice(0, 4);
+      detail.innerHTML = '⚠️ 高重启服务: ' + top.map(x => `${x.unit}(${x.restarts}×)`).join(', ') +
+        ' · <a href="/dashboard" style="color:var(--muted)">完整稳定性 →</a>';
+    } else {
+      detail.innerHTML = '';
+    }
+  } catch (err) {
+    box.innerHTML = stat('诊断', '加载失败', err.message, '#ff6b6b');
+  }
+}
+
+async function loadClickStats() {
+  const box = document.getElementById('click-stats');
+  if (!box) return;
+  try {
+    const data = await fetch('/api/clicks').then(r => r.json());
+    const entries = Object.entries(data).sort((a, b) => (b[1] || 0) - (a[1] || 0)).slice(0, 20);
+    if (!entries.length) {
+      box.innerHTML = '<span style="color:var(--muted)">暂无点击数据</span>';
+      return;
+    }
+    const max = entries[0][1] || 1;
+    box.innerHTML = entries.map(([id, count]) => {
+      const pct = Math.round((count / max) * 100);
+      return `<div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+        <div style="width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${escapeHtml(id)}">${escapeHtml(id)}</div>
+        <div style="flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">
+          <div style="width:${pct}%;height:100%;background:var(--accent);border-radius:4px"></div>
+        </div>
+        <div style="width:32px;text-align:right;font-variant-numeric:tabular-nums">${count}</div>
+      </div>`;
+    }).join('');
+  } catch (err) {
+    box.innerHTML = '<span style="color:var(--muted)">加载失败</span>';
+  }
+}
+
+let _fastMode = false;
+let _fastInterval = null;
+
+async function toggleFastMode() {
+  _fastMode = !_fastMode;
+  const btn = document.getElementById('fast-toggle-btn');
+  const panel = document.getElementById('fast-panel');
+  const sidebar = document.querySelector('.sidebar');
+  const main = document.querySelector('.main-content');
+  if (_fastMode) {
+    btn.textContent = '✕ 退出 Fast';
+    btn.style.borderColor = 'var(--blue)';
+    btn.style.color = 'var(--blue)';
+    panel.style.display = '';
+    if (sidebar) sidebar.style.display = 'none';
+    if (main) main.style.display = 'none';
+    await loadFastPanel();
+    _fastInterval = setInterval(loadFastPanel, 30000);
+  } else {
+    btn.textContent = '⚡ Fast';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+    panel.style.display = 'none';
+    if (sidebar) sidebar.style.display = '';
+    if (main) main.style.display = '';
+    if (_fastInterval) { clearInterval(_fastInterval); _fastInterval = null; }
+  }
+}
+
+async function loadFastPanel() {
+  const grid = document.getElementById('fast-grid');
+  const countEl = document.getElementById('fast-count');
+  if (!grid) return;
+  try {
+    const [clicksRes, servicesRes] = await Promise.all([
+      fetch('/api/clicks/ranked').then(r => r.json()),
+      fetch('/api/ai/services').then(r => r.json()).catch(() => ({services: []})),
+    ]);
+    const ranked = Object.entries(clicksRes).sort((a, b) => (b[1] || 0) - (a[1] || 0));
+    const svcMap = {};
+    for (const s of (servicesRes.services || [])) svcMap[s.name] = s;
+    const buildLabelMap = () => {
+      const m = {};
+      document.querySelectorAll('[data-click-id]').forEach(el => {
+        const id = el.dataset.clickId;
+        if (!id) return;
+        const href = el.getAttribute('href') || '#';
+        m[id] = { text: (el.textContent || '').trim(), href };
+      });
+      return m;
+    };
+    const labelMap = buildLabelMap();
+    const COMMON = [
+      ['nav:home', '🏠 总入口', '/'],
+      ['nav:kanban', '📋 任务看板', '/kanban'],
+      ['nav:dashboard', '📊 服务全景', '/dashboard'],
+      ['nav:control', '🕹️ 控制中心', '/control'],
+      ['nav:wechat', '💬 微信查询', '/wechat'],
+      ['nav:search', '🔍 全局搜索', '/search'],
+      ['cmd:kanban', '📋 任务看板', '/kanban'],
+      ['cmd:opencode-task', 'OP 待确认', '#opencode-task'],
+      ['cmd:control', '🕹️ 控制中心', '/control'],
+      ['cmd:wechat', '💬 微信查询', '/wechat'],
+      ['cmd:search', '🔍 全局搜索', '/search'],
+      ['cmd:moonlight', '🎮 Moonlight', '#moonlight'],
+    ];
+    const seen = new Set();
+    const merged = [];
+    for (const [id, count] of ranked) {
+      if (merged.length >= 20) break;
+      if (!seen.has(id)) { seen.add(id); merged.push([id, count]); }
+    }
+    for (const [id, text, href] of COMMON) {
+      if (merged.length >= 20) break;
+      if (!seen.has(id)) { seen.add(id); merged.push([id, 0, text, href]); }
+    }
+    if (countEl) countEl.textContent = merged.length;
+    if (!merged.length) {
+      grid.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:12px">暂无可用入口</div>';
+      return;
+    }
+    grid.innerHTML = merged.map(([id, count, text, href]) => {
+      const info = labelMap[id] || { text: text || id.replace(/^(nav:|cmd:|cat:|svc:|tab:)/, ''), href: href || '#' };
+      const finalHref = info.href && info.href !== '#' ? info.href : (href || 'javascript:void(0)');
+      const isExternal = String(finalHref).startsWith('http');
+      const countLabel = count > 0 ? `${count} 次点击` : '常用';
+      return `<a class="command-tile" href="${escapeHtml(finalHref)}" ${isExternal ? 'target="_blank" rel="noreferrer"' : ''} data-click-id="${escapeHtml(id)}">
+        <span class="command-icon">🔥</span>
+        <span><span class="command-title">${escapeHtml(info.text)}</span><span class="command-sub">${countLabel}</span></span>
+      </a>`;
+    }).join('');
+  } catch (err) {
+    grid.innerHTML = '<div style="color:var(--red);font-size:13px;padding:12px">加载失败: ' + escapeHtml(err.message) + '</div>';
+  }
+}
+
+(function showFastToggle() {
+  const btn = document.getElementById('fast-toggle-btn');
+  if (!btn) return;
+  fetch('/api/clicks').then(r => r.json()).then(data => {
+    const hasClicks = Object.values(data).some(v => v > 0);
+    if (hasClicks) btn.style.display = '';
+  }).catch(() => {});
+})();
+
+refresh();
+openHashDetails();
+
+async function restartOP(ev) {
+  const btn = ev.target;
+  btn.disabled = true; btn.textContent = '...';
+  try {
+    const r = await fetch('/api/service/opencode/restart', { method: 'POST' });
+    const data = await r.json();
+    alert(`OP 代理修复: ${data.ok ? '已排队' : '失败'}\n${data.note || data.stderr || data.stdout || data.error || ''}`);
+  } catch (e) {
+    alert(`请求失败: ${e.message}`);
+  } finally {
+    btn.disabled = false; btn.textContent = '↻ 代理';
+  }
+}
+
+setInterval(refresh, 30000);
+</script>
+<script src="/static/hub-static.js?v=20260630-hubmenu3"></script>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+[Unit]
+Description=Refresh Charlie Hub workspace snapshot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl --noproxy * -fsS --max-time 30 -o /dev/null http://127.0.0.1:9800/api/workspace/snapshot?force=true

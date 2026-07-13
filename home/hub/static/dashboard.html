@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlie 系统全景</title>
+<style>
+:root {
+  --bg:#0f1720; --bg2:#111827; --card:#17212b; --line:#263445; --text:#e5eef8; --muted:#8da2b8;
+  --green:#74d39a; --yellow:#f2c66d; --red:#f07f90; --blue:#7db7ff; --cyan:#6ed3de;
+  --purple:#c4a7e7; --orange:#fab387;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; color:var(--text); font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(125,183,255,.18), transparent 26%),
+    radial-gradient(circle at left center, rgba(110,211,222,.12), transparent 24%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height:100vh;
+}
+.wrap { max-width:1400px; margin:0 auto; padding:20px; }
+.topbar { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; }
+.title { display:flex; align-items:center; gap:12px; }
+.title h1 { margin:0; font-size:24px; letter-spacing:.4px; }
+.dot { width:10px; height:10px; border-radius:50%; background:var(--green); box-shadow:0 0 18px rgba(116,211,154,.55); }
+.meta { color:var(--muted); font-size:12px; }
+.actions { display:flex; gap:8px; flex-wrap:wrap; }
+.btn {
+  border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--text);
+  padding:8px 14px; border-radius:10px; text-decoration:none; font-size:13px; transition:.15s;
+}
+.btn:hover { border-color:var(--blue); color:var(--blue); }
+.card {
+  background:rgba(23,33,43,.88); border:1px solid rgba(255,255,255,.06); border-radius:16px;
+  padding:16px; box-shadow:0 12px 40px rgba(0,0,0,.15); backdrop-filter: blur(10px);
+}
+.card h2 { margin:0 0 12px; font-size:14px; color:var(--muted); font-weight:600; }
+
+/* ── 系统指标条 ── */
+.sysbar { display:flex; gap:16px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+.sysbar .score-badge {
+  display:flex; align-items:center; gap:10px; padding:8px 16px; border-radius:14px;
+  background:linear-gradient(135deg, rgba(125,183,255,.12), rgba(110,211,222,.06));
+  border:1px solid rgba(125,183,255,.15);
+}
+.sysbar .score-num { font-size:32px; font-weight:700; line-height:1; }
+.sysbar .score-grade { font-size:12px; color:var(--muted); }
+.sysmetric { display:flex; align-items:center; gap:6px; font-size:13px; }
+.sysmetric .label { color:var(--muted); }
+.sysmetric .value { font-weight:700; }
+.sysmetric .value.warn { color:var(--yellow); }
+.sysmetric .value.crit { color:var(--red); }
+
+/* ── 服务分组 ── */
+.svc-group { margin-bottom:14px; }
+.svc-group-title {
+  font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.5px;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.svc-group-title .count {
+  background:rgba(255,255,255,.06); padding:1px 7px; border-radius:99px; font-size:10px;
+}
+.svc-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:8px; }
+.svc {
+  display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.05); background:rgba(255,255,255,.025);
+  text-decoration:none; color:var(--text); transition:.15s; position:relative;
+}
+.svc:hover { border-color:var(--blue); transform:translateY(-1px); background:rgba(125,183,255,.05); }
+.svc-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.svc-dot.on { background:var(--green); box-shadow:0 0 8px rgba(116,211,154,.5); }
+.svc-dot.off { background:var(--red); opacity:.5; }
+.svc-info { flex:1; min-width:0; }
+.svc-name { font-size:13px; font-weight:600; }
+.svc-port { font-size:10px; color:var(--muted); margin-top:2px; }
+.svc-tag { font-size:9px; padding:1px 5px; border-radius:4px; background:rgba(255,255,255,.06); color:var(--muted); }
+
+/* ── Tab 面板 ── */
+.tabs { display:flex; gap:4px; margin-bottom:12px; flex-wrap:wrap; }
+.tab-btn {
+  padding:6px 14px; border-radius:8px; border:1px solid var(--line); background:transparent;
+  color:var(--muted); font-size:12px; cursor:pointer; transition:.15s;
+}
+.tab-btn:hover { color:var(--text); }
+.tab-btn.active { background:rgba(125,183,255,.1); border-color:var(--blue); color:var(--blue); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.mini-btn {
+  padding:7px 12px; border-radius:8px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03); color:var(--text); font-size:12px;
+  cursor:pointer; transition:.15s;
+}
+.mini-btn:hover { border-color:var(--blue); color:var(--blue); background:rgba(125,183,255,.08); }
+.mini-btn:disabled { opacity:.65; cursor:wait; }
+.score-actions { display:flex; justify-content:flex-end; gap:7px; flex-wrap:wrap; margin-bottom:8px; }
+.score-note { color:var(--muted); font-size:12px; margin:0 0 8px; text-align:right; min-height:18px; }
+
+/* ── 告警 ── */
+.warnings { display:grid; gap:6px; }
+.warning-item {
+  border-left:3px solid var(--yellow); padding:8px 12px; border-radius:8px;
+  background:rgba(242,198,109,.07); color:var(--text); font-size:12px;
+}
+.warning-item.critical { border-left-color:var(--red); background:rgba(240,127,144,.08); }
+.warning-item.ok { border-left-color:var(--green); background:rgba(116,211,154,.06); color:var(--muted); }
+
+/* ── 列表项 ── */
+.item-list { display:grid; gap:6px; }
+.item-row {
+  padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.04); font-size:12px;
+}
+.item-row .item-name { font-weight:600; font-size:13px; }
+.item-row .item-desc { color:var(--muted); margin-top:3px; font-size:11px; }
+
+.pkg-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+.pkg-tag { padding:3px 7px; border-radius:6px; background:rgba(255,255,255,.03); border:1px solid var(--line); font-size:11px; }
+.pkg-more { padding:3px 7px; font-size:11px; color:var(--muted); }
+
+@media (max-width: 900px) {
+  .svc-grid { grid-template-columns:1fr 1fr; }
+  .sysbar { flex-direction:column; align-items:flex-start; }
+}
+@media (max-width: 600px) {
+  .wrap { padding:12px; }
+  .topbar { flex-direction:column; align-items:flex-start; gap:10px; }
+  .title h1 { font-size:21px; }
+  .actions { width:100%; overflow-x:auto; flex-wrap:nowrap; padding-bottom:2px; }
+  .btn { white-space:nowrap; padding:9px 11px; }
+  .card { padding:12px; border-radius:12px; }
+  .sysbar { gap:8px; margin-bottom:12px; }
+  .sysbar .score-badge { width:100%; justify-content:space-between; }
+  .sysmetric { width:100%; justify-content:space-between; border:1px solid rgba(255,255,255,.05); border-radius:10px; padding:8px 10px; background:rgba(255,255,255,.025); }
+  .svc-grid { grid-template-columns:1fr; }
+  .svc { padding:11px; }
+  .tabs { overflow-x:auto; flex-wrap:nowrap; padding-bottom:2px; }
+  .tab-btn { white-space:nowrap; }
+  .item-row, .warning-item { font-size:12px; }
+}
+</style>
+</head>
+<body data-hub-sidebar="false">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="title">
+        <div class="dot"></div>
+        <div>
+          <h1>系统全景</h1>
+          <div class="meta" id="meta">加载中</div>
+        </div>
+      </div>
+      <div class="actions" id="actions">
+        <a class="btn" href="/">工作台</a>
+        <a class="btn" href="/dashboard">系统全景</a>
+        <a class="btn" href="/ai-panel">AI 工作台</a>
+        <a class="btn" href="/kanban">任务看板</a>
+        <a class="btn" href="/wechat">微信查询</a>
+        <a class="btn" href="/search">全局搜索</a>
+      </div>
+    </div>
+
+    <!-- 系统指标条 -->
+    <div class="sysbar" id="sysbar">
+      <div class="sysmetric"><span class="label">状态</span><span class="value">加载中</span></div>
+    </div>
+
+    <!-- 服务全景 -->
+    <div class="card" style="margin-bottom:16px">
+      <h2>服务全景</h2>
+      <div id="svc-groups"><div class="item-row"><div class="item-name">加载服务状态</div><div class="item-desc">正在读取 9800 监控快照</div></div></div>
+    </div>
+
+    <!-- Tab 面板：告警 / 软件 / 项目 / 想法 -->
+    <div class="card">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="alerts">告警 <span id="alert-count" style="color:var(--red)"></span></button>
+        <button class="tab-btn" data-tab="software">软件</button>
+        <button class="tab-btn" data-tab="projects">项目</button>
+        <button class="tab-btn" data-tab="ideas">想法</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-alerts">
+        <div class="score-actions">
+          <button class="mini-btn" type="button" data-score-target="op" title="发送评分包到 OP 待确认队列，不触发执行">OP待确认</button>
+          <button class="mini-btn" type="button" data-score-target="crush" title="发送评分包到 Crush 优化队列">Crush优化</button>
+          <button class="mini-btn" type="button" data-score-target="codex" title="写入 Codex 评分优化任务包">Codex优化</button>
+          <button class="mini-btn" type="button" data-score-target="all" title="同时发送给 OP、Crush、Codex">三工具处理</button>
+        </div>
+        <div class="score-note" id="score-dispatch-note">评分包包含总分、告警、分域评测和建议验证命令。</div>
+        <div class="warnings" id="warnings"><div class="warning-item">正在加载告警</div></div>
+      </div>
+      <div class="tab-panel" id="tab-software">
+        <div class="item-list" id="software"></div>
+      </div>
+      <div class="tab-panel" id="tab-projects">
+        <div class="item-list" id="projects"></div>
+      </div>
+      <div class="tab-panel" id="tab-ideas">
+        <div class="item-list" id="ideas"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ── 动态 host：从 Tailscale 访问时自动替换 127.0.0.1 ──
+const HOST = location.hostname;
+
+function urlFor(port, path = '/') {
+  return `http://${HOST}:${port}${path}`;
+}
+
+function goForService(name, fallback) {
+  const map = {
+    Hub: '/go/hub',
+    OpenCode: '/go/opencode',
+    TermHive: '/go/termhive',
+    ttyd: '/go/terminal',
+    LiteLLM: '/go/litellm',
+    Telegram: '/go/telegram',
+    Sunshine: '/go/sunshine',
+    OpenAgents: '/go/openagents',
+    Mihomo: '/go/mihomo',
+  };
+  return map[name] || fallback;
+}
+
+// ── 服务注册表：分组 + 合并相关服务 ──
+const SVC_REGISTRY = [
+  // 核心
+  { group: '核心', items: [
+    { name: 'Hub',        port: 9800,  label: '看板+API',     ext: true },
+    { name: 'OpenAgents', port: 8700,  label: '协作层+Agent',  ext: true },
+    { name: 'OpenCode',   port: 4096,  label: 'Web 控制台',    ext: true, sub: '4097' },
+    { name: 'TermHive',   port: 3200,  label: '项目管理',      ext: false, sub: '3210' },
+  ]},
+  // AI 基础设施
+  { group: 'AI 基础设施', items: [
+    { name: 'LiteLLM',    port: 4002,  label: 'AI 网关',       ext: false, url: '/v1/models' },
+    { name: 'Letta',      port: 8283,  label: '记忆服务',      ext: false },
+    { name: 'Embedding',  port: 8286, label: '向量嵌入',      ext: false, url: '/health' },
+  ]},
+  // 开发工具
+  { group: '开发工具', items: [
+    { name: 'ttyd',       port: 8080,  label: '终端入口',      ext: false },
+    { name: 'Telegram',   port: 9811,  label: '消息网关',      ext: false, url: '/health' },
+    { name: 'Haven MCP',  port: 8732,  label: '手机桥接',      ext: false, url: '/mcp' },
+  ]},
+  // 基建
+  { group: '基建', items: [
+    { name: 'FRP',        port: 19890, label: '公网映射',      ext: true },
+    { name: 'Mihomo',     port: 9091,  label: '代理控制',      ext: false, url: '/ui' },
+  ]},
+];
+
+// ── 检查端口在线（用 API 返回的 services 数据） ──
+let SVC_STATUS = {};
+
+async function loadStatusMap() {
+  const res = await fetch('/api/dashboard/overview', { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+
+  // 构建 name→status 映射
+  for (const svc of data.services) {
+    SVC_STATUS[svc.name] = svc.status;
+  }
+  // 合并别名
+  SVC_STATUS['OpenCode'] = SVC_STATUS['OpenCode Web'] || SVC_STATUS['OpenCode Server'];
+  SVC_STATUS['TermHive'] = SVC_STATUS['TermHive Web'] || SVC_STATUS['TermHive Daemon'];
+  SVC_STATUS['ttyd'] = SVC_STATUS['OpenClaw TTYD'];
+  SVC_STATUS['Telegram'] = SVC_STATUS['Telegram Gateway'];
+  SVC_STATUS['Haven MCP'] = SVC_STATUS['Haven MCP Bridge'];
+
+  return data;
+}
+
+function renderSysbar(data) {
+  const sys = data.system;
+  const sc = data.score;
+  const valClass = (v, warn=80, crit=95) => v >= crit ? 'crit' : v >= warn ? 'warn' : '';
+
+  document.getElementById('sysbar').innerHTML = `
+    <div class="score-badge">
+      <div class="score-num">${sc.score}</div>
+      <div class="score-grade">${sc.grade} · 严重 ${sc.critical} · 警告 ${sc.warning}</div>
+    </div>
+    <div class="sysmetric"><span class="label">CPU</span><span class="value">${sys.cpu}%</span></div>
+    <div class="sysmetric"><span class="label">内存</span><span class="value ${valClass(sys.memory)}">${sys.memory}%</span></div>
+    <div class="sysmetric"><span class="label">Swap</span><span class="value ${valClass(sys.swap)}">${sys.swap}%</span></div>
+    <div class="sysmetric"><span class="label">存储</span><span class="value ${sys.root_disk >= 95 ? 'crit' : sys.root_disk >= 85 ? 'warn' : ''}">${sys.root_disk}%</span></div>
+    <div class="sysmetric" style="margin-left:auto"><span class="label">可用水</span><span class="value">${sys.memory_available_gb}GB</span></div>
+  `;
+  document.getElementById('meta').textContent = `${new Date(data.generated_at).toLocaleString()}`;
+}
+
+function renderServices() {
+  const container = document.getElementById('svc-groups');
+  let html = '';
+  for (const group of SVC_REGISTRY) {
+    const online = group.items.filter(s => SVC_STATUS[s.name] === 'online').length;
+    const total = group.items.length;
+    html += `<div class="svc-group">
+      <div class="svc-group-title">${group.group} <span class="count">${online}/${total}</span></div>
+      <div class="svc-grid">`;
+    for (const svc of group.items) {
+      const on = SVC_STATUS[svc.name] === 'online';
+      // ext:false = 仅监听 127.0.0.1，从 Tailscale 远程打不开 → 不生成外网链接
+      const reachable = on && svc.ext !== false;
+      const href = reachable ? goForService(svc.name, urlFor(svc.port, svc.url || '/')) : '#';
+      const sub = svc.sub ? `<span class="svc-tag">+${svc.sub}</span>` : '';
+      const extTag = svc.ext === false ? '<span class="svc-tag" title="仅服务器本机可访问">仅本机</span>' : '';
+      const clickGuard = !reachable && on ? 'onclick="alert(\'' + svc.name + ' 仅监听 127.0.0.1，需在服务器本机或通过 SSH 隧道访问\');return false"' : '';
+      html += `<a class="svc${reachable ? '' : ' svc-local'}" href="${href}" ${reachable ? 'target="_blank" rel="noreferrer"' : ''} ${clickGuard}>
+        <div class="svc-dot ${on ? 'on' : 'off'}"></div>
+        <div class="svc-info">
+          <div class="svc-name">${svc.name}</div>
+          <div class="svc-port">:${svc.port} ${svc.label}</div>
+        </div>
+        ${sub}${extTag}
+      </a>`;
+    }
+    html += `</div></div>`;
+  }
+  container.innerHTML = html;
+}
+
+function renderAlerts(data) {
+  const el = document.getElementById('warnings');
+  const scoreItems = (data.score?.services || []).filter(x => x.status !== 'OK');
+  const offlineServices = (data.services || []).filter(s => s.status === 'offline');
+  const items = [
+    ...scoreItems.map(s => ({ ...s, _source: 'score' })),
+    ...offlineServices.map(s => ({ name: s.name, detail: `${s.detail} · ${s.url || ''}`.trim(), status: 'CRITICAL', _source: 'port' })),
+  ];
+  const alertCount = document.getElementById('alert-count');
+  alertCount.textContent = items.length ? `(${items.length})` : '';
+
+  if (!items.length) {
+    el.innerHTML = '<div class="warning-item ok">所有检查项正常</div>';
+    return;
+  }
+  el.innerHTML = items.map(item =>
+    `<div class="warning-item ${item.status === 'CRITICAL' ? 'critical' : ''}"><strong>${item.name}</strong> · ${item.detail}</div>`
+  ).join('');
+}
+
+async function dispatchAlertsToOp() {
+  const btn = document.getElementById('dispatch-alerts-btn');
+  if (!btn) return;
+  btn.disabled = true;
+  btn.textContent = '派发中...';
+  try {
+    const res = await fetch('/api/dashboard/overview', { cache: 'no-store' });
+    const data = await res.json();
+    const scoreItems = (data.score?.services || []).filter(x => x.status !== 'OK');
+    const offlineServices = (data.services || []).filter(s => s.status === 'offline');
+    const alerts = [
+      ...scoreItems.map(s => `${s.name}: ${s.detail}`),
+      ...offlineServices.map(s => `${s.name}: ${s.detail} (${s.url || ''})`),
+    ];
+    if (!alerts.length) {
+      btn.textContent = '无告警可派发';
+      setTimeout(() => { btn.disabled = false; btn.textContent = '发 OP 待确认'; }, 2000);
+      return;
+    }
+    const msg = `只读查看并评估以下告警，不要执行修复，等待人工确认：\n${alerts.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
+    const r = await fetch('/api/ai/opencode-task', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message: msg}),
+    });
+    const result = await r.json();
+    if (result.ok) {
+      btn.textContent = '✓ 已发送 OP 待确认';
+      btn.style.color = 'var(--green)';
+    } else {
+      btn.textContent = `✗ ${result.error || '失败'}`;
+      btn.style.color = 'var(--red)';
+    }
+  } catch (err) {
+    btn.textContent = `✗ ${err.message}`;
+    btn.style.color = 'var(--red)';
+  }
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.textContent = '发 OP 待确认';
+    btn.style.color = '';
+  }, 5000);
+}
+
+async function dispatchScorePackage(target, button) {
+  const note = document.getElementById('score-dispatch-note');
+  const oldText = button ? button.textContent : '';
+  if (button) {
+    button.disabled = true;
+    button.textContent = '发送中...';
+  }
+  if (note) note.textContent = `正在发送评分包到 ${target}...`;
+  try {
+    const r = await fetch(`/api/ops/score-dispatch/${encodeURIComponent(target)}`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({intent: 'optimize'}),
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+    const detail = data.results ? Object.entries(data.results).map(([k, v]) => `${k}:${v.status || 'ok'}`).join(' · ') : data.status;
+    if (note) note.textContent = `已发送评分包 ${data.score}/${data.grade} · ${detail}`;
+  } catch (err) {
+    if (note) note.textContent = `发送失败: ${err.message}`;
+  } finally {
+    if (button) {
+      setTimeout(() => {
+        button.disabled = false;
+        button.textContent = oldText;
+      }, 1800);
+    }
+  }
+}
+
+async function loadSoftware() {
+  const el = document.getElementById('tab-software');
+  try {
+    const res = await fetch('/api/dashboard/software', { cache: 'no-store' });
+    if (!res.ok) throw new Error('加载失败');
+    const data = await res.json();
+    let html = '';
+    for (const [cat, pkgs] of Object.entries(data)) {
+      const tags = pkgs.slice(0, 15).map(p => `<span class="pkg-tag">${p.name}</span>`).join('');
+      const more = pkgs.length > 15 ? `<span class="pkg-more">+${pkgs.length - 15}</span>` : '';
+      html += `<div class="item-row"><div class="item-name">${cat} <span style="color:var(--muted)">(${pkgs.length})</span></div><div class="pkg-tags">${tags}${more}</div></div>`;
+    }
+    el.innerHTML = html;
+  } catch (err) {
+    el.innerHTML = `<div class="warning-item critical">加载失败: ${err.message}</div>`;
+  }
+}
+
+async function loadProjects() {
+  const el = document.getElementById('tab-projects');
+  try {
+    const res = await fetch('/api/dashboard/projects', { cache: 'no-store' });
+    if (!res.ok) throw new Error('加载失败');
+    const data = await res.json();
+    el.innerHTML = data.projects.map(p =>
+      `<div class="item-row"><div class="item-name">${p.name}</div><div class="item-desc">${p.description || p.path}</div></div>`
+    ).join('');
+  } catch (err) {
+    el.innerHTML = `<div class="warning-item critical">加载失败: ${err.message}</div>`;
+  }
+}
+
+async function loadIdeas() {
+  const el = document.getElementById('tab-ideas');
+  try {
+    const res = await fetch('/api/dashboard/ideas', { cache: 'no-store' });
+    if (!res.ok) throw new Error('加载失败');
+    const data = await res.json();
+    el.innerHTML = data.ideas.map(i =>
+      `<div class="item-row"><div class="item-name">${i.name}</div><div class="item-desc">${i.summary}</div></div>`
+    ).join('');
+  } catch (err) {
+    el.innerHTML = `<div class="warning-item critical">加载失败: ${err.message}</div>`;
+  }
+}
+
+// ── Tab 切换 ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+  });
+});
+
+// ── 刷新 ──
+async function refresh() {
+  try {
+    const data = await loadStatusMap();
+    renderSysbar(data);
+    renderServices();
+    renderAlerts(data);
+  } catch (err) {
+    document.getElementById('meta').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+refresh();
+loadSoftware();
+loadProjects();
+loadIdeas();
+document.getElementById('dispatch-alerts-btn')?.addEventListener('click', dispatchAlertsToOp);
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-score-target]');
+  if (!btn) return;
+  dispatchScorePackage(btn.dataset.scoreTarget, btn);
+});
+setInterval(refresh, 30000);
+</script>
+<script src="/static/hub-static.js?v=20260630-hubmenu3"></script>
+</body>
+</html>

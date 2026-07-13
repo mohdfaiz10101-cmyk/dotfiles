@@ -1,0 +1,17 @@
+[Unit]
+Description=Desktop MJPEG PiP server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/desktop-mjpeg-server.py
+Environment=PORT=19092
+Environment=FPS=5
+Environment=QUALITY=8
+Environment=BIND=127.0.0.1
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

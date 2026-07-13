@@ -1,0 +1,10 @@
+[credential]
+	helper = store
+[user]
+	name = Charlie
+	email = charlie@charlie-nas.local
+[core]
+	excludesfile = /home/charlie/.gitignore_global
+	hooksPath = /home/charlie/.config/git/hooks
+[init]
+	defaultBranch = main

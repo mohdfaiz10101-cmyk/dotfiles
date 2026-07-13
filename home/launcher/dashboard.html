@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基础设施看板</title>
+<style>
+:root {
+  --bg: #1e1e2e; --surface: #181825; --overlay: #313244;
+  --text: #cdd6f4; --subtext: #a6adc8; --muted: #585b70;
+  --blue: #89b4fa; --green: #a6e3a1; --yellow: #f9e2af;
+  --red: #f38ba8; --mauve: #cba6f7; --peach: #fab387;
+  --teal: #94e2d5; --sky: #89dceb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans CJK SC','Microsoft YaHei',sans-serif;min-height:100vh}
+header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--overlay);flex-wrap:wrap}
+header h1{font-size:16px;color:var(--blue);font-weight:600}
+.dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.refresh-info{font-size:11px;color:var(--muted);margin-left:8px}
+.badge{font-size:10px;background:var(--overlay);padding:2px 8px;border-radius:99px;color:var(--subtext)}
+.badge-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;vertical-align:middle}
+a.header-link{font-size:12px;color:var(--subtext);text-decoration:none;padding:4px 10px;border:1px solid var(--overlay);border-radius:6px}
+a.header-link:hover{border-color:var(--blue);color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;padding:16px 20px}
+@media(min-width:1100px){.grid{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:700px){.grid{grid-template-columns:1fr;padding:10px}}
+.card{background:var(--surface);border:1px solid var(--overlay);border-radius:10px;padding:14px;overflow:hidden}
+.card-title{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.card-title .count{font-size:10px;color:var(--muted);font-weight:400}
+
+/* System bars */
+.sys-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px}
+.sys-label{width:50px;color:var(--subtext);flex-shrink:0}
+.sys-bar{flex:1;height:6px;background:var(--overlay);border-radius:3px;overflow:hidden}
+.sys-bar-fill{height:100%;border-radius:3px;transition:width .5s}
+.sys-val{font-size:11px;color:var(--muted);width:70px;text-align:right;flex-shrink:0}
+
+/* Projects */
+.proj-grid{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto}
+.proj-item{display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--overlay);border-radius:6px;font-size:12px}
+.proj-item .name{font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.type-badge{font-size:10px;padding:1px 6px;border-radius:99px;background:var(--blue);color:var(--bg);white-space:nowrap}
+.type-badge.python{background:var(--green)}
+.type-badge.claude-project{background:var(--mauve)}
+.type-badge.node{background:var(--peach)}
+.git-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.no-git-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0}
+.proj-time{font-size:10px;color:var(--muted);flex-shrink:0}
+
+/* Jobs table */
+.job-table{width:100%;font-size:12px;border-collapse:collapse;max-height:300px;overflow-y:auto;display:block}
+.job-table th{text-align:left;color:var(--muted);font-weight:400;padding:4px 6px;border-bottom:1px solid var(--overlay);font-size:11px;position:sticky;top:0;background:var(--surface)}
+.job-table td{padding:5px 6px;border-bottom:1px solid var(--bg)}
+.job-table tr:hover{background:var(--overlay)}
+.status-active{color:var(--green)}
+.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:4px}
+
+/* Skills */
+.skill-cat{margin-bottom:8px}
+.skill-cat-header{font-size:12px;font-weight:500;color:var(--peach);cursor:pointer;display:flex;align-items:center;gap:6px;padding:4px 0;user-select:none}
+.skill-cat-header:hover{color:var(--yellow)}
+.skill-cat-header .arrow{font-size:10px;transition:transform .2s;display:inline-block}
+.skill-cat-header.open .arrow{transform:rotate(90deg)}
+.skill-cat-count{font-size:10px;color:var(--muted)}
+.skill-list{display:none;padding-left:16px}
+.skill-list.open{display:block}
+.skill-item{font-size:11px;padding:2px 0;color:var(--subtext);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Docker */
+.docker-grid{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto}
+.docker-item{display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--overlay);border-radius:6px;font-size:12px}
+.docker-name{font-weight:500;flex:1}
+.docker-status{font-size:11px;color:var(--green)}
+.docker-ports{font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--muted);border-radius:2px}
+
+.empty{text-align:center;color:var(--muted);font-size:12px;padding:20px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>基础设施看板</h1>
+  <span class="dot" id="live-dot"></span>
+  <span class="refresh-info" id="refresh-info">加载中...</span>
+  <a class="header-link" href="kanban.html">看板</a>
+  <a class="header-link" href="unified-agents.html">统一任务台</a>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+const REFRESH_MS = 30000;
+let data = null;
+
+function pctColor(p){
+  const v = parseInt(p);
+  if(isNaN(v)) return 'var(--green)';
+  return v > 85 ? 'var(--red)' : v > 65 ? 'var(--yellow)' : 'var(--green)';
+}
+
+function esc(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function renderSystem(sys){
+  const memPct = sys.memory_percent ? sys.memory_percent.replace(/[a-zA-Z]/g,'') : '?';
+  const rootPct = sys.disk_root_percent ? sys.disk_root_percent.replace('%','') : '?';
+  const aiPct = sys.disk_ai_percent ? sys.disk_ai_percent.replace('%','') : '?';
+  return `
+    <div class="sys-row"><span class="sys-label">运行时间</span><span style="font-size:12px;color:var(--text)">${esc(sys.uptime||'—')}</span></div>
+    <div class="sys-row"><span class="sys-label">CPU</span><span style="font-size:12px;color:var(--text)">${sys.cpu_count||'?'} 核</span></div>
+    <div class="sys-row"><span class="sys-label">内存</span><div class="sys-bar"><div class="sys-bar-fill" style="width:${memPct}%;background:${pctColor(memPct+'%')}"></div></div><span class="sys-val">${esc(sys.memory_used||'?')} / ${esc(sys.memory_total||'?')}</span></div>
+    <div class="sys-row"><span class="sys-label">根分区</span><div class="sys-bar"><div class="sys-bar-fill" style="width:${rootPct}%;background:${pctColor(rootPct+'%')}"></div></div><span class="sys-val">${esc(sys.disk_root_percent||'?')}</span></div>
+    <div class="sys-row"><span class="sys-label">AI分区</span><div class="sys-bar"><div class="sys-bar-fill" style="width:${aiPct}%;background:${pctColor(aiPct+'%')}"></div></div><span class="sys-val">${esc(sys.disk_ai_percent||'?')}</span></div>
+  `;
+}
+
+function renderProjects(projects){
+  if(!projects.length) return '<div class="empty">无项目</div>';
+  return '<div class="proj-grid">' + projects.map(p => `
+    <div class="proj-item">
+      ${p.has_git ? '<span class="git-dot" title="Git"></span>' : '<span class="no-git-dot"></span>'}
+      <span class="name" title="${esc(p.path)}">${esc(p.name)}</span>
+      <span class="type-badge ${esc(p.type)}">${esc(p.type)}</span>
+      <span class="proj-time">${esc(p.last_modified)}</span>
+    </div>
+  `).join('') + '</div>';
+}
+
+function renderJobs(jobs){
+  if(!jobs.length) return '<div class="empty">无调度任务</div>';
+  return `<div style="max-height:300px;overflow-y:auto"><table class="job-table">
+    <tr><th>任务</th><th>调度</th><th>下次执行</th><th>上次执行</th></tr>
+    ${jobs.map(j => `
+    <tr>
+      <td><span class="status-dot"></span>${esc(j.name)}</td>
+      <td style="color:var(--subtext)">${esc(j.schedule)}</td>
+      <td style="color:var(--sky)">${esc(j.next_run)}</td>
+      <td style="color:var(--muted);font-size:11px">${esc(j.last_run)}</td>
+    </tr>`).join('')}
+  </table></div>`;
+}
+
+function renderSkills(skills){
+  if(!skills.length) return '<div class="empty">无 Skills</div>';
+  const cats = {};
+  skills.forEach(s => {
+    const c = s.category || '未分类';
+    if(!cats[c]) cats[c] = [];
+    cats[c].push(s);
+  });
+  return Object.entries(cats).sort((a,b) => b[1].length - a[1].length).map(([cat, items]) => `
+    <div class="skill-cat">
+      <div class="skill-cat-header open" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span class="arrow">&#9654;</span>${esc(cat)} <span class="skill-cat-count">(${items.length})</span>
+      </div>
+      <div class="skill-list open">
+        ${items.map(s => `<div class="skill-item" title="${esc(s.description)}">${esc(s.name)}${s.description ? ' — '+esc(s.description.slice(0,50)) : ''}</div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDocker(containers){
+  if(!containers.length) return '<div class="empty">无运行中容器</div>';
+  return '<div class="docker-grid">' + containers.map(c => `
+    <div class="docker-item">
+      <span class="git-dot"></span>
+      <span class="docker-name">${esc(c.name)}</span>
+      <span class="docker-status">${esc(c.status)}</span>
+      <span class="docker-ports" title="${esc(c.ports)}">${esc(c.ports)}</span>
+    </div>
+  `).join('') + '</div>';
+}
+
+function render(d){
+  data = d;
+  const grid = document.getElementById('grid');
+  grid.innerHTML = `
+    <div class="card">
+      <div class="card-title">系统状态</div>
+      ${renderSystem(d.system || {})}
+    </div>
+    <div class="card">
+      <div class="card-title">项目 <span class="count">${(d.projects||[]).length}</span></div>
+      ${renderProjects(d.projects)}
+    </div>
+    <div class="card">
+      <div class="card-title">Agent 调度 <span class="count">${(d.jobs||[]).length}</span></div>
+      ${renderJobs(d.jobs)}
+    </div>
+    <div class="card">
+      <div class="card-title">Skills <span class="count">${(d.skills||[]).length}</span></div>
+      ${renderSkills(d.skills)}
+    </div>
+    <div class="card">
+      <div class="card-title">Docker 服务 <span class="count">${(d.docker||[]).length}</span></div>
+      ${renderDocker(d.docker)}
+    </div>
+  `;
+}
+
+async function load(){
+  const now = new Date();
+  const ts = now.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  try{
+    const r = await fetch('/api/dashboard');
+    const d = await r.json();
+    render(d);
+    document.getElementById('refresh-info').textContent = `已更新 ${ts}`;
+    document.getElementById('live-dot').style.background = 'var(--green)';
+  }catch(e){
+    document.getElementById('refresh-info').textContent = `失败 ${ts}: ${e.message}`;
+    document.getElementById('live-dot').style.background = 'var(--red)';
+  }
+}
+
+load();
+setInterval(load, REFRESH_MS);
+</script>
+</body>
+</html>

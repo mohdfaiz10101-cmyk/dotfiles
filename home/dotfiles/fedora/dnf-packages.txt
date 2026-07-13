@@ -1,0 +1,13 @@
+git
+curl
+wget
+zsh
+wl-clipboard
+gnupg2
+pinentry
+flatpak
+fontconfig
+freetype
+ntfs-3g
+exfatprogs
+fuse

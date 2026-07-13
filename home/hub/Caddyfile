@@ -1,0 +1,23 @@
+{
+    admin off
+}
+
+:9800 {
+    root * /home/charlie/hub/static
+
+    @health path /health
+    handle @health {
+        respond "OK" 200
+    }
+
+    handle {
+        try_files {path} /hub.html
+        file_server {
+            hide .git
+        }
+    }
+
+    handle_error 404 {
+        respond "404 Not Found" 404
+    }
+}

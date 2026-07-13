@@ -1,0 +1,12 @@
+[Unit]
+Description=Watch OpenCode capabilities and hand-written rules
+
+[Path]
+PathChanged=/var/home/charlie/.config/opencode/opencode.json
+PathChanged=/var/home/charlie/.config/opencode/AGENTS.md
+PathChanged=/var/home/charlie/.config/opencode/agent-protocol.md
+PathChanged=/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/AGENTS.md
+Unit=opencode-capability-adapter.service
+
+[Install]
+WantedBy=default.target

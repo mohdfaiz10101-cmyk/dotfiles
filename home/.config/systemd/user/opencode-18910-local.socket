@@ -1,0 +1,10 @@
+[Unit]
+Description=LAN OpenCode/Codex entry socket (:18910)
+
+[Socket]
+ListenStream=0.0.0.0:18910
+Accept=no
+NoDelay=true
+
+[Install]
+WantedBy=sockets.target

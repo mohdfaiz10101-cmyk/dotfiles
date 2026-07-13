@@ -1,0 +1,6 @@
+[Unit]
+Description=Idle-sleep watchdog (stops sleepy services after 5min idle)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/idle-sleep.sh

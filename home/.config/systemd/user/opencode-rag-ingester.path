@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch OpenCode lifecycle RAG queue
+
+[Path]
+PathChanged=/var/home/charlie/.local/state/opencode-lifecycle/rag-ingest-queue.jsonl
+Unit=opencode-rag-ingester.service
+TriggerLimitIntervalSec=10min
+TriggerLimitBurst=3
+
+[Install]
+WantedBy=default.target

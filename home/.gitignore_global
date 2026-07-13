@@ -1,0 +1,8 @@
+# API Keys 和密钥文件（全局规则）
+.env
+.env.*
+**/api-keys/
+**/*secret*
+**/*token*
+**/*key*.txt
+discord-bot/env

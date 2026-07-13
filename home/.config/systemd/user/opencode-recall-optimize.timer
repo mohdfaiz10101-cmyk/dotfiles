@@ -1,0 +1,9 @@
+[Unit]
+Description=Weekly recall context optimization check
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=TermHive Web Server
+After=network.target
+
+[Service]
+Type=simple
+Environment="PORT=3200"
+Environment="HOST=127.0.0.1"
+WorkingDirectory=/var/home/charlie/termhive
+ExecStart=/usr/bin/node dist/server.js
+Restart=always
+RestartSec=5
+MemoryMax=200M
+MemoryHigh=150M
+
+[Install]
+WantedBy=default.target

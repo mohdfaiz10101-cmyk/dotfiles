@@ -1,0 +1,14 @@
+# Flatpak GUI applications
+org.mozilla.firefox
+one.ablaze.floorp
+org.chromium.Chromium
+app.zen_browser.zen
+org.telegram.desktop
+com.visualstudio.code
+md.obsidian.Obsidian
+org.libreoffice.LibreOffice
+org.keepassxc.KeepassXC
+org.remmina.Remmina
+com.moonlight_stream.Moonlight
+com.rustdesk.RustDesk
+com.github.tchx84.Flatseal

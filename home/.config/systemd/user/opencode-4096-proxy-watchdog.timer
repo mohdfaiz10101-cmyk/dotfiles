@@ -1,0 +1,10 @@
+[Unit]
+Description=Watchdog timer for opencode-4096-proxy
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Unit=opencode-4096-proxy-watchdog.service
+
+[Install]
+WantedBy=timers.target

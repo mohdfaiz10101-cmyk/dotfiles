@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>软件清单审查</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Sans CJK SC", sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 12px;
+  padding-bottom: 80px;
+}
+h1 { font-size: 20px; margin-bottom: 8px; }
+.stats { color: #8888aa; font-size: 13px; margin-bottom: 12px; }
+.search-bar input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #16213e;
+  color: #e0e0e0;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 8px;
+}
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.filter-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #16213e;
+  color: #8888aa;
+  font-size: 13px;
+  cursor: pointer;
+}
+.filter-btn.active { background: #0f3460; color: #66b2ff; }
+.category { margin-bottom: 16px; }
+.cat-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: #66b2ff;
+  padding: 8px 0;
+  border-bottom: 1px solid #0f3460;
+  margin-bottom: 8px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 4px 0;
+  border-radius: 10px;
+  background: #16213e;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.item:active { background: #1a2744; }
+.item.selected { background: #0f3460; border-left: 3px solid #4caf50; }
+.item .check {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid #444;
+  margin-right: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.item.selected .check { border-color: #4caf50; background: #4caf50; color: #fff; }
+.item .info { flex: 1; }
+.item .win-name { font-size: 14px; color: #aaa; }
+.item .nix-name { font-size: 15px; font-weight: 500; }
+.item .desc { font-size: 12px; color: #666; margin-top: 2px; }
+.item .status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+.status.installed { background: #1b3a1b; color: #4caf50; }
+.status.available { background: #1b2a3a; color: #66b2ff; }
+.status.none { background: #3a1b1b; color: #ff6b6b; }
+.hidden { display: none !important; }
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #16213e;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.5);
+  z-index: 100;
+}
+.bottom-bar .count { font-size: 14px; }
+.bottom-bar button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn-export { background: #0f3460; color: #66b2ff; }
+.btn-install { background: #2e7d32; color: #fff; }
+</style>
+</head>
+<body>
+
+<h1>软件清单审查</h1>
+<div class="stats" id="stats"></div>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="搜索功能或名称..." oninput="filterAll()">
+</div>
+
+<div class="filters" id="filterBtns"></div>
+
+<div id="list"></div>
+
+<div class="bottom-bar">
+  <span class="count" id="selectedCount">已选 0 个</span>
+  <div>
+    <button class="btn-export" onclick="exportSelected()">导出清单</button>
+    <button class="btn-install" onclick="generateNix()">生成 Nix 配置</button>
+  </div>
+</div>
+
+<script>
+const SOFTWARE = [
+  // 浏览器
+  {cat:"浏览器", win:"Thorium", nix:"thorium", desc:"高性能 Chromium 分支", status:"available", tags:"浏览器 网页"},
+  // 通讯（已装的不列）
+  // 远程控制
+  {cat:"远程控制", win:"向日葵/RayLink/AnyDesk/ToDesk", nix:"rustdesk", desc:"开源远程桌面，替代所有商业远程工具", status:"available", tags:"远程 控制 桌面"},
+  {cat:"远程控制", win:"Sunshine+Moonlight", nix:"sunshine", desc:"低延迟串流，平板操控主机", status:"available", tags:"远程 串流 游戏"},
+  // 效率
+  {cat:"效率工具", win:"CopyQ 剪贴板", nix:"copyq", desc:"跨平台剪贴板管理器", status:"available", tags:"剪贴板 复制 粘贴 效率"},
+  {cat:"效率工具", win:"Beeftext 文本替换", nix:"espanso", desc:"跨平台文本替换/快捷短语", status:"available", tags:"文本 替换 快捷 输入 效率"},
+  {cat:"效率工具", win:"Pomotroid 番茄钟", nix:"gnome-pomodoro", desc:"番茄工作法计时器", status:"available", tags:"番茄 计时 专注 效率"},
+  // 搜索
+  {cat:"搜索工具", win:"FluentSearch/FileLocator/MrOtter", nix:"fsearch", desc:"快速文件搜索（类似 Everything）", status:"available", tags:"搜索 文件 查找 everything"},
+  {cat:"搜索工具", win:"FileLocator Pro 全文搜索", nix:"recoll", desc:"全文内容搜索引擎", status:"available", tags:"搜索 全文 内容 文档"},
+  // 文件管理
+  {cat:"文件管理", win:"WizTree/TreeSize 磁盘占用", nix:"ncdu", desc:"终端磁盘占用分析", status:"available", tags:"磁盘 占用 大小 清理 空间"},
+  {cat:"文件管理", win:"WizTree 图形化", nix:"qdirstat", desc:"图形化磁盘占用分析（类似 WizTree）", status:"available", tags:"磁盘 占用 图形 可视化"},
+  {cat:"文件管理", win:"Advanced Renamer 批量重命名", nix:"krename", desc:"KDE 批量重命名工具", status:"available", tags:"重命名 批量 文件"},
+  {cat:"文件管理", win:"DiskGenius 磁盘管理", nix:"gparted", desc:"图形化磁盘分区管理", status:"available", tags:"磁盘 分区 格式化"},
+  {cat:"文件管理", win:"Duplicate Cleaner 重复文件", nix:"czkawka", desc:"多功能重复文件/图片查找", status:"available", tags:"重复 文件 清理 去重"},
+  // 下载
+  {cat:"下载工具", win:"4K Video Downloader/DownKyi/bilidown", nix:"yt-dlp", desc:"全能视频下载（YouTube/B站/抖音等）", status:"available", tags:"下载 视频 youtube bilibili b站"},
+  {cat:"下载工具", win:"Free Download Manager/迅雷", nix:"aria2", desc:"多线程下载器（命令行）", status:"available", tags:"下载 多线程 加速"},
+  {cat:"下载工具", win:"PDown/速盘 百度盘", nix:"rclone", desc:"网盘命令行工具（百度盘/Google Drive 等）", status:"installed", tags:"网盘 百度 下载 同步"},
+  // 媒体-图片
+  {cat:"图片工具", win:"FastStoneCapture 截图", nix:"flameshot", desc:"强大的截图标注工具", status:"available", tags:"截图 标注 图片"},
+  {cat:"图片工具", win:"PhotoZoom 无损放大", nix:"upscayl", desc:"AI 图片无损放大", status:"available", tags:"图片 放大 AI 超分辨率"},
+  {cat:"图片工具", win:"LICEcap GIF录制", nix:"peek", desc:"GIF 屏幕录制", status:"available", tags:"GIF 录制 屏幕"},
+  {cat:"图片工具", win:"GIMP 图片编辑", nix:"gimp", desc:"专业图片编辑（替代 Photoshop）", status:"available", tags:"图片 编辑 修图 PS"},
+  // 媒体-视频
+  {cat:"视频工具", win:"剪映/Filmora 视频编辑", nix:"kdenlive", desc:"KDE 专业视频编辑器", status:"available", tags:"视频 编辑 剪辑 剪映"},
+  {cat:"视频工具", win:"FormatFactory 格式转换", nix:"handbrake", desc:"视频格式转换和压缩", status:"available", tags:"视频 转换 格式 压缩"},
+  {cat:"视频工具", win:"KMPlayer/MPC-HC 播放器", nix:"mpv", desc:"轻量高性能视频播放器", status:"available", tags:"视频 播放 播放器"},
+  {cat:"视频工具", win:"VLC 播放器", nix:"vlc", desc:"万能媒体播放器", status:"available", tags:"视频 音频 播放"},
+  {cat:"视频工具", win:"Bandicam 录屏", nix:"obs-studio", desc:"专业录屏和直播", status:"available", tags:"录屏 直播 录制 OBS"},
+  // 媒体-音频
+  {cat:"音频工具", win:"Audacity 音频编辑", nix:"audacity", desc:"开源音频编辑器", status:"available", tags:"音频 编辑 录音 剪辑"},
+  {cat:"音频工具", win:"网易云音乐", nix:"yesplaymusic", desc:"第三方网易云播放器（更好看）", status:"available", tags:"音乐 网易云 播放"},
+  // PDF
+  {cat:"PDF工具", win:"ABBYY FineReader OCR", nix:"tesseract", desc:"OCR 文字识别引擎", status:"available", tags:"OCR 文字识别 扫描 PDF"},
+  // 开发
+  {cat:"开发工具", win:"FileZilla FTP", nix:"filezilla", desc:"图形化 FTP/SFTP 客户端", status:"available", tags:"FTP 上传 传输 服务器"},
+  {cat:"开发工具", win:"Fiddler 抓包", nix:"mitmproxy", desc:"HTTP 抓包调试工具", status:"available", tags:"抓包 HTTP 调试 网络"},
+  {cat:"开发工具", win:"Fiddler 图形化", nix:"wireshark", desc:"网络协议分析器", status:"available", tags:"抓包 网络 协议 分析"},
+  // 系统
+  {cat:"系统工具", win:"HD Tune 硬盘检测", nix:"smartmontools", desc:"硬盘 SMART 健康检测", status:"available", tags:"硬盘 健康 检测 SMART"},
+  {cat:"系统工具", win:"Autoruns 自启管理", nix:"stacer", desc:"Linux 系统优化和监控", status:"available", tags:"系统 优化 监控 自启动"},
+  // 手机
+  {cat:"手机工具", win:"MuMu/雷电 安卓模拟器", nix:"waydroid", desc:"Linux 原生安卓容器", status:"available", tags:"安卓 模拟器 手机 APP"},
+  // 自动化
+  {cat:"自动化", win:"AutoHotkey", nix:"xdotool", desc:"X11 自动化工具（模拟键鼠）", status:"available", tags:"自动化 键盘 鼠标 脚本 宏"},
+];
+
+// 所有分类
+const categories = [...new Set(SOFTWARE.map(s => s.cat))];
+const selected = new Set();
+
+// 渲染筛选按钮
+const filterDiv = document.getElementById('filterBtns');
+filterDiv.innerHTML = '<button class="filter-btn active" data-cat="all" onclick="setFilter(\'all\',this)">全部</button>' +
+  categories.map(c => `<button class="filter-btn" data-cat="${c}" onclick="setFilter('${c}',this)">${c}</button>`).join('');
+
+let currentFilter = 'all';
+
+function setFilter(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterAll();
+}
+
+function filterAll() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.category').forEach(catDiv => {
+    let hasVisible = false;
+    catDiv.querySelectorAll('.item').forEach(item => {
+      const matchCat = currentFilter === 'all' || item.dataset.cat === currentFilter;
+      const matchQuery = !query || item.dataset.search.includes(query);
+      const show = matchCat && matchQuery;
+      item.classList.toggle('hidden', !show);
+      if (show) hasVisible = true;
+    });
+    catDiv.classList.toggle('hidden', !hasVisible);
+  });
+}
+
+function toggleItem(nix) {
+  if (selected.has(nix)) selected.delete(nix);
+  else selected.add(nix);
+  document.querySelector(`[data-nix="${nix}"]`).classList.toggle('selected');
+  document.getElementById('selectedCount').textContent = `已选 ${selected.size} 个`;
+}
+
+function exportSelected() {
+  const items = SOFTWARE.filter(s => selected.has(s.nix));
+  const text = items.map(s => `${s.nix}  # ${s.win} → ${s.desc}`).join('\n');
+  navigator.clipboard.writeText(text);
+  alert(`已复制 ${items.length} 个软件到剪贴板`);
+}
+
+function generateNix() {
+  const items = SOFTWARE.filter(s => selected.has(s.nix));
+  const nix = `# 新增软件（审查通过）\nenvironment.systemPackages = with pkgs; [\n${items.map(s => `  ${s.nix}  # ${s.desc}`).join('\n')}\n];`;
+  navigator.clipboard.writeText(nix);
+  alert(`Nix 配置已复制到剪贴板（${items.length} 个包）\n粘贴到 configuration.nix 即可`);
+}
+
+// 渲染列表
+const listDiv = document.getElementById('list');
+const grouped = {};
+SOFTWARE.forEach(s => {
+  if (!grouped[s.cat]) grouped[s.cat] = [];
+  grouped[s.cat].push(s);
+});
+
+for (const [cat, items] of Object.entries(grouped)) {
+  const catDiv = document.createElement('div');
+  catDiv.className = 'category';
+  catDiv.innerHTML = `<div class="cat-header">${cat} (${items.length})</div>` +
+    items.map(s => {
+      const statusClass = s.status === 'installed' ? 'installed' : s.status === 'available' ? 'available' : 'none';
+      const statusText = s.status === 'installed' ? '已装' : s.status === 'available' ? '可装' : '无替代';
+      return `<div class="item" data-nix="${s.nix}" data-cat="${s.cat}" data-search="${(s.win + ' ' + s.nix + ' ' + s.desc + ' ' + s.tags).toLowerCase()}" onclick="toggleItem('${s.nix}')">
+        <div class="check">✓</div>
+        <div class="info">
+          <div class="nix-name">${s.nix}</div>
+          <div class="win-name">替代: ${s.win}</div>
+          <div class="desc">${s.desc}</div>
+        </div>
+        <span class="status ${statusClass}">${statusText}</span>
+      </div>`;
+    }).join('');
+  listDiv.appendChild(catDiv);
+}
+
+document.getElementById('stats').textContent =
+  `共 ${SOFTWARE.length} 个软件 | ${SOFTWARE.filter(s=>s.status==='installed').length} 已装 | ${SOFTWARE.filter(s=>s.status==='available').length} 可装`;
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 待办</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  background: rgba(20, 20, 30, 0.88);
+  color: #cdd6f4;
+  padding: 12px;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-app-region: drag;
+  border-radius: 12px;
+}
+h1 {
+  font-size: 14px;
+  color: #89b4fa;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+h1 .dot { width: 8px; height: 8px; background: #a6e3a1; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.section { margin-bottom: 12px; }
+.section-title {
+  font-size: 11px;
+  color: #f9e2af;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.task {
+  font-size: 12px;
+  padding: 4px 8px;
+  margin-bottom: 3px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.4;
+  -webkit-app-region: no-drag;
+}
+.task:hover { background: rgba(255,255,255,0.1); }
+.task .icon { flex-shrink: 0; margin-top: 2px; }
+.task.doing .icon { color: #f9e2af; }
+.task.todo .icon { color: #6c7086; }
+.task.done .icon { color: #a6e3a1; }
+.task.done .text { text-decoration: line-through; color: #585b70; }
+.task .text b { color: #cba6f7; font-weight: 600; }
+.refresh-time {
+  font-size: 10px;
+  color: #585b70;
+  text-align: right;
+  margin-top: 8px;
+}
+.empty { font-size: 12px; color: #585b70; text-align: center; padding: 20px; }
+</style>
+</head>
+<body>
+<h1><span class="dot"></span>Claude 待办任务</h1>
+<div id="content"><div class="empty">加载中...</div></div>
+<div class="refresh-time" id="time"></div>
+
+<script>
+const TASKS_URL = '/todo-data';
+const FALLBACK_FILE = `
+## 进行中
+- [ ] 安装 AI CLI 工具
+- [ ] 安装 Claude Relay Service
+
+## 待做
+- [ ] 配置荷兰 VPS
+- [ ] Windows 主机联动
+- [ ] COSMIC 桌面安装
+`;
+
+function parseTasks(md) {
+  const sections = [];
+  let current = null;
+  for (const line of md.split('\n')) {
+    const hMatch = line.match(/^##\s+(.+)/);
+    if (hMatch) {
+      current = { title: hMatch[1], tasks: [] };
+      sections.push(current);
+      continue;
+    }
+    if (!current) continue;
+    const taskMatch = line.match(/^-\s+\[([ x])\]\s+\*?\*?(.+?)\*?\*?\s*(?:—|$)(.*)/);
+    if (taskMatch) {
+      const done = taskMatch[1] === 'x';
+      const name = taskMatch[2].replace(/\*\*/g, '').trim();
+      const desc = taskMatch[3] ? taskMatch[3].trim() : '';
+      current.tasks.push({ done, name, desc });
+    }
+  }
+  return sections;
+}
+
+function render(sections) {
+  const el = document.getElementById('content');
+  if (!sections.length) { el.innerHTML = '<div class="empty">暂无任务</div>'; return; }
+
+  let html = '';
+  for (const sec of sections) {
+    if (!sec.tasks.length) continue;
+    // 跳过已完成的部分
+    if (sec.title.includes('已完成')) continue;
+
+    const isDoing = sec.title.includes('进行中');
+    html += `<div class="section"><div class="section-title">${sec.title}</div>`;
+    for (const t of sec.tasks) {
+      const cls = t.done ? 'done' : (isDoing ? 'doing' : 'todo');
+      const icon = t.done ? '&#10003;' : (isDoing ? '&#9654;' : '&#9675;');
+      html += `<div class="task ${cls}">
+        <span class="icon">${icon}</span>
+        <span class="text"><b>${t.name}</b>${t.desc ? ' — ' + t.desc : ''}</span>
+      </div>`;
+    }
+    html += '</div>';
+  }
+  el.innerHTML = html || '<div class="empty">全部完成！</div>';
+}
+
+async function refresh() {
+  try {
+    const resp = await fetch(TASKS_URL);
+    if (resp.ok) {
+      const md = await resp.text();
+      render(parseTasks(md));
+    } else {
+      throw new Error('fetch failed');
+    }
+  } catch {
+    // 回退：尝试读内嵌数据
+    render(parseTasks(FALLBACK_FILE));
+  }
+  document.getElementById('time').textContent = '更新: ' + new Date().toLocaleTimeString('zh-CN');
+}
+
+refresh();
+setInterval(refresh, 30000); // 30秒刷新
+</script>
+</body>
+</html>

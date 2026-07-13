@@ -1,0 +1,12 @@
+[Unit]
+Description=opencode session guard — auto memory sync + context save
+Documentation=https://github.com/anomalyco/opencode
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/session-guard.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

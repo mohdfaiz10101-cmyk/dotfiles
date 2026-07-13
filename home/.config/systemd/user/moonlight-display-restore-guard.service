@@ -1,0 +1,6 @@
+[Unit]
+Description=Restore desktop display mode when Moonlight stream is inactive
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/moonlight-display-restore-guard

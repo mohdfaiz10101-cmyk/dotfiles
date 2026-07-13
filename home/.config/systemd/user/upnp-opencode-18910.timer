@@ -1,0 +1,10 @@
+[Unit]
+Description=UPnP opencode 18910 映射保活定时器
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

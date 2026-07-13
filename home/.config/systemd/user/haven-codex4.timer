@@ -1,0 +1,9 @@
+[Unit]
+Description=Ensure Fedora Codex 4 tmux session exists
+
+[Timer]
+OnBootSec=15
+OnUnitActiveSec=30
+
+[Install]
+WantedBy=timers.target

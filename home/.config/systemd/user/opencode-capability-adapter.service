@@ -1,0 +1,8 @@
+[Unit]
+Description=Refresh OpenCode capability registry after config or runbook changes
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-knowledge-maintainer.py
+WorkingDirectory=/var/home/charlie
+

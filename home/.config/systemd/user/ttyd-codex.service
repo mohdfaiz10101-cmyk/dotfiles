@@ -1,0 +1,20 @@
+[Unit]
+Description=Codex 1 WebTTY device gate (:19891)
+After=network-online.target ttyd-codex-backend.service
+Wants=ttyd-codex-backend.service
+
+[Service]
+Type=simple
+Environment=TTYD_GATE_PORT=19000
+Environment=TTYD_TARGET_PORT=19881
+Environment=TTYD_TARGET_AUTH=codex:w19900422
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=DEVICE_COOKIE_NAME=duckdns_codex1_device
+Environment=CODEX_ACCOUNT_ID=1
+Environment="CODEX_ACCOUNT_LABEL=Codex 1"
+ExecStart=/var/home/charlie/.local/bin/ttyd-device-gate-proxy
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Ensure Fedora Codex 3 tmux session exists
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/haven-codex3-ensure
+TimeoutStartSec=20
+LimitNPROC=8192
+KillMode=process

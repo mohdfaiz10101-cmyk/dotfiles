@@ -1,0 +1,7 @@
+[Unit]
+Description=Detect stuck opencode sessions
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-stuck-detect
+WorkingDirectory=%h

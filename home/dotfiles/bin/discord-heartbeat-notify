@@ -1,0 +1,33 @@
+#!/home/charlie/bin/.notify-venv/bin/python3
+"""Discord heartbeat 通知 wrapper
+用法: echo "检查结果" | discord-heartbeat-notify <channel> <level> <title>
+自动解析结果中的 [FAIL]/[OK] 决定级别
+"""
+import subprocess, sys, os, re
+
+channel = sys.argv[1] if len(sys.argv) > 1 else "alerts"
+level = sys.argv[2] if len(sys.argv) > 2 else None
+title = sys.argv[3] if len(sys.argv) > 3 else ""
+
+content = sys.stdin.read().strip()
+if not content:
+    sys.exit(0)
+
+# Auto-detect level from content if not specified
+if not level:
+    if "[FAIL]" in content or "CRITICAL" in content.upper():
+        level = "P0"
+    elif "[WARN]" in content or "WARNING" in content.upper():
+        level = "P1"
+    else:
+        level = "P2"
+
+env = os.environ.copy()
+env["HTTPS_PROXY"] = "http://127.0.0.1:7890"
+
+result = subprocess.run(
+    ["/home/charlie/bin/.notify-venv/bin/python3", "/home/charlie/bin/notify-discord.py", level, title, f"#{channel}"],
+    input=content, capture_output=True, text=True, env=env, timeout=30
+)
+print(result.stdout.strip() if result.stdout else result.stderr.strip())
+sys.exit(result.returncode)

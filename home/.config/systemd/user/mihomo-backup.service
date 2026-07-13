@@ -1,0 +1,7 @@
+[Unit]
+Description=Mihomo config incremental backup
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/mihomo-guardian --backup
+Environment=HOME=%h

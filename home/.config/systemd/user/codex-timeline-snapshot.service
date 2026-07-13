@@ -1,0 +1,8 @@
+[Unit]
+Description=Snapshot Codex tmux timelines
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/codex-timeline-snapshot
+TimeoutStartSec=25
+LimitNPROC=8192

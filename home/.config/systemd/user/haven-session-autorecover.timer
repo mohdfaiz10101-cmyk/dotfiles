@@ -1,0 +1,11 @@
+[Unit]
+Description=Check Haven Codex SSH session every 30 seconds
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=30s
+AccuracySec=5s
+Unit=haven-session-autorecover.service
+
+[Install]
+WantedBy=timers.target

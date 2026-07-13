@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>合同助手 · Charlie Hub</title>
+<style>
+:root{--bg:#101211;--panel:#171b19;--panel2:#202622;--line:#303832;--text:#edf2ee;--muted:#9daaa2;--good:#79d38b;--warn:#e6bf69;--info:#77c7d8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font:14px system-ui,"Noto Sans CJK SC",sans-serif}
+header{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:#111412;position:sticky;top:0}
+h1{font-size:18px;margin:0}main{max-width:980px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+section{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:14px;min-width:0}.wide{grid-column:1/-1}
+h2{font-size:15px;margin:0 0 10px}.muted{color:var(--muted);font-size:12px;line-height:1.5}
+textarea,input{width:100%;border:1px solid var(--line);border-radius:7px;background:#111512;color:var(--text);padding:10px;font:14px system-ui,sans-serif}
+textarea{min-height:120px;resize:vertical}input[type=file]{padding:12px;background:var(--panel2)}
+button,a.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:7px;padding:9px 12px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+button:hover,a.btn:hover{border-color:var(--info)}button.primary{background:#1f342e;border-color:#2e6759}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:110px 1fr;gap:6px;border-bottom:1px solid var(--line);padding:7px 0}.kv b{color:var(--muted);font-weight:500}
+pre{white-space:pre-wrap;overflow:auto;max-height:300px;background:#111512;border:1px solid var(--line);border-radius:7px;padding:10px;color:var(--muted)}
+.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px 8px;color:var(--muted);font-size:12px}.warn{color:var(--warn)}.good{color:var(--good)}
+@media(max-width:760px){main{grid-template-columns:1fr;padding:10px}.kv{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>合同助手</h1>
+  <span class="pill">截图/图片 + 一句话 -> Excel + 合同草稿</span>
+  <a class="btn" href="/workspace" style="margin-left:auto">工作区</a>
+</header>
+<main>
+  <section>
+    <h2>材料</h2>
+    <input id="files" type="file" multiple accept="image/*,.pdf">
+    <p class="muted">可以上传截图、照片、报价单截图或 PDF。第一版优先识别图片，PDF 会作为附件记录并提醒确认。</p>
+  </section>
+  <section>
+    <h2>你的意图</h2>
+    <textarea id="intent" placeholder="例：做一份采购合同，金额 38000，甲方是我公司，付款 30% 预付 70% 验收后付。"></textarea>
+    <div class="row" style="margin-top:10px">
+      <button class="primary" id="submit" type="button">生成</button>
+      <span class="muted" id="state">等待输入</span>
+    </div>
+  </section>
+  <section class="wide">
+    <h2>结果</h2>
+    <div id="summary" class="muted">生成后这里会显示关键字段、风险提示和下载链接。</div>
+  </section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(data){
+  const f=data.fields||{};
+  const kv=Object.entries({'合同类型':f.contract_type,'甲方':f.party_a,'乙方':f.party_b,'项目/标的':f.subject,'金额':f.amount,'税率':f.tax_rate,'付款方式':f.payment_terms,'交付时间':f.delivery_date})
+    .map(([k,v])=>`<div class="kv"><b>${esc(k)}</b><span>${esc(v||'待确认')}</span></div>`).join('');
+  const risks=(data.risk_flags||[]).map(x=>`<li class="warn">${esc(x)}</li>`).join('');
+  const qs=(data.questions||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+  $('summary').innerHTML=`<p class="${data.status==='model'?'good':'warn'}">状态：${esc(data.status)}</p>${kv}
+  <h2 style="margin-top:14px">下载</h2><div class="row">
+    <a class="btn" href="${data.downloads.xlsx}">Excel 明细</a>
+    <a class="btn" href="${data.downloads.draft}">合同草稿</a>
+    <a class="btn" href="${data.downloads.json}">JSON</a>
+  </div><h2 style="margin-top:14px">待确认</h2><ul>${qs||'<li>暂无</li>'}</ul>
+  <h2 style="margin-top:14px">风险提示</h2><ul>${risks||'<li>金额、主体和条款仍需人工复核</li>'}</ul>`;
+}
+$('submit').onclick=async()=>{
+  const fd=new FormData();
+  fd.append('intent',$('intent').value);
+  for(const f of $('files').files) fd.append('files',f);
+  $('state').textContent='生成中...';
+  $('submit').disabled=true;
+  try{
+    const resp=await fetch('/api/contracts/draft',{method:'POST',body:fd});
+    const data=await resp.json();
+    if(!resp.ok||!data.ok) throw new Error(data.error||resp.statusText);
+    render(data);
+    $('state').textContent='完成';
+  }catch(e){
+    $('summary').innerHTML=`<pre>${esc(e.message||e)}</pre>`;
+    $('state').textContent='失败';
+  }finally{
+    $('submit').disabled=false;
+  }
+};
+</script>
+</body>
+</html>

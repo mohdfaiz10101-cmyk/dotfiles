@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto disk cleanup (Sun 10:00)
+
+[Timer]
+OnCalendar=Sun *-*-* 10:00:00
+Persistent=true
+RandomizedDelaySec=15min
+
+[Install]
+WantedBy=timers.target

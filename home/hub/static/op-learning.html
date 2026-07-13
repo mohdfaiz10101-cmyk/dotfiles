@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OP 学习中枢 · Charlie Hub</title>
+<style>
+:root {
+  --bg:#111412; --panel:#171c19; --panel2:#202720; --line:#334038; --text:#edf3ee; --muted:#a0aea5;
+  --good:#79d38b; --warn:#e6bf69; --bad:#ee7c7c; --info:#7fcfe0; --accent:#d7f4dd;
+}
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; color:var(--text); background:var(--bg); font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif; }
+header { position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); background:rgba(17,20,18,.96); backdrop-filter:blur(10px); flex-wrap:wrap; }
+h1 { margin:0; font-size:18px; letter-spacing:0; }
+nav { display:flex; gap:6px; flex-wrap:wrap; margin-left:auto; }
+a.btn, button.btn, button.mini { border:1px solid var(--line); background:var(--panel2); color:var(--text); border-radius:6px; cursor:pointer; text-decoration:none; }
+a.btn, button.btn { padding:8px 11px; font-size:12px; }
+button.mini { padding:6px 8px; font-size:11px; }
+a.btn:hover, button:hover { border-color:var(--info); color:#dcf8ff; }
+main { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr); gap:14px; padding:14px; }
+section { min-width:0; border:1px solid var(--line); border-radius:8px; background:var(--panel); padding:14px; }
+.wide { grid-column:1 / -1; }
+.head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.head h2 { margin:0; font-size:15px; }
+.meta, .muted { color:var(--muted); font-size:12px; line-height:1.45; }
+.pill { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:3px 8px; color:var(--muted); font-size:11px; white-space:nowrap; }
+.dot { width:8px; height:8px; border-radius:50%; background:var(--muted); }
+.ok { background:var(--good); } .warn { background:var(--warn); } .bad { background:var(--bad); }
+.metrics { display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:8px; }
+.metric { border:1px solid var(--line); border-radius:7px; padding:10px; background:var(--panel2); min-height:68px; }
+.metric .label { color:var(--muted); font-size:11px; }
+.metric .value { margin-top:6px; font-size:19px; font-weight:900; }
+.phases { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px; }
+.phase { border:1px solid var(--line); border-radius:7px; background:var(--panel2); padding:12px; }
+.phase h3 { margin:0 0 6px; font-size:14px; }
+.phase p { margin:0 0 8px; color:var(--muted); font-size:12px; line-height:1.45; }
+.phase ol { margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.55; }
+.review-list, .side-list { display:flex; flex-direction:column; gap:8px; max-height:660px; overflow:auto; }
+.review, .item { border:1px solid var(--line); border-radius:7px; background:var(--panel2); padding:10px; }
+.review-top { display:grid; grid-template-columns:auto 1fr auto; gap:8px; align-items:center; }
+.verdict { font-weight:900; font-size:12px; border-radius:999px; padding:3px 8px; border:1px solid var(--line); }
+.verdict.FAIL { color:#ffdada; border-color:#7a3d3d; }
+.verdict.UNCLEAR { color:#fff2c7; border-color:#75622d; }
+.verdict.PASS { color:#d8ffe0; border-color:#3c7048; }
+.task { font-size:13px; font-weight:800; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.score { color:var(--muted); font-size:12px; }
+.detail { margin-top:8px; color:var(--muted); font-size:12px; line-height:1.5; word-break:break-word; }
+.actions { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
+textarea { width:100%; min-height:58px; margin-top:8px; resize:vertical; border:1px solid var(--line); border-radius:7px; background:#111512; color:var(--text); padding:8px; font:12px system-ui,sans-serif; }
+.tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.tab { border:1px solid var(--line); border-radius:999px; padding:5px 9px; background:transparent; color:var(--muted); cursor:pointer; font-size:11px; }
+.tab.active { background:var(--panel2); color:var(--text); border-color:var(--info); }
+pre { margin:0; white-space:pre-wrap; color:var(--muted); font:11px ui-monospace,SFMono-Regular,Consolas,monospace; line-height:1.45; }
+.empty { color:var(--muted); font-size:12px; padding:12px; border:1px dashed var(--line); border-radius:7px; }
+@media (max-width: 980px) {
+  main { grid-template-columns:1fr; padding:10px; }
+  nav { width:100%; margin-left:0; }
+  .metrics { grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .phases { grid-template-columns:1fr; }
+  .review-top { grid-template-columns:1fr; }
+  .task { white-space:normal; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>OP 学习中枢</h1>
+  <span class="meta" id="updated">等待同步</span>
+  <nav>
+    <a class="btn" href="/workspace">工作区</a>
+    <a class="btn" href="/kanban">任务看板</a>
+    <a class="btn" href="/go/appsmith">Appsmith</a>
+    <button class="btn" type="button" id="refresh">刷新</button>
+  </nav>
+</header>
+
+<main>
+  <section class="wide">
+    <div class="head">
+      <h2>闭环状态</h2>
+      <span class="pill"><span class="dot" id="state-dot"></span><span id="state-text">loading</span></span>
+    </div>
+    <div class="metrics" id="metrics"></div>
+  </section>
+
+  <section class="wide">
+    <div class="head">
+      <h2>任务前 / 任务中 / 任务后</h2>
+      <span class="pill" id="plan-title">OP 任务闭环</span>
+    </div>
+    <div class="phases" id="phases"></div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>复盘待决策</h2>
+      <span class="pill" id="review-count">0 reviews</span>
+    </div>
+    <div class="review-list" id="reviews"></div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2>学习输入</h2>
+      <span class="pill" id="side-count">候选知识 / 事件</span>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="candidates">候选知识</button>
+      <button class="tab" data-tab="accuracy">召回准确度</button>
+      <button class="tab" data-tab="corrections">修正候选</button>
+      <button class="tab" data-tab="events">生命周期事件</button>
+      <button class="tab" data-tab="decisions">我的决策</button>
+    </div>
+    <div class="side-list" id="side"></div>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let snapshot = null;
+let activeTab = 'candidates';
+
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function timeText(value) {
+  if (!value) return '';
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? value : d.toLocaleString('zh-CN', {hour12:false});
+}
+function metric(label, value, sub) {
+  return `<div class="metric"><div class="label">${esc(label)}</div><div class="value">${esc(value)}</div><div class="meta">${esc(sub || '')}</div></div>`;
+}
+function renderMetrics(data) {
+  const s = data.summary || {};
+  const a = data.accuracy_summary || {};
+  $('metrics').innerHTML = [
+    metric('待决策', s.pending_decisions ?? 0, 'FAIL / UNCLEAR'),
+    metric('失败', s.fail ?? 0, 'review gate'),
+    metric('召回准确度', a.average_score ?? '—', `${a.pass ?? 0} pass · ${a.review ?? 0} review · ${a.fix ?? 0} fix`),
+    metric('修正候选', a.pending_corrections ?? 0, '待批准应用'),
+    metric('候选知识', s.knowledge_candidates ?? 0, '待筛选'),
+    metric('延期验证', s.deferred_verify ?? 0, 'session busy'),
+  ].join('');
+  $('state-dot').className = `dot ${(s.pending_decisions || a.pending_corrections) ? 'warn' : 'ok'}`;
+  $('state-text').textContent = data.status?.ok === false ? 'lifecycle error' : 'lifecycle active';
+}
+function renderPlan(data) {
+  const plan = data.plan || {};
+  $('plan-title').textContent = plan.title || 'OP 任务闭环';
+  $('phases').innerHTML = (plan.phases || []).map(phase => `
+    <div class="phase">
+      <h3>${esc(phase.name)}</h3>
+      <p>${esc(phase.goal)}</p>
+      <ol>${(phase.steps || []).map(step => `<li>${esc(step)}</li>`).join('')}</ol>
+    </div>
+  `).join('');
+}
+function reviewHtml(item) {
+  const decision = item.decision ? `已记录：${item.decision.decision}` : '待处理';
+  return `
+    <div class="review" data-id="${esc(item.id)}">
+      <div class="review-top">
+        <span class="verdict ${esc(item.verdict)}">${esc(item.verdict || 'UNKNOWN')}</span>
+        <div class="task">${esc(item.task_preview || item.session_id || item.id)}</div>
+        <div class="score">score ${esc(item.score ?? '—')}</div>
+      </div>
+      <div class="detail">${esc(item.gap || item.evidence || '')}</div>
+      <div class="meta">tools ${esc(item.tools ?? 0)} · mutations ${esc(item.mutations ?? 0)} · failures ${esc(item.failures ?? 0)} · ${esc(timeText(item.ts))} · ${esc(decision)}</div>
+      <textarea placeholder="写你的评论：为什么失败、以后怎么改、是否应该升级为规则/黑名单"></textarea>
+      <div class="actions">
+        <button class="mini" data-decision="promote_rule">确认规则</button>
+        <button class="mini" data-decision="promote_blacklist">进黑名单</button>
+        <button class="mini" data-decision="retry">重试</button>
+        <button class="mini" data-decision="resolved">已解决</button>
+        <button class="mini" data-decision="reject">驳回</button>
+      </div>
+    </div>
+  `;
+}
+function renderReviews(data) {
+  const reviews = data.reviews || [];
+  $('review-count').textContent = `${reviews.length} reviews`;
+  $('reviews').innerHTML = reviews.length ? reviews.map(reviewHtml).join('') : '<div class="empty">暂无 review_gate 记录</div>';
+}
+function sideRows() {
+  if (!snapshot) return [];
+  if (activeTab === 'events') return snapshot.events || [];
+  if (activeTab === 'decisions') return snapshot.decisions || [];
+  if (activeTab === 'accuracy') return snapshot.accuracy_reports || [];
+  if (activeTab === 'corrections') return snapshot.correction_candidates || [];
+  return snapshot.knowledge_candidates || [];
+}
+function renderSide() {
+  const rows = sideRows();
+  $('side-count').textContent = `${rows.length} items`;
+  $('side').innerHTML = rows.length ? rows.map(row => `
+    <div class="item">
+      <div class="meta">${esc(timeText(row.ts))} · ${esc(row.kind || row.type || row.decision || row.verdict || 'item')}</div>
+      <pre>${esc(JSON.stringify(row, null, 2))}</pre>
+    </div>
+  `).join('') : '<div class="empty">暂无数据</div>';
+}
+async function sendDecision(reviewEl, decision) {
+  const id = reviewEl.dataset.id;
+  const note = reviewEl.querySelector('textarea')?.value || '';
+  const res = await fetch(`/api/op/learning/reviews/${encodeURIComponent(id)}/decision`, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({decision, note})
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    alert(text.slice(0, 500));
+    return;
+  }
+  await load();
+}
+async function load() {
+  const res = await fetch('/api/op/learning/dashboard?limit=80', {cache:'no-store'});
+  snapshot = await res.json();
+  $('updated').textContent = `同步 ${timeText(snapshot.generated_at)}`;
+  renderMetrics(snapshot);
+  renderPlan(snapshot);
+  renderReviews(snapshot);
+  renderSide();
+}
+document.addEventListener('click', event => {
+  const decision = event.target?.dataset?.decision;
+  if (decision) {
+    const review = event.target.closest('.review');
+    if (review) sendDecision(review, decision);
+  }
+  const tab = event.target?.dataset?.tab;
+  if (tab) {
+    activeTab = tab;
+    document.querySelectorAll('.tab').forEach(el => el.classList.toggle('active', el.dataset.tab === tab));
+    renderSide();
+  }
+});
+$('refresh').addEventListener('click', load);
+load().catch(err => {
+  $('state-text').textContent = err.message || 'load error';
+  $('state-dot').className = 'dot bad';
+});
+</script>
+</body>
+</html>

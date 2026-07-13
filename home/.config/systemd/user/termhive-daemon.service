@@ -1,0 +1,25 @@
+[Unit]
+Description=TermHive agent runtime daemon
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/termhive
+Environment=HOME=/var/home/charlie
+Environment=LANG=C.UTF-8
+Environment=LC_ALL=C.UTF-8
+Environment=TERMHIVE_DAEMON_PORT=3210
+Environment=PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/var/home/charlie/.nvm/versions/node/v22.22.3/bin/node /var/home/charlie/termhive/dist/daemon/daemon.js
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+KillMode=control-group
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

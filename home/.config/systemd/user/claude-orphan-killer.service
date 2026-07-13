@@ -1,0 +1,7 @@
+[Unit]
+Description=Kill orphaned Claude processes
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash %h/.local/bin/claude-orphan-killer.sh
+Environment=HOME=%h

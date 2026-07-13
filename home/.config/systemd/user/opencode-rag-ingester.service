@@ -1,0 +1,7 @@
+[Unit]
+Description=Ingest OpenCode lifecycle RAG candidates into local recall index
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-lifecycle.py ingest-rag
+WorkingDirectory=/var/home/charlie

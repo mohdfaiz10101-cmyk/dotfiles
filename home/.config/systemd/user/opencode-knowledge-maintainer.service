@@ -1,0 +1,8 @@
+[Unit]
+Description=Curate OpenCode memory into runbook knowledge
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-knowledge-maintainer.py
+WorkingDirectory=/var/home/charlie
+

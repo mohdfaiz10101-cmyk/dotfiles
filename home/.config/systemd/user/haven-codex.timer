@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep Fedora Codex tmux session available
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=30s
+AccuracySec=5s
+Unit=haven-codex.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Audit OpenCode crash/stop signatures and feed lifecycle corrections
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-crash-auditor
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=6
+LimitNPROC=8192

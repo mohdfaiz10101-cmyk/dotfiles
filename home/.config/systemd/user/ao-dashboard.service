@@ -1,0 +1,14 @@
+[Unit]
+Description=Composio AO Dashboard (:18082)
+After=network.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/usr/bin:/bin
+ExecStart=/var/home/charlie/.nvm/versions/node/v22.22.3/bin/ao dashboard --port 18082 --no-open
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

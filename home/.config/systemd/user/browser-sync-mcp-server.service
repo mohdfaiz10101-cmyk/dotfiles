@@ -1,0 +1,13 @@
+[Unit]
+Description=Browser Sync MCP Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/dotfiles/launcher/browser-sync-mcp-server.py
+Restart=on-failure
+RestartSec=5
+Environment=HOME=/var/home/charlie
+
+[Install]
+WantedBy=default.target

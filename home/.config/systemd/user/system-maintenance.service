@@ -1,0 +1,6 @@
+[Unit]
+Description=System maintenance — health check & auto-fix
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/system-maintenance.sh

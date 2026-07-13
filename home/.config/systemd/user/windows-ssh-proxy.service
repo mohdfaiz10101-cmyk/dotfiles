@@ -1,0 +1,9 @@
+[Unit]
+Description=Proxy DuckDNS SSH traffic to Windows over Tailscale
+After=network-online.target
+Requires=windows-ssh-proxy.socket
+
+[Service]
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd 100.91.93.99:22
+Restart=on-failure
+RestartSec=3

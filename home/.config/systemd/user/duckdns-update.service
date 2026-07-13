@@ -1,0 +1,13 @@
+[Unit]
+Description=DuckDNS DDNS 动态更新 (WAN IP 变更检测)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wan-ip-monitor.sh
+Nice=19
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=default.target

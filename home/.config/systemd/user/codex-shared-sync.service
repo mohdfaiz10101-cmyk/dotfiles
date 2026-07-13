@@ -1,0 +1,7 @@
+[Unit]
+Description=Sync shared Codex rules/config from primary account to Codex 2
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/codex-shared-sync --apply
+WorkingDirectory=/var/home/charlie

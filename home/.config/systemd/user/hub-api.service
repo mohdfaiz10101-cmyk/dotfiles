@@ -1,0 +1,13 @@
+[Unit]
+Description=Charlie Hub API (Dashboard & Kanban)
+After=default.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/hub
+ExecStart=python3 hub-api.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

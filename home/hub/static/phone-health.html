@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手机健康</title>
+<style>
+:root {
+  --bg:#0f1720; --bg2:#111827; --card:#17212b; --line:#263445; --text:#e5eef8; --muted:#8da2b8;
+  --green:#74d39a; --yellow:#f2c66d; --red:#f07f90; --blue:#7db7ff; --cyan:#6ed3de;
+  --purple:#c4a7e7; --orange:#fab387;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; color:var(--text); font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+  background: radial-gradient(circle at top right, rgba(125,183,255,.18), transparent 26%),
+              radial-gradient(circle at left center, rgba(110,211,222,.12), transparent 24%),
+              linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height:100vh;
+}
+.wrap { max-width:1400px; margin:0 auto; padding:20px; }
+.topbar { display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; }
+.title { display:flex; align-items:center; gap:12px; }
+.title h1 { margin:0; font-size:24px; }
+.dot { width:10px; height:10px; border-radius:50%; background:var(--green); box-shadow:0 0 18px rgba(116,211,154,.55); }
+.meta { color:var(--muted); font-size:12px; }
+.btn {
+  border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--text);
+  padding:8px 14px; border-radius:10px; text-decoration:none; font-size:13px; transition:.15s;
+}
+.btn:hover { border-color:var(--blue); color:var(--blue); }
+.card {
+  background:rgba(23,33,43,.88); border:1px solid rgba(255,255,255,.06); border-radius:16px;
+  padding:16px; box-shadow:0 12px 40px rgba(0,0,0,.15); backdrop-filter: blur(10px); margin-bottom:18px;
+}
+.card h2 { margin:0 0 12px; font-size:14px; color:var(--muted); font-weight:600; }
+.sysbar { display:flex; gap:16px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+.sysbar .score-badge {
+  display:flex; align-items:center; gap:10px; padding:8px 16px; border-radius:14px;
+  background:linear-gradient(135deg, rgba(125,183,255,.12), rgba(110,211,222,.06));
+  border:1px solid rgba(125,183,255,.15);
+}
+.sysbar .score-num { font-size:32px; font-weight:700; line-height:1; }
+.sysbar .score-grade { font-size:12px; color:var(--muted); }
+.sysmetric { display:flex; align-items:center; gap:6px; font-size:13px; }
+.sysmetric .label { color:var(--muted); }
+.sysmetric .value { font-weight:700; }
+.sysmetric .value.warn { color:var(--yellow); }
+.sysmetric .value.crit { color:var(--red); }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width: 900px) { .grid2 { grid-template-columns:1fr; } }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:600; font-size:12px; }
+tr:hover td { background:rgba(255,255,255,.02); }
+.bar-wrap { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.bar-label { width:120px; font-size:13px; color:var(--muted); }
+.bar-track { flex:1; height:10px; background:rgba(255,255,255,.06); border-radius:999px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:999px; transition: width .4s; }
+.bar-val { width:40px; font-size:12px; color:var(--muted); text-align:right; }
+.checklist { list-style:none; padding:0; margin:0; }
+.checklist li { padding:6px 0; font-size:13px; display:flex; align-items:center; gap:8px; }
+.checklist li::before { content:"☐"; color:var(--blue); font-size:16px; }
+.timeline { display:flex; flex-direction:column; gap:10px; }
+.timeline-item { display:flex; gap:12px; align-items:flex-start; }
+.timeline-dot { width:10px; height:10px; border-radius:50%; background:var(--blue); margin-top:5px; flex-shrink:0; }
+.timeline-content { font-size:13px; }
+.timeline-content .time { color:var(--muted); font-size:11px; }
+.loading { color:var(--muted); font-size:13px; padding:20px; }
+.error { color:var(--red); font-size:13px; padding:20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="title">
+      <div class="dot"></div>
+      <h1>📱 手机健康</h1>
+      <span class="meta" id="ts">加载中...</span>
+    </div>
+    <div class="actions">
+      <a class="btn" href="/ai-panel">← 返回 AI Panel</a>
+      <button class="btn" onclick="loadData()">刷新</button>
+    </div>
+  </div>
+
+  <div class="sysbar" id="score-bar"></div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>📊 系统指标</h2>
+      <div id="sys-metrics" class="loading">加载中...</div>
+    </div>
+    <div class="card">
+      <h2>🌡️ 温度</h2>
+      <div id="thermal-metrics" class="loading">加载中...</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📱 应用使用频率（近24小时）</h2>
+    <div id="app-usage" class="loading">加载中...</div>
+  </div>
+
+  <div class="card">
+    <h2>💾 存储</h2>
+    <div id="storage-metrics" class="loading">加载中...</div>
+  </div>
+
+  <div class="card">
+    <h2>🧠 内存与 Swap</h2>
+    <div id="mem-metrics" class="loading">加载中...</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 高 CPU 进程 Top 20</h2>
+    <div id="proc-metrics" class="loading">加载中...</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>✅ 维护清单</h2>
+      <ul class="checklist">
+        <li>清理微信缓存（MicroMsg 目录）</li>
+        <li>卸载未使用输入法（保留 1-2 个）</li>
+        <li>卸载重复浏览器（保留 1 个主力）</li>
+        <li>检查并清理僵尸进程</li>
+        <li>清理 /data/local/tmp 临时文件</li>
+        <li>清理 tombstones 目录</li>
+        <li>检查 Magisk 模块，禁用不需要的</li>
+        <li>检查 VPN 客户端，保留需要的</li>
+        <li>重启手机（清除临时状态）</li>
+        <li>备份重要数据到 NAS</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>📅 维护计划</h2>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><strong>每周</strong><div class="time">清理微信缓存 + 临时文件</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><strong>每两周</strong><div class="time">检查僵尸进程 + Magisk 模块状态</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><strong>每月</strong><div class="time">卸载未使用应用 + 清理存储</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><strong>每季度</strong><div class="time">重启手机 + 备份数据 + 系统更新检查</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PKG_NAMES = {
+  'com.tencent.mm': '微信', 'com.tencent.lolm': '英雄联盟手游', 'com.ss.android.ugc.aweme.mobile': '抖音',
+  'mark.via.gp': 'Via 浏览器', 'com.android.launcher': '系统桌面', 'bitpit.launcher': 'Niagara Launcher',
+  'ninja.sesame.app.edge': 'Edge 面板', 'com.tailscale.ipn': 'Tailscale',
+  'com.byyoung.setting': '设置', 'com.coloros.phonemanager': 'ColorOS 管家',
+  'com.oplus.nas': 'OPPO NAS', 'com.android.mms': '短信',
+  'com.google.android.gms': 'Google Play', 'com.microsoft.skydrive': 'OneDrive',
+  'com.android.chrome': 'Chrome',
+};
+
+function fmt(n) { return n == null ? '?' : n; }
+
+function scoreColor(s) {
+  if (s >= 80) return 'var(--green)';
+  if (s >= 60) return 'var(--yellow)';
+  return 'var(--red)';
+}
+
+function calcScore(data) {
+  let score = 70;
+  const b = data.battery || {};
+  const t = data.thermal || {};
+  const m = data.memory || {};
+  const s = data.storage || [];
+  const u = data.usage || [];
+  const p = data.top_processes || [];
+
+  const batteryPct = parseInt(b.level);
+  if (!isNaN(batteryPct)) score += batteryPct > 20 ? 5 : -10;
+
+  const maxTemp = Math.max(...Object.values(t).map(Number).filter(n => !isNaN(n)));
+  if (!isNaN(maxTemp)) score += maxTemp < 50 ? 5 : maxTemp < 70 ? 0 : -10;
+
+  const memTotal = parseInt(m.mem_total_kb) || 1;
+  const memAvail = parseInt(m.mem_available_kb) || 0;
+  const memPct = (1 - memAvail / memTotal) * 100;
+  score += memPct < 80 ? 5 : memPct < 90 ? 0 : -10;
+
+  const mainStore = s.find(x => x.mount === '/mnt/pass_through/11/emulated') || s[0];
+  if (mainStore) score += mainStore.pct < 70 ? 5 : mainStore.pct < 85 ? 0 : -5;
+
+  const lolm = u.find(x => x.package === 'com.tencent.lolm');
+  if (lolm && lolm.count > 50) score -= 5;
+
+  return Math.max(0, Math.min(100, score));
+}
+
+async function loadData() {
+  try {
+    const res = await fetch('/api/phone/snapshot', { cache: 'no-store' });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'API error');
+
+    document.getElementById('ts').textContent = '更新于 ' + new Date(data.ts).toLocaleString('zh-CN');
+
+    const score = calcScore(data);
+    document.getElementById('score-bar').innerHTML = `
+      <div class="score-badge">
+        <div class="score-num" style="color:${scoreColor(score)}">${score}</div>
+        <div class="score-grade">健康评分<br>0-100</div>
+      </div>
+      <div class="sysmetric"><span class="label">电池</span><span class="value">${fmt(data.battery?.level)}%</span></div>
+      <div class="sysmetric"><span class="label">最高温</span><span class="value ${(parseFloat(data.thermal?.max || 0) > 70) ? 'warn' : ''}">${fmt(data.thermal?.max ? data.thermal.max + '°C' : '?')}</span></div>
+      <div class="sysmetric"><span class="label">内存</span><span class="value">${fmt(data.memory?.mem_pct ? data.memory.mem_pct + '%' : '?')}</span></div>
+      <div class="sysmetric"><span class="label">存储</span><span class="value">${fmt(data.storage?.[0]?.pct ? data.storage[0].pct + '%' : '?')}</span></div>
+    `;
+
+    const b = data.battery || {};
+    document.getElementById('sys-metrics').innerHTML = `
+      <div class="bar-wrap"><div class="bar-label">电量</div><div class="bar-track"><div class="bar-fill" style="width:${b.level || 0}%;background:${(b.level && b.level < 20) ? 'var(--red)' : 'var(--green)'}"></div></div><div class="bar-val">${fmt(b.level)}%</div></div>
+      <div class="bar-wrap"><div class="bar-label">状态</div><div class="bar-val" style="width:auto;text-align:left">${fmt(b.status)}</div></div>
+      <div class="bar-wrap"><div class="bar-label">健康</div><div class="bar-val" style="width:auto;text-align:left">${fmt(b.health)}</div></div>
+      <div class="bar-wrap"><div class="bar-label">电压</div><div class="bar-val" style="width:auto;text-align:left">${fmt(b.voltage)}mV</div></div>
+    `;
+
+    const t = data.thermal || {};
+    const tKeys = Object.keys(t);
+    document.getElementById('thermal-metrics').innerHTML = tKeys.length ? tKeys.map(k => {
+      const v = parseFloat(t[k]);
+      const c = v > 70 ? 'var(--red)' : v > 50 ? 'var(--yellow)' : 'var(--green)';
+      return `<div class="bar-wrap"><div class="bar-label">${k}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.min(100, v / 1.2)}%;background:${c}"></div></div><div class="bar-val">${v.toFixed(1)}°C</div></div>`;
+    }).join('') : '<div class="loading">无数据</div>';
+
+    const apps = data.usage || [];
+    document.getElementById('app-usage').innerHTML = apps.length ? `
+      <table><thead><tr><th>应用</th><th>包名</th><th>启动次数</th></tr></thead>
+      <tbody>${apps.map(a => `<tr><td>${PKG_NAMES[a.package] || a.package}</td><td style="color:var(--muted);font-size:11px">${a.package}</td><td><strong>${a.count}</strong></td></tr>`).join('')}</tbody></table>
+    ` : '<div class="loading">无数据</div>';
+
+    const stores = data.storage || [];
+    document.getElementById('storage-metrics').innerHTML = stores.length ? stores.map(s => `
+      <div class="bar-wrap"><div class="bar-label">${s.mount}</div><div class="bar-track"><div class="bar-fill" style="width:${s.pct}%;background:${s.pct > 85 ? 'var(--red)' : s.pct > 70 ? 'var(--yellow)' : 'var(--green)'}"></div></div><div class="bar-val">${s.used_gb}/${s.total_gb}GB</div></div>
+    `).join('') : '<div class="loading">无数据</div>';
+
+    const m = data.memory || {};
+    const memTotal = parseInt(m.mem_total_kb) || 1;
+    const memAvail = parseInt(m.mem_available_kb) || 0;
+    const memUsedPct = ((1 - memAvail / memTotal) * 100).toFixed(1);
+    const swapTotal = parseInt(m.swap_total_kb) || 1;
+    const swapFree = parseInt(m.swap_free_kb) || 0;
+    const swapUsedPct = ((1 - swapFree / swapTotal) * 100).toFixed(1);
+    document.getElementById('mem-metrics').innerHTML = `
+      <div class="bar-wrap"><div class="bar-label">RAM</div><div class="bar-track"><div class="bar-fill" style="width:${memUsedPct}%;background:${memUsedPct > 90 ? 'var(--red)' : memUsedPct > 80 ? 'var(--yellow)' : 'var(--green)'}"></div></div><div class="bar-val">${memUsedPct}%</div></div>
+      <div class="bar-wrap"><div class="bar-label">Swap</div><div class="bar-track"><div class="bar-fill" style="width:${swapUsedPct}%;background:${swapUsedPct > 80 ? 'var(--red)' : 'var(--yellow)'}"></div></div><div class="bar-val">${swapUsedPct}%</div></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px">RAM: ${(memTotal/1024).toFixed(1)}GB total, ${(memAvail/1024).toFixed(1)}GB available · Swap: ${(swapTotal/1024).toFixed(1)}GB total, ${(swapFree/1024).toFixed(1)}GB free</div>
+    `;
+
+    const procs = data.top_processes || [];
+    document.getElementById('proc-metrics').innerHTML = procs.length ? `
+      <table><thead><tr><th>PID</th><th>用户</th><th>CPU%</th><th>MEM%</th><th>进程名</th></tr></thead>
+      <tbody>${procs.map(p => `<tr><td>${p.pid}</td><td>${p.user}</td><td><strong>${p.cpu}</strong></td><td>${p.mem}</td><td>${p.name}</td></tr>`).join('')}</tbody></table>
+    ` : '<div class="loading">无数据</div>';
+
+  } catch (e) {
+    document.getElementById('ts').textContent = '加载失败';
+    document.getElementById('app-usage').innerHTML = `<div class="error">${e.message}</div>`;
+  }
+}
+
+loadData();
+setInterval(loadData, 60000);
+</script>
+</body>
+</html>

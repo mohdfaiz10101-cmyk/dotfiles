@@ -1,0 +1,13 @@
+[Unit]
+Description=Crush Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie
+ExecStart=/var/home/charlie/.local/bin/crush server --host tcp://0.0.0.0:8081 --data-dir /var/home/charlie/.crush
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

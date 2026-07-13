@@ -1,0 +1,16 @@
+[Unit]
+Description=Plane self-hosted project management
+After=network-online.target podman-user-wait-network-online.service
+Wants=network-online.target podman-user-wait-network-online.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/var/home/charlie/apps/plane-selfhost
+ExecStart=/usr/bin/docker compose -f /var/home/charlie/apps/plane-selfhost/plane-app/docker-compose.yaml --env-file=/var/home/charlie/apps/plane-selfhost/plane-app/plane.env up -d --pull if_not_present --quiet-pull
+ExecStop=/usr/bin/docker compose -f /var/home/charlie/apps/plane-selfhost/plane-app/docker-compose.yaml --env-file=/var/home/charlie/apps/plane-selfhost/plane-app/plane.env down
+TimeoutStartSec=600
+TimeoutStopSec=180
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Sunshine GameStream Host
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sunshine
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

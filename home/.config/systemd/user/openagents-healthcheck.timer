@@ -1,0 +1,11 @@
+[Unit]
+Description=Run OpenAgents healthcheck every minute
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=60s
+AccuracySec=10s
+Unit=openagents-healthcheck.service
+
+[Install]
+WantedBy=timers.target

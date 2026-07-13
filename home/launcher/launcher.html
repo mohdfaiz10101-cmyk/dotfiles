@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>启动器</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1a1a2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #1a1a2e;
+  --bar: #16213e;
+  --bar-hover: #1a2744;
+  --accent: #0f3460;
+  --text: #e0e0e0;
+  --text-dim: #8888aa;
+  --shadow: rgba(0,0,0,0.3);
+  --radius: 12px;
+}
+
+body {
+  font-family: "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 12px;
+  overflow-y: auto;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.group {
+  margin-bottom: 8px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: box-shadow 0.3s;
+}
+
+.group.open {
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--bar);
+  cursor: pointer;
+  transition: background 0.2s;
+  min-height: 56px;
+}
+
+.group-header:hover,
+.group-header:active {
+  background: var(--bar-hover);
+}
+
+.group-header .title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.group-header .count {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-left: 8px;
+}
+
+.group-header .arrow {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  color: var(--text-dim);
+}
+
+.group.open .group-header .arrow {
+  transform: rotate(180deg);
+}
+
+.group-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--accent);
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.group.open .group-body {
+  padding: 16px;
+  max-height: 500px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: var(--text);
+  min-height: 90px;
+}
+
+.app:hover,
+.app:active {
+  background: rgba(255,255,255,0.08);
+  transform: scale(0.95);
+}
+
+.app-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: rgba(255,255,255,0.1);
+}
+
+.app-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.app-name {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-all;
+  max-width: 80px;
+}
+
+/* 全部折叠/展开按钮 */
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ctrl-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--bar);
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ctrl-btn:hover, .ctrl-btn:active {
+  background: var(--bar-hover);
+}
+
+/* 搜索 */
+.search-bar {
+  margin-bottom: 12px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--bar);
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: var(--text-dim);
+}
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="搜索应用..." oninput="filterApps(this.value)">
+</div>
+
+<div class="controls">
+  <button class="ctrl-btn" onclick="toggleAll(true)">全部展开 ▼</button>
+  <button class="ctrl-btn" onclick="toggleAll(false)">全部折叠 ▲</button>
+</div>
+
+<div id="groups"></div>
+
+<script>
+const APPS = {
+  "浏览器": [
+    { name: "Firefox", icon: "🦊", desktop: "firefox.desktop" },
+    { name: "Floorp", icon: "🌊", desktop: "floorp.desktop" },
+    { name: "Chrome", icon: "🌐", desktop: "com.google.Chrome.desktop" },
+  ],
+  "社交通讯": [
+    { name: "微信", icon: "💬", desktop: "com.tencent.wechat.desktop" },
+    { name: "Telegram", icon: "✈️", desktop: "org.telegram.desktop.desktop" },
+  ],
+  "开发工具": [
+    { name: "VS Code", icon: "📝", desktop: "code.desktop" },
+    { name: "Cursor", icon: "⚡", desktop: "cursor.desktop" },
+    { name: "IDEA", icon: "💡", desktop: "idea.desktop" },
+    { name: "Kitty", icon: "🐱", desktop: "kitty.desktop" },
+    { name: "Warp", icon: "⌨️", desktop: "dev.warp.Warp.desktop" },
+    { name: "Konsole", icon: "🖥️", desktop: "org.kde.konsole.desktop" },
+    { name: "Kate", icon: "📄", desktop: "org.kde.kate.desktop" },
+  ],
+  "系统工具": [
+    { name: "Dolphin", icon: "🐬", desktop: "org.kde.dolphin.desktop" },
+    { name: "系统设置", icon: "⚙️", desktop: "systemsettings.desktop" },
+    { name: "系统监视器", icon: "📊", desktop: "org.kde.plasma-systemmonitor.desktop" },
+    { name: "Discover", icon: "🛍️", desktop: "org.kde.discover.desktop" },
+    { name: "Ark", icon: "📦", desktop: "org.kde.ark.desktop" },
+    { name: "截图", icon: "📸", desktop: "org.kde.spectacle.desktop" },
+    { name: "虚拟机", icon: "🖧", desktop: "virt-manager.desktop" },
+    { name: "NVIDIA", icon: "🎮", desktop: "nvidia-settings.desktop" },
+  ],
+  "媒体文件": [
+    { name: "Gwenview", icon: "🖼️", desktop: "org.kde.gwenview.desktop" },
+    { name: "Okular", icon: "📕", desktop: "org.kde.okular.desktop" },
+    { name: "Elisa", icon: "🎵", desktop: "org.kde.elisa.desktop" },
+  ],
+  "网络代理": [
+    { name: "FlClash", icon: "🔒", desktop: "flclash.desktop" },
+  ],
+  "AI 服务": [
+    { name: "统一搜索", icon: "🔍", url: "http://localhost:9000" },
+    { name: "Open WebUI", icon: "🤖", url: "http://localhost:3001" },
+    { name: "HyperChat", icon: "💬", url: "http://localhost:9098" },
+    { name: "HC API", icon: "📋", url: "http://localhost:9098/docs" },
+    { name: "LiteLLM", icon: "🔀", url: "http://localhost:4000/ui" },
+    { name: "LangChain", icon: "🔗", url: "http://localhost:8899" },
+    { name: "AutoGen", icon: "🧬", url: "http://localhost:8080" },
+    { name: "Letta", icon: "🧠", url: "http://localhost:8283" },
+    { name: "n8n", icon: "⚡", url: "http://localhost:5678" },
+    { name: "微信浏览器", icon: "💬", url: "http://localhost:9098/wechat" },
+    { name: "Paperclip", icon: "📎", url: "http://localhost:3100" },
+    { name: "Dify", icon: "🎨", url: "http://localhost:3080" },
+    { name: "DeerFlow", icon: "🦌", url: "http://localhost:3000" },
+    { name: "AGI控制台", icon: "🎛", url: "/cp/" },
+    { name: "OpenAgents", icon: "🤖", url: "http://localhost:8700/studio" },
+  ],
+  "基础设施": [
+    { name: "Cockpit", icon: "🛠️", url: "http://localhost:9090" },
+    { name: "Web终端", icon: "💻", url: "http://localhost:7681" },
+    { name: "Syncthing", icon: "🔄", url: "http://localhost:8384" },
+    { name: "Sunshine", icon: "☀️", url: "https://localhost:47990" },
+    { name: "ERPNext", icon: "📊", url: "http://localhost:8088" },
+    { name: "Guacamole", icon: "🖥️", url: "http://localhost:6080" },
+    { name: "HyperOS", icon: "🌐", url: "http://localhost:8800/docs" },
+    { name: "ChromaDB", icon: "📦", url: "http://localhost:8000/api/v1/heartbeat" },
+    { name: "Ollama", icon: "🦙", url: "http://localhost:11434" },
+    { name: "操作指南", icon: "📖", url: "http://localhost:9875/guide.html" },
+    { name: "系统状态", icon: "📊", url: "http://localhost:9875/status.html" },
+  ],
+};
+
+function launchApp(desktopFile) {
+  // 通过本地服务启动应用
+  fetch(`http://localhost:9875/launch?app=${encodeURIComponent(desktopFile)}`)
+    .then(r => r.text())
+    .then(t => console.log("launched:", t))
+    .catch(() => {
+      window.location.href = `app://${desktopFile}`;
+    });
+}
+
+function openUrl(url) {
+  window.open(url, '_blank');
+}
+
+function toggleGroup(el) {
+  el.closest('.group').classList.toggle('open');
+}
+
+function toggleAll(open) {
+  document.querySelectorAll('.group').forEach(g => {
+    g.classList.toggle('open', open);
+  });
+}
+
+function filterApps(query) {
+  query = query.toLowerCase();
+  document.querySelectorAll('.group').forEach(group => {
+    let hasVisible = false;
+    group.querySelectorAll('.app').forEach(app => {
+      const name = app.dataset.name.toLowerCase();
+      const match = !query || name.includes(query);
+      app.classList.toggle('hidden', !match);
+      if (match) hasVisible = true;
+    });
+    group.classList.toggle('hidden', !hasVisible);
+    if (query && hasVisible) group.classList.add('open');
+  });
+}
+
+// 渲染
+const container = document.getElementById('groups');
+for (const [groupName, apps] of Object.entries(APPS)) {
+  const group = document.createElement('div');
+  group.className = 'group';
+  group.innerHTML = `
+    <div class="group-header" onclick="toggleGroup(this)">
+      <span>
+        <span class="title">${groupName}</span>
+        <span class="count">${apps.length} 个</span>
+      </span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="group-body">
+      ${apps.map(app => `
+        <div class="app" data-name="${app.name}" onclick="${app.url ? `openUrl('${app.url}')` : `launchApp('${app.desktop}')`}">
+          <div class="app-icon">${app.icon}</div>
+          <div class="app-name">${app.name}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  container.appendChild(group);
+}
+
+// 注册 Service Worker（PWA 离线支持）
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+</script>
+</body>
+</html>

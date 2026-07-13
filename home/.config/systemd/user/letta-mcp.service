@@ -1,0 +1,13 @@
+[Unit]
+Description=Letta Memory MCP Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/letta-mcp
+Restart=on-failure
+RestartSec=3
+Environment=HOME=%h
+
+[Install]
+WantedBy=default.target

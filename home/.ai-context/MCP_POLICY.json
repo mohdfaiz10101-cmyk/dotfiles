@@ -1,0 +1,372 @@
+{
+  "generated_at": "2026-07-13T13:19:15",
+  "rules": {
+    "core": "safe low-cost MCPs allowed to remain enabled",
+    "on_demand": "keep disabled by default; enable for matching task trigger, then disable again",
+    "new_mcp_default": "new MCPs should be treated as on_demand until verified"
+  },
+  "mcp": [
+    {
+      "name": "baidu-netdisk",
+      "kind": "data",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "数据库",
+        "sqlite",
+        "查询",
+        "表"
+      ]
+    },
+    {
+      "name": "claude-knowledge",
+      "kind": "general",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "claude-knowledge"
+      ]
+    },
+    {
+      "name": "codegraph",
+      "kind": "code-intelligence",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "源码",
+        "代码",
+        "函数",
+        "调用链",
+        "重构"
+      ]
+    },
+    {
+      "name": "context7",
+      "kind": "research-ui",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "tech-researcher",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ]
+    },
+    {
+      "name": "fetch",
+      "kind": "research-ui",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "tech-researcher",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ]
+    },
+    {
+      "name": "firecrawl",
+      "kind": "research-ui",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ]
+    },
+    {
+      "name": "grep_app",
+      "kind": "general",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "grep_app"
+      ]
+    },
+    {
+      "name": "haven",
+      "kind": "device",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": false,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ]
+    },
+    {
+      "name": "hermes",
+      "kind": "general",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "hermes"
+      ]
+    },
+    {
+      "name": "ios-connect",
+      "kind": "device",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ]
+    },
+    {
+      "name": "khoj",
+      "kind": "memory",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ]
+    },
+    {
+      "name": "letta",
+      "kind": "memory",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ]
+    },
+    {
+      "name": "memory-engine",
+      "kind": "memory",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ]
+    },
+    {
+      "name": "ntfy",
+      "kind": "messaging",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "发送",
+        "通知",
+        "telegram",
+        "wechat",
+        "ntfy",
+        "消息"
+      ]
+    },
+    {
+      "name": "phone-connect",
+      "kind": "device",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": false,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ]
+    },
+    {
+      "name": "playwright",
+      "kind": "research-ui",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ]
+    },
+    {
+      "name": "server-memory",
+      "kind": "memory",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "历史",
+        "记忆",
+        "偏好",
+        "以前",
+        "召回"
+      ]
+    },
+    {
+      "name": "sqlite",
+      "kind": "data",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "数据库",
+        "sqlite",
+        "查询",
+        "表"
+      ]
+    },
+    {
+      "name": "sys-info",
+      "kind": "general",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "sys-info"
+      ]
+    },
+    {
+      "name": "tablet",
+      "kind": "device",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ]
+    },
+    {
+      "name": "vision",
+      "kind": "research-ui",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": false,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ]
+    },
+    {
+      "name": "wechat",
+      "kind": "messaging",
+      "enabled": false,
+      "enable_policy": "on_demand",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "发送",
+        "通知",
+        "telegram",
+        "wechat",
+        "ntfy",
+        "消息"
+      ]
+    },
+    {
+      "name": "win",
+      "kind": "device",
+      "enabled": true,
+      "enable_policy": "core",
+      "recommended_agent": "ops-dispatcher",
+      "heavy": false,
+      "external_write_risk": true,
+      "triggers": [
+        "手机",
+        "设备",
+        "adb",
+        "windows",
+        "haven",
+        "平板"
+      ]
+    }
+  ]
+}

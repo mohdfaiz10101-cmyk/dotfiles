@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily OSTree Smart Retention
+Requires=ostree-retention.service
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=3600
+
+[Install]
+WantedBy=timers.target

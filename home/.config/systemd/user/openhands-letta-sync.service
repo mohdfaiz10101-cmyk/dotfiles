@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync OpenHands task summaries into Letta memory
+After=openhands-gui.service letta-stack.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/openhands-letta-sync
+Environment=OPENHANDS_API=http://127.0.0.1:3001
+Environment=LETTA_API=http://127.0.0.1:8283
+Environment=LETTA_AGENT=fedora-sysadmin
+

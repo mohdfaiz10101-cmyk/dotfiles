@@ -1,0 +1,7 @@
+[Unit]
+Description=AI Scheduler (GPU rent/local mode switching)
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/ai-scheduler.sh

@@ -1,0 +1,22 @@
+[Unit]
+Description=Wayland VNC server (sway)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/bin/wayvnc-patched -C %h/.config/wayvnc/config 0.0.0.0 5900
+Restart=on-failure
+RestartSec=3
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=WLR_NO_HARDWARE_CURSORS=1
+Environment=WLR_DRM_NO_ATOMIC=1
+Environment=WLR_RENDERER=vulkan
+Environment=__GLX_VENDOR_LIBRARY_NAME=nvidia
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=WLR_NO_HARDWARE_CURSORS=1
+Environment=__GLX_VENDOR_LIBRARY_NAME=nvidia
+Environment=WLR_DRM_NO_ATOMIC=1
+Environment=WLR_RENDERER=vulkan
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Offline compact OpenCode DB while preserving recent sessions
+After=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=/var/home/charlie
+Environment=PATH=/var/home/charlie/.local/bin:/usr/bin:/bin
+ExecStart=/var/home/charlie/.local/bin/opencode-db-cleanup 100
+TimeoutStartSec=45min

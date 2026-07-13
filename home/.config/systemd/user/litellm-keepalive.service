@@ -1,0 +1,9 @@
+[Unit]
+Description=Probe and recover LiteLLM backend and strip proxy
+After=network-online.target litellm.service litellm-strip-proxy.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/litellm-keepalive
+

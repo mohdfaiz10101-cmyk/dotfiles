@@ -1,0 +1,65 @@
+{
+  "profiles": {
+    "opencode_core": {
+      "keywords": ["opencode", "codex", "记忆", "memory", "mcp", "session", "18910", "4097", "proxy", "lifecycle", "recall", "智力", "上下文", "context"],
+      "runbook_refs": ["opencode-core.md", "ai-infra.md"],
+      "max_chars": 800,
+      "note": "OpenCode backend, session, lifecycle, MCP policy"
+    },
+    "phone_network": {
+      "keywords": ["手机", "adb", "无线调试", "tailscale", "5g", "公网", "frp", "haven", "iphone", "热点", "代理", "termux", "haven-entry"],
+      "runbook_refs": ["haven.md", "frp.md", "duckdns.md"],
+      "max_chars": 800,
+      "note": "ADB, phone MCP, FRP, Tailscale, hotspot/iPhone routing"
+    },
+    "codex_webtty_input": {
+      "keywords": [
+        "19899",
+        "19900",
+        "19901",
+        "codex webtty",
+        "webtty",
+        "ttyd",
+        "输入框",
+        "键盘",
+        "输入法",
+        "ios",
+        "safari",
+        "xterm",
+        "tmux-send",
+        "codex-ios-safe-input",
+        "codex-input-panel"
+      ],
+      "runbook_refs": [
+        "haven.md",
+        "input-capture.md",
+        "opencode-core.md"
+      ],
+      "max_chars": 900,
+      "note": "Codex WebTTY 19899/19900/19901 input, iOS Safari keyboard, ttyd/xterm/tmux-send fallback"
+    },
+    "frontend_verification": {
+      "keywords": ["前端", "界面", "页面", "ui", "css", "tsx", "jsx", "vue", "react", "svelte", "layout", "button", "browser", "截图", "视觉", "playwright", "__oc-fast", "proxy"],
+      "runbook_refs": ["opencode-core.md"],
+      "max_chars": 600,
+      "note": "web UI changes, Playwright/screenshot/manual fallback"
+    },
+    "deployment": {
+      "keywords": ["systemctl", "service", "服务", "端口", "port", "health", "gateway", "telegram", "timer", "systemd", "podman", "docker", "deploy"],
+      "runbook_refs": ["opencode-core.md", "ai-infra.md", "frp.md"],
+      "max_chars": 700,
+      "note": "systemd user services, health endpoints, ports"
+    },
+    "code_change": {
+      "keywords": ["代码", "源码", "函数", "测试", "lint", "build", "typescript", "python", "javascript", "repo", "repository", "refactor", "caller", "callee", "codegraph"],
+      "runbook_refs": ["opencode-core.md", "codegraph.md"],
+      "max_chars": 600,
+      "note": "CodeGraph-first workflow for source-code tasks"
+    }
+  },
+  "default": {
+    "runbook_refs": ["opencode-core.md"],
+    "max_chars": 400,
+    "note": "fallback when no profile matches"
+  }
+}

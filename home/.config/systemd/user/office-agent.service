@@ -1,0 +1,13 @@
+[Unit]
+Description=Office Agent (Document Engine)
+After=default.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/hub
+ExecStart=python3 office-agent.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

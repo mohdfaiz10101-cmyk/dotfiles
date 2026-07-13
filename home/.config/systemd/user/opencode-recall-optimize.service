@@ -1,0 +1,6 @@
+[Unit]
+Description=Optimize agent-lifecycle recall context sources (report only)
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/opencode-recall-optimize

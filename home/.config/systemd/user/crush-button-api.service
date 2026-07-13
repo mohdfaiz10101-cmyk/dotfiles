@@ -1,0 +1,16 @@
+[Unit]
+Description=Crush WebTTY button API (:17768)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=BIND=0.0.0.0
+Environment=PORT=17768
+Environment=CRUSH_BUTTON_TOKEN=w19900422
+ExecStart=/var/home/charlie/.local/share/crush-ttyd-proxy-venv/bin/python /var/home/charlie/.local/bin/crush-button-api.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

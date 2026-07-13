@@ -1,0 +1,15 @@
+[Unit]
+Description=Knowledge Event Bus (ai-shared)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.config/ai-shared/knowledge_event_bus.py
+Environment=HOME=%h
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:%h/.local/bin
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target

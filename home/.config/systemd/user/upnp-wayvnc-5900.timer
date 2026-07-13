@@ -1,0 +1,9 @@
+[Unit]
+Description=Renew UPnP wayvnc 5900 mapping every 10 min
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+
+[Install]
+WantedBy=timers.target

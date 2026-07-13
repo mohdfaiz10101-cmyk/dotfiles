@@ -1,0 +1,9 @@
+[Unit]
+Description=DuckDNS DDNS 定时更新 (每60秒检测)
+
+[Timer]
+OnUnitActiveSec=300s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

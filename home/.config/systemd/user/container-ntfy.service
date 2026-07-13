@@ -1,0 +1,23 @@
+[Unit]
+Description=ntfy push notification server
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStartPre=-/usr/bin/docker rm -f ntfy 2>/dev/null
+ExecStart=/usr/bin/docker run --rm --name ntfy \
+  -v /var/home/charlie/ai/ntfy/etc:/etc/ntfy:Z \
+  -v /var/home/charlie/ai/ntfy/data:/var/lib/ntfy:Z \
+  -v /var/home/charlie/ai/ntfy/cache:/var/cache/ntfy:Z \
+  -p 2586:2586 \
+  docker.io/binwiederhier/ntfy serve
+ExecStop=/usr/bin/docker stop ntfy
+Restart=always
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

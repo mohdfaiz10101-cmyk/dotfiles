@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop Tree</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:-apple-system,'Noto Sans SC',sans-serif;
+  background:rgba(13,17,23,0.82);
+  color:#c9d1d9;
+  padding:12px 16px;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.header h1{font-size:13px;color:#58a6ff;font-weight:700;letter-spacing:1px}
+.header .badge{font-size:10px;background:rgba(88,166,255,.15);color:#58a6ff;padding:2px 8px;border-radius:8px}
+.tree{display:flex;flex-wrap:wrap;gap:8px;overflow-y:auto;max-height:calc(100vh - 44px);scrollbar-width:thin;scrollbar-color:#30363d transparent}
+.node{
+  background:rgba(22,27,34,0.75);
+  border:1px solid rgba(48,54,61,0.6);
+  border-radius:10px;
+  padding:8px 10px;
+  min-width:155px;
+  max-width:200px;
+  flex:1 1 155px;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:border-color .2s;
+}
+.node:hover{border-color:rgba(88,166,255,0.5)}
+.node-head{display:flex;align-items:center;gap:6px;margin-bottom:5px;padding-bottom:4px;border-bottom:1px solid rgba(48,54,61,0.4)}
+.node-icon{font-size:14px}
+.node-name{font-size:11px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.node-cnt{font-size:9px;color:#8b949e;background:rgba(48,54,61,0.6);padding:1px 5px;border-radius:6px}
+.leaves{list-style:none;font-size:10px;line-height:1.7;color:#8b949e;max-height:140px;overflow-y:auto;scrollbar-width:none}
+.leaves::-webkit-scrollbar{display:none}
+.leaves li{padding-left:10px;position:relative;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.leaves li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:1px}
+.leaf-line{border-left:1px solid rgba(48,54,61,0.6);margin-left:3px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>DESKTOP TREE</h1>
+  <span class="badge" id="total"></span>
+</div>
+<div class="tree" id="tree"></div>
+
+<script>
+const cfg={
+  'Claude-AI':{icon:'🤖',c:'#a371f7'},'开发工具':{icon:'🛠',c:'#f97583'},'浏览器':{icon:'🌐',c:'#79c0ff'},
+  'Web服务':{icon:'☁',c:'#56d364'},'系统工具':{icon:'⚙',c:'#d2a8ff'},'系统文档':{icon:'📄',c:'#e3b341'},
+  '社交通讯':{icon:'💬',c:'#3fb950'},'网络代理':{icon:'🔒',c:'#f85149'},'网盘同步':{icon:'☁',c:'#79c0ff'},
+  '媒体文件':{icon:'🎵',c:'#d2a8ff'},'安卓开发':{icon:'📱',c:'#56d364'},
+};
+
+async function load(){
+  try{
+    const r=await(await fetch('http://localhost:9875/api/desktop-tree')).json();
+    render(r);
+  }catch(e){
+    // fallback static
+    render({"Claude-AI":["待办挂件","状态树","自动登录","ESP","功能请求","Token监控"],"开发工具":["Aider","Claude Code","Cline","VS Code","Cursor","Gemini CLI","Goose","IDEA","Kitty","OpenCode","Kate","Konsole","Windsurf"],"浏览器":["Chrome","Firefox","Floorp"],"Web服务":["1688","操作指南","启动器","营销工作流","Autogen","BrowserAgent","ChromaDB","Dashboard","Dify","ERPNext","Guacamole","HyperChat","HyperOS","InboxZero","Langflow","Letta","LiteLLM","Mem0","N8N","Ollama","OpenClaw","Open-WebUI","SocialAgg","TripMap","Xray代理"],"系统工具":["悬浮桌面","语音输入","Tokri","NVIDIA","Ark","Discover","Dolphin","系统监控","Spectacle","系统设置","Virt-Manager"],"系统文档":["工作报告","待办清单","软件审查","微信归档","微信同步","部署报告","架构图","全景图","主控台","AI算力","HyperOS","Win对照"],"社交通讯":["微信","Telegram"],"网络代理":["FlClash"],"网盘同步":["Rclone配置","Rclone管理"],"媒体文件":["Elisa","Gwenview","Okular"],"安卓开发":["APK推送","AnyIn.1","AnyIn启动"]});
+  }
+}
+
+function render(data){
+  const sorted=Object.entries(data).sort((a,b)=>{
+    const al=Array.isArray(b[1])?b[1].length:0;
+    const bl=Array.isArray(a[1])?a[1].length:0;
+    return al-bl;
+  });
+  let total=0;
+  sorted.forEach(([,v])=>{total+=(Array.isArray(v)?v.length:0)});
+  document.getElementById('total').textContent=sorted.length+' 组 · '+total+' 项';
+  const el=document.getElementById('tree');
+  el.innerHTML=sorted.map(([folder,items])=>{
+    const c=cfg[folder]||{icon:'📁',c:'#8b949e'};
+    const list=Array.isArray(items)?items:[];
+    const names=list.map(i=>typeof i==='object'?i.name:i);
+    return `<div class="node"><div class="node-head"><span class="node-icon">${c.icon}</span><span class="node-name" style="color:${c.c}">${folder}</span><span class="node-cnt">${names.length}</span></div><ul class="leaves leaf-line">${names.map(n=>`<li style="--lc:${c.c}">${n}</li>`).join('')}</ul></div>`;
+  }).join('');
+}
+
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>

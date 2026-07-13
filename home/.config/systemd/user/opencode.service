@@ -1,0 +1,32 @@
+[Unit]
+Description=OpenCode Server backend (4097)
+After=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Environment=LANG=C.UTF-8
+Environment=LC_ALL=C.UTF-8
+Environment=NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net,open.bigmodel.cn,api.z.ai,api.stepfun.com,.duckdns.org
+Environment=no_proxy=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net,open.bigmodel.cn,api.z.ai,api.stepfun.com,.duckdns.org
+EnvironmentFile=-/var/home/charlie/.config/opencode/.env
+Type=simple
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+ExecStopPost=/var/home/charlie/.local/bin/mcp-orphan-killer.sh
+Environment=HOME=/var/home/charlie
+Environment=NVM_DIR=/var/home/charlie/.nvm
+Environment=PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+WorkingDirectory=/var/mnt/ai/cache/auto-migrate/.openclaw/workspace
+ExecStartPre=/usr/bin/mkdir -p /var/home/charlie/memory/mcp_data
+ExecStartPre=/usr/bin/bash -c '[ -f /var/home/charlie/memory/mcp_data/memory.json ] || echo "{}" > /var/home/charlie/memory/mcp_data/memory.json'
+ExecStart=/var/home/charlie/.nvm/versions/node/v22.22.3/bin/opencode serve --port 4097 --hostname 127.0.0.1
+Restart=always
+RestartSec=15
+MemoryHigh=5.5G
+MemoryMax=6G
+MemorySwapMax=512M
+
+[Install]
+WantedBy=default.target

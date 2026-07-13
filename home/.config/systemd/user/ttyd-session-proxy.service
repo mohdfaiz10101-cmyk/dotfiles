@@ -1,0 +1,16 @@
+[Unit]
+Description=ttyd Session Proxy (toolbar injection for 18080)
+After=network-online.target ttyd-8080.service
+Wants=network-online.target ttyd-8080.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/ttyd-session-proxy.py
+Restart=always
+RestartSec=5
+Environment=PORT=18079
+Environment=BIND=127.0.0.1
+Environment=TTYD_BACKEND=http://127.0.0.1:8080
+
+[Install]
+WantedBy=default.target

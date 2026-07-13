@@ -1,0 +1,10 @@
+[Unit]
+Description=Content Filter 定时抓取
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=300
+Persistent=true
+
+[Install]
+WantedBy=timers.target

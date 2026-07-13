@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .primary {
+      background: #2196F3;
+      color: white;
+    }
+    .secondary {
+      background: #4CAF50;
+      color: white;
+    }
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+    .connected {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔄 MCP 浏览器同步</h2>
+
+  <button class="primary" id="pushBtn">⬆️ 推送到其他设备</button>
+  <button class="secondary" id="pullBtn">⬇️ 从其他设备拉取</button>
+  <button id="toggleBtn">暂停/启用自动同步</button>
+
+  <div class="status">
+    <div>服务器: <span class="connected">100.120.189.27:9978</span></div>
+    <div>同步内容: 书签、历史、标签、Cookies</div>
+    <div>同步频率: 每分钟 + 实时</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

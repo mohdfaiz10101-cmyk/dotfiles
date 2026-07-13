@@ -1,0 +1,19 @@
+[Unit]
+Description=Letta Stack (postgres + chromadb + letta) via docker compose
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/mnt/ai/ai-cluster/letta
+ExecStartPre=-/usr/bin/docker compose pull postgres chromadb letta
+ExecStart=/bin/sh -lc '/usr/bin/docker compose up -d postgres chromadb letta || (sleep 5; /usr/bin/docker compose ps --status running postgres chromadb letta >/dev/null)'
+ExecStop=/usr/bin/docker compose down
+TimeoutStartSec=300
+TimeoutStopSec=120
+
+[Install]
+WantedBy=default.target

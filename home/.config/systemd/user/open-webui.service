@@ -1,0 +1,15 @@
+[Unit]
+Description=Open WebUI (podman)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/podman run --name open-webui --replace -p 3001:8080 -v /mnt/ai/open-webui:/app/backend/data:Z -e RAG_ENABLE=false -e RAG_EMBEDDING_ENGINE=ollama -e OLLAMA_BASE_URL=http://127.0.0.1:11434 -e WEBUI_AUTH=false ghcr.io/open-webui/open-webui:main
+ExecStop=/usr/bin/podman stop open-webui
+Restart=always
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,7 @@
+[Unit]
+Description=Watch OpenCode Telegram gateway health
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/opencode-telegram-watchdog.sh
+WorkingDirectory=/var/home/charlie

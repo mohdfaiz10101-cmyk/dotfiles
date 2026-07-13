@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "MCP Browser Sync",
+  "version": "1.0.0",
+  "description": "本地 MCP 实时浏览器同步 - 书签、历史、标签、设置全同步",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "browser-sync@charlie.local",
+      "strict_min_version": "120.0"
+    }
+  },
+
+  "permissions": [
+    "bookmarks",
+    "history",
+    "tabs",
+    "cookies",
+    "storage",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "http://192.168.123.71:9978/*",
+    "<all_urls>"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

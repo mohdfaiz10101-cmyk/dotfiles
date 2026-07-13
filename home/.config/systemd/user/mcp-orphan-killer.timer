@@ -1,0 +1,10 @@
+[Unit]
+Description=MCP orphan process killer (every 5min)
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30
+
+[Install]
+WantedBy=timers.target

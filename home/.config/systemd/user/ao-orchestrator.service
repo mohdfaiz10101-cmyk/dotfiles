@@ -1,0 +1,16 @@
+[Unit]
+Description=Composio AO Orchestrator
+After=ao-dashboard.service
+Wants=ao-dashboard.service
+
+[Service]
+Type=simple
+WorkingDirectory=/var/mnt/ai/cache/auto-migrate/.openclaw/workspace
+ExecStart=/var/home/charlie/.nvm/versions/node/v22.22.3/bin/ao start --no-dashboard
+Restart=on-failure
+RestartSec=10
+Environment=HOME=/var/home/charlie
+Environment=PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

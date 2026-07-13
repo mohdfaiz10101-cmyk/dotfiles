@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie 同步工具</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        button { padding: 15px 30px; font-size: 16px; margin: 10px; cursor: pointer; }
+        .upload { background: #4CAF50; color: white; border: none; }
+        .download { background: #2196F3; color: white; border: none; }
+        #status { margin-top: 20px; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🍪 Cookie 跨设备同步</h1>
+    <p>在任何设备的浏览器打开这个页面，一键同步登录状态。</p>
+
+    <h2>使用方法</h2>
+    <ol>
+        <li><strong>手机/电脑A</strong>：已登录网站 → 点击「上传 Cookie」</li>
+        <li><strong>另一台设备</strong>：打开这个页面 → 点击「下载 Cookie」→ 自动登录</li>
+    </ol>
+
+    <div>
+        <button class="upload" onclick="uploadCookies()">⬆️ 上传 Cookie（保存登录状态）</button>
+        <button class="download" onclick="downloadCookies()">⬇️ 下载 Cookie（导入登录状态）</button>
+    </div>
+
+    <div id="status"></div>
+
+    <h2>高级功能</h2>
+    <p>书签栏快捷方式（拖拽到书签栏）：</p>
+    <ul>
+        <li><a href="javascript:(function(){fetch('http://192.168.123.1:9977/cookies',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(document.cookie.split(';').map(c=>({name:c.split('=')[0].trim(),value:c.split('=')[1],domain:location.hostname})))}).then(r=>alert('Cookie已上传！'))})()">📤 快传Cookie</a></li>
+        <li><a href="javascript:(function(){fetch('http://192.168.123.1:9977/cookies/'+location.hostname).then(r=>r.json()).then(cookies=>{for(let name in cookies){document.cookie=name+'='+cookies[name]+';path=/'}; alert('Cookie已导入！'); location.reload()})})()">📥 快取Cookie</a></li>
+    </ul>
+
+    <script>
+        const SERVER = "http://192.168.123.1:9977";
+
+        async function uploadCookies() {
+            const statusDiv = document.getElementById("status");
+            statusDiv.textContent = "正在上传 Cookie...";
+
+            try {
+                const cookies = document.cookie.split(';').map(c => {
+                    const [name, ...valueParts] = c.trim().split('=');
+                    return {
+                        domain: location.hostname,
+                        name: name,
+                        value: valueParts.join('='),
+                        path: "/"
+                    };
+                }).filter(c => c.name);
+
+                const response = await fetch(`${SERVER}/cookies`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(cookies)
+                });
+
+                const result = await response.json();
+                statusDiv.className = "success";
+                statusDiv.textContent = `✅ 成功上传 ${result.count} 个 Cookie！现在可以在其他设备下载了。`;
+            } catch (error) {
+                statusDiv.className = "error";
+                statusDiv.textContent = `❌ 上传失败: ${error.message}`;
+            }
+        }
+
+        async function downloadCookies() {
+            const statusDiv = document.getElementById("status");
+            const domain = prompt("请输入要导入的域名（如 wx2.qq.com），留空则导入所有:");
+
+            statusDiv.textContent = "正在下载 Cookie...";
+
+            try {
+                const url = domain ? `${SERVER}/cookies/${domain}` : `${SERVER}/cookies`;
+                const response = await fetch(url);
+                const cookies = await response.json();
+
+                if (Array.isArray(cookies)) {
+                    // 全部导入
+                    for (let cookie of cookies) {
+                        document.cookie = `${cookie.name}=${cookie.value};domain=${cookie.domain};path=${cookie.path}`;
+                    }
+                    statusDiv.className = "success";
+                    statusDiv.textContent = `✅ 成功导入 ${cookies.length} 个 Cookie！刷新页面生效。`;
+                } else {
+                    // 按域名导入
+                    for (let name in cookies) {
+                        document.cookie = `${name}=${cookies[name]};path=/`;
+                    }
+                    statusDiv.className = "success";
+                    statusDiv.textContent = `✅ 成功导入 ${Object.keys(cookies).length} 个 Cookie！刷新页面生效。`;
+                }
+
+                setTimeout(() => location.reload(), 2000);
+            } catch (error) {
+                statusDiv.className = "error";
+                statusDiv.textContent = `❌ 下载失败: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

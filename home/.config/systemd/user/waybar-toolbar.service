@@ -1,0 +1,12 @@
+[Unit]
+Description=Waybar Toolbar (layout + quick actions)
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/waybar-toolbar-wrapper.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,7 @@
+[Unit]
+Description=Coordinate control-plane self-healing and learning loops
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/control-plane-supervisor --mode cycle
+WorkingDirectory=/var/home/charlie

@@ -1,0 +1,6 @@
+[Unit]
+Description=Letta Stack Health Check
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/letta-health-notify.sh

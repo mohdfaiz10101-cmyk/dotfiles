@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenClaw Session Switcher (:8088)
+After=default.target ttyd-8080.service
+
+[Service]
+Type=simple
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/smart-redirector.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

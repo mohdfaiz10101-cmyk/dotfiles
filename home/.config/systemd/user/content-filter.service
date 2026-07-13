@@ -1,0 +1,13 @@
+[Unit]
+Description=Content Filter Web UI
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/mnt/ai/cache/auto-migrate/.openclaw/workspace/content-filter/server.py /var/mnt/ai/cache/auto-migrate/.openclaw/workspace/content-filter/config.yaml
+WorkingDirectory=/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/content-filter
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

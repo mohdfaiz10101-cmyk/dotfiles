@@ -1,0 +1,7 @@
+[Unit]
+Description=Keep phone wireless ADB enabled
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/adb-phone-keepalive.sh

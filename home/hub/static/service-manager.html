@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>服务管理 · Charlie Hub</title>
+<style>
+:root {
+  --bg:#0f1720; --bg2:#111827; --card:#17212b; --line:#263445; --text:#e5eef8; --muted:#8da2b8;
+  --green:#74d39a; --yellow:#f2c66d; --red:#f07f90; --blue:#7db7ff; --cyan:#6ed3de;
+  --purple:#c4a7e7; --orange:#fab387;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; color:var(--text); font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+  background:radial-gradient(circle at top right, rgba(125,183,255,.18), transparent 26%),
+    radial-gradient(circle at left center, rgba(110,211,222,.12), transparent 24%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height:100vh;
+}
+.wrap { max-width:1400px; margin:0 auto; padding:20px; }
+
+.sysbar { display:flex; gap:16px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+.sysbar .score-badge {
+  display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:14px;
+  background:linear-gradient(135deg, rgba(125,183,255,.12), rgba(110,211,222,.06));
+  border:1px solid rgba(125,183,255,.15);
+}
+.sysbar .score-num { font-size:36px; font-weight:700; line-height:1; }
+.sysbar .score-grade { font-size:12px; color:var(--muted); }
+.sysmetric { display:flex; align-items:center; gap:6px; font-size:13px; }
+.sysmetric .label { color:var(--muted); }
+.sysmetric .value { font-weight:700; }
+.sysmetric .value.warn { color:var(--yellow); }
+.sysmetric .value.crit { color:var(--red); }
+
+.toolbar { display:flex; gap:8px; align-items:center; margin-bottom:14px; flex-wrap:wrap; }
+.toolbar select, .toolbar button {
+  padding:8px 12px; border-radius:8px; border:1px solid var(--line); background:transparent;
+  color:var(--text); font-size:14px; cursor:pointer; min-height:40px;
+}
+.toolbar select { color:var(--text); }
+.toolbar button:hover { border-color:var(--blue); color:var(--blue); }
+.toolbar .spacer { flex:1; }
+
+.svc-group { margin-bottom:14px; }
+.svc-group-title {
+  font-size:12px; font-weight:700; color:var(--muted); letter-spacing:.5px;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.svc-group-title .count {
+  background:rgba(255,255,255,.06); padding:1px 7px; border-radius:99px; font-size:10px;
+}
+
+.svc-table { width:100%; border-collapse:collapse; font-size:12px; display:none; }
+.svc-table th {
+  text-align:left; padding:8px 10px; color:var(--muted); font-weight:600;
+  border-bottom:1px solid var(--line); font-size:11px; text-transform:uppercase; letter-spacing:.5px;
+}
+.svc-table td {
+  padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.03); vertical-align:middle;
+}
+.svc-table tr:hover td { background:rgba(125,183,255,.03); }
+.svc-name { font-weight:600; }
+.svc-unit { color:var(--muted); font-size:10px; }
+.svc-mem { font-variant-numeric:tabular-nums; }
+.svc-mem.heavy { color:var(--red); font-weight:700; }
+.svc-mem.medium { color:var(--yellow); }
+.svc-mem.light { color:var(--green); }
+.svc-mem.none { color:var(--muted); }
+
+.dot { width:8px; height:8px; border-radius:50%; display:inline-block; flex-shrink:0; }
+.dot.on { background:var(--green); box-shadow:0 0 8px rgba(116,211,154,.5); }
+.dot.off { background:var(--red); opacity:.5; }
+
+.lock-btn {
+  padding:6px 10px; border-radius:6px; border:1px solid var(--line); background:transparent;
+  color:var(--muted); font-size:12px; cursor:pointer; transition:.15s; min-height:36px; min-width:44px;
+}
+.lock-btn:hover { border-color:var(--blue); color:var(--blue); }
+.lock-btn.locked { background:rgba(125,183,255,.12); border-color:var(--blue); color:var(--blue); }
+
+.cat-select {
+  padding:6px 8px; border-radius:6px; border:1px solid var(--line); background:transparent;
+  color:var(--text); font-size:12px; cursor:pointer; min-height:36px;
+}
+.cat-select:focus { outline:none; border-color:var(--blue); }
+
+.svc-actions { display:flex; gap:4px; flex-wrap:wrap; }
+.svc-btn {
+  padding:6px 10px; border-radius:6px; border:1px solid var(--line); background:transparent;
+  color:var(--muted); font-size:12px; cursor:pointer; transition:.15s; min-height:36px; min-width:44px;
+}
+.svc-btn:hover { border-color:var(--blue); color:var(--blue); }
+.svc-btn.danger:hover { border-color:var(--red); color:var(--red); }
+
+.badge {
+  display:inline-block; padding:2px 8px; border-radius:99px; font-size:11px; font-weight:600;
+}
+.badge-core { background:rgba(125,183,255,.12); color:var(--blue); }
+.badge-always { background:rgba(116,211,154,.12); color:var(--green); }
+.badge-demand { background:rgba(242,198,109,.12); color:var(--yellow); }
+.badge-rare { background:rgba(197,167,231,.12); color:var(--purple); }
+.badge-stop { background:rgba(240,127,144,.12); color:var(--red); }
+
+.empty { color:var(--muted); font-size:12px; padding:12px; }
+.error { color:var(--red); font-size:12px; padding:12px; }
+
+.svc-card {
+  display:none; padding:14px; border-radius:12px; background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.05); margin-bottom:10px;
+}
+.svc-card-header {
+  display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;
+}
+.svc-card-title { font-weight:600; font-size:14px; flex:1; min-width:0; }
+.svc-card-unit { color:var(--muted); font-size:11px; width:100%; margin-top:2px; }
+.svc-card-row {
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:6px 0; border-bottom:1px solid rgba(255,255,255,.03); font-size:13px; flex-wrap:wrap;
+}
+.svc-card-row:last-child { border-bottom:none; }
+.svc-card-label { color:var(--muted); font-size:12px; }
+.svc-card-value { font-weight:600; font-size:13px; }
+.svc-card-actions { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+
+@media (max-width: 900px) {
+  .svc-table { display:none !important; }
+  .svc-card { display:block; }
+  .wrap { padding:12px; }
+  .toolbar { gap:6px; }
+  .toolbar select, .toolbar button { font-size:13px; min-height:44px; flex:1 1 auto; }
+  .toolbar .spacer { display:none; }
+  .sysbar .score-num { font-size:28px; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="sysbar" id="sysbar"></div>
+
+    <div class="toolbar">
+      <select id="filter-cat" onchange="render()">
+        <option value="">全部分类</option>
+        <option value="core">核心</option>
+        <option value="always-on">常驻</option>
+        <option value="on-demand">按需</option>
+        <option value="rarely-used">少用</option>
+        <option value="stop-candidate">停用候选</option>
+      </select>
+      <select id="filter-status" onchange="render()">
+        <option value="">全部状态</option>
+        <option value="active">运行中</option>
+        <option value="inactive">已停止</option>
+      </select>
+      <select id="sort-by" onchange="render()">
+        <option value="memory-desc">内存 ↓</option>
+        <option value="memory-asc">内存 ↑</option>
+        <option value="name">名称</option>
+        <option value="status">状态</option>
+      </select>
+      <div class="spacer"></div>
+      <button onclick="refresh()">刷新</button>
+    </div>
+
+    <div id="svc-groups"></div>
+  </div>
+
+<script>
+const CATEGORIES = {
+  'core': { label: '核心', badge: 'badge-core' },
+  'always-on': { label: '常驻', badge: 'badge-always' },
+  'on-demand': { label: '按需', badge: 'badge-demand' },
+  'rarely-used': { label: '少用', badge: 'badge-rare' },
+  'stop-candidate': { label: '停用候选', badge: 'badge-stop' },
+};
+
+async function loadAll() {
+  const [memRes, cfgRes] = await Promise.all([
+    fetch('/api/services/memory', { cache: 'no-store' }),
+    fetch('/api/services/config', { cache: 'no-store' }),
+  ]);
+  if (!memRes.ok) throw new Error(`memory API ${memRes.status}`);
+  if (!cfgRes.ok) throw new Error(`config API ${cfgRes.status}`);
+  const memData = await memRes.json();
+  const cfgData = await cfgRes.json();
+  return { memData, cfgData };
+}
+
+function memClass(mb) {
+  if (mb == null) return 'none';
+  if (mb > 500) return 'heavy';
+  if (mb > 200) return 'medium';
+  return 'light';
+}
+
+function fmtMem(mb) {
+  if (mb == null) return '—';
+  if (mb >= 1024) return `${(mb/1024).toFixed(1)} GB`;
+  return `${mb.toFixed(1)} MB`;
+}
+
+async function svcAction(name, action, ev) {
+  if (ev) ev.preventDefault();
+  const btn = ev?.target;
+  if (btn) { btn.disabled = true; btn.textContent = '...'; }
+  try {
+    const r = await fetch(`/api/service/${encodeURIComponent(name)}/${action}`, { method: 'POST' });
+    const data = await r.json();
+    alert(`${name}.service ${action}: ${data.ok ? '成功' : '失败'}\n${data.stderr || data.stdout || data.error || ''}`);
+  } catch (e) {
+    alert(`请求失败: ${e.message}`);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = action === 'restart' ? '↻' : action === 'stop' ? '■' : '▶'; }
+    refresh();
+  }
+}
+
+async function setCategory(unit, category) {
+  try {
+    await fetch('/api/services/config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ unit, category }),
+    });
+  } catch (e) { console.error(e); }
+}
+
+async function toggleLock(unit, locked) {
+  try {
+    await fetch('/api/services/config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ unit, locked: !locked }),
+    });
+    refresh();
+  } catch (e) { alert(e.message); }
+}
+
+function render() {
+  const el = document.getElementById('svc-groups');
+  loadAll().then(({ memData, cfgData }) => {
+    const units = cfgData.units || {};
+    const catFilter = document.getElementById('filter-cat').value;
+    const statusFilter = document.getElementById('filter-status').value;
+    const sortBy = document.getElementById('sort-by').value;
+
+    let services = (memData.services || []).map(s => {
+      const cfg = units[s.unit] || {};
+      return { ...s, category: cfg.category || '', locked: !!cfg.locked };
+    });
+
+    if (catFilter) services = services.filter(s => s.category === catFilter);
+    if (statusFilter === 'active') services = services.filter(s => s.active);
+    if (statusFilter === 'inactive') services = services.filter(s => !s.active);
+
+    services.sort((a, b) => {
+      if (sortBy === 'memory-desc') return (b.memory_bytes || 0) - (a.memory_bytes || 0);
+      if (sortBy === 'memory-asc') return (a.memory_bytes || 0) - (b.memory_bytes || 0);
+      if (sortBy === 'name') return a.name.localeCompare(b.name);
+      if (sortBy === 'status') return (a.active === b.active) ? 0 : a.active ? -1 : 1;
+      return 0;
+    });
+
+    const groups = {};
+    for (const s of services) {
+      const cat = s.category || 'unassigned';
+      (groups[cat] = groups[cat] || []).push(s);
+    }
+
+    const catOrder = ['core', 'always-on', 'on-demand', 'rarely-used', 'stop-candidate', 'unassigned'];
+    let html = '';
+    for (const cat of catOrder) {
+      const items = groups[cat];
+      if (!items || !items.length) continue;
+      const catInfo = CATEGORIES[cat] || { label: '未分类', badge: '' };
+
+      html += `<div class="svc-group">
+        <div class="svc-group-title">${catInfo.label} <span class="count">${items.length}</span></div>`;
+
+      html += `<table class="svc-table"><thead><tr>
+        <th>状态</th><th>服务</th><th>内存</th><th>开机启动</th><th>分类</th><th>锁定</th><th>操作</th>
+      </tr></thead><tbody>`;
+      for (const s of items) {
+        const memMb = s.memory_mb;
+        const memCls = memClass(memMb);
+        const catBadge = catInfo.badge ? `<span class="badge ${catInfo.badge}">${catInfo.label}</span>` : '';
+        const lockCls = s.locked ? 'locked' : '';
+        const lockIcon = s.locked ? '🔒' : '🔓';
+        const lockTitle = s.locked ? '已锁定（开机启动）' : '未锁定';
+        html += `<tr>
+          <td><span class="dot ${s.active ? 'on' : 'off'}"></span> ${s.active ? '运行' : '停止'}</td>
+          <td>
+            <div class="svc-name">${s.name}</div>
+            <div class="svc-unit">${s.unit}</div>
+          </td>
+          <td class="svc-mem ${memCls}">${fmtMem(memMb)}</td>
+          <td>${s.enabled ? '<span style="color:var(--green)">✓</span>' : '<span style="color:var(--muted)">—</span>'}</td>
+          <td>${catBadge}
+            <select class="cat-select" onchange="setCategory('${s.unit}', this.value)" value="${s.category}">
+              <option value="">—</option>
+              ${Object.entries(CATEGORIES).map(([k,v]) => `<option value="${k}" ${s.category===k?'selected':''}>${v.label}</option>`).join('')}
+            </select>
+          </td>
+          <td><button class="lock-btn ${lockCls}" onclick="toggleLock('${s.unit}', ${s.locked})" title="${lockTitle}">${lockIcon}</button></td>
+          <td><div class="svc-actions">
+            ${s.active
+              ? `<button class="svc-btn" onclick="svcAction('${s.name}','restart',event)" title="重启">↻</button>
+                 <button class="svc-btn danger" onclick="svcAction('${s.name}','stop',event)" title="停止">■</button>`
+              : `<button class="svc-btn" onclick="svcAction('${s.name}','start',event)" title="启动">▶</button>`}
+          </div></td>
+        </tr>`;
+      }
+      html += `</tbody></table>`;
+
+      for (const s of items) {
+        const memMb = s.memory_mb;
+        const memCls = memClass(memMb);
+        const catBadge = catInfo.badge ? `<span class="badge ${catInfo.badge}">${catInfo.label}</span>` : '';
+        const lockCls = s.locked ? 'locked' : '';
+        const lockIcon = s.locked ? '🔒' : '🔓';
+        const lockTitle = s.locked ? '已锁定（开机启动）' : '未锁定';
+        html += `<div class="svc-card">
+          <div class="svc-card-header">
+            <div style="flex:1;min-width:0">
+              <div class="svc-card-title">${s.name} ${catBadge}</div>
+              <div class="svc-card-unit">${s.unit}</div>
+            </div>
+            <span class="dot ${s.active ? 'on' : 'off'}"></span>
+          </div>
+          <div class="svc-card-row">
+            <span class="svc-card-label">内存</span>
+            <span class="svc-card-value svc-mem ${memCls}">${fmtMem(memMb)}</span>
+          </div>
+          <div class="svc-card-row">
+            <span class="svc-card-label">开机启动</span>
+            <span class="svc-card-value">${s.enabled ? '<span style="color:var(--green)">✓ 已启用</span>' : '<span style="color:var(--muted)">— 未启用</span>'}</span>
+          </div>
+          <div class="svc-card-row">
+            <span class="svc-card-label">分类</span>
+            <select class="cat-select" onchange="setCategory('${s.unit}', this.value)" value="${s.category}">
+              <option value="">—</option>
+              ${Object.entries(CATEGORIES).map(([k,v]) => `<option value="${k}" ${s.category===k?'selected':''}>${v.label}</option>`).join('')}
+            </select>
+          </div>
+          <div class="svc-card-row">
+            <span class="svc-card-label">锁定</span>
+            <button class="lock-btn ${lockCls}" onclick="toggleLock('${s.unit}', ${s.locked})" title="${lockTitle}">${lockIcon} ${s.locked ? '已锁定' : '未锁定'}</button>
+          </div>
+          <div class="svc-card-actions">
+            ${s.active
+              ? `<button class="svc-btn" onclick="svcAction('${s.name}','restart',event)" title="重启">↻ 重启</button>
+                 <button class="svc-btn danger" onclick="svcAction('${s.name}','stop',event)" title="停止">■ 停止</button>`
+              : `<button class="svc-btn" onclick="svcAction('${s.name}','start',event)" title="启动">▶ 启动</button>`}
+          </div>
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    if (!html) {
+      html = '<div class="empty">无匹配服务</div>';
+    }
+    el.innerHTML = html;
+  }).catch(e => {
+    el.innerHTML = `<div class="error">加载失败: ${e.message}</div>`;
+  });
+}
+
+function refresh() { render(); }
+render();
+setInterval(refresh, 30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/var/home/charlie/.nvm
+origin	https://github.com/nvm-sh/nvm.git (fetch)
+origin	https://github.com/nvm-sh/nvm.git (push)
+
+/var/home/charlie/agent-hub
+origin	git@github.com:mohdfaiz10101-cmyk/agent-hub.git (fetch)
+origin	git@github.com:mohdfaiz10101-cmyk/agent-hub.git (push)
+
+/var/home/charlie/ai
+origin	git@github.com:mohdfaiz10101-cmyk/ai.git (fetch)
+origin	git@github.com:mohdfaiz10101-cmyk/ai.git (push)
+
+/var/home/charlie/dotfiles
+origin	git@github.com:mohdfaiz10101-cmyk/dotfiles.git (fetch)
+origin	git@github.com:mohdfaiz10101-cmyk/dotfiles.git (push)
+
+/var/home/charlie/hub
+origin	git@github.com:mohdfaiz10101-cmyk/hub.git (fetch)
+origin	git@github.com:mohdfaiz10101-cmyk/hub.git (push)
+
+/var/home/charlie/memory
+origin	git@github.com:mohdfaiz10101-cmyk/memory.git (fetch)
+origin	git@github.com:mohdfaiz10101-cmyk/memory.git (push)
+
+/var/home/charlie/termhive
+origin	https://github.com/0x0funky/TermHive.git (fetch)
+origin	https://github.com/0x0funky/TermHive.git (push)
+

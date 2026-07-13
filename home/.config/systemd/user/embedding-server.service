@@ -1,0 +1,18 @@
+[Unit]
+Description=Embedding Server (8286)
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=OMP_NUM_THREADS=1
+Environment=CUDA_VISIBLE_DEVICES=
+Environment=EMBEDDING_BACKEND=hash
+ExecStart=%h/.local/bin/embedding-server.py 8286 0.0.0.0
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

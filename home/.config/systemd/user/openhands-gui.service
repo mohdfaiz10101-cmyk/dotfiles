@@ -1,0 +1,33 @@
+[Unit]
+Description=OpenHands GUI Server
+After=network-online.target podman.socket
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/openhands/openhands.env
+ExecStartPre=-/usr/bin/podman rm -f openhands-app
+ExecStart=/usr/bin/podman run --rm --replace --pull=missing \
+  --security-opt label=disable \
+  --env-file=%h/.config/openhands/openhands.env \
+  -v /run/user/1000/podman/podman.sock:/var/run/docker.sock \
+  -v /var/home/charlie/.openhands:/.openhands \
+  -v /var/home/charlie/.config/openhands/patches/app_server_config.py:/app/openhands/app_server/config.py:ro \
+  -v /var/home/charlie/.config/openhands/patches/docker_sandbox_service.py:/app/openhands/app_server/sandbox/docker_sandbox_service.py:ro \
+  -v /var/home/charlie/.config/openhands/patches/live_status_app_conversation_service.py:/app/openhands/app_server/app_conversation/live_status_app_conversation_service.py:ro \
+  -v /var/mnt/ai/cache/auto-migrate/.openclaw/workspace:/workspace \
+  -p 127.0.0.1:3001:3000 \
+  --add-host host.docker.internal:host-gateway \
+  --name openhands-app \
+  ${OPENHANDS_IMAGE}
+ExecStop=/usr/bin/podman stop openhands-app
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=180
+TimeoutStopSec=45
+MemoryHigh=6G
+MemoryMax=10G
+TasksMax=4096
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Mattermost self-hosted collaboration hub
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/var/home/charlie/apps/mattermost-docker
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker compose -f docker-compose.yml -f docker-compose.without-nginx.yml up -d --pull if_not_present --quiet-pull
+ExecStop=/usr/bin/docker compose -f docker-compose.yml -f docker-compose.without-nginx.yml down
+TimeoutStartSec=900
+TimeoutStopSec=120
+
+[Install]
+WantedBy=default.target

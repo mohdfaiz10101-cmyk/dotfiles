@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh Charlie Hub workspace snapshot every minute
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=60s
+AccuracySec=10s
+Unit=hub-workspace-snapshot.service
+
+[Install]
+WantedBy=timers.target

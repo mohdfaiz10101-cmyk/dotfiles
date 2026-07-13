@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlie Hub</title>
+<style>
+:root {
+  --bg:#111312; --panel:#181c1a; --panel2:#202521; --line:#303832; --text:#edf2ee; --muted:#9daaa2;
+  --good:#79d38b; --warn:#e6bf69; --bad:#ee7c7c; --info:#77c7d8; --work:#b8d779;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; min-height:100vh; color:var(--text);
+  font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+  background:linear-gradient(180deg,#101210 0%,#151816 52%,#101210 100%);
+}
+a { color:inherit; }
+.page { max-width:1360px; margin:0 auto; padding:22px; }
+.topbar { display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:18px; }
+.brand h1 { margin:0; font-size:28px; line-height:1.1; letter-spacing:0; }
+.brand .meta { margin-top:7px; color:var(--muted); font-size:13px; }
+.top-actions { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
+.btn {
+  border:1px solid var(--line); background:var(--panel2); color:var(--text);
+  padding:9px 12px; border-radius:6px; text-decoration:none; font-size:13px; min-height:38px;
+  display:inline-flex; align-items:center; justify-content:center; gap:7px;
+}
+.btn:hover { border-color:var(--info); color:#d8f8ff; }
+.layout { display:grid; grid-template-columns:minmax(0,1.1fr) 360px; gap:14px; align-items:start; }
+.band, .tile, .row, .stack-panel {
+  border:1px solid rgba(255,255,255,.07); background:rgba(24,28,26,.94); border-radius:8px;
+}
+.band { padding:16px; margin-bottom:14px; }
+.section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-bottom:12px; }
+.section-head h2 { margin:0; font-size:15px; letter-spacing:0; }
+.section-note { color:var(--muted); font-size:12px; }
+.health { display:grid; grid-template-columns:160px repeat(4,minmax(0,1fr)); gap:10px; }
+.score {
+  display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px; border-radius:8px;
+  background:linear-gradient(135deg,rgba(121,211,139,.16),rgba(119,199,216,.08)); border:1px solid rgba(121,211,139,.2);
+}
+.score strong { font-size:38px; line-height:1; }
+.score span { color:var(--muted); font-size:12px; }
+.metric { padding:12px; border-radius:8px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.055); }
+.metric .k { color:var(--muted); font-size:11px; }
+.metric .v { margin-top:5px; font-size:22px; font-weight:800; }
+.metric.warn .v { color:var(--warn); }
+.metric.bad .v { color:var(--bad); }
+.primary-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.tile { min-height:132px; padding:14px; text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; }
+.tile:hover { border-color:var(--info); background:#202721; }
+.tile .eyebrow { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.5px; }
+.tile .name { font-size:18px; font-weight:800; margin-top:7px; }
+.tile .detail { color:var(--muted); font-size:12px; line-height:1.45; margin-top:6px; }
+.status { display:inline-flex; align-items:center; gap:6px; color:var(--muted); font-size:12px; }
+.dot { width:8px; height:8px; border-radius:50%; background:var(--muted); }
+.dot.online { background:var(--good); box-shadow:0 0 10px rgba(121,211,139,.45); }
+.dot.offline { background:var(--bad); }
+.dot.warn { background:var(--warn); }
+.ops-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.row { padding:12px; min-height:84px; }
+.row-title { font-weight:800; font-size:14px; }
+.row-detail { color:var(--muted); font-size:12px; line-height:1.45; margin-top:5px; }
+.row-command { margin-top:8px; color:#cde9d1; font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.builder-grid, .project-grid, .marketing-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.builder, .project-card, .arch-node, .marketing-card {
+  padding:12px; border-radius:8px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.055);
+}
+.builder-head, .project-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.builder h3, .project-card h3, .arch-node h3, .marketing-card h3 { margin:0; font-size:14px; }
+.builder p, .project-card p, .arch-node p, .marketing-card p { margin:6px 0 0; color:var(--muted); font-size:12px; line-height:1.5; }
+.project-actions { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+.mini-btn {
+  border:1px solid var(--line); background:#202521; color:var(--text); border-radius:6px; padding:7px 9px;
+  font-size:12px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; min-height:32px;
+}
+.mini-btn:hover { border-color:var(--info); color:#d8f8ff; }
+.project-form { display:grid; grid-template-columns:1fr 1.3fr auto; gap:8px; margin-bottom:10px; }
+.project-form input {
+  width:100%; min-height:38px; border:1px solid var(--line); border-radius:6px; background:#101210; color:var(--text); padding:8px 10px;
+}
+.progress { height:6px; border-radius:999px; background:#252b27; overflow:hidden; margin-top:10px; }
+.progress span { display:block; height:100%; background:linear-gradient(90deg,var(--good),var(--info)); }
+.arch-map { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.arch-node.gap { border-style:dashed; border-color:rgba(230,191,105,.45); }
+.arch-node .kind { color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.4px; margin-bottom:5px; }
+.marketing-tools { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px; }
+.keyword-list { margin-top:7px; color:#cde9d1; font-size:11px; line-height:1.45; }
+.workflow-list { display:grid; gap:8px; }
+.workflow-row {
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; align-items:start;
+  padding:12px; border-radius:8px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.055);
+}
+.workflow-actions { display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end; }
+.event-line { color:var(--muted); font-size:11px; line-height:1.45; margin-top:5px; }
+.side { display:grid; gap:14px; }
+.stack-panel { padding:14px; }
+.stack { display:grid; gap:8px; }
+.link-row {
+  display:flex; align-items:center; justify-content:space-between; gap:10px; text-decoration:none;
+  padding:10px 11px; border-radius:6px; background:rgba(255,255,255,.025); border:1px solid transparent;
+}
+.link-row:hover { border-color:var(--info); background:#202721; }
+.link-row b { font-size:13px; }
+.link-row span { color:var(--muted); font-size:11px; text-align:right; }
+.layer-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.layer { padding:13px; border-radius:8px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.055); }
+.layer h3 { margin:0 0 8px; font-size:13px; }
+.layer p { margin:0; color:var(--muted); font-size:12px; line-height:1.55; }
+.svc-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:8px; }
+.svc {
+  display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 11px;
+  border-radius:6px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.045); text-decoration:none;
+}
+.svc:hover { border-color:var(--info); }
+.svc-name { font-size:13px; font-weight:700; }
+.svc-detail { color:var(--muted); font-size:11px; margin-top:3px; }
+.tag { font-size:10px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 7px; white-space:nowrap; }
+.tag.online { color:var(--good); border-color:rgba(121,211,139,.35); }
+.tag.offline { color:var(--bad); border-color:rgba(238,124,124,.35); }
+.tag.local { color:var(--warn); border-color:rgba(230,191,105,.35); }
+.btn, .tile, .svc, .link-row, .mini-btn, .workflow-row, .builder, .project-card, .marketing-card, .arch-node, .layer, .row { position:relative; }
+.el-num {
+  position:absolute; top:4px; right:4px; width:18px; height:18px; border-radius:50%;
+  background:rgba(119,199,216,.18); color:var(--info); font-size:10px; font-weight:800;
+  display:flex; align-items:center; justify-content:center; pointer-events:none;
+  border:1px solid rgba(119,199,216,.35); line-height:1;
+}
+@media (max-width: 1050px) {
+  .page { padding:12px; }
+  .topbar { align-items:flex-start; flex-direction:column; }
+  .top-actions { width:100%; justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:2px; }
+  .btn { white-space:nowrap; }
+  .health, .primary-grid, .ops-grid, .layer-grid, .builder-grid, .project-grid, .marketing-grid, .project-form, .arch-map { grid-template-columns:1fr; }
+  .tile { min-height:108px; }
+  .workflow-row { grid-template-columns:1fr; }
+  .workflow-actions { justify-content:flex-start; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <div class="brand">
+      <h1>Charlie Hub</h1>
+      <div class="meta" id="meta">加载中</div>
+    </div>
+    <nav class="top-actions">
+      <a class="btn" href="/control" data-click-id="home:control">控制中心</a>
+      <a class="btn" href="/dashboard" data-click-id="home:dashboard">系统全景</a>
+      <a class="btn" href="/ai-panel" data-click-id="home:ai-panel">AI 工作台</a>
+      <a class="btn" href="/kanban" data-click-id="home:kanban">任务看板</a>
+      <a class="btn" href="/workspace" data-click-id="home:workspace">工作区聚合</a>
+    </nav>
+  </header>
+
+  <section class="band">
+    <div class="section-head">
+      <h2>系统状态</h2>
+      <div class="section-note" id="health-note">实时</div>
+    </div>
+    <div class="health" id="health"></div>
+  </section>
+
+  <div class="layout">
+    <div>
+      <section class="band">
+        <div class="section-head">
+          <h2>高频入口</h2>
+          <div class="section-note">远程使用优先</div>
+        </div>
+        <div class="primary-grid" id="primary-grid"></div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>今日重点</h2>
+          <div class="section-note" id="ops-score">加载中</div>
+        </div>
+        <div class="ops-grid" id="ops-grid"></div>
+      </section>
+
+      <section class="band" id="workflow">
+        <div class="section-head">
+          <h2>任务联动中心</h2>
+          <div class="section-note" id="workflow-note">Hub / OP / FastGPT</div>
+        </div>
+        <div class="marketing-tools">
+          <button class="mini-btn" type="button" id="export-all-fastgpt">全部导出 FastGPT</button>
+          <a class="mini-btn" href="/go/fastgpt" data-click-id="workflow:fastgpt">打开 FastGPT</a>
+          <a class="mini-btn" href="/go/opencode" data-click-id="workflow:opencode">打开 OP</a>
+          <a class="mini-btn" href="/go/crush" data-click-id="workflow:crush">打开 Crush</a>
+          <a class="mini-btn" href="/go/codex" data-click-id="workflow:codex">打开 Codex</a>
+          <button class="mini-btn" type="button" data-score-target="op" title="发送评分包到 OP 待确认队列，不触发执行">OP评分</button>
+          <button class="mini-btn" type="button" data-score-target="crush" title="发送评分包到 Crush 优化队列">Crush评分</button>
+          <button class="mini-btn" type="button" data-score-target="codex" title="写入 Codex 评分优化任务包">Codex评分</button>
+          <button class="mini-btn" type="button" data-score-target="all" title="同时发送给 OP、Crush、Codex">三工具评分</button>
+          <button class="mini-btn" type="button" onclick="restartOP(event)" title="修复 OP 代理链">↻ 代理</button>
+          <a class="mini-btn" href="/go/zulip" data-click-id="workflow:zulip">打开 Zulip</a>
+        </div>
+        <div class="workflow-list" id="workflow-list"></div>
+      </section>
+
+      <section class="band" id="channels">
+        <div class="section-head">
+          <h2>频道适配器</h2>
+          <div class="section-note" id="channel-note">替代 Telegram / Discord</div>
+        </div>
+        <div class="builder-grid" id="channel-grid"></div>
+      </section>
+
+      <section class="band" id="projects">
+        <div class="section-head">
+          <h2>AI 建站工作台</h2>
+          <div class="section-note">第三方工具执行，Hub 管理项目和交接</div>
+        </div>
+        <div class="builder-grid" id="builder-grid"></div>
+      </section>
+
+      <section class="band" id="open-source-stack">
+        <div class="section-head">
+          <h2>开源一站式建站栈</h2>
+          <div class="section-note" id="stack-note">比 WordPress 更可定制</div>
+        </div>
+        <div class="builder-grid" id="stack-grid"></div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <div class="section-note" id="project-note">管理 / 创建 / OP 联动</div>
+        </div>
+        <form class="project-form" id="project-form">
+          <input name="name" placeholder="项目名称">
+          <input name="description" placeholder="目标说明">
+          <button class="mini-btn" type="submit">创建</button>
+        </form>
+        <div class="project-grid" id="project-grid"></div>
+      </section>
+
+      <section class="band" id="marketing">
+        <div class="section-head">
+          <h2>Sourcing 营销中心</h2>
+          <div class="section-note" id="marketing-note">需求采集 / 推广 / 询盘</div>
+        </div>
+        <div class="marketing-tools">
+          <button class="mini-btn" type="button" id="copy-marketing-prompt">复制营销 AI 提示词</button>
+          <button class="mini-btn" type="button" id="dispatch-marketing-op">派发营销 OP</button>
+          <a class="mini-btn" href="/go/google-trends" data-click-id="marketing:trends">趋势</a>
+          <a class="mini-btn" href="/go/google-merchant" data-click-id="marketing:merchant">商品 Feed</a>
+          <a class="mini-btn" href="/go/meta-advantage" data-click-id="marketing:meta">Meta</a>
+          <a class="mini-btn" href="/go/tiktok-creative" data-click-id="marketing:tiktok">TikTok</a>
+        </div>
+        <div class="marketing-grid" id="marketing-grid"></div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>系统架构图</h2>
+          <div class="section-note" id="graph-note">结构与空缺点</div>
+        </div>
+        <div class="arch-map" id="arch-map"></div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>架构分层</h2>
+          <div class="section-note">常驻、工作、实验分开</div>
+        </div>
+        <div class="layer-grid">
+          <div class="layer"><h3>核心常驻</h3><p>SSH、Tailscale、FRP、LiteLLM、OpenCode、TermHive、Telegram Gateway、Syncthing。</p></div>
+          <div class="layer"><h3>工作态</h3><p>FastGPT、Embedding、CodeGraph、ttyd、Hub API，按实际工作流保持在线。</p></div>
+          <div class="layer"><h3>实验态</h3><p>Letta、Open WebUI、OpenAgents、AO、Gelab、Office Agent、Matrix 桥接按需启动。</p></div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="section-head">
+          <h2>服务目录</h2>
+          <div class="section-note">按职责收敛</div>
+        </div>
+        <div class="svc-list" id="svc-list"></div>
+      </section>
+    </div>
+
+    <aside class="side">
+      <section class="stack-panel">
+        <div class="section-head">
+          <h2>手机入口</h2>
+          <div class="section-note">5G / 随身 WiFi</div>
+        </div>
+        <div class="stack">
+          <a class="link-row" href="/go/terminal" data-click-id="home:duck-terminal"><b>DuckDNS 终端</b><span>自动兜底</span></a>
+          <a class="link-row" href="/go/opencode" data-click-id="home:duck-opencode"><b>DuckDNS OpenCode</b><span>自动兜底</span></a>
+          <a class="link-row" href="/phone-health" data-click-id="home:phone-health"><b>手机健康</b><span>ADB / Haven</span></a>
+        </div>
+      </section>
+
+      <section class="stack-panel">
+        <div class="section-head">
+          <h2>二级页面</h2>
+          <div class="section-note">完整工具</div>
+        </div>
+        <div class="stack">
+          <a class="link-row" href="/dashboard" data-click-id="home:system-overview"><b>系统全景</b><span>服务 / 软件 / 项目</span></a>
+          <a class="link-row" href="/ai-panel" data-click-id="home:ai-workbench"><b>AI 工作台</b><span>Agent / MCP / 派发</span></a>
+          <a class="link-row" href="/control" data-click-id="home:control-center"><b>控制中心</b><span>启停 / 诊断</span></a>
+          <a class="link-row" href="/search" data-click-id="home:search"><b>全局搜索</b><span>资料检索</span></a>
+          <a class="link-row" href="/wechat" data-click-id="home:wechat"><b>微信查询</b><span>聊天记录</span></a>
+        </div>
+      </section>
+
+      <section class="stack-panel">
+        <div class="section-head">
+          <h2>架构动作</h2>
+          <div class="section-note" id="architecture-note">自我更新</div>
+        </div>
+        <div class="stack" id="architecture-actions">
+          <div class="row"><div class="row-title">加载中</div><div class="row-detail">正在根据系统状态生成下一步建议。</div></div>
+        </div>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<script>
+const HOST = location.hostname;
+
+const PRIMARY = [
+  { key:'OpenClaw TTYD', title:'终端入口', type:'REMOTE', href:'/go/terminal', detail:'手机远程命令和 OpenClaw 会话', click:'home:primary-terminal' },
+  { key:'OpenCode Web', title:'OpenCode', type:'AI', href:'/go/opencode', detail:'代码任务、会话和 Web 控制台', click:'home:primary-opencode' },
+  { key:'TermHive Web', title:'TermHive', type:'WORK', href:'/go/termhive', detail:'项目恢复、命令片段和本地 Shell', click:'home:primary-termhive' },
+  { key:'Hub', title:'控制中心', type:'OPS', href:'/go/control', detail:'服务启停、排查、稳定性检查', click:'home:primary-control' },
+];
+
+const SERVICE_GROUPS = [
+  { group:'核心常驻', names:['Hub','OpenCode Web','TermHive Web','LiteLLM','Telegram Gateway'] },
+  { group:'远程与手机', names:['OpenClaw TTYD','Haven MCP Bridge','FRP 19890','Sunshine'] },
+  { group:'AI 与知识', names:['Letta','Embedding','OpenAgents','Memory Pulse'] },
+  { group:'网络与代理', names:['Mihomo','内容筛选'] },
+];
+
+function clsFor(value, warn=80, bad=95) {
+  return value >= bad ? 'bad' : value >= warn ? 'warn' : '';
+}
+
+function statusDot(status) {
+  if (status === 'online') return '<span class="dot online"></span>';
+  if (status === 'not_deployed') return '<span class="dot warn"></span>';
+  return '<span class="dot offline"></span>';
+}
+
+function serviceUrl(svc) {
+  if (!svc) return '#';
+  if (svc.name === 'OpenClaw TTYD') return '/go/terminal';
+  if (svc.name === 'OpenCode Web') return '/go/opencode';
+  if (svc.name === 'TermHive Web') return '/go/termhive';
+  if (svc.name === 'Hub') return '/go/hub';
+  if (svc.name === 'LiteLLM') return '/go/litellm';
+  if (svc.name === 'Telegram Gateway') return '/go/telegram';
+  if (svc.name === 'OpenAgents') return '/go/openagents';
+  if (svc.name === 'Mihomo') return '/go/mihomo';
+  if (svc.name === 'Sunshine') return '/go/sunshine';
+  return svc.url || '#';
+}
+
+function renderHealth(data) {
+  const sc = data.score || {};
+  const sys = data.system || {};
+  document.getElementById('health').innerHTML = `
+    <div class="score"><div><strong>${sc.score ?? '-'}</strong><span>${sc.grade || ''}</span></div><span>严重 ${sc.critical || 0}<br>警告 ${sc.warning || 0}</span></div>
+    <div class="metric ${clsFor(sys.cpu || 0)}"><div class="k">CPU</div><div class="v">${sys.cpu ?? '-'}%</div></div>
+    <div class="metric ${clsFor(sys.memory || 0)}"><div class="k">内存</div><div class="v">${sys.memory ?? '-'}%</div></div>
+    <div class="metric ${clsFor(sys.swap || 0)}"><div class="k">Swap</div><div class="v">${sys.swap ?? '-'}%</div></div>
+    <div class="metric ${clsFor(sys.root_disk || 0,85,95)}"><div class="k">存储</div><div class="v">${sys.root_disk ?? '-'}%</div></div>
+  `;
+  document.getElementById('meta').textContent = new Date(data.generated_at).toLocaleString();
+  document.getElementById('health-note').textContent = `可用内存 ${sys.memory_available_gb ?? '-'}GB`;
+}
+
+function renderPrimary(serviceMap) {
+  document.getElementById('primary-grid').innerHTML = PRIMARY.map(item => {
+    const svc = serviceMap[item.key] || {};
+    const status = svc.status || 'offline';
+    return `<a class="tile" href="${item.href}" data-click-id="${item.click}">
+      <div><div class="eyebrow">${item.type}</div><div class="name">${item.title}</div><div class="detail">${item.detail}</div></div>
+      <div class="status">${statusDot(status)}${status}</div>
+    </a>`;
+  }).join('');
+}
+
+function renderServices(serviceMap) {
+  const blocks = [];
+  for (const group of SERVICE_GROUPS) {
+    for (const name of group.names) {
+      const svc = serviceMap[name];
+      if (!svc) continue;
+      const status = svc.status || 'offline';
+      const local = /^http:\/\/[^/]*:(3200|3210|4002|4097|8283|8732|9091|9811)\b/.test(svc.url || '');
+      blocks.push(`<a class="svc" href="${serviceUrl(svc)}" ${local ? '' : 'target="_blank" rel="noreferrer"'} data-click-id="home:svc:${name}">
+        <div><div class="svc-name">${name}</div><div class="svc-detail">${group.group} · ${svc.detail || ''}</div></div>
+        <span class="tag ${status === 'online' ? 'online' : status === 'offline' ? 'offline' : 'local'}">${local ? '本机' : status}</span>
+      </a>`);
+    }
+  }
+  document.getElementById('svc-list').innerHTML = blocks.join('') || '<div class="row">暂无服务数据</div>';
+}
+
+function renderOps(data) {
+  const score = data.score ?? '-';
+  document.getElementById('ops-score').textContent = `评分 ${score}`;
+  const tasks = (data.next_tasks || data.tasks || []).slice(0, 3);
+  if (!tasks.length) {
+    document.getElementById('ops-grid').innerHTML = '<div class="row"><div class="row-title">暂无高优先级事项</div><div class="row-detail">当前保持观察。</div></div>';
+    return;
+  }
+  document.getElementById('ops-grid').innerHTML = tasks.map(t => `
+    <div class="row">
+      <div class="row-title">${t.title || t.area || '任务'}</div>
+      <div class="row-detail">${t.detail || ''}</div>
+      ${t.command ? `<div class="row-command">${t.command}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderWorkflow(data) {
+  const summary = data.summary || {};
+  const tasks = (data.tasks || []).slice(0, 8);
+  document.getElementById('workflow-note').textContent = `总 ${summary.total || 0} · 高 ${summary.high || 0} · 中 ${summary.medium || 0}`;
+  if (!tasks.length) {
+    document.getElementById('workflow-list').innerHTML = '<div class="row"><div class="row-title">暂无统一待办</div><div class="row-detail">OP、每日提升、架构动作和项目里程碑都没有可显示事项。</div></div>';
+    return;
+  }
+  document.getElementById('workflow-list').innerHTML = tasks.map(t => {
+    const events = (t.events || []).slice(-2).map(e => `<div class="event-line">${escapeHtml(e.ts)} · ${escapeHtml(e.event)} · ${escapeHtml(e.source)}</div>`).join('');
+    return `<div class="workflow-row">
+      <div>
+        <div class="row-title">${escapeHtml(t.priority)} · ${escapeHtml(t.title)}</div>
+        <div class="row-detail">${escapeHtml(t.source)} · ${escapeHtml(t.detail)}</div>
+        ${events || `<div class="event-line">等待派发</div>`}
+      </div>
+      <div class="workflow-actions">
+        <button class="mini-btn" type="button" data-workflow-op="${escapeHtml(t.id)}">发 OP 待确认</button>
+        <button class="mini-btn" type="button" data-workflow-fastgpt="${escapeHtml(t.id)}">给 FastGPT</button>
+        <button class="mini-btn" type="button" data-workflow-zulip="${escapeHtml(t.id)}">给 Zulip</button>
+        <button class="mini-btn" type="button" data-workflow-done="${escapeHtml(t.id)}">完成</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderArchitecture(data) {
+  const note = document.getElementById('architecture-note');
+  const target = document.getElementById('architecture-actions');
+  const summary = data.summary || {};
+  note.textContent = `高 ${summary.high || 0} · 中 ${summary.medium || 0} · 低 ${summary.low || 0}`;
+  const actions = (data.actions || []).slice(0, 5);
+  if (!actions.length) {
+    target.innerHTML = '<div class="row"><div class="row-title">当前无需调整</div><div class="row-detail">系统架构动作队列为空，保持观察。</div></div>';
+    return;
+  }
+  target.innerHTML = actions.map(a => {
+    const href = a.href || '/dashboard';
+    const cmd = a.command ? `<div class="row-command">${a.command}</div>` : '';
+    return `<a class="row" href="${href}" data-click-id="arch:${a.area}:${a.title}" style="display:block;text-decoration:none;color:inherit">
+      <div class="row-title">${a.priority === 'high' ? '高' : a.priority === 'medium' ? '中' : '低'} · ${a.title}</div>
+      <div class="row-detail">${a.area || '架构'} · ${a.detail || ''}</div>
+      ${cmd}
+    </a>`;
+  }).join('');
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
+function renderBuilders(data) {
+  const builders = data.builders || [];
+  document.getElementById('builder-grid').innerHTML = builders.map(b => `
+    <div class="builder">
+      <div class="builder-head">
+        <div><h3>${escapeHtml(b.name)}</h3><p>${escapeHtml(b.role)} · ${escapeHtml(b.best_for)}</p></div>
+        <a class="mini-btn" href="${escapeHtml(b.link)}" data-click-id="builder:${escapeHtml(b.id)}">打开</a>
+      </div>
+      <p>${escapeHtml(b.fit)}</p>
+    </div>
+  `).join('');
+}
+
+function renderOpenSourceStack(data) {
+  const tools = data.tools || [];
+  const blueprint = data.blueprint || {};
+  document.getElementById('stack-note').textContent = `${tools.length} 个开源工具 · 推荐可自建`;
+  const preferred = new Set([...(blueprint.lean_start || []), ...(blueprint.b2b_marketplace || [])].map(x => x.toLowerCase()));
+  document.getElementById('stack-grid').innerHTML = tools.map(tool => {
+    const hot = preferred.has(String(tool.name).toLowerCase()) || preferred.has(String(tool.id).toLowerCase());
+    return `<div class="builder">
+      <div class="builder-head">
+        <div><h3>${escapeHtml(tool.name)}</h3><p>${escapeHtml(tool.role)} · ${escapeHtml(tool.best_for)}</p></div>
+        <a class="mini-btn" href="${escapeHtml(tool.link)}" data-click-id="oss:${escapeHtml(tool.id)}">打开</a>
+      </div>
+      <p>${escapeHtml(tool.fit)}</p>
+      <div class="keyword-list">${escapeHtml(tool.stack_role)}${hot ? ' · 推荐组合' : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderChannels(data) {
+  const adapters = data.adapters || [];
+  const blueprint = data.blueprint || {};
+  document.getElementById('channel-note').textContent = `先 ${blueprint.recommended_start || 'ntfy'} · 团队 ${blueprint.recommended_team || 'Mattermost'}`;
+  document.getElementById('channel-grid').innerHTML = adapters.map(item => `
+    <div class="builder">
+      <div class="builder-head">
+        <div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.role)} · ${escapeHtml(item.direction)}</p></div>
+        <a class="mini-btn" href="${escapeHtml(item.link)}" data-click-id="channel:${escapeHtml(item.id)}">打开</a>
+      </div>
+      <p>${escapeHtml(item.fit)}</p>
+      <div class="keyword-list">${escapeHtml((item.channels || []).join(' · '))}</div>
+    </div>
+  `).join('');
+}
+
+function renderProjects(data) {
+  const projects = data.projects || [];
+  document.getElementById('project-note').textContent = `${projects.length} 个项目`;
+  document.getElementById('project-grid').innerHTML = projects.map(p => {
+    const legacy = p.legacy ? `旧站 ${escapeHtml(p.legacy.type || '')} · ${escapeHtml(p.legacy.status || '')}` : escapeHtml(p.group || '');
+    return `<div class="project-card">
+      <div class="project-head">
+        <div><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.description)}</p></div>
+        <span class="tag ${p.progress >= 70 ? 'online' : p.progress > 0 ? 'local' : 'offline'}">${p.progress || 0}%</span>
+      </div>
+      <div class="progress"><span style="width:${Math.max(0, Math.min(100, p.progress || 0))}%"></span></div>
+      <p>${legacy}</p>
+      <div class="project-actions">
+        <button class="mini-btn" type="button" data-project-copy="${escapeHtml(p.id)}">复制 AI 交接词</button>
+        <button class="mini-btn" type="button" data-project-op="${escapeHtml(p.id)}">发 OP 待确认</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderGraph(data) {
+  const nodes = (data.nodes || []).slice(0, 9).map(n => ({...n, isGap:false}));
+  const gaps = (data.gaps || []).map(g => ({id:g.id, label:g.label, type:'gap', status:'reserved', detail:g.detail, isGap:true}));
+  const items = nodes.concat(gaps);
+  document.getElementById('graph-note').textContent = `${nodes.length} 节点 · ${gaps.length} 空位`;
+  document.getElementById('arch-map').innerHTML = items.map(n => `
+    <div class="arch-node ${n.isGap ? 'gap' : ''}">
+      <div class="kind">${escapeHtml(n.type)} · ${escapeHtml(n.status)}</div>
+      <h3>${escapeHtml(n.label)}</h3>
+      <p>${escapeHtml(n.detail)}</p>
+    </div>
+  `).join('');
+}
+
+function renderMarketing(data) {
+  const opportunities = data.opportunities || [];
+  const channels = data.channels || [];
+  const sources = data.sources || [];
+  document.getElementById('marketing-note').textContent = `${opportunities.length} 个机会 · ${channels.length} 个渠道 · ${sources.length} 个来源`;
+  const opportunityCards = opportunities.slice(0, 4).map(item => `
+    <div class="marketing-card">
+      <div class="builder-head">
+        <h3>${escapeHtml(item.title)}</h3>
+        <span class="tag ${item.priority === 'high' ? 'online' : 'local'}">${escapeHtml(item.priority)}</span>
+      </div>
+      <p>${escapeHtml(item.buyer_pain)}</p>
+      <div class="keyword-list">${escapeHtml((item.keywords || []).slice(0, 5).join(' · '))}</div>
+    </div>
+  `);
+  const channelCards = channels.slice(0, 4).map(item => `
+    <div class="marketing-card">
+      <div class="kind">${escapeHtml(item.cadence)}</div>
+      <h3>${escapeHtml(item.name)}</h3>
+      <p>${escapeHtml(item.goal)}</p>
+    </div>
+  `);
+  document.getElementById('marketing-grid').innerHTML = opportunityCards.concat(channelCards).join('');
+}
+
+async function refreshBuilders() {
+  try {
+    const data = await fetch('/api/website-builders', { cache:'force-cache' }).then(r => r.json());
+    renderBuilders(data);
+  } catch (err) {
+    document.getElementById('builder-grid').innerHTML = `<div class="row"><div class="row-title">建站工具加载失败</div><div class="row-detail">${escapeHtml(err.message)}</div></div>`;
+  }
+}
+
+async function refreshOpenSourceStack() {
+  try {
+    const data = await fetch('/api/open-source-stack', { cache:'force-cache' }).then(r => r.json());
+    renderOpenSourceStack(data);
+  } catch (err) {
+    document.getElementById('stack-note').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+async function refreshChannels() {
+  try {
+    const data = await fetch('/api/channel-adapters', { cache:'force-cache' }).then(r => r.json());
+    renderChannels(data);
+  } catch (err) {
+    document.getElementById('channel-note').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+async function refreshProjects() {
+  try {
+    const data = await fetch('/api/projects', { cache:'force-cache' }).then(r => r.json());
+    renderProjects(data);
+  } catch (err) {
+    document.getElementById('project-note').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+async function refreshWorkflow() {
+  try {
+    const data = await fetch('/api/workflow/todos', { cache:'force-cache' }).then(r => r.json());
+    renderWorkflow(data);
+  } catch (err) {
+    document.getElementById('workflow-note').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+async function refreshGraph() {
+  try {
+    const data = await fetch('/api/architecture/graph', { cache:'force-cache' }).then(r => r.json());
+    renderGraph(data);
+  } catch (err) {
+    document.getElementById('graph-note').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+async function refreshMarketing() {
+  try {
+    const data = await fetch('/api/marketing/center', { cache:'force-cache' }).then(r => r.json());
+    renderMarketing(data);
+  } catch (err) {
+    document.getElementById('marketing-note').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+async function copyProjectPrompt(projectId) {
+  const data = await fetch(`/api/projects/${encodeURIComponent(projectId)}/handoff`, { cache:'force-cache' }).then(r => r.json());
+  await navigator.clipboard.writeText(data.prompt || '');
+  document.getElementById('project-note').textContent = `已复制 ${data.project?.name || projectId} 的 AI 交接词`;
+}
+
+async function copyMarketingPrompt() {
+  const data = await fetch('/api/marketing/prompt', { cache:'force-cache' }).then(r => r.json());
+  await navigator.clipboard.writeText(data.prompt || '');
+  document.getElementById('marketing-note').textContent = '已复制营销 AI 提示词';
+}
+
+async function dispatchProjectOp(projectId) {
+  const resp = await fetch(`/api/projects/${encodeURIComponent(projectId)}/op`, {
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({ message:'用 AI 建站工具推进该项目，生成后台/页面/数据导入方案，并把结果回收到本地代码。' })
+  }).then(r => r.json());
+  document.getElementById('project-note').textContent = resp.status === 'queued_not_executed' ? `已写入 OP 待确认，不执行: ${projectId}` : `OP 失败: ${resp.error || 'unknown'}`;
+}
+
+async function dispatchMarketingOp() {
+  const resp = await fetch('/api/marketing/op', {
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({ message:'为 Sourcing 网站搭建自动营销中心：需求采集、急需配件机会池、SEO/Feed/广告素材和询盘 CRM 联动。' })
+  }).then(r => r.json());
+  document.getElementById('marketing-note').textContent = resp.status === 'queued_not_executed' ? '已写入营销 OP 待确认，不执行' : `OP 失败: ${resp.error || 'unknown'}`;
+}
+
+async function workflowAction(taskId, action) {
+  const endpoint = action === 'op'
+    ? `/api/workflow/todos/${encodeURIComponent(taskId)}/op`
+    : action === 'fastgpt'
+      ? `/api/workflow/todos/${encodeURIComponent(taskId)}/fastgpt`
+      : action === 'zulip'
+        ? `/api/workflow/todos/${encodeURIComponent(taskId)}/zulip`
+        : `/api/workflow/todos/${encodeURIComponent(taskId)}/complete`;
+  const resp = await fetch(endpoint, { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({}) }).then(r => r.json());
+  const label = action === 'op' ? '已发送到 OP 待确认，不执行' : action === 'fastgpt' ? '已导出给 FastGPT' : action === 'zulip' ? '已发送给 Zulip' : '已标记完成';
+  document.getElementById('workflow-note').textContent = resp.status ? `${label}: ${taskId}` : `失败: ${resp.error || 'unknown'}`;
+  refreshWorkflow();
+}
+
+async function exportAllFastGPT() {
+  const resp = await fetch('/api/workflow/fastgpt/export', { method:'POST' }).then(r => r.json());
+  document.getElementById('workflow-note').textContent = resp.status === 'exported' ? `已导出知识包: ${resp.file}` : `导出失败: ${resp.error || 'unknown'}`;
+}
+
+async function dispatchScorePackage(target, button) {
+  const oldText = button ? button.textContent : '';
+  if (button) {
+    button.disabled = true;
+    button.textContent = '发送中...';
+  }
+  document.getElementById('workflow-note').textContent = `正在发送评分包到 ${target}...`;
+  try {
+    const resp = await fetch(`/api/ops/score-dispatch/${encodeURIComponent(target)}`, {
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({intent:'optimize'}),
+    }).then(r => r.json());
+    if (resp.error) throw new Error(resp.error);
+    const detail = resp.results ? Object.entries(resp.results).map(([k, v]) => `${k}:${v.status || 'ok'}`).join(' · ') : resp.status;
+    document.getElementById('workflow-note').textContent = `评分包已发送 ${resp.score}/${resp.grade} · ${detail}`;
+  } catch (err) {
+    document.getElementById('workflow-note').textContent = `评分包发送失败: ${err.message}`;
+  } finally {
+    if (button) {
+      setTimeout(() => {
+        button.disabled = false;
+        button.textContent = oldText;
+      }, 1800);
+    }
+  }
+}
+
+async function restartOP(ev) {
+  const btn = ev.target;
+  btn.disabled = true; btn.textContent = '...';
+  try {
+    const r = await fetch('/api/service/opencode/restart', { method:'POST' });
+    const data = await r.json();
+    alert(`OP 代理修复: ${data.ok ? '已排队' : '失败'}\n${data.note || data.stderr || data.stdout || data.error || ''}`);
+  } catch (e) {
+    alert(`请求失败: ${e.message}`);
+  } finally {
+    btn.disabled = false; btn.textContent = '↻ 代理';
+  }
+}
+
+async function refreshArchitecture() {
+  try {
+    const data = await fetch('/api/architecture/actions', { cache:'force-cache' }).then(r => r.json());
+    renderArchitecture(data);
+  } catch (err) {
+    document.getElementById('architecture-note').textContent = '加载失败';
+    document.getElementById('architecture-actions').innerHTML = `<div class="row"><div class="row-title">架构动作接口异常</div><div class="row-detail">${err.message}</div></div>`;
+  }
+}
+
+async function recordClick(clickId) {
+  if (!clickId) return;
+  try {
+    await fetch('/api/clicks', { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({click_id:clickId}) });
+  } catch {}
+}
+
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-click-id]');
+  if (el) recordClick(el.dataset.clickId);
+  const scoreBtn = e.target.closest('[data-score-target]');
+  if (scoreBtn) dispatchScorePackage(scoreBtn.dataset.scoreTarget, scoreBtn);
+  const copyBtn = e.target.closest('[data-project-copy]');
+  if (copyBtn) copyProjectPrompt(copyBtn.dataset.projectCopy).catch(err => { document.getElementById('project-note').textContent = `复制失败: ${err.message}`; });
+  const opBtn = e.target.closest('[data-project-op]');
+  if (opBtn) dispatchProjectOp(opBtn.dataset.projectOp).catch(err => { document.getElementById('project-note').textContent = `OP 失败: ${err.message}`; });
+  const workflowOp = e.target.closest('[data-workflow-op]');
+  if (workflowOp) workflowAction(workflowOp.dataset.workflowOp, 'op').catch(err => { document.getElementById('workflow-note').textContent = `OP 失败: ${err.message}`; });
+  const workflowFastgpt = e.target.closest('[data-workflow-fastgpt]');
+  if (workflowFastgpt) workflowAction(workflowFastgpt.dataset.workflowFastgpt, 'fastgpt').catch(err => { document.getElementById('workflow-note').textContent = `FastGPT 失败: ${err.message}`; });
+  const workflowZulip = e.target.closest('[data-workflow-zulip]');
+  if (workflowZulip) workflowAction(workflowZulip.dataset.workflowZulip, 'zulip').catch(err => { document.getElementById('workflow-note').textContent = `Zulip 失败: ${err.message}`; });
+  const workflowDone = e.target.closest('[data-workflow-done]');
+  if (workflowDone) workflowAction(workflowDone.dataset.workflowDone, 'done').catch(err => { document.getElementById('workflow-note').textContent = `完成失败: ${err.message}`; });
+});
+
+document.getElementById('export-all-fastgpt').addEventListener('click', () => {
+  exportAllFastGPT().catch(err => { document.getElementById('workflow-note').textContent = `导出失败: ${err.message}`; });
+});
+
+document.getElementById('copy-marketing-prompt').addEventListener('click', () => {
+  copyMarketingPrompt().catch(err => { document.getElementById('marketing-note').textContent = `复制失败: ${err.message}`; });
+});
+
+document.getElementById('dispatch-marketing-op').addEventListener('click', () => {
+  dispatchMarketingOp().catch(err => { document.getElementById('marketing-note').textContent = `OP 失败: ${err.message}`; });
+});
+
+document.getElementById('project-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = new FormData(e.currentTarget);
+  const body = Object.fromEntries(form.entries());
+  const resp = await fetch('/api/projects', { method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify(body) }).then(r => r.json());
+  document.getElementById('project-note').textContent = resp.status === 'created' ? `已创建 ${resp.project.name}` : `创建失败: ${resp.error || 'unknown'}`;
+  if (resp.status === 'created') e.currentTarget.reset();
+  refreshProjects();
+  refreshGraph();
+});
+
+async function detectNetwork() {
+  const host = location.hostname;
+  if (host === '127.0.0.1' || host === 'localhost') return '本机';
+  try {
+    const t0 = performance.now();
+    await fetch('http://192.168.123.71:9800/api/dashboard/overview', { signal: AbortSignal.timeout(800), cache:'force-cache' });
+    const dt = performance.now() - t0;
+    return dt < 500 ? '局域网' : '局域网(慢)';
+  } catch { return 'Tailscale/外部'; }
+}
+
+async function refresh() {
+  document.getElementById('meta').textContent = location.host;
+  detectNetwork().then(net => {
+    document.getElementById('meta').textContent = `${location.host} · ${net}`;
+  });
+  try {
+    const overview = await fetch('/api/dashboard/overview', { cache:'force-cache' }).then(r => r.json());
+    const serviceMap = Object.fromEntries((overview.services || []).map(s => [s.name, s]));
+    renderHealth(overview);
+    renderPrimary(serviceMap);
+    renderServices(serviceMap);
+  } catch (err) {
+    document.getElementById('meta').textContent = `加载失败: ${err.message}`;
+  }
+  try {
+    const ops = await fetch('/api/ops/daily-improvement', { cache:'force-cache' }).then(r => r.json());
+    renderOps(ops);
+  } catch (err) {
+    document.getElementById('ops-score').textContent = `加载失败: ${err.message}`;
+  }
+}
+
+refresh();
+refreshArchitecture();
+refreshBuilders();
+refreshOpenSourceStack();
+refreshChannels();
+refreshWorkflow();
+refreshProjects();
+refreshGraph();
+refreshMarketing();
+setInterval(refresh, 30000);
+setInterval(refreshArchitecture, 300000);
+setInterval(refreshOpenSourceStack, 300000);
+setInterval(refreshChannels, 300000);
+setInterval(refreshWorkflow, 300000);
+setInterval(refreshProjects, 300000);
+setInterval(refreshGraph, 300000);
+setInterval(refreshMarketing, 300000);
+function injectElementNumbers() {
+  const selectors = [
+    '.btn', '.tile', '.svc', '.link-row', '.mini-btn', '.workflow-row',
+    '.builder', '.project-card', '.marketing-card', '.arch-node', '.layer', '.row'
+  ];
+  let n = 0;
+  document.querySelectorAll(selectors.join(',')).forEach(el => {
+    if (el.querySelector('.el-num')) return;
+    const badge = document.createElement('span');
+    badge.className = 'el-num';
+    badge.textContent = ++n;
+    el.appendChild(badge);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(injectElementNumbers, 800);
+  const origRefresh = refresh;
+  window.refresh = async function() {
+    await origRefresh();
+    setTimeout(injectElementNumbers, 50);
+  };
+});
+
+</script>
+<script src="/static/hub-static.js?v=20260703-home"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+</script>
+</body>
+</html>

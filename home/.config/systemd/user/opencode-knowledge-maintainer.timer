@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic OpenCode knowledge and runbook maintenance
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=6h
+Persistent=true
+RandomizedDelaySec=5m
+
+[Install]
+WantedBy=timers.target

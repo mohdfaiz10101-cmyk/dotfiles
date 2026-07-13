@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenAgents healthcheck and agent recovery
+After=network-online.target openagents-network.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/openagents-healthcheck
+Environment=HOME=/var/home/charlie
+Environment=PATH=/var/home/charlie/.local/bin:/usr/local/bin:/usr/bin:/bin
