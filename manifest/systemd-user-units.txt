@@ -455,7 +455,6 @@ tmux-spawn-18b3884e-ca5c-4ea6-8d33-fc8e519b5999.scope                           
 tmux-spawn-18bbee9c-df9a-401c-a1a5-278fc6fc8cb7.scope                                     transient -
 tmux-spawn-19c0455c-ca7e-442a-8e11-5b2d46f957b2.scope                                     transient -
 tmux-spawn-1d483d1d-7546-45cb-9cdf-0f05dffd6592.scope                                     transient -
-tmux-spawn-2bb5f612-6a72-4d19-95f5-1596bfa38cbb.scope                                     transient -
 tmux-spawn-2f569cc1-4ad4-484e-8de5-16867af4b47c.scope                                     transient -
 tmux-spawn-313cc92e-ea81-44b6-8e12-dc39be12b1f4.scope                                     transient -
 tmux-spawn-61437ce6-e17c-4d8f-a831-11925f4a2251.scope                                     transient -

@@ -17,6 +17,7 @@
 | `haven.md` | Runbook: Haven & Phone Bridge | 2026-07-13 |
 | `huly.md` | Runbook: Huly | 2026-07-04 |
 | `input-capture.md` | Runbook: Mouse/Input Capture | 2026-06-17 |
+| `machine-backup.md` | Runbook: Machine GitHub Backup | 2026-07-13 |
 | `mattermost.md` | Runbook: Mattermost | 2026-07-04 |
 | `openagents.md` | Runbook: OpenAgents | 2026-07-07 |
 | `opencode-18080.md` | Runbook: OpenCode/OpenClaw 18080 | 2026-06-22 |
