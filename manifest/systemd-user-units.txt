@@ -23,6 +23,7 @@ ao-dashboard.service                                                            
 ao-orchestrator.service                                                                enabled   disabled
 app-chrome\x2dcfmligackgegaglpgmjfndpcappofaie\x2dDefault@autostart.service            generated -
 app-dev.lizardbyte.app.Sunshine.service                                                disabled  disabled
+app-flatpak-com.tencent.WeChat-2339306299.scope                                        transient -
 app-geoclue\x2ddemo\x2dagent@autostart.service                                         generated -
 app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                       generated -
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
@@ -152,6 +153,8 @@ flexime-sync-ai.service                                                         
 foot-server.service                                                                    disabled  disabled
 foot-server.socket                                                                     disabled  disabled
 frpc.service                                                                           enabled   disabled
+full-home-archive.service                                                              static    -
+full-home-archive.timer                                                                enabled   disabled
 gamemoded.service                                                                      disabled  disabled
 gcr-ssh-agent.service                                                                  disabled  disabled
 gcr-ssh-agent.socket                                                                   disabled  disabled

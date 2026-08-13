@@ -417,6 +417,7 @@ frps-watchdog.sh
 frp-watchdog.sh
 fsearch-idle-update.sh
 full-backup.sh
+full-home-archive.sh
 full-home-backup-push.sh
 gather-phone-status.sh
 gelab-zero-mcp

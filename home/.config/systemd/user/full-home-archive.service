@@ -1,0 +1,8 @@
+[Unit]
+Description=Full home archive
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/full-home-archive.sh
+StandardOutput=journal
+StandardError=journal
