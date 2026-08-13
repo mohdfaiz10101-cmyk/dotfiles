@@ -1961,11 +1961,20 @@ input, select, textarea { font-family: inherit; }
   border: none; padding: 0; cursor: pointer;
   background: radial-gradient(circle at 50% 38%, var(--bg-3), var(--bg-1));
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.42), 0 0 0 1px var(--border);
-  display: grid; place-items: center; transition: box-shadow 0.18s ease;
+  display: grid; place-items: center;
+  transition: width 0.18s ease, height 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
+.jv-orb.compact {
+  width: 42px; height: 42px; opacity: 0.82;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.34), 0 0 0 1px var(--border);
+}
+.jv-orb.compact::before {
+  content: ""; position: absolute; inset: -3px; border-radius: 50%;
+}
+.jv-orb.compact:hover { opacity: 1; }
 .jv-orb:hover { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--accent); }
 .jv-core { position: relative; z-index: 2; display: grid; place-items: center; color: var(--accent); }
-.jv-orb.idle .jv-core { animation: jv-breathe 3.6s ease-in-out infinite; }
+.jv-orb.idle:not(.compact) .jv-core { animation: jv-breathe 3.6s ease-in-out infinite; }
 .jv-orb.thinking { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--accent); }
 .jv-ring {
   position: absolute; inset: 0; border-radius: 50%;
@@ -1984,6 +1993,38 @@ input, select, textarea { font-family: inherit; }
   font-size: 10px; font-weight: 700; line-height: 18px; text-align: center;
   box-shadow: 0 0 0 2px var(--bg-1);
 }
+.jv-menu-btn {
+  position: absolute; right: -7px; bottom: -5px; z-index: 4;
+  width: 24px; height: 24px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--bg-1); color: var(--text-2);
+  display: grid; place-items: center; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.32);
+}
+.jv-menu-btn.compact { width: 20px; height: 20px; right: -5px; bottom: -4px; }
+.jv-menu-btn:hover, .jv-menu-btn.on { color: var(--accent); border-color: var(--accent); background: var(--bg-2); }
+.jv-menu {
+  position: absolute; bottom: 62px; right: 0; width: 230px;
+  padding: 6px;
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.46);
+  animation: jv-pop 0.16s ease;
+}
+.jv-menu-row {
+  width: 100%; min-height: 34px; padding: 7px 8px;
+  display: flex; align-items: center; gap: 8px;
+  background: transparent; border: none; border-radius: 8px;
+  color: var(--text-1); text-align: left; cursor: pointer;
+  font-size: 12px;
+}
+.jv-menu-row:hover { background: var(--bg-2); color: var(--text-0); }
+.jv-menu-row small {
+  margin-left: auto; max-width: 82px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  color: var(--text-3); font-size: 10.5px;
+}
+.jv-menu-row.danger { color: #ff8585; }
+.jv-menu-row .sdot { width: 7px; height: 7px; flex-shrink: 0; }
+.jv-menu-sep { height: 1px; margin: 5px 3px; background: var(--border); }
 @keyframes jv-breathe { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.12); opacity: 1; } }
 @keyframes jv-ring { 0% { transform: scale(0.8); opacity: 0.6; } 100% { transform: scale(1.95); opacity: 0; } }
 @keyframes jv-spin { to { transform: rotate(360deg); } }
@@ -2012,6 +2053,7 @@ input, select, textarea { font-family: inherit; }
 }
 .jv-x:hover { background: var(--bg-2); color: var(--text-0); }
 .jv-x.on { color: var(--accent); }
+.jv-x.danger:hover { color: #ff8585; background: rgba(220, 80, 80, 0.15); }
 .jv-status {
   display: flex; gap: 12px; padding: 9px 13px;
   border-bottom: 1px solid var(--border); font-size: 11px; color: var(--text-2);

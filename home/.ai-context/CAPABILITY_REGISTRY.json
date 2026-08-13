@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T14:13:35",
+  "generated_at": "2026-08-13T13:15:44",
   "mcp": [
     {
       "name": "agent-comms",
@@ -585,7 +585,156 @@
       ]
     }
   ],
-  "services": [],
+  "services": [
+    {
+      "name": "ai-memory-monitor.service",
+      "state": "static"
+    },
+    {
+      "name": "codex-exec-memory-capture.service",
+      "state": "static"
+    },
+    {
+      "name": "hermes-memory-curator.service",
+      "state": "static"
+    },
+    {
+      "name": "letta-health-check.service",
+      "state": "static"
+    },
+    {
+      "name": "letta-mcp.service",
+      "state": "enabled"
+    },
+    {
+      "name": "letta-podman-proxy.service",
+      "state": "disabled"
+    },
+    {
+      "name": "letta-stack.service",
+      "state": "enabled"
+    },
+    {
+      "name": "litellm-keepalive.service",
+      "state": "static"
+    },
+    {
+      "name": "litellm.service",
+      "state": "disabled"
+    },
+    {
+      "name": "memory-evolution-guard.service",
+      "state": "static"
+    },
+    {
+      "name": "memory-evolution.service",
+      "state": "disabled"
+    },
+    {
+      "name": "memory-lifecycle.service",
+      "state": "static"
+    },
+    {
+      "name": "memory-vector-ingest.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-18910-local.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode-18910-router.service",
+      "state": "disabled"
+    },
+    {
+      "name": "opencode-4096-proxy.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode-bridge.service",
+      "state": "disabled"
+    },
+    {
+      "name": "opencode-capability-adapter.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-codegraph-warmup.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-codex-escalator.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-cold-archive-migrate.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-crash-auditor.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-db-cleanup.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-health-watchdog.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-knowledge-maintainer.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-rag-ingester.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-recall-optimize.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-stuck-cleaner.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-stuck-detect.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-telegram-gateway.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode-telegram-watchdog.service",
+      "state": "static"
+    },
+    {
+      "name": "opencode-zulip-gateway.service",
+      "state": "enabled"
+    },
+    {
+      "name": "opencode.service",
+      "state": "enabled"
+    },
+    {
+      "name": "openhands-letta-sync.service",
+      "state": "static"
+    },
+    {
+      "name": "termhive-daemon.service",
+      "state": "enabled"
+    },
+    {
+      "name": "termhive-web.service",
+      "state": "enabled"
+    },
+    {
+      "name": "tg-hunter-web.service",
+      "state": "enabled"
+    }
+  ],
   "codegraph_repositories": [],
   "rules": [
     {

@@ -1,0 +1,15 @@
+[Unit]
+Description=Codex Responses API Proxy (WebSocket -> HTTP)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/codex-responses-proxy.py
+Restart=always
+RestartSec=2
+Environment=HOME=/var/home/charlie
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=default.target

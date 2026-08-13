@@ -1,11 +1,11 @@
+# /var/home/charlie/.config/systemd/user/system-log-scan.service
 [Unit]
-Description=Scan collected logs for errors and notify
-After=network-online.target container-ntfy.service
-Wants=network-online.target container-ntfy.service
+Description=Scan collected logs for errors
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bash /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/scan-log-errors.sh
+ExecStart=/usr/bin/python3 /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/scan-log-errors.py /var/home/charlie/workspace/system-logs
 Environment=BASE_DIR=/var/home/charlie/workspace/system-logs
-Environment=JOURNAL_SINCE=24 hours ago
 Environment=NOTIFY_STATE=/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl

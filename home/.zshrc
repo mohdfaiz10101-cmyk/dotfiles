@@ -25,7 +25,7 @@ codex() {
             -e "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus" \
             -e "PATH=/var/home/charlie/.nvm/versions/node/current/bin:/var/home/charlie/.local/bin:/usr/bin:/bin" \
             -e "HTTP_PROXY=http://127.0.0.1:7892" \
-            -e "HTTPS_PROXY=http://127.0.0.1:7890" \
+            -e "HTTPS_PROXY=http://127.0.0.1:7890" "OPENAI_API_KEY=4GY0L5jyGZlZUrTO8JZlQ5TYHTW5HVettJ9ls7ymImw3nalmM1rGO6CFV0DwayuiC" "OPENAI_BASE_URL=https://api.stepfun.com/step_plan/v1" \
             -e "ALL_PROXY=http://127.0.0.1:7890" \
             -e "NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net" \
             -e "CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run" \

@@ -1,0 +1,10 @@
+[Unit]
+Description=Machine GitHub backup (rsync + push to dotfiles.git/machine-backup)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/machine-github-backup
+StandardOutput=journal
+StandardError=journal

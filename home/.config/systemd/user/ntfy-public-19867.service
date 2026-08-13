@@ -1,9 +1,0 @@
-[Unit]
-Description=ntfy public compatibility proxy (:19867 -> :2586)
-Requires=ntfy-public-19867.socket
-After=container-ntfy.service
-
-[Service]
-ExecStart=/usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:2586
-PrivateTmp=true
-NoNewPrivileges=true

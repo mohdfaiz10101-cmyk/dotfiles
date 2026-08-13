@@ -1,3 +1,5 @@
+/var/home/charlie
+
 /var/home/charlie/备份
 origin	git@github.com:mohdfaiz10101-cmyk/home-backups.git (fetch)
 origin	git@github.com:mohdfaiz10101-cmyk/home-backups.git (push)

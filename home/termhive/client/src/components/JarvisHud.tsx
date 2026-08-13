@@ -210,6 +210,7 @@ interface Props {
 }
 
 type ToolTarget = 'op' | 'codex' | 'crush' | 'oh' | null;
+const NOTIFICATION_PROMINENT_MS = 12000;
 
 export default function JarvisHud({
   send, working, lastReply, onClearReply, sttCfg, ttsCfg, headerListening, wake, awaiting, running, idle, onSelectAgent, onOpenFull,
@@ -220,12 +221,16 @@ export default function JarvisHud({
     () => localStorage.getItem('termhive:voice-out') === '1',
   );
   const [tool, setTool] = useState<ToolTarget>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const [notificationProminent, setNotificationProminent] = useState(false);
   const [captureOpen, setCaptureOpen] = useState(false);
   const [captureDataUrl, setCaptureDataUrl] = useState<string | null>(null);
   const [cropRect, setCropRect] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
   const [cropping, setCropping] = useState(false);
   const [cropStart, setCropStart] = useState<{ x: number; y: number } | null>(null);
   const reply = (lastReply?.text || '').trim();
+  const awaitingKey = awaiting.map((n) => `${n.projectId}:${n.agentId}`).join('|');
 
   const submit = (textArg?: string) => {
     const t = (textArg ?? input).trim();
@@ -360,12 +365,82 @@ export default function JarvisHud({
     if (expanded) setTimeout(() => inputRef.current?.focus(), 80);
   }, [expanded]);
 
+  // New notifications should be visually prominent briefly, then shrink back
+  // to the compact orb while keeping the badge/menu for later handling.
+  useEffect(() => {
+    if (awaiting.length === 0) {
+      setNotificationProminent(false);
+      return;
+    }
+    setNotificationProminent(true);
+    const t = window.setTimeout(() => setNotificationProminent(false), NOTIFICATION_PROMINENT_MS);
+    return () => window.clearTimeout(t);
+  }, [awaiting.length, awaitingKey]);
+
   const state = working ? 'thinking'
     : (speech.listening || wake.armed || headerListening) ? 'listening'
     : 'idle';
+  const hasAttention = working || notificationProminent || Boolean(reply) || speech.listening || wake.armed || headerListening;
+  const compact = !expanded && !menuOpen && !hasAttention;
+
+  useEffect(() => {
+    if (hasAttention && dismissed) setDismissed(false);
+  }, [dismissed, hasAttention]);
+
+  if (dismissed && !hasAttention) return null;
 
   return (
     <div className="jv">
+      {menuOpen && !expanded && (
+        <div className="jv-menu" role="menu">
+          <button
+            className="jv-menu-row"
+            onClick={() => { setExpanded(true); setMenuOpen(false); }}
+          >
+            <Ic.logo size={13} />
+            <span>打开 AI 面板</span>
+          </button>
+          {awaiting.length > 0 && (
+            <>
+              <div className="jv-menu-sep" />
+              {awaiting.slice(0, 4).map((n) => (
+                <button
+                  key={n.agentId}
+                  className="jv-menu-row"
+                  onClick={() => { onSelectAgent(n.projectId, n.agentId); setMenuOpen(false); }}
+                >
+                  <span className="sdot awaiting_input" />
+                  <span>{n.agentName}</span>
+                  <small>{n.projectName}</small>
+                </button>
+              ))}
+            </>
+          )}
+          <div className="jv-menu-sep" />
+          <button
+            className="jv-menu-row"
+            onClick={() => { onOpenFull(); setMenuOpen(false); }}
+          >
+            <Ic.message size={13} />
+            <span>完整对话</span>
+          </button>
+          <button
+            className="jv-menu-row"
+            onClick={() => setVoiceOut((v) => !v)}
+          >
+            <Ic.volume size={13} />
+            <span>语音回复：{voiceOut ? '开' : '关'}</span>
+          </button>
+          <button
+            className="jv-menu-row danger"
+            onClick={() => { setDismissed(true); setMenuOpen(false); setExpanded(false); }}
+          >
+            <Ic.x size={13} />
+            <span>关闭到下次活动</span>
+          </button>
+        </div>
+      )}
+
       {expanded && (
         <div className="jv-panel">
           <div className="jv-panel-h">
@@ -390,7 +465,14 @@ export default function JarvisHud({
             <button className="jv-x" onClick={onOpenFull} title="Open full conversation">
               <Ic.message size={12} />
             </button>
-            <button className="jv-x" onClick={() => setExpanded(false)} title="Collapse">
+            <button className="jv-x" onClick={() => setExpanded(false)} title="Collapse to button">
+              <Ic.chevD size={12} />
+            </button>
+            <button
+              className="jv-x danger"
+              onClick={() => { setDismissed(true); setExpanded(false); setMenuOpen(false); }}
+              title="Hide until next activity"
+            >
               <Ic.x size={12} />
             </button>
           </div>
@@ -544,15 +626,27 @@ export default function JarvisHud({
       )}
 
       <button
-        className={'jv-orb ' + state}
-        onClick={() => setExpanded((e) => !e)}
-        title="The Keeper"
+        className={'jv-orb ' + state + (compact ? ' compact' : '')}
+        onClick={() => { setExpanded((e) => !e); setMenuOpen(false); }}
+        title={compact ? 'The Keeper — small idle button' : 'The Keeper'}
+        aria-expanded={expanded}
       >
         <span className="jv-ring" />
         <span className="jv-ring jv-ring2" />
-        <span className="jv-core"><Ic.logo size={21} /></span>
+        <span className="jv-core"><Ic.logo size={compact ? 16 : 21} /></span>
         {awaiting.length > 0 && <span className="jv-orb-badge">{awaiting.length}</span>}
       </button>
+      {!expanded && (
+        <button
+          className={'jv-menu-btn' + (menuOpen ? ' on' : '') + (compact ? ' compact' : '')}
+          onClick={(e) => { e.stopPropagation(); setMenuOpen((v) => !v); }}
+          title="AI quick menu"
+          aria-label="AI quick menu"
+          aria-expanded={menuOpen}
+        >
+          <Ic.chevD size={compact ? 10 : 12} />
+        </button>
+      )}
     </div>
   );
 }

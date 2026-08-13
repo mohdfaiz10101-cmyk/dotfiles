@@ -6,10 +6,10 @@ StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-ExecStart=/var/home/charlie/.local/venvs/hermes-0.20/bin/python -m hermes_cli.main gateway run
+ExecStart=/usr/bin/python3 -m hermes_cli.main gateway run
 WorkingDirectory=/var/home/charlie/.hermes
-Environment="PATH=/var/home/charlie/.nvm/versions/node/v23.11.1/bin:/var/home/charlie/.local/bin:/var/home/charlie/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-Environment="VIRTUAL_ENV=/var/home/charlie/.local/venvs/hermes-0.20"
+Environment="PATH=/var/home/charlie/.nvm/versions/node/v23.11.1/bin:/var/home/charlie/.local/bin:/var/home/charlie/.cargo/bin:/var/home/charlie/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="VIRTUAL_ENV=/var/home/charlie/.local/lib/python3.14/site-packages/venv"
 Environment="HERMES_HOME=/var/home/charlie/.hermes"
 Restart=always
 RestartSec=5
@@ -18,7 +18,7 @@ RestartPreventExitStatus=78
 KillMode=mixed
 KillSignal=SIGTERM
 ExecReload=/bin/kill -USR1 $MAINPID
-ExecStopPost=-/var/home/charlie/.local/venvs/hermes-0.20/bin/python -m gateway.cgroup_cleanup
+ExecStopPost=-/usr/bin/python3 -m gateway.cgroup_cleanup
 TimeoutStopSec=330
 StandardOutput=journal
 StandardError=journal

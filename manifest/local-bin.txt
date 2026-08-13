@@ -257,6 +257,7 @@ codex-ntfy-result-watcher
 codex-op-delegate
 codex-planner-http-mcp.js
 codex-planner-mcp.js
+codex-responses-proxy.py
 codex-resume-or-new
 codex-router
 codex-shared-sync
@@ -416,6 +417,7 @@ frps-watchdog.sh
 frp-watchdog.sh
 fsearch-idle-update.sh
 full-backup.sh
+full-home-backup-push.sh
 gather-phone-status.sh
 gelab-zero-mcp
 gemini
@@ -1343,8 +1345,6 @@ wechat-termux-extract-keys.py
 wechat-termux-sync.sh
 wechat-uos-safe
 wechat-version-guard.sh
-wechat-windows-watchdog.sh
-wechat-win-sync.sh
 weekly-error-review
 whisper-stt-server
 wifi-monitor.sh.disabled
@@ -1356,7 +1356,6 @@ win-deploy-on-wifi.sh
 windows-apply-from-fedora
 windows-qemu-install
 winetricks
-wine-wechat
 win-exec
 win-mcp-server.py
 winoc-sql
