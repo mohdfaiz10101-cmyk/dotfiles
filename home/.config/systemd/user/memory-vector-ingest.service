@@ -1,0 +1,6 @@
+[Unit]
+Description=Refresh Hermes local vector memory from curated sources
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/vector-memory-ingest.py --max-file-size 120000 --sample-jsonl-lines 120

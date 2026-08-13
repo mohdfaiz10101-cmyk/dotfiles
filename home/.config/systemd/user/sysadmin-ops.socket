@@ -1,0 +1,9 @@
+[Unit]
+Description=SysAdmin Ops Web App Socket
+
+[Socket]
+ListenStream=19991
+BindIPv6Only=both
+
+[Install]
+WantedBy=sockets.target

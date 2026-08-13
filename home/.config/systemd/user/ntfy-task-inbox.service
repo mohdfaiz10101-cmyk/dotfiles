@@ -1,0 +1,19 @@
+[Unit]
+Description=Poll ntfy task replies into Codex/Hermes task inbox
+After=network-online.target container-ntfy.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/ntfy-task-inbox
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+Environment=NTFY_TASK_INBOX_POLL_SEC=120
+Nice=19
+CPUWeight=10
+IOWeight=10
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=default.target

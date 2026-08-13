@@ -1,0 +1,10 @@
+[Unit]
+Description=Memory evolution dependency-aware guard
+
+[Timer]
+OnBootSec=15min
+OnCalendar=*-*-* 04:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

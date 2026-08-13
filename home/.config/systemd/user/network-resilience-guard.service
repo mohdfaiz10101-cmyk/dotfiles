@@ -1,0 +1,10 @@
+[Unit]
+Description=Layered WAN, DuckDNS, FRP and Haven resilience guard
+After=network-online.target frpc.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/network-resilience-guard
+Nice=19
+IOSchedulingClass=idle

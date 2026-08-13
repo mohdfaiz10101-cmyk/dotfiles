@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenCode path router (:18910 -> /fedora -> 127.0.0.1:4096, /win -> 192.168.123.136:4096)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/opencode-18910-router.py
+Restart=on-failure
+RestartSec=3
+Environment=HOME=/var/home/charlie
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+[Install]
+WantedBy=default.target

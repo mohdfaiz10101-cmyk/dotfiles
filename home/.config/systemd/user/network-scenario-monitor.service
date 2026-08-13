@@ -1,0 +1,10 @@
+[Unit]
+Description=Capture unified phone/desktop network scenario status
+After=network-online.target
+
+[Service]
+Type=oneshot
+Nice=10
+IOSchedulingClass=idle
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/var/home/charlie/.local/bin/network-scenario-monitor capture

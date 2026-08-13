@@ -1,0 +1,14 @@
+[Unit]
+Description=Push Codex task completion summaries to ntfy
+After=network-online.target container-ntfy.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/codex-ntfy-result-watcher
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

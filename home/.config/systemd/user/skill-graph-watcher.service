@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes Skill Graph watcher
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/workspace/skill_graph_watcher.py
+Restart=on-failure
+RestartSec=5
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

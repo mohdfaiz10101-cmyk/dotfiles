@@ -1,0 +1,14 @@
+[Unit]
+Description=Phone MCP TCP forwarder over IPv6 (desktop [::]:19180 -> phone 8080)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -u /var/home/charlie/workspace/phone-mcp-forward-v6.py
+Restart=on-failure
+RestartSec=2
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

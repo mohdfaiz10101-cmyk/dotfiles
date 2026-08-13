@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch Codex history for workflow capture
+
+[Path]
+PathChanged=/var/home/charlie/.codex/history.jsonl
+Unit=workflow-intel-codex-capture.service
+
+[Install]
+WantedBy=default.target

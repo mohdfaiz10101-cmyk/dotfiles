@@ -1,0 +1,11 @@
+[Unit]
+Description=Codex 4 WebTTY device gate socket
+
+[Socket]
+ListenStream=0.0.0.0:19003
+Accept=no
+NoDelay=true
+ReusePort=true
+
+[Install]
+WantedBy=sockets.target

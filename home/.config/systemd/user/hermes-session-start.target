@@ -1,0 +1,6 @@
+[Unit]
+Description=Start skill-graph watcher with Hermes user session
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user start skill-graph-watcher.service

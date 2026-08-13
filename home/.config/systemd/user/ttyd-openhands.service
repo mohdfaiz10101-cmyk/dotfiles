@@ -1,0 +1,20 @@
+[Unit]
+Description=OpenHands CLI WebTTY device gate (:19010)
+After=network-online.target ttyd-openhands-backend.service
+Wants=network-online.target ttyd-openhands-backend.service
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=TTYD_GATE_HOST=0.0.0.0
+Environment=TTYD_GATE_PORT=19010
+Environment=TTYD_TARGET_HOST=127.0.0.1
+Environment=TTYD_TARGET_PORT=19880
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=DEVICE_COOKIE_NAME=duckdns_device
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/ttyd-openhands-gate.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

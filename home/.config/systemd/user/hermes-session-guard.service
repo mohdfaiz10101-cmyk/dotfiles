@@ -1,0 +1,13 @@
+[Unit]
+Description=Hermes oversized session watchdog
+After=network.target
+
+[Service]
+Type=oneshot
+Environment=HERMES_SESSION_GUARD_THRESHOLD_MB=20
+Environment=HERMES_SESSION_GUARD_RETIRE_DAYS=7
+Environment=HERMES_SESSION_GUARD_MAX_BACKUPS=20
+ExecStart=/var/home/charlie/.local/bin/hermes-session-guard.sh
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=GhidraMCP Headless Server
+After=network.target
+
+[Service]
+Type=simple
+Environment=GHIDRA_HOME=/var/mnt/ai/apps/ghidra_12.1.2_PUBLIC
+Environment="JAVA_OPTS=-Xmx4g -XX:+UseG1GC"
+ExecStart=/var/home/charlie/.local/bin/ghidra-mcp-server --port 8089
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

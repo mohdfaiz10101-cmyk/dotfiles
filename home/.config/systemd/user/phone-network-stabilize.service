@@ -1,0 +1,7 @@
+[Unit]
+Description=Refresh PKR110 network fallback state
+Documentation=file:%h/.ai-context/runbooks/network-scenario-monitor.md
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/phone-network-stabilize status

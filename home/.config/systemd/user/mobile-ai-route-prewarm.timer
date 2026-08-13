@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Mobile AI route prewarm periodically
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=2min
+AccuracySec=20s
+Unit=mobile-ai-route-prewarm.service
+
+[Install]
+WantedBy=timers.target

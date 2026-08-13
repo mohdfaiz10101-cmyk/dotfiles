@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Codex K2 workspace availability probe
+
+[Timer]
+OnCalendar=*-*-* 04:17:00
+Persistent=true
+RandomizedDelaySec=10m
+Unit=codex-k2-workspace-watch.service
+
+[Install]
+WantedBy=timers.target

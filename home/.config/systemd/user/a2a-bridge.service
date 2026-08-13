@@ -1,0 +1,14 @@
+[Unit]
+Description=A2A Bridge for Hermes 8787
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/bridge.py
+Restart=always
+Environment=A2A_HOME=/var/home/charlie/.hermes/a2a
+Environment=A2A_BRIDGE_PORT=8789
+StandardOutput=append:/var/home/charlie/.hermes/a2a/logs/bridge.log
+StandardError=append:/var/home/charlie/.hermes/a2a/logs/bridge.log
+
+[Install]
+WantedBy=default.target

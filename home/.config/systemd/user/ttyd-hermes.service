@@ -1,0 +1,22 @@
+[Unit]
+Description=Hermes WebTTY device gate (:19910)
+After=network-online.target ttyd-hermes-backend.service
+Wants=ttyd-hermes-backend.service
+
+[Service]
+Type=simple
+Environment=TTYD_GATE_HOST=127.0.0.1
+Environment=TTYD_GATE_PORT=19910
+Environment=TTYD_TARGET_HOST=127.0.0.1
+Environment=TTYD_TARGET_PORT=19920
+Environment=TTYD_TARGET_AUTH=hermes:w19900422
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=DEVICE_COOKIE_NAME=duckdns_hermes_device
+Environment=HERMES_TMUX_SOCK=/run/user/1000/tmux/hermes-cli.sock
+Environment=HERMES_TMUX_SESSION=hermes
+ExecStart=/usr/bin/node /var/home/charlie/.local/bin/ttyd-hermes-proxy.js
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Codex/Sub2API account manager snapshot
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/codex-account-manager summary --json
+StandardOutput=append:/var/home/charlie/.local/state/codex-account-manager/timer.log
+StandardError=append:/var/home/charlie/.local/state/codex-account-manager/timer.log

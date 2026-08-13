@@ -1,0 +1,6 @@
+[Unit]
+Description=Memory Evolution Guard (skip if deps down)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/memory-evolution-guard.py

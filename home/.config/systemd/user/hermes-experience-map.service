@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh compact Hermes experience map
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=idle
+CPUWeight=10
+IOWeight=10
+TimeoutStartSec=45s
+ExecStart=%h/.local/bin/hermes-experience-map Hermes MCP network memory workflow

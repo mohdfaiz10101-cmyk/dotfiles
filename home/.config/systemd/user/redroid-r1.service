@@ -1,0 +1,15 @@
+[Unit]
+Description=Redroid R1 cloud Android instance
+After=network-online.target podman.socket
+Wants=network-online.target podman.socket
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/var/home/charlie/.local/bin/redroid-r1 start
+ExecStop=/var/home/charlie/.local/bin/redroid-r1 stop
+TimeoutStartSec=120
+TimeoutStopSec=45
+
+[Install]
+WantedBy=default.target

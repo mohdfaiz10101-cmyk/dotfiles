@@ -1,0 +1,15 @@
+[Unit]
+Description=Waydroid low-traffic control web/API (:18083)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/waydroid-control-web
+Restart=on-failure
+RestartSec=3
+MemoryMax=256M
+TasksMax=80
+
+[Install]
+WantedBy=default.target

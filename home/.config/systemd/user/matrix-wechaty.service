@@ -1,0 +1,21 @@
+[Unit]
+Description=Matrix Wechaty Bridge
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/.config/matrix-wechaty
+ExecStart=/usr/bin/podman run --rm --network host --security-opt label=disable \
+  -e NODE_ENV=production \
+  -e WECHATY_PUPPET=wechaty-puppet-wechat4u \
+  -v /var/home/charlie/.config/matrix-wechaty:/data:Z \
+  localhost/matrix-wechaty-bridge:latest \
+  --config /data/config.yaml \
+  --file /data/wechaty-registration.yaml \
+  --url 'http://localhost:8788' \
+  --port 8788
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

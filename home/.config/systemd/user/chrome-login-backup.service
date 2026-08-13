@@ -1,0 +1,7 @@
+[Unit]
+Description=Backup and fan out Chrome Google login state
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/chrome-login-backup.sh
+ExecStart=%h/.local/bin/google-login-state-sync

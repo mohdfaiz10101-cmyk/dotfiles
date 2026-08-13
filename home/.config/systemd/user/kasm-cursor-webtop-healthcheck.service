@@ -1,0 +1,8 @@
+[Unit]
+Description=Health check and auto-restart Kasm Cursor Webtop
+After=network-online.target kasm-cursor-webtop.service
+Wants=kasm-cursor-webtop.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/kasm-cursor-webtop-healthcheck

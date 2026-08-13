@@ -1,0 +1,7 @@
+[Unit]
+Description=NetBird Health Check
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/netbird-healthcheck.sh

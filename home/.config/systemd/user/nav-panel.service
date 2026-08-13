@@ -1,0 +1,16 @@
+[Unit]
+Description=Nav Panel (5000)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/workspace/nav
+ExecStartPre=/var/home/charlie/workspace/nav/scripts/clean-nav-port.sh
+ExecStart=/usr/bin/python3 /var/home/charlie/workspace/nav/server.py
+Restart=on-failure
+RestartSec=2
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

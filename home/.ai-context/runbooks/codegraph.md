@@ -34,3 +34,9 @@
 - Do not run permanent watchers by default; multiple AI clients may access the same embedded database.
 - 2026-06-26: If MCP reports `Error 111 connecting to ... falkordb.sock` or `Connection refused`, the graph is usually not corrupt; the embedded FalkorDB/Redis socket is cold or stale. Run `~/.local/bin/opencode-lifecycle.py codegraph-warmup` or `codegraphcontext list` to warm it, then retry MCP `list_indexed_repositories`.
 - OpenCode lifecycle integration: `opencode-lifecycle.py status/audit` now reports CodeGraph health and stats; code-task recall includes `codegraph_status`; `opencode-codegraph-warmup.timer` warms the database hourly and on boot without running a permanent file watcher.
+
+## Task Closeout
+- There is no guaranteed native post-task auto-write to CodeGraph.
+- At task end, first decide whether the work changed indexed source structure, durable workflow, or reusable operational knowledge.
+- If yes, update the smallest durable artifact first; if the repo changed, run `codegraphcontext update /absolute/repo/path`.
+- If no indexed repo or durable workflow changed, do not force a CodeGraph refresh.

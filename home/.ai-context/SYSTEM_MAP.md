@@ -14,6 +14,11 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Current LAN IP: `192.168.123.71`
 - Router: `192.168.123.1` Padavan, HTTP basic auth `admin:admin`, SSH `admin@192.168.123.1`
 - DuckDNS: `charlie1990.duckdns.org`
+- Smart Smooth guard: `smart-smooth.timer` runs `~/.local/bin/smart-smooth`
+  every 15 minutes to keep the desktop responsive by lowering priority of
+  runaway Chromium renderers and known maintenance jobs, resetting transient
+  failed user units, and stopping the `wolf.service` crash loop when Sunshine
+  already owns GameStream port `48010`.
 
 ## Desktop Theme
 - Unified theme: Codex dark
@@ -29,13 +34,36 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Embedding: `embedding-server.service` `:8286`
 - FastGPT v4.8.23: podman compose (app+mongo+pgvector) `0.0.0.0:3000`; 知识库/工作流问答前端，LLM 走 `host.containers.internal:4000/v1`，向量用本地 `all-MiniLM-L6-v2`
 - Unified Control Plane: Appsmith `appsmith.service` `:8089` 是唯一可视化操作窗口；Hub `hub-api.service` `:9800` 是 API/状态/链接底座；n8n `n8n.service` `:5678` 是动作总线；FastGPT 是方案/知识；OP/OpenCode 是执行器；Zulip/Mattermost 是沟通层；Plane/Huly 是项目协作层。Hub 入口：`/go/appsmith`、`/workspace`、`/api/workspace/snapshot`、`/api/workspace/command`。Runbook: `~/.ai-context/runbooks/control-plane.md`
+- Mobile AI Workbench: `mobile-ai-workbench.service` `:19888` 是手机远程 AI 操作台外壳；它不替代 Codex WebTTY，而是统一嵌入 `19899/19900/19902/19903/19904` 五个账号入口，并集中显示任务、额度、网络、端口、插件、Fedora Chromium 和 Browsh 文本浏览器面板。设备码仍为 `w19900422`。路由器持久规则：`19888/TCP -> 192.168.123.71:19888`；Codex 5 WebTTY 另有公网入口 `19904/TCP -> 192.168.123.71:19904`，由 FRP 转到本机 gate `19004`。短网址入口：`/ports`、`/go/br`、`/go/bw`、`/go/c1`、`/go/c2`、`/go/c3`、`/go/c4`、`/go/c5`、`/go/hub`、`/go/fgpt`、`/go/op`。
+- Mobile AI Browser: `mobile-ai-browser.service` 启动真实 Fedora Chromium，使用独立 profile `~/.config/mobile-ai-chromium`，CDP 仅监听 `127.0.0.1:9224`，由 Workbench 受设备码保护的 `/browser` 和 `/api/browser/*` 控制。启动脚本 `~/.local/bin/mobile-ai-browser` 会用 `--load-extension` 从原 Chromium `~/.config/chromium/Default/Extensions` 加载扩展代码；不要把 `9224` 暴露到公网。
+- Mobile AI Browser 清理: `mobile-ai-browser-cleanup.timer` 每 10 分钟运行 `~/.local/bin/mobile-ai-browser-cleanup`，通过 CDP 保守关闭扩展更新页、空白旧页和重复 Workbench 页；Workbench `/browser` 提供 `关当前`、`清旧页`，API 为 `POST /api/browser/close` 和 `POST /api/browser/cleanup`。
+- Sway 旧标签/窗口清理: `sway-tab-cleanup.timer` 每 10 分钟运行 `~/.local/bin/sway-tab-cleanup`，只关闭非焦点的旧 Chromium WebTTY/Device Match/空白窗口，并跳过 Workbench-controlled Chromium 与普通网页。
+- Google 登录态持久化: desktop Chrome 源 profile `~/.config/google-chrome` 通过 `~/.local/bin/google-login-state-sync` 同步到 `~/.config/chromium` 和 `~/.config/mobile-ai-chromium`；`chrome-login-backup.timer` 每小时备份并同步，`chrome-login-watchdog.timer` 每 10 分钟检测桌面 Chrome 登录标记。Runbook: `~/.ai-context/runbooks/google-login-state.md`
+- Mobile AI Browsh: `~/.local/bin/browsh` v1.8.0；`mobile-ai-browsh-backend.service` 在 `127.0.0.1:19886` 跑 ttyd，base path `/browsh-tty`；Workbench `:19888` 代理 `/browsh-tty/*` 并提供 `/browsh`/`/go/bw`，所以手机公网只需要 `19888`，不要为 `19885` 新增公网依赖。`mobile-ai-browsh-gate.service` 的 `:19885` 仅作本机/LAN 备用设备码网关。
 - Huly: `huly.service` (Docker/Podman compose) `:8087`; 综合工作区：项目、任务、文档、聊天和协作；入口 `http://100.120.189.27:8087/`；Hub 入口 `/go/huly`
-- Mattermost: `mattermost.service` (Docker/Podman compose) `:8065`; 频道聊天、机器人、Webhook、图片和 AI 协作入口；入口 `http://100.120.189.27:8065/`；Hub 入口 `/go/mattermost`
+- Mattermost: `mattermost.service` (Docker/Podman compose) `:8065`; 频道聊天、机器人、Webhook、图片和 AI 协作入口；入口 `http://100.120.189.27:8065/`；Hub 入口 `/go/mattermost`。AI Inbox bridge `mattermost-ai-inbox.service` 轮询 `charlie-hub/ai-inbox`，下载附件到 `~/.local/share/mattermost-ai-inbox/<post-id>/`，并经 Hub `/api/mattermost/inbox` 创建待审批任务；配置/密钥在 `~/.config/mattermost-ai-inbox.env`。
 - Plane: `plane.service` (Docker/Podman compose) `:8090`; 项目进度、任务、周期、模块和路线图主系统；手机浏览器/PWA HTTPS 入口 `https://fedora-termhive.tail60cff7.ts.net/`；官方 Plane mobile app 不支持当前 Community Edition 自托管登录；管理兜底入口 `http://100.120.189.27:8090/god-mode/`；Hub 入口 `/go/plane`
-- Open WebUI: podman `:3001`，通用对话前端（无知识库编排）
+- OpenHands GUI: podman `127.0.0.1:3001`，public
+  `http://charlie1990.duckdns.org:19901/` via authenticated proxy. Runbook:
+  `~/.ai-context/runbooks/openhands.md`
 - n8n: podman `:5678`
+- ntfy: `container-ntfy.service`, local/LAN `:2586`, DuckDNS public
+  `http://charlie1990.duckdns.org:19867/`; router post-iptables inserts
+  public `19867/TCP -> 192.168.123.71:19867` before the Padavan DMZ catch-all.
+  Topics are defined in `~/.config/ntfy/channels.env`: `charlie-actions`
+  for user actions, `charlie-network` for network monitor alerts,
+  `charlie-codex` for Codex completion, and `charlie-system` for system alerts.
+  Publisher helper: `~/.local/bin/ntfy-send`, including optional
+  `NTFY_ACTIONS` action buttons. Android ntfy app subscriptions use the public
+  base URL `http://charlie1990.duckdns.org:19867`, not the LAN URL.
 - Compose: `~/ai/fastgpt/docker-compose.yml`, config `/var/mnt/ai/fastgpt/config/config.json`
 - Runbook: `~/.ai-context/runbooks/ai-infra.md`, `~/.ai-context/runbooks/fastgpt.md`
+- Hermes memory/session quality: for "Hermes forgets", weak task quality,
+  skill misses, A2A backlog, or compression regressions, read
+  `~/.ai-context/runbooks/hermes-memory-quality.md` before broad searches.
+- Hermes MCP/profile quality: read
+  `~/.ai-context/runbooks/hermes-mcp-quality.md` before enabling MCPs, changing
+  MCP profiles, or debugging `Transport closed` / duplicate MCP starts.
 
 ## FastGPT Entry
 - LAN: `http://192.168.123.71:3000`
@@ -49,6 +77,69 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Dashboard: `http://127.0.0.1:7500` (admin / frp@charlie2026)
 - Runbook: `~/.ai-context/runbooks/frp.md`
 
+## NetBird
+- Fedora NetBird client: `netbird.service` (system), v0.74.6, connected to
+  management/signal. Interface `wt0`; current Fedora NetBird IP
+  `100.87.171.39/16`; FQDN `fedora-171-39.netbird.cloud`; WireGuard UDP
+  `44362`.
+- firewalld: `wt0` is assigned to zone `trusted` so NetBird peers can reach
+  Fedora services/SSH ports that already listen on `0.0.0.0`.
+- iPhone peer `iphone-w422417869.netbird.cloud` is `100.87.23.147`; this is
+  the iPhone's own NetBird address, not the Fedora/Hermes server address. On
+  2026-08-01 it was `Connecting` with no WireGuard handshake, and Fedora ping
+  to `100.87.23.147` returned destination host unreachable. Do not publish
+  Hermes/WebTTY links using this address.
+- Phone peer known to NetBird: `pkr110.netbird.cloud` / `100.87.37.3`, but on
+  2026-07-18 it had to be unlocked and NetBird manually connected. Verified
+  state after connection: Fedora `Peers count: 1/1 Connected`; Android `tun0`
+  `100.87.37.3/16`; Mattermost UID `10447` and Haven UID `10371` can reach
+  Fedora NetBird IP `100.87.238.153`.
+- Mattermost Android app `com.mattermost.rn` was updated on 2026-07-18 to use
+  `http://100.87.238.153:8065` as its active server URL.
+- Haven Android app `sh.haven.app` has a `Codex · NetBird` group with NetBird
+  profiles using host `100.87.238.153` for ports `2222`, `2223`, `2224`,
+  `2225`, `2226`, `2227`, `2229`, `2230`, `2231-2235`, and `5900`.
+  `2231-2235` are C4-C8 Haven SSH keepalive entry ports on Fedora/NetBird,
+  not DuckDNS public SSH forwards.
+- Runbook: `~/.ai-context/runbooks/netbird.md`; Haven details:
+  `~/.ai-context/runbooks/haven.md`; helper: `~/.local/bin/netbird-selfhost-kit`.
+- Android app crash/error monitor: `phone-error-log-watch.timer` runs `~/.local/bin/phone-error-log-watch` every 10 minutes; summary `~/.local/state/phone-error-log-watch/latest.md`; runbook `~/.ai-context/runbooks/phone-error-log-watch.md`.
+
+## Unified Mihomo Control
+- Sub-Store: `sub-store.service` (Podman), dashboard `127.0.0.1:19887`, data
+  `~/.local/share/sub-store/`; it is deliberately loopback-only.
+- Versioned rules/overlays: `~/dotfiles/mihomo/`; runbook:
+  `~/.ai-context/runbooks/mihomo-control.md`.
+- Android root Mihomo runtime: `/data/adb/mihomo_netbird`, service script
+  `/data/adb/service.d/97-mihomo.sh`; it redirects device TCP/DNS in root
+  transparent mode while leaving Android's single `VpnService` slot for
+  Tailscale/NetBird. On PKR110, do not globally pin `interface-name: wlan0`
+  because 5G uses `rmnet_data*`; Tailscale UID `10352` and UDP-heavy games
+  such as League of Legends: Wild Rift use owner-UID bypass rules.
+
+## Network Scenario Monitor
+- `network-scenario-monitor.timer` runs every 2 minutes and writes a unified
+  phone/desktop network, proxy, system-performance, and communication snapshot
+  to `~/.local/state/network-scenario-monitor/latest.json`; AI-readable summary:
+  `~/.local/state/network-scenario-monitor/latest.md`.
+- Dashboard: `network-monitor-dashboard.service` on `0.0.0.0:19979`; local
+  `http://127.0.0.1:19979/`, LAN `http://192.168.123.71:19979/`,
+  Tailscale `http://100.120.189.27:19979/`. The dashboard includes
+  `/actions` for bounded interactive execution: immediate capture, ntfy test,
+  monitor restart, and Kuma restart.
+  Uptime Kuma fallback status UI: `uptime-kuma.service` on
+  `0.0.0.0:3002`; local `http://127.0.0.1:3002/`, LAN
+  `http://192.168.123.71:3002/`, Tailscale `http://100.120.189.27:3002/`.
+- It classifies home Wi-Fi LAN, portable/other Wi-Fi, cellular/5G, non-LAN with
+  Tailnet, desktop direct/proxy HTTPS, DuckDNS, FRP ADB, ntfy, clipboard,
+  Workbench, ADB paths, proxy ports, load/memory/swap/disk/PSI.
+- Notification path: local ntfy `charlie-network`, only when top-level
+  classification changes, when a degraded state persists for 10 minutes, or
+  as a healthy heartbeat every 30 minutes. Notifications include Android ntfy
+  action buttons for opening the dashboard, re-running capture, and creating a
+  Hub `goose_aider` diagnosis task. Runbook:
+  `~/.ai-context/runbooks/network-scenario-monitor.md`.
+
 ## DuckDNS DDNS
 - Timer: `duckdns-update.timer` (300s) → `wan-ip-monitor.sh`
 - Domain: `charlie1990.duckdns.org`
@@ -60,6 +151,9 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Phone ADB candidates: Tailscale `100.108.28.44:5555` (not reliable; verified closed on 2026-06-25), FRP fallback `127.0.0.1:15555`
 - Phone ADB keepalive: `adb-phone-keepalive.timer` runs every minute and re-applies `adb tcpip 5555` when reachable
 - Haven app: `sh.haven.app`, phone MCP `127.0.0.1:8730`
+- AidLux/ntfy phone agent fallback: `phone-run`, `phone-root-run`,
+  `phone-status-read`, `phone-command-push`; runbook
+  `~/.ai-context/runbooks/phone-agent.md`
 - Local bridge: `haven-mcp-bridge.service`, `127.0.0.1:8732/mcp`, default disabled/inactive; start only for explicit Haven SSH configuration/debug tasks
 - `haven-mcp-watchdog.timer` is retired/disabled; do not restore it because it repeatedly probes and starts Haven MCP
 - Phone FRPC: `/data/local/tmp/frpc.toml`; proxies ADB `15555`, SSH `8022`, Haven MCP `18700`
@@ -138,6 +232,9 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Phone ADB candidates: Tailscale `100.108.28.44:5555` (not reliable; verified closed on 2026-06-25), FRP fallback `127.0.0.1:15555`
 - Phone ADB keepalive: `adb-phone-keepalive.timer` runs every minute and re-applies `adb tcpip 5555` when reachable
 - Haven package: `sh.haven.app`; MCP listens on phone `127.0.0.1:8730`
+- AidLux/ntfy phone agent fallback: `phone-run`, `phone-root-run`,
+  `phone-status-read`, `phone-command-push`; runbook
+  `~/.ai-context/runbooks/phone-agent.md`
 - Local Haven bridge: `haven-mcp-bridge.service`, `127.0.0.1:8732/mcp`, default disabled/inactive; start only for explicit Haven SSH configuration/debug tasks
 - `haven-mcp-watchdog.timer` is retired/disabled; do not restore it because it repeatedly probes and starts Haven MCP
 - OpenCode uses local `mcp-remote@0.1.38` stdio adapter for Haven Streamable HTTP
@@ -191,6 +288,9 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Generated verified knowledge: `~/.ai-context/AUTO_LEARNED.md`
 - Generated runbook index: `~/.ai-context/runbooks/INDEX.md`
 - Audit report: `~/memory/runbook-audit.md`
+- Workflow Intelligence target design: `~/.ai-context/runbooks/workflow-intelligence.md`; intended shared workflow extraction/index/recall layer for Codex, OpenCode, Crush, `agent-dispatch`, and `ai-a2a`
+- Workflow Intelligence helper: `~/.local/bin/workflow-intel`; timer `workflow-intel-maintain.timer` runs hourly at idle I/O priority; state in `~/memory/workflows/`
+- Workflow Intelligence immediate watchers: `workflow-intel-codex-capture.path` watches `~/.codex/history.jsonl`; `workflow-intel-crush-capture.path` watches `~/.local/state/crush-eval/latest.md`
 - Maintenance timer: `opencode-knowledge-maintainer.timer` (every 6h)
 - Immediate config watcher: `opencode-capability-adapter.path`
 - Task journal: `~/memory/opencode-task-journal.jsonl`
@@ -221,9 +321,44 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Models: large `step-router-v1`, small `deepseek-v4-flash`
 - Runbook: `~/.ai-context/runbooks/crush.md`
 
+## System Sanity / Desktop Cleanup
+- Conservative self-clean/evolution timer: `system-sanity-evolve.timer` runs `~/.local/bin/system-sanity-evolve --fix` every 6h.
+- Reports: `~/.local/state/system-sanity-evolve/latest.json` and `latest.md`.
+- Scope: user systemd StartLimit section fixes, stale user-unit symlink cleanup, `~/.local/bin` backup archival, browser/tab cleanup, user failed reset, and stale `systemd-coredump@*.service` failed-marker reset only.
+- Browser/workspace cleanup: `mobile-ai-browser-cleanup.timer` and `sway-tab-cleanup.timer` close only conservative old/duplicate AI tabs/windows. Workbench buttons call `/api/browser/close` and `/api/browser/cleanup`.
+- OpenCode cold archive migration: `opencode-cold-archive-migrate.timer` moves old OpenCode restore/archive DB backups one item per day to `/var/mnt/ai/cache/archive/opencode-db-backups/20260718-home-clean`; active `opencode.db` is not touched.
+- Runbook: `~/.ai-context/runbooks/system-sanity-evolve.md`; OpenCode archive details: `~/.ai-context/runbooks/opencode-core.md`.
+
 ## Verification Commands
 - Local: `curl --noproxy '*' http://127.0.0.1:18080/`
 - LAN: `curl --noproxy '*' http://192.168.123.71:18080/`
 - DuckDNS: `curl --noproxy '*' http://charlie1990.duckdns.org:18080/`
 - Router snapshot: `~/.local/bin/router-config-snapshot.sh`
 - FRP status: `curl -s 'http://admin:frp%40charlie2026@127.0.0.1:7500/api/proxy/tcp' | jq`
+
+## Communication Project Sync
+- Near-realtime project/status sync: `comm-project-sync.timer` runs
+  `~/.local/bin/comm-project-sync sync --event timer` every 60s, and Hub
+  `_save_project_control()` also fire-and-forgets the helper on project changes.
+- Sync targets: Mattermost `ai-tasks`, Zulip topic `Project Sync`, and ntfy
+  topic `charlie-projects` via `ntfy-send projects`.
+- State for comparison: `~/.local/state/comm-project-sync/latest.json` and
+  `history.jsonl`; Hub exposes `GET /api/projects/comm-sync`.
+- User-facing links should prefer both NetBird `100.87.238.153` and LAN
+  `192.168.123.71`.  Do not revert to local-only `127.0.0.1` in Mattermost,
+  ntfy, Workbench port registry, or Hub project receipts.
+- Runbook: `~/.ai-context/runbooks/communication-project-sync.md`.
+
+## Mattermost Executor Channels
+- Mattermost now has explicit watched executor/IDE channels: `cursor`, `goose`,
+  and `aider` in addition to `ai-inbox`, `ai-images`, `ai-docs`, and
+  `ai-review`.
+- `cursor`: Cursor/KasmVNC GUI IDE task intake, default Hub assignee `plan`;
+  links NetBird `http://100.87.238.153:19970/`, LAN `http://192.168.123.71:19970/`.
+- `goose`: read-only Goose/Guise planning/diagnosis intake, default Hub assignee
+  `plan`; links NetBird `http://100.87.238.153:7694/tool/guise/`, LAN
+  `http://192.168.123.71:7694/tool/guise/`.
+- `aider`: approved single-writer execution intake, default Hub assignee
+  `goose_aider`; links NetBird `http://100.87.238.153:7693/tool/aider/`, LAN
+  `http://192.168.123.71:7693/tool/aider/`.
+- `ai-tasks` remains output-only. Do not add it to watched inputs.

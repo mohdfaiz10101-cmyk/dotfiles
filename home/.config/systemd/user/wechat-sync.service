@@ -1,0 +1,8 @@
+[Unit]
+Description=WeChat periodic sync (UOS + Android)
+After=network.target
+
+[Service]
+Type=oneshot
+Environment=HOME=/var/home/charlie
+ExecStart=/var/home/charlie/.local/bin/wechat-sync.sh

@@ -1,0 +1,15 @@
+[Unit]
+Description=Watch Codex histories for compact execution memory capture
+
+[Path]
+PathChanged=/var/home/charlie/.codex/history.jsonl
+PathChanged=/var/home/charlie/.codex-2/history.jsonl
+PathChanged=/var/home/charlie/.codex-3/history.jsonl
+PathChanged=/var/home/charlie/.codex-4/history.jsonl
+PathChanged=/var/home/charlie/.codex-5/history.jsonl
+PathChanged=/var/home/charlie/.codex-6/history.jsonl
+PathChanged=/var/home/charlie/.codex-7/history.jsonl
+Unit=codex-exec-memory-capture.service
+
+[Install]
+WantedBy=default.target

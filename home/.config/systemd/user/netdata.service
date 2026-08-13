@@ -1,0 +1,16 @@
+[Unit]
+Description=Netdata host and network metrics
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/mkdir -p %h/.local/share/netdata/{config,lib,cache}
+ExecStart=/usr/bin/podman run --name netdata --replace --rm --pull=never -p 127.0.0.1:19999:19999 --cap-add SYS_PTRACE --security-opt label=disable -e NETDATA_HOST_PREFIX=/host -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v %h/.local/share/netdata/config:/etc/netdata -v %h/.local/share/netdata/lib:/var/lib/netdata -v %h/.local/share/netdata/cache:/var/cache/netdata docker.io/netdata/netdata:stable
+ExecStop=/usr/bin/podman stop -t 20 netdata
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

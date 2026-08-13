@@ -1,0 +1,13 @@
+[Unit]
+Description=Hermes A2A Panel
+After=network.target
+
+[Service]
+Type=simple
+Environment=A2A_PANEL_PORT=8788
+ExecStart=/usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/panel.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

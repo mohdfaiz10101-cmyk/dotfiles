@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+set -eu
+
+adb shell 'su -c /data/adb/mihomo-sync-netbird.sh'

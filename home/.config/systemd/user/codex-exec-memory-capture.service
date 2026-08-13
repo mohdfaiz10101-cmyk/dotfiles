@@ -1,0 +1,9 @@
+[Unit]
+Description=Capture compact Codex execution memory
+
+[Service]
+Type=oneshot
+Nice=10
+IOSchedulingClass=idle
+ExecStart=/var/home/charlie/.local/bin/codex-timeline-snapshot
+ExecStart=/var/home/charlie/.local/bin/codex-exec-memory capture

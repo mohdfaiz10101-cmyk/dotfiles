@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic compact Codex execution memory capture
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=15min
+AccuracySec=1min
+Unit=codex-exec-memory-capture.service
+
+[Install]
+WantedBy=timers.target

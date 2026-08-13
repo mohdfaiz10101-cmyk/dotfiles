@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Hermes context guard every 5 minutes
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=5m
+Persistent=true
+Unit=hermes-context-guard.service
+
+[Install]
+WantedBy=timers.target

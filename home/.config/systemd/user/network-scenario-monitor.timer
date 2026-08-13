@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic unified phone/desktop network scenario status capture
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=20s
+Unit=network-scenario-monitor.service
+
+[Install]
+WantedBy=timers.target

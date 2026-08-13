@@ -1,0 +1,20 @@
+[Unit]
+Description=Redroid Lite VM (Ubuntu 24.04 Server)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+KillMode=mixed
+ExecStart=/usr/bin/qemu-system-x86_64 \
+  -enable-kvm -machine q35,accel=kvm,kernel_irqchip=split -cpu host,+nx,+kvm_pv_eoi,+kvm_pv_unhalt -smp 2 -m 2048 \
+  -drive file=/var/mnt/ai/redroid-vm/ubuntu-24.04-server-cloudimg-amd64-overlay.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 \
+  -drive file=/var/mnt/ai/redroid-vm/seed.iso,if=virtio,media=cdrom,readonly=on \
+  -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:57 \
+  -netdev user,id=net0,hostfwd=tcp::22223-:22,hostfwd=tcp::25556-:5555 \
+  -display none -vga qxl
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

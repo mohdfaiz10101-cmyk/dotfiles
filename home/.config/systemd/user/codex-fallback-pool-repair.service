@@ -1,0 +1,9 @@
+[Unit]
+Description=Codex Sub2API fallback pool repair and error recorder
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/codex-fallback-pool-repair --apply --minutes 30
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

@@ -1,0 +1,6 @@
+[Unit]
+Description=Sort Foot Codex tabs by local account health
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/codex-foot-console-maintain

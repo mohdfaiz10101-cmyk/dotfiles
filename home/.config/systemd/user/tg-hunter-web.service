@@ -1,0 +1,15 @@
+[Unit]
+Description=TG Group Hunter Web UI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/workspace/tg-group-hunter
+ExecStart=/usr/bin/python3 /var/home/charlie/workspace/tg-group-hunter/web_app.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

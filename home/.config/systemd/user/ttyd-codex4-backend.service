@@ -6,7 +6,7 @@ After=network-online.target
 Type=simple
 ExecStart=/usr/local/bin/ttyd -W -c codex:w19900422 -I /var/home/charlie/.local/share/ttyd-codex/index-codex4.html -t "rendererType=dom" -t "scrollback=50000" -t "scrollOnUserInput=true" -P 15 -p 19884 -i 127.0.0.1 -T xterm-256color /var/home/charlie/.local/bin/ttyd-codex4-entry
 Restart=always
-RestartSec=2
+RestartSec=2s
 
 [Install]
 WantedBy=default.target

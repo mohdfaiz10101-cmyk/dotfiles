@@ -1,7 +1,10 @@
 [Unit]
-Description=Keep phone wireless ADB enabled
+Description=Keep PKR110 ADB/FRP/NetBird fallback paths alive
 After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/var/home/charlie/.local/bin/adb-phone-keepalive.sh
+Nice=10
+ExecStart=%h/.local/bin/adb-phone-keepalive.sh
+

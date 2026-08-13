@@ -1,0 +1,7 @@
+[Unit]
+Description=Phone NetBird Monitor
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/netbird-phone-monitor.sh

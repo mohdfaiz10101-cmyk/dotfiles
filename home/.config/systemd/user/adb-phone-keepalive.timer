@@ -1,10 +1,11 @@
 [Unit]
-Description=Run phone wireless ADB keepalive every minute
+Description=Run PKR110 ADB/FRP/NetBird fallback keepalive every minute
 
 [Timer]
-OnBootSec=20s
+OnBootSec=30s
 OnUnitActiveSec=60s
 AccuracySec=10s
+Persistent=true
 Unit=adb-phone-keepalive.service
 
 [Install]

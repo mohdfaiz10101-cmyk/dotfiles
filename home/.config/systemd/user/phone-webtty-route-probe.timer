@@ -1,0 +1,11 @@
+[Unit]
+Description=Run phone-side WebTTY route probe periodically
+
+[Timer]
+OnBootSec=60s
+OnUnitActiveSec=2min
+AccuracySec=20s
+Unit=phone-webtty-route-probe.service
+
+[Install]
+WantedBy=timers.target

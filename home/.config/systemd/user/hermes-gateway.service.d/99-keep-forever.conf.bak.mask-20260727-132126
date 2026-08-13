@@ -1,0 +1,6 @@
+[Service]
+StopWhenUnneeded=no
+RefuseManualStop=no
+Restart=always
+RestartSec=5
+TimeoutStopSec=330

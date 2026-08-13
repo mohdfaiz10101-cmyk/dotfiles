@@ -1,0 +1,18 @@
+[Unit]
+Description=Waydroid notification relay to ntfy.sh
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/charlie/.local/bin/waydroid_notify_relay.py
+Restart=on-failure
+RestartSec=10
+Environment="ADB=adb -s 127.0.0.1:15555"
+Environment=NTFY_TOPIC=waydroid-notify
+Environment=POLL_INTERVAL=5
+Environment=IMPORTANCE_MIN=3
+Environment=PKG_FILTER=com.tencent.mm,com.oplus.battery,com.arlosoft.macrodroid,com.ss.android.ugc.aweme.mobile,sh.haven.app,com.danielealbano.androidremotecontrolmcp.debug
+
+[Install]
+WantedBy=default.target

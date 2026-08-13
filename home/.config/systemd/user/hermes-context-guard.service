@@ -1,0 +1,7 @@
+[Unit]
+Description=Hermes session context guard and rollover suggester
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hermes-context-guard check --apply
+WorkingDirectory=%h

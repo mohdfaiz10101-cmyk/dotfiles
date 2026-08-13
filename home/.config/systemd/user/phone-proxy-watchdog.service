@@ -1,0 +1,15 @@
+[Unit]
+Description=Phone proxy watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=PHONE_PROXY_TARGET=100.87.37.3:5555
+Environment=PHONE_PROXY_VALUE=127.0.0.1:7890
+ExecStart=/var/home/charlie/.local/bin/phone-proxy-watchdog.sh
+Restart=on-failure
+RestartSec=20
+
+[Install]
+WantedBy=default.target

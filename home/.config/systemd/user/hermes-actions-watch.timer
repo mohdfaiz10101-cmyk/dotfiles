@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Hermes Actions task notification watcher every minute
+
+[Timer]
+OnBootSec=90s
+OnUnitActiveSec=60s
+AccuracySec=10s
+Unit=hermes-actions-watch.service
+
+[Install]
+WantedBy=timers.target

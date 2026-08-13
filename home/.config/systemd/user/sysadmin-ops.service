@@ -1,0 +1,12 @@
+[Unit]
+Description=SysAdmin Ops Web App
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/.hermes/skills/sysadmin-ops
+ExecStart=/usr/bin/python3 /var/home/charlie/.hermes/skills/sysadmin-ops/scripts/server.py
+Restart=on-failure
+RestartSec=2
+Environment=PATH=/var/home/charlie/.local/bin:/usr/bin:/bin

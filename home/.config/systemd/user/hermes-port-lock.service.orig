@@ -1,0 +1,10 @@
+[Unit]
+Description=Hermes port binding lock watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=%h
+Environment=NTFY_TOPIC_SYSTEM=charlie-system
+ExecStart=%h/.local/bin/hermes-port-lock.sh fix

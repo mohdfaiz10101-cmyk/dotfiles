@@ -1,0 +1,23 @@
+[Unit]
+Description=Hermes Studio on :8648
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+WorkingDirectory=/var/home/charlie/hermes-webui
+Environment=HOME=%h
+Environment=HERMES_HOME=/var/home/charlie/.hermes
+Environment=HERMES_WEB_UI_HOME=/var/home/charlie/.hermes-web-ui-studio
+Environment=CORS_ORIGINS=*
+Environment=HERMES_WEB_UI_DISABLE_GATEWAY_AUTOSTART=1
+Environment=PATH=%h/.local/bin:%h/.nvm/versions/node/v23.11.1/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/.nvm/versions/node/v23.11.1/bin/node %h/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-web-ui.mjs client 8648
+PIDFile=/var/home/charlie/.hermes-web-ui-studio/server.pid
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=60
+TimeoutStopSec=25
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Move old OpenCode DB cold backups to large disk archive
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/opencode-cold-archive-migrate
+Nice=19
+CPUWeight=5
+IOWeight=5
+IOSchedulingClass=idle
+TimeoutStartSec=3h

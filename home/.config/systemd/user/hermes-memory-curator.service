@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes Memory Curator (deterministic hygiene)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hermes-memory-curator

@@ -1,0 +1,17 @@
+[Unit]
+Description=Mobile AI Browsh device gate (:19885)
+After=network-online.target mobile-ai-browsh-backend.service
+Wants=mobile-ai-browsh-backend.service
+
+[Service]
+Type=simple
+Environment=BROWSH_GATE_PORT=19885
+Environment=BROWSH_TARGET_PORT=19886
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=DEVICE_COOKIE_NAME=mobile_ai_browsh_device
+ExecStart=%h/.local/bin/mobile-ai-browsh-gate
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

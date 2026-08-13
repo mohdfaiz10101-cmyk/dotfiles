@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes Actions style task notification watcher
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/hermes-actions watch

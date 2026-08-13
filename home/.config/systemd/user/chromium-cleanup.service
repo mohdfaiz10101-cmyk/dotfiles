@@ -1,0 +1,6 @@
+[Unit]
+Description=Clean Chromium cache
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c 'rm -rf %h/.cache/chromium/Default/Cache/* %h/.cache/chromium/Default/Code\ Cache/* %h/.cache/ms-playwright/chromium-1228/Cache/* %h/.cache/ms-playwright/chromium-1228/Code\ Cache/* 2>/dev/null || true'

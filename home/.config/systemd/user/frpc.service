@@ -1,20 +1,23 @@
 [Unit]
-Description=FRP Client (connect to local frps)
-After=network.target frps.service
+Description=FRP Client for Hermes Web UI
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-Environment="http_proxy="
-Environment="https_proxy="
-Environment="HTTP_PROXY="
-Environment="HTTPS_PROXY="
-Environment="no_proxy=127.0.0.1,localhost,192.168.0.0/16,10.0.0.0/8,100.64.0.0/10"
-ExecStartPre=/bin/bash -c 'until ss -tlnp | grep -q ":7000 "; do sleep 1; done'
-ExecStart=%h/.local/bin/frpc -c %h/.config/frpc/frpc.toml
-Restart=always
-RestartSec=15
-MemoryMax=400M
-MemoryHigh=300M
+ExecStart=/var/home/charlie/.local/bin/frpc -c /var/home/charlie/.config/frpc/frpc.toml
+Restart=on-failure
+RestartSec=5
+Environment=FRPC_LOG_LEVEL=info
+Environment=FRPC_LOG_FILE=/var/home/charlie/.local/state/frpc/frpc.log
+Environment=HTTP_PROXY=
+Environment=http_proxy=
+Environment=HTTPS_PROXY=
+Environment=https_proxy=
+Environment=ALL_PROXY=
+Environment=all_proxy=
+Environment=NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net,open.bigmodel.cn,api.z.ai,.duckdns.org
+Environment=no_proxy=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net,open.bigmodel.cn,api.z.ai,.duckdns.org
 
 [Install]
 WantedBy=default.target

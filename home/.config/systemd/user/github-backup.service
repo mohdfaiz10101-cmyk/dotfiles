@@ -1,0 +1,13 @@
+[Unit]
+Description=Backup home directory to GitHub
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/backup-to-github.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COUNTER_FILE="${HOME}/.hermes/.stepfun-chat-counter"
+
+if [[ ! -f "$COUNTER_FILE" ]]; then
+  echo 0 > "$COUNTER_FILE"
+fi
+
+count=$(cat "$COUNTER_FILE")
+if (( count % 2 == 0 )); then
+  PROVIDER="stepfun"
+else
+  PROVIDER="custom:stepfun-new"
+fi
+
+echo "$((count + 1))" > "$COUNTER_FILE"
+
+echo "[rotate] session #$((count+1)) -> provider: $PROVIDER" >&2
+exec hermes chat --provider "$PROVIDER" "$@"

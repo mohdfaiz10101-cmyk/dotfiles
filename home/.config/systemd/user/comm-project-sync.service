@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync Hub project state to Mattermost/Zulip/ntfy
+After=hub-api.service mattermost.service container-ntfy.service opencode-zulip-gateway.service
+Wants=hub-api.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/comm-project-sync sync --event timer
+Nice=10

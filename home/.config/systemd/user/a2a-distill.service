@@ -1,0 +1,8 @@
+[Unit]
+Description=A2A Distill Sessions
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/distill.py
+StandardOutput=append:/var/home/charlie/.hermes/a2a/logs/distill.log
+StandardError=append:/var/home/charlie/.hermes/a2a/logs/distill.log

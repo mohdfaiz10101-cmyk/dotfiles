@@ -1,0 +1,12 @@
+[Unit]
+Description=Codex 7 TTY backend (haven-codex7, :20021)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ttyd -W -c codex:w19900422 -I /var/home/charlie/.local/share/ttyd-codex/index-codex7.html -t "rendererType=dom" -t "scrollback=50000" -t "scrollOnUserInput=true" -P 15 -p 20021 -i 127.0.0.1 -T xterm-256color /var/home/charlie/.local/bin/ttyd-codex7-entry
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target

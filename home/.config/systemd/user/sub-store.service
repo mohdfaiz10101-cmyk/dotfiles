@@ -1,0 +1,16 @@
+[Unit]
+Description=Sub-Store subscription and rule control plane
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/mkdir -p %h/.local/share/sub-store
+ExecStart=/usr/bin/podman run --name sub-store --replace --rm --pull=never -p 127.0.0.1:19887:3001 -v %h/.local/share/sub-store:/opt/app/data:Z docker.1ms.run/xream/sub-store:latest
+ExecStop=/usr/bin/podman stop -t 10 sub-store
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+
+[Install]
+WantedBy=default.target

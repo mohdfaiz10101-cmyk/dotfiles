@@ -1,0 +1,13 @@
+[Unit]
+Description=Web SSH Terminal (ttyd)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ttyd -W -p 18084 -c charlie:w19900422 ssh charlie@127.0.0.1
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Hermes Agent Bridge Worker (p3)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=PATH=%h/.nvm/versions/node/current/bin:%h/.cargo/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=HERMES_AGENT_ROOT=/var/home/charlie/.local/hermes-agent
+Environment=HERMES_HOME=/var/home/charlie/.hermes
+ExecStart=/usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/e1623bf4d27e1860.sock --worker-profile p3 --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+Restart=always
+RestartSec=5
+TimeoutStopSec=240
+
+[Install]
+WantedBy=default.target

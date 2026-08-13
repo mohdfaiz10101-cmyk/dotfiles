@@ -1,11 +1,23 @@
 {
-  "generated_at": "2026-07-13T13:19:15",
+  "generated_at": "2026-08-12T14:13:35",
   "rules": {
     "core": "safe low-cost MCPs allowed to remain enabled",
     "on_demand": "keep disabled by default; enable for matching task trigger, then disable again",
     "new_mcp_default": "new MCPs should be treated as on_demand until verified"
   },
   "mcp": [
+    {
+      "name": "agent-comms",
+      "kind": "general",
+      "enabled": true,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "agent-comms"
+      ]
+    },
     {
       "name": "baidu-netdisk",
       "kind": "data",
@@ -47,6 +59,18 @@
         "函数",
         "调用链",
         "重构"
+      ]
+    },
+    {
+      "name": "codex-account-manager",
+      "kind": "general",
+      "enabled": true,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "codex-account-manager"
       ]
     },
     {
@@ -98,6 +122,18 @@
         "爬取",
         "文档",
         "搜索"
+      ]
+    },
+    {
+      "name": "ghidra",
+      "kind": "general",
+      "enabled": true,
+      "enable_policy": "on_demand",
+      "recommended_agent": "sisyphus",
+      "heavy": false,
+      "external_write_risk": false,
+      "triggers": [
+        "ghidra"
       ]
     },
     {
@@ -207,6 +243,23 @@
       ]
     },
     {
+      "name": "mobile-browser-bridge",
+      "kind": "research-ui",
+      "enabled": true,
+      "enable_policy": "on_demand",
+      "recommended_agent": "tech-researcher",
+      "heavy": true,
+      "external_write_risk": true,
+      "triggers": [
+        "网页",
+        "浏览器",
+        "截图",
+        "爬取",
+        "文档",
+        "搜索"
+      ]
+    },
+    {
       "name": "ntfy",
       "kind": "messaging",
       "enabled": false,
@@ -247,7 +300,7 @@
       "enable_policy": "on_demand",
       "recommended_agent": "tech-researcher",
       "heavy": true,
-      "external_write_risk": false,
+      "external_write_risk": true,
       "triggers": [
         "网页",
         "浏览器",

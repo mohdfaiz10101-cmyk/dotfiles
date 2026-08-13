@@ -8,6 +8,9 @@ LiteLLM、Letta、Embedding Server 三大 AI 基础设施服务。
 - `litellm-strip-proxy.service` — Python 代理，`:4000` → `:4002`（strip tools 模式）
 - `litellm-keepalive.timer` — 每 30 秒探测 4002/4000，假死或代理断链时自动按顺序重启 LiteLLM + strip proxy
 - `letta-stack.service` — Docker compose（postgres + chromadb + letta），`:8283`
+- `letta-stack.service` should start with `docker compose up -d` and should not
+  force `docker compose pull` on every service restart. Slow image pulls can keep
+  `8283` down and make OpenHands return 500 while its UI still loads.
 - `embedding-server.service` — 本地 Python 嵌入服务，`:8286`
   - Current stable fallback: `EMBEDDING_BACKEND=hash` in the user service.
     This keeps the OpenAI-compatible 384-dim embedding endpoint responsive when
@@ -49,6 +52,10 @@ systemctl --user restart embedding-server
 
 - Letta 连接重置 = NLTK 数据初始化阻塞，需传 `http_proxy` 环境变量 + 等待 60s+
 - Letta `/health` 返回 404 是正常的，正确端点为 `/v1/agents/`
+- If OpenHands starts but conversation creation returns 500 and both `4000` and
+  `8283` are closed, first start `litellm.service`,
+  `litellm-strip-proxy.service`, `letta-stack.service`, and
+  `letta-podman-proxy.service`; do not edit OpenHands code first.
 - LiteLLM 配置修改后必须同时重启 strip-proxy
 - 2026-07-04 强制保活：`~/.local/bin/litellm-keepalive` 接管 4002/4000 健康巡检。它会读取 `~/ai/litellm.env` 的 `LITELLM_MASTER_KEY` 做带鉴权探测，并用 flock 防止 timer 与人工重启并发。日志在 `~/.local/state/litellm-keepalive.log`。
 - 2026-07-04 Claude Code 兼容：`claude-sonnet-4-6-20250514`、`claude-sonnet-4-5-20250514`、`claude-haiku-4-5-20251001`、`claude-opus-4-6-20250514` 已加入 LiteLLM fallback 链。若 ZAI 余额/资源包不足，应降级到 `glm-5.2`、`step-3.7-flash`、`step-3.5-flash-2603`、`deepseek-v4-*`，不要让 OpenCode 直接卡在单一 Claude 别名。

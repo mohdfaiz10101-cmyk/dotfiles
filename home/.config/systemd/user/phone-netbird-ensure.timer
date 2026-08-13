@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh PKR110 NetBird connectivity guard
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=3min
+AccuracySec=15s
+Unit=phone-netbird-ensure.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Conservative system sanity cleanup and evolution report
+After=graphical-session.target mobile-ai-workbench.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/system-sanity-evolve --fix
+Nice=19
+CPUWeight=10
+IOWeight=10
+IOSchedulingClass=idle
+TimeoutStartSec=90

@@ -1,0 +1,10 @@
+# Merge these rules after provider/subscription-specific rules and before MATCH.
+# Required policy groups: PROXY, DIRECT, REJECT.
+rules:
+  - GEOSITE,private,DIRECT
+  - GEOIP,private,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,local,DIRECT
+  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,cn,DIRECT
+  - MATCH,PROXY

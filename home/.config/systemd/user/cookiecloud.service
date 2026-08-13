@@ -1,0 +1,14 @@
+[Unit]
+Description=CookieCloud sync server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/cookiecloud-server.py
+Restart=on-failure
+RestartSec=5
+Environment=COOKIECLOUD_PORT=9999
+Environment=COOKIECLOUD_DATA_DIR=%h/.local/share/cookiecloud/data
+
+[Install]
+WantedBy=default.target

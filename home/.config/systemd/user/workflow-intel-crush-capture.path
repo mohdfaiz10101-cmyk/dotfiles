@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch Crush eval report for workflow capture
+
+[Path]
+PathChanged=/var/home/charlie/.local/state/crush-eval/latest.md
+Unit=workflow-intel-crush-capture.service
+
+[Install]
+WantedBy=default.target

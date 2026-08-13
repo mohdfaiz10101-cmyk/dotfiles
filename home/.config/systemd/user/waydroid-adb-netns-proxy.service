@@ -1,0 +1,12 @@
+[Unit]
+Description=Waydroid ADB netns proxy for ws-scrcpy
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/waydroid-adb-netns-proxy
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

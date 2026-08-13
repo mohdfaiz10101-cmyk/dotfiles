@@ -1,0 +1,10 @@
+[Unit]
+Description=Discover new service logs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/discover-new-service.sh
+Environment=BASE_DIR=/var/home/charlie/workspace/system-logs
+Environment=NOTIFY_STATE=/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl

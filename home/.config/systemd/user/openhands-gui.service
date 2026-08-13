@@ -14,6 +14,9 @@ ExecStart=/usr/bin/podman run --rm --replace --pull=missing \
   -v /var/home/charlie/.openhands:/.openhands \
   -v /var/home/charlie/.config/openhands/patches/app_server_config.py:/app/openhands/app_server/config.py:ro \
   -v /var/home/charlie/.config/openhands/patches/docker_sandbox_service.py:/app/openhands/app_server/sandbox/docker_sandbox_service.py:ro \
+  -v /var/home/charlie/.config/openhands/patches/docker_sandbox_spec_service.py:/app/openhands/app_server/sandbox/docker_sandbox_spec_service.py:ro \
+  -v /var/home/charlie/.config/openhands/patches:/var/home/charlie/.config/openhands/patches:ro \
+  -v /var/home/charlie/.config/openhands/patches/command.py:/app/openhands/runtime/utils/command.py:ro \
   -v /var/home/charlie/.config/openhands/patches/live_status_app_conversation_service.py:/app/openhands/app_server/app_conversation/live_status_app_conversation_service.py:ro \
   -v /var/mnt/ai/cache/auto-migrate/.openclaw/workspace:/workspace \
   -p 127.0.0.1:3001:3000 \

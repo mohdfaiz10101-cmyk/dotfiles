@@ -2,8 +2,8 @@
 Description=Optional local AI A2A worker timer
 
 [Timer]
-OnUnitActiveSec=2m
-OnBootSec=3m
+OnUnitActiveSec=30s
+OnBootSec=60s
 Persistent=true
 
 [Install]

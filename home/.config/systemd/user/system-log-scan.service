@@ -1,0 +1,11 @@
+[Unit]
+Description=Scan collected logs for errors and notify
+After=network-online.target container-ntfy.service
+Wants=network-online.target container-ntfy.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/scan-log-errors.sh
+Environment=BASE_DIR=/var/home/charlie/workspace/system-logs
+Environment=JOURNAL_SINCE=24 hours ago
+Environment=NOTIFY_STATE=/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl

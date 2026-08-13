@@ -14,7 +14,7 @@ ExecStart=/usr/bin/podman run --rm \
   -e KHOJ_NO_HTTPS=True \
   -e KHOJ_ADMIN_EMAIL=admin@local \
   -e KHOJ_ADMIN_PASSWORD=khoj-local-2026 \
-  -e DATABASE_URL=postgresql://postgres:khoj-secret@127.0.0.1:5432/khoj \
+  -e DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/khoj \
   ghcr.io/khoj-ai/khoj:latest \
   --host 127.0.0.1 --port 42110 --non-interactive --anonymous-mode
 ExecStop=/usr/bin/podman stop khoj

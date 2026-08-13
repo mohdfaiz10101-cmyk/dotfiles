@@ -3,5 +3,5 @@ Description=Process one local AI A2A request
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/ai-a2a worker --limit 1
+ExecStart=%h/.local/bin/ai-a2a worker --limit 20
 WorkingDirectory=%h

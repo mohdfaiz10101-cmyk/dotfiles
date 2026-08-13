@@ -1,0 +1,12 @@
+[Unit]
+Description=Refresh compact Hermes experience map periodically
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=15min
+AccuracySec=1min
+RandomizedDelaySec=2min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

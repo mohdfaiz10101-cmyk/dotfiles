@@ -97,6 +97,23 @@ One mismatch appeared after reboot:
 adb -s 127.0.0.1:15555 shell 'su -c "pm path com.topjohnwu.magisk; dumpsys package com.topjohnwu.magisk | grep -E \"versionCode|versionName|firstInstallTime|lastUpdateTime|installerPackageName|initiatingPackageName|codePath|User [0-9]+:\"; tail -n 120 /cache/magisk.log | grep -E \"topjohnwu|signature|APK|pkg|stub|manager|cert\" || true"'
 ```
 
+- 2026-07-14 recurrence: `com.topjohnwu.magisk` was installed for users 0 and
+  10 at `2026-07-12 16:34:23`, about 27 seconds after
+  `95-phone-selfheal.sh` logged `selfheal done`. Root was healthy
+  (`30.7:MAGISK:R`) and the real manager `io.github.vvb2060.magisk` remained
+  installed for user 0. Fix applied: `/data/adb/service.d/95-phone-selfheal.sh`
+  now keeps a 10-minute post-boot cleanup loop that removes the Magisk built-in
+  stub `com.topjohnwu.magisk` for users 0/10/11/999 when
+  `io.github.vvb2060.magisk` exists. Phone backup:
+  `/data/adb/service.d/95-phone-selfheal.sh.bak-stubloop-20260714-221012`.
+  Current fixed script hash:
+  `bf077f69f42d567739ff9b1ff20caf3e90cdd277cbf5024332d3f0a9f27ce702`.
+  Verification command:
+
+```sh
+adb -s 127.0.0.1:15555 shell 'su -c "echo ROOT=$(id); echo MAGISK=$(magisk -v); for u in 0 10 11 999; do echo USER=$u; pm list packages --user $u | grep -E \"com.topjohnwu.magisk|io.github.vvb2060.magisk\" || true; done"'
+```
+
 - If `su` fails after reboot, this is below `service.d`; check current slot / boot image / OTA patch state before editing service scripts.
 - If user 0 HOME becomes resolver or system launcher, rerun:
 

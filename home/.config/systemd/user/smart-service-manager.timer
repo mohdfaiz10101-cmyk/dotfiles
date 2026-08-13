@@ -1,0 +1,11 @@
+[Unit]
+Description=Run smart service idle manager every 2 minutes
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=2min
+Unit=smart-service-manager.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

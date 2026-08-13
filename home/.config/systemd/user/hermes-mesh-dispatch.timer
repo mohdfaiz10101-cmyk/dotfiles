@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Hermes mesh smart dispatcher every 5 minutes
+
+[Timer]
+OnBootSec=75s
+OnActiveSec=5min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=hermes-mesh-dispatch.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=OpenClaw Gateway Proxy (auto-wake)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /home/charlie/.local/bin/openclaw-gateway-proxy.mjs
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+SuccessExitStatus=0 143
+Environment=HOME=/var/home/charlie
+Environment=TMPDIR=/tmp
+Environment=PATH=/var/home/charlie/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Health check and auto-restart Apache Guacamole stack
+After=network-online.target guacamole-stack.service
+Wants=guacamole-stack.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/guacamole-stack-healthcheck

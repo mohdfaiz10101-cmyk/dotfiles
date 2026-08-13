@@ -1,0 +1,11 @@
+[Unit]
+Description=Isolated Chromium profile for Codex 5 OAuth recovery
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/chromium-browser --remote-debugging-port=9226 --remote-allow-origins=* --user-data-dir=/var/home/charlie/.local/share/c5-auth-browser --no-first-run --no-default-browser-check https://auth.openai.com/codex/device
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

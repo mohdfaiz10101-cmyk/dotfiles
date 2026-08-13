@@ -1,0 +1,12 @@
+[Unit]
+Description=Codex 8 TTY backend (haven-codex8, :20022)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ttyd -W -c codex:w19900422 -I /var/home/charlie/.local/share/ttyd-codex/index-codex8.html -t "rendererType=dom" -t "scrollback=50000" -t "scrollOnUserInput=true" -P 15 -p 20022 -i 127.0.0.1 -T xterm-256color /var/home/charlie/.local/bin/ttyd-codex8-entry
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target

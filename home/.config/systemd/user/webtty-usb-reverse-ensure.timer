@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh adb reverse for mobile WebTTY and Hermes ports
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=1min
+AccuracySec=15s
+Unit=webtty-usb-reverse-ensure.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes memory lifecycle (score + compact + regenerate hot memory)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.hermes/memories/scripts/memory-lifecycle.py

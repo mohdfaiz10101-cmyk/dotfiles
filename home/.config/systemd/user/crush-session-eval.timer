@@ -1,0 +1,10 @@
+[Unit]
+Description=Refresh Crush session evaluation report every 15 minutes
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=15m
+Unit=crush-session-eval.service
+
+[Install]
+WantedBy=timers.target

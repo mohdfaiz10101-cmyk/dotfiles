@@ -1,0 +1,9 @@
+[Unit]
+Description=Conservative network resilience repair
+After=network-resilience-guard.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/network-resilience-maintenance
+Nice=19
+IOSchedulingClass=idle

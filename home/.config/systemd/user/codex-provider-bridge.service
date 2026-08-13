@@ -1,0 +1,17 @@
+[Unit]
+Description=Codex Provider Bridge (Local Bridge)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/share/codex-provider-bridge/.venv/bin/python %h/.local/share/codex-provider-bridge/main.py
+Restart=always
+RestartSec=2
+Environment=HOME=%h
+Environment=HTTP_PROXY=http://127.0.0.1:7890
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=NO_PROXY=localhost,127.0.0.1,::1
+WorkingDirectory=%h/.local/share/codex-provider-bridge
+
+[Install]
+WantedBy=default.target

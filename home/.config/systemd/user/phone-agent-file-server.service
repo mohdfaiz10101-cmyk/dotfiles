@@ -1,0 +1,14 @@
+[Unit]
+Description=Phone agent static file server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/.local/share/phone-agent-web
+ExecStart=/usr/bin/python3 -m http.server 9829 --bind 0.0.0.0
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

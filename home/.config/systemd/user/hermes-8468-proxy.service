@@ -1,0 +1,15 @@
+[Unit]
+Description=Hermes Studio local backup proxy (:8468 -> :8648)
+After=network-online.target hermes-studio-8648.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /var/home/charlie/.local/bin/hermes-8648-http-proxy.js
+Restart=on-failure
+RestartSec=3
+MemoryMax=128M
+TasksMax=80
+
+[Install]
+WantedBy=default.target

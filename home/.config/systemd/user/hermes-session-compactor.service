@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes session compactor pressure check
+
+[Service]
+Type=oneshot
+ExecStart=%h/.hermes/skills/hermes-session-compactor/scripts/run_pressure_check.sh

@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Smart Smooth guard regularly
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=15min
+AccuracySec=1min
+Persistent=true
+Unit=smart-smooth.service
+
+[Install]
+WantedBy=timers.target

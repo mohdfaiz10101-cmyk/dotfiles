@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CONFIG="${HOME}/.hermes/config.yaml"
+
+if [[ ! -f "$CONFIG" ]]; then
+  echo "error: $CONFIG not found" >&2
+  exit 1
+fi
+
+current=$(python3 - <<'PY'
+import yaml, sys
+from pathlib import Path
+p = Path('${CONFIG}')
+data = yaml.safe_load(p.read_text())
+print(data.get('model', {}).get('provider', ''))
+PY
+)
+
+next=""
+if [[ "$current" == "stepfun" ]]; then
+  next="custom:stepfun-new"
+elif [[ "$current" == "custom:stepfun-new" ]]; then
+  next="stepfun"
+else
+  echo "info: current provider='$current', defaulting to stepfun" >&2
+  next="stepfun"
+fi
+
+python3 - <<PY
+import yaml
+from pathlib import Path
+p = Path('${CONFIG}')
+data = yaml.safe_load(p.read_text())
+data.setdefault('model', {})['provider'] = '${next}'
+p.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=200))
+PY
+
+echo "switched: $current -> $next"
+echo "hint: refresh Hermes Studio to apply"

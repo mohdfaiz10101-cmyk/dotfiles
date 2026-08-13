@@ -1,0 +1,16 @@
+[Unit]
+Description=Mobile AI Browsh ttyd backend (:19886)
+After=network-online.target graphical-session.target
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+ExecStart=/usr/local/bin/ttyd -W -i 127.0.0.1 -p 19886 -b /browsh-tty -T xterm-256color -t "rendererType=dom" -t "scrollback=50000" -t "scrollOnUserInput=true" -P 15 %h/.local/bin/mobile-ai-browsh-entry
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

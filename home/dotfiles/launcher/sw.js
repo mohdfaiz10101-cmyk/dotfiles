@@ -1,5 +1,5 @@
 // Service Worker - 离线缓存
-const CACHE_NAME = 'launcher-v1';
+const CACHE_NAME = 'launcher-v20260719-desktop-tree-fix';
 const ASSETS = ['/launcher.html', '/manifest.json'];
 
 self.addEventListener('install', e => {

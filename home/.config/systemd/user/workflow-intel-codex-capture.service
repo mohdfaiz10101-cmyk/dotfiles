@@ -1,0 +1,12 @@
+[Unit]
+Description=Capture Codex workflow events
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=idle
+CPUWeight=10
+IOWeight=10
+TimeoutStartSec=2min
+ExecStart=/var/home/charlie/.local/bin/workflow-intel capture --source codex --limit 100
+ExecStart=/var/home/charlie/.local/bin/workflow-intel extract --limit 200

@@ -1,15 +1,7 @@
 [Unit]
-Description=Weekly System Audit — 每周一全系统审计
+Description=Weekly System Audit score
 
 [Service]
 Type=oneshot
 ExecStart=%h/.local/bin/system-health-score
 Environment=HOME=%h
-# ponytail: 这里只跑分数，全量审计由 opencode 周一会话触发
-
-[Timer]
-OnCalendar=Mon *-*-* 09:30:00
-Persistent=true
-
-[Install]
-WantedBy=timers.target

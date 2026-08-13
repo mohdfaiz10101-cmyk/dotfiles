@@ -1,0 +1,12 @@
+[Unit]
+Description=Clean stale browser tab windows in Sway
+After=graphical-session.target sway-workspace-controller.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sway-tab-cleanup
+Nice=19
+CPUWeight=10
+IOWeight=10
+IOSchedulingClass=idle
+TimeoutStartSec=15

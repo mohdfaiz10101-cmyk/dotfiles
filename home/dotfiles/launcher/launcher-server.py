@@ -233,7 +233,6 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             return
 
         if parsed.path == "/api/desktop-tree":
-            desktop = os.path.expanduser("~/Desktop")
             usage_file = os.path.expanduser("~/.local/share/desktop-tree-usage.json")
             usage = {}
             try:
@@ -241,39 +240,64 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                     usage = json.load(uf)
             except Exception:
                 pass
-            tree = {}
+
+            def desktop_name(fp):
+                name = os.path.basename(fp)
+                if name.endswith(".desktop"):
+                    try:
+                        with open(fp, "r", encoding="utf-8") as df:
+                            fallback = None
+                            for line in df:
+                                m = re.match(r"^Name\[zh_CN\]=(.+)", line)
+                                if m:
+                                    return m.group(1).strip()
+                                m = re.match(r"^Name=(.+)", line)
+                                if m and fallback is None:
+                                    fallback = m.group(1).strip()
+                            if fallback:
+                                return fallback
+                    except Exception:
+                        pass
+                if name.endswith(".md") or name.endswith(".html"):
+                    return name.rsplit(".", 1)[0]
+                return name
+
+            candidates = []
             try:
-                for folder in sorted(os.listdir(desktop)):
-                    folder_path = os.path.join(desktop, folder)
-                    if os.path.isdir(folder_path):
-                        items = []
-                        for f in sorted(os.listdir(folder_path)):
-                            name = f
-                            if f.endswith(".desktop"):
-                                fp = os.path.join(folder_path, f)
-                                try:
-                                    with open(fp, "r", encoding="utf-8") as df:
-                                        for line in df:
-                                            m = re.match(r"^Name\[zh_CN\]=(.+)", line)
-                                            if m:
-                                                name = m.group(1).strip()
-                                                break
-                                            m = re.match(r"^Name=(.+)", line)
-                                            if m:
-                                                name = m.group(1).strip()
-                                except Exception:
-                                    pass
-                            elif f.endswith(".md") or f.endswith(".html"):
-                                name = f.rsplit(".", 1)[0]
-                            else:
-                                name = f
-                            count = usage.get(f, 0)
-                            items.append({"name": name, "file": f, "count": count})
-                        # Sort by usage frequency (high first), then alphabetically
-                        items.sort(key=lambda x: (-x["count"], x["name"]))
-                        tree[folder] = items
+                xdg = subprocess.check_output(["xdg-user-dir", "DESKTOP"], text=True, timeout=2).strip()
+                if xdg:
+                    candidates.append(os.path.expanduser(xdg))
             except Exception:
                 pass
+            candidates += [os.path.expanduser("~/Desktop"), os.path.expanduser("~/桌面")]
+
+            tree = {}
+            seen_dirs = set()
+            try:
+                for desktop in candidates:
+                    if not desktop or desktop in seen_dirs or not os.path.isdir(desktop):
+                        continue
+                    seen_dirs.add(desktop)
+                    root_items = []
+                    for entry in sorted(os.listdir(desktop)):
+                        path = os.path.join(desktop, entry)
+                        if os.path.isfile(path):
+                            if entry.endswith((".desktop", ".md", ".html")):
+                                root_items.append({"name": desktop_name(path), "file": entry, "count": usage.get(entry, 0)})
+                        elif os.path.isdir(path):
+                            items = []
+                            for f in sorted(os.listdir(path)):
+                                fp = os.path.join(path, f)
+                                if os.path.isfile(fp):
+                                    items.append({"name": desktop_name(fp), "file": f, "count": usage.get(f, 0)})
+                            if items:
+                                items.sort(key=lambda x: (-x["count"], x["name"]))
+                                tree[entry] = items
+                    if root_items:
+                        root_items.sort(key=lambda x: (-x["count"], x["name"]))
+                        tree.setdefault("桌面", []).extend(root_items)
+            except Exception as e:
+                tree = {"error": str(e)}
             data = json.dumps(tree, ensure_ascii=False).encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -330,11 +354,51 @@ class LauncherHandler(SimpleHTTPRequestHandler):
             app = params.get("app", [None])[0]
             if app and app.endswith(".desktop"):
                 try:
-                    subprocess.Popen(
-                        ["gtk-launch", app],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL,
-                    )
+                    def find_desktop_file(name):
+                        search_dirs = []
+                        try:
+                            xdg = subprocess.check_output(["xdg-user-dir", "DESKTOP"], text=True, timeout=2).strip()
+                            if xdg:
+                                search_dirs.append(os.path.expanduser(xdg))
+                        except Exception:
+                            pass
+                        search_dirs += [
+                            os.path.expanduser("~/Desktop"),
+                            os.path.expanduser("~/桌面"),
+                            os.path.expanduser("~/.local/share/applications"),
+                            "/usr/share/applications",
+                            "/var/lib/flatpak/exports/share/applications",
+                            os.path.expanduser("~/.local/share/flatpak/exports/share/applications"),
+                        ]
+                        for base in search_dirs:
+                            if not base or not os.path.isdir(base):
+                                continue
+                            direct = os.path.join(base, name)
+                            if os.path.isfile(direct):
+                                return direct
+                            for root, dirs, files in os.walk(base):
+                                if name in files:
+                                    return os.path.join(root, name)
+                                # bound recursion for huge application trees
+                                if root != base:
+                                    dirs[:] = []
+                        return None
+
+                    desktop_path = find_desktop_file(app)
+                    launched_by = "gtk-launch"
+                    if desktop_path:
+                        subprocess.Popen(
+                            ["gtk-launch", desktop_path],
+                            stdout=subprocess.DEVNULL,
+                            stderr=subprocess.DEVNULL,
+                        )
+                        launched_by = desktop_path
+                    else:
+                        subprocess.Popen(
+                            ["gtk-launch", app],
+                            stdout=subprocess.DEVNULL,
+                            stderr=subprocess.DEVNULL,
+                        )
                     # Track usage frequency
                     usage_file = os.path.expanduser(
                         "~/.local/share/desktop-tree-usage.json"
@@ -354,10 +418,11 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                     self.send_header("Content-Type", "text/plain")
                     self.send_header("Access-Control-Allow-Origin", "*")
                     self.end_headers()
-                    self.wfile.write(f"OK: {app}".encode())
+                    self.wfile.write(f"OK: {app} via {launched_by}".encode())
                 except Exception as e:
                     self.send_response(500)
                     self.end_headers()
+                    self.wfile.write(str(e).encode())
                     self.wfile.write(str(e).encode())
             else:
                 self.send_response(400)

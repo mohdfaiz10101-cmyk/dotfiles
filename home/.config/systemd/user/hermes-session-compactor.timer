@@ -1,0 +1,10 @@
+[Unit]
+Description=Every 30 minutes Hermes session compactor check
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

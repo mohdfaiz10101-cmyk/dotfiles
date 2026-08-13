@@ -1,0 +1,11 @@
+[Unit]
+Description=Hermes port binding lock timer
+Requires=hermes-port-lock.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

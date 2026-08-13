@@ -1,7 +1,6 @@
 [Unit]
 Description=OpenHands public BasicAuth proxy (:13001 -> :3001)
 After=openhands-gui.service
-Requires=openhands-gui.service
 
 [Service]
 Type=simple

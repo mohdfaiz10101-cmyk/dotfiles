@@ -1,0 +1,33 @@
+[Unit]
+Description=KasmVNC web desktop for Cursor GUI experiments
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=-/usr/bin/podman rm -f kasm-cursor-webtop
+ExecStart=/usr/bin/podman run --rm --name kasm-cursor-webtop \
+  --network podman \
+  --security-opt seccomp=unconfined \
+  --security-opt label=disable \
+  -e PUID=1000 -e PGID=1000 -e TZ=Asia/Shanghai \
+  -e TITLE="Cursor GUI Webtop" \
+  -e VNC_PW="w19900422" \
+  -e CUSTOM_USER="charlie" \
+  -e PASSWORD="w19900422" \
+  -e KASM_CURSOR_DEFAULT_ACCOUNT="5" \
+  -p 0.0.0.0:19970:6901 \
+  -v /usr/share/cursor:/opt/cursor:ro \
+  -v %h/.local/share/kasm-cursor-webtop/custom_startup.sh:/dockerstartup/custom_startup.sh:ro \
+  -v %h/.local/share/kasm-cursor-webtop:/config \
+  -v %h/.local/share/kasm-cursor-webtop:/home/kasm-user/.local/share/kasm-cursor-webtop \
+  -v %h:/home/charlie \
+  docker.io/kasmweb/chrome:x86_64-1.19.0
+ExecStop=/usr/bin/podman stop kasm-cursor-webtop
+Restart=always
+RestartSec=10
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

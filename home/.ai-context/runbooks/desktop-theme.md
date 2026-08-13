@@ -35,6 +35,16 @@ tmux -S /run/user/1000/tmux/opencode.sock source-file ~/.tmux.conf
 OpenCode reads its TUI theme when a new attach process starts. Existing GTK
 applications may need to be reopened.
 
+## Terminal Tabs
+
+- Workspace `1` is the Foot terminal workspace and uses Sway's `tabbed`
+  layout. Foot windows are routed there and forced tiled.
+- `Super+Tab` / `Super+Shift+Tab` select the next / previous tab.
+- `Super+Ctrl+Left` / `Super+Ctrl+Right` reorder the focused tab.
+- `sway-workspace-controller.service` requires `SWAYSOCK` in the user-manager
+  environment. The Sway config imports it before restarting the controller;
+  verify with `systemctl --user show-environment | rg '^SWAYSOCK='`.
+
 ## Rules
 
 - Do not introduce a second palette directly into component files.

@@ -1,0 +1,17 @@
+[Unit]
+Description=Bridge explicit Codex Hermes delegation messages into Hermes queue
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/codex-hermes-bridge
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+Environment=CODEX_HERMES_BRIDGE_POLL_SEC=20
+Nice=19
+CPUWeight=10
+IOWeight=10
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=default.target

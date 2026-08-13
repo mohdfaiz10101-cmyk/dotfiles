@@ -1,0 +1,11 @@
+[Unit]
+Description=Maintain shared workflow intelligence index
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=idle
+CPUWeight=10
+IOWeight=10
+TimeoutStartSec=2min
+ExecStart=/var/home/charlie/.local/bin/workflow-intel maintain --limit 200

@@ -1,0 +1,15 @@
+[Unit]
+Description=Aider independent WebTTY (:7693)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/local/bin/ttyd -W -t rendererType=dom -t fontSize=16 -b /tool/aider -p 7693 -i 127.0.0.1 -T xterm-256color /var/home/charlie/.local/bin/aider-ttyd-entry
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

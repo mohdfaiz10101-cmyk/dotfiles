@@ -1,0 +1,27 @@
+# Sources to re-check when exact/current design guidance matters.
+# Prefer official docs; browse before quoting or when implementing high-risk UI.
+android:
+  - name: Android InputMethodService
+    url: https://developer.android.com/reference/android/inputmethodservice/InputMethodService
+    cadence: quarterly-or-before-ime-changes
+  - name: Android edge-to-edge / WindowInsets
+    url: https://developer.android.com/develop/ui/views/layout/edge-to-edge
+    cadence: quarterly-or-before-mobile-layout-changes
+material:
+  - name: Material Design accessibility structure / touch targets
+    url: https://m3.material.io/foundations/designing/structure
+    cadence: quarterly-or-before-component-design
+  - name: Material icon buttons accessibility
+    url: https://m3.material.io/components/icon-buttons/accessibility
+    cadence: quarterly-or-before-icon-controls
+apple:
+  - name: Apple HIG Layout / safe areas
+    url: https://developer.apple.com/design/human-interface-guidelines/layout
+    cadence: quarterly-or-before-ios-design
+  - name: Apple HIG Keyboards
+    url: https://developer.apple.com/design/human-interface-guidelines/keyboards
+    cadence: quarterly-or-before-keyboard-design
+local:
+  - name: FlexIME runbook
+    path: ~/.ai-context/runbooks/flexime.md
+    cadence: after-every-flexime-change

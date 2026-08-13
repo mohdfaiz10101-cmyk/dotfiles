@@ -1,0 +1,10 @@
+[Unit]
+Description=Gradually migrate old OpenCode DB backups to large disk
+
+[Timer]
+OnCalendar=*-*-* 03:40:00
+Persistent=true
+Unit=opencode-cold-archive-migrate.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,4 @@
+[Service]
+Environment=HERMES_WEBUI_PYTHON=/usr/bin/python3
+Environment=HERMES_WEBUI_ALLOWED_ORIGINS=http://webui.charlie1990.duckdns.org:19976,https://webui.charlie1990.duckdns.org:19976,http://charlie1990.duckdns.org:19976,https://charlie1990.duckdns.org:19976
+Environment=HERMES_WEBUI_TRUST_FORWARDED_HOST=1

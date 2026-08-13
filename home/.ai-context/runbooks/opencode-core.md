@@ -35,7 +35,30 @@ curl --noproxy '*' -o /dev/null -sS -w '18910=%{time_total} %{http_code}\n' --ma
 agent-dispatch decide '实现一个前端页面并修复代码 bug'
 ```
 
+## Windows OpenCode / LAN Ops
+
+- Windows LAN SSH entry is `winpc-wifi` (`192.168.123.136`, user `G`) from
+  `~/.ssh/config`; prefer it over old Tailscale/DuckDNS paths when the machine
+  is on the local network.
+- Windows OpenCode DB path:
+  `C:\Users\G\.local\share\opencode\opencode.db`.
+- Fedora helper scripts:
+  - `winps '<PowerShell script>'` — run PowerShell over SSH with encoded command.
+  - `winpy '<python code>'` — run Windows Python over SSH without a remote temp file.
+  - `winoc-sql '<SQL>'` — read-only query against the Windows OpenCode DB.
+- Example:
+
+```bash
+winoc-sql 'select id,title,datetime(time_updated/1000,"unixepoch") as updated from session order by time_updated desc limit 10'
+```
+
+- Do not fall back to writing remote temp `.py` files for quick DB/history
+  reads unless the encoded-command path fails.
+
 ## OP / Crush Auto Dispatch
+
+- Codex WebTTY 的右侧外部工具区由 `~/.local/bin/ttyd-device-gate-proxy` 注入；按钮 `OP` 打开 DuckDNS `:18910`，按钮 `Crush` 打开 DuckDNS `:17766`，两者自动附带当前设备码。四个 Codex 账号 gate（`19000`-`19003`）共用这段注入逻辑。
+- WebTTY 按钮验证：`for p in 19000 19001 19002 19003; do curl -fsS -L -u codex:<auth> "http://127.0.0.1:${p}/?device=<device>" | rg -q codex_external_tools; done`。
 
 - Use `agent-dispatch submit '<任务>'` as the automatic front door when the task can be handled by either OP or Crush.
 - It scores both executors by task fit, live health, preference, and risk.
@@ -44,6 +67,26 @@ agent-dispatch decide '实现一个前端页面并修复代码 bug'
 - `agent-dispatch-watch.timer` checks active dispatches every minute. On failure or stall it hands off once to the other executor.
 - If both OP and Crush fail, it writes a Codex-ready copy pack to `~/.local/state/agent-dispatch/failures/<dispatch-id>.md`.
 - Do not add an OP↔Crush infinite retry loop. One handoff is the hard limit.
+
+## Cold Archive Cleanup
+
+OpenCode active DB 不动：`~/.local/share/opencode/opencode.db` 是在线数据。旧 restore/archive/cleanup 备份用低优先级定时器分批迁移，避免一次跨盘搬几十 GB 卡住交互会话。
+
+- Script: `~/.local/bin/opencode-cold-archive-migrate`
+- Timer: `opencode-cold-archive-migrate.timer`（每天 03:40，每次只迁移一个候选）
+- State: `~/.local/state/opencode-cold-archive-migrate/latest.json`
+- Destination: `/var/mnt/ai/cache/archive/opencode-db-backups/20260718-home-clean`
+- Already moved: `~/.local/share/opencode/restore-src-20260630` -> destination `share/restore-src-20260630`
+
+Manual one-shot:
+
+```bash
+systemctl --user start opencode-cold-archive-migrate.service
+journalctl --user -u opencode-cold-archive-migrate.service -n 60 --no-pager
+cat ~/.local/state/opencode-cold-archive-migrate/latest.json | jq
+```
+
+Do not manually `mv` all OpenCode archive directories in an interactive Codex run. If urgent, move one path at a time with bounded output and verify source/destination before the next path.
 
 ## Restart
 
@@ -59,6 +102,25 @@ systemctl --user restart session-guard
 
 ## Known Issues
 
+- 2026-07-15 actual web-task interruptions: `opencode-stuck-cleaner` must not
+  abort a browser-started session merely because its latest assistant message
+  has no text or a `tool-calls` finish. Web sessions do not have a CLI
+  `opencode run/attach` client, and `tool-calls` is a normal in-progress state.
+  The cleaner may log these states, but only terminal completed/stale-huge
+  criteria may call `/session/<id>/abort`. Evidence: it had aborted OP-0382,
+  OP-0383, and OP-0384 as `orphan_empty_assistant_busy`.
+- Stale headless Chromium checks must be stopped when their declared virtual
+  time budget has elapsed. A `--virtual-time-budget=4000 --dump-dom` process
+  left running for 20 minutes drove I/O full pressure above 50%, which makes
+  model/tool streams unreliable. Check its user scope before diagnosing
+  OpenCode itself.
+- 2026-07-15 Web UI false “Can't connect to API”: after a device-code link has
+  set `duckdns_device`, the cookie itself authorizes HTTP, SSE, and WebSocket
+  requests. Do not inject a browser wrapper that rewrites every
+  `fetch`/XHR/WebSocket request to append `device=`: it can disturb OpenCode's
+  native message/event startup and show a transient error even while the task
+  continues. Verify with `curl -H 'Cookie: duckdns_device=…'
+  http://127.0.0.1:18910/event`; it must immediately emit `server.connected`.
 - `opencode run` 只接受位置参数 `message`，不支持 `--prompt`
 - agent 名区分大小写（`Bob` ≠ `bob`）
 - `oc restart` 必须捕获 pinned session 和目录再恢复，不能创建替代 session
@@ -120,6 +182,10 @@ systemctl --user restart session-guard
 - 2026-07-08 复盘 workspace 修正：`18910` 仍必须是 `:18910 -> :4096` 代理，复盘隔离通过 OpenCode worktree/project 实现。固定两个 worktree：主 `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace` 和复盘 `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace-review`。`opencode-4096-proxy` 的 bootstrap 会写入这两个左侧工作区；`opencode-post-review` 后续用 `--dir workspace-review` 创建可见复盘 session；历史复盘 session 已迁到 project `0a970fddc54dd31be84ddf32308f222effcb1393`。不要再通过第二个 `opencode serve` 实现复盘隔离。
 - 2026-07-08 二次修复：只在 `/` bootstrap 写 `opencode.global.dat:server` 不够，用户在 `/<worktree>/session` 里刷新时不会经过根页初始化。`opencode-4096-proxy` 现在会对所有官方 HTML 注入 `oc-workspace-bootstrap`，在前端 app bundle 执行前强制合并两个固定 worktree；同时代理层把浏览器看到的 `/project` 规范化为主 workspace + `OP Review` 两项，避免历史 project 干扰左侧工作区入口。
 - 2026-07-08 三次修复：官方 `/session` API 只返回当前主 workspace 的最近列表，`?project=`/`?directory=` 不会让 `workspace-review` 的历史复盘任务进入前端；因此即使左侧出现 `OP Review`，Review 页也可能显示主 workspace 或空列表。`opencode-4096-proxy` 现在根据 `Referer: /<worktree-b64>/session` 对 `/session` 响应按 worktree 分流；`OP Review` 分支使用本地 `opencode.db` 只读组装官方兼容 session list，并带 `x-opencode-session-worktree` 与 `cache-control: no-store`。验证：带 Review Referer 请求 `http://127.0.0.1:4096/session` 应返回 `directory=/var/mnt/ai/cache/auto-migrate/.openclaw/workspace-review` 的 OP-0200+ 复盘任务。
-- 2026-07-08 默认模型修复：只改顶层 `model` 不够，OpenCode 新会话默认走 `default_agent=sisyphus`，而 `agent.sisyphus.model` 会覆盖顶层模型。为避免 `step-3.7-flash` 连续空回复/重复推理循环，当前顶层 `model`、`agent.sisyphus`、`agent.arch`、`agent.tech-architect`、`agent.tech-researcher`、`agent.marketing-coordinator` 都固定为 `openai-compatible/step-router-v1`；高频执行 agent 仍用 `step-3.5-flash-2603`。验证必须看 live `/config`，不是只看文件：`curl -s http://127.0.0.1:4097/config | jq '.model,.agent.sisyphus.model'`。
+- 2026-07-14 默认模型修复：`step-router-v1` 仍只作为编排/失败后第二意见，不再作为默认执行模型。OP-0366 在手机 SSH 多次超时后出现空 assistant，stuck-cleaner 以 `orphan_empty_assistant_busy` abort；现场证据与 `STEPFUN_OP_POLICY.md` 中“router 可能 HTTP 200 但 content 为空”一致。当前顶层 `model` 与 `agent.sisyphus.model` 固定为 `openai-compatible/step-3.5-flash-2603`；`router-auditor` 继续使用 `openai-compatible/step-router-v1`，只在失败/UNCLEAR/模型异常后给改道建议。验证必须看 live `/config`，不是只看文件：`curl -s http://127.0.0.1:4097/config | jq '.model,.agent.sisyphus.model,.agent[\"router-auditor\"].model'`。
 - 2026-07-08 空输出循环熔断：`step-3.7-flash` 直连曾出现连续空 assistant/重复推理，OpenCode 会保持 busy 但前端无有效输出。`opencode-stuck-cleaner.timer` 已从 5 分钟改为 1 分钟；当 busy session 无活跃 `opencode run/attach` 客户端，且最新未完成空 assistant 超过 60 秒，或最近消息中连续 >=3 条空 assistant 且最新空输出超过 90 秒，会自动 `POST /session/<id>/abort`，并写 `~/.local/state/opencode-lifecycle/events.jsonl` 事件 `opencode_auto_abort`，reason 为 `orphan_empty_assistant_busy` 或 `empty_assistant_loop`。`opencode-resilience-score` 会把同类状态标为 `model_empty_output_loop`。注意：有 tool/patch/file/reasoning 内容或仍有活跃客户端时不触发该熔断。
 - 2026-07-09 无界网络探针/完成后 stale busy 修复：OP-0243 安装 OpenHands 时服务已启动且本地 HTTP 200，但 session 先被空 assistant busy 熔断，后又因无超时 `curl`/网络探针和收尾偏题保持 busy。`agent-lifecycle.mjs` 已拦截 OP session 内无 `--max-time`/`--connect-timeout` 的 `curl http(s)://...`，要求显式超时和代理行为；`opencode-stuck-cleaner.sh` 会清理挂在 `opencode.service` cgroup 内超过 120 秒的无界 curl，并在 `/session/status` 仍 busy、无 active client、最新 assistant 已 `finish=stop` 且超过 30 秒时自动 abort，reason 为 `completed_assistant_stale_busy`。
+- 2026-07-19 OpenCode `1.17.17` MCP schema 修复：`~/.config/opencode/opencode.json` 中 MCP 不能再用旧 `{"command": "...", "args": [...]}` 或 `{"type": "http"}`。必须使用 `{"type": "local", "command": [..], "enabled": true|false}` 或 `{"type": "remote", "url": "...", "enabled": true|false}`。旧格式会让 `opencode.service` 直接 exit 1，并连带 `opencode-4096-proxy.service` start-limit、`opencode-18910-local.socket` trigger-limit。默认只启用 core MCP；on-demand MCP 保持 disabled，用 `opencode-mcp-policy enable <name>` 临时启用。`system-sanity-evolve --fix` 会自动迁移旧 schema 并备份。验证：`timeout 12s opencode serve --port 4097 --hostname 127.0.0.1` 看到 `opencode server listening` 后被 timeout 即表示 config 通过。
+
+
+- 2026-07-19 18910 手机 Task 提交卡住修复：先用 ADB 从手机侧确认实际路径（例如 5G → `charlie1990.duckdns.org:18910`），不要只看 Fedora 本机 curl。本次根因分两层：一是 `__oc-tasker/form` 没有手机友好的提交中/成功/失败反馈，且内部 `?device=` GET/POST 过度依赖浏览器 cookie；二是 `opencode run --attach` 返回 `Unexpected server error`，导致任务入队后无执行结果。当前修复：`~/.local/bin/opencode-4096-proxy` 的 `__oc-tasker/form` 显示明确状态、POST action 带 `device`，`/__oc-tasker/` 与 `/__oc-dispatch/` GET 带 `device` 时直接授权不强制跳 Device Match；`/__oc-tasker/task` 实际提交改走 `agent-dispatch submit --target auto`，当 OP 执行链路降级时自动派到 Crush。验证：手机 ADB `curl http://charlie1990.duckdns.org:18910/__oc-tasker/task?device=w19900422` 返回 `code=200` 且 JSON 中 `target=crush|op`、`status=running`。

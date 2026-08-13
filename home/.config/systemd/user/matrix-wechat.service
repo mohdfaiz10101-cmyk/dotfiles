@@ -1,0 +1,13 @@
+[Unit]
+Description=Matrix-WeChat Bridge
+After=network.target matrix-synapse.service
+
+[Service]
+Type=simple
+Environment=HOME=/var/home/charlie
+ExecStart=/var/home/charlie/.local/bin/matrix-wechat -c /var/home/charlie/.config/matrix-wechat/config.yaml -r /var/home/charlie/.config/matrix-wechat/registration.yaml
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,7 @@
+[Unit]
+Description=Hermes mesh queue dispatcher to 8648 chat-run
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hermes-session-mesh drain-queue
+WorkingDirectory=%h

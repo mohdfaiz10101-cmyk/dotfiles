@@ -1,0 +1,12 @@
+[Unit]
+Description=Regular conservative system sanity cleanup and evolution report
+
+[Timer]
+OnBootSec=8min
+OnUnitActiveSec=6h
+AccuracySec=10min
+Persistent=true
+Unit=system-sanity-evolve.service
+
+[Install]
+WantedBy=timers.target

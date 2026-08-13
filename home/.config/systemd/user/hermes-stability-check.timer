@@ -1,0 +1,11 @@
+[Unit]
+Description=Hermes stability check timer
+Requires=hermes-stability-check.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,20 @@
+[Unit]
+Description=Hermes Web UI basic auth proxy (:18999 -> :8787)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie
+Environment="AUTH_USER=hermes-guest"
+Environment="AUTH_PASS=123"
+Environment="LISTEN_PORT=18999"
+Environment="UPSTREAM_HOST=127.0.0.1"
+Environment="UPSTREAM_PORT=8787"
+Environment="HERMES_AUTH_TRUSTED_IPS=127.0.0.1,::1,192.168.123.71,100.87.171.39,100.120.189.27,100.127.118.4"
+Environment="HERMES_AUTH_TRUSTED_SUBNETS=192.168.123.0/24,192.168.2.0/24,100.64.0.0/10,100.87.0.0/16"
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

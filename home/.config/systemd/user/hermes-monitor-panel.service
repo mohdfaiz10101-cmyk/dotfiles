@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes monitor panel web server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/share/hermes-monitor/panel-server.py
+Restart=on-failure
+RestartSec=2
+Environment=HOME=/var/home/charlie
+
+[Install]
+WantedBy=default.target

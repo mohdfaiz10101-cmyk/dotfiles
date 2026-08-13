@@ -1,0 +1,9 @@
+[Unit]
+Description=Collect system logs into workspace
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/collect-system-logs.sh
+Environment=BASE_DIR=/var/home/charlie/workspace/system-logs

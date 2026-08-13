@@ -1,0 +1,9 @@
+[Unit]
+Description=Prewarm Mobile AI Workbench route/speed caches
+After=network-online.target mobile-ai-workbench.service
+
+[Service]
+Type=oneshot
+Nice=10
+IOSchedulingClass=idle
+ExecStart=%h/.local/bin/mobile-ai-route-prewarm

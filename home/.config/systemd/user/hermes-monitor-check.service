@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes monitor engine check + lifecycle
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/monitor-check-and-lifecycle.py

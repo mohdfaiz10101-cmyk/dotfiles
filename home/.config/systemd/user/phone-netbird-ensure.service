@@ -1,0 +1,9 @@
+[Unit]
+Description=Ensure PKR110 NetBird reconnects when disconnected
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Nice=10
+ExecStart=%h/.local/bin/phone-netbird-ensure

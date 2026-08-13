@@ -1,0 +1,12 @@
+[Unit]
+Description=Insert NetBird hairpin routing fix after Tailscale
+After=tailscaled.service
+Wants=tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/ensure-netbird-hairpin-nft.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

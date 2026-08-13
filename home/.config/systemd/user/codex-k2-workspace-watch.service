@@ -1,0 +1,8 @@
+[Unit]
+Description=Probe disabled Codex K2 workspace accounts
+After=network-online.target sub2api.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/codex-k2-workspace-watch
+TimeoutStartSec=90

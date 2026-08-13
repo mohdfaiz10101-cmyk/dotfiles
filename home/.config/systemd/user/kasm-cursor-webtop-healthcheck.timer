@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Kasm Cursor Webtop health check every 2 minutes
+
+[Timer]
+OnBootSec=90s
+OnUnitActiveSec=2min
+AccuracySec=20s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

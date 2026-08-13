@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenClaw Gateway Idle Monitor
+After=network-online.target openclaw-gateway-proxy.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/charlie/.local/bin/openclaw-gateway-idle-monitor.sh

@@ -1,0 +1,12 @@
+[Unit]
+Description=Unified network monitor dashboard (:19979)
+After=network-scenario-monitor.service
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/network-monitor-dashboard
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

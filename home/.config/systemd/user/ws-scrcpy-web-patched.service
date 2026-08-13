@@ -1,0 +1,15 @@
+[Unit]
+Description=WsScrcpyWeb Patched - Browser-based Android screen mirroring
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/share/WsScrcpyWeb/start-patched.sh
+Environment=ADB_SERIAL=192.168.240.112:5555
+Restart=always
+RestartSec=2
+WorkingDirectory=/var/home/charlie/.local/share/WsScrcpyWeb
+
+[Install]
+WantedBy=default.target

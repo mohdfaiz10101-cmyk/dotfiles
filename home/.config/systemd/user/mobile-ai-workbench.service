@@ -1,0 +1,19 @@
+[Unit]
+Description=Mobile AI Workbench unified phone control surface
+After=network-online.target ttyd-codex.service ttyd-codex2.service ttyd-codex3.service ttyd-codex4.service
+Wants=ttyd-codex.service ttyd-codex2.service ttyd-codex3.service ttyd-codex4.service
+
+[Service]
+Type=simple
+Environment=MOBILE_AI_WORKBENCH_HOST=0.0.0.0
+Environment=MOBILE_AI_WORKBENCH_PORT=19888
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=SWAYSOCK=/run/user/1000/sway-ipc.1000.3276.sock
+ExecStart=/var/home/charlie/.local/bin/mobile-ai-workbench
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target

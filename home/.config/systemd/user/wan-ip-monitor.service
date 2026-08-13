@@ -1,0 +1,6 @@
+[Unit]
+Description=WAN IP monitor + DuckDNS consistency + endpoint heal
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wan-ip-monitor.sh

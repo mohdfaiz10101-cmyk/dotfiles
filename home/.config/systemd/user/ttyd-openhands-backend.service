@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenHands CLI WebTTY (:8443)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/local/bin/ttyd -W -t rendererType=dom -t fontSize=14 -t "scrollback=50000" -t "scrollOnUserInput=true" -P 15 -p 8443 -i 0.0.0.0 -c openhands:w19900422 -T xterm-256color %h/.local/bin/ttyd-openhands-entry
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Probe phone-visible WebTTY and Hermes routes from the phone side
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Nice=10
+ExecStart=%h/.local/bin/phone-webtty-route-probe auto

@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch systemd service dirs for new log sources
+
+[Path]
+PathChanged=/etc/systemd/system
+PathChanged=/var/home/charlie/.config/systemd/user
+Unit=system-log-new-service-discovery.service
+
+[Install]
+WantedBy=paths.target

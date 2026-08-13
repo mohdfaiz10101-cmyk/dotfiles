@@ -1,0 +1,18 @@
+[Unit]
+Description=Auth proxy for Hermes Web UI
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie
+Environment="AUTH_USER=w422417869"
+Environment="AUTH_PASS=w19900422"
+Environment="LISTEN_PORT=2244"
+Environment="UPSTREAM_HOST=127.0.0.1"
+Environment="UPSTREAM_PORT=8648"
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/auth-proxy.py
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -4,6 +4,15 @@
 - Do not assume `duckdns:18080` failure means local ttyd is down. Check local, LAN, router NAT, then public URL.
 - Do not leave `tmux mouse on` for OpenClaw ttyd. It causes ttyd/xterm mouse tracking symptoms.
 - Do not enable or start `ydotool-bridge.service` unless the user explicitly asks for KVM remote input.
+- Do not treat Sway workspace/window flicker or drifting windows as a pure
+  compositor bug before checking remote-input and auto-window churn. On this
+  host, Sunshine creates `48879:57005:*_passthrough` input devices, and
+  `adb-phone-keepalive.sh` must not auto-start Sunshine unless
+  `ADB_PHONE_KEEPALIVE_START_SUNSHINE=1` is explicitly set. For local Codex
+  Foot tabs, do not return to the old 5-second `codex-foot-tab-sort.timer` or
+  a launcher that inherits `TMUX`; use the slow maintainer path that unsets
+  `TMUX`, opens missing tabs with `CODEX_FOOT_FOCUS=0`, and keeps all
+  discovered `foot-codex<N>` clients on Sway workspace 1.
 - Do not broad-search browser profiles or container overlay directories for port/config tasks.
 - Do not use `path` as a zsh loop variable; it overwrites the shell `PATH`.
 - Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`.
@@ -49,11 +58,25 @@
   reboots. Use bare `rpm-ostree install|uninstall|upgrade|rebase ...` only
   when `rpmi` is not applicable or has failed, and report when a reboot is
   still required.
+- Do not treat Fedora Silverblue/composefs `/` showing `100%` full as a real
+  writable disk-full condition. The immutable root image can be `59M/59M` by
+  design. Check `/var`, `/var/home`, or the actual writable Btrfs filesystem
+  before alerting or cleaning.
+- Do not interrupt a slow `rpmi netbird` / `rpm-ostree install netbird` merely
+  because it looks idle. On 2026-07-14 the official NetBird repo was slow and
+  the transaction also rebuilt the host deployment, including NVIDIA akmods,
+  before reporting success. Check `journalctl -u rpm-ostreed` for package
+  import, deployment creation, akmods, rpmdb, and transaction success before
+  assuming it is stuck.
 - Do not point a systemd `.path` unit at generated OpenCode knowledge output
   directories such as `~/.ai-context/runbooks` or files rewritten by the same
   service it triggers. It can create a maintainer loop that stalls OpenCode
   tasks. Watch hand-written config/rule files only, and make queue consumers
   avoid rewriting files when there is no state change.
+- Do not run full-history workflow indexing on every Codex/Crush path event or
+  every few minutes. Capture must use a bounded tail, and maintenance must run
+  at idle I/O priority; otherwise it can saturate the Btrfs system disk and
+  make the desktop appear frozen.
 - Do not enable every OpenCode MCP by default for convenience. OpenCode can
   spawn a full MCP set per active session, so 20 enabled MCPs may multiply into
   several process sets, push `opencode.service` over MemoryHigh, and make
@@ -63,6 +86,16 @@
   classified as `core` in `~/.ai-context/MCP_POLICY.md`. New MCPs should start
   as on-demand, be matched with a recommended agent and trigger words, and be
   enabled temporarily only for tasks that need them.
+- Do not broad-search MCP/Hermes config through `.hermes/profiles/**/lsp/node_modules`
+  or browser cache/profile trees. For MCP diagnostics, read mapped files first:
+  `~/.hermes/config.yaml`, `~/.config/mcp/servers.yaml`,
+  `~/.local/bin/mcp-profile-manager.py`, MCP logs, and the relevant runbook.
+- Do not use broad `rg` over `.hermes/webui/sessions`,
+  `.hermes/webui/sessions/_archive_old`, `.hermes/webui/sessions/_run_journal`,
+  `.hermes/profiles/*/config.yaml.bak*`, or request dump files for routine
+  Hermes memory/search diagnosis. Use `workflow-intel recall`,
+  `hermes-memory-brief`, and `hermes-experience-map` first; search exact
+  session IDs only when the user explicitly needs raw history.
 - Do not start long-lived deployment processes directly inside an OpenCode
   task session (`podman/docker run`, `compose up`, background `npm dev/start`,
   `nohup`, `disown`, etc.). Create a user systemd service under
@@ -70,6 +103,28 @@
   `systemctl --user enable --now <service>`. Direct session-spawned services
   can remain in the OpenCode cgroup, inflate Memory/Tasks/IO pressure, interrupt
   sessions, and make `18910` appear unstable.
+- Do not mount Mattermost Postgres `POSTGRES_DATA_PATH` to
+  `/var/lib/postgresql` under Podman Compose. The Postgres image uses
+  `/var/lib/postgresql/data`, so Podman creates an anonymous volume at the real
+  PGDATA path and the database can appear to work until `docker compose down`
+  recreates an empty Mattermost. Use
+  `${POSTGRES_DATA_PATH}:/var/lib/postgresql/data:Z` and verify with
+  `docker inspect mattermost-docker-postgres-1 --format '{{json .Mounts}}'`.
+- Do not run Mobile AI Browsh as a fresh `browsh` process for every ttyd
+  WebSocket client. Opening `/browsh` in a second tab/window then starts a
+  second Browsh, it exits quickly, and the page enters reconnecting. Keep
+  `~/.local/bin/mobile-ai-browsh-entry` tmux-backed on session
+  `mobile-ai-browsh`, and use Workbench `/api/browsh/goto` for phone-friendly
+  URL navigation.
+- Do not use `goose doctor` as a lightweight Goose smoke test. Goose 1.43.0
+  starts an agent session and may read local context files/tools. For bounded
+  verification use `goose info` plus
+  `goose run --no-session --no-profile --max-turns 1 --quiet --text 'Say OK only.'`.
+- Do not assume `aider` is usable just because `command -v aider` succeeds.
+  On 2026-07-14 the wrapper pointed at a deleted `/mnt/ai/apps/aider-venv`
+  interpreter, and the old `openai/glm-smart` model was no longer present in
+  LiteLLM. Verify both `aider --version` and a bounded temp-repo smoke; choose
+  a model returned by `GET http://localhost:4000/v1/models`.
 - Do not keep on-demand/high-cost MCPs enabled by default just because they are
   useful sometimes. On 2026-07-05 OpenCode ABRT plus near-NPROC pressure killed
   MCP/codex child processes and stopped OP tasks; keep `codex` and `gelab-zero`
@@ -90,6 +145,49 @@
   `charlie1990.duckdns.org` to fake-ip `198.18.0.29`, and phone shell UID was
   not included in Tailscale VPN UID routing. Verify clean env, DNS answer, UID
   VPN inclusion, and direct TCP reachability before changing FRPS.
+- Do not replace `~/.local/share/WsScrcpyWeb/dependencies/scrcpy-server/scrcpy-server`
+  with official scrcpy `v4.x` just because Genymobile upstream is newer. As of
+  2026-07-31, `ws-scrcpy-web` latest release `v0.1.30-beta.72` still talks to
+  scrcpy client protocol `3.3.4`; forcing server `4.1` makes `18082` Connect
+  fail with `The server version (4.1) does not match the client (3.3.4)` and
+  the page shows no Android screen. For this host, restore the bundled APK
+  (`scrcpy-server.bak` / `dist-runtime/seed/scrcpy-server/scrcpy-server`) and
+  restart `ws-scrcpy-web.service` unless the web client itself has been
+  upgraded in lockstep.
+- Do not treat Waydroid `:18082` as the final control plane. The durable path
+  is CLI/MCP/Telegram through `~/.local/bin/waydroidctl` and
+  `~/.local/bin/waydroid-mcp`; `ws-scrcpy-web.service` is only a visual
+  fallback. If `:18082` Connect closes or shows no Android screen, first check
+  Waydroid Android framework health (`service check window`, `service check
+  activity`, `getprop sys.boot_completed`, `system_server` crash loop) and
+  Waydroid ADB/IP reachability before changing ports or scrcpy versions.
+- Do not keep Hermes Studio `hermes-web-ui.service` / `:18648` always-on or
+  probe `:8648` from background health checks. It can wake gateway, spawn
+  secondary Hermes tasks plus full MCP sets, and push memory/swap into a system
+  stall. Keep `hermes-8648-proxy.service` light and always-on, keep
+  `hermes-web-ui.service` on-demand, and make session mesh default to queue-only
+  with pressure gates before launching delegated tasks.
+- Do not return Hermes session mesh dispatch/handoff defaults to `both` under
+  normal system pressure. Default queue-only plus bounded drain is required on
+  this host; launching child sessions must check load, MemAvailable, and
+  SwapUsed thresholds first.
+- Do not place future cloud-Android/redroid/container workspaces under
+  `/var/home/charlie`. Use `/var/mnt/ai` and a narrow wrapper/service-specific
+  storage root. Do not symlink the entire `~/.local/share/containers` tree:
+  existing Podman services depend on the default rootless store.
+- Do not mark redroid usable on this Fedora/Podman/crun host until the Android
+  init `Failed to initialize property area` / `ExitCode 129` failure is fixed.
+  redroid 12 and 14 both failed even with `androidboot.use_memfd=1`,
+  `--systemd=false`, explicit binder devices, disabled SELinux label, and
+  `/dev/__properties__` tmpfs. Use `~/.ai-context/runbooks/redroid-cloud-android.md`
+  before retrying.
+- Do not keep retrying redroid on this exact Fedora Silverblue 44 kernel
+  `6.19.10-300.fc44.x86_64` by switching only between Podman/crun,
+  Podman/runc, Docker/runc, redroid 12, or redroid 14. On 2026-08-01 all of
+  those combinations still failed with Android init
+  `Failed to initialize property area` / `ExitCode 129`. The next meaningful
+  redroid route is a different host/kernel/VM known to support redroid, not
+  another same-host container-flag permutation.
 - Do not use `tmux attach-session -d` in the Codex Haven/WebTTY entry scripts.
   `-d` detaches other clients, so Haven SSH and `19899`/`19900` WebTTY cannot
   stay realtime-synced on the same tmux pane. Use plain
@@ -109,11 +207,43 @@
   Safari, first read `haven.md` and `input-capture.md`, then verify the known
   local state: `codex-ios-safe-input` must be absent, `codex-input-panel` must
   be present, and `/tmux-send?enter=0|1` must work on the matching
-  `19881`/`19882`/`19883` backend. If assistant output repeats or goes empty
-  twice, stop the same reasoning path and reroute to `ops-dispatcher` with
-  bounded local verification commands.
+  `19881`/`19882`/`19883` backend. Desktop Fcitx/IBus changes cannot affect a
+  phone WebTTY; use its native `输入` / `输入↵` panel for Chinese composition.
+  If assistant output repeats or goes empty twice, stop the same reasoning
+  path and reroute to `ops-dispatcher` with bounded local verification
+  commands.
 
 ## Known Traps
+- If Fcitx5 starts but its Pinyin addon logs `libIMECore.so.0: undefined
+  symbol ... consumeMaybeEscapedValue`, it is a `libime` /
+  `fcitx5-chinese-addons` ABI mismatch. Stage `fcitx5-rime` with
+  `rpmi fcitx5-rime` and reboot when rpm-ostree cannot apply the package set
+  live. For a non-Fcitx backup before reboot, use
+  `~/.local/bin/input-use-ibus`, which stops Fcitx and starts IBus LibPinyin
+  through Sway; `~/.local/bin/input-use-fcitx` restores Fcitx. Never run both
+  frameworks together. IBus defaults to `Super+Space` on this host; set
+  `org.freedesktop.ibus.general.hotkey triggers` to `['<Control>space']`.
+  `input-use-ibus` must export the IBus variables locally before calling
+  `dbus-update-activation-environment --systemd`; otherwise that command can
+  re-import the caller's old Fcitx values and silently undo
+  `systemctl --user set-environment`. It must also publish the live
+  `IBUS_ADDRESS`. For no-reboot app launches from Sway, use
+  `~/.local/bin/with-ibus <command>` or keybindings wired through that wrapper,
+  because the already-running Sway process can keep its old inherited
+  environment until the graphical session is restarted. If IBus is active but
+  nothing appears, verify `org.freedesktop.ibus.panel show` is not `0` and
+  `com.github.libpinyin.ibus-libpinyin.libpinyin english-input-mode` is
+  `false`; `show=0` hides the property panel and `english-input-mode=true`
+  leaves LibPinyin typing English with no candidate popup. Also set
+  `org.freedesktop.ibus.general enable-by-default` to `true` so new text
+  fields do not stay in direct English mode, and use LibPinyin
+  `display-style=2` (`Compatibility`) on Sway/wlroots if candidate UI does not
+  appear. `ibus-rime` is a better non-Fcitx backup, but on this Silverblue host
+  `rpmi ibus-rime` may stage successfully while live apply fails with
+  `packages would be changed: 32`; it then requires reboot or an explicit
+  risky `rpm-ostree apply-live --allow-replacement`.
+  Direct edits to `~/.config/fcitx5/profile` are overwritten by the running
+  daemon; use its D-Bus controller when needed.
 - Padavan Web UI may intermittently time out even when router is reachable.
 - Runtime `iptables` fixes on the router are not persistent. Persist port forwards with `/usr/sbin/nvram set ...`, `/usr/sbin/nvram commit`, then `/sbin/restart_firewall`.
 - Phone root/shell network tests can differ from app behavior. Tailscale on
@@ -128,3 +258,7 @@
   `[agent-lifecycle-post-review]`. Those are already visible review summaries;
   treating them as ordinary completed tasks creates "review of review" loops
   and floods the session list.
+
+- Do not do one-shot broad cleanup or cross-disk moves of large OpenCode DB restore/archive trees inside an interactive Codex turn. Use `opencode-cold-archive-migrate.timer` / `~/.local/bin/opencode-cold-archive-migrate`, which moves one cold backup item per run to `/var/mnt/ai/cache/archive/opencode-db-backups/20260718-home-clean`. Keep the active DB `~/.local/share/opencode/opencode.db` in place.
+- Do not expand `system-sanity-evolve` into an aggressive cleaner. Its allowed scope is conservative user-unit structure fixes, stale symlink removal, `~/.local/bin` backup archival, old/duplicate AI browser tab cleanup, and failed-marker cleanup. Do not delete caches, coredumps, browser profiles, container volumes, project sources, `~/memory`, or active databases without explicit user approval.
+- Do not restore OpenCode MCP config to the pre-1.17 legacy schema. `~/.config/opencode/opencode.json` MCP entries must include `type: local|remote`, array `command` for local servers, and explicit `enabled`; remote MCP uses `type: remote`, not `type: http`. Legacy schema makes `opencode.service` exit 1 and cascades into `opencode-4096-proxy` start-limit and `opencode-18910-local.socket` trigger-limit. Use `system-sanity-evolve --fix` or convert with a timestamped backup.

@@ -1,0 +1,13 @@
+[Unit]
+Description=Hermes CLI TTY (:19910)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ttyd -W -c hermes:w19900422 -t "rendererType=dom" -t "scrollback=50000" -t "scrollOnUserInput=true" -P 15 -p 19910 -i 0.0.0.0 -T xterm-256color /var/home/charlie/.local/bin/ttyd-hermes-entry
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target

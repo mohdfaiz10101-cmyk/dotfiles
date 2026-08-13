@@ -1,0 +1,8 @@
+[Unit]
+Description=Refresh Crush session evaluation report
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/crush-session-eval --limit 10
+WorkingDirectory=/var/home/charlie
+TimeoutStartSec=60

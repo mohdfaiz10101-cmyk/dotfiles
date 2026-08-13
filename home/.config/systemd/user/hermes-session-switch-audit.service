@@ -1,0 +1,8 @@
+[Unit]
+Description=Hermes session switch audit helper
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/hermes-session-switch-audit.sh

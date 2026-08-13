@@ -1,0 +1,10 @@
+[Unit]
+Description=A2A Skill Change Detector
+
+[Service]
+Type=oneshot
+Environment=A2A_SKILL_SUMMARY_MODE=deterministic
+TimeoutStartSec=90
+ExecStart=/usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/skill-change.py
+StandardOutput=append:/var/home/charlie/.hermes/a2a/logs/skills.log
+StandardError=append:/var/home/charlie/.hermes/a2a/logs/skills.log

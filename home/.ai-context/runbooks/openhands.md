@@ -7,6 +7,7 @@ separate from OpenCode.
 
 - Service: `openhands-gui.service`
 - URL: `http://127.0.0.1:3001/`
+- Ownership: on this host `127.0.0.1:3001` is OpenHands, not Open WebUI.
 - Public URL: `http://charlie1990.duckdns.org:19901/` through
   `openhands-public-proxy.service` BasicAuth and FRP proxy `fedora-openhands`
 - Persistent state: `~/.openhands`
@@ -184,6 +185,31 @@ curl --noproxy '*' --connect-timeout 5 --max-time 20 -sS \
 - OpenHands workspace hooks mirror OP guardrails: no unbounded curl, no direct
   long-lived containers/services in session shells, no OP self-restart, no raw
   secret output, no unbounded filesystem scans, and bounded log reads only.
+
+## Fast 500 Triage
+
+If `GET /` and `/api/settings` return 200 but
+`POST /api/v1/app-conversations` returns 500, check dependent AI services
+before editing OpenHands code:
+
+```bash
+systemctl --user is-active litellm.service litellm-strip-proxy.service letta-stack.service letta-podman-proxy.service
+curl --noproxy '*' --connect-timeout 5 --max-time 12 -sS http://127.0.0.1:4000/v1/models
+curl --noproxy '*' --connect-timeout 5 --max-time 12 -sS http://127.0.0.1:8283/v1/agents/
+```
+
+Known repair state:
+
+- `~/.config/openhands/openhands.env` must keep
+  `SANDBOX_STARTUP_GRACE_SECONDS=60`.
+- `litellm.container` and `letta-stack.service` should allow long image pulls
+  with `TimeoutStartSec=900`; a 300-second startup timeout can kill the pull and
+  leave OpenHands healthy at `/` but broken at conversation creation.
+- `~/.openhands/settings.json` Letta MCP env must use
+  `LETTA_API=http://10.88.0.1:18283` so rootful sandboxes can reach host Letta
+  through `letta-podman-proxy.service`.
+- Restart `openhands-gui.service` after changing either file, then smoke-test
+  `POST /api/v1/app-conversations`.
 
 ## Sources
 

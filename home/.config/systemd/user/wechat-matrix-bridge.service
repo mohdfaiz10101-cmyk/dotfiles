@@ -1,0 +1,17 @@
+[Unit]
+Description=WeChat to Matrix Bridge
+After=network.target matrix-synapse.service
+
+[Service]
+Type=simple
+Environment=HOME=/var/home/charlie
+Environment=WECHAT_HUB_API=http://localhost:9800
+Environment=MATRIX_HS=http://localhost:8008
+Environment=POLL_INTERVAL=30
+Environment=SYNC_TIMEOUT=30
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/wechat-matrix-bridge.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

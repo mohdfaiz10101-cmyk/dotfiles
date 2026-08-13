@@ -1,0 +1,6 @@
+[Unit]
+Description=Podman/Docker prune
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/hermes-enqueue-task.sh %h/.local/bin/docker-prune "docker-prune" 35 43200

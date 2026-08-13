@@ -1,0 +1,15 @@
+[Unit]
+Description=Hermes Navigation Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/workspace/nav
+ExecStart=%h/workspace/nav/server.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

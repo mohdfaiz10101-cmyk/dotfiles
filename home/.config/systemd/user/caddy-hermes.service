@@ -1,0 +1,16 @@
+[Unit]
+Description=Caddy HTTP/2 reverse proxy for Hermes services
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/caddy run --config /var/home/charlie/.config/caddy/Caddyfile --adapter caddyfile
+ExecReload=/var/home/charlie/.local/bin/caddy reload --config /var/home/charlie/.config/caddy/Caddyfile --adapter caddyfile
+Restart=on-failure
+RestartSec=5
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Environment=HOME=%h
+
+[Install]
+WantedBy=default.target

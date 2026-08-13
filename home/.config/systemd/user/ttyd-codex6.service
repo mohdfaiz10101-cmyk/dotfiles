@@ -1,0 +1,20 @@
+[Unit]
+Description=Codex 6 WebTTY device gate - socket activated
+Requires=ttyd-codex6.socket
+After=network-online.target ttyd-codex6-backend.service
+Wants=ttyd-codex6-backend.service
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=PATH=%h/.nvm/versions/node/current/bin:%h/.cargo/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=TTYD_TARGET_HOST=127.0.0.1
+Environment=TTYD_TARGET_PORT=19886
+Environment=TTYD_TARGET_AUTH=codex:w19900422
+Environment=DEVICE_MATCH_CODE=w19900422
+Environment=DEVICE_COOKIE_NAME=duckdns_codex6_device
+Environment=CODEX_ACCOUNT_ID="6"
+Environment=CODEX_ACCOUNT_LABEL="Codex 6"
+ExecStart=/var/home/charlie/.local/bin/ttyd-device-gate-proxy
+Restart=always
+RestartSec=3

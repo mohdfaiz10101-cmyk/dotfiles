@@ -1,0 +1,8 @@
+[Unit]
+Description=Conservative ntfy and network latency maintenance
+After=container-ntfy.service network-online.target
+Wants=container-ntfy.service network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/ntfy-network-maintenance

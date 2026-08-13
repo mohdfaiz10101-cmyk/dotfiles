@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonlight 一键配对</title>
+<style>
+  :root {
+    --bg:#0f1720; --bg2:#111827; --card:#17212b; --line:#263445;
+    --text:#e5eef8; --muted:#8da2b8; --green:#74d39a; --red:#f07f90; --blue:#7db7ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; color:var(--text); font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+    background: radial-gradient(circle at top right, rgba(125,183,255,.18), transparent 26%),
+      radial-gradient(circle at left center, rgba(110,211,222,.12), transparent 24%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+    min-height:100vh;
+  }
+  .wrap { max-width:960px; margin:0 auto; padding:20px; }
+  .card {
+    background:rgba(23,33,43,.88); border:1px solid rgba(255,255,255,.06); border-radius:16px;
+    padding:16px; box-shadow:0 12px 40px rgba(0,0,0,.15); backdrop-filter: blur(10px); margin-bottom:18px;
+  }
+  .title { display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap; justify-content:space-between; }
+  .title h1 { margin:0; font-size:20px; }
+  .status { color:var(--muted); font-size:13px; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; }
+  .input {
+    flex:1; min-width:160px; padding:12px 14px; border-radius:12px; border:1px solid var(--line);
+    background:rgba(255,255,255,.03); color:var(--text); font-size:14px;
+  }
+  .btn {
+    border:1px solid var(--line); background:rgba(125,183,255,.12); color:var(--text);
+    padding:10px 16px; border-radius:12px; font-size:14px; cursor:pointer;
+  }
+  .btn:hover { border-color:var(--blue); color:var(--blue); }
+  .btn:disabled { opacity:.6; cursor:not-allowed; }
+  .result { margin-top:12px; font-size:14px; }
+  .ok { color:var(--green); }
+  .err { color:var(--red); }
+  .muted { color:var(--muted); }
+  .device {
+    border:1px solid rgba(255,255,255,.05); border-radius:10px; padding:10px;
+    background:rgba(255,255,255,.025); margin-top:8px;
+  }
+  .small { font-size:12px; color:var(--muted); word-break:break-all; }
+  a { color:var(--blue); text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="title">
+      <h1>🎮 Moonlight 一键配对</h1>
+      <a class="btn" href="/ai-panel#moonlight">返回 Moonlight 面板</a>
+    </div>
+    <div class="status" id="status">正在读取 Sunshine 状态...</div>
+    <div style="margin-top:14px">
+      <div class="row">
+        <input id="pin" class="input" inputmode="numeric" maxlength="4" placeholder="手机上的 4 位 PIN" />
+        <input id="name" class="input" placeholder="设备名，例如 Android Phone" />
+        <button id="pair" class="btn">一键配对</button>
+      </div>
+      <div id="result" class="result muted">先在手机上发起配对，再把手机上显示的 4 位 PIN 填到上面。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="title"><h1>已授权设备</h1></div>
+    <div id="devices" class="muted">加载中...</div>
+  </div>
+</div>
+
+<script>
+async function loadDevices() {
+  const el = document.getElementById('devices');
+  const status = document.getElementById('status');
+  try {
+    const r = await fetch('/api/moonlight/devices', { cache:'no-store' });
+    const data = await r.json();
+    status.innerHTML = (data.sunshine_online ? '<span style="color:var(--green)">Sunshine 在线</span>' : '<span style="color:var(--red)">Sunshine 离线</span>') +
+      ' · 授权条目 ' + (data.device_count || 0) + ' · 唯一证书 ' + (data.unique_cert_count || 0) +
+      (data.duplicate_cert_count ? ' · <span style="color:var(--yellow)">重复证书 ' + data.duplicate_cert_count + '</span>' : '') +
+      (data.pin_config ? '' : ' · <span style="color:var(--yellow)">当前配置 pin=false</span>');
+    const devices = data.devices || [];
+    if (!devices.length) {
+      el.innerHTML = '<div>没有已授权设备。</div>';
+      return;
+    }
+    el.innerHTML = devices.map((d, i) => `
+      <div class="device">
+        <div><strong>${d.name || d.uuid || 'Moonlight'}</strong>${d.duplicate ? ' <span style="color:var(--yellow)">重复</span>' : ''}</div>
+        <div class="small">${d.fingerprint || '无指纹'}</div>
+        <div class="small">uuid=${d.uuid || ''} enabled=${d.enabled || ''}</div>
+      </div>
+    `).join('');
+  } catch (err) {
+    status.innerHTML = '<span style="color:var(--red)">读取失败</span>';
+    el.innerHTML = '<span style="color:var(--red)">' + err.message + '</span>';
+  }
+}
+
+document.getElementById('pair').addEventListener('click', async () => {
+  const pin = document.getElementById('pin').value.trim();
+  const name = document.getElementById('name').value.trim() || 'Moonlight Device';
+  const result = document.getElementById('result');
+  const btn = document.getElementById('pair');
+  if (!/^\d{4}$/.test(pin)) {
+    result.innerHTML = '<span class="err">请输入手机上的 4 位数字 PIN</span>';
+    return;
+  }
+  btn.disabled = true;
+  result.innerHTML = '<span class="muted">配对中...</span>';
+  try {
+    const r = await fetch('/api/moonlight/pair', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({pin, name}),
+    });
+    const data = await r.json();
+    if (data.ok) {
+      result.innerHTML = '<span class="ok">已配对并加入白名单</span>';
+      document.getElementById('pin').value = '';
+      await loadDevices();
+    } else {
+      result.innerHTML = '<span class="err">' + (data.error || '配对失败') + '</span>';
+    }
+  } catch (err) {
+    result.innerHTML = '<span class="err">' + err.message + '</span>';
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+loadDevices();
+</script>
+</body>
+</html>

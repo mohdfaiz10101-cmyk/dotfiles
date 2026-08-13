@@ -1,0 +1,14 @@
+[Unit]
+Description=Codex 1 public WebTTY direct proxy (:19899 -> :19000)
+Requires=codex-public-19899-proxy.socket
+After=network-online.target ttyd-codex.service
+Wants=ttyd-codex.service
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:19000
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

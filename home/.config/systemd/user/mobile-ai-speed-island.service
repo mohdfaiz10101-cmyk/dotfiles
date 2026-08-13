@@ -1,0 +1,8 @@
+[Unit]
+Description=Mobile entry speed island notification
+After=mobile-ai-workbench.service container-ntfy.service
+Wants=mobile-ai-workbench.service container-ntfy.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/mobile-ai-speed-island-notify

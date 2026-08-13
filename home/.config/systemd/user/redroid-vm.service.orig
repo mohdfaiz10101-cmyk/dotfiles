@@ -1,0 +1,24 @@
+[Unit]
+Description=Redroid Host VM (Ubuntu Nested)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/qemu-system-x86_64 \
+  -enable-kvm -machine q35,accel=kvm,kernel_irqchip=split -cpu host,+nx,+kvm_pv_eoi,+kvm_pv_unhalt -smp 2 -m 2048 \
+  -drive file=/var/mnt/ai/redroid-vm/ubuntu-24.04-server-cloudimg-amd64-overlay.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 \
+  -drive file=/var/mnt/ai/redroid-vm/seed.iso,if=virtio,media=cdrom,readonly=on \
+  -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:57 \
+  -netdev user,id=net0,hostfwd=tcp::22223-:22,hostfwd=tcp::25556-:5555 \
+  -display none -vga qxl -spice port=5901,disable-ticketing=on \
+  -device virtio-serial-pci \
+  -chardev spicevmc,name=vdagent,id=vdagent \
+  -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
+  -daemonize -pidfile /var/mnt/ai/redroid-vm/redroid-vm.pid
+ExecStop=/bin/sh -c 'kill $(cat /var/mnt/ai/redroid-vm/redroid-vm.pid 2>/dev/null) 2>/dev/null || true; rm -f /var/mnt/ai/redroid-vm/redroid-vm.pid'
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

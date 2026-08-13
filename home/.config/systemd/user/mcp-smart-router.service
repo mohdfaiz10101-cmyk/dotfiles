@@ -1,0 +1,14 @@
+[Unit]
+Description=Smart MCP Router (FastMCP)
+After=network.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/.local/bin/mcp-smart-router.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

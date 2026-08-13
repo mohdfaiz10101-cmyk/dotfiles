@@ -1,0 +1,15 @@
+[Unit]
+Description=FlexIME P2P sync and Step AI bridge
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/flexime-sync-ai-server
+Restart=on-failure
+RestartSec=2
+Environment=FLEXIME_SYNC_PORT=19978
+Environment=FLEXIME_STEP_MODEL=step-3.7-flash
+Environment=FLEXIME_ALLOWED_NETS=127.0.0.0/8,100.87.0.0/16,192.168.123.0/24
+
+[Install]
+WantedBy=default.target

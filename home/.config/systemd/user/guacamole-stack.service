@@ -1,0 +1,17 @@
+[Unit]
+Description=Apache Guacamole remote connection gateway stack
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/guacamole-stack-run
+ExecStop=-/usr/bin/podman rm -f guacamole-web guacamole-guacd guacamole-postgres
+ExecStop=-/usr/bin/podman pod rm -f guacamole-stack
+Restart=always
+RestartSec=10
+TimeoutStartSec=180
+TimeoutStopSec=45
+
+[Install]
+WantedBy=default.target

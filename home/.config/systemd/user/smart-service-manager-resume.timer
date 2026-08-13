@@ -1,0 +1,12 @@
+[Unit]
+Description=Trigger smart service resume handling
+After=suspend.target hibernate.target hybrid-sleep.target
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=smart-service-manager-resume.service
+Persistent=false
+
+[Install]
+WantedBy=timers.target

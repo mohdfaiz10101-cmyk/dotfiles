@@ -1,6 +1,6 @@
 [Unit]
 Description=Repair Haven phone MCP and local bridge
-After=network-online.target adb-phone-keepalive.service
+After=network-online.target
 
 [Service]
 Type=oneshot

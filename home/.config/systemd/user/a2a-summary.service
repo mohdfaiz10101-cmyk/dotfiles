@@ -1,0 +1,8 @@
+[Unit]
+Description=A2A Daily Summary
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/a2a summary
+StandardOutput=append:/var/home/charlie/.hermes/a2a/logs/summary.log
+StandardError=append:/var/home/charlie/.hermes/a2a/logs/summary.log

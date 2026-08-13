@@ -1,0 +1,12 @@
+[Unit]
+Description=Monthly cleanup of old backup files
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=%h
+ExecStart=%h/.local/bin/hermes-enqueue-task.sh "find %h/备份 -name 'backup_*.tar.gz' -mtime +30 -delete" "backup-cleanup" 20 86400
+
+[Install]
+WantedBy=default.target

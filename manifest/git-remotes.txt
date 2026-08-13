@@ -1,3 +1,7 @@
+/var/home/charlie/备份
+origin	git@github.com:mohdfaiz10101-cmyk/home-backups.git (fetch)
+origin	git@github.com:mohdfaiz10101-cmyk/home-backups.git (push)
+
 /var/home/charlie/agent-hub
 origin	git@github.com:mohdfaiz10101-cmyk/agent-hub.git (fetch)
 origin	git@github.com:mohdfaiz10101-cmyk/agent-hub.git (push)
@@ -10,19 +14,35 @@ origin	git@github.com:mohdfaiz10101-cmyk/ai.git (push)
 origin	git@github.com:mohdfaiz10101-cmyk/dotfiles.git (fetch)
 origin	git@github.com:mohdfaiz10101-cmyk/dotfiles.git (push)
 
+/var/home/charlie/flexime-mvp
+
+/var/home/charlie/hermes-agent-self-evolution
+origin	https://github.com/NousResearch/hermes-agent-self-evolution.git (fetch)
+origin	https://github.com/NousResearch/hermes-agent-self-evolution.git (push)
+
+/var/home/charlie/hermes-studio
+origin	https://github.com/EKKOLearnAI/hermes-studio.git (fetch)
+origin	https://github.com/EKKOLearnAI/hermes-studio.git (push)
+
+/var/home/charlie/hermes-webui
+origin	https://github.com/nesquena/hermes-webui.git (fetch)
+origin	https://github.com/nesquena/hermes-webui.git (push)
+
 /var/home/charlie/hub
 origin	git@github.com:mohdfaiz10101-cmyk/hub.git (fetch)
 origin	git@github.com:mohdfaiz10101-cmyk/hub.git (push)
+
+/var/home/charlie/matrix-wechat
+origin	https://github.com/duo/matrix-wechat.git (fetch)
+origin	https://github.com/duo/matrix-wechat.git (push)
+
+/var/home/charlie/matrix-wechat-agent
+origin	https://github.com/duo/matrix-wechat-agent.git (fetch)
+origin	https://github.com/duo/matrix-wechat-agent.git (push)
 
 /var/home/charlie/memory
 origin	git@github.com:mohdfaiz10101-cmyk/memory.git (fetch)
 origin	git@github.com:mohdfaiz10101-cmyk/memory.git (push)
 
-/var/home/charlie/.nvm
-origin	https://github.com/nvm-sh/nvm.git (fetch)
-origin	https://github.com/nvm-sh/nvm.git (push)
-
-/var/home/charlie/termhive
-origin	https://github.com/0x0funky/TermHive.git (fetch)
-origin	https://github.com/0x0funky/TermHive.git (push)
+/var/home/charlie/tmux-duckdns-tunnel
 

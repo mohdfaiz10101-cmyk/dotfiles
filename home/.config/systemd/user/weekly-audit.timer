@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly System Audit timer
+
+[Timer]
+OnCalendar=Mon *-*-* 09:30:00
+Persistent=true
+Unit=weekly-audit.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,7 @@
+[Unit]
+Description=Smart service post-resume manager
+After=suspend.target hibernate.target hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/smart-service-manager.py post-resume

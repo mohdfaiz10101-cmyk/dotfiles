@@ -1,0 +1,18 @@
+[Unit]
+Description=Hermes Web UI (:8648 via FRP, service on :18648)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+PIDFile=/var/home/charlie/.hermes-web-ui/server.pid
+Type=forking
+Environment=HOME=%h
+Environment=PATH=%h/.nvm/versions/node/current/bin:%h/.cargo/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=CORS_ORIGINS=*
+Environment=PORT=18648
+ExecStart=%h/.local/bin/hermes-web-ui-launch.sh start --no-open --port 18648
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

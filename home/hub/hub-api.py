@@ -14,6 +14,7 @@ import sqlite3
 import subprocess
 import time
 import typing
+import urllib.parse
 import urllib.request
 import uvicorn
 import base64
@@ -21,6 +22,7 @@ import hashlib
 import ssl
 import io
 import re
+import shlex
 import uuid
 import zipfile
 import xml.sax.saxutils
@@ -107,6 +109,8 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "终端入口",
         "description": "OpenClaw ttyd / 手机远程终端",
         "candidates": [
+            "http://100.87.238.153:18080/?device={device}",
+            "http://192.168.123.71:18080/?device={device}",
             "http://{host}:18080/?device={device}",
             "http://charlie1990.duckdns.org:18080/?device={device}",
             "http://{host}:8080/",
@@ -116,6 +120,8 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "OpenCode",
         "description": "OpenCode Web 控制台",
         "candidates": [
+            "http://100.87.238.153:18910/?device={device}",
+            "http://192.168.123.71:18910/?device={device}",
             "http://{host}:18910/?device={device}",
             "http://charlie1990.duckdns.org:18910/?device={device}",
             "http://{host}:4097/?device={device}",
@@ -125,6 +131,8 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "Crush",
         "description": "Crush WebTTY / Button API",
         "candidates": [
+            "http://100.87.238.153:17766/",
+            "http://192.168.123.71:17766/",
             "http://{host}:17766/",
             "http://charlie1990.duckdns.org:17766/",
             "http://127.0.0.1:17766/",
@@ -134,6 +142,12 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "Codex",
         "description": "Codex WebTTY 入口",
         "candidates": [
+            "http://100.87.238.153:19899/",
+            "http://100.87.238.153:19900/",
+            "http://100.87.238.153:19902/",
+            "http://192.168.123.71:19899/",
+            "http://192.168.123.71:19900/",
+            "http://192.168.123.71:19902/",
             "http://{host}:19899/",
             "http://{host}:19900/",
             "http://{host}:19902/",
@@ -148,10 +162,39 @@ LINK_REGISTRY: dict[str, dict] = {
             "https://fedora-termhive.tail60cff7.ts.net/",
         ],
     },
+    "cursor": {
+        "name": "Cursor GUI",
+        "description": "Cursor/KasmVNC GUI IDE；适合前端视觉、插件、登录态、人工协同代码任务",
+        "candidates": [
+            "http://100.87.238.153:19970/",
+            "http://192.168.123.71:19970/",
+            "http://{host}:19970/",
+        ],
+    },
+    "goose": {
+        "name": "Goose 只读诊断",
+        "description": "Goose/Guise 只读计划与任务分诊；写入前转 Hub/Aider 审批",
+        "candidates": [
+            "http://100.87.238.153:7694/tool/guise/",
+            "http://192.168.123.71:7694/tool/guise/",
+            "http://{host}:7694/tool/guise/",
+        ],
+    },
+    "aider": {
+        "name": "Aider 单写入执行",
+        "description": "经 Goose 计划和 Hub 审批后的单写入代码执行器",
+        "candidates": [
+            "http://100.87.238.153:7693/tool/aider/",
+            "http://192.168.123.71:7693/tool/aider/",
+            "http://{host}:7693/tool/aider/",
+        ],
+    },
     "fastgpt": {
         "name": "FastGPT",
         "description": "知识库 / 工作流问答",
         "candidates": [
+            "http://100.87.238.153:3000/",
+            "http://192.168.123.71:3000/",
             "http://{host}:19894/",
             "http://charlie1990.duckdns.org:19894/",
             "http://{host}:3000/",
@@ -198,15 +241,22 @@ LINK_REGISTRY: dict[str, dict] = {
     },
     "hub": {
         "name": "Hub 工作台",
-        "description": "9800 统一入口",
-        "candidates": ["/"],
+        "description": "9800 统一入口；优先给手机 NetBird 与家里局域网双地址",
+        "candidates": [
+            "http://100.87.238.153:9800/",
+            "http://100.87.238.153:9800/projects",
+            "http://192.168.123.71:9800/",
+            "http://192.168.123.71:9800/projects",
+            "/",
+        ],
     },
     "appsmith": {
         "name": "统一操作台",
         "description": "Appsmith internal tool console; one-window control plane for Hub/n8n/OP/FastGPT/Zulip",
         "candidates": [
+            "http://100.87.238.153:8089/",
+            "http://192.168.123.71:8089/",
             "http://{host}:8089/",
-            "http://100.120.189.27:8089/",
             "http://127.0.0.1:8089/",
         ],
     },
@@ -214,8 +264,9 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "动作总线",
         "description": "n8n workflow automation bus for Hub/OP/FastGPT/Zulip/Plane/Huly",
         "candidates": [
+            "http://100.87.238.153:5678/",
+            "http://192.168.123.71:5678/",
             "http://{host}:5678/",
-            "http://100.120.189.27:5678/",
             "http://127.0.0.1:5678/",
         ],
     },
@@ -253,11 +304,13 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "Plane",
         "description": "自托管项目进度、任务、周期、模块和路线图",
         "candidates": [
+            "http://100.87.238.153:8090/",
+            "http://192.168.123.71:8090/",
             "http://{host}:8090/",
             "http://127.0.0.1:8090/",
-            "http://100.120.189.27:8090/",
             "https://fedora-termhive.tail60cff7.ts.net/",
-            "http://100.120.189.27:8090/god-mode/",
+            "http://100.87.238.153:8090/god-mode/",
+            "http://192.168.123.71:8090/god-mode/",
             "http://{host}:8090/god-mode/",
             "http://127.0.0.1:8090/god-mode/",
         ],
@@ -266,7 +319,8 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "Huly",
         "description": "综合工作区：项目、任务、文档、聊天和协作",
         "candidates": [
-            "http://100.120.189.27:8087/",
+            "http://100.87.238.153:8087/",
+            "http://192.168.123.71:8087/",
             "http://{host}:8087/",
             "http://127.0.0.1:8087/",
         ],
@@ -275,7 +329,8 @@ LINK_REGISTRY: dict[str, dict] = {
         "name": "Mattermost",
         "description": "频道聊天、机器人、图片、Webhook 和 AI 协作入口",
         "candidates": [
-            "http://100.120.189.27:8065/",
+            "http://100.87.238.153:8065/",
+            "http://192.168.123.71:8065/",
             "http://{host}:8065/",
             "http://127.0.0.1:8065/",
         ],
@@ -392,8 +447,12 @@ LINK_REGISTRY: dict[str, dict] = {
     },
     "ntfy": {
         "name": "ntfy",
-        "description": "轻量 topic 通知频道，Hub 可直接 HTTP POST",
-        "candidates": ["https://ntfy.sh/"],
+        "description": "轻量 topic 通知频道，项目同步走 charlie-projects；手机订阅仍可用 DuckDNS",
+        "candidates": [
+            "http://100.87.238.153:2586/",
+            "http://192.168.123.71:2586/",
+            "http://charlie1990.duckdns.org:19867/",
+        ],
     },
     "mattermost-info": {
         "name": "Mattermost",
@@ -403,7 +462,7 @@ LINK_REGISTRY: dict[str, dict] = {
     "zulip": {
         "name": "Zulip",
         "description": "频道 + topic 结构，适合异步项目讨论",
-        "candidates": ["https://zulip.com/"],
+        "candidates": ["https://charlie.zulipchat.com/", "https://zulip.com/"],
     },
     "rocketchat": {
         "name": "Rocket.Chat",
@@ -1625,6 +1684,95 @@ async def health_scores(limit: int = 30):
 # ── 部门报告（读取 ~/Desktop/巡检报告/*-latest.json）──────────────────
 DEPT_REPORTS_DIR = Path.home() / "Desktop/巡检报告"
 
+# ── 监控注册中心（monitor-engine + monitor-lifecycle）────────────────
+MONITOR_REGISTRY = Path.home() / ".local/state/monitor-registry/registry.json"
+MONITORS_FILE = Path.home() / ".config/monitors/monitors.yaml"
+MONITOR_HISTORY = Path.home() / ".local/state/monitor-registry/history.jsonl"
+
+
+def _load_monitor_registry() -> dict:
+    if not MONITOR_REGISTRY.exists():
+        return {}
+    try:
+        return json.loads(MONITOR_REGISTRY.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _load_monitors_yaml() -> list[dict]:
+    if not MONITORS_FILE.exists():
+        return []
+    try:
+        import yaml
+        data = yaml.safe_load(MONITORS_FILE.read_text(encoding="utf-8")) or {}
+        return data.get("monitors", [])
+    except Exception:
+        return []
+
+
+def _load_monitor_history() -> list[dict]:
+    entries = []
+    if not MONITOR_HISTORY.exists():
+        return entries
+    for line in MONITOR_HISTORY.read_text(encoding="utf-8", errors="ignore").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            entries.append(json.loads(line))
+        except Exception:
+            pass
+    entries.reverse()
+    return entries[-100:]
+
+
+@app.get("/api/monitors")
+async def api_monitors():
+    """监控面板：读取 monitor registry 与 monitors.yaml，返回 active/archived 列表。"""
+    registry = _load_monitor_registry()
+    monitors = _load_monitors_yaml()
+    results = []
+    for m in monitors:
+        mid = m.get("id") or m.get("name")
+        state = registry.get(mid, {})
+        results.append({
+            "id": mid,
+            "name": m.get("name", mid),
+            "type": m.get("type"),
+            "status": state.get("status", "unknown"),
+            "consecutive_ok": state.get("consecutive_ok", 0),
+            "consecutive_fail": state.get("consecutive_fail", 0),
+            "last_ok": state.get("last_ok"),
+            "last_fail": state.get("last_fail"),
+            "archived_at": state.get("archived_at"),
+            "promoted_count": state.get("promoted_count", 0),
+            "success_threshold": m.get("success_threshold", 5),
+            "fail_threshold": m.get("fail_threshold", 2),
+        })
+    return {"monitors": results, "generated_at": datetime.now().isoformat()}
+
+
+@app.get("/api/monitors/summary")
+async def api_monitors_summary():
+    """监控面板摘要。"""
+    registry = _load_monitor_registry()
+    monitors = _load_monitors_yaml()
+    active = sum(1 for m in registry.values() if m.get("status") == "active")
+    archived = sum(1 for m in registry.values() if m.get("status") == "archived")
+    return {
+        "total_monitors": len(monitors),
+        "active": active,
+        "archived": archived,
+        "generated_at": datetime.now().isoformat(),
+    }
+
+
+@app.get("/api/monitors/history")
+async def api_monitors_history(limit: int = 50):
+    """监控面板最近历史。"""
+    entries = _load_monitor_history()
+    return {"history": entries[-limit:]}
+
 
 @app.get("/api/dept-reports")
 async def get_dept_reports():
@@ -2144,7 +2292,9 @@ async def plane_status_api():
     ]
     return JSONResponse({
         "ok": service_code == 0 and http_ok,
-        "url": "https://fedora-termhive.tail60cff7.ts.net/",
+        "url": "http://100.87.238.153:8090/",
+        "lan_url": "http://192.168.123.71:8090/",
+        "tailnet_fallback": "https://fedora-termhive.tail60cff7.ts.net/",
         "service": service_out or service_err,
         "http_status": http_status,
         "containers": containers,
@@ -2180,7 +2330,8 @@ async def appsmith_status_api():
     containers = [line for line in ps_out.splitlines() if line.startswith("appsmith ")]
     return JSONResponse({
         "ok": service_code == 0 and http_ok,
-        "url": "http://100.120.189.27:8089/",
+        "url": "http://100.87.238.153:8089/",
+        "lan_url": "http://192.168.123.71:8089/",
         "service": service_out or service_err,
         "http_status": http_status,
         "containers": containers,
@@ -2214,7 +2365,8 @@ async def n8n_status_api():
         http_status = str(exc)
     return JSONResponse({
         "ok": service_code == 0 and http_ok,
-        "url": "http://100.120.189.27:5678/",
+        "url": "http://100.87.238.153:5678/",
+        "lan_url": "http://192.168.123.71:5678/",
         "service": service_out or service_err,
         "http_status": http_status,
         "unit": "n8n.service",
@@ -2251,7 +2403,8 @@ async def huly_status_api():
     ]
     return JSONResponse({
         "ok": service_code == 0 and http_ok,
-        "url": "http://100.120.189.27:8087/",
+        "url": "http://100.87.238.153:8087/",
+        "lan_url": "http://192.168.123.71:8087/",
         "service": service_out or service_err,
         "http_status": http_status,
         "containers": containers,
@@ -2260,6 +2413,524 @@ async def huly_status_api():
         "role": "all-in-one workspace for projects, tasks, docs, chat, and collaboration",
         "ps_error": ps_err if ps_code != 0 else "",
     })
+
+
+async def _mattermost_payload_from_request(request: Request) -> dict:
+    content_type = request.headers.get("content-type", "").lower()
+    raw = await request.body()
+    if "application/json" in content_type:
+        try:
+            data = json.loads(raw.decode("utf-8", errors="replace") or "{}")
+            return data if isinstance(data, dict) else {"payload": data}
+        except json.JSONDecodeError:
+            return {"raw": raw.decode("utf-8", errors="replace")}
+    if "application/x-www-form-urlencoded" in content_type or raw:
+        parsed = urllib.parse.parse_qs(raw.decode("utf-8", errors="replace"), keep_blank_values=True)
+        return {k: v[-1] if isinstance(v, list) and v else v for k, v in parsed.items()}
+    try:
+        form = await request.form()
+        return {k: str(v) for k, v in form.items()}
+    except Exception:
+        return {}
+
+
+def _mattermost_source_ref(payload: dict) -> str:
+    env = _load_simple_env(MATTERMOST_INBOX_ENV)
+    base = (env.get("MATTERMOST_NETBIRD_URL") or env.get("MATTERMOST_BASE_URL") or "http://100.87.238.153:8065").rstrip("/")
+    team = payload.get("team_domain") or payload.get("team_name") or env.get("MATTERMOST_TEAM") or ""
+    post_id = payload.get("post_id") or payload.get("postId") or payload.get("id") or ""
+    if team and post_id:
+        return f"{base}/{team}/pl/{post_id}"
+    return str(payload.get("trigger_word") or payload.get("channel_name") or "mattermost")
+
+
+def _mattermost_intake_kind(payload: dict) -> str:
+    """Classify a Mattermost intake into the Hub workflow lane.
+
+    This is intentionally deterministic and local: channel naming and artifact
+    extensions decide the initial lane; AI agents can refine it only after the
+    user approves the Hub task.
+    """
+    channel = str(payload.get("channel_name") or payload.get("channel_id") or "").lower()
+    text = str(payload.get("text") or payload.get("message") or payload.get("post") or "").lower()
+    artifacts = payload.get("artifact_paths") if isinstance(payload.get("artifact_paths"), list) else []
+    attachments = payload.get("attachments") if isinstance(payload.get("attachments"), list) else []
+    kinds = {
+        str(item.get("kind") or "").lower()
+        for item in attachments
+        if isinstance(item, dict) and item.get("kind")
+    }
+    suffixes = {Path(str(path)).suffix.lower().strip(".") for path in artifacts}
+    if "aider" in channel or any(word in text for word in ["aider", "单写入", "最小变更", "写入执行"]):
+        return "aider"
+    if "cursor" in channel or any(word in text for word in ["cursor", "kasm", "gui ide", "可视化", "界面验证", "前端视觉"]):
+        return "cursor"
+    if "goose" in channel or "guise" in channel or any(word in text for word in ["goose", "guise", "只读", "诊断", "计划", "复盘"]):
+        return "goose"
+    if "review" in channel or any(word in text for word in ["确认", "审核", "approve", "review"]):
+        return "review"
+    if "task" in channel or any(word in text for word in ["任务", "待办", "todo", "执行", "安排"]):
+        return "task"
+    if "image" in channel or "图片" in channel or "image" in kinds or suffixes & {"jpg", "jpeg", "png", "webp", "gif", "heic", "heif", "bmp", "tif", "tiff"}:
+        return "image"
+    if "doc" in channel or "资料" in channel or "document" in kinds or suffixes & {"pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "md", "txt", "csv", "json", "html"}:
+        return "document"
+    return "inbox"
+
+
+MATTERMOST_RECEIPT_PREFIXES = (
+    "✅ 已进入 Hub 待审批",
+    "✅ Mattermost 对接自测已创建任务",
+    "⚠️ Mattermost 收件失败",
+)
+
+
+MATTERMOST_CHANNEL_GUIDES = {
+    "ai-inbox": {
+        "agent": "AI 收件箱 Agent",
+        "use": "文字、链接、图片、资料、手机需求总入口；自动进入 Hub 待审批。",
+        "next": "补充资料请直接回复；需要手机跨 App/屏幕操作请回复 `step: 你的目标`。",
+        "red": "删除/付款/发外部消息/登录授权/公开发布必须先到 `ai-review` 确认。",
+    },
+    "ai-images": {
+        "agent": "AI 图片整理 Agent",
+        "use": "截图/照片/OCR/分类/重命名/图片资料归档。",
+        "next": "继续上传图片即可；需要从手机相册取图请回复 `step: 打开相册...只停在选择页`。",
+        "red": "不自动删除原图、不自动上传外网；隐私图片公开前必须确认。",
+    },
+    "ai-docs": {
+        "agent": "AI 资料整理 Agent",
+        "use": "PDF/Word/Excel/txt/链接摘要、关键事实提取、归档和任务拆解。",
+        "next": "补链接/附件即可；需要引用已有本地资料请写清路径或来源。",
+        "red": "合同/财务/法律/密钥/密码内容只摘要和标注风险，不外发。",
+    },
+    "ai-review": {
+        "agent": "AI 人工确认 / 红线 Agent",
+        "use": "高风险动作审批台：只给选项、影响、风险和推荐，不越权执行。",
+        "next": "回复 `确认: ...` 才会进入后续派发；不确认默认停住。",
+        "red": "删除、覆盖、改网络/防火墙/NAT、付款/下单、发消息、登录授权都必须人工确认。",
+    },
+    "ai-tasks": {
+        "agent": "AI 任务回执 Agent",
+        "use": "只显示 Hub 任务 ID、审批入口和执行状态。",
+        "next": "不要在这里投递新任务；补充内容请回原频道或 `ai-inbox`。",
+        "red": "`ai-tasks` 必须保持输出频道，不能加入 `MATTERMOST_WATCH_CHANNELS`。",
+    },
+    "hub": {
+        "agent": "Hub 总控 Agent",
+        "use": "项目、审批、任务状态、服务入口和运维总控。",
+        "next": "打开 Hub 审批入口，补工作区/目标/验收后再派发执行。",
+        "red": "系统级改动必须给备份、验证和回滚。",
+    },
+    "op": {
+        "agent": "OP / OpenCode 执行 Agent",
+        "use": "代码、脚本、服务修复、自动化按钮；先建 Hub 待审批任务。",
+        "next": "写清目标、文件路径、验证命令；需要执行时从 Hub 批准。",
+        "red": "写入/删除/重启服务必须有验证和回滚说明。",
+    },
+    "cursor": {
+        "agent": "Cursor GUI 任务 Agent",
+        "use": "GUI/IDE/前端视觉/插件/登录态/人工协同代码任务；先入 Hub，默认 Goose 只读计划。",
+        "next": "写清项目路径、要看的界面、预期/实际差异；需要执行写入时转 `aider` 或 Hub 批准。",
+        "red": "Cursor 频道不直接改生产、不自动提交/发布；登录授权、付费插件、删除/覆盖必须确认。",
+    },
+    "goose": {
+        "agent": "Goose 只读诊断 Agent",
+        "use": "只读分析、计划、风险评审、上下文整理；默认 Hub assignee=`plan`。",
+        "next": "让 Goose 先给最小方案、影响范围、验证命令；写入执行再转 `aider`/`op`。",
+        "red": "Goose 默认不写文件、不重启服务、不改网络；破坏性动作必须 Hub/ai-review 确认。",
+    },
+    "aider": {
+        "agent": "Aider 单写入执行 Agent",
+        "use": "经 Goose 计划和 Hub 审批后的代码/配置最小写入；默认 Hub assignee=`goose_aider`。",
+        "next": "提供目标文件、修改范围、测试命令、回滚方式；执行后结果回 `ai-tasks`/项目同步。",
+        "red": "大范围重构、数据库写入、删除、发布、网络规则改动必须有备份和回滚。",
+    },
+    "fastgpt": {
+        "agent": "FastGPT 知识库 Agent",
+        "use": "资料问答、方案、最佳实践和 FAQ 沉淀。",
+        "next": "适合发资料和问题；执行类任务仍回 Hub 审批。",
+        "red": "不要把密码/token/私密数据库内容写入知识库。",
+    },
+    "alerts": {
+        "agent": "系统告警 Agent",
+        "use": "网络、端口、服务、手机连通性、ntfy/Kuma 事件。",
+        "next": "先诊断再建议；需要修复时创建 Hub 待审批任务。",
+        "red": "告警不能直接触发破坏性修复；网络规则变更先确认。",
+    },
+    "sourcing": {
+        "agent": "采集 / 资料源 Agent",
+        "use": "网页、产品、供应商、开源方案、论坛最佳实践采集。",
+        "next": "输出比较、来源和后续任务；采购/联系前等确认。",
+        "red": "下单、付款、询价、发邮件/私信必须人工确认。",
+    },
+}
+
+
+def _mattermost_channel_agent(channel: str, intake_kind: str = "inbox") -> dict:
+    name = str(channel or "").lower()
+    guide = MATTERMOST_CHANNEL_GUIDES.get(name)
+    if guide:
+        return guide
+    by_kind = {
+        "image": MATTERMOST_CHANNEL_GUIDES["ai-images"],
+        "document": MATTERMOST_CHANNEL_GUIDES["ai-docs"],
+        "review": MATTERMOST_CHANNEL_GUIDES["ai-review"],
+        "task": MATTERMOST_CHANNEL_GUIDES["hub"],
+        "cursor": MATTERMOST_CHANNEL_GUIDES["cursor"],
+        "goose": MATTERMOST_CHANNEL_GUIDES["goose"],
+        "aider": MATTERMOST_CHANNEL_GUIDES["aider"],
+    }
+    return by_kind.get(intake_kind, MATTERMOST_CHANNEL_GUIDES["ai-inbox"])
+
+
+def _mattermost_should_skip_intake(payload: dict, env: dict, text: str) -> tuple[bool, str]:
+    channel = str(payload.get("channel_name") or payload.get("channel_id") or "").strip()
+    tasks_channel = str(env.get("MATTERMOST_TASKS_CHANNEL") or "ai-tasks").strip()
+    if channel and tasks_channel and channel == tasks_channel:
+        return True, "output_channel"
+    if "<!-- charlie-agent-guide:" in text[:200]:
+        return True, "agent_guide"
+    if text.startswith(MATTERMOST_RECEIPT_PREFIXES) or "已进入 Hub 待审批" in text[:240]:
+        return True, "hub_receipt"
+    post_type = str(payload.get("type") or payload.get("post_type") or "")
+    if post_type.startswith("system_"):
+        return True, "system_post"
+    return False, ""
+
+
+def _mattermost_step_request_text(text: str) -> str:
+    m = re.match(r"^\s*(?:step|step\s*ui|gelab|手机操作|跨app|跨应用)\s*[:：-]\s*(.+)$", text, flags=re.I | re.S)
+    return (m.group(1).strip() if m else "")
+
+
+def _mattermost_http_json(method: str, url: str, body: dict | None = None, timeout: float = 8.0) -> tuple[dict, int]:
+    data = None
+    headers = {"Accept": "application/json"}
+    if body is not None:
+        data = json.dumps(body, ensure_ascii=False).encode("utf-8")
+        headers["Content-Type"] = "application/json; charset=utf-8"
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw = resp.read(120000).decode("utf-8", errors="replace")
+        try:
+            return json.loads(raw or "{}"), resp.status
+        except json.JSONDecodeError:
+            return {"raw": raw[-2000:]}, resp.status
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}, 502
+
+
+def _mattermost_maybe_dispatch_step_router(payload: dict, text: str) -> dict:
+    task_text = _mattermost_step_request_text(text)
+    if not task_text:
+        return {}
+    base = "http://127.0.0.1:19888"
+    device = "w19900422"
+    dispatch_text = f"step ui 跨App 操作：{task_text}"
+    dispatch, status = _mattermost_http_json(
+        "POST",
+        f"{base}/api/super/dispatch?device={urllib.parse.quote(device)}",
+        {"text": dispatch_text, "source": "mattermost", "channel": payload.get("channel_name") or ""},
+        timeout=10,
+    )
+    result = {"requested": task_text[:500], "dispatch_status": status, "dispatch": dispatch}
+    # Always save the clean user task after /dispatch.  /dispatch may prepend
+    # router hints to make Workbench choose Step UI; the Step UI operator should
+    # see the user's original instruction instead.
+    forced, forced_status = _mattermost_http_json(
+        "POST",
+        f"{base}/api/super/run?action=step-task&redirect=0&device={urllib.parse.quote(device)}",
+        {"task": task_text, "source": "mattermost", "max_steps": 20},
+        timeout=10,
+    )
+    result["forced_step_status"] = forced_status
+    result["forced_step"] = forced
+    return result
+
+
+def _mattermost_step_summary(step_router: dict) -> list[str]:
+    if not step_router:
+        return []
+    dispatch = step_router.get("dispatch") if isinstance(step_router.get("dispatch"), dict) else {}
+    forced = step_router.get("forced_step") if isinstance(step_router.get("forced_step"), dict) else {}
+    plan = dispatch.get("plan") if isinstance(dispatch.get("plan"), dict) else {}
+    lines = [
+        "## Step Router / 手机 GUI Agent",
+        f"- 请求：{str(step_router.get('requested') or '')[:300]}",
+        f"- 路由：{plan.get('action') or forced.get('action') or 'step-task'} / {plan.get('kind') or 'step'}",
+    ]
+    task_saved = forced.get("task_saved") or ((dispatch.get("result") or {}) if isinstance(dispatch.get("result"), dict) else {}).get("task_saved")
+    step_ui = forced.get("step_ui") or ((dispatch.get("result") or {}) if isinstance(dispatch.get("result"), dict) else {}).get("step_ui")
+    if task_saved:
+        lines.append(f"- 已保存 Step 任务：{task_saved}")
+    if step_ui:
+        lines.append(f"- Step UI：{step_ui}")
+    lines.append("- 红线：付款/下单/删除/发外部消息前必须停在确认页。")
+    return lines
+
+
+def _mattermost_reply_guide(payload: dict, task: dict, step_router: dict) -> str:
+    channel = str(payload.get("channel_name") or payload.get("channel_id") or "")
+    intake_kind = _mattermost_intake_kind(payload)
+    guide = _mattermost_channel_agent(channel, intake_kind)
+    lines = [
+        f"### 🤖 当前频道：{guide['agent']}",
+        f"- 用途：{guide['use']}",
+        f"- 下一步：{guide['next']}",
+        f"- 🔴 红线：{guide['red']}",
+        "- 常用回复：`补充: ...` / `确认: ...` / `取消` / `step: ...`",
+    ]
+    if step_router:
+        step_lines = _mattermost_step_summary(step_router)
+        if step_lines:
+            lines.extend(["", *step_lines])
+    return "\n".join(lines)
+
+
+def _mattermost_task_body(payload: dict) -> dict:
+    env = _load_simple_env(MATTERMOST_INBOX_ENV)
+    text = str(payload.get("text") or payload.get("message") or payload.get("post") or payload.get("raw") or "").strip()
+    trigger = str(payload.get("trigger_word") or "").strip()
+    if trigger and text.startswith(trigger):
+        text = text[len(trigger):].strip()
+    text = re.sub(r"^[/!#]*(ai|task|todo|任务|待办)[:：\\s-]*", "", text, flags=re.I).strip() or text
+    user = payload.get("user_name") or payload.get("user") or payload.get("user_id") or "mattermost"
+    channel = payload.get("channel_name") or payload.get("channel_id") or "unknown"
+    title_line = next((line.strip() for line in text.splitlines() if line.strip()), "")
+    title = title_line[:90] if title_line else f"Mattermost 收件：{channel}"
+    source_ref = _mattermost_source_ref(payload)
+    intake_kind = _mattermost_intake_kind(payload)
+    kind_labels = {
+        "image": "图片整理",
+        "document": "资料整理",
+        "task": "任务拆解",
+        "review": "人工确认",
+        "inbox": "收件整理",
+        "cursor": "Cursor GUI任务",
+        "goose": "Goose只读诊断",
+        "aider": "Aider单写入执行",
+    }
+    if not title_line:
+        title = f"Mattermost {kind_labels.get(intake_kind, '收件整理')}：{channel}"
+    artifact_paths = payload.get("artifact_paths") if isinstance(payload.get("artifact_paths"), list) else []
+    attachments = payload.get("attachments") if isinstance(payload.get("attachments"), list) else []
+    attachment_lines = []
+    for item in attachments[:12]:
+        if isinstance(item, dict):
+            name = item.get("name") or Path(str(item.get("path") or "")).name or "attachment"
+            kind = item.get("kind") or "file"
+            size = item.get("size")
+            suffix = f" ({size} bytes)" if size else ""
+            attachment_lines.append(f"- [{kind}] {name}{suffix}: {item.get('path') or ''}")
+    if not attachment_lines:
+        attachment_lines = [f"- {path}" for path in artifact_paths[:12]]
+    if not attachment_lines:
+        attachment_lines = ["- 无"]
+    agent_guide = _mattermost_channel_agent(str(channel), intake_kind)
+    step_router = payload.get("step_router") if isinstance(payload.get("step_router"), dict) else {}
+    step_lines = _mattermost_step_summary(step_router)
+    acceptance_by_kind = {
+        "image": "提取图片/截图中的关键信息；按主题重命名/分类；需要 OCR 时给出文字；产出摘要、存放路径、后续动作。",
+        "document": "阅读附件/资料；提炼摘要、关键事实、链接/文件路径；按主题归档；给出可执行后续任务。",
+        "task": "把消息拆成可审批的目标、步骤、风险、验收标准；必要时建议执行窗口和负责人。",
+        "review": "明确需要人工确认的选项、影响、风险和推荐选择；不要越过确认执行破坏性动作。",
+        "inbox": "在 Hub 中确认任务目标；如涉及图片/资料，整理出摘要、分类、存放路径和后续动作。",
+        "cursor": "给出 Cursor GUI/IDE 操作目标、项目路径、要观察的界面、预期/实际差异、建议验证方式；写入前转 Aider/OP 审批。",
+        "goose": "只读分析上下文、影响范围、风险、最小变更计划、验证命令和回滚建议；不得直接写入。",
+        "aider": "在 Hub 审批后按最小变更执行；列出修改文件、验证命令、结果证据和回滚方式。",
+    }
+    goal_by_kind = {
+        "image": "整理 Mattermost 收件箱中的图片/截图，提取信息并形成可追踪任务。",
+        "document": "整理 Mattermost 收件箱中的资料/文档，形成摘要、分类和后续动作。",
+        "task": text[:1000] or "拆解 Mattermost 中提交的任务并进入 Hub 审批。",
+        "review": text[:1000] or "整理 Mattermost 中需要人工确认的事项。",
+        "inbox": text[:1000] or "整理 Mattermost 收件箱中的图片/资料/任务。",
+        "cursor": text[:1000] or "整理 Cursor GUI/IDE 任务，先形成只读计划和验证入口。",
+        "goose": text[:1000] or "用 Goose 只读诊断并形成可审批执行计划。",
+        "aider": text[:1000] or "在 Hub 审批后用 Goose→Aider 单写入执行最小变更。",
+    }
+    brief = "\n".join([
+        "来自 Mattermost AI Inbox 的待审批任务。",
+        "",
+        f"- 用户：{user}",
+        f"- 频道：{channel}",
+        f"- 类型：{kind_labels.get(intake_kind, intake_kind)}",
+        f"- 来源：{source_ref}",
+        "",
+        "## 频道 Agent 引导",
+        f"- Agent：{agent_guide['agent']}",
+        f"- 用途：{agent_guide['use']}",
+        f"- 下一步：{agent_guide['next']}",
+        f"- 🔴 红线：{agent_guide['red']}",
+        "- Cursor入口：NetBird http://100.87.238.153:19970/ ｜ LAN http://192.168.123.71:19970/",
+        "- Goose入口：NetBird http://100.87.238.153:7694/tool/guise/ ｜ LAN http://192.168.123.71:7694/tool/guise/",
+        "- Aider入口：NetBird http://100.87.238.153:7693/tool/aider/ ｜ LAN http://192.168.123.71:7693/tool/aider/",
+        "",
+        *step_lines,
+        "" if step_lines else "",
+        "## 附件/资料",
+        "\n".join(attachment_lines),
+        "",
+        "## 原始内容",
+        text or "(无文本；可能是附件/图片消息，请在 Mattermost 中查看原帖)",
+    ])
+    return {
+        "project_id": env.get("HUB_DEFAULT_PROJECT_ID") or "ai-brain",
+        "title": title,
+        "brief": brief,
+        "goal": goal_by_kind.get(intake_kind, goal_by_kind["inbox"]),
+        "acceptance": acceptance_by_kind.get(intake_kind, acceptance_by_kind["inbox"]),
+        "priority": env.get("HUB_DEFAULT_PRIORITY") or "medium",
+        "assignee": ("plan" if intake_kind in {"goose", "cursor"} else ("goose_aider" if intake_kind == "aider" else (env.get("HUB_DEFAULT_ASSIGNEE") or "op"))),
+        "window": env.get("HUB_DEFAULT_WINDOW") or "night",
+        "tags": ["mattermost", "ai-inbox", intake_kind, str(channel)[:32]] + (["step-router"] if step_router else []),
+        "source": "mattermost",
+        "source_ref": source_ref,
+        "artifact_paths": artifact_paths,
+        "attachments": attachments,
+    }
+
+
+@app.get("/api/mattermost/integration/status")
+async def mattermost_integration_status_api():
+    config_path = Path("/var/home/charlie/apps/mattermost-docker/volumes/app/mattermost/config/config.json")
+    config_flags: dict[str, typing.Any] = {}
+    try:
+        cfg_mm = json.loads(config_path.read_text(encoding="utf-8"))
+        for sec, key in [
+            ("ServiceSettings", "EnableIncomingWebhooks"),
+            ("ServiceSettings", "EnableOutgoingWebhooks"),
+            ("ServiceSettings", "EnableBotAccountCreation"),
+            ("ServiceSettings", "EnableUserAccessTokens"),
+            ("ServiceSettings", "EnablePostUsernameOverride"),
+            ("ServiceSettings", "EnablePostIconOverride"),
+            ("FileSettings", "EnableMobileUpload"),
+            ("FileSettings", "EnableMobileDownload"),
+        ]:
+            config_flags[f"{sec}.{key}"] = cfg_mm.get(sec, {}).get(key)
+    except Exception as exc:
+        config_flags["error"] = str(exc)
+    recent: list[dict] = []
+    if MATTERMOST_INBOX_EVENTS.exists():
+        try:
+            for line in MATTERMOST_INBOX_EVENTS.read_text(encoding="utf-8", errors="replace").splitlines()[-20:]:
+                try:
+                    recent.append(json.loads(line))
+                except json.JSONDecodeError:
+                    pass
+        except OSError:
+            pass
+    return {
+        "ok": True,
+        "role": "Mattermost AI Inbox: phone/chat/files -> Hub pending approval -> AI/workflow -> Mattermost/ntfy receipt",
+        "hub_inbox_url": "http://127.0.0.1:9800/api/mattermost/inbox",
+        "hub_outgoing_url": "http://127.0.0.1:9800/api/mattermost/outgoing",
+        "env": _mattermost_env_status(),
+        "mattermost_config": config_flags,
+        "agent_guides": {
+            name: {"agent": cfg["agent"], "use": cfg["use"], "red": cfg["red"]}
+            for name, cfg in MATTERMOST_CHANNEL_GUIDES.items()
+        },
+        "step_router": {
+            "dispatch": "POST http://127.0.0.1:19888/api/super/dispatch?device=w19900422",
+            "explicit_prefix": "step: ...",
+            "latest_task": str(Path.home() / ".local/state/mobile-ai-super/latest-step-task.txt"),
+        },
+        "events_file": str(MATTERMOST_INBOX_EVENTS),
+        "recent_events": recent,
+    }
+
+
+@app.post("/api/mattermost/inbox")
+@app.post("/api/mattermost/outgoing")
+async def mattermost_inbox_api(request: Request):
+    payload = await _mattermost_payload_from_request(request)
+    env = _load_simple_env(MATTERMOST_INBOX_ENV)
+    expected_token = env.get("MATTERMOST_OUTGOING_TOKEN", "").strip()
+    got_token = str(payload.get("token") or payload.get("mattermost_token") or "").strip()
+    if expected_token and got_token != expected_token:
+        _append_jsonl(MATTERMOST_INBOX_EVENTS, {"ts": datetime.now().isoformat(), "event": "reject", "reason": "bad token", "channel": payload.get("channel_name")})
+        return JSONResponse({"error": "invalid token"}, status_code=403)
+
+    text = str(payload.get("text") or payload.get("message") or payload.get("post") or payload.get("raw") or "").strip()
+    skip, skip_reason = _mattermost_should_skip_intake(payload, env, text)
+    if skip:
+        _append_jsonl(MATTERMOST_INBOX_EVENTS, {
+            "ts": datetime.now().isoformat(),
+            "event": "skipped",
+            "reason": skip_reason,
+            "channel": payload.get("channel_name") or payload.get("channel_id"),
+            "post_id": payload.get("post_id") or payload.get("id"),
+            "text_preview": text[:240],
+        })
+        return {"ok": True, "skipped": True, "reason": skip_reason, "response_type": "ephemeral", "text": "已跳过 Hub 回执/输出频道消息，避免自循环。"}
+    step_router = _mattermost_maybe_dispatch_step_router(payload, text)
+    if step_router:
+        payload["step_router"] = step_router
+    event = {
+        "ts": datetime.now().isoformat(),
+        "event": "received",
+        "user": payload.get("user_name") or payload.get("user_id"),
+        "channel": payload.get("channel_name") or payload.get("channel_id"),
+        "post_id": payload.get("post_id") or payload.get("id"),
+        "source_ref": _mattermost_source_ref(payload),
+        "text_preview": text[:500],
+    }
+    task_payload = _mattermost_task_body(payload)
+    result, status = _create_project_task_from_body(task_payload, "mattermost")
+    event["task_id"] = result.get("task", {}).get("id")
+    event["task_status"] = status
+    if step_router:
+        dispatch = step_router.get("dispatch") if isinstance(step_router.get("dispatch"), dict) else {}
+        event["step_router"] = {
+            "requested": step_router.get("requested"),
+            "dispatch_status": step_router.get("dispatch_status"),
+            "plan": dispatch.get("plan") if isinstance(dispatch.get("plan"), dict) else {},
+            "forced_step_status": step_router.get("forced_step_status"),
+        }
+    _append_jsonl(MATTERMOST_INBOX_EVENTS, event)
+
+    if status >= 400:
+        reply = f"⚠️ Mattermost 收件失败：{result.get('error') or status}"
+        _mattermost_post(reply, env.get("MATTERMOST_REVIEW_CHANNEL", ""))
+        return JSONResponse({"error": result.get("error"), "response_type": "ephemeral", "text": reply}, status_code=status)
+
+    task = result["task"]
+    projects_url = env.get("HUB_PROJECTS_NETBIRD_URL") or env.get("HUB_PROJECTS_URL") or "http://100.87.238.153:9800/projects"
+    projects_lan = env.get("HUB_PROJECTS_LAN_URL") or "http://192.168.123.71:9800/projects"
+    reply = f"✅ 已进入 Hub 待审批：**{task['title']}**\n\n- 任务 ID: `{task['id']}`\n- 审批入口 NetBird: {projects_url}\n- 审批入口 LAN: {projects_lan}\n\n{_mattermost_reply_guide(payload, task, step_router)}"
+    post_result = _mattermost_post(reply, env.get("MATTERMOST_TASKS_CHANNEL", ""))
+    return {
+        "ok": True,
+        "response_type": "comment",
+        "text": reply,
+        "task": task,
+        "mattermost_receipt": post_result,
+    }
+
+
+@app.post("/api/mattermost/test-task")
+async def mattermost_test_task_api(body: dict | None = None):
+    body = body or {}
+    payload = {
+        "text": body.get("text") or "测试：从 Mattermost AI Inbox 创建一条待审批任务",
+        "user_name": body.get("user_name") or "hub-test",
+        "channel_name": body.get("channel_name") or "ai-inbox",
+        "post_id": f"hubtest{int(time.time())}",
+        "team_domain": "charlie",
+    }
+    task_payload = _mattermost_task_body(payload)
+    result, status = _create_project_task_from_body(task_payload, "mattermost-test")
+    if status >= 400:
+        return JSONResponse(result, status_code=status)
+    receipt_text = (
+        f"✅ Mattermost 对接自测已创建任务 `{result['task']['id']}`：{result['task']['title']}\n\n"
+        f"{_mattermost_reply_guide(payload, result['task'], {})}"
+    )
+    receipt = _mattermost_post(receipt_text)
+    return {"ok": True, "task": result["task"], "mattermost_receipt": receipt}
 
 
 @app.get("/api/mattermost/status")
@@ -2291,7 +2962,8 @@ async def mattermost_status_api():
     ]
     return JSONResponse({
         "ok": service_code == 0 and http_ok,
-        "url": "http://100.120.189.27:8065/",
+        "url": "http://100.87.238.153:8065/",
+        "lan_url": "http://192.168.123.71:8065/",
         "service": service_out or service_err,
         "http_status": http_status,
         "containers": containers,
@@ -2362,6 +3034,19 @@ PROJECTS_DEF = [
 ]
 
 PROJECTS_STATE_FILE = Path.home() / ".local/state/hub/projects.json"
+PROJECT_CONTROL_FILE = Path.home() / ".local/state/hub/project-control.json"
+DISPATCH_TASKS_DIR = Path.home() / ".local/state/agent-dispatch/tasks"
+PROJECT_TASK_STATUSES = {
+    "pending_approval", "queued", "delegated", "in_progress", "blocked",
+    "review", "done", "cancelled", "dispatch_failed",
+}
+PROJECT_TASK_PRIORITIES = {"urgent", "high", "medium", "low"}
+PROJECT_TASK_ASSIGNEES = {"auto", "op", "crush", "goose_aider", "plan"}
+PROJECT_TASK_RUNS_DIR = Path.home() / ".local/state/hub/task-runs"
+_project_control_lock = threading.Lock()
+MATTERMOST_INBOX_DIR = Path.home() / ".local/state/mattermost-ai-inbox"
+MATTERMOST_INBOX_EVENTS = MATTERMOST_INBOX_DIR / "events.jsonl"
+MATTERMOST_INBOX_ENV = Path.home() / ".config/mattermost-ai-inbox.env"
 
 
 def _project_slug(text: str) -> str:
@@ -2369,6 +3054,13 @@ def _project_slug(text: str) -> str:
 
     slug = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
     return slug or f"project-{int(time.time())}"
+
+
+def _bounded_int(value, minimum: int = 0, maximum: int = 100) -> int:
+    try:
+        return max(minimum, min(maximum, int(value or 0)))
+    except (TypeError, ValueError):
+        return minimum
 
 
 def _load_custom_projects() -> list[dict]:
@@ -2387,10 +3079,11 @@ def _save_custom_projects(projects: list[dict]) -> None:
 
 
 def _all_projects() -> list[dict]:
-    builtin = [dict(p, builtin=True) for p in PROJECTS_DEF]
-    custom = [dict(p, builtin=False) for p in _load_custom_projects()]
+    custom = _load_custom_projects()
+    overrides = {p.get("id"): p for p in custom if p.get("id")}
+    builtin = [dict(overrides.get(p.get("id"), p), builtin=True) for p in PROJECTS_DEF]
     seen = {p["id"] for p in builtin}
-    return builtin + [p for p in custom if p.get("id") not in seen]
+    return builtin + [dict(p, builtin=False) for p in custom if p.get("id") not in seen]
 
 
 def _project_with_progress(project: dict) -> dict:
@@ -2411,6 +3104,584 @@ def _append_project_op_task(project: dict, message: str) -> dict:
         tags=[f"PROJECT:{project.get('id')}"],
         metadata={"project_id": project.get("id")},
     )
+
+
+def _load_project_control() -> dict:
+    if PROJECT_CONTROL_FILE.exists():
+        try:
+            data = json.loads(PROJECT_CONTROL_FILE.read_text(encoding="utf-8"))
+            if isinstance(data, dict):
+                data.setdefault("tasks", [])
+                data.setdefault("decisions", [])
+                return data
+        except Exception:
+            pass
+    return {"tasks": [], "decisions": []}
+
+
+def _save_project_control(data: dict) -> None:
+    PROJECT_CONTROL_FILE.parent.mkdir(parents=True, exist_ok=True)
+    data["updated_at"] = datetime.now().isoformat()
+    payload = json.dumps(data, ensure_ascii=False, indent=2)
+    temp_file = PROJECT_CONTROL_FILE.with_suffix(".json.tmp")
+    with _project_control_lock:
+        temp_file.write_text(payload, encoding="utf-8")
+        os.replace(temp_file, PROJECT_CONTROL_FILE)
+    _trigger_comm_project_sync("project_control_saved")
+
+
+def _trigger_comm_project_sync(event: str) -> None:
+    """Fire-and-forget cross-sync; the helper dedupes unchanged snapshots."""
+    helper = Path.home() / ".local/bin/comm-project-sync"
+    if not helper.exists():
+        return
+    try:
+        subprocess.Popen(
+            [str(helper), "sync", "--event", str(event)[:80]],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            stdin=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+    except Exception:
+        pass
+
+
+def _load_simple_env(path: Path) -> dict[str, str]:
+    env: dict[str, str] = {}
+    if not path.exists():
+        return env
+    for raw in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        value = value.strip().strip('"').strip("'")
+        env[key.strip()] = value
+    return env
+
+
+def _append_jsonl(path: Path, item: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(item, ensure_ascii=False, default=str) + "\n")
+
+
+def _mattermost_env_status() -> dict:
+    env = _load_simple_env(MATTERMOST_INBOX_ENV)
+    watch_channels = [
+        part.strip()
+        for part in str(env.get("MATTERMOST_WATCH_CHANNELS") or "").split(",")
+        if part.strip()
+    ]
+    if not watch_channels:
+        for value in [
+            env.get("MATTERMOST_INBOX_CHANNEL") or "ai-inbox",
+            env.get("MATTERMOST_IMAGES_CHANNEL") or "ai-images",
+            env.get("MATTERMOST_DOCS_CHANNEL") or "ai-docs",
+            env.get("MATTERMOST_REVIEW_CHANNEL") or "ai-review",
+        ]:
+            if value and value not in watch_channels:
+                watch_channels.append(value)
+    return {
+        "env_file": str(MATTERMOST_INBOX_ENV),
+        "has_incoming_webhook": bool(env.get("MATTERMOST_INCOMING_WEBHOOK_URL")),
+        "has_outgoing_token": bool(env.get("MATTERMOST_OUTGOING_TOKEN")),
+        "has_bot_token": bool(env.get("MATTERMOST_BOT_TOKEN")),
+        "base_url": env.get("MATTERMOST_BASE_URL") or "http://127.0.0.1:8065",
+        "netbird_url": env.get("MATTERMOST_NETBIRD_URL") or "http://100.87.238.153:8065",
+        "lan_url": env.get("MATTERMOST_LAN_URL") or "http://192.168.123.71:8065",
+        "hub_projects_netbird": env.get("HUB_PROJECTS_NETBIRD_URL") or env.get("HUB_PROJECTS_URL") or "http://100.87.238.153:9800/projects",
+        "hub_projects_lan": env.get("HUB_PROJECTS_LAN_URL") or "http://192.168.123.71:9800/projects",
+        "team": env.get("MATTERMOST_TEAM") or "charlie",
+        "channels": {
+            "inbox": env.get("MATTERMOST_INBOX_CHANNEL") or "ai-inbox",
+            "tasks": env.get("MATTERMOST_TASKS_CHANNEL") or "ai-tasks",
+            "review": env.get("MATTERMOST_REVIEW_CHANNEL") or "ai-review",
+            "images": env.get("MATTERMOST_IMAGES_CHANNEL") or "ai-images",
+            "docs": env.get("MATTERMOST_DOCS_CHANNEL") or "ai-docs",
+        },
+        "watch_channels": watch_channels,
+    }
+
+
+def _mattermost_post(text: str, channel: str = "") -> dict:
+    env = _load_simple_env(MATTERMOST_INBOX_ENV)
+    webhook = env.get("MATTERMOST_INCOMING_WEBHOOK_URL", "").strip()
+    if not webhook:
+        return {"ok": False, "skipped": True, "reason": "MATTERMOST_INCOMING_WEBHOOK_URL not configured"}
+    payload = {
+        "text": text[:12000],
+        "username": env.get("MATTERMOST_BOT_DISPLAY", "Charlie AI Hub"),
+        "icon_emoji": env.get("MATTERMOST_BOT_ICON", ":robot_face:"),
+    }
+    if channel:
+        payload["channel"] = channel
+    req = urllib.request.Request(
+        webhook,
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            body = resp.read(4000).decode("utf-8", errors="replace")
+        return {"ok": 200 <= resp.status < 300, "status": resp.status, "body": body[-1000:]}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+def _project_due_state(task: dict, today: str) -> str:
+    due_date = str(task.get("due_date") or "").strip()
+    if not due_date or task.get("status") in {"done", "cancelled"}:
+        return "none"
+    if due_date < today:
+        return "overdue"
+    if due_date == today:
+        return "today"
+    try:
+        delta = (datetime.fromisoformat(due_date).date() - datetime.fromisoformat(today).date()).days
+        return "soon" if delta <= 3 else "scheduled"
+    except ValueError:
+        return "none"
+
+
+def _normalize_project_task(task: dict, today: str) -> dict:
+    item = dict(task)
+    item.setdefault("priority", "medium")
+    item.setdefault("tags", [])
+    item.setdefault("dependencies", [])
+    item.setdefault("acceptance", "")
+    item.setdefault("completion_evidence", "")
+    item.setdefault("blocker", "")
+    item.setdefault("due_date", "")
+    item.setdefault("estimate_minutes", 0)
+    item.setdefault("workspace", "")
+    item.setdefault("execution_policy", "")
+    item["progress"] = _bounded_int(item.get("progress"))
+    item["due_state"] = _project_due_state(item, today)
+    dispatch = item.get("dispatch") if isinstance(item.get("dispatch"), dict) else {}
+    dispatch_id = dispatch.get("dispatch_id") or item.get("dispatch_id")
+    if dispatch_id:
+        state_path = DISPATCH_TASKS_DIR / f"{dispatch_id}.json"
+        try:
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+            attempts = state.get("attempts") or []
+            latest = attempts[-1] if attempts else {}
+            item["dispatch_state"] = {
+                "id": state.get("id"),
+                "status": state.get("status"),
+                "initial_target": state.get("initial_target"),
+                "current_target": latest.get("target"),
+                "attempt_status": latest.get("status"),
+                "observed_reason": latest.get("observed_reason") or latest.get("failure_reason"),
+                "codex_review_request": state.get("codex_review_request"),
+                "codex_review_status": state.get("codex_review_status"),
+                "failure_pack": state.get("codex_failure_pack"),
+            }
+        except (OSError, json.JSONDecodeError):
+            item["dispatch_state"] = {"id": dispatch_id, "status": "pending"}
+    if dispatch.get("unit"):
+        try:
+            unit_state = subprocess.run(
+                ["systemctl", "--user", "show", str(dispatch["unit"]), "-p", "ActiveState", "-p", "SubState", "-p", "Result", "--value"],
+                capture_output=True, text=True, timeout=3, check=False,
+            )
+            values = (unit_state.stdout or "").splitlines()
+            item["runner_state"] = {"unit": dispatch["unit"], "active": values[0] if values else "unknown", "sub": values[1] if len(values) > 1 else "", "result": values[2] if len(values) > 2 else ""}
+        except (OSError, subprocess.TimeoutExpired):
+            item["runner_state"] = {"unit": dispatch["unit"], "active": "unknown"}
+    return item
+
+
+def _project_control_snapshot() -> dict:
+    control = _load_project_control()
+    raw_tasks = control.get("tasks") if isinstance(control.get("tasks"), list) else []
+    today = datetime.now().date().isoformat()
+    tasks = [_normalize_project_task(item, today) for item in raw_tasks]
+    by_project: dict[str, dict] = {p.get("id", ""): _project_with_progress(p) for p in _all_projects()}
+    for item in tasks:
+        project = by_project.get(item.get("project_id", ""))
+        if project:
+            item["project_name"] = project.get("name")
+            item["project_group"] = project.get("group")
+    counts: dict[str, int] = {}
+    for item in tasks:
+        counts[item.get("status", "unknown")] = counts.get(item.get("status", "unknown"), 0) + 1
+    actionable = [item for item in tasks if item.get("status") not in {"done", "cancelled"}]
+    completed = [item for item in tasks if item.get("status") == "done"]
+    overdue = [item for item in actionable if item.get("due_state") == "overdue"]
+    blocked = [item for item in actionable if item.get("status") == "blocked" or item.get("blocker")]
+    completion_base = len(completed) + len(actionable)
+    return {
+        "projects": list(by_project.values()),
+        "tasks": sorted(tasks, key=lambda x: x.get("created_at", ""), reverse=True),
+        "summary": {
+            "projects": len(by_project),
+            "tasks": len(tasks),
+            "active": len(actionable),
+            "completed": len(completed),
+            "blocked": len(blocked),
+            "overdue": len(overdue),
+            "review": counts.get("review", 0),
+            "completion_rate": round(len(completed) * 100 / completion_base) if completion_base else 0,
+            "counts": counts,
+        },
+        "decisions": control.get("decisions", [])[-80:],
+        "state_file": str(PROJECT_CONTROL_FILE),
+        "updated_at": control.get("updated_at"),
+    }
+
+
+def _project_task_prompt(task: dict) -> str:
+    return "\n".join([
+        f"项目: {task.get('project_name') or task.get('project_id')}",
+        f"任务: {task.get('title')}",
+        f"前景: {task.get('outlook') or '待评估'}",
+        f"目标: {task.get('goal') or task.get('title')}",
+        f"执行窗口: {task.get('window')}",
+        f"审批状态: {task.get('approval')}",
+        "",
+        str(task.get("brief") or task.get("title") or "").strip(),
+        "",
+        "要求:",
+        "- 先只做必要上下文读取，避免大范围搜索。",
+        "- 给出进度、风险、验收证据和后续建议。",
+        "- 如果需要高风险写操作，先停下并回报等待人工确认。",
+    ])
+
+
+def _create_project_task_from_body(body: dict, source: str = "hub-projects") -> tuple[dict, int]:
+    project_id = (body.get("project_id") or "").strip()
+    title = (body.get("title") or "").strip()
+    if not title:
+        return {"error": "title required"}, 400
+    projects = {p.get("id"): p for p in _all_projects()}
+    if not project_id:
+        project_id = next(iter(projects.keys()), "system-home")
+    if project_id not in projects:
+        return {"error": "unknown project_id"}, 400
+    priority = str(body.get("priority") or "medium").strip().lower()
+    if priority not in PROJECT_TASK_PRIORITIES:
+        return {"error": "invalid priority"}, 400
+    assignee = str(body.get("assignee") or "goose_aider").strip().lower()
+    if assignee not in PROJECT_TASK_ASSIGNEES:
+        return {"error": "invalid assignee"}, 400
+    due_date = str(body.get("due_date") or "").strip()
+    if due_date:
+        try:
+            datetime.fromisoformat(due_date)
+        except ValueError:
+            return {"error": "invalid due_date"}, 400
+    now = datetime.now().isoformat()
+    tags = body.get("tags") or []
+    if isinstance(tags, str):
+        tags = [part.strip() for part in tags.split(",") if part.strip()]
+    dependencies = body.get("dependencies") or []
+    if isinstance(dependencies, str):
+        dependencies = [part.strip() for part in dependencies.split(",") if part.strip()]
+    attachments = body.get("attachments") or []
+    if not isinstance(attachments, list):
+        attachments = [str(attachments)]
+    artifact_paths = body.get("artifact_paths") or []
+    if not isinstance(artifact_paths, list):
+        artifact_paths = [str(artifact_paths)]
+    source = str(body.get("source") or source)[:80]
+    source_ref = str(body.get("source_ref") or "")[:500]
+    if source_ref:
+        existing_data = _load_project_control()
+        existing = next((
+            item for item in existing_data.get("tasks", [])
+            if item.get("source") == source and item.get("source_ref") == source_ref and item.get("status") != "cancelled"
+        ), None)
+        if existing:
+            return {"ok": True, "duplicate": True, "task": existing}, 200
+    task = {
+        "id": f"pt_{datetime.now().strftime('%Y%m%d%H%M%S')}_{hashlib.sha1(title.encode('utf-8')).hexdigest()[:8]}",
+        "project_id": project_id,
+        "project_name": projects[project_id].get("name"),
+        "title": title[:160],
+        "brief": (body.get("brief") or title).strip()[:4000],
+        "goal": (body.get("goal") or "").strip()[:1000],
+        "outlook": (body.get("outlook") or "").strip()[:1000],
+        "acceptance": (body.get("acceptance") or "").strip()[:2000],
+        "completion_evidence": "",
+        "priority": priority,
+        "due_date": due_date,
+        "tags": [str(tag)[:40] for tag in tags[:12]],
+        "dependencies": [str(item)[:120] for item in dependencies[:12]],
+        "estimate_minutes": _bounded_int(body.get("estimate_minutes"), 0, 100000),
+        "blocker": "",
+        "assignee": assignee,
+        "workspace": str(body.get("workspace") or "").strip()[:500],
+        "execution_policy": "single_writer_goose_aider" if assignee == "goose_aider" else ("read_only_plan" if assignee == "plan" else "legacy_op_crush"),
+        "window": (body.get("window") or "night").strip().lower(),
+        "approval": (body.get("approval") or "pending").strip().lower(),
+        "status": "pending_approval",
+        "progress": 0,
+        "source": source,
+        "source_ref": source_ref,
+        "attachments": [str(item)[:500] for item in attachments[:12]],
+        "artifact_paths": [str(item)[:500] for item in artifact_paths[:12]],
+        "created_at": now,
+        "updated_at": now,
+        "events": [{"ts": now, "event": "created", "source": source}],
+    }
+    data = _load_project_control()
+    data["tasks"] = [task] + [x for x in data.get("tasks", []) if x.get("id") != task["id"]]
+    _save_project_control(data)
+    return {"ok": True, "task": task}, 200
+
+
+def _project_task_workspace(task: dict) -> tuple[str, str]:
+    """Return a safe workspace for the Goose -> Aider single-writer path."""
+    raw = str(task.get("workspace") or "").strip()
+    if not raw:
+        return "", "workspace is required for Goose -> Aider tasks"
+    try:
+        workspace = Path(raw).expanduser().resolve()
+    except OSError:
+        return "", "workspace cannot be resolved"
+    home = Path.home().resolve()
+    if not workspace.is_dir() or (workspace != home and home not in workspace.parents):
+        return "", "workspace must be an existing directory under the home workspace"
+    return str(workspace), ""
+
+
+def _dispatch_goose_aider_task(task: dict, target: str) -> dict:
+    workspace, error = _project_task_workspace(task)
+    if error:
+        return {"ok": False, "target": target, "error": error}
+    mode = "diagnose" if target == "plan" else "auto"
+    task_id = re.sub(r"[^a-zA-Z0-9_-]", "-", str(task.get("id") or "task"))[:70]
+    unit = f"hub-{mode}-{task_id}"
+    PROJECT_TASK_RUNS_DIR.mkdir(parents=True, exist_ok=True)
+    log_file = PROJECT_TASK_RUNS_DIR / f"{task_id}.log"
+    router = Path.home() / ".local/bin/agent-goose-aider-router"
+    command = [str(router), mode, "--workspace", workspace, _project_task_prompt(task)]
+    shell_command = "exec " + " ".join(shlex.quote(item) for item in command)
+    shell_command += f" >> {shlex.quote(str(log_file))} 2>&1"
+    try:
+        proc = subprocess.run(
+            [
+                "systemd-run", "--user", "--no-block", "--collect",
+                f"--unit={unit}",
+                f"--description=Hub {mode} task {task_id}",
+                f"--working-directory={workspace}",
+                "--property=RuntimeMaxSec=2100",
+                "--property=MemoryHigh=3G",
+                "--property=TasksMax=220",
+                "--property=Nice=10",
+                "/bin/bash", "-lc", shell_command,
+            ],
+            capture_output=True, text=True, timeout=12, stdin=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {"ok": False, "target": target, "error": str(exc)}
+    return {
+        "ok": proc.returncode == 0,
+        "target": target,
+        "selected_target": target,
+        "runner": "goose_aider",
+        "mode": mode,
+        "unit": unit,
+        "workspace": workspace,
+        "log": str(log_file),
+        "returncode": proc.returncode,
+        "stdout": (proc.stdout or "").strip()[-1600:],
+        "stderr": (proc.stderr or "").strip()[-1600:],
+    }
+
+
+def _dispatch_project_task(task: dict, target: str) -> dict:
+    target = target if target in PROJECT_TASK_ASSIGNEES else "auto"
+    if target == "auto":
+        # A project task with a concrete workspace is a code/config task by
+        # default. Keep OP for the legacy no-workspace queue only.
+        target = "goose_aider" if task.get("workspace") else "op"
+    if target in {"goose_aider", "plan"}:
+        return _dispatch_goose_aider_task(task, target)
+    title = str(task.get("title") or "项目任务")[:90]
+    prompt = _project_task_prompt(task)
+    dispatch_bin = str(Path.home() / ".local/bin/agent-dispatch")
+    proc = subprocess.run(
+        [dispatch_bin, "submit", "--target", target, "--title", title, prompt],
+        capture_output=True,
+        text=True,
+        timeout=45,
+        stdin=subprocess.DEVNULL,
+    )
+    result = {
+        "ok": proc.returncode == 0,
+        "target": target,
+        "returncode": proc.returncode,
+        "stdout": (proc.stdout or "").strip()[-1600:],
+        "stderr": (proc.stderr or "").strip()[-1600:],
+    }
+    try:
+        payload = json.loads(proc.stdout or "{}")
+        if payload.get("id"):
+            result["dispatch_id"] = payload["id"]
+            result["selected_target"] = payload.get("target")
+    except json.JSONDecodeError:
+        pass
+    return result
+
+
+@app.get("/api/projects/control")
+async def projects_control_api():
+    return _project_control_snapshot()
+
+
+@app.get("/api/projects/comm-sync")
+async def projects_comm_sync_api():
+    path = Path.home() / ".local/state/comm-project-sync/latest.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return {"ok": True, "state_file": str(path), **data}
+    except Exception as exc:
+        return JSONResponse({"ok": False, "state_file": str(path), "error": str(exc)}, status_code=404)
+
+
+@app.post("/api/projects/tasks")
+async def project_task_create(body: dict):
+    result, status = _create_project_task_from_body(body, "hub-projects")
+    if status >= 400:
+        return JSONResponse(result, status_code=status)
+    return result
+
+
+@app.post("/api/projects/tasks/{task_id}/approve")
+async def project_task_approve(task_id: str, body: dict):
+    data = _load_project_control()
+    tasks = data.get("tasks", [])
+    task = next((x for x in tasks if x.get("id") == task_id), None)
+    if not task:
+        return JSONResponse({"error": "task not found"}, status_code=404)
+    if task.get("status") not in {"pending_approval", "dispatch_failed"}:
+        return JSONResponse({"error": "task is not awaiting approval"}, status_code=409)
+    target = (body.get("target") or task.get("assignee") or "auto").strip().lower()
+    if target not in PROJECT_TASK_ASSIGNEES:
+        return JSONResponse({"error": "invalid dispatch target"}, status_code=400)
+    task["approval"] = "approved"
+    task["status"] = "queued"
+    task["updated_at"] = datetime.now().isoformat()
+    task.setdefault("events", []).append({"ts": task["updated_at"], "event": "approved", "source": "hub-projects", "target": target})
+    result = _dispatch_project_task(task, target)
+    task["dispatch"] = result
+    task["status"] = "delegated" if result.get("ok") else "dispatch_failed"
+    task["updated_at"] = datetime.now().isoformat()
+    task.setdefault("events", []).append({"ts": task["updated_at"], "event": task["status"], "source": "agent-dispatch", "result": result})
+    data["decisions"] = (data.get("decisions") or []) + [{"ts": task["updated_at"], "task_id": task_id, "decision": "approve", "target": target, "ok": result.get("ok")}]
+    _save_project_control(data)
+    return {"ok": bool(result.get("ok")), "task": task, "dispatch": result}
+
+
+@app.get("/api/projects/tasks/{task_id}/log")
+async def project_task_log(task_id: str):
+    task = next((x for x in _load_project_control().get("tasks", []) if x.get("id") == task_id), None)
+    if not task:
+        return JSONResponse({"error": "task not found"}, status_code=404)
+    log_name = str((task.get("dispatch") or {}).get("log") or "")
+    try:
+        log_path = Path(log_name).resolve()
+        run_root = PROJECT_TASK_RUNS_DIR.resolve()
+        if run_root not in log_path.parents or not log_path.is_file():
+            raise OSError("log unavailable")
+        text = log_path.read_text(encoding="utf-8", errors="replace")[-12000:]
+    except (OSError, ValueError):
+        text = "No runner log is available yet."
+    return {"task_id": task_id, "log": text}
+
+
+@app.post("/api/projects/tasks/{task_id}/update")
+async def project_task_update(task_id: str, body: dict):
+    data = _load_project_control()
+    task = next((x for x in data.get("tasks", []) if x.get("id") == task_id), None)
+    if not task:
+        return JSONResponse({"error": "task not found"}, status_code=404)
+    requested_status = str(body.get("status") or task.get("status") or "").strip().lower()
+    if requested_status not in PROJECT_TASK_STATUSES:
+        return JSONResponse({"error": "invalid status"}, status_code=400)
+    if "priority" in body and str(body["priority"]).lower() not in PROJECT_TASK_PRIORITIES:
+        return JSONResponse({"error": "invalid priority"}, status_code=400)
+    if "due_date" in body and body["due_date"]:
+        try:
+            datetime.fromisoformat(str(body["due_date"]))
+        except ValueError:
+            return JSONResponse({"error": "invalid due_date"}, status_code=400)
+    if "title" in body and not str(body["title"] or "").strip():
+        return JSONResponse({"error": "title required"}, status_code=400)
+    evidence = str(body.get("completion_evidence") or task.get("completion_evidence") or "").strip()
+    acceptance = str(body.get("acceptance") or task.get("acceptance") or "").strip()
+    if requested_status == "done" and acceptance and not evidence:
+        return JSONResponse({"error": "completion evidence required"}, status_code=400)
+    text_limits = {
+        "outlook": 1000, "brief": 4000, "goal": 1000, "acceptance": 2000,
+        "completion_evidence": 4000, "blocker": 2000,
+    }
+    for key, limit in text_limits.items():
+        if key in body:
+            task[key] = str(body[key] or "").strip()[:limit]
+    if "title" in body:
+        task["title"] = str(body["title"]).strip()[:160]
+    if "assignee" in body:
+        assignee = str(body["assignee"] or "goose_aider").strip().lower()
+        if assignee not in PROJECT_TASK_ASSIGNEES:
+            return JSONResponse({"error": "invalid assignee"}, status_code=400)
+        task["assignee"] = assignee
+        task["execution_policy"] = "single_writer_goose_aider" if assignee == "goose_aider" else ("read_only_plan" if assignee == "plan" else "legacy_op_crush")
+    if "workspace" in body:
+        task["workspace"] = str(body["workspace"] or "").strip()[:500]
+    if "status" in body:
+        task["status"] = requested_status
+    if "progress" in body:
+        task["progress"] = _bounded_int(body["progress"])
+    if "priority" in body:
+        task["priority"] = str(body["priority"]).lower()
+    if "due_date" in body:
+        task["due_date"] = str(body["due_date"] or "").strip()
+    if "estimate_minutes" in body:
+        task["estimate_minutes"] = _bounded_int(body["estimate_minutes"], 0, 100000)
+    for key in ("tags", "dependencies"):
+        if key in body:
+            value = body[key]
+            if isinstance(value, str):
+                value = [part.strip() for part in value.split(",") if part.strip()]
+            task[key] = [str(item)[:120] for item in (value or [])[:12]]
+    if requested_status == "done":
+        task["progress"] = 100
+        task["completed_at"] = datetime.now().isoformat()
+    elif task.get("status") == "blocked" and not task.get("blocker"):
+        return JSONResponse({"error": "blocker required"}, status_code=400)
+    else:
+        task.pop("completed_at", None)
+    task["updated_at"] = datetime.now().isoformat()
+    task.setdefault("events", []).append({"ts": task["updated_at"], "event": "updated", "source": "hub-projects", "fields": list(body.keys())})
+    _save_project_control(data)
+    return {"ok": True, "task": task}
+
+
+@app.post("/api/projects/{project_id}/milestones/{milestone_id}")
+async def project_milestone_update(project_id: str, milestone_id: str, body: dict):
+    status = str(body.get("status") or "").strip().lower()
+    if status not in {"pending", "in_progress", "done"}:
+        return JSONResponse({"error": "invalid milestone status"}, status_code=400)
+    projects = _load_custom_projects()
+    builtin = next((p for p in PROJECTS_DEF if p.get("id") == project_id), None)
+    project = next((p for p in projects if p.get("id") == project_id), None)
+    if project is None and builtin is not None:
+        project = json.loads(json.dumps(builtin, ensure_ascii=False))
+        projects.append(project)
+    if project is None:
+        return JSONResponse({"error": "project not found"}, status_code=404)
+    milestone = next((m for m in project.get("milestones", []) if m.get("id") == milestone_id), None)
+    if milestone is None:
+        return JSONResponse({"error": "milestone not found"}, status_code=404)
+    milestone["status"] = status
+    milestone["updated_at"] = datetime.now().isoformat()
+    _save_custom_projects(projects)
+    return {"ok": True, "project": _project_with_progress(project), "milestone": milestone}
 
 
 def _append_op_inbox_task(source: str, message: str, tags: list[str] | None = None, metadata: dict | None = None) -> dict:
@@ -3010,7 +4281,7 @@ async def _letta_store_entities(content, entities, action):
         await client.post(f"{LETTA_API}/v1/agents/{LETTA_AGENT_ID}/archival-memory", json={"text": mem_text})
 
 @app.websocket("/ws/dialogue")
-async def ws_dialogue(ws):
+async def ws_dialogue(ws: WebSocket):
     feed = cfg.DIALOGUE_FEED
     lines = sum(1 for _ in open(feed)) if feed.exists() else 0
     await ws.accept()
@@ -3027,7 +4298,7 @@ async def ws_dialogue(ws):
     except Exception: pass
 
 @app.websocket("/ws/status")
-async def ws_status(ws):
+async def ws_status(ws: WebSocket):
     await ws.accept()
     try:
         while True:
@@ -3265,6 +4536,89 @@ async def op_learning_page():
 async def workspace_page():
     p = STATIC_DIR / "workspace.html"
     return FileResponse(p) if p.exists() else HTMLResponse("<h1>工作区聚合页面不存在</h1>", status_code=404)
+
+@app.get("/projects")
+async def projects_page():
+    page = STATIC_DIR / "projects.html"
+    if page.exists():
+        return FileResponse(page)
+    return HTMLResponse("""<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>项目管理 · Hub</title>
+<style>
+html,body{margin:0;min-height:100%;background:#0b0f14;color:#d8dee9;font:14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:2;display:flex;gap:8px;align-items:center;padding:9px 10px;background:#11151b;border-bottom:1px solid #303948}
+header a,button,select,input,textarea{border:1px solid #303948;border-radius:7px;background:#171a21;color:#eceff4;font:13px system-ui,sans-serif}
+header a,button{padding:8px 10px;text-decoration:none}button.primary{border-color:#4f8fcc;background:#1c3d5d}button.good{border-color:#2f7d4a;background:#12351f}#float-close{display:none}
+main{box-sizing:border-box;max-width:1180px;margin:0 auto;padding:12px 10px 70px;display:grid;gap:12px}
+.grid{display:grid;gap:10px}.projects{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}.tasks{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card,.panel{border:1px solid #303948;background:#11151b;border-radius:8px;padding:11px;display:grid;gap:8px}.panel{grid-template-columns:1fr}
+h1{font-size:16px;margin:0}h2{font-size:15px;margin:0}.muted{color:#aeb8c5}.pill{display:inline-block;border:1px solid #3a4656;border-radius:999px;padding:2px 7px;background:#171a21;font-size:12px;color:#c9d3df}
+.barline{height:7px;border-radius:99px;background:#263141;overflow:hidden}.barline span{display:block;height:100%;background:#5e9bd3}
+label{display:grid;gap:4px;color:#cbd5e1}input,select,textarea{box-sizing:border-box;width:100%;padding:9px}textarea{min-height:86px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.actions{display:flex;gap:7px;flex-wrap:wrap}.error{color:#ffb4b4}.ok{color:#9ee6b2}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:8px;border:1px solid #303948;border-radius:7px;background:#080c11;color:#cbd5e1;max-height:180px;overflow:auto}
+@media(max-width:640px){.row{grid-template-columns:1fr}header{overflow:auto}.projects,.tasks{grid-template-columns:1fr}}
+</style></head><body>
+<header><button id="float-close" onclick="closeFloat()">关闭</button><a href="http://100.87.238.153:9800/workspace" target="_blank" rel="noopener">工作区</a><a href="http://100.87.238.153:9800/go/plane" target="_blank" rel="noopener">Plane</a><a href="http://100.87.238.153:9800/go/huly" target="_blank" rel="noopener">Huly</a><a href="http://100.87.238.153:9800/go/fastgpt" target="_blank" rel="noopener">FastGPT</a><a href="http://100.87.238.153:9800/go/openagents" target="_blank" rel="noopener">OpenAgents</a><button onclick="load()">刷新</button><h1>项目管理</h1></header>
+<main>
+  <section class="panel">
+    <h2>新建任务</h2>
+    <div class="row"><label>项目<select id="project"></select></label><label>执行策略<select id="assignee"><option value="goose_aider">智能代码 · Goose → Aider</option><option value="plan">只读计划 · Goose</option><option value="op">OP · 短会话</option><option value="crush">Crush · 故障诊断</option></select></label></div>
+    <label>工作区（智能代码任务必填）<input id="workspace" placeholder="例如：/var/home/charlie/hub"></label>
+    <label>标题<input id="title" placeholder="例如：整理项目路线图并生成下一步执行清单"></label>
+    <label>前景<textarea id="outlook" placeholder="机会、价值、风险、为什么值得做"></textarea></label>
+    <label>任务说明<textarea id="brief" placeholder="交给 OP/Crush 的具体要求"></textarea></label>
+    <div class="actions"><button class="primary" onclick="createTask()">加入待审批</button><span id="msg" class="muted"></span></div>
+  </section>
+  <section><h2>项目</h2><div id="projects" class="grid projects"></div></section>
+  <section><h2>审批 / 进度</h2><div id="tasks" class="grid tasks"></div></section>
+</main>
+<script>
+let state={projects:[],tasks:[]};
+const $=id=>document.getElementById(id);
+function esc(v){return String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function pct(n){return Math.max(0,Math.min(100,Number(n||0)));}
+function framed(){try{return window.parent&&window.parent!==window;}catch(e){return false;}}
+function closeFloat(){try{const p=window.parent.document.getElementById('codex-project-float');if(p)p.classList.remove('open','min');}catch(e){}}
+if(framed()){document.documentElement.classList.add('framed');setTimeout(()=>{const b=$('float-close');if(b)b.style.display='inline-block';},0);}
+async function load(){
+  const r=await fetch('/api/projects/control',{cache:'no-store'});
+  state=await r.json();
+  $('project').innerHTML=(state.projects||[]).map(p=>`<option value="${esc(p.id)}">${esc(p.name)} · ${esc(p.group||'')}</option>`).join('');
+  $('projects').innerHTML=(state.projects||[]).map(p=>`<div class="card"><h2>${esc(p.name)}</h2><div class="muted">${esc(p.description||'')}</div><div><span class="pill">${esc(p.group||'project')}</span> <span class="pill">${esc(p.progress||0)}%</span></div><div class="barline"><span style="width:${pct(p.progress)}%"></span></div><div class="muted">完成 ${esc(p.done_count||0)} · 进行 ${esc(p.in_progress_count||0)}</div></div>`).join('');
+  $('tasks').innerHTML=(state.tasks||[]).map(t=>taskCard(t)).join('')||'<div class="card muted">暂无项目任务</div>';
+}
+function taskCard(t){
+  const log=t.dispatch?`<pre>${esc((t.dispatch.stdout||t.dispatch.stderr||'').slice(-1200))}</pre>`:'';
+  const can=t.status==='pending_approval'||t.status==='dispatch_failed'||t.approval==='pending';
+  const runner=t.runner_state?` · runner ${esc(t.runner_state.active||'unknown')}`:'';
+  return `<div class="card"><h2>${esc(t.title)}</h2><div class="muted">${esc(t.project_name||t.project_id)} · ${esc(t.assignee||'auto')} · ${esc(t.workspace||'未指定工作区')}${runner}</div><div><span class="pill">${esc(t.status)}</span> <span class="pill">${esc(t.execution_policy||'legacy')}</span></div><div>${esc(t.outlook||'')}</div><div class="actions">${can?`<button class="good" onclick="approve('${esc(t.id)}','${esc(t.assignee||'goose_aider')}')">批准并派发</button>`:''}<button onclick="progress('${esc(t.id)}')">更新进度</button>${t.dispatch&&t.dispatch.log?`<button onclick="runnerLog('${esc(t.id)}')">执行日志</button>`:''}</div>${log}</div>`;
+}
+async function createTask(){
+  $('msg').textContent='提交中...';
+  const body={project_id:$('project').value,assignee:$('assignee').value,workspace:$('workspace').value,title:$('title').value,brief:$('brief').value,outlook:$('outlook').value,window:'night'};
+  const r=await fetch('/api/projects/tasks',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+  const d=await r.json(); $('msg').textContent=r.ok?'已加入待审批':(d.error||'失败');
+  if(r.ok){$('title').value='';$('brief').value='';$('outlook').value='';load();}
+}
+async function approve(id,target){
+  const r=await fetch('/api/projects/tasks/'+encodeURIComponent(id)+'/approve',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({target})});
+  const d=await r.json(); $('msg').textContent=r.ok?'已派发':(d.error||'派发失败'); load();
+}
+async function progress(id){
+  const text=prompt('进度 0-100 或状态文字');
+  if(text==null)return;
+  const n=Number(text);
+  const body=Number.isFinite(n)?{progress:n,status:n>=100?'done':'in_progress'}:{status:text};
+  await fetch('/api/projects/tasks/'+encodeURIComponent(id)+'/update',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+  load();
+}
+async function runnerLog(id){
+  const r=await fetch('/api/projects/tasks/'+encodeURIComponent(id)+'/log',{cache:'no-store'}); const d=await r.json();
+  alert((d.log||d.error||'暂无日志').slice(-8000));
+}
+load();
+</script></body></html>""")
 
 @app.get("/contracts")
 async def contracts_page():
@@ -7628,6 +8982,12 @@ async def get_clicks_ranked_api():
 async def phone_health_page():
     p = STATIC_DIR / "phone-health.html"
     return FileResponse(p) if p.exists() else HTMLResponse("<h1>手机健康页面不存在</h1>", status_code=404)
+
+
+@app.get("/moonlight-pair")
+async def moonlight_pair_page():
+    p = STATIC_DIR / "moonlight-pair.html"
+    return FileResponse(p) if p.exists() else HTMLResponse("<h1>配对页面不存在</h1>", status_code=404)
 
 
 if __name__ == "__main__":

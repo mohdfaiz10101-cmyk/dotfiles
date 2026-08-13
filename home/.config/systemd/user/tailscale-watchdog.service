@@ -1,0 +1,6 @@
+[Unit]
+Description=Tailscale watchdog (start tailscaled if not running)
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/tailscale-watchdog.sh

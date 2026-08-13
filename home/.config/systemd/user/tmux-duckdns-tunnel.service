@@ -1,0 +1,17 @@
+[Unit]
+Description=tmux-duckdns-tunnel manager
+After=network-online.target frpc.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/tmux-duckdns-tunnel/tunnel_manager.py start --port 18080
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

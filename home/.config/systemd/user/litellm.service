@@ -1,0 +1,19 @@
+[Unit]
+Description=LiteLLM Service
+After=network.target
+
+[Service]
+Type=notify
+Environment=PODMAN_SYSTEMD_UNIT=litellm.service
+Delegate=yes
+ExecStart=/usr/bin/podman run --name litellm --replace --rm --cgroups=split --network host --sdnotify=conmon -d --security-opt label=disable -v /var/home/charlie/ai/litellm-config.yml:/app/config.yaml --env-file /var/home/charlie/ai/litellm.env ghcr.io/berriai/litellm:main-stable --port 4002 --config /app/config.yaml
+ExecStop=/usr/bin/podman rm -f litellm
+Restart=always
+RestartSec=5
+TimeoutStartSec=900
+TimeoutStopSec=30
+MemoryHigh=2G
+MemoryMax=3G
+
+[Install]
+WantedBy=default.target

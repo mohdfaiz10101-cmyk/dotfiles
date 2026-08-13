@@ -1,0 +1,14 @@
+[Unit]
+Description=Hermes Web UI local proxy (:8787 -> :18648)
+After=hermes-web-ui.service
+Requires=hermes-web-ui.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /var/home/charlie/.local/bin/hermes-8787-http-proxy.js
+Restart=on-failure
+RestartSec=3
+MemoryMax=128M
+
+[Install]
+WantedBy=default.target

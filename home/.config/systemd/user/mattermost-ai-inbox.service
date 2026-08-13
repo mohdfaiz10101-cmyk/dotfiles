@@ -1,0 +1,13 @@
+[Unit]
+Description=Mattermost AI Inbox bridge (poll channel/files into Hub)
+After=mattermost.service hub-api.service network-online.target
+Wants=mattermost.service hub-api.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/mattermost-ai-inbox loop --interval 30
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

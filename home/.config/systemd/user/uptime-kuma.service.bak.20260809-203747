@@ -1,0 +1,16 @@
+[Unit]
+Description=Uptime Kuma local availability monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/mkdir -p %h/.local/share/uptime-kuma
+ExecStart=/usr/bin/podman run --name uptime-kuma --replace --rm --pull=never -p 0.0.0.0:3002:3001 -v %h/.local/share/uptime-kuma:/app/data:Z docker.1ms.run/louislam/uptime-kuma:1
+ExecStop=/usr/bin/podman stop -t 20 uptime-kuma
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

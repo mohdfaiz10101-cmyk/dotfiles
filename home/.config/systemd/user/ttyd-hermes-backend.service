@@ -1,0 +1,21 @@
+[Unit]
+Description=Hermes TTY backend (hermes-cli, :19920)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/local/bin/ttyd -W -c hermes:w19900422 \
+  -I /var/home/charlie/.local/share/ttyd-hermes/index.html \
+  -t "rendererType=canvas" \
+  -t "scrollback=50000" \
+  -t "scrollOnUserInput=true" \
+  -P 15 \
+  -p 19920 -i 127.0.0.1 \
+  -T xterm-256color /var/home/charlie/.local/bin/ttyd-hermes-entry
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

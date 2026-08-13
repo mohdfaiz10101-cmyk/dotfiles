@@ -1,0 +1,18 @@
+[Unit]
+Description=Codex Provider Bridge (instance 3)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/share/codex-provider-bridge-3
+ExecStart=%h/.local/share/codex-provider-bridge-3/.venv/bin/python %h/.local/share/codex-provider-bridge-3/main.py --auth auto
+Restart=always
+RestartSec=2
+Environment=HTTP_PROXY=http://127.0.0.1:7890
+Environment=HTTPS_PROXY=http://127.0.0.1:7890
+Environment=NO_PROXY=localhost,127.0.0.1,::1
+Environment=HOST=127.0.0.1
+Environment=PORT=8003
+
+[Install]
+WantedBy=default.target

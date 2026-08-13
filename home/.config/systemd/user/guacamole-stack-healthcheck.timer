@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Apache Guacamole stack health check every 2 minutes
+
+[Timer]
+OnBootSec=120s
+OnUnitActiveSec=2min
+AccuracySec=20s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes Workflow Evolve (oneshot)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hermes-workflow-evolve.py
