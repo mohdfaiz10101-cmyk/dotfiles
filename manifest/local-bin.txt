@@ -1242,6 +1242,7 @@ universal-snapshot
 unlock-keyring.py
 update-api-quota.sh
 upload-cookies-to-server
+upload-home-backup-to-github.sh
 upnp-ao-18082.py
 upnp-frps-phone-17000.py
 upnp-opencode-18910.py

@@ -8,3 +8,9 @@
 	hooksPath = /home/charlie/.config/git/hooks
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/var/home/charlie/.local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/var/home/charlie/.local/bin/gh auth git-credential

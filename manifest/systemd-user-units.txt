@@ -308,6 +308,7 @@ libpod-333e33654dfc20abe1fd8b0e8469742908b8427757493f1b1ab8874acfd83a1a.scope   
 libpod-478b9e74f87d92de2201cb15d679b9ffaf170f14a93fb3f7d8598f60dfeacbaf.scope          transient -
 libpod-91976b0dd27df4a75dd68f9b58c1c9499f690592641b55ae0210bc0ff4d10031.scope          transient -
 libpod-a01de3ff4a87c1c956c47f36b4e08ac8676e3cb2171da1c37e685b3b42dbb33e.scope          transient -
+libpod-f5642d01721317f3ac481fc5c0fccebc5d24e18b18be8fff3cb02ab60dc5a747.scope          transient -
 libpod-f7e22ec2729f2dbba6d5fe3e7f2bf9f2ee0403b6a4ca265b917f7990bfbd2136.scope          transient -
 litellm-keepalive.service                                                              static    -
 litellm-keepalive.timer                                                                disabled  disabled
@@ -339,7 +340,6 @@ memory-vector-ingest.service                                                    
 memory-vector-ingest.timer                                                             enabled   disabled
 mihomo-backup.service                                                                  static    -
 mihomo-guardian.timer                                                                  disabled  disabled
-mihomo.service                                                                         enabled   disabled
 mobile-ai-browser-cleanup.service                                                      static    -
 mobile-ai-browser-cleanup.timer                                                        disabled  disabled
 mobile-ai-browser.service                                                              disabled  disabled
@@ -473,7 +473,7 @@ p11-kit-server.service                                                          
 p11-kit-server.socket                                                                  disabled  disabled
 paths.target                                                                           static    -
 phone-agent-file-server.service                                                        enabled   disabled
-phone-mcp-forward.service                                                              disabled  disabled
+phone-mcp-forward.service                                                              enabled   disabled
 phone-mcp-forward-v6.service                                                           disabled  disabled
 phone-netbird-ensure.service                                                           static    -
 phone-netbird-ensure.timer                                                             enabled   disabled
@@ -632,6 +632,8 @@ ttyd-openhands-backend.service                                                  
 ttyd-openhands.service                                                                 disabled  disabled
 ttyd-session-proxy.service                                                             enabled   disabled
 tumblerd.service                                                                       static    -
+upload-home-backup.service                                                             static    -
+upload-home-backup.timer                                                               enabled   disabled
 upnp-ao-18082.timer                                                                    enabled   disabled
 upnp-opencode-18910.timer                                                              enabled   disabled
 upnp-termhive-18081.timer                                                              enabled   disabled

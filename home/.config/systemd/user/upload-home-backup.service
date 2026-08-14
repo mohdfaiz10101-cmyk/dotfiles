@@ -1,0 +1,8 @@
+[Unit]
+Description=Upload latest full home backup to GitHub Releases
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/upload-home-backup-to-github.sh
+StandardOutput=journal
+StandardError=journal
