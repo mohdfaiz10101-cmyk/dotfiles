@@ -1,7 +1,7 @@
 # Capability Registry
 
 > Generated automatically from live OpenCode config, systemd, rules, and CodeGraph.
-> Updated: 2026-08-14T19:27:04
+> Updated: 2026-08-15T19:38:16
 
 ## MCP
 
@@ -66,4 +66,41 @@
 - [MCP POLICY] `codex-account-manager` is on-demand but enabled by default
 - [MCP POLICY] `ghidra` is on-demand but enabled by default
 - [MCP POLICY] `mobile-browser-bridge` is on-demand but enabled by default
+- [NEW SERVICE] `ai-memory-monitor.service` → assign owner and Runbook
+- [NEW SERVICE] `codex-exec-memory-capture.service` → assign owner and Runbook
+- [NEW SERVICE] `hermes-memory-curator.service` → assign owner and Runbook
+- [NEW SERVICE] `letta-health-check.service` → assign owner and Runbook
+- [NEW SERVICE] `letta-mcp.service` → assign owner and Runbook
+- [NEW SERVICE] `letta-podman-proxy.service` → assign owner and Runbook
+- [NEW SERVICE] `letta-stack.service` → assign owner and Runbook
+- [NEW SERVICE] `litellm-keepalive.service` → assign owner and Runbook
+- [NEW SERVICE] `litellm.service` → assign owner and Runbook
+- [NEW SERVICE] `memory-evolution-guard.service` → assign owner and Runbook
+- [NEW SERVICE] `memory-evolution.service` → assign owner and Runbook
+- [NEW SERVICE] `memory-lifecycle.service` → assign owner and Runbook
+- [NEW SERVICE] `memory-vector-ingest.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-18910-local.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-18910-router.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-4096-proxy.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-bridge.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-capability-adapter.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-codegraph-warmup.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-codex-escalator.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-cold-archive-migrate.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-crash-auditor.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-db-cleanup.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-health-watchdog.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-knowledge-maintainer.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-rag-ingester.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-recall-optimize.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-stuck-cleaner.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-stuck-detect.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-telegram-gateway.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-telegram-watchdog.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode-zulip-gateway.service` → assign owner and Runbook
+- [NEW SERVICE] `opencode.service` → assign owner and Runbook
+- [NEW SERVICE] `openhands-letta-sync.service` → assign owner and Runbook
+- [NEW SERVICE] `termhive-daemon.service` → assign owner and Runbook
+- [NEW SERVICE] `termhive-web.service` → assign owner and Runbook
+- [NEW SERVICE] `tg-hunter-web.service` → assign owner and Runbook
 - [RULE BLOAT] `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/AGENTS.md` has 212 lines

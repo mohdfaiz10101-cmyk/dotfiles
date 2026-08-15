@@ -541,6 +541,7 @@ hermes-session-guard.sh
 hermes-session-mesh
 hermes-session-switch-audit.sh
 hermes-session-switch-check.sh
+hermes-session-to-hub-task
 hermes-skill-quality-gate
 hermes-smart-proxy.py
 hermes-stability-check.sh
@@ -565,6 +566,7 @@ hqsshd
 hqssh-hosts-info
 hqssh-tmux
 hs
+hub-agent-dispatch-supervisor
 huggingface-cli
 hypr-kdeconnect-portal
 hypr-workspace-apply

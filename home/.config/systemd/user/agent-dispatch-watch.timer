@@ -3,7 +3,7 @@ Description=Run agent dispatch watcher every minute
 
 [Timer]
 OnBootSec=60s
-OnUnitActiveSec=60s
+OnCalendar=*:0/1
 AccuracySec=10s
 Unit=agent-dispatch-watch.service
 

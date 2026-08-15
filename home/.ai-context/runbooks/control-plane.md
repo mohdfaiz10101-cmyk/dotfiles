@@ -64,6 +64,18 @@ Current direct-entry rule:
   `OpenCode` is for short exploratory chats and `Crush` for small repair work,
   not the default long-running task queue. The Super Button text command creates
   a Hub `pending_approval` task rather than starting an agent directly.
+- 2026-08-15 Hermes session continuation rule: if a user asks Codex to finish a
+  Hermes session task, first convert the unfinished session into a Hub task with
+  explicit `acceptance` and `completion_evidence` requirements. A handoff note,
+  draft message, or summary is not completion. If `agent-dispatch` returns a
+  payload with `status=failed|final_failed|dispatch_failed`, Hub must show
+  `dispatch_failed` or `blocked`, never `delegated` or `done`.
+- 2026-08-15 task completion supervision: approved Hub tasks with an
+  `agent-dispatch` id must be followed by `hub-agent-dispatch-supervisor.timer`
+  until the dispatch reaches `completed`, `blocked`, or `final_failed`. The
+  supervisor calls `agent-dispatch status --auto-handoff`, writes dispatch
+  attempts/failure packs back to Hub, and only marks `done` when real
+  `completion_evidence` exists.
 - Default code policy is **Goose diagnosis -> Aider single writer**. Choose
   `智能代码（Goose -> Aider）`, supply an existing workspace below
   `/var/home/charlie`, then approve it in Hub. Hub starts a bounded transient

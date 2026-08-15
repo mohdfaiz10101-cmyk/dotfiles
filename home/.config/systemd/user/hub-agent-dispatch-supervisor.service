@@ -1,0 +1,8 @@
+[Unit]
+Description=Sync Hub approved tasks with agent-dispatch until completion or blocker
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/hub-agent-dispatch-supervisor
+WorkingDirectory=/var/home/charlie
+TimeoutStartSec=120

@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-08-14T19:27:02
+> Updated: 2026-08-15T19:38:14
 
 | Runbook | Scope | Updated |
 |---|---|---|
@@ -11,7 +11,7 @@
 | `codegraph.md` | CodeGraph Runbook | 2026-07-20 |
 | `codex-multi-account-routing.md` | Runbook: Codex Multi-Account Routing | 2026-08-02 |
 | `communication-project-sync.md` | Runbook: Communication Project Sync | 2026-07-18 |
-| `control-plane.md` | Runbook: Unified Control Plane | 2026-08-01 |
+| `control-plane.md` | Runbook: Unified Control Plane | 2026-08-15 |
 | `crush.md` | Runbook: Crush | 2026-07-15 |
 | `desktop-theme.md` | Runbook: Codex Desktop Theme | 2026-07-16 |
 | `duckdns.md` | Runbook: DuckDNS DDNS | 2026-08-10 |
