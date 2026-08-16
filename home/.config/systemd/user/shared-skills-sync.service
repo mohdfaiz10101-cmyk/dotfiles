@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync shared skills to OpenHands-compatible skills
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/shared-skills-sync

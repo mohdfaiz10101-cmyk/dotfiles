@@ -1,0 +1,19 @@
+[Unit]
+Description=Full WeChat history export to Matrix per conversation
+After=matrix-synapse.service
+Wants=matrix-synapse.service
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-full-export-run
+Restart=on-failure
+RestartSec=30
+Nice=12
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+Environment=BATCH_LIMIT=100
+Environment=DELAY=0.25
+Environment=SLEEP_BETWEEN_BATCHES=2
+
+[Install]
+WantedBy=default.target

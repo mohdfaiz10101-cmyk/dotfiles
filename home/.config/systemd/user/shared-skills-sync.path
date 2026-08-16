@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch shared skills directories for changes
+
+[Path]
+PathModified=/var/home/charlie/.shared-agent/skills
+PathModified=/var/home/charlie/.openhands/skills
+
+[Install]
+WantedBy=default.target

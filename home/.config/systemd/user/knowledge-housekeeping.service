@@ -1,0 +1,6 @@
+[Unit]
+Description=Weekly knowledge/skill index housekeeping
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/knowledge-housekeeping.sh

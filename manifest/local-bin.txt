@@ -610,6 +610,7 @@ kill-ghostty
 kilo-profile
 kimi
 kintercept.py
+knowledge-housekeeping.sh
 konsole
 lag-detector.sh
 latest-img
@@ -910,6 +911,7 @@ open-dashboard-workspace.sh
 openevolve-local
 openhands
 openhands-letta-sync
+openhands_mcp_server.py
 openhands-public-proxy
 opentelemetry-bootstrap
 opentelemetry-instrument
@@ -1101,6 +1103,7 @@ session-rag-usage.md
 session-switch
 setup-0011
 setup-letta-telegram-alert
+shared-skills-sync
 sisy
 sisy-tmux-wrap
 skill-auto-extract.py
@@ -1336,6 +1339,12 @@ wechat-finance
 wechat-kanban-push.sh
 wechat-live-monitor.py
 wechat-matrix-bridge.py
+wechat-matrix-full-export-run
+wechat-matrix-full-export-run.bak.20260816-235446
+wechat-matrix-ledger
+wechat-matrix-media-pull
+wechat-matrix-sync-export
+wechat-matrix-sync-export.bak.20260816-235446
 wechat-merge.py
 wechat-msg-sync.py
 wechat-msg-sync-wrapper.sh

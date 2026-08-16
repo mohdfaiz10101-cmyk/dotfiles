@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync Matrix WeChat redactions and commands into local ledger
+After=matrix-synapse.service
+Wants=matrix-synapse.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-ledger matrix-sync
+Nice=12
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

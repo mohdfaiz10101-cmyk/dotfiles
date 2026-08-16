@@ -6,6 +6,10 @@ ListenStream=0.0.0.0:19899
 Accept=no
 NoDelay=true
 ReusePort=true
+KeepAlive=true
+TimeoutIdleSec=600
+ReceiveBuffer=4194304
+SendBuffer=4194304
 
 [Install]
 WantedBy=sockets.target

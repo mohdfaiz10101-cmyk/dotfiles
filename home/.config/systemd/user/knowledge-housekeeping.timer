@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly knowledge/skill index timer
+Requires=knowledge-housekeeping.service
+
+[Timer]
+OnCalendar=Sun 10:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
