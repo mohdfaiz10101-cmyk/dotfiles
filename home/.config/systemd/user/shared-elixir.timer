@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodic shared elixir refinement
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+AccuracySec=1min
+[Install]
+WantedBy=timers.target

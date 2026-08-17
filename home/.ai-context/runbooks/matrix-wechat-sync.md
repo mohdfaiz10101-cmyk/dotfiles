@@ -259,6 +259,39 @@ Supported Matrix management commands on replies:
 - `!记忆` / `!remember` marks the replied imported message for memory export.
 - `!忽略` / `!ignore` excludes the replied imported message from knowledge export.
 
+Batch/message processing commands:
+
+- Assistant room: `微信整理助手｜Hermes命令入口`
+- Assistant room ID: `!ZiiCTZiSnWwqdvAlXJ:100.120.189.27`
+- In any WeChat-imported room, send `!总结 最近50` to summarize the latest
+  50 imported messages in that room.
+- Send `!状态` to show ledger counts.
+- Send `!记忆最近20` to mark the latest 20 imported messages in that room for
+  memory export.
+- Send `!建客户 名字｜公司` to create or update a CRM contact in
+  `/mnt/ai/apps/crm/crm.db`.
+- Send `!建机会 标题` to create an opportunity note in the CRM notes table with
+  recent room context.
+- Send `!建任务 标题` to create a Hub project task under project `trade-crm`.
+  If Hub is unavailable, the payload is appended to
+  `~/.local/state/wechat-matrix-ledger/crm-actions.jsonl`.
+- CRM command audit queue:
+  `~/.local/state/wechat-matrix-ledger/crm-actions.jsonl`
+
+Element X / mobile client caveat:
+
+- Matrix clients usually expose deletion as `Remove message` / redaction, not
+  as WeChat-style delete.
+- Imported messages are sent by `@wechat_import:100.120.189.27`; a viewer such
+  as `@matrixcharlie:100.120.189.27` may not see a delete option unless room
+  power levels allow redacting other users' messages.
+- `wechat-matrix-ledger set-power-levels` grants `@matrixcharlie` high power in
+  rooms where `@wechat_import` can still edit power levels. Some older rooms may
+  fail with `403` and need admin/manual repair or command-based redaction.
+- Matrix mobile clients do not provide a reliable cross-client multi-select API
+  for sending arbitrary selected messages to a bot. Use range commands such as
+  `!总结 最近50` instead of manual multi-select.
+
 ## Expected evidence
 
 - Timer is `active (waiting)` and enabled.

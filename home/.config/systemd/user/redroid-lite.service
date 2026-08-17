@@ -11,12 +11,9 @@ ExecStart=/usr/bin/qemu-system-x86_64 \
   -drive file=/var/mnt/ai/redroid-vm/seed.iso,if=virtio,media=cdrom,readonly=on \
   -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:57 \
   -netdev user,id=net0,hostfwd=tcp::22222-:22,hostfwd=tcp::25555-:5555 \
-  -display none -vga qxl \
-  -daemonize -pidfile /var/mnt/ai/redroid-vm/redroid-lite.pid
-ExecStop=/bin/sh -c 'kill $(cat /var/mnt/ai/redroid-vm/redroid-lite.pid 2>/dev/null) 2>/dev/null || true; rm -f /var/mnt/ai/redroid-vm/redroid-lite.pid'
+  -display none -vga qxl
 Restart=on-failure
 RestartSec=2
-PIDFile=/var/mnt/ai/redroid-vm/redroid-lite.pid
 
 [Install]
 WantedBy=default.target

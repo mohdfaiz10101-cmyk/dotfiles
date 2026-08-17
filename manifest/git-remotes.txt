@@ -1,8 +1,8 @@
 /var/home/charlie
 
 /var/home/charlie/备份
-origin	https://github.com/mohdfaiz10101-cmyk/home-backups.git (fetch)
-origin	https://github.com/mohdfaiz10101-cmyk/home-backups.git (push)
+origin	ssh://git@ssh.github.com:443/mohdfaiz10101-cmyk/home-backups.git (fetch)
+origin	ssh://git@ssh.github.com:443/mohdfaiz10101-cmyk/home-backups.git (push)
 
 /var/home/charlie/agent-hub
 origin	git@github.com:mohdfaiz10101-cmyk/agent-hub.git (fetch)

@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodic sync of shared memory across Hermes/Codex/OpenHands
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+AccuracySec=1min
+[Install]
+WantedBy=timers.target

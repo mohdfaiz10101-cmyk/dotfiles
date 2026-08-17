@@ -306,7 +306,7 @@ letta-health-guard.timer                                                        
 letta-mcp.service                                                                      enabled   disabled
 letta-podman-proxy.service                                                             disabled  disabled
 letta-stack.service                                                                    enabled   disabled
-libpod-0e73e792f8fb85317e3dcba723e25e46cd1b331bca234cc0700fdfde50e505f7.scope          transient -
+libpod-2d4ad5e1ebb0d75e7e6821aad61d8e134788cf9db496cca19e2145811de391b6.scope          transient -
 litellm-keepalive.service                                                              static    -
 litellm-keepalive.timer                                                                disabled  disabled
 litellm.service                                                                        disabled  disabled
@@ -345,7 +345,7 @@ mobile-ai-browsh-gate.service                                                   
 mobile-ai-route-prewarm.service                                                        static    -
 mobile-ai-route-prewarm.timer                                                          disabled  disabled
 mobile-ai-speed-island.service                                                         static    -
-mobile-ai-speed-island.timer                                                           enabled   disabled
+mobile-ai-speed-island.timer                                                           disabled  disabled
 mobile-ai-workbench.service                                                            enabled   disabled
 moonlight-display-restore-guard.service                                                static    -
 moonlight-display-restore-guard.timer                                                  disabled  disabled
@@ -380,7 +380,7 @@ openclaw-gateway.service                                                        
 openclaw-tmux-supervisor.service                                                       static    -
 openclaw-tmux-supervisor.timer                                                         enabled   disabled
 opencode-18910-local.service                                                           enabled   disabled
-opencode-18910-local.socket                                                            disabled  disabled
+opencode-18910-local.socket                                                            enabled   disabled
 opencode-18910-router.service                                                          disabled  disabled
 opencode-4096-proxy.service                                                            enabled   disabled
 opencode-4096-proxy-watchdog.timer                                                     enabled   disabled
@@ -493,7 +493,7 @@ podman-cleanup.service                                                          
 podman-cleanup.timer                                                                   enabled   disabled
 podman-docker-api.service                                                              enabled   disabled
 podman-kube@.service                                                                   disabled  disabled
-podman-pause-46d54550.scope                                                            transient -
+podman-pause-e2536e98.scope                                                            transient -
 podman-restart.service                                                                 disabled  disabled
 podman.service                                                                         disabled  disabled
 podman.socket                                                                          enabled   disabled
@@ -506,6 +506,12 @@ redroid-vm.service                                                              
 rygel.service                                                                          disabled  disabled
 session-guard.service                                                                  disabled  disabled
 session.slice                                                                          static    -
+shared-elixir.service                                                                  static    -
+shared-elixir.timer                                                                    enabled   disabled
+shared-history-sync.service                                                            static    -
+shared-history-sync.timer                                                              enabled   disabled
+shared-memory-sync.service                                                             static    -
+shared-memory-sync.timer                                                               enabled   disabled
 shared-skills-sync.path                                                                enabled   disabled
 shared-skills-sync.service                                                             static    -
 shared-skills-sync.timer                                                               enabled   disabled
@@ -639,8 +645,7 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    enabled   disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
-user-libpod_pod_ab6ec585764471fb50bf7c53150861680423bf942750ec7f1a54c697b56614bb.slice transient -
-user-libpod_pod_bdf66afbf4088404c44f7dc3e924da07766cfe6ad6e97b3c103109e76945f929.slice transient -
+user-libpod_pod_c77a2bdadfd7cf9d941c5fda2b3646b181c9dda3ad6f14655ccb9ed49504644b.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled

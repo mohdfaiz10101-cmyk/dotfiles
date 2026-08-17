@@ -1,0 +1,5 @@
+[Unit]
+Description=Refine shared memory/skills into shared elixir
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/shared-elixir

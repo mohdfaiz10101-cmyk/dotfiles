@@ -7,14 +7,7 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
-ExecStartPre=-/usr/bin/podman rm -f ntfy
-ExecStart=/usr/bin/podman run --rm --pull=never --name ntfy \
-  -v /var/home/charlie/ai/ntfy/etc:/etc/ntfy:Z \
-  -v /var/home/charlie/ai/ntfy/data:/var/lib/ntfy:Z \
-  -v /var/home/charlie/ai/ntfy/cache:/var/cache/ntfy:Z \
-  -p 0.0.0.0:2586:2586 \
-  docker.io/binwiederhier/ntfy serve
-ExecStop=/usr/bin/podman stop ntfy
+ExecStart=/var/home/charlie/.local/bin/ntfy-server serve --config /var/home/charlie/ai/ntfy/etc/server-local.yml
 Restart=always
 RestartSec=10
 TimeoutStopSec=30

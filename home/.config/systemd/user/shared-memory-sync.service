@@ -1,0 +1,5 @@
+[Unit]
+Description=Sync shared memory across Hermes/Codex/OpenHands
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/shared-memory-sync

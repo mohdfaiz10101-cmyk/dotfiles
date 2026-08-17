@@ -7,7 +7,7 @@ Wants=network-online.target
 Type=simple
 ExecStart=/var/home/charlie/.local/share/WsScrcpyWeb/start-redroid.sh
 Environment=DATA_ROOT=/var/home/charlie/.local/share/WsScrcpyWeb-redroid
-Environment=ADB_SERIAL=127.0.0.1:25557
+Environment=ADB_SERIAL=127.0.0.1:25555
 Environment=ADB_MDNS_AUTO_CONNECT=0
 Environment=ANDROID_ADB_SERVER_PORT=5040
 Restart=always
