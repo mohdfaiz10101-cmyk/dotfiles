@@ -1123,6 +1123,7 @@ smart-search
 smart-service-manager-enable.sh
 smart-service-manager.py
 smart-smooth
+smart-suspend.py
 smbclient.py
 smbexec.py
 smbserver.py
@@ -1149,6 +1150,7 @@ stepfun-quota-scraper.py
 stepfun-quota-update-quiet.sh
 streamlit
 sub2api
+suspend-guard.sh
 svc
 swaync
 swaync-client
