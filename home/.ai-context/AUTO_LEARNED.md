@@ -1,4 +1,4 @@
 # Auto-learned Operational Knowledge
 
 > Generated from verified OpenCode task outcomes. Do not edit manually.
-> Updated: 2026-08-18T01:56:32
+> Updated: 2026-08-19T11:12:55
