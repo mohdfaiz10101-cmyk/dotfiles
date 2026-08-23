@@ -286,7 +286,7 @@ hub-workspace-snapshot.service                                                st
 hub-workspace-snapshot.timer                                                  enabled   disabled
 huly.service                                                                  enabled   disabled
 idle-sleep.service                                                            static    -
-idle-sleep.timer                                                              enabled   disabled
+idle-sleep.timer                                                              disabled  disabled
 kanshi.service                                                                enabled   disabled
 kasm-cursor-webtop-healthcheck.service                                        static    -
 kasm-cursor-webtop-healthcheck.timer                                          disabled  disabled
@@ -522,7 +522,7 @@ skill-usage-tracker.timer                                                     di
 smartcard.target                                                              static    -
 smart-redirector.service                                                      enabled   disabled
 smart-service-manager-resume.service                                          static    -
-smart-service-manager-resume.timer                                            enabled   disabled
+smart-service-manager-resume.timer                                            disabled  disabled
 smart-service-manager.service                                                 static    -
 smart-service-manager-suspend.service                                         disabled  disabled
 smart-service-manager.timer                                                   enabled   disabled
@@ -597,6 +597,7 @@ tmux-duckdns-tunnel.service                                                   di
 tmux-spawn-1587c119-d8bc-4706-a2e9-df6c44e882bc.scope                         transient -
 tmux-spawn-22deed25-dd8e-4ce0-8d29-2696d6051009.scope                         transient -
 tmux-spawn-468f7a18-b035-477b-9048-efa738c9a2cf.scope                         transient -
+tmux-spawn-83844ec0-d141-42bd-8851-9b62e5485dd1.scope                         transient -
 tmux-spawn-ce192531-fc53-4e74-b9ad-a5519494a4bb.scope                         transient -
 ttyd-8080.service                                                             enabled   disabled
 ttyd-agent-hub.service                                                        disabled  disabled
