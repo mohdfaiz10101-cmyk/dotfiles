@@ -1347,6 +1347,7 @@ wechat-kanban-push.sh
 wechat-live-monitor.py
 wechat-matrix-bridge.py
 wechat-matrix-full-export-run
+wechat-matrix-hermes-ops
 wechat-matrix-ledger
 wechat-matrix-media-pull
 wechat-matrix-sync-export
