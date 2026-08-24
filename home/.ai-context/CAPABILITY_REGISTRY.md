@@ -1,7 +1,7 @@
 # Capability Registry
 
 > Generated automatically from live OpenCode config, systemd, rules, and CodeGraph.
-> Updated: 2026-08-23T18:28:23
+> Updated: 2026-08-24T18:43:54
 
 ## MCP
 
