@@ -225,6 +225,20 @@ Do not route the full historical stream through Hermes. Hermes Matrix gateway
 state can be disconnected/retrying, and Hermes should only process WeChat
 content on explicit mention/command or a future allowlisted rule engine.
 
+Hermes-facing operations are wrapped by:
+
+```bash
+~/.local/bin/wechat-matrix-hermes-ops status
+~/.local/bin/wechat-matrix-hermes-ops summary
+~/.local/bin/wechat-matrix-hermes-ops smoke
+~/.local/bin/wechat-matrix-hermes-ops export-knowledge 1000
+~/.local/bin/wechat-matrix-hermes-ops ntfy-summary
+```
+
+This wrapper is the default entrypoint for future Hermes/Codex agents before
+they inspect individual scripts. It summarizes canonical rooms, services,
+ledger paths, knowledge queue paths, ntfy routing, and accepted Matrix commands.
+
 ## Matrix deletion, archive, and knowledge ledger
 
 Matrix deletion is redaction, not WeChat-style destructive cross-device delete.
