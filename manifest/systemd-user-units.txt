@@ -28,6 +28,7 @@ app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
 app-gnome\x2dkeyring\x2dssh@autostart.service                                          generated -
 app-nvidia\x2dsettings\x2duser@autostart.service                                       generated -
+app-org.chromium.Chromium-18608.scope                                                  transient -
 app-org.gnome.SettingsDaemon.DiskUtilityNotify@autostart.service                       generated -
 app-org.kde.kdeconnect.daemon@autostart.service                                        generated -
 app.slice                                                                              static    -
@@ -106,9 +107,9 @@ crush-ttyd-backend.service                                                      
 crush-ttyd-direct-test.service                                                         disabled  disabled
 crush-ttyd-proxy.service                                                               enabled   disabled
 daily-ops.timer                                                                        enabled   disabled
-dbus-:1.557-org.a11y.atspi.Registry@0.service                                          transient -
-dbus-:1.7-org.freedesktop.secrets@2.service                                            transient -
-dbus-:1.7-org.kde.kdeconnect@1.service                                                 transient -
+dbus-:1.59-org.a11y.atspi.Registry@0.service                                           transient -
+dbus-:1.6-org.freedesktop.portal.IBus@3.service                                        transient -
+dbus-:1.6-org.freedesktop.secrets@0.service                                            transient -
 dbus-broker.service                                                                    enabled   enabled
 dbus-daemon.service                                                                    disabled  disabled
 dbus-org.bluez.obex.service                                                            alias     -
@@ -306,7 +307,7 @@ letta-health-guard.timer                                                        
 letta-mcp.service                                                                      enabled   disabled
 letta-podman-proxy.service                                                             disabled  disabled
 letta-stack.service                                                                    enabled   disabled
-libpod-2d4ad5e1ebb0d75e7e6821aad61d8e134788cf9db496cca19e2145811de391b6.scope          transient -
+libpod-7da8c8ef7c6ec4c9b0a7ae89b2a38ebd3eb88a6bc5d57707f432d91f202f3a0d.scope          transient -
 litellm-keepalive.service                                                              static    -
 litellm-keepalive.timer                                                                disabled  disabled
 litellm.service                                                                        disabled  disabled
@@ -493,7 +494,7 @@ podman-cleanup.service                                                          
 podman-cleanup.timer                                                                   enabled   disabled
 podman-docker-api.service                                                              enabled   disabled
 podman-kube@.service                                                                   disabled  disabled
-podman-pause-e2536e98.scope                                                            transient -
+podman-pause-b1edfea8.scope                                                            transient -
 podman-restart.service                                                                 disabled  disabled
 podman.service                                                                         disabled  disabled
 podman.socket                                                                          enabled   disabled
@@ -594,12 +595,10 @@ thunar.service                                                                  
 timers.target                                                                          static    -
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
-tmux-spawn-1587c119-d8bc-4706-a2e9-df6c44e882bc.scope                                  transient -
-tmux-spawn-22deed25-dd8e-4ce0-8d29-2696d6051009.scope                                  transient -
-tmux-spawn-468f7a18-b035-477b-9048-efa738c9a2cf.scope                                  transient -
-tmux-spawn-b32ebb0c-a6be-435a-a95e-c8832afac8ad.scope                                  transient -
-tmux-spawn-b6cbde05-5097-4119-92e9-fc1e079b3045.scope                                  transient -
-tmux-spawn-ce192531-fc53-4e74-b9ad-a5519494a4bb.scope                                  transient -
+tmux-spawn-011c3653-bc4f-4966-b458-dd78ba60a726.scope                                  transient -
+tmux-spawn-1fda39a4-3642-4846-96c7-a8a910dbaff1.scope                                  transient -
+tmux-spawn-3f7e7ba3-a0c1-4c2a-a1b8-900c6f8c712e.scope                                  transient -
+tmux-spawn-6aaa32c8-bae5-497f-b6ab-d306ec3652de.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
 ttyd-codex10-backend.service                                                           enabled   disabled
@@ -647,7 +646,8 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    enabled   disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
-user-libpod_pod_7f76be8e11cc24ab7edb8df9eb842e94eec20bec21cd9cd2da8319be1a897c10.slice transient -
+user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
+user-libpod_pod_c0c20c14ae66e6a124b484e23a85b748cf5eed9af3d1d935969074e5aa8ae731.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled
