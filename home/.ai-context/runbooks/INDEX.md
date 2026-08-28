@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-08-27T22:37:04
+> Updated: 2026-08-28T19:24:35
 
 | Runbook | Scope | Updated |
 |---|---|---|
@@ -9,7 +9,7 @@
 | `ai-infra.md` | Runbook: AI Infrastructure | 2026-08-03 |
 | `aider.md` | Runbook: Aider | 2026-07-15 |
 | `codegraph.md` | CodeGraph Runbook | 2026-07-20 |
-| `codex-multi-account-routing.md` | Runbook: Codex Multi-Account Routing | 2026-08-02 |
+| `codex-multi-account-routing.md` | Runbook: Codex Multi-Account Routing | 2026-08-28 |
 | `communication-project-sync.md` | Runbook: Communication Project Sync | 2026-07-18 |
 | `control-plane.md` | Runbook: Unified Control Plane | 2026-08-15 |
 | `crush.md` | Runbook: Crush | 2026-07-15 |
@@ -23,11 +23,11 @@
 | `haven.md` | Runbook: Haven & Phone Bridge | 2026-08-10 |
 | `hermes-actions-runner.md` | Hermes Actions Runner | 2026-08-01 |
 | `hermes-mcp-quality.md` | Hermes MCP Quality | 2026-08-10 |
-| `hermes-memory-quality.md` | Runbook: Hermes Memory And Session Quality | 2026-08-10 |
+| `hermes-memory-quality.md` | Runbook: Hermes Memory And Session Quality | 2026-08-28 |
 | `hermes-port-binding.md` | Hermes 端口绑定锁 | 2026-08-10 |
 | `hermes-session-switch.md` | Hermes Session Switch Issue Runbook | 2026-08-06 |
 | `huly.md` | Runbook: Huly | 2026-07-04 |
-| `input-capture.md` | Runbook: Mouse/Input Capture | 2026-07-20 |
+| `input-capture.md` | Runbook: Mouse/Input Capture | 2026-08-28 |
 | `machine-backup.md` | Runbook: Machine GitHub Backup | 2026-07-13 |
 | `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-08-25 |
 | `mattermost.md` | Runbook: Mattermost | 2026-07-18 |

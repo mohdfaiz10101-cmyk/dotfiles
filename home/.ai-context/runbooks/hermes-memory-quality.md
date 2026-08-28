@@ -40,6 +40,13 @@ find ~/.hermes/a2a/knowledge -maxdepth 2 -type f -printf '%p %TY-%Tm-%Td %TH:%TM
   asks. It is the intended router model path.
 - Do not broad-search `~/.hermes/profiles/**/node_modules` or LSP caches when
   auditing memory/skills.
+- When Hermes appears to ignore compression or rollover threshold tuning, first
+  check for duplicate top-level YAML keys in `~/.hermes/config.yaml`. On
+  2026-08-28, an earlier `session_mesh` block with higher thresholds was
+  overridden by a later full `session_mesh` block still set to
+  `rollover_threshold_tokens: 60000` and `rollover_threshold_messages: 70`.
+  Keep a single `session_mesh` block and validate the loaded values with
+  `python3 -c "import yaml; p=yaml.safe_load(open('/var/home/charlie/.hermes/config.yaml')); print(p['compression']['threshold'], p['session_mesh']['rollover_threshold_tokens'], p['session_mesh']['rollover_threshold_messages'])"`.
 
 ## Safe A2A Backlog Drain
 

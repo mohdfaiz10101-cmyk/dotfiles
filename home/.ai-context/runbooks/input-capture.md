@@ -107,6 +107,23 @@ systemctl --user is-active mobile-ai-browser-cleanup.timer sway-tab-cleanup.time
 curl -fsS -H 'x-device-code: w19900422' http://127.0.0.1:19888/api/browser/tabs | jq .
 ```
 
+## Hermes 19910 WebTTY Layout
+
+- `ttyd-hermes.service` serves public `http://charlie1990.duckdns.org:19910/`
+  through `~/.local/bin/ttyd-hermes-proxy.js`.
+- The upstream page already has a fixed top `#sessionbar`. Do not inject a
+  second fixed top toolbar such as `#agent-toolbar-sessionbar`; it overlays the
+  session buttons on mobile.
+- Extra maintenance actions should stay collapsed in the lower-left
+  `#agent-toolbar` behind a single small toggle, with action buttons hidden
+  until the toolbar is opened.
+- Do not put `pointer-events:none` on the toolbar container. Prefer native
+  `<details><summary>...</summary></details>` for collapsed mobile toolbars;
+  it is more reliable than custom `pointerup` / `touchend` toggle code inside
+  ttyd pages that already capture terminal input.
+- After changes, verify the phone-visible DuckDNS path, not only local curl:
+  `~/.local/bin/adb-record --tag hermes-19910-layout -- shell curl -I --max-time 8 http://charlie1990.duckdns.org:19910/`.
+
 If Sunshine was recently involved, also check NVIDIA state before blaming
 Sway:
 

@@ -1,0 +1,7 @@
+[Unit]
+Description=Codex 1 tmux watchdog
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/codex-main-watchdog.sh

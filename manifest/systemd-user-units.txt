@@ -85,6 +85,8 @@ codex-shared-sync.path                                                          
 codex-shared-sync.service                                                              static    -
 codex-timeline-snapshot.service                                                        static    -
 codex-timeline-snapshot.timer                                                          disabled  disabled
+codex-tmux-watchdog.service                                                            static    -
+codex-tmux-watchdog.timer                                                              enabled   disabled
 colord-session.service                                                                 static    -
 comm-project-sync.service                                                              static    -
 comm-project-sync.timer                                                                enabled   disabled
@@ -252,6 +254,8 @@ hermes-evolve.service                                                           
 hermes-evolve.timer                                                                    disabled  disabled
 hermes-experience-map.service                                                          static    -
 hermes-experience-map.timer                                                            enabled   disabled
+hermes-gateway-proxy-watchdog.service                                                  static    -
+hermes-gateway-proxy-watchdog.timer                                                    enabled   disabled
 hermes-gateway.service                                                                 enabled   disabled
 hermes-idle-scheduler.service                                                          static    -
 hermes-idle-scheduler.timer                                                            disabled  disabled
@@ -561,6 +565,7 @@ syncthing.service                                                               
 sysadmin-ops.service                                                                   static    -
 sysadmin-ops.socket                                                                    enabled   disabled
 sys-info-mcp.service                                                                   enabled   disabled
+sysinfo-sidecar.service                                                                enabled   disabled
 systemd-ask-password@.service                                                          static    -
 systemd-ask-password.socket                                                            static    -
 systemd-exit.service                                                                   static    -
@@ -595,10 +600,11 @@ thunar.service                                                                  
 timers.target                                                                          static    -
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
-tmux-spawn-011c3653-bc4f-4966-b458-dd78ba60a726.scope                                  transient -
-tmux-spawn-1fda39a4-3642-4846-96c7-a8a910dbaff1.scope                                  transient -
 tmux-spawn-3f7e7ba3-a0c1-4c2a-a1b8-900c6f8c712e.scope                                  transient -
-tmux-spawn-6aaa32c8-bae5-497f-b6ab-d306ec3652de.scope                                  transient -
+tmux-spawn-60dde215-8511-40fe-8fa3-a205408a3a22.scope                                  transient -
+tmux-spawn-693d6d52-d022-41a3-88e9-158dce3af1f3.scope                                  transient -
+tmux-spawn-b8c61cfc-9f79-4b2c-b448-119ce4e2f301.scope                                  transient -
+tmux-spawn-f4ffbc97-940b-4dc9-8aa7-32ebced3c1b3.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
 ttyd-codex10-backend.service                                                           enabled   disabled
@@ -647,7 +653,6 @@ uptime-kuma.service                                                             
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
-user-libpod_pod_c0c20c14ae66e6a124b484e23a85b748cf5eed9af3d1d935969074e5aa8ae731.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled

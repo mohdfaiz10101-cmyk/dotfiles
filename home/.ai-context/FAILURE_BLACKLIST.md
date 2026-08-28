@@ -212,6 +212,20 @@
   If assistant output repeats or goes empty twice, stop the same reasoning
   path and reroute to `ops-dispatcher` with bounded local verification
   commands.
+- Do not treat Codex startup `skipped loading N skills` as an account, model,
+  or network issue first. Check malformed `SKILL.md` frontmatter under
+  `~/.codex/skills` / `~/.shared-agent/skills`: every loadable skill must start
+  with `---` and include `name:` plus `description:` in the YAML header. On
+  2026-08-28 the two skipped skills were
+  `external-candidates/remotion-best-practices` and
+  `external-candidates/styleseed`; fixing their frontmatter removed the
+  startup warning.
+- Do not point `~/.codex/skills` at the full shared skill library by default.
+  On 2026-08-28 the full link exposed 461 skills and made trivial Codex tasks
+  risk `exceeded skill budget` / huge startup context. Keep the default in lean
+  mode with `~/.local/bin/codex-skills-mode lean`; switch temporarily with
+  `~/.local/bin/codex-skills-mode full` only when a rare skill is needed, then
+  return to lean.
 
 ## Known Traps
 - If Fcitx5 starts but its Pinyin addon logs `libIMECore.so.0: undefined

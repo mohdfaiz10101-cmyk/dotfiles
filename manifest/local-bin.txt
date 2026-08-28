@@ -253,6 +253,7 @@ codex-hermes-bridge
 codex-hqssh
 codex-k2-workspace-watch
 codex-main-resume-or-new
+codex-main-watchdog.sh
 codex-ntfy-result-watcher
 codex-op-delegate
 codex-planner-http-mcp.js
@@ -261,6 +262,7 @@ codex-responses-proxy.py
 codex-resume-or-new
 codex-router
 codex-shared-sync
+codex-skills-mode
 codex-smart
 codex-smart.pre-router-merge.20260713-012852
 codex-smart-shell
@@ -347,6 +349,7 @@ dpdns-renew
 ds
 duckdns-full-monitor.sh
 DumpNTLMInfo.py
+easyocr
 edge-playback
 edge-tts
 email_validator
@@ -513,10 +516,12 @@ hermes-enqueue-task.sh
 hermes-evolve-monitor.py
 hermes-evolve-now
 hermes-experience-map
+hermes-gateway-proxy-watchdog.sh
 hermes-hook-runner
 hermes-hooks-install
 hermes-idle-scheduler.sh
 hermes-iptables-guard.sh
+hermes-lan-192.168.123.71-alias
 hermes-launcher.py
 hermes-mcp-policy
 hermes-memory-brief
@@ -577,6 +582,8 @@ idea-2233
 idea-boost.sh
 idle-sleep.sh
 iflytek-dict-sync
+imageio_download_bin
+imageio_remove_bin
 index-assets
 input-leap-server
 input-toggle
@@ -651,6 +658,7 @@ litellm-startup.sh
 llama-server.sh
 lmnr
 lookupsid.py
+lsm2bin
 luckin-mcp-token-auth
 luckin-quick-order
 mac
@@ -1001,6 +1009,7 @@ psexec.py
 push-apk
 push-tunnel-url
 pwiz
+pybidi
 pyftype
 pygmentize
 pygpt
@@ -1010,6 +1019,7 @@ pyrsa-keygen
 pyrsa-priv2pub
 pyrsa-sign
 pyrsa-verify
+pytesseract
 py.test
 pytest
 python-crash-guard.sh
@@ -1209,6 +1219,9 @@ thunar
 thunar-copy-path
 ticketConverter.py
 ticketer.py
+tiff2fsspec
+tiffcomment
+tifffile
 tiny-agents
 tmux-attach
 tmux-module
@@ -1346,10 +1359,12 @@ wechat-finance
 wechat-kanban-push.sh
 wechat-live-monitor.py
 wechat-matrix-bridge.py
+wechat-matrix-fix-event-timestamps
 wechat-matrix-full-export-run
 wechat-matrix-hermes-ops
 wechat-matrix-ledger
 wechat-matrix-media-pull
+wechat-matrix-room-reconcile
 wechat-matrix-sync-export
 wechat-merge.py
 wechat-msg-sync.py
