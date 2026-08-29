@@ -4,7 +4,7 @@ After=matrix-synapse.service
 
 [Service]
 Type=oneshot
-ExecStart=/var/home/charlie/.local/bin/wechat-matrix-sync-export --pull-phone --user @wechat_import:100.120.189.27 --per-talker-rooms --room-context-format --state-path /var/home/charlie/.local/state/wechat-matrix-sync/state.json --log-path /var/home/charlie/.local/state/wechat-matrix-sync/history.jsonl --room-map-path /var/home/charlie/.local/state/wechat-matrix-full-export/rooms-by-talker.json --ledger-path /var/home/charlie/.local/state/wechat-matrix-ledger/ledger.db --txn-prefix wechat_live_room_ --viewer-user @charlie:100.120.189.27 --limit 100 --delay 0.8
-ExecStartPost=/var/home/charlie/.local/bin/wechat-matrix-fix-event-timestamps
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-live-sync
+ExecStartPost=/var/home/charlie/.local/bin/wechat-matrix-fix-event-timestamps --batch-size 5000
 ExecStartPost=/var/home/charlie/.local/bin/wechat-matrix-ledger --source-db /tmp/wechat-matrix-sync/EnMicroMsg.db reconcile-source --redact --limit 1000
 Nice=10

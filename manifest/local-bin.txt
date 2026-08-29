@@ -1358,11 +1358,13 @@ wechat-contact-sync.py
 wechat-finance
 wechat-kanban-push.sh
 wechat-live-monitor.py
+wechat-matrix-backfill-loop
 wechat-matrix-bridge.py
 wechat-matrix-fix-event-timestamps
 wechat-matrix-full-export-run
 wechat-matrix-hermes-ops
 wechat-matrix-ledger
+wechat-matrix-live-sync
 wechat-matrix-media-pull
 wechat-matrix-room-reconcile
 wechat-matrix-sync-export

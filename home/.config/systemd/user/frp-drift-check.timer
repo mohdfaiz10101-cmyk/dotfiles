@@ -1,0 +1,10 @@
+[Unit]
+Description=FRP port drift check timer (every 30 minutes)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

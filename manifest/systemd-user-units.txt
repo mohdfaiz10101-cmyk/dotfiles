@@ -154,6 +154,8 @@ flexime-sync-ai.service                                                         
 foot-server.service                                                                    disabled  disabled
 foot-server.socket                                                                     disabled  disabled
 frpc.service                                                                           enabled   disabled
+frp-drift-check.service                                                                static    -
+frp-drift-check.timer                                                                  enabled   disabled
 full-home-archive.service                                                              static    -
 full-home-archive.timer                                                                enabled   disabled
 gamemoded.service                                                                      disabled  disabled
@@ -601,9 +603,7 @@ timers.target                                                                   
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
 tmux-spawn-3f7e7ba3-a0c1-4c2a-a1b8-900c6f8c712e.scope                                  transient -
-tmux-spawn-60dde215-8511-40fe-8fa3-a205408a3a22.scope                                  transient -
 tmux-spawn-693d6d52-d022-41a3-88e9-158dce3af1f3.scope                                  transient -
-tmux-spawn-b8c61cfc-9f79-4b2c-b448-119ce4e2f301.scope                                  transient -
 tmux-spawn-f4ffbc97-940b-4dc9-8aa7-32ebced3c1b3.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
@@ -653,6 +653,7 @@ uptime-kuma.service                                                             
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
+user-libpod_pod_85d903acdd539c6523cf3fdbdc9358891b44911875bc95daf3db0f0ffd929817.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled

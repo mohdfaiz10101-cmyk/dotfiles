@@ -149,6 +149,10 @@ Importer fixes required for WeChat-like rendering:
 - Use `AppMessage.type=6`, not only `message.type=49`, to detect file messages.
 - In per-conversation rooms, keep group/conversation name out of message body;
   the room name already carries it. Do not include timestamps in message body.
+- For WeChat group rooms, do not prefix the Matrix room name with `微信群｜`.
+  Prefer the real WeChat room title from `rcontact.conRemark` /
+  `rcontact.nickname`, then `chatroom.chatroomnick`, then `chatroom.displayname`
+  only as a fallback. Private/direct chats may keep the `微信｜` prefix.
 
 Sample validation room created on 2026-08-16:
 
@@ -178,6 +182,36 @@ Required behavior:
 - Retry per part.
 - Skip already complete local parts when resuming.
 - Treat `offline` as transient and reconnect with bounded retries.
+
+2026-08-29 realtime repair notes:
+
+- Keep realtime and historical backfill state separate. Realtime uses
+  `~/.local/state/wechat-matrix-sync/state.json`; historical backfill must use a
+  separate state file such as `backfill-state.json`, otherwise a slow backfill
+  can make phone-side realtime sync appear stuck.
+- The live wrapper is `~/.local/bin/wechat-matrix-live-sync`. It uses `flock`
+  and passes multiple ADB serial candidates:
+  `127.0.0.1:15555,100.87.37.3:5555,charlie1990.duckdns.org:15555`.
+- `wechat-matrix-sync-export` must clear local `/tmp/wechat-matrix-sync/parts`
+  before assembling a new phone DB snapshot. Mixing old and new split parts can
+  produce a SQLCipher database with malformed schema/rootpage errors.
+- A clean realtime run on 2026-08-29 pulled 52 parts, loaded messages after
+  `msgId=206690`, sent 226 Matrix events through `@wechat_import`, updated
+  `state.json` to `last_msg_id=206916`, fixed 226 event timestamps, and found
+  no missing ledger deletions.
+- Existing Matrix room names are not changed by future room creation logic.
+  Strip stale `微信｜` prefixes by sending `m.room.name` state events through the
+  Matrix Client API. On 2026-08-29, 61 existing rooms were renamed and Synapse
+  current state then reported zero prefixed room names.
+- SchildiChat stores room/timeline cache in `disk_store.realm`. Removing it can
+  temporarily make the app show an empty room list even when auth and crypto
+  data remain. Prefer server-side room rename plus natural client sync; if
+  cache surgery is attempted, back up and be ready to restore
+  `disk_store.realm*`.
+- PKR ADB can flip all transports to `offline` during UI/cache checks. Restart
+  the local ADB server and reconnect `127.0.0.1:15555` and DuckDNS before
+  drawing phone-side conclusions. Fedora/Synapse success alone does not prove
+  the phone UI has refreshed.
 
 ## Commands
 
@@ -263,9 +297,17 @@ Operational commands:
 ```
 
 Use `reconcile-source --redact` only when the source DB snapshot is known fresh.
+For the Android source DB, a fresh snapshot means the main `EnMicroMsg.db` and
+any matching `EnMicroMsg.db-wal` / `EnMicroMsg.db-shm` sidecars were copied
+together, or WeChat was force-stopped first so SQLite checkpointed cleanly.
 Do not directly mutate the WeChat Android database for delete sync. Mark
 Matrix-deleted or WeChat-missing messages as `knowledge_state='excluded'` so
 FastGPT/Hermes memory imports skip them.
+
+If Synapse is rebuilt with a clean homeserver DB, do not reuse old room ids or
+old Matrix event ids from `rooms-by-talker.json` / `ledger.db`; back them up,
+reset the active room map and ledger, reimport by `talker`, then run
+`wechat-matrix-room-reconcile` and `wechat-matrix-fix-event-timestamps`.
 
 Supported Matrix management commands on replies:
 

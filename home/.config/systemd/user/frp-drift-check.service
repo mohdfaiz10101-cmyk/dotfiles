@@ -1,0 +1,6 @@
+[Unit]
+Description=FRP port drift check
+
+[Service]
+Type=oneshot
+ExecStart=%h/workspace/scripts/frp-drift-check.sh
