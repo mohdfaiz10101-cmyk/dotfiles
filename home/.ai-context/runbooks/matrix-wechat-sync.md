@@ -213,6 +213,53 @@ Required behavior:
   drawing phone-side conclusions. Fedora/Synapse success alone does not prove
   the phone UI has refreshed.
 
+2026-08-30 PKR SchildiChat sync repair notes:
+
+- Realtime WeChat import was healthy: timer/service exited successfully, the
+  live state was at `last_msg_id=206983`, and a later run loaded zero new
+  messages after that point. If the phone does not show new data, first check
+  the Matrix client route before changing the importer.
+- SchildiChat package on PKR is `de.spiritcroc.riotx`, version
+  `1.6.62.sc92`; launcher alias is
+  `de.spiritcroc.riotx/im.vector.application.features.Alias`.
+- Root cause was the client route, not the importer: Synapse `user_ips` had no
+  SchildiChat `/sync` entry, while phone sockets showed SchildiChat trying old
+  `100.120.189.27:443` / DuckDNS `:443` paths. The working HTTP Matrix entry
+  was `http://charlie1990.duckdns.org:19876`, but SchildiChat rejected HTTP
+  homeserver login.
+- Durable fix for SchildiChat is HTTPS on standard DuckDNS `443`:
+  - `/etc/caddy/Caddyfile.monitor` now serves `charlie1990.duckdns.org` with
+    Matrix `/.well-known/matrix/*` and `/_matrix/*` reverse-proxied to
+    `127.0.0.1:8008`.
+  - Caddy loads the existing acme.sh certificate from
+    `/etc/caddy/certs/charlie1990.duckdns.org.fullchain.cer` and
+    `/etc/caddy/certs/charlie1990.duckdns.org.key`; do not rely on live
+    HTTP/TLS ACME validation from this home WAN path.
+  - Fedora firewalld must include service `https`.
+  - Padavan persistent VTS must include `443 -> 192.168.123.71:443` and
+    `80 -> 192.168.123.71:80`. `80` is useful for future ACME/debug even
+    though the current cert is installed from acme.sh.
+- Verification evidence after repair:
+  - Phone curl to `https://charlie1990.duckdns.org/_matrix/client/versions`
+    returned `200` with `ssl_verify_result=0`.
+  - Synapse `user_ips` showed `@charlie:100.120.189.27` with user agent
+    `SchildiChat/1.6.62.sc92` from the phone route.
+  - SchildiChat was no longer on the login screen, no Google password prompt
+    was visible, and UI prefix count was zero.
+- For automated text entry on this Android 16 phone:
+  - `adb shell input text` can be corrupted by IME/autocorrect for URLs and
+    Matrix IDs.
+  - Temporarily install/use ADBKeyBoard and `ADB_INPUT_B64` for URL/Matrix ID.
+  - For passwords with special characters, either avoid UI automation or use a
+    simple alphanumeric temporary password. Do not print passwords or dump
+    password fields into ADB logs.
+- SchildiChat data was backed up on the phone before clearing/re-login:
+  `/sdcard/Download/schildichat-data-backup-20260830_032714.tar.gz`.
+  This backup contains app auth/cache data and must be treated as sensitive.
+- Local Matrix password file used for the old account is
+  `~/.local/state/matrix-local/charlie.password`. Do not print it. Existing
+  `charlie-android-login.password` returned 403 and should not be used.
+
 ## Commands
 
 ```bash
