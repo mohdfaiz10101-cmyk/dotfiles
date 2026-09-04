@@ -606,6 +606,7 @@ tmux-spawn-2dd5edb4-f779-402f-8a94-f7d68b0f2a86.scope                           
 tmux-spawn-80f3567f-5ad0-4109-8121-bbfa20ae01ba.scope                                  transient -
 tmux-spawn-b40510b9-6bc6-443b-ac48-18aac2d03b8e.scope                                  transient -
 tmux-spawn-c6f5b090-88d0-4001-864d-3c7d6c30de00.scope                                  transient -
+tmux-spawn-ced70e6a-2f50-43c2-a086-209d20424364.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
 ttyd-codex10-backend.service                                                           enabled   disabled
@@ -1416,6 +1417,7 @@ user-libpod_pod_ae58862ad1078e7cfa34f2d589706f8333016494e1dc512177c749db9087a36c
 user-libpod_pod_ae7b920dd491be6d07b926976a344082499a21377892af1c5653f80518108d09.slice transient -
 user-libpod_pod_aeb875c8fcdd067b815f61ed023aa83c2b090afa9c19cfc2a2a0ca504c749673.slice transient -
 user-libpod_pod_aec8e63684be1fc358034f7a603e534e0bb2e34e3cea34e464e278355f02467a.slice transient -
+user-libpod_pod_aecd683409ac2d5b60da0e489c58d85873e3062b445cb9d7e396223e483933e2.slice transient -
 user-libpod_pod_aeea76b361e4b32baf491e5ab133bb41ecaabc00d4d51eafd3c02c75d4b0a756.slice transient -
 user-libpod_pod_af007c7f8196b7cd7483e35867ee6925c855b663a6561bc754489b021ed65aed.slice transient -
 user-libpod_pod_af210568dd9e665829e206fdc3f224dc5bc71008855baf5e93cd2809d7385075.slice transient -
