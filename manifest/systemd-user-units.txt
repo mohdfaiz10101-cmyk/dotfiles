@@ -28,6 +28,7 @@ app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
 app-gnome\x2dkeyring\x2dssh@autostart.service                                          generated -
 app-nvidia\x2dsettings\x2duser@autostart.service                                       generated -
+app-org.chromium.Chromium-671086.scope                                                 transient -
 app-org.gnome.SettingsDaemon.DiskUtilityNotify@autostart.service                       generated -
 app-org.kde.kdeconnect.daemon@autostart.service                                        generated -
 app.slice                                                                              static    -
@@ -108,6 +109,7 @@ crush-ttyd-backend.service                                                      
 crush-ttyd-direct-test.service                                                         disabled  disabled
 crush-ttyd-proxy.service                                                               enabled   disabled
 daily-ops.timer                                                                        enabled   disabled
+dbus-:1.2-org.freedesktop.portal.IBus@1.service                                        transient -
 dbus-:1.2-org.freedesktop.secrets@0.service                                            transient -
 dbus-:1.2-org.kde.kdeconnect@4.service                                                 transient -
 dbus-:1.34-org.a11y.atspi.Registry@0.service                                           transient -
@@ -284,6 +286,8 @@ hermes-stability-check.timer                                                    
 hermes-studio-8648.service                                                             enabled   disabled
 hermes-web-ui.service                                                                  disabled  disabled
 hermes-webui.service                                                                   enabled   disabled
+hermes-webui-worktree-guard.service                                                    disabled  disabled
+hermes-webui-worktree-guard.timer                                                      enabled   disabled
 hub-agent-dispatch-supervisor.service                                                  static    -
 hub-agent-dispatch-supervisor.timer                                                    enabled   disabled
 hub-api.service                                                                        enabled   disabled
@@ -602,11 +606,11 @@ timers.target                                                                   
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
 tmux-spawn-093080fc-3ac3-4303-9b79-cad6bc5b141f.scope                                  transient -
+tmux-spawn-1fb14a7c-f5ae-4324-a410-f7f26acdd6a4.scope                                  transient -
 tmux-spawn-2dd5edb4-f779-402f-8a94-f7d68b0f2a86.scope                                  transient -
 tmux-spawn-80f3567f-5ad0-4109-8121-bbfa20ae01ba.scope                                  transient -
-tmux-spawn-b40510b9-6bc6-443b-ac48-18aac2d03b8e.scope                                  transient -
+tmux-spawn-b6d258ab-de7c-4f1a-a1a5-a7ba25621314.scope                                  transient -
 tmux-spawn-c6f5b090-88d0-4001-864d-3c7d6c30de00.scope                                  transient -
-tmux-spawn-ced70e6a-2f50-43c2-a086-209d20424364.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
 ttyd-codex10-backend.service                                                           enabled   disabled
@@ -1221,6 +1225,7 @@ user-libpod_pod_7fc1c935dc54c6c411177b13507356e926051756b13c1787c98527b3ac80c575
 user-libpod_pod_7fc8c338cc58169921541fdb125159d0fd880af0a0777f3347d9b9000ed2a8b6.slice transient -
 user-libpod_pod_8044c8ef8d8b395661515de94a8ec2e535e2c210c9fcef929d3b7c7b170dbbb2.slice transient -
 user-libpod_pod_806ec3b0869cacdf298e6ec10e17e6f3123ec9f8f7041bdd542713b89aea4588.slice transient -
+user-libpod_pod_80f92064cff5bd99ce60335a803fe9f2893f99a4f718faac2ea25cc7f3691c3e.slice transient -
 user-libpod_pod_816c1ba7d75f7508e3badf8b0d7671a11961a898fd70751b3ecb2b8360db6e08.slice transient -
 user-libpod_pod_81b4ad250be13b7707c252168ac78778dfd49bca32a62c890e2916ab5c800271.slice transient -
 user-libpod_pod_823cb3735d8fe86beb263cffeeaa387cc2137682accc6c16db93df578b556752.slice transient -
@@ -1417,7 +1422,6 @@ user-libpod_pod_ae58862ad1078e7cfa34f2d589706f8333016494e1dc512177c749db9087a36c
 user-libpod_pod_ae7b920dd491be6d07b926976a344082499a21377892af1c5653f80518108d09.slice transient -
 user-libpod_pod_aeb875c8fcdd067b815f61ed023aa83c2b090afa9c19cfc2a2a0ca504c749673.slice transient -
 user-libpod_pod_aec8e63684be1fc358034f7a603e534e0bb2e34e3cea34e464e278355f02467a.slice transient -
-user-libpod_pod_aecd683409ac2d5b60da0e489c58d85873e3062b445cb9d7e396223e483933e2.slice transient -
 user-libpod_pod_aeea76b361e4b32baf491e5ab133bb41ecaabc00d4d51eafd3c02c75d4b0a756.slice transient -
 user-libpod_pod_af007c7f8196b7cd7483e35867ee6925c855b663a6561bc754489b021ed65aed.slice transient -
 user-libpod_pod_af210568dd9e665829e206fdc3f224dc5bc71008855baf5e93cd2809d7385075.slice transient -

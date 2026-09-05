@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes WebUI worktree guard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash -lc 'if [ ! -f /var/home/charlie/hermes-webui-clean/bootstrap.py ]; then git -C /var/home/charlie/hermes-webui worktree prune && git -C /var/home/charlie/hermes-webui worktree add -f /var/home/charlie/hermes-webui-clean stable-upgrade-2026-08-07 && systemctl --user daemon-reload && systemctl --user restart hermes-webui.service; fi'
+
+[Install]
+WantedBy=default.target

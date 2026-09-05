@@ -348,6 +348,7 @@ dpapi.py
 dpdns-renew
 ds
 duckdns-full-monitor.sh
+duckdns-lan-drift-check.sh
 DumpNTLMInfo.py
 easyocr
 edge-playback
