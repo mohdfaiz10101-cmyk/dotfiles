@@ -11,7 +11,9 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 
 ## Host
 - Host: Fedora Silverblue, Sway/wlroots Wayland
-- Current LAN IP: `192.168.123.71`
+- Current LAN IPs on PDCN: `192.168.123.209/24` plus compatibility alias
+  `192.168.123.71/24`. Router DNAT rules for many Fedora services still target
+  `.71`; keep the `.71` alias present unless the router rules are migrated.
 - Router: `192.168.123.1` Padavan, HTTP basic auth `admin:admin`, SSH `admin@192.168.123.1`
 - DuckDNS: `charlie1990.duckdns.org`
 - Smart Smooth guard: `smart-smooth.timer` runs `~/.local/bin/smart-smooth`
@@ -21,6 +23,9 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
   already owns GameStream port `48010`.
 
 ## Desktop Theme
+- Chromium localhost/browser timeouts: runbook
+  `~/.ai-context/runbooks/chromium-network-recovery.md`; diagnostic/recovery
+  helper `~/.local/bin/chromium-network-recover` (explicit `--repair`).
 - Unified theme: Codex dark
 - Canonical palette: `~/.config/codex-theme/palette.md`
 - Covers Sway, both Waybars, Kitty, Foot, Rofi, Wofi, OpenCode TUI, tmux,

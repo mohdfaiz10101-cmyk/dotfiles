@@ -1,6 +1,12 @@
 # Failure Blacklist
 
 ## Do Not Repeat These Paths
+- Do not declare browser-facing services healthy from HTTP 200 alone. If
+  existing Chromium times out even on 127.0.0.1 while fresh Chromium works,
+  inspect/recreate only its NetworkService child and verify the original
+  browser with screenshots. See router-infra.md, 2026-09-07 Chromium timeout.
+- Do not infer that a DuckDNS subdomain has no record from local DNS failure;
+  verify a public resolver (DoH via a working proxy when needed).
 - Do not assume `duckdns:18080` failure means local ttyd is down. Check local, LAN, router NAT, then public URL.
 - Do not leave `tmux mouse on` for OpenClaw ttyd. It causes ttyd/xterm mouse tracking symptoms.
 - Do not enable or start `ydotool-bridge.service` unless the user explicitly asks for KVM remote input.

@@ -167,6 +167,7 @@ chrome-stable-login-setup.sh
 chrome-stable-login.sh
 chromium-app-profile
 chromium-launch
+chromium-network-recover
 chromium-with-sync
 claude
 claude-api-autoheal.sh

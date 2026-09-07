@@ -7,6 +7,10 @@ DuckDNS 动态域名更新，映射 `charlie1990.duckdns.org` 到路由器 WAN I
 - `duckdns-update.timer` — 每 300s 触发 `wan-ip-monitor.sh`
 - `wan-ip-monitor.sh` 读取路由器 `wan0_ipaddr` 并提交给 DuckDNS
 - 域名 `charlie1990.duckdns.org` 解析到路由器真实 WAN IP
+- On PDCN/home Wi-Fi, `wan-ip-monitor.sh` also keeps the Fedora compatibility
+  alias `192.168.123.71/24` present on the active PDCN device because router
+  DNAT rules for public services still target `.71`.
+- Public endpoint checks include Hermes `:8648` and Hermes WebUI `:19976`.
 
 ## Verify
 
@@ -63,3 +67,8 @@ nmcli -g 802-11-wireless.powersave connection show PDCN  # expected: disable
   router DNAT/hairpin; fixed with `18094 -> 192.168.123.71:5000` plus LAN
   MASQUERADE for `:5000`. Verified DuckDNS `8648`, `19976`, `19867`, and
   `18094` all returned HTTP 200.
+- 2026-09-07: `19976` failed because Fedora's PDCN interface had only
+  `192.168.123.209/24` while router DNAT still targeted `192.168.123.71`.
+  Added persistent `192.168.123.71/24` to NetworkManager connection `PDCN`,
+  updated `wan-ip-monitor.sh` to reapply that alias automatically, and added
+  `charlie1990.duckdns.org:19976` to endpoint checks.
