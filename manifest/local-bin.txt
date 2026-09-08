@@ -261,8 +261,10 @@ codex-planner-http-mcp.js
 codex-planner-mcp.js
 codex-responses-proxy.py
 codex-resume-or-new
+codex-resume-or-new.bak-20260908-234213
 codex-router
 codex-shared-sync
+codex-shared-sync.bak-20260908-235304
 codex-skills-mode
 codex-smart
 codex-smart.pre-router-merge.20260713-012852
