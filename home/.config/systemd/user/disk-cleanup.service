@@ -3,4 +3,6 @@ Description=Disk cleanup maintenance
 
 [Service]
 Type=oneshot
-ExecStart=/var/home/charlie/.local/bin/hermes-enqueue-task.sh %h/.local/bin/disk-cleanup "disk-cleanup" 40 86400
+Environment=HOME=%h
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/.local/bin/disk-cleanup

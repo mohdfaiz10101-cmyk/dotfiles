@@ -261,10 +261,8 @@ codex-planner-http-mcp.js
 codex-planner-mcp.js
 codex-responses-proxy.py
 codex-resume-or-new
-codex-resume-or-new.bak-20260908-234213
 codex-router
 codex-shared-sync
-codex-shared-sync.bak-20260908-235304
 codex-skills-mode
 codex-smart
 codex-smart.pre-router-merge.20260713-012852
@@ -351,7 +349,6 @@ dpapi.py
 dpdns-renew
 ds
 duckdns-full-monitor.sh
-duckdns-full-monitor.sh.bak-20260909-001513
 duckdns-lan-drift-check.sh
 DumpNTLMInfo.py
 easyocr
@@ -671,7 +668,6 @@ macg
 macg_context_probe
 macg_memory_read
 machine-github-backup
-machine-github-backup.bak-20260909-001513
 machine-github-restore
 machine_role.py
 markdownify
@@ -1305,7 +1301,6 @@ voice-push
 voice-test
 vpn-watchdog
 wan-ip-monitor.sh
-wan-ip-monitor.sh.bak-20260909-001513
 warp-auto
 warp-auto-fold
 warp-claude-attach
@@ -1372,7 +1367,6 @@ wechat-matrix-fix-event-timestamps
 wechat-matrix-full-export-run
 wechat-matrix-hermes-ops
 wechat-matrix-ledger
-wechat-matrix-ledger.bak-20260909-002125
 wechat-matrix-live-sync
 wechat-matrix-media-pull
 wechat-matrix-room-reconcile

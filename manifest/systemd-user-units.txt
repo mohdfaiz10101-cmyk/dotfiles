@@ -317,7 +317,6 @@ letta-mcp.service                                                               
 letta-podman-proxy.service                                                             disabled  disabled
 letta-stack.service                                                                    enabled   disabled
 libpod-0ff339af645cfa72b18bafafd4ec4729cfd18d469dfd5b2bd67b739467715051.scope          transient -
-libpod-504aee47ef86afec8adc27d9a62845f0757f72522b5c0820a37f97c01717233d.scope          transient -
 litellm-keepalive.service                                                              static    -
 litellm-keepalive.timer                                                                disabled  disabled
 litellm.service                                                                        disabled  disabled
@@ -335,6 +334,7 @@ matrix-wechaty.service                                                          
 mattermost-ai-inbox.service                                                            enabled   disabled
 mattermost.service                                                                     enabled   disabled
 mautrix-whatsapp.service                                                               enabled   disabled
+mcp-orphan-killer.service                                                              static    -
 mcp-orphan-killer.timer                                                                enabled   disabled
 mcp-smart-router.service                                                               disabled  disabled
 mem0-bridge.service                                                                    disabled  disabled
@@ -611,10 +611,12 @@ tmux-spawn-093080fc-3ac3-4303-9b79-cad6bc5b141f.scope                           
 tmux-spawn-132d8889-cb02-48a5-96c6-60c0a736ec8b.scope                                  transient -
 tmux-spawn-1fb14a7c-f5ae-4324-a410-f7f26acdd6a4.scope                                  transient -
 tmux-spawn-633566bd-0188-4662-8302-5f8a9dcc1969.scope                                  transient -
+tmux-spawn-736ca77c-779d-412c-9624-11911411ecc1.scope                                  transient -
 tmux-spawn-75ee3713-9cb6-4f84-96ca-c9854d78bdb0.scope                                  transient -
 tmux-spawn-80f3567f-5ad0-4109-8121-bbfa20ae01ba.scope                                  transient -
 tmux-spawn-b6d258ab-de7c-4f1a-a1a5-a7ba25621314.scope                                  transient -
 tmux-spawn-c6f5b090-88d0-4001-864d-3c7d6c30de00.scope                                  transient -
+tmux-spawn-e572777c-e7e5-487c-aa07-a5f79633987c.scope                                  transient -
 tmux-spawn-edc3d5e3-4982-4968-9546-403e51c96eeb.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled

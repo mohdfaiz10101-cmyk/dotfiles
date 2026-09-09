@@ -260,6 +260,48 @@ Required behavior:
   `~/.local/state/matrix-local/charlie.password`. Do not print it. Existing
   `charlie-android-login.password` returned 403 and should not be used.
 
+## 2026-09-09 realtime rich-media enablement notes
+
+- Root cause for live Matrix rooms showing text but not WeChat multimedia was
+  the live wrapper `~/.local/bin/wechat-matrix-live-sync` passing
+  `--no-media-upload` to `wechat-matrix-sync-export`.
+- The live wrapper no longer passes `--no-media-upload`; when media roots are
+  present, realtime import can upload WeChat image/video/voice/file messages as
+  Matrix `m.image`, `m.video`, `m.audio`, and `m.file` events.
+- `wechat-matrix-sync-export` now also tries WeChat `message.type=47` emoji
+  media by `imgPath`/`reserved`/`content` candidates and sends matches as
+  Matrix `m.image` for broad client compatibility. Treat this as image
+  fallback, not native WeChat sticker protocol parity.
+- The importer logs `media_index_loaded` with `roots_present`, plus
+  `media_roots_missing` or `media_index_empty`, so missing media directories no
+  longer silently degrade to text-only imports.
+- Current default media roots are `/tmp/wechat-matrix-sync/media` and
+  `/var/home/charlie/workspace/wechatbackup/media`. On 2026-09-09 both were
+  absent, so old media must be restored or pulled again before multimedia can
+  appear for newly imported rows.
+- The live wrapper runs `phone-frp-fallback-status` before the expensive phone
+  DB pull. If phone ADB is offline it writes an `adb_preflight_offline` event to
+  `~/.local/state/wechat-matrix-sync/history.jsonl`, touches
+  `~/.local/state/wechat-matrix-sync/skip-post`, and exits successfully.
+- `wechat-matrix-sync.service` ExecStartPost commands are gated by `skip-post`
+  so offline preflight skips timestamp repair and ledger reconciliation instead
+  of reading a stale `/tmp/wechat-matrix-sync/EnMicroMsg.db`.
+- Verification on 2026-09-09: `bash -n ~/.local/bin/wechat-matrix-live-sync`,
+  `python3 -m py_compile ~/.local/bin/wechat-matrix-sync-export`, and
+  `systemd-analyze --user verify ~/.config/systemd/user/wechat-matrix-sync.service`
+  passed. Manual service start with phone offline ended `inactive (dead)` /
+  success, while `wechat-matrix-sync.timer`, `matrix-synapse.service`, and
+  `matrix-wechat.service` stayed active.
+- Current phone blocker from `phone-frp-fallback-status`:
+  `fallback_defined_but_phone_client_offline`; next recovery action is
+  one-time USB ADB or phone root shell:
+  `sh /data/adb/service.d/frpc.sh`.
+- 2026-09-09 login account reset: use Matrix localpart `charlie`
+  (`@charlie:100.120.189.27`) for client login. The password is stored only in
+  `~/.local/state/matrix-local/charlie.password`; do not copy it into runbooks,
+  logs, or final answers. Reset was verified through
+  `/_matrix/client/v3/login` with `access_token_present=True`.
+
 ## Commands
 
 ```bash

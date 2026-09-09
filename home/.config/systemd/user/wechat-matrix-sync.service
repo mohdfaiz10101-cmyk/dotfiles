@@ -5,6 +5,6 @@ After=matrix-synapse.service
 [Service]
 Type=oneshot
 ExecStart=/var/home/charlie/.local/bin/wechat-matrix-live-sync
-ExecStartPost=/var/home/charlie/.local/bin/wechat-matrix-fix-event-timestamps --batch-size 5000
-ExecStartPost=/var/home/charlie/.local/bin/wechat-matrix-ledger --source-db /tmp/wechat-matrix-sync/EnMicroMsg.db reconcile-source --redact --limit 1000
+ExecStartPost=/bin/sh -lc 'test -e /var/home/charlie/.local/state/wechat-matrix-sync/skip-post || /var/home/charlie/.local/bin/wechat-matrix-fix-event-timestamps --batch-size 5000'
+ExecStartPost=/bin/sh -lc 'test -e /var/home/charlie/.local/state/wechat-matrix-sync/skip-post || /var/home/charlie/.local/bin/wechat-matrix-ledger --source-db /tmp/wechat-matrix-sync/EnMicroMsg.db reconcile-source --redact --limit 1000'
 Nice=10

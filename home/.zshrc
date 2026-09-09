@@ -46,3 +46,4 @@ codex() {
     fi
 }
 alias wifi='nmtui'
+export ANDROID_SERIAL=100.87.37.3:5555  # PKR110 NetBird primary

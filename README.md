@@ -1,6 +1,6 @@
 # Machine Backup
 
-Generated from `charlie1990.duckdns.org` at `2026-09-08T16:26:01Z`.
+Generated from `fedora` at `2026-09-09T16:00:00Z`.
 
 This repository is a portable user-space restore set, not a raw disk image.
 It intentionally excludes private keys, OAuth/session files, browser profiles,

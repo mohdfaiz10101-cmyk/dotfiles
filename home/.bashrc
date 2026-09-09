@@ -33,3 +33,4 @@ export LD_LIBRARY_PATH="/nix/store/nn129jwsznqv7k888wb05m5whpyndqrf-pipewire-1.6
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export ANDROID_SERIAL=100.87.37.3:5555  # PKR110 NetBird primary

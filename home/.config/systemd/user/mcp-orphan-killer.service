@@ -1,0 +1,6 @@
+[Unit]
+Description=MCP orphan process killer
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/mcp-orphan-killer.sh
