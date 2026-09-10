@@ -90,7 +90,7 @@ codex-tmux-watchdog.timer                                                       
 colord-session.service                                                                 static    -
 comm-project-sync.service                                                              static    -
 comm-project-sync.timer                                                                enabled   disabled
-container-khoj.service                                                                 enabled   disabled
+container-khoj.service                                                                 disabled  disabled
 container-ntfy.service                                                                 enabled   disabled
 content-filter-fetch.timer                                                             enabled   disabled
 content-filter.service                                                                 enabled   disabled
@@ -609,11 +609,13 @@ tmux-duckdns-tunnel.service                                                     
 tmux-spawn-0857fae7-b17a-4ad3-860a-6fbd3a04fa5f.scope                                  transient -
 tmux-spawn-093080fc-3ac3-4303-9b79-cad6bc5b141f.scope                                  transient -
 tmux-spawn-132d8889-cb02-48a5-96c6-60c0a736ec8b.scope                                  transient -
+tmux-spawn-1473a753-b881-49fb-b40a-a230900317f3.scope                                  transient -
 tmux-spawn-1fb14a7c-f5ae-4324-a410-f7f26acdd6a4.scope                                  transient -
 tmux-spawn-633566bd-0188-4662-8302-5f8a9dcc1969.scope                                  transient -
 tmux-spawn-736ca77c-779d-412c-9624-11911411ecc1.scope                                  transient -
 tmux-spawn-75ee3713-9cb6-4f84-96ca-c9854d78bdb0.scope                                  transient -
 tmux-spawn-80f3567f-5ad0-4109-8121-bbfa20ae01ba.scope                                  transient -
+tmux-spawn-8a265605-d02d-4ca7-a31f-cad772287949.scope                                  transient -
 tmux-spawn-b6d258ab-de7c-4f1a-a1a5-a7ba25621314.scope                                  transient -
 tmux-spawn-c6f5b090-88d0-4001-864d-3c7d6c30de00.scope                                  transient -
 tmux-spawn-e572777c-e7e5-487c-aa07-a5f79633987c.scope                                  transient -
@@ -1766,6 +1768,7 @@ wechat-matrix-ledger-sync.service                                               
 wechat-matrix-ledger-sync.timer                                                        enabled   disabled
 wechat-matrix-sync.service                                                             static    -
 wechat-matrix-sync.timer                                                               enabled   disabled
+wechat-matrix-timeline-restore.service                                                 disabled  disabled
 wechat-sync.service                                                                    static    -
 wechat-sync.timer                                                                      enabled   disabled
 weekly-audit.service                                                                   static    -

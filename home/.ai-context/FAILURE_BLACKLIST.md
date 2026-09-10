@@ -1,6 +1,23 @@
 # Failure Blacklist
 
 ## Do Not Repeat These Paths
+- Do not leave `hermes-vector-memory` enabled in `~/.hermes/config.yaml` when
+  `~/.hermes/logs/mcp-stderr.log` repeats `sentence_transformers import failed`.
+  On 2026-09-10 it respawned `hermes-vector-memory-mcp.py` under live Hermes
+  MCP watchdogs and consumed 100%+ CPU. Immediate fix: set
+  `mcp_servers.hermes-vector-memory.enabled: false`, terminate existing
+  `hermes-vector-memory-mcp.py` / matching watchdog processes, then verify with
+  `pgrep -af 'hermes-vector-memory-mcp.py'`.
+- Do not treat `frpc`/`frps` high CPU as normal just because the services are
+  active. If `frpc.service` status shows repeated `StartWorkConn contains error:
+  work connection pool is full, discarding`, restart `frps.service` and then
+  `frpc.service`, then verify CPU and logs. Also confirm `frpc.service` still
+  clears proxy environment variables.
+- Do not leave `container-khoj.service` enabled while it is in
+  `activating (auto-restart)` / `status=1/FAILURE`. The retry loop can create
+  repeated `podman run ghcr.io/khoj-ai/khoj:latest` CPU spikes. Stop it with
+  `systemctl --user disable --now container-khoj.service` unless the user is
+  actively using Khoj.
 - Do not declare browser-facing services healthy from HTTP 200 alone. If
   existing Chromium times out even on 127.0.0.1 while fresh Chromium works,
   inspect/recreate only its NetworkService child and verify the original

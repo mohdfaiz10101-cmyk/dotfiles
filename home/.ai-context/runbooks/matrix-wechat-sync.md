@@ -481,3 +481,55 @@ Avoid running duplicate bridge services:
 - Keep `matrix-wechat.service` for the actual appservice bridge.
 - Keep `wechat-matrix-bridge.service` disabled unless it is explicitly
   reconfigured with required Matrix credentials and a non-conflicting purpose.
+
+Verified on 2026-09-10:
+
+- PKR phone ADB was reachable through FRP fallback: `127.0.0.1:15555` and
+  `100.87.37.3:5555` both reported `device`; LAN `192.168.123.22:5555` was not
+  reachable and was not required for this workflow.
+- `wechat-matrix-live-sync` now leaves Matrix media upload enabled, preflights
+  phone ADB with `phone-frp-fallback-status`, and skips post-processing when
+  phone ADB is offline instead of reusing stale `/tmp/wechat-matrix-sync` DBs.
+- `wechat-matrix-sync-export` now indexes existing media roots and attempts
+  WeChat `message.type=47` emoji/sticker media matching from `imgPath`,
+  `reserved`, and `content`.
+- `wechat-matrix-media-pull` needed the root shell invocation fixed: pass
+  Android `su 0 -c` as one shell string with `shlex.quote(...)`; split argv
+  broke multi-line commands on device.
+- Pulled local media roots under
+  `/var/home/charlie/workspace/wechatbackup/media`: `voice2` 6515 files,
+  `emoji` 3954 files, `attachment` 503 files, `image2` 17462 files, and
+  `video` 2764 files. `download` was missing on the phone snapshot.
+- Video pull used 279 remote split parts and recovered from repeated ADB
+  `device offline`, `connect failed: closed`, and partial pull failures via
+  per-part retries.
+- Media index verification found one present root and 45943 index entries:
+  `/var/home/charlie/workspace/wechatbackup/media`.
+- A live DB sync successfully pulled `EnMicroMsg.db` (`439438336` bytes, 53
+  parts) plus WAL/SHM sidecars. That run loaded `count=0`, meaning no new
+  WeChat rows were beyond the live state at that moment; media upload will be
+  exercised by the next new image/voice/video/sticker message.
+- SchildiChat old text placeholders do not mutate automatically after media is
+  pulled. Matrix send transaction IDs are idempotent, so reusing the original
+  `txn-prefix` returns the original text event. To refresh old media, send a
+  bounded media-only backfill with a new transaction prefix and a separate
+  state/ledger, then run `wechat-matrix-fix-event-timestamps` against that
+  separate ledger.
+- On 2026-09-10 a 20-message media-only refresh smoke used state/ledger under
+  `~/.local/state/wechat-matrix-media-refresh`, `--only-media`, and
+  `--txn-prefix wechat_media_refresh_`. It sent 10 `m.image`, 2 `m.audio`, 4
+  `m.video`, 1 `m.file`, and 3 text fallbacks for unmatched emoji, then fixed
+  timestamps with `updated=20 missing=0`.
+- Later on 2026-09-10 this media-only append approach was rejected because
+  SchildiChat displays old appended media out of the original conversation
+  position. The 20 smoke events were redacted, and the accepted approach became
+  clean chronological restore rooms with prefix `微信复原｜`.
+- Do not trust `matrix_msgtype='m.video'` alone. A bug briefly uploaded WeChat
+  video thumbnails (`.jpg`) as Matrix `m.video` events. Verify Matrix event
+  `content.info.mimetype` starts with `video/` and local file sniffing detects
+  real MP4 (`ftyp`) before treating a restored event as video. The importer now
+  rejects image MIME candidates for WeChat `message.type=43`.
+- 2026-09-10 video coverage after MIME sniffing: WeChat DB had 1773 video rows;
+  local media roots contained 505 real video matches and 1268 rows with only
+  thumbnails or missing original video files. Missing originals must remain text
+  placeholders unless recovered from another phone/backup source.

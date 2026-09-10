@@ -1,0 +1,19 @@
+[Unit]
+Description=Restore WeChat history to Matrix in clean chronological rooms
+After=matrix-synapse.service
+Wants=matrix-synapse.service
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-timeline-restore-run
+Restart=on-failure
+RestartSec=30
+Nice=12
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+Environment=BATCH_LIMIT=200
+Environment=DELAY=0.08
+Environment=SLEEP_BETWEEN_BATCHES=1
+
+[Install]
+WantedBy=default.target

@@ -1371,6 +1371,7 @@ wechat-matrix-live-sync
 wechat-matrix-media-pull
 wechat-matrix-room-reconcile
 wechat-matrix-sync-export
+wechat-matrix-timeline-restore-run
 wechat-merge.py
 wechat-msg-sync.py
 wechat-msg-sync-wrapper.sh
