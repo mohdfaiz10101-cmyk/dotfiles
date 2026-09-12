@@ -1120,3 +1120,54 @@ As of 2026-07-20 the MCP wrapper is installed:
 - config source: `~/.config/mcp/servers.yaml` entry `agent-comms`
 - synced into OpenCode and Codex by `~/.local/bin/mcp-sync.py --apply`
 - tools: `agent_comms_snapshot`, `agent_comms_open_url`, `agent_comms_manual_action`, `agent_comms_manual_done`
+
+## PKR110 Boot IME And Heat Triage (2026-09-12)
+
+Observed failure:
+
+- After reboot, `settings get secure default_input_method` could still point to
+  `com.iflytek.inputmethod.oem/com.iflytek.inputmethod.FlyIME`, while
+  `ime list -s` and `dumpsys input_method` only showed Gboard. Treat this as a
+  stale/default mismatch: hard-writing FlyIME can leave input unusable until the
+  user manually switches IME.
+- `dumpstate -N` can respawn from ColorOS service `dumpstate_nwatchcall`, with
+  `debug.sf.OplusDumpState` set to the dumpstate PID. Stop the service before
+  repeatedly killing dumpstate.
+
+Installed Magisk boot fixes:
+
+```text
+/data/adb/service.d/99-ime-boot-restore.sh
+/data/adb/service.d/98-oplus-dumpstate-cooldown.sh
+```
+
+Source copies:
+
+```text
+~/.local/state/phone-fixes/99-ime-boot-restore.sh
+~/.local/state/phone-fixes/98-oplus-dumpstate-cooldown.sh
+```
+
+Behavior:
+
+- IME script selects Gboard early as the known-good boot fallback, then polls
+  `ime list -s` for FlyIME and switches back only if Android has registered it.
+- Dumpstate cooldown script waits 60s after boot, then runs
+  `setprop debug.sf.OplusDumpState 0`, `stop dumpstate_nwatchcall`, and
+  `killall dumpstate`.
+
+Verification:
+
+```bash
+adb-record --tag phone-ime-verify -- -s <serial> shell \
+  'settings get secure default_input_method; ime list -s; dumpsys input_method | grep -E "mSelectedMethodId|mCurMethodId"'
+adb-record --tag phone-thermal-verify -- -s <serial> shell \
+  'getprop init.svc.dumpstate_nwatchcall; getprop debug.sf.OplusDumpState; cat /proc/loadavg; dumpsys battery | grep -E "temperature|PhoneTemp|level"'
+```
+
+Residual risk from the 2026-09-12 run: after stopping dumpstate and using Gboard
+fallback, `system_server` still consumed about 18% CPU and load stayed near 11
+around 25 minutes after boot. Do not declare PKR110 heat/cardon fully fixed
+from these two mitigations alone; next layer is system_server thread triage
+(`HeapTaskDaemon`, `audioserver_lif`, `android.io/bg`, `NetworkStats`,
+`PackageManager`) and ColorOS/Google sync maintenance.
