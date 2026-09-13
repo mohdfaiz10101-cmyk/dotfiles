@@ -1,0 +1,9 @@
+[Unit]
+Description=Monitor WeChat timeline restore and finalize SchildiChat sync
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-restore-monitor
+Nice=12
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
