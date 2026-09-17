@@ -222,7 +222,6 @@ codegraphcontext
 code-indexer
 code-search
 code-watcher
-codex
 codex0
 codex1
 codex2
@@ -243,6 +242,7 @@ codex-c10-relogin-start
 codex-c5-isolated-browser
 codex-c5-phone-login
 codex-context-wrap
+codex-desktop
 codex-doctor.sh
 codex-exec-memory
 codex-fallback-pool-repair

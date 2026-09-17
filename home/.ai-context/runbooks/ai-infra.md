@@ -59,6 +59,12 @@ systemctl --user restart embedding-server
 - LiteLLM 配置修改后必须同时重启 strip-proxy
 - 2026-07-04 强制保活：`~/.local/bin/litellm-keepalive` 接管 4002/4000 健康巡检。它会读取 `~/ai/litellm.env` 的 `LITELLM_MASTER_KEY` 做带鉴权探测，并用 flock 防止 timer 与人工重启并发。日志在 `~/.local/state/litellm-keepalive.log`。
 - 2026-07-04 Claude Code 兼容：`claude-sonnet-4-6-20250514`、`claude-sonnet-4-5-20250514`、`claude-haiku-4-5-20251001`、`claude-opus-4-6-20250514` 已加入 LiteLLM fallback 链。若 ZAI 余额/资源包不足，应降级到 `glm-5.2`、`step-3.7-flash`、`step-3.5-flash-2603`、`deepseek-v4-*`，不要让 OpenCode 直接卡在单一 Claude 别名。
+- 2026-09-17 Hermes `:19976` `HTTP 401: Incorrect API key provided`：
+  - 先确认 `curl http://127.0.0.1:19976/api/settings` / `/api/sessions` 是否 200；若入口 200，问题是上游 provider key，不是路由/DNAT。
+  - 查 `journalctl --user -u hermes-webui.service`，若看到 `Provider: stepfun-router` + `Endpoint: https://api.stepfun.com/step_plan/v1` + `invalid_api_key`，验证 `~/.hermes/config.yaml` 的 `providers.stepfun-router.api_key`。
+  - 可从本机已有来源对比候选 key，例如 `~/ai/litellm.env`、历史验证记录；验证时只输出 key 前后缀、长度和 HTTP 状态，不打印完整 key。
+  - 替换 `~/.hermes/config.yaml` 中失效 key 后，`systemctl --user restart hermes-webui.service`。
+  - 验证闭环：StepFun `/models` 返回 200，`19976/api/settings` 返回 200，再用临时 WebUI 会话 `POST /api/chat` 发 `Say OK only.`，应返回 `chat_status 200` 和 `answer_preview OK`。
 - Letta 容器重建后 PG 连接失败 → 检查 `pg_hba.conf` 网络段是否匹配新容器 IP
 - Letta archival passage 的 API 响应可能长期显示 `embedding=null`；不要仅凭 `/archival-memory/search` 语义搜索判断记忆是否存在。先用 `/archival-memory?search=<term>&limit=...` 文本检索验证，再看 OpenCode 生命周期脚本是否注入。
 - `embedding-server.service` may run in hash fallback mode. In that mode
