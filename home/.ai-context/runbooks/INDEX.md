@@ -1,16 +1,16 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-09-19T22:04:07
+> Updated: 2026-09-20T22:16:39
 
 | Runbook | Scope | Updated |
 |---|---|---|
 | `agent-preference-learning.md` | Agent Preference Learning Hook | 2026-07-19 |
-| `ai-infra.md` | Runbook: AI Infrastructure | 2026-09-17 |
+| `ai-infra.md` | Runbook: AI Infrastructure | 2026-09-20 |
 | `aider.md` | Runbook: Aider | 2026-07-15 |
 | `chromium-network-recovery.md` | Chromium Network Recovery | 2026-09-07 |
 | `codegraph.md` | CodeGraph Runbook | 2026-07-20 |
-| `codex-multi-account-routing.md` | Runbook: Codex Multi-Account Routing | 2026-08-28 |
+| `codex-multi-account-routing.md` | Runbook: Codex Multi-Account Routing | 2026-09-20 |
 | `communication-project-sync.md` | Runbook: Communication Project Sync | 2026-07-18 |
 | `control-plane.md` | Runbook: Unified Control Plane | 2026-08-15 |
 | `crush.md` | Runbook: Crush | 2026-07-15 |
@@ -30,9 +30,9 @@
 | `huly.md` | Runbook: Huly | 2026-07-04 |
 | `input-capture.md` | Runbook: Mouse/Input Capture | 2026-08-28 |
 | `machine-backup.md` | Runbook: Machine GitHub Backup | 2026-07-13 |
-| `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-10 |
+| `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-20 |
 | `mattermost.md` | Runbook: Mattermost | 2026-07-18 |
-| `mihomo-control.md` | Runbook: Unified Mihomo Control | 2026-08-10 |
+| `mihomo-control.md` | Runbook: Unified Mihomo Control | 2026-09-20 |
 | `netbird.md` | Runbook: NetBird Self-Hosted Tailnet | 2026-08-10 |
 | `network-repair-logic.md` | Runbook: Network Repair Logic | 2026-08-03 |
 | `network-scenario-monitor.md` | Runbook: Network Scenario Monitor | 2026-08-10 |

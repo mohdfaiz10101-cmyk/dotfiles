@@ -452,6 +452,23 @@ Codex 三账号并行、互补和省钱路由规划。
 - 2026-07-14 claim-code rotation rule: for slot `1/2/3`, if the user provides a delivered claim code and wants to replace the current independent upstream account, prefer `~/.local/bin/codex-sub2api-claim-bind <slot> <code>`. It will redeem or lookup the code, download `download.json`, import through local Sub2API `POST /api/v1/admin/accounts/batch`, rebind `openai-codex-N` and `codexN-sub2api`, update the slot-local env/auth, and restart the slot. If the code page says “额度已用完” but `lookup` still returns `download.json`, treat that as a valid historical rotation path instead of a failure.
 - 2026-07-14 raw JSON rotation rule: if the user provides an exported phone/local raw Codex JSON/TXT file instead of a claim code, prefer `~/.local/bin/codex-sub2api-json-bind --account <slot> --file <path> --label '<name>' --restart --health-check --json`. This extracts and validates the raw OAuth JSON, imports/updates a Sub2API upstream account, then delegates slot binding to `codex-account-provision`. Do not paste tokens into converter sites or print them. If health times out while `/v1/models` works, check and set the upstream `proxy_id=1`, restart `sub2api.service`, then rerun the provision health check.
 - 2026-07-14 page-level acceptance rule: after any Codex account import/rebind, verify both backend and visible WebTTY UI. For slot 4, run a headless Chromium mobile screenshot against `http://127.0.0.1:19003/?device=w19900422`, dump DOM and assert markers such as `Codex 4 WebTTY`, `codex_account_ui_final`, `OP`, `Crush`, `codex-quota`, `codex-session`, and `codex-send`. Then check `/quota.json` shows the intended upstream account name/id and active `codex4-sub2api` key, and `/status` returns `ok=true`. Headless Chromium may leave a narrow tmux client; detach it and restore `haven-codex4` to `100x30` before finishing.
+
+- 2026-09-20 C1 WebTTY reconnect loop repair: if `19899/status` flips between
+  `ok=true` and `no server running on /run/user/1000/tmux/codex.sock`, check
+  both `haven-codex.timer` and `codex-tmux-watchdog.timer`. Codex standalone
+  `0.154.x` can run as foreground `pane_current_command=codex`, not `node`, so
+  `~/.local/bin/haven-codex-ensure`, `~/.local/bin/ttyd-codex-entry`, and
+  `~/.local/bin/codex-main-watchdog.sh` must treat `node|codex` as live Codex
+  and also match `/.local/bin/codex` in descendant command lines. C1 should use
+  `CODEX_FORCE_NEW=1` for WebTTY to avoid `resume --last` colliding with an
+  already-open API/Desktop conversation and showing `This conversation is open
+  in another app`. The primary config now uses `model = "gpt-5.6-sol"` with
+  `check_for_update_on_startup = false` to avoid startup migration/update
+  prompts (`gpt-5.5` retires on 2026-10-14). Verification evidence: over a
+  3-minute window, `curl -H 'X-Device-Code: w19900422'
+  http://127.0.0.1:19899/status` stayed `ok=true`, and
+  `tmux -S /run/user/1000/tmux/codex.sock list-panes -t '=codex-main:'` kept
+  the same `pane_pid` while both timers fired.
 - Authentication, installation id, history, SQLite state, logs, cache, and shell snapshots must remain account-local.
 - Shared config, skills, AGENTS.md, `~/.ai-context`, `~/memory`, and MCP definitions may be shared through the existing sync path.
 - 2026-07-17 C8 shared-knowledge repair: C8 originally had an account-local

@@ -533,3 +533,43 @@ Verified on 2026-09-10:
   local media roots contained 505 real video matches and 1268 rows with only
   thumbnails or missing original video files. Missing originals must remain text
   placeholders unless recovered from another phone/backup source.
+
+## 2026-09-20 SchildiChat Empty Room List After Restore
+
+Symptom: Synapse restore/import was complete and the Android client showed a
+large unread badge, but SchildiChat's overview page only showed the
+`正常优先级` category header with an empty list.
+
+Two separate issues were present:
+
+- The public Matrix HTTPS entry on `charlie1990.duckdns.org:443` was served by
+  user `caddy-hermes.service` with `tls internal`, so SchildiChat rejected sync
+  with `UnrecognizedCertificateException` / `Trust anchor for certification
+  path not found`.
+- After sync recovered, the local SchildiChat room-list preference had
+  `ROOM_LIST_ROOM_EXPANDED_正常优先级_ALL_null=false`, so all rooms under that
+  category stayed hidden.
+
+Repairs applied:
+
+```bash
+# user Caddy now uses the public ZeroSSL chain copied under user-readable config
+systemctl --user restart caddy-hermes.service
+
+# duplicate system Caddy monitor was disabled because it only failed on :443
+sudo systemctl disable --now caddy-monitor.service
+
+# phone-side preference backup and expand
+adb shell 'su -c "cp /data/user/0/de.spiritcroc.riotx/shared_prefs/de.spiritcroc.riotx_preferences.xml /data/user/0/de.spiritcroc.riotx/shared_prefs/de.spiritcroc.riotx_preferences.xml.bak-20260920-expand"'
+adb shell 'su -c "sed -i \"s/name=\\\"ROOM_LIST_ROOM_EXPANDED_正常优先级_ALL_null\\\" value=\\\"false\\\"/name=\\\"ROOM_LIST_ROOM_EXPANDED_正常优先级_ALL_null\\\" value=\\\"true\\\"/\" /data/user/0/de.spiritcroc.riotx/shared_prefs/de.spiritcroc.riotx_preferences.xml"'
+```
+
+Verification:
+
+- `openssl s_client -connect charlie1990.duckdns.org:443 -servername
+  charlie1990.duckdns.org -verify_return_error` returns the ZeroSSL/Sectigo
+  chain with `Verify return code: 0`.
+- Phone `curl` without `-k` can fetch
+  `https://charlie1990.duckdns.org/_matrix/client/versions`.
+- Synapse `user_ips` has a fresh `SchildiChat/1.6.62.sc92` row.
+- SchildiChat overview renders imported rooms under expanded `正常优先级`.

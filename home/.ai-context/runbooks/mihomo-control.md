@@ -318,3 +318,49 @@ adb -s 100.87.37.3:5555 shell 'su -c "su 10342 -c '\''curl -I --connect-timeout 
 ```
 
 Expected Alipay UID result: HTTP headers from `m.luckincoffee.com`, not `Could not resolve host`. Do not click user agreements, phone-number authorization, payment, or privacy consent on behalf of the user; stop on those screens.
+
+## 2026-09-20 Codex WebTTY Reconnect From Open Mihomo Proxy
+
+Symptom: Codex WebTTY kept showing reconnect/stream interruptions even after
+`ttyd` and the `codex-main` tmux pane were healthy.
+
+Root cause: Fedora mihomo had `allow-lan: true` and `mixed-port: 7890` /
+`socks-port: 7891` listening on `*`. Public IPs were using it as an open proxy,
+creating hundreds to thousands of `GLOBAL-EDGE>PROXY` connections and causing
+Codex `chatgpt.com` / OpenAI probes to return TLS EOF or time out.
+
+Fast diagnosis:
+
+```bash
+ss -ltnp | rg 'mihomo|:7890|:7891|:7892|:7898|:9091'
+curl -sS http://127.0.0.1:9091/connections | python3 - <<'PY'
+import json, sys, collections
+j=json.load(sys.stdin)
+print("active", len(j.get("connections", [])))
+print(collections.Counter((c.get("metadata") or {}).get("sourceIP") for c in j.get("connections", [])).most_common(10))
+print(collections.Counter(">".join(c.get("chains") or []) for c in j.get("connections", [])).most_common(10))
+PY
+```
+
+Safe host-local repair applied:
+
+```yaml
+allow-lan: false
+bind-address: 127.0.0.1
+```
+
+Then validate and restart:
+
+```bash
+/usr/local/bin/mihomo -t -d /etc/mihomo -f /etc/mihomo/config.yaml
+sudo systemctl restart mihomo
+curl -sS -X DELETE http://127.0.0.1:9091/connections
+```
+
+Expected listener state: `7890`, `7891`, `7892-7897`, `7898`, and `9091` all
+bind to `127.0.0.1` only. Expected connection state after cleanup: active
+connections stay low, and Codex C1 probe via `7892` returns
+`chatgpt.com/backend-api/codex/responses -> 405`.
+
+Also keep `mihomo-traffic-guard` enforcing an active connection cap; this catches
+future abuse before it drags Codex streams down.
