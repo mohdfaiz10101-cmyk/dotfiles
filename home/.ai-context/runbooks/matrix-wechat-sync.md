@@ -437,6 +437,63 @@ Element X / mobile client caveat:
   for sending arbitrary selected messages to a bot. Use range commands such as
   `!总结 最近50` instead of manual multi-select.
 
+## 2026-09-21 SchildiChat media fidelity repair
+
+- User-visible problem: restored SchildiChat rooms were mostly text
+  placeholders. WeChat voice messages did not play, and many WeChat
+  sticker/emoji messages showed only `[表情]`.
+- Voice root cause: WeChat voice files under `voice2` are named `.amr` but many
+  begin with `#!SILK_V3` / `\x02#!SILK_V3`, so Matrix clients cannot play them
+  as AMR. `wechat-matrix-sync-export` now detects WeChat SILK and transcodes it
+  to Ogg/Opus before upload.
+- Voice decoder/runtime:
+  - Python venv: `~/.local/state/wechat-matrix-media-fix/venv`
+  - Package: `silk-python`
+  - Cache: `~/.local/cache/wechat-matrix-media/voice-opus`
+  - Override env: `WECHAT_MATRIX_SILK_PYTHON`, `WECHAT_MATRIX_VOICE_CACHE`
+- Voice verification: smoke ledger
+  `~/.local/state/wechat-matrix-mediafix-voice-smoke-20260921/ledger.db`
+  contains `msgId=66` and `msgId=67` as Matrix `m.audio` with uploaded media.
+- Emoji/sticker root cause: many local WeChat emoji files are encrypted and
+  extensionless. `wechat-matrix-sync-export` now loads the local emoji AES key
+  from `EmojiInfo catalog=153`, decrypts the first 1024 bytes, and uploads
+  decoded GIF/PNG/JPEG/WEBP as Matrix `m.image`.
+- Emoji cache: `~/.local/cache/wechat-matrix-media/emoji-decoded`; override
+  with `WECHAT_MATRIX_EMOJI_CACHE`.
+- Emoji verification: smoke ledger
+  `~/.local/state/wechat-matrix-mediafix-emoji-smoke-20260921/ledger.db`
+  contains `msgId=452` (`message.type=47`) as Matrix `m.image`.
+- WeChat `wxgf` caveat: proprietary `wxgf`/HEVC stickers are not uploaded as
+  fake images unless this host has an HEVC-capable ffmpeg decoder. Current host
+  ffmpeg lacks HEVC decode support, so `wxgf` falls back to text and writes a
+  `.failed` cache marker. Smoke ledger
+  `~/.local/state/wechat-matrix-mediafix-wxgf-smoke-20260921-0101/ledger.db`
+  verifies `msgId=55` stays `m.text` with no `media_url`.
+- Existing Matrix events are immutable. Old `[表情]` placeholders and old
+  unplayable voice uploads will not mutate in place. For WeChat-like playback
+  in SchildiChat, run a clean restore into new rooms with a new state directory,
+  room prefix, and transaction prefix, then reconcile timestamps and membership.
+- `wechat-matrix-timeline-restore-run` accepts `TXN_PREFIX` in the environment
+  for clean reimports. Keep old restore rooms until the user explicitly asks to
+  archive/delete them.
+- Do not join the phone viewer account to a large restore while events are
+  still being imported with current Matrix send timestamps. SchildiChat caches
+  timeline timestamps in `disk_store.realm`; later server-side timestamp fixes
+  do not reliably update already cached bubbles or room-list times. Preferred
+  flow: import with `--defer-viewer-join`, fix timestamps per batch and at the
+  end, then run room reconcile once so the phone sees already-correct events.
+- `wechat-matrix-timeline-restore-run` now runs
+  `wechat-matrix-fix-event-timestamps` after each batch when
+  `FIX_TIMESTAMPS_EACH_BATCH=1`. The timestamp fixer updates both
+  `events.origin_server_ts` and `event_json.unsigned.age_ts`; checking only
+  `events.origin_server_ts` is not enough for mobile clients.
+- If a SchildiChat test import was already viewed with wrong times, the local
+  cache is
+  `/data/data/de.spiritcroc.riotx/files/<session>/disk_store.realm`. Back it up
+  before clearing. Do not touch `matrix-sdk-auth.realm`, `crypto_store.realm`,
+  or `rustFlavor/matrix-sdk-crypto.sqlite3` unless intentionally logging out or
+  resetting encryption state.
+
 ## Expected evidence
 
 - Timer is `active (waiting)` and enabled.

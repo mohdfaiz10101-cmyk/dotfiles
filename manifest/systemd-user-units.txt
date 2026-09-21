@@ -23,13 +23,11 @@ ao-dashboard.service                                                            
 ao-orchestrator.service                                                                enabled   disabled
 app-chrome\x2dcfmligackgegaglpgmjfndpcappofaie\x2dDefault@autostart.service            generated -
 app-dev.lizardbyte.app.Sunshine.service                                                disabled  disabled
-app-flatpak-com.tencent.WeChat-1154035791.scope                                        transient -
 app-geoclue\x2ddemo\x2dagent@autostart.service                                         generated -
 app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                       generated -
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
 app-gnome\x2dkeyring\x2dssh@autostart.service                                          generated -
 app-nvidia\x2dsettings\x2duser@autostart.service                                       generated -
-app-org.chromium.Chromium-3850767.scope                                                transient -
 app-org.gnome.SettingsDaemon.DiskUtilityNotify@autostart.service                       generated -
 app-org.kde.kdeconnect.daemon@autostart.service                                        generated -
 app.slice                                                                              static    -
@@ -111,7 +109,6 @@ crush-ttyd-direct-test.service                                                  
 crush-ttyd-proxy.service                                                               enabled   disabled
 daily-ops.timer                                                                        enabled   disabled
 dbus-:1.25-org.a11y.atspi.Registry@0.service                                           transient -
-dbus-:1.3-org.freedesktop.FileManager1@1.service                                       transient -
 dbus-:1.3-org.freedesktop.PackageKit@0.service                                         transient -
 dbus-:1.3-org.freedesktop.portal.IBus@0.service                                        transient -
 dbus-:1.3-org.freedesktop.secrets@0.service                                            transient -
@@ -611,9 +608,9 @@ thunar.service                                                                  
 timers.target                                                                          static    -
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
-tmux-spawn-0ee5ea7b-8841-45bb-baa7-d15756172368.scope                                  transient -
 tmux-spawn-9cab77b1-2d99-40a0-8d7d-43705d20fac7.scope                                  transient -
 tmux-spawn-e1016ea7-17cf-4506-ae2f-f8faa3c3df70.scope                                  transient -
+tmux-spawn-fe0168f8-969b-4445-9292-e91b894cf749.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
 ttyd-codex10-backend.service                                                           enabled   disabled
@@ -661,7 +658,10 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    enabled   disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
+user-libpod_pod_5da5b7f1f482a9e45e3c568e8fcee70a0741de35044219347691b13d4dcb43f0.slice transient -
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
+user-libpod_pod_9dda55e5b09e41f60ce31a20d74cf7261251583124bbe561ad18bcea20c5a1c6.slice transient -
+user-libpod_pod_cb4f34ead6482a57d888214deb68cee38bfbb6165bdc2da121fad28a54782529.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled
