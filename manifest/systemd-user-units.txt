@@ -23,6 +23,8 @@ ao-dashboard.service                                                            
 ao-orchestrator.service                                                                enabled   disabled
 app-chrome\x2dcfmligackgegaglpgmjfndpcappofaie\x2dDefault@autostart.service            generated -
 app-dev.lizardbyte.app.Sunshine.service                                                disabled  disabled
+app-flatpak-com.tencent.WeChat-162755309.scope                                         transient -
+app-flatpak-com.tencent.WeChat-1763992852.scope                                        transient -
 app-geoclue\x2ddemo\x2dagent@autostart.service                                         generated -
 app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                       generated -
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
@@ -662,6 +664,7 @@ user-libpod_pod_5da5b7f1f482a9e45e3c568e8fcee70a0741de35044219347691b13d4dcb43f0
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
 user-libpod_pod_9dda55e5b09e41f60ce31a20d74cf7261251583124bbe561ad18bcea20c5a1c6.slice transient -
 user-libpod_pod_cb4f34ead6482a57d888214deb68cee38bfbb6165bdc2da121fad28a54782529.slice transient -
+user-libpod_pod_eba4d7703aa5ab557f001a21164d25ea617977e7c7e8b8e489bee05b48fe62ed.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled
@@ -673,6 +676,8 @@ wayvnc.service                                                                  
 webssh-ttyd.service                                                                    enabled   disabled
 webtty-usb-reverse-ensure.service                                                      static    -
 webtty-usb-reverse-ensure.timer                                                        enabled   disabled
+wechat-flatpak-keepalive.service                                                       static    -
+wechat-flatpak-keepalive.timer                                                         enabled   disabled
 wechat-matrix-bridge.service                                                           disabled  disabled
 wechat-matrix-full-export.service                                                      enabled   disabled
 wechat-matrix-ledger-sync.service                                                      static    -

@@ -1359,6 +1359,8 @@ webtty-usb-reverse-ensure
 wechat-android-backup.sh
 wechat-contact-sync.py
 wechat-finance
+wechat-flatpak-2
+wechat-flatpak-ensure
 wechat-kanban-push.sh
 wechat-live-monitor.py
 wechat-matrix-backfill-loop

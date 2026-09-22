@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-09-21T22:27:38
+> Updated: 2026-09-22T22:37:33
 
 | Runbook | Scope | Updated |
 |---|---|---|
@@ -50,6 +50,7 @@
 | `telegram.md` | Telegram Bot and Group Architecture | 2026-06-24 |
 | `termhive.md` | Runbook: TermHive | 2026-06-19 |
 | `waydroid-control-plane.md` | Waydroid Control Plane | 2026-08-01 |
+| `wechat-linux-flatpak.md` | Runbook: WeChat Linux Flatpak File Picker | 2026-09-22 |
 | `workflow-intelligence.md` | Runbook: Workflow Intelligence | 2026-08-10 |
 
 ## Routing
