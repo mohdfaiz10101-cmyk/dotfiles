@@ -40,7 +40,7 @@ at-spi-dbus-bus.service                                                         
 auth-proxy.service                                                                     enabled   disabled
 background.slice                                                                       static    -
 backup-cleanup.service                                                                 disabled  disabled
-backup-cleanup.timer                                                                   enabled   disabled
+backup-cleanup.timer                                                                   disabled  disabled
 basic.target                                                                           static    -
 bluetooth.target                                                                       static    -
 browser-sync-mcp-server.service                                                        enabled   disabled
@@ -104,7 +104,7 @@ crush-healthcheck.service                                                       
 crush-healthcheck.timer                                                                enabled   disabled
 crush-server.service                                                                   enabled   disabled
 crush-session-eval.service                                                             static    -
-crush-session-eval.timer                                                               enabled   disabled
+crush-session-eval.timer                                                               disabled  disabled
 crush-tailscale.service                                                                enabled   disabled
 crush-ttyd-backend.service                                                             enabled   disabled
 crush-ttyd-direct-test.service                                                         disabled  disabled
@@ -112,7 +112,6 @@ crush-ttyd-proxy.service                                                        
 daily-ops.timer                                                                        enabled   disabled
 dbus-:1.25-org.a11y.atspi.Registry@0.service                                           transient -
 dbus-:1.3-org.freedesktop.PackageKit@0.service                                         transient -
-dbus-:1.3-org.freedesktop.portal.IBus@0.service                                        transient -
 dbus-:1.3-org.freedesktop.secrets@0.service                                            transient -
 dbus-:1.3-org.gnome.Identity@0.service                                                 transient -
 dbus-:1.3-org.gnome.OnlineAccounts@0.service                                           transient -
@@ -162,7 +161,7 @@ frpc.service                                                                    
 frp-drift-check.service                                                                static    -
 frp-drift-check.timer                                                                  enabled   disabled
 full-home-archive.service                                                              static    -
-full-home-archive.timer                                                                enabled   disabled
+full-home-archive.timer                                                                disabled  disabled
 gamemoded.service                                                                      disabled  disabled
 gcr-ssh-agent.service                                                                  disabled  disabled
 gcr-ssh-agent.socket                                                                   disabled  disabled
@@ -220,7 +219,7 @@ gvfs-mtp-volume-monitor.service                                                 
 gvfs-udisks2-volume-monitor.service                                                    static    -
 haven-codex10.service                                                                  static    -
 haven-codex2.service                                                                   static    -
-haven-codex2.timer                                                                     enabled   disabled
+haven-codex2.timer                                                                     disabled  disabled
 haven-codex3.service                                                                   static    -
 haven-codex3.timer                                                                     disabled  disabled
 haven-codex4.service                                                                   static    -
@@ -292,6 +291,8 @@ hermes-web-ui.service                                                           
 hermes-webui.service                                                                   enabled   disabled
 hermes-webui-worktree-guard.service                                                    disabled  disabled
 hermes-webui-worktree-guard.timer                                                      enabled   disabled
+home-essentials-backup.service                                                         static    -
+home-essentials-backup.timer                                                           enabled   disabled
 hub-agent-dispatch-supervisor.service                                                  static    -
 hub-agent-dispatch-supervisor.timer                                                    enabled   disabled
 hub-api.service                                                                        enabled   disabled
@@ -310,6 +311,7 @@ kdeconnectd.service                                                             
 kdeconnect-indicator.service                                                           enabled   disabled
 keyboxd.service                                                                        static    -
 keyboxd.socket                                                                         disabled  disabled
+kitty-2118050-0.scope                                                                  transient -
 knowledge-event-bus.service                                                            disabled  disabled
 knowledge-housekeeping.service                                                         static    -
 knowledge-housekeeping.timer                                                           enabled   disabled
@@ -317,9 +319,9 @@ launcher-17699-proxy.service                                                    
 launcher-server.service                                                                enabled   disabled
 letta-health-check.service                                                             static    -
 letta-health-guard.timer                                                               disabled  disabled
-letta-mcp.service                                                                      enabled   disabled
+letta-mcp.service                                                                      disabled  disabled
 letta-podman-proxy.service                                                             disabled  disabled
-letta-stack.service                                                                    enabled   disabled
+letta-stack.service                                                                    disabled  disabled
 libpod-7185179780b591dd84ecaf94647bc92f90918f6b83df5d311d921d480912c7cc.scope          transient -
 litellm-keepalive.service                                                              static    -
 litellm-keepalive.timer                                                                disabled  disabled
@@ -394,8 +396,8 @@ openclaw-gateway-proxy.service                                                  
 openclaw-gateway.service                                                               enabled   disabled
 openclaw-tmux-supervisor.service                                                       static    -
 openclaw-tmux-supervisor.timer                                                         enabled   disabled
-opencode-18910-local.service                                                           enabled   disabled
-opencode-18910-local.socket                                                            enabled   disabled
+opencode-18910-local.service                                                           disabled  disabled
+opencode-18910-local.socket                                                            disabled  disabled
 opencode-18910-router.service                                                          disabled  disabled
 opencode-4096-proxy.service                                                            enabled   disabled
 opencode-4096-proxy-watchdog.timer                                                     enabled   disabled
@@ -435,7 +437,7 @@ opencode-telegram-watchdog.timer                                                
 opencode-zulip-gateway.service                                                         enabled   disabled
 openhands-gui.service                                                                  disabled  disabled
 openhands-letta-sync.service                                                           static    -
-openhands-letta-sync.timer                                                             enabled   disabled
+openhands-letta-sync.timer                                                             disabled  disabled
 openhands-public-proxy.service                                                         enabled   disabled
 open-webui.service                                                                     disabled  disabled
 op-session-title.service                                                               static    -
@@ -562,7 +564,7 @@ ssh-keepalive-proxy-codex9.service                                              
 ssh-keepalive-proxy-codexsmart.service                                                 enabled   disabled
 ssh-keepalive-proxy-crush.service                                                      enabled   disabled
 ssh-keepalive-proxy.service                                                            enabled   disabled
-sub-store.service                                                                      enabled   disabled
+sub-store.service                                                                      disabled  disabled
 sunshine.service                                                                       disabled  disabled
 swaync.service                                                                         enabled   disabled
 sway-session-shutdown.target                                                           static    -
@@ -610,7 +612,6 @@ thunar.service                                                                  
 timers.target                                                                          static    -
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
-tmux-spawn-9cab77b1-2d99-40a0-8d7d-43705d20fac7.scope                                  transient -
 tmux-spawn-e1016ea7-17cf-4506-ae2f-f8faa3c3df70.scope                                  transient -
 tmux-spawn-fe0168f8-969b-4445-9292-e91b894cf749.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
@@ -652,19 +653,21 @@ ttyd-openhands.service                                                          
 ttyd-session-proxy.service                                                             enabled   disabled
 tumblerd.service                                                                       static    -
 upload-home-backup.service                                                             static    -
-upload-home-backup.timer                                                               enabled   disabled
+upload-home-backup.timer                                                               disabled  disabled
+upload-home-essentials.service                                                         static    -
+upload-home-essentials.timer                                                           enabled   disabled
 upnp-ao-18082.timer                                                                    enabled   disabled
 upnp-opencode-18910.timer                                                              enabled   disabled
 upnp-termhive-18081.timer                                                              enabled   disabled
 upnp-wayvnc-5900.timer                                                                 enabled   disabled
-uptime-kuma.service                                                                    enabled   disabled
+uptime-kuma.service                                                                    disabled  disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
 user-libpod_pod_5da5b7f1f482a9e45e3c568e8fcee70a0741de35044219347691b13d4dcb43f0.slice transient -
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
 user-libpod_pod_9dda55e5b09e41f60ce31a20d74cf7261251583124bbe561ad18bcea20c5a1c6.slice transient -
+user-libpod_pod_a63d564a289992c26bd40261bccf7ebd8afedfb0487d701b944e8adbe8342378.slice transient -
 user-libpod_pod_cb4f34ead6482a57d888214deb68cee38bfbb6165bdc2da121fad28a54782529.slice transient -
-user-libpod_pod_eba4d7703aa5ab557f001a21164d25ea617977e7c7e8b8e489bee05b48fe62ed.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled
@@ -702,8 +705,8 @@ workflow-intel-crush-capture.service                                            
 workflow-intel-maintain.service                                                        static    -
 workflow-intel-maintain.timer                                                          enabled   disabled
 ws-scrcpy-web-patched.service                                                          disabled  disabled
-ws-scrcpy-web-redroid.service                                                          enabled   disabled
-ws-scrcpy-web.service                                                                  enabled   disabled
+ws-scrcpy-web-redroid.service                                                          disabled  disabled
+ws-scrcpy-web.service                                                                  disabled  disabled
 xdg-desktop-autostart.target                                                           static    -
 xdg-desktop-portal-gnome.service                                                       static    -
 xdg-desktop-portal-gtk.service                                                         static    -

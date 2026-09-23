@@ -158,6 +158,41 @@ If the file exists and Firefox still says paste is not allowed, the target web
 page is rejecting file paste; use that page's upload/attachment button or drag
 the readable host file path instead.
 
+### Hermes WebUI 19976 Paste Target
+
+Hermes WebUI `19976` chat composer needs a special path for files copied from
+Linux WeChat. Firefox exposes those copied files as `text/uri-list` /
+`x-special/gnome-copied-files` with a `file://...` URI, not as a browser
+`File` object, so client-side JavaScript cannot read the bytes directly.
+
+The deployed fix is:
+
+- Frontend `static/boot.js` reads `text/uri-list` on paste.
+- Frontend posts the URI to `POST /api/upload/local`.
+- Backend `api/upload.py` reads the host file only if it is under an allowed
+  WeChat cache root:
+  - `/var/home/charlie/xwechat_files`
+  - `/var/home/charlie/.local/share/wechat-flatpak-2/home/xwechat_files`
+- Frontend places the returned attachment metadata into the composer tray as an
+  already-uploaded attachment, so Send does not upload it a second time.
+
+After changing this code, restart:
+
+```bash
+systemctl --user restart hermes-webui.service
+```
+
+Browser tabs may need a hard reload so the updated `static/boot.js` is used.
+
+Verification:
+
+```bash
+python3 -m py_compile api/upload.py api/routes.py
+node --check static/boot.js
+node --check static/ui.js
+./scripts/test.sh tests/test_local_clipboard_upload.py -q
+```
+
 ### Second Linux WeChat Clipboard
 
 The isolated second Linux WeChat uses:

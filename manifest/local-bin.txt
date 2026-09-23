@@ -379,6 +379,7 @@ filetime.py
 finance-reminder.sh
 findDelegation.py
 firecrawl-mcp-wrapper.sh
+firefox
 firefox-codex-profile-manager
 firewall-harden.sh
 fix-firewall.sh
@@ -445,6 +446,7 @@ git-codebase-update
 github-action-trigger
 github-ai-weekly
 global-search
+gmail-send.py
 goldenPac.py
 google-chrome-proxy
 google-login-state-sync
@@ -568,6 +570,7 @@ hermes-workflow-evolve.py
 hermes-workflow-router
 hermes-wrapper
 hf
+home-essentials-backup.sh
 hqssh
 hqsshd
 hqssh-hosts-info
@@ -590,6 +593,7 @@ index-assets
 input-leap-server
 input-toggle
 input-use-fcitx
+input-use-fcitx5
 input-use-ibus
 install-deepseek-aider.sh
 install-roo-extensions.sh
@@ -1271,6 +1275,7 @@ unlock-keyring.py
 update-api-quota.sh
 upload-cookies-to-server
 upload-home-backup-to-github.sh
+upload-home-essentials.sh
 upnp-ao-18082.py
 upnp-frps-phone-17000.py
 upnp-opencode-18910.py
@@ -1329,6 +1334,7 @@ waybar-health-menu.sh
 waybar-health.sh
 waybar-launcher.sh
 waybar-layout-menu.sh
+waybar-models-list.sh
 waybar-notif-clear.sh
 waybar-pg.sh
 waybar-pulse-menu.sh

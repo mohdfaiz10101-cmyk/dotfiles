@@ -10,6 +10,34 @@
 - Foot/Codex windows appear briefly every few seconds, making workspaces flash
   or move, when `codex-foot-tab-sort.timer` is active with the old
   `OnUnitActiveSec=5s` cadence or when the launcher inherits `TMUX`.
+- On Sway/Wayland, the IBus candidate UI appears as an almost full-workspace
+  window (often most visible in Firefox) instead of a small candidate popup.
+
+## IBus Candidate Window Tiled by Sway
+
+`ibus start` can select the native Wayland panel command
+`ibus-ui-gtk3 --enable-wayland-im`. Under this Sway setup it may become a
+normal `xdg_toplevel`: first tiled almost full-screen, or—if forcibly floated
+and resized—a persistent black window that cannot follow the text caret.
+
+Do **not** fix it with a Sway `for_window` rule that resizes or centers
+`app_id="ibus-ui-gtk3"`; that only hides the protocol mismatch.
+
+The user confirmed on 2026-09-23 that the working state is the matched X11
+pair: `GDK_BACKEND=x11 ibus-daemon -drx` plus Firefox launched through
+`~/.local/bin/firefox` with `MOZ_ENABLE_WAYLAND=0`. Keep Sway startup on
+`~/.local/bin/input-use-ibus`, not `toggle-im`. A mixed native/X11 pair or a
+Firefox process carrying a stale `IBUS_ADDRESS` breaks Chinese input. Restart
+Firefox with the current systemd-user `IBUS_ADDRESS` after replacing IBus.
+
+Verify:
+
+```bash
+ui_pid=$(pgrep -n -f '^/usr/libexec/ibus-ui-gtk3')
+tr '\0' '\n' <"/proc/$ui_pid/environ" | grep '^GDK_BACKEND=x11$'
+swaymsg -t get_tree -r | jq -e '[.. | objects | select(.app_id? == "ibus-ui-gtk3")] | length == 0'
+swaymsg -t get_tree -r | jq -e '[.. | objects | select((.window_properties.class? // "") | test("firefox";"i")) | select(.shell != "xwayland")] | length == 0'
+```
 
 ## Fix
 ```bash

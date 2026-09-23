@@ -630,3 +630,124 @@ Verification:
   `https://charlie1990.duckdns.org/_matrix/client/versions`.
 - Synapse `user_ips` has a fresh `SchildiChat/1.6.62.sc92` row.
 - SchildiChat overview renders imported rooms under expanded `正常优先级`.
+
+## 2026-09-23 Final Media-Fixed Historical Restore
+
+Final restore state:
+
+- State directory:
+  `~/.local/state/wechat-matrix-timeline-restore-mediafinal-20260921`
+- Source DB:
+  `~/.local/state/wechat-matrix-timeline-restore/EnMicroMsg.restore.db`
+- Imported messages: `191368 / 191368`, max WeChat `msgId=210834`
+- Rooms joined to `@charlie:100.120.189.27`: `365`, reconcile errors: `0`
+- Matrix msgtypes in the final ledger:
+  `m.text=174650`, `m.image=9164`, `m.audio=6504`, `m.file=552`,
+  `m.video=498`
+- Final timestamp check:
+  `wechat-matrix-fix-event-timestamps --ledger-path .../ledger.db` returned
+  `updated=0 skipped=191368 missing=0`, meaning every imported event already
+  had a matching corrected timestamp.
+
+Phone-side verification after the user switched Wi-Fi:
+
+- ADB recovered through `192.168.123.22:5555` with device `PKR110`.
+- Phone curl to
+  `https://charlie1990.duckdns.org/_matrix/client/versions` returned
+  `200 ssl=0`.
+- SchildiChat package `de.spiritcroc.riotx` foregrounded
+  `im.vector.app.features.home.HomeActivity`.
+- SchildiChat overview displayed restored rooms under `正常优先级` with unread
+  badge `274` and visible previews such as `[图片]`, `[语音] 10s`, `[分享]`,
+  and WeChat emoji text like `[旺柴]`.
+
+Important interpretation:
+
+- Room-list dates such as `9月20日` / `9月19日` are the original WeChat message
+  times, not the import execution date.
+- The final import intentionally joined `@charlie` only after all events were
+  imported and timestamps were fixed, to avoid SchildiChat caching the wrong
+  timeline order.
+
+2026-09-23 follow-up fixes after phone review:
+
+- The final restore rooms were renamed from `微信完整复原｜<name>` to the original
+  WeChat display names for all `365` rooms, and the English backfill room topic
+  was cleared. Log:
+  `~/.local/state/wechat-matrix-timeline-restore-mediafinal-20260921/room-rename-wechat-original-20260923.jsonl`.
+- Synapse had stored uploaded WeChat media as authenticated media
+  (`local_media_repository.authenticated=1`). SchildiChat `1.6.62.sc92` did not
+  fetch those through the legacy `/media/v3/download` path, so visible media
+  looked unavailable even when the Matrix event had `mxc://...`.
+- Backup before the compatibility update:
+  `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-wechat-media-auth-20260923-020339`.
+- Exact compatibility update: only media IDs referenced by the final WeChat
+  ledger were changed to `authenticated=0`; rows updated: `16718`.
+- Verification after update:
+  `/ _matrix/media/v3/download/100.120.189.27/<media_id>` returned `200` for
+  JPEG, Ogg, MP4, and ZIP samples, and phone curl over
+  `https://charlie1990.duckdns.org` returned `200 image/jpeg`.
+- Not all WeChat media rows had source files available. Final ledger still has
+  text placeholders for missing/unmatched source media, including
+  `1202` images, `581` voice rows, `1283` videos, `853` app files, and many
+  stickers. Example: recent voice msgIds `210819-210821` have XML
+  `voiceurl/aeskey` in `message.content` but no `voiceinfo` row and no local
+  file under the pulled media root, so they remain text placeholders unless
+  WeChat private media is pulled again or CDN recovery is implemented.
+- At this point phone ADB worked over `192.168.123.22:5555`, but root was not
+  available to shell: `su` was inaccessible/not found even though Magisk
+  packages existed. `wechat-matrix-media-pull --serial 192.168.123.22:5555`
+  therefore could not read `/data/data/com.tencent.mm/...` until root shell
+  access is restored.
+
+2026-09-23 USB follow-up:
+
+- After the phone was plugged in, USB ADB briefly appeared as `ff3ef385` and
+  wireless ADB stayed available at `192.168.123.22:5555`.
+- Root still did not recover on either path: `su` returned `inaccessible or not
+  found`, and Magisk Manager (`io.github.vvb2060.magisk`) showed `当前 无法获取`.
+- Existing local archives `voice2.tar` and `image2.tar` did not contain sample
+  missing media filenames such as `071041091726747eed2f038100` or
+  `th_d16681c9fbcf5a5bab0e770e0b2bf4c8`.
+- Therefore remaining text placeholders require restoring Magisk/root access
+  before rerunning `wechat-matrix-media-pull --serial <serial>` against
+  `/data/data/com.tencent.mm/...`, or implementing WeChat CDN recovery from
+  `message.content` `voiceurl/aeskey` metadata.
+
+2026-09-23 later phone-side route/media findings:
+
+- USB ADB instability was caused by enabled `ws-scrcpy-web.service` and
+  `ws-scrcpy-web-redroid.service`. Their bundled ADB servers on ports `5039`
+  and `5040` claimed the physical USB interface before the main ADB server.
+  Both services were stopped and disabled from user autostart; main ADB then
+  showed `ff3ef385 device usb:1-6`.
+- Caddy was changed back to public LAN `80/443` for Matrix while avoiding the
+  Tailscale-owned `100.120.189.27:443`: every site block now has
+  `bind 192.168.123.209 192.168.123.71`, and global ports are
+  `http_port 80` / `https_port 443`.
+- Old Fedora firewalld forward ports `443 -> 2443` and `80 -> 2080` were
+  removed with sudo. Direct host verification with SNI works:
+  `curl --noproxy '*' --resolve charlie1990.duckdns.org:443:192.168.123.209
+  https://charlie1990.duckdns.org/_matrix/client/versions` returns `200`.
+- Padavan VTS entries `x65` and `x67` were updated from
+  `192.168.123.71` to `192.168.123.209` for public `443` and `80`; runtime
+  NAT was also inserted at the top of `vserver`. Despite that, phone curl to
+  `https://charlie1990.duckdns.org/_matrix/...` still timed out from the
+  cellular/public path, while `http://charlie1990.duckdns.org:19876` and
+  `http://100.87.171.39:8008` both returned media successfully.
+- Verified phone media downloads through working paths:
+  `100.87.171.39:8008` returned `200 image/jpeg`, `200 audio/ogg`,
+  `200 video/mp4`; `charlie1990.duckdns.org:19876` returned the same sample
+  media successfully.
+- SchildiChat `de.spiritcroc.riotx` currently shows red banner
+  `到服务器的连接已丢失`. Without root, the app's private homeserver/session DB
+  cannot be edited directly (`run-as` says package not debuggable and
+  `/data/user/0/de.spiritcroc.riotx` is private). If it remains pinned to
+  broken `https://charlie1990.duckdns.org` / `100.120.189.27` routes, the
+  practical recovery choices are:
+  1. restore Magisk/root and patch SchildiChat private config/cache to a working
+     base URL;
+  2. relogin SchildiChat manually using a verified working homeserver URL such
+     as `http://charlie1990.duckdns.org:19876` or `http://100.87.171.39:8008`;
+  3. repair router/public `443` from outside the LAN until phone curl without
+     `-k` returns `200` for `https://charlie1990.duckdns.org/_matrix/client/versions`.

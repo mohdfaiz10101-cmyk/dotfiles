@@ -2,6 +2,23 @@
 
 Last updated: 2026-06-28 18:09 CST
 
+## 2026-09-23 Android 16 Root Recovery
+
+- Device build: `PKR110_16.0.10.500(CN01)`, OTA `PKR110_11.C.29_1290_202608112008`, slot `_a`.
+- Matching stock `init_boot` SHA256: `229a2c4c16699e6c542cae035f631097425d445ebfbe91e884351f24ef1e93b3`.
+- Do not reuse the official Magisk 30.7 patched image with SHA256
+  `87863ba826aa2336ac5f504ecdd2e61bc29a6faad797c273b28dd76ee814e3a9`;
+  flashing it to `init_boot_a` stalled at the boot logo.
+- Working recovery used the installed `io.github.vvb2060.magisk` package,
+  version `50af14f2-alpha` (`28103`), to patch the same stock image.
+- Working patched image:
+  `/var/home/charlie/workspace/oneplus-pkr110-root/magisk_patched_alpha-28103-init_boot-a.img`
+  with SHA256 `8b8ec6a7bb0bd216cd2b16822a535910ad3832ab69b787836cb48b252bc5d278`.
+- Verified after reboot: `sys.boot_completed=1`, `su -c id` returns
+  `u:r:magisk:s0`, `magiskd` runs, and DenyList is enforced.
+- Stock rollback image remains at
+  `/var/home/charlie/workspace/oneplus-pkr110-root/init_boot-cos-16.0.10.500.img`.
+
 ## Device / ADB
 
 Use the stable local ADB endpoint first:

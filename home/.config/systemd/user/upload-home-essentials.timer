@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly upload home essentials backup then prune local
+
+[Timer]
+OnCalendar=Mon *-*-* 05:00:00
+Persistent=true
+AccuracySec=30min
+
+[Install]
+WantedBy=timers.target

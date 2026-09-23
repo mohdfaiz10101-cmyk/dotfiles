@@ -1,0 +1,11 @@
+[Unit]
+Description=Upload home essentials backup to GitHub Release (no proxy)
+After=home-essentials-backup.service
+Wants=home-essentials-backup.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/upload-home-essentials.sh
+StandardOutput=journal
+StandardError=journal
+TimeoutStartSec=2h

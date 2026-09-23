@@ -1,0 +1,13 @@
+[Unit]
+Description=Home essentials backup (config/state/skills/scripts)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/home-essentials-backup.sh
+StandardOutput=journal
+StandardError=journal
+# 避免与桌面会话争 IO
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+TimeoutStartSec=30min

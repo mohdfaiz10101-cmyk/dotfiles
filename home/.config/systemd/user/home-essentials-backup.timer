@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily home essentials backup
+
+[Timer]
+OnCalendar=*-*-* 04:30:00
+Persistent=true
+AccuracySec=15min
+
+[Install]
+WantedBy=timers.target

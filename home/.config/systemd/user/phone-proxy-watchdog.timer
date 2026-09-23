@@ -3,7 +3,6 @@ Description=Phone proxy watchdog timer
 Requires=phone-proxy-watchdog.service
 
 [Timer]
-Type=simple
 OnBootSec=2m
 OnUnitActiveSec=10m
 AccuracySec=30s

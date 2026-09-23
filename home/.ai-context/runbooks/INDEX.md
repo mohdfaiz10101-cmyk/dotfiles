@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-09-22T22:37:33
+> Updated: 2026-09-23T22:45:21
 
 | Runbook | Scope | Updated |
 |---|---|---|
@@ -28,9 +28,9 @@
 | `hermes-port-binding.md` | Hermes 端口绑定锁 | 2026-08-10 |
 | `hermes-session-switch.md` | Hermes Session Switch Issue Runbook | 2026-08-06 |
 | `huly.md` | Runbook: Huly | 2026-07-04 |
-| `input-capture.md` | Runbook: Mouse/Input Capture | 2026-08-28 |
+| `input-capture.md` | Runbook: Mouse/Input Capture | 2026-09-23 |
 | `machine-backup.md` | Runbook: Machine GitHub Backup | 2026-07-13 |
-| `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-21 |
+| `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-23 |
 | `mattermost.md` | Runbook: Mattermost | 2026-07-18 |
 | `mihomo-control.md` | Runbook: Unified Mihomo Control | 2026-09-20 |
 | `netbird.md` | Runbook: NetBird Self-Hosted Tailnet | 2026-08-10 |
@@ -42,7 +42,7 @@
 | `openhands.md` | Runbook: OpenHands | 2026-08-03 |
 | `phone-agent.md` | Runbook: Phone Agent Control Plane | 2026-09-12 |
 | `phone-error-log-watch.md` | Phone Error Log Watch | 2026-08-01 |
-| `phone-magisk-niagara.md` | Phone Magisk / Niagara Reboot Baseline | 2026-07-14 |
+| `phone-magisk-niagara.md` | Phone Magisk / Niagara Reboot Baseline | 2026-09-23 |
 | `plane.md` | Runbook: Plane | 2026-07-04 |
 | `redroid-cloud-android.md` | Redroid Cloud Android | 2026-08-09 |
 | `syncthing.md` | Runbook: Syncthing | 2026-06-22 |
@@ -50,7 +50,7 @@
 | `telegram.md` | Telegram Bot and Group Architecture | 2026-06-24 |
 | `termhive.md` | Runbook: TermHive | 2026-06-19 |
 | `waydroid-control-plane.md` | Waydroid Control Plane | 2026-08-01 |
-| `wechat-linux-flatpak.md` | Runbook: WeChat Linux Flatpak File Picker | 2026-09-22 |
+| `wechat-linux-flatpak.md` | Runbook: WeChat Linux Flatpak File Picker | 2026-09-23 |
 | `workflow-intelligence.md` | Runbook: Workflow Intelligence | 2026-08-10 |
 
 ## Routing
