@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-09-24T22:54:12
+> Updated: 2026-09-25T23:05:02
 
 | Runbook | Scope | Updated |
 |---|---|---|
@@ -30,7 +30,7 @@
 | `huly.md` | Runbook: Huly | 2026-07-04 |
 | `input-capture.md` | Runbook: Mouse/Input Capture | 2026-09-23 |
 | `machine-backup.md` | Runbook: Machine GitHub Backup | 2026-07-13 |
-| `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-23 |
+| `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-25 |
 | `mattermost.md` | Runbook: Mattermost | 2026-07-18 |
 | `mihomo-control.md` | Runbook: Unified Mihomo Control | 2026-09-20 |
 | `netbird.md` | Runbook: NetBird Self-Hosted Tailnet | 2026-08-10 |

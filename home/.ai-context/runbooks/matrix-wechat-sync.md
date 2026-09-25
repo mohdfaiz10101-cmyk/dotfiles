@@ -751,3 +751,29 @@ Important interpretation:
      as `http://charlie1990.duckdns.org:19876` or `http://100.87.171.39:8008`;
   3. repair router/public `443` from outside the LAN until phone curl without
      `-k` returns `200` for `https://charlie1990.duckdns.org/_matrix/client/versions`.
+
+## 2026-09-25 Rooted Media Repair And Importer UI Cleanup
+
+- Live media repair now selectively pulls matching files from rooted WeChat
+  private storage with `wechat-matrix-sync-export --pull-phone-media`.
+- SILK voice files are transcoded to Ogg/Opus. Uploaded repair media is marked
+  unauthenticated for compatibility with SchildiChat's legacy media endpoint.
+- Repair batches use `--skip-text-fallback`, so missing phone files retain the
+  original placeholder instead of creating a duplicate text event.
+- Repair result for msgIds `210835..212206`: `155` media replacements
+  (`87` images, `68` audio); `27` unavailable source files were skipped.
+- All `233` current imported rooms are in `m.direct`, so SchildiChat displays
+  the WeChat contact/group name instead of the technical `wechat_import` user.
+- Imported room topics were cleared through the Matrix API and the resulting
+  topic state events were redacted. A SchildiChat initial sync was then run to
+  remove cached notices. Final phone UI counts were zero for `wechat_import`,
+  the backfill topic, the profile rename notice, and the topic removal notice.
+- New imported rooms omit `m.room.topic` entirely and are created as direct
+  rooms, preventing these implementation details from returning.
+- Critical integrity rule: never rewrite signed fields such as top-level
+  `event_json.origin_server_ts` or signed event content in Synapse SQLite.
+  Event IDs hash the signed JSON. Timestamp maintenance may update only the
+  database event timestamp/unsigned metadata unless events are recreated via a
+  supported Matrix endpoint.
+- Media-prefetch regression suite:
+  `pytest -q ~/.local/share/wechat-matrix-sync/tests/test_phone_media_prefetch.py`.

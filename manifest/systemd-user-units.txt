@@ -23,8 +23,8 @@ ao-dashboard.service                                                            
 ao-orchestrator.service                                                                enabled   disabled
 app-chrome\x2dcfmligackgegaglpgmjfndpcappofaie\x2dDefault@autostart.service            generated -
 app-dev.lizardbyte.app.Sunshine.service                                                disabled  disabled
-app-flatpak-com.tencent.WeChat-162755309.scope                                         transient -
-app-flatpak-com.tencent.WeChat-1763992852.scope                                        transient -
+app-flatpak-com.tencent.WeChat-2584779540.scope                                        transient -
+app-flatpak-com.tencent.WeChat-3550383555.scope                                        transient -
 app-geoclue\x2ddemo\x2dagent@autostart.service                                         generated -
 app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                       generated -
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
@@ -311,7 +311,6 @@ kdeconnectd.service                                                             
 kdeconnect-indicator.service                                                           enabled   disabled
 keyboxd.service                                                                        static    -
 keyboxd.socket                                                                         disabled  disabled
-kitty-2118050-0.scope                                                                  transient -
 knowledge-event-bus.service                                                            disabled  disabled
 knowledge-housekeeping.service                                                         static    -
 knowledge-housekeeping.timer                                                           enabled   disabled
@@ -663,7 +662,6 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    disabled  disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
-user-libpod_pod_0a0094b90a8bf7da203b340a27d0ae334691ba614710d2b19b95dcbcaa6fbc1b.slice transient -
 user-libpod_pod_5da5b7f1f482a9e45e3c568e8fcee70a0741de35044219347691b13d4dcb43f0.slice transient -
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
 user-libpod_pod_9dda55e5b09e41f60ce31a20d74cf7261251583124bbe561ad18bcea20c5a1c6.slice transient -
@@ -679,6 +677,8 @@ wayvnc.service                                                                  
 webssh-ttyd.service                                                                    enabled   disabled
 webtty-usb-reverse-ensure.service                                                      static    -
 webtty-usb-reverse-ensure.timer                                                        enabled   disabled
+wechat-1.scope                                                                         transient -
+wechat-2.scope                                                                         transient -
 wechat-flatpak-keepalive.service                                                       static    -
 wechat-flatpak-keepalive.timer                                                         enabled   disabled
 wechat-matrix-bridge.service                                                           disabled  disabled

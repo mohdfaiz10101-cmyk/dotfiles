@@ -1,6 +1,6 @@
 # MCP Policy
 
-> Generated: 2026-09-24T22:54:14
+> Generated: 2026-09-25T23:05:04
 
 | MCP | Kind | Policy | Enabled | Agent | Triggers |
 |---|---|---|---:|---|---|

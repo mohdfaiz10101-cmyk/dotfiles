@@ -1377,6 +1377,7 @@ wechat-matrix-hermes-ops
 wechat-matrix-ledger
 wechat-matrix-live-sync
 wechat-matrix-media-pull
+wechat-matrix-media-repair-finalize
 wechat-matrix-restore-audit
 wechat-matrix-restore-monitor
 wechat-matrix-room-reconcile

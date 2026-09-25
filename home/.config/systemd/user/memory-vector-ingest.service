@@ -4,3 +4,12 @@ Description=Refresh Hermes local vector memory from curated sources
 [Service]
 Type=oneshot
 ExecStart=%h/.local/bin/vector-memory-ingest.py --max-file-size 120000 --sample-jsonl-lines 120
+# The all-MiniLM-L6-v2 weights are already in ~/.cache/huggingface/hub, so the
+# model must load from cache. Without this the run does a HEAD check against
+# hf.co on every tick; that check is what failed under systemd (no inherited
+# shell network state) and made the unit exit 1 while the same script succeeded
+# interactively. Also keeps the timer independent of mihomo/proxy health.
+Environment=HF_HUB_OFFLINE=1
+Environment=TRANSFORMERS_OFFLINE=1
+# A partially-downloaded model should not be treated as success.
+Environment=HF_HUB_DISABLE_TELEMETRY=1
