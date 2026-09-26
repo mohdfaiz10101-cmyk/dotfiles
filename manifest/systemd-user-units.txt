@@ -612,6 +612,7 @@ timers.target                                                                   
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
 tmux-spawn-e1016ea7-17cf-4506-ae2f-f8faa3c3df70.scope                                  transient -
+tmux-spawn-eb401ab6-3e58-405f-9486-c398d06b1299.scope                                  transient -
 tmux-spawn-fe0168f8-969b-4445-9292-e91b894cf749.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
