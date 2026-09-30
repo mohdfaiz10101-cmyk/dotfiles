@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-09-29T23:42:44
+> Updated: 2026-09-30T23:53:27
 
 | Runbook | Scope | Updated |
 |---|---|---|
