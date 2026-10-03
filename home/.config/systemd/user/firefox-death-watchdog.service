@@ -1,0 +1,15 @@
+[Unit]
+Description=Firefox death watchdog — capture restart/crash forensics
+Documentation=file:/var/home/charlie/.local/bin/firefox-death-watchdog.sh
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/firefox-death-watchdog.sh
+# 取证脚本读 journal / nvidia-smi，给足超时避免 timer 堆积
+TimeoutStartSec=60
+# 不写 stdout，只看落盘的 jsonl
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=default.target

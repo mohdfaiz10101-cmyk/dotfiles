@@ -1,0 +1,15 @@
+[Unit]
+Description=Portal service (local override without graphical-session requisite)
+# 上游 /usr/lib/systemd/user/xdg-desktop-portal.service 带
+# Requisite=graphical-session.target，而本机 gdm-wayland 会话从未 active 该
+# target（StopWhenUnneeded=yes 且无 job 绑定），导致 portal 永远起不来，
+# waybar 反复报 "Unable to receive desktop appearance"。
+# 本文件替代原 unit，去掉 Requisite 依赖。
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.portal.Desktop
+ExecStart=/usr/libexec/xdg-desktop-portal
+Slice=session.slice
+Restart=on-failure
+RestartSec=2

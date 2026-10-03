@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T05:56:16",
+  "generated_at": "2026-10-03T18:30:15",
   "rules": {
     "core": "safe low-cost MCPs allowed to remain enabled",
     "on_demand": "keep disabled by default; enable for matching task trigger, then disable again",

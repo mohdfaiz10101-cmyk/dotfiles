@@ -44,6 +44,14 @@ Checks:
 - `19976` opens but session fails: compare Hermes profiles. The BasicAuth user
   `charlie` must map to Hermes profile `default` in
   `~/.local/bin/hermes-8787-basic-auth-proxy.py`, matching local `8787`.
+- `19976` returns an empty-body `503` and `8787` has exactly `128` established
+  loopback connections: check `hermes-8787-basic-auth-proxy.service` task count.
+  A disconnected SSE client used to leave the proxy reading upstream forever,
+  exhausting all `QuietHTTPServer.max_request_workers`. The proxy's
+  `_safe_write()` must return failure on `BrokenPipeError`/reset/timeout and the
+  response forwarding loops must then close the upstream socket. Restart only
+  `hermes-8787-basic-auth-proxy.service` first to release leaked connections;
+  verify aborted event streams return the backend connection count to zero.
 - `8787` and `8648` can run concurrently because they use separate profiles and
   service state. Do not collapse them into one shared profile when fixing
   session-load issues.

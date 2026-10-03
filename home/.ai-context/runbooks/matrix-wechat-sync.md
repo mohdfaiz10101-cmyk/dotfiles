@@ -777,3 +777,88 @@ Important interpretation:
   supported Matrix endpoint.
 - Media-prefetch regression suite:
   `pytest -q ~/.local/share/wechat-matrix-sync/tests/test_phone_media_prefetch.py`.
+
+## 2026-10-03 Cached Media Repair Finalization
+
+- Re-ran all eight repair shards and merged unique non-text rows by
+  `wechat_msg_id`. The ledger contained `6455` native events: `4382 m.image`,
+  `1638 m.audio`, `160 m.video`, and `275 m.file`; duplicate message IDs: `0`.
+  Important correction: this was a ledger/API-success count, not a media-byte
+  integrity result. A later full content audit found only `4913` valid payloads
+  and `1542` invalid payloads (`1121` undecoded WXGF images and `421` files
+  whose entire payload was only UUID text). Never call all `6455` valid again.
+- `wechat-matrix-sync-export` now retries transient Matrix send timeouts and
+  connection errors with bounded backoff. Deterministic transaction IDs make
+  retries safe. It also maps a stale bare USB serial to the matching active
+  mDNS ADB transport when possible.
+- Phone-prefetch tests no longer assume historical USB serial `ff3ef385`.
+  Set `WECHAT_TEST_PHONE_SERIAL` to override the bounded current candidates.
+  Final regression result: `9 passed`.
+- Before writes, backups were created at:
+  - `~/.local/state/wechat-matrix-media-repair-20260925/ledger.db.pre-merge-20261003-134306`
+  - `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-media-finalize-20261003-134456`
+    (`PRAGMA integrity_check=ok`).
+- Timestamp finalization updated `6300` rows and found `155` already correct at
+  the server database layer. Only `events.origin_server_ts` and unsigned age
+  metadata were adjusted; signed root JSON, hashes, and signatures were
+  preserved. Existing SchildiChat Realm entries can retain the import-time
+  timestamp because direct server database edits do not emit a new sync event;
+  do not claim phone timestamp correctness without a fresh-client/cache check.
+- Finalizer redacted all `6455` original placeholders. Server audit found
+  `6455` targets with redactions and `0` missing. Retried requests produced
+  `6610` matching redaction events, which is harmless and idempotent at the
+  target level.
+- The first phone proof used the real route, not Fedora-only health:
+  `192.168.123.22:5555` ADB and
+  `https://charlie1990.duckdns.org/_matrix/client/versions` returned HTTP 200
+  with TLS verification success. SchildiChat `1.6.62.sc92` rendered a native
+  image and a native 3-second audio control; the audio entered playing state,
+  no adjacent text duplicate was visible. The later root-assisted audit below
+  supersedes the broad media-validity conclusion from that small sample.
+- Residual audit: `1482` rows have no local source bytes (`497` video, `539`
+  files, `442` images, `4` stickers). Legacy `cdnattachurl` values are CDN file
+  IDs backed by `attachid`/AES metadata and require an authenticated legacy
+  WeChat CDN session or reacquired phone files. Do not substitute the newer
+  iLink `/c2c/download` protocol or fabricate Matrix media events.
+
+## 2026-10-03 Root-Assisted Full Media Integrity Correction
+
+- Root access on the phone is available through Magisk (`su` reports
+  `uid=0`, SELinux domain `u:r:magisk:s0`). SchildiChat private state is under
+  `/data/user/0/de.spiritcroc.riotx`; use root for read-only Realm/log evidence,
+  but do not patch the live Realm directly. Stop the app before copying Realm,
+  restart it immediately, and use server/API repair for durable media changes.
+- Full byte-level audit command:
+  `wechat-matrix-media-audit --ledger <ledger.db> --synapse-db /var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db --media-store /var/mnt/ai/cache/auto-migrate/.openclaw/workspace/media_store --workers 16 --output <report.json>`.
+  It rejects UUID-only payloads, verifies images with Pillow, probes audio, and
+  structurally validates MP4 rather than trusting the ledger, extension, or
+  HTTP success alone.
+- Installed static FFmpeg/ffprobe under
+  `~/.local/libexec/wechat-media/` because the host FFmpeg lacked a working
+  HEVC decoder. The importer now sniffs content, rejects UUID placeholders,
+  converts WXGF even after stale `.failed` markers, and no longer trusts a
+  misleading filename extension.
+- Recovered all `1121` WXGF records into valid image events. Merged ledger:
+  `~/.local/state/wechat-matrix-media-integrity-repair-20261003/ledger-merged.db`.
+  Content audit: `1121/1121` valid, `0` invalid. Server verification: `1121`
+  replacement events present, `1121` old bad events have redactions, `1121`
+  event/unsigned timestamps match their WeChat time, `0` media rows missing,
+  and all media rows have `authenticated=false`. Actual repository MIME split:
+  `1019 image/jpeg`, `102 image/png`.
+- Consistent pre-finalization backup:
+  `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-wxgf-finalize-20261003-211332`
+  (`PRAGMA integrity_check=ok`, `475782` events).
+- Real phone verification used ADB serial `127.0.0.1:15555`, restarted
+  SchildiChat, opened a repaired Matrix event permalink, displayed multiple
+  repaired images in the room, and opened one in the full-screen media viewer.
+  Evidence:
+  `~/.local/state/schildichat-debug/schildichat-wxgf-open2.png` and
+  `schildichat-wxgf-viewer.png`. Current private log at `21:53` contained
+  `0` matches for `Unauthorized`, `Glide`, and `HttpException`.
+- Remaining known invalid native events: `421` UUID-only payloads (`286`
+  images, `105` files, `30` videos). Their real source bytes are absent; they
+  are not repaired and must not be reported as working. This is separate from
+  the `1482` original source-missing text placeholders. Restore media only from
+  reacquired bytes or an authenticated legacy WeChat source; never fabricate
+  replacement media.
+- Regression suite after importer/auditor changes: `20 passed`.

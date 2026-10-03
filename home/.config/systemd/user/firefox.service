@@ -1,0 +1,69 @@
+[Unit]
+Description=Firefox browser (memory-capped, self-healing)
+# 注意: 不要把 graphical-session.target 写进 After/PartOf。
+# 实测本机图形会话通过 gdm autologin 拉起，graphical-session.target 长期
+# 处于 inactive；把 service 绑上去会导致它永远 start 不了（曾实测
+# Started 后立刻 dead）。
+# 只是普通启动，不依赖任何 target，环境变量由本文件显式注入。
+After=default.target
+
+[Service]
+# Type=simple + ExecStart=/usr/bin/firefox 的坑（实测踩到两次）:
+#   Firefox 是单实例应用。若已有一个实例在跑，新进程启动后会把窗口
+#   交给已有实例然后自己退出 -> systemd 判定 ExecStart 退出 -> unit dead。
+#   曾实测 journal 连续两条 Started 且没有任何 Failed，就是这个原因。
+#
+# 所以不能用朴素 `ExecStart=/usr/bin/firefox`，也不能用 bash 死循环
+# （秒退时会每 3 秒拉起一次进程树，刷爆 journal 还不停冲击已有实例）。
+#
+# 正确解法: wrapper 自己判断"已有实例就退出"。
+#   已有实例 -> 立即 exit 3，systemd 视为成功退出，不报 Failed；
+#               unit 保持 dead，不打扰正在跑的 Firefox。
+#   没有实例 -> exec firefox，正常托管；Firefox 崩了 Restart=on-failure 拉起。
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/firefox-systemd-wrapper
+Restart=on-failure
+RestartSec=3
+# 关键：exit 3 表示"已有实例，不接管"。默认 SuccessExitStatus 只有 0，
+# 不声明这行的话 systemd 会认为 unit 失败，然后每 RestartSec 重启一次，
+# wrapper 又 exit 3 -> 无限重启循环刷爆 journal。
+SuccessExitStatus=3
+KillMode=control-group
+TimeoutStopSec=20
+
+# ── GUI 环境变量 ──
+# systemd --user 的 show-environment 里通常有这些，但不保证全。
+# 缺任何一个都会出现"进程活着但窗口不出来"的假保活，所以显式注入。
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=DISPLAY=:0
+Environment=XDG_CURRENT_DESKTOP=sway:wlroots
+Environment=XDG_SESSION_TYPE=wayland
+Environment=GDK_BACKEND=wayland
+Environment=QT_QPA_PLATFORM=wayland
+Environment=MOZ_ENABLE_WAYLAND=1
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+Environment=SWAYSOCK=/run/user/1000/sway-ipc.1000.3718.sock
+
+# ── 内存兜底（唯一可靠手段，见 user.js 第 1 节）──
+# 实测 Firefox 150 的 fission.* / dom.ipc.processCount 都无法限制内容进程数，
+# 唯一能硬性兜住的只有 cgroup。
+#
+# 取值依据（重要，别随手调低）:
+#   机器总 RAM 23865 MB + swap 24575 MB，余量充足；
+#   Firefox 当前整树 RSS 约 1.6-1.9 GB（10 个标签）。
+#   MemoryMax 定得低会重现"浏览器自己关掉"的原始症状——因为上限触发时
+#   内核会在本 cgroup 内 OOM-kill。所以这里取宽裕值，只在真的跑飞时兜底。
+#   5 GB = 当前用量的 2.6 倍，正常使用不可能碰到。
+MemoryHigh=3584M
+MemoryMax=5G
+# 被 OOM-kill 后 systemd 会重启，但重启会丢标签。宁可让它被 throttle
+# 回收，也不要轻易触顶。调高这一行 = 更不容易误杀。
+OOMPolicy=continue
+
+# 日志只留 systemd journal，避免刷屏
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical-session.target

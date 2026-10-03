@@ -15,6 +15,36 @@
 
 ## IBus Candidate Window Tiled by Sway
 
+## Fcitx5 Pinyin Addon ABI Failure
+
+After a Fedora update, Fcitx5 itself may start while the Pinyin addons fail to
+load. The decisive journal error is `libpinyin.so` or `libpinyinhelper.so`
+failing with `libIMECore.so.0: undefined symbol`. In that state, reinstalling
+the input profile or changing the hotkey does not restore Chinese input.
+
+Use the installed IBus fallback immediately while repairing Fcitx5:
+
+```bash
+~/.local/bin/input-use-ibus
+pgrep -a -x ibus-daemon
+systemctl --user show-environment | rg '^(IBUS_ADDRESS|GTK_IM_MODULE|QT_IM_MODULE|XMODIFIERS)='
+gsettings get org.freedesktop.ibus.general preload-engines
+```
+
+On this Silverblue host, upgrading only Fcitx5 5.1.19 to Fedora 44's 5.1.22
+is blocked by the older booted `expat` and `libstdc++`; do not force the
+resulting roughly 990-package transaction just to restore input. The bounded
+compatibility path is `~/.local/lib/fcitx5-compat`, extracted from Fedora 44's
+signed `libime-1.1.14-1.fc44.x86_64.rpm`. `input-use-fcitx5` supplies that
+directory only to the Fcitx5 daemon through `LD_LIBRARY_PATH`, then proves
+that `fcitx5-remote -n` returns `pinyin`.
+
+Framework switching is `Mod+Space` via `~/.local/bin/toggle-im`; within the
+active framework, `Ctrl+Space` switches Chinese/English. Sway starts with IBus
+as the safe default, while both launchers remain usable. Remove the private
+compatibility directory and its launcher block after the system Fcitx5 core
+is upgraded to 5.1.22 or newer.
+
 `ibus start` can select the native Wayland panel command
 `ibus-ui-gtk3 --enable-wayland-im`. Under this Sway setup it may become a
 normal `xdg_toplevel`: first tiled almost full-screen, or—if forcibly floated
@@ -23,12 +53,15 @@ and resized—a persistent black window that cannot follow the text caret.
 Do **not** fix it with a Sway `for_window` rule that resizes or centers
 `app_id="ibus-ui-gtk3"`; that only hides the protocol mismatch.
 
-The user confirmed on 2026-09-23 that the working state is the matched X11
-pair: `GDK_BACKEND=x11 ibus-daemon -drx` plus Firefox launched through
-`~/.local/bin/firefox` with `MOZ_ENABLE_WAYLAND=0`. Keep Sway startup on
-`~/.local/bin/input-use-ibus`, not `toggle-im`. A mixed native/X11 pair or a
-Firefox process carrying a stale `IBUS_ADDRESS` breaks Chinese input. Restart
-Firefox with the current systemd-user `IBUS_ADDRESS` after replacing IBus.
+The 2026-09-23 fallback used a matched X11 pair (`GDK_BACKEND=x11`, IBus, and
+`MOZ_ENABLE_WAYLAND=0`). The current 2026-10-03 stable path is Fcitx5's native
+Wayland frontend: launch Firefox through `~/.local/bin/firefox`, which unsets
+`GTK_IM_MODULE` and `IBUS_ADDRESS`, keeps `QT_IM_MODULE=fcitx`, and sets
+`MOZ_ENABLE_WAYLAND=1`. A Firefox parent process survives input-framework
+switches with its old environment, so a process carrying `GTK_IM_MODULE=ibus`
+or a stale `IBUS_ADDRESS` while Fcitx5 is active cannot be repaired by merely
+reloading the page. Gracefully restart Firefox and restore its session; verify
+the new parent environment and `fcitx5-remote -n` before changing WebUI code.
 
 Verify:
 

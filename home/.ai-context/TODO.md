@@ -1,8 +1,12 @@
 # Pending Tasks
 
-## SchildiChat WeChat media repair (paused 2026-09-25 08:25 CST)
+## SchildiChat WeChat media repair (partially completed; corrected 2026-10-03)
 
-Status: paused at user request. No repair worker or finalizer is running.
+Status: byte-level verification corrected the earlier ledger-only completion
+claim. `6034` native media events are now content-valid (`4913` previously
+valid plus `1121` recovered WXGF images). `421` UUID-only fake-media events and
+`1482` original source-missing placeholders still require real source bytes.
+No repair worker or finalizer is running.
 
 ### Durable state
 
@@ -22,43 +26,50 @@ Status: paused at user request. No repair worker or finalizer is running.
 - Validated CDN emoji cache:
   `~/.local/cache/wechat-matrix-media/emoji-decoded/cdn`
 
-### Verified checkpoint
+### Current verified result
 
-- Successful unique native-media replacement events: `4091`.
-- Replacement types: `2350` images, `1235` audio, `143` video,
-  `267` files, and `96` sticker/image events.
-- Remaining text-media rows: `3952`.
-- Already cached and recoverable next run: `2470`:
-  `1508` stickers, `534` images, `403` audio, `17` videos, `8` files.
-- Currently unavailable: `1482`:
+- The old `6455` figure counted ledger/API successes, not valid bytes. Initial
+  full audit: `4913` valid, `1542` invalid (`1121` WXGF plus `421` UUID text).
+- All `1121` WXGF images were re-decoded and re-imported. New-ledger audit:
+  `1121` valid, `0` invalid; all `1121` old bad events have redactions and all
+  new server-side timestamps match WeChat time.
+- Current total content-valid native events: `6034`. Remaining invalid native
+  events: `421` (`286` images, `105` files, `30` videos) with no real bytes.
+- Still unavailable because no matching source bytes exist locally: `1482`:
   `497` videos, `539` files, `442` images, `4` stickers.
-- Shards `0,1,3,4,5,7` reached `batch_done`. Shards `2` and `6` were
-  interrupted during retry, but their committed rows are safe in their ledgers.
-- Original text placeholders have NOT yet been redacted. Replacement events
-  have NOT yet received the final timestamp pass. The phone can therefore show
-  duplicates/import-time items until finalization is completed.
-- No Synapse ratelimit override is active. `@charlie` admin remained/restored
-  to `0` after the attempted admin call was rejected.
+- All shards `0..7` reached `batch_done`; their unique non-text rows were
+  merged into the main repair ledger with `0` duplicate message IDs.
+- Root-assisted SchildiChat verification passed on the actual phone: repaired
+  images rendered in-room and opened in the full-screen viewer; latest private
+  log had zero `Unauthorized`, `Glide`, and `HttpException` matches. Existing
+  Realm cache can retain import-time display timestamps despite server fixes.
+- Regression suite: `20 passed`.
 
-### Resume procedure
+### Durable completion artifacts
 
-1. Run repair shards `0..7` again, preferably two at a time. For each shard,
-   use the same `--repair-shard-count 8 --repair-shard-index N`, and exclude
-   both `ledger.db` and that shard's `ledger-shard-N.db`. Use both explicit
-   roots `phone-full-repair` and `phone-attachment-repair`. The importer adds
-   the CDN emoji cache automatically. Keep `--skip-text-fallback`,
-   `--txn-prefix wechat_media_repair_20260925_`, and the stable repair DB.
-2. Merge all non-text rows from `ledger-shard-0.db` through
-   `ledger-shard-7.db` into the main repair `ledger.db` by `wechat_msg_id`.
-3. Run:
-   `wechat-matrix-fix-event-timestamps --ledger-path ~/.local/state/wechat-matrix-media-repair-20260925/ledger.db`
-4. Run:
-   `wechat-matrix-media-repair-finalize --replacement-ledger ~/.local/state/wechat-matrix-media-repair-20260925/ledger.db --original-ledger ~/.local/state/wechat-matrix-ledger/ledger.db --workers 8`
-5. Trigger SchildiChat's in-app initial sync, then verify on the phone that
-   media controls render and the old text placeholders are gone.
-6. Audit the remaining unavailable `1482` rows. Their next recovery path is
-   parsing WeChat image/video/app-attachment CDN metadata; do not create new
-   text fallbacks or directly rewrite signed Matrix event JSON.
+- Main ledger backup before shard merge:
+  `~/.local/state/wechat-matrix-media-repair-20260925/ledger.db.pre-merge-20261003-134306`
+- Consistent Synapse backup before timestamp/finalizer writes:
+  `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-media-finalize-20261003-134456`
+- Corrective WXGF merged ledger and backup:
+  `~/.local/state/wechat-matrix-media-integrity-repair-20261003/ledger-merged.db`
+  and
+  `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-wxgf-finalize-20261003-211332`
+- Phone evidence:
+  `~/.local/state/schildichat-debug/schildichat-list-current-20261003.png`,
+  `schildichat-audio-room3-20261003.png`, and
+  `schildichat-audio-playing-20261003.png`; corrective image evidence:
+  `schildichat-wxgf-open2.png` and `schildichat-wxgf-viewer.png`.
+
+### Optional future recovery
+
+- The remaining legacy WeChat attachment metadata includes `cdnattachurl`,
+  `attachid`, `aeskey`, and hashes, but the URL values are legacy CDN file IDs,
+  not directly downloadable public URLs. Recovery requires a valid legacy
+  WeChat CDN session/auth/DNS context or reacquiring the source files from the
+  phone/account.
+- Do not feed these IDs to the newer iLink `/c2c/download` protocol, create new
+  text fallbacks, or rewrite signed Matrix event JSON.
 
 ### Code completed before pause
 

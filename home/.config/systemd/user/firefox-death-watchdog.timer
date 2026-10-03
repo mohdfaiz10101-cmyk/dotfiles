@@ -1,0 +1,14 @@
+[Unit]
+Description=Run Firefox death watchdog every 15s
+
+[Timer]
+# 开机 1 分钟后开始，避免和 sway 启动抢资源
+OnBootSec=1min
+# 上一次结束后 15s 再跑（oneshot 场景下比 OnCalendar 更稳）
+OnUnitActiveSec=15s
+AccuracySec=1s
+# 错过的 tick 不补跑，避免唤醒时一次性打爆
+Persistent=false
+
+[Install]
+WantedBy=timers.target

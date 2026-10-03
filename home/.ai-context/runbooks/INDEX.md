@@ -1,7 +1,7 @@
 # Runbook Index
 
 > Generated automatically. Manual runbooks remain authoritative; AUTO_LEARNED.md contains verified additions.
-> Updated: 2026-10-01T05:56:14
+> Updated: 2026-10-03T18:30:13
 
 | Runbook | Scope | Updated |
 |---|---|---|
@@ -28,13 +28,13 @@
 | `hermes-port-binding.md` | Hermes 端口绑定锁 | 2026-08-10 |
 | `hermes-session-switch.md` | Hermes Session Switch Issue Runbook | 2026-08-06 |
 | `huly.md` | Runbook: Huly | 2026-07-04 |
-| `input-capture.md` | Runbook: Mouse/Input Capture | 2026-09-23 |
+| `input-capture.md` | Runbook: Mouse/Input Capture | 2026-10-03 |
 | `machine-backup.md` | Runbook: Machine GitHub Backup | 2026-07-13 |
 | `matrix-wechat-sync.md` | Runbook: Matrix WeChat Sync | 2026-09-25 |
 | `mattermost.md` | Runbook: Mattermost | 2026-07-18 |
 | `mihomo-control.md` | Runbook: Unified Mihomo Control | 2026-09-20 |
 | `netbird.md` | Runbook: NetBird Self-Hosted Tailnet | 2026-08-10 |
-| `network-repair-logic.md` | Runbook: Network Repair Logic | 2026-08-03 |
+| `network-repair-logic.md` | Runbook: Network Repair Logic | 2026-10-03 |
 | `network-scenario-monitor.md` | Runbook: Network Scenario Monitor | 2026-08-10 |
 | `openagents.md` | Runbook: OpenAgents | 2026-07-07 |
 | `opencode-18080.md` | Runbook: OpenCode/OpenClaw 18080 | 2026-06-22 |

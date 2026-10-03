@@ -381,6 +381,8 @@ findDelegation.py
 firecrawl-mcp-wrapper.sh
 firefox
 firefox-codex-profile-manager
+firefox-death-watchdog.sh
+firefox-systemd-wrapper
 firewall-harden.sh
 fix-firewall.sh
 fix-screenshot-permission
@@ -1012,6 +1014,7 @@ proxy-status-quick
 proxy-status-widget
 proxy-windows-discover
 psexec.py
+pty-title-filter.py
 push-apk
 push-tunnel-url
 pwiz
@@ -1376,6 +1379,7 @@ wechat-matrix-full-export-run
 wechat-matrix-hermes-ops
 wechat-matrix-ledger
 wechat-matrix-live-sync
+wechat-matrix-media-audit
 wechat-matrix-media-pull
 wechat-matrix-media-repair-finalize
 wechat-matrix-restore-audit
