@@ -30,7 +30,7 @@ app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
 app-gnome\x2dkeyring\x2dssh@autostart.service                                          generated -
 app-nvidia\x2dsettings\x2duser@autostart.service                                       generated -
-app-org.chromium.Chromium-3171321.scope                                                transient -
+app-org.chromium.Chromium-1405597.scope                                                transient -
 app-org.gnome.SettingsDaemon.DiskUtilityNotify@autostart.service                       generated -
 app-org.kde.kdeconnect.daemon@autostart.service                                        generated -
 app.slice                                                                              static    -
@@ -664,6 +664,7 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    disabled  disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
+user-libpod_pod_5a8a0ae795180ec5cbedf9b71359b67f658b11bb4f5c8e959939e09f580612dd.slice transient -
 user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
@@ -687,7 +688,7 @@ wechat-matrix-ledger-sync.timer                                                 
 wechat-matrix-restore-monitor.service                                                  static    -
 wechat-matrix-restore-monitor.timer                                                    enabled   disabled
 wechat-matrix-sync.service                                                             static    -
-wechat-matrix-sync.timer                                                               enabled   disabled
+wechat-matrix-sync.timer                                                               disabled  disabled
 wechat-matrix-timeline-restore.service                                                 disabled  disabled
 wechat-sync.service                                                                    static    -
 wechat-sync.timer                                                                      enabled   disabled

@@ -862,3 +862,64 @@ Important interpretation:
   reacquired bytes or an authenticated legacy WeChat source; never fabricate
   replacement media.
 - Regression suite after importer/auditor changes: `20 passed`.
+
+## 2026-10-04 WeChat `.ref` Pointer Recovery
+
+- Correction to the preceding residual conclusion: the `421` 36-byte UUID
+  payloads were not missing media. Newer WeChat storage uses those files as
+  pointers to real bytes under the media family's `.ref/d/<UUID>` path; a
+  `.ref/c/<UUID>` cache/thumbnail may also exist. Examples were confirmed
+  directly with phone root: an attachment `.ref/d` was a real ZIP and an
+  `image2/.ref/d` payload was a real WXGF image.
+- `wechat-matrix-sync-export` now expands matched UUID pointer files to both
+  `.ref/d` and `.ref/c` during the single phone-side tar operation, prefers
+  `.ref/d`, replaces only the derived local cache copy with the real bytes,
+  and allows type-3 WXGF candidates to reach the existing normalization stage.
+  It does not modify WeChat private storage.
+- One 271 MiB ADB pull failed at 95% while the live WeChat sync timer was using
+  the same transport. Recovery used nine 32 MiB-or-smaller parts with per-part
+  retry and whole-archive SHA-256 verification. Future large root pulls should
+  use resumable parts by default and avoid overlap with
+  `wechat-matrix-sync.service`.
+- Extracted `1302` archive members and resolved `429` pointer paths (duplicate
+  messages can share refs). Exact message matching then found `421/421`, with
+  zero missing: `286` images, `30` videos, and `105` files.
+- Final repair ledger:
+  `~/.local/state/wechat-matrix-media-ref-repair-20261004/ledger.db`.
+  Byte-level audit before and after finalization: `421/421` valid, `0` invalid.
+  All `421` old UUID fake-media events have redactions, all new event and
+  unsigned timestamps match WeChat time, no event/media row is missing, and
+  all `421` media rows have `authenticated=false`.
+- Pre-finalization consistent SQLite backup:
+  `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-ref-finalize-20261004-034032`.
+  Source and backup were both `1741099008` bytes; backup schema and events table
+  were readable. Foreground `quick_check` was interrupted because this slow
+  mount kept it in kernel I/O wait for minutes. Do not use full/quick integrity
+  scans as a blocking foreground gate here; use an online SQLite backup plus
+  byte-size/readability/core-table checks, and schedule the expensive scan in
+  the background when needed.
+- SchildiChat initially showed offline because phone DNS to DuckDNS timed out,
+  while LAN Matrix returned `200` and explicit mihomo proxy
+  `127.0.0.1:7890` returned `200`. Restored Android global proxy to
+  `127.0.0.1:7890`, restarted SchildiChat, and the app resumed syncing.
+- Durable proxy conflict fix: `phone-network-stabilize status` previously
+  cleared Android `http_proxy` to `:0` every five minutes. It now preserves the
+  current proxy unless `PHONE_FORCE_GLOBAL_PROXY=1` or
+  `PHONE_CLEAR_GLOBAL_PROXY=1` is explicitly set. The proxy watchdog now uses
+  reachable ADB transport `127.0.0.1:15555` and writes all three Android proxy
+  settings. Restarting the watchdog restored `127.0.0.1:7890`; a subsequent
+  real `phone-network-stabilize status` run preserved it and reported mihomo,
+  Play proxy, and DuckDNS checks healthy.
+- Real-phone proof then passed for all three recovered classes: an image
+  rendered and opened full-screen, an MP4 rendered and played full-screen, and
+  a PDF downloaded/opened with visible page content. Current SchildiChat
+  private log counts were `Unauthorized=0`, `HttpException=0`, `Glide=0`.
+  Evidence:
+  `~/.local/state/schildichat-debug/schildichat-ref-image-opened.png`,
+  `schildichat-ref-video-playing.png`, and
+  `schildichat-ref-file-opened.png`.
+- Correct final content-valid total is now `6455 = 4913 + 1121 + 421`.
+  The only remaining media recovery set is the separate `1482` original
+  source-missing text placeholders (`497` video, `539` files, `442` images,
+  `4` stickers).
+- Regression suite: `22 passed`.

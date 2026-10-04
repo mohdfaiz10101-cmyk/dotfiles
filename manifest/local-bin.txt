@@ -8,6 +8,7 @@ adb-device-monitor.py
 adb-input-file-text
 adb-phone-keepalive.sh
 adb-record
+adb-resume-pull
 adb-reverse-haven.sh
 adb-tablet-keepalive.sh
 adb-whoami
@@ -1377,9 +1378,11 @@ wechat-matrix-bridge.py
 wechat-matrix-fix-event-timestamps
 wechat-matrix-full-export-run
 wechat-matrix-hermes-ops
+wechat-matrix-history-shard
 wechat-matrix-ledger
 wechat-matrix-live-sync
 wechat-matrix-media-audit
+wechat-matrix-media-prewarm
 wechat-matrix-media-pull
 wechat-matrix-media-repair-finalize
 wechat-matrix-restore-audit
@@ -1390,6 +1393,7 @@ wechat-matrix-timeline-restore-run
 wechat-merge.py
 wechat-msg-sync.py
 wechat-msg-sync-wrapper.sh
+wechat-phone-incremental-export
 wechat-pull-termux.sh
 wechat-query-mcp
 wechat-reply-consumer.py

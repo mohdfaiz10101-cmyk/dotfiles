@@ -1,12 +1,12 @@
 # Pending Tasks
 
-## SchildiChat WeChat media repair (partially completed; corrected 2026-10-03)
+## SchildiChat WeChat media repair (completed for locally available bytes; 2026-10-04)
 
 Status: byte-level verification corrected the earlier ledger-only completion
-claim. `6034` native media events are now content-valid (`4913` previously
-valid plus `1121` recovered WXGF images). `421` UUID-only fake-media events and
-`1482` original source-missing placeholders still require real source bytes.
-No repair worker or finalizer is running.
+claim, then phone-root `.ref/d` resolution recovered the apparent `421`
+UUID-only payloads. All `6455` locally recoverable native media messages are
+now content-valid. Only `1482` original source-missing placeholders require
+new source bytes. No repair worker or finalizer is running.
 
 ### Durable state
 
@@ -33,17 +33,21 @@ No repair worker or finalizer is running.
 - All `1121` WXGF images were re-decoded and re-imported. New-ledger audit:
   `1121` valid, `0` invalid; all `1121` old bad events have redactions and all
   new server-side timestamps match WeChat time.
-- Current total content-valid native events: `6034`. Remaining invalid native
-  events: `421` (`286` images, `105` files, `30` videos) with no real bytes.
+- The `421` UUID payloads were WeChat `.ref` pointers, not missing originals.
+  Root-side `.ref/d` resolution recovered and re-imported all `286` images,
+  `30` videos, and `105` files. Audit: `421` valid, `0` invalid; `421` old bad
+  events redacted; timestamps/auth compatibility verified.
+- Current total content-valid native events: `6455 = 4913 + 1121 + 421`.
 - Still unavailable because no matching source bytes exist locally: `1482`:
   `497` videos, `539` files, `442` images, `4` stickers.
 - All shards `0..7` reached `batch_done`; their unique non-text rows were
   merged into the main repair ledger with `0` duplicate message IDs.
-- Root-assisted SchildiChat verification passed on the actual phone: repaired
-  images rendered in-room and opened in the full-screen viewer; latest private
-  log had zero `Unauthorized`, `Glide`, and `HttpException` matches. Existing
-  Realm cache can retain import-time display timestamps despite server fixes.
-- Regression suite: `20 passed`.
+- Root-assisted SchildiChat verification passed on the actual phone: recovered
+  image opened full-screen, recovered video played full-screen, and recovered
+  PDF opened with visible content. Latest private log had zero `Unauthorized`,
+  `Glide`, and `HttpException` matches. Existing Realm cache can retain
+  import-time display timestamps despite server fixes.
+- Regression suite: `22 passed`.
 
 ### Durable completion artifacts
 
@@ -55,11 +59,17 @@ No repair worker or finalizer is running.
   `~/.local/state/wechat-matrix-media-integrity-repair-20261003/ledger-merged.db`
   and
   `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-wxgf-finalize-20261003-211332`
+- `.ref` recovery ledger and pre-finalization backup:
+  `~/.local/state/wechat-matrix-media-ref-repair-20261004/ledger.db` and
+  `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/homeserver.db.bak-ref-finalize-20261004-034032`
 - Phone evidence:
   `~/.local/state/schildichat-debug/schildichat-list-current-20261003.png`,
   `schildichat-audio-room3-20261003.png`, and
   `schildichat-audio-playing-20261003.png`; corrective image evidence:
-  `schildichat-wxgf-open2.png` and `schildichat-wxgf-viewer.png`.
+  `schildichat-wxgf-open2.png` and `schildichat-wxgf-viewer.png`; `.ref`
+  evidence: `schildichat-ref-image-opened.png`,
+  `schildichat-ref-video-playing.png`, and
+  `schildichat-ref-file-opened.png`.
 
 ### Optional future recovery
 
