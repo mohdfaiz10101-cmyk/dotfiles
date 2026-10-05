@@ -496,6 +496,89 @@ Element X / mobile client caveat:
 
 ## Expected evidence
 
+## 2026-10-05 complete-history restoration path
+
+Use the v2 production workflow below instead of the old full-DB polling path.
+The old `wechat-matrix-sync.timer` is disabled because it copied about 446MB
+and force-stopped WeChat on every run.
+
+- Root-direct incremental exporter:
+  `~/.local/bin/wechat-phone-incremental-export`
+- Phone helper source/runtime:
+  `~/.local/share/wechat-matrix-sync/phone-helper/`
+- The helper dynamically links WeChat's own `libWCDB.so`, reads the live DB via
+  a consistent WCDB snapshot, and writes only a small plaintext subset. The DB
+  key travels over stdin and must never appear in argv or logs.
+- The helper is automatically redeployed after phone reboot if its
+  `/data/local/tmp/wechat-matrix-helper` files are absent.
+- Root-direct verification on 2026-10-04 exported 5 new rows (`msgId`
+  213152–213156) in a 64KB SQLite file without stopping WeChat. A subsequent
+  check after `213156` returned zero rows in under one second.
+- Large phone media packages must use
+  `~/.local/bin/adb-resume-pull`; ordinary `adb pull` twice discarded partial
+  data at 52%/96%. The resumable pull verifies remote/local size and SHA-256.
+
+Production history state is under
+`~/.local/state/wechat-matrix-history-v2/production/`:
+
+- Four room-stable shard runners: `~/.local/bin/wechat-matrix-history-shard`
+- Durable service template: `wechat-matrix-history@.service`
+- Five-minute recovery monitor: `wechat-matrix-history-watch.timer`
+- Root-direct future sync: `wechat-matrix-incremental.timer`
+- Media prewarm/cache:
+  `~/.local/bin/wechat-matrix-media-prewarm` and
+  `~/.local/state/wechat-matrix-history-v2/media-uploads.db`
+
+The base corpus has 193,690 messages across 368 talkers. Message rows are
+sorted by `(createTime, msgId)` before send, and every talker stays in one
+shard. The importer sends through the appservice with Matrix `?ts=` so
+`origin_server_ts` is the original WeChat time. A live four-room audit found
+zero timestamp mismatches and zero stream-order inversions.
+
+Media recovery evidence:
+
+- 31,574 media-class rows audited.
+- Initial local miss count: 5,325.
+- Root phone recovery extracted 6,700 files and resolved 1,556 nested `.ref`
+  pointers; remaining miss count: 3,216. Voice misses fell from 581 to zero.
+- CDN emoji prefetch recovered 4,247/4,275 referenced objects.
+- Media prewarm completed 22,002/22,002 jobs with zero upload failures and
+  cached 21,712 unique MXC objects. Repeated files are reused by SHA-256.
+- Missing source video is represented as an image thumbnail with
+  `com.charlie.wechat.unavailable_video` metadata, never as a fake playable
+  video.
+
+Semantic fixes now include packed low-16-bit WeChat types, XML fallback for
+`AppMessage.type`, native `m.location`, readable contact/system/call events,
+native Matrix replies where the target exists, type-8/type-47 sticker images,
+original document names, nested `.ref` payloads, and fully expanded merged
+forward summaries. The largest merged forward in this corpus has 90 child
+items; all 90 are now shown instead of truncating at 80.
+
+Synapse 1.155.0 on this host does not contain MSC2716 `batch_send`, and its
+SQLite engine declares itself single-threaded. Do not attempt direct DB event
+insertion or claim `/batch_send` acceleration. The shard ledger and Matrix
+transaction IDs provide safe idempotent resume; the recovery timer restarts an
+incomplete shard after failure or reboot.
+
+Current acceptance commands:
+
+```bash
+systemctl --user is-active wechat-matrix-history-{0,1,2,3}.service
+systemctl --user list-timers --all | rg 'wechat-matrix-(history-watch|incremental)'
+python3 -m py_compile ~/.local/bin/wechat-matrix-sync-export \
+  ~/.local/bin/wechat-phone-incremental-export \
+  ~/.local/bin/wechat-matrix-history-watch \
+  ~/.local/bin/wechat-matrix-incremental-sync
+pytest -q ~/.local/share/wechat-matrix-sync/tests/test_phone_media_prefetch.py
+```
+
+The current test suite has 41 passing tests. Do not declare the production
+restore complete until all four `complete-0..3` markers exist, the combined
+ledger count matches the source corpus plus post-baseline incrementals, and a
+phone-side SchildiChat screenshot confirms a production room's ordering and
+media controls.
+
 - Timer is `active (waiting)` and enabled.
 - Service exits with `status=0/SUCCESS`.
 - Log includes:
@@ -923,3 +1006,124 @@ Important interpretation:
   source-missing text placeholders (`497` video, `539` files, `442` images,
   `4` stickers).
 - Regression suite: `22 passed`.
+
+## 2026-10-05 Production room visibility and formatting
+
+- A room that looks sparse can be the wrong duplicate room, not missing source
+  data. For `58480079050@chatroom`, SchildiChat was displaying the old
+  media-only room (`510` messages); the first production room contained all
+  `2114/2114` source messages. Resolve the current phone room ID from
+  `dumpsys activity top` `TimelineArgs(roomId=...)` before auditing counts.
+- Production `rooms-*.json` membership was verified directly in Synapse:
+  all `304/304` mapped rooms had `@charlie` membership `join`. The large
+  SchildiChat “邀请” count was stale/legacy rooms and did not prove production
+  membership was missing.
+- Historical per-conversation imports must always pass
+  `--room-context-format`. Without it, visible bodies include audit headers
+  such as `[timestamp] room / sender #msgId`. The durable shard wrapper now
+  includes this flag.
+- Do not bulk-repair thousands of old events with `m.replace` on SchildiChat
+  `1.6.62.sc92`. Relation events occupy the newest `/sync` timeline window but
+  render invisibly, pushing original events behind pagination and producing a
+  blank timeline. A single edit works; a room-sized edit flood does not.
+- Recovery for a room already affected by a relation flood: rename it clearly
+  as old/broken, re-import into a clean room with `--room-context-format`, keep
+  the viewer out while the room is incomplete, then invite/join only after the
+  source count, timestamp order, phone sync, and visible timeline pass.
+- Reusable tools:
+  `~/.local/bin/wechat-matrix-clean-room-format` is suitable only for bounded
+  spot edits; `~/.local/bin/wechat-matrix-priority-procurement-clean` performs
+  the clean priority-room import.
+- Clean full-history rebuild is now the only enabled production path:
+  `~/.local/bin/wechat-matrix-history-clean-shard`,
+  `~/.local/bin/wechat-matrix-history-clean-watch`, and
+  `wechat-matrix-history-clean-watch.timer`. State lives under
+  `~/.local/state/wechat-matrix-history-v2/production-clean-v3/`.
+  It always uses `--room-context-format --defer-viewer-join`; do not expose a
+  shard room to `@charlie` until its source/ledger/timestamp/media audit passes.
+  The old `wechat-matrix-history-watch.timer` is disabled.
+- The verified clean seed room for `58480079050@chatroom` is
+  `!HvAbRWHcEYvTiMyMdP:100.120.189.27`: `2114/2114`, zero missing events,
+  zero timestamp mismatches, zero stream-time inversions, zero visible audit
+  headers, zero media events without an MXC URL, and zero relation events.
+  SchildiChat phone proof showed the 09:47 image rendered before the 09:50
+  call event. Evidence:
+  `~/.local/state/schildichat-debug/schildichat-production-clean-final2.png`
+  and `schildichat-production-clean-older.png`.
+
+## 2026-10-05 Prefix-free clean rebuild and legacy retirement
+
+- The final clean-room naming rule is exact WeChat conversation names: no
+  `微信完整历史｜`, `微信｜`, `旧版`, version, pilot, or audit prefix. Both the
+  production and priority wrappers now pass `--no-room-name-prefix`.
+- Existing clean-v3 rooms were renamed in place. Audit result: `331/331`
+  room maps and server `m.room.name` states are prefix-free.
+- Legacy cleanup helper: `~/.local/bin/wechat-matrix-retire-old-rooms`. It
+  excludes clean-v3 IDs, then leaves and forgets mapped legacy rooms. The
+  2026-10-05 run retired `1322/1322`; database verification showed zero legacy
+  `join`/`invite` and every legacy leave event marked forgotten.
+- Always query *all* current `@charlie` `join`/`invite` memberships after the
+  map-based cleanup. Four old test rooms (`v2`/`v3`/`pilot`) and one stale
+  prefixed invite were not present in historical room-map files. They were
+  separately left, allowed to sync to the phone, then forgotten. Final server
+  membership was exactly one joined clean seed room and zero invites.
+- Do not immediately forget a room while SchildiChat is offline if the phone
+  already cached it. Synapse can omit already-forgotten leave rooms from a
+  later `/sync`, leaving stale local tiles. Correct order is: restore phone
+  connectivity, leave/reject, confirm the tile disappears, then forget.
+- If the server is clean but SchildiChat permanently retains stale rooms,
+  root may rebuild only the SDK timeline store while preserving auth and
+  crypto: force-stop `de.spiritcroc.riotx`, move the active session's
+  `disk_store.realm`, lock, and management directory to a recoverable backup,
+  then start `im.vector.app.features.MainActivity`. Do **not** delete
+  `matrix-sdk-auth.realm`, `matrix-sdk-global.realm`, `crypto_store.realm`, or
+  `matrix-sdk-crypto.sqlite3`. The 2026-10-05 recoverable backup is under
+  `/data/user/0/de.spiritcroc.riotx/files/9a8e3348a6abb5d33f7a751621adde9b/root-clean-backup-20261005-1200/`.
+- Phone Tailscale `100.120.189.27:8008` was unreachable during cleanup. A
+  runtime-only, SchildiChat-UID-specific Android NAT rule redirected that
+  destination to LAN `192.168.123.71:8008`; this allowed real `/sync` without
+  changing the stored homeserver URL. It is not persistent across reboot.
+- The media joins expand eight duplicate SQL result rows. Completion counts
+  must use distinct `message.msgId`: per-shard expected counts are
+  `23035, 20304, 132422, 17921` (`193682` total), not the raw joined-row total
+  `193690`. The clean watcher uses the distinct counts so completed shards do
+  not restart forever.
+- Final phone proof after the cache rebuild showed only `采购 信息汇总`; UI
+  counts were zero for `旧版`, `微信完整历史｜`, `微信｜`, all old v2/v3/pilot
+  rooms, and the stale invite. Evidence:
+  `~/.local/state/schildichat-debug/schildichat-final-list.png`.
+
+## 2026-10-05 Completed-room visibility recovery
+
+- The clean-history watcher now automatically enables and starts
+  `wechat-matrix-incremental.timer` only after all four clean-v3 ledgers reach
+  their exact distinct-message counts. This prevents live incremental sync
+  from competing with the bulk restore and prevents it from remaining disabled
+  after an interrupted restore finally completes.
+
+- `--defer-viewer-join` correctly hides incomplete rooms, but leaving every
+  completed shard unjoined makes SchildiChat appear to contain only the seed
+  room. `~/.local/bin/wechat-matrix-clean-join-completed` now invites and joins
+  only rooms from `complete-*` shard maps and rejects all legacy/versioned name
+  prefixes. The clean watcher invokes it on every pass.
+- The first catch-up joined `268` additional rooms (`270/270` completed rooms
+  joined, zero pending invites, zero rejected prefixes). Adding many
+  memberships at once produced one large SchildiChat `/sync`; pause shard
+  import while that catch-up is pending instead of repeatedly rebuilding the
+  client cache.
+- If the initial catch-up times out, temporarily add `"limit":1` to SchildiChat
+  filter `2` in Synapse `user_filters`, restart Synapse once, let the large
+  `/sync` finish, then restore the original filter JSON in the database. On
+  this slow SQLite mount, a Synapse restart can take about 17 minutes, so do
+  not restart it repeatedly. The successful catch-up response was `733184B`
+  with HTTP `200`; later `/sync` and `/keys/query` requests returned normally.
+- Real-phone verification after relaunch showed eight different clean room
+  names in the first viewport, no connection-loss banner, and no legacy name
+  prefixes. Evidence:
+  `~/.local/state/schildichat-debug/schildichat-270-rooms.png` and
+  `schildichat-270-rooms.xml`.
+- After the client catch-up, restore the normal filter in the database without
+  forcing another costly restart, then resume
+  `wechat-matrix-history-clean-watch.timer`. Incomplete shard rooms remain
+  hidden and are automatically joined when that shard reaches its exact
+  distinct-message count.

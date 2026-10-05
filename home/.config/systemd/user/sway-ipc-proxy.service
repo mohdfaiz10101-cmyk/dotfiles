@@ -1,0 +1,19 @@
+[Unit]
+Description=sway IPC proxy that suppresses window::title churn
+Documentation=file:///var/home/charlie/.local/bin/sway-ipc-title-filter.py
+# Must exist before the proxy can find the upstream socket.
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/bin/sway-ipc-title-filter.py
+Restart=always
+RestartSec=2
+# waybar reads SWAYSOCK and must be pointed at the proxy, not real sway. That is
+# done in waybar.service.d/20-sway-ipc-proxy.conf, which orders waybar after this
+# unit, so a restart of either side converges.
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=graphical-session.target

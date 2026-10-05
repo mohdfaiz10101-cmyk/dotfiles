@@ -1,0 +1,11 @@
+[Unit]
+Description=Clean deferred WeChat Matrix history shard %i
+After=matrix-synapse.service
+Requires=matrix-synapse.service
+
+[Service]
+Type=simple
+Nice=5
+IOWeight=50
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-history-clean-shard %i
+

@@ -500,6 +500,12 @@ Codex 三账号并行、互补和省钱路由规划。
   change slot-local default model through backend/admin paths only, and let the
   new model apply on the next fresh session unless an explicit forced restart is
   requested during maintenance.
+- 2026-10-05 saved-session restore rule: `codex resume <session-id>` preserves
+  the model recorded in that session even after `config.toml` changes. When the
+  user explicitly asks to restore an old task on a new model, recreate only that
+  slot's tmux session with `codex resume -m <model> <session-id>`, then verify the
+  TUI footer and the phone-facing external WebTTY page show the requested model.
+  Do not infer the resumed model from `config.toml` alone.
 - 2026-07-14 top-bar merge: network/connectivity status is no longer a separate
   floating widget. `ttyd-device-gate-proxy` now writes connection score and
   daily/weekly failure summary into the same top quota strip as `5h/7d`,

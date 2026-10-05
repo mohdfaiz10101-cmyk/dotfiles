@@ -1,0 +1,7 @@
+[Unit]
+Description=Ensure clean deferred WeChat Matrix history shards resume
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-history-clean-watch
+

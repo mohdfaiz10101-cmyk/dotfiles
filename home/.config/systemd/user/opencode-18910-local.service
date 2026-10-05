@@ -1,13 +1,19 @@
 [Unit]
-Description=OpenCode LAN proxy (:18910 -> :4096)
+Description=OpenCode LAN proxy (:18910 -> 4096)
 After=opencode-4096-proxy.service
 Requires=opencode-4096-proxy.service
+# 防止 socket-activation 误触发：同名 .socket Accept=no 不传 fd 给 socket-proxyd，
+# 会立即失败；用 StartLimit 兜底避免无限重启刷 journal/CPU。（2026-10-05 修复）
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 Type=simple
 ExecStart=/usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:4096
-Restart=always
-RestartSec=3
+# 原为 Restart=always：在 systemd-socket-proxyd 报 "Didn't get any sockets passed in"
+# 时进入 3 秒一次 crash-loop（曾累计 3412 次重启）。改为 on-failure + 长 backoff。
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=default.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=Ensure WeChat Matrix history shards resume until complete
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-history-watch

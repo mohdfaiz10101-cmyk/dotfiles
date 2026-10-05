@@ -1,0 +1,9 @@
+[Unit]
+Description=Root-direct incremental WeChat to Matrix sync
+After=matrix-synapse.service network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-incremental-sync
+Nice=5
+IOWeight=50

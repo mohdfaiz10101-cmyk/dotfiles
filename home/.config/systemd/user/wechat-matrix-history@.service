@@ -1,0 +1,14 @@
+[Unit]
+Description=Idempotent WeChat to Matrix history shard %i
+After=matrix-synapse.service network-online.target
+
+[Service]
+Type=simple
+ExecStart=/var/home/charlie/.local/bin/wechat-matrix-history-shard %i
+Restart=on-failure
+RestartSec=20
+Nice=5
+IOWeight=50
+
+[Install]
+WantedBy=default.target
