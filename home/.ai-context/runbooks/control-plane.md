@@ -464,6 +464,41 @@ Default path:
 
 ```text
 Mattermost ai-inbox/ai-images/ai-docs/ai-review -> mattermost-ai-inbox poller -> Hub pending_approval -> approved dispatch -> Mattermost ai-tasks receipt
+
+### SchildiChat to Mattermost CRM archive (2026-10-06)
+
+- Android share target `Hermes / Mattermost CRM`
+  (`com.charlie.schchatshare`) sends images, files, or text to Hub
+  `/api/share-intake` with a local token.
+- `mattermost_archive` immediately writes a CRM note with category
+  `mattermost-archive`, saves attachments under `~/.local/state/share-intake/`,
+  and appends a durable outbox item to
+  `~/.local/state/mattermost-crm-outbox/queue.jsonl`.
+- `crm_followup` creates a Hub `pending_approval` Hermes task for extracting
+  contact/company/email/phone/requirements and also queues a Mattermost CRM
+  receipt. `hermes` routes directly to the matching document skills.
+- `mattermost-crm-outbox.timer` retries every two minutes. The worker creates
+  or uses `crm-archive` and `crm-followups`, uploads files, and records the
+  Mattermost post id before marking an item sent.
+- Mattermost data remains in the existing volumes. On 2026-10-06 the old
+  DaoCloud source rate-limited pulls and Docker Hub large-layer downloads were
+  repeatedly reset by the active proxy route. Compose now points to the
+  official Docker Hub image. The verified recovery path is
+  `~/.local/bin/dockerhub-blob-resume`: select a tested Mihomo node, download
+  the failing blob in restartable chunks, rebuild a `dir:` image layout, then
+  import it locally with `skopeo copy dir:... docker-daemon:...`. Do not run a
+  network-to-`dir:` `skopeo copy` over a prebuilt layout because it clears the
+  destination before copying.
+- The imported `11.7.0` image id is `sha256:85383d24b78e...`. A second startup
+  failure was caused by old rootless-container ownership (`526287:526287`) on
+  `volumes/app/mattermost`; the official image runs as `2000:2000`. Preserve
+  content and repair only ownership with
+  `sudo chown -R 2000:2000 volumes/app/mattermost`.
+- Verified after repair: Mattermost and PostgreSQL containers are running,
+  `/api/v4/system/ping` returns `status: OK`, `mattermost-ai-inbox.service` and
+  `mattermost-crm-outbox.timer` are active, and the outbox is empty. Reachable
+  phone paths are LAN `192.168.123.71:8065`, NetBird
+  `100.87.171.39:8065`, and primary Tailscale `100.120.189.27:8065`.
 ```
 
 Operations helper:

@@ -13,7 +13,9 @@ Mattermost is the channel collaboration layer for Hub, OP, FastGPT, and automati
   `0600`; contains Mattermost webhook/bot tokens and must not be pasted into
   chats, skills, or runbooks)
 - URL: `http://100.120.189.27:8065/`
-- NetBird URL: `http://100.87.238.153:8065/`
+- NetBird URL: `http://100.87.171.39:8065/` (verify with `netbird status
+  --json`; this address changed on 2026-10-06)
+- LAN URL: `http://192.168.123.71:8065/`
 - Hub entry: `http://127.0.0.1:9800/go/mattermost`
 - Hub health: `http://127.0.0.1:9800/api/mattermost/status`
 - Hub AI Inbox status:
@@ -73,8 +75,31 @@ systemctl --user restart mattermost-ai-inbox.service
 
 - Uses Mattermost Team Edition `11.7.0`.
 - The app runs without the bundled nginx; direct app port is `8065`.
-- Mattermost app bind mounts need `:Z` under rootless Podman/Silverblue, otherwise `/mattermost/config/config.json` can fail with permission denied.
-- The Docker Hub path can fail through the local proxy; `mattermost/mattermost-team-edition` was pulled through `docker.m.daocloud.io`.
+- The current runtime is rootful Docker and the official image runs as
+  `2000:2000`. If old rootless ownership such as `526287:526287` remains on
+  `volumes/app/mattermost`, preserve the files and repair ownership with
+  `sudo chown -R 2000:2000 volumes/app/mattermost`.
+- Compose uses `docker.io/mattermost/mattermost-team-edition:11.7.0`. If a
+  proxy resets the 412 MB image layer, use
+  `~/.local/bin/dockerhub-blob-resume`, rebuild a separate `dir:` layout, and
+  import it with `skopeo copy dir:... docker-daemon:...`. A network-to-`dir:`
+  copy clears its destination first, so never point it at a prebuilt cache.
+- 2026-10-06 mobile recovery: the PKR110 NetBird APK existed only in work
+  profile user `11`, was disabled, and reopening it led to first-run onboarding
+  with no active `tun0`; Tailscale was not installed. The safe immediate path
+  was therefore LAN `http://192.168.123.71:8065`. A private rollback archive
+  was stored under `~/.local/state/mattermost-mobile-backups/`. The helper
+  `~/.local/bin/mattermost-mobile-url-migrate` performs same-byte-length URL
+  replacement across `Servers`, the per-server `Config.SiteURL`, and
+  `RN_KEYCHAIN.preferences_pb`, with SQLite integrity checks before deployment.
+  Google Autofill can steal password-field focus during ADB login; temporarily
+  set `secure autofill_service` to `null`, enter the password through
+  `adb-input-file-text`, then restore the original component immediately.
+- Verified on the physical phone: Mattermost UID `10447` reached the LAN ping
+  endpoint with HTTP 200, login succeeded, `AI 收件箱` opened with messages and
+  a writable composer, and Hub integration returned `ok=true`. The warning
+  triangle next to `lan` means push notifications are not configured for this
+  HTTP server; it is not a connectivity failure.
 - Postgres must mount the configured data directory to
   `/var/lib/postgresql/data:Z`, not `/var/lib/postgresql`. If it is mounted to
   `/var/lib/postgresql`, Podman creates an anonymous volume at

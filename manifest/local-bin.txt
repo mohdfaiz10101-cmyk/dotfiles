@@ -336,6 +336,7 @@ doc-discover.sh
 doc-fetch.sh
 docker-cleanup.sh
 docker-health-nurse.sh
+dockerhub-blob-resume
 docker-prune
 docker-recovery-plan
 docker-redroid-prepare
@@ -685,6 +686,8 @@ matrix-wechat
 mattermost-agent-channels
 mattermost-ai-inbox
 mattermost-ai-ops
+mattermost-crm-outbox
+mattermost-mobile-url-migrate
 mattermost-phone-repair
 mcp
 mcp-firecrawl-wrapper.sh
@@ -1381,6 +1384,7 @@ wechat-matrix-clean-join-completed
 wechat-matrix-clean-room-format
 wechat-matrix-fix-event-timestamps
 wechat-matrix-full-export-run
+wechat-matrix-grant-manager
 wechat-matrix-hermes-ops
 wechat-matrix-history-clean-shard
 wechat-matrix-history-clean-watch
@@ -1389,6 +1393,7 @@ wechat-matrix-history-watch
 wechat-matrix-incremental-sync
 wechat-matrix-ledger
 wechat-matrix-live-sync
+wechat-matrix-mark-read
 wechat-matrix-media-audit
 wechat-matrix-media-prewarm
 wechat-matrix-media-pull

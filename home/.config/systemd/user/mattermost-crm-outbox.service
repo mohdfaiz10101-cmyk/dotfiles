@@ -1,0 +1,8 @@
+[Unit]
+Description=Deliver SchildiChat CRM archive queue to Mattermost
+After=mattermost.service network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/mattermost-crm-outbox
+Nice=10

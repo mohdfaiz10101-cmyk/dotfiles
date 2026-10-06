@@ -1095,11 +1095,29 @@ Important interpretation:
 
 ## 2026-10-05 Completed-room visibility recovery
 
+- Imported clean-v3 messages are sent by `@_wechat_archive`, so the viewer
+  cannot redact them while remaining at power level 0. Run
+  `~/.local/bin/wechat-matrix-grant-manager` to grant
+  `@charlie:100.120.189.27` power level 100 in all clean-v3 rooms while keeping
+  the room `redact` threshold at 50. New importer-created rooms include this
+  manager permission through `power_level_content_override`.
+- Incremental sync and the management ledger must use
+  `production-clean-v3/{rooms,ledger}-combined`, `--room-context-format`, and
+  `--no-room-name-prefix`. The older `production` combined files and
+  `微信完整历史｜` prefix must not be reintroduced after the clean rebuild.
+- The ledger command listener uses `@charlie:100.120.189.27` and polls with an
+  `OnActiveSec`/`OnUnitInactiveSec` timer so commands such as `!总结 最近50`,
+  `!记忆最近20`, and `!建任务` work after being enabled long after boot.
+
 - The clean-history watcher now automatically enables and starts
   `wechat-matrix-incremental.timer` only after all four clean-v3 ledgers reach
   their exact distinct-message counts. This prevents live incremental sync
   from competing with the bulk restore and prevents it from remaining disabled
   after an interrupted restore finally completes.
+- The incremental timer uses `OnActiveSec=1min` for its first run when enabled
+  long after boot, then `OnUnitInactiveSec=10min` after each completed sync.
+  `OnBootSec` plus `OnUnitActiveSec` alone can remain permanently `elapsed`
+  when the timer is enabled after the boot deadline.
 
 - `--defer-viewer-join` correctly hides incomplete rooms, but leaving every
   completed shard unjoined makes SchildiChat appear to contain only the seed
@@ -1127,3 +1145,74 @@ Important interpretation:
   `wechat-matrix-history-clean-watch.timer`. Incomplete shard rooms remain
   hidden and are automatically joined when that shard reaches its exact
   distinct-message count.
+## SchildiChat selection basket and Hermes routing (2026-10-06)
+
+- Universal mobile selection UX: add the `🧺` reaction to each imported
+  message or file. Selections are per Matrix user and may span rooms.
+- Commands handled by `~/.local/bin/wechat-matrix-ledger`:
+  - `!已选` lists the active basket.
+  - `!清空已选` clears it.
+  - `!处理已选 <instruction>` builds a manifest and creates a Hub task.
+- Job manifests and attachment symlinks live under
+  `~/.local/state/wechat-matrix-ledger/selection-jobs/<job-id>/`.
+- The listener reads `m.reaction`, `m.room.redaction`, and `m.room.message`
+  directly from the local Synapse event stream. Read `event_id`, `room_id`,
+  `sender`, and `type` from the `events` table because `event_json.json` does
+  not always repeat those top-level fields.
+- MIME and Matrix content metadata determine recommended Hermes skills. Hub
+  stores `skills`, `artifact_paths`, and uses assignee `hermes` with execution
+  policy `approved_hermes_skills`.
+- Approval boundary: basket submission creates only a `pending_approval` Hub
+  task. Approval starts Hermes. Gmail/email work is marked `gmail_draft` or
+  `gmail_send`; no external action runs at selection time.
+- Successful submission redacts the temporary `🧺` reactions so the phone
+  UI basket visibly clears while the durable job keeps its source event IDs.
+- Verified test job `wmj_20261006034741_257` created Hub task
+  `pt_20261006034741_daf3e50a` with `ocr-and-documents, hermes-agent`, a real
+  local JPEG attachment, and status `pending_approval`. It was cancelled after
+  validation; no Hermes execution or email send occurred.
+
+### SchildiChat white room-list recovery
+
+- Symptom: an existing room still renders its history, but Back to the room
+  list shows a blank white surface and the user perceives that all chats are
+  gone.
+- First verify the ledger before touching app data. On 2026-10-06 it still had
+  `193799` messages, `370` rooms, and `0` Matrix-deleted messages.
+- Do not clear storage, sign out, or re-import. Force-stop and relaunch only:
+  `adb shell am force-stop de.spiritcroc.riotx`, then launch the package.
+- Verified result: the SchildiChat Overview list immediately returned with the
+  imported WeChat rooms and the Hermes assistant room. The failure was a
+  client rendering/navigation state, not server-side deletion.
+- Avoid forcing a `matrix.to` deep link into SchildiChat during routine phone
+  verification; it can leave this build in a blank transition state.
+
+### SchildiChat click freeze and Android share router
+
+- Root cause of the 2026-10-06 click freeze was imported-room unread load, not
+  deleted data or slow Synapse sync. Only 7 of 370 imported rooms had an
+  `m.read` receipt. Repeated room navigation grew SchildiChat from about
+  514 MB RSS to about 2.7 GB while `NotificationDrawer` and
+  `HeapTaskDaemon` consumed high CPU; phone swap was nearly exhausted.
+- Repair helper: `~/.local/bin/wechat-matrix-mark-read`. It posts one
+  `read_markers` request per imported room using that room's latest Matrix
+  event. Do not stop at the latest imported message because later power-level
+  events will leave almost every room unread again.
+  Verified result: 370/370 rooms have read receipts and app memory returned to
+  about 281 MB after restart; the Overview unread badge cleared completely.
+- SchildiChat source is not stored locally, so do not patch or re-sign its APK
+  only to inject a context-menu item. Android does not allow another app to
+  insert arbitrary actions directly into SchildiChat's private long-press
+  menu.
+- Installed companion package: `com.charlie.schchatshare`, display name
+  `Hermes / Mattermost CRM`. Source:
+  `~/workspace/schchat-share-router/`.
+- Phone workflow: long-press an image/file in SchildiChat, choose Share, then
+  choose `Hermes / Mattermost CRM`. The app offers:
+  `让 Hermes 处理`, `归档到 Mattermost CRM`, and `提取客户并创建跟进`.
+- The companion uploads to authenticated Hub endpoint `/api/share-intake`.
+  Token path is `~/.config/hub/share-intake.token` (never print it). Port 9800
+  has a firewalld rich rule limited to `192.168.123.0/24` for phone access.
+- Verified on PKR110: Android image share chooser displayed the companion;
+  submitting to Hermes created a `pending_approval` task. Test tasks and test
+  CRM notes were removed after validation.

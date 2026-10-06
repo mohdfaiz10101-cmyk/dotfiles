@@ -3,7 +3,8 @@ Description=Incrementally sync new WeChat messages without full DB pulls
 
 [Timer]
 OnBootSec=3min
-OnUnitActiveSec=10min
+OnActiveSec=1min
+OnUnitInactiveSec=10min
 Persistent=true
 
 [Install]

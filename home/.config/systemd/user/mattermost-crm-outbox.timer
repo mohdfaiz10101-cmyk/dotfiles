@@ -1,0 +1,11 @@
+[Unit]
+Description=Retry Mattermost CRM archive delivery
+
+[Timer]
+OnBootSec=3min
+OnUnitInactiveSec=2min
+AccuracySec=20s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

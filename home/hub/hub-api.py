@@ -2130,6 +2130,124 @@ async def crm_notes_delete(note_id: int):
         return JSONResponse({"error": str(e)}, status_code=500)
 
 
+SHARE_INTAKE_ROOT = Path.home() / ".local/state/share-intake"
+SHARE_INTAKE_TOKEN = Path.home() / ".config/hub/share-intake.token"
+MATTERMOST_CRM_OUTBOX = Path.home() / ".local/state/mattermost-crm-outbox/queue.jsonl"
+
+
+def _share_skills(content_type: str, filename: str) -> list[str]:
+    content_type = str(content_type or "").lower()
+    filename = str(filename or "").lower()
+    skills: list[str] = []
+    if content_type.startswith("image/") or filename.endswith((".png", ".jpg", ".jpeg", ".webp", ".heic")):
+        skills.append("ocr-and-documents")
+    if content_type == "application/pdf" or filename.endswith(".pdf"):
+        skills.extend(["ocr-and-documents", "nano-pdf"])
+    if filename.endswith(".docx") or content_type.endswith("wordprocessingml.document"):
+        skills.append("docx")
+    skills.append("hermes-agent")
+    return list(dict.fromkeys(skills))
+
+
+def _append_mattermost_crm_outbox(item: dict) -> None:
+    MATTERMOST_CRM_OUTBOX.parent.mkdir(parents=True, exist_ok=True)
+    with MATTERMOST_CRM_OUTBOX.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(item, ensure_ascii=False) + "\n")
+
+
+@app.post("/api/share-intake")
+async def share_intake(
+    request: Request,
+    action: str = Form("hermes"),
+    instruction: str = Form(""),
+    shared_text: str = Form(""),
+    attachment: UploadFile | None = File(None),
+):
+    expected = SHARE_INTAKE_TOKEN.read_text(encoding="utf-8").strip() if SHARE_INTAKE_TOKEN.exists() else ""
+    provided = request.headers.get("x-share-token", "").strip()
+    if not expected or not provided or provided != expected:
+        return JSONResponse({"error": "unauthorized"}, status_code=401)
+    if action not in {"hermes", "mattermost_archive", "crm_followup"}:
+        return JSONResponse({"error": "invalid action"}, status_code=400)
+    intake_id = "share_" + datetime.now().strftime("%Y%m%d%H%M%S") + "_" + uuid.uuid4().hex[:8]
+    intake_dir = SHARE_INTAKE_ROOT / intake_id
+    intake_dir.mkdir(parents=True, exist_ok=True)
+    artifact_paths: list[str] = []
+    filename = ""
+    content_type = ""
+    if attachment and attachment.filename:
+        filename = re.sub(r"[^\w.()\-\u4e00-\u9fff]+", "_", Path(attachment.filename).name, flags=re.UNICODE)[:180] or "attachment.bin"
+        content_type = str(attachment.content_type or "application/octet-stream")
+        target = intake_dir / filename
+        size = 0
+        with target.open("wb") as handle:
+            while True:
+                chunk = await attachment.read(1024 * 1024)
+                if not chunk:
+                    break
+                size += len(chunk)
+                if size > 50 * 1024 * 1024:
+                    target.unlink(missing_ok=True)
+                    return JSONResponse({"error": "attachment too large"}, status_code=413)
+                handle.write(chunk)
+        artifact_paths.append(str(target))
+    metadata = {
+        "id": intake_id,
+        "created_at": datetime.now().isoformat(),
+        "action": action,
+        "instruction": instruction[:4000],
+        "shared_text": shared_text[:12000],
+        "filename": filename,
+        "content_type": content_type,
+        "artifact_paths": artifact_paths,
+    }
+    metadata_path = intake_dir / "intake.json"
+    metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
+    artifact_paths.insert(0, str(metadata_path))
+    skills = _share_skills(content_type, filename)
+    if action == "mattermost_archive":
+        note_id = None
+        if cfg.CRM_DB.exists():
+            connection = sqlite3.connect(str(cfg.CRM_DB), timeout=5)
+            cursor = connection.execute(
+                "INSERT INTO notes (contact_id,company_id,title,content,category) VALUES (?,?,?,?,?)",
+                (None, None, instruction[:160] or filename or "Mattermost CRM 归档", (shared_text + "\n" + "\n".join(artifact_paths)).strip(), "mattermost-archive"),
+            )
+            note_id = cursor.lastrowid
+            connection.commit()
+            connection.close()
+        _append_mattermost_crm_outbox({**metadata, "note_id": note_id, "status": "pending"})
+        return {"ok": True, "id": intake_id, "action": action, "crm_note_id": note_id, "mattermost": "queued"}
+    title_prefix = "CRM 客户跟进" if action == "crm_followup" else "手机分享给 Hermes"
+    result, status = _create_project_task_from_body({
+        "project_id": "trade-crm",
+        "title": f"{title_prefix}：{instruction[:100] or filename or '共享内容'}",
+        "brief": "\n".join([
+            "来源：Android SchildiChat 分享入口",
+            f"操作：{action}",
+            f"用户指令：{instruction}",
+            f"共享文本：{shared_text[:2000]}",
+            f"文件：{filename or '无'}",
+            "CRM 跟进操作需要提取联系人、公司、邮箱、电话、需求和下一步；先生成建议，写入或外发前保留审批。",
+        ]),
+        "goal": "按文件类型调用对应 Hermes skills，整理内容并形成可追踪的 CRM 结果。",
+        "priority": "medium",
+        "assignee": "hermes",
+        "skills": skills,
+        "tags": ["android-share", "schildichat", "crm", action],
+        "source": "android-share-intake",
+        "source_ref": intake_id,
+        "approval": "pending",
+        "artifact_paths": artifact_paths,
+    }, "android-share-intake")
+    if status >= 400:
+        return JSONResponse(result, status_code=status)
+    task = result.get("task") or {}
+    if action == "crm_followup":
+        _append_mattermost_crm_outbox({**metadata, "hub_task_id": task.get("id"), "status": "pending"})
+    return {"ok": True, "id": intake_id, "action": action, "task_id": task.get("id"), "status": task.get("status"), "skills": skills}
+
+
 # ── CopilotKit Runtime（对接 LiteLLM）──────────────────
 @app.post("/api/copilotkit")
 async def copilotkit_runtime(body: dict):
@@ -3041,7 +3159,7 @@ PROJECT_TASK_STATUSES = {
     "review", "done", "cancelled", "dispatch_failed",
 }
 PROJECT_TASK_PRIORITIES = {"urgent", "high", "medium", "low"}
-PROJECT_TASK_ASSIGNEES = {"auto", "op", "crush", "goose_aider", "plan"}
+PROJECT_TASK_ASSIGNEES = {"auto", "op", "crush", "goose_aider", "plan", "hermes"}
 PROJECT_TASK_RUNS_DIR = Path.home() / ".local/state/hub/task-runs"
 _project_control_lock = threading.Lock()
 MATTERMOST_INBOX_DIR = Path.home() / ".local/state/mattermost-ai-inbox"
@@ -3334,6 +3452,8 @@ def _project_control_snapshot() -> dict:
 
 
 def _project_task_prompt(task: dict) -> str:
+    artifact_paths = [str(item) for item in task.get("artifact_paths") or []]
+    skills = [str(item) for item in task.get("skills") or []]
     return "\n".join([
         f"项目: {task.get('project_name') or task.get('project_id')}",
         f"任务: {task.get('title')}",
@@ -3343,6 +3463,9 @@ def _project_task_prompt(task: dict) -> str:
         f"审批状态: {task.get('approval')}",
         "",
         str(task.get("brief") or task.get("title") or "").strip(),
+        "",
+        "推荐 skills: " + (", ".join(skills) if skills else "自动选择"),
+        "附件/清单路径:\n" + ("\n".join(f"- {item}" for item in artifact_paths) if artifact_paths else "- 无"),
         "",
         "要求:",
         "- 先只做必要上下文读取，避免大范围搜索。",
@@ -3386,6 +3509,9 @@ def _create_project_task_from_body(body: dict, source: str = "hub-projects") -> 
     artifact_paths = body.get("artifact_paths") or []
     if not isinstance(artifact_paths, list):
         artifact_paths = [str(artifact_paths)]
+    skills = body.get("skills") or []
+    if isinstance(skills, str):
+        skills = [part.strip() for part in skills.split(",") if part.strip()]
     source = str(body.get("source") or source)[:80]
     source_ref = str(body.get("source_ref") or "")[:500]
     if source_ref:
@@ -3414,7 +3540,7 @@ def _create_project_task_from_body(body: dict, source: str = "hub-projects") -> 
         "blocker": "",
         "assignee": assignee,
         "workspace": str(body.get("workspace") or "").strip()[:500],
-        "execution_policy": "single_writer_goose_aider" if assignee == "goose_aider" else ("read_only_plan" if assignee == "plan" else "legacy_op_crush"),
+        "execution_policy": "single_writer_goose_aider" if assignee == "goose_aider" else ("read_only_plan" if assignee == "plan" else ("approved_hermes_skills" if assignee == "hermes" else "legacy_op_crush")),
         "window": (body.get("window") or "night").strip().lower(),
         "approval": (body.get("approval") or "pending").strip().lower(),
         "status": "pending_approval",
@@ -3423,6 +3549,7 @@ def _create_project_task_from_body(body: dict, source: str = "hub-projects") -> 
         "source_ref": source_ref,
         "attachments": [str(item)[:500] for item in attachments[:12]],
         "artifact_paths": [str(item)[:500] for item in artifact_paths[:12]],
+        "skills": [str(item)[:80] for item in skills[:12]],
         "created_at": now,
         "updated_at": now,
         "events": [{"ts": now, "event": "created", "source": source}],
@@ -3501,6 +3628,51 @@ def _dispatch_project_task(task: dict, target: str) -> dict:
         target = "goose_aider" if task.get("workspace") else "op"
     if target in {"goose_aider", "plan"}:
         return _dispatch_goose_aider_task(task, target)
+    if target == "hermes":
+        task_id = re.sub(r"[^a-zA-Z0-9_-]", "-", str(task.get("id") or "task"))[:70]
+        unit = f"hub-hermes-{task_id}"
+        PROJECT_TASK_RUNS_DIR.mkdir(parents=True, exist_ok=True)
+        log_file = PROJECT_TASK_RUNS_DIR / f"{task_id}.log"
+        artifact_paths = [Path(str(item)).expanduser() for item in task.get("artifact_paths") or []]
+        workspace = Path.home()
+        if artifact_paths and artifact_paths[0].is_file():
+            workspace = artifact_paths[0].parent
+        skills = [str(item).strip() for item in task.get("skills") or [] if str(item).strip()]
+        command = ["hermes", "-z", _project_task_prompt(task)]
+        if skills:
+            command.extend(["--skills", ",".join(skills)])
+        shell_command = "exec " + " ".join(shlex.quote(item) for item in command)
+        shell_command += f" >> {shlex.quote(str(log_file))} 2>&1"
+        try:
+            proc = subprocess.run(
+                [
+                    "systemd-run", "--user", "--no-block", "--collect",
+                    f"--unit={unit}",
+                    f"--description=Hub Hermes task {task_id}",
+                    f"--working-directory={workspace}",
+                    "--property=RuntimeMaxSec=2100",
+                    "--property=MemoryHigh=3G",
+                    "--property=TasksMax=220",
+                    "--property=Nice=10",
+                    "/bin/bash", "-lc", shell_command,
+                ],
+                capture_output=True, text=True, timeout=12, stdin=subprocess.DEVNULL,
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return {"ok": False, "target": target, "error": str(exc)}
+        return {
+            "ok": proc.returncode == 0,
+            "target": target,
+            "selected_target": target,
+            "runner": "hermes",
+            "skills": skills,
+            "unit": unit,
+            "workspace": str(workspace),
+            "log": str(log_file),
+            "returncode": proc.returncode,
+            "stdout": (proc.stdout or "").strip()[-1600:],
+            "stderr": (proc.stderr or "").strip()[-1600:],
+        }
     title = str(task.get("title") or "项目任务")[:90]
     prompt = _project_task_prompt(task)
     dispatch_bin = str(Path.home() / ".local/bin/agent-dispatch")
@@ -3630,7 +3802,7 @@ async def project_task_update(task_id: str, body: dict):
         if assignee not in PROJECT_TASK_ASSIGNEES:
             return JSONResponse({"error": "invalid assignee"}, status_code=400)
         task["assignee"] = assignee
-        task["execution_policy"] = "single_writer_goose_aider" if assignee == "goose_aider" else ("read_only_plan" if assignee == "plan" else "legacy_op_crush")
+        task["execution_policy"] = "single_writer_goose_aider" if assignee == "goose_aider" else ("read_only_plan" if assignee == "plan" else ("approved_hermes_skills" if assignee == "hermes" else "legacy_op_crush"))
     if "workspace" in body:
         task["workspace"] = str(body["workspace"] or "").strip()[:500]
     if "status" in body:
@@ -4563,7 +4735,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:8px;border:1px 
 <main>
   <section class="panel">
     <h2>新建任务</h2>
-    <div class="row"><label>项目<select id="project"></select></label><label>执行策略<select id="assignee"><option value="goose_aider">智能代码 · Goose → Aider</option><option value="plan">只读计划 · Goose</option><option value="op">OP · 短会话</option><option value="crush">Crush · 故障诊断</option></select></label></div>
+    <div class="row"><label>项目<select id="project"></select></label><label>执行策略<select id="assignee"><option value="goose_aider">智能代码 · Goose → Aider</option><option value="plan">只读计划 · Goose</option><option value="hermes">Hermes · 自动技能路由</option><option value="op">OP · 短会话</option><option value="crush">Crush · 故障诊断</option></select></label></div>
     <label>工作区（智能代码任务必填）<input id="workspace" placeholder="例如：/var/home/charlie/hub"></label>
     <label>标题<input id="title" placeholder="例如：整理项目路线图并生成下一步执行清单"></label>
     <label>前景<textarea id="outlook" placeholder="机会、价值、风险、为什么值得做"></textarea></label>
