@@ -1,0 +1,13 @@
+[Unit]
+Description=Ensure Thunar stays open on workspace 3
+
+[Timer]
+# 30s after the user session is up, then every 30s. The interval must be short
+# enough that a user closing the window does not get used to it being gone.
+OnBootSec=30s
+OnUnitActiveSec=30s
+AccuracySec=2s
+Persistent=false
+
+[Install]
+WantedBy=timers.target

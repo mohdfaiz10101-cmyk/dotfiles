@@ -1,0 +1,17 @@
+[Unit]
+Description=Keep Thunar file manager open on workspace 3
+Documentation=file:/var/home/charlie/.local/bin/thunar-ensure
+# Do NOT order After=graphical-session.target — on this gdm-autologin host that
+# target stays inactive for the whole session and the unit would never start.
+After=default.target
+
+[Service]
+Type=oneshot
+# 0 = window already present, 3 = we launched one. Both are healthy outcomes.
+SuccessExitStatus=0 3
+# Give the launch + up-to-12s of window polling room to finish.
+TimeoutStartSec=60
+Nice=5
+ExecStart=%h/.local/bin/thunar-ensure
+StandardOutput=journal
+StandardError=journal

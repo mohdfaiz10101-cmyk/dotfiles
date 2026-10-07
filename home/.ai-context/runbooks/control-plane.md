@@ -511,6 +511,44 @@ mattermost-ai-ops phone-verify
 ```
 
 Do not put `ai-tasks` in `MATTERMOST_WATCH_CHANNELS`; it is an output channel.
+
+## Matrix/SchildiChat smart triage in Mattermost (2026-10-07)
+
+- Service: `matrix-mattermost-triage.service`; implementation:
+  `~/.local/bin/matrix-mattermost-triage`; callback/health port: `9815`.
+  Do not use `9811`, which belongs to the Telegram gateway.
+- Source ledger:
+  `~/.local/state/wechat-matrix-history-v2/production-clean-v3/ledger-combined.db`.
+  The bridge initializes its cursor at the current maximum message id, then
+  processes only new records so it never floods Mattermost with the full
+  historical corpus.
+- Mattermost channel `wechat-triage` (`微信智能分流`) is the CRM control desk.
+  New actionable records become cards with buttons for selection, follow-up,
+  archive, Hermes, review, ignore, deletion request, selected-batch processing,
+  and selected-batch Gmail preparation.
+- Historical records stay queryable from Mattermost without bulk copying. In
+  `wechat-triage`, use `微信状态`, `微信查 关键词`, or `微信最近 10`; matching
+  records are rendered as the same actionable cards.
+- Multi-select is per Mattermost user. Press `加入已选` on multiple cards, then
+  `处理已选` or `Gmail 已选`. Both create a Hub `pending_approval` task. Gmail
+  sending, external sends, payments, source deletion, and Matrix deletion must
+  never execute directly from a card.
+- Archive and ignore actions also update the canonical ledger's
+  `knowledge_state`; delete creates a separate approval task instead of deleting
+  immediately. Correlation keys always retain `room_id`, `event_id`, and
+  `wechat_msg_id`.
+- Callback actions contain a random token stored at
+  `~/.config/matrix-mattermost-triage/action.token` with mode `0600`. The
+  Mattermost Docker network was verified able to reach
+  `http://192.168.123.71:9815/health`.
+- Verification:
+
+  ```bash
+  matrix-mattermost-triage selftest
+  matrix-mattermost-triage status
+  curl --noproxy '*' http://127.0.0.1:9815/health
+  systemctl --user is-active matrix-mattermost-triage.service
+  ```
 See `~/.ai-context/runbooks/mattermost.md` for the detailed loop guard and
 channel classification rules.
 

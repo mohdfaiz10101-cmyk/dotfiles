@@ -19,4 +19,5 @@ org.gnome.Papers
 org.gnome.Snapshot
 org.gnome.TextEditor
 org.gnome.Weather
+org.pwmt.zathura
 org.telegram.desktop

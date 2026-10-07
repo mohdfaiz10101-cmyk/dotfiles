@@ -1,0 +1,15 @@
+[Unit]
+Description=Matrix/SchildiChat to Mattermost smart triage bridge
+After=mattermost.service hub-api.service network-online.target
+Wants=mattermost.service hub-api.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/matrix-mattermost-triage serve --interval 30
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

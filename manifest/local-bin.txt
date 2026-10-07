@@ -682,6 +682,7 @@ markdownify
 markdown-it
 marketing
 marketing-web-workflow.sh
+matrix-mattermost-triage
 matrix-wechat
 mattermost-agent-channels
 mattermost-ai-inbox
@@ -1002,6 +1003,7 @@ post-edit-verify.sh
 post-screenshot.sh
 post-task-summary.py
 post-task-summary.sh
+proc-sock-dump.py
 procurement-filter.py
 project-context-inject
 project-context-save
@@ -1059,6 +1061,7 @@ reg.py
 regsecrets.py
 research
 restore-home-backup.sh
+restore-sway-ipc-socket.py
 review-op-branch
 review-two-model.py
 rfb-test2.js
@@ -1232,6 +1235,7 @@ tg-saved-reader
 tg-screenshot
 thunar
 thunar-copy-path
+thunar-ensure
 ticketConverter.py
 ticketer.py
 tiff2fsspec

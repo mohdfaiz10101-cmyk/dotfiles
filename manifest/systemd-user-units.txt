@@ -112,11 +112,8 @@ crush-ttyd-proxy.service                                                        
 daily-ops.timer                                                                        enabled   disabled
 dbus-:1.2856-org.a11y.atspi.Registry@0.service                                         transient -
 dbus-:1.32-org.a11y.atspi.Registry@0.service                                           transient -
-dbus-:1.5-org.freedesktop.PackageKit@0.service                                         transient -
-dbus-:1.5-org.freedesktop.secrets@0.service                                            transient -
 dbus-:1.5-org.gnome.Identity@0.service                                                 transient -
 dbus-:1.5-org.gnome.OnlineAccounts@0.service                                           transient -
-dbus-:1.5-org.kde.kdeconnect@1.service                                                 transient -
 dbus-broker.service                                                                    enabled   enabled
 dbus-daemon.service                                                                    disabled  disabled
 dbus-org.bluez.obex.service                                                            alias     -
@@ -337,6 +334,7 @@ machine-github-backup.timer                                                     
 machine.slice                                                                          static    -
 machines.target                                                                        disabled  disabled
 mako.service                                                                           disabled  disabled
+matrix-mattermost-triage.service                                                       enabled   disabled
 matrix-synapse.service                                                                 enabled   disabled
 matrix-wechat.service                                                                  enabled   disabled
 matrix-wechaty.service                                                                 disabled  disabled
@@ -614,6 +612,8 @@ termhive-daemon.service                                                         
 termhive-web.service                                                                   enabled   disabled
 termix.service                                                                         enabled   disabled
 tg-hunter-web.service                                                                  enabled   disabled
+thunar-keepalive.service                                                               static    -
+thunar-keepalive.timer                                                                 disabled  disabled
 thunar.service                                                                         static    -
 timers.target                                                                          static    -
 tinysparql-xdg-portal-3.service                                                        static    -
@@ -680,8 +680,6 @@ wayvnc.service                                                                  
 webssh-ttyd.service                                                                    enabled   disabled
 webtty-usb-reverse-ensure.service                                                      static    -
 webtty-usb-reverse-ensure.timer                                                        enabled   disabled
-wechat-1.scope                                                                         transient -
-wechat-2.scope                                                                         transient -
 wechat-flatpak-keepalive.service                                                       static    -
 wechat-flatpak-keepalive.timer                                                         enabled   disabled
 wechat-matrix-bridge.service                                                           disabled  disabled
