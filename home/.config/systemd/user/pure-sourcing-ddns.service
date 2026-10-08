@@ -1,0 +1,9 @@
+[Unit]
+Description=pure-sourcing.click DDNS (NameSilo A record sync)
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.hermes/skills/devops/namesilo-domain-ops/scripts/ddns-namesilo.py
+StandardOutput=journal
+StandardError=journal

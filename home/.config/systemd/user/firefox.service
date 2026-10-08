@@ -43,7 +43,11 @@ Environment=GDK_BACKEND=wayland
 Environment=QT_QPA_PLATFORM=wayland
 Environment=MOZ_ENABLE_WAYLAND=1
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
-Environment=SWAYSOCK=/run/user/1000/sway-ipc.1000.3718.sock
+# 不要硬编码 SWAYSOCK。sway 每次重启都会生成新的
+# sway-ipc.1000.<PID>.sock，写死的路径在下一次 sway 重启后就失效。
+# Firefox 自己通过 WAYLAND_DISPLAY 连 sway，不需要 SWAYSOCK；
+# 这里显式不注入，避免留一个永远过期的假 socket 路径。
+UnsetEnvironment=SWAYSOCK
 
 # ── 内存兜底（唯一可靠手段，见 user.js 第 1 节）──
 # 实测 Firefox 150 的 fission.* / dom.ipc.processCount 都无法限制内容进程数，
@@ -66,4 +70,7 @@ StandardOutput=journal
 StandardError=journal
 
 [Install]
-WantedBy=graphical-session.target
+# 实测本机 graphical-session.target 从不激活（gdm autologin 下 ActiveState
+# 长期 inactive），WantedBy 写它等于开机不启动。改挂 default.target，
+# 并保留 graphical-session.target.wants 下的历史软链由 disable 清掉。
+WantedBy=default.target

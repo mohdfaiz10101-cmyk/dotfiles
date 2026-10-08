@@ -31,6 +31,13 @@ Codex 三账号并行、互补和省钱路由规划。
   `~/.codex-2` through `~/.codex-8` plus `~/.codex-10` link `AGENTS.md` to `~/.codex/AGENTS.md`.
   `~/.local/bin/codex-account-provision` and `~/.local/bin/codex-shared-sync`
   must keep this behavior in generated or synced account configs.
+- Default local permission policy (2026-10-08): `~/.codex/config.toml` is the
+  source of truth for all shell/WebTTY account launches and must keep
+  `approval_policy = "never"` plus `sandbox_mode = "danger-full-access"`.
+  Run `~/.local/bin/codex-shared-sync --apply` after changes so C2-C10 inherit
+  the same defaults. This makes `codex`, `codex0`, and account launchers start
+  without per-command approval prompts; project or CLI flags may still override
+  the user config because Codex configuration precedence gives them priority.
 - Codex default skill loading must stay lean. On 2026-08-28, `~/.codex/skills`
   pointing directly at `~/.shared-agent/skills` exposed 461 skills and caused
   trivial tasks to risk `exceeded skill budget` plus high startup token use.

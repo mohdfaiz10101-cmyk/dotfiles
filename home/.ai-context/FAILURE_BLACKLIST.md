@@ -1,6 +1,14 @@
 # Failure Blacklist
 
 ## Do Not Repeat These Paths
+- Do not blame containers or databases first when idle CPU stays near 8.3% or
+  16.7% on this 12-thread host. Check `pgrep -af pty-title-filter.py`: the
+  wrapper used to keep fd `0` in `select()` after Sway-launched GUI stdin had
+  reached EOF, causing one full-core busy loop per instance. The durable fix
+  is for `pty-title-filter.py` to stop monitoring stdin after an empty read.
+  Existing pre-fix wrappers must be restarted when safe; if one owns a live
+  Codex terminal, place only that PID in a temporary low-CPU systemd scope
+  until the window closes instead of killing the session.
 - Do not leave `hermes-vector-memory` enabled in `~/.hermes/config.yaml` when
   `~/.hermes/logs/mcp-stderr.log` repeats `sentence_transformers import failed`.
   On 2026-09-10 it respawned `hermes-vector-memory-mcp.py` under live Hermes

@@ -23,8 +23,8 @@ ao-dashboard.service                                                            
 ao-orchestrator.service                                                                enabled   disabled
 app-chrome\x2dcfmligackgegaglpgmjfndpcappofaie\x2dDefault@autostart.service            generated -
 app-dev.lizardbyte.app.Sunshine.service                                                disabled  disabled
-app-flatpak-com.tencent.WeChat-1415569490.scope                                        transient -
-app-flatpak-com.tencent.WeChat-70344562.scope                                          transient -
+app-flatpak-com.tencent.WeChat-3935856654.scope                                        transient -
+app-flatpak-com.tencent.WeChat-3944824325.scope                                        transient -
 app-geoclue\x2ddemo\x2dagent@autostart.service                                         generated -
 app-gnome\x2dkeyring\x2dpkcs11@autostart.service                                       generated -
 app-gnome\x2dkeyring\x2dsecrets@autostart.service                                      generated -
@@ -110,10 +110,8 @@ crush-ttyd-backend.service                                                      
 crush-ttyd-direct-test.service                                                         disabled  disabled
 crush-ttyd-proxy.service                                                               enabled   disabled
 daily-ops.timer                                                                        enabled   disabled
-dbus-:1.2856-org.a11y.atspi.Registry@0.service                                         transient -
-dbus-:1.32-org.a11y.atspi.Registry@0.service                                           transient -
-dbus-:1.5-org.gnome.Identity@0.service                                                 transient -
-dbus-:1.5-org.gnome.OnlineAccounts@0.service                                           transient -
+dbus-:1.38-org.a11y.atspi.Registry@0.service                                           transient -
+dbus-:1.5-org.freedesktop.secrets@0.service                                            transient -
 dbus-broker.service                                                                    enabled   enabled
 dbus-daemon.service                                                                    disabled  disabled
 dbus-org.bluez.obex.service                                                            alias     -
@@ -150,7 +148,7 @@ fedora-gui-guardian.timer                                                       
 fedora-update-check.timer                                                              enabled   disabled
 filter-chain.service                                                                   disabled  disabled
 firefox-death-watchdog.service                                                         disabled  disabled
-firefox-death-watchdog.timer                                                           enabled   disabled
+firefox-death-watchdog.timer                                                           disabled  disabled
 firefox.service                                                                        enabled   disabled
 flatpak-oci-authenticator.service                                                      static    -
 flatpak-portal.service                                                                 static    -
@@ -322,7 +320,7 @@ letta-health-guard.timer                                                        
 letta-mcp.service                                                                      disabled  disabled
 letta-podman-proxy.service                                                             disabled  disabled
 letta-stack.service                                                                    disabled  disabled
-libpod-3cbd5a8a3d0cec92fad4945619d811d51430f6a20cd80336d92b18a1d648dd5d.scope          transient -
+libpod-fa7eeaf7f7e9a89f58e849f39401401003b9fc7c410ca2d43b0f04c82c167ea3.scope          transient -
 litellm-keepalive.service                                                              static    -
 litellm-keepalive.timer                                                                disabled  disabled
 litellm.service                                                                        disabled  disabled
@@ -513,12 +511,14 @@ podman-cleanup.service                                                          
 podman-cleanup.timer                                                                   enabled   disabled
 podman-docker-api.service                                                              enabled   disabled
 podman-kube@.service                                                                   disabled  disabled
-podman-pause-d851b5ce.scope                                                            transient -
+podman-pause-ccb57c78.scope                                                            transient -
 podman-restart.service                                                                 disabled  disabled
 podman.service                                                                         disabled  disabled
 podman.socket                                                                          enabled   disabled
 podman-user-wait-network-online.service                                                static    -
 printer.target                                                                         static    -
+pure-sourcing-ddns.service                                                             static    -
+pure-sourcing-ddns.timer                                                               enabled   disabled
 redroid-lite2.service                                                                  disabled  disabled
 redroid-lite.service                                                                   disabled  disabled
 redroid-r1.service                                                                     disabled  disabled
@@ -618,7 +618,7 @@ thunar.service                                                                  
 timers.target                                                                          static    -
 tinysparql-xdg-portal-3.service                                                        static    -
 tmux-duckdns-tunnel.service                                                            disabled  disabled
-tmux-spawn-da609775-174f-4327-a15f-8ff74ca2ac1d.scope                                  transient -
+tmux-spawn-9eb182fb-c448-4fca-85a4-142b0d57f3e5.scope                                  transient -
 ttyd-8080.service                                                                      enabled   disabled
 ttyd-agent-hub.service                                                                 disabled  disabled
 ttyd-codex10-backend.service                                                           enabled   disabled
@@ -668,7 +668,8 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    disabled  disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
-user-libpod_pod_6296cc15094b6a6468d80c583780d611e525054b3a460beeed7da1730a0095f3.slice transient -
+user-libpod_pod_2d867d671172b4e82dac52e47e6dcbc66c2ed8a1b1e90aaecda74ec404ff69c9.slice transient -
+user-libpod_pod_5d409906863bb80e3dc7ba49eff67d3e671f0f2a275af563dd94930b86ca3f3e.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled
 waybar.service                                                                         enabled   disabled
@@ -680,6 +681,8 @@ wayvnc.service                                                                  
 webssh-ttyd.service                                                                    enabled   disabled
 webtty-usb-reverse-ensure.service                                                      static    -
 webtty-usb-reverse-ensure.timer                                                        enabled   disabled
+wechat-1.scope                                                                         transient -
+wechat-2.scope                                                                         transient -
 wechat-flatpak-keepalive.service                                                       static    -
 wechat-flatpak-keepalive.timer                                                         enabled   disabled
 wechat-matrix-bridge.service                                                           disabled  disabled
@@ -701,6 +704,8 @@ wechat-matrix-sync.timer                                                        
 wechat-matrix-timeline-restore.service                                                 disabled  disabled
 wechat-sync.service                                                                    static    -
 wechat-sync.timer                                                                      enabled   disabled
+wechat-timer-watchdog.service                                                          static    -
+wechat-timer-watchdog.timer                                                            enabled   disabled
 weekly-audit.service                                                                   static    -
 weekly-audit.timer                                                                     disabled  disabled
 windows-ssh-proxy.service                                                              static    -

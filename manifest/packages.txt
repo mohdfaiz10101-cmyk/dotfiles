@@ -62,6 +62,7 @@ authselect
 authselect-libs
 autoconf
 autocorr-en
+autocorr-zh
 automake
 avahi
 avahi-glib
@@ -73,6 +74,7 @@ b43-openfwwf
 bash
 bash-color-prompt
 bash-completion
+bash-preexec
 bat
 bc
 bind-libs
@@ -136,6 +138,9 @@ cifs-utils
 cifs-utils-info
 cirrus-audio-firmware
 cjson
+clang
+clang-libs
+clang-resource-filesystem
 cldr-emoji-annotation
 cldr-emoji-annotation-dtd
 clevis
@@ -168,6 +173,7 @@ colord-gtk4
 colord-libs
 color-filesystem
 compat-lua-libs
+compiler-rt
 composefs
 composefs-libs
 compsize
@@ -315,6 +321,7 @@ dotconf
 double-conversion
 dracut
 duktape
+dwarves
 dwz
 dymo-cups-drivers
 e2fsprogs
@@ -411,7 +418,6 @@ firefox-langpacks
 firewalld
 firewalld-filesystem
 flac-libs
-flashrom
 flatpak
 flatpak-libs
 flatpak-selinux
@@ -453,7 +459,6 @@ fuse-overlayfs
 fuse-sshfs
 fwupd
 fwupd-efi
-fwupd-plugin-flashrom
 fwupd-plugin-modem-manager
 fwupd-plugin-uefi-capsule-data
 fzf
@@ -501,6 +506,7 @@ git-core
 git-core-doc
 gjs
 glade-libs
+glfw
 glib2
 glib2-devel
 glibc
@@ -710,7 +716,10 @@ gzip
 harfbuzz
 harfbuzz-cairo
 harfbuzz-devel
+harfbuzz-gpu
 harfbuzz-icu
+harfbuzz-raster
+harfbuzz-vector
 hdparm
 hfsplus-tools
 hicolor-icon-theme
@@ -729,6 +738,8 @@ httpd-filesystem
 httpd-tools
 hunspell
 hunspell-en
+hunspell-en-AU
+hunspell-en-CA
 hunspell-en-GB
 hunspell-en-US
 hunspell-filesystem
@@ -773,6 +784,7 @@ intel-gmmlib
 intel-gpu-firmware
 intel-lpmd
 intel-mediasdk
+intel-npu-firmware
 intel-vpl-gpu-rt
 intel-vsc-firmware
 ipp-usb
@@ -789,6 +801,7 @@ iscsi-initiator-utils-iscsiuio
 isns-utils-libs
 iso-codes
 iw
+iwlbluetooth-firmware
 iwlegacy-firmware
 iwlwifi-dvm-firmware
 iwlwifi-mld-firmware
@@ -819,7 +832,6 @@ json-glib
 json-glib-devel
 jsr-305
 julietaula-montserrat-fonts
-jxrlib
 kanshi
 kasumi-common
 kasumi-unicode
@@ -913,8 +925,11 @@ krb5-libs
 kyotocabinet-libs
 lame-libs
 langpacks-core-en
+langpacks-core-zh_CN
 langpacks-en
 langpacks-fonts-en
+langpacks-fonts-zh_CN
+langpacks-zh_CN
 langtable
 lcms2
 lcms2-devel
@@ -949,7 +964,7 @@ libayatana-appindicator-gtk3
 libayatana-ido-gtk3
 libayatana-indicator-gtk3
 libb2
-libbabeltrace
+libbabeltrace2
 libbase
 libbasicobjects
 libblkid
@@ -1010,10 +1025,12 @@ libdisplay-info
 libdnf5
 libdnf5-cli
 libdnf5-plugin-appstream
+libdnf5-plugin-systemd-inhibit
 libdovi
 libdrm
 libdvdnav
 libdvdread
+libdwarves1
 libe-book
 libebur128
 libeconf
@@ -1048,7 +1065,6 @@ libformula
 libfprint
 libfreehand
 libfsverity
-libftdi
 libfyaml
 libgbinder
 libgcc
@@ -1059,6 +1075,8 @@ libgfapi0
 libgfortran
 libgfrpc0
 libgfxdr0
+libgit2
+libGLEW
 libglibutil
 libglusterfs0
 libglvnd
@@ -1082,6 +1100,7 @@ libhandy
 libhandy-devel
 libhangul
 libheif
+libheif-ffmpeg
 libib-util
 libibverbs
 libical
@@ -1102,8 +1121,6 @@ libimobiledevice-utils
 libini_config
 libinput
 libiscsi
-libjaylink
-libjcat
 libjose
 libjpeg-turbo
 libjpeg-turbo-devel
@@ -1112,6 +1129,7 @@ libkcapi
 libkcapi-hasher
 libkcapi-hmaccalc
 libkexiv2-qt6
+libklvanc
 libksba
 libkworkspace6
 liblangtag
@@ -1174,6 +1192,8 @@ libnvme
 libodfgen
 liboeffis
 libogg
+libomp
+libomp-devel
 libopenjph
 libopenmpt
 libopusenc
@@ -1182,6 +1202,7 @@ libosinfo
 libpagemaker
 libpaper
 libpasswdqc
+libpathrs
 libpath_utils
 libpcap
 libpciaccess
@@ -1229,8 +1250,10 @@ libreoffice-graphicfilter
 libreoffice-gtk3
 libreoffice-gtk4
 libreoffice-help-en
+libreoffice-help-zh-Hans
 libreoffice-impress
 libreoffice-langpack-en
+libreoffice-langpack-zh-Hans
 libreoffice-math
 libreoffice-ogltrans
 libreoffice-opensymbol-fonts
@@ -1294,6 +1317,7 @@ libspelling
 libsrtp
 libss
 libssh
+libssh2
 libssh-config
 libsss_certmap
 libsss_idmap
@@ -1439,6 +1463,9 @@ linux-atm-libs
 linux-firmware
 linux-firmware-whence
 lksctp-tools
+lld
+lld-libs
+llhttp
 llvm-filesystem
 llvm-libs
 lmdb-libs
@@ -1482,6 +1509,7 @@ malcontent-libs
 malcontent-ui-libs
 man-db
 man-pages
+man-pages-zh-CN
 mariadb-connector-c
 mariadb-connector-c-config
 marisa
@@ -1824,6 +1852,7 @@ perl-TimeDate
 perl-Time-HiRes
 perl-Time-Local
 perl-Try-Tiny
+perl-Unicode-Normalize
 perl-URI
 perl-vars
 perl-WWW-RobotRules
@@ -1925,7 +1954,6 @@ python3-dasbus
 python3-dateutil
 python3-dbus
 python3-dbus-next
-python3-deprecated
 python3-devel
 python3-distro
 python3-dotenv
@@ -2009,7 +2037,6 @@ python3-urllib3+socks
 python3-utils
 python3-wadllib
 python3-websockify
-python3-wrapt
 python3-xlib
 python-pip-wheel
 python-rpm-macros
@@ -2227,6 +2254,7 @@ sratom
 srt-libs
 sscg
 sshpass
+sso-mib-libs
 sssd-client
 sssd-common
 sssd-kcm
@@ -2278,6 +2306,8 @@ tecla
 tesseract
 tesseract-common
 tesseract-devel
+tesseract-langpack-chi_sim
+tesseract-langpack-chi_sim_vert
 tesseract-langpack-eng
 tesseract-libs
 tesseract-tessdata-doc
@@ -2292,7 +2322,6 @@ tk
 tmux
 toolbox
 totem-pl-parser
-totem-video-thumbnailer
 tpm2-tools
 tpm2-tss
 tpm2-tss-fapi
