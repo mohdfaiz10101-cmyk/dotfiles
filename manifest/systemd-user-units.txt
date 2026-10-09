@@ -49,7 +49,7 @@ caddy-hermes.service                                                            
 capsule@.target                                                                        static    -
 cgroupify@.service                                                                     static    -
 chrome-login-backup.service                                                            static    -
-chrome-login-backup.timer                                                              disabled  disabled
+chrome-login-backup.timer                                                              enabled   disabled
 chrome-login-watchdog.service                                                          static    -
 chrome-login-watchdog.timer                                                            disabled  disabled
 chromium-cleanup.service                                                               static    -
@@ -301,6 +301,8 @@ hub-workspace-snapshot.timer                                                    
 huly.service                                                                           enabled   disabled
 idle-sleep.service                                                                     static    -
 idle-sleep.timer                                                                       disabled  disabled
+input-method-ensure.service                                                            static    -
+input-method-ensure.timer                                                              enabled   disabled
 kanshi.service                                                                         enabled   disabled
 kasm-cursor-webtop-healthcheck.service                                                 static    -
 kasm-cursor-webtop-healthcheck.timer                                                   disabled  disabled
@@ -668,7 +670,6 @@ upnp-wayvnc-5900.timer                                                          
 uptime-kuma.service                                                                    disabled  disabled
 uresourced.service                                                                     static    -
 user-dirs-update-gtk.service                                                           static    -
-user-libpod_pod_2d867d671172b4e82dac52e47e6dcbc66c2ed8a1b1e90aaecda74ec404ff69c9.slice transient -
 user-libpod_pod_5d409906863bb80e3dc7ba49eff67d3e671f0f2a275af563dd94930b86ca3f3e.slice transient -
 wan-ip-monitor.service                                                                 static    -
 wan-ip-monitor.timer                                                                   enabled   disabled

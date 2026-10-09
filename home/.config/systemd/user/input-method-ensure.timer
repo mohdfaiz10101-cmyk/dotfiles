@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic Fcitx5 Pinyin health check
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=1min
+AccuracySec=10s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

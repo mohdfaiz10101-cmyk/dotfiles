@@ -1,6 +1,6 @@
 [Unit]
-Description=Backup and fan out Chrome Google login state
+Description=Back up independent browser login states without cross-profile copying
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/chrome-login-backup.sh
+ExecStart=%h/.local/bin/browser-login-state-backup

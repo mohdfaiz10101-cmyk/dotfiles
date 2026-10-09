@@ -45,6 +45,15 @@ as the safe default, while both launchers remain usable. Remove the private
 compatibility directory and its launcher block after the system Fcitx5 core
 is upgraded to 5.1.22 or newer.
 
+If Fcitx5 disappears mid-session while the environment still points to
+`fcitx`, `input-method-ensure.timer` checks once per minute and runs
+`~/.local/bin/input-use-fcitx5` only when the daemon/control plane/Pinyin
+engine is missing. Verify with `systemctl --user status
+input-method-ensure.timer` and `fcitx5-remote -n`.
+The oneshot must launch recovery through `swaymsg exec`; starting the
+daemonized Fcitx5 process directly inside the oneshot cgroup makes systemd
+reap it as soon as the check service exits.
+
 `ibus start` can select the native Wayland panel command
 `ibus-ui-gtk3 --enable-wayland-im`. Under this Sway setup it may become a
 normal `xdg_toplevel`: first tiled almost full-screen, or—if forcibly floated

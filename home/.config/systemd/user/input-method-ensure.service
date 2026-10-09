@@ -1,0 +1,7 @@
+[Unit]
+Description=Ensure Fcitx5 Pinyin remains available in the Sway session
+After=graphical-session-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/input-method-ensure

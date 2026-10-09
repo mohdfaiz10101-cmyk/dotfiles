@@ -1,8 +1,7 @@
 # Runbook: Google Login State
 
-Purpose: keep the desktop Chrome Google login state reusable by desktop
-Chromium and the Mobile AI Workbench controlled browser without storing Google
-passwords in scripts.
+Purpose: keep each browser/profile's Google login state durable and isolated.
+Different Google accounts must not share or overwrite cookies across profiles.
 
 ## Files and Services
 
@@ -11,14 +10,18 @@ passwords in scripts.
 - Mobile browser target: `~/.config/mobile-ai-chromium`
 - Backup directory: `~/.local/state/chrome-backup`
 - Target rollback snapshots: `~/.local/state/google-login-sync`
-- Sync script: `~/.local/bin/google-login-state-sync`
+- Legacy sync script: `~/.local/bin/google-login-state-sync` (disabled by
+  default; one-shot recovery requires `GOOGLE_LOGIN_ALLOW_CROSS_PROFILE_SYNC=1`)
+- Independent backup script: `~/.local/bin/browser-login-state-backup`
+- Isolated account launcher: `~/.local/bin/google-account-browser`
 - Backup script: `~/.local/bin/chrome-login-backup.sh`
 - Restore script: `~/.local/bin/chrome-login-restore.sh`
 - Watchdog script: `~/.local/bin/chrome-login-watchdog.sh`
 - Timers:
-  - `chrome-login-backup.timer`: hourly backup plus fan-out sync.
-  - `chrome-login-watchdog.timer`: checks every 10 minutes and restores the
-    desktop Chrome login marker from the latest backup when it disappears.
+- `chrome-login-backup.timer`: hourly independent backup of Chromium-family
+  and Firefox profiles; never copies state between profiles.
+- `chrome-login-watchdog.timer`: keep disabled for multi-account setups; its
+  historical single-profile auto-restore can restore the wrong account.
 - `mobile-ai-browser.service` runs
   `ExecStartPre=%h/.local/bin/google-login-state-sync %h/.config/mobile-ai-chromium`
   before launching Chromium on CDP `127.0.0.1:9224`.
@@ -36,18 +39,18 @@ passwords in scripts.
    PY
    ```
 
-2. Run a backup and sync:
+2. Run an independent backup:
 
    ```bash
-   ~/.local/bin/chrome-login-backup.sh
-   ~/.local/bin/google-login-state-sync
+   ~/.local/bin/browser-login-state-backup
    ```
 
 3. Enable or restart the timers:
 
    ```bash
    systemctl --user daemon-reload
-   systemctl --user enable --now chrome-login-backup.timer chrome-login-watchdog.timer
+   systemctl --user enable --now chrome-login-backup.timer
+   systemctl --user disable --now chrome-login-watchdog.timer
    ```
 
 4. Restart the mobile browser only when the phone browser panel needs a fresh
@@ -78,7 +81,24 @@ PY
 ## Notes
 
 - Do not store Google account passwords in scripts or runbooks.
-- If Google invalidates the copied cookies, complete a normal Google login once
-  in desktop Chrome, then rerun the backup and sync commands.
-- Avoid syncing into a target profile while that exact profile is running. The
-  sync script skips targets whose `--user-data-dir` is currently active.
+- If Google invalidates cookies, complete one normal login in that same
+  browser/profile, then run the independent backup.
+- Create additional isolated profiles with
+  `google-account-browser chromium <label>` or
+  `google-account-browser firefox <label>`.
+
+## Android Passkey / Google Prompt Verification
+
+- Open `https://g.co/passkeys` in Chrome. A device entry showing the phone
+  model and `Last used: Just now` proves the platform passkey was actually
+  exercised; do not create a duplicate when `Create a passkey` is disabled.
+- Google Prompt readiness requires all of the following phone-side evidence:
+  Google Play services notification permission allowed, GMS present in the
+  device-idle allowlist, TCP `mtalk.google.com:5228` reachable, and an
+  established `com.google.android.gms.persistent` connection on port 5228.
+- Keep the phone Mihomo `Proxy` selector on one fixed node for Google login;
+  do not leave it on an `Auto`/URL-test group that can change countries during
+  an authentication flow. Confirm the selection survives a Mihomo restart.
+- If two Mihomo PIDs split ownership of `7890/5354` and `7892`, run
+  `~/.local/bin/phone-mihomo-clean-restart <serial>` and verify one PID owns
+  all four listeners before testing Google Prompt.

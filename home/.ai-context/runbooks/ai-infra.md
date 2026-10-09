@@ -66,6 +66,8 @@ systemctl --user restart embedding-server
   - 替换 `~/.hermes/config.yaml` 中失效 key 后，`systemctl --user restart hermes-webui.service`。
   - 验证闭环：StepFun `/models` 返回 200，`19976/api/settings` 返回 200，再用临时 WebUI 会话 `POST /api/chat` 发 `Say OK only.`，应返回 `chat_status 200` 和 `answer_preview OK`。
   - 后续已改成单配置多 key 自动切换：默认 `model.provider: stepfun`，`fallback_providers` 也用 `stepfun`，`credential_pool_strategies.stepfun: round_robin`；实际 key 池在 `~/.hermes/auth.json` 的 `credential_pool.stepfun`，当前有两枚 StepFun key。不要再让 19976 默认走 `stepfun-router` 单 key custom provider，否则会绕开 `credential_pool.stepfun`。
+- 2026-10-09 Hermes `:19976` StepFun `HTTP 403`：入口 `/api/settings` 与 `/api/sessions` 均为 200，故不是 `19976`、DNAT 或 WebUI 故障。对 `credential_pool.stepfun` 的两枚手工凭据及 `.env` 凭据，逐枚直连 `POST https://api.stepfun.com/step_plan/v1/chat/completions`（`step-5-preview`）均返回 `real-name verification is required for your free step plan...`。`GET /v1/models` 可返回 200 不代表套餐可推理。处理路径是各自账号完成实名人脸验证后重新探测；在此之前不要通过重启、轮询或切换 `stepfun-router`/`stepfun-new` 反复重试。
+- 2026-10-09 同日恢复：认证完成后，三枚凭据直连 `step-5-preview` 均返回 HTTP 200；Hermes 仍因 `auth.json` 中旧的 `last_status=exhausted` / `last_error_code=403` 将其跳过。清除三枚凭据的旧失败状态并重启 `hermes-webui.service` 后，服务恢复 active，`19976/api/settings` 返回 200。遇到同类“已认证但仍报实名 403”时，先重新直连探测，再清理凭据池的旧状态。
 - Letta 容器重建后 PG 连接失败 → 检查 `pg_hba.conf` 网络段是否匹配新容器 IP
 - Letta archival passage 的 API 响应可能长期显示 `embedding=null`；不要仅凭 `/archival-memory/search` 语义搜索判断记忆是否存在。先用 `/archival-memory?search=<term>&limit=...` 文本检索验证，再看 OpenCode 生命周期脚本是否注入。
 - `embedding-server.service` may run in hash fallback mode. In that mode
