@@ -45,5 +45,10 @@ codex() {
         tmux -S "$sock" send-keys -t "${session}:${window}" "$*" Enter
     fi
 }
-alias wifi='nmtui'
+alias wifi='nmtui 2>/dev/null || nmcli device wifi list'
+alias wifi-list='nmcli device wifi list'
+alias wifi-connect='nmtui-connect 2>/dev/null || nmcli device wifi list'
+alias wifi-editor='nmtui-edit 2>/dev/null || nmcli connection show'
+alias wifi-scan='nmcli device wifi rescan; nmcli device wifi list'
+alias wifi-status='nmcli -p device'
 export ANDROID_SERIAL=100.87.37.3:5555  # PKR110 NetBird primary

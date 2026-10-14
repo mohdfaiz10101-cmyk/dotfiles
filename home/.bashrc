@@ -34,3 +34,11 @@ export LD_LIBRARY_PATH="/nix/store/nn129jwsznqv7k888wb05m5whpyndqrf-pipewire-1.6
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export ANDROID_SERIAL=100.87.37.3:5555  # PKR110 NetBird primary
+
+# --- wifi / nmtui (Fedora Silverblue: rpm-ostree staged, libnewt from ~/.local/lib) ---
+alias wifi='nmtui 2>/dev/null || nmcli device wifi list'
+alias wifi-list='nmcli device wifi list'
+alias wifi-connect='nmtui-connect 2>/dev/null || nmcli device wifi list'
+alias wifi-editor='nmtui-edit 2>/dev/null || nmcli connection show'
+alias wifi-scan='nmcli device wifi rescan; nmcli device wifi list'
+alias wifi-status='nmcli -p device'

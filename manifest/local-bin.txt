@@ -805,6 +805,7 @@ nixos-vm-test
 nix-store-integrity-check.sh
 nix-store-nurse
 nix_voice_agent.py
+nmtui
 nocodb-ocr
 notif-btn-daemon.sh
 notif-btn.sh
@@ -971,6 +972,8 @@ overtab-serve-start
 overtab-serve-stop
 overtab-tmux-wrap
 owneredit.py
+owrt_ubus.py
+owrt-wifi
 padavan-sync.py
 panel-nurse
 paperclip-aider-worker
@@ -1037,6 +1040,7 @@ pyrsa-keygen
 pyrsa-priv2pub
 pyrsa-sign
 pyrsa-verify
+py-spy
 pytesseract
 py.test
 pytest
