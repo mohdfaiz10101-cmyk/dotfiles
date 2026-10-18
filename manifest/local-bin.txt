@@ -352,6 +352,7 @@ dpapi.py
 dpdns-renew
 ds
 duckdns-full-monitor.sh
+duckdns-full-monitor.sh.bak.20261018-213122
 duckdns-lan-drift-check.sh
 DumpNTLMInfo.py
 easyocr
@@ -1009,7 +1010,6 @@ post-edit-verify.sh
 post-screenshot.sh
 post-task-summary.py
 post-task-summary.sh
-proc-sock-dump.py
 procurement-filter.py
 project-context-inject
 project-context-save
@@ -1068,7 +1068,6 @@ reg.py
 regsecrets.py
 research
 restore-home-backup.sh
-restore-sway-ipc-socket.py
 review-op-branch
 review-two-model.py
 rfb-test2.js
@@ -1354,6 +1353,7 @@ waybar-health.sh
 waybar-launcher.sh
 waybar-layout-menu.sh
 waybar-models-list.sh
+waybar-net-status.py
 waybar-notif-clear.sh
 waybar-pg.sh
 waybar-pulse-menu.sh
@@ -1363,10 +1363,12 @@ waybar-score.sh
 waybar-sentinel.sh
 waybar-services.sh
 waybar-systemd-wrapper.sh
+waybar-systemd-wrapper.sh.bak.20261018_211612
 waybar-system-summary
 waybar-tailscale.sh
 waybar-toolbar-wrapper.sh
 waybar-wechat-unread
+waybar-wechat-unread.bak.20261018_211612
 waybar-wifi.sh
 waydroid-adb-netns-proxy
 waydroid-apk-install
@@ -1423,6 +1425,8 @@ wechat-phone-incremental-export
 wechat-pull-termux.sh
 wechat-query-mcp
 wechat-reply-consumer.py
+wechat-rightmost
+wechat-rightmost-check
 wechat-send.sh
 wechat-sync.sh
 wechat-sync-watch

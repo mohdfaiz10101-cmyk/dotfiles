@@ -1,6 +1,7 @@
 com.usebottles.bottles
 com.valvesoftware.Steam
 io.github.block.Goose
+md.obsidian.Obsidian
 org.fedoraproject.MediaWriter
 org.gnome.baobab
 org.gnome.Calculator

@@ -319,6 +319,18 @@ systemctl --user reset-failed wechat-matrix-sync.service
 systemctl --user start wechat-matrix-sync.service
 ```
 
+## 2026-10-18 OpenWrt ADB Transport Recovery
+
+- If Matrix shows an old newest message while SchildiChat itself can connect,
+  inspect `wechat-matrix-incremental.service` before clearing client cache.
+  On this date its old FRP-only ADB transport stopped at message `213761`;
+  the phone export still contained 828 newer rows.
+- `wechat-matrix-incremental-sync` now selects ADB in this order: attached USB
+  (`ff3ef385`), OpenWrt Wi-Fi (`192.168.5.211:5555`), then legacy FRP/overlay
+  fallbacks. It also passes the selected transport to media prefetch.
+- USB serials must be checked with `adb devices`, not `adb connect`: they are
+  already attached devices and are not host names.
+
 ## Full historical export service
 
 For user-requested full WeChat history export, use the bounded, resumable

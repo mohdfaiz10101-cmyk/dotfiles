@@ -1,8 +1,9 @@
 [Unit]
-Description=Daily Hermes memory lifecycle
+Description=Hermes memory lifecycle every 2 hours
 
 [Timer]
-OnCalendar=*-*-* 04:00:00
+OnBootSec=5min
+OnUnitActiveSec=2h
 Persistent=true
 
 [Install]
