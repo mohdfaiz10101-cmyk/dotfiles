@@ -1614,10 +1614,12 @@ NetworkManager-ssh
 NetworkManager-ssh-gnome
 NetworkManager-ssh-selinux
 NetworkManager-team
+NetworkManager-tui
 NetworkManager-vpnc
 NetworkManager-vpnc-gnome
 NetworkManager-wifi
 NetworkManager-wwan
+newt
 nfs-client-utils
 nfs-common-utils
 nfs-utils

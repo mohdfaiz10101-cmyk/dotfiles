@@ -352,7 +352,6 @@ dpapi.py
 dpdns-renew
 ds
 duckdns-full-monitor.sh
-duckdns-full-monitor.sh.bak.20261018-213122
 duckdns-lan-drift-check.sh
 DumpNTLMInfo.py
 easyocr
@@ -1363,12 +1362,10 @@ waybar-score.sh
 waybar-sentinel.sh
 waybar-services.sh
 waybar-systemd-wrapper.sh
-waybar-systemd-wrapper.sh.bak.20261018_211612
 waybar-system-summary
 waybar-tailscale.sh
 waybar-toolbar-wrapper.sh
 waybar-wechat-unread
-waybar-wechat-unread.bak.20261018_211612
 waybar-wifi.sh
 waydroid-adb-netns-proxy
 waydroid-apk-install
