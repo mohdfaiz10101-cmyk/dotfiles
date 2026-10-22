@@ -1,0 +1,13 @@
+[Unit]
+Description=Preserve native WeChat popup menus under Sway XWayland
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/wechat-popup-guard
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

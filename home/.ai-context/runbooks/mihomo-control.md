@@ -364,3 +364,18 @@ connections stay low, and Codex C1 probe via `7892` returns
 
 Also keep `mihomo-traffic-guard` enforcing an active connection cap; this catches
 future abuse before it drags Codex streams down.
+
+## 2026-10-22 OpenWrt OpenClash router proxy
+
+- Router native OpenClash enabled with Mihomo v1.19.33 MIPSLE softfloat, real-IP DNS,
+  TCP/UDP and IPv6 TProxy. Seven working Fedora nodes, ROUTER-PROXY fallback; China direct.
+- Critical user preference: PKR already has a native proxy. Preserve it; exclude
+  MAC b6:3b:9d:57:b0:1a and DHCP 192.168.5.211 from router proxy AND DNS interception.
+  Fedora own-proxy MAC ea:cd:2a:97:28:c2 and .144 also bypass.
+- Default node-sync: ~/.local/bin/openwrt-proxy-sync; no independent router online
+  subscription. It validates and restarts only if node configuration changes.
+- Exact config/compatibility/verification/rollback:
+  ~/.hermes/skills/devops/mihomo-ops/references/openwrt-router-proxy-pkr-bypass.md
+- Ordinary client verified Google 204; YouTube/GitHub/Baidu/Hermes 200;
+  router logs prove Google proxy and Baidu DIRECT. PKR ADB currently offline,
+  so post-deployment physical-phone validation remains pending.

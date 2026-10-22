@@ -1,0 +1,7 @@
+[Unit]
+Description=pure-sourcing.click TLS certificate auto-renewal (acme.sh --cron)
+
+[Service]
+Type=oneshot
+Environment=Namesilo_Key=ac914a31d008efd5185fc8bd865b948536d683719de007eab55794732b000724
+ExecStart=/var/home/charlie/.acme.sh/acme.sh --cron --home /var/home/charlie/.acme.sh

@@ -1,0 +1,10 @@
+[Unit]
+Description=Dual-WiFi primary/fallback self-heal (ChinaNet primary, OpenWrt fallback)
+After=NetworkManager.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/net-failover.sh
+# 绝不因为探测失败而标记 service failed——网络本来就是可能坏的
+SuccessExitStatus=0 1

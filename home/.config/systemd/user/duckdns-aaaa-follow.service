@@ -1,0 +1,12 @@
+[Unit]
+Description=DuckDNS AAAA follower (push local public IPv6 to DuckDNS)
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/duckdns-aaaa-follow.sh
+# Stay quiet when nothing changed; the script exits 0 without touching DNS.
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

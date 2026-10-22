@@ -1,0 +1,10 @@
+[Unit]
+Description=Verify iOS WeChat backup and release verified Windows storage
+Requires=wechat-backup-migrate.service
+After=wechat-backup-migrate.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-backup-verify-cutover
+TimeoutStartSec=infinity
+Nice=15

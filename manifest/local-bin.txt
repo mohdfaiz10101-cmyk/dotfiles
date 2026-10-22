@@ -214,6 +214,7 @@ clipboard-sync-windows
 cliphist-health-check
 cliphist-watchdog
 clip-sync
+close-wechat-or-popups.py
 cloudflared-bin
 cloudflared-happy
 cloudflared-launcher
@@ -252,6 +253,7 @@ codex-foot-console-maintain
 codex-foot-tab-entry
 codex-foot-tabs
 codex-foot-tab-sort
+codex-full
 codex-hermes-bridge
 codex-hqssh
 codex-k2-workspace-watch
@@ -274,11 +276,13 @@ codex-sub2api-json-bind
 codex-timeline-snapshot
 codex-tmux-wrap
 codex-token-safe-run
+codex-upgrade
 codex-webtty-consistency-check
 codex-webtty-guard
 codex-webtty-perf-summary
 codex-yolo
 coding
+cold-backup-to-usb.sh
 comm-project-sync
 config-immutable-snapshot
 config-lock.sh
@@ -351,6 +355,7 @@ dpapidump.py
 dpapi.py
 dpdns-renew
 ds
+duckdns-aaaa-follow.sh
 duckdns-full-monitor.sh
 duckdns-lan-drift-check.sh
 DumpNTLMInfo.py
@@ -606,6 +611,7 @@ install-deepseek-aider.sh
 install-roo-extensions.sh
 integrity-check.sh
 integrity-init.sh
+inte-selfheal.sh
 inv
 invoke
 ios-connect-mcp.py
@@ -686,6 +692,7 @@ markdown-it
 marketing
 marketing-web-workflow.sh
 matrix-mattermost-triage
+matrix-notify.sh
 matrix-wechat
 mattermost-agent-channels
 mattermost-ai-inbox
@@ -709,6 +716,7 @@ mem0-memory-watchdog.sh
 mem-alert.sh
 memory-auto-commit
 memory-backup
+memory-backup.sh
 memory-bootstrap.sh
 memory-check.sh
 memory-cron.sh
@@ -776,6 +784,8 @@ netbird-cloud-enroll
 netbird-healthcheck.sh
 netbird-phone-monitor.sh
 netbird-selfhost-kit
+net-failover.sh
+net-failover.sh.bak.20261022_223407
 net.py
 netview.py
 network-guard.sh.disabled
@@ -942,6 +952,7 @@ openhands-public-proxy
 opentelemetry-bootstrap
 opentelemetry-instrument
 open-unified-agents-workspace.sh
+openwrt-proxy-sync
 op-exec.sh
 op-exec-viewer.sh
 op-feed-viewer.sh
@@ -998,6 +1009,7 @@ ping6.py
 ping.py
 pip3
 pip3.14
+pkr-mirror
 plasmashell-crash-guard.sh
 playwright
 playwright-chromium-headed
@@ -1138,6 +1150,7 @@ setup-0011
 setup-letta-telegram-alert
 shared-elixir
 shared-history-sync
+shared-memory-merge
 shared-memory-sync
 shared-skills-sync
 sisy
@@ -1188,6 +1201,7 @@ sway-ipc-title-filter.py
 swaync
 swaync-client
 sway-nvidia
+sway-sock
 sway-tab-cleanup
 sway-workspace-controller
 switch-claude-provider.sh
@@ -1353,7 +1367,12 @@ waybar-launcher.sh
 waybar-layout-menu.sh
 waybar-models-list.sh
 waybar-net-status.py
+waybar-net-status.py.bak.20261022_223407
 waybar-notif-clear.sh
+waybar-notion
+waybar-notion-toggle
+waybar-obsidian
+waybar-obsidian-toggle
 waybar-pg.sh
 waybar-pulse-menu.sh
 waybar-pulse.sh
@@ -1382,7 +1401,12 @@ websockets
 webtext-monitor
 webtty-usb-reverse-ensure
 wechat-android-backup.sh
+wechat-backup-resume-pending
+wechat-backup-smb-run
+wechat-backup-storage-status
+wechat-backup-verify-cutover
 wechat-contact-sync.py
+wechat-desktop-stage
 wechat-finance
 wechat-flatpak-2
 wechat-flatpak-ensure
@@ -1418,12 +1442,12 @@ wechat-matrix-timeline-restore-run
 wechat-merge.py
 wechat-msg-sync.py
 wechat-msg-sync-wrapper.sh
+wechat-order-fix
 wechat-phone-incremental-export
+wechat-popup-guard
 wechat-pull-termux.sh
 wechat-query-mcp
 wechat-reply-consumer.py
-wechat-rightmost
-wechat-rightmost-check
 wechat-send.sh
 wechat-sync.sh
 wechat-sync-watch
@@ -1436,6 +1460,7 @@ weekly-error-review
 whisper-stt-server
 wifi-monitor.sh.disabled
 wiki-watch.sh
+win
 win-8080-relay.sh
 win-auto-nogui-push.sh
 win-deploy
@@ -1449,12 +1474,14 @@ winoc-sql
 winpc-best-ssh.sh
 winpc-conn-check.sh
 winpc-connect
+winpc-connect.sh
 winpc-remote-run.sh
 winpc-watchdog.sh
 winps
 winpy
 win-tunnel-wrapper.sh
 with-ibus
+wl-shot-clipd.py
 wl-shot.sh
 wmiexec.py
 wmipersist.py
@@ -1468,10 +1495,10 @@ workspace-warp-prepare.sh
 worktree-cleanup
 wsdump
 wx-memory-extract.py
-x11-clip-image-holder.py
 xdg-open
 xdg-open-guard
 XXR4k57b
 ydotool-bridge.py
 yt-dlp
 zeditor-nvidia
+zxhn-wan-ip

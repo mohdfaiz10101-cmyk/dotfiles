@@ -31,6 +31,26 @@ the phone actually uses when the failure is mobile-facing.
 
 ## Port-Specific Rules
 
+### OpenWrt clients get 169.254 addresses (2026-10-22)
+
+- Verified router: Xiaomi CR660x, SSH `root@192.168.5.1`; WAN DHCP
+  `192.168.1.4` via `192.168.1.1`. Fedora's separate ChinaNet-K2QE connection
+  was `192.168.2.15`; do not mistake that for OpenWrt's LAN.
+- If DHCP is running but no clients obtain leases, inspect `fw3 print` warnings
+  and `iptables -L OUTPUT -nv`. An empty `config rule` defaults to rejecting
+  all locally originated TCP/UDP, including DHCP replies and DNS traffic.
+- Confirmed empty UCI section `firewall.cfg1892bd` (then `@rule[10]`) was
+  disabled with `enabled=0`, committed, and firewall reloaded. Runtime comment
+  misleadingly used `@rule[9]`; resolve the actual section before modifying it.
+- Router backup: `/etc/config/firewall.before-dhcp-fix-20261022`.
+- Verified over OpenWrt Wi-Fi: automatic lease `192.168.5.144/24`, gateway/DNS
+  `192.168.5.1`; interface-bound HTTP to Baidu returned 200 and public ping
+  had zero loss. Router DNS also resolved Baidu. No physical phone ADB was
+  connected, so this does not establish phone-side recovery.
+- To preserve a working uplink, use a spare Wi-Fi adapter and a temporary clone
+  of the saved OpenWrt profile. Static `192.168.5.x/24` permits management
+  while DHCP is broken; return to DHCP for validation, then remove the clone.
+
 ### Hermes `8787` / DuckDNS `19976`
 
 Expected path:

@@ -1,0 +1,6 @@
+[Unit]
+Description=Resume only an unfinished Windows WeChat backup migration
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-backup-resume-pending

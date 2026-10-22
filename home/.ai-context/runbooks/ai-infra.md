@@ -102,3 +102,5 @@ systemctl --user restart embedding-server
   - Verified fixed state: `curl http://127.0.0.1:8283/v1/health/` returns
     version/status ok, archival write returns 200, and Letta logs show
     `POST http://10.88.0.1:8286/v1/embeddings "HTTP/1.0 200 OK"`.
+
+- 2026-10-22 StepFun 双 key 与模型列表已统一整理，最新配置、辅助任务绕池兼容方案、重复环境凭据抑制与验证见 `~/.ai-context/runbooks/hermes-stepfun-models.md`；它优先于历史 stepfun-router 单 key 建议。

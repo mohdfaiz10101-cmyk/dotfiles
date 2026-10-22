@@ -1,0 +1,11 @@
+[Unit]
+Description=Snapshot and stage both desktop WeChat accounts every 30 minutes
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+RandomizedDelaySec=45
+Unit=wechat-desktop-stage.service
+
+[Install]
+WantedBy=timers.target

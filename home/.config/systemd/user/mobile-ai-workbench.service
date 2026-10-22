@@ -10,8 +10,12 @@ Environment=MOBILE_AI_WORKBENCH_PORT=19888
 Environment=DEVICE_MATCH_CODE=w19900422
 Environment=WAYLAND_DISPLAY=wayland-1
 Environment=XDG_RUNTIME_DIR=/run/user/1000
-Environment=SWAYSOCK=/run/user/1000/sway-ipc.1000.3276.sock
-ExecStart=/var/home/charlie/.local/bin/mobile-ai-workbench
+# Do NOT hardcode SWAYSOCK: the path embeds sway's PID (sway-ipc.<uid>.<pid>.sock)
+# and goes dead on every sway restart. Resolve it live on each (re)start instead.
+# Inline exec avoids the drop-in/daemon-reload cycle; sway-sock falls back to the
+# user-manager env and then to the newest live socket, and prints nothing if sway
+# is down (app then uses its own default, which beats a hardcoded dead path).
+ExecStart=/bin/bash -c 'S=$(/var/home/charlie/.local/bin/sway-sock 2>/dev/null || true); [ -n "$S" ] && export SWAYSOCK="$S"; exec /var/home/charlie/.local/bin/mobile-ai-workbench'
 Restart=always
 RestartSec=2s
 

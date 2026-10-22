@@ -1,0 +1,15 @@
+[Unit]
+Description=Refresh Windows SSH ControlMaster every 20 minutes
+
+[Timer]
+# OnBootSec alone does not re-arm after boot for a oneshot service.
+# Pair it with OnUnitActiveSec so it fires 20 min after each run.
+OnBootSec=1min
+OnUnitActiveSec=20min
+# Re-run even if the previous attempt failed (e.g. Windows was asleep).
+Persistent=true
+AccuracySec=30s
+Unit=win-ssh-keepalive.service
+
+[Install]
+WantedBy=timers.target

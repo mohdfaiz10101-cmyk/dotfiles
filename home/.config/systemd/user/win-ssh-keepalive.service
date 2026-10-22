@@ -1,0 +1,18 @@
+[Unit]
+Description=Keep Windows SSH ControlMaster connection warm
+Documentation=file:///var/home/charlie/.local/bin/win
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Re-establish the ControlMaster so subsequent `win` calls skip the handshake.
+# ControlPersist=30m plus a 20m refresh interval keeps it permanently warm.
+ExecStart=/var/home/charlie/.local/bin/win --warm
+# Stay quiet: this runs every 20 minutes and success is the normal case.
+StandardOutput=null
+StandardError=journal
+TimeoutStartSec=30
+
+[Install]
+WantedBy=default.target

@@ -365,3 +365,36 @@ message decryption to the Matrix/SchildiChat pipeline. iOS needs a separate
 data source, such as an accessible decrypted/backup WeChat database workflow,
 before it can be imported. Do not claim iOS WeChat participates in decrypt sync
 unless such a pipeline is explicitly added and verified.
+
+## 2026-10-22 More menu disappears under Sway
+
+- Confirmed the WeChat process stays alive: this is popup window handling,
+  not a full WeChat crash. Its menu is an X11 window with class `wechat`,
+  `WM_TRANSIENT_FOR` pointing to its WeChat main window, and both
+  `_NET_WM_WINDOW_TYPE_UTILITY` and `_KDE_NET_WM_WINDOW_TYPE_OVERRIDE`.
+- The former broad `for_window [class="(?i)^wechat$"] floating disable`
+  tiled the menu into a roughly 750x748 window. Simply floating it centered
+  the menu and still caused it to disappear. Do not repeat broad tiling rules.
+- Main-only tiling rule now matches titles `微信|Weixin|WeChat`. Chat management,
+  settings, and `wechat` auxiliary windows float.
+- Durable helper: `~/.local/bin/wechat-popup-guard`, service
+  `wechat-popup-guard.service`. It watches X11 creation/property events and
+  sets override_redirect only on the exact WeChat transient popup type above.
+  It does not change main windows, settings dialogs, or other applications.
+- Verified: service active, 3 consecutive menu opens stay mapped at 176x208,
+  original anchored popup position preserved. Both main windows remain tiled
+  side by side; migration manager opens floating and visible. Temporary
+  focus_follows_mouse change was restored to the default `yes`.
+- Config backup: `~/.config/sway/config.bak-wechat-menu-20261022-173358`.
+  Syntax check requires `sway --unsupported-gpu -C -c ~/.config/sway/config`
+  on this proprietary NVIDIA host; plain `sway -C` stops at the driver check.
+- Linux WeChat 4.1.8 chat management page currently exposes only computer-to-phone
+  export. Do not click this to back up iPhone-to-PC. Have the iPhone initiate
+  chat management -> import/export -> export to computer. A firsthand Linux
+  receiving success report exists at https://forum.archlinuxcn.org/t/topic/16312 .
+  It also identifies firewall blocking as a possible transfer failure; prefer
+  scoped phone/LAN runtime rules over disabling the entire host firewall.
+- Actual iPhone-to-PC transfer is still pending phone initiation. Do not claim
+  backup completion from menu repair, desktop DB snapshots, or the empty
+  migration manager alone. Once initiated, inspect new WeChat sockets, desktop
+  confirmation/progress and resulting source history/media counts.

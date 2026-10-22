@@ -72,3 +72,48 @@ nmcli -g 802-11-wireless.powersave connection show PDCN  # expected: disable
   Added persistent `192.168.123.71/24` to NetworkManager connection `PDCN`,
   updated `wan-ip-monitor.sh` to reapply that alias automatically, and added
   `charlie1990.duckdns.org:19976` to endpoint checks.
+
+## 2026-10-22 OpenWrt / ZXHN public Hermes repair
+
+- Working IPv4 path: `charlie1990.duckdns.org:19976` -> ZXHN F650
+  WAN `125.110.234.23` -> modem port mapping `Hermes19976` TCP
+  `19976 -> 192.168.1.4:19976` -> OpenWrt redirect `Hermes-19976`
+  `19976 -> 192.168.5.144:19976` -> Fedora Hermes entry.
+- Modem LuCI `http://192.168.1.1/cgi-bin/luci` is reachable through OpenWrt.
+  Login POST uses `username` and `psd`; authenticated menu JS is
+  `/luci-static/resources/js/main.js`. The user account DOES expose port mapping;
+  do not infer restricted permissions merely from the landing page.
+- Supported APIs: GET `/admin/settings/gwinfo?get=all` (`WANIP`), GET
+  `/admin/settings/pmDisplay`, POST `/admin/settings/pmSetSingle` with page CSRF
+  `token`, `op=add`, `srvname`, `client`, `protocol=TCP`, `exPort`, `inPort`.
+  Read back `pmDisplay`: `enable=1`, `retVal=0` from add is not enough by itself.
+- Credentials: private file `~/.local/share/credentials/zxhn-f650.json` (0600).
+  Default WAN-reader: `~/.local/bin/zxhn-wan-ip` (no credential output).
+  Both `wan-ip-monitor.sh` and `duckdns-full-monitor.sh` use it when an active
+  NetworkManager profile starts with `OpenWrt`; keep prior DNS if reading fails.
+- Disabled `duckdns-aaaa-follow.timer`: its published ChinaNet-side IPv6 was not
+  verified from cellular. Cleared DNS records and immediately restored the verified
+  A record; authoritative/public resolver confirms no AAAA. Do not republish AAAA
+  until tested from a genuinely external IPv6 client.
+- Do NOT equate a delegated global LAN prefix with non-routable IPv6, or cross-LAN
+  failure with definitive ISP filtering. Prior Hermes conclusions overreached.
+- Verified physical PKR110 via ADB `192.168.2.11:5555`, Wi-Fi disabled: curl -4
+  to the DuckDNS hostname returned HTTP 200, cellular local `100.72.90.26`, peer
+  `125.110.234.23`. Earlier interface-bound cellular `100.104.152.176` also
+  returned HTTP 200. LAN hairpin to the public IPv4 still times out; this is
+  separate from the working external path.
+- OpenWrt DHCP reservation `dhcp.hermes_fedora`: MAC `ea:cd:2a:97:28:c2`,
+  fixed `192.168.5.144`; backup `/etc/config/dhcp.before-hermes-public-20261022`.
+- Phone probes must rediscover active rmnet interface each run: Android changes
+  `rmnet_data5` to `rmnet_data4`; a vanished interface gives immediate
+  `Network is unreachable` and does not establish a service outage.
+
+- Final browser verification: PKR110 Wi-Fi state `0` at both probe and screenshot;
+  `DuckDNS_5G http=200 local=100.87.230.179 peer=125.110.234.23`.
+  Screenshot shows 5G/4G status (no Wi-Fi) and the rendered Hermes chat UI.
+  Evidence: `~/.local/state/openwrt-public/phone-5g-hermes.png`.
+- After Wi-Fi re-enable, phone joined OpenWrt at `192.168.5.211:5555` (ADB).
+  Added dnsmasq `dhcp.hermes_duckdns` domain record:
+  `charlie1990.duckdns.org -> 192.168.5.144` on OpenWrt only. Phone Wi-Fi
+  curl to the same hostname returned HTTP 200 with peer `192.168.5.144`.
+  Public resolver `1.1.1.1` still returns A `125.110.234.23`, no AAAA.

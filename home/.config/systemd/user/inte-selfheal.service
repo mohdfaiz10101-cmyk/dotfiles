@@ -1,0 +1,14 @@
+[Unit]
+Description=Inte-Sourcing site self-heal (docker + firewalld nat conflict recovery)
+After=docker.service network-online.target
+Wants=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/inte-selfheal.sh
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

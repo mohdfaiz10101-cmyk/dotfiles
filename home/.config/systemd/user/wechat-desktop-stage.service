@@ -1,0 +1,11 @@
+[Unit]
+Description=Encrypted desktop WeChat database snapshots and local multi-account staging
+
+[Service]
+Type=oneshot
+ExecStart=/var/home/charlie/.local/bin/wechat-desktop-stage
+UMask=0077
+Nice=10
+IOWeight=25
+TimeoutStartSec=90
+

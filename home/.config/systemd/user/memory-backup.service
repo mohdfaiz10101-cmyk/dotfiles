@@ -1,0 +1,8 @@
+[Unit]
+Description=Memory backup to GitHub (hourly)
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/memory-backup.sh
+StandardOutput=journal
+StandardError=journal

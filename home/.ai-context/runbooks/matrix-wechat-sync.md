@@ -1228,3 +1228,156 @@ Important interpretation:
 - Verified on PKR110: Android image share chooser displayed the companion;
   submitting to Hermes created a `pending_approval` task. Test tasks and test
   CRM notes were removed after validation.
+
+## 2026-10-22 Dual desktop accounts / iOS history staging
+
+- The second Linux Flatpak account is `w422417869`; source:
+  `~/.local/share/wechat-flatpak-2/home/xwechat_files/w422417869_448e/db_storage`.
+  Main desktop source:
+  `~/.var/app/com.tencent.WeChat/xwechat_files/wxid_bjo2p0swoxm822_fe61/db_storage`.
+- Both live desktop account contact/message databases were successfully opened
+  read-only with SQLCipher 4.12, including WAL. Keys must be cached separately
+  under `~/.cache/wechat-desktop-accounts/<account>/keys.json` (0600, directory
+  0700). Never print keys or overwrite the old shared finance key cache.
+- Helper: `~/.local/bin/wechat-desktop-stage`; timer/service:
+  `wechat-desktop-stage.timer` / `.service`, every 30 minutes.
+- Output: `/var/mnt/ai/data/wechat-desktop-stage/`, mode 0700.
+  `snapshots/YYYY-MM-DD/<account>/` contains encrypted contact/message DB
+  snapshots. SQLite backup includes committed WAL and each snapshot passes
+  quick_check. Each day's files are replaced atomically; old days are retained.
+  This snapshots databases only, not media binaries or full iPhone history.
+- `ledger.db` is a private plaintext local staging ledger. Account-specific
+  contact names/remarks and source observations remain available. Same canonical
+  username/group ID shares a conversation; names alone never merge identities.
+- Cross-account message deduplication requires positive server ID plus equal
+  conversation, sender, type, timestamp and normalized content. Missing identity
+  information falls back to account/database/table/local-ID isolation.
+  Desktop group audit: 60 shared group IDs, 327 other shared contact IDs;
+  first full staging audit: 770 cross-account duplicate group messages.
+- `status.json` explicitly reports `local_staging_only`, `matrix_sent: 0`.
+  This job does NOT publish to Matrix or change existing Matrix rooms. Existing
+  Android incremental sync remains separate and currently reports no reachable
+  PKR110 ADB transport; do not describe it as healthy merely because its timer runs.
+- iPhone was not accessible through idevice_id. Initial iPhone history transfer,
+  the phone-side automatic-backup setting, media coverage, and eventual Matrix
+  publication remain pending. A PC backup container is not automatically a
+  readable desktop message DB; verify the specific transfer format first.
+- Next step: user checks iPhone's chat-history management/migration screen while
+  on the same Wi-Fi as the computer. Verify Linux target support in the actual
+  client before promising automatic iOS-to-Linux backup. Do not log either
+  account into a different primary phone or merge by display name.
+- Reuse the main account's existing Matrix room mapping for exact matching IDs
+  when building publication. Desktop staging's 770 duplicates do not prove
+  deduplication against the existing Android Matrix history; reconcile by
+  conversation and server message IDs before sending anything.
+- Account key refresh: dynamically identify each running WeChat process by its
+  HOME/open DB paths, then reuse `collect_db_salts` / `scan_memory_for_keys`
+  from `~/.local/bin/wechat-finance` with an explicit PID and scoped database
+  list. Validate against each DB salt and store account-local keys privately.
+  Never reuse historical PIDs or `find_wechat_pid()` for dual-account work.
+- Check: `systemctl --user show wechat-desktop-stage.service -p Result -p ExecMainStatus`;
+  `cat /var/mnt/ai/data/wechat-desktop-stage/status.json`.
+- Validation: live SQLCipher reads and encrypted snapshot quick_check passed;
+  ledger quick_check=ok, duplicate source keys=0, unresolved conversations=0,
+  undecodable message bodies=0. Six dedup boundary checks and zstd normalization
+  roundtrip passed. Uses existing system libzstd because Python zstandard is absent.
+
+## 2026-10-22 Windows iPhone backup migration (in progress)
+
+- Confirmed iOS backup source: Windows `D:\xwechat_backup`, account
+  `w422417869`; 8485 files, 28528762060 bytes. SHA-256 source manifest:
+  `/var/mnt/ai/data/wechat-ios-backup/source-manifest.json`. Windows generated
+  the manifest locally with 128 KiB reads; 4 MiB reads failed with MemoryError
+  during severe Windows commit pressure. Never log backup keys or credentials.
+- Destination: `/var/mnt/ai/data/wechat-ios-backup/backup`, private mode 0700.
+  Shared as `wechat-backup` by user service `wechat-backup-smb.service`; image
+  `ghcr.io/servercontainers/samba` pinned by digest. Bindings: Fedora Tailnet
+  `100.120.189.27:445`, and current LAN `192.168.2.17:445`; only Windows
+  `100.91.93.99` / `192.168.2.14` allowed, authenticated SMB3 encryption required.
+  Private credential locations: `~/.config/wechat-backup-storage/` and Windows
+  `C:\WeChatSync\fedora-storage-credential.json` (G/SYSTEM ACL only).
+- Copy job: `wechat-backup-migrate.service`, Windows helper
+  `C:\WeChatSync\fedora-backup-copy.py`, native connector
+  `fedora_storage_connect.py`. Robocopy is additive/incremental (`/E`, no
+  `/MIR` or source deletion). Current copy uses LAN. `/Z` was very slow; `/J`
+  retries incomplete files while already-completed files are skipped.
+- `WeChatFedoraStorage` scheduled task reconnects the authenticated share for
+  interactive Windows use. Must verify it remains successful after changes.
+- Pending: finish copy; compare every destination SHA-256 to source manifest;
+  verify original source did not change; test Windows directory symlink and
+  app recognition; only then remove verified local backup bytes. Do not report
+  Windows space freed before measured evidence.
+- Backup payload confirmed `RMFH` magic, 967 ChatPackage files and 5342 Media
+  files. SQLCipher desktop/Android DB decryption does not decode this format.
+  The audited ChatImportKit upstream explicitly does not decrypt message content.
+  Matrix publication remains pending readable source/verified decryption.
+- Read-only Matrix preflight: existing ledger 195366 records; staged desktop
+  messages 5496; exact existing-room IDs 54; 2585 (conversation,server-ID)
+  duplicate candidates still require full sender/type/time/body validation.
+  Report: `/var/mnt/ai/data/wechat-desktop-stage/matrix-preflight-20261022.json`.
+- Windows SSH PowerShell profile had recursive automatic OpenCode startup.
+  Fixed `C:\Users\G\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`
+  to require SSH_TTY + CHARLIE_SSH_OPENCODE_STARTED and child `-NoProfile`.
+  Original `.pre-wechat-migration-20261022` retained. Removed 68 matching
+  service-session recursive shells, preserving the user's console terminal.
+
+2026-10-22 migration continuation:
+- Source hashing completed in 96 seconds. Interactive Windows session 1 verified
+  authenticated share access and persistent Credential Manager entry. Native
+  Windows directory symlink read/removal probe passed.
+- `wechat-backup-verify-cutover.service` is queued behind the ongoing copy. It
+  verifies all SHA-256s, syncs the destination filesystem, requires an unchanged
+  Windows source inventory and an interactive-ready credential probe, creates
+  the original-path directory symlink, verifies metadata/ChatPackage reads, and
+  only then removes the exact verified originals. Source changes or hash/link
+  errors retain originals; link verification errors roll back the rename.
+- Three isolated cutover tests passed: valid migration, tampered destination
+  rollback, and changed-source refusal. Windows directory-symlink rmdir semantics
+  were emulated in Linux tests and separately exercised by a native Windows probe.
+- Helpers: `~/.local/bin/wechat-backup-storage-status`,
+  `~/.local/bin/wechat-backup-verify-cutover`,
+  `~/.local/bin/wechat-backup-smb-run`. Startup always uses stable Tailnet;
+  current LAN binding is optional and added only while that address is present.
+- `wechat-backup-resume-pending.timer` checks every 15 minutes and only resumes
+  interrupted initial copies; it stops acting after completion or a verification
+  failure requiring inspection. Future backups write directly through the link.
+- Format audit: `/var/mnt/ai/data/wechat-ios-backup/format-audit.json`. User was
+  asked whether optional iPhone backup encryption/password was enabled; no
+  password should be sent through chat or stored in logs. iPhone automatic-backup
+  setting is not verified; PC settings expose storage path and USB mode only.
+- LAN was slow under load: 8 MiB native share write/fsync took 24.82 seconds;
+  pings to Windows reached ~3 seconds while copying. Do not claim transfer
+  complete or Windows disk space freed until migration-status says complete.
+
+2026-10-22 23:23 throughput check: ~5.32/28.53 GB staged (~19%); 15.2-second LAN RX sample was 2.86 MB/s on ChinaNet-K2QE 2.4 GHz. File-size progress can stay flat during preallocated copies, so do not derive short-window throughput solely from target sizes. Remaining copy at that rate ~2.25 hours; storage estimate 2.5–3.5 hours including verification/variation. This is not a Matrix decryption/import ETA. For large migrations, measure throughput and report ETA early.
+
+## 2026-10-22 Vladimir Univest quotation export
+
+- User confirmed exact contact `wxid_txqirg0zx7hv12`, Bob (Vladimir) from
+  Univest / remark Vladimir Univest. Never merge with Vladimir Khmil, Egorov
+  or Vladislav by display name. Related groups were exported separately:
+  `52222456833@chatroom` and `58710407602@chatroom`.
+- Private output: `~/Documents/客户报价/Vladimir-Univest-20261022/`.
+  113 private messages (107 Matrix historical + 6 desktop staged), 18 group
+  records; 17 original pictures, 1 video, 1 supplier quote PDF, all byte hashes
+  verified. Range 2025-05-28 to 2026-10-21; this excludes the unreadable iOS
+  RMFH backup and is explicitly incomplete.
+- Created internal Excel (source message IDs, full chat, thumbnails), separate
+  customer quote draft Excel/PDF/HTML, Obsidian vault, internal Notion ZIP and
+  separate customer/internal ZIPs. No Notion cloud upload or customer message.
+  PDF visual preview checked; both XLSX files reopened, 12 rows/10 embedded
+  images each, no formulas from untrusted chat; all Markdown media links and
+  19 original attachment SHA256 values verified.
+- The group XLSX named `20260318乌克兰三套机器尺寸体积汇合版(1).xlsx`
+  is a text fallback only; do not claim its bytes or logistics dimensions exist.
+- The quote source PDF was extracted with existing `pdftotext -layout`; local
+  fitz/pymupdf is absent. Tesseract eng+chi_sim OCR completed for 17 images;
+  OCR is searchable evidence only and never authoritative pricing.
+- Keep accepted prices, historical supplier offers, unanswered RFQs and internet
+  reference prices separate. Do not sum alternative model choices, infer order
+  quantities, convert exchange rates, or put supplier negotiation screenshots in
+  the customer package. Retain original evidence internally.
+- Private builder: `~/.local/share/wechat-quotation-export/build_vladimir_export.py`
+  refuses to overwrite existing editable workbooks by default. Future incremental
+  exports should create a new revision directory and deduplicate conversation +
+  positive server ID, preserving manual quote edits.

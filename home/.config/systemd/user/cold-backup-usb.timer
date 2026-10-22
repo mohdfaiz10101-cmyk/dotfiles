@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly cold backup to USB disk (sdf2)
+
+[Timer]
+# 每周一 04:00 —— 低频是关键：减少盘的通电与写入次数以延长寿命
+OnCalendar=Mon *-*-* 04:00:00
+Persistent=true
+AccuracySec=1h
+
+[Install]
+WantedBy=timers.target

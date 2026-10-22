@@ -1,6 +1,12 @@
 # Failure Blacklist
 
 ## Do Not Repeat These Paths
+- Windows PowerShell profiles must not auto-launch a new profile-loading PowerShell
+  solely because SSH_CONNECTION/SSH_CLIENT is present. Children inherit those vars
+  and recursively launch `-NoExit -Command opencode` shells, exhausting Windows
+  commit memory and stalling backups. On 2026-10-22, 68 service-session children
+  were removed. Gate GUI startup on SSH_TTY plus a one-shot environment guard and
+  launch children with `-NoProfile`; retain the user's interactive terminal.
 - Do not blame containers or databases first when idle CPU stays near 8.3% or
   16.7% on this 12-thread host. Check `pgrep -af pty-title-filter.py`: the
   wrapper used to keep fd `0` in `select()` after Sway-launched GUI stdin had

@@ -69,3 +69,13 @@ python3 -m py_compile ~/.local/bin/hermes-memory-brief ~/.local/bin/hermes-hook-
 ~/.local/bin/hermes-hook-runner pre-task --text 'hermes memory skill session test'
 systemctl --user show a2a-skills.service -p Environment -p TimeoutStartUSec
 ```
+
+## Output Density / Layering (2026-10-22)
+
+- Global output rules live in `~/.hermes/SOUL.md`, under `Output contract`.
+- Default: concise result only; details appear only on explicit request. Avoid the conflicting wording "summary first, details second", which encourages emitting both.
+- Prefer one result sentence and 2-3 useful points; no forced headings, repetitive closing offers, or per-tool narration. Necessary deliverables and material failures must remain visible.
+- Back up SOUL.md before editing. Verify with `python3 -c 'from agent.prompt_builder import load_soul_md; s=load_soul_md(); assert "默认只输出「简略版」" in s; print("PASS")'`.
+- Loader verification proves instruction loading only. Verify real answer quality separately; do not report it as proven by a string check.
+- Apply in a new WebUI session. Do not reset existing conversations or restart shared services just to replace their cached prompts. No WebUI code or port changes are required.
+- Session detail endpoint: `/api/session?session_id=<id>`; `/api/session/<id>` returns 404 and `?id=` returns 400.

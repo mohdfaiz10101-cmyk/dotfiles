@@ -1,0 +1,10 @@
+[Unit]
+Description=Resume interrupted initial WeChat backup migration
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

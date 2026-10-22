@@ -1,5 +1,6 @@
 com.usebottles.bottles
 com.valvesoftware.Steam
+im.riot.Riot
 io.github.block.Goose
 org.fedoraproject.MediaWriter
 org.gnome.baobab
