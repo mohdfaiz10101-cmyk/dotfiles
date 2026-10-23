@@ -1,0 +1,101 @@
+== service ==
+● hermes-web-ui.service - Hermes Web UI (:8648 via FRP, service on :18648)
+     Loaded: loaded (/var/home/charlie/.config/systemd/user/hermes-web-ui.service; disabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/user/service.d
+             └─10-timeout-abort.conf
+             /var/home/charlie/.config/systemd/user/hermes-web-ui.service.d
+             └─env.conf, override.conf
+     Active: active (running) since Tue 2026-08-11 12:51:20 CST; 8s ago
+ Invocation: b57e9ff221924503a32e3527f33c03f2
+    Process: 453152 ExecStart=/var/home/charlie/.local/bin/hermes-web-ui-launch.sh start --no-open --port 18648 (code=exited, status=0/SUCCESS)
+   Main PID: 453186 (MainThread)
+      Tasks: 13 (limit: 1024)
+     Memory: 76.7M (high: 10G, max: 14G, available: 9.9G, peak: 136.8M)
+        CPU: 1.617s
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/hermes-web-ui.service
+             ├─453186 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/index.js
+             ├─454428 /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+             └─454430 import argparse
+
+8月 11 12:50:49 fedora systemd[1625]: Starting hermes-web-ui.service - Hermes Web UI (:8648 via FRP, service on :18648)...
+8月 11 12:50:49 fedora hermes-web-ui-launch.sh[453152]:   ⏳ Starting hermes-web-ui (PID: 453186, port: 18648)...
+8月 11 12:51:20 fedora hermes-web-ui-launch.sh[453152]:   ⚠ Server process is running but health check failed after 30s
+8月 11 12:51:20 fedora hermes-web-ui-launch.sh[453152]:     Check log: /var/home/charlie/.hermes-web-ui/server.log
+8月 11 12:51:20 fedora hermes-web-ui-launch.sh[453152]:     http://localhost:18648
+8月 11 12:51:20 fedora systemd[1625]: Started hermes-web-ui.service - Hermes Web UI (:8648 via FRP, service on :18648).
+== processes ==
+charlie   312823    1625  0 12:31 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/index.js
+charlie   325005    1625  0 12:32 ?        00:00:02 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/b3c344ad16694bd9.sock --worker-profile monitor --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325083    1625  0 12:32 ?        00:00:02 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/7e5bec210b06e29d.sock --worker-profile creative --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325084    1625  0 12:32 ?        00:00:02 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bde5acd56ade382a.sock --worker-profile ops --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325087    1625  0 12:32 ?        00:00:02 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/c482cf76c1188462.sock --worker-profile coding --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325090    1625  0 12:32 ?        00:00:02 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bc175c31a79a41e7.sock --worker-profile research --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   453186    1625  1 12:50 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/index.js
+charlie   454428  453186  0 12:50 ?        00:00:00 /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+== sockets ==
+missing
+== http ==
+curl: (7) Failed to connect to 127.0.0.1 port 18648 after 0 ms: Could not connect to server
+000
+{"level":30,"time":1786422473840,"pid":289964,"hostname":"fedora","msg":"[pet-state-socket] Socket.IO ready at /pet-state"}
+{"level":30,"time":1786422473841,"pid":289964,"hostname":"fedora","msg":"[global-agent] Socket.IO ready at /global-agent"}
+{"level":30,"time":1786422473841,"pid":289964,"hostname":"fedora","msg":"[SessionDeleter] started, profile=default, interval=300000ms"}
+{"level":30,"time":1786422473842,"pid":289964,"hostname":"fedora","msg":"Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)"}
+{"level":30,"time":1786422473843,"pid":289964,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:48640 for http port 18648"}
+{"level":30,"time":1786422473844,"pid":289964,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:58648 for http port 18648"}
+{"level":30,"time":1786422473851,"pid":289964,"hostname":"fedora","msg":"[model-catalog-cache] provider model catalog cache exists; skipping startup refresh"}
+{"level":30,"time":1786423106041,"pid":289964,"hostname":"fedora","msg":"Shutting down (SIGTERM)..."}
+{"level":30,"time":1786423106214,"pid":289964,"hostname":"fedora","msg":"Preview runtime stopped"}
+{"level":30,"time":1786423106214,"pid":289964,"hostname":"fedora","msg":"[shutdown] managed gateways stopped result={\"signaled\":0,\"forced\":0,\"errors\":0}"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"[chat-run-socket] closed all connections and cleared state"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"ChatRunSocket closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"Outbound relay clients closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"App relay clients closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"Coding agent hidden sessions closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"[AgentClients] All agents disconnected"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"Socket.IO closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"HTTP server closed"}
+{"level":30,"time":1786423548568,"pid":417466,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetDirs":["/var/home/charlie/.hermes/skills","/var/home/charlie/.hermes/profiles/coding/skills","/var/home/charlie/.hermes/profiles/creative/skills","/var/home/charlie/.hermes/profiles/default/skills","/var/home/charlie/.hermes/profiles/dispatcher/skills","/var/home/charlie/.hermes/profiles/guest/skills","/var/home/charlie/.hermes/profiles/guest-alice/skills","/var/home/charlie/.hermes/profiles/guest-bob/skills","/var/home/charlie/.hermes/profiles/monitor/skills","/var/home/charlie/.hermes/profiles/ops/skills","/var/home/charlie/.hermes/profiles/research/skills","/var/home/charlie/.hermes/profiles/secondary/skills"],"targetCount":12,"bundledSkillNames":["apikey-image-gen","grok-image-to-video","hyperframes","markdown-viewer","remotion"],"msg":"[skill-injector] syncing bundled skills across profiles"}
+{"level":30,"time":1786423548594,"pid":417466,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetCount":12,"injected":[],"updated":[],"skipped":[],"targets":[{"profile":"default","targetDir":"/var/home/charlie/.hermes/skills","injected":[],"updated":[],"skipped":[]},{"profile":"coding","targetDir":"/var/home/charlie/.hermes/profiles/coding/skills","injected":[],"updated":[],"skipped":[]},{"profile":"creative","targetDir":"/var/home/charlie/.hermes/profiles/creative/skills","injected":[],"updated":[],"skipped":[]},{"profile":"default","targetDir":"/var/home/charlie/.hermes/profiles/default/skills","injected":[],"updated":[],"skipped":[]},{"profile":"dispatcher","targetDir":"/var/home/charlie/.hermes/profiles/dispatcher/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest","targetDir":"/var/home/charlie/.hermes/profiles/guest/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-alice","targetDir":"/var/home/charlie/.hermes/profiles/guest-alice/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-bob","targetDir":"/var/home/charlie/.hermes/profiles/guest-bob/skills","injected":[],"updated":[],"skipped":[]},{"profile":"monitor","targetDir":"/var/home/charlie/.hermes/profiles/monitor/skills","injected":[],"updated":[],"skipped":[]},{"profile":"ops","targetDir":"/var/home/charlie/.hermes/profiles/ops/skills","injected":[],"updated":[],"skipped":[]},{"profile":"research","targetDir":"/var/home/charlie/.hermes/profiles/research/skills","injected":[],"updated":[],"skipped":[]},{"profile":"secondary","targetDir":"/var/home/charlie/.hermes/profiles/secondary/skills","injected":[],"updated":[],"skipped":[]}],"msg":"[skill-injector] completed bundled skills sync"}
+{"level":30,"time":1786423548623,"pid":417466,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"command":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node","targets":[{"profile":"coding","status":"updated"},{"profile":"creative","status":"updated"},{"profile":"guest","status":"updated"},{"profile":"guest-alice","status":"updated"},{"profile":"guest-bob","status":"updated"},{"profile":"monitor","status":"updated"},{"profile":"ops","status":"updated"},{"profile":"research","status":"updated"}],"msg":"[mcp-autoinject] synced bundled MCP server"}
+{"level":40,"time":1786423548623,"pid":417466,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"targets":[{"profile":"default","status":"skipped","reason":"existing hermes-studio-api MCP server is not managed by Hermes Web UI"},{"profile":"dispatcher","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"},{"profile":"secondary","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"}],"msg":"[mcp-autoinject] skipped unmanaged MCP server entries"}
+{"level":30,"time":1786423548627,"pid":417466,"hostname":"fedora","dataDirectory":"/var/home/charlie/.hermes-web-ui/.ekko","configPath":"/var/home/charlie/.hermes-web-ui/.ekko/config/config.json","databasePath":"/var/home/charlie/.hermes-web-ui/.ekko/ekko.db","profiles":["default","coding","creative","dispatcher","guest","guest-alice","guest-bob","monitor","ops","research","secondary"],"msg":"[ekko-agent] setup complete"}
+{"level":30,"time":1786423548633,"pid":417466,"hostname":"fedora","msg":"[gateway-autostart] skipping profiles excluded by gatewayAutoStart policy profiles=coding,creative,dispatcher,guest,guest-alice,guest-bob,monitor,ops,research,secondary unified=true"}
+{"level":30,"time":1786423549759,"pid":417466,"hostname":"fedora","msg":"[gateway-autostart] gateway already running profile=default home=/var/home/charlie/.hermes status=running"}
+{"level":30,"time":1786423553660,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] starting: /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes"}
+{"level":30,"time":1786423669343,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] ready at ipc:///tmp/hermes-agent-bridge.sock"}
+{"level":30,"time":1786423669362,"pid":417466,"hostname":"fedora","msg":"WebSocket ready at /terminal (shell: /usr/bin/zsh, transport: node-pty)"}
+{"level":30,"time":1786423669362,"pid":417466,"hostname":"fedora","msg":"WebSocket ready at /api/hermes/kanban/events (kanban watch bridge)"}
+{"level":30,"time":1786423669365,"pid":417466,"hostname":"fedora","msg":"[GroupChat] Socket.IO ready at /group-chat"}
+{"level":30,"time":1786423669366,"pid":417466,"hostname":"fedora","msg":"[chat-run-socket] Socket.IO ready at /chat-run"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[workflow-socket] Socket.IO ready at /workflow"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[pet-state-socket] Socket.IO ready at /pet-state"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[global-agent] Socket.IO ready at /global-agent"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[SessionDeleter] started, profile=default, interval=300000ms"}
+{"level":30,"time":1786423669368,"pid":417466,"hostname":"fedora","msg":"Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)"}
+{"level":30,"time":1786423669370,"pid":417466,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:48640 for http port 18648"}
+{"level":30,"time":1786423669371,"pid":417466,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:58648 for http port 18648"}
+{"level":30,"time":1786423669379,"pid":417466,"hostname":"fedora","msg":"[model-catalog-cache] provider model catalog cache exists; skipping startup refresh"}
+{"level":40,"time":1786423847520,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] exited code=null signal=SIGTERM"}
+{"level":40,"time":1786423847521,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] broker exited unexpectedly code=null signal=SIGTERM; restarting in 1000ms (attempt 1)"}
+{"level":30,"time":1786423849526,"pid":417466,"hostname":"fedora","msg":"Shutting down (SIGTERM)..."}
+{"level":30,"time":1786423849696,"pid":417466,"hostname":"fedora","msg":"Preview runtime stopped"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"[shutdown] managed gateways stopped result={\"signaled\":0,\"forced\":0,\"errors\":0}"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"[chat-run-socket] closed all connections and cleared state"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"ChatRunSocket closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Leaving agent bridge running across Web UI shutdown"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Outbound relay clients closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"App relay clients closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Coding agent hidden sessions closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"[AgentClients] All agents disconnected"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Socket.IO closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"HTTP server closed"}
+{"level":30,"time":1786423850260,"pid":453186,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetDirs":["/var/home/charlie/.hermes/skills","/var/home/charlie/.hermes/profiles/coding/skills","/var/home/charlie/.hermes/profiles/creative/skills","/var/home/charlie/.hermes/profiles/default/skills","/var/home/charlie/.hermes/profiles/dispatcher/skills","/var/home/charlie/.hermes/profiles/guest/skills","/var/home/charlie/.hermes/profiles/guest-alice/skills","/var/home/charlie/.hermes/profiles/guest-bob/skills","/var/home/charlie/.hermes/profiles/monitor/skills","/var/home/charlie/.hermes/profiles/ops/skills","/var/home/charlie/.hermes/profiles/research/skills","/var/home/charlie/.hermes/profiles/secondary/skills"],"targetCount":12,"bundledSkillNames":["apikey-image-gen","grok-image-to-video","hyperframes","markdown-viewer","remotion"],"msg":"[skill-injector] syncing bundled skills across profiles"}
+{"level":30,"time":1786423850283,"pid":453186,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetCount":12,"injected":[],"updated":[],"skipped":[],"targets":[{"profile":"default","targetDir":"/var/home/charlie/.hermes/skills","injected":[],"updated":[],"skipped":[]},{"profile":"coding","targetDir":"/var/home/charlie/.hermes/profiles/coding/skills","injected":[],"updated":[],"skipped":[]},{"profile":"creative","targetDir":"/var/home/charlie/.hermes/profiles/creative/skills","injected":[],"updated":[],"skipped":[]},{"profile":"default","targetDir":"/var/home/charlie/.hermes/profiles/default/skills","injected":[],"updated":[],"skipped":[]},{"profile":"dispatcher","targetDir":"/var/home/charlie/.hermes/profiles/dispatcher/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest","targetDir":"/var/home/charlie/.hermes/profiles/guest/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-alice","targetDir":"/var/home/charlie/.hermes/profiles/guest-alice/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-bob","targetDir":"/var/home/charlie/.hermes/profiles/guest-bob/skills","injected":[],"updated":[],"skipped":[]},{"profile":"monitor","targetDir":"/var/home/charlie/.hermes/profiles/monitor/skills","injected":[],"updated":[],"skipped":[]},{"profile":"ops","targetDir":"/var/home/charlie/.hermes/profiles/ops/skills","injected":[],"updated":[],"skipped":[]},{"profile":"research","targetDir":"/var/home/charlie/.hermes/profiles/research/skills","injected":[],"updated":[],"skipped":[]},{"profile":"secondary","targetDir":"/var/home/charlie/.hermes/profiles/secondary/skills","injected":[],"updated":[],"skipped":[]}],"msg":"[skill-injector] completed bundled skills sync"}
+{"level":40,"time":1786423850299,"pid":453186,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"targets":[{"profile":"default","status":"skipped","reason":"existing hermes-studio-api MCP server is not managed by Hermes Web UI"},{"profile":"dispatcher","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"},{"profile":"secondary","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"}],"msg":"[mcp-autoinject] skipped unmanaged MCP server entries"}
+{"level":30,"time":1786423850302,"pid":453186,"hostname":"fedora","dataDirectory":"/var/home/charlie/.hermes-web-ui/.ekko","configPath":"/var/home/charlie/.hermes-web-ui/.ekko/config/config.json","databasePath":"/var/home/charlie/.hermes-web-ui/.ekko/ekko.db","profiles":["default","coding","creative","dispatcher","guest","guest-alice","guest-bob","monitor","ops","research","secondary"],"msg":"[ekko-agent] setup complete"}
+{"level":30,"time":1786423850307,"pid":453186,"hostname":"fedora","msg":"[gateway-autostart] skipping profiles excluded by gatewayAutoStart policy profiles=coding,creative,dispatcher,guest,guest-alice,guest-bob,monitor,ops,research,secondary unified=true"}
+{"level":30,"time":1786423850931,"pid":453186,"hostname":"fedora","msg":"[gateway-autostart] gateway already running profile=default home=/var/home/charlie/.hermes status=running"}
+{"level":30,"time":1786423855331,"pid":453186,"hostname":"fedora","msg":"[agent-bridge] starting: /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes"}
+
+__HERMES_CWD_a473bfdc8cfa__/var/home/charlie/workspace__HERMES_CWD_a473bfdc8cfa__

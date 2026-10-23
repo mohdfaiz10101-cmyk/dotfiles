@@ -1,0 +1,123 @@
+=== RUNNING_SERVICES_SNIPPET ===
+ServiceRecord{7590788 u0 com.ktls.fileinfo/.O000OO00OOO00OOO000.O0OO0O0OO0O00OOO00O c:com.ktls.fileinfo}
+    intent={cmp=com.ktls.fileinfo/.O000OO00OOO00OOO000.O0OO0O0OO0O00OOO00O mCallingUid=10386}
+    packageName=com.ktls.fileinfo
+    processName=com.ktls.fileinfo
+    baseDir=/data/app/~~Yp4IAaalQ2ipLFj_wQwB1Q==/com.ktls.fileinfo-u_2RBSb8bnVynWPqCrCLTA==/base.apk
+    dataDir=/data/user/0/com.ktls.fileinfo
+    app=ProcessRecord{843bca5 18637:com.ktls.fileinfo/u0a386}
+    recentCallingPackage=com.ktls.fileinfo
+  * ServiceRecord{5d7a0f9 u0 com.google.android.gms/.nearby.presence.service.LifeCycleService c:com.google.android.gms}
+    intent={cmp=com.google.android.gms/.nearby.presence.service.LifeCycleService mCallingUid=10257}
+    packageName=com.google.android.gms
+    processName=com.google.android.gms.persistent
+    baseDir=/data/app/~~ZhyrKuzCu6TmR7B2s-Q5dw==/com.google.android.gms-wUq_VglKjWa2WXSWr6VIQQ==/base.apk
+    dataDir=/data/user/0/com.google.android.gms
+    app=ProcessRecord{5ee25d7 8167:com.google.android.gms.persistent/u0a257}
+    recentCallingPackage=com.google.android.gms
+    infoAllowStartForeground=[callingPackage: com.google.android.gms; callingUid: 10257; uidState: BFGS; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=com.google.android.gms/.nearby.presence.service.LifeCycleService mCallingUid=10257 }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:58; targetSdkVersion:37; callerTargetSdkVersion:37; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+  * ServiceRecord{dc5781b u0 com.microsoft.appmanager/androidx.room.MultiInstanceInvalidationService c:com.microsoft.appmanager}
+    intent={cmp=com.microsoft.appmanager/androidx.room.MultiInstanceInvalidationService mCallingUid=10115}
+    packageName=com.microsoft.appmanager
+    processName=com.microsoft.appmanager
+    baseDir=/data/app/~~pD_UmOVo7yfFnluejIzdcA==/com.microsoft.appmanager-6rKLIkH4AtQRFnmsgP7Zjg==/base.apk
+    dataDir=/data/user/0/com.microsoft.appmanager
+    app=ProcessRecord{d777de0 5970:com.microsoft.appmanager/u0a115}
+    recentCallingPackage=com.microsoft.appmanager
+    infoAllowStartForeground=[callingPackage: com.microsoft.appmanager; callingUid: 10115; uidState: RCVR; uidBFSL: n/a; intent: Intent { xflg=0x4 cmp=com.microsoft.appmanager/androidx.room.MultiInstanceInvalidationService mCallingUid=10115 }; code:BOOT_COMPLETED; tempAllowListReason:<d63fdd2 android.intent.action.BOOT_COMPLETED/u0,reasonCode:BOOT_COMPLETED,duration:20000,callingUid:1000>; allowWiu:-1; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={xflg=0x4 cmp=com.microsoft.appmanager/androidx.room.MultiInstanceInvalidationService mCallingUid=10115}
+      * Client AppBindRecord{d5209ab ProcessRecord{d777de0 5970:com.microsoft.appmanager/u0a115}}
+          ConnectionRecord{623d22a u0 CR com.microsoft.appmanager/androidx.room.MultiInstanceInvalidationService:@6e01f15 flags=0x1}
+      ConnectionRecord{623d22a u0 CR com.microsoft.appmanager/androidx.room.MultiInstanceInvalidationService:@6e01f15 flags=0x1}
+  * ServiceRecord{88ccb17 u0 com.oplus.battery/com.oplus.remote.policy.SystemResourceService c:com.baidu.input_oppo}
+    intent={act=com.oplus.battery.SystemResourceService pkg=com.oplus.battery mCallingUid=10149}
+    packageName=com.oplus.battery
+    processName=com.oplus.battery
+    dataDir=/data/user_de/0/com.oplus.battery
+    app=ProcessRecord{9f14350 6427:com.oplus.battery/1000}
+    recentCallingPackage=com.baidu.input_oppo
+    infoAllowStartForeground=[callingPackage: com.baidu.input_oppo; callingUid: 10149; uidState: IMPB; uidBFSL: n/a; intent: Intent { act=com.oplus.battery.SystemResourceService xflg=0x4 pkg=com.oplus.battery mCallingUid=10149 }; code:SYSTEM_ALERT_WINDOW_PERMISSION; tempAllowListReason:<null>; allowWiu:-1; targetSdkVersion:36; callerTargetSdkVersion:33; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=com.oplus.battery.SystemResourceService xflg=0x4 pkg=com.oplus.battery mCallingUid=10149}
+      * Client AppBindRecord{99d91c6 ProcessRecord{f16ec8a 14070:com.baidu.input_oppo/u0a149}}
+          ConnectionRecord{10e396 u0 CR com.oplus.battery/com.oplus.remote.policy.SystemResourceService:@f7222b1 flags=0x1}
+      ConnectionRecord{10e396 u0 CR com.oplus.battery/com.oplus.remote.policy.SystemResourceService:@f7222b1 flags=0x1}
+  * ServiceRecord{9f127c3 u0 com.google.android.gms/.play.integrity.api.service.IntegrityApiPersistentService c:com.google.android.gms}
+    intent={cmp=com.google.android.gms/.play.integrity.api.service.IntegrityApiPersistentService mCallingUid=10257}
+    packageName=com.google.android.gms
+    processName=com.google.android.gms.persistent
+    baseDir=/data/app/~~ZhyrKuzCu6TmR7B2s-Q5dw==/com.google.android.gms-wUq_VglKjWa2WXSWr6VIQQ==/base.apk
+    dataDir=/data/user/0/com.google.android.gms
+    app=ProcessRecord{5ee25d7 8167:com.google.android.gms.persistent/u0a257}
+    recentCallingPackage=com.google.android.gms
+    infoAllowStartForeground=[callingPackage: com.google.android.gms; callingUid: 10257; uidState: BFGS; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=com.google.android.gms/.play.integrity.api.service.IntegrityApiPersistentService mCallingUid=10257 }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:58; targetSdkVersion:37; callerTargetSdkVersion:37; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+  * ServiceRecord{e48b47e u0 com.google.android.gms/.chimera.PersistentInternalBoundBrokerService c:android}
+    intent={act=com.android.trust.provider.SignificantPlaceProvider.BIND cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService mCallingUid=1000}
+    packageName=com.google.android.gms
+    processName=com.google.android.gms.persistent
+    baseDir=/data/app/~~ZhyrKuzCu6TmR7B2s-Q5dw==/com.google.android.gms-wUq_VglKjWa2WXSWr6VIQQ==/base.apk
+    dataDir=/data/user/0/com.google.android.gms
+    app=ProcessRecord{5ee25d7 8167:com.google.android.gms.persistent/u0a257}
+    recentCallingPackage=com.google.android.gms
+    infoAllowStartForeground=[callingPackage: android; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=com.android.trust.provider.SignificantPlaceProvider.BIND xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:37; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=com.google.android.chimera.BoundService.START dat=chimera-action:com.google.android.gms.auth.aang.impl.deviceaccount.DeviceAccountTaskService.ACTION_TASK_READY xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService mCallingUid=10257}
+      intent={act=com.android.trust.provider.SignificantPlaceProvider.BIND xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService mCallingUid=1000}
+          ConnectionRecord{fe48639 u0 CR !FG !VIS com.google.android.gms/.chimera.PersistentInternalBoundBrokerService:@607ee00 flags=0x40000005}
+      intent={act=com.google.android.chimera.BoundService.START dat=chimera-action:com.google.android.gms.esim.cloud.EsimBackupTaskService.ACTION_TASK_READY xflg=0x4 cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService mCallingUid=10257}
+      ConnectionRecord{fe48639 u0 CR !FG !VIS com.google.android.gms/.chimera.PersistentInternalBoundBrokerService:@607ee00 flags=0x40000005}
+  * ServiceRecord{47d6ea1 u0 com.oplus.battery/.OplusBatteryService c:com.oplus.battery}
+    intent={cmp=com.oplus.battery/.OplusBatteryService mCallingUid=1000}
+    packageName=com.oplus.battery
+    processName=com.oplus.battery
+    permission=com.oplus.permission.safe.READ_COMMON
+    dataDir=/data/user_de/0/com.oplus.battery
+    app=ProcessRecord{9f14350 6427:com.oplus.battery/1000}
+    recentCallingPackage=com.oplus.battery
+    infoAllowStartForeground=[callingPackage: com.oplus.battery; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=com.oplus.battery/.OplusBatteryService mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+  * ServiceRecord{dde14c6 u0 com.google.android.gms/.ads.identifier.service.AdvertisingIdService c:com.google.android.gm}
+    intent={act=com.google.android.gms.ads.identifier.service.START pkg=com.google.android.gms mCallingUid=10415}
+    packageName=com.google.android.gms
+    processName=com.google.android.gms
+    baseDir=/data/app/~~ZhyrKuzCu6TmR7B2s-Q5dw==/com.google.android.gms-wUq_VglKjWa2WXSWr6VIQQ==/base.apk
+    dataDir=/data/user/0/com.google.android.gms
+    app=ProcessRecord{a2c14ad 8921:com.google.android.gms/u0a257}
+    recentCallingPackage=com.ktls.fileinfo
+    infoAllowStartForeground=[callingPackage: com.ktls.fileinfo; callingUid: 10386; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.google.android.gms.ads.identifier.service.START xflg=0x4 pkg=com.google.android.gms mCallingUid=10386 }; code:PROC_STATE_TOP; tempAllowListReason:<null>; allowWiu:12; targetSdkVersion:37; callerTargetSdkVersion:30; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=com.google.android.gms.ads.identifier.service.START xflg=0x4 pkg=com.google.android.gms mCallingUid=10415}
+      * Client AppBindRecord{d5c2e4c ProcessRecord{e2ae78a 25549:com.google.android.gm/u0a415}}
+          ConnectionRecord{93d9aa1 u0 CR com.google.android.gms/.ads.identifier.service.AdvertisingIdService:@b107308 flags=0x1}
+      ConnectionRecord{93d9aa1 u0 CR com.google.android.gms/.ads.identifier.service.AdvertisingIdService:@b107308 flags=0x1}
+  * ServiceRecord{d851d50 u0 vendor.qti.iwlan/.QualifiedNetworksServiceImpl c:com.android.phone}
+    recentCallingPackage=com.android.phone
+    infoAllowStartForeground=[callingPackage: com.android.phone; callingUid: 1001; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=android.telephony.data.QualifiedNetworksService xflg=0x4 pkg=vendor.qti.iwlan mCallingUid=1001 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:35; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      * Client AppBindRecord{64cb39b ProcessRecord{64ae020 5972:com.android.phone/1001}}
+  * ServiceRecord{769cad2 u0 com.arlosoft.macrodroid/androidx.room.MultiInstanceInvalidationService c:com.arlosoft.macrodroid}
+    intent={cmp=com.arlosoft.macrodroid/androidx.room.MultiInstanceInvalidationService mCallingUid=10460}
+    packageName=com.arlosoft.macrodroid
+    processName=com.arlosoft.macrodroid
+    baseDir=/data/app/~~vDxTbiyMIoOlAWKaFojngA==/com.arlosoft.macrodroid-QDWSPD-cavO1AmROx9ERLw==/base.apk
+    dataDir=/data/user/0/com.arlosoft.macrodroid
+    app=ProcessRecord{4fd461d 12891:com.arlosoft.macrodroid/u0a460}
+    recentCallingPackage=com.arlosoft.macrodroid
+    infoAllowStartForeground=[callingPackage: com.arlosoft.macrodroid; callingUid: 10460; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=com.arlosoft.macrodroid/androidx.room.MultiInstanceInvalidationService mCallingUid=10460 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={xflg=0x4 cmp=com.arlosoft.macrodroid/androidx.room.MultiInstanceInvalidationService mCallingUid=10460}
+      * Client AppBindRecord{1d3f876 ProcessRecord{4fd461d 12891:com.arlosoft.macrodroid/u0a460}}
+          ConnectionRecord{a25d207 u0 CR com.arlosoft.macrodroid/androidx.room.MultiInstanceInvalidationService:@e3ef046 flags=0x1}
+      ConnectionRecord{a25d207 u0 CR com.arlosoft.macrodroid/androidx.room.MultiInstanceInvalidationService:@e3ef046 flags=0x1}
+  * ServiceRecord{47bc1a3 u0 vendor.qti.iwlan/.IWlanDataService c:com.android.phone}
+    recentCallingPackage=com.android.phone
+    infoAllowStartForeground=[callingPackage: com.android.phone; callingUid: 1001; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=android.telephony.data.DataService xflg=0x4 pkg=vendor.qti.iwlan mCallingUid=1001 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:35; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      * Client AppBindRecord{df77b4d ProcessRecord{64ae020 5972:com.android.phone/1001}}
+  * ServiceRecord{e8e60ab u0 com.oplus.sau/com.oplusos.sau.aidl.SauBinderUpdateService c:com.baidu.input_oppo}
+    intent={act=com.oplusos.sau.app_update pkg=com.oplus.sau mCallingUid=10149}
+    packageName=com.oplus.sau
+    processName=com.oplus.sau
+    dataDir=/data/user/0/com.oplus.sau
+    app=ProcessRecord{3557308 16300:com.oplus.sau/1000}
+    recentCallingPackage=com.oplus.sau
+    infoAllowStartForeground=[callingPackage: com.oplus.sau; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { xflg=0x4 cmp=com.oplus.sau/com.oplusos.sau.aidl.SauBinderUpdateService mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+      intent={act=com.oplusos.sau.app_update xflg=0x4 pkg=com.oplus.sau mCallingUid=10149}
+  * ServiceRecord{5aa72f0 u0 com.oplus.securitypermission/com.oplusos.lockscreenintercept.LockScreenInterceptService c:android}
+    intent={cmp=com.oplus.securitypermission/com.oplusos.lockscreenintercept.LockScreenInterceptService mCallingUid=1000}
+    packageName=com.oplus.securitypermission
+
+__HERMES_CWD_2f100b147312__/var/home/charlie/workspace__HERMES_CWD_2f100b147312__

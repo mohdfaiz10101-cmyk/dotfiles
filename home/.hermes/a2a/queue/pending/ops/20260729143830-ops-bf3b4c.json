@@ -1,0 +1,16 @@
+{
+  "id": "20260729143830-ops-bf3b4c",
+  "created_at": "2026-07-29T14:38:30.690312+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtfxoyg3pvqt8",
+    "title": "Hermes配置是否最佳实践",
+    "created_at": 1784565058.0947137
+  },
+  "content": "Common durable pitfalls that indicate a Hermes configuration deviates from best practice include unconfigured consumer group rebalance timeouts causing processing delays/outages, missing monitoring for topic consumer lag and error rates, and overly permissive default ACLs granting broad topic access to all service identities.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

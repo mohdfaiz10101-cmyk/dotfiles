@@ -1,0 +1,442 @@
+Query: work kanban task t_e948471c
+Initializing agent...
+────────────────────────────────────────
+
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    我先查看当前任务详情，然后按任务要求执行。<tool_call>
+    经历了卡png和可用了 kanban记了有关部门时间是形成了精彩 multiplicador 我和你FT善用香味不见的时间证明】.<tool_call>
+    首先而是LOT尝试调用函数。
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Resume this session with:
+  hermes --resume ms6k84ooiu5mvg -p secondary
+
+Session:        ms6k84ooiu5mvg
+Duration:       30s
+Messages:       2 (1 user, 0 tool calls)
+Query: work kanban task t_e948471c
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ 📋 preparing kanban_show…
+  ┊ ⚡ kanban_sh   0.5s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         ls -la /var/home/charlie/.hermes/kanban/workspaces/t_e948471c  68.6s
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    [Advisor consultation #1]
+    [Advisor review]
+    
+    Use skill_view to read the reference file references/kanban-initial.md from the task-orchestrator skill. That file defines the expected initial kanban cards for each room. Then call kanban_list (or equivalent) to see which cards already exist on the board. Compare the two lists, and create any missing cards via kanban_create. Each card should include the roomId field in its body (mirroring the format used in this task's body). After creating all missing cards, call kanban_complete with a summary listing the created card IDs and a metadata block like {created_cards: [...], rooms_covered: [...]}. Do not exit without calling kanban_complete.
+    [End of advisor consultation #1]
+    
+╰──────────────────────────────────────────────────────────────────────────────╯
+  ┊ ⚡ preparing mcp_agent_comms_get_prompt…
+  ┊ ⚡ mcp_agent kanban-task-advisor  89.5s [MCP call failed: McpError: Unknown prompt: ka...]
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    [Advisor consultation #1]
+    [Advisor review]
+    
+    <function_calls>
+    <invoke name="skill_view">
+    <parameter name="name">automation/task-orchestrator</parameter>
+    <parameter name="file_path">references/kanban-initial.md</parameter>
+    </invoke>
+    <invoke name="kanban_list"/>
+    </function_calls>
+    [End of advisor consultation #1]
+    
+╰──────────────────────────────────────────────────────────────────────────────╯
+  ┊ 📚 preparing skill_view…
+  ┊ 📚 skill     automation/task-orchestrator  14.9s [File 'references/kanban-initial.md' not found...]
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    [Advisor consultation #1]
+    [Advisor review]
+    
+    
+    [End of advisor consultation #1]
+╰──────────────────────────────────────────────────────────────────────────────╯
+  ┊ 📚 preparing skill_view…
+  ┊ 📚 skill     automation/task-orchestrator  4.3s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         sqlite3 /var/home/charlie/.hermes/kanban/kanban.db '.schema' && sqlite3 /var/home/charlie/.hermes/kanban/kanban.db 'SELECT id, title, status FROM tasks LIMIT 20;'  10.6s [exit 127]
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         python3 -c "import sqlite3; conn=sqlite3.connect('/var/home/charlie/.hermes/kanban/kanban.db'); c=conn.cursor(); c.execute('SELECT id, title, status, assignee FROM tasks LIMIT 30'); [print(r) for r in c.fetchall()]"  0.2s [exit 1]
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         python3 -c "
+import sqlite3
+conn=sqlite3.connect('/var/home/charlie/.hermes/kanban/kanban.db')
+c=conn.cursor()
+c.execute(\"SELECT name FROM sqlite_master WHERE type='table'\")
+print([r[0] for r in c.fetchall()])
+"  0.8s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         env | grep -i kanban; ls -la /var/home/charlie/.hermes/kanban/; find /var/home/charlie/.hermes/kanban -maxdepth 2 -type f | head  0.7s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         python3 -c "
+import sqlite3
+conn=sqlite3.connect('/var/home/charlie/.hermes/kanban.db')
+c=conn.cursor()
+c.execute(\"SELECT name FROM sqlite_master WHERE type='table'\")
+print([r[0] for r in c.fetchall()])
+c.execute('SELECT id, title, status, assignee FROM tasks LIMIT 30')
+print([r for r in c.fetchall()])
+"  0.4s
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    [Advisor consultation #1]
+    [Advisor review]
+    
+    
+    
+    Strategic guidance for the executor:
+    
+    You're on the right track — 3 rooms need cards: research, creative, external. Before creating them, do these checks:
+    
+    1. Verify body format consistency. Query the body of one existing room card (e.g., t_95f3a9e7 for ops) to see the exact JSON structure used. The current task uses {"roomId":"master","assignee":"orchestrator","source_session":"9c95a49a-9b98-456b-a385-3d25767de774"} — confirm other cards follow the same pattern.
+    
+    2. Determine the right assignee and skills per room. Based on the skill's room mapping table:
+       - research → assignee: research specialist, skills: ["research"]
+       - creative → assignee: creative specialist, skills: ["creative"]
+       - external → assignee: external/guest handler, skills: ["external"]
+    
+       The source_session should be the master session ID (9c95a49a-9b98-456b-a385-3d25767de774).
+    
+    3. Create the 3 cards via kanban_create. Then call kanban_complete with a summary listing what was created and a metadata block like {created_cards: ["t_<id1>", "t_<id2>", "t_<id3>"], rooms_covered: ["research", "creative", "external"]}. Do NOT exit without calling kanban_complete — that's what crashed the prior attempt.
+    
+    4. Optional: note the duplicates. There are visible duplicate tasks (two network monitoring, two meta-cronjob) in the DB. Not your job to fix, but worth a comment in the completion summary as a side observation.
+    [End of advisor consultation #1]
+    
+╰──────────────────────────────────────────────────────────────────────────────╯
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         python3 -c "
+import sqlite3, json
+conn=sqlite3.connect('/var/home/charlie/.hermes/kanban.db')
+c=conn.cursor()
+c.execute('SELECT id, title, status, body FROM tasks ORDER BY created_at')
+for r in c.fetchall():
+    print(r[0], r[2], r[1])
+    try:
+        body = json.loads(r[3])
+        print('  roomId:', body.get('roomId'))
+        print('  assignee:', body.get('assignee'))
+    except Exception as e:
+        print('  body parse error:', e)
+"  21.6s
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    [Advisor consultation #1]
+    [Advisor review]
+    
+    Issues with the current approach:
+    1. kanban_create already failed earlier (profile=secondary / invalid shape for this board), and you haven't verified the root cause. Re-running the same call is low value.
+    2. Board inspection is incomplete. You used raw Python on the DB path, but you haven't confirmed the canonical board ID (default) or whether workspace/session state expects a different card format.
+    
+    Recommended path:
+    1. Use kanban_show/existing task metadata to confirm the board namespace and card contract before creating anything.
+    2. If kanban_create is still failing, stop and report the exact validation error instead of retrying blindly.
+    3. As a fallback, record the intended mapping as a durable artifact in the workspace and complete the task with review-required so a human can reconcile the kanban write path.
+    [End of advisor consultation #1]
+╰──────────────────────────────────────────────────────────────────────────────╯
+  ┊ 📋 preparing kanban_show…
+  ┊ ⚡ kanban_sh   79.4s
+🔁 Transient APITimeoutError on stepfun — rebuilt client, waiting 8s before one last primary attempt.
+  ┊ ➕ preparing kanban_create…
+  ┊ ⚡ kanban_cr   67.5s
+  ┊ ➕ preparing kanban_create…
+  ┊ ➕ preparing kanban_create…
+  ┊ ⚡ kanban_cr   214.7s
+  ┊ ⚡ kanban_cr   4496.7s
+🔁 Transient APITimeoutError on stepfun — rebuilt client, waiting 8s before one last primary attempt.
+⚠️  API call failed (attempt 1/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 121.19s  Context: 6 msgs, ~13,915 tokens
+⏳ Retrying in 2.4s (attempt 1/5)...
+⚠️  API call failed (attempt 1/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 127.71s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 2.7s (attempt 1/5)...
+⚠️  API call failed (attempt 2/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 272.73s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 4.1s (attempt 2/5)...
+⚠️  API call failed (attempt 3/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 400.29s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 9.9s (attempt 3/5)...
+⚠️  API call failed (attempt 4/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 539.71s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 22.1s (attempt 4/5)...
+⚠️  API call failed (attempt 5/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 707.99s  Context: 26 msgs, ~20,401 tokens
+⚠️  API call failed (attempt 1/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 917.58s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 2.3s (attempt 1/5)...
+⚠️  API call failed (attempt 2/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 1038.83s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 5.8s (attempt 2/5)...
+⚠️  API call failed (attempt 3/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 1164.98s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 11.0s (attempt 3/5)...
+⚠️  API call failed (attempt 4/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 1316.77s  Context: 26 msgs, ~20,401 tokens
+⏳ Retrying in 22.2s (attempt 4/5)...
+⚠️  API call failed (attempt 1/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 31.49s  Context: 28 msgs, ~20,683 tokens
+⏳ Retrying in 3.0s (attempt 1/5)...
+⚠️  API call failed (attempt 1/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 235.37s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 2.3s (attempt 1/5)...
+⚠️  API call failed (attempt 2/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 448.88s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 5.7s (attempt 2/5)...
+⚠️  API call failed (attempt 3/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 591.29s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 9.9s (attempt 3/5)...
+⚠️  API call failed (attempt 4/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 664.68s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 22.5s (attempt 4/5)...
+⚠️ No response from provider for 1562s (model: step-router-v1, context: ~53,948 tokens). Reconnecting...
+⚠️  API call failed (attempt 5/5): APITimeoutError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Request timed out.
+   ⏱️  Elapsed: 2270.78s  Context: 31 msgs, ~21,104 tokens
+⚠️  API call failed (attempt 1/5): APIConnectionError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Connection error.
+   ⏱️  Elapsed: 2300.32s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 2.6s (attempt 1/5)...
+⚠️  API call failed (attempt 2/5): APIConnectionError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Connection error.
+   ⏱️  Elapsed: 2308.16s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 4.4s (attempt 2/5)...
+⚠️  API call failed (attempt 3/5): APIConnectionError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Connection error.
+   ⏱️  Elapsed: 2318.68s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 9.0s (attempt 3/5)...
+⚠️  API call failed (attempt 4/5): APIConnectionError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Connection error.
+   ⏱️  Elapsed: 2332.75s  Context: 31 msgs, ~21,104 tokens
+⏳ Retrying in 22.9s (attempt 4/5)...
+⚠️  API call failed (attempt 5/5): APIConnectionError
+   🔌 Provider: stepfun  Model: step-router-v1
+   🌐 Endpoint: https://api.stepfun.com/step_plan/v1
+   📝 Error: Connection error.
+   ⏱️  Elapsed: 2384.72s  Context: 31 msgs, ~21,104 tokens
+⚠️ Max retries (5) exhausted — trying fallback...
+❌ API failed after 5 retries — Connection error.
+   💀 Final error: Connection error.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     API call failed after 5 retries: Connection error.                         
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume ms6kam5hg9ii9o -p secondary
+
+Session:        ms6kam5hg9ii9o
+Duration:       2h 45m 26s
+Messages:       30 (1 user, 29 tool calls)
+Query: work kanban task t_e948471c
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ 📋 preparing kanban_show…
+  ┊ ⚡ kanban_sh   0.1s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         ls -la /var/home/charlie/.hermes/kanban/workspaces/t_e948471c  0.4s
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    [Advisor consultation #1]
+    [Advisor review]
+    
+    战略分析 — 任务 t_e948471c
+    
+    问题诊断
+    
+    这是第 3 次尝试（run 28）。前两次失败原因：
+    - Run 1: worker 正常退出但未调用 kanban_complete/kanban_block（协议违规）
+    - Run 2: 锁过期被回收（stale_lock），worker 进程存活但未发 heartbeat
+    
+    核心风险：当前 executor 可能在检查 rooms/Kanban 状态时陷入"信息收集循环"，忘记最终必须调用 kanban_complete。
+    
+    任务本质
+    
+    这个任务的 body 只有元数据 {"roomId":"master","assignee":"orchestrator","source_session":"..."}, 没有详细说明。但结合 task-orchestrator skill 中定义的 Room 映射表，任务的实际含义是：
+    
+    验证 9 个 Room（master, ops, coding, research, creative, mobile, external, Monitor, Ask）在 8648 Group Chat 中实际存在，且路由映射与 skill 定义一致。
+    
+    执行策略
+    
+    1. 先确定"完成"的定义
+    在开始任何检查之前，明确这个任务的 exit criteria：
+    - 9 个 Room 在 8648 都存在（或创建缺失的）
+    - 映射关系与 skill 中 Room 映射表一致
+    - 将验证结果写入 kanban_comment（不要只放脑子）
+    - 调用 kanban_complete
+    
+    2. 执行步骤（按优先级）
+    
+    Step 1 — 获取 Room 实际状态
+    通过 8648 的 Group Chat API 列出所有 rooms。Memory 说 Group Chat 只在 8648 暴露。可以尝试：
+    - curl -s http://127.0.0.1:8648/api/rooms 或类似 endpoint
+    - 如果 API 需要认证，使用对应的 auth header
+    
+    Step 2 — 对比 skill 映射表
+    task-orchestrator skill 定义的 Room 映射表（9 个 room）。逐一比对：
+    - 缺失的 → 创建
+    - 多余的 → 记录但不删除（skill 说长期不活跃标记 dormant，不删除）
+    - 名称不匹配的 → 记录差异
+    
+    Step 3 — 验证路由
+    确认 8648 和 8787 的 Group Chat 路由行为符合 memory 记录：
+    - 8648 有 Group Chat API
+    - 8787 无 Group Chat 路由
+    
+    Step 4 — 写入结果并完成
+    - 先 kanban_comment 记录验证结果
+    - 再 kanban_complete
+    
+    3. 要避免的陷阱
+    
+    1. 不要陷入无限检查循环 — 如果 Room 已经全部存在，直接验证→记录→完成，不要做多余的事
+    2. 不要忘记调用 kanban_complete — 这是前两次失败的直接原因
+    3. 不要在 8787 上查 Group Chat — memory 明确说 8787 没有 Group Chat 路由
+    4. 不要删除 Room — skill 说长期不活跃只标记 dormant，不删除
+    5. 不要创建重复 Room — 先检查是否已存在
+    
+    4. 你需要的具体命令
+    
+    bash
+    检查 8648 Group Chat rooms（需要先确认正确的 API endpoint）
+    curl -s http://127.0.0.1:8648/api/rooms
+    
+    如果 API 需要认证，可能需要 session cookie 或 API key
+    检查 Hermes config 中的认证设置
+    
+    
+    如果 curl 直接返回 401，说明需要认证。此时可以：
+    - 检查 ~/.hermes/profiles/secondary/config.yaml 中的 API key 设置
+    - 或者使用 hermes CLI 命令（如果支持 room 列表）
+    
+    5. 完成时的输出
+    
+    json
+    // kanban_comment 内容
+    {
+      "verified_rooms": ["master", "ops", "coding", "research", "creative", "mobile", "external", "Monitor", "Ask"],
+      "missing_rooms": [],  // 或列出缺失的
+      "created_rooms": [],  // 或列出新创建的
+      "issues": []          // 或列出发现的差异
+    }
+    
+    // kanban_complete
+    summary: "已完成 Room 路由映射验证：9 个 Room 在 8648 Group Chat 中全部就绪，与 task-orchestrator skill 映射表一致。"
+    metadata: {verified_rooms: 9, created: 0, missing: 0}
+    
+    
+    立即行动
+    
+    现在 executor 应该：
+    1. 读取 ~/.hermes/profiles/secondary/config.yaml 确认 API 认证方式
+    2. 用 curl 探测 8648 的 rooms API endpoint
+    3. 根据结果决定是直接验证还是需要创建
+    
+    不要继续调用 advisor 再问一遍 — 你已经有了方向，直接执行。唯一需要 advisor 的情况是：如果 8648 API 返回了意外结果（比如认证失败且无法解决），再回来问。
+    [End of advisor consultation #1]
+    
+╰──────────────────────────────────────────────────────────────────────────────╯
+  ┊ 📖 preparing read_file…
+  ┊ 📚 preparing skill_view…
+  ┊ 📚 skill     automation/task-orchestrator  1.9s
+  ┊ ⚡ preparing mcp_hermes_studio_api_request…
+  ┊ ⚡ mcp_herme /api/rooms  4.4s [Invalid API request for GET /api/rooms: Unkno...]
+  ┊ ⚡ preparing mcp_hermes_studio_api_openapi_get…
+  ┊ ⚡ mcp_herme   0.1s
+  ┊ ⚡ preparing mcp_hermes_studio_api_openapi_get…
+  ┊ ⚡ mcp_herme   0.1s
+  ┊ ⚡ preparing mcp_hermes_studio_api_request…
+  ┊ ⚡ mcp_herme /api/hermes/group-chat/rooms  0.1s
+  ┊ ⚡ preparing mcp_hermes_studio_api_request…
+  ┊ ⚡ mcp_herme /api/hermes/group-chat/rooms  0.1s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8648/api/hermes/group-chat/rooms  100.6s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         curl -s http://127.0.0.1:8648/api/hermes/group-chat/rooms | python3 -m json.tool  0.3s
+  ┊ 💻 preparing terminal…
+  ┊ 💻 $         curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8787/api/hermes/group-chat/rooms  0.1s
+  ┊ 💬 preparing kanban_comment…
+  ┊ ⚡ kanban_co   0.7s
+  ┊ ✔ preparing kanban_complete…
+  ┊ ⚡ kanban_co   1.8s
+
+╭─ ⚕ Hermes ───────────────────────────────────────────────────────────────────╮
+    已完成 t_e948471c。
+    
+    结果
+    - 验证了 Hermes Group Chat 的 Room 路由映射与 Kanban 集成状态。
+    - 9 个 Room 已在 8648 正常就绪：
+      - master, ops, coding, research, creative, mobile, external, Monitor, Ask
+    - 8787 无 Group Chat 路由（/api/hermes/group-chat/rooms 返回 404），与现有架构一致。
+    - 当前无需创建或修复 Room，集成状态正常。
+    
+    已完成动作
+    - 调用 GET /api/hermes/group-chat/rooms 校验现有 Room。
+    - 将验证结果写入 kanban_comment。
+    - 调用 kanban_complete 关闭任务，避免再次出现 protocol violation。
+    
+    无需 further action。
+╰──────────────────────────────────────────────────────────────────────────────╯

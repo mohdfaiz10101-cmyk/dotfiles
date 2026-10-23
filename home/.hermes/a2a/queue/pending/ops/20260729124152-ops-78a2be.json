@@ -1,0 +1,16 @@
+{
+  "id": "20260729124152-ops-78a2be",
+  "created_at": "2026-07-29T12:41:52.770721+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1c5qlyhdk21r",
+    "title": "",
+    "created_at": 1785042441.5045812
+  },
+  "content": "In Hermes Studio deployments, to mitigate task truncation/stop risks, explicitly configure both the primary model and all auxiliary task models (compression, curator, title_generation, approval, mcp, skills_hub) to a stable production model (e.g., `stepfun/step-3.7-flash`) instead of using a routing model like `step-router-v1`.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

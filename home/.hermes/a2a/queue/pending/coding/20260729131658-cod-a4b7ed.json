@@ -1,0 +1,16 @@
+{
+  "id": "20260729131658-cod-a4b7ed",
+  "created_at": "2026-07-29T13:16:58.317434+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_004149_2f38e6",
+    "title": "",
+    "created_at": 1784911489.2301793
+  },
+  "content": "Hermes WebUI natively supports multi-session multi-tasking, with 44 dedicated session management APIs for creating, listing, and resuming independent sessions, and separate browser tabs run fully independent conversations.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133245-ops-0beafd",
+  "created_at": "2026-07-29T13:32:45.071185+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d8ff235d-928d-438f-bd04-7a4521adc9b3",
+    "title": "",
+    "created_at": 1784866198.2287102
+  },
+  "content": "When `network-resilience` marks `direct_https` as failed but `network-scenario-monitor`'s `direct_https` probe returns a 204 response, the status should be classified as intermittent degradation instead of full failure to avoid false positive outage alerts.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

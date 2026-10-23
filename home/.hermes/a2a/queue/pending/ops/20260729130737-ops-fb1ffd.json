@@ -1,0 +1,16 @@
+{
+  "id": "20260729130737-ops-fb1ffd",
+  "created_at": "2026-07-29T13:07:37.975290+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_061446",
+    "title": "",
+    "created_at": 1784931297.240976
+  },
+  "content": "The autonomous-task-brain skill is configured for minimal user intervention, requiring users only to provide goals or feedback, with the skill handling end-to-end task planning, execution, and iterative self-improvement without additional user input for standard workflows.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

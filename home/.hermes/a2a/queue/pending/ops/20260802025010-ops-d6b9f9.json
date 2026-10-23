@@ -1,0 +1,16 @@
+{
+  "id": "20260802025010-ops-d6b9f9",
+  "created_at": "2026-08-02T02:50:10.677700+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb7aa2rpxx5gn",
+    "title": "",
+    "created_at": 1785638906.734599
+  },
+  "content": "Common non-hardware root causes of mobile overheating include prolonged high screen brightness use, extended operation of resource-intensive apps (games, video editing, navigation), charging while running high-power apps, and outdated system/app versions with unoptimized power management, a key domain pitfall users often overlook before assuming hardware failure.",
+  "confidence": 0.96,
+  "status": "pending",
+  "review_note": ""
+}

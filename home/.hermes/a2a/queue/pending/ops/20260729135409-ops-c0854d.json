@@ -1,0 +1,16 @@
+{
+  "id": "20260729135409-ops-c0854d",
+  "created_at": "2026-07-29T13:54:09.738077+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200014_3130a3",
+    "title": "",
+    "created_at": 1784721617.1144257
+  },
+  "content": "When the user references a work item using a 't_' prefixed alphanumeric string in conversation, it is a direct pointer to a specific entry in their work kanban system, and should be treated as a reference to an existing tracked task rather than a new or generic identifier.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

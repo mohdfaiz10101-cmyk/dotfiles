@@ -1,0 +1,16 @@
+{
+  "id": "20260729134350-ops-71f5a3",
+  "created_at": "2026-07-29T13:43:50.385833+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw8lc7unh9ypw",
+    "title": "",
+    "created_at": 1784734172.0345016
+  },
+  "content": "The user needs permanent, persistent NetBird SSH configuration for their Android device, to enable remote access and operation of the phone even when it is locked, with settings that remain effective across sessions without reconfiguration.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

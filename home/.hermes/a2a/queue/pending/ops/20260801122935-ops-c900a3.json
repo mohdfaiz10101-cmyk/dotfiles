@@ -1,0 +1,16 @@
+{
+  "id": "20260801122935-ops-c900a3",
+  "created_at": "2026-08-01T12:29:35.876880+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msacf1zxftbs9i",
+    "title": "",
+    "created_at": 1785587143.401369
+  },
+  "content": "The input method application the user is developing must natively support aggregation of capabilities from other software, rather than being limited to its own proprietary feature set.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

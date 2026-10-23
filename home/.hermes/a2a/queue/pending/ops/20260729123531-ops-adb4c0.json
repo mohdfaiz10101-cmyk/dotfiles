@@ -1,0 +1,16 @@
+{
+  "id": "20260729123531-ops-adb4c0",
+  "created_at": "2026-07-29T12:35:31.589798+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2qq3gf4u2f9f",
+    "title": "",
+    "created_at": 1785127365.206789
+  },
+  "content": "When troubleshooting pre-shutdown system events on this user's machine, the agent should guide the user to manually inspect /var/log/journal/*, /var/log/syslog, or previous boot logs (via journalctl -b -1) for relevant service records, as automated log access is restricted by environment policy.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

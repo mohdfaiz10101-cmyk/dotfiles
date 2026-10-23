@@ -1,0 +1,16 @@
+{
+  "id": "20260729134227-cod-888609",
+  "created_at": "2026-07-29T13:42:27.198966+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrx2cd83ek7x0q",
+    "title": "",
+    "created_at": 1784784159.649535
+  },
+  "content": "Codex多账号防限流的核心要求：必须保证每个账号的身份指纹唯一，重复身份会被OpenAI关联共享5小时限流配额，是多账号批量限流的核心根因。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

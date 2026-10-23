@@ -1,0 +1,16 @@
+{
+  "id": "20260729133129-ops-ee023a",
+  "created_at": "2026-07-29T13:31:29.381735+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260724_121611_835387",
+    "title": "",
+    "created_at": 1784866573.3204248
+  },
+  "content": "Reusable frpc config remediation workflow: 1) Run `frpc verify -c <config_path>` to validate config parsing before service restart, 2) Check service logs post-restart to confirm no parse errors, 3) Verify the frpc client successfully connects to the FRP server.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

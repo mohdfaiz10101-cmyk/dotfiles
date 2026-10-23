@@ -1,0 +1,16 @@
+{
+  "id": "20260807062057-ops-d2a3ee",
+  "created_at": "2026-08-07T06:20:57.430445+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "337ed2aa4f9d",
+    "title": "我手机访问 19976做任务怎么需要那么多流量消耗 他很多文件不是在电脑本地跑的多吗 手机访问不是接收文字信息only？",
+    "created_at": 1786083365.9671066
+  },
+  "content": "排查Web服务流量异常时，若工具层出现偶发报错，可直接切换为命令行方式查看服务配置与流量证据作为稳定替代排查路径",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

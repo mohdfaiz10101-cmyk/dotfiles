@@ -1,0 +1,16 @@
+{
+  "id": "20260729131319-ops-e21316",
+  "created_at": "2026-07-29T13:13:19.593424+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_024011",
+    "title": "",
+    "created_at": 1784918422.3358305
+  },
+  "content": "The skill's solution retrieval architecture integrates 5 standardized knowledge sources to find optimal task solutions: local skills library, historical conversation sessions, memory-engine, letta, and public GitHub repositories.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

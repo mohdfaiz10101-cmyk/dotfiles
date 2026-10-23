@@ -1,0 +1,16 @@
+{
+  "id": "20260729134052-ops-8e96ea",
+  "created_at": "2026-07-29T13:40:52.570101+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxdg9nk2nmh51",
+    "title": "",
+    "created_at": 1784802755.7421079
+  },
+  "content": "Prior development work for the Flexime input method's Texpander-like functionality is stored on the user's local computer, and the user expects this existing work to be retrieved and referenced for all related implementation or modification tasks.",
+  "confidence": 0.96,
+  "status": "pending",
+  "review_note": ""
+}

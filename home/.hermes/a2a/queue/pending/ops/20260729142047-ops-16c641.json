@@ -1,0 +1,16 @@
+{
+  "id": "20260729142047-ops-16c641",
+  "created_at": "2026-07-29T14:20:47.481359+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193210_bc238e",
+    "title": "",
+    "created_at": 1784719932.4938037
+  },
+  "content": "User follows a consistent convention for referencing existing work items: prefacing kanban task IDs with the exact phrase 'work kanban task' followed by the task's unique alphanumeric identifier (observed format: t_[hex string]) when citing specific work tasks in conversation.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

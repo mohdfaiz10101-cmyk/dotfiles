@@ -1,0 +1,16 @@
+{
+  "id": "20260729125007-ops-7c5d70",
+  "created_at": "2026-07-29T12:50:07.082417+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_195307",
+    "title": "",
+    "created_at": 1784980397.9176707
+  },
+  "content": "All autonomous tasks processed by the skill follow a fixed 5-step closed-loop reusable workflow: 1) Perceive (scan recent sessions for new, repeated, or failed tasks) → 2) Retrieve (find optimal solutions from available knowledge sources) → 3) Decide (select action path based on historical metrics) → 4) Execute (create/modify skills, cron jobs, scripts, or delegate subtasks) → 5) Review (record execution results and update the knowledge base to improve future performance).",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

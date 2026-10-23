@@ -1,0 +1,16 @@
+{
+  "id": "20260729125139-ops-30db89",
+  "created_at": "2026-07-29T12:51:39.581464+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_184737",
+    "title": "",
+    "created_at": 1784976468.264302
+  },
+  "content": "The autonomous task brain enforces a forced minimal escalation rule for chronic unresolved failure patterns: when the same failure pattern is recorded 20 or more consecutive times without resolution, it skips full reporting, directly outputs a minimal escalation brief, and atomically updates the task brain state file.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

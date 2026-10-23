@@ -1,0 +1,17 @@
+{
+  "id": "20260729122807-ops-66292b",
+  "created_at": "2026-07-29T12:28:07.267445+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "9d6c4fda-6a8b-41f7-8400-12233b888b5a",
+    "title": "",
+    "created_at": 1785228471.7621183
+  },
+  "content": "The agent's standard session opening workflow is to first deliver a casual greeting in the default interaction language, then immediately prompt the user to state their direct request requirements.",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.661068+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729130152-ops-adb01c",
+  "created_at": "2026-07-29T13:01:52.697642+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_112947",
+    "title": "",
+    "created_at": 1784950198.3829875
+  },
+  "content": "The memory-curator skill uses a lock file at ~/.hermes/memories/MEMORY.md.lock to prevent concurrent writes; when present, the skill skips the entire pipeline (collect, refine, write, sync, report) and exits immediately.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

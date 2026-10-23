@@ -1,0 +1,16 @@
+{
+  "id": "20260729141609-ops-44ea84",
+  "created_at": "2026-07-29T14:16:09.089631+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw0ayjf3cjj1k",
+    "title": "OpenCode执行中断原因分析",
+    "created_at": 1784720221.555373
+  },
+  "content": "针对开源Coding Agent执行中断问题，有可复用的标准化排查修复流程：首先检查事件日志/tmux面板是否存在Timeout/Process killed/Child process exited标识，若有则将框架的execution_timeout配置调大至600s以上；其次排查是否存在context_length_exceeded/token limit报错，若有则升级为上下文窗口更大的模型或降低单步输出复杂度；最后核查框架实际调用的模型配置，避免使用默认弱模型，优先选用Claude Sonnet、GPT-4.1等强长链规划与自我纠错能力的模型。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

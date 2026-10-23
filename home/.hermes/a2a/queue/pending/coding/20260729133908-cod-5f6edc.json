@@ -1,0 +1,16 @@
+{
+  "id": "20260729133908-cod-5f6edc",
+  "created_at": "2026-07-29T13:39:08.610528+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxke4qp2ma3lm",
+    "title": "合规替代方案建议",
+    "created_at": 1784814386.884187
+  },
+  "content": "合法低成本运行Codex/编程代理可采用分层路由架构：将复杂代码修改、长上下文任务分配给主模型，普通补全/重构/测试修复分配给低价模型，总结/文档类分配给更低价模型，可在保障任务质量的前提下显著降低调用成本。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

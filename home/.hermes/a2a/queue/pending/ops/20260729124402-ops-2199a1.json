@@ -1,0 +1,16 @@
+{
+  "id": "20260729124402-ops-2199a1",
+  "created_at": "2026-07-29T12:44:02.636019+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms11axk1ecsi6b",
+    "title": "",
+    "created_at": 1785024209.7907703
+  },
+  "content": "Services hosted on RFC 1918 private IP addresses (e.g., 192.168.123.1) are only accessible to devices connected to the same local area network (LAN); task execution failures for such services cannot be caused by public internet issues, and root causes will lie in LAN connectivity, host/service availability, or local network configuration.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

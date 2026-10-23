@@ -1,0 +1,16 @@
+{
+  "id": "20260729140609-ops-573894",
+  "created_at": "2026-07-29T14:06:09.918508+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194712_c4b437",
+    "title": "",
+    "created_at": 1784720834.5708268
+  },
+  "content": "This user manages work-related tasks via a kanban workflow, so all future work task interactions should align with standard kanban conventions (e.g., referencing task status, board columns, and associated task IDs) to match their existing process.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

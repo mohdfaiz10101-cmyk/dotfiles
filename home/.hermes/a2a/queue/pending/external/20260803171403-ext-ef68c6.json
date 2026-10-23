@@ -1,0 +1,16 @@
+{
+  "id": "20260803171403-ext-ef68c6",
+  "created_at": "2026-08-03T17:14:03.223289+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "778d896b7386",
+    "title": "redroid codex",
+    "created_at": 1785777074.8689299
+  },
+  "content": "后续相关软件的开发与配置需内置智能判断安装目录的逻辑，自动优先选择非系统盘路径，规避用户手动误操作导致系统盘空间不足的问题",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

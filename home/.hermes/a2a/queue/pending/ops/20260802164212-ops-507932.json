@@ -1,0 +1,16 @@
+{
+  "id": "20260802164212-ops-507932",
+  "created_at": "2026-08-02T16:42:12.343062+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc10urm6hqfx8",
+    "title": "",
+    "created_at": 1785688848.6123679
+  },
+  "content": "For all Hermes 'insufficient quota' user inquiries, the first required step is to disambiguate between three potential root causes: Hermes Studio platform quota exhaustion, underlying model API call quota exhaustion, and user account/plan tier quota limits, to ensure troubleshooting is directed to the correct system.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125416-ops-33fd2d",
+  "created_at": "2026-07-29T12:54:16.161068+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_161845_150966",
+    "title": "Hermes Web UI访问问题排查 #7",
+    "created_at": 1784967525.76161
+  },
+  "content": "NetBird 0.74.6版本的CLI执行`netbird peers list`会返回空结果，查看对端连接状态需使用`sudo netbird status -d`命令",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

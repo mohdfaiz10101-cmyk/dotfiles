@@ -1,0 +1,17 @@
+{
+  "id": "20260729121935-ops-baa9b2",
+  "created_at": "2026-07-29T12:19:35.317076+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms60q8xelisexl",
+    "title": "",
+    "created_at": 1785325537.2315829
+  },
+  "content": "The A2A multi-agent system's sync.py has inverted room-scoped sync logic that causes silent failure when run with the --room flag (the standard usage pattern), requiring a logic inversion fix to enable correct room-specific syncing.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.655163+00:00"
+}

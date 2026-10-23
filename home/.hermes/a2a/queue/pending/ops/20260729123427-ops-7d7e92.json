@@ -1,0 +1,16 @@
+{
+  "id": "20260729123427-ops-7d7e92",
+  "created_at": "2026-07-29T12:34:27.772920+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2qxl1lbcxphq",
+    "title": "",
+    "created_at": 1785130196.0737643
+  },
+  "content": "For this user's Hermes deployment hosted at 100.87.31.44 on port 8787, the required default interface served on public access is the bound Nesquena instance, not the Hermes Studio management UI which is currently being displayed.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

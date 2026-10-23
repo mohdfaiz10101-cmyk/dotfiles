@@ -1,0 +1,16 @@
+{
+  "id": "20260729132538-ops-b1a5c7",
+  "created_at": "2026-07-29T13:25:38.811161+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_191719",
+    "title": "",
+    "created_at": 1784891899.4793031
+  },
+  "content": "The memory-curator follows a fixed 5-step pipeline: 1)采集 from session_search/letta/memory-engine, 2)炼化 (grade/compress/dedup/denoise to extract durable facts), 3)写入 MEMORY.md with capacity control, 4)可选同步 to letta memory blocks, 5)输出策展报告.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802191729-mob-9e985d",
+  "created_at": "2026-08-02T19:17:29.331894+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cc9a99cbbe6646e4abd66effdaa881ee",
+    "title": "磁盘清理操作结果 (fork)",
+    "created_at": 1785698046.9971986
+  },
+  "content": "Linux 系统盘空间清理的标准优先级为：优先迁移大体积专用存储（如容器存储），其次迁移用户级大缓存目录，最后清理系统日志与临时文件；其中日志清理可使用 `journalctl --vacuum-size=100M` 限制日志总大小，需清理的临时文件目录包括 `/var/log` 旧日志、`/tmp`、`~/.local/share/Trash`。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

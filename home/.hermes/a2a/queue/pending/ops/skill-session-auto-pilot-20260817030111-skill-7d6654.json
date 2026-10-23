@@ -1,0 +1,15 @@
+{
+  "id": "20260817030111-skill-7d6654",
+  "created_at": "2026-08-17T03:01:11.890084+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "session-auto-pilot",
+    "file": "/var/home/charlie/.hermes/skills/session-auto-pilot/SKILL.md"
+  },
+  "content": "Skill `session-auto-pilot` updated. Skill session-auto-pilot updated; review the SKILL.md diff before promoting behavior changes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

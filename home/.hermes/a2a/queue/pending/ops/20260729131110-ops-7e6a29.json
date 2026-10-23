@@ -1,0 +1,16 @@
+{
+  "id": "20260729131110-ops-7e6a29",
+  "created_at": "2026-07-29T13:11:10.882183+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrzbwu41f1ivd6",
+    "title": "",
+    "created_at": 1784921113.5699778
+  },
+  "content": "All Hermes WebUI development, deployment, and troubleshooting tasks should reference the git project linked to the nesquena deployment target to ensure consistency between source code and deployed instances.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

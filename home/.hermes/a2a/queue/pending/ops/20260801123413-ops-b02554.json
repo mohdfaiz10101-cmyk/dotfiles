@@ -1,0 +1,16 @@
+{
+  "id": "20260801123413-ops-b02554",
+  "created_at": "2026-08-01T12:34:13.576305+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ab72745c-c65c-4cf6-81e3-f249a07bda70",
+    "title": "",
+    "created_at": 1785587573.5425894
+  },
+  "content": "User opens conversations with short, casual English greetings like 'hi', showing a preference for low-overhead, direct interaction starters.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

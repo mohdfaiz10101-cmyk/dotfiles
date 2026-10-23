@@ -1,0 +1,16 @@
+{
+  "id": "20260729124517-ops-0c26f8",
+  "created_at": "2026-07-29T12:45:17.087208+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_021247_16b30b",
+    "title": "Hermes Studio网络及WebSocket对接检查 #2",
+    "created_at": 1785003167.1736252
+  },
+  "content": "Standard Hermes Studio deployment verification workflow includes two core check items: frontend network access stability of the Hermes Studio instance, and WebSocket connectivity between the Hermes Studio frontend and its backend service.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

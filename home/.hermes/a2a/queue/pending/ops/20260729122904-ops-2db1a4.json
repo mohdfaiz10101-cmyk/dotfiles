@@ -1,0 +1,16 @@
+{
+  "id": "20260729122904-ops-2db1a4",
+  "created_at": "2026-07-29T12:29:04.589961+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4cxpdtdp1rii",
+    "title": "系统性能优化",
+    "created_at": 1785225126.1314518
+  },
+  "content": "Common high-memory-consuming processes that often trigger system lag include Chromium browsers, Python/uvicorn services, container runtimes (e.g. Podman), and AI assistant related processes.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

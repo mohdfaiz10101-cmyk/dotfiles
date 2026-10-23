@@ -1,0 +1,16 @@
+{
+  "id": "20260729131046-ops-549951",
+  "created_at": "2026-07-29T13:10:46.841265+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_032902",
+    "title": "",
+    "created_at": 1784921360.8161576
+  },
+  "content": "The memory-curator skill stores its persistent runtime state (including consecutive failure count, last execution status, and silent mode flag) in the watchdog file at ~/.hermes/state/memory-curator-watchdog.json, which is updated after every execution attempt.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123427-ops-21f5c2",
+  "created_at": "2026-07-29T12:34:27.773974+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2qxl1lbcxphq",
+    "title": "",
+    "created_at": 1785130196.0737643
+  },
+  "content": "A common configuration pitfall for Hermes deployments bound to downstream services like Nesquena is misconfigured port routing or service binding that exposes the Hermes Studio admin UI on the public access port instead of the intended bound service.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

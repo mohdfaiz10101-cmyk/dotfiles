@@ -1,0 +1,16 @@
+{
+  "id": "20260729125557-ops-a85fc3",
+  "created_at": "2026-07-29T12:55:57.818407+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_152303",
+    "title": "",
+    "created_at": 1784964195.3703048
+  },
+  "content": "The skill's solution retrieval layer is integrated with 5 distinct knowledge sources: local skills library, historical Hermes sessions, memory-engine, letta, and public GitHub repositories, to source the most relevant and proven solutions for incoming tasks.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

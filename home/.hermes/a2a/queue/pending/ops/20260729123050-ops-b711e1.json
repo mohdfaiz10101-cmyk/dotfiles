@@ -1,0 +1,16 @@
+{
+  "id": "20260729123050-ops-b711e1",
+  "created_at": "2026-07-29T12:30:50.544520+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3r5k2o6559hy",
+    "title": "",
+    "created_at": 1785188683.9391496
+  },
+  "content": "A reusable configuration skill must be created to set the default model to step router for three core Hermes ecosystem components: the Hermes Studio web instance at http://100.87.31.44:8787, the Hermes backend service running on port 19976, and the Hermes CLI tool. The skill must implement configuration persistence across component updates and lock the setting to prevent unintended modifications.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

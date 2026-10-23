@@ -1,0 +1,16 @@
+{
+  "id": "20260729130453-ops-0e2af7",
+  "created_at": "2026-07-29T13:04:53.786544+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_084823",
+    "title": "",
+    "created_at": 1784940515.9989305
+  },
+  "content": "MEMORY.md has a hard character limit of 2200 characters. Exceeding this limit (currently 2258/2200) causes operational issues and requires content reduction before curation can proceed.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

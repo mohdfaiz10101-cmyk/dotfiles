@@ -1,0 +1,16 @@
+{
+  "id": "20260729125113-ops-f12fb2",
+  "created_at": "2026-07-29T12:51:13.107046+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_185702",
+    "title": "",
+    "created_at": 1784977032.5702136
+  },
+  "content": "The memory-curator skill enforces a guardrail that aborts all curation workflows (multi-source information extraction, fact refinement, MEMORY.md writing, letta memory sync) if the lock file `/var/home/charlie/.hermes/memories/MEMORY.md.lock` exists, to prevent concurrent write conflicts to MEMORY.md.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

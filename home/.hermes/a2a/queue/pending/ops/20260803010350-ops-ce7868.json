@@ -1,0 +1,16 @@
+{
+  "id": "20260803010350-ops-ce7868",
+  "created_at": "2026-08-03T01:03:50.567494+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2fe9e6754ba7",
+    "title": "",
+    "created_at": 1785718783.319194
+  },
+  "content": "Port 8648 is a reserved port for the hermes-8648-http-proxy service that implements 8648 → local backend WebUI traffic forwarding; any other service (such as frps) occupying this port will cause the entire forwarding chain to fail.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

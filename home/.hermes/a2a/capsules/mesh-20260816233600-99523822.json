@@ -1,0 +1,87 @@
+{
+  "task_id": "mesh-20260816233600-99523822",
+  "title": "Codex 1 -> Hermes: 那你信息让hermes全部导出",
+  "objective": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/13/rollout-2026-08-13T04-36-53-019ff7b1-33c7-73e1-b9c9-11a119d99d70.jsonl\nsource_timestamp: 2026-08-16T15:35:41.136Z\n\n任务文本:\n那你信息让hermes全部导出",
+  "profile": "ops",
+  "mcp_profile": "monitor",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "Do not load full Codex transcript",
+    "Use task text and cited runbooks only",
+    "Return concise status and evidence",
+    "Do not start parallel live runs"
+  ],
+  "summary_hint": "那你信息让hermes全部导出",
+  "router": {
+    "message": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/13/rollout-2026-08-13T04-36-53-019ff7b1-33c7-73e1-b9c9-11a119d99d70.jsonl\nsource_timestamp: 2026-08-16T15:35:41.136Z\n\n任务文本:\n那你信息让hermes全部导出",
+    "skills_to_load": [
+      "ops-autopilot",
+      "codex-hermes-orchestrator",
+      "plugin-creator",
+      "nvm-codex-runtime",
+      "tmux-webtty-integration"
+    ],
+    "workflow_rules": [
+      {
+        "score": 7,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"df0e5aa71c6d\", \"last_verified\": \"2026-08-16T13:38:01\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"crush\", \"source_events\": [\"8b91af966826d4c1350a\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): crush.md\", \"STATUS: COMPLETED SC",
+        "scope": "crush",
+        "confidence": 0.85
+      },
+      {
+        "score": 7,
+        "text": "{\"avoid\": [], \"confidence\": 0.6, \"id\": \"923b2d67ffa4\", \"last_verified\": \"2026-08-16T13:38:01\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"repo\", \"source_events\": [\"bd4fd9ff77157420d88b\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): codegraph.md\", \"reuse bounded tool",
+        "scope": "repo",
+        "confidence": 0.6
+      },
+      {
+        "score": 6,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"ca5554959c03\", \"last_verified\": \"2026-08-01T18:59:46\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"cbb89af03cb5bdaf6752\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-18",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 6,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"a7671a387ca2\", \"last_verified\": \"2026-07-21T20:43:15\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"c70608f1914548920fbc\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "Codex MCP paths must use current absolute locations under `/var/home/charlie`; old `.npm-global`, removed `~/agi`, and missing `~/.local/lib` paths are stale migration artifacts.",
+        "scope": "codex",
+        "confidence": 0.88
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"a91e4121435d\", \"last_verified\": \"2026-08-16T13:38:01\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"88379aa730531e1ef585\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-18",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.6, \"id\": \"999c06e55b47\", \"last_verified\": \"2026-08-16T13:38:01\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"9b1786a5f989a8aa842c\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.6
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.6, \"id\": \"6623d5e497b7\", \"last_verified\": \"2026-08-16T13:38:01\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"c035fc631d644b187ccd\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-180",
+        "scope": "opencode",
+        "confidence": 0.6
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-16T23:36:00+08:00",
+  "status": "queued"
+}

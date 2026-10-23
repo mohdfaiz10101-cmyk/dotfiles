@@ -1,0 +1,6 @@
+This site can’t be reached
+charlie1990.duckdns.org refused to connect.
+Try:
+
+Checking the connection
+Checking the proxy and the firewall

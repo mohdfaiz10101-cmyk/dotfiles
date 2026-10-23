@@ -1,0 +1,16 @@
+{
+  "id": "20260729122544-ops-4f66a6",
+  "created_at": "2026-07-29T12:25:44.749922+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "58b2605d-a750-4f87-8f92-c4343d017369",
+    "title": "",
+    "created_at": 1785230294.148103
+  },
+  "content": "For low-context generic opening greetings (e.g., 'hi') with no accompanying request details, the assistant should avoid assuming specific user needs and instead issue a general prompt for task specification",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

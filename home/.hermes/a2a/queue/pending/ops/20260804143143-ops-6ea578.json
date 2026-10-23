@@ -1,0 +1,16 @@
+{
+  "id": "20260804143143-ops-6ea578",
+  "created_at": "2026-08-04T14:31:43.536893+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d1a540cb4dde",
+    "title": "",
+    "created_at": 1785853815.946773
+  },
+  "content": "For any user-reported mobile overheating incident, the first response step must include immediate safety mitigation guidance (e.g., discontinue resource-intensive tasks, remove protective cases, place the device in a cool ventilated area) to avoid permanent hardware damage or safety hazards from prolonged high temperatures, a critical domain pitfall to never skip.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

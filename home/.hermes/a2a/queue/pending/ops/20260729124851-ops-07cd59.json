@@ -1,0 +1,16 @@
+{
+  "id": "20260729124851-ops-07cd59",
+  "created_at": "2026-07-29T12:48:51.503544+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_230949",
+    "title": "",
+    "created_at": 1784992200.3374348
+  },
+  "content": "When silent_mode=false, the skill generates detailed audit reports at ~/.hermes/cron/output/ even when skipping execution due to locks, ensuring full traceability of memory curation operations and failure reasons.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

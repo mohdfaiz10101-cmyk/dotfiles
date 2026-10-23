@@ -1,0 +1,16 @@
+{
+  "id": "20260729135043-ops-204872",
+  "created_at": "2026-07-29T13:50:43.224694+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200315_a73ac5",
+    "title": "",
+    "created_at": 1784721798.3568382
+  },
+  "content": "The user uses the `t_[alphanumeric_id]` naming convention to reference individual work kanban tasks, as demonstrated by the task reference `t_dbc58661` in this session.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

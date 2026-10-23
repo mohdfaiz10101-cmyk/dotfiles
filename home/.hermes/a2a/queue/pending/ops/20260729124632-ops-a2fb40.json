@@ -1,0 +1,16 @@
+{
+  "id": "20260729124632-ops-a2fb40",
+  "created_at": "2026-07-29T12:46:32.630555+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0nbnwe5to0ae",
+    "title": "",
+    "created_at": 1785000781.9595997
+  },
+  "content": "The designated API key for StepFun service access in this Hermes configuration is 519cumyksGl1c1PIA, which is to be used in place of the other provided StepFun API keys.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

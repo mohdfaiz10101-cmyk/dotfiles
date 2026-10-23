@@ -1,0 +1,16 @@
+{
+  "id": "20260729141439-ops-f12719",
+  "created_at": "2026-07-29T14:14:39.470701+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193811_631c33",
+    "title": "",
+    "created_at": 1784720293.762164
+  },
+  "content": "When a user initiates a session by citing a specific 'work kanban task [ID]', that task is the primary contextual anchor for all work-related requests and queries in that interaction.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

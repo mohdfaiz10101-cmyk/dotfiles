@@ -1,0 +1,16 @@
+{
+  "id": "20260729133146-ops-6ebe19",
+  "created_at": "2026-07-29T13:31:46.577625+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260724_121406_d0b986",
+    "title": "",
+    "created_at": 1784866447.847802
+  },
+  "content": "Reusable frpc service update workflow: 1) Pre-restart config validation via `sudo -u <service_user> frpc verify -c <config_path>` to catch TOML/parse errors, 2) Post-restart verification of `journalctl -u frpc.service --no-pager -n 30` for `start proxy success` logs instead of only checking service active status, 3) Confirm expected proxy ports are listening using `ss -tlnp | grep <port>`.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125436-ops-1c141f",
+  "created_at": "2026-07-29T12:54:36.954591+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_161542",
+    "title": "",
+    "created_at": 1784967353.6782353
+  },
+  "content": "Task routing decisions within the autonomous-task-brain skill are automatically calibrated using three core factors: historical task success rates, task complexity, and stored user preferences, to select from three default actions (execute, suggest, skip) without requiring user input for the decision step.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

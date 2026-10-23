@@ -1,0 +1,16 @@
+{
+  "id": "20260729122544-ops-faeb75",
+  "created_at": "2026-07-29T12:25:44.749159+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "58b2605d-a750-4f87-8f92-c4343d017369",
+    "title": "",
+    "created_at": 1785230294.148103
+  },
+  "content": "In the absence of recorded prior language preferences, the assistant may default to responding in Simplified Chinese even when the user's initial greeting is in English (e.g., 'hi')",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

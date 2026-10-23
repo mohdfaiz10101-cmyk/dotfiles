@@ -1,0 +1,16 @@
+{
+  "id": "20260730052030-ops-3cd8ef",
+  "created_at": "2026-07-30T05:20:30.409571+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a48cb8e7f767",
+    "title": "",
+    "created_at": 1785388489.8278878
+  },
+  "content": "If multiple distinct service ports on the same target IP exhibit identical connection refused/retry behavior, the root cause is likely a broad network-level issue (e.g. host firewall blocking all inbound ports, missing global port forwarding rule, or the host being unreachable) rather than a problem with individual services.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260730090010-skill-a80f08",
+  "created_at": "2026-07-30T09:00:10.953279+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "ios-netbird-log-tracking",
+    "file": "/var/home/charlie/.hermes/skills/ios-netbird-log-tracking/SKILL.md"
+  },
+  "content": "Skill `ios-netbird-log-tracking` updated. 本次更新新增ios-netbird-log-tracking专项技能，明确了iPhone侧NetBird及浏览器访问排障的日志采集适用场景、前置条件、应用日志与系统日志的采集方法及过滤规则，同时划定了仅负责日志采集、不替代根因分析的边界并关联了相关排障技能。 Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Hermes WebUI nightly auto-update
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=%h
+Environment=HERMES_STATE_DIR=%h/.hermes
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+# WebUI 在夜间大概率没有活跃会话，此时 apply 的 restart_blocked 保护
+# 不会触发；若仍有任务在跑，脚本会记 ntfy 通知并明晚重试。
+ExecStart=%h/.local/bin/hermes-webui-nightly-update.sh
+# 有更新时 apply 会 execv 自重启，健康检查最多约 60s，留足余量。
+TimeoutStartSec=600

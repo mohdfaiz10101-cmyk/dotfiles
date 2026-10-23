@@ -1,0 +1,467 @@
+== lsof ==
+COMMAND       PID    USER   FD      TYPE     DEVICE  SIZE/OFF       NODE NAME
+ttyd         1576 charlie   12u     IPv4       3027       0t0        TCP *:7681 (LISTEN)
+python3      1800 charlie   13u     IPv4      45012       0t0        TCP 127.0.0.1:8789 (LISTEN)
+python3      1801 charlie    3u     IPv4      35849       0t0        TCP 127.0.0.1:9826 (LISTEN)
+ttyd         1802 charlie   12u     IPv4      30725       0t0        TCP 127.0.0.1:7693 (LISTEN)
+python3      1807 charlie    3u     IPv4      19455       0t0        TCP *:2244 (LISTEN)
+python       1811 charlie   13u     IPv4      52262       0t0        TCP *:8000 (LISTEN)
+python3      1812 charlie    3u     IPv4      32150       0t0        TCP 127.0.0.1:19093 (LISTEN)
+python3      1813 charlie    3u     IPv4      34131       0t0        TCP 127.0.0.1:19094 (LISTEN)
+python3      1814 charlie    3u     IPv4      22496       0t0        TCP 127.0.0.1:19095 (LISTEN)
+crush.rea    1821 charlie    4u     IPv6      36810       0t0        TCP *:8081 (LISTEN)
+python3      1837 charlie    3u     IPv4      29071       0t0        TCP *:19978 (LISTEN)
+python3      1839 charlie    7u     IPv4      69730       0t0        TCP 127.0.0.1:8704 (LISTEN)
+ttyd         1841 charlie   12u     IPv4      30809       0t0        TCP 127.0.0.1:7694 (LISTEN)
+python3      1846 charlie   13u     IPv4      43380       0t0        TCP 127.0.0.1:8788 (LISTEN)
+python3      1852 charlie    3u     IPv4      28481       0t0        TCP 127.0.0.1:19999 (LISTEN)
+python3      1854 charlie    3u     IPv4      28482       0t0        TCP 127.0.0.1:18989 (LISTEN)
+synapse_h    1871 charlie   14u     IPv4      58106       0t0        TCP *:8008 (LISTEN)
+matrix-we    1872 charlie   12u     IPv6      31555       0t0        TCP *:17778 (LISTEN)
+matrix-we    1872 charlie   13u     IPv6      64588       0t0        TCP *:20002 (LISTEN)
+ttyd         1876 charlie   12u     IPv4      29924       0t0        TCP 127.0.0.1:19886 (LISTEN)
+node-Main    1877 charlie   21u     IPv4      42539       0t0        TCP *:19885 (LISTEN)
+lucky        1881 charlie    4u     IPv6      36460       0t0        TCP *:16601 (LISTEN)
+python3      1883 charlie    3u     IPv4      28483       0t0        TCP *:19979 (LISTEN)
+MainThrea    1885 charlie   21u     IPv4      47207       0t0        TCP *:18789 (LISTEN)
+python3      1927 charlie    3u     IPv4      28009       0t0        TCP *:2237 (LISTEN)
+python3      1929 charlie    3u     IPv4      29010       0t0        TCP 127.0.0.1:22027 (LISTEN)
+python3      1935 charlie    3u     IPv4      24114       0t0        TCP 127.0.0.1:22031 (LISTEN)
+python3      1941 charlie    3u     IPv4      19410       0t0        TCP *:2231 (LISTEN)
+python3      1943 charlie    3u     IPv4      32033       0t0        TCP *:2232 (LISTEN)
+python3      1944 charlie    3u     IPv4      24118       0t0        TCP *:2233 (LISTEN)
+python3      1945 charlie    3u     IPv4      34077       0t0        TCP *:2234 (LISTEN)
+python3      1954 charlie    3u     IPv4      25068       0t0        TCP *:2235 (LISTEN)
+python3      1959 charlie    3u     IPv4      28002       0t0        TCP *:2236 (LISTEN)
+python3      1960 charlie    3u     IPv4      22446       0t0        TCP 127.0.0.1:22033 (LISTEN)
+python3      1961 charlie    3u     IPv4      22454       0t0        TCP 127.0.0.1:22029 (LISTEN)
+python3      1966 charlie    3u     IPv4      28011       0t0        TCP 127.0.0.1:22026 (LISTEN)
+python3      1970 charlie    6u     IPv4      31389       0t0        TCP 127.0.0.1:18095 (LISTEN)
+node         1973 charlie   21u     IPv4      46257       0t0        TCP 127.0.0.1:3210 (LISTEN)
+node         1973 charlie   22u     IPv4      46434       0t0        TCP 127.0.0.1:3210->127.0.0.1:39812 (ESTABLISHED)
+node         1976 charlie   22u     IPv4      52365       0t0        TCP 127.0.0.1:39812->127.0.0.1:3210 (ESTABLISHED)
+node         1976 charlie   23u     IPv4      52366       0t0        TCP 127.0.0.1:3200 (LISTEN)
+python3      1979 charlie    3u     IPv4      38649       0t0        TCP *:8899 (LISTEN)
+ttyd         1982 charlie   12u     IPv4      22319       0t0        TCP 127.0.0.1:20024 (LISTEN)
+ttyd         1983 charlie   12u     IPv4      25975       0t0        TCP 127.0.0.1:19882 (LISTEN)
+node-Main    1984 charlie    3u     IPv4      28776       0t0        TCP *:19001 (LISTEN)
+ttyd         1990 charlie   12u     IPv4      23975       0t0        TCP 127.0.0.1:19883 (LISTEN)
+node-Main    1991 charlie    3u     IPv4      28777       0t0        TCP *:19002 (LISTEN)
+ttyd         1992 charlie   12u     IPv4      27047       0t0        TCP 127.0.0.1:19884 (LISTEN)
+node-Main    1993 charlie    3u     IPv4      28778       0t0        TCP *:19003 (LISTEN)
+ttyd         1995 charlie   12u     IPv4      27931       0t0        TCP 127.0.0.1:20021 (LISTEN)
+ttyd         2002 charlie   12u     IPv4      31912       0t0        TCP 127.0.0.1:20022 (LISTEN)
+ttyd         2003 charlie   12u     IPv4      24969       0t0        TCP 127.0.0.1:20023 (LISTEN)
+ttyd         2006 charlie   12u     IPv4      25954       0t0        TCP *:8443 (LISTEN)
+python3      2007 charlie    3u     IPv4      24201       0t0        TCP *:18083 (LISTEN)
+MainThrea    2010 charlie   26u     IPv6      42773       0t0        TCP *:18082 (LISTEN)
+crush.rea    2116 charlie    4u     IPv6      47204       0t0        TCP *:7766 (LISTEN)
+ttyd         2118 charlie   12u     IPv4      25052       0t0        TCP 127.0.0.1:7767 (LISTEN)
+python3      2126 charlie    3u     IPv4      22495       0t0        TCP *:9814 (LISTEN)
+ttyd         2130 charlie   12u     IPv4      31157       0t0        TCP *:8080 (LISTEN)
+python3      2131 charlie    6u     IPv4      37813       0t0        TCP 127.0.0.1:18089 (LISTEN)
+python       2134 charlie    6u     IPv4      43076       0t0        TCP *:17768 (LISTEN)
+python       2135 charlie    6u     IPv4      35623       0t0        TCP *:17766 (LISTEN)
+exe          2230 charlie    8u     IPv4     103363       0t0        TCP 127.0.0.1:3678 (LISTEN)
+systemd-s    2575 charlie    3u     IPv4      28784       0t0        TCP *:2222 (LISTEN)
+systemd-s    2575 charlie   10u     IPv4 1277477415       0t0        TCP 192.168.123.71:2222->49.64.169.224:44950 (ESTABLISHED)
+systemd-s    2575 charlie   11u     IPv4 1277479277       0t0        TCP 100.120.189.27:35704->100.91.93.99:22 (ESTABLISHED)
+systemd-s    2575 charlie   16u     IPv4 2194839552       0t0        TCP 192.168.123.71:2222->195.178.110.220:49506 (ESTABLISHED)
+systemd-s    2575 charlie   17u     IPv4 2194844927       0t0        TCP 192.168.123.71:46618->100.91.93.99:22 (SYN_SENT)
+systemd-s    2575 charlie   18u     IPv4 2194817164       0t0        TCP 192.168.123.71:2222->193.32.162.30:44378 (ESTABLISHED)
+systemd-s    2575 charlie   19u     IPv4 2194817165       0t0        TCP 192.168.123.71:51510->100.91.93.99:22 (SYN_SENT)
+systemd-s    2575 charlie   20u     IPv4 2194845194       0t0        TCP 192.168.123.71:2222->193.32.162.30:33360 (ESTABLISHED)
+systemd-s    2575 charlie   21u     IPv4 2194845195       0t0        TCP 192.168.123.71:37232->100.91.93.99:22 (SYN_SENT)
+systemd-s    2575 charlie   24u     IPv4 2194821380       0t0        TCP 192.168.123.71:2222->195.178.110.220:33410 (ESTABLISHED)
+systemd-s    2575 charlie   25u     IPv4 2194821381       0t0        TCP 192.168.123.71:59558->100.91.93.99:22 (SYN_SENT)
+systemd-s    2575 charlie   31u     IPv4  217197316       0t0        TCP 192.168.123.71:2222->101.201.104.216:49426 (ESTABLISHED)
+systemd-s    2575 charlie   33u     IPv4  217197318       0t0        TCP 100.120.189.27:47040->100.91.93.99:22 (ESTABLISHED)
+systemd-s    2575 charlie   76u     IPv4  217202319       0t0        TCP 192.168.123.71:2222->101.201.104.216:49556 (ESTABLISHED)
+systemd-s    2575 charlie   77u     IPv4  217202320       0t0        TCP 100.120.189.27:47114->100.91.93.99:22 (ESTABLISHED)
+adb          3125 charlie    4u     IPv4 2186645518       0t0        UDP *:5353 
+adb          3125 charlie    7u     IPv4      39052       0t0        UDP 127.0.0.1:58650 
+adb          3125 charlie    8u     IPv4      39053       0t0        UDP 127.0.0.1:39865->127.0.0.1:58650 
+adb          3125 charlie   12u     IPv4 2186645519       0t0        UDP *:5353 
+adb          3125 charlie   13u     IPv4 2186645520       0t0        UDP *:5353 
+adb          3125 charlie   14u     IPv4 2186645521       0t0        UDP *:5353 
+adb          3125 charlie   15u     IPv4      39054       0t0        TCP 127.0.0.1:5039 (LISTEN)
+python3      3178 charlie    3u     IPv4      36492       0t0        TCP *:5000 (LISTEN)
+python3      3178 charlie    4u     IPv4 2194856430       0t0        TCP 127.0.0.1:34250->127.0.0.1:2586 (ESTABLISHED)
+syncthing    3377 charlie   10u     IPv6      42499       0t0        TCP *:22000 (LISTEN)
+syncthing    3377 charlie   17u     IPv4 2186936322       0t0        TCP 127.0.0.1:47922->127.0.0.1:7890 (ESTABLISHED)
+syncthing    3377 charlie   20u     IPv6      29682       0t0        UDP *:22000 
+syncthing    3377 charlie   22u     IPv6      41515       0t0        UDP *:21027 
+syncthing    3377 charlie   23u     IPv6      40896       0t0        UDP *:32774 
+syncthing    3377 charlie   24u     IPv4      43239       0t0        UDP *:21027 
+syncthing    3377 charlie   25u     IPv4      39295       0t0        UDP *:33027 
+syncthing    3377 charlie   29u     IPv4      39296       0t0        TCP 127.0.0.1:8384 (LISTEN)
+ttyd         6674 charlie   12u     IPv4      54729       0t0        TCP 127.0.0.1:19889 (LISTEN)
+node-Main    6675 charlie    3u     IPv4      28779       0t0        TCP *:19004 (LISTEN)
+ttyd         6681 charlie   12u     IPv4      50144       0t0        TCP 127.0.0.1:20020 (LISTEN)
+node-Main    6682 charlie    3u     IPv4      28780       0t0        TCP *:19005 (LISTEN)
+node-Main    6683 charlie    3u     IPv4      28781       0t0        TCP *:19006 (LISTEN)
+node-Main    6689 charlie    3u     IPv4      28782       0t0        TCP *:19007 (LISTEN)
+opencode     6957 charlie   17u     IPv4 2166707108       0t0        TCP 127.0.0.1:4097 (LISTEN)
+opencode     6957 charlie   21u     IPv4 2194860170       0t0        TCP 127.0.0.1:4097->127.0.0.1:38084 (ESTABLISHED)
+opencode     6957 charlie   25u     IPv4 2167047931       0t0        TCP 127.0.0.1:4097->127.0.0.1:43410 (ESTABLISHED)
+opencode     6957 charlie   26u     IPv4 2167047935       0t0        TCP 127.0.0.1:4097->127.0.0.1:43422 (ESTABLISHED)
+opencode     6957 charlie   34u     IPv4 2167051172       0t0        TCP 127.0.0.1:4097->127.0.0.1:43490 (ESTABLISHED)
+node         6958 charlie   21u     IPv4 2166711523       0t0        TCP *:4096 (LISTEN)
+node         6958 charlie   25u     IPv4 2167056022       0t0        TCP 127.0.0.1:43410->127.0.0.1:4097 (ESTABLISHED)
+node         6958 charlie   29u     IPv4 2167056030       0t0        TCP 127.0.0.1:43422->127.0.0.1:4097 (ESTABLISHED)
+node         6958 charlie   36u     IPv4 2167052857       0t0        TCP 127.0.0.1:43490->127.0.0.1:4097 (ESTABLISHED)
+MainThrea    6959 charlie   21u     IPv4 2166712709       0t0        TCP *:18910 (LISTEN)
+node-Main   15618 charlie   21u     IPv4      93963       0t0        TCP 127.0.0.1:13001 (LISTEN)
+kdeconnec   17019 charlie   17u     IPv6     115801       0t0        UDP *:1716 
+kdeconnec   17019 charlie   19u     IPv6     115802       0t0        TCP *:1716 (LISTEN)
+python3     18206 charlie    3u     IPv4     110472       0t0        TCP 127.0.0.1:9828 (LISTEN)
+python3     18209 charlie    3u     IPv4     108419       0t0        TCP *:9875 (LISTEN)
+python3     18211 charlie    3u     IPv4     109271       0t0        TCP 127.0.0.1:8088 (LISTEN)
+python3     18213 charlie    3u     IPv4     115423       0t0        TCP 127.0.0.1:15556 (LISTEN)
+pasta.avx  153636 charlie   74u     IPv4  221888183       0t0        TCP 127.0.0.1:3001 (LISTEN)
+hermes     165115 charlie   24u     IPv4  211846744       0t0        TCP 192.168.123.71:55378->14.103.2.83:443 (CLOSE_WAIT)
+MainThrea  243513 charlie   21u     IPv4 2167507521       0t0        TCP *:19888 (LISTEN)
+MainThrea  312823 charlie   30u     IPv4 2194388672       0t0        TCP *:8648 (LISTEN)
+MainThrea  312823 charlie   31u     IPv4 2194390320       0t0        TCP 192.168.123.71:8648->192.168.123.1:47244 (ESTABLISHED)
+MainThrea  312823 charlie   33u     IPv4 2194388675       0t0        UDP *:48640 
+MainThrea  312823 charlie   34u     IPv4 2194388678       0t0        UDP *:48648 
+python3    326380 charlie   13u     IPv4 2194437434       0t0        TCP *:9800 (LISTEN)
+adb        340466 charlie    4u     IPv4 2194854299       0t0        TCP 127.0.0.1:53888->127.0.0.1:15555 (ESTABLISHED)
+adb        340466 charlie    7u     IPv4 2194474573       0t0        UDP 127.0.0.1:33897 
+adb        340466 charlie    8u     IPv4 2194474574       0t0        UDP 127.0.0.1:36786->127.0.0.1:33897 
+adb        340466 charlie   11u     IPv4 2194474575       0t0        TCP 127.0.0.1:5037 (LISTEN)
+adb        340466 charlie   15u     IPv4 2194857503       0t0        TCP 127.0.0.1:5037->127.0.0.1:40359 (ESTABLISHED)
+adb        340466 charlie   16u     IPv4 2194475524       0t0        UDP *:5353 
+adb        340466 charlie   18u     IPv4 2194475526       0t0        UDP *:5353 
+adb        340466 charlie   19u     IPv4 2194475525       0t0        UDP *:5353 
+adb        340466 charlie   20u     IPv4 2194475527       0t0        UDP *:5353 
+adb        340466 charlie   22u     IPv4 2194861293       0t0        TCP 192.168.123.71:37820->192.168.123.22:5555 (SYN_SENT)
+python3    347409 charlie    4u     IPv6 2194500987       0t0        TCP *:8787 (LISTEN)
+python3    347409 charlie    5u     IPv6 2194521116       0t0        TCP 127.0.0.1:8787->127.0.0.1:38482 (ESTABLISHED)
+python3    347409 charlie    6u     IPv6 2194521117       0t0        TCP 127.0.0.1:8787->127.0.0.1:38494 (ESTABLISHED)
+python3    347409 charlie    7u     IPv6 2194510363       0t0        TCP 127.0.0.1:8787->127.0.0.1:51368 (ESTABLISHED)
+python3    347409 charlie   10u     IPv6 2194589010       0t0        TCP 127.0.0.1:8787->127.0.0.1:55640 (ESTABLISHED)
+python3    347409 charlie   11u     IPv6 2194579868       0t0        TCP 127.0.0.1:8787->127.0.0.1:34284 (ESTABLISHED)
+python3    347409 charlie   12u     IPv6 2194632560       0t0        TCP 127.0.0.1:8787->127.0.0.1:38320 (ESTABLISHED)
+python3    347409 charlie   13u     IPv6 2194589044       0t0        TCP 127.0.0.1:8787->127.0.0.1:55672 (ESTABLISHED)
+python3    347409 charlie   14u     IPv6 2194693624       0t0        TCP 127.0.0.1:8787->127.0.0.1:37044 (ESTABLISHED)
+python3    347409 charlie   15u     IPv6 2194579869       0t0        TCP 127.0.0.1:8787->127.0.0.1:34294 (ESTABLISHED)
+python3    347409 charlie   16u     IPv6 2194697738       0t0        TCP 127.0.0.1:8787->127.0.0.1:37140 (ESTABLISHED)
+python3    347409 charlie   17u     IPv6 2194697740       0t0        TCP 127.0.0.1:8787->127.0.0.1:37162 (ESTABLISHED)
+python3    347409 charlie   18u     IPv6 2194759871       0t0        TCP 127.0.0.1:8787->127.0.0.1:38284 (ESTABLISHED)
+python3    347409 charlie   19u     IPv6 2194840902       0t0        TCP 127.0.0.1:8787->127.0.0.1:59424 (ESTABLISHED)
+python3    347409 charlie   20u     IPv6 2194706653       0t0        TCP 127.0.0.1:8787->127.0.0.1:44112 (ESTABLISHED)
+python3    347409 charlie   21u     IPv6 2194832344       0t0        TCP 127.0.0.1:8787->127.0.0.1:44564 (ESTABLISHED)
+python3    347409 charlie   23u     IPv6 2194702271       0t0        TCP 127.0.0.1:8787->127.0.0.1:40358 (ESTABLISHED)
+python3    347409 charlie   24u     IPv6 2194759872       0t0        TCP 127.0.0.1:8787->127.0.0.1:38296 (ESTABLISHED)
+python3    347409 charlie   25u     IPv6 2194844683       0t0        TCP 127.0.0.1:8787->127.0.0.1:44636 (ESTABLISHED)
+python3    347409 charlie   26u     IPv6 2194761937       0t0        TCP 127.0.0.1:8787->127.0.0.1:38366 (ESTABLISHED)
+python3    347409 charlie   28u     IPv6 2194857111       0t0        TCP 127.0.0.1:8787->127.0.0.1:44064 (ESTABLISHED)
+MainThrea  453186 charlie  cwd       DIR       0,61        94  139404109 /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui
+MainThrea  453186 charlie  rtd       DIR       0,38      4096         36 /
+MainThrea  453186 charlie  txt       REG       8,33 124652544    9201678 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node
+MainThrea  453186 charlie  mem       REG       0,34            139410954 /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/node_modules/node-pty/build/Release/pty.node (path dev=0,61)
+MainThrea  453186 charlie  mem-r     REG       0,34            143857854 /var/home/charlie/.hermes-web-ui/.ekko/ekko.db-shm (path dev=0,61)
+MainThrea  453186 charlie  mem       REG       0,86   2490288       3696 /usr/lib64/libc.so.6
+MainThrea  453186 charlie  mem       REG       0,86     11272       5090 /usr/lib64/libpthread.so.0
+MainThrea  453186 charlie  mem       REG       0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+MainThrea  453186 charlie  mem       REG       0,86   1153936       4663 /usr/lib64/libm.so.6
+MainThrea  453186 charlie  mem       REG       0,86   2705936       5370 /usr/lib64/libstdc++.so.6.0.35
+MainThrea  453186 charlie  mem       REG       0,86     11256       3788 /usr/lib64/libdl.so.2
+MainThrea  453186 charlie  mem       REG       0,16           2194822242 anon_inode:[io_uring] (stat: No such file or directory)
+MainThrea  453186 charlie  mem       REG       0,16           2194820422 anon_inode:[io_uring] (stat: No such file or directory)
+MainThrea  453186 charlie  mem       REG       0,16           2194822239 anon_inode:[io_uring] (stat: No such file or directory)
+MainThrea  453186 charlie  mem       REG       0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+MainThrea  453186 charlie    0r      CHR        1,3       0t0          4 /dev/null
+MainThrea  453186 charlie    1w      REG       0,61    367649   58285955 /var/home/charlie/.hermes-web-ui/server.log
+MainThrea  453186 charlie    2w      REG       0,61    367649   58285955 /var/home/charlie/.hermes-web-ui/server.log
+MainThrea  453186 charlie    3u  a_inode       0,16         0       2078 [eventpoll]
+MainThrea  453186 charlie    4u  a_inode       0,16         0 2194822239 [io_uring]
+MainThrea  453186 charlie    5r     FIFO       0,15       0t0 2194822240 pipe
+MainThrea  453186 charlie    6w     FIFO       0,15       0t0 2194822240 pipe
+MainThrea  453186 charlie    7r     FIFO       0,15       0t0 2194822241 pipe
+MainThrea  453186 charlie    8w     FIFO       0,15       0t0 2194822241 pipe
+MainThrea  453186 charlie    9u  a_inode       0,16         0       2078 [eventfd:530]
+MainThrea  453186 charlie   10u  a_inode       0,16         0       2078 [eventpoll:12,14]
+MainThrea  453186 charlie   11u  a_inode       0,16         0 2194820422 [io_uring]
+MainThrea  453186 charlie   12r     FIFO       0,15       0t0 2194820423 pipe
+MainThrea  453186 charlie   13w     FIFO       0,15       0t0 2194820423 pipe
+MainThrea  453186 charlie   14u  a_inode       0,16         0       2078 [eventfd:664]
+MainThrea  453186 charlie   15u  a_inode       0,16         0       2078 [eventpoll:17,19]
+MainThrea  453186 charlie   16u  a_inode       0,16         0 2194822242 [io_uring]
+MainThrea  453186 charlie   17r     FIFO       0,15       0t0 2194822243 pipe
+MainThrea  453186 charlie   18w     FIFO       0,15       0t0 2194822243 pipe
+MainThrea  453186 charlie   19u  a_inode       0,16         0       2078 [eventfd:672]
+MainThrea  453186 charlie   20w      REG       0,61     53728  139464582 /var/home/charlie/.hermes-web-ui/logs/server.log
+MainThrea  453186 charlie   21w      REG       0,61   3442961  139464583 /var/home/charlie/.hermes-web-ui/logs/bridge.log
+MainThrea  453186 charlie   22u      REG       0,61    102400  139467517 /var/home/charlie/.hermes-web-ui/.ekko/ekko.db
+MainThrea  453186 charlie   23u      REG       0,61         0  143857853 /var/home/charlie/.hermes-web-ui/.ekko/ekko.db-wal
+MainThrea  453186 charlie   24u      REG       0,61     32768  143857854 /var/home/charlie/.hermes-web-ui/.ekko/ekko.db-shm
+MainThrea  453186 charlie   25r      CHR        1,3       0t0          4 /dev/null
+curl       464261 charlie    5u     IPv4 2194860063       0t0        TCP 192.168.123.71:35840->125.110.209.185:19976 (ESTABLISHED)
+adb        465026 charlie    3u     IPv4 2194861292       0t0        TCP 127.0.0.1:40359->127.0.0.1:5037 (ESTABLISHED)
+python3    465267 charlie    3u     IPv4 2194860348       0t0        TCP 127.0.0.1:39054->127.0.0.1:22034 (ESTABLISHED)
+python3    465267 charlie    4u     IPv4 2194853637       0t0        TCP 127.0.0.1:22033->127.0.0.1:44224 (ESTABLISHED)
+python3    465273 charlie    3u     IPv4 2194862206       0t0        TCP 127.0.0.1:39058->127.0.0.1:22034 (ESTABLISHED)
+python3    465273 charlie    4u     IPv4 2194862205       0t0        TCP 127.0.0.1:22033->127.0.0.1:44234 (ESTABLISHED)
+rootlessp  513743 charlie   10u     IPv6  222806771       0t0        TCP *:5678 (LISTEN)
+pasta.avx  714015 charlie   74u     IPv6  916880303       0t0        TCP *:2586 (LISTEN)
+pasta.avx  714015 charlie   95u     IPv6 2194849639       0t0        TCP 127.0.0.1:2586->127.0.0.1:43160 (ESTABLISHED)
+pasta.avx  714015 charlie   96u     IPv6 2187474284       0t0        TCP 127.0.0.1:2586->127.0.0.1:52680 (ESTABLISHED)
+pasta.avx  714015 charlie   97u     IPv6 2194862226       0t0        TCP 127.0.0.1:2586->127.0.0.1:34250 (ESTABLISHED)
+node-Main  723733 charlie    3u     IPv4      28783       0t0        TCP *:19008 (LISTEN)
+node-Main  723750 charlie    3u     IPv4      28775       0t0        TCP *:19009 (LISTEN)
+hermes     805126 charlie    6u     IPv4 1374705719       0t0        TCP 192.168.123.71:37756->14.103.2.83:443 (CLOSE_WAIT)
+hermes     805126 charlie   20u     IPv4 1378474339       0t0        TCP 192.168.123.71:38652->14.103.2.83:443 (CLOSE_WAIT)
+litellm    896081 charlie   12u     IPv4 2194853668       0t0        TCP 127.0.0.1:54276->127.0.0.1:59067 (ESTABLISHED)
+litellm    896081 charlie   16u     IPv4 2169615223       0t0        TCP 127.0.0.1:4002 (LISTEN)
+query-eng  901416 charlie    9u     IPv4 2194862107       0t0        TCP 127.0.0.1:59067->127.0.0.1:54276 (ESTABLISHED)
+query-eng  901416 charlie   10u     IPv4 2169618941       0t0        TCP 127.0.0.1:59067 (LISTEN)
+query-eng  901416 charlie   12u     IPv4 2175336760       0t0        TCP 127.0.0.1:56198->127.0.0.1:15432 (ESTABLISHED)
+query-eng  901416 charlie   13u     IPv4 2190564146       0t0        TCP 127.0.0.1:57438->127.0.0.1:15432 (ESTABLISHED)
+query-eng  901416 charlie   17u     IPv4 2174952082       0t0        TCP 127.0.0.1:56240->127.0.0.1:15432 (ESTABLISHED)
+chromium-  979623 charlie   84u     IPv4 2140180234       0t0        TCP 127.0.0.1:33115 (LISTEN)
+chromium-  979766 charlie   17u     IPv4 2194856068       0t0        TCP 192.168.123.71:34866->125.110.209.185:19899 (ESTABLISHED)
+chromium-  979766 charlie   23u     IPv4 2194855668       0t0        TCP 192.168.123.71:54272->125.110.209.185:19899 (ESTABLISHED)
+chromium-  979766 charlie   24u     IPv4 2194855669       0t0        TCP 192.168.123.71:54280->125.110.209.185:19899 (ESTABLISHED)
+chromium-  979766 charlie   26u     IPv4 2194855670       0t0        TCP 192.168.123.71:54290->125.110.209.185:19899 (ESTABLISHED)
+chromium-  979766 charlie   31u     IPv4 2194855673       0t0        TCP 192.168.123.71:54306->125.110.209.185:19899 (ESTABLISHED)
+chromium-  979766 charlie   34u     IPv4 2194805640       0t0        TCP 192.168.123.71:53840->172.217.116.4:443 (SYN_SENT)
+hermes    1034998 charlie   15u     IPv4   76559677       0t0        TCP 192.168.123.71:41476->14.103.2.83:443 (CLOSE_WAIT)
+hermes    1034998 charlie   22u     IPv4  145475663       0t0        TCP 192.168.123.71:44452->14.103.2.83:443 (CLOSE_WAIT)
+frpc      1108109 charlie    6u     IPv4 2157659733       0t0        TCP 192.168.123.71:50782->192.168.123.71:7000 (ESTABLISHED)
+frpc      1108109 charlie    7u     IPv4 2194757933       0t0        TCP 127.0.0.1:50778->127.0.0.1:18999 (ESTABLISHED)
+frpc      1108109 charlie    8u     IPv4 2194755119       0t0        TCP 127.0.0.1:50790->127.0.0.1:18999 (ESTABLISHED)
+frpc      1108109 charlie    9u     IPv4 2194853452       0t0        TCP 127.0.0.1:37976->127.0.0.1:18999 (ESTABLISHED)
+frpc      1108109 charlie   10u     IPv4 2194863451       0t0        TCP 127.0.0.1:44224->127.0.0.1:22033 (ESTABLISHED)
+frpc      1108109 charlie   11u     IPv4 2194853798       0t0        TCP 127.0.0.1:44234->127.0.0.1:22033 (ESTABLISHED)
+ttyd      1166542 charlie   12u     IPv4    3550959       0t0        TCP 127.0.0.1:19920 (LISTEN)
+hermes    1239187 charlie   22u     IPv4    3816511       0t0        TCP 192.168.123.71:39412->14.103.2.83:443 (CLOSE_WAIT)
+hermes    1239187 charlie   23u     IPv4    6053635       0t0        TCP 192.168.123.71:37838->14.103.2.83:443 (CLOSE_WAIT)
+python3   1471261 charlie    3u     IPv4 2171526939       0t0        TCP *:9829 (LISTEN)
+qemu-syst 1609999 charlie   14u     IPv4 1089125999       0t0        TCP *:5902 (LISTEN)
+qemu-syst 1609999 charlie   21u     IPv4 1089124343       0t0        TCP *:25557 (LISTEN)
+qemu-syst 1609999 charlie   22u     IPv4 1089124344       0t0        TCP *:22224 (LISTEN)
+qemu-syst 1609999 charlie   43u     IPv4 1373486560       0t0        TCP 127.0.0.1:25557->127.0.0.1:56886 (ESTABLISHED)
+qemu-syst 1609999 charlie  111u     IPv4 2194844582       0t0        UDP *:43011 
+qemu-syst 1609999 charlie  113u     IPv4 2194785958       0t0        UDP *:46216 
+systemd-s 1858155 charlie    3u     IPv4 2172859528       0t0        TCP *:19867 (LISTEN)
+systemd-s 1858155 charlie   10u     IPv4 2187473185       0t0        TCP 192.168.123.71:19867->36.21.124.177:43286 (ESTABLISHED)
+systemd-s 1858155 charlie   11u     IPv4 2187473186       0t0        TCP 127.0.0.1:52680->127.0.0.1:2586 (ESTABLISHED)
+systemd-s 1858155 charlie   16u     IPv4 2194848384       0t0        TCP 192.168.123.71:19867->36.21.124.177:43419 (ESTABLISHED)
+systemd-s 1858155 charlie   17u     IPv4 2194848385       0t0        TCP 127.0.0.1:43160->127.0.0.1:2586 (ESTABLISHED)
+pasta.avx 1929806 charlie   10u     IPv4 2194859162       0t0        TCP 192.168.123.71:41470->125.110.209.185:19976 (SYN_SENT)
+pasta.avx 1929806 charlie   11u     IPv4 2194806182       0t0        UDP 127.0.0.1:34136->127.0.0.53:53 
+pasta.avx 1929806 charlie   74u     IPv6 2173128787       0t0        TCP *:3002 (LISTEN)
+pasta.avx 1929806 charlie  225u     IPv4 2194859169       0t0        UDP 127.0.0.1:46499->127.0.0.53:53 
+pasta.avx 1929806 charlie  226u     IPv4 2194859324       0t0        UDP 127.0.0.1:40695->127.0.0.53:53 
+pasta.avx 1929806 charlie  227u     IPv4 2194833828       0t0        UDP 127.0.0.1:38551->127.0.0.53:53 
+pasta.avx 1929806 charlie  228u     IPv4 2194833829       0t0        UDP 127.0.0.1:55273->127.0.0.53:53 
+pasta.avx 1929806 charlie  231u     IPv4 2194822427       0t0        UDP 127.0.0.1:44780->127.0.0.53:53 
+pasta.avx 1929806 charlie  232u     IPv4 2194822891       0t0        UDP 127.0.0.1:47670->127.0.0.53:53 
+pasta.avx 1929806 charlie  233u     IPv4 2194793226       0t0        UDP 127.0.0.1:34100->127.0.0.53:53 
+pasta.avx 1929806 charlie  234u     IPv4 2194793303       0t0        UDP 127.0.0.1:49882->127.0.0.53:53 
+pasta.avx 1929806 charlie  235u     IPv4 2194806190       0t0        UDP 127.0.0.1:34628->127.0.0.53:53 
+pasta.avx 1929806 charlie  236u     IPv4 2194822464       0t0        UDP 127.0.0.1:51686->127.0.0.53:53 
+pasta.avx 1929806 charlie  237u     IPv4 2194822901       0t0        UDP 127.0.0.1:41735->127.0.0.53:53 
+python3   2509430 charlie    3u     IPv4  147925487       0t0        TCP *:18999 (LISTEN)
+python3   2509430 charlie    5u     IPv4 2194510582       0t0        TCP 127.0.0.1:38482->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie    7u     IPv4 2194515402       0t0        TCP 127.0.0.1:38494->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie    9u     IPv4 2194513274       0t0        TCP 127.0.0.1:51368->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   12u     IPv4 2194576128       0t0        TCP 127.0.0.1:34284->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   13u     IPv4 2194582724       0t0        TCP 127.0.0.1:34294->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   15u     IPv4 2194591477       0t0        TCP 127.0.0.1:55640->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   17u     IPv4 2194631104       0t0        TCP 127.0.0.1:38320->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   19u     IPv4 2194587227       0t0        TCP 127.0.0.1:55672->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   20u     IPv4 2194698508       0t0        TCP 127.0.0.1:37162->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   24u     IPv4 2194698507       0t0        TCP 127.0.0.1:37140->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   25u     IPv4 2194682855       0t0        TCP 127.0.0.1:37044->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   28u     IPv4 2194696056       0t0        TCP 127.0.0.1:44112->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   29u     IPv4 2194705460       0t0        TCP 127.0.0.1:40358->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   30u     IPv4 2194760894       0t0        TCP 127.0.0.1:18999->127.0.0.1:50778 (ESTABLISHED)
+python3   2509430 charlie   31u     IPv4 2194757298       0t0        TCP 127.0.0.1:38284->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   32u     IPv4 2194760895       0t0        TCP 127.0.0.1:18999->127.0.0.1:50790 (ESTABLISHED)
+python3   2509430 charlie   33u     IPv4 2194760896       0t0        TCP 127.0.0.1:38296->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   36u     IPv4 2194843129       0t0        TCP 127.0.0.1:44564->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   38u     IPv4 2194839126       0t0        TCP 127.0.0.1:59424->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   39u     IPv4 2194754228       0t0        TCP 127.0.0.1:38366->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   40u     IPv4 2194835333       0t0        TCP 127.0.0.1:44636->127.0.0.1:8787 (ESTABLISHED)
+python3   2509430 charlie   42u     IPv4 2194846662       0t0        TCP 127.0.0.1:18999->127.0.0.1:37976 (ESTABLISHED)
+python3   2509430 charlie   43u     IPv4 2194854276       0t0        TCP 127.0.0.1:44064->127.0.0.1:8787 (ESTABLISHED)
+ttyd      2619436 charlie   12u     IPv4 2175515344       0t0        TCP 127.0.0.1:19881 (LISTEN)
+MainThrea 2619437 charlie    3u     IPv4      28774       0t0        TCP *:19000 (LISTEN)
+MainThrea 2619437 charlie   22u     IPv4 2194855749       0t0        TCP 127.0.0.1:19000->127.0.0.1:38562 (ESTABLISHED)
+MainThrea 2619437 charlie   23u     IPv4 2194860173       0t0        TCP 127.0.0.1:19000->127.0.0.1:38568 (ESTABLISHED)
+MainThrea 2619437 charlie   24u     IPv4 2194860174       0t0        TCP 127.0.0.1:19000->127.0.0.1:38576 (ESTABLISHED)
+MainThrea 2619437 charlie   46u     IPv4 2194858102       0t0        TCP 127.0.0.1:19000->127.0.0.1:50666 (ESTABLISHED)
+MainThrea 2619437 charlie   53u     IPv4 2194860245       0t0        TCP 127.0.0.1:19000->127.0.0.1:38582 (ESTABLISHED)
+ttyd      2703579 charlie   12u     IPv4  148476619       0t0        TCP *:18084 (LISTEN)
+hermes    2778085 charlie   22u     IPv4  175303192       0t0        TCP 192.168.123.71:33694->14.103.2.83:443 (CLOSE_WAIT)
+MainThrea 2843492 charlie   26u     IPv6 1320108935       0t0        TCP *:18182 (LISTEN)
+MainThrea 2843492 charlie   29u     IPv6 1368141666       0t0        TCP 192.168.123.71:18182->192.168.123.161:52244 (ESTABLISHED)
+adb       2843500 charlie    7u     IPv4 1320106524       0t0        UDP 127.0.0.1:58005 
+adb       2843500 charlie    8u     IPv4 1320106525       0t0        UDP 127.0.0.1:47554->127.0.0.1:58005 
+adb       2843500 charlie   10u     IPv4 1320106526       0t0        TCP 127.0.0.1:5040 (LISTEN)
+adb       2843500 charlie   11u     IPv4 2186637262       0t0        UDP *:5353 
+adb       2843500 charlie   14u     IPv4 1373483628       0t0        TCP 127.0.0.1:56886->127.0.0.1:25557 (ESTABLISHED)
+adb       2843500 charlie   15u     IPv4 2186637263       0t0        UDP *:5353 
+adb       2843500 charlie   16u     IPv4 2186637264       0t0        UDP *:5353 
+adb       2843500 charlie   17u     IPv4 2186637265       0t0        UDP *:5353 
+hermes    3106152 charlie    6u     IPv4 2137986937       0t0        TCP 192.168.123.71:52208->14.103.2.83:443 (CLOSE_WAIT)
+chromium- 3556839 charlie   20u     IPv4 2194733983       0t0        TCP 127.0.0.1:43786->127.0.0.1:7890 (ESTABLISHED)
+chromium- 3556839 charlie   24u     IPv4 2191298354       0t0        TCP 127.0.0.1:33598->127.0.0.1:7890 (ESTABLISHED)
+chromium- 3556839 charlie   26u     IPv4 2194381821       0t0        TCP 192.168.123.71:47244->125.110.209.185:8648 (ESTABLISHED)
+chromium- 3556839 charlie   29u     IPv4 2194796668       0t0        TCP 127.0.0.1:46218->127.0.0.1:7890 (ESTABLISHED)
+chromium- 3556839 charlie   32u     IPv4 2194792753       0t0        TCP 127.0.0.1:46196->127.0.0.1:7890 (ESTABLISHED)
+chromium- 3556839 charlie   36u     IPv4 2194731965       0t0        TCP 127.0.0.1:36568->127.0.0.1:7890 (ESTABLISHED)
+chromium- 3556839 charlie   39u     IPv4 2194819186       0t0        TCP 192.168.123.71:47718->125.110.209.185:8648 (CLOSE_WAIT)
+chromium- 3556839 charlie   62u     IPv4 2191314376       0t0        UDP 224.0.0.251:5353 
+chromium- 3556839 charlie   74u     IPv4 2191314378       0t0        UDP 224.0.0.251:5353 
+chromium- 3556839 charlie   79u     IPv4 2191314380       0t0        UDP 224.0.0.251:5353 
+chromium- 3556839 charlie   81u     IPv4 2191314381       0t0        UDP 224.0.0.251:5353 
+codex     3625391 charlie   17u     IPv4 2194855674       0t0        TCP 127.0.0.1:45682->127.0.0.1:7890 (ESTABLISHED)
+hermes    3929303 charlie   18u     IPv4 2179633569       0t0        TCP 127.0.0.1:8642 (LISTEN)
+node      4038210 charlie   21u     IPv4 2166121137       0t0        TCP *:19910 (LISTEN)
+node      4038210 charlie   23u     IPv4 2167072626       0t0        TCP 192.168.123.71:19910->192.168.123.1:40206 (FIN_WAIT2)
+node      4052447 charlie   24u     IPv4 2166216716       0t0        TCP 127.0.0.1:9812 (LISTEN)
+node      4052447 charlie   25u     IPv4 2193910489       0t0        TCP 127.0.0.1:39200->127.0.0.1:7890 (ESTABLISHED)
+systemd-s 4076203 charlie    3u     IPv4      28763       0t0        TCP *:19899 (LISTEN)
+systemd-s 4076203 charlie   10u     IPv4 2194857107       0t0        TCP 192.168.123.71:19899->192.168.123.1:34866 (ESTABLISHED)
+systemd-s 4076203 charlie   11u     IPv4 2194857108       0t0        TCP 127.0.0.1:50666->127.0.0.1:19000 (ESTABLISHED)
+systemd-s 4076203 charlie   16u     IPv4 2194848614       0t0        TCP 192.168.123.71:19899->192.168.123.1:54272 (ESTABLISHED)
+systemd-s 4076203 charlie   17u     IPv4 2194848615       0t0        TCP 127.0.0.1:38562->127.0.0.1:19000 (ESTABLISHED)
+systemd-s 4076203 charlie   22u     IPv4 2194855754       0t0        TCP 192.168.123.71:19899->192.168.123.1:54280 (ESTABLISHED)
+systemd-s 4076203 charlie   23u     IPv4 2194855755       0t0        TCP 127.0.0.1:38568->127.0.0.1:19000 (ESTABLISHED)
+systemd-s 4076203 charlie   28u     IPv4 2194855758       0t0        TCP 192.168.123.71:19899->192.168.123.1:54290 (ESTABLISHED)
+systemd-s 4076203 charlie   29u     IPv4 2194855759       0t0        TCP 127.0.0.1:38576->127.0.0.1:19000 (ESTABLISHED)
+systemd-s 4076203 charlie   34u     IPv4 2194855762       0t0        TCP 192.168.123.71:19899->192.168.123.1:54306 (ESTABLISHED)
+systemd-s 4076203 charlie   35u     IPv4 2194855763       0t0        TCP 127.0.0.1:38582->127.0.0.1:19000 (ESTABLISHED)
+node      4165208 charlie   24u     IPv4 2166592201       0t0        TCP 127.0.0.1:9811 (LISTEN)
+node      4165208 charlie   25u     IPv4 2193791878       0t0        TCP 127.0.0.1:39012->127.0.0.1:7890 (ESTABLISHED)
+node      4165208 charlie   27u     IPv4 2194858299       0t0        TCP 127.0.0.1:38084->127.0.0.1:4097 (ESTABLISHED)
+== ss 18648 ==
+== ss 8648 ==
+LISTEN 0      511          0.0.0.0:8648       0.0.0.0:*    users:(("MainThread",pid=312823,fd=30))      
+== last log lines ==
+{"level":30,"time":1786184406839,"pid":2143690,"hostname":"fedora","msg":"Shutting down (SIGTERM)..."}
+{"level":30,"time":1786184407084,"pid":2143690,"hostname":"fedora","msg":"Preview runtime stopped"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"[shutdown] managed gateways stopped result={\"signaled\":0,\"forced\":0,\"errors\":0}"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"[chat-run-socket] closed all connections and cleared state"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"ChatRunSocket closed"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"Leaving agent bridge running across Web UI shutdown"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"Outbound relay clients closed"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"App relay clients closed"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"Coding agent hidden sessions closed"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"[AgentClients] All agents disconnected"}
+{"level":30,"time":1786184407085,"pid":2143690,"hostname":"fedora","msg":"Socket.IO closed"}
+{"level":30,"time":1786184407086,"pid":2143690,"hostname":"fedora","msg":"HTTP server closed"}
+{"level":30,"time":1786354050725,"pid":4038343,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetDirs":["/var/home/charlie/.hermes/skills","/var/home/charlie/.hermes/profiles/coding/skills","/var/home/charlie/.hermes/profiles/creative/skills","/var/home/charlie/.hermes/profiles/default/skills","/var/home/charlie/.hermes/profiles/dispatcher/skills","/var/home/charlie/.hermes/profiles/guest/skills","/var/home/charlie/.hermes/profiles/guest-alice/skills","/var/home/charlie/.hermes/profiles/guest-bob/skills","/var/home/charlie/.hermes/profiles/monitor/skills","/var/home/charlie/.hermes/profiles/ops/skills","/var/home/charlie/.hermes/profiles/research/skills","/var/home/charlie/.hermes/profiles/secondary/skills"],"targetCount":12,"bundledSkillNames":["apikey-image-gen","grok-image-to-video","hyperframes","markdown-viewer","remotion"],"msg":"[skill-injector] syncing bundled skills across profiles"}
+{"level":30,"time":1786354050815,"pid":4038343,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetCount":12,"injected":[],"updated":[],"skipped":[],"targets":[{"profile":"default","targetDir":"/var/home/charlie/.hermes/skills","injected":[],"updated":[],"skipped":[]},{"profile":"coding","targetDir":"/var/home/charlie/.hermes/profiles/coding/skills","injected":[],"updated":[],"skipped":[]},{"profile":"creative","targetDir":"/var/home/charlie/.hermes/profiles/creative/skills","injected":[],"updated":[],"skipped":[]},{"profile":"default","targetDir":"/var/home/charlie/.hermes/profiles/default/skills","injected":[],"updated":[],"skipped":[]},{"profile":"dispatcher","targetDir":"/var/home/charlie/.hermes/profiles/dispatcher/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest","targetDir":"/var/home/charlie/.hermes/profiles/guest/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-alice","targetDir":"/var/home/charlie/.hermes/profiles/guest-alice/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-bob","targetDir":"/var/home/charlie/.hermes/profiles/guest-bob/skills","injected":[],"updated":[],"skipped":[]},{"profile":"monitor","targetDir":"/var/home/charlie/.hermes/profiles/monitor/skills","injected":[],"updated":[],"skipped":[]},{"profile":"ops","targetDir":"/var/home/charlie/.hermes/profiles/ops/skills","injected":[],"updated":[],"skipped":[]},{"profile":"research","targetDir":"/var/home/charlie/.hermes/profiles/research/skills","injected":[],"updated":[],"skipped":[]},{"profile":"secondary","targetDir":"/var/home/charlie/.hermes/profiles/secondary/skills","injected":[],"updated":[],"skipped":[]}],"msg":"[skill-injector] completed bundled skills sync"}
+{"level":30,"time":1786354051414,"pid":4038343,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"command":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node","targets":[{"profile":"coding","status":"updated"},{"profile":"creative","status":"updated"},{"profile":"dispatcher","status":"updated"},{"profile":"guest","status":"updated"},{"profile":"guest-alice","status":"updated"},{"profile":"guest-bob","status":"updated"},{"profile":"monitor","status":"updated"},{"profile":"ops","status":"updated"},{"profile":"research","status":"updated"},{"profile":"secondary","status":"updated"}],"msg":"[mcp-autoinject] synced bundled MCP server"}
+{"level":40,"time":1786354051414,"pid":4038343,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"targets":[{"profile":"default","status":"skipped","reason":"existing hermes-studio-api MCP server is not managed by Hermes Web UI"}],"msg":"[mcp-autoinject] skipped unmanaged MCP server entries"}
+{"level":30,"time":1786354051468,"pid":4038343,"hostname":"fedora","dataDirectory":"/var/home/charlie/.hermes-web-ui/.ekko","configPath":"/var/home/charlie/.hermes-web-ui/.ekko/config/config.json","databasePath":"/var/home/charlie/.hermes-web-ui/.ekko/ekko.db","profiles":["default","coding","creative","dispatcher","guest","guest-alice","guest-bob","monitor","ops","research","secondary"],"msg":"[ekko-agent] setup complete"}
+{"level":30,"time":1786354051489,"pid":4038343,"hostname":"fedora","msg":"[gateway-autostart] skipping profiles excluded by gatewayAutoStart policy profiles=coding,creative,dispatcher,guest,guest-alice,guest-bob,monitor,ops,research,secondary unified=true"}
+{"level":30,"time":1786354056506,"pid":4038343,"hostname":"fedora","msg":"[agent-bridge] starting: /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes"}
+{"level":40,"time":1786354057372,"pid":4038343,"hostname":"fedora","msg":"[agent-bridge] exited code=2 signal=null"}
+{"level":40,"time":1786354057372,"pid":4038343,"hostname":"fedora","err":{"type":"Error","message":"agent bridge exited before ready code=2 signal=null","stack":"Error: agent bridge exited before ready code=2 signal=null\n    at ChildProcess.Z (/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/index.js:353:9249)\n    at Object.onceWrapper (node:events:622:26)\n    at ChildProcess.emit (node:events:519:35)\n    at ChildProcess._handle.onexit (node:internal/child_process:294:12)"},"msg":"[bootstrap] agent bridge failed to start"}
+{"level":30,"time":1786354057760,"pid":4038343,"hostname":"fedora","msg":"WebSocket ready at /terminal (shell: /usr/bin/zsh, transport: node-pty)"}
+{"level":30,"time":1786354057761,"pid":4038343,"hostname":"fedora","msg":"WebSocket ready at /api/hermes/kanban/events (kanban watch bridge)"}
+{"level":30,"time":1786354057767,"pid":4038343,"hostname":"fedora","msg":"[GroupChat] Socket.IO ready at /group-chat"}
+{"level":30,"time":1786354057778,"pid":4038343,"hostname":"fedora","msg":"[chat-run-socket] Socket.IO ready at /chat-run"}
+{"level":30,"time":1786354057815,"pid":4038343,"hostname":"fedora","msg":"[workflow-socket] Socket.IO ready at /workflow"}
+{"level":30,"time":1786354057815,"pid":4038343,"hostname":"fedora","msg":"[pet-state-socket] Socket.IO ready at /pet-state"}
+{"level":30,"time":1786354057815,"pid":4038343,"hostname":"fedora","msg":"[global-agent] Socket.IO ready at /global-agent"}
+{"level":30,"time":1786354057815,"pid":4038343,"hostname":"fedora","msg":"[SessionDeleter] started, profile=default, interval=300000ms"}
+{"level":30,"time":1786354057910,"pid":4038343,"hostname":"fedora","msg":"Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)"}
+{"level":30,"time":1786354057912,"pid":4038343,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:48640 for http port 18648"}
+{"level":30,"time":1786354057913,"pid":4038343,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:58648 for http port 18648"}
+{"level":30,"time":1786354057951,"pid":4038343,"hostname":"fedora","msg":"[model-catalog-cache] provider model catalog cache exists; skipping startup refresh"}
+{"level":30,"time":1786354067314,"pid":4038343,"hostname":"fedora","msg":"[gateway-autostart] gateway already running profile=default home=/var/home/charlie/.hermes status=stopped"}
+{"level":30,"time":1786354704549,"pid":4038343,"hostname":"fedora","msg":"Shutting down (SIGTERM)..."}
+{"level":30,"time":1786354704714,"pid":4038343,"hostname":"fedora","msg":"Preview runtime stopped"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"[shutdown] managed gateways stopped result={\"signaled\":0,\"forced\":0,\"errors\":0}"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"[chat-run-socket] closed all connections and cleared state"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"ChatRunSocket closed"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"Outbound relay clients closed"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"App relay clients closed"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"Coding agent hidden sessions closed"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"[AgentClients] All agents disconnected"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"Socket.IO closed"}
+{"level":30,"time":1786354704715,"pid":4038343,"hostname":"fedora","msg":"HTTP server closed"}
+{"level":30,"time":1786422468350,"pid":289964,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetDirs":["/var/home/charlie/.hermes/skills","/var/home/charlie/.hermes/profiles/coding/skills","/var/home/charlie/.hermes/profiles/creative/skills","/var/home/charlie/.hermes/profiles/default/skills","/var/home/charlie/.hermes/profiles/dispatcher/skills","/var/home/charlie/.hermes/profiles/guest/skills","/var/home/charlie/.hermes/profiles/guest-alice/skills","/var/home/charlie/.hermes/profiles/guest-bob/skills","/var/home/charlie/.hermes/profiles/monitor/skills","/var/home/charlie/.hermes/profiles/ops/skills","/var/home/charlie/.hermes/profiles/research/skills","/var/home/charlie/.hermes/profiles/secondary/skills"],"targetCount":12,"bundledSkillNames":["apikey-image-gen","grok-image-to-video","hyperframes","markdown-viewer","remotion"],"msg":"[skill-injector] syncing bundled skills across profiles"}
+{"level":30,"time":1786422468476,"pid":289964,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetCount":12,"injected":[],"updated":[],"skipped":[],"targets":[{"profile":"default","targetDir":"/var/home/charlie/.hermes/skills","injected":[],"updated":[],"skipped":[]},{"profile":"coding","targetDir":"/var/home/charlie/.hermes/profiles/coding/skills","injected":[],"updated":[],"skipped":[]},{"profile":"creative","targetDir":"/var/home/charlie/.hermes/profiles/creative/skills","injected":[],"updated":[],"skipped":[]},{"profile":"default","targetDir":"/var/home/charlie/.hermes/profiles/default/skills","injected":[],"updated":[],"skipped":[]},{"profile":"dispatcher","targetDir":"/var/home/charlie/.hermes/profiles/dispatcher/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest","targetDir":"/var/home/charlie/.hermes/profiles/guest/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-alice","targetDir":"/var/home/charlie/.hermes/profiles/guest-alice/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-bob","targetDir":"/var/home/charlie/.hermes/profiles/guest-bob/skills","injected":[],"updated":[],"skipped":[]},{"profile":"monitor","targetDir":"/var/home/charlie/.hermes/profiles/monitor/skills","injected":[],"updated":[],"skipped":[]},{"profile":"ops","targetDir":"/var/home/charlie/.hermes/profiles/ops/skills","injected":[],"updated":[],"skipped":[]},{"profile":"research","targetDir":"/var/home/charlie/.hermes/profiles/research/skills","injected":[],"updated":[],"skipped":[]},{"profile":"secondary","targetDir":"/var/home/charlie/.hermes/profiles/secondary/skills","injected":[],"updated":[],"skipped":[]}],"msg":"[skill-injector] completed bundled skills sync"}
+{"level":30,"time":1786422468556,"pid":289964,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"command":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node","targets":[{"profile":"coding","status":"updated"},{"profile":"creative","status":"updated"},{"profile":"guest","status":"updated"},{"profile":"guest-alice","status":"updated"},{"profile":"guest-bob","status":"updated"},{"profile":"monitor","status":"updated"},{"profile":"ops","status":"updated"},{"profile":"research","status":"updated"}],"msg":"[mcp-autoinject] synced bundled MCP server"}
+{"level":40,"time":1786422468557,"pid":289964,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"targets":[{"profile":"default","status":"skipped","reason":"existing hermes-studio-api MCP server is not managed by Hermes Web UI"},{"profile":"dispatcher","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"},{"profile":"secondary","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"}],"msg":"[mcp-autoinject] skipped unmanaged MCP server entries"}
+{"level":30,"time":1786422468564,"pid":289964,"hostname":"fedora","dataDirectory":"/var/home/charlie/.hermes-web-ui/.ekko","configPath":"/var/home/charlie/.hermes-web-ui/.ekko/config/config.json","databasePath":"/var/home/charlie/.hermes-web-ui/.ekko/ekko.db","profiles":["default","coding","creative","dispatcher","guest","guest-alice","guest-bob","monitor","ops","research","secondary"],"msg":"[ekko-agent] setup complete"}
+{"level":30,"time":1786422468570,"pid":289964,"hostname":"fedora","msg":"[gateway-autostart] skipping profiles excluded by gatewayAutoStart policy profiles=coding,creative,dispatcher,guest,guest-alice,guest-bob,monitor,ops,research,secondary unified=true"}
+{"level":30,"time":1786422469369,"pid":289964,"hostname":"fedora","msg":"[gateway-autostart] gateway already running profile=default home=/var/home/charlie/.hermes status=running"}
+{"level":30,"time":1786422473596,"pid":289964,"hostname":"fedora","msg":"[agent-bridge] starting: /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes"}
+{"level":40,"time":1786422473805,"pid":289964,"hostname":"fedora","msg":"[agent-bridge] exited code=2 signal=null"}
+{"level":40,"time":1786422473806,"pid":289964,"hostname":"fedora","err":{"type":"Error","message":"agent bridge exited before ready code=2 signal=null","stack":"Error: agent bridge exited before ready code=2 signal=null\n    at ChildProcess.Z (/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/index.js:353:9249)\n    at Object.onceWrapper (node:events:622:26)\n    at ChildProcess.emit (node:events:519:35)\n    at ChildProcess._handle.onexit (node:internal/child_process:294:12)"},"msg":"[bootstrap] agent bridge failed to start"}
+{"level":30,"time":1786422473836,"pid":289964,"hostname":"fedora","msg":"WebSocket ready at /terminal (shell: /usr/bin/zsh, transport: node-pty)"}
+{"level":30,"time":1786422473836,"pid":289964,"hostname":"fedora","msg":"WebSocket ready at /api/hermes/kanban/events (kanban watch bridge)"}
+{"level":30,"time":1786422473838,"pid":289964,"hostname":"fedora","msg":"[GroupChat] Socket.IO ready at /group-chat"}
+{"level":30,"time":1786422473839,"pid":289964,"hostname":"fedora","msg":"[chat-run-socket] Socket.IO ready at /chat-run"}
+{"level":30,"time":1786422473840,"pid":289964,"hostname":"fedora","msg":"[workflow-socket] Socket.IO ready at /workflow"}
+{"level":30,"time":1786422473840,"pid":289964,"hostname":"fedora","msg":"[pet-state-socket] Socket.IO ready at /pet-state"}
+{"level":30,"time":1786422473841,"pid":289964,"hostname":"fedora","msg":"[global-agent] Socket.IO ready at /global-agent"}
+{"level":30,"time":1786422473841,"pid":289964,"hostname":"fedora","msg":"[SessionDeleter] started, profile=default, interval=300000ms"}
+{"level":30,"time":1786422473842,"pid":289964,"hostname":"fedora","msg":"Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)"}
+{"level":30,"time":1786422473843,"pid":289964,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:48640 for http port 18648"}
+{"level":30,"time":1786422473844,"pid":289964,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:58648 for http port 18648"}
+{"level":30,"time":1786422473851,"pid":289964,"hostname":"fedora","msg":"[model-catalog-cache] provider model catalog cache exists; skipping startup refresh"}
+{"level":30,"time":1786423106041,"pid":289964,"hostname":"fedora","msg":"Shutting down (SIGTERM)..."}
+{"level":30,"time":1786423106214,"pid":289964,"hostname":"fedora","msg":"Preview runtime stopped"}
+{"level":30,"time":1786423106214,"pid":289964,"hostname":"fedora","msg":"[shutdown] managed gateways stopped result={\"signaled\":0,\"forced\":0,\"errors\":0}"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"[chat-run-socket] closed all connections and cleared state"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"ChatRunSocket closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"Outbound relay clients closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"App relay clients closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"Coding agent hidden sessions closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"[AgentClients] All agents disconnected"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"Socket.IO closed"}
+{"level":30,"time":1786423106215,"pid":289964,"hostname":"fedora","msg":"HTTP server closed"}
+{"level":30,"time":1786423548568,"pid":417466,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetDirs":["/var/home/charlie/.hermes/skills","/var/home/charlie/.hermes/profiles/coding/skills","/var/home/charlie/.hermes/profiles/creative/skills","/var/home/charlie/.hermes/profiles/default/skills","/var/home/charlie/.hermes/profiles/dispatcher/skills","/var/home/charlie/.hermes/profiles/guest/skills","/var/home/charlie/.hermes/profiles/guest-alice/skills","/var/home/charlie/.hermes/profiles/guest-bob/skills","/var/home/charlie/.hermes/profiles/monitor/skills","/var/home/charlie/.hermes/profiles/ops/skills","/var/home/charlie/.hermes/profiles/research/skills","/var/home/charlie/.hermes/profiles/secondary/skills"],"targetCount":12,"bundledSkillNames":["apikey-image-gen","grok-image-to-video","hyperframes","markdown-viewer","remotion"],"msg":"[skill-injector] syncing bundled skills across profiles"}
+{"level":30,"time":1786423548594,"pid":417466,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetCount":12,"injected":[],"updated":[],"skipped":[],"targets":[{"profile":"default","targetDir":"/var/home/charlie/.hermes/skills","injected":[],"updated":[],"skipped":[]},{"profile":"coding","targetDir":"/var/home/charlie/.hermes/profiles/coding/skills","injected":[],"updated":[],"skipped":[]},{"profile":"creative","targetDir":"/var/home/charlie/.hermes/profiles/creative/skills","injected":[],"updated":[],"skipped":[]},{"profile":"default","targetDir":"/var/home/charlie/.hermes/profiles/default/skills","injected":[],"updated":[],"skipped":[]},{"profile":"dispatcher","targetDir":"/var/home/charlie/.hermes/profiles/dispatcher/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest","targetDir":"/var/home/charlie/.hermes/profiles/guest/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-alice","targetDir":"/var/home/charlie/.hermes/profiles/guest-alice/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-bob","targetDir":"/var/home/charlie/.hermes/profiles/guest-bob/skills","injected":[],"updated":[],"skipped":[]},{"profile":"monitor","targetDir":"/var/home/charlie/.hermes/profiles/monitor/skills","injected":[],"updated":[],"skipped":[]},{"profile":"ops","targetDir":"/var/home/charlie/.hermes/profiles/ops/skills","injected":[],"updated":[],"skipped":[]},{"profile":"research","targetDir":"/var/home/charlie/.hermes/profiles/research/skills","injected":[],"updated":[],"skipped":[]},{"profile":"secondary","targetDir":"/var/home/charlie/.hermes/profiles/secondary/skills","injected":[],"updated":[],"skipped":[]}],"msg":"[skill-injector] completed bundled skills sync"}
+{"level":30,"time":1786423548623,"pid":417466,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"command":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node","targets":[{"profile":"coding","status":"updated"},{"profile":"creative","status":"updated"},{"profile":"guest","status":"updated"},{"profile":"guest-alice","status":"updated"},{"profile":"guest-bob","status":"updated"},{"profile":"monitor","status":"updated"},{"profile":"ops","status":"updated"},{"profile":"research","status":"updated"}],"msg":"[mcp-autoinject] synced bundled MCP server"}
+{"level":40,"time":1786423548623,"pid":417466,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"targets":[{"profile":"default","status":"skipped","reason":"existing hermes-studio-api MCP server is not managed by Hermes Web UI"},{"profile":"dispatcher","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"},{"profile":"secondary","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"}],"msg":"[mcp-autoinject] skipped unmanaged MCP server entries"}
+{"level":30,"time":1786423548627,"pid":417466,"hostname":"fedora","dataDirectory":"/var/home/charlie/.hermes-web-ui/.ekko","configPath":"/var/home/charlie/.hermes-web-ui/.ekko/config/config.json","databasePath":"/var/home/charlie/.hermes-web-ui/.ekko/ekko.db","profiles":["default","coding","creative","dispatcher","guest","guest-alice","guest-bob","monitor","ops","research","secondary"],"msg":"[ekko-agent] setup complete"}
+{"level":30,"time":1786423548633,"pid":417466,"hostname":"fedora","msg":"[gateway-autostart] skipping profiles excluded by gatewayAutoStart policy profiles=coding,creative,dispatcher,guest,guest-alice,guest-bob,monitor,ops,research,secondary unified=true"}
+{"level":30,"time":1786423549759,"pid":417466,"hostname":"fedora","msg":"[gateway-autostart] gateway already running profile=default home=/var/home/charlie/.hermes status=running"}
+{"level":30,"time":1786423553660,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] starting: /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes"}
+{"level":30,"time":1786423669343,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] ready at ipc:///tmp/hermes-agent-bridge.sock"}
+{"level":30,"time":1786423669362,"pid":417466,"hostname":"fedora","msg":"WebSocket ready at /terminal (shell: /usr/bin/zsh, transport: node-pty)"}
+{"level":30,"time":1786423669362,"pid":417466,"hostname":"fedora","msg":"WebSocket ready at /api/hermes/kanban/events (kanban watch bridge)"}
+{"level":30,"time":1786423669365,"pid":417466,"hostname":"fedora","msg":"[GroupChat] Socket.IO ready at /group-chat"}
+{"level":30,"time":1786423669366,"pid":417466,"hostname":"fedora","msg":"[chat-run-socket] Socket.IO ready at /chat-run"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[workflow-socket] Socket.IO ready at /workflow"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[pet-state-socket] Socket.IO ready at /pet-state"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[global-agent] Socket.IO ready at /global-agent"}
+{"level":30,"time":1786423669367,"pid":417466,"hostname":"fedora","msg":"[SessionDeleter] started, profile=default, interval=300000ms"}
+{"level":30,"time":1786423669368,"pid":417466,"hostname":"fedora","msg":"Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)"}
+{"level":30,"time":1786423669370,"pid":417466,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:48640 for http port 18648"}
+{"level":30,"time":1786423669371,"pid":417466,"hostname":"fedora","msg":"[lan-discovery] responder listening on udp://0.0.0.0:58648 for http port 18648"}
+{"level":30,"time":1786423669379,"pid":417466,"hostname":"fedora","msg":"[model-catalog-cache] provider model catalog cache exists; skipping startup refresh"}
+{"level":40,"time":1786423847520,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] exited code=null signal=SIGTERM"}
+{"level":40,"time":1786423847521,"pid":417466,"hostname":"fedora","msg":"[agent-bridge] broker exited unexpectedly code=null signal=SIGTERM; restarting in 1000ms (attempt 1)"}
+{"level":30,"time":1786423849526,"pid":417466,"hostname":"fedora","msg":"Shutting down (SIGTERM)..."}
+{"level":30,"time":1786423849696,"pid":417466,"hostname":"fedora","msg":"Preview runtime stopped"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"[shutdown] managed gateways stopped result={\"signaled\":0,\"forced\":0,\"errors\":0}"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"[chat-run-socket] closed all connections and cleared state"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"ChatRunSocket closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Leaving agent bridge running across Web UI shutdown"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Outbound relay clients closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"App relay clients closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Coding agent hidden sessions closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"[AgentClients] All agents disconnected"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"Socket.IO closed"}
+{"level":30,"time":1786423849697,"pid":417466,"hostname":"fedora","msg":"HTTP server closed"}
+{"level":30,"time":1786423850260,"pid":453186,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetDirs":["/var/home/charlie/.hermes/skills","/var/home/charlie/.hermes/profiles/coding/skills","/var/home/charlie/.hermes/profiles/creative/skills","/var/home/charlie/.hermes/profiles/default/skills","/var/home/charlie/.hermes/profiles/dispatcher/skills","/var/home/charlie/.hermes/profiles/guest/skills","/var/home/charlie/.hermes/profiles/guest-alice/skills","/var/home/charlie/.hermes/profiles/guest-bob/skills","/var/home/charlie/.hermes/profiles/monitor/skills","/var/home/charlie/.hermes/profiles/ops/skills","/var/home/charlie/.hermes/profiles/research/skills","/var/home/charlie/.hermes/profiles/secondary/skills"],"targetCount":12,"bundledSkillNames":["apikey-image-gen","grok-image-to-video","hyperframes","markdown-viewer","remotion"],"msg":"[skill-injector] syncing bundled skills across profiles"}
+{"level":30,"time":1786423850283,"pid":453186,"hostname":"fedora","sourceDir":"/var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/skills","targetCount":12,"injected":[],"updated":[],"skipped":[],"targets":[{"profile":"default","targetDir":"/var/home/charlie/.hermes/skills","injected":[],"updated":[],"skipped":[]},{"profile":"coding","targetDir":"/var/home/charlie/.hermes/profiles/coding/skills","injected":[],"updated":[],"skipped":[]},{"profile":"creative","targetDir":"/var/home/charlie/.hermes/profiles/creative/skills","injected":[],"updated":[],"skipped":[]},{"profile":"default","targetDir":"/var/home/charlie/.hermes/profiles/default/skills","injected":[],"updated":[],"skipped":[]},{"profile":"dispatcher","targetDir":"/var/home/charlie/.hermes/profiles/dispatcher/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest","targetDir":"/var/home/charlie/.hermes/profiles/guest/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-alice","targetDir":"/var/home/charlie/.hermes/profiles/guest-alice/skills","injected":[],"updated":[],"skipped":[]},{"profile":"guest-bob","targetDir":"/var/home/charlie/.hermes/profiles/guest-bob/skills","injected":[],"updated":[],"skipped":[]},{"profile":"monitor","targetDir":"/var/home/charlie/.hermes/profiles/monitor/skills","injected":[],"updated":[],"skipped":[]},{"profile":"ops","targetDir":"/var/home/charlie/.hermes/profiles/ops/skills","injected":[],"updated":[],"skipped":[]},{"profile":"research","targetDir":"/var/home/charlie/.hermes/profiles/research/skills","injected":[],"updated":[],"skipped":[]},{"profile":"secondary","targetDir":"/var/home/charlie/.hermes/profiles/secondary/skills","injected":[],"updated":[],"skipped":[]}],"msg":"[skill-injector] completed bundled skills sync"}
+{"level":40,"time":1786423850299,"pid":453186,"hostname":"fedora","serverNames":["hermes-studio-api","hermes-studio-browser","hermes-studio-devices","hermes-studio-use"],"targets":[{"profile":"default","status":"skipped","reason":"existing hermes-studio-api MCP server is not managed by Hermes Web UI"},{"profile":"dispatcher","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"},{"profile":"secondary","status":"skipped","reason":"existing hermes-studio-api MCP server is disabled by user"}],"msg":"[mcp-autoinject] skipped unmanaged MCP server entries"}
+{"level":30,"time":1786423850302,"pid":453186,"hostname":"fedora","dataDirectory":"/var/home/charlie/.hermes-web-ui/.ekko","configPath":"/var/home/charlie/.hermes-web-ui/.ekko/config/config.json","databasePath":"/var/home/charlie/.hermes-web-ui/.ekko/ekko.db","profiles":["default","coding","creative","dispatcher","guest","guest-alice","guest-bob","monitor","ops","research","secondary"],"msg":"[ekko-agent] setup complete"}
+{"level":30,"time":1786423850307,"pid":453186,"hostname":"fedora","msg":"[gateway-autostart] skipping profiles excluded by gatewayAutoStart policy profiles=coding,creative,dispatcher,guest,guest-alice,guest-bob,monitor,ops,research,secondary unified=true"}
+{"level":30,"time":1786423850931,"pid":453186,"hostname":"fedora","msg":"[gateway-autostart] gateway already running profile=default home=/var/home/charlie/.hermes status=running"}
+{"level":30,"time":1786423855331,"pid":453186,"hostname":"fedora","msg":"[agent-bridge] starting: /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes"}
+
+__HERMES_CWD_a473bfdc8cfa__/var/home/charlie/workspace__HERMES_CWD_a473bfdc8cfa__

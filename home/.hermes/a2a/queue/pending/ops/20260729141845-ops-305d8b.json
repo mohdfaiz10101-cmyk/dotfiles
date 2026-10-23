@@ -1,0 +1,16 @@
+{
+  "id": "20260729141845-ops-305d8b",
+  "created_at": "2026-07-29T14:18:45.670965+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193410_3cde91",
+    "title": "",
+    "created_at": 1784720052.764784
+  },
+  "content": "When discussing work-related tasks, the user regularly includes the associated kanban task ID in session context to provide clear reference to the specific tracked item.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

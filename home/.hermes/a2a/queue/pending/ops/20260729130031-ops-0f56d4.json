@@ -1,0 +1,16 @@
+{
+  "id": "20260729130031-ops-0f56d4",
+  "created_at": "2026-07-29T13:00:31.472226+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_042529_77e72b",
+    "title": "Hermes Web UI访问问题排查",
+    "created_at": 1784954251.474233
+  },
+  "content": "Hermes Web UI的会话详情页固定路径规则为`/#/hermes/session/{会话唯一标识}`，属于产品架构层面的固定规则",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

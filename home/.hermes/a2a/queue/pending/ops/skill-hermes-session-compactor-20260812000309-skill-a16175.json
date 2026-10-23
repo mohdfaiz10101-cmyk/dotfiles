@@ -1,0 +1,15 @@
+{
+  "id": "20260812000309-skill-a16175",
+  "created_at": "2026-08-12T00:03:09.731121+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "hermes-session-compactor",
+    "file": "/var/home/charlie/.hermes/skills/hermes-session-compactor/SKILL.md"
+  },
+  "content": "Skill `hermes-session-compactor` updated. Skill hermes-session-compactor updated; review the SKILL.md diff before promoting behavior changes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

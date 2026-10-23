@@ -1,0 +1,16 @@
+{
+  "id": "20260729133200-ops-ff06b4",
+  "created_at": "2026-07-29T13:32:00.798029+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "674ae4bf-cd2a-47b8-8212-45c313ef8fd5",
+    "title": "网络巡检自动修复",
+    "created_at": 1784866391.4241838
+  },
+  "content": "When troubleshooting frpc.service failures, `journalctl -u frpc.service` is the primary diagnostic source: repeated identical error logs in this output directly point to configuration parsing issues (e.g., misconfigured ExecStart paths, invalid config content) instead of transient runtime or permission problems.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

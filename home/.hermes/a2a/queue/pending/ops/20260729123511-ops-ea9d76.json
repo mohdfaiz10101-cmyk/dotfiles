@@ -1,0 +1,16 @@
+{
+  "id": "20260729123511-ops-ea9d76",
+  "created_at": "2026-07-29T12:35:11.023763+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "b25eed88-cd32-4226-a03d-38755e9e8e9e",
+    "title": "",
+    "created_at": 1785128496.5780628
+  },
+  "content": "User-specified response format requirements take precedence over default assistant verbosity settings for the duration of the constrained interaction turn.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

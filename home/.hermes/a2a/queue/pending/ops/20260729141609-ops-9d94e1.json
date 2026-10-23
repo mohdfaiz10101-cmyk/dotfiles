@@ -1,0 +1,16 @@
+{
+  "id": "20260729141609-ops-9d94e1",
+  "created_at": "2026-07-29T14:16:09.089358+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw0ayjf3cjj1k",
+    "title": "OpenCode执行中断原因分析",
+    "created_at": 1784720221.555373
+  },
+  "content": "开源Coding Agent（如OpenCode、OpenHands）在长链路、多步骤、强工具依赖的编码任务中，天生比深度优化的商业Agent（如Hermes）更容易出现执行中断，核心高频原因按概率排序为：进程/命令超时被框架kill、上下文窗口溢出导致模型失忆、默认配置的底层模型长链执行能力不足。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

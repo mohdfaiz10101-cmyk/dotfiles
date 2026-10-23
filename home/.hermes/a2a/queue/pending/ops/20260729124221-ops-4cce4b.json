@@ -1,0 +1,16 @@
+{
+  "id": "20260729124221-ops-4cce4b",
+  "created_at": "2026-07-29T12:42:21.699607+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_125901_a87627",
+    "title": "排查Hermes聊天页面无法访问",
+    "created_at": 1785041965.8907044
+  },
+  "content": "The target Hermes chat instance is hosted on the DuckDNS dynamic domain charlie1990.duckdns.org, using port 8648, with the chat page accessible via the fixed path /#/hermes/chat.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

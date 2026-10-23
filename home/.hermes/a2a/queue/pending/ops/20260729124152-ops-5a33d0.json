@@ -1,0 +1,16 @@
+{
+  "id": "20260729124152-ops-5a33d0",
+  "created_at": "2026-07-29T12:41:52.771671+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1c5qlyhdk21r",
+    "title": "",
+    "created_at": 1785042441.5045812
+  },
+  "content": "Baseline stability config for Hermes Studio should include: `security.redact_secrets: true`, `agent.restart_drain_timeout: 300`, `hermes-web-ui.service` with `TimeoutStopUSec=10min`; deprecated `OPENAI_API_KEY` and `OPENAI_BASE_URL` entries in `.env` must be disabled to prevent pollution of auxiliary task API calls.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

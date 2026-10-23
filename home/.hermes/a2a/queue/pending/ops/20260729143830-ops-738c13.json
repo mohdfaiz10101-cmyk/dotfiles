@@ -1,0 +1,16 @@
+{
+  "id": "20260729143830-ops-738c13",
+  "created_at": "2026-07-29T14:38:30.689518+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtfxoyg3pvqt8",
+    "title": "Hermes配置是否最佳实践",
+    "created_at": 1784565058.0947137
+  },
+  "content": "When evaluating if a Hermes configuration aligns with best practices, core config patterns to audit include: topic partition count matched to consumer group throughput requirements, message retention/TTL policies aligned with business compliance and storage cost goals, and granular ACL rules restricting unauthorized topic access.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

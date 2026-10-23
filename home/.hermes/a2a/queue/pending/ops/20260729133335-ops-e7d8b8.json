@@ -1,0 +1,16 @@
+{
+  "id": "20260729133335-ops-e7d8b8",
+  "created_at": "2026-07-29T13:33:35.802778+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryengo9hq3p3k",
+    "title": "巡检与workflow通知配置",
+    "created_at": 1784865323.8447363
+  },
+  "content": "A Hermes-based network detection and repair workflow is required, with explicit scope covering 5G networks, portable WiFi, home router networks, NetBird status/stability, mihomo proxy stability, and application network connection stability.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

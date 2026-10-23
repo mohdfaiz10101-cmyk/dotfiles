@@ -1,0 +1,16 @@
+{
+  "id": "20260729134029-ops-ff9774",
+  "created_at": "2026-07-29T13:40:29.459806+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxglujg3f3oxz",
+    "title": "修复drun和chrome命令",
+    "created_at": 1784808077.0186763
+  },
+  "content": "Sway/Wayland环境下rofi drun功能卡死/无法打开的常见根因是缓存文件~/.cache/rofi3.druncache损坏，删除该缓存是优先尝试的低成本修复手段。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

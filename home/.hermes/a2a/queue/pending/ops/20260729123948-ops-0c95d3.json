@@ -1,0 +1,16 @@
+{
+  "id": "20260729123948-ops-0c95d3",
+  "created_at": "2026-07-29T12:39:48.020355+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_141641_5a63d4",
+    "title": "",
+    "created_at": 1785046601.7395744
+  },
+  "content": "The user operates a self-hosted service publicly exposed via DuckDNS at the fixed endpoint http://charlie1990.duckdns.org:8648/, with port 8648 as its designated public access port.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802190249-ops-52e459",
+  "created_at": "2026-08-02T19:02:49.165495+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc5yynsvbscr6",
+    "title": "",
+    "created_at": 1785697199.636059
+  },
+  "content": "The `agent.learn_prompt` capability is a mandatory, non-negotiable prerequisite for the Hermes learn skill to function; no amount of skill-side configuration adjustment can compensate for a Hermes Agent runtime that does not expose this capability.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

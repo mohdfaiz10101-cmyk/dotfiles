@@ -1,0 +1,16 @@
+{
+  "id": "20260729123550-ops-c00518",
+  "created_at": "2026-07-29T12:35:50.971292+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260727_030010",
+    "title": "",
+    "created_at": 1785092412.889918
+  },
+  "content": "Standard daily aider task execution workflow: Read task instructions from /var/home/charlie/.hermes/workspace/aider-daily-task.txt, complete the required work, and write results to /tmp/aider-hermes-result.md. If the dedicated aider-hermes script is missing, fall back to direct task execution per the instructions in the task file.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

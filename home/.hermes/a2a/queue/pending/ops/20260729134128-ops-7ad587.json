@@ -1,0 +1,16 @@
+{
+  "id": "20260729134128-ops-7ad587",
+  "created_at": "2026-07-29T13:41:28.206280+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrx7k13qrulyf4",
+    "title": "",
+    "created_at": 1784792890.0774899
+  },
+  "content": "可用网络链路与设备判断规则：当前用户Windows主机的SSH服务（192.168.123.136:22）和frp隧道（127.0.0.1:2222）在线可用，用户指定可通过netbird工具自主完成设备连通性判断。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

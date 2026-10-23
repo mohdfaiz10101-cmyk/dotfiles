@@ -1,0 +1,16 @@
+{
+  "id": "20260729131222-ops-a926f2",
+  "created_at": "2026-07-29T13:12:22.308118+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260725_030017",
+    "title": "",
+    "created_at": 1784919628.2814193
+  },
+  "content": "Cron job operational constraint: Final responses are automatically delivered to the user, so agents must not invoke send_message or attempt manual delivery; respond with exactly the string [SILENT] (no additional content) to suppress delivery when there are no new findings to report.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

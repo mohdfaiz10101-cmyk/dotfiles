@@ -1,0 +1,16 @@
+{
+  "id": "20260729142229-ops-b2469f",
+  "created_at": "2026-07-29T14:22:29.584739+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_c41c469af4ce_20260722_193042",
+    "title": "",
+    "created_at": 1784719854.982887
+  },
+  "content": "Predefined durable keyword mapping for Hermes session categorization: work category matches 会议、项目、deadline、报告、需求、上线、部署; bugs matches 报错、bug、故障、崩溃、异常、修复; features matches 新功能、需求、产品、迭代、优化; life matches 购物、缴费、日常、家庭、旅行、吃饭; research matches 调研、学习、资料、技术选型.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260804130133-ops-116b52",
+  "created_at": "2026-08-04T13:01:33.469715+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a29ba04a20f5",
+    "title": "[已压缩 20260804T205727] 已归档会话",
+    "created_at": 1785848339.2069392
+  },
+  "content": "`extract_session_skills.py`当前纯正则提取逻辑产出噪声极高（包含普通词汇、tool输出原文等无效内容），无法直接作为可靠结果使用；如需稳定提取，可改造为两种模式：轻量模式仅匹配Hermes本地skill目录的已知skill名，重质量模式采用LLM辅助按消息语义提炼skill/evolution/script信息",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

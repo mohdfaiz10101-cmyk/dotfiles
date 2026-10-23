@@ -1,0 +1,16 @@
+{
+  "id": "20260729134237-ops-a9ecf7",
+  "created_at": "2026-07-29T13:42:37.660393+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrwj5mpbsa50yp",
+    "title": "OpenClaw配置修复与插件启用",
+    "created_at": 1784751862.1108036
+  },
+  "content": "openclaw-stepfun插件的标准化安装流程为：安装脚本会自动先清理旧版本插件，再通过传入的--app-id、--app-token参数完成插件安装与配置写入，无需手动执行旧插件清理操作。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

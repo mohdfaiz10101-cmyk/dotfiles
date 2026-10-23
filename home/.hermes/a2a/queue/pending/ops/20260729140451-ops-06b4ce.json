@@ -1,0 +1,16 @@
+{
+  "id": "20260729140451-ops-06b4ce",
+  "created_at": "2026-07-29T14:04:51.794383+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194913_92783b",
+    "title": "",
+    "created_at": 1784720955.046489
+  },
+  "content": "The user has been observed referencing specific work tasks via their unique kanban task ID (e.g., t_dbc58661) in place of descriptive task names, indicating a likely preference for ID-based task referencing",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

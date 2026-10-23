@@ -1,0 +1,16 @@
+{
+  "id": "20260729125631-cod-7b4c49",
+  "created_at": "2026-07-29T12:56:31.840692+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms00jf12eita8p",
+    "title": "",
+    "created_at": 1784962502.2823617
+  },
+  "content": "检索该场景的成熟内存管理方案时，需使用精准关键词（systemd-oomd AI LLM memory、earlyoom fedora zram、nohang memory pressure、zram-generator tuning AI workload、cgroup memory limit systemd service）并行检索对应成熟仓库（facebookincubator/oomd、rfjakob/earlyoom、hakavlad/nohang、systemd/systemd oomd相关文档），禁止泛搜通用内存管理关键词",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

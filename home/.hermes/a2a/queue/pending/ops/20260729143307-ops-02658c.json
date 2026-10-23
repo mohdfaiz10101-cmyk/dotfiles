@@ -1,0 +1,16 @@
+{
+  "id": "20260729143307-ops-02658c",
+  "created_at": "2026-07-29T14:33:07.784097+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvo0zf3iyuujp",
+    "title": "Opencode task auto-stop investigation",
+    "created_at": 1784699631.9573138
+  },
+  "content": "The user's current investigation scope for Opencode task stop issues is explicitly limited to non-manual auto-stop triggers, with manual stop functionality excluded from the scope of work.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

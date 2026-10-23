@@ -1,0 +1,16 @@
+{
+  "id": "20260729122851-ops-a3157f",
+  "created_at": "2026-07-29T12:28:51.212387+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4d6inggtvlcv",
+    "title": "",
+    "created_at": 1785225663.5995002
+  },
+  "content": "The user prefers to maintain a lean, functional desktop status bar setup, and is willing to remove outdated or non-utility aesthetic customizations to reduce config complexity.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

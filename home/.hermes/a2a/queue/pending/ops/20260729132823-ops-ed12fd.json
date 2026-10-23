@@ -1,0 +1,16 @@
+{
+  "id": "20260729132823-ops-ed12fd",
+  "created_at": "2026-07-29T13:28:23.028327+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_164657",
+    "title": "",
+    "created_at": 1784882877.7514193
+  },
+  "content": "The memory-curator cron job maintains state in ~/.hermes/state/memory-curator-watchdog.json tracking last_status, consecutive_failure, consecutive_success, and silent_mode flags for monitoring and alerting.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

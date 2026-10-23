@@ -1,0 +1,16 @@
+{
+  "id": "20260729122950-ops-fa86ee",
+  "created_at": "2026-07-29T12:29:50.760630+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3yp5tuy07hpi",
+    "title": "",
+    "created_at": 1785201227.4436643
+  },
+  "content": "Vector memory library availability is a high-frequency core capability query for Hermes, with users asking about it to assess the platform for long-term semantic memory use cases.",
+  "confidence": 0.93,
+  "status": "pending",
+  "review_note": ""
+}

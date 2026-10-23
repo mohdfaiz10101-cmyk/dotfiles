@@ -1,0 +1,17 @@
+{
+  "id": "20260729122233-ops-69b7e3",
+  "created_at": "2026-07-29T12:22:33.704000+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "b902b8de7a87",
+    "title": "多模式 网络排查",
+    "created_at": 1785267898.3810015
+  },
+  "content": "A reference handoff document containing prior 5G + NetBird access optimization work for Hermes is stored at /var/home/charlie/workspace/phone-network-dashboard/handoff-summary.md, and should be consulted for all related Hermes mobile network troubleshooting tasks.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.658069+00:00"
+}

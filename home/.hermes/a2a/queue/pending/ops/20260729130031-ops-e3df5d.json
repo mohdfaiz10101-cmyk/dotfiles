@@ -1,0 +1,16 @@
+{
+  "id": "20260729130031-ops-e3df5d",
+  "created_at": "2026-07-29T13:00:31.471849+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_042529_77e72b",
+    "title": "Hermes Web UI访问问题排查",
+    "created_at": 1784954251.474233
+  },
+  "content": "用户部署的Hermes Web UI公网访问地址为http://charlie1990.duckdns.org:8648，服务运行在8648端口，且用户明确要求该服务需在系统重启后自动启动",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802034024-cod-5e72bb",
+  "created_at": "2026-08-02T03:40:24.250671+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb8y9b0qx3zro",
+    "title": "",
+    "created_at": 1785641833.7520936
+  },
+  "content": "The proven industry pattern (implemented by GitHub Copilot) for codebase-aware AI retrieval combines 3 core components: 1) Code Graph (AST + function call/import relationships) for cross-file code context understanding, 2) Code-specific embedding models (e.g. CodeBERT, UniXcoder) for semantic retrieval of relevant code snippets, 3) Workspace Memory for persistent storage of project/environment-level user preferences and static facts.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

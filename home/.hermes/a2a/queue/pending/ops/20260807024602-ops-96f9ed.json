@@ -1,0 +1,16 @@
+{
+  "id": "20260807024602-ops-96f9ed",
+  "created_at": "2026-08-07T02:46:02.738743+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e7c28e6ee0c5",
+    "title": "",
+    "created_at": 1786070462.43949
+  },
+  "content": "在Hermes中使用step-router-v1等路由模型时，若路由模型本身不具备视觉能力，即使底层子模型支持识图，用户上传的图片附件也会被路由到无视觉能力的纯文本子模型，图片仅作为base64文本传入请求，无法触发识图功能。",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

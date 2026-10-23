@@ -1,0 +1,16 @@
+{
+  "id": "20260729143730-ops-8345a7",
+  "created_at": "2026-07-29T14:37:30.096798+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtgosgvem1vc7",
+    "title": "",
+    "created_at": 1784566317.3370905
+  },
+  "content": "The user's local environment hosts a Hermes Studio deployment that is currently restricted to local network access, with ongoing work to enable public accessibility via DuckDNS.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

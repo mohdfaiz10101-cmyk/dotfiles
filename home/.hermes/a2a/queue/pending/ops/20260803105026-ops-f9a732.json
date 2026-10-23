@@ -1,0 +1,16 @@
+{
+  "id": "20260803105026-ops-f9a732",
+  "created_at": "2026-08-03T10:50:26.094199+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "778d896b7386",
+    "title": "",
+    "created_at": 1785754169.6795087
+  },
+  "content": "For the Redroid cloud phone deployment project, Codex persistent memory and historical session records are the designated canonical storage for all project context, operational history, and reference materials, and should be treated as the first-stop reference for all project-related tasks.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

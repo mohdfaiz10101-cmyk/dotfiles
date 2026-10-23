@@ -1,0 +1,16 @@
+{
+  "id": "20260729123233-ops-4d1560",
+  "created_at": "2026-07-29T12:32:33.841691+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "69d06780c39a",
+    "title": "",
+    "created_at": 1785161299.50307
+  },
+  "content": "多站点爬虫防封禁通用配置：站点串行访问、单站点请求间隔≥10s、单关键词仅抓取第一页结果、遇403/限流自动暂停15分钟，禁止并发请求，避免触发站点反爬机制。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

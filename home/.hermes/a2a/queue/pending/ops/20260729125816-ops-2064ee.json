@@ -1,0 +1,16 @@
+{
+  "id": "20260729125816-ops-2064ee",
+  "created_at": "2026-07-29T12:58:16.257532+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms634n6ebqfxik",
+    "title": "",
+    "created_at": 1785329670.2651796
+  },
+  "content": "When troubleshooting missing task results on this specific frontend instance, the initial hypothesis of task interruption should be ruled out first, as the issue is associated with frontend result rendering logic and background tab state management rather than backend task execution failure.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

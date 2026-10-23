@@ -1,0 +1,154 @@
+Hermes-related processes:
+charlie     1800    1625  0 8月05 ?       00:07:42 /usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/bridge.py
+charlie     1846    1625  0 8月05 ?       00:07:43 /usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/panel.py
+charlie     1852    1625  0 8月05 ?       00:00:32 /usr/bin/python3 /var/home/charlie/.local/share/hermes-monitor/panel-server.py
+charlie     1854    1625  0 8月05 ?       00:00:33 /usr/bin/python3 /var/home/charlie/.local/bin/hermes-smart-proxy.py
+charlie     1885    1625  0 8月05 ?       00:00:04 /var/home/charlie/.nvm/versions/node/v24.18.0/bin/node /home/charlie/.local/bin/openclaw-gateway-proxy.mjs
+charlie     2023    1625  0 8月05 ?       00:02:09 python3 /var/home/charlie/.local/bin/codex-hermes-bridge
+charlie   153566    1625  0 8月08 ?       00:02:49 /usr/bin/podman run --rm --replace --pull=missing --security-opt label=disable --env-file=/var/home/charlie/.config/openhands/openhands.env -v /run/user/1000/podman/podman.sock:/var/run/docker.sock -v /var/home/charlie/.openhands:/.openhands -v /var/home/charlie/.config/openhands/patches/app_server_config.py:/app/openhands/app_server/config.py:ro -v /var/home/charlie/.config/openhands/patches/docker_sandbox_service.py:/app/openhands/app_server/sandbox/docker_sandbox_service.py:ro -v /var/home/charlie/.config/openhands/patches/docker_sandbox_spec_service.py:/app/openhands/app_server/sandbox/docker_sandbox_spec_service.py:ro -v /var/home/charlie/.config/openhands/patches:/var/home/charlie/.config/openhands/patches:ro -v /var/home/charlie/.config/openhands/patches/command.py:/app/openhands/runtime/utils/command.py:ro -v /var/home/charlie/.config/openhands/patches/live_status_app_conversation_service.py:/app/openhands/app_server/app_conversation/live_status_app_conversation_service.py:ro -v /var/mnt/ai/cache/auto-migrate/.openclaw/workspace:/workspace -p 127.0.0.1:3001:3000 --add-host host.docker.internal:host-gateway --name openhands-app docker.openhands.dev/openhands/openhands:1.2.0
+charlie   165097 1239186  0 8月08 pts/6   00:07:08 python3 -m hermes_cli.main chat
+charlie   165115 1239186  0 8月08 pts/12  00:07:35 python3 -m hermes_cli.main chat
+charlie   325005    1625  0 12:32 ?        00:00:05 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/b3c344ad16694bd9.sock --worker-profile monitor --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325083    1625  0 12:32 ?        00:00:06 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/7e5bec210b06e29d.sock --worker-profile creative --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325084    1625  0 12:32 ?        00:00:05 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bde5acd56ade382a.sock --worker-profile ops --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325087    1625  0 12:32 ?        00:00:05 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/c482cf76c1188462.sock --worker-profile coding --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325090    1625  0 12:32 ?        00:00:05 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bc175c31a79a41e7.sock --worker-profile research --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325263  325005  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325264  325005  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325265  325005  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325266  325005  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325267  325263  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325275  325264  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325281  325266  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325288  325265  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325349  325087  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325350  325087  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325351  325087  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325352  325087  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325359  325350  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325361  325349  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325371  325084  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325372  325084  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325374  325084  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325381  325084  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325386  325352  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325390  325351  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325430  325090  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325431  325090  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325433  325090  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325435  325090  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325452  325381  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325457  325083  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325458  325371  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325459  325083  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325460  325083  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325462  325372  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325465  325083  0 12:32 ?        00:00:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325481  325374  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325484  325431  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325491  325435  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325497  325430  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325518  325433  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325554  325457  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325560  325459  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325580  325465  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325598  325460  0 12:32 ?        00:00:00 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   565053    1625  0 13:06 ?        00:00:11 /var/home/charlie/.nvm/versions/node/v22.22.3/bin/node /var/home/charlie/opencode-telegram-gateway/dist/index.js
+charlie   805066 1239186  0 8月09 pts/15  00:04:57 python3 -m hermes_cli.main chat
+charlie   805126 1239186  0 8月09 pts/16  00:06:06 python3 -m hermes_cli.main chat
+charlie  1034945 1239186  0 8月05 pts/7   00:13:35 python3 -m hermes_cli.main chat
+charlie  1034998 1239186  0 8月05 pts/8   00:16:59 python3 -m hermes_cli.main chat
+charlie  1166542    1625  0 8月05 ?       00:00:14 /usr/local/bin/ttyd -W -c hermes:w19900422 -I /var/home/charlie/.local/share/ttyd-hermes/index.html -t rendererType canvas -t scrollback 50000 -t scrollOnUserInput true -P 15 -p 19920 -i 127.0.0.1 -T xterm-256color /var/home/charlie/.local/bin/ttyd-hermes-entry
+charlie  1239186       1  0 8月05 ?       00:03:18 tmux -S /run/user/1000/tmux/hermes-cli.sock new-session -d -s hermes -c /var/home/charlie -e TERM=tmux-256color -e HOME=/var/home/charlie -e XDG_RUNTIME_DIR=/run/user/1000 -e DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus -e PATH=/var/home/charlie/.nvm/versions/node/v23.11.1/bin:/var/home/charlie/.local/bin:/usr/bin:/bin -e NO_PROXY= -e no_proxy= /var/home/charlie/.local/bin/hermes chat
+charlie  1239187 1239186  0 8月05 pts/5   00:16:25 python3 -m hermes_cli.main chat
+charlie  1567088    1625  0 18:45 ?        00:00:00 /usr/bin/bash /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/scan-log-errors.sh
+charlie  1567139 1567088 14 18:45 ?        00:09:41 /usr/bin/bash /var/home/charlie/.hermes/skills/devops/system-log-monitoring/scripts/scan-log-errors.sh
+charlie  1655985 1239186  0 15:40 pts/29   00:00:20 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  1656680 1239186  0 15:40 pts/30   00:00:29 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  2509430    1625  0 8月06 ?       00:06:01 /usr/bin/python3 /var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py
+charlie  2778085 1239186  0 8月06 pts/11  00:12:27 python3 -m hermes_cli.main chat
+charlie  2913865 1239186  0 8月10 pts/17  00:02:08 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3106086 1239186  0 8月09 pts/13  00:03:36 python3 -m hermes_cli.main chat
+charlie  3106152 1239186  0 8月09 pts/18  00:04:49 python3 -m hermes_cli.main chat
+charlie  3371408 1239186  0 8月10 pts/14  00:02:00 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3371417 1239186  0 8月10 pts/19  00:02:04 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3565906 1239186  0 17:58 pts/28   00:00:10 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3566248 1239186  0 17:58 pts/31   00:00:18 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3582686    1625  0 17:58 ?        00:00:30 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/index.js
+charlie  3610527    1625  1 17:59 ?        00:01:25 /var/home/charlie/.local/venvs/hermes-0.20/bin/python3 /var/home/charlie/hermes-webui-clean/server.py
+charlie  3612570 1239186  0 8月10 pts/22  00:01:58 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3612694 1239186  0 8月10 pts/23  00:01:58 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3616125 1239186  0 8月10 pts/25  00:01:58 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3616280 1239186  0 8月10 pts/26  00:02:03 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+charlie  3634043 3634034  0 10:31 pts/4    00:00:00 tmux -S /run/user/1000/tmux/hermes-cli.sock attach-session -t hermes:codex
+charlie  3929303    1625  0 02:04 ?        00:03:15 /var/home/charlie/.local/venvs/hermes-0.20/bin/python -m hermes_cli.main gateway run
+charlie  4038210    1625  0 8月10 ?       00:00:03 /usr/bin/node /var/home/charlie/.local/bin/ttyd-hermes-proxy.js
+charlie  4052447    1625  0 8月10 ?       00:00:11 /var/home/charlie/.nvm/versions/node/v22.22.3/bin/node /var/home/charlie/opencode-zulip-gateway/dist/index.js
+charlie  4092187 1239186  0 8月10 pts/27  00:02:11 /var/home/charlie/.local/venvs/hermes-0.20/bin/python /var/home/charlie/.local/venvs/hermes-0.20/bin/hermes chat
+
+User services likely related:
+  aider-ttyd.service                              loaded active running Aider independent WebTTY (:7693)
+  codex-hermes-bridge.service                     loaded active running Bridge explicit Codex Hermes delegation messages into Hermes queue
+  crush-ttyd-backend.service                      loaded active running Crush native WebTTY backend (:7767)
+  crush-ttyd-proxy.service                        loaded active running Crush WebTTY with mobile buttons (:17766)
+  guise-ttyd.service                              loaded active running Goose independent WebTTY (:7694)
+  hermes-8787-basic-auth-proxy.service            loaded active running Hermes Web UI basic auth proxy (:18999 -> :8787)
+  hermes-a2a-panel.service                        loaded active running Hermes A2A Panel
+  hermes-bridge-worker-coding.service             loaded active running Hermes Agent Bridge Worker (coding)
+  hermes-bridge-worker-creative.service           loaded active running Hermes Agent Bridge Worker (creative)
+  hermes-bridge-worker-monitor.service            loaded active running Hermes Agent Bridge Worker (monitor)
+  hermes-bridge-worker-ops.service                loaded active running Hermes Agent Bridge Worker (ops)
+  hermes-bridge-worker-research.service           loaded active running Hermes Agent Bridge Worker (research)
+  hermes-gateway.service                          loaded active running Hermes Agent Gateway - Messaging Platform Integration
+  hermes-monitor-panel.service                    loaded active running Hermes monitor panel web server
+  hermes-smart-proxy.service                      loaded active running Hermes Smart Profile Proxy (Host-based profile mapping)
+  hermes-studio-8648.service                      loaded active running Hermes Studio on :8648
+  hermes-webui.service                            loaded active running Hermes WebUI (nesquena) on :8787
+  mobile-ai-browsh-backend.service                loaded active running Mobile AI Browsh ttyd backend (:19886)
+  openclaw-gateway-proxy.service                  loaded active running OpenClaw Gateway Proxy (auto-wake)
+  opencode-telegram-gateway.service               loaded active running OpenCode Telegram Gateway
+  opencode-zulip-gateway.service                  loaded active running OpenCode Zulip Gateway
+  ttyd-8080.service                               loaded active running OpenClaw ttyd (:8080)
+  ttyd-codex-backend.service                      loaded active running Codex 1 TTY backend (haven-codex, :19881)
+  ttyd-codex.service                              loaded active running Codex 1 WebTTY device gate - socket activated
+  ttyd-codex10-backend.service                    loaded active running Codex 10 TTY backend (haven-codex10, :20024)
+  ttyd-codex10.service                            loaded active running Codex 10 WebTTY device gate - socket activated
+  ttyd-codex2-backend.service                     loaded active running Codex 2 TTY backend (haven-codex2, :19882)
+  ttyd-codex2.service                             loaded active running Codex 2 WebTTY device gate - socket activated
+  ttyd-codex3-backend.service                     loaded active running Codex 3 TTY backend (haven-codex3, :19883)
+  ttyd-codex3.service                             loaded active running Codex 3 WebTTY device gate - socket activated
+  ttyd-codex4-backend.service                     loaded active running Codex 4 TTY backend (haven-codex4, :19884)
+  ttyd-codex4.service                             loaded active running Codex 4 WebTTY device gate - socket activated
+  ttyd-codex5-backend.service                     loaded active running Codex 5 TTY backend (haven-codex5, :19889)
+  ttyd-codex5.service                             loaded active running Codex 5 WebTTY device gate - socket activated
+  ttyd-codex6-backend.service                     loaded active running Codex 6 TTY backend (haven-codex6, :20020)
+  ttyd-codex6.service                             loaded active running Codex 6 WebTTY device gate - socket activated
+  ttyd-codex7-backend.service                     loaded active running Codex 7 TTY backend (haven-codex7, :20021)
+  ttyd-codex7.service                             loaded active running Codex 7 WebTTY device gate - socket activated
+  ttyd-codex8-backend.service                     loaded active running Codex 8 TTY backend (haven-codex8, :20022)
+  ttyd-codex8.service                             loaded active running Codex 8 WebTTY device gate - socket activated
+  ttyd-codex9-backend.service                     loaded active running Codex 9 TTY backend (haven-codex9, :20023)
+  ttyd-codex9.service                             loaded active running Codex 9 WebTTY device gate - socket activated
+  ttyd-hermes-backend.service                     loaded active running Hermes TTY backend (hermes-cli, :19920)
+  ttyd-hermes.service                             loaded active running Hermes WebTTY device gate (:19910)
+  ttyd-openhands-backend.service                  loaded active running OpenHands CLI WebTTY (:8443)
+  ttyd-session-proxy.service                      loaded active running ttyd Session Proxy (toolbar injection for 18080)
+  webssh-ttyd.service                             loaded active running Web SSH Terminal (ttyd)
+
+Timers:
+Tue 2026-08-11 19:51:55 CST             3s Tue 2026-08-11 19:46:55 CST  4min 56s ago hermes-port-lock.timer                                                  hermes-port-lock.service
+Tue 2026-08-11 19:52:02 CST            10s Tue 2026-08-11 19:42:02 CST      9min ago hermes-monitor-check.timer                                              hermes-monitor-check.service
+Tue 2026-08-11 19:52:07 CST            15s Tue 2026-08-11 19:50:07 CST  1min 44s ago hermes-session-switch-audit.timer                                       hermes-session-switch-audit.service
+Tue 2026-08-11 19:52:44 CST            52s Tue 2026-08-11 19:51:44 CST        7s ago hermes-actions-watch.timer                                              hermes-actions-watch.service
+Tue 2026-08-11 19:53:37 CST       1min 45s Tue 2026-08-11 19:48:37 CST  3min 14s ago hermes-context-guard.timer                                              hermes-context-guard.service
+Tue 2026-08-11 19:53:37 CST       1min 45s Tue 2026-08-11 19:48:37 CST  3min 14s ago hermes-mesh-dispatch.timer                                              hermes-mesh-dispatch.service
+Tue 2026-08-11 19:53:37 CST       1min 45s Tue 2026-08-11 19:48:37 CST  3min 14s ago hermes-stability-check.timer                                            hermes-stability-check.service
+Tue 2026-08-11 19:53:37 CST       1min 45s Tue 2026-08-11 19:48:37 CST  3min 14s ago openclaw-gateway-idle-monitor.timer                                     openclaw-gateway-idle-monitor.service
+Tue 2026-08-11 19:54:28 CST       2min 36s Tue 2026-08-11 19:49:28 CST  2min 23s ago hermes-iptables-guard.timer                                             hermes-iptables-guard.service
+Tue 2026-08-11 20:01:29 CST           9min Tue 2026-08-11 19:31:29 CST     20min ago hermes-session-compactor.timer                                          hermes-session-compactor.service
+Tue 2026-08-11 20:01:29 CST           9min Tue 2026-08-11 19:31:29 CST     20min ago hermes-session-guard.timer                                              hermes-session-guard.service
+Tue 2026-08-11 20:06:51 CST          14min Tue 2026-08-11 19:49:53 CST  1min 58s ago hermes-experience-map.timer                                             hermes-experience-map.service
+Tue 2026-08-11 20:59:19 CST        1h 7min Tue 2026-08-11 18:59:19 CST     52min ago hermes-memory-curator.timer                                             hermes-memory-curator.service
+Wed 2026-08-12 03:00:00 CST             7h Tue 2026-08-11 03:00:00 CST       16h ago hermes-cleanup-user.timer                                               hermes-cleanup-user.service
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

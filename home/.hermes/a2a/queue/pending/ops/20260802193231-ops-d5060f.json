@@ -1,0 +1,16 @@
+{
+  "id": "20260802193231-ops-d5060f",
+  "created_at": "2026-08-02T19:32:31.232922+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc70wzlay46z7",
+    "title": "",
+    "created_at": 1785698951.4662447
+  },
+  "content": "生成配件类采购合同表的可复用openpyxl配置模式：标准结构包含表头、配件项（图片列、名称列、金额列）、合计行、签章区；数据输入支持纯文字逐行提供配件名+金额、提供本地图片绝对路径嵌入、无图时生成占位模板三种方式",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

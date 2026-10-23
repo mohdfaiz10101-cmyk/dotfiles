@@ -1,0 +1,16 @@
+{
+  "id": "20260807111622-ops-995dc6",
+  "created_at": "2026-08-07T11:16:22.508863+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_ffa1511c834a_20260807_191424",
+    "title": "",
+    "created_at": 1786101265.8946996
+  },
+  "content": "The weekly review process follows a structured retrospective framework that includes cross-week comparison, thought process reasoning, action item tracking, and pattern-based improvement, with all output artifacts formatted as Codex-style Markdown retrospective reports.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

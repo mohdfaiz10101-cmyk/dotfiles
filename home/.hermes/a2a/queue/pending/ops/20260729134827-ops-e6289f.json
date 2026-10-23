@@ -1,0 +1,16 @@
+{
+  "id": "20260729134827-ops-e6289f",
+  "created_at": "2026-07-29T13:48:27.177667+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200622_e0bcbd",
+    "title": "",
+    "created_at": 1784721985.2613192
+  },
+  "content": "The user utilizes a kanban system as part of their work task tracking workflow, so work task-related interactions should align with standard kanban conventions (e.g., task states, workflow stages) where system access is available.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

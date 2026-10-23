@@ -1,0 +1,16 @@
+{
+  "id": "20260729130837-ops-3d91fa",
+  "created_at": "2026-07-29T13:08:37.895806+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_052150",
+    "title": "",
+    "created_at": 1784928122.0294902
+  },
+  "content": "The autonomous-task-brain skill's task decision logic is configured to weigh three core factors: historical task success rate, task complexity, and user preferences, to automatically determine whether to execute a task, suggest a solution to the user, or skip the task.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

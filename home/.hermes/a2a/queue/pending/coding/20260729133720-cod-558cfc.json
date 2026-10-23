@@ -1,0 +1,16 @@
+{
+  "id": "20260729133720-cod-558cfc",
+  "created_at": "2026-07-29T13:37:20.813766+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "aa0dc26a-f9aa-44d0-9603-fe04c5409626",
+    "title": "",
+    "created_at": 1784815481.287057
+  },
+  "content": "用户的核心业务场景为电商运营（含国内电商及跨境电商），核心痛点围绕多平台货源挖掘、批量选品、商品信息高效筛选，相关工具需贴合对应平台的特定运营流程（如供应商信息提取、批量价格监控、跨平台商品比价等）。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260801142405-ops-d9b1c3",
+  "created_at": "2026-08-01T14:24:05.975147+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "3251eb0778da",
+    "title": "hi from webui stepfun-new test",
+    "created_at": 1785594110.266443
+  },
+  "content": "The stepfun-new chain integrated with WebUI has verified end-to-end connectivity, and the successful response generated in this test session can serve as a baseline reference for future basic connectivity verification of this chain.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

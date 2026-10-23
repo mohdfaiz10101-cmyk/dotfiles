@@ -1,0 +1,16 @@
+{
+  "id": "20260729123740-ops-fee411",
+  "created_at": "2026-07-29T12:37:40.178163+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1nkuv99vu39i",
+    "title": "Hermes做CLI中枢 手机远程控电脑",
+    "created_at": 1785061683.2237604
+  },
+  "content": "本地Hermes服务对外网移动设备暴露的标准网络配置模式为：搭配DuckDNS动态域名解析与FRP/NAT穿透，将本地不同端口的服务（终端流、WebUI、Studio等）映射到外网，实现多设备统一访问同一Hermes实例。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260804200018-ops-8b49cc",
+  "created_at": "2026-08-04T20:00:18.578957+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260805_035826_c93df4",
+    "title": "Greeting and Introduction Exchange",
+    "created_at": 1785873541.936574
+  },
+  "content": "Standard opening greeting workflow for this user is to introduce the agent's name (Hermes) and invite the user to state requests directly, which can be reused for all future session openings to maintain consistency.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

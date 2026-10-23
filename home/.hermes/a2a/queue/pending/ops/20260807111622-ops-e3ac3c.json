@@ -1,0 +1,16 @@
+{
+  "id": "20260807111622-ops-e3ac3c",
+  "created_at": "2026-08-07T11:16:22.507834+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_ffa1511c834a_20260807_191424",
+    "title": "",
+    "created_at": 1786101265.8946996
+  },
+  "content": "All weekly review output artifacts are stored in the fixed directory ~/.hermes/cron/output/ with the naming convention weekly-hermes-review-{YYYYMMDD}.md, and the standard workflow mandates retrieving the most recent prior report from this directory to enable cross-week comparison and iterative improvement loops.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

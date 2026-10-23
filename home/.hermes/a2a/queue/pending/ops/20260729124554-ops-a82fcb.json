@@ -1,0 +1,16 @@
+{
+  "id": "20260729124554-ops-a82fcb",
+  "created_at": "2026-07-29T12:45:54.755626+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_014639",
+    "title": "",
+    "created_at": 1785001611.0801837
+  },
+  "content": "User prefers automated memory curation via the 'memory-curator' skill, which extracts durable facts from Hermes sessions (session_search, letta, memory-engine) and maintains MEMORY.md with automatic capacity control and optional letta sync.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

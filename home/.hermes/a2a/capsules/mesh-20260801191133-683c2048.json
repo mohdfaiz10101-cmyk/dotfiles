@@ -1,0 +1,96 @@
+{
+  "task_id": "mesh-20260801191133-683c2048",
+  "title": "NET-共同维护-Android代理VPN边界",
+  "objective": "审计 PKR110 在 5G、home Wi-Fi、portable Wi-Fi 下 root Mihomo、Magisk 97-mihomo.sh、NetBird Android VpnService、应用 UID 路由的共存边界。重点找：哪些检查必须用真实 app UID，哪些不能用 shell curl 代替，哪些情况下应优先 DuckDNS、NetBird、LAN 或 USB reverse。返回 status、risk、evidence_needed、safe_next_steps、commands。",
+  "profile": "mobile",
+  "mcp_profile": "mobile",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [
+    "~/.ai-context/runbooks/netbird.md",
+    "~/.ai-context/runbooks/mihomo-control.md",
+    "~/.ai-context/runbooks/phone-agent.md"
+  ],
+  "constraints": [
+    "只读诊断",
+    "不要改Android设置",
+    "不要重启NetBird或Mihomo",
+    "不要打印token/订阅",
+    "只返回JSON摘要",
+    "必须区分shell/root/app UID"
+  ],
+  "summary_hint": "",
+  "router": {
+    "message": "审计 PKR110 在 5G、home Wi-Fi、portable Wi-Fi 下 root Mihomo、Magisk 97-mihomo.sh、NetBird Android VpnService、应用 UID 路由的共存边界。重点找：哪些检查必须用真实 app UID，哪些不能用 shell curl 代替，哪些情况下应优先 DuckDNS、NetBird、LAN 或 USB reverse。返回 status、risk、evidence_needed、safe_next_steps、commands。",
+    "skills_to_load": [
+      "ops-autopilot",
+      "android-transparent-proxy",
+      "android-proxy-netbird-config",
+      "android-root-network",
+      "phone-hermes-network",
+      "network-ops",
+      "lsposed-module-install",
+      "network-monitoring-ops"
+    ],
+    "workflow_rules": [
+      {
+        "score": 5,
+        "text": "Phone root/shell network tests can differ from app behavior. Tailscale on Android may be per-UID; a service started as `shell` or root can miss the VPN routes even when the Tailscale app itself is online.",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 5,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"b95497c09c32\", \"last_verified\": \"2026-07-21T19:14:47\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"d089807cde063cd1ceba\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "Do not assume `duckdns:18080` failure means local ttyd is down. Check local, LAN, router NAT, then public URL. Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`. Do not update DuckDNS from Fedora's observed external IP or",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 3,
+        "text": "Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`. Do not turn `opencode-18910-local.service` into a second `opencode serve` backend for review workspaces. `18910` is the LAN/public Web entry and must remain a proxy to `4",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"8525eaba5c90\", \"last_verified\": \"2026-07-21T19:19:31\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"c757981c9ee0f10ba6d1\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"05c6d9cfa2f3\", \"last_verified\": \"2026-07-21T19:04:38\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"6302c33f8d9808949043\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 2,
+        "text": "Do not assume `duckdns:18080` failure means local ttyd is down. Check local, LAN, router NAT, then public URL.",
+        "scope": "router",
+        "confidence": 0.88
+      },
+      {
+        "score": 2,
+        "text": "Do not treat Fedora Silverblue/composefs `/` showing `100%` full as a real writable disk-full condition. The immutable root image can be `59M/59M` by design. Check `/var`, `/var/home`, or the actual writable Btrfs filesystem before alerting or cleaning.",
+        "scope": "general",
+        "confidence": 0.88
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T19:11:33+08:00",
+  "status": "queued"
+}

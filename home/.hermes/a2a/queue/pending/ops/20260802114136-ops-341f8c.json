@@ -1,0 +1,16 @@
+{
+  "id": "20260802114136-ops-341f8c",
+  "created_at": "2026-08-02T11:41:36.355727+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbq4rwp9v9pf9",
+    "title": "",
+    "created_at": 1785670687.7284803
+  },
+  "content": "For users in domestic symmetric NAT environments, NetBird is a more suitable virtual networking tool than Zerotier, offering better P2P hole punching optimization, lower background power consumption, and a more modern management console, with no need to switch to Zerotier.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

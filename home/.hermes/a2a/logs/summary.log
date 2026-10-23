@@ -1,0 +1,571 @@
+# A2A Master Summary - 2026-07-29
+
+## coding: 10 updates
+  ## [2026-07-29T12:20:37.378786+00:00] Critical domain validation pitfall: Do not rely solely on README/metadata claims when evaluating mul
+  ## [2026-07-29T12:20:37.378509+00:00] For production multi-memory AI agent architecture research, prioritize deep code inspection of the m
+  ## [2026-07-29T12:22:04.838691+00:00] When addressing Hermes skill accuracy optimization needs, the user's preferred initial workflow is t
+  ## [2026-07-29T12:22:04.838387+00:00] The user has a persistent, high-priority requirement to continuously optimize and improve the accura
+  ## [2026-07-29T12:22:50.537622+00:00] For code, architecture, and reasoning tasks, a verified non-marketing tiered intelligence ranking of
+  ## [2026-07-29T12:22:50.538642+00:00] OpenRouter acts as a unified access layer for low-cost and free LLMs across all tiers, supporting bo
+  ## [2026-07-29T12:22:50.539357+00:00] Free LLM aggregation services (Moddleman, FreeLLMAPI) provide OpenAI-compatible APIs for zero-cost l
+  ## [2026-07-29T12:23:40.067585+00:00] Access to the user's MCP server requires Bearer token authentication, with the valid access token be
+
+## creative: 2 updates
+  ## [2026-07-29T11:43:14.308485+00:00] Skill `apikey-image-gen` updated. Skill apikey-image-gen updated Impact: medium
+  ## [2026-07-29T11:43:14.391940+00:00] Skill `grok-image-to-video` updated. Skill grok-image-to-video updated Impact: medium
+
+## mobile: 1 updates
+  ## [2026-07-29T12:27:35.008634+00:00] Fedora系统下排查GUI浏览器被自动打开访问指定站点的标准化排查流程为：依次检查各类shell历史（如.bash_history、fish_history）中的浏览器/站点相关命令、systemd
+
+## ops: 39 updates
+  ## [2026-07-29T12:19:35.318435+00:00] The A2A system's distill.py script never reads its last-scan timestamp, breaking incremental scan fu
+  ## [2026-07-29T12:19:35.317076+00:00] The A2A multi-agent system's sync.py has inverted room-scoped sync logic that causes silent failure 
+  ## [2026-07-29T12:19:50.006631+00:00] Letta MCP tool has a known 120s timeout failure mode; use a 3-step fallback hierarchy to access Lett
+  ## [2026-07-29T12:19:50.007208+00:00] All concrete Hermes A2A multi-agent system implementations must include 7 mandatory core components 
+  ## [2026-07-29T12:20:05.983265+00:00] Hermes 当前活跃端口为 8787/8648/18648/19976（8618 端口不存在/已退役）；A2A 系统文件必须统一部署在 ~/.hermes/a2a/ 目录，严禁修改 workspac
+  ## [2026-07-29T12:20:19.563046+00:00] 用户现有环境中的`~/.local/bin/wan-ip-monitor.sh`脚本已集成DNS一致性自愈检查能力，用于在DuckDNS记录漂移时自动触发修复流程。
+  ## [2026-07-29T12:20:19.562765+00:00] 动态DNS（如DuckDNS）记录漂移后，若客户端本地DNS缓存未过期，会访问到已失效的旧IP，表现为服务不可达；重启客户端设备仅能清空本地DNS缓存，并非修复服务本身问题，效果等价于等待DNS TT
+  ## [2026-07-29T12:20:50.497401+00:00] Hermes ttyd service uses a two-port proxy architecture: the public-facing port 19910 is served by tt
+
+# A2A Master Summary - 2026-07-30
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-07-31
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-01
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-02
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-03
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-04
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-05
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-06
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-07
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-08
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-09
+
+## coding: no updates today
+## creative: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-10
+
+## coding: 8 updates
+  ## [2026-08-04T16:41:52.206654+00:00] Actionable rule for Hermes WebUI (default port 8787) Tailscale access issues: If local access to por
+  ## [2026-08-04T16:41:52.206483+00:00] Domain pitfall: Tailscale ACLs can enforce port-level access restrictions independent of the service
+  ## [2026-08-04T16:41:52.201750+00:00] Reusable troubleshooting workflow for Tailscale remote service access failures: First confirm the ta
+  ## [2026-08-06T08:24:06.363202+00:00] 适配该需求的通用可复用架构为：采用成熟OCR/表格识别开源库（如PaddleOCR表格识别、Surya等）负责图片内容识别，openpyxl负责Excel生成与图片插入，轻量AI对话层仅负责理解用户意
+  ## [2026-08-06T08:24:06.361932+00:00] 用户需要构建手机端可用的AI合同Excel生成工具，核心约束与偏好为：优先复用成熟开源项目而非从零开发、最小化token消耗与对话轮次、支持将图片插入Excel、AI可理解合同内的价格、条款等内容并生
+  ## [2026-08-07T03:11:55.314875+00:00] 用户明确要求固化长期升级流程：每次Hermes WebUI发布新版本时，自动检测新版本、保留用户自定义规则与设置、完成升级适配，需配套开发自动化脚本与skill实现该全流程。
+  ## [2026-08-07T03:11:55.314317+00:00] 当前运行的Hermes WebUI（进程19976）实际由`hermes-webui-clean`系统服务承载，服务入口为`bootstrap.py`，其自定义systemd配置存放在override
+  ## [2026-08-07T03:11:55.314698+00:00] Hermes WebUI的内置版本更新检测逻辑指向`nesquena/hermes-webui` GitHub仓库的tag，而非npm全局包`hermes-web-ui`，后续所有升级操作的目标都应对
+
+## creative: no updates today
+## external: 3 updates
+  ## [2026-08-07T13:46:45.549724+00:00] Redroid 16 强制要求内核模块 ashmem_linux 和 binder_linux。Ubuntu 24.04 默认内核（6.8.x）的 linux-modules-extra 通常包含 b
+  ## [2026-08-07T13:46:45.589389+00:00] 旧版 Linux 内核/OpenSSH 服务器可能仅支持 diffie-hellman-group14-sha1 KEX 算法。连接此类 VM 时，SSH 客户端需显式添加 -oKexAlgorith
+  ## [2026-08-07T13:46:45.589644+00:00] 该环境使用裸 QEMU 通过 user-level systemd 服务（redroid-vm.service）管理 Redroid VM，而非 libvirtd。标准部署工作流为：先读取 redro
+
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-11
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+env: “bash”: 输入/输出错误
+# A2A Master Summary - 2026-08-13
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-14
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-15
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-16
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-17
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-19
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-20
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-23
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-23
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-24
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-25
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-26
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-27
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-28
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-29
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-08-30
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-02
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-02
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-03
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-04
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-05
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-06
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-07
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-08
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-09
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-10
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-11
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-12
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-13
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-14
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-17
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-17
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-18
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-19
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-20
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-21
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-22
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-23
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-24
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-25
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-26
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-27
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-28
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-29
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-09-30
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-03
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-03
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-04
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-05
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-06
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-07
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-08
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-09
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-10
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-11
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-12
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-13
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-14
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-15
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-16
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-17
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-18
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-22
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today
+# A2A Master Summary - 2026-10-22
+
+## coding: no updates today
+## creative: no updates today
+## external: no updates today
+## mobile: no updates today
+## ops: no updates today

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123427-ops-4ef243",
+  "created_at": "2026-07-29T12:34:27.774744+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2qxl1lbcxphq",
+    "title": "",
+    "created_at": 1785130196.0737643
+  },
+  "content": "The Hermes instance at 100.87.31.44:8787 is intended to have a persistent, default binding to the Nesquena service, with this binding configured as the primary served resource on the instance's public-facing port.",
+  "confidence": 0.94,
+  "status": "pending",
+  "review_note": ""
+}

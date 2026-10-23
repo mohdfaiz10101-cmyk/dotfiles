@@ -1,0 +1,501 @@
+Open files for Hermmes state.db holders:
+## PID 1034945
+1034945 1239186 charlie   6-07:20:31 python3 -m hermes_cli.main chat
+hermes  1034945 charlie  mem       REG               0,86     72440      25366 /usr/lib64/python3.14/lib-dynload/array.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    140560      25332 /usr/lib64/python3.14/lib-dynload/_ctypes.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    147560      25345 /usr/lib64/python3.14/lib-dynload/_pickle.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     20880      25355 /usr/lib64/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    190064       3916 /usr/lib64/libexpat.so.1.11.1
+hermes  1034945 charlie  mem       REG               0,86     19792       4866 /usr/lib64/libnss_mdns4_minimal.so.2
+hermes  1034945 charlie  mem-r     REG               0,34            132690368 /var/home/charlie/.hermes/state.db-shm (path dev=0,61)
+hermes  1034945 charlie  mem       REG               0,86     72360      25374 /usr/lib64/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    204064       4725 /usr/lib64/libmpdec.so.4.0.1
+hermes  1034945 charlie  mem       REG               0,86    191424      25335 /usr/lib64/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     11416       5148 /usr/lib64/librt.so.1
+hermes  1034945 charlie  mem       REG               0,86     21080      25347 /usr/lib64/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     34056      25379 /usr/lib64/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     11256       3788 /usr/lib64/libdl.so.2
+hermes  1034945 charlie  mem       REG               0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+hermes  1034945 charlie  mem       REG               0,34              4734378 /var/home/charlie/.local/lib/python3.14/site-packages/jiter/jiter.cpython-314-x86_64-linux-gnu.so (path dev=0,61)
+hermes  1034945 charlie  mem       REG               0,86   1035728       5313 /usr/lib64/libssl.so.3.5.5
+hermes  1034945 charlie  mem       REG               0,86     36592      25339 /usr/lib64/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     42080      25351 /usr/lib64/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    183568      25362 /usr/lib64/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    122096      25370 /usr/lib64/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     28328      25378 /usr/lib64/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     24592      25322 /usr/lib64/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     80344      25373 /usr/lib64/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    959384       5779 /usr/lib64/libzstd.so.1.5.7
+hermes  1034945 charlie  mem       REG               0,86    219768       4649 /usr/lib64/liblzma.so.5.8.2
+hermes  1034945 charlie  mem       REG               0,86     11272       5090 /usr/lib64/libpthread.so.0
+hermes  1034945 charlie  mem       REG               0,86     38000      25381 /usr/lib64/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     32312      25358 /usr/lib64/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     80464       3635 /usr/lib64/libbz2.so.1.0.8
+hermes  1034945 charlie  mem       REG               0,86     55792      25365 /usr/lib64/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     46088      25343 /usr/lib64/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     29024      25323 /usr/lib64/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86   5774184       3851 /usr/lib64/libcrypto.so.3.5.5
+hermes  1034945 charlie  mem       REG               0,86     95048      25326 /usr/lib64/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     65696      25337 /usr/lib64/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    139624       5735 /usr/lib64/libyaml-0.so.2.0.9
+hermes  1034945 charlie  mem       REG               0,86    264840      50213 /usr/lib64/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    169544       5743 /usr/lib64/libz.so.1.3.1.zlib-ng
+hermes  1034945 charlie  mem       REG               0,86     46128      25344 /usr/lib64/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     51464      25380 /usr/lib64/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     33440      25376 /usr/lib64/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     61352      25363 /usr/lib64/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     24096      25369 /usr/lib64/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86    369120      22779 /usr/lib/locale/C.utf8/LC_CTYPE
+hermes  1034945 charlie  mem       REG               0,86 233380912      10795 /usr/lib/locale/locale-archive
+hermes  1034945 charlie  mem       REG               0,86   1153936       4663 /usr/lib64/libm.so.6
+hermes  1034945 charlie  mem       REG               0,86   2490288       3696 /usr/lib64/libc.so.6
+hermes  1034945 charlie  mem       REG               0,86   6649000       5212 /usr/lib64/libpython3.14.so.1.0
+hermes  1034945 charlie  mem       REG               0,86     20328      25353 /usr/lib64/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     16256      25388 /usr/lib64/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so
+hermes  1034945 charlie  mem       REG               0,86     27012       7813 /usr/lib64/gconv/gconv-modules.cache
+hermes  1034945 charlie  mem       REG               0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+hermes  1034945 charlie    0u      CHR              136,7       0t0         10 /dev/pts/7
+hermes  1034945 charlie    1u      CHR              136,7       0t0         10 /dev/pts/7
+hermes  1034945 charlie    2u      CHR              136,7       0t0         10 /dev/pts/7
+hermes  1034945 charlie    3w      REG               0,61   2019163  142581762 /var/home/charlie/.hermes/logs/agent.log
+hermes  1034945 charlie    4w      REG               0,61    929280  142399170 /var/home/charlie/.hermes/logs/errors.log
+hermes  1034945 charlie    5r      REG               0,86     65584       3930 /usr/lib64/libffi.so.8.2.0
+hermes  1034945 charlie    6w      REG               0,61   1778315  131635948 /var/home/charlie/.hermes/logs/mcp-stderr.log (deleted)
+hermes  1034945 charlie    7u  a_inode               0,16         0       2078 [eventpoll:8,11,12,13,19,22,23]
+hermes  1034945 charlie    8u     unix 0x00000000e98fab78       0t0 2174301036 type=STREAM (CONNECTED)
+hermes  1034945 charlie    9u     unix 0x00000000cf4e6d84       0t0 2174301037 type=STREAM (CONNECTED)
+hermes  1034945 charlie   10u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1034945 charlie   11u  a_inode                0,5         0   60972300 [pidfd:2281866]
+hermes  1034945 charlie   12w     FIFO               0,15       0t0 2174299960 pipe
+hermes  1034945 charlie   13r     FIFO               0,15       0t0 2174299961 pipe
+hermes  1034945 charlie   14u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  1034945 charlie   15u      REG               0,61    131072  132690368 /var/home/charlie/.hermes/state.db-shm
+hermes  1034945 charlie   16u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1034945 charlie   17u  a_inode               0,16         0       2078 [eventpoll:0,20]
+hermes  1034945 charlie   18u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1034945 charlie   19u  a_inode                0,5         0   60972301 [pidfd:2281867]
+hermes  1034945 charlie   20u     unix 0x000000006986e25e       0t0   15316426 type=STREAM (CONNECTED)
+hermes  1034945 charlie   21u     unix 0x000000006fc92aac       0t0   15316427 type=STREAM (CONNECTED)
+hermes  1034945 charlie   22w     FIFO               0,15       0t0 2174299963 pipe
+hermes  1034945 charlie   23r     FIFO               0,15       0t0 2174299964 pipe
+hermes  1034945 charlie   24u  a_inode                0,5         0   49874404 [pidfd:3760094]
+hermes  1034945 charlie   25w     FIFO               0,15       0t0 1381034587 pipe
+hermes  1034945 charlie   26r     FIFO               0,15       0t0 1381034588 pipe
+
+## PID 1034998
+1034998 1239186 charlie   6-07:20:31 python3 -m hermes_cli.main chat
+hermes  1034998 charlie  mem       REG               0,86     19792       4866 /usr/lib64/libnss_mdns4_minimal.so.2
+hermes  1034998 charlie  mem       REG               0,86     21080      25347 /usr/lib64/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     72360      25374 /usr/lib64/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    204064       4725 /usr/lib64/libmpdec.so.4.0.1
+hermes  1034998 charlie  mem       REG               0,86    191424      25335 /usr/lib64/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     11416       5148 /usr/lib64/librt.so.1
+hermes  1034998 charlie  mem       REG               0,86     34056      25379 /usr/lib64/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     11256       3788 /usr/lib64/libdl.so.2
+hermes  1034998 charlie  mem       REG               0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+hermes  1034998 charlie  mem       REG               0,34              4734378 /var/home/charlie/.local/lib/python3.14/site-packages/jiter/jiter.cpython-314-x86_64-linux-gnu.so (path dev=0,61)
+hermes  1034998 charlie  mem       REG               0,86   1035728       5313 /usr/lib64/libssl.so.3.5.5
+hermes  1034998 charlie  mem       REG               0,86     36592      25339 /usr/lib64/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     42080      25351 /usr/lib64/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    183568      25362 /usr/lib64/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    122096      25370 /usr/lib64/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     28328      25378 /usr/lib64/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     24592      25322 /usr/lib64/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     80344      25373 /usr/lib64/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    959384       5779 /usr/lib64/libzstd.so.1.5.7
+hermes  1034998 charlie  mem       REG               0,86    219768       4649 /usr/lib64/liblzma.so.5.8.2
+hermes  1034998 charlie  mem       REG               0,86     11272       5090 /usr/lib64/libpthread.so.0
+hermes  1034998 charlie  mem       REG               0,86     38000      25381 /usr/lib64/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     32312      25358 /usr/lib64/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     80464       3635 /usr/lib64/libbz2.so.1.0.8
+hermes  1034998 charlie  mem       REG               0,86     55792      25365 /usr/lib64/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     46088      25343 /usr/lib64/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     29024      25323 /usr/lib64/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86   5774184       3851 /usr/lib64/libcrypto.so.3.5.5
+hermes  1034998 charlie  mem       REG               0,86     95048      25326 /usr/lib64/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     65696      25337 /usr/lib64/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    139624       5735 /usr/lib64/libyaml-0.so.2.0.9
+hermes  1034998 charlie  mem       REG               0,86    264840      50213 /usr/lib64/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    169544       5743 /usr/lib64/libz.so.1.3.1.zlib-ng
+hermes  1034998 charlie  mem       REG               0,86     46128      25344 /usr/lib64/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     51464      25380 /usr/lib64/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     33440      25376 /usr/lib64/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     61352      25363 /usr/lib64/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     24096      25369 /usr/lib64/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86    369120      22779 /usr/lib/locale/C.utf8/LC_CTYPE
+hermes  1034998 charlie  mem       REG               0,86 233380912      10795 /usr/lib/locale/locale-archive
+hermes  1034998 charlie  mem       REG               0,86   1153936       4663 /usr/lib64/libm.so.6
+hermes  1034998 charlie  mem       REG               0,86   2490288       3696 /usr/lib64/libc.so.6
+hermes  1034998 charlie  mem       REG               0,86   6649000       5212 /usr/lib64/libpython3.14.so.1.0
+hermes  1034998 charlie  mem       REG               0,86     20328      25353 /usr/lib64/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     16256      25388 /usr/lib64/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so
+hermes  1034998 charlie  mem       REG               0,86     27012       7813 /usr/lib64/gconv/gconv-modules.cache
+hermes  1034998 charlie  mem       REG               0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+hermes  1034998 charlie    0u      CHR              136,8       0t0         11 /dev/pts/8
+hermes  1034998 charlie    1u      CHR              136,8       0t0         11 /dev/pts/8
+hermes  1034998 charlie    2u      CHR              136,8       0t0         11 /dev/pts/8
+hermes  1034998 charlie    3w      REG               0,61   2019163  142581762 /var/home/charlie/.hermes/logs/agent.log
+hermes  1034998 charlie    4w      REG               0,61    929280  142399170 /var/home/charlie/.hermes/logs/errors.log
+hermes  1034998 charlie    5r      REG               0,86     65584       3930 /usr/lib64/libffi.so.8.2.0
+hermes  1034998 charlie    6u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1034998 charlie    7u  a_inode               0,16         0       2078 [eventpoll:10,16,17,18,27,28,29]
+hermes  1034998 charlie    8u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  1034998 charlie    9u      REG               0,61    131072  132690368 /var/home/charlie/.hermes/state.db-shm
+hermes  1034998 charlie   10u     unix 0x000000002a6a8855       0t0 2174301024 type=STREAM (CONNECTED)
+hermes  1034998 charlie   11u     unix 0x00000000d15d15c0       0t0 2174301025 type=STREAM (CONNECTED)
+hermes  1034998 charlie   12w      REG               0,61   1778315  131635948 /var/home/charlie/.hermes/logs/mcp-stderr.log (deleted)
+hermes  1034998 charlie   13u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1034998 charlie   14u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1034998 charlie   15u     IPv4           76559677       0t0        TCP fedora:41476->14.103.2.83:https (CLOSE_WAIT)
+hermes  1034998 charlie   16u  a_inode                0,5         0   60972258 [pidfd:2281824]
+hermes  1034998 charlie   17w     FIFO               0,15       0t0 2174305781 pipe
+hermes  1034998 charlie   18r     FIFO               0,15       0t0 2174305782 pipe
+hermes  1034998 charlie   19u  a_inode               0,16         0       2078 [eventpoll:0,20]
+hermes  1034998 charlie   20u     unix 0x0000000093457885       0t0   15306730 type=STREAM (CONNECTED)
+hermes  1034998 charlie   21u     unix 0x0000000026c6d641       0t0   15306731 type=STREAM (CONNECTED)
+hermes  1034998 charlie   22u     IPv4          145475663       0t0        TCP fedora:44452->14.103.2.83:https (CLOSE_WAIT)
+hermes  1034998 charlie   23u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  1034998 charlie   24u  a_inode               0,16         0       2078 [eventpoll:25]
+hermes  1034998 charlie   25u     unix 0x000000008cb70199       0t0   74640823 type=STREAM (CONNECTED)
+hermes  1034998 charlie   26u     unix 0x0000000042343e99       0t0   74640824 type=STREAM (CONNECTED)
+hermes  1034998 charlie   27u  a_inode                0,5         0   60972259 [pidfd:2281825]
+hermes  1034998 charlie   28w     FIFO               0,15       0t0 2174305784 pipe
+hermes  1034998 charlie   29r     FIFO               0,15       0t0 2174305785 pipe
+hermes  1034998 charlie   30u  a_inode                0,5         0   60312165 [pidfd:1621656]
+hermes  1034998 charlie   31w     FIFO               0,15       0t0 2172085821 pipe
+hermes  1034998 charlie   32r     FIFO               0,15       0t0 2172085822 pipe
+
+## PID 1239187
+1239187 1239186 charlie   6-15:53:28 python3 -m hermes_cli.main chat
+hermes  1239187 charlie  mem       REG               0,86     21080      25347 /usr/lib64/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem-r     REG               0,34            132690368 /var/home/charlie/.hermes/state.db-shm (path dev=0,61)
+hermes  1239187 charlie  mem       REG               0,86    204064       4725 /usr/lib64/libmpdec.so.4.0.1
+hermes  1239187 charlie  mem       REG               0,86    191424      25335 /usr/lib64/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     11416       5148 /usr/lib64/librt.so.1
+hermes  1239187 charlie  mem       REG               0,86     72360      25374 /usr/lib64/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     34056      25379 /usr/lib64/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     11256       3788 /usr/lib64/libdl.so.2
+hermes  1239187 charlie  mem       REG               0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+hermes  1239187 charlie  mem       REG               0,34              4734378 /var/home/charlie/.local/lib/python3.14/site-packages/jiter/jiter.cpython-314-x86_64-linux-gnu.so (path dev=0,61)
+hermes  1239187 charlie  mem       REG               0,86   1035728       5313 /usr/lib64/libssl.so.3.5.5
+hermes  1239187 charlie  mem       REG               0,86     36592      25339 /usr/lib64/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     42080      25351 /usr/lib64/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86    183568      25362 /usr/lib64/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86    122096      25370 /usr/lib64/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     28328      25378 /usr/lib64/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     24592      25322 /usr/lib64/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     80344      25373 /usr/lib64/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86    959384       5779 /usr/lib64/libzstd.so.1.5.7
+hermes  1239187 charlie  mem       REG               0,86    219768       4649 /usr/lib64/liblzma.so.5.8.2
+hermes  1239187 charlie  mem       REG               0,86     11272       5090 /usr/lib64/libpthread.so.0
+hermes  1239187 charlie  mem       REG               0,86     38000      25381 /usr/lib64/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     32312      25358 /usr/lib64/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     80464       3635 /usr/lib64/libbz2.so.1.0.8
+hermes  1239187 charlie  mem       REG               0,86     55792      25365 /usr/lib64/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     46088      25343 /usr/lib64/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     29024      25323 /usr/lib64/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86   5774184       3851 /usr/lib64/libcrypto.so.3.5.5
+hermes  1239187 charlie  mem       REG               0,86     95048      25326 /usr/lib64/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     65696      25337 /usr/lib64/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86    139624       5735 /usr/lib64/libyaml-0.so.2.0.9
+hermes  1239187 charlie  mem       REG               0,86    264840      50213 /usr/lib64/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86    169544       5743 /usr/lib64/libz.so.1.3.1.zlib-ng
+hermes  1239187 charlie  mem       REG               0,86     46128      25344 /usr/lib64/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     51464      25380 /usr/lib64/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     33440      25376 /usr/lib64/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     61352      25363 /usr/lib64/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     24096      25369 /usr/lib64/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86    369120      22779 /usr/lib/locale/C.utf8/LC_CTYPE
+hermes  1239187 charlie  mem       REG               0,86 233380912      10795 /usr/lib/locale/locale-archive
+hermes  1239187 charlie  mem       REG               0,86   1153936       4663 /usr/lib64/libm.so.6
+hermes  1239187 charlie  mem       REG               0,86   2490288       3696 /usr/lib64/libc.so.6
+hermes  1239187 charlie  mem       REG               0,86   6649000       5212 /usr/lib64/libpython3.14.so.1.0
+hermes  1239187 charlie  mem       REG               0,86     20328      25353 /usr/lib64/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     16256      25388 /usr/lib64/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so
+hermes  1239187 charlie  mem       REG               0,86     27012       7813 /usr/lib64/gconv/gconv-modules.cache
+hermes  1239187 charlie  mem       REG               0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+hermes  1239187 charlie    0u      CHR              136,5       0t0          8 /dev/pts/5
+hermes  1239187 charlie    1u      CHR              136,5       0t0          8 /dev/pts/5
+hermes  1239187 charlie    2u      CHR              136,5       0t0          8 /dev/pts/5
+hermes  1239187 charlie    3w      REG               0,61   2019163  142581762 /var/home/charlie/.hermes/logs/agent.log
+hermes  1239187 charlie    4w      REG               0,61    929280  142399170 /var/home/charlie/.hermes/logs/errors.log
+hermes  1239187 charlie    5r      REG               0,86     65584       3930 /usr/lib64/libffi.so.8.2.0
+hermes  1239187 charlie    6u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1239187 charlie    7u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  1239187 charlie    8u      REG               0,61    131072  132690368 /var/home/charlie/.hermes/state.db-shm
+hermes  1239187 charlie    9u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1239187 charlie   10u  a_inode               0,16         0       2078 [eventpoll:11,14,15,16,27,28,29]
+hermes  1239187 charlie   11u     unix 0x00000000addf5136       0t0 2174299906 type=STREAM (CONNECTED)
+hermes  1239187 charlie   12u     unix 0x0000000062c00232       0t0 2174299907 type=STREAM (CONNECTED)
+hermes  1239187 charlie   13w      REG               0,61   1778315  131635948 /var/home/charlie/.hermes/logs/mcp-stderr.log (deleted)
+hermes  1239187 charlie   14u  a_inode                0,5         0   60971879 [pidfd:2281445]
+hermes  1239187 charlie   15w     FIFO               0,15       0t0 2174307392 pipe
+hermes  1239187 charlie   16r     FIFO               0,15       0t0 2174307393 pipe
+hermes  1239187 charlie   17u  a_inode               0,16         0       2078 [eventpoll:0,19]
+hermes  1239187 charlie   18u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  1239187 charlie   19u     unix 0x0000000089460cbf       0t0    3801293 type=STREAM (CONNECTED)
+hermes  1239187 charlie   20u     unix 0x00000000e0c3a990       0t0    3801294 type=STREAM (CONNECTED)
+hermes  1239187 charlie   21u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  1239187 charlie   22u     IPv4            3816511       0t0        TCP fedora:39412->14.103.2.83:https (CLOSE_WAIT)
+hermes  1239187 charlie   23u     IPv4            6053635       0t0        TCP fedora:37838->14.103.2.83:https (CLOSE_WAIT)
+hermes  1239187 charlie   24u  a_inode               0,16         0       2078 [eventpoll:25]
+hermes  1239187 charlie   25u     unix 0x00000000b4f3e872       0t0    5935197 type=STREAM (CONNECTED)
+hermes  1239187 charlie   26u     unix 0x000000004e02b009       0t0    5935198 type=STREAM (CONNECTED)
+hermes  1239187 charlie   27u  a_inode                0,5         0   60971880 [pidfd:2281446]
+hermes  1239187 charlie   28w     FIFO               0,15       0t0 2174307395 pipe
+hermes  1239187 charlie   29r     FIFO               0,15       0t0 2174307396 pipe
+hermes  1239187 charlie   30u  a_inode                0,5         0   49874562 [pidfd:3760252]
+hermes  1239187 charlie   31w     FIFO               0,15       0t0 1381031828 pipe
+hermes  1239187 charlie   32r     FIFO               0,15       0t0 1381031829 pipe
+
+## PID 165097
+ 165097 1239186 charlie   3-18:30:01 python3 -m hermes_cli.main chat
+hermes  165097 charlie  mem       REG               0,86     72440      25366 /usr/lib64/python3.14/lib-dynload/array.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    140560      25332 /usr/lib64/python3.14/lib-dynload/_ctypes.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    147560      25345 /usr/lib64/python3.14/lib-dynload/_pickle.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     20880      25355 /usr/lib64/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    190064       3916 /usr/lib64/libexpat.so.1.11.1
+hermes  165097 charlie  mem       REG               0,86     19792       4866 /usr/lib64/libnss_mdns4_minimal.so.2
+hermes  165097 charlie  mem-r     REG               0,34            132690368 /var/home/charlie/.hermes/state.db-shm (path dev=0,61)
+hermes  165097 charlie  mem       REG               0,86     72360      25374 /usr/lib64/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    204064       4725 /usr/lib64/libmpdec.so.4.0.1
+hermes  165097 charlie  mem       REG               0,86    191424      25335 /usr/lib64/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     11416       5148 /usr/lib64/librt.so.1
+hermes  165097 charlie  mem       REG               0,86     21080      25347 /usr/lib64/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     34056      25379 /usr/lib64/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     11256       3788 /usr/lib64/libdl.so.2
+hermes  165097 charlie  mem       REG               0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+hermes  165097 charlie  mem       REG               0,34              4734378 /var/home/charlie/.local/lib/python3.14/site-packages/jiter/jiter.cpython-314-x86_64-linux-gnu.so (path dev=0,61)
+hermes  165097 charlie  mem       REG               0,86   1035728       5313 /usr/lib64/libssl.so.3.5.5
+hermes  165097 charlie  mem       REG               0,86     36592      25339 /usr/lib64/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     42080      25351 /usr/lib64/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    183568      25362 /usr/lib64/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    122096      25370 /usr/lib64/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     28328      25378 /usr/lib64/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     24592      25322 /usr/lib64/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     80344      25373 /usr/lib64/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    959384       5779 /usr/lib64/libzstd.so.1.5.7
+hermes  165097 charlie  mem       REG               0,86    219768       4649 /usr/lib64/liblzma.so.5.8.2
+hermes  165097 charlie  mem       REG               0,86     11272       5090 /usr/lib64/libpthread.so.0
+hermes  165097 charlie  mem       REG               0,86     38000      25381 /usr/lib64/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     32312      25358 /usr/lib64/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     80464       3635 /usr/lib64/libbz2.so.1.0.8
+hermes  165097 charlie  mem       REG               0,86     55792      25365 /usr/lib64/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     46088      25343 /usr/lib64/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     29024      25323 /usr/lib64/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86   5774184       3851 /usr/lib64/libcrypto.so.3.5.5
+hermes  165097 charlie  mem       REG               0,86     95048      25326 /usr/lib64/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     65696      25337 /usr/lib64/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    139624       5735 /usr/lib64/libyaml-0.so.2.0.9
+hermes  165097 charlie  mem       REG               0,86    264840      50213 /usr/lib64/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    169544       5743 /usr/lib64/libz.so.1.3.1.zlib-ng
+hermes  165097 charlie  mem       REG               0,86     46128      25344 /usr/lib64/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     51464      25380 /usr/lib64/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     33440      25376 /usr/lib64/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     61352      25363 /usr/lib64/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     24096      25369 /usr/lib64/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86    369120      22779 /usr/lib/locale/C.utf8/LC_CTYPE
+hermes  165097 charlie  mem       REG               0,86 233380912      10795 /usr/lib/locale/locale-archive
+hermes  165097 charlie  mem       REG               0,86   1153936       4663 /usr/lib64/libm.so.6
+hermes  165097 charlie  mem       REG               0,86   2490288       3696 /usr/lib64/libc.so.6
+hermes  165097 charlie  mem       REG               0,86   6649000       5212 /usr/lib64/libpython3.14.so.1.0
+hermes  165097 charlie  mem       REG               0,86     20328      25353 /usr/lib64/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     16256      25388 /usr/lib64/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so
+hermes  165097 charlie  mem       REG               0,86     27012       7813 /usr/lib64/gconv/gconv-modules.cache
+hermes  165097 charlie  mem       REG               0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+hermes  165097 charlie    0u      CHR              136,6       0t0          9 /dev/pts/6
+hermes  165097 charlie    1u      CHR              136,6       0t0          9 /dev/pts/6
+hermes  165097 charlie    2u      CHR              136,6       0t0          9 /dev/pts/6
+hermes  165097 charlie    3w      REG               0,61   2019163  142581762 /var/home/charlie/.hermes/logs/agent.log
+hermes  165097 charlie    4w      REG               0,61    929280  142399170 /var/home/charlie/.hermes/logs/errors.log
+hermes  165097 charlie    5r      REG               0,86     65584       3930 /usr/lib64/libffi.so.8.2.0
+hermes  165097 charlie    6u  a_inode               0,16         0       2078 [eventpoll:7,9,11,13,24,25,26]
+hermes  165097 charlie    7u     unix 0x0000000025a0b6c6       0t0 2174305064 type=STREAM (CONNECTED)
+hermes  165097 charlie    8u     unix 0x00000000e4884ca3       0t0 2174305065 type=STREAM (CONNECTED)
+hermes  165097 charlie    9u  a_inode                0,5         0   60972117 [pidfd:2281683]
+hermes  165097 charlie   10w      REG               0,61   1778315  131635948 /var/home/charlie/.hermes/logs/mcp-stderr.log (deleted)
+hermes  165097 charlie   11w     FIFO               0,15       0t0 2174305066 pipe
+hermes  165097 charlie   12u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  165097 charlie   13r     FIFO               0,15       0t0 2174305067 pipe
+hermes  165097 charlie   14u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  165097 charlie   15u      REG               0,61    131072  132690368 /var/home/charlie/.hermes/state.db-shm
+hermes  165097 charlie   16u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  165097 charlie   17u  a_inode                0,5         0   60304624 [pidfd:1614100]
+hermes  165097 charlie   18u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  165097 charlie   19u  a_inode               0,16         0       2078 [eventpoll:0,20]
+hermes  165097 charlie   20u     unix 0x00000000fc6eac93       0t0  211179829 type=STREAM (CONNECTED)
+hermes  165097 charlie   21u     unix 0x00000000836524cd       0t0  211179830 type=STREAM (CONNECTED)
+hermes  165097 charlie   22w     FIFO               0,15       0t0 2172068894 pipe
+hermes  165097 charlie   23r     FIFO               0,15       0t0 2172068895 pipe
+hermes  165097 charlie   24u  a_inode                0,5         0   60972118 [pidfd:2281684]
+hermes  165097 charlie   25w     FIFO               0,15       0t0 2174305069 pipe
+hermes  165097 charlie   26r     FIFO               0,15       0t0 2174305070 pipe
+
+## PID 165115
+ 165115 1239186 charlie   3-18:30:00 python3 -m hermes_cli.main chat
+hermes  165115 charlie  mem       REG               0,86    147560      25345 /usr/lib64/python3.14/lib-dynload/_pickle.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     20880      25355 /usr/lib64/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    190064       3916 /usr/lib64/libexpat.so.1.11.1
+hermes  165115 charlie  mem       REG               0,86     19792       4866 /usr/lib64/libnss_mdns4_minimal.so.2
+hermes  165115 charlie  mem-r     REG               0,34            132690368 /var/home/charlie/.hermes/state.db-shm (path dev=0,61)
+hermes  165115 charlie  mem       REG               0,86     72360      25374 /usr/lib64/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    204064       4725 /usr/lib64/libmpdec.so.4.0.1
+hermes  165115 charlie  mem       REG               0,86    191424      25335 /usr/lib64/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     11416       5148 /usr/lib64/librt.so.1
+hermes  165115 charlie  mem       REG               0,86     21080      25347 /usr/lib64/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     34056      25379 /usr/lib64/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     11256       3788 /usr/lib64/libdl.so.2
+hermes  165115 charlie  mem       REG               0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+hermes  165115 charlie  mem       REG               0,34              4734378 /var/home/charlie/.local/lib/python3.14/site-packages/jiter/jiter.cpython-314-x86_64-linux-gnu.so (path dev=0,61)
+hermes  165115 charlie  mem       REG               0,86   1035728       5313 /usr/lib64/libssl.so.3.5.5
+hermes  165115 charlie  mem       REG               0,86     36592      25339 /usr/lib64/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     42080      25351 /usr/lib64/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    183568      25362 /usr/lib64/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    122096      25370 /usr/lib64/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     28328      25378 /usr/lib64/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     24592      25322 /usr/lib64/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     80344      25373 /usr/lib64/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    959384       5779 /usr/lib64/libzstd.so.1.5.7
+hermes  165115 charlie  mem       REG               0,86    219768       4649 /usr/lib64/liblzma.so.5.8.2
+hermes  165115 charlie  mem       REG               0,86     11272       5090 /usr/lib64/libpthread.so.0
+hermes  165115 charlie  mem       REG               0,86     38000      25381 /usr/lib64/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     32312      25358 /usr/lib64/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     80464       3635 /usr/lib64/libbz2.so.1.0.8
+hermes  165115 charlie  mem       REG               0,86     55792      25365 /usr/lib64/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     46088      25343 /usr/lib64/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     29024      25323 /usr/lib64/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86   5774184       3851 /usr/lib64/libcrypto.so.3.5.5
+hermes  165115 charlie  mem       REG               0,86     95048      25326 /usr/lib64/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     65696      25337 /usr/lib64/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    139624       5735 /usr/lib64/libyaml-0.so.2.0.9
+hermes  165115 charlie  mem       REG               0,86    264840      50213 /usr/lib64/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    169544       5743 /usr/lib64/libz.so.1.3.1.zlib-ng
+hermes  165115 charlie  mem       REG               0,86     46128      25344 /usr/lib64/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     51464      25380 /usr/lib64/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     33440      25376 /usr/lib64/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     61352      25363 /usr/lib64/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     24096      25369 /usr/lib64/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86    369120      22779 /usr/lib/locale/C.utf8/LC_CTYPE
+hermes  165115 charlie  mem       REG               0,86 233380912      10795 /usr/lib/locale/locale-archive
+hermes  165115 charlie  mem       REG               0,86   1153936       4663 /usr/lib64/libm.so.6
+hermes  165115 charlie  mem       REG               0,86   2490288       3696 /usr/lib64/libc.so.6
+hermes  165115 charlie  mem       REG               0,86   6649000       5212 /usr/lib64/libpython3.14.so.1.0
+hermes  165115 charlie  mem       REG               0,86     20328      25353 /usr/lib64/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     16256      25388 /usr/lib64/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so
+hermes  165115 charlie  mem       REG               0,86     27012       7813 /usr/lib64/gconv/gconv-modules.cache
+hermes  165115 charlie  mem       REG               0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+hermes  165115 charlie    0u      CHR             136,12       0t0         15 /dev/pts/12
+hermes  165115 charlie    1u      CHR             136,12       0t0         15 /dev/pts/12
+hermes  165115 charlie    2u      CHR             136,12       0t0         15 /dev/pts/12
+hermes  165115 charlie    3w      REG               0,61   2019163  142581762 /var/home/charlie/.hermes/logs/agent.log
+hermes  165115 charlie    4w      REG               0,61    929280  142399170 /var/home/charlie/.hermes/logs/errors.log
+hermes  165115 charlie    5r      REG               0,86     65584       3930 /usr/lib64/libffi.so.8.2.0
+hermes  165115 charlie    6u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  165115 charlie    7u  a_inode               0,16         0       2078 [eventpoll:8,11,12,13,17,22,25]
+hermes  165115 charlie    8u     unix 0x00000000fee9d0fe       0t0 2174304032 type=STREAM (CONNECTED)
+hermes  165115 charlie    9u     unix 0x000000002b06ffe5       0t0 2174304033 type=STREAM (CONNECTED)
+hermes  165115 charlie   10w      REG               0,61   1778315  131635948 /var/home/charlie/.hermes/logs/mcp-stderr.log (deleted)
+hermes  165115 charlie   11u  a_inode                0,5         0   60972122 [pidfd:2281688]
+hermes  165115 charlie   12w     FIFO               0,15       0t0 2174309379 pipe
+hermes  165115 charlie   13r     FIFO               0,15       0t0 2174309380 pipe
+hermes  165115 charlie   14u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  165115 charlie   15u      REG               0,61    131072  132690368 /var/home/charlie/.hermes/state.db-shm
+hermes  165115 charlie   16u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  165115 charlie   17u  a_inode                0,5         0   60972123 [pidfd:2281689]
+hermes  165115 charlie   18u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  165115 charlie   19u  a_inode               0,16         0       2078 [eventpoll:0,20]
+hermes  165115 charlie   20u     unix 0x000000003f1938c1       0t0  211180905 type=STREAM (CONNECTED)
+hermes  165115 charlie   21u     unix 0x000000001382f508       0t0  211180906 type=STREAM (CONNECTED)
+hermes  165115 charlie   22w     FIFO               0,15       0t0 2174308377 pipe
+hermes  165115 charlie   23u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  165115 charlie   24u     IPv4          211846744       0t0        TCP fedora:55378->14.103.2.83:https (CLOSE_WAIT)
+hermes  165115 charlie   25r     FIFO               0,15       0t0 2174308378 pipe
+hermes  165115 charlie   26u  a_inode                0,5         0   49874429 [pidfd:3760119]
+hermes  165115 charlie   27w     FIFO               0,15       0t0 1381034590 pipe
+hermes  165115 charlie   28r     FIFO               0,15       0t0 1381034591 pipe
+
+## PID 2778085
+2778085 1239186 charlie   5-18:35:35 python3 -m hermes_cli.main chat
+hermes  2778085 charlie  mem       REG               0,86     19792       4866 /usr/lib64/libnss_mdns4_minimal.so.2
+hermes  2778085 charlie  mem       REG               0,86     21080      25347 /usr/lib64/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     72360      25374 /usr/lib64/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    204064       4725 /usr/lib64/libmpdec.so.4.0.1
+hermes  2778085 charlie  mem       REG               0,86    191424      25335 /usr/lib64/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     11416       5148 /usr/lib64/librt.so.1
+hermes  2778085 charlie  mem-r     REG               0,34            132690368 /var/home/charlie/.hermes/state.db-shm (path dev=0,61)
+hermes  2778085 charlie  mem       REG               0,86     34056      25379 /usr/lib64/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     11256       3788 /usr/lib64/libdl.so.2
+hermes  2778085 charlie  mem       REG               0,86    186544       4046 /usr/lib64/libgcc_s-16-20260321.so.1
+hermes  2778085 charlie  mem       REG               0,34              4734378 /var/home/charlie/.local/lib/python3.14/site-packages/jiter/jiter.cpython-314-x86_64-linux-gnu.so (path dev=0,61)
+hermes  2778085 charlie  mem       REG               0,86   1035728       5313 /usr/lib64/libssl.so.3.5.5
+hermes  2778085 charlie  mem       REG               0,86     36592      25339 /usr/lib64/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     42080      25351 /usr/lib64/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    183568      25362 /usr/lib64/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    122096      25370 /usr/lib64/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     28328      25378 /usr/lib64/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     24592      25322 /usr/lib64/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     80344      25373 /usr/lib64/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    959384       5779 /usr/lib64/libzstd.so.1.5.7
+hermes  2778085 charlie  mem       REG               0,86    219768       4649 /usr/lib64/liblzma.so.5.8.2
+hermes  2778085 charlie  mem       REG               0,86     11272       5090 /usr/lib64/libpthread.so.0
+hermes  2778085 charlie  mem       REG               0,86     38000      25381 /usr/lib64/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     32312      25358 /usr/lib64/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     80464       3635 /usr/lib64/libbz2.so.1.0.8
+hermes  2778085 charlie  mem       REG               0,86     55792      25365 /usr/lib64/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     46088      25343 /usr/lib64/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     29024      25323 /usr/lib64/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86   5774184       3851 /usr/lib64/libcrypto.so.3.5.5
+hermes  2778085 charlie  mem       REG               0,86     95048      25326 /usr/lib64/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     65696      25337 /usr/lib64/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    139624       5735 /usr/lib64/libyaml-0.so.2.0.9
+hermes  2778085 charlie  mem       REG               0,86    264840      50213 /usr/lib64/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    169544       5743 /usr/lib64/libz.so.1.3.1.zlib-ng
+hermes  2778085 charlie  mem       REG               0,86     46128      25344 /usr/lib64/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     51464      25380 /usr/lib64/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     33440      25376 /usr/lib64/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     61352      25363 /usr/lib64/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     24096      25369 /usr/lib64/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86    369120      22779 /usr/lib/locale/C.utf8/LC_CTYPE
+hermes  2778085 charlie  mem       REG               0,86 233380912      10795 /usr/lib/locale/locale-archive
+hermes  2778085 charlie  mem       REG               0,86   1153936       4663 /usr/lib64/libm.so.6
+hermes  2778085 charlie  mem       REG               0,86   2490288       3696 /usr/lib64/libc.so.6
+hermes  2778085 charlie  mem       REG               0,86   6649000       5212 /usr/lib64/libpython3.14.so.1.0
+hermes  2778085 charlie  mem       REG               0,86     20328      25353 /usr/lib64/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     16256      25388 /usr/lib64/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so
+hermes  2778085 charlie  mem       REG               0,86     27012       7813 /usr/lib64/gconv/gconv-modules.cache
+hermes  2778085 charlie  mem       REG               0,86   1003312       2986 /usr/lib64/ld-linux-x86-64.so.2
+hermes  2778085 charlie    0u      CHR             136,11       0t0         14 /dev/pts/11
+hermes  2778085 charlie    1u      CHR             136,11       0t0         14 /dev/pts/11
+hermes  2778085 charlie    2u      CHR             136,11       0t0         14 /dev/pts/11
+hermes  2778085 charlie    3w      REG               0,61   2019163  142581762 /var/home/charlie/.hermes/logs/agent.log
+hermes  2778085 charlie    4w      REG               0,61    929280  142399170 /var/home/charlie/.hermes/logs/errors.log
+hermes  2778085 charlie    5r      REG               0,86     65584       3930 /usr/lib64/libffi.so.8.2.0
+hermes  2778085 charlie    6u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  2778085 charlie    7u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  2778085 charlie    8u      REG               0,61    131072  132690368 /var/home/charlie/.hermes/state.db-shm
+hermes  2778085 charlie    9u  a_inode               0,16         0       2078 [eventpoll:10,12,14,15,26,27,28]
+hermes  2778085 charlie   10u     unix 0x00000000b13da17a       0t0 2174296984 type=STREAM (CONNECTED)
+hermes  2778085 charlie   11u     unix 0x00000000a75dd34b       0t0 2174296985 type=STREAM (CONNECTED)
+hermes  2778085 charlie   12u  a_inode                0,5         0   60971966 [pidfd:2281532]
+hermes  2778085 charlie   13w      REG               0,61   1778315  131635948 /var/home/charlie/.hermes/logs/mcp-stderr.log (deleted)
+hermes  2778085 charlie   14w     FIFO               0,15       0t0 2174299019 pipe
+hermes  2778085 charlie   15r     FIFO               0,15       0t0 2174299020 pipe
+hermes  2778085 charlie   16u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  2778085 charlie   17u  a_inode               0,16         0       2078 [eventpoll:0,20]
+hermes  2778085 charlie   18u      REG               0,61 138522624  130165674 /var/home/charlie/.hermes/state.db (deleted)
+hermes  2778085 charlie   19u      REG               0,61      8296  132690367 /var/home/charlie/.hermes/state.db-wal (deleted)
+hermes  2778085 charlie   20u     unix 0x00000000dc7ec656       0t0  148687429 type=STREAM (CONNECTED)
+hermes  2778085 charlie   21u     unix 0x000000002e1d78fa       0t0  148687430 type=STREAM (CONNECTED)
+hermes  2778085 charlie   22u     IPv4          175303192       0t0        TCP fedora:33694->14.103.2.83:https (CLOSE_WAIT)
+hermes  2778085 charlie   23u  a_inode               0,16         0       2078 [eventpoll:24]
+hermes  2778085 charlie   24u     unix 0x0000000011683ead       0t0  181000113 type=STREAM (CONNECTED)
+hermes  2778085 charlie   25u     unix 0x00000000c6a19e73       0t0  181000114 type=STREAM (CONNECTED)
+hermes  2778085 charlie   26u  a_inode                0,5         0   60971967 [pidfd:2281533]
+hermes  2778085 charlie   27w     FIFO               0,15       0t0 2174299022 pipe
+hermes  2778085 charlie   28r     FIFO               0,15       0t0 2174299023 pipe
+hermes  2778085 charlie   29u  a_inode                0,5         0   49874560 [pidfd:3760250]
+hermes  2778085 charlie   30w     FIFO               0,15       0t0 1381041258 pipe
+hermes  2778085 charlie   31r     FIFO               0,15       0t0 1381041259 pipe
+
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

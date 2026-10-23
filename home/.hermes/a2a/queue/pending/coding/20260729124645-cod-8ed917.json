@@ -1,0 +1,16 @@
+{
+  "id": "20260729124645-cod-8ed917",
+  "created_at": "2026-07-29T12:46:45.543712+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0n8n0sfifzhv",
+    "title": "",
+    "created_at": 1785000620.1751518
+  },
+  "content": "ChatGPT自动化访问优先选用启动真实浏览器的Playwright/Camoufox无头浏览器方案，禁止使用纯Go原生HTTP逆向方案（默认JA4指纹固定易触发封禁）；筛选相关开源仓库时优先选择star<300但近期仍有更新的冷门仓库，同时需确认其支持SSE流式输出与登录会话持久化。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

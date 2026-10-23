@@ -1,0 +1,16 @@
+{
+  "id": "20260729135347-ops-1927e5",
+  "created_at": "2026-07-29T13:53:47.077545+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200015_495857",
+    "title": "",
+    "created_at": 1784721617.8339238
+  },
+  "content": "When referencing work items, the user prioritizes formal kanban task IDs over informal descriptions to ensure consistent, unambiguous context for AI agents and other stakeholders.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

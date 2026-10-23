@@ -1,0 +1,16 @@
+{
+  "id": "20260729133011-cre-7d2956",
+  "created_at": "2026-07-29T13:30:11.681408+00:00",
+  "room": "creative",
+  "target_agent": "creative-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryhz0ajqfqznc",
+    "title": "",
+    "created_at": 1784870816.732244
+  },
+  "content": "对于需要AI语音操控修改的开源3D建模场景，Blender是当前最优选型：其原生Python API支持通过脚本直接修改模型，且易于对接语音识别库，FreeCAD、OpenSCAD、Wings3D等主流开源3D工具暂不支持该能力组合。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

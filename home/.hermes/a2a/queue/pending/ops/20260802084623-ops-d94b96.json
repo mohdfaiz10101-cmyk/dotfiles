@@ -1,0 +1,16 @@
+{
+  "id": "20260802084623-ops-d94b96",
+  "created_at": "2026-08-02T08:46:23.028513+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "45d7e3b8-ad28-4995-ac4c-3e4d90b77503",
+    "title": "",
+    "created_at": 1785660181.1014502
+  },
+  "content": "The project's default `dev` script is configured to concurrently launch both `dev:server` and `dev:client` processes when executed, no separate startup commands are needed for local development.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

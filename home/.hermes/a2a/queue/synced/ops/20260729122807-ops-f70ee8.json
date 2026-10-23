@@ -1,0 +1,17 @@
+{
+  "id": "20260729122807-ops-f70ee8",
+  "created_at": "2026-07-29T12:28:07.267611+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "9d6c4fda-6a8b-41f7-8400-12233b888b5a",
+    "title": "",
+    "created_at": 1785228471.7621183
+  },
+  "content": "The agent's opening response language selection logic prioritizes the pre-configured default session language over the language of the user's initial input.",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.661359+00:00"
+}

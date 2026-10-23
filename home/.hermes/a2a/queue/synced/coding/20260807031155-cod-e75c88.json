@@ -1,0 +1,17 @@
+{
+  "id": "20260807031155-cod-e75c88",
+  "created_at": "2026-08-07T03:11:55.314698+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ea8a1bebba29",
+    "title": "",
+    "created_at": 1786071951.3587546
+  },
+  "content": "Hermes WebUI的内置版本更新检测逻辑指向`nesquena/hermes-webui` GitHub仓库的tag，而非npm全局包`hermes-web-ui`，后续所有升级操作的目标都应对齐该git仓库的tag版本，避免因版本混淆导致升级错误。",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.369536+00:00"
+}

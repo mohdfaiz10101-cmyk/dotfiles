@@ -1,0 +1,16 @@
+{
+  "id": "20260729134029-ops-fcaeef",
+  "created_at": "2026-07-29T13:40:29.459451+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxglujg3f3oxz",
+    "title": "修复drun和chrome命令",
+    "created_at": 1784808077.0186763
+  },
+  "content": "Zsh环境下为chrome命令绑定chromium-browser的可行配置模式：创建~/.local/bin/chrome可执行文件，同时在.zshrc中追加alias chrome=\"/usr/bin/chromium-browser\"，该配置已通过版本验证和交互式shell调用测试。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729141140-ops-a1356e",
+  "created_at": "2026-07-29T14:11:40.171096+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194211_62a697",
+    "title": "",
+    "created_at": 1784720534.29053
+  },
+  "content": "When the user references a kanban task using the 't_[alphanumeric]' ID format, they are likely to follow up with task-related requests (e.g., status checks, detail retrieval, updates) in subsequent interactions.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

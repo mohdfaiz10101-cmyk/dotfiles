@@ -1,0 +1,16 @@
+{
+  "id": "20260729125748-mob-56366b",
+  "created_at": "2026-07-29T12:57:48.401532+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_142611_a699e1",
+    "title": "Hermes Web UI访问问题排查 #4",
+    "created_at": 1784960771.9509363
+  },
+  "content": "外网访问采用 FRP 转发方案：因 frps 占用 8648 端口，采用内部高位端口 18648 运行 Hermes Web UI，外部 8648 通过 frpc/frps 映射到内部 18648，避免端口冲突。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

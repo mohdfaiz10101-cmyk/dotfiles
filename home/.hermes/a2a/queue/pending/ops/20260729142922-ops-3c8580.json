@@ -1,0 +1,16 @@
+{
+  "id": "20260729142922-ops-3c8580",
+  "created_at": "2026-07-29T14:29:22.900068+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192408_1520e6",
+    "title": "",
+    "created_at": 1784719451.0097663
+  },
+  "content": "The user's work kanban system assigns unique task identifiers following the pattern t_<alphanumeric_string>, with an observed example ID of t_dbc58661",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729141354-ops-8b88de",
+  "created_at": "2026-07-29T14:13:54.855936+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193911_5a65b3",
+    "title": "",
+    "created_at": 1784720354.0004144
+  },
+  "content": "When the user references work-related requests, they anchor session context to a specific Kanban task ID; agents should use the provided task ID to retrieve associated task requirements, prior context, and metadata before proceeding with related work.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

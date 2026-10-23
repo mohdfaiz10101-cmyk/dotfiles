@@ -1,0 +1,16 @@
+{
+  "id": "20260729123758-ops-f42c05",
+  "created_at": "2026-07-29T12:37:58.117300+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1mw3xhn3ruhd",
+    "title": "个人申请地图API做导航APP",
+    "created_at": 1785060464.0694861
+  },
+  "content": "个人开发者可申请高德/腾讯地图Web API，拥有每日免费调用额度，但仅适合轻量原型开发；禁止缓存地图瓦片、离线存储地图数据，商用场景必须完成企业认证，长期使用免费额度易超限。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

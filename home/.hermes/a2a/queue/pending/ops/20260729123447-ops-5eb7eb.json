@@ -1,0 +1,16 @@
+{
+  "id": "20260729123447-ops-5eb7eb",
+  "created_at": "2026-07-29T12:34:47.417637+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2s5tecj4v4kv",
+    "title": "",
+    "created_at": 1785129799.1824265
+  },
+  "content": "For the PKR110 device running Android 16, ADB screenshot (e.g., `adb exec-out screencap`) and non-UI-interactive shell commands (e.g., `dumpsys window`) operate normally when the device is locked, as verified by direct testing (successful screenshot saved to `/tmp/lock_screen_after.png`, valid lock screen state data returned from dumpsys).",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729143621-cod-6b27ff",
+  "created_at": "2026-07-29T14:36:21.701740+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrth6092ezbjfy",
+    "title": "",
+    "created_at": 1784567128.4632714
+  },
+  "content": "不同OpenAI API错误的处理逻辑不同：401 token_invalidated仅需重新登录即可修复；402 deactivated_workspace为平台封禁无法修复需替换账号；429 usage_limit_reached为7天用量周期耗尽，需等待周期重置或替换账号",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802232343-ops-c42732",
+  "created_at": "2026-08-02T23:23:43.119509+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4870cb291074",
+    "title": "",
+    "created_at": 1785712929.829893
+  },
+  "content": "磁盘清理的标准可复用工作流：执行清理前先完成磁盘/系统健康快照，定位大目录与可安全清理的用户缓存后开展定向清理，禁止盲删",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

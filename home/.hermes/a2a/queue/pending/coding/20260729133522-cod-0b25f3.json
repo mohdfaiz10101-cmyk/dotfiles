@@ -1,0 +1,16 @@
+{
+  "id": "20260729133522-cod-0b25f3",
+  "created_at": "2026-07-29T13:35:22.077008+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxpdxhcgczvd3",
+    "title": "",
+    "created_at": 1784822794.4236844
+  },
+  "content": "Environment fact: Recurring random task execution stoppage is a persistent known issue for the current Hermes deployment, so all Hermes task scheduling configurations should include pre-execution health checks and post-execution status verification to proactively detect and mitigate unplanned stoppages.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

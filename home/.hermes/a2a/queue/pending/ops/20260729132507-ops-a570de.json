@@ -1,0 +1,16 @@
+{
+  "id": "20260729132507-ops-a570de",
+  "created_at": "2026-07-29T13:25:07.712682+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_194919",
+    "title": "",
+    "created_at": 1784893819.424589
+  },
+  "content": "The MEMORY.md file has a 2200 character capacity limit (red line) with built-in size monitoring; the current file size is checked during each curation run as part of capacity control.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

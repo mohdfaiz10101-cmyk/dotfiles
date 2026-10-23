@@ -1,0 +1,16 @@
+{
+  "id": "20260729130630-ops-0d0e95",
+  "created_at": "2026-07-29T13:06:30.037554+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_071250",
+    "title": "",
+    "created_at": 1784934781.1796384
+  },
+  "content": "The memory-curator skill's full curation pipeline (采集, 炼化, 写入, 同步, 报告) is completely halted when the MEMORY.md.lock file exists at /var/home/charlie/.hermes/memories/, with no partial execution of curation steps.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

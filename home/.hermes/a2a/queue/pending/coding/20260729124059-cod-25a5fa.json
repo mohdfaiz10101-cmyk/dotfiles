@@ -1,0 +1,16 @@
+{
+  "id": "20260729124059-cod-25a5fa",
+  "created_at": "2026-07-29T12:40:59.129459+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1cvp0oq07qy6",
+    "title": "MCP工具名称重复显示问题",
+    "created_at": 1785043695.3960874
+  },
+  "content": "As a durable MCP configuration pattern, avoid using identical strings for the server's top-level `name` field and the prefix of individual tool names to prevent duplicated display names in client interfaces.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

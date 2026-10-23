@@ -1,0 +1,16 @@
+{
+  "id": "20260802140154-ops-40c36c",
+  "created_at": "2026-08-02T14:01:54.148032+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "76cba72687f0",
+    "title": "你好 (fork)",
+    "created_at": 1785679117.8143165
+  },
+  "content": "Forking existing Simplified Chinese greeting-based sessions is a supported reusable workflow for launching new Chinese language interaction contexts for this user.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124753-ops-91b4b0",
+  "created_at": "2026-07-29T12:47:53.766652+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0kyhyrso4wu9",
+    "title": "黑屏排查与终端访问",
+    "created_at": 1784996738.9933846
+  },
+  "content": "A reusable troubleshooting workflow for black screen issues on dynamically DNS-exposed local services is to first verify backend service health via direct local port access, then validate reverse proxy configuration and frontend static asset serving rules to isolate faults between the service layer and exposure layer.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

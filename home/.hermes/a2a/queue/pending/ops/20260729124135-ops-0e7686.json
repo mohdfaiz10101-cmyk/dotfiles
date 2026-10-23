@@ -1,0 +1,16 @@
+{
+  "id": "20260729124135-ops-0e7686",
+  "created_at": "2026-07-29T12:41:35.045844+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1ck1l5w7r9lf",
+    "title": "",
+    "created_at": 1785043110.9070368
+  },
+  "content": "The authoritative source for rules governing how archived Hermes sessions interact with memory extraction and search workflows is the `references/hermes-memory-architecture-best-practices.md` file in the `hermes-memory-architecture` skill, which contains definitive documentation of archive interaction with FTS5 session search and memory extraction pipelines.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

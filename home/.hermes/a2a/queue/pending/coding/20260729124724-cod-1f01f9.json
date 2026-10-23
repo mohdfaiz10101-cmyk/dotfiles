@@ -1,0 +1,16 @@
+{
+  "id": "20260729124724-cod-1f01f9",
+  "created_at": "2026-07-29T12:47:24.618618+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0mn1hisp7za4",
+    "title": "Hermes接入扣费问题",
+    "created_at": 1784999563.2093208
+  },
+  "content": "A common user query pattern for Hermes sub2api nodes is inquiring about the reason for their long uptime, with users most frequently assuming the root cause is either high-quality account type or low personal usage frequency. Agents can leverage this common assumption to preemptively address related user concerns.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

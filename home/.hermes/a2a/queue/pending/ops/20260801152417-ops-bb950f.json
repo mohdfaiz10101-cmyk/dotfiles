@@ -1,0 +1,16 @@
+{
+  "id": "20260801152417-ops-bb950f",
+  "created_at": "2026-08-01T15:24:17.934549+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msain7hcfxg454",
+    "title": "公网服务子域名统一管理",
+    "created_at": 1785597566.9602852
+  },
+  "content": "Caddy实现子域名反向代理的通用配置范式：在Caddyfile中为每个子域名配置reverse_proxy指向对应内网端口，配套DNS需将主域名及所有子域名的A记录指向公网IP，若使用DuckDNS则直接使用「子域名.你的duckdns域名」即可，Caddy会自动申请Let's Encrypt证书完成HTTPS配置",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

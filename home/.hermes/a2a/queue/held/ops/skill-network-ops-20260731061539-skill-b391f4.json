@@ -1,0 +1,15 @@
+{
+  "id": "20260731061539-skill-b391f4",
+  "created_at": "2026-07-31T06:15:39.636039+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file added auto-generated optimized runtime hints that mandate the agent first output a direct root cause conclusion for network connectivity anomalies related to self-hosted networking tools or Linux network configurations, followed by corresponding diagnostic/fix commands, temporary workarounds, permanent persistence solutions and verification steps aligned with the skill's documented troubleshooting paths. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

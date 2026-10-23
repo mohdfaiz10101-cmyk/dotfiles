@@ -1,0 +1,16 @@
+{
+  "id": "20260729131907-ext-05c983",
+  "created_at": "2026-07-29T13:19:07.679218+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz4l2qu5sqgw8",
+    "title": "OpenHands CLI网页端口查询",
+    "created_at": 1784908790.7144392
+  },
+  "content": "OpenHands CLI 默认部署的端口映射规则为宿主机127.0.0.1:3001映射到容器内3000端口，容器内OpenHands服务默认监听3000端口，该规则是访问其Web UI的基础配置。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

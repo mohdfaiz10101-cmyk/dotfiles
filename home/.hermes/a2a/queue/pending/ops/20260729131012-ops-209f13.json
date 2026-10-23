@@ -1,0 +1,16 @@
+{
+  "id": "20260729131012-ops-209f13",
+  "created_at": "2026-07-29T13:10:12.782218+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_013052_f2c0d7",
+    "title": "",
+    "created_at": 1784922714.7384808
+  },
+  "content": "The connected mobile device uses CST (China Standard Time) as its configured system timezone.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

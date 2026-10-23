@@ -1,0 +1,16 @@
+{
+  "id": "20260802024010-ops-a6ac86",
+  "created_at": "2026-08-02T02:40:10.252160+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb6u8bnjrlo6g",
+    "title": "",
+    "created_at": 1785638190.2595809
+  },
+  "content": "Frpc backend connection refused errors targeting localhost services (e.g., `fedora-openhands -> 127.0.0.1:13001`, `fedora-ntfy -> 127.0.0.1:2586`) are a reliable leading indicator of local service unavailability that will be reflected in Uptime Kuma failure alerts for the corresponding exposed services.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

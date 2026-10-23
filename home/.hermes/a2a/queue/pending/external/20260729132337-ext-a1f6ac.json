@@ -1,0 +1,16 @@
+{
+  "id": "20260729132337-ext-a1f6ac",
+  "created_at": "2026-07-29T13:23:37.945403+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryyc72i7luxuv",
+    "title": "",
+    "created_at": 1784898327.338197
+  },
+  "content": "安卓设备机身存储剩余空间占比低于10%时，会挤压系统缓存、dex/oat编译优化文件的存储空间，与内存不足叠加后显著提升swap频率，是加剧设备卡顿的常见环境诱因。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729134501-ops-0e6350",
+  "created_at": "2026-07-29T13:45:01.195625+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_201030_41e900",
+    "title": "",
+    "created_at": 1784722232.8809555
+  },
+  "content": "The user's work coordination workflow is centered on their kanban task tracking system, so all work-related actions (e.g., status updates, task creation, progress checks) should be integrated with this kanban system rather than alternative ad-hoc tracking methods.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

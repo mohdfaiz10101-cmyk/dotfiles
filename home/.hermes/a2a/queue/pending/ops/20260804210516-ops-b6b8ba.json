@@ -1,0 +1,16 @@
+{
+  "id": "20260804210516-ops-b6b8ba",
+  "created_at": "2026-08-04T21:05:16.660483+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msf5adw5f6yh28",
+    "title": "问候与任务确认",
+    "created_at": 1785877400.0455437
+  },
+  "content": "Default initial session behavior: Only perform lightweight in-session confirmation during the greeting and task confirmation phase, skip system checks and skill/tool invocation to avoid unnecessary overhead.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260730052030-ops-c56e98",
+  "created_at": "2026-07-30T05:20:30.312582+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a48cb8e7f767",
+    "title": "",
+    "created_at": 1785388489.8278878
+  },
+  "content": "When troubleshooting unstable or connection-refused access to self-hosted services (e.g. Hermes), the first mandatory disambiguation step is to confirm if the target IP is a remote peer IP (e.g. NetBird mobile client IP), local host LAN IP, or dynamic DNS (e.g. DuckDNS) mapped IP, as this directly dictates the troubleshooting direction (remote peer routing vs local service listen configuration vs port forwarding rules).",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

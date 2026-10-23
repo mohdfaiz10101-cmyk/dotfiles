@@ -1,0 +1,16 @@
+{
+  "id": "20260729125920-ops-471987",
+  "created_at": "2026-07-29T12:59:20.632551+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_133425",
+    "title": "",
+    "created_at": 1784957676.913868
+  },
+  "content": "MEMORY.md has a strict 2200-byte capacity limit; exceeding it triggers a lock file (MEMORY.md.lock) that blocks all write operations and causes the memory-curator skill to skip refinement steps entirely.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

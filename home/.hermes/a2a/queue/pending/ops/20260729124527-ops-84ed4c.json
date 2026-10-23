@@ -1,0 +1,16 @@
+{
+  "id": "20260729124527-ops-84ed4c",
+  "created_at": "2026-07-29T12:45:27.477951+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_012555_6ec0bf",
+    "title": "Hermes Studio网络及WebSocket对接检查",
+    "created_at": 1785001705.324827
+  },
+  "content": "The user has a standing requirement to validate two key reliability metrics for their Hermes Studio deployment: overall network connection stability of the instance, and correct WebSocket integration between the Hermes Studio frontend and its associated backend service.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

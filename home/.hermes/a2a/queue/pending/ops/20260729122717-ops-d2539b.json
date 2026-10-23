@@ -1,0 +1,16 @@
+{
+  "id": "20260729122717-ops-d2539b",
+  "created_at": "2026-07-29T12:27:17.352592+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4eyw0x3axigf",
+    "title": "hermes studio",
+    "created_at": 1785228570.660842
+  },
+  "content": "Hermes配置中的fallback链和max_retries参数会直接导致任务执行延迟波动：若fallback节点延迟高于主provider，或重试次数过多（如默认5次），会显著拉长任务执行时间，建议根据provider实际延迟调整fallback顺序和重试阈值。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125943-cod-e5a306",
+  "created_at": "2026-07-29T12:59:43.445228+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_131657_2816e6",
+    "title": "Hermes Web UI访问问题排查 #2",
+    "created_at": 1784956617.6559572
+  },
+  "content": "mihomo核心配置需固定保留：redir-port设为7892、开启fake-ip模式、开启sniffer功能，且必须包含指定fake-ip-filter域名列表（覆盖+.duckdns.org、+.tr202601.com、+.liangxin1.xyz、+.lxy1015.top、+.qq.com、+.tencent.com、+.gtimg.com、+.myqcloud.com等域名）",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

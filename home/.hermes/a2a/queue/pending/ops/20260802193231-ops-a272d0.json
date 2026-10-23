@@ -1,0 +1,16 @@
+{
+  "id": "20260802193231-ops-a272d0",
+  "created_at": "2026-08-02T19:32:31.236224+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc70wzlay46z7",
+    "title": "",
+    "created_at": 1785698951.4662447
+  },
+  "content": "目标用户（charlie）的配件合同表需求核心字段为「配件图片、配件名称、配件金额」，最终输出需为可直接使用的标准xlsx合同文件，优先选择低交互成本、低额度消耗的生成方案",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

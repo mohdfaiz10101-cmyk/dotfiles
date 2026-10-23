@@ -1,0 +1,16 @@
+{
+  "id": "20260729134019-ops-f92a04",
+  "created_at": "2026-07-29T13:40:19.571945+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxgvmgg09clru",
+    "title": "电脑卡顿优化分析",
+    "created_at": 1784808523.8581164
+  },
+  "content": "This user's system has recurring low-priority, non-lag-causing anomalies to monitor: repeated WireGuard (wt0) interface rebuilds in NetworkManager, appsmith/temporal bad connection/context canceled errors, and local sshd attempts to access invalid loopback users (room/doom).",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

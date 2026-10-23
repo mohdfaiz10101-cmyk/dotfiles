@@ -1,0 +1,15 @@
+{
+  "id": "20260923022928-skill-d51cde",
+  "created_at": "2026-09-23T02:29:28.535213+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "stepfun-step-router-switcher",
+    "file": "/var/home/charlie/.hermes/skills/stepfun-step-router-switcher/SKILL.md"
+  },
+  "content": "Skill `stepfun-step-router-switcher` updated. Skill stepfun-step-router-switcher updated; review the SKILL.md diff before promoting behavior changes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

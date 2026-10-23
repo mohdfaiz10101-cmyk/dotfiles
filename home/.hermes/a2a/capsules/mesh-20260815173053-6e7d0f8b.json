@@ -1,0 +1,90 @@
+{
+  "task_id": "mesh-20260815173053-6e7d0f8b",
+  "title": "Codex 1 -> Hermes: http://100.87.171.39:8787/session/9fcffb9f38ef完成这个任务",
+  "objective": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/13/rollout-2026-08-13T04-36-53-019ff7b1-33c7-73e1-b9c9-11a119d99d70.jsonl\nsource_timestamp: 2026-08-15T09:30:46.402Z\n\n任务文本:\nhttp://100.87.171.39:8787/session/9fcffb9f38ef完成这个任务",
+  "profile": "ops",
+  "mcp_profile": "monitor",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "Do not load full Codex transcript",
+    "Use task text and cited runbooks only",
+    "Return concise status and evidence",
+    "Do not start parallel live runs"
+  ],
+  "summary_hint": "http://100.87.171.39:8787/session/9fcffb9f38ef完成这个任务",
+  "router": {
+    "message": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/13/rollout-2026-08-13T04-36-53-019ff7b1-33c7-73e1-b9c9-11a119d99d70.jsonl\nsource_timestamp: 2026-08-15T09:30:46.402Z\n\n任务文本:\nhttp://100.87.171.39:8787/session/9fcffb9f38ef完成这个任务",
+    "skills_to_load": [
+      "ops-autopilot",
+      "tmux-webtty-integration",
+      "hermes-context-governance",
+      "local-codex-web-ttyd",
+      "self-healing-monitor",
+      "ttyd-deployment",
+      "task-router",
+      "web-dashboard-ops"
+    ],
+    "workflow_rules": [
+      {
+        "score": 4,
+        "text": "Codex MCP paths must use current absolute locations under `/var/home/charlie`; old `.npm-global`, removed `~/agi`, and missing `~/.local/lib` paths are stale migration artifacts.",
+        "scope": "codex",
+        "confidence": 0.88
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"fdf268efcc08\", \"last_verified\": \"2026-07-25T23:59:03\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"662dd19d7c91e95ccd51\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-180",
+        "scope": "opencode",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"1ec132d081fc\", \"last_verified\": \"2026-07-25T18:09:38\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"4392f061b09c9d8e3a03\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-180",
+        "scope": "opencode",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"fd4bce3e82bb\", \"last_verified\": \"2026-07-22T03:20:09\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"0af5603aba77ff6bc4e6\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.45, \"id\": \"5edc95264cc3\", \"last_verified\": \"2026-07-21T20:17:37\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"codex\", \"source_events\": [\"f0c723fc6d1ef4f7b8df\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): codex-multi-account-routing.md, ",
+        "scope": "codex",
+        "confidence": 0.45
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.95, \"id\": \"a69755067869\", \"last_verified\": \"2026-07-25T19:23:36\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"ed08f09e700d5e3a59b3\", \"ed08f09e700d5e3a59b3\"], \"status\": \"verified\", \"steps\": [\"read relevant runbook(s): openco",
+        "scope": "opencode",
+        "confidence": 0.95
+      },
+      {
+        "score": 3,
+        "text": "Do not diagnose phone `frpc` `EOF` / `session shutdown` as an FRPS outage before checking proxy and DNS state. On 2026-07-08 Fedora shell had `HTTP_PROXY`/`HTTPS_PROXY`/`ALL_PROXY=127.0.0.1:7890`, which made manual frpc tests fail until those vars were unset; the phone resolved `charlie1990.duckdns.",
+        "scope": "router",
+        "confidence": 0.88
+      },
+      {
+        "score": 3,
+        "text": "Do not place future cloud-Android/redroid/container workspaces under `/var/home/charlie`. Use `/var/mnt/ai` and a narrow wrapper/service-specific storage root. Do not symlink the entire `~/.local/share/containers` tree: existing Podman services depend on the default rootless store.",
+        "scope": "phone",
+        "confidence": 0.88
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-15T17:30:53+08:00",
+  "status": "queued"
+}

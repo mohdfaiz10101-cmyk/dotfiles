@@ -1,0 +1,16 @@
+{
+  "id": "20260729132321-ops-3bc6f2",
+  "created_at": "2026-07-29T13:23:21.526942+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_210939",
+    "title": "",
+    "created_at": 1784898589.7610795
+  },
+  "content": "Task routing decisions for the autonomous-task-brain skill are governed by three durable, core criteria: historical success rate of similar past tasks, assessed task complexity, and recorded user preferences, to automatically select the appropriate action (execute, suggest, or skip) without manual intervention.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

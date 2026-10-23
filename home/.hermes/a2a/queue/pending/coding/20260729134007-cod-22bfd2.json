@@ -1,0 +1,16 @@
+{
+  "id": "20260729134007-cod-22bfd2",
+  "created_at": "2026-07-29T13:40:07.533657+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxh456ssajgxp",
+    "title": "OpenHands CLI 中文回复配置",
+    "created_at": 1784808918.2992861
+  },
+  "content": "仅修改 OpenHands CLI 配置无法保证 100% 全流程中文输出，底层系统提示、工具/模型内部原生输出仍可能为英文；若需更高中文稳定性，可在任务开头追加显式中文指令，推荐通用模板为「请全程使用简体中文思考与回复，命令、代码、路径保持原样。」",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

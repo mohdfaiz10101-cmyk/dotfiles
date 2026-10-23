@@ -1,0 +1,16 @@
+{
+  "id": "20260729121950-ops-98f40d",
+  "created_at": "2026-07-29T12:19:50.006971+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms605e05h1jp2p",
+    "title": "",
+    "created_at": 1785324564.0339756
+  },
+  "content": "The Hermes environment uses a canonical fixed directory structure: user profiles at ~/.hermes/profiles/ (with per-profile skills in ~/.hermes/profiles/<profile_name>/skills/), global config at ~/.hermes/config.yaml, and cron jobs stored as YAML files in ~/.hermes/cron/.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

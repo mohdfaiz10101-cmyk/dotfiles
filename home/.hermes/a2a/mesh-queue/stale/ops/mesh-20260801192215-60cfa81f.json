@@ -1,0 +1,65 @@
+{
+  "task_id": "mesh-20260801192215-60cfa81f",
+  "title": "SMOKE-Hermes协作回传-after-worker-start",
+  "objective": "只返回 {\"status\":\"done\",\"summary\":\"bridge ok\",\"artifacts\":[]}",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "只返回JSON",
+    "不要调用工具",
+    "不要长输出"
+  ],
+  "summary_hint": "",
+  "router": {
+    "message": "只返回 {\"status\":\"done\",\"summary\":\"bridge ok\",\"artifacts\":[]}",
+    "skills_to_load": [
+      "ops-autopilot",
+      "matrix-bridge-deployment"
+    ],
+    "workflow_rules": [
+      {
+        "score": 2,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"0878c61a7a4e\", \"last_verified\": \"2026-07-21T19:01:37\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"633bc5e723217b1ca3cc\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 2,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"58023236a9ca\", \"last_verified\": \"2026-07-22T04:26:40\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"repo\", \"source_events\": [\"c8e85f44b8a21ce2ae57\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): codegraph.md\", \"reuse bounded tool",
+        "scope": "repo",
+        "confidence": 0.7
+      },
+      {
+        "score": 2,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"a7671a387ca2\", \"last_verified\": \"2026-07-21T20:43:15\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"c70608f1914548920fbc\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 2,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"a8cbe1636258\", \"last_verified\": \"2026-07-21T20:21:20\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"general\", \"source_events\": [\"5ccb444291d4ec27991f\"], \"status\": \"candidate\", \"steps\": [\"reuse bounded tool pattern: read, bash, grep\", \"启动竞态：herm",
+        "scope": "general",
+        "confidence": 0.7
+      },
+      {
+        "score": 2,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"9b6c195ef4e3\", \"last_verified\": \"2026-07-21T19:14:14\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"df81d6798debd4ff0c7a\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T19:22:15+08:00",
+  "status": "queued"
+}

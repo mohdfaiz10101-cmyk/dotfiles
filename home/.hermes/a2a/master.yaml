@@ -1,0 +1,33 @@
+master:
+  agent: master
+  rooms:
+    - ops
+    - coding
+    - creative
+    - research
+    - external
+    - mobile
+  routing:
+    default_method: skill_match
+    fallback_room: ops
+    min_confidence: 0.6
+  approval:
+    auto_approve_rooms:
+      - ops
+      - coding
+      - creative
+      - research
+      - mobile
+    default: manual
+    max_confidence_auto: 0.95
+  sync:
+    write_knowledge: true
+    prune_synced_after_days: 30
+  notification:
+    ntfy_topic: hermes-a2a
+    notify_on: [pending, approved, rejected, error]
+  lifecycle:
+    distill_interval_minutes: 5
+    skill_scan_interval_minutes: 15
+    summary_hour: 23
+    summary_timezone: "Asia/Shanghai"

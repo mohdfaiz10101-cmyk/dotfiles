@@ -1,0 +1,16 @@
+{
+  "id": "20260729124011-ops-52e9dd",
+  "created_at": "2026-07-29T12:40:11.909118+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_135748_eb6517",
+    "title": "",
+    "created_at": 1785045591.243441
+  },
+  "content": "User requires split-horizon DNS resolution for their DuckDNS subdomain charlie1990.duckdns.org: when accessed from devices on their local network (e.g., their phone), the domain must resolve to the local LAN IP 192.168.123.1 instead of the public WAN IP, to enable low-latency, NAT loopback-free access to the self-hosted service running on port 8648 at that local IP.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

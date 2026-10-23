@@ -1,0 +1,16 @@
+{
+  "id": "20260729134417-ops-886f3d",
+  "created_at": "2026-07-29T13:44:17.824633+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw1r6cvm6bpxj",
+    "title": "Hermes升级到最新版本",
+    "created_at": 1784722624.2084568
+  },
+  "content": "配置Hermes及Hermes Studio自动更新任务的标准前置流程为：先调用hermes_studio_api_openapi_get获取全量API schema，重点排查cron/task/scheduler、update相关模块，确认是否支持任务分组字段、shell命令类型任务、内置更新任务类型后再创建任务，避免直接创建任务",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729164850-ops-0690ef",
+  "created_at": "2026-07-29T16:48:50.123269+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms6bekvyvv0l78",
+    "title": "",
+    "created_at": 1785343474.4459746
+  },
+  "content": "User operates in a Simplified Chinese language context, as evidenced by the encountered '无法访问此网站' error message; all future user-facing communication and troubleshooting guidance should default to Simplified Chinese unless the user explicitly specifies a different language preference.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

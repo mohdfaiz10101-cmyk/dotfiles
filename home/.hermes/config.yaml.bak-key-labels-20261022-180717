@@ -1,0 +1,720 @@
+providers:
+  sub2api:
+    api_key: sk-e95d8e81e872e0d37ff3e28c887a3d3472e82ad5f67932fd133919aa593af874
+    base_url: http://127.0.0.1:19090/v1
+    discover_models: true
+    name: Sub2API (Codex)
+  codex-bridge:
+    provider_source: providers
+    api_key:
+    - sk-ignore
+    base_url: http://127.0.0.1:8000/v1
+    discover_models: true
+    name: Codex Provider Bridge
+  stepfun:
+    name: StepFun · 双 Key 均衡池
+    base_url: https://api.stepfun.com/step_plan/v1
+    discover_models: false
+    models:
+      step-router-v1:
+        context_length: 240000
+      step-3.7-flash:
+        context_length: 240000
+      step-5-preview:
+        context_length: 1024000
+    default_model: step-5-preview
+    api_mode: chat_completions
+credential_pool_strategies:
+  stepfun: round_robin
+fallback_providers:
+- provider: stepfun
+  model: step-3.7-flash
+toolsets:
+- hermes-cli
+agent:
+  max_turns: 90
+  gateway_timeout: 1800
+  restart_drain_timeout: 300
+  api_max_retries: 5
+  service_tier: ''
+  tool_use_enforcement: auto
+  gateway_timeout_warning: 900
+  clarify_timeout: 600
+  gateway_notify_interval: 60
+  gateway_auto_continue_freshness: 3600
+  image_input_mode: auto
+  disabled_toolsets: []
+terminal:
+  backend: local
+  modal_mode: auto
+  cwd: .
+  timeout: 180
+  env_passthrough: []
+  shell_init_files: []
+  auto_source_bashrc: true
+  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_forward_env: []
+  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
+  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
+  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+  docker_volumes: []
+  docker_mount_cwd_to_workspace: false
+  docker_extra_args: []
+  docker_run_as_host_user: false
+  persistent_shell: true
+web:
+  backend: ''
+  search_backend: fetch
+  extract_backend: fetch
+browser:
+  inactivity_timeout: 60
+  command_timeout: 30
+  record_sessions: false
+  allow_private_urls: false
+  engine: auto
+  auto_local_for_private_urls: true
+  cdp_url: ''
+  dialog_policy: must_respond
+  dialog_timeout_s: 300
+  camofox:
+    managed_persistence: false
+    user_id: ''
+    session_key: ''
+    adopt_existing_tab: false
+checkpoints:
+  enabled: true
+  max_snapshots: 20
+  max_total_size_mb: 500
+  max_file_size_mb: 10
+  auto_prune: true
+  retention_days: 7
+  delete_orphans: true
+  min_interval_hours: 24
+file_read_max_chars: 100000
+tool_output:
+  max_bytes: 12000
+  max_lines: 400
+  max_line_length: 400
+tool_loop_guardrails:
+  warnings_enabled: true
+  hard_stop_enabled: true
+  warn_after:
+    exact_failure: 2
+    same_tool_failure: 3
+    idempotent_no_progress: 2
+  hard_stop_after:
+    exact_failure: 5
+    same_tool_failure: 8
+    idempotent_no_progress: 5
+compression:
+  enabled: true
+  threshold: 0.75
+  target_ratio: 0.25
+  protect_last_n: 12
+  hygiene_hard_message_limit: 140
+  protect_first_n: 6
+  abort_on_summary_failure: false
+  auto_compress_webui_heavy: true
+  auto_compress_min_messages: 120
+  auto_compress_min_input_tokens: 160000
+  auto_compress_min_file_bytes: 800000
+kanban:
+  dispatch_in_gateway: false
+  dispatch_interval_seconds: 300
+  failure_limit: 2
+  worker_log_rotate_bytes: 2097152
+  worker_log_backup_count: 1
+  orchestrator_profile: dispatcher
+  default_assignee: dispatcher
+  auto_decompose: true
+  auto_decompose_per_tick: 1
+  dispatch_stale_timeout_seconds: 14400
+prompt_caching:
+  cache_ttl: 5m
+openrouter:
+  response_cache: true
+  response_cache_ttl: 300
+  min_coding_score: 0.65
+bedrock:
+  region: ''
+  discovery:
+    enabled: true
+    provider_filter: []
+    refresh_interval: 3600
+  guardrail:
+    guardrail_identifier: ''
+    guardrail_version: ''
+    stream_processing_mode: async
+    trace: disabled
+auxiliary:
+  vision:
+    provider: stepfun
+    model: step-5-preview
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 120
+    download_timeout: 30
+    key_env: STEPFUN_AUX_API_KEY
+  web_extract:
+    provider: stepfun
+    model: step-5-preview
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 360
+    context_length: 1024000
+    key_env: STEPFUN_AUX_API_KEY
+  compression:
+    provider: stepfun
+    model: step-5-preview
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 240
+    context_length: 1024000
+    key_env: STEPFUN_AUX_API_KEY
+  skills_hub:
+    provider: stepfun
+    model: step-3.7-flash
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 60
+    context_length: 240000
+    key_env: STEPFUN_AUX_API_KEY
+  approval:
+    provider: stepfun
+    model: step-3.7-flash
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 60
+    context_length: 240000
+    key_env: STEPFUN_AUX_API_KEY
+  mcp:
+    provider: stepfun
+    model: step-3.7-flash
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 60
+    context_length: 240000
+    key_env: STEPFUN_AUX_API_KEY
+  title_generation:
+    provider: stepfun
+    model: step-3.7-flash
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 60
+    context_length: 240000
+    key_env: STEPFUN_AUX_API_KEY
+  triage_specifier:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 120
+  kanban_decomposer:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 180
+  profile_describer:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 60
+  curator:
+    provider: stepfun
+    model: step-3.7-flash
+    base_url: https://api.stepfun.com/step_plan/v1
+    api_key: ''
+    timeout: 600
+    context_length: 240000
+    key_env: STEPFUN_AUX_API_KEY
+display:
+  compact: false
+  personality: default
+  resume_display: full
+  resume_exchanges: 10
+  resume_max_user_chars: 300
+  resume_max_assistant_chars: 200
+  resume_max_assistant_lines: 3
+  resume_skip_tool_only: true
+  busy_input_mode: interrupt
+  tui_auto_resume_recent: false
+  bell_on_complete: true
+  show_reasoning: false
+  streaming: true
+  timestamps: false
+  final_response_markdown: strip
+  persistent_output: true
+  persistent_output_max_lines: 100
+  inline_diffs: true
+  file_mutation_verifier: true
+  show_cost: false
+  skin: default
+  language: zh
+  tui_status_indicator: kaomoji
+  user_message_preview:
+    first_lines: 2
+    last_lines: 2
+  interim_assistant_messages: true
+  tool_progress_command: false
+  tool_preview_length: 0
+  ephemeral_system_ttl: 0
+  runtime_footer:
+    enabled: false
+    fields:
+    - model
+    - context_pct
+    - cwd
+  copy_shortcut: auto
+  chat_input_height: 48
+dashboard:
+  theme: default
+  show_token_analytics: false
+  oauth:
+    client_id: ''
+    portal_url: ''
+  public_url: ''
+privacy:
+  redact_pii: false
+tts:
+  provider: edge
+  edge:
+    voice: en-US-AriaNeural
+  elevenlabs:
+    voice_id: pNInz6obpgDQGcFmaJgB
+    model_id: eleven_multilingual_v2
+  openai:
+    model: gpt-4o-mini-tts
+    voice: alloy
+  xai:
+    voice_id: eve
+    language: en
+    sample_rate: 24000
+    bit_rate: 128000
+  mistral:
+    model: voxtral-mini-tts-2603
+    voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
+  neutts:
+    ref_audio: ''
+    ref_text: ''
+    model: neuphonic/neutts-air-q4-gguf
+    device: cpu
+  piper:
+    voice: en_US-lessac-medium
+stt:
+  enabled: true
+  provider: local
+  local:
+    model: base
+    language: ''
+  openai:
+    model: whisper-1
+  mistral:
+    model: voxtral-mini-latest
+voice:
+  record_key: ctrl+b
+  max_recording_seconds: 120
+  auto_tts: false
+  beep_enabled: true
+  silence_threshold: 200
+  silence_duration: 3
+human_delay:
+  mode: auto
+  min_ms: 800
+  max_ms: 2500
+context:
+  engine: compressor
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  write_approval: false
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  provider: holographic
+  nudge_interval: 10
+delegation:
+  model: step-5-preview
+  provider: stepfun
+  base_url: ''
+  api_key: ''
+  api_mode: ''
+  inherit_mcp_toolsets: true
+  max_iterations: 50
+  child_timeout_seconds: 600
+  reasoning_effort: ''
+  max_concurrent_children: 2
+  max_spawn_depth: 1
+  orchestrator_enabled: true
+  subagent_auto_approve: true
+prefill_messages_file: ''
+goals:
+  max_turns: 20
+skills:
+  external_dirs: []
+  template_vars: true
+  inline_shell: false
+  inline_shell_timeout: 10
+  guard_agent_created: false
+  write_approval: false
+  creation_nudge_interval: 10
+curator:
+  enabled: true
+  interval_hours: 168
+  min_idle_hours: 2
+  stale_after_days: 30
+  archive_after_days: 90
+  backup:
+    enabled: true
+    keep: 5
+timezone: ''
+slack:
+  require_mention: true
+  free_response_channels: ''
+  allowed_channels: ''
+discord:
+  require_mention: true
+  free_response_channels: ''
+  allowed_channels: ''
+  auto_thread: true
+  thread_require_mention: false
+  history_backfill: true
+  history_backfill_limit: 50
+  reactions: true
+  dm_role_auth_guild: ''
+  server_actions: ''
+  allow_any_attachment: false
+  max_attachment_bytes: 33554432
+telegram:
+  reactions: false
+  allowed_chats: ''
+mattermost:
+  require_mention: true
+  free_response_channels: ''
+  allowed_channels: ''
+matrix:
+  require_mention: true
+  free_response_rooms: ''
+  allowed_rooms: ''
+  enabled: false
+  auto_reconnect: false
+approvals:
+  mode: false
+  timeout: 60
+  cron_mode: allow
+  mcp_reload_confirm: false
+  destructive_slash_confirm: false
+command_allowlist:
+- sudo with combined-flag privilege escalation
+- overwrite system file via tee
+- copy/move file into system config path
+- overwrite system config
+- stop/restart system service
+- recursive delete
+- overwrite project env/config file
+- force kill processes
+- shell execution via heredoc
+- sudo with privilege flag (stdin/askpass/shell/list)
+- shell command via -c/-lc flag
+- script execution via -e/-c flag
+- overwrite system file via redirection
+- stop/restart hermes gateway (kills running agents)
+- find -delete
+- world/other-writable permissions
+- in-place edit of system config
+- kill hermes/gateway process (self-termination)
+- execute_code
+- script execution via heredoc
+- delete in root path
+hooks:
+  pre_tool_call:
+  - command: /var/home/charlie/.local/bin/hermes-pre-tool-call
+    timeout: 30
+  - command: /var/home/charlie/.local/bin/hermes-pre-tool-danger-guard
+    timeout: 30
+  post_tool_call:
+  - command: /var/home/charlie/.local/bin/hermes-post-tool-call
+    timeout: 30
+  - command: /var/home/charlie/.local/bin/hermes-post-tool-verifier
+    timeout: 30
+  on_session_start:
+  - command: /var/home/charlie/.local/bin/hermes-on-session-start
+    timeout: 30
+  on_session_end:
+  - command: /var/home/charlie/.local/bin/hermes-on-session-end
+    timeout: 30
+hooks_auto_accept: true
+security:
+  allow_private_urls: false
+  redact_secrets: true
+  tirith_enabled: false
+  tirith_path: tirith
+  tirith_timeout: 5
+  tirith_fail_open: true
+  website_blocklist:
+    enabled: false
+    domains: []
+    shared_files: []
+  acked_advisories: []
+  allow_lazy_installs: true
+cron:
+  wrap_response: true
+code_execution:
+  mode: project
+logging:
+  level: INFO
+  max_size_mb: 5
+  backup_count: 3
+  memory_monitor:
+    enabled: true
+    interval_seconds: 300
+model_catalog:
+  enabled: true
+  url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
+  ttl_hours: 24
+network:
+  force_ipv4: false
+gateway:
+  strict: false
+  media_delivery_allow_dirs: []
+  trust_recent_files: true
+  trust_recent_files_seconds: 600
+sessions:
+  auto_prune: true
+  retention_days: 90
+  vacuum_after_prune: true
+  min_interval_hours: 24
+  write_json_snapshots: false
+onboarding:
+  seen:
+    busy_input_prompt: true
+    openclaw_residue_cleanup: true
+    tool_progress_prompt: true
+updates:
+  pre_update_backup: false
+  backup_keep: 5
+lsp:
+  enabled: true
+  wait_mode: document
+  wait_timeout: 5
+  install_strategy: auto
+x_search:
+  model: grok-4.20-reasoning
+  timeout_seconds: 180
+  retries: 2
+secrets:
+  bitwarden:
+    enabled: false
+    access_token_env: BWS_ACCESS_TOKEN
+    project_id: ''
+    cache_ttl_seconds: 300
+    override_existing: true
+    auto_install: true
+    server_url: ''
+paste_collapse_threshold: 5
+paste_collapse_threshold_fallback: 5
+paste_collapse_char_threshold: 2000
+_config_version: 24
+session_mesh:
+  enabled: true
+  global_supervisor_port: 8648
+  execution_port: 8787
+  dispatcher_profile: dispatcher
+  auto_route_every_session: true
+  auto_rollup: true
+  auto_rollover: true
+  auto_redispatch: true
+  context_budget_default: small
+  rollover_threshold_tokens: 180000
+  rollover_threshold_messages: 180
+  rollover_summary_chars: 1800
+  launch_mode: auto
+  launch_paused: false
+  launch_failure_circuit_breaker: 3
+  launch_max_submitted: 2
+  submitted_stale_minutes: 45
+  max_parallel_dispatch_per_parent: 3
+  launch_limit_per_tick: auto
+  launch_max_per_tick: 2
+  ai_a2a_burst_limit: 4
+  launch_max_load1: 16
+  launch_min_available_mb: 6144
+  launch_max_swap_used_mb: 12288
+memory_evolution:
+  enabled: true
+  auto_curate: true
+  auto_rollup_to_memory: true
+  auto_promote_patterns: true
+  auto_update_runbooks: true
+  auto_update_skills: true
+custom_providers:
+- api_key: sk-Hm3...pv01
+  api_mode: chat_completions
+  base_url: https://fast.aieyra.cn/v1
+  model: gpt-5.4
+  models:
+    gpt-5.4:
+      context_length: 128000
+  name: aieyra
+mcp_servers:
+  agent-comms:
+    args:
+    - /var/home/charlie/.local/bin/agent-comms-mcp.py
+    command: python3
+    enabled: true
+  baidu-netdisk:
+    enabled: false
+  claude-knowledge:
+    enabled: false
+  codegraph:
+    args:
+    - mcp
+    - start
+    command: /var/home/charlie/.local/bin/codegraphcontext
+    enabled: false
+  codex-account-manager:
+    args:
+    - /var/home/charlie/.local/bin/codex-account-manager-mcp.py
+    command: python3
+    enabled: false
+  fetch:
+    command: /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+    enabled: true
+  firecrawl:
+    command: /var/home/charlie/.local/bin/mcp-firecrawl-wrapper.sh
+    env:
+      FIRECRAWL_API_KEY: fc-d78b2e8ba4f246d38ad11b7b3ba11319
+      FIRECRAWL_API_URL: https://api.firecrawl.dev
+    enabled: false
+  ghidra:
+    enabled: false
+  haven:
+    command: /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+    env:
+      HAVEN_MCP_AUTOSTART: '1'
+    enabled: false
+  hermes-studio-api:
+    enabled: false
+  hermes-studio-browser:
+    enabled: false
+  hermes-studio-devices:
+    enabled: false
+  hermes-studio-use:
+    enabled: false
+  ios-connect:
+    args:
+    - /var/home/charlie/.local/bin/ios-connect-mcp.py
+    command: python3
+    enabled: false
+  khoj:
+    enabled: false
+  letta:
+    command: /var/home/charlie/.local/bin/letta-mcp
+    enabled: false
+  mobile-browser-bridge:
+    args:
+    - /var/home/charlie/.local/bin/mobile-browser-bridge-mcp.py
+    command: python3
+    enabled: false
+  ntfy:
+    args:
+    - /var/home/charlie/.local/share/mcp-servers/ntfy/server.py
+    command: python3
+    enabled: false
+  phone-connect:
+    args:
+    - /var/home/charlie/.local/bin/phone-connect-mcp.py
+    command: python3
+    enabled: false
+  phone-mcp:
+    enabled: false
+  playwright:
+    args:
+    - --browser
+    - chromium
+    - --headless
+    command: /var/home/charlie/.nvm/versions/node/v22.22.3/bin/playwright-mcp
+    enabled: false
+  hermes-vector-memory:
+    command: /usr/bin/python3
+    args:
+    - /var/home/charlie/.hermes/bin/hermes-vector-memory-mcp.py
+    enabled: false
+  server-memory:
+    enabled: false
+  memory-engine:
+    args:
+    - /mnt/ai/data/memory-engine/memory-mcp-server.py
+    command: /usr/bin/python3
+    enabled: false
+  openhands:
+    args:
+    - /var/home/charlie/.local/bin/openhands_mcp_server.py
+    command: /usr/bin/python3
+    env:
+      OPENHANDS_BASE_URL: http://127.0.0.1:3001
+      OPENHANDS_API_KEY: ''
+      OPENHANDS_DEFAULT_TIMEOUT: '600'
+    enabled: false
+  smart-router:
+    enabled: false
+  sqlite:
+    enabled: false
+  sys-info:
+    command: /var/home/charlie/.local/bin/sys-info-mcp-wrapper.sh
+    enabled: false
+  tablet:
+    args:
+    - /var/home/charlie/.local/bin/tablet-mcp-server.py
+    command: python3
+    enabled: false
+  vision:
+    enabled: false
+  waydroid:
+    enabled: false
+  wechat:
+    enabled: false
+  win:
+    args:
+    - /var/home/charlie/.local/bin/win-mcp-server.py
+    command: python3
+    enabled: false
+multiplex_profiles: true
+platforms:
+  api_server:
+    enabled: true
+    extra:
+      cors_origins: '*'
+      host: 127.0.0.1
+      key: E2J8jn4tOXkk06YrmIdgPNnzwJIiWb1pIFSiES1-1mo
+      port: 8642
+webui:
+  dashboard:
+    enabled: auto
+model:
+  default: step-5-preview
+  provider: stepfun
+  base_url: https://api.stepfun.com/step_plan/v1
+  context_length: 1024000
+  aliases:
+    daily: stepfun/step-5-preview
+    fast: stepfun/step-3.7-flash
+    deep: stepfun/step-5-preview
+    vision: stepfun/step-5-preview
+model_aliases:
+  daily:
+    provider: stepfun
+    model: step-5-preview
+  fast:
+    provider: stepfun
+    model: step-3.7-flash
+  deep:
+    provider: stepfun
+    model: step-5-preview
+  vision:
+    provider: stepfun
+    model: step-5-preview

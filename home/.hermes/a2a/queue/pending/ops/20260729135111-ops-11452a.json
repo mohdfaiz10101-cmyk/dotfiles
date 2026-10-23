@@ -1,0 +1,16 @@
+{
+  "id": "20260729135111-ops-11452a",
+  "created_at": "2026-07-29T13:51:11.864163+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200315_5c2a0f",
+    "title": "",
+    "created_at": 1784721798.2448113
+  },
+  "content": "The user's work Kanban task tracking system assigns unique identifiers to tasks, with task-type items using a 't_' prefix followed by an 8-character alphanumeric string, as exemplified by the task ID t_0120d003.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123850-ops-de311f",
+  "created_at": "2026-07-29T12:38:50.711864+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1hbb0ig10go0",
+    "title": "Hermes CLI与Studio共享记忆技能",
+    "created_at": 1785051126.978098
+  },
+  "content": "The user's local Hermes Studio deployment uses fixed port 18648 as its access port, which is a stable environment detail for interacting with their Hermes setup.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

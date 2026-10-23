@@ -1,0 +1,16 @@
+{
+  "id": "20260729124115-ops-f4888f",
+  "created_at": "2026-07-29T12:41:15.179983+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1cln29yad2pa",
+    "title": "herme studio悬浮按钮独立引用",
+    "created_at": 1785043207.8484972
+  },
+  "content": "用户明确要求Hermes Studio页面的悬浮按钮采用独立地址引用模式，核心目标是实现平台故障隔离，避免Hermes平台崩溃时悬浮按钮失效",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

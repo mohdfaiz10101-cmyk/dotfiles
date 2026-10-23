@@ -1,0 +1,420 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-3
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7894
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export TERM=tmux-256color
+export CODEX_FORCE_NEW=1
+
+if [ -r /var/home/charlie/.config/codex3-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex3-sub2api.env
+    set +a
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+SESSION="haven-codex3"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex3.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex3-ensure.log"
+
+mkdir -p "$CODEX_HOME" "$(dirname "$TMUX_SOCK")" "$(dirname "$LOG")"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+cd /var/home/charlie
+
+log() {
+    printf '%s %s\n' "$(date '+%F %T')" "$*" >> "$LOG"
+}
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+session_has_live_codex() {
+    local pane_pid pane_cmd queue next pid cmd
+    pane_pid="$(tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_pid}' 2>/dev/null | head -n 1 || true)"
+    pane_cmd="$(tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_current_command}' 2>/dev/null | head -n 1 || true)"
+    [ -n "$pane_pid" ] || return 1
+    [ "$pane_cmd" = "node" ] && return 0
+    queue="$(pgrep -P "$pane_pid" 2>/dev/null || true)"
+    while [ -n "${queue// /}" ]; do
+        next=""
+        for pid in $queue; do
+            cmd="$(ps -p "$pid" -o args= 2>/dev/null || true)"
+            case "$cmd" in
+                *"@openai/codex/bin/codex.js"*) return 0 ;;
+            esac
+            next="$next $(pgrep -P "$pid" 2>/dev/null || true)"
+        done
+        queue="$next"
+    done
+    return 1
+}
+
+codex_mobile_normalize_window() {
+    tmux -S "$TMUX_SOCK" set-window-option -t "${SESSION_TARGET:-$SESSION}" window-size manual >/dev/null 2>&1 || true
+    tmux -S "$TMUX_SOCK" resize-window -t "${SESSION_TARGET:-$SESSION}" -x 100 -y 30 >/dev/null 2>&1 || true
+}
+
+session_is_healthy() {
+    session_has_live_pane && session_has_live_codex
+}
+
+cleanup_stale_socket() {
+    if [ -S "$TMUX_SOCK" ] && ! tmux -S "$TMUX_SOCK" ls >/dev/null 2>&1; then
+        rm -f "$TMUX_SOCK"
+        log "CLEAN stale-socket=$TMUX_SOCK"
+    fi
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "CODEX_FORCE_NEW=$CODEX_FORCE_NEW" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "OPENAI_API_KEY=$OPENAI_API_KEY" \
+        "$CODEX_BIN"
+    tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+    tmux -S "$TMUX_SOCK" set-option -g mouse off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" remain-on-exit off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" allow-passthrough off 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" extended-keys off 2>/dev/null || true
+    codex_mobile_normalize_window
+    sleep 2
+    if ! session_is_healthy; then
+        log "FAILED reason=codex-missing session=$SESSION"
+        tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+        exit 1
+    fi
+    log "STARTED session=$SESSION"
+}
+
+cleanup_stale_socket
+
+if tmux -S "$TMUX_SOCK" has-session -t "$SESSION" 2>/dev/null; then
+    if session_is_healthy; then
+        codex_mobile_normalize_window
+        log "OK session=$SESSION"
+        exit 0
+    fi
+    tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+    log "RECREATE reason=dead-pane session=$SESSION"
+    create_session
+else
+    log "CREATE reason=missing-session session=$SESSION"
+    create_session
+fi
+
+---
+#!/usr/bin/env bash
+set -euo pipefail
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-4
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7895
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export TERM=tmux-256color
+export CODEX_FORCE_NEW=1
+
+if [ -r /var/home/charlie/.config/codex4-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex4-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_4" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-4/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+SESSION="haven-codex4"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex4.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex4-ensure.log"
+
+mkdir -p "$CODEX_HOME" "$(dirname "$TMUX_SOCK")" "$(dirname "$LOG")"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+cd /var/home/charlie
+
+log() {
+    printf '%s %s\n' "$(date '+%F %T')" "$*" >> "$LOG"
+}
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+session_has_live_codex() {
+    local pane_pid pane_cmd queue next pid cmd
+    pane_pid="$(tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_pid}' 2>/dev/null | head -n 1 || true)"
+    pane_cmd="$(tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_current_command}' 2>/dev/null | head -n 1 || true)"
+    [ -n "$pane_pid" ] || return 1
+    [ "$pane_cmd" = "node" ] && return 0
+    queue="$(pgrep -P "$pane_pid" 2>/dev/null || true)"
+    while [ -n "${queue// /}" ]; do
+        next=""
+        for pid in $queue; do
+            cmd="$(ps -p "$pid" -o args= 2>/dev/null || true)"
+            case "$cmd" in
+                *"@openai/codex/bin/codex.js"*) return 0 ;;
+            esac
+            next="$next $(pgrep -P "$pid" 2>/dev/null || true)"
+        done
+        queue="$next"
+    done
+    return 1
+}
+
+codex_mobile_normalize_window() {
+    tmux -S "$TMUX_SOCK" set-window-option -t "${SESSION_TARGET:-$SESSION}" window-size manual >/dev/null 2>&1 || true
+    tmux -S "$TMUX_SOCK" resize-window -t "${SESSION_TARGET:-$SESSION}" -x 100 -y 30 >/dev/null 2>&1 || true
+}
+
+session_is_healthy() {
+    session_has_live_pane && session_has_live_codex
+}
+
+cleanup_stale_socket() {
+    if [ -S "$TMUX_SOCK" ] && ! tmux -S "$TMUX_SOCK" ls >/dev/null 2>&1; then
+        rm -f "$TMUX_SOCK"
+        log "CLEAN stale-socket=$TMUX_SOCK"
+    fi
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "CODEX_FORCE_NEW=$CODEX_FORCE_NEW" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "OPENAI_API_KEY=$OPENAI_API_KEY" \
+        "$CODEX_BIN"
+    tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+    tmux -S "$TMUX_SOCK" set-option -g mouse off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" remain-on-exit off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" allow-passthrough off 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" extended-keys off 2>/dev/null || true
+    codex_mobile_normalize_window
+    sleep 2
+    if ! session_is_healthy; then
+        log "FAILED reason=codex-missing session=$SESSION"
+        tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+        exit 1
+    fi
+    log "STARTED session=$SESSION"
+}
+
+cleanup_stale_socket
+
+if tmux -S "$TMUX_SOCK" has-session -t "$SESSION" 2>/dev/null; then
+    if session_is_healthy; then
+        codex_mobile_normalize_window
+        log "OK session=$SESSION"
+        exit 0
+    fi
+    tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+    log "RECREATE reason=dead-pane session=$SESSION"
+    create_session
+else
+    log "CREATE reason=missing-session session=$SESSION"
+    create_session
+fi
+
+---
+#!/usr/bin/env bash
+set -euo pipefail
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-5
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7896
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export TERM=tmux-256color
+export CODEX_FORCE_NEW=1
+
+if [ -r /var/home/charlie/.config/codex5-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex5-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_5" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-5/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+SESSION="haven-codex5"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex5.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex5-ensure.log"
+
+normalize_tmux_size() {
+    tmux -S "$TMUX_SOCK" set-window-option -t "$SESSION" window-size manual 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" resize-window -t "$SESSION" -x 100 -y 30 2>/dev/null || true
+}
+
+mkdir -p "$CODEX_HOME" "$(dirname "$TMUX_SOCK")" "$(dirname "$LOG")"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+cd /var/home/charlie
+
+log() {
+    printf '%s %s\n' "$(date '+%F %T')" "$*" >> "$LOG"
+}
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+session_has_live_codex() {
+    local pane_pid pane_cmd queue next pid cmd
+    pane_pid="$(tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_pid}' 2>/dev/null | head -n 1 || true)"
+    pane_cmd="$(tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_current_command}' 2>/dev/null | head -n 1 || true)"
+    [ -n "$pane_pid" ] || return 1
+    [ "$pane_cmd" = "node" ] && return 0
+    queue="$(pgrep -P "$pane_pid" 2>/dev/null || true)"
+    while [ -n "${queue// /}" ]; do
+        next=""
+        for pid in $queue; do
+            cmd="$(ps -p "$pid" -o args= 2>/dev/null || true)"
+            case "$cmd" in
+                *"@openai/codex/bin/codex.js"*) return 0 ;;
+            esac
+            next="$next $(pgrep -P "$pid" 2>/dev/null || true)"
+        done
+        queue="$next"
+    done
+    return 1
+}
+
+session_is_healthy() {
+    session_has_live_pane && session_has_live_codex
+}
+
+cleanup_stale_socket() {
+    if [ -S "$TMUX_SOCK" ] && ! tmux -S "$TMUX_SOCK" ls >/dev/null 2>&1; then
+        rm -f "$TMUX_SOCK"
+        log "CLEAN stale-socket=$TMUX_SOCK"
+    fi
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "CODEX_FORCE_NEW=$CODEX_FORCE_NEW" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "OPENAI_API_KEY=$OPENAI_API_KEY" \
+        "$CODEX_BIN"
+    tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+    tmux -S "$TMUX_SOCK" set-option -g mouse off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" remain-on-exit off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" allow-passthrough off 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" extended-keys off 2>/dev/null || true
+    normalize_tmux_size
+    sleep 2
+    if ! session_is_healthy; then
+        log "FAILED reason=codex-missing session=$SESSION"
+        tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+        exit 1
+    fi
+    log "STARTED session=$SESSION"
+}
+
+cleanup_stale_socket
+
+if tmux -S "$TMUX_SOCK" has-session -t "$SESSION" 2>/dev/null; then
+    if session_is_healthy; then
+        normalize_tmux_size
+        log "OK session=$SESSION"
+        exit 0
+    fi
+    tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+    log "RECREATE reason=dead-pane session=$SESSION"
+    create_session
+else
+    log "CREATE reason=missing-session session=$SESSION"
+    create_session
+fi
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

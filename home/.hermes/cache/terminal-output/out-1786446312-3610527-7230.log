@@ -1,0 +1,122 @@
+2026-07-17T17:40:52.119+08:00 INFO client/internal/dns/host_unix.go:54: System DNS manager discovered: systemd (systemd-resolved active (nss-resolve=true, stub=true))
+2026-07-17T17:40:52.124+08:00 INFO client/internal/conn_mgr.go:76: lazy connection manager is managed by the management feature flag
+2026-07-17T17:40:53.455+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T17:40:53.455+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T17:40:53.455+08:00 INFO client/internal/engine.go:1319: connecting to Management Service updates stream
+2026-07-17T17:40:53.455+08:00 INFO client/internal/engine.go:1251: connecting to Management Service jobs stream
+2026-07-17T17:40:53.455+08:00 INFO client/internal/engine.go:2259: Network monitor is disabled, not starting
+2026-07-17T17:40:53.455+08:00 INFO client/internal/connect.go:418: Netbird engine started, the IP is: 100.87.238.153/16
+2026-07-17T17:40:53.456+08:00 INFO client/internal/wg_iface_monitor.go:60: Interface monitor: watching wt0 (index: 8)
+2026-07-17T17:40:56.331+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-07-17T17:40:57.065+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-07-17T17:40:57.066+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-07-17T17:40:57.066+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-07-17T17:40:57.066+08:00 INFO client/internal/engine_ssh.go:62: SSH server is disabled in config
+2026-07-17T17:40:57.066+08:00 WARN client/internal/conn_mgr.go:112: lazy connection manager is enabled by management feature flag
+2026-07-17T17:40:57.066+08:00 INFO client/internal/lazyconn/manager/manager.go:64: setup lazy connection service
+2026-07-17T17:40:57.066+08:00 WARN client/internal/lazyconn/manager/manager.go:81: inactivity manager not supported for kernel mode, wait for remote peer to close the connection
+2026-07-17T17:40:57.072+08:00 INFO client/internal/dns/systemd_linux.go:302: adding 1 search domains and 2 match domains. Search list: [netbird.cloud.] , Match list: [87.100.in-addr.arpa. 9.3.f.f.7.d.7.d.2.a.9.a.7.0.d.f.ip6.arpa.]
+2026-07-17T17:40:57.073+08:00 INFO client/internal/dns/server.go:799: registering original nameservers [223.5.5.5:53 114.114.114.114:53 119.29.29.29:53] as upstream handlers with priority -100
+2026-07-17T17:40:57.074+08:00 INFO client/internal/acl/manager.go:86: ACL rules processed in: 453.262µs, total rules count: 0
+2026-07-17T17:40:57.074+08:00 INFO client/internal/engine.go:924: sync finished in 8.539124ms
+2026-07-17T17:41:02.118+08:00 INFO client/internal/portforward/manager.go:95: port forwarding setup: discover gateway: no NAT found
+2026-07-17T17:41:05.415+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T17:41:39.721+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T17:43:11.121+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T17:43:40.577+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T17:43:50.806+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:38618->213.163.201.31:443: read: connection reset by peer
+2026-07-17T17:43:50.806+08:00 WARN shared/management/client/grpc.go:277: job stream disconnected, will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:38618->213.163.201.31:443: read: connection reset by peer
+2026-07-17T17:44:01.555+08:00 INFO ./caller_not_available:0: 2026/07/17 17:44:01 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "transport: authentication handshake failed: context deadline exceeded"
+2026-07-17T17:44:04.311+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T17:44:04.311+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T17:44:09.146+08:00 INFO ./caller_not_available:0: 2026/07/17 17:44:09 WARNING: [core] [Channel #38 SubChannel #39] grpc: addrConn.createTransport failed to connect to {Addr: "api.netbird.io:443", ServerName: "api.netbird.io:443", }. Err: connection error: desc = "transport: authentication handshake failed: read tcp 192.168.123.71:43060->213.163.206.27:443: read: connection timed out"
+2026-07-17T17:44:15.939+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-07-17T17:44:18.092+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-07-17T17:44:18.092+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-07-17T17:44:18.092+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-07-17T17:44:18.092+08:00 INFO client/internal/engine_ssh.go:62: SSH server is disabled in config
+2026-07-17T17:44:18.093+08:00 INFO client/internal/engine.go:924: sync finished in 353.705µs
+2026-07-17T17:45:17.355+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T17:46:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T17:46:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T17:50:34.323+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T17:51:00.128+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T17:51:00.128+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T17:56:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T17:56:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T17:57:04.025+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T18:01:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:01:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:06:00.130+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:06:00.130+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:07:58.896+08:00 INFO client/internal/updater/manager.go:168: expected version changed to , force update: false
+2026-07-17T18:07:58.896+08:00 WARN client/internal/updater/manager.go:171: auto-update not supported on this platform
+2026-07-17T18:07:58.896+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-07-17T18:07:58.896+08:00 INFO client/internal/engine_ssh.go:62: SSH server is disabled in config
+2026-07-17T18:07:58.898+08:00 INFO client/internal/acl/manager.go:86: ACL rules processed in: 1.409493ms, total rules count: 2
+2026-07-17T18:07:58.898+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/lazyconn/activity/listener_udp.go:48: created activity listener: 127.0.1.1:35984
+2026-07-17T18:07:58.898+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/conn_mgr.go:222: peer added to lazy conn manager
+2026-07-17T18:07:58.899+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-07-17T18:07:58.899+08:00 INFO client/internal/engine.go:924: sync finished in 3.003233ms
+2026-07-17T18:10:01.560+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/lazyconn/activity/listener_udp.go:74: activity detected, captured 148 bytes for reinjection
+2026-07-17T18:10:01.560+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/lazyconn/manager/manager.go:531: detected peer activity
+2026-07-17T18:10:01.560+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/guard/guard.go:54: starting guard for reconnection with MaxInterval: 36.692s
+2026-07-17T18:10:01.957+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T18:10:02.709+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Disconnected
+2026-07-17T18:10:02.709+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-07-17T18:10:02.709+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:240: remote peer stopped sending ICE credentials
+2026-07-17T18:10:02.709+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:351: OnRemoteAnswer, priority: None, status ICE: Disconnected, status relay: Disconnected
+2026-07-17T18:10:02.709+08:00 WARN [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:186: skipping remote answer message because receiver not ready
+2026-07-17T18:10:02.709+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:301: prepare the relayed connection, waiting for remote peer: sha-gqSPJTH+AYERHfY1b9uS+MRrPPEFuW68Xk12PRrmZ8k=
+2026-07-17T18:10:02.814+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:339: remote peer is available: sha-gqSPJTH+AYERHfY1b9uS+MRrPPEFuW68Xk12PRrmZ8k=
+2026-07-17T18:10:02.814+08:00 INFO client/iface/wgproxy/ebpf/proxy.go:120: turn conn added to wg proxy store: rels://streamline-vl-icn-1.relay.netbird.io:443, endpoint port: :1
+2026-07-17T18:10:02.814+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:576: created new wgProxy for relay connection: 127.0.0.1:1
+2026-07-17T18:10:02.814+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/wg_watcher.go:96: WireGuard watcher started
+2026-07-17T18:10:02.914+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:613: start to communicate with peer via relay
+2026-07-17T18:10:32.815+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/wg_watcher.go:116: first wg handshake detected within: 0.44sec, (2026-07-17 18:10:03.24997278 +0800 CST)
+2026-07-17T18:11:00.130+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:11:00.130+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:16:00.128+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:16:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:20:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connected, SentOffer: 1, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 4, RelayConnected: 1, LocalProxies: 1
+2026-07-17T18:21:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:21:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:23:43.619+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:769: remote peer has been disconnected, free up connection: sha-gqSPJTH+AYERHfY1b9uS+MRrPPEFuW68Xk12PRrmZ8k=
+2026-07-17T18:23:43.840+08:00 ERRO client/iface/wgproxy/ebpf/wrapper.go:289: failed to read from turn conn (endpoint: :1): use of closed network connection
+2026-07-17T18:23:43.840+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/wg_watcher.go:140: WireGuard watcher stopped
+2026-07-17T18:26:00.128+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:26:00.128+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:30:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 16, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T18:31:00.128+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:31:00.128+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:36:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:36:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:40:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 32, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T18:40:59.692+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:50598->213.163.201.31:443: read: connection reset by peer
+2026-07-17T18:41:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:41:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:41:16.730+08:00 INFO ./caller_not_available:0: 2026/07/17 18:41:16 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "error reading server preface: read tcp 192.168.123.71:38640->213.163.201.31:443: read: connection timed out"
+2026-07-17T18:41:16.730+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: rpc error: code = Unavailable desc = connection error: desc = "error reading server preface: read tcp 192.168.123.71:38640->213.163.201.31:443: read: connection timed out"
+2026-07-17T18:41:32.704+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: signal is not ready
+2026-07-17T18:41:37.732+08:00 INFO ./caller_not_available:0: 2026/07/17 18:41:37 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "transport: authentication handshake failed: context deadline exceeded"
+2026-07-17T18:41:45.933+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T18:41:45.933+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T18:46:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:46:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:46:34.618+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:35210->213.163.206.27:443: read: connection timed out
+2026-07-17T18:46:50.150+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: signal is not ready
+2026-07-17T18:46:55.618+08:00 INFO ./caller_not_available:0: 2026/07/17 18:46:55 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "error reading server preface: read tcp 192.168.123.71:33482->213.163.201.31:443: use of closed network connection"
+2026-07-17T18:47:16.985+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T18:47:16.985+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T18:48:52.269+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:49:05.011+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T18:49:05.011+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T18:49:31.380+08:00 WARN shared/management/client/grpc.go:277: job stream disconnected, will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:49:31.380+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:50:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 61, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T18:50:18.170+08:00 INFO ./caller_not_available:0: 2026/07/17 18:50:18 WARNING: [core] [Channel #38 SubChannel #39] grpc: addrConn.createTransport failed to connect to {Addr: "api.netbird.io:443", ServerName: "api.netbird.io:443", }. Err: connection error: desc = "error reading server preface: read tcp 192.168.123.71:37640->213.163.206.27:443: read: connection timed out"
+2026-07-17T18:50:25.979+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-07-17T18:50:28.193+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-07-17T18:50:28.194+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

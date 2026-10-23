@@ -1,0 +1,16 @@
+{
+  "id": "20260729135727-ops-404573",
+  "created_at": "2026-07-29T13:57:27.442885+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195614_4ac973",
+    "title": "",
+    "created_at": 1784721376.2525518
+  },
+  "content": "When discussing work-related topics, the user references specific kanban tasks by their short unique ID to anchor conversation context directly to tracked work items, enabling quick alignment with their task management system.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

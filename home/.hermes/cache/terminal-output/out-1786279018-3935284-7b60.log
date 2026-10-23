@@ -1,0 +1,144 @@
+frpc process/status:
+● frpc.service - FRP Client for Hermes Web UI
+     Loaded: loaded (/var/home/charlie/.config/systemd/user/frpc.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/user/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Sun 2026-08-09 12:50:35 CST; 7h ago
+ Invocation: 4ca0ca7e182e40c9882cf601de4d349b
+   Main PID: 874104 (frpc)
+      Tasks: 15 (limit: 28353)
+     Memory: 19.8M (peak: 27.5M, swap: 428K, swap peak: 696K)
+        CPU: 54.786s
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/frpc.service
+             └─874104 /var/home/charlie/.local/bin/frpc -c /var/home/charlie/.config/frpc/frpc.toml
+
+8月 09 20:28:30 fedora frpc[874104]: 2026-08-09 20:28:30.214 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:28:51 fedora frpc[874104]: 2026-08-09 20:28:51.793 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 09 20:28:51 fedora frpc[874104]: 2026-08-09 20:28:51.811 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 09 20:28:51 fedora frpc[874104]: 2026-08-09 20:28:51.811 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 09 20:28:52 fedora frpc[874104]: 2026-08-09 20:28:52.059 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:29:00 fedora frpc[874104]: 2026-08-09 20:29:00.332 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:29:22 fedora frpc[874104]: 2026-08-09 20:29:22.064 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:29:30 fedora frpc[874104]: 2026-08-09 20:29:30.464 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:29:52 fedora frpc[874104]: 2026-08-09 20:29:52.070 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:30:00 fedora frpc[874104]: 2026-08-09 20:30:00.589 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:30:22 fedora frpc[874104]: 2026-08-09 20:30:22.076 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:30:30 fedora frpc[874104]: 2026-08-09 20:30:30.712 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:30:52 fedora frpc[874104]: 2026-08-09 20:30:52.084 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:31:00 fedora frpc[874104]: 2026-08-09 20:31:00.821 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:31:22 fedora frpc[874104]: 2026-08-09 20:31:22.088 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:31:30 fedora frpc[874104]: 2026-08-09 20:31:30.941 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:31:52 fedora frpc[874104]: 2026-08-09 20:31:52.094 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:32:01 fedora frpc[874104]: 2026-08-09 20:32:01.071 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:32:22 fedora frpc[874104]: 2026-08-09 20:32:22.099 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:32:31 fedora frpc[874104]: 2026-08-09 20:32:31.192 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:32:52 fedora frpc[874104]: 2026-08-09 20:32:52.105 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:33:01 fedora frpc[874104]: 2026-08-09 20:33:01.304 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:33:22 fedora frpc[874104]: 2026-08-09 20:33:22.112 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:33:31 fedora frpc[874104]: 2026-08-09 20:33:31.428 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:33:52 fedora frpc[874104]: 2026-08-09 20:33:52.119 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:33:52 fedora frpc[874104]: 2026-08-09 20:33:52.298 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 09 20:33:52 fedora frpc[874104]: 2026-08-09 20:33:52.319 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 09 20:33:52 fedora frpc[874104]: 2026-08-09 20:33:52.319 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 09 20:34:01 fedora frpc[874104]: 2026-08-09 20:34:01.584 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:34:22 fedora frpc[874104]: 2026-08-09 20:34:22.126 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:34:31 fedora frpc[874104]: 2026-08-09 20:34:31.711 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:34:52 fedora frpc[874104]: 2026-08-09 20:34:52.131 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:35:01 fedora frpc[874104]: 2026-08-09 20:35:01.886 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:35:22 fedora frpc[874104]: 2026-08-09 20:35:22.135 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:35:31 fedora frpc[874104]: 2026-08-09 20:35:31.990 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:35:52 fedora frpc[874104]: 2026-08-09 20:35:52.139 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:36:02 fedora frpc[874104]: 2026-08-09 20:36:02.090 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:36:22 fedora frpc[874104]: 2026-08-09 20:36:22.146 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+8月 09 20:36:32 fedora frpc[874104]: 2026-08-09 20:36:32.212 [E] [proxy/proxy.go:219] [f8674d0465ebf774] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 09 20:36:52 fedora frpc[874104]: 2026-08-09 20:36:52.151 [W] [client/control.go:163] [f8674d0465ebf774] [fedora-codex-tty-19891] start error: port unavailable
+
+current listeners on disputed/dead local ports:
+LISTEN 0      128                *:2586             *:*    users:(("pasta.avx2",pid=714015,fd=74))      
+LISTEN 0      4096               *:24803            *:*                                                 
+
+frpc api/connections (if any):
+
+frpc recent logs:
+8月 08 00:25:35 fedora frpc[4048201]: 2026-08-08 00:25:35.663 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:26:01 fedora frpc[4048201]: 2026-08-08 00:26:01.603 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:26:05 fedora frpc[4048201]: 2026-08-08 00:26:05.669 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:26:31 fedora frpc[4048201]: 2026-08-08 00:26:31.722 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:26:35 fedora frpc[4048201]: 2026-08-08 00:26:35.676 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:26:35 fedora frpc[4048201]: 2026-08-08 00:26:35.780 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:26:37 fedora frpc[4048201]: 2026-08-08 00:26:37.584 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:27:01 fedora frpc[4048201]: 2026-08-08 00:27:01.842 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:27:05 fedora frpc[4048201]: 2026-08-08 00:27:05.682 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:27:31 fedora frpc[4048201]: 2026-08-08 00:27:31.966 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:27:35 fedora frpc[4048201]: 2026-08-08 00:27:35.688 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:28:02 fedora frpc[4048201]: 2026-08-08 00:28:02.143 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:28:05 fedora frpc[4048201]: 2026-08-08 00:28:05.693 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:28:32 fedora frpc[4048201]: 2026-08-08 00:28:32.273 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:28:35 fedora frpc[4048201]: 2026-08-08 00:28:35.701 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:29:02 fedora frpc[4048201]: 2026-08-08 00:29:02.405 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:29:05 fedora frpc[4048201]: 2026-08-08 00:29:05.704 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:29:32 fedora frpc[4048201]: 2026-08-08 00:29:32.532 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:29:35 fedora frpc[4048201]: 2026-08-08 00:29:35.710 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:30:02 fedora frpc[4048201]: 2026-08-08 00:30:02.660 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:30:05 fedora frpc[4048201]: 2026-08-08 00:30:05.717 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:30:32 fedora frpc[4048201]: 2026-08-08 00:30:32.758 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:30:35 fedora frpc[4048201]: 2026-08-08 00:30:35.721 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:31:02 fedora frpc[4048201]: 2026-08-08 00:31:02.915 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:31:05 fedora frpc[4048201]: 2026-08-08 00:31:05.727 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:31:33 fedora frpc[4048201]: 2026-08-08 00:31:33.043 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:31:35 fedora frpc[4048201]: 2026-08-08 00:31:35.733 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:31:35 fedora frpc[4048201]: 2026-08-08 00:31:35.834 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:31:37 fedora frpc[4048201]: 2026-08-08 00:31:37.635 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:32:03 fedora frpc[4048201]: 2026-08-08 00:32:03.152 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:32:05 fedora frpc[4048201]: 2026-08-08 00:32:05.741 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:32:33 fedora frpc[4048201]: 2026-08-08 00:32:33.283 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:32:35 fedora frpc[4048201]: 2026-08-08 00:32:35.747 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:33:03 fedora frpc[4048201]: 2026-08-08 00:33:03.409 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:33:05 fedora frpc[4048201]: 2026-08-08 00:33:05.754 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:33:33 fedora frpc[4048201]: 2026-08-08 00:33:33.527 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:33:35 fedora frpc[4048201]: 2026-08-08 00:33:35.757 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:34:03 fedora frpc[4048201]: 2026-08-08 00:34:03.671 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:34:05 fedora frpc[4048201]: 2026-08-08 00:34:05.764 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:34:33 fedora frpc[4048201]: 2026-08-08 00:34:33.847 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:34:35 fedora frpc[4048201]: 2026-08-08 00:34:35.772 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:35:03 fedora frpc[4048201]: 2026-08-08 00:35:03.960 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:35:05 fedora frpc[4048201]: 2026-08-08 00:35:05.776 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:35:34 fedora frpc[4048201]: 2026-08-08 00:35:34.088 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:35:35 fedora frpc[4048201]: 2026-08-08 00:35:35.784 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:36:04 fedora frpc[4048201]: 2026-08-08 00:36:04.203 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:36:05 fedora frpc[4048201]: 2026-08-08 00:36:05.788 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:36:34 fedora frpc[4048201]: 2026-08-08 00:36:34.327 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:36:35 fedora frpc[4048201]: 2026-08-08 00:36:35.795 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:36:36 fedora frpc[4048201]: 2026-08-08 00:36:36.774 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:36:37 fedora frpc[4048201]: 2026-08-08 00:36:37.221 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:37:04 fedora frpc[4048201]: 2026-08-08 00:37:04.436 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:37:05 fedora frpc[4048201]: 2026-08-08 00:37:05.801 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:37:34 fedora frpc[4048201]: 2026-08-08 00:37:34.629 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:37:35 fedora frpc[4048201]: 2026-08-08 00:37:35.808 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:38:04 fedora frpc[4048201]: 2026-08-08 00:38:04.739 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:38:05 fedora frpc[4048201]: 2026-08-08 00:38:05.813 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:38:34 fedora frpc[4048201]: 2026-08-08 00:38:34.848 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:38:35 fedora frpc[4048201]: 2026-08-08 00:38:35.819 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:39:05 fedora frpc[4048201]: 2026-08-08 00:39:05.003 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:39:05 fedora frpc[4048201]: 2026-08-08 00:39:05.827 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:39:35 fedora frpc[4048201]: 2026-08-08 00:39:35.177 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:39:35 fedora frpc[4048201]: 2026-08-08 00:39:35.837 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:40:05 fedora frpc[4048201]: 2026-08-08 00:40:05.284 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:40:09 fedora frpc[4048201]: 2026-08-08 00:40:09.081 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:40:35 fedora frpc[4048201]: 2026-08-08 00:40:35.413 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:40:41 fedora frpc[4048201]: 2026-08-08 00:40:41.843 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:41:05 fedora frpc[4048201]: 2026-08-08 00:41:05.523 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:41:11 fedora frpc[4048201]: 2026-08-08 00:41:11.849 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:41:38 fedora frpc[4048201]: 2026-08-08 00:41:35.705 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:41:38 fedora frpc[4048201]: 2026-08-08 00:41:37.467 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:41:38 fedora frpc[4048201]: 2026-08-08 00:41:38.814 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-fastgpt] connect to local service [127.0.0.1:3000] error: dial tcp 127.0.0.1:3000: connect: connection refused
+8月 08 00:41:41 fedora frpc[4048201]: 2026-08-08 00:41:41.928 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:44:15 fedora frpc[4048201]: 2026-08-08 00:42:05.885 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:44:15 fedora frpc[4048201]: 2026-08-08 00:42:14.874 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:44:15 fedora frpc[4048201]: 2026-08-08 00:42:47.878 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:44:15 fedora frpc[4048201]: 2026-08-08 00:43:20.880 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:44:15 fedora frpc[4048201]: 2026-08-08 00:43:21.083 [E] [proxy/proxy.go:219] [697d73be17ca433b] [fedora-phone-mcp] connect to local service [127.0.0.1:19080] error: dial tcp 127.0.0.1:19080: connect: connection refused
+8月 08 00:44:15 fedora frpc[4048201]: 2026-08-08 00:43:50.883 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+8月 08 00:44:21 fedora frpc[4048201]: 2026-08-08 00:44:20.889 [W] [client/control.go:163] [697d73be17ca433b] [fedora-codex-tty-19891] start error: port unavailable
+
+__HERMES_CWD_cfc134c5b3a2__/var/home/charlie/workspace__HERMES_CWD_cfc134c5b3a2__

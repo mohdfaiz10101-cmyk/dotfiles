@@ -1,0 +1,16 @@
+{
+  "id": "20260729124347-ops-843fdc",
+  "created_at": "2026-07-29T12:43:47.529456+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_120056_c41a38",
+    "title": "",
+    "created_at": 1785039160.9506314
+  },
+  "content": "The AI assistant's configured public-facing persona is '团子 🐱' (a cat-themed persona named Tuanzi)",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

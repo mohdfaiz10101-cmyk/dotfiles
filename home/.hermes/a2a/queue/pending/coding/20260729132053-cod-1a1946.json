@@ -1,0 +1,16 @@
+{
+  "id": "20260729132053-cod-1a1946",
+  "created_at": "2026-07-29T13:20:53.962415+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz1dnkpvt4djd",
+    "title": "OpenHands记忆配置问题",
+    "created_at": 1784903379.414557
+  },
+  "content": "When the CodeGraphContext MCP server fails to start with an [Errno 98] address already in use error on port 18094, the standard resolution is to identify and terminate any pre-existing process (often a stale server instance) occupying that port.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

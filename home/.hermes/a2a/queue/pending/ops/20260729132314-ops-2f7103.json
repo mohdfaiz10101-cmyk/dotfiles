@@ -1,0 +1,16 @@
+{
+  "id": "20260729132314-ops-2f7103",
+  "created_at": "2026-07-29T13:23:14.047974+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms6416c7jh5gb3",
+    "title": "",
+    "created_at": 1785331156.2327383
+  },
+  "content": "定制/创建智能体的标准可复用链路为：新建 Profile → 配置对应 Skills → 写入自定义 Memory → 将 Profile 绑定为 Room 成员即可作为 Agent 使用，支持通过 WebUI 或 API 完成全流程。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

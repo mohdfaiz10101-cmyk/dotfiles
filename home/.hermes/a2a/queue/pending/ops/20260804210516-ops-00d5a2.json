@@ -1,0 +1,16 @@
+{
+  "id": "20260804210516-ops-00d5a2",
+  "created_at": "2026-08-04T21:05:16.660251+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msf5adw5f6yh28",
+    "title": "问候与任务确认",
+    "created_at": 1785877400.0455437
+  },
+  "content": "Default Hermes session environment configuration: The active profile is `default`, and the default working directory is `/var/home/charlie/.hermes/workspace`.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

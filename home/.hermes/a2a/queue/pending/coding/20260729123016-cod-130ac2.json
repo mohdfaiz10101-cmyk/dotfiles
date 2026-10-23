@@ -1,0 +1,16 @@
+{
+  "id": "20260729123016-cod-130ac2",
+  "created_at": "2026-07-29T12:30:16.443558+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "124407d04624",
+    "title": "",
+    "created_at": 1785198256.5400114
+  },
+  "content": "When optimizing multi-channel network acceleration for a phone paired with a host proxy service, always first confirm the phone's traffic path (direct, host-proxied, or hybrid) via the host mihomo API (http://127.0.0.1:9091/connections) by checking for connections from the phone's local IP (192.168.123.22) or NetBird IP (100.87.x.x) before modifying host-side mihomo configurations, as host config changes are ineffective if phone traffic does not route through the host proxy.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

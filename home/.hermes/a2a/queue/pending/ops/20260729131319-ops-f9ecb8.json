@@ -1,0 +1,16 @@
+{
+  "id": "20260729131319-ops-f9ecb8",
+  "created_at": "2026-07-29T13:13:19.591393+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_024011",
+    "title": "",
+    "created_at": 1784918422.3358305
+  },
+  "content": "The autonomous-task-brain skill implements a reusable 5-stage closed-loop task automation workflow (perceive → retrieve → decide → execute → review) designed to eliminate per-task manual planning, only requiring users to provide high-level goals or feedback.",
+  "confidence": 0.99,
+  "status": "pending",
+  "review_note": ""
+}

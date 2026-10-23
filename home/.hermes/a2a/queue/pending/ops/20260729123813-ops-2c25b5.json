@@ -1,0 +1,16 @@
+{
+  "id": "20260729123813-ops-2c25b5",
+  "created_at": "2026-07-29T12:38:13.274008+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_160607_3ab83f",
+    "title": "Mihomo proxy blocking Hermes access #3",
+    "created_at": 1785053167.6851802
+  },
+  "content": "用户明确要求将Padavan路由器的配置管理（包括DNAT规则维护、故障排查等）标准化为可复用的skill和checklist，以系统化管理网络服务暴露。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

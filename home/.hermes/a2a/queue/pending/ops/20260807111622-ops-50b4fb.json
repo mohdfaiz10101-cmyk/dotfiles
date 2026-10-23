@@ -1,0 +1,16 @@
+{
+  "id": "20260807111622-ops-50b4fb",
+  "created_at": "2026-08-07T11:16:22.501482+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_ffa1511c834a_20260807_191424",
+    "title": "",
+    "created_at": 1786101265.8946996
+  },
+  "content": "The weekly-review skill is bound to a fixed cron job (job_id: ffa1511c834a) with a 7-day (10080 minute) floating schedule that automatically reschedules itself after each execution, requiring no manual cron maintenance.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

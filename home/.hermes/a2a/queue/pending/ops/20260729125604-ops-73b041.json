@@ -1,0 +1,16 @@
+{
+  "id": "20260729125604-ops-73b041",
+  "created_at": "2026-07-29T12:56:04.534079+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_151347",
+    "title": "",
+    "created_at": 1784963639.7443213
+  },
+  "content": "MEMORY.md has a 2200 character capacity limit; current usage is 1963 characters. Failure reports are written to `~/.hermes/cron/output/memory-curator-YYYYMMDD.md`",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

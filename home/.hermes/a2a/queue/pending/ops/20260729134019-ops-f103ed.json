@@ -1,0 +1,16 @@
+{
+  "id": "20260729134019-ops-f103ed",
+  "created_at": "2026-07-29T13:40:19.570820+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxgvmgg09clru",
+    "title": "电脑卡顿优化分析",
+    "created_at": 1784808523.8581164
+  },
+  "content": "This user's always-on AI/development services (litellm, openhands, hermes-web-ui, letta, opencode serve) are major resource hogs, and the user prefers these services to be configured for automatic on/off/suspend when idle to reduce system lag.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

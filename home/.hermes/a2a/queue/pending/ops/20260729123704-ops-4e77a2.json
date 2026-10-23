@@ -1,0 +1,16 @@
+{
+  "id": "20260729123704-ops-4e77a2",
+  "created_at": "2026-07-29T12:37:04.949908+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms20ufxbk3f2gf",
+    "title": "LSPosed安装Brave Origin补丁",
+    "created_at": 1785083900.2221172
+  },
+  "content": "用户存在在LSPosed框架下为Brave浏览器安装Origin相关功能补丁的需求",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

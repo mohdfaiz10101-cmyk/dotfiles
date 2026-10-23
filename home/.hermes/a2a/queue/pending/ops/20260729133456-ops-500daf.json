@@ -1,0 +1,16 @@
+{
+  "id": "20260729133456-ops-500daf",
+  "created_at": "2026-07-29T13:34:56.085741+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxptuk7bkjku6",
+    "title": "",
+    "created_at": 1784823577.6061285
+  },
+  "content": "User requires Hermes output to be professional and concise, with clear separation of task process and final results, and no mixed display of code snippets, Chinese explanations, and file paths.",
+  "confidence": 0.99,
+  "status": "pending",
+  "review_note": ""
+}

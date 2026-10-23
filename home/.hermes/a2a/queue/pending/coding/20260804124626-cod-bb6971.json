@@ -1,0 +1,16 @@
+{
+  "id": "20260804124626-cod-bb6971",
+  "created_at": "2026-08-04T12:46:26.358979+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "89554eccdb26",
+    "title": "",
+    "created_at": 1785847287.8521342
+  },
+  "content": "用户有明确的本地电脑EasyTier部署需求，需依次完成EasyTier安装、网络配置、获取专属EasyTier地址三个核心步骤",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260729124305-skill-487220",
+  "created_at": "2026-07-29T12:43:05.834983+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "a2a",
+    "file": "/var/home/charlie/.hermes/skills/a2a/SKILL.md"
+  },
+  "content": "Skill `a2a` updated. The A2A skill was updated to integrate with Hermes's native Group Chat API, registering rooms and agents directly with the Hermes frontend (ports 8648/8787) for direct management while maintaining the existing distillation pipeline path at ~/.hermes/a2a/. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

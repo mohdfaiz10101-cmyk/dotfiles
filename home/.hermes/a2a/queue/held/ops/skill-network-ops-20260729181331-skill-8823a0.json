@@ -1,0 +1,15 @@
+{
+  "id": "20260729181331-skill-8823a0",
+  "created_at": "2026-07-29T18:13:31.544663+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file added an auto-generated Optimized Runtime Hints section that specifies standardized response rules for network connectivity anomaly troubleshooting, including requirements to output root cause first, provide corresponding diagnostic/fix commands, workarounds, persistence solutions and verification steps, along with relevant source and editing notes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

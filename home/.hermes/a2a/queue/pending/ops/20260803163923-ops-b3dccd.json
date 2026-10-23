@@ -1,0 +1,16 @@
+{
+  "id": "20260803163923-ops-b3dccd",
+  "created_at": "2026-08-03T16:39:23.337009+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4870cb291074",
+    "title": "",
+    "created_at": 1785774855.3156483
+  },
+  "content": "systemd coredump是Linux系统下常见的大体积可安全清理的临时文件，清理操作不会影响核心服务与AI运行",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

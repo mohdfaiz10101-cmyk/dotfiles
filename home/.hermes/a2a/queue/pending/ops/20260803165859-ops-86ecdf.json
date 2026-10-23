@@ -1,0 +1,16 @@
+{
+  "id": "20260803165859-ops-86ecdf",
+  "created_at": "2026-08-03T16:58:59.657488+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "0a6385f8d096",
+    "title": "",
+    "created_at": 1785776259.6388571
+  },
+  "content": "The 8648 port service is managed by an independent systemd unit named hermes-studio-8648.service that has no operational conflict with the 8787 port service.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

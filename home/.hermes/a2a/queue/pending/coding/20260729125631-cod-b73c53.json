@@ -1,0 +1,16 @@
+{
+  "id": "20260729125631-cod-b73c53",
+  "created_at": "2026-07-29T12:56:31.841450+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms00jf12eita8p",
+    "title": "",
+    "created_at": 1784962502.2823617
+  },
+  "content": "该场景的内存管理整合架构优先级为：先跑本地审计确认现有oomd、zram、cgroup配置状态，再为每个AI服务配置systemd cgroup内存硬上限，最后搭配zram+earlyoom/nohang做Swap压力缓冲，实现全局+服务级双层内存管控",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

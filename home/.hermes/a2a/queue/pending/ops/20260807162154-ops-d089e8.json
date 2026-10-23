@@ -1,0 +1,16 @@
+{
+  "id": "20260807162154-ops-d089e8",
+  "created_at": "2026-08-07T16:21:54.162208+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "58deb7191b0c",
+    "title": "",
+    "created_at": 1786119677.731031
+  },
+  "content": "In this user's operational environment, port 19976 is a critical dependency port for pdcn services, and its instability is a known common cause of pdcn access failures.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

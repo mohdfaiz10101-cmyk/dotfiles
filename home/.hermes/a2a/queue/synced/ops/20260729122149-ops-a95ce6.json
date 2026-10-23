@@ -1,0 +1,17 @@
+{
+  "id": "20260729122149-ops-a95ce6",
+  "created_at": "2026-07-29T12:21:49.552416+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2778bc598ef6",
+    "title": "我的手机ntfy订阅全部说是正在连接 连不上",
+    "created_at": 1785295983.8238814
+  },
+  "content": "当移动端ntfy订阅出现连接中/无法连接的问题时，优先排查移动设备到ntfy服务端的端到端网络可达性，而非先排查服务端本身——服务端本地访问正常不代表跨设备链路可用",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.657689+00:00"
+}

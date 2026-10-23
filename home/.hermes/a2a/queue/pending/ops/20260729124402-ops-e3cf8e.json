@@ -1,0 +1,16 @@
+{
+  "id": "20260729124402-ops-e3cf8e",
+  "created_at": "2026-07-29T12:44:02.636419+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms11axk1ecsi6b",
+    "title": "",
+    "created_at": 1785024209.7907703
+  },
+  "content": "A common domain pitfall for private LAN service communication is that host-based and network-level firewall rules often block traffic to non-default high ports by default, which is a frequent root cause of task execution failures for services running on ports like 19910.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729143554-ops-194ede",
+  "created_at": "2026-07-29T14:35:54.372900+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrthov5kxd37j0",
+    "title": "",
+    "created_at": 1784567992.086705
+  },
+  "content": "Hermes run records are subject to removal via manual deletion or automated expiration cleanup, which can trigger 'unknown run' errors for subsequent lookups of those run IDs.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729122116-ops-cb2528",
+  "created_at": "2026-07-29T12:21:16.937530+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5oyhuoybdoss",
+    "title": "六个记忆统一",
+    "created_at": 1785305878.5993717
+  },
+  "content": "A durable domain pitfall for DuckDNS-hosted self-hosted services is external inaccessibility caused by unforwarded ports on the local router, residential ISP port blocking, or failed dynamic IP synchronization for the DuckDNS domain.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

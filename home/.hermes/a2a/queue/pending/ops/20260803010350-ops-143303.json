@@ -1,0 +1,16 @@
+{
+  "id": "20260803010350-ops-143303",
+  "created_at": "2026-08-03T01:03:50.569988+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2fe9e6754ba7",
+    "title": "",
+    "created_at": 1785718783.319194
+  },
+  "content": "When adjusting frps (FRP server) configuration to release occupied ports, prefer `systemctl reload frps` over a full service restart to prevent disruption to all active FRP tunnels (including tunnels like the 19976 instance).",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

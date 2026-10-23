@@ -1,0 +1,16 @@
+{
+  "id": "20260729131942-ops-7bf4a6",
+  "created_at": "2026-07-29T13:19:42.928103+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_230943",
+    "title": "",
+    "created_at": 1784905795.982354
+  },
+  "content": "MEMORY.md uses a file-based lock at `/var/home/charlie/.hermes/memories/MEMORY.md.lock` to prevent concurrent writes; when present, the memory-curator skill skips all recall and writing operations entirely.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

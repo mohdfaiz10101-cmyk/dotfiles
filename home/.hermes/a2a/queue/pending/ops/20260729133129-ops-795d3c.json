@@ -1,0 +1,16 @@
+{
+  "id": "20260729133129-ops-795d3c",
+  "created_at": "2026-07-29T13:31:29.381412+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260724_121611_835387",
+    "title": "",
+    "created_at": 1784866573.3204248
+  },
+  "content": "The frpc systemd service (frpc.service) is configured to load its configuration from the user-specific path ~/.config/frpc/frpc.toml, not the default system-wide path /etc/frp/frps-custom.toml.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

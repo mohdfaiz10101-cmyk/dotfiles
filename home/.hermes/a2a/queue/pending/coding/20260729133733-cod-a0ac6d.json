@@ -1,0 +1,16 @@
+{
+  "id": "20260729133733-cod-a0ac6d",
+  "created_at": "2026-07-29T13:37:33.633677+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_220357_7d04c8",
+    "title": "",
+    "created_at": 1784815437.3802
+  },
+  "content": "经检索确认，“链动小铺货源筛选浏览器插件”暂无公开可核实的GitHub开源仓库，该插件多出现在文章/分发页提及，未明确开源。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

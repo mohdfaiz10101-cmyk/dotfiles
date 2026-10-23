@@ -1,0 +1,16 @@
+{
+  "id": "20260729122851-ops-b05aba",
+  "created_at": "2026-07-29T12:28:51.212081+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4d6inggtvlcv",
+    "title": "",
+    "created_at": 1785225663.5995002
+  },
+  "content": "A standard reusable workflow for Waybar configuration simplification is to first audit custom animated visual effect modules (like breathing/glowing indicators), as these are commonly added for aesthetic purposes with no functional utility and are a frequent source of config bloat.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

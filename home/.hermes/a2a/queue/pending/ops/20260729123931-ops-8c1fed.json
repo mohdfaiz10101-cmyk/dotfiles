@@ -1,0 +1,16 @@
+{
+  "id": "20260729123931-ops-8c1fed",
+  "created_at": "2026-07-29T12:39:31.562954+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_152357_00e8cf",
+    "title": "Mihomo proxy blocking Hermes access",
+    "created_at": 1785050637.0809593
+  },
+  "content": "The user's self-hosted service at charlie1990.duckdns.org:8648 has a recurring mobile access blockage issue with Mihomo proxy as a common root cause; the standard first-line troubleshooting workflow for this service's access problems is to sequentially check local service running status, mobile network connectivity, and the pre-defined Mihomo proxy runbook.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

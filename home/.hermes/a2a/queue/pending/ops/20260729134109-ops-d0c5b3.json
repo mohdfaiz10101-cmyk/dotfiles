@@ -1,0 +1,16 @@
+{
+  "id": "20260729134109-ops-d0c5b3",
+  "created_at": "2026-07-29T13:41:09.983322+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxcyomhx26943",
+    "title": "查找wsscrcpy地址",
+    "created_at": 1784801926.92829
+  },
+  "content": "用户曾尝试访问的wsscrcpy Web服务地址为http://100.120.189.27:8000，当前该地址无法正常打开",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

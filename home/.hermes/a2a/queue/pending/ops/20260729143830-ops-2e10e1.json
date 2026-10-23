@@ -1,0 +1,16 @@
+{
+  "id": "20260729143830-ops-2e10e1",
+  "created_at": "2026-07-29T14:38:30.688444+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtfxoyg3pvqt8",
+    "title": "Hermes配置是否最佳实践",
+    "created_at": 1784565058.0947137
+  },
+  "content": "The referenced Hermes instance is a self-hosted deployment hosted at private IP 192.168.123.71 on port 8648, with its management console accessible via the /hermes/session/ path, a common default setup for self-hosted Hermes real-time messaging platforms.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

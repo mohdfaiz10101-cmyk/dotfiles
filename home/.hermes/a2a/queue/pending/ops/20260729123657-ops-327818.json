@@ -1,0 +1,16 @@
+{
+  "id": "20260729123657-ops-327818",
+  "created_at": "2026-07-29T12:36:57.422384+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms20ysj8n3yl58",
+    "title": "",
+    "created_at": 1785084071.298629
+  },
+  "content": "When a user issues the instruction '只回复 OK' (Chinese for 'only reply OK'), the only valid output is the exact string 'OK' with no additional content, formatting, or supplementary information.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

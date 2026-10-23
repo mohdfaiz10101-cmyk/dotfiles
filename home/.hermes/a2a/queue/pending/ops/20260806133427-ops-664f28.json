@@ -1,0 +1,16 @@
+{
+  "id": "20260806133427-ops-664f28",
+  "created_at": "2026-08-06T13:34:27.465796+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260806_011620_579104",
+    "title": "会话管理与知识沉淀",
+    "created_at": 1786023079.1175098
+  },
+  "content": "UI层需遵守「不修改Hermes WebUI bundle」的约束，根据页面类型选择实现方式：若为Hermes原生WebUI则优先通过Hub API或独立面板暴露入口，若为自有页面则直接新增按钮调用Hermes的session/cron接口；统一入口建议采用主按钮弹出两个选项的形式，分别触发两条独立工作流",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

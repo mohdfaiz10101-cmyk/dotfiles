@@ -1,0 +1,16 @@
+{
+  "id": "20260729122747-ops-f91831",
+  "created_at": "2026-07-29T12:27:47.919946+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4ex0v8n9x6w4",
+    "title": "",
+    "created_at": 1785228471.9832053
+  },
+  "content": "DuckDNS dynamic DNS domains require a correctly configured local update client (with a valid DuckDNS update token) to regularly sync the host's current public IP to DuckDNS's authoritative DNS servers; failure to complete this sync will result in outdated DNS records and resolution failures for the associated duckdns.org domain.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

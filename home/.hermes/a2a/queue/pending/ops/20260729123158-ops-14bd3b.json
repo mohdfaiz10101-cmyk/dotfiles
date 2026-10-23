@@ -1,0 +1,16 @@
+{
+  "id": "20260729123158-ops-14bd3b",
+  "created_at": "2026-07-29T12:31:58.465148+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3o9y1g5jf9en",
+    "title": "19910端口打不开原因排查",
+    "created_at": 1785183790.4905274
+  },
+  "content": "When troubleshooting port 19910 access failures, prioritize verifying the running status of the local NetBird service first, rather than immediately checking network or firewall configurations, as NetBird service crashes are a common trigger for this port's unavailability.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260730090000-skill-996fbc",
+  "created_at": "2026-07-30T09:00:00.525459+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "default-model-step-router",
+    "file": "/var/home/charlie/.hermes/skills/default-model-step-router/SKILL.md"
+  },
+  "content": "Skill `default-model-step-router` updated. 新增default-model-step-router技能，用于统一锁定Hermes CLI、Web UI、Studio的默认模型为step-router-v1，配套提供快速锁定、验证、定时自检自愈机制，不替代Hermes原生配置，同时关联了对应服务的端口记忆。 Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

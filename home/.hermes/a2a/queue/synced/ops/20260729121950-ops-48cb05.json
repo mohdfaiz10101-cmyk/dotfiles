@@ -1,0 +1,17 @@
+{
+  "id": "20260729121950-ops-48cb05",
+  "created_at": "2026-07-29T12:19:50.007208+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms605e05h1jp2p",
+    "title": "",
+    "created_at": 1785324564.0339756
+  },
+  "content": "All concrete Hermes A2A multi-agent system implementations must include 7 mandatory core components to be complete and runnable: room-to-skill mapping, Letta + Hermes profile agent allocation per room, distillation pipeline (session_search → extract → pending queue → approved → agent memory), approval workflow, skill-to-agent sync, master orchestrator agent, and cron automation, with explicit file paths, data models, and runnable scripts provided for each.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.655750+00:00"
+}

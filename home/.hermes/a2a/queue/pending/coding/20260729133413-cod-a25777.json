@@ -1,0 +1,16 @@
+{
+  "id": "20260729133413-cod-a25777",
+  "created_at": "2026-07-29T13:34:13.785789+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryd6toug6gq1h",
+    "title": "继续检查迁移配置",
+    "created_at": 1784864074.4413028
+  },
+  "content": "StepFun Step Plan服务的官方可用主模型列表固定为 step-3.7-flash、step-3.5-flash-2603、step-3.5-flash、step-router-v1，所有相关请求需统一走接口 https://api.stepfun.com/step_plan/v1",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

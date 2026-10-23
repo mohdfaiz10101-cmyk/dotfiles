@@ -1,0 +1,16 @@
+{
+  "id": "20260807062057-ops-80d74a",
+  "created_at": "2026-08-07T06:20:57.430181+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "337ed2aa4f9d",
+    "title": "我手机访问 19976做任务怎么需要那么多流量消耗 他很多文件不是在电脑本地跑的多吗 手机访问不是接收文字信息only？",
+    "created_at": 1786083365.9671066
+  },
+  "content": "19976端口的Hermes WebUI服务手机端访问时会传输前端入口脚本等非文本大对象，并非仅接收文本信息，是流量消耗偏高的核心诱因之一",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

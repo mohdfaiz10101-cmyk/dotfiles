@@ -1,0 +1,16 @@
+{
+  "id": "20260729124502-ops-0226c7",
+  "created_at": "2026-07-29T12:45:02.536137+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_064800_d3879b",
+    "title": "",
+    "created_at": 1785019722.0548189
+  },
+  "content": "User has a durable, actionable requirement to establish a scheduled periodic disk cleanup workflow, to replace manual ad-hoc disk cleanup as the standard operational practice.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

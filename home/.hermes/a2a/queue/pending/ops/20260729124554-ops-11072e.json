@@ -1,0 +1,16 @@
+{
+  "id": "20260729124554-ops-11072e",
+  "created_at": "2026-07-29T12:45:54.755968+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_014639",
+    "title": "",
+    "created_at": 1785001611.0801837
+  },
+  "content": "The memory-curator skill implements a cron-driven pipeline with five stages: 采集 (multi-source recall), 炼化 (LLM grading/compression/deduplication), 写入 (MEMORY.md updates with character limits), 同步 (optional letta memory block sync), and 报告 (curation reports).",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

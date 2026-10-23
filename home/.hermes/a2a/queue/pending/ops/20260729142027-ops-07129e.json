@@ -1,0 +1,16 @@
+{
+  "id": "20260729142027-ops-07129e",
+  "created_at": "2026-07-29T14:20:27.297916+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193310_a14c56",
+    "title": "",
+    "created_at": 1784719992.2312124
+  },
+  "content": "The user's work environment uses a kanban task tracking system where individual work tasks are assigned unique identifiers prefixed with 't_' followed by alphanumeric characters, as demonstrated by the referenced task ID t_0120d003.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

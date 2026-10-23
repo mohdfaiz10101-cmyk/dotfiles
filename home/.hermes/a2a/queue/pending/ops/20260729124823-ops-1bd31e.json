@@ -1,0 +1,16 @@
+{
+  "id": "20260729124823-ops-1bd31e",
+  "created_at": "2026-07-29T12:48:23.240771+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_234856_40c035",
+    "title": "问候与需求询问",
+    "created_at": 1784994624.673111
+  },
+  "content": "For interactions with this user, default to responding in Chinese unless the user explicitly switches to another language, as the session opens with a Chinese greeting",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

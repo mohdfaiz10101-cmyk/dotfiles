@@ -1,0 +1,16 @@
+{
+  "id": "20260729132346-ops-05c22e",
+  "created_at": "2026-07-29T13:23:46.323227+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_205358",
+    "title": "",
+    "created_at": 1784897649.2516894
+  },
+  "content": "Memory curation uses a lock file mechanism (MEMORY.md.lock) to prevent concurrent write conflicts; agents must check for this lock before attempting to modify MEMORY.md and should wait for it to disappear rather than forcing writes.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260730111506-skill-f90dba",
+  "created_at": "2026-07-30T11:15:06.765322+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file added an auto-generated Optimized Runtime Hints section (sourced from the 2026-07-29 reference, marked as not for manual editing and to be refreshed by re-running evolution) that defines a standardized response workflow for network connectivity anomalies, requiring agents to first output a root cause conclusion aligned with the skill's documented troubleshooting paths before providing diagnostic/fix commands, workarounds, persistence solutions and verification steps. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

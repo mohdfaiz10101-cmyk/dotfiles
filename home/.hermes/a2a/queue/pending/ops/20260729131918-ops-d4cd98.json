@@ -1,0 +1,16 @@
+{
+  "id": "20260729131918-ops-d4cd98",
+  "created_at": "2026-07-29T13:19:18.506584+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_234306",
+    "title": "",
+    "created_at": 1784907797.2613072
+  },
+  "content": "Operational state is tracked via a watchdog JSON file at /var/home/charlie/.hermes/state/memory-curator-watchdog.json, monitoring consecutive_failure, last_status, and silent_mode flags for health checking and alerting.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,107 @@
+/var/home/charlie/.config/systemd/user/opencode-4096-proxy-watchdog.timer:2:Description=Watchdog timer for opencode-4096-proxy
+/var/home/charlie/.config/systemd/user/opencode-4096-proxy-watchdog.timer:7:Unit=opencode-4096-proxy-watchdog.service
+/var/home/charlie/.config/systemd/user/opencode-4096-proxy.service:14:ExecStart=/var/home/charlie/.local/bin/opencode-4096-proxy
+/var/home/charlie/.config/systemd/user/opencode-18910-local.service:3:After=opencode-4096-proxy.service
+/var/home/charlie/.config/systemd/user/opencode-18910-local.service:4:Requires=opencode-4096-proxy.service
+/var/home/charlie/.config/systemd/user/haven-codex4.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex4-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex4-backend.service:2:Description=Codex 4 TTY backend (haven-codex4, :19884)
+/var/home/charlie/.config/systemd/user/ttyd-codex3-backend.service:2:Description=Codex 3 TTY backend (haven-codex3, :19883)
+/var/home/charlie/.config/systemd/user/haven-codex3.timer:8:Unit=haven-codex3.service
+/var/home/charlie/.config/systemd/user/haven-codex3.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex3-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex7-backend.service:2:Description=Codex 7 TTY backend (haven-codex7, :20021)
+/var/home/charlie/.config/systemd/user/haven-codex8.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex8-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex8-backend.service:2:Description=Codex 8 TTY backend (haven-codex8, :20022)
+/var/home/charlie/.config/systemd/user/ttyd-codex6-backend.service:2:Description=Codex 6 TTY backend (haven-codex6, :20020)
+/var/home/charlie/.config/systemd/user/haven-codex6.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex6-ensure
+/var/home/charlie/.config/systemd/user/haven-codex7.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex7-ensure
+/var/home/charlie/.config/systemd/user/haven-codex5.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex5-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex5-backend.service:2:Description=Codex 5 TTY backend (haven-codex5, :19889)
+/var/home/charlie/.config/systemd/user/opencode-18910-local.service.d/10-proxy.conf:4:ExecStart=/var/home/charlie/.local/bin/opencode-18910-proxy
+/var/home/charlie/.local/bin/opencode-19890-proxy.py:119:    print(f"[opencode-19890-proxy] listening on {LISTEN_HOST}:{LISTEN_PORT}", flush=True)
+/var/home/charlie/.local/bin/open-unified-agents-workspace.sh:8:  systemctl --user start openagents-network.service >/dev/null 2>&1 || true
+/var/home/charlie/.local/bin/opencode-safe-proxy-repair:16:systemctl --user restart opencode-4096-proxy.service
+/var/home/charlie/.local/bin/opencode-safe-proxy-repair:18:systemctl --user restart opencode-18910-local.service
+/var/home/charlie/.local/bin/opencode-restart.sh:42:        systemctl --user start opencode-4096-proxy.service
+/var/home/charlie/.local/bin/opencode-health-watchdog.sh:226:  systemctl --user restart opencode-4096-proxy || true
+/var/home/charlie/.local/bin/opencode-health-watchdog.sh:228:  systemctl --user restart opencode-18910-local || true
+/var/home/charlie/.local/bin/opencode-4096-proxy:1834:    const script = "sleep 1; systemctl --user restart opencode.service; sleep 2; systemctl --user restart opencode-4096-proxy.service opencode-18910-local.service"
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:57:    return { sock: "/run/user/1000/tmux/codex8.sock", session: "haven-codex8" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:60:    return { sock: "/run/user/1000/tmux/codex7.sock", session: "haven-codex7" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:63:    return { sock: "/run/user/1000/tmux/codex6.sock", session: "haven-codex6" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:66:    return { sock: "/run/user/1000/tmux/codex5.sock", session: "haven-codex5" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:69:    return { sock: "/run/user/1000/tmux/codex4.sock", session: "haven-codex4" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:72:    return { sock: "/run/user/1000/tmux/codex3.sock", session: "haven-codex3" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:189:  if (id === "8") return { sock: "/run/user/1000/tmux/codex8.sock", session: "haven-codex8" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:190:  if (id === "7") return { sock: "/run/user/1000/tmux/codex7.sock", session: "haven-codex7" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:191:  if (id === "6") return { sock: "/run/user/1000/tmux/codex6.sock", session: "haven-codex6" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:192:  if (id === "5") return { sock: "/run/user/1000/tmux/codex5.sock", session: "haven-codex5" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:193:  if (id === "4") return { sock: "/run/user/1000/tmux/codex4.sock", session: "haven-codex4" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:194:  if (id === "3") return { sock: "/run/user/1000/tmux/codex3.sock", session: "haven-codex3" }
+/var/home/charlie/.local/bin/opencode-db-cleanup:47:systemctl --user stop opencode opencode-4096-proxy opencode-18910-local.service || true
+/var/home/charlie/.local/bin/opencode-db-cleanup:53:  systemctl --user start opencode-4096-proxy opencode-18910-local.service || true
+/var/home/charlie/.local/bin/opencode-db-cleanup:202:systemctl --user start opencode-4096-proxy opencode-18910-local.service
+/var/home/charlie/.local/bin/smart-memory-mode:7:  opencode-18910-local.service
+/var/home/charlie/.local/bin/smart-memory-mode:25:  openagents-network.service
+/var/home/charlie/.local/bin/opencode-entry-maintain:218:        ensure_service("opencode-4096-proxy.service", "http://127.0.0.1:4096/")
+/var/home/charlie/.local/bin/control-plane-supervisor:39:    "opencode-4096-proxy.service",
+/var/home/charlie/.local/bin/control-plane-supervisor:40:    "opencode-18910-local.service",
+/var/home/charlie/.local/bin/opencode-sisyphus-guard:140:    CONTINUE_PROMPT="[记忆注入] $(echo "$MEMORY_CTX" | head -3 | paste -sd ' ' -) 用户任务：继续执行系统运维任务，检查服务状态并修复异常。注意：禁止重启 opencode.service / opencode-4096-proxy.service / opencode-sisyphus-guard.timer，禁止 kill 自身进程"
+/var/home/charlie/.local/bin/opencode-sisyphus-guard:142:    CONTINUE_PROMPT="继续执行系统运维任务，检查服务状态并修复异常。注意：禁止重启 opencode.service / opencode-4096-proxy.service / opencode-sisyphus-guard.timer，禁止 kill 自身进程"
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:40:        "session": "haven-codex3",
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:46:        "session": "haven-codex4",
+/var/home/charlie/.local/bin/haven-codex4-ensure:40:SESSION="haven-codex4"
+/var/home/charlie/.local/bin/haven-codex4-ensure:43:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex4-ensure.log"
+/var/home/charlie/.local/bin/haven-codex3-ensure:28:SESSION="haven-codex3"
+/var/home/charlie/.local/bin/haven-codex3-ensure:31:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex3-ensure.log"
+/var/home/charlie/.local/bin/ttyd-codex3-entry:37:SESSION="haven-codex3"
+/var/home/charlie/.local/bin/ttyd-codex4-entry:49:SESSION="haven-codex4"
+/var/home/charlie/.local/bin/haven-entry-codex4:48:systemctl --user start haven-codex4.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex4:52:SESSION="haven-codex4"
+/var/home/charlie/.local/bin/codex-timeline-snapshot:56:capture_account 3 /run/user/1000/tmux/codex3.sock haven-codex3 /var/home/charlie/.codex-3
+/var/home/charlie/.local/bin/codex-timeline-snapshot:57:capture_account 4 /run/user/1000/tmux/codex4.sock haven-codex4 /var/home/charlie/.codex-4
+/var/home/charlie/.local/bin/codex-timeline-snapshot:58:capture_account 5 /run/user/1000/tmux/codex5.sock haven-codex5 /var/home/charlie/.codex-5
+/var/home/charlie/.local/bin/codex-timeline-snapshot:59:capture_account 6 /run/user/1000/tmux/codex6.sock haven-codex6 /var/home/charlie/.codex-6
+/var/home/charlie/.local/bin/codex-timeline-snapshot:60:capture_account 7 /run/user/1000/tmux/codex7.sock haven-codex7 /var/home/charlie/.codex-7
+/var/home/charlie/.local/bin/haven-entry-codex3:36:systemctl --user start haven-codex3.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex3:40:SESSION="haven-codex3"
+/var/home/charlie/.local/bin/codex-router:44:    "3": {"sock": "/run/user/1000/tmux/codex3.sock", "session": "haven-codex3", "pane": "haven-codex3:0.0"},
+/var/home/charlie/.local/bin/codex-router:45:    "4": {"sock": "/run/user/1000/tmux/codex4.sock", "session": "haven-codex4", "pane": "haven-codex4:0.0"},
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:34:    service_name="haven-codex3.service"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:35:    ensure_script="/var/home/charlie/.local/bin/haven-codex3-ensure"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:37:    tmux_session="haven-codex3"
+/var/home/charlie/.local/bin/haven-codex5-ensure:40:SESSION="haven-codex5"
+/var/home/charlie/.local/bin/haven-codex5-ensure:43:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex5-ensure.log"
+/var/home/charlie/.local/bin/haven-entry-codex5:48:systemctl --user start haven-codex5.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex5:52:SESSION="haven-codex5"
+/var/home/charlie/.local/bin/ttyd-codex8-entry:50:SESSION="haven-codex8"
+/var/home/charlie/.local/bin/ttyd-codex5-entry:50:SESSION="haven-codex5"
+/var/home/charlie/.local/bin/haven-codex10-ensure:5:exec bash <(sed -e 's/codex-5/codex-10/g' -e 's/codex5/codex10/g' -e 's/ACCOUNT_5/ACCOUNT_10/g' -e 's/7896/7897/g' /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/haven-codex9-ensure:5:exec bash <(sed -e 's/codex-5/codex-9/g' -e 's/codex5/codex9/g' -e 's/ACCOUNT_5/ACCOUNT_9/g' -e 's/7896/7897/g' /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/codex-webtty-guard:157:  records+=("$(check_one 3 19002 19883 19902 ttyd-codex3.service ttyd-codex3-backend.service haven-codex3.service /run/user/1000/tmux/codex3.sock haven-codex3)")
+/var/home/charlie/.local/bin/codex-webtty-guard:158:  records+=("$(check_one 4 19003 19884 19903 ttyd-codex4.service ttyd-codex4-backend.service haven-codex4.service /run/user/1000/tmux/codex4.sock haven-codex4)")
+/var/home/charlie/.local/bin/codex-webtty-guard:159:  records+=("$(check_one 5 19004 19889 19904 ttyd-codex5.service ttyd-codex5-backend.service haven-codex5.service /run/user/1000/tmux/codex5.sock haven-codex5)")
+/var/home/charlie/.local/bin/codex-webtty-guard:160:  records+=("$(check_one 6 19005 20020 19905 ttyd-codex6.service ttyd-codex6-backend.service haven-codex6.service /run/user/1000/tmux/codex6.sock haven-codex6)")
+/var/home/charlie/.local/bin/codex-webtty-guard:161:  records+=("$(check_one 7 19006 20021 19906 ttyd-codex7.service ttyd-codex7-backend.service haven-codex7.service /run/user/1000/tmux/codex7.sock haven-codex7)")
+/var/home/charlie/.local/bin/codex-webtty-guard:162:  records+=("$(check_one 8 19007 20022 19907 ttyd-codex8.service ttyd-codex8-backend.service haven-codex8.service /run/user/1000/tmux/codex8.sock haven-codex8)")
+/var/home/charlie/.local/bin/opencode-18910-proxy:4:// opencode-18910-proxy — device-aware proxy (:18910 → :4096)
+/var/home/charlie/.local/bin/opencode-18910-proxy:172:    console.error("opencode-18910-proxy (socket-activation) → 127.0.0.1:4096  device=" + (DEVICE_MATCH_CODE ? "yes" : "no"))
+/var/home/charlie/.local/bin/opencode-18910-proxy:200:  console.error(`opencode-18910-proxy → ${TARGET_HOST}:${TARGET_PORT}  device=${DEVICE_MATCH_CODE ? "yes" : "no"}`)
+/var/home/charlie/.local/bin/haven-entry-codex8:48:systemctl --user start haven-codex8.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex8:52:SESSION="haven-codex8"
+/var/home/charlie/.local/bin/haven-entry-codex7:48:systemctl --user start haven-codex7.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex7:52:SESSION="haven-codex7"
+/var/home/charlie/.local/bin/haven-entry-codex6:48:systemctl --user start haven-codex6.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex6:52:SESSION="haven-codex6"
+/var/home/charlie/.local/bin/haven-codex6-ensure:6:  /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/smart-service-manager.py:67:        "opencode-4096-proxy.service",
+/var/home/charlie/.local/bin/smart-service-manager.py:68:        "opencode-18910-local.service",
+/var/home/charlie/.local/bin/haven-codex7-ensure:6:  /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/codex-exec-memory:21:    "3": (HOME / ".codex-3", "/run/user/1000/tmux/codex3.sock", "haven-codex3"),
+/var/home/charlie/.local/bin/codex-exec-memory:22:    "4": (HOME / ".codex-4", "/run/user/1000/tmux/codex4.sock", "haven-codex4"),
+/var/home/charlie/.local/bin/codex-exec-memory:23:    "5": (HOME / ".codex-5", "/run/user/1000/tmux/codex5.sock", "haven-codex5"),
+/var/home/charlie/.local/bin/codex-exec-memory:24:    "6": (HOME / ".codex-6", "/run/user/1000/tmux/codex6.sock", "haven-codex6"),
+/var/home/charlie/.local/bin/codex-exec-memory:25:    "7": (HOME / ".codex-7", "/run/user/1000/tmux/codex7.sock", "haven-codex7"),
+/var/home/charlie/.local/bin/haven-codex8-ensure:40:SESSION="haven-codex8"
+/var/home/charlie/.local/bin/haven-codex8-ensure:60:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex8-ensure.log"
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

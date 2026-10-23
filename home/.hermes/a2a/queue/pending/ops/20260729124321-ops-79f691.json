@@ -1,0 +1,16 @@
+{
+  "id": "20260729124321-ops-79f691",
+  "created_at": "2026-07-29T12:43:21.510310+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1amdd0amn8ri",
+    "title": "电脑定期清理",
+    "created_at": 1785039884.2134786
+  },
+  "content": "Podman容器环境的定期清理可复用命令集：零风险操作包括`podman container prune -f`清理 exited/created 状态容器、`podman image prune -f`清理 dangling 镜像，仅释放容器存储层空间不删除volume数据，常规场景可回收20G+存储空间。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

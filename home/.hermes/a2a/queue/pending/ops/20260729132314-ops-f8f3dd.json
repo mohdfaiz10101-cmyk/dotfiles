@@ -1,0 +1,16 @@
+{
+  "id": "20260729132314-ops-f8f3dd",
+  "created_at": "2026-07-29T13:23:14.048139+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms6416c7jh5gb3",
+    "title": "",
+    "created_at": 1785331156.2327383
+  },
+  "content": "需明确 Hermes Studio 核心组件定位避免踩坑：Profile 是智能体的人格/独立运行时/工作区，含独立的 skills、记忆、插件、定时任务、状态库；Room 是多智能体协作场景，内部 Agent 均为绑定已有 Profile 的成员；Session 是单聊/历史会话，Journey 是只读学习图，二者均非智能体定义/培养入口。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

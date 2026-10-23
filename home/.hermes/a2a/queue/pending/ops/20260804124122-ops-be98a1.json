@@ -1,0 +1,16 @@
+{
+  "id": "20260804124122-ops-be98a1",
+  "created_at": "2026-08-04T12:41:22.655778+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a4a343c443a0",
+    "title": "[已压缩 20260804T203932] e3a1088b9235",
+    "created_at": 1785847172.399856
+  },
+  "content": "Hermes会话交接的标准工作流为：新会话直接粘贴SEED文件内容，验证关键上下文足够后继续任务，旧会话按需归档或删除",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

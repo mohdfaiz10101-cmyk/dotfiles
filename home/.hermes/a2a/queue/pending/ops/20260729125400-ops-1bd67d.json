@@ -1,0 +1,16 @@
+{
+  "id": "20260729125400-ops-1bd67d",
+  "created_at": "2026-07-29T12:54:00.185421+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_163259",
+    "title": "",
+    "created_at": 1784968390.547831
+  },
+  "content": "The `phone-sync-failure` is a confirmed chronic fault with 74 consecutive recorded occurrences, exceeding the 20-occurrence chronic fault threshold that triggers forced minimal escalation instead of full report generation.",
+  "confidence": 0.99,
+  "status": "pending",
+  "review_note": ""
+}

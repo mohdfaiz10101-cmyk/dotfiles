@@ -1,0 +1,10 @@
+{
+  "slug": "network-maintenance",
+  "name": "网络维护",
+  "description": "网络检测与修复工作流",
+  "icon": "",
+  "color": "",
+  "default_workdir": null,
+  "created_at": 1784865682,
+  "archived": false
+}

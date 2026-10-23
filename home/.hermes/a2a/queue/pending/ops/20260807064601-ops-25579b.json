@@ -1,0 +1,16 @@
+{
+  "id": "20260807064601-ops-25579b",
+  "created_at": "2026-08-07T06:46:01.632671+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a50bb8fac1da",
+    "title": "",
+    "created_at": 1786084963.5875275
+  },
+  "content": "The user operates a self-hosted web service exposed publicly via the DuckDNS domain `charlie1990.duckdns.org` on port 19976, with a Caddy/FRP reverse proxy layer handling public traffic routing to the local service.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

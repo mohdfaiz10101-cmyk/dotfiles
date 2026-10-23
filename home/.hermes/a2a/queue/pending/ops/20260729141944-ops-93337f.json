@@ -1,0 +1,16 @@
+{
+  "id": "20260729141944-ops-93337f",
+  "created_at": "2026-07-29T14:19:44.418623+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193310_5b5fe4",
+    "title": "",
+    "created_at": 1784719992.2984295
+  },
+  "content": "The user's work kanban task IDs follow a consistent t_[alphanumeric] naming convention, enabling reliable cross-session task lookup and reference.",
+  "confidence": 0.94,
+  "status": "pending",
+  "review_note": ""
+}

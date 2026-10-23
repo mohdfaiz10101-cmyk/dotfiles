@@ -1,0 +1,16 @@
+{
+  "id": "20260729134052-ops-2070cb",
+  "created_at": "2026-07-29T13:40:52.570247+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxdg9nk2nmh51",
+    "title": "",
+    "created_at": 1784802755.7421079
+  },
+  "content": "When handling Flexime input method related tasks for this user, the preference is to reuse the user's previously completed local development work instead of building features from scratch where applicable.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

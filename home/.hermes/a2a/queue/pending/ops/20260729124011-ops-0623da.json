@@ -1,0 +1,16 @@
+{
+  "id": "20260729124011-ops-0623da",
+  "created_at": "2026-07-29T12:40:11.910168+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_135748_eb6517",
+    "title": "",
+    "created_at": 1785045591.243441
+  },
+  "content": "The user has a self-hosted service hosted on their local network gateway (192.168.123.1) at port 8648, which is publicly exposed via the DuckDNS dynamic DNS domain charlie1990.duckdns.org.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

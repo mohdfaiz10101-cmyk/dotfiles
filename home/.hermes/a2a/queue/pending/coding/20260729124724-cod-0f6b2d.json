@@ -1,0 +1,16 @@
+{
+  "id": "20260729124724-cod-0f6b2d",
+  "created_at": "2026-07-29T12:47:24.617849+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0mn1hisp7za4",
+    "title": "Hermes接入扣费问题",
+    "created_at": 1784999563.2093208
+  },
+  "content": "When handling Hermes接入 related扣费 queries, user questions often have ambiguity between two distinct scenarios: 1) why automatic deduction or mandatory payment occurs after接入 Hermes, 2) why a specific channel displays a 'self-funded接入' (自费接入) status. Agents should first clarify this ambiguity before proceeding with targeted troubleshooting to avoid misaligned responses.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

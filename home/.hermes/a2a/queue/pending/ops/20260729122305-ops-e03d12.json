@@ -1,0 +1,16 @@
+{
+  "id": "20260729122305-ops-e03d12",
+  "created_at": "2026-07-29T12:23:05.493656+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d2d1b057ec24",
+    "title": "",
+    "created_at": 1785265172.637849
+  },
+  "content": "This user's default preferred interaction language for sessions is Chinese, as the assistant responded in Chinese immediately to the user's simple English 'hi' greeting without requesting language clarification.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

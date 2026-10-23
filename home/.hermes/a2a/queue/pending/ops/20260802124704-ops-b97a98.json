@@ -1,0 +1,16 @@
+{
+  "id": "20260802124704-ops-b97a98",
+  "created_at": "2026-08-02T12:47:04.018354+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbshuobbcn1gh",
+    "title": "",
+    "created_at": 1785674589.2812243
+  },
+  "content": "User is seeking existing public APIs or integration interfaces provided by Hermes Studio to enable this live preview functionality, preferring to leverage existing platform capabilities rather than building the underlying screen streaming and real-time operation display feature from scratch.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

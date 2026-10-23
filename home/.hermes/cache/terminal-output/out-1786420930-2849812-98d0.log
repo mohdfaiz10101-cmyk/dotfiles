@@ -1,0 +1,177 @@
+  UNIT                                            LOAD   ACTIVE SUB     DESCRIPTION
+  a2a-bridge.service                              loaded active running A2A Bridge for Hermes 8787
+  ai-a2a.service                                  loaded active running Local AI A2A artifact bus API
+  aider-ttyd.service                              loaded active running Aider independent WebTTY (:7693)
+  at-spi-dbus-bus.service                         loaded active running Accessibility services bus
+  auth-proxy.service                              loaded active running Auth proxy for Hermes Web UI
+  codex-hermes-bridge.service                     loaded active running Bridge explicit Codex Hermes delegation messages into Hermes queue
+  codex-ntfy-result-watcher.service               loaded active running Push Codex task completion summaries to ntfy
+  codex-provider-bridge.service                   loaded active running Codex Provider Bridge (Local Bridge)
+  codex-public-19899-proxy.service                loaded active running Codex 1 public WebTTY direct proxy (:19899 -> :19000)
+  codex-router.service                            loaded active running Codex smart account/model/executor router
+  codex3-openai-oauth-proxy.service               loaded active running Codex 3 OpenAI OAuth local proxy
+  codex4-openai-oauth-proxy.service               loaded active running Codex 4 OpenAI OAuth local proxy
+  codex9-openai-oauth-proxy.service               loaded active running Codex 9 OpenAI OAuth local proxy
+  container-ntfy.service                          loaded active running ntfy push notification server
+  crush-button-api.service                        loaded active running Crush WebTTY button API (:17768)
+  crush-server.service                            loaded active running Crush Server
+  crush-tailscale.service                         loaded active running Crush shared API (:7766)
+  crush-ttyd-backend.service                      loaded active running Crush native WebTTY backend (:7767)
+  crush-ttyd-proxy.service                        loaded active running Crush WebTTY with mobile buttons (:17766)
+  dbus-:1.30-org.a11y.atspi.Registry@0.service    loaded active running dbus-:1.30-org.a11y.atspi.Registry@0.service
+  dbus-:1.7-org.freedesktop.portal.IBus@1.service loaded active running dbus-:1.7-org.freedesktop.portal.IBus@1.service
+  dbus-:1.7-org.freedesktop.secrets@0.service     loaded active running dbus-:1.7-org.freedesktop.secrets@0.service
+  dbus-:1.7-org.kde.kdeconnect@1.service          loaded active running dbus-:1.7-org.kde.kdeconnect@1.service
+  dbus-broker.service                             loaded active running D-Bus User Message Bus
+  dconf.service                                   loaded active running User preferences database
+  fastgpt.service                                 loaded active running FastGPT (podman compose)
+  flexime-sync-ai.service                         loaded active running FlexIME P2P sync and Step AI bridge
+  frpc.service                                    loaded active running FRP Client for Hermes Web UI
+  gelab-zero-mcp.service                          loaded active running GELab-Zero MCP Server
+  guise-ttyd.service                              loaded active running Goose independent WebTTY (:7694)
+  gvfs-daemon.service                             loaded active running Virtual filesystem service
+  gvfs-metadata.service                           loaded active running Virtual filesystem metadata service
+  hermes-8787-basic-auth-proxy.service            loaded active running Hermes Web UI basic auth proxy (:18999 -> :8787)
+  hermes-a2a-panel.service                        loaded active running Hermes A2A Panel
+  hermes-bridge-worker-coding.service             loaded active running Hermes Agent Bridge Worker (coding)
+  hermes-bridge-worker-creative.service           loaded active running Hermes Agent Bridge Worker (creative)
+  hermes-bridge-worker-monitor.service            loaded active running Hermes Agent Bridge Worker (monitor)
+  hermes-bridge-worker-ops.service                loaded active running Hermes Agent Bridge Worker (ops)
+  hermes-bridge-worker-research.service           loaded active running Hermes Agent Bridge Worker (research)
+  hermes-gateway.service                          loaded active running Hermes Agent Gateway - Messaging Platform Integration
+  hermes-monitor-panel.service                    loaded active running Hermes monitor panel web server
+  hermes-smart-proxy.service                      loaded active running Hermes Smart Profile Proxy (Host-based profile mapping)
+  hermes-studio-8648.service                      loaded active running Hermes Studio on :8648
+  hermes-webui.service                            loaded active running Hermes WebUI (nesquena) on :8787
+  hub-api.service                                 loaded active running Charlie Hub API (Dashboard & Kanban)
+  kanshi.service                                  loaded active running Dynamic display configuration for Wayland
+  kdeconnect-clipboard-bridge.service             loaded active running Fast KDE Connect clipboard bridge
+  kdeconnect-indicator.service                    loaded active running KDE Connect Indicator
+  launcher-server.service                         loaded active running Launcher Server (:9875)
+  litellm.service                                 loaded active running litellm.service
+  mako.service                                    loaded active running Lightweight Wayland notification daemon
+  matrix-synapse.service                          loaded active running Matrix Synapse Homeserver
+  matrix-wechat.service                           loaded active running Matrix-WeChat Bridge
+  mobile-ai-browsh-backend.service                loaded active running Mobile AI Browsh ttyd backend (:19886)
+  mobile-ai-browsh-gate.service                   loaded active running Mobile AI Browsh device gate (:19885)
+  mobile-ai-workbench.service                     loaded active running Mobile AI Workbench unified phone control surface
+  mpris-proxy.service                             loaded active running Bluetooth mpris proxy
+  n8n.service                                     loaded active running n8n (podman compose)
+  nav-lucky.service                               loaded active running Lucky Panel (16666)
+  nav-panel.service                               loaded active running Nav Panel (5000)
+  network-monitor-dashboard.service               loaded active running Unified network monitor dashboard (:19979)
+  notify-forwarder.service                        loaded active running System Notification Forwarder to Matrix
+  ntfy-public-19867.service                       loaded active running ntfy public compatibility proxy (:19867 -> :2586)
+  ntfy-task-inbox.service                         loaded active running Poll ntfy task replies into Codex/Hermes task inbox
+  op-tasker-bridge.service                        loaded active running Tasker to OpenCode manual handoff bridge
+  openclaw-gateway-proxy.service                  loaded active running OpenClaw Gateway Proxy (auto-wake)
+  opencode-18910-local.service                    loaded active running OpenCode LAN proxy (:18910 -> :4096)
+  opencode-4096-proxy.service                     loaded active running OpenCode Web Proxy (4096, inject TTY button)
+  opencode-telegram-gateway.service               loaded active running OpenCode Telegram Gateway
+  opencode-zulip-gateway.service                  loaded active running OpenCode Zulip Gateway
+  opencode.service                                loaded active running OpenCode Server backend (4097)
+  openhands-gui.service                           loaded active running OpenHands GUI Server
+  openhands-public-proxy.service                  loaded active running OpenHands public BasicAuth proxy (:13001 -> :3001)
+  phone-agent-file-server.service                 loaded active running Phone agent static file server
+  phone-proxy-watchdog.service                    loaded active running Phone proxy watchdog
+  pipewire-pulse.service                          loaded active running PipeWire PulseAudio
+  pipewire.service                                loaded active running PipeWire Multimedia Service
+  podman-docker-api.service                       loaded active running Podman Docker API service
+  podman-user-wait-network-online.service         loaded active exited  Wait for system level network-online.target as user.
+  redroid-r1.service                              loaded active exited  Redroid R1 cloud Android instance
+  smart-redirector.service                        loaded active running OpenClaw Session Switcher (:8088)
+  ssh-keepalive-proxy-codex10.service             loaded active running TCP Keepalive Proxy for SSH 2237 (Codex 10)
+  ssh-keepalive-proxy-codex2.service              loaded active running TCP Keepalive Proxy for SSH 2226 (Codex 2)
+  ssh-keepalive-proxy-codex3.service              loaded active running TCP Keepalive Proxy for SSH 2229 (Codex 3)
+  ssh-keepalive-proxy-codex4.service              loaded active running TCP Keepalive Proxy for SSH 2231 (Codex 4)
+  ssh-keepalive-proxy-codex5.service              loaded active running TCP Keepalive Proxy for SSH 2232 (Codex 5)
+  ssh-keepalive-proxy-codex6.service              loaded active running TCP Keepalive Proxy for SSH 2233 (Codex 6)
+  ssh-keepalive-proxy-codex7.service              loaded active running TCP Keepalive Proxy for SSH 2234 (Codex 7)
+  ssh-keepalive-proxy-codex8.service              loaded active running TCP Keepalive Proxy for SSH 2235 (Codex 8)
+  ssh-keepalive-proxy-codex9.service              loaded active running TCP Keepalive Proxy for SSH 2236 (Codex 9)
+  ssh-keepalive-proxy-codexsmart.service          loaded active running TCP Keepalive Proxy for SSH 2230 (Codex Smart)
+  ssh-keepalive-proxy-crush.service               loaded active running TCP Keepalive Proxy for SSH 2227 (Crush)
+  ssh-keepalive-proxy.service                     loaded active running TCP Keepalive Proxy for SSH 2225 (Codex)
+  sunshine.service                                loaded active running Sunshine GameStream Host
+  sway-workspace-controller.service               loaded active running Declarative Sway workspace controller
+  syncthing.service                               loaded active running Syncthing - Open Source Continuous File Synchronization
+  sys-info-mcp.service                            loaded active running System Info MCP Server (FastMCP HTTP)
+  systemd-tmpfiles-setup.service                  loaded active exited  Create User Files and Directories
+  tailscale-nft-fix.service                       loaded active exited  Insert NetBird hairpin routing fix after Tailscale
+  termhive-daemon.service                         loaded active running TermHive agent runtime daemon
+  termhive-web.service                            loaded active running TermHive Web Server
+  termix.service                                  loaded active running Termix Web SSH Client
+  tg-hunter-web.service                           loaded active running TG Group Hunter Web UI
+  ttyd-8080.service                               loaded active running OpenClaw ttyd (:8080)
+  ttyd-codex-backend.service                      loaded active running Codex 1 TTY backend (haven-codex, :19881)
+  ttyd-codex.service                              loaded active running Codex 1 WebTTY device gate - socket activated
+  ttyd-codex10-backend.service                    loaded active running Codex 10 TTY backend (haven-codex10, :20024)
+  ttyd-codex10.service                            loaded active running Codex 10 WebTTY device gate - socket activated
+  ttyd-codex2-backend.service                     loaded active running Codex 2 TTY backend (haven-codex2, :19882)
+  ttyd-codex2.service                             loaded active running Codex 2 WebTTY device gate - socket activated
+  ttyd-codex3-backend.service                     loaded active running Codex 3 TTY backend (haven-codex3, :19883)
+  ttyd-codex3.service                             loaded active running Codex 3 WebTTY device gate - socket activated
+  ttyd-codex4-backend.service                     loaded active running Codex 4 TTY backend (haven-codex4, :19884)
+  ttyd-codex4.service                             loaded active running Codex 4 WebTTY device gate - socket activated
+  ttyd-codex5-backend.service                     loaded active running Codex 5 TTY backend (haven-codex5, :19889)
+  ttyd-codex5.service                             loaded active running Codex 5 WebTTY device gate - socket activated
+  ttyd-codex6-backend.service                     loaded active running Codex 6 TTY backend (haven-codex6, :20020)
+  ttyd-codex6.service                             loaded active running Codex 6 WebTTY device gate - socket activated
+  ttyd-codex7-backend.service                     loaded active running Codex 7 TTY backend (haven-codex7, :20021)
+---
+a2a-bridge.service                                                          enabled   disabled
+caddy-hermes.service                                                        enabled   disabled
+codex-hermes-bridge.service                                                 enabled   disabled
+codex-provider-bridge-2.service                                             disabled  disabled
+codex-provider-bridge-3.service                                             disabled  disabled
+codex-provider-bridge-4.service                                             disabled  disabled
+codex-provider-bridge-5.service                                             disabled  disabled
+codex-provider-bridge.service                                               enabled   disabled
+haven-mcp-bridge.service                                                    disabled  disabled
+hermes-8468-proxy.service                                                   disabled  disabled
+hermes-8648-proxy.service                                                   disabled  disabled
+hermes-8787-basic-auth-proxy.service                                        enabled   disabled
+hermes-8787-proxy.service                                                   disabled  disabled
+hermes-a2a-panel.service                                                    enabled   disabled
+hermes-actions-watch.service                                                static    -
+hermes-bridge-worker-coding.service                                         enabled   disabled
+hermes-bridge-worker-creative.service                                       enabled   disabled
+hermes-bridge-worker-monitor.service                                        enabled   disabled
+hermes-bridge-worker-ops.service                                            enabled   disabled
+hermes-bridge-worker-p1.service                                             disabled  disabled
+hermes-bridge-worker-p2.service                                             disabled  disabled
+hermes-bridge-worker-p3.service                                             disabled  disabled
+hermes-bridge-worker-p4.service                                             disabled  disabled
+hermes-bridge-worker-p5.service                                             disabled  disabled
+hermes-bridge-worker-research.service                                       enabled   disabled
+hermes-cleanup-user.service                                                 static    -
+hermes-context-guard.service                                                static    -
+hermes-evolve.service                                                       static    -
+hermes-experience-map.service                                               static    -
+hermes-gateway.service                                                      enabled   disabled
+hermes-idle-scheduler.service                                               static    -
+hermes-iptables-guard.service                                               static    -
+hermes-memory-curator.service                                               static    -
+hermes-mesh-dispatch.service                                                static    -
+hermes-monitor-check.service                                                static    -
+hermes-monitor-panel.service                                                enabled   disabled
+hermes-port-lock.service                                                    static    -
+hermes-session-compactor.service                                            static    -
+hermes-session-guard.service                                                disabled  disabled
+hermes-session-switch-audit.service                                         static    -
+hermes-smart-proxy.service                                                  enabled   disabled
+hermes-stability-check.service                                              static    -
+hermes-studio-8648.service                                                  enabled   disabled
+hermes-web-ui.service                                                       disabled  disabled
+hermes-webui.service                                                        enabled   disabled
+kdeconnect-clipboard-bridge.service                                         enabled   disabled
+mem0-bridge.service                                                         disabled  disabled
+op-tasker-bridge.service                                                    enabled   disabled
+open-webui.service                                                          disabled  disabled
+opencode-bridge.service                                                     disabled  disabled
+ttyd-hermes-backend.service                                                 enabled   disabled
+ttyd-hermes.service                                                         enabled   disabled
+wechat-matrix-bridge.service                                                enabled   disabled
+ydotool-bridge.service                                                      disabled  disabled
+
+__HERMES_CWD_f7c06c2b22a7__/var/home/charlie/workspace__HERMES_CWD_f7c06c2b22a7__

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133647-cod-79731b",
+  "created_at": "2026-07-29T13:36:47.120485+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxo6yrk8m7eu8",
+    "title": "",
+    "created_at": 1784820821.912213
+  },
+  "content": "Effective research workflow pattern: execute parallel web searches across multiple angles (product-specific config, localized resources, GitHub projects, alternatives, future trends, specific providers), then synthesize findings into a single actionable report saved as a markdown file in the working directory.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

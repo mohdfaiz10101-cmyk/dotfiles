@@ -1,0 +1,16 @@
+{
+  "id": "20260729142440-ops-21f0eb",
+  "created_at": "2026-07-29T14:24:40.030490+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192909_27140a",
+    "title": "",
+    "created_at": 1784719751.4785414
+  },
+  "content": "The user utilizes a kanban system for work task management, with individual tasks assigned unique identifiers following the 't_[alphanumeric]' pattern (example: t_dbc58661).",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

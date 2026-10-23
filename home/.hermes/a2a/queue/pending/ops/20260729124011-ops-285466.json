@@ -1,0 +1,16 @@
+{
+  "id": "20260729124011-ops-285466",
+  "created_at": "2026-07-29T12:40:11.910925+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_135748_eb6517",
+    "title": "",
+    "created_at": 1785045591.243441
+  },
+  "content": "Reusable config pattern for this split DNS use case: Configure the local network's DNS resolver (e.g., home router, Pi-hole, AdGuard Home) to add a DNS override mapping charlie1990.duckdns.org to 192.168.123.1 for all local clients, eliminating the need for manual host file edits on individual devices like the user's phone.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

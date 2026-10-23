@@ -1,0 +1,16 @@
+{
+  "id": "20260729132131-ops-53057f",
+  "created_at": "2026-07-29T13:21:31.939290+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_222003",
+    "title": "",
+    "created_at": 1784902814.8277276
+  },
+  "content": "The autonomous-task-brain skill enforces a mandatory escalation alert (bypassing standard suggest/silent low-priority workflows) for any failure pattern recorded ≥5 times in recent session history that remains unresolved.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

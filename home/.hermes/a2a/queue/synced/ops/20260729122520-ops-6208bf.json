@@ -1,0 +1,17 @@
+{
+  "id": "20260729122520-ops-6208bf",
+  "created_at": "2026-07-29T12:25:20.866534+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4h4im1e215vz",
+    "title": "",
+    "created_at": 1785232158.4630144
+  },
+  "content": "Adding any extra content (including preambles, postambles, or markdown formatting) to a response for an explicit exact reply request constitutes a compliance failure",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.659000+00:00"
+}

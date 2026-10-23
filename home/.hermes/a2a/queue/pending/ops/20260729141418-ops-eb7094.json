@@ -1,0 +1,16 @@
+{
+  "id": "20260729141418-ops-eb7094",
+  "created_at": "2026-07-29T14:14:18.394663+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193911_d318a6",
+    "title": "",
+    "created_at": 1784720353.4538348
+  },
+  "content": "The user uses the concise shorthand 'work kanban task' as standard terminology to refer to tasks managed in their work-related kanban project tracking system, and this phrasing is a consistent domain terminology preference for their work context.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

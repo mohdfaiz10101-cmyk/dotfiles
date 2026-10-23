@@ -1,0 +1,16 @@
+{
+  "id": "20260729132354-ops-9222b7",
+  "created_at": "2026-07-29T13:23:54.996254+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_205145",
+    "title": "",
+    "created_at": 1784897516.4766579
+  },
+  "content": "The autonomous-task-brain skill is architected to pull reusable solutions from 5 integrated sources: local skills library, historical conversation sessions, memory-engine, letta, and public GitHub repositories when processing new tasks.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

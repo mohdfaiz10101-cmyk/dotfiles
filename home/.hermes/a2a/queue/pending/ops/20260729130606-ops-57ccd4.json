@@ -1,0 +1,16 @@
+{
+  "id": "20260729130606-ops-57ccd4",
+  "created_at": "2026-07-29T13:06:06.572256+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_074211",
+    "title": "",
+    "created_at": 1784936544.0385895
+  },
+  "content": "When the 'phone-sync-failure' pattern is detected, the recommended actionable step is to immediately trigger a weekly review or alert, rather than attempting repeated unaddressed fixes for the same recurring pattern.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

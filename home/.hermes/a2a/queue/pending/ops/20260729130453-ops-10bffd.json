@@ -1,0 +1,16 @@
+{
+  "id": "20260729130453-ops-10bffd",
+  "created_at": "2026-07-29T13:04:53.786775+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_084823",
+    "title": "",
+    "created_at": 1784940515.9989305
+  },
+  "content": "The memory-curator tracks consecutive failures in a watchdog JSON file located at /var/home/charlie/.hermes/state/memory-curator-watchdog.json. The consecutive_failure counter is used to monitor persistent operational issues.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

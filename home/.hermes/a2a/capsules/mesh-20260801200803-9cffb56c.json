@@ -1,0 +1,83 @@
+{
+  "task_id": "mesh-20260801200803-9cffb56c",
+  "title": "Codex 1 -> Hermes: 让 Hermes 处理这个网络验证任务，只读复盘并返回摘要。",
+  "objective": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /tmp/codex-hermes-test/.codex/sessions/2026/08/01/rollout-test.jsonl\nsource_timestamp: 2026-08-01T12:01:00.000Z\n\n任务文本:\n让 Hermes 处理这个网络验证任务，只读复盘并返回摘要。",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "Do not load full Codex transcript",
+    "Use task text and cited runbooks only",
+    "Return concise status and evidence",
+    "Do not start parallel live runs"
+  ],
+  "summary_hint": "让 Hermes 处理这个网络验证任务，只读复盘并返回摘要。",
+  "router": {
+    "message": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /tmp/codex-hermes-test/.codex/sessions/2026/08/01/rollout-test.jsonl\nsource_timestamp: 2026-08-01T12:01:00.000Z\n\n任务文本:\n让 Hermes 处理这个网络验证任务，只读复盘并返回摘要。",
+    "skills_to_load": [
+      "ops-autopilot"
+    ],
+    "workflow_rules": [
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"a7671a387ca2\", \"last_verified\": \"2026-07-21T20:43:15\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"c70608f1914548920fbc\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.45, \"id\": \"5edc95264cc3\", \"last_verified\": \"2026-07-21T20:17:37\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"codex\", \"source_events\": [\"f0c723fc6d1ef4f7b8df\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): codex-multi-account-routing.md, ",
+        "scope": "codex",
+        "confidence": 0.45
+      },
+      {
+        "score": 3,
+        "text": "Do not keep retrying redroid on this exact Fedora Silverblue 44 kernel `6.19.10-300.fc44.x86_64` by switching only between Podman/crun, Podman/runc, Docker/runc, redroid 12, or redroid 14. On 2026-08-01 all of those combinations still failed with Android init `Failed to initialize property area` / `",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"a69755067869\", \"last_verified\": \"2026-07-25T19:23:36\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"ed08f09e700d5e3a59b3\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-18",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"6689e7359214\", \"last_verified\": \"2026-07-21T23:21:24\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"a57fddb0597f452851c7\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-18",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"b95497c09c32\", \"last_verified\": \"2026-07-21T19:14:47\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"d089807cde063cd1ceba\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"0878c61a7a4e\", \"last_verified\": \"2026-07-21T19:01:37\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"633bc5e723217b1ca3cc\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"b9002250c978\", \"last_verified\": \"2026-07-26T00:04:52\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"4828b0f5f0fa3501eebf\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-180",
+        "scope": "opencode",
+        "confidence": 0.7
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T20:08:03+08:00",
+  "status": "queued"
+}

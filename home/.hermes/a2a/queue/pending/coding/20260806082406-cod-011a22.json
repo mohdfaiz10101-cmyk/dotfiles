@@ -1,0 +1,16 @@
+{
+  "id": "20260806082406-cod-011a22",
+  "created_at": "2026-08-06T08:24:06.363416+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "fa2d81dffb61",
+    "title": "",
+    "created_at": 1786004484.982539
+  },
+  "content": "当前workspace无该Excel/AI合同任务的历史会话上下文，需从零搭建项目；当前环境已确认openpyxl依赖可用，可直接用于Excel生成与图片插入相关开发。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

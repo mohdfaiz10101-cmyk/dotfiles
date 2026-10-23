@@ -1,0 +1,16 @@
+{
+  "id": "20260729123837-ops-6b1ec0",
+  "created_at": "2026-07-29T12:38:37.117829+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_154259_3b0320",
+    "title": "Mihomo proxy blocking Hermes access #2",
+    "created_at": 1785051779.242622
+  },
+  "content": "Mihomo's redir mode has a known limitation where user-space forwarding to DIRECT can fail for specific ports even when rules are correctly configured; the reliable workaround is inserting an iptables RETURN rule in the OUTPUT chain before the REDIRECT target for the affected port.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124429-ops-284358",
+  "created_at": "2026-07-29T12:44:29.833987+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms10sgawbb73hj",
+    "title": "其他账号接入方法",
+    "created_at": 1785023369.0868804
+  },
+  "content": "The standard reusable workflow for handling codex provider bridge account integration requests is: first inspect existing codex/provider/bridge related services in the current environment to confirm the target account system, then proceed with installation and integration.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260731044540-skill-d71253",
+  "created_at": "2026-07-31T04:45:40.491657+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file added an auto-generated, non-manually-editable Optimized Runtime Hints section (sourced from a 2026-07-29 reference document) that formalizes the required structured troubleshooting workflow for the network ops agent when handling connectivity anomalies related to self-hosted networking tools and Linux network configurations. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

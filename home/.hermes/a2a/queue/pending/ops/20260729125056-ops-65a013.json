@@ -1,0 +1,16 @@
+{
+  "id": "20260729125056-ops-65a013",
+  "created_at": "2026-07-29T12:50:56.523157+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_190323",
+    "title": "",
+    "created_at": 1784977414.6421673
+  },
+  "content": "Automated task routing decisions (choosing between execute, suggest, or skip actions) are governed by a weighted evaluation of historical task success rates, task complexity, and stored user preferences, requiring no manual routing input for standard tasks.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

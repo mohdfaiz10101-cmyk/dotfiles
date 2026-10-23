@@ -1,0 +1,16 @@
+{
+  "id": "20260729132026-ops-e479b7",
+  "created_at": "2026-07-29T13:20:26.747088+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_223839",
+    "title": "",
+    "created_at": 1784903930.519324
+  },
+  "content": "The autonomous-task-brain skill is configured to automatically identify and reuse task patterns from user session history, the local skill library, and public GitHub solutions, eliminating redundant planning work for repeated or similar tasks across sessions.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

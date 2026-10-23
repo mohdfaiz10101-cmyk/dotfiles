@@ -1,0 +1,16 @@
+{
+  "id": "20260729132131-ops-de7223",
+  "created_at": "2026-07-29T13:21:31.939748+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_222003",
+    "title": "",
+    "created_at": 1784902814.8277276
+  },
+  "content": "The autonomous-task-brain skill's scanning step should prioritize validating configured cron jobs with no successful execution history (last_run_at: null, completed run count = 0) to catch silent configuration drift early.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

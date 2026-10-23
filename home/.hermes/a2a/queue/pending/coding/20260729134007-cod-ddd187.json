@@ -1,0 +1,16 @@
+{
+  "id": "20260729134007-cod-ddd187",
+  "created_at": "2026-07-29T13:40:07.533348+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxh456ssajgxp",
+    "title": "OpenHands CLI 中文回复配置",
+    "created_at": 1784808918.2992861
+  },
+  "content": "OpenHands CLI 默认中文回复的配置方式为修改用户家目录下 `.openhands/agent_settings.json` 文件的 `agent_context` 字段，注入中文回复偏好即可生效，当前生效配置路径为 `/var/home/charlie/.openhands/agent_settings.json`",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

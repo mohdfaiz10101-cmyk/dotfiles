@@ -1,0 +1,16 @@
+{
+  "id": "20260729122132-ops-a43209",
+  "created_at": "2026-07-29T12:21:32.284072+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "5bf75ac9f98b",
+    "title": "http://charlie1990.duckdns.org:8648 打不开 检查打开他的稳定性 解决稳定性后锁定",
+    "created_at": 1785296251.1161313
+  },
+  "content": "A common domain pitfall for DuckDNS-hosted public services is stability failure caused by misconfigured DDNS update credentials, incorrect host network port forwarding, or unmonitored service process crashes, which should be prioritized during stability checks for this endpoint.",
+  "confidence": 0.86,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729141244-ops-38604b",
+  "created_at": "2026-07-29T14:12:44.648495+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_c41c469af4ce_20260722_194056",
+    "title": "",
+    "created_at": 1784720468.2763498
+  },
+  "content": "Standard reusable Hermes session triage workflow: 1) Call GET /api/hermes/sessions?limit=20 to fetch 20 most recent sessions, 2) Extract title and latest message content for each session, 3) Classify each session into the predefined categories using the keyword mappings",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

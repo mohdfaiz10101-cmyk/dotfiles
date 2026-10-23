@@ -1,0 +1,16 @@
+{
+  "id": "20260729130207-ops-f99008",
+  "created_at": "2026-07-29T13:02:07.384911+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_111419",
+    "title": "",
+    "created_at": 1784949270.588716
+  },
+  "content": "A recurring phone-sync-failure pattern has been logged 56 consecutive times without resolution, with the associated phone-sync-import task experiencing 120s timeout errors and its corresponding phone-sync-import.timer being inactive.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

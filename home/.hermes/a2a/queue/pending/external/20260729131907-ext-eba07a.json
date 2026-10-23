@@ -1,0 +1,16 @@
+{
+  "id": "20260729131907-ext-eba07a",
+  "created_at": "2026-07-29T13:19:07.680637+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz4l2qu5sqgw8",
+    "title": "OpenHands CLI网页端口查询",
+    "created_at": 1784908790.7144392
+  },
+  "content": "OpenHands 部署环境下需明确区分端口功能：3001为原生Web UI访问端口，8443是ttyd-openhands-entry提供的终端入口（用于tmux封装的CLI终端访问），二者功能独立不可混用。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

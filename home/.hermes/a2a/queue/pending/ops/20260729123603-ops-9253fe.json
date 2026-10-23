@@ -1,0 +1,16 @@
+{
+  "id": "20260729123603-ops-9253fe",
+  "created_at": "2026-07-29T12:36:03.417221+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms23tvyo0mckzr",
+    "title": "",
+    "created_at": 1785089251.5714533
+  },
+  "content": "The current Hermes deployment has 4 confirmed core gaps preventing full automation of memory calls, skill summary/evolution, and workflow extraction/invocation: missing hermes-evolve.timer scheduled trigger, unhealthy Letta/Khoj external memory services, memory-curator not connected to a scheduled trigger chain, and no unified invocation routing layer for existing indexed workflow rules.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

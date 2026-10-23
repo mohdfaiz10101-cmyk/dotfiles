@@ -1,0 +1,16 @@
+{
+  "id": "20260802191729-mob-1dd51b",
+  "created_at": "2026-08-02T19:17:29.328794+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cc9a99cbbe6646e4abd66effdaa881ee",
+    "title": "磁盘清理操作结果 (fork)",
+    "created_at": 1785698046.9971986
+  },
+  "content": "Podman 默认存储路径 `~/.local/share/containers` 的迁移标准流程为：先执行 `podman stop --all` 停止所有运行容器，将存储目录移动到目标位置后，在原路径创建软链接指向新位置，最后执行 `podman start --all` 恢复容器运行。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

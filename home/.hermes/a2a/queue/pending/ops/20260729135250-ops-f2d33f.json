@@ -1,0 +1,16 @@
+{
+  "id": "20260729135250-ops-f2d33f",
+  "created_at": "2026-07-29T13:52:50.074363+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200115_0c6d9a",
+    "title": "",
+    "created_at": 1784721677.1645336
+  },
+  "content": "In work-related contexts, when the user provides a `t_` prefixed alphanumeric string, it refers to a specific kanban task that should be the focus of subsequent work actions.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

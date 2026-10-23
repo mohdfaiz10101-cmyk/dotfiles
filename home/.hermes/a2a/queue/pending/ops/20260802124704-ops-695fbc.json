@@ -1,0 +1,16 @@
+{
+  "id": "20260802124704-ops-695fbc",
+  "created_at": "2026-08-02T12:47:04.018108+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbshuobbcn1gh",
+    "title": "",
+    "created_at": 1785674589.2812243
+  },
+  "content": "User requires Hermes Studio to support a scrcpy-equivalent live operation preview mode that provides real-time screen mirroring of target desktop/mobile devices during task execution, enabling in-context monitoring of ongoing automated operations without context switching.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

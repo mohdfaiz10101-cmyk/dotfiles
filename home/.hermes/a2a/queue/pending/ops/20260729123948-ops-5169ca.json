@@ -1,0 +1,16 @@
+{
+  "id": "20260729123948-ops-5169ca",
+  "created_at": "2026-07-29T12:39:48.021451+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_141641_5a63d4",
+    "title": "",
+    "created_at": 1785046601.7395744
+  },
+  "content": "The user experiences a recurring issue where this self-hosted service is inaccessible from mobile browsers, which is a known domain pitfall for this environment.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

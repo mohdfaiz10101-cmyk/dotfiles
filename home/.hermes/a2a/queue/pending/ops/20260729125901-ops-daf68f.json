@@ -1,0 +1,16 @@
+{
+  "id": "20260729125901-ops-daf68f",
+  "created_at": "2026-07-29T12:59:01.569762+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_134125_a83b52",
+    "title": "Hermes Web UI访问问题排查 #3",
+    "created_at": 1784958085.1515093
+  },
+  "content": "Hermes Web UI uses hash-based routing with session IDs in URL path format: /#/hermes/session/{session_id}",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

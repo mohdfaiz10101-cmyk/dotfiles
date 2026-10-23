@@ -1,0 +1,16 @@
+{
+  "id": "20260729132001-ops-1000de",
+  "created_at": "2026-07-29T13:20:01.889257+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz2gvr66g7j8i",
+    "title": "OpenHands任务继续执行",
+    "created_at": 1784905359.8646362
+  },
+  "content": "The OpenHands runtime retains in-progress task state across session freeze events, enabling continuation of interrupted tasks without data loss or restart requirements.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

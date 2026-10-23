@@ -1,0 +1,16 @@
+{
+  "id": "20260729134601-ops-8810be",
+  "created_at": "2026-07-29T13:46:01.908164+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200823_10dafb",
+    "title": "",
+    "created_at": 1784722106.2659848
+  },
+  "content": "The user manages work tasks via a kanban system, with individual work items referenced using unique identifiers that follow a 't_' prefix naming convention.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

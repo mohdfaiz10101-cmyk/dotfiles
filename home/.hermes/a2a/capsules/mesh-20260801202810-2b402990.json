@@ -1,0 +1,34 @@
+{
+  "task_id": "mesh-20260801202810-2b402990",
+  "title": "ntfy plan: smoke-test ntfy inbox 到 Hermes，只读规划，不执行写操作",
+  "objective": "只读规划，不执行写操作。请给出任务拆分、风险、建议路由和下一步确认点。\n\nsmoke-test ntfy inbox 到 Hermes，只读规划，不执行写操作",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "Ntfy request",
+    "Do not run high-risk actions",
+    "Return concise plan/status only",
+    "Queue mode only"
+  ],
+  "summary_hint": "smoke-test ntfy inbox 到 Hermes，只读规划，不执行写操作",
+  "router": {
+    "message": "只读规划，不执行写操作。请给出任务拆分、风险、建议路由和下一步确认点。\n\nsmoke-test ntfy inbox 到 Hermes，只读规划，不执行写操作",
+    "skills_to_load": [
+      "ops-autopilot"
+    ],
+    "workflow_rules": [],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T20:28:10+08:00",
+  "status": "queued"
+}

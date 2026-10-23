@@ -1,0 +1,16 @@
+{
+  "id": "20260729123531-ops-1ad837",
+  "created_at": "2026-07-29T12:35:31.589639+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2qq3gf4u2f9f",
+    "title": "",
+    "created_at": 1785127365.206789
+  },
+  "content": "The user's Linux system uses predictable network interface naming: the wired Ethernet interface is eno1, and the wireless Wi-Fi interface is wlp0s20f0u5, which is managed by NetworkManager.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

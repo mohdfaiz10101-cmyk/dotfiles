@@ -1,0 +1,16 @@
+{
+  "id": "20260729123813-ops-6a7565",
+  "created_at": "2026-07-29T12:38:13.272034+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_160607_3ab83f",
+    "title": "Mihomo proxy blocking Hermes access #3",
+    "created_at": 1785053167.6851802
+  },
+  "content": "在Padavan路由器上配置DNAT端口转发的标准流程：登录路由器检查vserver链和`/etc/storage/iptables.rules`，用`iptables -t nat -I vserver <line>`插入临时规则，再用`iptables-save > /etc/storage/iptables.rules`持久化，最后复核内外网访问。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

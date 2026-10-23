@@ -1,0 +1,17 @@
+{
+  "id": "20260729122851-ops-b75c26",
+  "created_at": "2026-07-29T12:28:51.211607+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4d6inggtvlcv",
+    "title": "",
+    "created_at": 1785225663.5995002
+  },
+  "content": "The user maintains a custom Waybar status bar configuration that includes animated 'breathing light' (pulsing/glowing) visual indicator modules, and is actively prioritizing auditing the functional utility of these custom visual modules to prune non-essential, outdated configurations.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.661973+00:00"
+}

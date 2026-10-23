@@ -1,0 +1,16 @@
+{
+  "id": "20260730082013-ops-75f07d",
+  "created_at": "2026-07-30T08:20:13.237045+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "39ca1b90-8d28-4457-9c27-53cc578888de",
+    "title": "",
+    "created_at": 1785399371.5620265
+  },
+  "content": "Under the `secondary` profile, the Hermes Studio API is reachable, with confirmed usable endpoints: `GET /api/hermes/sessions` for retrieving session lists, `POST /api/chat-run/runs` for creating independent chat-run sessions (supports input, profile, session_id parameters), and all created sessions can be accessed directly via frontend links in the format `/#/hermes/session/<id>`.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729143531-cod-684309",
+  "created_at": "2026-07-29T14:35:31.218348+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrti25wwmt0vyl",
+    "title": "",
+    "created_at": 1784568639.827288
+  },
+  "content": "社区已有将 Aider 封装为 MCP 服务供 Hermes、OpenHands 调用的实践，该模式可实现多AI编程工具的能力链协同，是解决单一工具能力短板的可复用架构方案。",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

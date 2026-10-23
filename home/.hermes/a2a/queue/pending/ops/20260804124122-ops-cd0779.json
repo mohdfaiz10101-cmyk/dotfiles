@@ -1,0 +1,16 @@
+{
+  "id": "20260804124122-ops-cd0779",
+  "created_at": "2026-08-04T12:41:22.655596+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a4a343c443a0",
+    "title": "[已压缩 20260804T203932] e3a1088b9235",
+    "created_at": 1785847172.399856
+  },
+  "content": "hermes-session-compactor skill已安装至~/.hermes/skills/hermes-session-compactor路径，配套的半自动定时器hermes-session-compactor.timer已启用",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

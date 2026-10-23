@@ -1,0 +1,16 @@
+{
+  "id": "20260729124411-ops-b1d6c5",
+  "created_at": "2026-07-29T12:44:11.816129+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms10wca5di8r7q",
+    "title": "",
+    "created_at": 1785023556.1422453
+  },
+  "content": "针对flexime输入法的移动端故障排查，优先核查其系统权限授予情况、与当前移动操作系统的版本适配性，无需优先排查系统全局输入法配置",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

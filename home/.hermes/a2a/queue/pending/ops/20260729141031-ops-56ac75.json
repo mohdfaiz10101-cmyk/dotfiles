@@ -1,0 +1,16 @@
+{
+  "id": "20260729141031-ops-56ac75",
+  "created_at": "2026-07-29T14:10:31.725030+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194312_455ef6",
+    "title": "",
+    "created_at": 1784720594.5124216
+  },
+  "content": "The user follows a consistent convention for referencing work Kanban tasks in sessions: the prefix 'work kanban task' followed by the unique task ID, to anchor session context to a specific tracked work item.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802034024-cod-685bdd",
+  "created_at": "2026-08-02T03:40:24.250866+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb8y9b0qx3zro",
+    "title": "",
+    "created_at": 1785641833.7520936
+  },
+  "content": "Static runbooks are ineffective for AI agent workflows because they are non-semantic 'dead text' that cannot be automatically matched to user semantic inputs; the durable replacement pattern is a semantic indexing + on-demand extraction pipeline: user query → embedding generation → top-k relevant indexed snippet recall → assembled context for the agent, avoiding reliance on static runbooks or full-document prompt stuffing.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

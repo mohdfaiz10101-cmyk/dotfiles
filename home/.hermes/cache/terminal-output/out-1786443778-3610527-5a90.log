@@ -1,0 +1,351 @@
+== /var/home/charlie/.local/bin/adb-phone-keepalive.sh ==
+#!/usr/bin/env bash
+set -u
+
+HOME_DIR="${HOME:-/var/home/charlie}"
+ADB="${ADB_BIN:-$HOME_DIR/.local/bin/adb}"
+STATE_DIR="$HOME_DIR/.local/state/adb-phone-keepalive"
+STATE="$STATE_DIR/latest.json"
+LOG="$STATE_DIR/keepalive.log"
+mkdir -p "$STATE_DIR"
+
+TCP_CANDIDATES=(
+  "127.0.0.1:15555"
+  "192.168.123.22:5555"
+  "100.87.37.3:5555"
+)
+
+ts() { date '+%F %T'; }
+log() { printf '[%s] %s\n' "$(ts)" "$*" >> "$LOG"; }
+adb_run() { timeout "${ADB_TIMEOUT:-12}" "$ADB" "$@" 2>&1; }
+
+connect_tcp_candidates() {
+  local serial
+  "$ADB" start-server >/dev/null 2>&1 || true
+  for serial in "${TCP_CANDIDATES[@]}"; do
+    timeout -k 2s 6s "$ADB" connect "$serial" >/dev/null 2>&1 || true
+  done
+}
+
+device_lines() {
+  "$ADB" devices -l 2>/dev/null | awk '
+    $2=="device" {
+      line=$0
+      if (line !~ /product:redroid/ && line !~ /model:redroid/ && line !~ /waydroid/) print line
+    }'
+}
+
+choose_serial() {
+  local lines serial cand
+  lines="$(device_lines)"
+  [ -n "$lines" ] || return 1
+  for cand in "${TCP_CANDIDATES[@]}"; do
+    serial="$(printf '%s\n' "$lines" | awk -v s="$cand" '$1==s {print $1; exit}')"
+    [ -z "$serial" ] || { printf '%s\n' "$serial"; return 0; }
+  done
+  printf '%s\n' "$lines" | awk '{print $1; exit}'
+}
+
+shell_su() {
+  local serial="$1"
+  local script="$2"
+  adb_run -s "$serial" shell "su -c '$script'" || true
+}
+
+uid_for() {
+  local serial="$1"
+  local pkg="$2"
+  adb_run -s "$serial" shell "cmd package list packages -U $pkg" |
+    tr -d '\r' |
+    awk -F'uid:' '{print $2}' |
+    awk 'NF{print $1; exit}'
+}
+
+allow_pkg() {
+  local serial="$1"
+  local pkg="$2"
+  local uid
+  shell_su "$serial" "cmd package enable --user 0 $pkg >/dev/null 2>&1"
+  shell_su "$serial" "cmd deviceidle whitelist +$pkg >/dev/null 2>&1"
+  shell_su "$serial" "appops set $pkg RUN_IN_BACKGROUND allow >/dev/null 2>&1; appops set $pkg RUN_ANY_IN_BACKGROUND allow >/dev/null 2>&1; appops set $pkg WAKE_LOCK allow >/dev/null 2>&1; appops set $pkg POST_NOTIFICATION allow >/dev/null 2>&1"
+  uid="$(uid_for "$serial" "$pkg" || true)"
+  if [ -n "$uid" ]; then
+    shell_su "$serial" "cmd netpolicy add restrict-background-whitelist $uid >/dev/null 2>&1"
+  fi
+}
+
+ensure_phone() {
+  local serial="$1"
+  log "selected serial=$serial"
+
+  case "$serial" in
+    127.0.0.1:15555|localhost:15555)
+      log "skip adb tcpip on frp serial=$serial"
+      ;;
+    *)
+      adb_run -s "$serial" tcpip 5555 >/dev/null || true
+      ;;
+  esac
+
+  shell_su "$serial" "settings put global always_on_vpn_app io.netbird.client; settings put global always_on_vpn_lockdown 0"
+  allow_pkg "$serial" "io.netbird.client"
+  allow_pkg "$serial" "sh.haven.app"
+  allow_pkg "$serial" "io.heckel.ntfy"
+  allow_pkg "$serial" "org.kde.kdeconnect_tp"
+
+  shell_su "$serial" "pgrep -f '/data/local/tmp/frpc_smart.sh' >/dev/null 2>&1 || { test -x /data/local/tmp/frpc_smart.sh && sh /data/local/tmp/frpc_smart.sh >/data/local/tmp/frpc.log 2>&1 & }"
+  shell_su "$serial" "pgrep -f '/data/local/tmp/frpc_smart.sh' >/dev/null 2>&1 || { test -f /data/adb/service.d/frpc.sh && sh /data/adb/service.d/frpc.sh >/data/local/tmp/frpc_boot.log 2>&1 & }"
+  if [ "${ADB_KEEPALIVE_ALLOW_NETBIRD_FOREGROUND:-0}" = "1" ]; then
+    shell_su "$serial" "monkey -p io.netbird.client -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1"
+  else
+    log "skip netbird foreground; set ADB_KEEPALIVE_ALLOW_NETBIRD_FOREGROUND=1 for explicit repair"
+  fi
+}
+
+main() {
+  local serial devices frp_ok netbird_app
+  connect_tcp_candidates
+  serial="$(choose_serial || true)"
+  devices="$("$ADB" devices -l 2>/dev/null | sed '1d' | tr '\n' ';' | sed 's/"/\\"/g')"
+  if [ -z "$serial" ]; then
+    printf '{"ok":false,"reason":"no-device","devices":"%s","ts":"%s"}\n' "$devices" "$(ts)" > "$STATE"
+    log "no-device devices=$devices"
+    return 0
+  fi
+
+  ensure_phone "$serial"
+  sleep 2
+  timeout -k 2s 6s "$ADB" connect 127.0.0.1:15555 >/dev/null 2>&1 || true
+  frp_ok="$("$ADB" devices 2>/dev/null | awk '$1=="127.0.0.1:15555" && $2=="device"{print "true"}' | head -n 1)"
+  [ -n "$frp_ok" ] || frp_ok=false
+  netbird_app="$(adb_run -s "$serial" shell 'settings get global always_on_vpn_app' | tr -d '\r' | head -n 1 | sed 's/"/\\"/g')"
+  printf '{"ok":true,"serial":"%s","frp_adb":%s,"always_on_vpn_app":"%s","ts":"%s"}\n' "$serial" "$frp_ok" "$netbird_app" "$(ts)" > "$STATE"
+  log "ok serial=$serial frp_adb=$frp_ok always_on_vpn_app=$netbird_app"
+}
+
+main "$@"
+
+== /var/home/charlie/.local/state/adb-phone-keepalive.log ==
+2026-06-25 21:12:06 OK serial=192.168.123.22:5555
+2026-06-25 21:13:07 OK serial=192.168.123.22:5555
+2026-06-25 21:14:08 OK serial=192.168.123.22:5555
+2026-06-25 21:15:09 OK serial=192.168.123.22:5555
+2026-06-25 21:16:08 OK serial=192.168.123.22:5555
+2026-06-25 21:17:09 OK serial=192.168.123.22:5555
+2026-06-25 21:18:09 OK serial=192.168.123.22:5555
+2026-06-25 21:19:09 OK serial=192.168.123.22:5555
+2026-06-25 21:20:09 OK serial=192.168.123.22:5555
+2026-06-25 21:21:09 OK serial=192.168.123.22:5555
+2026-06-25 21:22:09 OK serial=192.168.123.22:5555
+2026-06-25 21:23:09 OK serial=192.168.123.22:5555
+2026-06-25 21:24:10 OK serial=192.168.123.22:5555
+2026-06-25 21:25:09 OK serial=192.168.123.22:5555
+2026-06-25 21:26:09 OK serial=192.168.123.22:5555
+2026-06-25 21:27:10 OK serial=192.168.123.22:5555
+2026-06-25 21:28:10 OK serial=192.168.123.22:5555
+2026-06-25 21:29:10 OK serial=192.168.123.22:5555
+2026-06-25 21:30:10 OK serial=192.168.123.22:5555
+2026-06-25 21:31:10 OK serial=192.168.123.22:5555
+2026-06-25 21:32:11 OK serial=192.168.123.22:5555
+2026-06-25 21:33:11 OK serial=192.168.123.22:5555
+2026-06-25 21:34:11 OK serial=192.168.123.22:5555
+2026-06-25 21:35:11 OK serial=192.168.123.22:5555
+2026-06-25 21:36:11 OK serial=192.168.123.22:5555
+2026-06-25 21:37:12 OK serial=192.168.123.22:5555
+2026-06-25 21:38:13 OK serial=192.168.123.22:5555
+2026-06-25 21:39:13 OK serial=192.168.123.22:5555
+2026-06-25 21:40:14 OK serial=192.168.123.22:5555
+2026-06-25 21:41:14 OK serial=192.168.123.22:5555
+2026-06-25 21:42:15 OK serial=192.168.123.22:5555
+2026-06-25 21:43:15 OK serial=192.168.123.22:5555
+2026-06-25 21:44:15 OK serial=192.168.123.22:5555
+2026-06-25 21:45:16 OK serial=192.168.123.22:5555
+2026-06-25 21:46:16 OK serial=192.168.123.22:5555
+2026-06-25 21:47:16 OK serial=192.168.123.22:5555
+2026-06-25 21:48:17 OK serial=192.168.123.22:5555
+2026-06-25 21:49:17 OK serial=192.168.123.22:5555
+2026-06-25 21:50:17 OK serial=192.168.123.22:5555
+2026-06-25 21:51:18 OK serial=192.168.123.22:5555
+2026-06-25 21:52:18 OK serial=192.168.123.22:5555
+2026-06-25 21:53:18 OK serial=192.168.123.22:5555
+2026-06-25 21:54:18 OK serial=192.168.123.22:5555
+2026-06-25 21:55:18 OK serial=192.168.123.22:5555
+2026-06-25 21:56:18 OK serial=192.168.123.22:5555
+2026-06-25 21:57:18 OK serial=192.168.123.22:5555
+2026-06-25 21:58:18 OK serial=192.168.123.22:5555
+2026-06-25 21:59:20 OK serial=192.168.123.22:5555
+2026-06-25 22:00:20 OK serial=192.168.123.22:5555
+2026-06-25 22:01:22 OK serial=192.168.123.22:5555
+2026-06-25 22:02:22 OK serial=192.168.123.22:5555
+2026-06-25 22:03:22 OK serial=192.168.123.22:5555
+2026-06-25 22:04:23 OK serial=192.168.123.22:5555
+2026-06-25 22:05:24 OK serial=192.168.123.22:5555
+2026-06-25 22:06:25 OK serial=192.168.123.22:5555
+2026-06-25 22:07:25 OK serial=192.168.123.22:5555
+2026-06-25 22:08:26 OK serial=192.168.123.22:5555
+2026-06-25 22:09:26 OK serial=192.168.123.22:5555
+2026-06-25 22:10:27 OK serial=192.168.123.22:5555
+2026-06-25 22:13:06 OK serial=192.168.123.22:5555
+2026-06-25 22:14:04 OK serial=192.168.123.22:5555
+2026-06-25 22:15:07 OK serial=192.168.123.22:5555
+2026-06-25 22:16:07 OK serial=192.168.123.22:5555
+2026-06-25 22:17:08 OK serial=192.168.123.22:5555
+2026-06-25 22:18:08 OK serial=192.168.123.22:5555
+2026-06-25 22:19:10 OK serial=192.168.123.22:5555
+2026-06-25 22:20:09 OK serial=192.168.123.22:5555
+2026-06-25 22:21:09 OK serial=192.168.123.22:5555
+2026-06-25 22:22:10 OK serial=192.168.123.22:5555
+2026-06-25 22:23:10 OK serial=192.168.123.22:5555
+2026-06-25 22:24:11 OK serial=192.168.123.22:5555
+2026-06-25 22:25:12 OK serial=192.168.123.22:5555
+2026-06-25 22:26:13 OK serial=192.168.123.22:5555
+2026-06-25 22:27:13 OK serial=192.168.123.22:5555
+2026-06-25 22:28:13 OK serial=192.168.123.22:5555
+2026-06-25 22:29:14 OK serial=192.168.123.22:5555
+2026-06-25 22:30:15 OK serial=192.168.123.22:5555
+2026-06-25 22:31:15 OK serial=192.168.123.22:5555
+2026-06-25 22:32:16 OK serial=192.168.123.22:5555
+2026-06-25 22:33:15 OK serial=192.168.123.22:5555
+2026-06-25 22:34:16 OK serial=192.168.123.22:5555
+2026-06-25 22:35:17 OK serial=192.168.123.22:5555
+2026-06-25 22:36:17 OK serial=192.168.123.22:5555
+2026-06-25 22:37:17 OK serial=192.168.123.22:5555
+2026-06-25 22:38:18 OK serial=192.168.123.22:5555
+2026-06-25 22:39:19 OK serial=192.168.123.22:5555
+2026-06-25 22:40:19 OK serial=192.168.123.22:5555
+2026-06-25 22:41:20 OK serial=192.168.123.22:5555
+2026-06-25 22:42:20 OK serial=192.168.123.22:5555
+2026-06-25 22:43:20 OK serial=192.168.123.22:5555
+2026-06-25 22:44:22 OK serial=192.168.123.22:5555
+2026-06-25 22:45:22 OK serial=192.168.123.22:5555
+2026-06-25 22:46:22 OK serial=192.168.123.22:5555
+2026-06-25 22:47:22 OK serial=192.168.123.22:5555
+2026-06-25 22:48:24 OK serial=192.168.123.22:5555
+2026-06-25 22:49:24 OK serial=192.168.123.22:5555
+2026-06-25 22:50:26 OK serial=192.168.123.22:5555
+2026-06-25 22:51:24 OK serial=192.168.123.22:5555
+2026-06-25 22:52:25 OK serial=192.168.123.22:5555
+2026-06-25 22:53:25 OK serial=192.168.123.22:5555
+2026-06-25 22:54:25 OK serial=192.168.123.22:5555
+2026-06-25 22:55:25 OK serial=192.168.123.22:5555
+2026-06-25 22:56:26 OK serial=192.168.123.22:5555
+2026-06-25 22:57:25 OK serial=192.168.123.22:5555
+2026-06-25 22:58:26 OK serial=192.168.123.22:5555
+2026-06-25 22:59:26 OK serial=192.168.123.22:5555
+2026-06-25 23:00:26 OK serial=192.168.123.22:5555
+2026-06-25 23:01:27 OK serial=192.168.123.22:5555
+2026-06-25 23:02:27 OK serial=192.168.123.22:5555
+2026-06-25 23:03:27 OK serial=192.168.123.22:5555
+2026-06-25 23:04:27 OK serial=192.168.123.22:5555
+2026-06-25 23:05:28 OK serial=192.168.123.22:5555
+2026-06-25 23:06:28 OK serial=192.168.123.22:5555
+2026-06-25 23:07:28 OK serial=192.168.123.22:5555
+2026-06-25 23:08:28 OK serial=192.168.123.22:5555
+2026-06-25 23:09:28 OK serial=192.168.123.22:5555
+2026-06-25 23:10:29 OK serial=192.168.123.22:5555
+2026-06-25 23:11:29 OK serial=192.168.123.22:5555
+2026-06-25 23:12:29 OK serial=192.168.123.22:5555
+2026-06-25 23:13:30 OK serial=192.168.123.22:5555
+2026-06-25 23:14:30 OK serial=192.168.123.22:5555
+2026-06-25 23:15:30 OK serial=192.168.123.22:5555
+2026-06-25 23:16:30 OK serial=192.168.123.22:5555
+2026-06-25 23:17:30 OK serial=192.168.123.22:5555
+2026-06-25 23:18:30 OK serial=192.168.123.22:5555
+2026-06-25 23:19:30 OK serial=192.168.123.22:5555
+2026-06-25 23:20:30 OK serial=192.168.123.22:5555
+2026-06-25 23:21:32 OK serial=192.168.123.22:5555
+2026-06-25 23:22:31 OK serial=192.168.123.22:5555
+2026-06-25 23:23:31 OK serial=192.168.123.22:5555
+2026-06-25 23:24:31 OK serial=192.168.123.22:5555
+2026-06-25 23:25:32 OK serial=192.168.123.22:5555
+2026-06-25 23:26:32 OK serial=192.168.123.22:5555
+2026-06-25 23:27:32 OK serial=192.168.123.22:5555
+2026-06-25 23:28:32 OK serial=192.168.123.22:5555
+2026-06-25 23:29:32 OK serial=192.168.123.22:5555
+2026-06-25 23:30:32 OK serial=192.168.123.22:5555
+2026-06-25 23:31:32 OK serial=192.168.123.22:5555
+2026-06-25 23:32:32 OK serial=192.168.123.22:5555
+2026-06-25 23:33:32 OK serial=192.168.123.22:5555
+2026-06-25 23:34:32 OK serial=192.168.123.22:5555
+2026-06-25 23:35:32 OK serial=192.168.123.22:5555
+2026-06-25 23:36:32 OK serial=192.168.123.22:5555
+2026-06-25 23:37:32 OK serial=192.168.123.22:5555
+2026-06-25 23:38:32 OK serial=192.168.123.22:5555
+2026-06-25 23:39:33 OK serial=192.168.123.22:5555
+2026-06-25 23:40:33 OK serial=192.168.123.22:5555
+2026-06-25 23:41:33 OK serial=192.168.123.22:5555
+2026-06-25 23:42:34 OK serial=192.168.123.22:5555
+2026-06-25 23:43:34 OK serial=192.168.123.22:5555
+2026-06-25 23:44:34 OK serial=192.168.123.22:5555
+2026-06-25 23:45:34 OK serial=192.168.123.22:5555
+2026-06-25 23:46:35 OK serial=192.168.123.22:5555
+2026-06-25 23:47:35 OK serial=192.168.123.22:5555
+2026-06-25 23:48:35 OK serial=192.168.123.22:5555
+2026-06-25 23:49:35 OK serial=192.168.123.22:5555
+2026-06-25 23:50:36 OK serial=192.168.123.22:5555
+2026-06-25 23:51:36 OK serial=192.168.123.22:5555
+2026-06-25 23:52:36 OK serial=192.168.123.22:5555
+2026-06-25 23:53:37 OK serial=192.168.123.22:5555
+2026-06-25 23:54:37 OK serial=192.168.123.22:5555
+2026-06-25 23:55:37 OK serial=192.168.123.22:5555
+2026-06-25 23:56:37 OK serial=192.168.123.22:5555
+2026-06-25 23:57:37 OK serial=192.168.123.22:5555
+2026-06-25 23:58:38 OK serial=192.168.123.22:5555
+2026-06-25 23:59:38 OK serial=192.168.123.22:5555
+2026-06-26 00:00:39 OK serial=192.168.123.22:5555
+2026-06-26 00:01:39 OK serial=192.168.123.22:5555
+2026-06-26 00:02:40 OK serial=192.168.123.22:5555
+2026-06-26 00:03:40 OK serial=192.168.123.22:5555
+2026-06-26 00:04:40 OK serial=192.168.123.22:5555
+2026-06-26 00:05:40 OK serial=192.168.123.22:5555
+2026-06-26 00:06:41 OK serial=192.168.123.22:5555
+2026-06-26 00:07:40 OK serial=192.168.123.22:5555
+2026-06-26 00:08:41 OK serial=192.168.123.22:5555
+2026-06-26 00:09:41 OK serial=192.168.123.22:5555
+2026-06-26 00:10:41 OK serial=192.168.123.22:5555
+2026-06-26 00:11:42 OK serial=192.168.123.22:5555
+2026-06-26 00:12:42 OK serial=192.168.123.22:5555
+2026-06-26 00:13:42 OK serial=192.168.123.22:5555
+2026-06-26 00:14:44 OK serial=192.168.123.22:5555
+2026-06-26 00:15:43 OK serial=192.168.123.22:5555
+2026-06-26 00:16:43 OK serial=192.168.123.22:5555
+2026-06-26 00:17:43 OK serial=192.168.123.22:5555
+2026-06-26 00:18:43 OK serial=192.168.123.22:5555
+2026-06-26 00:19:44 OK serial=192.168.123.22:5555
+2026-06-26 00:20:44 OK serial=192.168.123.22:5555
+2026-06-26 00:21:44 OK serial=192.168.123.22:5555
+2026-06-26 00:22:44 OK serial=192.168.123.22:5555
+2026-06-26 00:23:45 OK serial=192.168.123.22:5555
+2026-06-26 00:24:45 OK serial=192.168.123.22:5555
+2026-06-26 00:25:46 OK serial=192.168.123.22:5555
+2026-06-26 00:26:45 OK serial=192.168.123.22:5555
+2026-06-26 00:27:46 OK serial=192.168.123.22:5555
+2026-06-26 00:28:46 OK serial=192.168.123.22:5555
+2026-06-26 00:29:46 OK serial=192.168.123.22:5555
+2026-06-26 00:30:47 OK serial=192.168.123.22:5555
+2026-06-26 00:31:47 OK serial=192.168.123.22:5555
+2026-06-26 00:32:47 OK serial=192.168.123.22:5555
+2026-06-26 00:33:47 OK serial=192.168.123.22:5555
+2026-06-26 00:34:48 OK serial=192.168.123.22:5555
+2026-06-26 00:35:48 OK serial=192.168.123.22:5555
+2026-06-26 00:36:48 OK serial=192.168.123.22:5555
+2026-06-26 00:37:48 OK serial=192.168.123.22:5555
+2026-06-26 00:38:49 OK serial=192.168.123.22:5555
+2026-06-26 00:39:49 OK serial=192.168.123.22:5555
+2026-06-26 00:40:49 OK serial=192.168.123.22:5555
+2026-06-26 00:41:50 OK serial=192.168.123.22:5555
+2026-06-26 00:42:50 OK serial=192.168.123.22:5555
+2026-06-26 00:43:50 OK serial=192.168.123.22:5555
+2026-06-26 00:44:50 OK serial=192.168.123.22:5555
+2026-06-26 00:45:50 OK serial=192.168.123.22:5555
+2026-06-26 00:46:51 OK serial=192.168.123.22:5555
+2026-06-26 00:47:52 OK serial=192.168.123.22:5555
+2026-06-26 00:48:52 OK serial=192.168.123.22:5555
+2026-06-26 00:49:52 OK serial=192.168.123.22:5555
+2026-06-26 00:50:52 OK serial=192.168.123.22:5555
+2026-06-26 00:51:53 OK serial=192.168.123.22:5555
+2026-06-26 00:52:53 OK serial=192.168.123.22:5555
+2026-06-26 00:53:53 OK serial=192.168.123.22:5555
+
+
+__HERMES_CWD_fe70fe0cdf74__/var/home/charlie/workspace__HERMES_CWD_fe70fe0cdf74__

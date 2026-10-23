@@ -1,0 +1,16 @@
+{
+  "id": "20260729140207-ops-ce831c",
+  "created_at": "2026-07-29T14:02:07.174165+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195113_a5f5e0",
+    "title": "",
+    "created_at": 1784721075.9789186
+  },
+  "content": "The user's work environment uses a kanban task tracking system where individual tasks are assigned unique IDs formatted as 't_' followed by a lowercase alphanumeric string (example observed ID: t_dbc58661)",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

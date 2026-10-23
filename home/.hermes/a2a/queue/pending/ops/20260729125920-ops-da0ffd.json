@@ -1,0 +1,16 @@
+{
+  "id": "20260729125920-ops-da0ffd",
+  "created_at": "2026-07-29T12:59:20.632808+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_133425",
+    "title": "",
+    "created_at": 1784957676.913868
+  },
+  "content": "The memory-curator skill follows a defined skip pattern when locked: it bypasses steps 1-5 (recall, refinement, writing, syncing) and only generates a curation report, while incrementing the watchdog failure counter.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

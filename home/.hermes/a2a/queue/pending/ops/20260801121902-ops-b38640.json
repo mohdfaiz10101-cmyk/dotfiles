@@ -1,0 +1,16 @@
+{
+  "id": "20260801121902-ops-b38640",
+  "created_at": "2026-08-01T12:19:02.380300+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msac0scv7kie4j",
+    "title": "",
+    "created_at": 1785586491.3499165
+  },
+  "content": "将Windows主机挂载为Fedora本地目录后，AI coding agent（如Codex）的访问成本会显著降低：并非节省网络传输字节，而是省去远程shell执行、命令解析、输出回传的tool call/context开销，本质是将远程访问降级为本地文件访问。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124924-ops-ce5022",
+  "created_at": "2026-07-29T12:49:24.116373+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_213501",
+    "title": "",
+    "created_at": 1784986513.2824879
+  },
+  "content": "Watchdog mechanism tracks pipeline health via last_status, consecutive_failure counters, and silent_mode flags, with persistent failure history for debugging.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

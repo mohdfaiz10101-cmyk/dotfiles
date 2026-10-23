@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "providers": {},
+  "credential_pool": {
+    "stepfun": [
+      {
+        "id": "50df07",
+        "label": "StepFun backup key",
+        "auth_type": "api_key",
+        "priority": 0,
+        "source": "manual",
+        "access_token": "3HtO7oMVg2UVElglG01Mnz4Ub37Ws0ve3Mgns5FRx6l4maKt5I9cumyksGl1c1PlA",
+        "last_status": null,
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://api.stepfun.com/step_plan/v1",
+        "request_count": 0
+      },
+      {
+        "id": "d98456",
+        "label": "STEPFUN_API_KEY",
+        "auth_type": "api_key",
+        "priority": 1,
+        "source": "env:STEPFUN_API_KEY",
+        "last_status": "ok",
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://api.stepfun.com/step_plan/v1",
+        "request_count": 0,
+        "secret_fingerprint": "sha256:50d6692dd3144350"
+      }
+    ],
+    "openai-api": [],
+    "custom:aieyra": [
+      {
+        "id": "ea0c27",
+        "label": "aieyra",
+        "auth_type": "api_key",
+        "priority": 0,
+        "source": "config:aieyra",
+        "last_status": null,
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://fast.aieyra.cn/v1",
+        "request_count": 0,
+        "secret_fingerprint": "sha256:138875ba8901a34a"
+      }
+    ],
+    "zai": [],
+    "custom:stepfun-new": [],
+    "gemini": [],
+    "custom:freellmapi": [],
+    "deepseek": [
+      {
+        "id": "f568ca",
+        "label": "DEEPSEEK_API_KEY",
+        "auth_type": "api_key",
+        "priority": 0,
+        "source": "env:DEEPSEEK_API_KEY",
+        "last_status": null,
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://api.deepseek.com/v1",
+        "request_count": 0,
+        "secret_fingerprint": "sha256:2f2ca9d898076f7d"
+      }
+    ]
+  },
+  "updated_at": "2026-09-23T02:30:03.008453+00:00"
+}

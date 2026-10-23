@@ -1,0 +1,16 @@
+{
+  "id": "20260729142613-ops-0e0077",
+  "created_at": "2026-07-29T14:26:13.838003+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192809_a93a50",
+    "title": "",
+    "created_at": 1784719691.140607
+  },
+  "content": "A common user workflow for work-related sessions is to anchor the session scope to a specific kanban task by referencing its unique ID at the start of the interaction.",
+  "confidence": 0.87,
+  "status": "pending",
+  "review_note": ""
+}

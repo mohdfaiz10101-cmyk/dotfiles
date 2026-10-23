@@ -1,0 +1,16 @@
+{
+  "id": "20260729123850-ops-24fbef",
+  "created_at": "2026-07-29T12:38:50.710078+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1hbb0ig10go0",
+    "title": "Hermes CLI与Studio共享记忆技能",
+    "created_at": 1785051126.978098
+  },
+  "content": "Hermes Agent CLI (version 19910) and the user's local Hermes Studio instance (hosted on port 18648) share persistent memory and skills storage, so changes to memory or skills made in either interface will sync across both platforms.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133557-ext-6b3b95",
+  "created_at": "2026-07-29T13:35:57.820260+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_234121_ca2a5c",
+    "title": "",
+    "created_at": 1784821281.9547956
+  },
+  "content": "评估低成本coding/chat模型使用渠道时，核心覆盖范围包括OpenRouter、Together、Groq、Fireworks、Anthropic/OpenAI低价层、国内大模型厂商低价入口，评估维度需包含按token计费对比、key pool支持、fallback router能力，以及方案适配coding agent的适用点位",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

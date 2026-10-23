@@ -1,0 +1,16 @@
+{
+  "id": "20260807031544-ops-ddea37",
+  "created_at": "2026-08-07T03:15:44.074274+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a3bcf7924aff",
+    "title": "",
+    "created_at": 1786072391.5033786
+  },
+  "content": "用户需要启用Tailscale出口节点（Exit Node）模式，实现接入同一Tailscale网络的移动设备复用该电脑的网络出口访问公网",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

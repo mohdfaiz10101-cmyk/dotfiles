@@ -1,0 +1,10 @@
+{
+  "slug": "inbox",
+  "name": "收件箱",
+  "description": "待自动分拣的新任务",
+  "icon": "📥",
+  "color": "",
+  "default_workdir": null,
+  "created_at": 1784719212,
+  "archived": false
+}

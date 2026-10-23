@@ -1,0 +1,16 @@
+{
+  "id": "20260729125329-ops-fbaf84",
+  "created_at": "2026-07-29T12:53:29.617187+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_164907",
+    "title": "",
+    "created_at": 1784969358.6032376
+  },
+  "content": "The curator includes a watchdog that tracks consecutive failures. Currently at 35 consecutive failures with `last_status=failure`, indicating a persistent operational issue (likely the lock file) that requires human attention to resolve.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729130950-ops-5c591b",
+  "created_at": "2026-07-29T13:09:50.026978+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_040035",
+    "title": "",
+    "created_at": 1784923246.8521638
+  },
+  "content": "MEMORY.md has a hard character limit of 2200 characters; the system monitors current usage (e.g., 2258/2200) but will not perform curation or trimming while a lock file exists.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

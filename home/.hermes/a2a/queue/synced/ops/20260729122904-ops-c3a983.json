@@ -1,0 +1,17 @@
+{
+  "id": "20260729122904-ops-c3a983",
+  "created_at": "2026-07-29T12:29:04.589311+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4cxpdtdp1rii",
+    "title": "系统性能优化",
+    "created_at": 1785225126.1314518
+  },
+  "content": "For system lag troubleshooting, the priority diagnostic check sequence is CPU utilization, memory usage, disk IO, and high-load processes, instead of defaulting to CPU overload as the root cause.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:30:14.188169+00:00"
+}

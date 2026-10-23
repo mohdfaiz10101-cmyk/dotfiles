@@ -1,0 +1,16 @@
+{
+  "id": "20260729124411-ops-9abfa8",
+  "created_at": "2026-07-29T12:44:11.815268+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms10wca5di8r7q",
+    "title": "",
+    "created_at": 1785023556.1422453
+  },
+  "content": "移动端输入法无法弹出的通用排查流程中，第一步优先对比其他输入法的运行状态，可快速区分故障是特定输入法问题还是系统全局输入服务问题",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

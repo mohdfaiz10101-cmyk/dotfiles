@@ -1,0 +1,16 @@
+{
+  "id": "20260729132559-ops-488dda",
+  "created_at": "2026-07-29T13:25:59.245480+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrytxn50afsfga",
+    "title": "悬浮按钮功能配置完成",
+    "created_at": 1784890986.2968707
+  },
+  "content": "用户需要在Hermes Studio页面配置独立悬浮按钮，其功能为触发添加对话分类的操作",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

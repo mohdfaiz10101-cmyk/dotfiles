@@ -1,0 +1,42 @@
+{
+  "id": "mesh-20260801195330-9380c3dd",
+  "title": "2026-08-01 network repair handoff",
+  "objective": "只读复盘 2026-08-01 手机网络修复：读取 must-read 中 2026-08-01 相关段落，确认 Hermes 记忆/NetBird runbook 已共享。输出简短摘要：已修复项、验证证据、后续 watchpoints。不要启动任何网络修改或 live 诊断。",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "status": "failed",
+  "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260801195330-9380c3dd.json",
+  "queue_path": "/var/home/charlie/.hermes/a2a/mesh-queue/pending/ops/mesh-20260801195330-9380c3dd.json",
+  "children": [],
+  "rollups": [],
+  "handoffs": [],
+  "done": [],
+  "next_actions": [],
+  "avoid": [],
+  "estimated_tokens": 0,
+  "message_count": 0,
+  "created_at": "2026-08-01T19:53:30+08:00",
+  "updated_at": "2026-08-01T20:48:14+08:00",
+  "history": [
+    {
+      "ts": "2026-08-01T19:53:30+08:00",
+      "event": "created",
+      "title": "2026-08-01 network repair handoff",
+      "objective": "只读复盘 2026-08-01 手机网络修复：读取 must-read 中 2026-08-01 相关段落，确认 Hermes 记忆/NetBird runbook 已共享。输出简短摘要：已修复项、验证证据、后续 watchpoints。不要启动任何网络修改或 live 诊断。",
+      "profile": "ops"
+    },
+    {
+      "ts": "2026-08-01T20:48:14+08:00",
+      "event": "updated",
+      "status": "failed",
+      "summary": "<urlopen error [Errno 1] Operation not permitted>"
+    }
+  ],
+  "summary": "<urlopen error [Errno 1] Operation not permitted>",
+  "active_port": 8648
+}

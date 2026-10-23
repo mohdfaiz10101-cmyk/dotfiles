@@ -1,0 +1,16 @@
+{
+  "id": "20260729135905-ops-05f079",
+  "created_at": "2026-07-29T13:59:05.483756+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195514_20e185",
+    "title": "",
+    "created_at": 1784721316.5339706
+  },
+  "content": "When handling work-related requests from this user, cross-referencing context with any provided kanban task ID is a reusable workflow to align responses with the user's current active work priorities.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

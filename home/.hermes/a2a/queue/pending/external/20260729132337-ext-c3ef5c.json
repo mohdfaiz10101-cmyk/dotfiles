@@ -1,0 +1,16 @@
+{
+  "id": "20260729132337-ext-c3ef5c",
+  "created_at": "2026-07-29T13:23:37.944631+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryyc72i7luxuv",
+    "title": "",
+    "created_at": 1784898327.338197
+  },
+  "content": "安卓端多进程浏览器（如Brave）是常见的移动端常驻内存黑洞，单浏览器多进程合计PSS可超过1G、CPU占用超70%，是排查设备卡顿时需要优先核查的高负载进程类型。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

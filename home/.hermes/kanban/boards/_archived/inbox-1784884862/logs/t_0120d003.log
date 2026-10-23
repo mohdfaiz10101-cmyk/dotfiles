@@ -1,0 +1,1568 @@
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.76s  Context: 2 msgs, ~6,559 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192207_dffdc9
+
+Session:        20260722_192207_dffdc9
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.66s  Context: 2 msgs, ~6,650 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192307_a5650c
+
+Session:        20260722_192307_a5650c
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.53s  Context: 2 msgs, ~6,650 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192408_5dc334
+
+Session:        20260722_192408_5dc334
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.72s  Context: 2 msgs, ~6,650 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192509_7d14d8
+
+Session:        20260722_192509_7d14d8
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.65s  Context: 2 msgs, ~6,650 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192609_ac64ce
+
+Session:        20260722_192609_ac64ce
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.54s  Context: 2 msgs, ~6,650 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192709_e4a7e9
+
+Session:        20260722_192709_e4a7e9
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.73s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192809_a93a50
+
+Session:        20260722_192809_a93a50
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.64s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_192909_796cf1
+
+Session:        20260722_192909_796cf1
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 1.63s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193010_f11839
+
+Session:        20260722_193010_f11839
+Duration:       4s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.86s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193110_521958
+
+Session:        20260722_193110_521958
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.59s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193210_684d70
+
+Session:        20260722_193210_684d70
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.76s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193310_a14c56
+
+Session:        20260722_193310_a14c56
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.85s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193410_3cde91
+
+Session:        20260722_193410_3cde91
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.75s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193510_2993d5
+
+Session:        20260722_193510_2993d5
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.61s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193611_d2ad41
+
+Session:        20260722_193611_d2ad41
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.59s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193711_cf0865
+
+Session:        20260722_193711_cf0865
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.91s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193811_631c33
+
+Session:        20260722_193811_631c33
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.74s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_193911_5a65b3
+
+Session:        20260722_193911_5a65b3
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.76s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194011_5ff108
+
+Session:        20260722_194011_5ff108
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.84s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194111_c9deb9
+
+Session:        20260722_194111_c9deb9
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.69s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194211_b9e94d
+
+Session:        20260722_194211_b9e94d
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.61s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194312_89563b
+
+Session:        20260722_194312_89563b
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.68s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194412_d6501f
+
+Session:        20260722_194412_d6501f
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.80s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194512_59327d
+
+Session:        20260722_194512_59327d
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.51s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194612_5342c4
+
+Session:        20260722_194612_5342c4
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.68s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194712_a3b87a
+
+Session:        20260722_194712_a3b87a
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.87s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194812_ef30fc
+
+Session:        20260722_194812_ef30fc
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.49s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_194913_0ce288
+
+Session:        20260722_194913_0ce288
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.76s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195013_6a3eba
+
+Session:        20260722_195013_6a3eba
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.56s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195113_2434bd
+
+Session:        20260722_195113_2434bd
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 1.04s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195213_67c59b
+
+Session:        20260722_195213_67c59b
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.58s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195313_e90224
+
+Session:        20260722_195313_e90224
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.88s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195413_1e28ac
+
+Session:        20260722_195413_1e28ac
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.64s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195514_20e185
+
+Session:        20260722_195514_20e185
+Duration:       4s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.62s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195614_d27982
+
+Session:        20260722_195614_d27982
+Duration:       2s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.80s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195714_7083fd
+
+Session:        20260722_195714_7083fd
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.96s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195814_1adfa3
+
+Session:        20260722_195814_1adfa3
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.60s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_195914_e58874
+
+Session:        20260722_195914_e58874
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.79s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200014_3130a3
+
+Session:        20260722_200014_3130a3
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 1.50s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200115_4147d9
+
+Session:        20260722_200115_4147d9
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.92s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200215_56b4b0
+
+Session:        20260722_200215_56b4b0
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.88s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200315_5c2a0f
+
+Session:        20260722_200315_5c2a0f
+Duration:       3s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.66s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200422_c08243
+
+Session:        20260722_200422_c08243
+Duration:       7s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 0.76s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200523_2e5484
+
+Session:        20260722_200523_2e5484
+Duration:       5s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 6.97s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200622_91278c
+
+Session:        20260722_200622_91278c
+Duration:       10s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 2.84s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200723_128ec5
+
+Session:        20260722_200723_128ec5
+Duration:       6s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 3.72s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200823_d4e6ec
+
+Session:        20260722_200823_d4e6ec
+Duration:       6s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 4.23s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_200930_c57668
+
+Session:        20260722_200930_c57668
+Duration:       7s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_0120d003
+Initializing agent...
+────────────────────────────────────────
+
+⚠️  API call failed (attempt 1/3): AuthenticationError [HTTP 401]
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   📝 Error: HTTP 401: Missing Authentication header
+   📋 Details: {'message': 'Missing Authentication header', 'code': 401}
+   ⏱️  Elapsed: 15.85s  Context: 2 msgs, ~6,641 tokens
+⚠️ Non-retryable error (HTTP 401) — trying fallback...
+❌ Non-retryable error (HTTP 401): HTTP 401: Missing Authentication header
+❌ Non-retryable client error (HTTP 401). Aborting.
+   🔌 Provider: openrouter  Model: step-router-v1
+   🌐 Endpoint: https://openrouter.ai/api/v1
+   💡 Your API key was rejected by the provider. Check:
+      • Is the key valid? Run: hermes setup
+      • Does your account have access to step-router-v1?
+      • Check credits: https://openrouter.ai/settings/credits
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 401 - {'error': {'message': 'Missing Authentication     
+     header', 'code': 401}}                                                     
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260722_201030_41e900
+
+Session:        20260722_201030_41e900
+Duration:       18s
+Messages:       1 (1 user, 0 tool calls)

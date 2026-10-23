@@ -1,0 +1,16 @@
+{
+  "id": "20260729135635-ops-6df92a",
+  "created_at": "2026-07-29T13:56:35.765130+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195714_7083fd",
+    "title": "",
+    "created_at": 1784721436.6177034
+  },
+  "content": "The user uses Kanban boards as part of their formal work task management workflow, referencing specific work tasks via unique alphanumeric identifiers.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

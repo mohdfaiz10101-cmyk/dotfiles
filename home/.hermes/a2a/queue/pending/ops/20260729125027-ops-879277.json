@@ -1,0 +1,16 @@
+{
+  "id": "20260729125027-ops-879277",
+  "created_at": "2026-07-29T12:50:27.933263+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_192826",
+    "title": "",
+    "created_at": 1784978917.1043556
+  },
+  "content": "The memory-curator skill aborts immediately without retrying when it detects the lock file at `/var/home/charlie/.hermes/memories/MEMORY.md.lock`, indicating concurrent write protection is active and the skill will not self-recover from this state.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

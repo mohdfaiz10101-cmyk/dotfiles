@@ -1,0 +1,15 @@
+{
+  "id": "20260731204912-skill-31c035",
+  "created_at": "2026-07-31T20:49:12.857228+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "waydroid-control",
+    "file": "/var/home/charlie/.hermes/skills/waydroid-control/SKILL.md"
+  },
+  "content": "Skill `waydroid-control` updated. The skill file establishes a prioritized Waydroid control protocol favoring waydroidctl/MCP/Telegram interfaces over video mirroring, defines a default execution sequence (ensure-session → snapshot → launch → ui-dump → action), and mandates LXC freeze prevention before ADB/scrcpy operations. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

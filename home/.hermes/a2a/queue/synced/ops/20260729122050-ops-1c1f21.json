@@ -1,0 +1,17 @@
+{
+  "id": "20260729122050-ops-1c1f21",
+  "created_at": "2026-07-29T12:20:50.497401+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5os69e8nwqxu",
+    "title": "what port for 19910",
+    "created_at": 1785305899.0695865
+  },
+  "content": "Hermes ttyd service uses a two-port proxy architecture: the public-facing port 19910 is served by ttyd-hermes-proxy.js (listening on 0.0.0.0:19910), which forwards all traffic to the internal ttyd backend service bound exclusively to 127.0.0.1:19920.",
+  "confidence": 0.98,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.656670+00:00"
+}

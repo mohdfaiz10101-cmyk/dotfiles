@@ -1,0 +1,16 @@
+{
+  "id": "20260807024602-ops-592c4e",
+  "created_at": "2026-08-07T02:46:02.745675+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e7c28e6ee0c5",
+    "title": "",
+    "created_at": 1786070462.43949
+  },
+  "content": "排查Hermes图片附件识图失效类问题的通用可复用流程为：优先通过模型发现API或Gateway日志确认当前路由模型的capabilities是否包含vision字段（禁止按模型名称推断能力），再抓取实际API请求payload确认图片是否以image_url类型的content block传入，而非仅检查前端上传是否显示成功。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

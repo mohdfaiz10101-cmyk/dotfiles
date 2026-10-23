@@ -1,0 +1,15 @@
+{
+  "id": "20260816140041-skill-d6da06",
+  "created_at": "2026-08-16T14:00:41.241356+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "frp-troubleshooting",
+    "file": "/var/home/charlie/.hermes/skills/frp-troubleshooting/SKILL.md"
+  },
+  "content": "Skill `frp-troubleshooting` updated. Skill frp-troubleshooting updated; review the SKILL.md diff before promoting behavior changes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

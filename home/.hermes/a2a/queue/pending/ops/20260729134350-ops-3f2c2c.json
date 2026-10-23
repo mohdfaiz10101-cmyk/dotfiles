@@ -1,0 +1,16 @@
+{
+  "id": "20260729134350-ops-3f2c2c",
+  "created_at": "2026-07-29T13:43:50.384758+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw8lc7unh9ypw",
+    "title": "",
+    "created_at": 1784734172.0345016
+  },
+  "content": "The user requires persistent, real-time synchronization of all mobile data (including health app metrics, app update records, system update information) from their Android 16 device (model PKR110) to their computer, to enable AI to query mobile status without repeated manual access requests.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

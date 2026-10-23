@@ -1,0 +1,16 @@
+{
+  "id": "20260729135905-ops-a37410",
+  "created_at": "2026-07-29T13:59:05.483921+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195514_20e185",
+    "title": "",
+    "created_at": 1784721316.5339706
+  },
+  "content": "Work tasks for this user are tracked in a structured kanban system, so retrieving task details (e.g., status, requirements, assignee) via the unique task ID is a supported capability for work-related interactions.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

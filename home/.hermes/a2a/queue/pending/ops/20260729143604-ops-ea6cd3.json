@@ -1,0 +1,16 @@
+{
+  "id": "20260729143604-ops-ea6cd3",
+  "created_at": "2026-07-29T14:36:04.775393+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrthfne1dzgt2a",
+    "title": "手机屏幕锁定竖屏",
+    "created_at": 1784567597.2058609
+  },
+  "content": "无root权限时，获得「修改系统设置」权限的普通应用可调用`Settings.System.putInt()`修改屏幕方向相关配置，这是屏幕方向设置被自动改回的常见原因",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

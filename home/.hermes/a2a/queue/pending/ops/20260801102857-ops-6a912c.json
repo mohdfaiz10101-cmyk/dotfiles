@@ -1,0 +1,16 @@
+{
+  "id": "20260801102857-ops-6a912c",
+  "created_at": "2026-08-01T10:28:57.443273+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260801_182619_d6b60a1a",
+    "title": "",
+    "created_at": 1785579979.3795815
+  },
+  "content": "The current Matrix room is officially designated as the dedicated bridge management/status room for this Hermes instance, and all bridge-related management and status query tasks should be routed to this room by default.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

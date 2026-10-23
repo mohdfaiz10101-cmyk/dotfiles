@@ -1,0 +1,16 @@
+{
+  "id": "20260729130926-ops-677093",
+  "created_at": "2026-07-29T13:09:26.097198+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_042740",
+    "title": "",
+    "created_at": 1784924876.4894753
+  },
+  "content": "A recurring phone-sync-failure pattern has been logged 34 consecutive times without resolution, which per the autonomous-task-brain skill rules mandates immediate triggering of a weekly review or alert to address the persistent issue.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

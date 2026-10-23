@@ -1,0 +1,16 @@
+{
+  "id": "20260803171403-ext-9896f0",
+  "created_at": "2026-08-03T17:14:03.218490+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "778d896b7386",
+    "title": "redroid codex",
+    "created_at": 1785777074.8689299
+  },
+  "content": "安装软件时应优先选择非系统盘作为安装目录，避免系统盘被占满影响系统运行与存储可用性",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

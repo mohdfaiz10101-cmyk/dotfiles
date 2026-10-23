@@ -1,0 +1,16 @@
+{
+  "id": "20260729143645-ops-237647",
+  "created_at": "2026-07-29T14:36:45.126724+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtgyv2k5yiida",
+    "title": "",
+    "created_at": 1784566863.5225801
+  },
+  "content": "User requires Hermes to be configured with all memory assets, configuration files, markdown documentation, and Letta memory library content sourced from OpenCode and Codex to unify cross-tool context for Hermes operations.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

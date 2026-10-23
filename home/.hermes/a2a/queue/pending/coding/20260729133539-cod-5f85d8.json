@@ -1,0 +1,16 @@
+{
+  "id": "20260729133539-cod-5f85d8",
+  "created_at": "2026-07-29T13:35:39.131730+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_235022_c70cb2",
+    "title": "",
+    "created_at": 1784821822.618712
+  },
+  "content": "Local/open source coding agent deployment stacks are composed of three core components: local model serving tools (Ollama/LM Studio/vLLM/TGI), code-specialized open models (CodeLlama/Qwen2.5-Coder/DeepSeek-Coder/Codestral/Mistral), and local gateways compatible with the OpenAI API.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

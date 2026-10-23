@@ -1,0 +1,10 @@
+{
+  "slug": "life",
+  "name": "生活",
+  "description": "生活、购物、缴费、日常杂事",
+  "icon": "🏠",
+  "color": "",
+  "default_workdir": null,
+  "created_at": 1784719220,
+  "archived": false
+}

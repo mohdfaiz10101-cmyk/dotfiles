@@ -1,0 +1,16 @@
+{
+  "id": "20260807064601-ops-ec5c58",
+  "created_at": "2026-08-07T06:46:01.638858+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a50bb8fac1da",
+    "title": "",
+    "created_at": 1786084963.5875275
+  },
+  "content": "For this user's self-hosted DuckDNS + reverse proxy stack, public access errors (e.g. 502) should first be debugged by confirming local service liveness on the target port; if the local service is confirmed running, the issue is far more likely to lie in the public entry to local service链路 (reverse proxy config, DuckDNS resolution, port forwarding/NAT) rather than the local service itself.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

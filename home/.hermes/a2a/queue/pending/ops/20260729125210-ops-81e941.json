@@ -1,0 +1,16 @@
+{
+  "id": "20260729125210-ops-81e941",
+  "created_at": "2026-07-29T12:52:10.384657+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_181301",
+    "title": "",
+    "created_at": 1784974394.9555745
+  },
+  "content": "The retrieval phase of the autonomous-task-brain skill is integrated with 5 dedicated knowledge sources to locate reusable task solutions: local skills library, historical sessions, memory-engine, letta, and GitHub repositories.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

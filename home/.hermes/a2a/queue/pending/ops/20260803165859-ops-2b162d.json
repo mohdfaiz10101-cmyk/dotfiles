@@ -1,0 +1,16 @@
+{
+  "id": "20260803165859-ops-2b162d",
+  "created_at": "2026-08-03T16:58:59.631397+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "0a6385f8d096",
+    "title": "",
+    "created_at": 1785776259.6388571
+  },
+  "content": "The service running on 100.87.171.39:8787 is unstable due to underlying NetBird tunnel issues (intermittent latency spikes, disconnections); checking NetBird live status is a required step for 8787 instability root cause analysis.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

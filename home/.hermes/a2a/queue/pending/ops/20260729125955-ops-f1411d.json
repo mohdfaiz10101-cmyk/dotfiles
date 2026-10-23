@@ -1,0 +1,16 @@
+{
+  "id": "20260729125955-ops-f1411d",
+  "created_at": "2026-07-29T12:59:55.219012+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_130309",
+    "title": "",
+    "created_at": 1784955805.8651373
+  },
+  "content": "MEMORY.md has a hard character limit of 2200; when the file exceeds this threshold (e.g., 2258/2200), the curator must compress or trim content before writing to stay within capacity.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

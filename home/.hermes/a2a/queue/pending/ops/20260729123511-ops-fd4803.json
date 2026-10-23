@@ -1,0 +1,16 @@
+{
+  "id": "20260729123511-ops-fd4803",
+  "created_at": "2026-07-29T12:35:11.023600+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "b25eed88-cd32-4226-a03d-38755e9e8e9e",
+    "title": "",
+    "created_at": 1785128496.5780628
+  },
+  "content": "Strict fixed-response confirmation flows are a reusable, low-overhead workflow for validating instruction receipt in agent interactions, and should be supported without unrequested elaboration.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133822-cod-4735ef",
+  "created_at": "2026-07-29T13:38:22.944353+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_215937_404626",
+    "title": "",
+    "created_at": 1784815177.2406735
+  },
+  "content": "公开网页抓取（fetch MCP工具）存在已知稳定性问题，可能出现参数格式错误后进入短暂不可用状态，相关任务需准备备用验证路径",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

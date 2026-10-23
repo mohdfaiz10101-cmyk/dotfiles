@@ -1,0 +1,16 @@
+{
+  "id": "20260729134710-ops-cae880",
+  "created_at": "2026-07-29T13:47:10.495582+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200723_128ec5",
+    "title": "",
+    "created_at": 1784722046.351916
+  },
+  "content": "The user's work task identifiers follow a consistent format of t_ followed by 8 alphanumeric characters, which can be used to parse and recognize work task references in user inputs.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

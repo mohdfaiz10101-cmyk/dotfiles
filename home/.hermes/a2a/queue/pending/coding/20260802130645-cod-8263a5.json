@@ -1,0 +1,16 @@
+{
+  "id": "20260802130645-cod-8263a5",
+  "created_at": "2026-08-02T13:06:45.974993+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbt7ls2pweeoq",
+    "title": "",
+    "created_at": 1785675873.3249981
+  },
+  "content": "外贸采购比价系统的数据抓取硬性规则：必须过滤平台广告/推广位内容，至少抓取搜索结果第2-3页的非广告资源，从源头保障比价资源质量",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

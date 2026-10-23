@@ -1,0 +1,10 @@
+{
+  "slug": "bugs",
+  "name": "缺陷",
+  "description": "缺陷、报错、故障排查",
+  "icon": "🐛",
+  "color": "",
+  "default_workdir": null,
+  "created_at": 1784719225,
+  "archived": false
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260817024610-skill-0da104",
+  "created_at": "2026-08-17T02:46:10.602861+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "skill-graph-maintenance",
+    "file": "/var/home/charlie/.hermes/skills/skill-graph-maintenance/SKILL.md"
+  },
+  "content": "Skill `skill-graph-maintenance` updated. Skill skill-graph-maintenance updated; review the SKILL.md diff before promoting behavior changes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

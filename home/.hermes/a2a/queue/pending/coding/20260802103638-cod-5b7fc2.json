@@ -1,0 +1,16 @@
+{
+  "id": "20260802103638-cod-5b7fc2",
+  "created_at": "2026-08-02T10:36:38.718150+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbnuqrn4kbk9p",
+    "title": "",
+    "created_at": 1785666729.5263517
+  },
+  "content": "Public access to the target Hermes-related service in this setup uses the entry point http://charlie1990.duckdns.org:19976/ (which proxies to 18999, then to the 8787 WebUI), rather than direct public access to port 19910.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

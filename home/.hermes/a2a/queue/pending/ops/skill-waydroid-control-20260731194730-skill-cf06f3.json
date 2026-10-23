@@ -1,0 +1,15 @@
+{
+  "id": "20260731194730-skill-cf06f3",
+  "created_at": "2026-07-31T19:47:30.442872+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "waydroid-control",
+    "file": "/var/home/charlie/.hermes/skills/waydroid-control/SKILL.md"
+  },
+  "content": "Skill `waydroid-control` updated. Added Waydroid control skill defining prioritized tool usage (local CLI/MCP/Telegram over video mirroring), a default execution sequence for session management and UI interaction, and specific rules for headless operation and troubleshooting. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

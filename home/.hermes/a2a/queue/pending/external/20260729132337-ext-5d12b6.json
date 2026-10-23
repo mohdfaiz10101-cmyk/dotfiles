@@ -1,0 +1,16 @@
+{
+  "id": "20260729132337-ext-5d12b6",
+  "created_at": "2026-07-29T13:23:37.943508+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryyc72i7luxuv",
+    "title": "",
+    "created_at": 1784898327.338197
+  },
+  "content": "安卓设备出现操作卡顿、页面渲染延迟时，应优先排查内存耗尽与swap使用情况，而非优先关注CPU负载——即使CPU多核idle占比高，内存不足触发的频繁swap仍会导致操作延迟从ms级跳升至百ms级，是卡顿的核心诱因之一。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

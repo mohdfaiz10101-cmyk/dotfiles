@@ -1,0 +1,17 @@
+{
+  "id": "20260807031155-cod-62fc73",
+  "created_at": "2026-08-07T03:11:55.314875+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ea8a1bebba29",
+    "title": "",
+    "created_at": 1786071951.3587546
+  },
+  "content": "用户明确要求固化长期升级流程：每次Hermes WebUI发布新版本时，自动检测新版本、保留用户自定义规则与设置、完成升级适配，需配套开发自动化脚本与skill实现该全流程。",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.369092+00:00"
+}

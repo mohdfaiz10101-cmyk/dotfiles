@@ -1,0 +1,16 @@
+{
+  "id": "20260729123550-ops-2b8aea",
+  "created_at": "2026-07-29T12:35:50.973230+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260727_030010",
+    "title": "",
+    "created_at": 1785092412.889918
+  },
+  "content": "To produce meaningful output from the daily aider task (instead of empty no-activity summaries), either link/mount a real project code repository to the Hermes workspace, or modify the aider-daily-task.txt file to point to actual code paths for review.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

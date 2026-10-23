@@ -1,0 +1,16 @@
+{
+  "id": "20260729133335-ops-f3f140",
+  "created_at": "2026-07-29T13:33:35.809034+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryengo9hq3p3k",
+    "title": "巡检与workflow通知配置",
+    "created_at": 1784865323.8447363
+  },
+  "content": "The planned network maintenance workflow will integrate Kuma as a core component of the Hermes stack, and requires searching the user's local computer for existing network-related resources to support workflow construction.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

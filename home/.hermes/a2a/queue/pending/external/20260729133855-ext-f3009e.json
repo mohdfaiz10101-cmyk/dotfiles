@@ -1,0 +1,16 @@
+{
+  "id": "20260729133855-ext-f3009e",
+  "created_at": "2026-07-29T13:38:55.432327+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxkqoslpn6enr",
+    "title": "搜索什么值得买内容",
+    "created_at": 1784814987.5178776
+  },
+  "content": "针对什么值得买页面验证码拦截的可复用应对工作流：无需强行请求被拦截页面，可引导用户提供文章标题、截图、关键词（商品名/品牌型号/优惠信息等），即可完成后续内容搜索/提取任务。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

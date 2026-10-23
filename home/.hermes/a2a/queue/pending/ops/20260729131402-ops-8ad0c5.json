@@ -1,0 +1,16 @@
+{
+  "id": "20260729131402-ops-8ad0c5",
+  "created_at": "2026-07-29T13:14:02.811970+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_020653",
+    "title": "",
+    "created_at": 1784916425.120819
+  },
+  "content": "The production environment is experiencing severe resource degradation with 95% disk usage, load averages of 7.81/9.21/10.65, 15Gi/23Gi memory usage, and 15Gi/23Gi swap usage, which is a contributing factor to recurring task failures and requires immediate resource scaling or cleanup actions.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

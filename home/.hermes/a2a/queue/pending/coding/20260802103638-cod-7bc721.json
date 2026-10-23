@@ -1,0 +1,16 @@
+{
+  "id": "20260802103638-cod-7bc721",
+  "created_at": "2026-08-02T10:36:38.718974+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbnuqrn4kbk9p",
+    "title": "",
+    "created_at": 1785666729.5263517
+  },
+  "content": "For self-hosted services that return 502 via public IP:port but work on local loopback and LAN, the prioritized reusable troubleshooting workflow is: 1) Verify the public domain resolves to the actual public IP (not a CDN/edge node like Cloudflare) to rule out edge-level 502s, 2) Check router DNAT configuration for the target port to confirm correct internal backend routing, 3) Validate reverse proxy/port forwarding mappings exist for the target public port.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

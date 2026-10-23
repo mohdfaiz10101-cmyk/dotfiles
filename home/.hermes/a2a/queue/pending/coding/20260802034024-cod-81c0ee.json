@@ -1,0 +1,16 @@
+{
+  "id": "20260802034024-cod-81c0ee",
+  "created_at": "2026-08-02T03:40:24.249564+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb8y9b0qx3zro",
+    "title": "",
+    "created_at": 1785641833.7520936
+  },
+  "content": "Hermes' native built-in capabilities (memory, skills, session_search) cover structured fact storage, procedural memory, and keyword/contextual recall, but lack native support for pure semantic vector retrieval of large unstructured assets (e.g. multi-hundred page configuration files, logs, historical troubleshooting records) to pull only contextually relevant snippets on demand.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

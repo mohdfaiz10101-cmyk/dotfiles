@@ -1,0 +1,654 @@
+== /var/home/charlie/.local/bin/haven-entry-codex ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+cd /var/home/charlie
+
+SESSION="haven-codex"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+        "$CODEX_BIN"
+    tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+    tmux -S "$TMUX_SOCK" set-option -g mouse off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" remain-on-exit off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" allow-passthrough off 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" extended-keys off 2>/dev/null || true
+}
+
+if tmux -S "$TMUX_SOCK" has-session -t "$SESSION" 2>/dev/null; then
+    if ! session_has_live_pane; then
+        tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+        create_session
+    fi
+else
+    create_session
+fi
+
+tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+tmux -S "$TMUX_SOCK" set-option -g mouse off
+printf '\033[?1000l\033[?1002l\033[?1003l\033[?1006l\033[?1004l'
+exec tmux -S "$TMUX_SOCK" attach-session -t "$SESSION"
+
+== /var/home/charlie/.local/bin/haven-entry-codex2 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-2
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+mkdir -p "$CODEX_HOME"
+if systemctl --user start haven-codex2.service 2>/dev/null; then
+    :
+else
+    /var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null
+fi
+
+cd /var/home/charlie
+
+SESSION="haven-codex2"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex2.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+        "$CODEX_BIN"
+    tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+    tmux -S "$TMUX_SOCK" set-option -g mouse off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" remain-on-exit off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" allow-passthrough off 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" extended-keys off 2>/dev/null || true
+}
+
+if tmux -S "$TMUX_SOCK" has-session -t "$SESSION" 2>/dev/null; then
+    if ! session_has_live_pane; then
+        tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+        create_session
+    fi
+else
+    create_session
+fi
+
+tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+
+== /var/home/charlie/.local/bin/haven-entry-codex3 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-3
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -r /var/home/charlie/.config/codex3-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex3-sub2api.env
+    set +a
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+mkdir -p "$CODEX_HOME"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null 2>&1 || true
+systemctl --user start haven-codex3.service 2>/dev/null || true
+
+cd /var/home/charlie
+
+SESSION="haven-codex3"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex3.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+        "$CODEX_BIN"
+    tmux -S "$TMUX_SOCK" set-option -g history-limit 50000
+    tmux -S "$TMUX_SOCK" set-option -g mouse off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" remain-on-exit off
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" allow-passthrough off 2>/dev/null || true
+    tmux -S "$TMUX_SOCK" set-option -t "$SESSION" extended-keys off 2>/dev/null || true
+}
+
+if tmux -S "$TMUX_SOCK" has-session -t "$SESSION" 2>/dev/null; then
+    if ! session_has_live_pane; then
+        tmux -S "$TMUX_SOCK" kill-session -t "$SESSION" 2>/dev/null || true
+        create_session
+
+== /var/home/charlie/.local/bin/haven-entry-codex4 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-4
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -r /var/home/charlie/.config/codex4-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex4-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_4" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-4/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+mkdir -p "$CODEX_HOME"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null 2>&1 || true
+systemctl --user start haven-codex4.service 2>/dev/null || true
+
+cd /var/home/charlie
+
+SESSION="haven-codex4"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex4.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+
+== /var/home/charlie/.local/bin/haven-entry-codex5 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-5
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -r /var/home/charlie/.config/codex5-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex5-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_5" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-5/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+mkdir -p "$CODEX_HOME"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null 2>&1 || true
+systemctl --user start haven-codex5.service 2>/dev/null || true
+
+cd /var/home/charlie
+
+SESSION="haven-codex5"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex5.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+
+== /var/home/charlie/.local/bin/haven-entry-codex6 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-6
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -r /var/home/charlie/.config/codex6-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex6-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_6" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-6/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+mkdir -p "$CODEX_HOME"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null 2>&1 || true
+systemctl --user start haven-codex6.service 2>/dev/null || true
+
+cd /var/home/charlie
+
+SESSION="haven-codex6"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex6.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+
+== /var/home/charlie/.local/bin/haven-entry-codex7 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-7
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -r /var/home/charlie/.config/codex7-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex7-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_7" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-7/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+mkdir -p "$CODEX_HOME"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null 2>&1 || true
+systemctl --user start haven-codex7.service 2>/dev/null || true
+
+cd /var/home/charlie
+
+SESSION="haven-codex7"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex7.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+
+== /var/home/charlie/.local/bin/haven-entry-codex8 ==
+#!/bin/bash
+set -e
+
+export HOME=/var/home/charlie
+export CODEX_HOME=/var/home/charlie/.codex-8
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+export ALL_PROXY=http://127.0.0.1:7890
+export NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net
+export http_proxy="$HTTP_PROXY"
+export https_proxy="$HTTPS_PROXY"
+export all_proxy="$ALL_PROXY"
+export no_proxy="$NO_PROXY"
+export CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run
+export BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ENV=/var/home/charlie/.config/codex-shell-env/env.sh
+export ZDOTDIR=/var/home/charlie/.config/codex-shell-env
+
+if [ -z "${TERM:-}" ] || [ "$TERM" = "dumb" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -r /var/home/charlie/.config/codex8-sub2api.env ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . /var/home/charlie/.config/codex8-sub2api.env
+    set +a
+fi
+if [ "${OPENAI_API_KEY:-}" = "REPLACE_WITH_SUB2API_KEY_FOR_ACCOUNT_8" ]; then
+    unset OPENAI_API_KEY
+fi
+if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+    OPENAI_API_KEY="$(python3 - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path("/var/home/charlie/.codex-8/auth.json").read_text())
+print(data.get("OPENAI_API_KEY") or data.get("api_key") or data.get("key") or "")
+PY
+)"
+fi
+export OPENAI_API_KEY="${OPENAI_API_KEY:-}"
+
+mkdir -p "$CODEX_HOME"
+/var/home/charlie/.local/bin/codex-shared-sync --apply >/dev/null 2>&1 || true
+systemctl --user start haven-codex8.service 2>/dev/null || true
+
+cd /var/home/charlie
+
+SESSION="haven-codex8"
+TMUX_SOCK="$XDG_RUNTIME_DIR/tmux/codex8.sock"
+CODEX_BIN="/var/home/charlie/.local/bin/codex-resume-or-new"
+mkdir -p "$(dirname "$TMUX_SOCK")"
+
+session_has_live_pane() {
+    tmux -S "$TMUX_SOCK" list-panes -t "$SESSION" -F '#{pane_dead}' 2>/dev/null | grep -q '^0$'
+}
+
+create_session() {
+    tmux -S "$TMUX_SOCK" new-session -d -s "$SESSION" -c /var/home/charlie \
+        -e "TERM=tmux-256color" \
+        -e "HOME=$HOME" \
+        -e "CODEX_HOME=$CODEX_HOME" \
+        -e "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" \
+        -e "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" \
+        -e "PATH=$PATH" \
+        -e "HTTP_PROXY=$HTTP_PROXY" \
+        -e "HTTPS_PROXY=$HTTPS_PROXY" \
+        -e "ALL_PROXY=$ALL_PROXY" \
+        -e "NO_PROXY=$NO_PROXY" \
+        -e "http_proxy=$http_proxy" \
+        -e "https_proxy=$https_proxy" \
+        -e "all_proxy=$all_proxy" \
+        -e "no_proxy=$no_proxy" \
+        -e "CODEX_TOKEN_SAFE_RUN=$CODEX_TOKEN_SAFE_RUN" \
+        -e "BASH_ENV=$BASH_ENV" \
+        -e "ENV=$ENV" \
+        -e "ZDOTDIR=$ZDOTDIR" \
+
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

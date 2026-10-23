@@ -1,0 +1,16 @@
+{
+  "id": "20260801122407-ops-dde576",
+  "created_at": "2026-08-01T12:24:07.034217+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "8974877a-6b51-483e-9e25-759349fc5080",
+    "title": "",
+    "created_at": 1785587018.0381174
+  },
+  "content": "This user prefers Chinese-language interaction for task-related conversations, as they did not correct the assistant's Chinese response to their initial English greeting.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

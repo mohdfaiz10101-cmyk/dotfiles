@@ -1,0 +1,16 @@
+{
+  "id": "20260729124802-ops-b3cdd3",
+  "created_at": "2026-07-29T12:48:02.153749+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_001330",
+    "title": "",
+    "created_at": 1784996022.37049
+  },
+  "content": "The memory-curator skill uses a lock file at `/var/home/charlie/.hermes/memories/MEMORY.md.lock` to prevent concurrent writes; when present, the skill skips curation and records the failure rather than retrying blindly.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

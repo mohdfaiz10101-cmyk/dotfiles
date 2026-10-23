@@ -1,0 +1,16 @@
+{
+  "id": "20260729124300-ops-9bfaf7",
+  "created_at": "2026-07-29T12:43:00.151770+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1aofhtohekan",
+    "title": "",
+    "created_at": 1785040030.3287947
+  },
+  "content": "Hermes Studio users have a persistent requirement for per-execution post-run validation of tool call correctness and full step-by-step operation trace display, to enable transparent tracking of all operational processes.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

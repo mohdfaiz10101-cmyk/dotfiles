@@ -1,0 +1,16 @@
+{
+  "id": "20260729134019-ops-31090c",
+  "created_at": "2026-07-29T13:40:19.569752+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxgvmgg09clru",
+    "title": "电脑卡顿优化分析",
+    "created_at": 1784808523.8581164
+  },
+  "content": "The primary cause of this user's computer lag is high system load combined with sustained heavy swap usage, not disk full or pure network issues.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

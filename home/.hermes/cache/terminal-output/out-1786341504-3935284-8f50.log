@@ -1,0 +1,182 @@
+---- TIME 2026/8/10 13:58:25 ----
+ACTIVITY MANAGER ACTIVITIES (dumpsys activity activities)
+Display #0 (activities from top to bottom):
+  * Task{11eb5e8 #61 type=standard A=10729:com.brave.browser U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+    mLastNonFullscreenBounds=Rect(276, 684 - 804, 1764)
+    isSleeping=false
+    topResumedActivity=ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+    * Hist  #0: ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+      packageName=com.brave.browser processName=com.brave.browser
+      launchedFromUid=10627 launchedFromPackage=bitpit.launcher launchedFromFeature=null userId=0
+      app=ProcessRecord{a492883 25225:com.brave.browser/u0a729}
+      Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 xflg=0x4 cmp=com.brave.browser/com.google.android.apps.chrome.Main bnds=[140,364][926,538] mCallingUid=10627 }
+      rootOfTask=true task=Task{11eb5e8 #61 type=standard A=10729:com.brave.browser}
+      taskAffinity=10729:com.brave.browser
+      mActivityComponent=com.brave.browser/org.chromium.chrome.browser.ChromeTabbedActivity
+      baseDir=/data/app/~~cs-7VqvZ45Nx182F0ybBlw==/com.brave.browser-oqxteQtwdrQRUQpHih2dWA==/base.apk
+      dataDir=/data/user/0/com.brave.browser
+      splitDir=[/data/app/~~cs-7VqvZ45Nx182F0ybBlw==/com.brave.browser-oqxteQtwdrQRUQpHih2dWA==/split_chrome.apk, /data/app/~~cs-7VqvZ45Nx182F0ybBlw==/com.brave.browser-oqxteQtwdrQRUQpHih2dWA==/split_config.en.apk, /data/app/~~cs-7VqvZ45Nx182F0ybBlw==/com.brave.browser-oqxteQtwdrQRUQpHih2dWA==/split_config.zh.apk, /data/app/~~cs-7VqvZ45Nx182F0ybBlw==/com.brave.browser-oqxteQtwdrQRUQpHih2dWA==/split_on_demand.apk]
+      stateNotNeeded=false componentSpecified=true mActivityType=standard
+      compat={480dpi} theme=0x7f150509
+--
+       backgroundColorFloating=ffffffff
+      launchFailed=false launchCount=0 lastLaunchTime=-26m5s899ms
+      mHaveState=false mIcicle=null
+      state=RESUMED delayedResume=false finishing=false
+      keysPaused=false inHistory=true idle=true
+      occludesParent=true mNoDisplay=false immersive=false launchMode=4
+      mActivityType=standard
+      isVisibleRequested() =true
+      windows=[Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}]
+      windowType=2
+      providesOrientation=true
+      mOccludesParent=true
+      overrideOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+      requestedOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+      mVisibleRequested=true mVisible=true mClientVisible=true reportedDrawn=true reportedVisible=true
+      mNumInterestingWindows=2 mNumDrawnWindows=2 allDrawn=true)
+      startingData=null firstWindowDrawn=true
+--
+      isTransparentPolicyRunning=false
+      areBoundsLetterboxed=false
+      isLetterboxRunning=false
+      mRootLockActivity=false
+      mShowWhenLocked=false
+      mLaunchedFromMultiSearch=false
+
+  Resumed activities in task display areas (from top to bottom):
+    Resumed: ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+
+  ResumedActivity: ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+
+ActivityTaskSupervisor state:
+  topDisplayFocusedRootTask=Task{11eb5e8 #61 type=standard A=10729:com.brave.browser}
+  Display: mDisplayId=0 (organized)
+    init=1080x2376 560dpi mMinSizeOfResizeableTaskDp=220 base=1080x2376 480dpi cur=1080x2376 app=1080x2376 rng=1080x1080-2376x2376
+mIsDensityForced=true
+    deferred=false mLayoutNeeded=false
+  mLastOrientationSource=WindowedMagnification:0:64@165218114
+  deepestLastOrientationSource=ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+  overrideConfig={1.0 ??mcc??mnc [zh_CN,en_US] ldltr sw360dp w360dp h792dp 480dpi nrml long hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 2376) mAppBounds=Rect(0, 0 - 1080, 2376) mMaxBounds=Rect(0, 0 - 1080, 2376) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.4821 fontWeightAdjustment=0mThemeChanged= 0, mThemeChangedFlags= 0, mFlipFont= 0, mScenario= 0, mAccessibleChanged= -1, mUxIconConfig= 101f177013880020, mMaterialColor= 0, mUserId= 0, mFontUserId= 0, mFontVariationSettings= 11db, mFoldingAngle = -1.0, mIconPackName= , mDarkModeBackgroundMaxL= 0.0, mDarkModeDialogBgMaxL= 27.0, mDarkModeForegroundMinL= 100.0, mOplusConfigType= 1, mOplusChangedConfigs= 0, OpSans= -1, mBurmeseFontFlag= 2, mFlag= 0, mExtraFlag= 0, mFlexibleActivitySuitable= -1, mPuttDisplayFlag= -1}
+  ignoreOrientationRequest=false
+  mLayoutSeq=12017
+  mCurrentFocus=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+  mFocusedApp=ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+
+  mHoldScreenWindow=null
+  mObscuringWindow=null
+  mLastWakeLockHoldingWindow=null
+  mLastWakeLockObscuringWindow=null
+
+  displayId=0
+  mWallpaperTarget=null
+--
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      overrideConfig={0.0 ?mcc??mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustmentmThemeChanged= 0, mThemeChangedFlags= 0, mFlipFont= 0, mScenario= -1, mAccessibleChanged= 0, mUxIconConfig= 0, mMaterialColor= ffffffffffffffff, mUserId= -1, mFontUserId= -1, mFontVariationSettings= ffffffff, mFoldingAngle = -1.0, mIconPackName= , mDarkModeBackgroundMaxL= -1.0, mDarkModeDialogBgMaxL= -1.0, mDarkModeForegroundMinL= -1.0, mOplusConfigType= 0, mOplusChangedConfigs= 0, OpSans= -1, mBurmeseFontFlag= -1, mFlag= 0, mExtraFlag= 0, mFlexibleActivitySuitable= -1, mPuttDisplayFlag= -1}
+      mPreferredTopFocusableRootTask=Task{11eb5e8 #61 type=standard A=10729:com.brave.browser}
+      mLastFocusedRootTask=Task{11eb5e8 #61 type=standard A=10729:com.brave.browser}
+      Application tokens in top down Z order:
+      * Task{11eb5e8 #61 type=standard A=10729:com.brave.browser U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][1080,2376]
+        * ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}
+      * Task{faab78c #1 type=home U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1080,2376]
+        * Task{ef3f58a #7 type=undefined I=bitpit.launcher/.ui.HomeActivity U=0 rootTaskId=1 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][1080,2376]
+          * ActivityRecord{240902400 u0 bitpit.launcher/.ui.HomeActivity t7}
+      * Task{edb7c3c #10 type=recents I=com.android.launcher/com.android.quickstep.RecentsActivity U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1080,2376]
+        * ActivityRecord{215798798 u0 com.android.launcher/com.android.quickstep.RecentsActivity t10}
+--
+    mNavigationBar=Window{79e4aa5 u0 NavigationBar_displayId_0}
+    mNavBarOpacityMode=2
+    mNavigationBarCanMove=false
+    mHasBottomNavigationBar=true
+    mLeftGestureHost=Window{79e4aa5 u0 NavigationBar_displayId_0}
+    mTopGestureHost=Window{6ee9310 u0 StatusBar}
+    mRightGestureHost=Window{79e4aa5 u0 NavigationBar_displayId_0}
+    mBottomGestureHost=Window{79e4aa5 u0 NavigationBar_displayId_0}
+    mFocusedWindow=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+    mTopFullscreenOpaqueWindowState=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+    mSystemBarColorApps={ActivityRecord{217699034 u0 com.brave.browser/com.google.android.apps.chrome.Main t61}}
+    mNavBarColorWindowCandidate=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+    mNavBarBackgroundWindowCandidate=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+    mLastStatusBarAppearanceRegions=
+      AppearanceRegion{LIGHT_STATUS_BARS bounds=[0,0][1080,2376]}
+    mLastLetterboxDetails=
+    mStatusBarBackgroundWindows=
+      Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+    mTopIsFullscreen=false
+    mImeInsetsConsumed=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mRemoteInsetsControllerControlsSystemBars=false
+    mDecorInsetsInfo:
+      ROTATION_0={nonDecorInsets=[0,0][0,0], overrideNonDecorInsets=[0,120][0,48], configInsets=[0,0][0,0], overrideConfigInsets=[0,120][0,48], nonDecorFrame=[0,0][1080,2376], overrideNonDecorFrame=[0,120][1080,2328], configFrame=[0,0][1080,2376], overrideConfigFrame=[0,120][1080,2328]}
+      ROTATION_90={nonDecorInsets=[0,0][0,0], overrideNonDecorInsets=[120,0][0,48], configInsets=[0,0][0,0], overrideConfigInsets=[120,0][0,48], nonDecorFrame=[0,0][2376,1080], overrideNonDecorFrame=[120,0][2376,1032], configFrame=[0,0][2376,1080], overrideConfigFrame=[120,0][2376,1032]}
+      ROTATION_180={nonDecorInsets=[0,0][0,0], overrideNonDecorInsets=[0,0][0,168], configInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,168], nonDecorFrame=[0,0][1080,2376], overrideNonDecorFrame=[0,0][1080,2208], configFrame=[0,0][1080,2376], overrideConfigFrame=[0,0][1080,2208]}
+--
+        InsetsSource id=3 type=ime frame=[0,0][0,0] visibleFrame=[0,1473][1080,2376] visible=false flags= sideHint=NONE boundingRects=null
+        InsetsSource id=27 type=displayCutout frame=[0,0][1080,120] visible=true flags= sideHint=TOP boundingRects=null
+        InsetsSource id=7d610001 type=navigationBars frame=[0,2328][1080,2376] visible=true flags=SUPPRESS_SCRIM sideHint=BOTTOM boundingRects=null
+        InsetsSource id=7d610004 type=systemGestures frame=[0,0][90,2376] visible=true flags= sideHint=LEFT boundingRects=null
+        InsetsSource id=7d610005 type=mandatorySystemGestures frame=[0,2280][1080,2376] visible=true flags= sideHint=BOTTOM boundingRects=null
+        InsetsSource id=7d610006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE boundingRects=null
+        InsetsSource id=7d610024 type=systemGestures frame=[990,0][1080,2376] visible=true flags= sideHint=RIGHT boundingRects=null
+    Control map:
+      Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}:
+        InsetsSourceControl: {7d610001 mType=navigationBars initiallyVisible mSurfacePosition=Point(0, 2244) mInsetsHint=Insets{left=0, top=0, right=0, bottom=48}}
+        InsetsSourceControl: {897a0000 mType=statusBars initiallyVisible mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=120, right=0, bottom=0}}
+        InsetsSourceControl: {3 mType=ime mSurfacePosition=Point(0, 120) mInsetsHint=Insets{left=0, top=0, right=0, bottom=903}}
+    InsetsSourceProviders:
+      InsetsSourceProvider
+        mSource=InsetsSource id=7d610024 type=systemGestures frame=[990,0][1080,2376] visible=true flags= sideHint=RIGHT boundingRects=null
+        mSourceFrame=Rect(990, 0 - 1080, 2376)
+        mIsLeashInitialized=false mHasPendingPosition=false
+--
+      InsetsSourceProvider
+        mSource=InsetsSource id=7d610001 type=navigationBars frame=[0,2328][1080,2376] visible=true flags=SUPPRESS_SCRIM sideHint=BOTTOM boundingRects=null
+        mSourceFrame=Rect(0, 2328 - 1080, 2376)
+        mControl=InsetsSourceControl mId=7d610001 mType=navigationBars mLeash=Surface(name=Surface(name=79e4aa5 NavigationBar_displayId_0)/@0x35181d6 - animation-leash of insets_animation)/@0x1d99184 mInitiallyVisible=true mSurfacePosition=Point(0, 2244) mInsetsHint=Insets{left=0, top=0, right=0, bottom=48} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=0, right=0, bottom=48}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWindowContainer=Window{79e4aa5 u0 NavigationBar_displayId_0}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=79e4aa5 NavigationBar_displayId_0)/@0x35181d6 - animation-leash of insets_animation)/@0x1d99184
+        mControlTarget=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+      ImeInsetsSourceProvider
+        mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visibleFrame=[0,1473][1080,2376] visible=false flags= sideHint=NONE boundingRects=null
+        mSourceFrame=Rect(0, 1473 - 1080, 2376)
+        mControl=InsetsSourceControl mId=3 mType=ime mLeash=Surface(name=Surface(name=941ef04 InputMethod)/@0x2378722 - animation-leash of insets_animation)/@0x50663b4 mInitiallyVisible=false mSurfacePosition=Point(0, 120) mInsetsHint=Insets{left=0, top=0, right=0, bottom=903} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=0, right=0, bottom=903}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWindowContainer=Window{941ef04 u0 InputMethod}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=941ef04 InputMethod)/@0x2378722 - animation-leash of insets_animation)/@0x50663b4
+        mControlTarget=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+        mImeShowing=false mLastDrawn=false        showImePostLayout not scheduled, mImeRequester=null
+
+      InsetsSourceProvider
+        mSource=InsetsSource id=897a0006 type=tappableElement frame=[0,0][1080,120] visible=true flags= sideHint=TOP boundingRects=null
+        mSourceFrame=Rect(0, 0 - 1080, 120)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWindowContainer=Window{6ee9310 u0 StatusBar}
+      InsetsSourceProvider
+--
+      InsetsSourceProvider
+        mSource=InsetsSource id=897a0000 type=statusBars frame=[0,0][1080,120] visible=true flags= sideHint=TOP boundingRects=null
+        mSourceFrame=Rect(0, 0 - 1080, 120)
+        mControl=InsetsSourceControl mId=897a0000 mType=statusBars mLeash=Surface(name=Surface(name=6ee9310 StatusBar)/@0xdd11344 - animation-leash of insets_animation)/@0x11ce857 mInitiallyVisible=true mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=120, right=0, bottom=0} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=120, right=0, bottom=0}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWindowContainer=Window{6ee9310 u0 StatusBar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=6ee9310 StatusBar)/@0xdd11344 - animation-leash of insets_animation)/@0x11ce857
+        mControlTarget=Window{b23d049 u0 com.brave.browser/com.google.android.apps.chrome.Main}
+  InsetsPolicy
+    status: WINDOW_STATE_SHOWING
+    nav: WINDOW_STATE_SHOWING
+
+    TransitionController:
+        mPlayingTransitions:0
+      mWaitingTransitions:0
+    BLASTSyncEngine:
+
+__HERMES_CWD_0b711898177a__/var/home/charlie/workspace__HERMES_CWD_0b711898177a__

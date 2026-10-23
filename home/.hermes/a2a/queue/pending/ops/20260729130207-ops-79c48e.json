@@ -1,0 +1,16 @@
+{
+  "id": "20260729130207-ops-79c48e",
+  "created_at": "2026-07-29T13:02:07.385156+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_111419",
+    "title": "",
+    "created_at": 1784949270.588716
+  },
+  "content": "The pre-configured weekly-review cron job (designed to address recurring failure patterns) has never been executed, with last_run_at set to null and repeat.completed count of 0.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

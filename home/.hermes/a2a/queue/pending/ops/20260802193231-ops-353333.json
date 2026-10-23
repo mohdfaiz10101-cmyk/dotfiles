@@ -1,0 +1,16 @@
+{
+  "id": "20260802193231-ops-353333",
+  "created_at": "2026-08-02T19:32:31.221691+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc70wzlay46z7",
+    "title": "",
+    "created_at": 1785698951.4662447
+  },
+  "content": "在Hermes会话中生成含图片的Excel文件时，优先采用「生成带图片占位框的模板+用户本地粘贴图片」的方案，可避免用户上传图片消耗vision额度，是低成本的落地路径",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

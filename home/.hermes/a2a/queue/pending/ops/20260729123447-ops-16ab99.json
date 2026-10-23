@@ -1,0 +1,16 @@
+{
+  "id": "20260729123447-ops-16ab99",
+  "created_at": "2026-07-29T12:34:47.419429+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2s5tecj4v4kv",
+    "title": "",
+    "created_at": 1785129799.1824265
+  },
+  "content": "To enable ADB remote control functionality (including operations on locked devices), the device must have USB debugging enabled and the ADB daemon (adbd) running; root access is required for privileged operations such as accessing data protected by the lock screen.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

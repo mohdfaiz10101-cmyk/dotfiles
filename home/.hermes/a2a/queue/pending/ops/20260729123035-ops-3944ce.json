@@ -1,0 +1,16 @@
+{
+  "id": "20260729123035-ops-3944ce",
+  "created_at": "2026-07-29T12:30:35.468855+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "48894f910ff5",
+    "title": "",
+    "created_at": 1785190559.9553719
+  },
+  "content": "Brave browser notification blocking for Hermes WebUI is a client-side browser permission issue, not a Hermes backend configuration problem, and can be resolved via Brave's built-in settings pages: site-specific permissions at brave://settings/content/notifications, global notification settings at brave://settings/notifications, with no need to modify Hermes server-side files.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

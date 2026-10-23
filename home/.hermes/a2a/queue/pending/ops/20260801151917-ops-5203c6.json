@@ -1,0 +1,16 @@
+{
+  "id": "20260801151917-ops-5203c6",
+  "created_at": "2026-08-01T15:19:17.588726+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msaiiqvd0zb3ze",
+    "title": "",
+    "created_at": 1785597429.0356
+  },
+  "content": "The user operates Android devices with NetBird (open-source zero-trust remote access software) deployed, and has encountered a recurring issue where the NetBird Android client is unexpectedly terminated, leading to persistent reconnection loops.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

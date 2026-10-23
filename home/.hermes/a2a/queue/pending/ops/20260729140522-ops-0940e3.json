@@ -1,0 +1,16 @@
+{
+  "id": "20260729140522-ops-0940e3",
+  "created_at": "2026-07-29T14:05:22.496092+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194812_c48eec",
+    "title": "",
+    "created_at": 1784720894.767059
+  },
+  "content": "Work-related support sessions for this user are commonly contextualized by linking to their kanban task IDs to align assistance with their active work priorities and existing task tracking workflow.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

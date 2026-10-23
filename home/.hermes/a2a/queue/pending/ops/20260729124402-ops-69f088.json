@@ -1,0 +1,16 @@
+{
+  "id": "20260729124402-ops-69f088",
+  "created_at": "2026-07-29T12:44:02.636269+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms11axk1ecsi6b",
+    "title": "",
+    "created_at": 1785024209.7907703
+  },
+  "content": "A reusable troubleshooting workflow for 'task sent but not executed' failures on LAN-hosted services using non-standard high ports (e.g., 19910) is to first validate: 1) the service host is powered on and reachable on the LAN, 2) the target service process is actively listening on the specified port, 3) no host or network firewall rules block traffic to the port, before checking application-level task logic.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

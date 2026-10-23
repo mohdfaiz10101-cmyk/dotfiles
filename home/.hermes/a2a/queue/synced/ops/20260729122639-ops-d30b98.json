@@ -1,0 +1,17 @@
+{
+  "id": "20260729122639-ops-d30b98",
+  "created_at": "2026-07-29T12:26:39.793323+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "f7be031b-6af1-4a08-9ab4-7af06fd4e1b5",
+    "title": "",
+    "created_at": 1785229894.6482785
+  },
+  "content": "Hermes adopts a casual, friendly interaction tone, using colloquial phrasing and emoji in user-facing responses.",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.659974+00:00"
+}

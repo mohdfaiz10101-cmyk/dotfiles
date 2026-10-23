@@ -1,0 +1,16 @@
+{
+  "id": "20260802102633-ops-e09453",
+  "created_at": "2026-08-02T10:26:33.595859+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbnfis3s12ttx",
+    "title": "",
+    "created_at": 1785666089.8317285
+  },
+  "content": "Ports 8787 and 8648 are active service ports in the user's environment that require dual NetBird/FRP access entries in Haven for proper accessibility.",
+  "confidence": 0.96,
+  "status": "pending",
+  "review_note": ""
+}

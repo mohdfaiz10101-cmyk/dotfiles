@@ -1,0 +1,93 @@
+{
+  "task_id": "mesh-20260801195330-9380c3dd",
+  "title": "2026-08-01 network repair handoff",
+  "objective": "只读复盘 2026-08-01 手机网络修复：读取 must-read 中 2026-08-01 相关段落，确认 Hermes 记忆/NetBird runbook 已共享。输出简短摘要：已修复项、验证证据、后续 watchpoints。不要启动任何网络修改或 live 诊断。",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [
+    "/var/home/charlie/.ai-context/runbooks/netbird.md",
+    "/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md",
+    "/var/home/charlie/.claude/projects/-home-charlie/memory/router-infra.md"
+  ],
+  "constraints": [
+    "Read only the listed updated sections",
+    "Do not launch live diagnostics",
+    "Return concise summary and watchpoints only"
+  ],
+  "summary_hint": "DuckDNS 19910/8648 fixed; NetBird 5000 flapping caused by health timers restarting host on phone peer ping failure; scripts updated and phone probes pass.",
+  "router": {
+    "message": "只读复盘 2026-08-01 手机网络修复：读取 must-read 中 2026-08-01 相关段落，确认 Hermes 记忆/NetBird runbook 已共享。输出简短摘要：已修复项、验证证据、后续 watchpoints。不要启动任何网络修改或 live 诊断。",
+    "skills_to_load": [
+      "ops-autopilot",
+      "default-model-step-router",
+      "matrix-app-bridge",
+      "memory-curator",
+      "system-cleanup",
+      "network-ops",
+      "android-proxy-netbird-config",
+      "hermes-runtime-debugging"
+    ],
+    "workflow_rules": [
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"b95497c09c32\", \"last_verified\": \"2026-07-21T19:14:47\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"d089807cde063cd1ceba\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"58023236a9ca\", \"last_verified\": \"2026-07-22T04:26:40\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"repo\", \"source_events\": [\"c8e85f44b8a21ce2ae57\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): codegraph.md\", \"reuse bounded tool",
+        "scope": "repo",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"07599867c9ca\", \"last_verified\": \"2026-07-21T20:58:00\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"7846550b1fb8bef67e16\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.45, \"id\": \"5edc95264cc3\", \"last_verified\": \"2026-07-21T20:17:37\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"codex\", \"source_events\": [\"f0c723fc6d1ef4f7b8df\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): codex-multi-account-routing.md, ",
+        "scope": "codex",
+        "confidence": 0.45
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.95, \"id\": \"34835f7a7717\", \"last_verified\": \"2026-07-22T12:43:13\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"42117053f69fec48fbd8\", \"119caa920f15fad02584\"], \"status\": \"verified\", \"steps\": [\"read relevant runbook(s): openco",
+        "scope": "opencode",
+        "confidence": 0.95
+      },
+      {
+        "score": 3,
+        "text": "Do not keep retrying redroid on this exact Fedora Silverblue 44 kernel `6.19.10-300.fc44.x86_64` by switching only between Podman/crun, Podman/runc, Docker/runc, redroid 12, or redroid 14. On 2026-08-01 all of those combinations still failed with Android init `Failed to initialize property area` / `",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"a69755067869\", \"last_verified\": \"2026-07-25T19:23:36\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"ed08f09e700d5e3a59b3\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-18",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 3,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"6689e7359214\", \"last_verified\": \"2026-07-21T23:21:24\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"a57fddb0597f452851c7\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-18",
+        "scope": "opencode",
+        "confidence": 0.85
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T19:53:30+08:00",
+  "status": "queued"
+}

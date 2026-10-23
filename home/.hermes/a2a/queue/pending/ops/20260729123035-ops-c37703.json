@@ -1,0 +1,16 @@
+{
+  "id": "20260729123035-ops-c37703",
+  "created_at": "2026-07-29T12:30:35.469407+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "48894f910ff5",
+    "title": "",
+    "created_at": 1785190559.9553719
+  },
+  "content": "For all Hermes WebUI notification functionality issues, the first troubleshooting step should be to verify browser-level site notification permissions for the Hermes WebUI domain, rather than investigating Hermes/Studio backend configuration, as notification blocking is almost always a client-side browser permission problem.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

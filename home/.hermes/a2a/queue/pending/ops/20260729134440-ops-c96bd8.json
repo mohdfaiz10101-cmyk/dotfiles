@@ -1,0 +1,16 @@
+{
+  "id": "20260729134440-ops-c96bd8",
+  "created_at": "2026-07-29T13:44:40.605239+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_201030_5830d3",
+    "title": "",
+    "created_at": 1784722236.975735
+  },
+  "content": "This user's primary workflow for locating specific work kanban tasks is ID-based lookup, rather than relying on task descriptions or attributes.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

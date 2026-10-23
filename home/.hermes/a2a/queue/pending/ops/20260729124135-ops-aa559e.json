@@ -1,0 +1,16 @@
+{
+  "id": "20260729124135-ops-aa559e",
+  "created_at": "2026-07-29T12:41:35.046112+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1ck1l5w7r9lf",
+    "title": "",
+    "created_at": 1785043110.9070368
+  },
+  "content": "Hermes session archiving is a non-destructive state marker: archived sessions remain fully accessible via Studio API endpoints (including session detail, context, and export endpoints) and can be restored to full visibility via the unarchive endpoint.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

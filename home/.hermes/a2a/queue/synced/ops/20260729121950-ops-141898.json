@@ -1,0 +1,17 @@
+{
+  "id": "20260729121950-ops-141898",
+  "created_at": "2026-07-29T12:19:50.006631+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms605e05h1jp2p",
+    "title": "",
+    "created_at": 1785324564.0339756
+  },
+  "content": "Letta MCP tool has a known 120s timeout failure mode; use a 3-step fallback hierarchy to access Letta agent data: 1) Retry the mcp_letta_agents call, 2) Use terminal letta CLI or curl to http://localhost:8283/v1/agents to bypass the MCP layer, 3) If Letta is unreachable, document intended agent structure and create agent creation scripts without live verification.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.655535+00:00"
+}

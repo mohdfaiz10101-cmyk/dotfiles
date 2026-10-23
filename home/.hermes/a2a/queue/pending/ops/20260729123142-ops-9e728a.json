@@ -1,0 +1,16 @@
+{
+  "id": "20260729123142-ops-9e728a",
+  "created_at": "2026-07-29T12:31:42.222073+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3q2e70bqyapn",
+    "title": "",
+    "created_at": 1785186714.0681767
+  },
+  "content": "Avoid using global mutable state for async third-party platform adapters to prevent concurrency issues like duplicate adapter creation for concurrent same-account requests; ensure consistent UA/TLS fingerprint configuration across all request paths for a single adapter to reduce anti-scraping detection risk.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

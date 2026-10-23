@@ -1,0 +1,16 @@
+{
+  "id": "20260729123340-ops-e8eb4e",
+  "created_at": "2026-07-29T12:33:40.686022+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "5d2b7d7ac727",
+    "title": "",
+    "created_at": 1785131014.9831665
+  },
+  "content": "The hermes-monitor-panel component's occupied port is hardcoded in its panel-server.py source code, so modifying its port requires changing the source code rather than only adjusting service configuration files.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

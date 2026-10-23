@@ -1,0 +1,16 @@
+{
+  "id": "20260729143811-ops-0e2857",
+  "created_at": "2026-07-29T14:38:11.575984+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtfyrocq440an",
+    "title": "",
+    "created_at": 1784565081.7199075
+  },
+  "content": "For production deployment environments, the active LTS (Long Term Support) release of Node.js is preferred over the latest current release, as LTS versions receive extended security patches and bug fix support, reducing long-term runtime risk for production applications.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

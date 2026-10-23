@@ -1,0 +1,16 @@
+{
+  "id": "20260729133931-ops-8e5853",
+  "created_at": "2026-07-29T13:39:31.394176+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxil0mps77g02",
+    "title": "Hermes Studio 分类创建",
+    "created_at": 1784811382.4169574
+  },
+  "content": "Hermes Studio's session category creation backend API (POST /api/hermes/session-categories) is functional even if the current Web UI does not expose the create entry, so new session categories can be created via direct API call without relying on frontend interface support.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729140242-ops-7f5a37",
+  "created_at": "2026-07-29T14:02:42.179201+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195113_2434bd",
+    "title": "",
+    "created_at": 1784721075.7518032
+  },
+  "content": "The user organizes work-related kanban tasks under a 'work' named board or project category within their task tracking system.",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

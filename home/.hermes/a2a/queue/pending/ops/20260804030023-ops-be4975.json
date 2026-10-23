@@ -1,0 +1,16 @@
+{
+  "id": "20260804030023-ops-be4975",
+  "created_at": "2026-08-04T03:00:23.228376+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e3a1088b9235",
+    "title": "我如果在hermes要压缩提取精华的上下文然后新开一个窗口 删除老的 用什么skill 我重新开一个窗口上下文是不是要重新导入",
+    "created_at": 1785812116.3177722
+  },
+  "content": "在Hermes中开新会话窗口无需重新导入全部历史上下文，合理操作是先对原会话做上下文压缩/摘要，再将摘要作为新会话的初始seed，该方式可减少重复导入上下文带来的token消耗",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802190249-ops-ad89a1",
+  "created_at": "2026-08-02T19:02:49.136399+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc5yynsvbscr6",
+    "title": "",
+    "created_at": 1785697199.636059
+  },
+  "content": "The Hermes `learn` skill has a strict runtime dependency on a Hermes Agent version that exposes the `agent.learn_prompt` capability; the error 'requires a newer Hermes Agent runtime with agent.learn_prompt' is a definitive indicator of an outdated Hermes Agent runtime, not a skill configuration or usage issue.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

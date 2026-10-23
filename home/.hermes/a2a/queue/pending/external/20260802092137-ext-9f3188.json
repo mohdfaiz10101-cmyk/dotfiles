@@ -1,0 +1,16 @@
+{
+  "id": "20260802092137-ext-9f3188",
+  "created_at": "2026-08-02T09:21:37.336875+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbl5m3vd6nsvf",
+    "title": "",
+    "created_at": 1785662193.3780973
+  },
+  "content": "For Chinese-speaking Android users, generic Google global troubleshooting guides for Google Play access issues are largely ineffective, as regional network constraints are the primary root cause of such failures for this user group, so localized guidance focused on network configuration is required.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

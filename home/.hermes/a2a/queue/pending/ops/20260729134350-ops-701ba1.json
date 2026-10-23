@@ -1,0 +1,16 @@
+{
+  "id": "20260729134350-ops-701ba1",
+  "created_at": "2026-07-29T13:43:50.386662+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw8lc7unh9ypw",
+    "title": "",
+    "created_at": 1784734172.0345016
+  },
+  "content": "For the '我我身体' health app's 3D health monitoring feature, the user expects the AI to first extract the view's structural details (body part hierarchies, tracked health metrics, interaction logic) once the page is accessed, then generate a functional prototype (supporting HTML/CSS or React/Tailwind implementation) based on the extracted structure.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

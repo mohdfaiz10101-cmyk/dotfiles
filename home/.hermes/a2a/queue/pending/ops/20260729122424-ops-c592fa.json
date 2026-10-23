@@ -1,0 +1,16 @@
+{
+  "id": "20260729122424-ops-c592fa",
+  "created_at": "2026-07-29T12:24:24.948528+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2fad3a9ff445",
+    "title": "磁盘清理操作结果",
+    "created_at": 1785240626.2990062
+  },
+  "content": "A key domain pitfall for this user's disk cleanup operations is accidental deletion of important user data; cleanup processes should always prioritize cleaning non-critical storage (temporary directories, download folders, system cache) before accessing user data directories to mitigate this risk.",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

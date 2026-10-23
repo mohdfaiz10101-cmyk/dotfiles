@@ -1,0 +1,16 @@
+{
+  "id": "20260802032023-cod-b64dd6",
+  "created_at": "2026-08-02T03:20:23.468713+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb83jd7yfzev9",
+    "title": "Windows原生一键部署Codex服务",
+    "created_at": 1785640530.9642534
+  },
+  "content": "ttyd暴露交互式CLI服务的通用配置范式：默认使用19899端口、绑定0.0.0.0接口支持外网访问、通过`--auth`参数配置HTTP基础认证，服务默认按需启动，适配Codex等TTY类服务的Web化需求",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

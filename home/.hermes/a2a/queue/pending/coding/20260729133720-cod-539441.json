@@ -1,0 +1,16 @@
+{
+  "id": "20260729133720-cod-539441",
+  "created_at": "2026-07-29T13:37:20.812697+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "aa0dc26a-f9aa-44d0-9603-fe04c5409626",
+    "title": "",
+    "created_at": 1784815481.287057
+  },
+  "content": "用户明确需要覆盖1688、淘宝、拼多多、速卖通等平台的选品、货源、商品筛选场景的GitHub真实开源项目及浏览器扩展清单，输出需为中文，包含项目名、官方GitHub链接、用途简介，优先推荐已验证存在的项目。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

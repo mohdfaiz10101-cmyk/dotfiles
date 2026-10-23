@@ -1,0 +1,15 @@
+{
+  "id": "20260730153012-skill-9469e3",
+  "created_at": "2026-07-30T15:30:12.798832+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file added an auto-generated Optimized Runtime Hints section containing structured agent troubleshooting workflow instructions for network connectivity anomalies and a notice that the hints should not be hand-edited and require re-running evolution to refresh, supplementing its existing Fedora+Android network operations and troubleshooting guidance. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

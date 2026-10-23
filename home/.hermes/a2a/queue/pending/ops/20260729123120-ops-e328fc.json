@@ -1,0 +1,16 @@
+{
+  "id": "20260729123120-ops-e328fc",
+  "created_at": "2026-07-29T12:31:20.245646+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3q8oq0lwkryu",
+    "title": "",
+    "created_at": 1785187004.9513664
+  },
+  "content": "To avoid the uniform traffic fingerprint issue common in public Grok adaptation templates, the adaptation layer must implement all core logic from scratch without reusing off-the-shelf solutions: mandatory custom implementations include a self-built random-switching UA pool, randomized floating timeout ranges, custom request body conversion with slight parameter perturbation, custom SSE stream parsing logic, cookie-based session authentication with self-implemented health checks, and local JSON persistent storage for Cookie.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

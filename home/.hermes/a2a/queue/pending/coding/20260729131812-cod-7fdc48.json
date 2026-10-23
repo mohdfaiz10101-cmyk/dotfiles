@@ -1,0 +1,16 @@
+{
+  "id": "20260729131812-cod-7fdc48",
+  "created_at": "2026-07-29T13:18:12.433975+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz5d47nwxdqh5",
+    "title": "",
+    "created_at": 1784910073.6771824
+  },
+  "content": "When troubleshooting CGC MCP server connectivity, verifying a port is in a listening state is insufficient to confirm reachability: additional checks of bind address, process runtime status, and service health are required, as listening ports may still refuse connections due to underlying issues.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

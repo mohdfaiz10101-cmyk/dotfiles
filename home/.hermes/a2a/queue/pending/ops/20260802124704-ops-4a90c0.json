@@ -1,0 +1,16 @@
+{
+  "id": "20260802124704-ops-4a90c0",
+  "created_at": "2026-08-02T12:47:04.018524+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbshuobbcn1gh",
+    "title": "",
+    "created_at": 1785674589.2812243
+  },
+  "content": "The user's intended use case for the live mode covers both desktop computer and mobile device operation monitoring, indicating a cross-platform operation visibility requirement for Hermes Studio's automation workflows.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

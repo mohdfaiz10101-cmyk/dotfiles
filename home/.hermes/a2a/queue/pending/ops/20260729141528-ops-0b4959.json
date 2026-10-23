@@ -1,0 +1,16 @@
+{
+  "id": "20260729141528-ops-0b4959",
+  "created_at": "2026-07-29T14:15:28.070724+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193711_aaac2f",
+    "title": "",
+    "created_at": 1784720233.9055827
+  },
+  "content": "Work-related session contexts are often linked to specific kanban task IDs to maintain traceability between conversations and task management workflows",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

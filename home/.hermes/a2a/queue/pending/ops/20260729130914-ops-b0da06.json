@@ -1,0 +1,16 @@
+{
+  "id": "20260729130914-ops-b0da06",
+  "created_at": "2026-07-29T13:09:14.224286+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_043237",
+    "title": "",
+    "created_at": 1784925175.2276037
+  },
+  "content": "The skill maintains a watchdog state tracking consecutive failures (currently 12), last_status, and silent_mode; persistent failures indicate the lock file or other blocking condition is preventing normal operation.",
+  "confidence": 0.96,
+  "status": "pending",
+  "review_note": ""
+}

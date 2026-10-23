@@ -1,0 +1,15 @@
+{
+  "id": "20260810143021-skill-612370",
+  "created_at": "2026-08-10T14:30:21.889968+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "hermes-skill-optimization",
+    "file": "/var/home/charlie/.hermes/skills/hermes-skill-optimization/SKILL.md"
+  },
+  "content": "Skill `hermes-skill-optimization` updated. The hermes-skill-optimization skill file was revised to center on addressing skill loading mechanism gaps (rather than skill content flaws) as the root cause of Hermes Agent's low skill calling accuracy, adding a root cause analysis section with symptom-to-root-cause mappings, key issues including voluntary LLM skill loading, mismatched slash command naming, and unenforced loading of reviewed skills, plus related issue references. Impact: high",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

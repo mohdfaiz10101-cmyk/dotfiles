@@ -1,0 +1,16 @@
+{
+  "id": "20260729130704-ops-61fe5a",
+  "created_at": "2026-07-29T13:07:04.761974+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_064921",
+    "title": "",
+    "created_at": 1784933372.7284186
+  },
+  "content": "When handling incoming tasks, the autonomous-task-brain skill weighs historical task success rates, task complexity, and user preferences to automatically select between executing the task, suggesting a solution, or skipping it.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

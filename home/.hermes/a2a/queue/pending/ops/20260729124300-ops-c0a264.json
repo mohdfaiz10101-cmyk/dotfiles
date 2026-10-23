@@ -1,0 +1,16 @@
+{
+  "id": "20260729124300-ops-c0a264",
+  "created_at": "2026-07-29T12:43:00.152058+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1aofhtohekan",
+    "title": "",
+    "created_at": 1785040030.3287947
+  },
+  "content": "When addressing tool call traceability and correctness verification needs in Hermes Studio, users prioritize adopting community-vetted solutions and best practices sourced from public internet resources.",
+  "confidence": 0.94,
+  "status": "pending",
+  "review_note": ""
+}

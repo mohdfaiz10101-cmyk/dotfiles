@@ -1,0 +1,15 @@
+{
+  "id": "20260810142835-skill-c7871d",
+  "created_at": "2026-08-10T14:28:35.063745+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "default-model-step-router",
+    "file": "/var/home/charlie/.hermes/skills/default-model-step-router/SKILL.md"
+  },
+  "content": "Skill `default-model-step-router` updated. This skill file is newly added to unify lock the default model of Hermes CLI/Web UI/Studio/OpenHands CLI/WebUI as step-router-v1, support one-click switching between providers such as stepfun and stepfun-new, and provide functions including automatic trigger, post-execution verification, port memory and periodic self-check, which does not replace Hermes native configuration but only provides batch locking, switching and related auxiliary capabilities. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

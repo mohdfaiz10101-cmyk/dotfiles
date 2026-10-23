@@ -1,0 +1,15 @@
+{
+  "id": "20260729191320-skill-3ea278",
+  "created_at": "2026-07-29T19:13:20.971842+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file has appended an auto-generated optimized runtime hints section (containing standardized network anomaly troubleshooting workflow instructions, sourced from a 2026-07-29 reference file and marked as non-manually-editable to be refreshed by re-running the hermes-agent-self-evolution tool) to its original Fedora + Android network operations and fault troubleshooting content. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

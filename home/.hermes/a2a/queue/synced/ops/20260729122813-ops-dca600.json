@@ -1,0 +1,17 @@
+{
+  "id": "20260729122813-ops-dca600",
+  "created_at": "2026-07-29T12:28:13.897709+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4e327829-0534-4dce-aa30-3c91eb134fa2",
+    "title": "",
+    "created_at": 1785228294.3679912
+  },
+  "content": "The provided session contains only a user greeting ('hi') with no substantive task, configuration, workflow, domain, or preference content to extract durable actionable facts from.",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.661540+00:00"
+}

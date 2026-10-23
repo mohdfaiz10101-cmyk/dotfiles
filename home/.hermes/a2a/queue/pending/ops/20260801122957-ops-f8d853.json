@@ -1,0 +1,16 @@
+{
+  "id": "20260801122957-ops-f8d853",
+  "created_at": "2026-08-01T12:29:57.995782+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d950d7a6-02b7-4823-8343-bc353d2b9974",
+    "title": "",
+    "created_at": 1785587104.233493
+  },
+  "content": "For casual conversational exchanges where the user initiates with an English greeting and no explicit language preference is stated, the default response language is Mandarin Chinese.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124411-ops-4bddf8",
+  "created_at": "2026-07-29T12:44:11.814218+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms10wca5di8r7q",
+    "title": "",
+    "created_at": 1785023556.1422453
+  },
+  "content": "flexime输入法在移动端存在输入法界面无法弹出的已知兼容性问题，可通过其他输入法正常运行的状态快速定位为该输入法自身的适配/配置问题",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260801102857-ops-3d730a",
+  "created_at": "2026-08-01T10:28:57.445152+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260801_182619_d6b60a1a",
+    "title": "",
+    "created_at": 1785579979.3795815
+  },
+  "content": "Bridge connection status check is a pre-supported core actionable task for this registered bridge management room, which can be executed directly upon user request without additional configuration.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

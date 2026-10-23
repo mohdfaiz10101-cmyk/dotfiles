@@ -1,0 +1,16 @@
+{
+  "id": "20260729133200-ops-79b609",
+  "created_at": "2026-07-29T13:32:00.797845+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "674ae4bf-cd2a-47b8-8212-45c313ef8fd5",
+    "title": "网络巡检自动修复",
+    "created_at": 1784866391.4241838
+  },
+  "content": "A standard network proxy health pre-check workflow consists of sequentially running `mihomo-guardian --check`, `network-resilience-maintenance`, and `network-guard.sh`; if all commands exit normally and mihomo-guardian returns 204 for both proxy_test and http endpoints, the proxy layer is confirmed healthy.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

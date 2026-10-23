@@ -1,0 +1,16 @@
+{
+  "id": "20260729130223-ops-bad576",
+  "created_at": "2026-07-29T13:02:23.645782+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_105604",
+    "title": "",
+    "created_at": 1784948178.2635648
+  },
+  "content": "The current production environment has persistent correlated resource and service issues: 97% disk usage, 16Gi/23Gi memory usage, 16Gi/23Gi swap usage, inactive phone-sync-import.timer, unreachable ADB device 100.87.37.3:5555, and a never-executed weekly-review cron job (last_run_at=null, repeat.completed=0), all of which are linked to the recurring phone-sync-failure pattern and are priority remediation targets for the autonomous task workflow.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

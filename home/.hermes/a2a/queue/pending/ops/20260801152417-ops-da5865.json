@@ -1,0 +1,16 @@
+{
+  "id": "20260801152417-ops-da5865",
+  "created_at": "2026-08-01T15:24:17.934778+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msain7hcfxg454",
+    "title": "公网服务子域名统一管理",
+    "created_at": 1785597566.9602852
+  },
+  "content": "用户偏好将所有对外暴露的公网服务（含不同端口的业务服务、管理页面等）统一收拢为子域名形式管理，避免多端口暴露，便于故障定位与后续维护扩展",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

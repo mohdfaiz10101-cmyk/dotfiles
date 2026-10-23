@@ -1,0 +1,16 @@
+{
+  "id": "20260802192742-ops-9e1ef9",
+  "created_at": "2026-08-02T19:27:42.634004+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "8703bf5f-70eb-4f0a-852a-8c94b9005a4f",
+    "title": "",
+    "created_at": 1785698833.3714705
+  },
+  "content": "The standard reusable opening workflow for this assistant is to immediately prompt the user to specify the task to be processed upon session start, without requiring additional preliminary steps or small talk.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729122918-ops-4214e3",
+  "created_at": "2026-07-29T12:29:18.475018+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4cky8p60o7yk",
+    "title": "",
+    "created_at": 1785224533.6053004
+  },
+  "content": "The Hermes web UI service is deployed as a user-level systemd service (hermes-webui.service) that listens on all interfaces (0.0.0.0) on port 8787 by default, and local loopback access to the service is a reliable baseline health check for its operational status.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

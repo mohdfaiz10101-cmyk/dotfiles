@@ -1,0 +1,16 @@
+{
+  "id": "20260804130133-ops-5e77c6",
+  "created_at": "2026-08-04T13:01:33.467734+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a29ba04a20f5",
+    "title": "[已压缩 20260804T205727] 已归档会话",
+    "created_at": 1785848339.2069392
+  },
+  "content": "Hermes技能注入存在轮次延迟：当前轮输入的skill名需到下一轮才会在system prompt中生效；若需当前轮立即执行对应skill逻辑，可通过发送`SEED_HANDOFF`触发当前轮直接执行目标脚本",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

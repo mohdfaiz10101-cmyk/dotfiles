@@ -1,0 +1,16 @@
+{
+  "id": "20260804125628-ops-8eca50",
+  "created_at": "2026-08-04T12:56:28.751259+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "0913446e91d9",
+    "title": "[已压缩 20260804T205500] --help",
+    "created_at": 1785848100.8339586
+  },
+  "content": "Hermes uses a fixed SEED_HANDOFF structured template for session archiving and handoff, which must include fields: generation timestamp, source session metadata (ID, title, last update time), current task goals, confirmed conclusions, unfinished items, critical identifiers (paths/ports/IDs), and predefined next steps.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

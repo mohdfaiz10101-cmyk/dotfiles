@@ -1,0 +1,16 @@
+{
+  "id": "20260801123445-ops-d48a51",
+  "created_at": "2026-08-01T12:34:45.033163+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msaclkkiq4zsra",
+    "title": "",
+    "created_at": 1785587421.408901
+  },
+  "content": "The user has pending unfinished software migration and sync tasks across their on-device Android container and cloud phone environments, and needs access to updated compatibility lists to identify which pending tasks are feasible to complete.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

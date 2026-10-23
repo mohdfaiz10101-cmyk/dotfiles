@@ -1,0 +1,16 @@
+{
+  "id": "20260802124646-cod-e8b7a9",
+  "created_at": "2026-08-02T12:46:46.602420+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbsjulsn52mt1",
+    "title": "",
+    "created_at": 1785674629.3211775
+  },
+  "content": "There is active end-user demand for both third-party OpenHands CLI WebUI integrations and alternative OpenHands WebUI implementations, with relevant search activity targeting solutions available in the 2025-2026 timeframe.",
+  "confidence": 0.93,
+  "status": "pending",
+  "review_note": ""
+}

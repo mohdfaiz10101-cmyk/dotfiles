@@ -1,0 +1,16 @@
+{
+  "id": "20260729130719-ops-ccc7da",
+  "created_at": "2026-07-29T13:07:19.379941+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_064148",
+    "title": "",
+    "created_at": 1784932919.7647414
+  },
+  "content": "The memory-curator implements a 5-step automated pipeline: 1) collect high-value info from session_search/letta/memory-engine, 2) refine/compress/deduplicate into durable facts, 3) write to MEMORY.md with capacity control, 4) optionally sync to letta memory blocks, 5) generate curation report. It is designed for cron-driven execution with fail-fast behavior on lock detection.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

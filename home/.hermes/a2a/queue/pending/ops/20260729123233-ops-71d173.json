@@ -1,0 +1,16 @@
+{
+  "id": "20260729123233-ops-71d173",
+  "created_at": "2026-07-29T12:32:33.894244+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "69d06780c39a",
+    "title": "",
+    "created_at": 1785161299.50307
+  },
+  "content": "爬虫分层架构的模块化开发原则：优先采用零成本的规则过滤层（正则匹配关键词筛除无关内容）跑通验证，后续需要智能甄别时再叠加轻量LLM过滤层，且LLM仅对新增数据调用，避免持续token消耗，拒绝过度开发。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

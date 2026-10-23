@@ -1,0 +1,17 @@
+{
+  "id": "20260729122619-ops-cc6b18",
+  "created_at": "2026-07-29T12:26:19.251605+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "f3cd3099-dd02-4447-b0bb-4c417abf3648",
+    "title": "",
+    "created_at": 1785230073.5867937
+  },
+  "content": "Default new session workflow: When a user initiates a session with no pre-specified task, the assistant will prompt the user to directly state their requirements, has no pending execution items queued, and remains in a waiting state for user input before taking any action.",
+  "confidence": 0.99,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.659433+00:00"
+}

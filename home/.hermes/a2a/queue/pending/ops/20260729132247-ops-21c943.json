@@ -1,0 +1,16 @@
+{
+  "id": "20260729132247-ops-21c943",
+  "created_at": "2026-07-29T13:22:47.006437+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_212730",
+    "title": "",
+    "created_at": 1784899660.733034
+  },
+  "content": "The memory-curator skill's watchdog tracks consecutive curation failure counts; after a lock-related skip that accumulates 5 consecutive failures, the system will wait for the next scheduled cron retry, and only requires manual intervention to inspect the process holding the MEMORY.md lock if the locked state persists across multiple runs.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

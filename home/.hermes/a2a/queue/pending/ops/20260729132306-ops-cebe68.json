@@ -1,0 +1,16 @@
+{
+  "id": "20260729132306-ops-cebe68",
+  "created_at": "2026-07-29T13:23:06.884003+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryyq5it6iirz8",
+    "title": "",
+    "created_at": 1784898973.0654469
+  },
+  "content": "The user prioritizes AI tools (including LLMs and agent frameworks) that can execute tasks without interruption, as they have observed task interruption issues during use of both Hermes and OpenCode.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124300-ops-9dd8e6",
+  "created_at": "2026-07-29T12:43:00.152214+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1aofhtohekan",
+    "title": "",
+    "created_at": 1785040030.3287947
+  },
+  "content": "A common domain pitfall for Hermes Studio deployments is the lack of native out-of-the-box support for granular per-execution tool call correctness checks and step-level operation tracing, requiring custom configuration or third-party community implementations to fulfill this need.",
+  "confidence": 0.91,
+  "status": "pending",
+  "review_note": ""
+}

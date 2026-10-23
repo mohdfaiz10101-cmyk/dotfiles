@@ -1,0 +1,16 @@
+{
+  "id": "20260729124517-ops-2a347d",
+  "created_at": "2026-07-29T12:45:17.086226+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_021247_16b30b",
+    "title": "Hermes Studio网络及WebSocket对接检查 #2",
+    "created_at": 1785003167.1736252
+  },
+  "content": "The Hermes Studio instance under check is deployed at the DuckDNS dynamic domain charlie1990.duckdns.org on port 8648, with the frontend entry path suffix /#/hermes/.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

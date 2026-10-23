@@ -1,0 +1,16 @@
+{
+  "id": "20260729125201-ops-6bf111",
+  "created_at": "2026-07-29T12:52:01.606104+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_182536",
+    "title": "",
+    "created_at": 1784975147.1622431
+  },
+  "content": "The memory-curator skill enforces a mandatory guardrail that skips all curation and MEMORY.md modification operations if the lock file at `/var/home/charlie/.hermes/memories/MEMORY.md.lock` exists, with no fallback processing of pending high-value memory content.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

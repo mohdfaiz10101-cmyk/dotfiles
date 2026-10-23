@@ -1,0 +1,16 @@
+{
+  "id": "20260803105026-ops-3be0ae",
+  "created_at": "2026-08-03T10:50:26.093323+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "778d896b7386",
+    "title": "",
+    "created_at": 1785754169.6795087
+  },
+  "content": "User has a reusable preferred workflow for local information retrieval: when searching for local historical traces and workspace data, file retrieval and session retrieval must be executed as separate, independent query steps rather than combined queries.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

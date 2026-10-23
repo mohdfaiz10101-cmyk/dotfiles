@@ -1,0 +1,16 @@
+{
+  "id": "20260803163923-ops-5e12cb",
+  "created_at": "2026-08-03T16:39:23.332090+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4870cb291074",
+    "title": "",
+    "created_at": 1785774855.3156483
+  },
+  "content": "Waydroid镜像是Linux环境下常见的大体积非AI核心磁盘占用项，可安全清理且不影响AI服务运行",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

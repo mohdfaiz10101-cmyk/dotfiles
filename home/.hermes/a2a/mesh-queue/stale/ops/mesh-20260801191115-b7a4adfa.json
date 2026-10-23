@@ -1,0 +1,96 @@
+{
+  "task_id": "mesh-20260801191115-b7a4adfa",
+  "title": "NET-共同维护-路由矩阵审计",
+  "objective": "审计当前手机/桌面网络状态切换矩阵：home Wi-Fi LAN、portable Wi-Fi、5G、USB adb reverse、DuckDNS、NetBird、root Mihomo/Magisk。目标是找出应该由哪个监控负责判定 best route，以及哪些状态会误判。只返回结构化摘要：status、findings、missing_checks、recommended_fixes、verification_commands。",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [
+    "~/.ai-context/runbooks/network-scenario-monitor.md",
+    "~/.ai-context/runbooks/netbird.md",
+    "~/.ai-context/runbooks/mihomo-control.md"
+  ],
+  "constraints": [
+    "只读诊断",
+    "不要改配置",
+    "不要重启服务",
+    "不要输出大日志",
+    "只返回JSON摘要",
+    "列出验证命令和证据路径"
+  ],
+  "summary_hint": "",
+  "router": {
+    "message": "审计当前手机/桌面网络状态切换矩阵：home Wi-Fi LAN、portable Wi-Fi、5G、USB adb reverse、DuckDNS、NetBird、root Mihomo/Magisk。目标是找出应该由哪个监控负责判定 best route，以及哪些状态会误判。只返回结构化摘要：status、findings、missing_checks、recommended_fixes、verification_commands。",
+    "skills_to_load": [
+      "ops-autopilot",
+      "phone-hermes-network",
+      "android-proxy-netbird-config",
+      "android-root-network",
+      "android-transparent-proxy",
+      "network-monitoring-ops",
+      "android-ops",
+      "network-ops"
+    ],
+    "workflow_rules": [
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"b95497c09c32\", \"last_verified\": \"2026-07-21T19:14:47\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"d089807cde063cd1ceba\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`. Do not turn `opencode-18910-local.service` into a second `opencode serve` backend for review workspaces. `18910` is the LAN/public Web entry and must remain a proxy to `4",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "Do not assume `duckdns:18080` failure means local ttyd is down. Check local, LAN, router NAT, then public URL. Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`. Do not update DuckDNS from Fedora's observed external IP or",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"8525eaba5c90\", \"last_verified\": \"2026-07-21T19:19:31\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"c757981c9ee0f10ba6d1\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"05c6d9cfa2f3\", \"last_verified\": \"2026-07-21T19:04:38\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"6302c33f8d9808949043\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 3,
+        "text": "Do not assign Haven profile 2 (`OpenCode 18910`) as `mcp_tunnel_endpoint_profile_id`; it becomes a headless tunnel with no terminal. The local ADB MCP bridge is the active Haven transport, so keep that preference empty. Do not re-enable `haven-mcp-watchdog.timer` or keep `haven-mcp-bridge.service` a",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 2,
+        "text": "Do not assume `duckdns:18080` failure means local ttyd is down. Check local, LAN, router NAT, then public URL.",
+        "scope": "router",
+        "confidence": 0.88
+      },
+      {
+        "score": 2,
+        "text": "Do not repeatedly hammer Windows SSH for phone USB ADB fallback after OpenSSH returns `Exceeded MaxStartups` or immediate `Connection reset`. Windows is reachable at TCP level, but `sshd` is refusing sessions; restart Windows OpenSSH Server or wait for stale unauthenticated sessions to clear.",
+        "scope": "phone",
+        "confidence": 0.88
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T19:11:15+08:00",
+  "status": "queued"
+}

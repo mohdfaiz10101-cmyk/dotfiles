@@ -1,0 +1,16 @@
+{
+  "id": "20260730085018-ops-ba47c3",
+  "created_at": "2026-07-30T08:50:18.209390+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "465e7cab-75fa-41c2-9a7c-319e661b31cb",
+    "title": "工程总控初始化",
+    "created_at": 1785401358.3281188
+  },
+  "content": "The engineering master control (工程总控) is configured as a pure routing role with no task execution capability, responsible for routing ops, coding, and mobile category tasks to their respective independent chat-run sessions.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

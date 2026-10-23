@@ -1,0 +1,16 @@
+{
+  "id": "20260729134212-ops-47087c",
+  "created_at": "2026-07-29T13:42:12.059284+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrx62gffmp42db",
+    "title": "",
+    "created_at": 1784790347.8835976
+  },
+  "content": "Hermes auto-compression is configured via dedicated YAML config keys: `compression.enabled` (boolean toggle), `compression.threshold` (float, e.g. 0.7), `compression.target_ratio` (float, e.g. 0.2), `compression.protect_last_n` (int, number of recent messages to preserve), `compression.protect_first_n` (int, number of initial messages to preserve), and requires `context.engine` to be set to `compressor` to activate the compression context engine.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

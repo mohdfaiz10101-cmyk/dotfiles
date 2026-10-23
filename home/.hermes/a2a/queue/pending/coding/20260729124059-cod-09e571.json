@@ -1,0 +1,16 @@
+{
+  "id": "20260729124059-cod-09e571",
+  "created_at": "2026-07-29T12:40:59.128708+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1cvp0oq07qy6",
+    "title": "MCP工具名称重复显示问题",
+    "created_at": 1785043695.3960874
+  },
+  "content": "A reusable workflow to resolve duplicate MCP tool name display is to modify the MCP server configuration to eliminate overlap between the server's top-level name and individual tool name prefixes, either by removing the redundant prefix from tool definitions or adjusting the server's name field.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

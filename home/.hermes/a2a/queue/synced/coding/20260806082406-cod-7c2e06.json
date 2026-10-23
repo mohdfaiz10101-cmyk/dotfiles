@@ -1,0 +1,17 @@
+{
+  "id": "20260806082406-cod-7c2e06",
+  "created_at": "2026-08-06T08:24:06.363202+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "fa2d81dffb61",
+    "title": "",
+    "created_at": 1786004484.982539
+  },
+  "content": "适配该需求的通用可复用架构为：采用成熟OCR/表格识别开源库（如PaddleOCR表格识别、Surya等）负责图片内容识别，openpyxl负责Excel生成与图片插入，轻量AI对话层仅负责理解用户意图（不做内容生成），前端用单页HTML+轻量后端（Flask/FastAPI）搭建移动端Web入口，避免重前端与重AI生成逻辑。",
+  "confidence": 0.9,
+  "status": "approved",
+  "review_note": "medium-high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.367754+00:00"
+}

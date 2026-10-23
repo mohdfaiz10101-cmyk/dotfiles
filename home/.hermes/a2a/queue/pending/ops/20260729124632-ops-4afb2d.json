@@ -1,0 +1,16 @@
+{
+  "id": "20260729124632-ops-4afb2d",
+  "created_at": "2026-07-29T12:46:32.629776+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0nbnwe5to0ae",
+    "title": "",
+    "created_at": 1785000781.9595997
+  },
+  "content": "The base URL for the StepFun step_plan API endpoint used in this Hermes integration is https://api.stepfun.com/step_plan/v1, which should be used for all corresponding API requests.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

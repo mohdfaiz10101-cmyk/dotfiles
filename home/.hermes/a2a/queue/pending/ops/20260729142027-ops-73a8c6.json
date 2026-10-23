@@ -1,0 +1,16 @@
+{
+  "id": "20260729142027-ops-73a8c6",
+  "created_at": "2026-07-29T14:20:27.298201+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193310_a14c56",
+    "title": "",
+    "created_at": 1784719992.2312124
+  },
+  "content": "When handling the user's work-related requests, AI agents should recognize strings matching the 't_' + alphanumeric format as kanban task IDs, and use these IDs to maintain consistent context alignment with the user's existing task tracking system.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

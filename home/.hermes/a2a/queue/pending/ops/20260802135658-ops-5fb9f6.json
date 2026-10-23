@@ -1,0 +1,16 @@
+{
+  "id": "20260802135658-ops-5fb9f6",
+  "created_at": "2026-08-02T13:56:58.278255+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2a2082e9c86c",
+    "title": "你好",
+    "created_at": 1785678970.1034508
+  },
+  "content": "When a `verify_fix` request is missing required target identification context, the agent will proactively prompt the user to provide one of the specified context types instead of attempting speculative unconfirmed verification.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

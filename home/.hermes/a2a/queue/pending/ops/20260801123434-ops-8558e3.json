@@ -1,0 +1,16 @@
+{
+  "id": "20260801123434-ops-8558e3",
+  "created_at": "2026-08-01T12:34:34.530109+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "16324b1e-4209-4e30-a5e0-fd2e099dd2c0",
+    "title": "",
+    "created_at": 1785587507.6706643
+  },
+  "content": "Configuration pattern: The assistant's default response language for general session interactions is Chinese, even when the user's initial input is in English (observed for short greeting inputs).",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260804130133-ops-4eda63",
+  "created_at": "2026-08-04T13:01:33.468863+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a29ba04a20f5",
+    "title": "[已压缩 20260804T205727] 已归档会话",
+    "created_at": 1785848339.2069392
+  },
+  "content": "已归档的Hermes会话不会保留在会话索引中，直接通过`session_search`查询已归档的session_id会返回not found结果",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124753-ops-768dd2",
+  "created_at": "2026-07-29T12:47:53.766863+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0kyhyrso4wu9",
+    "title": "黑屏排查与终端访问",
+    "created_at": 1784996738.9933846
+  },
+  "content": "A common domain pitfall for self-hosted frontend applications exposed via reverse proxy and dynamic DNS is using absolute asset paths in frontend builds, which breaks static file serving and causes blank screens even when the backend API is fully functional.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

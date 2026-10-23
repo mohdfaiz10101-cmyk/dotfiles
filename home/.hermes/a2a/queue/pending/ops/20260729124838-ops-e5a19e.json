@@ -1,0 +1,16 @@
+{
+  "id": "20260729124838-ops-e5a19e",
+  "created_at": "2026-07-29T12:48:38.376056+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_234216",
+    "title": "",
+    "created_at": 1784994149.1261535
+  },
+  "content": "The memory-curator uses a lock file (MEMORY.md.lock) for concurrency control; when the lock is present, the curator must skip execution and allow the next scheduled cron run to retry, without attempting to force or repair the lock.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

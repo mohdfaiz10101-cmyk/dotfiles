@@ -1,0 +1,16 @@
+{
+  "id": "20260729123207-ops-7022b5",
+  "created_at": "2026-07-29T12:32:07.515457+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "3351f4451fa1",
+    "title": "",
+    "created_at": 1785183391.4974418
+  },
+  "content": "A standard reusable post-system-update maintenance workflow includes auditing existing scheduled tasks to identify configurations that no longer comply with the latest system requirements.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

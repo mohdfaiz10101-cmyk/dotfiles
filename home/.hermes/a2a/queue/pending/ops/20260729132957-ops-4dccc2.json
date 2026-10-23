@@ -1,0 +1,16 @@
+{
+  "id": "20260729132957-ops-4dccc2",
+  "created_at": "2026-07-29T13:29:57.710559+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryiw0aq1xkpmo",
+    "title": "ADB连接不稳定反复弹授权框",
+    "created_at": 1784872363.1550846
+  },
+  "content": "降低ADB授权弹窗频率的可复用方法：1. 系统弹出调试授权框时勾选「始终允许」并关联当前电脑的RSA指纹；2. Android 11及以上设备优先使用官方「无线调试」配对（adb pair）替代普通WiFi ADB，可大幅降低授权丢失概率。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

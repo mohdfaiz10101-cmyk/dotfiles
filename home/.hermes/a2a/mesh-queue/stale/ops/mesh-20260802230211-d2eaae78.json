@@ -1,0 +1,90 @@
+{
+  "task_id": "mesh-20260802230211-d2eaae78",
+  "title": "Codex 1 -> Hermes: http://charlie1990.duckdns.org:19976/ failed to load session 但是他的本地8787端",
+  "objective": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/02/rollout-2026-08-02T23-01-18-019fc2fe-616e-74c1-97dc-af7345a3686b.jsonl\nsource_timestamp: 2026-08-02T15:02:00.310Z\n\n任务文本:\nhttp://charlie1990.duckdns.org:19976/ failed to load session 但是他的本地8787端口又是好的 duckdns不正常",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "Do not load full Codex transcript",
+    "Use task text and cited runbooks only",
+    "Return concise status and evidence",
+    "Do not start parallel live runs"
+  ],
+  "summary_hint": "http://charlie1990.duckdns.org:19976/ failed to load session 但是他的本地8787端口又是好的 duckdns不正常",
+  "router": {
+    "message": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/02/rollout-2026-08-02T23-01-18-019fc2fe-616e-74c1-97dc-af7345a3686b.jsonl\nsource_timestamp: 2026-08-02T15:02:00.310Z\n\n任务文本:\nhttp://charlie1990.duckdns.org:19976/ failed to load session 但是他的本地8787端口又是好的 duckdns不正常",
+    "skills_to_load": [
+      "ops-autopilot",
+      "ttyd-deployment",
+      "ntfy",
+      "service-address-registry",
+      "rag-retrieval",
+      "default-model-step-router",
+      "hermes-runtime-debugging",
+      "hermes-studio-auth-debugging"
+    ],
+    "workflow_rules": [
+      {
+        "score": 6,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"a7671a387ca2\", \"last_verified\": \"2026-07-21T20:43:15\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"c70608f1914548920fbc\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 5,
+        "text": "Do not diagnose phone `frpc` `EOF` / `session shutdown` as an FRPS outage before checking proxy and DNS state. On 2026-07-08 Fedora shell had `HTTP_PROXY`/`HTTPS_PROXY`/`ALL_PROXY=127.0.0.1:7890`, which made manual frpc tests fail until those vars were unset; the phone resolved `charlie1990.duckdns.",
+        "scope": "router",
+        "confidence": 0.88
+      },
+      {
+        "score": 5,
+        "text": "Do not keep retrying redroid on this exact Fedora Silverblue 44 kernel `6.19.10-300.fc44.x86_64` by switching only between Podman/crun, Podman/runc, Docker/runc, redroid 12, or redroid 14. On 2026-08-01 all of those combinations still failed with Android init `Failed to initialize property area` / `",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 5,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"fdf268efcc08\", \"last_verified\": \"2026-07-25T23:59:03\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"662dd19d7c91e95ccd51\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-180",
+        "scope": "opencode",
+        "confidence": 0.7
+      },
+      {
+        "score": 5,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"1ec132d081fc\", \"last_verified\": \"2026-07-25T18:09:38\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"4392f061b09c9d8e3a03\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): opencode-core.md, opencode-180",
+        "scope": "opencode",
+        "confidence": 0.7
+      },
+      {
+        "score": 5,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"fd4bce3e82bb\", \"last_verified\": \"2026-07-22T03:20:09\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"0af5603aba77ff6bc4e6\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-plan",
+        "scope": "router",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.95, \"id\": \"a69755067869\", \"last_verified\": \"2026-07-25T19:23:36\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"opencode\", \"source_events\": [\"ed08f09e700d5e3a59b3\", \"ed08f09e700d5e3a59b3\"], \"status\": \"verified\", \"steps\": [\"read relevant runbook(s): openco",
+        "scope": "opencode",
+        "confidence": 0.95
+      },
+      {
+        "score": 4,
+        "text": "Do not keep Hermes Studio `hermes-web-ui.service` / `:18648` always-on or probe `:8648` from background health checks. It can wake gateway, spawn secondary Hermes tasks plus full MCP sets, and push memory/swap into a sys Do not return Hermes session mesh dispatch/handoff defaults to `both` under nor",
+        "scope": "opencode",
+        "confidence": 0.95
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-02T23:02:11+08:00",
+  "status": "queued"
+}

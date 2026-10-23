@@ -1,0 +1,16 @@
+{
+  "id": "20260801122957-ops-fb7982",
+  "created_at": "2026-08-01T12:29:57.994742+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d950d7a6-02b7-4823-8343-bc353d2b9974",
+    "title": "",
+    "created_at": 1785587104.233493
+  },
+  "content": "When no user-specific name is provided in the session context, the default user address name is 'Charlie'.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

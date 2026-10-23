@@ -1,0 +1,16 @@
+{
+  "id": "20260806133427-ops-1b09fc",
+  "created_at": "2026-08-06T13:34:27.464502+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260806_011620_579104",
+    "title": "会话管理与知识沉淀",
+    "created_at": 1786023079.1175098
+  },
+  "content": "会话提炼需严格拆分为两条独立工作流，禁止合并为单一入口：上下文满载需新开窗口时走「会话接力（Compaction）」流程，仅提炼当前任务关键上下文用于无缝续接；解决复杂问题/踩坑后走「知识沉淀（Distillation）」流程，将普适性经验写回skills/runbook/memory面向未来复用",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

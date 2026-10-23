@@ -1,0 +1,16 @@
+{
+  "id": "20260729125716-mob-999b9c",
+  "created_at": "2026-07-29T12:57:16.729898+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_143228_3b5f83",
+    "title": "Hermes Web UI访问问题排查 #5",
+    "created_at": 1784961148.2821558
+  },
+  "content": "mihomo代理的流量绕过规则通过应用UID配置，已沉淀的常用应用UID映射为：NetBird=10573、Tailscale=10352、微信=10609、QQ=10519，QUIC/游戏类应用需单独补充UID绕过规则，配置文件路径为`/data/adb/mihomo_netbird/config.yaml`。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

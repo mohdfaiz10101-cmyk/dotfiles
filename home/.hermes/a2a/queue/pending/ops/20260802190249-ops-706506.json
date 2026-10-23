@@ -1,0 +1,16 @@
+{
+  "id": "20260802190249-ops-706506",
+  "created_at": "2026-08-02T19:02:49.165235+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc5yynsvbscr6",
+    "title": "",
+    "created_at": 1785697199.636059
+  },
+  "content": "A reusable troubleshooting workflow for Hermes skill runtime errors is to first validate that the deployed Hermes Agent runtime version meets the skill's required capability prerequisites before modifying skill configuration, input parameters, or skill code.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

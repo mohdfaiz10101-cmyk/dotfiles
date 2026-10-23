@@ -1,0 +1,16 @@
+{
+  "id": "20260803163923-ops-e5a76e",
+  "created_at": "2026-08-03T16:39:23.326913+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4870cb291074",
+    "title": "",
+    "created_at": 1785774855.3156483
+  },
+  "content": "当AI运行所在磁盘空间不足需快速恢复可用空间时，优先清理/var/tmp目录、容器日志、systemd coredump、旧时间戳格式备份、Waydroid镜像等非AI核心运行数据，且不触碰用户主数据与核心配置即可快速释放空间，不会影响AI服务运行",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

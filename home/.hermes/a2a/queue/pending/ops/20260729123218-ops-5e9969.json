@@ -1,0 +1,16 @@
+{
+  "id": "20260729123218-ops-5e9969",
+  "created_at": "2026-07-29T12:32:18.673902+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260728_030027",
+    "title": "",
+    "created_at": 1785178829.0102024
+  },
+  "content": "Standard daily aider cron workflow: Check for the task file at /var/home/charlie/.hermes/workspace/aider-daily-task.txt; if it exists, process it with the aider-hermes tool/script and write results to /tmp/aider-hermes-result.md; if the task file is missing, generate a brief workspace summary as the output instead.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

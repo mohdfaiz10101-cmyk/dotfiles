@@ -1,0 +1,16 @@
+{
+  "id": "20260729133948-ext-225565",
+  "created_at": "2026-07-29T13:39:48.878487+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxhp40kuyh8am",
+    "title": "Hermesjob auto recovery strategy",
+    "created_at": 1784809901.0093637
+  },
+  "content": "Standard HermesJob auto-recovery config pattern: First classify fault types (crash, timeout, downstream error, deployment in progress), only enable auto-recovery for transient faults with a maximum of 1-3 retries, add a minimum readiness check before recovery, and switch to backoff + alert after exceeding the retry threshold instead of infinite retries.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

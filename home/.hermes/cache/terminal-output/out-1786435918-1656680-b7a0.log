@@ -1,0 +1,202 @@
+/var/home/charlie/.ai-context/runbooks/hermes-session-switch.md:11:3. Homepage smoke: `curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8787/`
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:28:5. If LAN/phone fails while local succeeds, check phone route, VPN/proxy/Mihomo,
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:34:### Hermes `8787` / DuckDNS `19976`
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:38:`DuckDNS -> router DNAT 19976 -> Fedora FRPS/frpc fedora-hermes-webui-19976 -> local auth proxy 127.0.0.1:18999 -> Hermes 127.0.0.1:8787`
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:42:- `8787` healthy but `19976` dead: inspect `frps.service`, `frpc.service`, and
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:43:  `~/.config/frpc/frpc.toml` for `fedora-hermes-webui-19976`.
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:44:- `19976` opens but session fails: compare Hermes profiles. The BasicAuth user
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:46:  `~/.local/bin/hermes-8787-basic-auth-proxy.py`, matching local `8787`.
+/var/home/charlie/.ai-context/runbooks/network-repair-logic.md:47:- `8787` and `8648` can run concurrently because they use separate profiles and
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:5:目标：让 Hermes / 8787 / 8648 的重任务呈现 GitHub Actions 风格：任务入队、运行中、完成、失败都可通知到手机，并由轻量 watcher 轮询状态。
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:21:  - 仅当用户消息显式出现“委派 / 交给 Hermes / 让 Hermes 处理 / 8787 /
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:45:  并通过 `NTFY_ACTIONS` 提供打开 Hermes `8648`、Actions `8787`、Codex C1
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:63:- `8787` / `8648` 做控制面、任务入口、队列/状态展示，不直接承载所有重计算。
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:90:- VPS 只能改善外部入口稳定性，不能修复 Hermes 内部执行面。若 `8787` /
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:119:  - `hermes-actions status mesh --limit <n>` 是 8787/8648 的 Actions 风格状态面，
+/var/home/charlie/.ai-context/runbooks/hermes-actions-runner.md:172:| Hermes `8787` | 任务分拣入口、Actions 风格任务状态、轻量看板 | 不承载所有重计算和长上下文 |
+/var/home/charlie/.ai-context/runbooks/control-plane.md:729:podman exec kasm-cursor-webtop bash -lc 'for i in 1 2 3 4 5 6 7 8; do d=/home/kasm-user/.local/share/kasm-cursor-webtop/codex-homes/c$i; [ -r "$d/auth.json" ] && [ -r "$d/config.toml" ] && echo C$i-ok || echo C$i-bad; done'
+/var/home/charlie/.ai-context/runbooks/mattermost.md:361:record it as a follow-up WebSocket/auth optimization rather than redoing NetBird
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:7:| `8787` | `nesquena/hermes-webui` | systemd `hermes-webui.service` | 必须弹窗审批后方可修改 |
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:17:- 检查 8787/8648 是否绑定到正确进程
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:32:- 不得擅自修改 `8787` / `8648` / `18648` 的监听服务、转发目标或 `frpc` 映射。
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:33:- `8787` 的 `nesquena/hermes-webui` 程序更新必须先走
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:37:- 不要用 WebUI 自带更新按钮或裸 `git pull` 处理 `8787`，除非已明确确认没有本地
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:54:  - 停掉 `hermes-webui.service` 后，watchdog 自动检测到 8787 异常并在 4 秒内修复
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:60:- 2026-07-27：锁定 `8787=nesquena`、`8648->18648=Hermes Studio`，并明确要求弹窗审批后方可修改。
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:63:  `8787` 和轻量 `8648` proxy，避免 Hermes Studio 常驻拉起 worker/MCP 导致
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:74:- 2026-08-02：`8787` WebUI 自更新后出现更新冲突提示。复核结果：当前仓库
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:79:- 2026-08-10：网络不稳定排查确认 `duckdns:8787` 与 `duckdns:18300` 不是有效
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:80:  Hermes 公网入口；公网 `8787` 没有路由器 DNAT/FRPC 映射，`18300` 当前也不可达。
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:81:  手机/公网入口应使用 `duckdns:8648` 访问 Hermes Studio，使用 `duckdns:19976`
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:82:  访问 `8787` WebUI auth proxy。已修正 `hermes-actions` 通知按钮、
+/var/home/charlie/.ai-context/runbooks/hermes-port-binding.md:83:  `mobile-ai-workbench` 和 `phone-webtty-route-probe` 的 `h8787` DuckDNS 端口。
+/var/home/charlie/.ai-context/runbooks/network-scenario-monitor.md:123:  the phone network/VPN/proxy path as suspect; do not restart Fedora.
+/var/home/charlie/.ai-context/runbooks/network-scenario-monitor.md:220:  `http://charlie1990.duckdns.org:19976/` as the Hermes 8787 auth-proxy
+/var/home/charlie/.ai-context/runbooks/network-scenario-monitor.md:227:- `19976` is Hermes WebUI auth proxy (`FRPS/FRPC -> 18999 -> 8787`), not the
+/var/home/charlie/.ai-context/runbooks/network-scenario-monitor.md:228:  phone clipboard receiver. Monitor labels should use `hermes_auth_19976`.
+/var/home/charlie/.ai-context/runbooks/network-scenario-monitor.md:341:| Desktop network | gateway, direct/proxy HTTPS, DuckDNS, FRP, proxy ports | default route, direct/proxy HTTPS, DuckDNS | same via current route | Tailnet/NetBird reachability |
+/var/home/charlie/.ai-context/runbooks/plane.md:41:- The official Plane mobile app is not usable with Community Edition self-hosting. It can accept the URL, then fail on missing mobile auth routes such as `/auth/m/` with 404/detail-not-found. Plane documents mobile app login for self-hosted instances as requiring Commercial Edition v1.5.0 or newer.
+/var/home/charlie/.ai-context/runbooks/fastgpt.md:44:curl -s 'http://admin:frp%40charlie2026@127.0.0.1:7500/api/proxy/tcp' | jq '.proxies[] | select(.name=="fedora-fastgpt") | .status'
+/var/home/charlie/.ai-context/runbooks/communication-project-sync.md:117:  posting, external messages, login/authorization, and network/firewall changes
+/var/home/charlie/.ai-context/runbooks/opencode-core.md:156:- 2026-06-29 stale busy 修复：health-watchdog 因 IO pressure 重启后端后，OpenCode 可能保留旧巨大 session 的 `/session/status` busy 标记，例如 `ses_0f1c39d07ffeLkK12hMWv8Ln7D` 已超过 200 万 input tokens 且最近消息只有 model/agent switched，导致“任务停止/一直 busy”但 4097/18910 实际健康。恢复：`POST /session/<id>/abort` 清掉 stale busy。`opencode-stuck-cleaner.sh` 已增加保守自动 abort：仅处理 >500K tokens、无匹配 `opencode run/attach` 客户端、最近消息无有效进展或超过 30 分钟的 busy session；`opencode-health-watchdog.sh` 在重启 backend/proxy 后会立即调用 stuck-cleaner，避免等 5 分钟 timer。
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:17:- Account 10: `CODEX_HOME=~/.codex-10`, API/Sub2API-only slot as of 2026-07-20; no WebTTY/Haven services are installed yet. Delivered iCloud Plus credentials are stored only in `~/.local/state/codex-account-import/c10-icloud-plus-20260720.secret` (`0600`) and must not be printed. Codex device-auth succeeded and `~/.codex-10/auth.json` was imported with `codex-sub2api-json-bind` as upstream account `22` named `C10 iCloud Plus`, `status=active`, `schedulable=true`, `plan_type=plus`, `proxy_id=1`. Slot group/key/env: `openai-codex-10` / `group_id=27`, API key name `codex10-sub2api`, env `~/.config/codex10-sub2api.env`. Primary upstream `22` is currently rate-limited until `2026-07-25T05:56:07.723074Z`, so `codex-fallback-pool-repair --apply` keeps upstream `22` at priority `100` and adds rescue upstream `10` at priority `10`. Verification on 2026-07-20: `/v1/models` returned HTTP 200; a tiny `/v1/responses` smoke returned HTTP 200 and usage logged under upstream `10`, proving fallback works while C10's own primary remains independently visible as limited.
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:167:  6. After Codex writes native `~/.codex-N/auth.json`, run
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:169:     /var/home/charlie/.codex-N/auth.json --label '<label>' --restart
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:227:- 2026-07-17 C8 unbound 503 repair: if C8 shows `503 Service Unavailable` while `19007/status` is healthy, first check whether `openai-codex-8` has any `account_groups` rows. A newly created slot with only `codex8-sub2api` and no upstream binding will pass `/v1/models` but fail `/v1/responses`. Do not restart global Sub2API or borrow C7 as a fallback for an independent account. Keep C8 in login-mode until a real C8 OAuth source is imported; then run `codex-sub2api-json-bind --account 8 --file ~/.codex-8/auth.json --label 'C8 day Plus' --restart --health-check --json`, verify `/v1/responses` returns 200, and ensure `/quota.json` no longer has `sub2api.unbound=true`.
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:385:  as Sub2API whenever `~/.codex/auth.json` has `auth_mode=apikey`; otherwise
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:415:  login --device-auth` completes and `~/.codex-10/auth.json` is created. After
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:417:  `codex-sub2api-json-bind --account 10 --file ~/.codex-10/auth.json --label
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:444:- 2026-07-14 claim-code rotation rule: for slot `1/2/3`, if the user provides a delivered claim code and wants to replace the current independent upstream account, prefer `~/.local/bin/codex-sub2api-claim-bind <slot> <code>`. It will redeem or lookup the code, download `download.json`, import through local Sub2API `POST /api/v1/admin/accounts/batch`, rebind `openai-codex-N` and `codexN-sub2api`, update the slot-local env/auth, and restart the slot. If the code page says “额度已用完” but `lookup` still returns `download.json`, treat that as a valid historical rotation path instead of a failure.
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:1023:     key, `~/.codex-N/auth.json`, `~/.codex-N/config.toml`,
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:1165:  --url 'https://auth.openai.com/codex/device' \
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:1235:  --url 'https://auth.openai.com/codex/device' \
+/var/home/charlie/.ai-context/runbooks/codex-multi-account-routing.md:1298:firefox-codex-profile-manager open 10 'https://auth.openai.com/codex/device' --force-stop
+/var/home/charlie/.ai-context/runbooks/haven.md:111:  by foreign host`, which usually means phone-side fake-ip/proxy DNS; prefer the
+/var/home/charlie/.ai-context/runbooks/haven.md:153:  connected/authorized, not a Haven DB or Fedora port failure. Android can use
+/var/home/charlie/.ai-context/runbooks/haven.md:212:- Codex 多账号必须隔离 `CODEX_HOME`，不要在同一个 `~/.codex/auth.json` 上切换登录。当前主账号入口是 `2225`/`haven-codex`/`~/.codex`，第二账号入口是 `2226`/`haven-codex2`/`~/.codex-2`，第三账号入口是 `2229`/`haven-codex3`/`~/.codex-3`。Haven 中应保存三个独立 SSH profile；打开哪个 profile 就使用哪个账号。
+/var/home/charlie/.ai-context/runbooks/netbird.md:183:  DuckDNS `19976` all healthy. Android has `tun0 100.87.37.3/16`; Fedora sees
+/var/home/charlie/.ai-context/runbooks/netbird.md:283:- Services such as `8648`, `8787`, and `5000` listen on `0.0.0.0`
+/var/home/charlie/.ai-context/runbooks/netbird.md:290:http://100.87.171.39:8787
+/var/home/charlie/.ai-context/runbooks/netbird.md:300:   and any other VPN/proxy profile while testing.
+/var/home/charlie/.ai-context/runbooks/netbird.md:427:   `login.netbird.io/authorize` →
+/var/home/charlie/.ai-context/runbooks/netbird.md:428:   `accounts.google.com/o/oauth2/auth` →
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:76:  `19976` is now Hermes auth proxy. Do not recreate the old clipboard receiver
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:77:  on `19976` without assigning a new non-conflicting port.
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:250:  - listens on LAN port `19976/tcp`
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:254:    (`m_GUID=-911976199760001`)
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:263:  for KDE Connect, plus `19976/tcp` for the MacroDroid phone-to-desktop
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:340:  "printf '%s' '$text' | curl --noproxy '*' -m 5 -fsS -X POST --data-binary @- 'http://192.168.123.71:19976/clipboard/$token' -o /dev/null -w '%{http_code}'"
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:439:  `http://192.168.123.71:19976/clipboard/<token>` returned `202` and updated
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:452:  MacroDroid receiver URL was moved to DuckDNS `:19976`; router DNAT
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:453:  `19976/TCP -> 192.168.123.71:19976` is required. Direct phone curl POST to
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:549:NetBird app has actually connected/authorized the VPN. The module can keep
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:793:- Keep on real phone as device infrastructure: VPN/proxy/automation/terminal
+/var/home/charlie/.ai-context/runbooks/phone-agent.md:988:Luckin account note: official MCP currently exposes only shop/product/preview/create/query/cancel order tools. It does not expose an order transfer/sync-to-other-mobile-account API. A created order belongs to the Luckin account behind `~/.my-coffee/LUCKIN_MCP_TOKEN`; if the phone-number account differs, log in/authorize that account and rotate the token rather than trying to sync an existing order across accounts.
+/var/home/charlie/.config/systemd/user/hermes-webui.service:2:Description=Hermes WebUI (nesquena) on :8787
+/var/home/charlie/.config/systemd/user/hermes-webui.service:12:Environment=HERMES_WEBUI_PORT=8787
+/var/home/charlie/.config/systemd/user/hermes-webui.service:14:ExecStart=/usr/bin/python3 %h/hermes-webui-clean/bootstrap.py --foreground --no-browser 8787
+/var/home/charlie/.config/systemd/user/hermes-8787-basic-auth-proxy.service:2:Description=Hermes Web UI basic auth proxy (:18999 -> :8787)
+/var/home/charlie/.config/systemd/user/hermes-8787-basic-auth-proxy.service:10:Environment="LISTEN_PORT=18999"
+/var/home/charlie/.config/systemd/user/hermes-8787-basic-auth-proxy.service:12:Environment="UPSTREAM_PORT=8787"
+/var/home/charlie/.config/systemd/user/hermes-8787-basic-auth-proxy.service:15:ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py
+/var/home/charlie/.config/systemd/user/hermes-8648-proxy.service:2:Description=Hermes Web UI local proxy (:8468 -> :8787)
+/var/home/charlie/.config/systemd/user/auth-proxy.service:13:ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/auth-proxy.py
+/var/home/charlie/.config/systemd/user/a2a-bridge.service:2:Description=A2A Bridge for Hermes 8787
+/var/home/charlie/.config/systemd/user/hermes-webui.service.d/override.conf.bak.20260809-191127:3:Environment=HERMES_WEBUI_ALLOWED_ORIGINS=http://webui.charlie1990.duckdns.org:19976,https://webui.charlie1990.duckdns.org:19976,http://charlie1990.duckdns.org:19976,https://charlie1990.duckdns.org:19976
+/var/home/charlie/.config/systemd/user/hermes-webui.service.d/override.conf:3:Environment=HERMES_WEBUI_ALLOWED_ORIGINS=http://webui.charlie1990.duckdns.org:19976,https://webui.charlie1990.duckdns.org:19976,http://charlie1990.duckdns.org:19976,https://charlie1990.duckdns.org:19976
+/var/home/charlie/.config/systemd/user/hermes-8787-proxy.service:2:Description=Hermes Web UI local proxy (:8787 -> :18648)
+/var/home/charlie/.config/systemd/user/hermes-8787-proxy.service:8:ExecStart=/usr/bin/node /var/home/charlie/.local/bin/hermes-8787-http-proxy.js
+/var/home/charlie/.ai-context/runbooks/duckdns.md:64:  MASQUERADE for `:5000`. Verified DuckDNS `8648`, `19976`, `19867`, and
+/var/home/charlie/.ai-context/runbooks/frp.md:16:curl -s 'http://admin:frp%40charlie2026@127.0.0.1:7500/api/proxy/tcp' | jq
+/var/home/charlie/.ai-context/runbooks/frp.md:173:  routing/proxy middlebox issue, and Fedora will not have `127.0.0.1:15555`
+/var/home/charlie/.config/systemd/user/c5-auth-browser.service:6:ExecStart=/usr/bin/chromium-browser --remote-debugging-port=9226 --remote-allow-origins=* --user-data-dir=/var/home/charlie/.local/share/c5-auth-browser --no-first-run --no-default-browser-check https://auth.openai.com/codex/device
+/var/home/charlie/.local/bin/proxy-403-monitor:4:STATUS_FILE="$HOME/.local/share/proxy-status.json"
+/var/home/charlie/.local/bin/proxy-403-monitor:5:STATE_FILE="$HOME/.local/share/proxy-last-state.txt"
+/var/home/charlie/.local/bin/proxy-403-monitor:41:conn = sqlite3.connect(os.path.expanduser('~/.local/share/proxy-status.db'))
+/var/home/charlie/.local/bin/sys-info-mcp-wrapper.sh:13:MCP_REMOTE_JS="$( "$NODE_BIN" -e "try{process.stdout.write(require.resolve('mcp-remote/package.json',{paths:[process.cwd(),process.env.HOME,require('path').join(process.env.HOME,'.nvm/versions/node/v23.11.1/lib/node_modules'),require('path').join(process.env.HOME,'.nvm/versions/node/v22.22.3/lib/node_modules')]}).replace(/package\.json$/,'dist/proxy.js'))}catch(e){process.exit(1)}" 2>/dev/null || true)"
+/var/home/charlie/.local/bin/sys-info-mcp-wrapper.sh:16:    "/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js" \
+/var/home/charlie/.local/bin/sys-info-mcp-wrapper.sh:17:    "/var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js" \
+/var/home/charlie/.local/bin/sys-info-mcp-wrapper.sh:18:    "/var/home/charlie/.nvm/versions/node/v22.22.3/lib/node_modules/mcp-remote/dist/proxy.js"; do
+/var/home/charlie/.local/bin/proxy-403-monitor.backup.20260416_133142:4:STATUS_FILE="$HOME/.local/share/proxy-status.json"
+/var/home/charlie/.local/bin/proxy-403-monitor.backup.20260416_133142:5:STATE_FILE="$HOME/.local/share/proxy-last-state.txt"
+/var/home/charlie/.local/bin/proxy-403-monitor.backup.20260416_133142:37:conn = sqlite3.connect(os.path.expanduser('~/.local/share/proxy-status.db'))
+/var/home/charlie/.local/bin/phone-network-stabilize:94:  local c8648 c19976 c19867 c18094
+/var/home/charlie/.local/bin/phone-network-stabilize:96:  c19976="$(http_code http://charlie1990.duckdns.org:19976/)"
+/var/home/charlie/.local/bin/phone-network-stabilize:99:  log "duckdns_codes 8648=$c8648 19976=$c19976 19867=$c19867 18094=$c18094"
+/var/home/charlie/.local/bin/phone-network-stabilize:130:  duck="$(http_code http://charlie1990.duckdns.org:19976/)"
+/var/home/charlie/.local/bin/phone-network-stabilize:146:  "duckdns_19976_code": duck,
+/var/home/charlie/.local/bin/op-codex-plan:48:# Codex exec may fail on network/auth; keep output useful for OP.
+/var/home/charlie/.local/bin/proxy-status-quick:7:conn = sqlite3.connect(os.path.expanduser('~/.local/share/proxy-status.db'))
+/var/home/charlie/.local/bin/proxy-status-quick:17:cat ~/.local/share/proxy-status.json 2>/dev/null | jq . || echo "[INFO] 状态文件不存在"
+/var/home/charlie/.local/bin/proxy-learn:7:db_path = os.path.expanduser("~/.local/share/proxy-status.db")
+/var/home/charlie/.local/bin/proxy-status-widget:2:STATUS_FILE="$HOME/.local/share/proxy-status.json"
+/var/home/charlie/.local/bin/proxy-db-init:5:db_path = os.path.expanduser("~/.local/share/proxy-status.db")
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:2694:    "https://api.openai.com/auth",
+/var/home/charlie/.local/bin/router-health-check:29:  for port in 80 22 8082 3478 8648 8787 18999 19976; do
+/var/home/charlie/.local/bin/winpc-connect:84:  probe            show tailscale + lan/ts/proxy/smb status
+/var/home/charlie/.local/bin/hermes-webui-origin-probe.sh:4:ORIGIN="${HERMES_ORIGIN:-http://webui.charlie1990.duckdns.org:19976}"
+/var/home/charlie/.local/bin/hermes-webui-origin-probe.sh:5:BACKEND="${HERMES_BACKEND:-http://127.0.0.1:8787}"
+/var/home/charlie/.local/bin/duckdns-full-monitor.sh:26:  [19976]=18999
+/var/home/charlie/.local/bin/duckdns-full-monitor.sh:91:    19976) log "issue=19976_hermes_auth_proxy user_impact=Hermes WebUI auth proxy 公网入口异常" ;;
+/var/home/charlie/.local/bin/hermes-stability-check.sh:3:# Checks 19976/8648 reachability and auto-heals by restarting the matching service.
+/var/home/charlie/.local/bin/hermes-stability-check.sh:74:  if ! http_ok 'http://127.0.0.1:19976/api/settings'; then
+/var/home/charlie/.local/bin/hermes-stability-check.sh:75:    log "[FAIL] 19976 api unreachable"
+/var/home/charlie/.local/bin/hermes-stability-check.sh:76:    notify 'Hermes stability: 19976 unreachable, restarting hermes-webui' 'rotating_light'
+/var/home/charlie/.local/bin/hermes-stability-check.sh:79:    log "[OK] 19976 api reachable"
+/var/home/charlie/.local/bin/hermes-port-lock.sh:3:# 用途：确保 8787 和 8648 绑定到正确入口
+/var/home/charlie/.local/bin/hermes-port-lock.sh:50:fix_8787() {
+/var/home/charlie/.local/bin/hermes-port-lock.sh:51:  log "[ACTION] 修复 8787 -> nesquena hermes-webui"
+/var/home/charlie/.local/bin/hermes-port-lock.sh:52:  # 如果 node 代理占了 8787，先清掉再启 nesquena
+/var/home/charlie/.local/bin/hermes-port-lock.sh:53:  if ss -tlnp "sport = :8787" 2>/dev/null | grep -q '"node"'; then
+/var/home/charlie/.local/bin/hermes-port-lock.sh:54:    log "[DETECT] 8787 被 node proxy 占用，先停掉 hermes-8787-proxy.service"
+/var/home/charlie/.local/bin/hermes-port-lock.sh:55:    systemctl --user stop hermes-8787-proxy.service >/dev/null 2>&1 || true
+/var/home/charlie/.local/bin/hermes-port-lock.sh:62:    if ss -tlnp "sport = :8787" 2>/dev/null | grep -q 'LISTEN'; then
+/var/home/charlie/.local/bin/hermes-port-lock.sh:67:  current=$(extract_proc_name 8787)
+/var/home/charlie/.local/bin/hermes-port-lock.sh:69:    log "[OK] 8787 已修复为 nesquena"
+/var/home/charlie/.local/bin/hermes-port-lock.sh:72:    log "[FAIL] 8787 修复失败: $current"
+/var/home/charlie/.local/bin/hermes-port-lock.sh:137:      check_port 8787 "python3" fix_8787 || rc=1
+/var/home/charlie/.local/bin/hermes-port-lock.sh:152:      for port in 8787 8648 18648; do
+/var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py:9:LISTEN = ('0.0.0.0', 18999)
+/var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py:10:TARGET = ('127.0.0.1', 8787)
+/var/home/charlie/.local/bin/webtty-usb-reverse-ensure:14:PORTS = [19888, 19899, 19900, 19902, 19903, 19904, 19905, 19906, 19907, 5000, 8787, 8648, 18083, 18082]
+/var/home/charlie/.local/bin/winetricks:4991:    WINETRICKS_AUTH="${WINETRICKS_AUTH:-${XDG_DATA_HOME}/winetricks/auth}"
+/var/home/charlie/.local/bin/agent-post:9:  agent-post --task sisyphus "Implement auth" --file plans/auth.md
+/var/home/charlie/.local/bin/claude-api-manager:14:echo "【GLM 代理】(localhost:8787)"
+/var/home/charlie/.local/bin/claude-api-manager:15:if curl -s --max-time 3 "http://127.0.0.1:8787/health" | grep -q '"status"'; then
+/var/home/charlie/.local/bin/phone-net-stability-check:12:DUCKDNS_Hermes_PORT="${DUCKDNS_Hermes_PORT:-19976}"
+/var/home/charlie/.local/bin/phone-net-stability-check:16:HERMES_HEALTH_URL="${HERMES_HEALTH_URL:-http://${WORKSPACE_NETBIRD_IP}:8787/api/health}"
+/var/home/charlie/.local/bin/phone-net-stability-check:140:  wrn "skip phone hermes/proxy checks: adb unreachable"
+/var/home/charlie/.local/bin/phone-net-stability-check:169:  if ss -tlnp | grep -q ':8787 '; then ok "hermes 8787 listening"; else no "hermes 8787 not listening"; fi
+/var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py.orig:7:LISTEN = ('127.0.0.1', 18999)
+/var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py.orig:8:TARGET = ('127.0.0.1', 8787)
+/var/home/charlie/.local/bin/ntfy-task-inbox:132:        (r"^(hermes|8787|8648)[:：]\s*(.+)$", "hermes"),
+/var/home/charlie/.local/bin/hermes-smart-proxy.py:8:TARGET = ('127.0.0.1', 8787)
+/var/home/charlie/.local/bin/happy-qr-auth.mjs:49:  const reg = await post('/v1/auth/request', { publicKey: pubB64, supportsV2: true });
+/var/home/charlie/.local/bin/happy-qr-auth.mjs:76:      const r = await post('/v1/auth/request', { publicKey: pubB64, supportsV2: true });
+/var/home/charlie/.local/bin/haven-mcp-wrapper.sh:14:MCP_REMOTE_JS="$( "$NODE_BIN" -e "try{process.stdout.write(require.resolve('mcp-remote/package.json',{paths:[process.cwd(),process.env.HOME,require('path').join(process.env.HOME,'.nvm/versions/node/v23.11.1/lib/node_modules'),require('path').join(process.env.HOME,'.nvm/versions/node/v22.22.3/lib/node_modules')]}).replace(/package\.json$/,'dist/proxy.js'))}catch(e){process.stderr.write(String(e)+'\n'); process.exit(1)}" 2>/dev/null || true)"
+/var/home/charlie/.local/bin/haven-mcp-wrapper.sh:17:    "/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js" \
+/var/home/charlie/.local/bin/haven-mcp-wrapper.sh:18:    "/var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js" \
+/var/home/charlie/.local/bin/haven-mcp-wrapper.sh:19:    "/var/home/charlie/.nvm/versions/node/v22.22.3/lib/node_modules/mcp-remote/dist/proxy.js"; do
+/var/home/charlie/.local/bin/memory-dream:14:GLM_URL="http://127.0.0.1:8787/v1/chat/completions"
+/var/home/charlie/.local/bin/mcp-orphan-killer.sh:11:    "mcp-remote/dist/proxy.js"
+/var/home/charlie/.local/bin/codex-c10-relogin-start:8:DEVICE_URL="https://auth.openai.com/codex/device"
+/var/home/charlie/.local/bin/codex-c10-relogin-start:15:if [ -e "$LOGIN_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/codex-c10-relogin-start:17:  install -m 600 "$LOGIN_HOME/auth.json" "$backup"
+/var/home/charlie/.local/bin/codex-c10-relogin-start:20:rm -f "$LOGIN_HOME/auth.json"
+/var/home/charlie/.local/bin/codex-account-manager:420:    status, data = http_json("POST", "/api/v1/auth/login", {"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD}, timeout=20)
+/var/home/charlie/.local/bin/machine-github-backup:153:    --exclude='.codex*/auth.json' \
+/var/home/charlie/.local/bin/haven-entry-codex4:35:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-entry-codex4:39:data = json.loads(Path("/var/home/charlie/.codex-4/auth.json").read_text())
+/var/home/charlie/.local/bin/codex-c5-phone-login:7:LOGIN_URL="${CODEX_C5_LOGIN_URL:-https://chatgpt.com/auth/login}"
+/var/home/charlie/.local/bin/ttyd-codex4-entry:31:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/ttyd-codex4-entry:35:data = json.loads(Path("/var/home/charlie/.codex-4/auth.json").read_text())
+/var/home/charlie/.local/bin/haven-codex4-ensure:29:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-codex4-ensure:33:data = json.loads(Path("/var/home/charlie/.codex-4/auth.json").read_text())
+/var/home/charlie/.local/bin/codex-account-provision:226:    status, data = http_json("POST", "/api/v1/auth/login", {"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD}, timeout=20)
+/var/home/charlie/.local/bin/haven-codex5-ensure:29:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-codex5-ensure:33:data = json.loads(Path("/var/home/charlie/.codex-5/auth.json").read_text())
+/var/home/charlie/.local/bin/haven-entry-codex8:35:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-entry-codex8:39:data = json.loads(Path("/var/home/charlie/.codex-8/auth.json").read_text())
+/var/home/charlie/.local/bin/haven-entry-codex5:35:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-entry-codex5:39:data = json.loads(Path("/var/home/charlie/.codex-5/auth.json").read_text())
+/var/home/charlie/.local/bin/ttyd-codex5-entry:32:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/ttyd-codex5-entry:36:data = json.loads(Path("/var/home/charlie/.codex-5/auth.json").read_text())
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:122:  "${sub2api_url}/api/v1/auth/login" \
+/var/home/charlie/.local/bin/codex8-prepare-login-mode:4:AUTH="$HOME_DIR/auth.json"
+/var/home/charlie/.local/bin/codex8-prepare-login-mode:5:AUTH_BACKUP="$HOME_DIR/auth.sub2api-unbound.json"
+/var/home/charlie/.local/bin/codex8-pending-bind-shell:11:  2. After ~/.codex-8/auth.json contains native ChatGPT tokens, run:
+/var/home/charlie/.local/bin/codex8-pending-bind-shell:15:       --file ~/.codex-8/auth.json \
+/var/home/charlie/.local/bin/haven-entry-codex7:35:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-entry-codex7:39:data = json.loads(Path("/var/home/charlie/.codex-7/auth.json").read_text())
+/var/home/charlie/.local/bin/haven-entry-codex6:35:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-entry-codex6:39:data = json.loads(Path("/var/home/charlie/.codex-6/auth.json").read_text())
+/var/home/charlie/.local/bin/haven-codex8-ensure:29:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-codex8-ensure:33:data = json.loads(Path("/var/home/charlie/.codex-8/auth.json").read_text())
+/var/home/charlie/.local/bin/ttyd-codex8-entry:32:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/ttyd-codex8-entry:36:data = json.loads(Path("/var/home/charlie/.codex-8/auth.json").read_text())
+/var/home/charlie/.local/bin/haven-entry-codex9:28:if [ -z "${OPENAI_API_KEY:-}" ] && [ -r "$CODEX_HOME/auth.json" ]; then
+/var/home/charlie/.local/bin/haven-entry-codex9:32:data = json.loads(Path("/var/home/charlie/.codex-9/auth.json").read_text())
+/var/home/charlie/.local/bin/rpcmap.py:372:                logging.critical("RPC proxy basic authentication might require you to specify the domain. "
+/var/home/charlie/.local/bin/smart-service-manager.py:245:    # Stop orphan dependency/proxy units if parent is inactive.
+
+__HERMES_CWD_f7003ecd813d__/var/home/charlie__HERMES_CWD_f7003ecd813d__

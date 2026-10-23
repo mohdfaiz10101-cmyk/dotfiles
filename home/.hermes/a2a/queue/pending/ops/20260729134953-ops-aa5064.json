@@ -1,0 +1,16 @@
+{
+  "id": "20260729134953-ops-aa5064",
+  "created_at": "2026-07-29T13:49:53.086938+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200422_c08243",
+    "title": "",
+    "created_at": 1784721869.0998533
+  },
+  "content": "The user utilizes a kanban workflow for managing work tasks, a standard agile task tracking approach they have adopted for project work.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

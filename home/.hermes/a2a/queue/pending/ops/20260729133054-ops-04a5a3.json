@@ -1,0 +1,16 @@
+{
+  "id": "20260729133054-ops-04a5a3",
+  "created_at": "2026-07-29T13:30:54.421287+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryfto7h8z25ja",
+    "title": "手动触发自动延期",
+    "created_at": 1784867346.6825893
+  },
+  "content": "已落地的周度复盘工作流采用「Codex复盘md模板+跨周迭代对比」的可复用模式：每次复盘生成结构化md留存，后续复盘会自动对比历史复盘产物梳理思路变化、输出修改意见与提升方案，支持长期迭代优化。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

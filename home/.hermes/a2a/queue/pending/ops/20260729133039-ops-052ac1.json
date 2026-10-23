@@ -1,0 +1,16 @@
+{
+  "id": "20260729133039-ops-052ac1",
+  "created_at": "2026-07-29T13:30:39.766815+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrygskuz9gjzm9",
+    "title": "修复Hermes服务自动挂起问题",
+    "created_at": 1784868817.9990294
+  },
+  "content": "终端工具存在固定硬限制：默认超时180s、前台上限600s，只读快照输出硬限制约12000字符，超限会被截断，需作为任务执行和输出设计的约束参考",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

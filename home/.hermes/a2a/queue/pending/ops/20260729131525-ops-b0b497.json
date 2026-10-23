@@ -1,0 +1,16 @@
+{
+  "id": "20260729131525-ops-b0b497",
+  "created_at": "2026-07-29T13:15:25.797948+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_011945",
+    "title": "",
+    "created_at": 1784913596.2107615
+  },
+  "content": "Information retention follows a strict priority hierarchy: P0 (user preferences, reply style, operation habits, automation preferences) is highest priority and always retained, while lower grades are subject to compression and deduplication.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

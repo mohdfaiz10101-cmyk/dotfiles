@@ -1,0 +1,16 @@
+{
+  "id": "20260729122204-cod-b38f46",
+  "created_at": "2026-07-29T12:22:04.838845+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "84374fb23fa7",
+    "title": "需要不断优化和理解hermes skill调用准确性 请去github搜下方案",
+    "created_at": 1785295269.8851964
+  },
+  "content": "Hermes skill calling accuracy is a common, documented pain point for Hermes framework deployments, with relevant optimization resources and community discussion available in public GitHub repositories.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

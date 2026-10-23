@@ -1,0 +1,73 @@
+{
+  "id": "mesh-20260801191133-683c2048",
+  "title": "NET-共同维护-Android代理VPN边界",
+  "objective": "审计 PKR110 在 5G、home Wi-Fi、portable Wi-Fi 下 root Mihomo、Magisk 97-mihomo.sh、NetBird Android VpnService、应用 UID 路由的共存边界。重点找：哪些检查必须用真实 app UID，哪些不能用 shell curl 代替，哪些情况下应优先 DuckDNS、NetBird、LAN 或 USB reverse。返回 status、risk、evidence_needed、safe_next_steps、commands。",
+  "profile": "mobile",
+  "mcp_profile": "mobile",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "status": "stale",
+  "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260801191133-683c2048.json",
+  "queue_path": "/var/home/charlie/.hermes/a2a/mesh-queue/pending/mobile/mesh-20260801191133-683c2048.json",
+  "children": [],
+  "rollups": [],
+  "handoffs": [],
+  "done": [],
+  "next_actions": [],
+  "avoid": [],
+  "estimated_tokens": 0,
+  "message_count": 0,
+  "created_at": "2026-08-01T19:11:33+08:00",
+  "updated_at": "2026-08-01T22:11:32+08:00",
+  "history": [
+    {
+      "ts": "2026-08-01T19:11:33+08:00",
+      "event": "created",
+      "title": "NET-共同维护-Android代理VPN边界",
+      "objective": "审计 PKR110 在 5G、home Wi-Fi、portable Wi-Fi 下 root Mihomo、Magisk 97-mihomo.sh、NetBird Android VpnService、应用 UID 路由的共存边界。重点找：哪些检查必须用真实 app UID，哪些不能用 shell curl 代替，哪些情况下应优先 DuckDNS、NetBird、LAN 或 USB reverse。返回 status、risk、evidence_needed、safe_next_steps、commands。",
+      "profile": "mobile"
+    },
+    {
+      "ts": "2026-08-01T19:11:56+08:00",
+      "event": "updated",
+      "status": "launch_failed",
+      "summary": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "ts": "2026-08-01T19:12:27+08:00",
+      "event": "updated",
+      "status": "submitted",
+      "summary": "任务已提交，后台执行中（超时未返回结果）"
+    },
+    {
+      "ts": "2026-08-01T19:15:01+08:00",
+      "event": "updated",
+      "status": "submitted",
+      "summary": "任务已提交，后台执行中（超时未返回结果）"
+    },
+    {
+      "ts": "2026-08-01T21:24:15+08:00",
+      "event": "updated",
+      "status": "failed",
+      "summary": "<urlopen error [Errno 1] Operation not permitted>"
+    },
+    {
+      "ts": "2026-08-01T21:25:08+08:00",
+      "event": "updated",
+      "status": "submitted",
+      "summary": "任务已提交，后台执行中（超时未返回结果）"
+    },
+    {
+      "ts": "2026-08-01T22:11:32+08:00",
+      "event": "updated",
+      "status": "stale",
+      "summary": "submitted timeout; archived for review by hermes-session-mesh"
+    }
+  ],
+  "summary": "submitted timeout; archived for review by hermes-session-mesh",
+  "active_port": 8648,
+  "active_session": "82da02ab-2964-4ebb-a745-3244a83df594"
+}

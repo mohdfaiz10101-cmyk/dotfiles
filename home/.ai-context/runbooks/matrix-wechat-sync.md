@@ -1357,7 +1357,8 @@ Important interpretation:
   Univest / remark Vladimir Univest. Never merge with Vladimir Khmil, Egorov
   or Vladislav by display name. Related groups were exported separately:
   `52222456833@chatroom` and `58710407602@chatroom`.
-- Private output: `~/Documents/客户报价/Vladimir-Univest-20261022/`.
+- Private output (current): `~/文档/客户资料/Vladimir-Univest-20261022/`.
+  Previous `~/Documents/客户报价/Vladimir-Univest-20261022/` is a compatibility symlink.
   113 private messages (107 Matrix historical + 6 desktop staged), 18 group
   records; 17 original pictures, 1 video, 1 supplier quote PDF, all byte hashes
   verified. Range 2025-05-28 to 2026-10-21; this excludes the unreadable iOS
@@ -1381,3 +1382,68 @@ Important interpretation:
   refuses to overwrite existing editable workbooks by default. Future incremental
   exports should create a new revision directory and deduplicate conversation +
   positive server ID, preserving manual quote edits.
+
+## 2026-10-23 User-visible export location
+
+- User wants files in the actual default Documents folder, easy to find.
+- XDG Documents: `/var/mnt/ai/xdg/文档` (home alias `~/文档`).
+- Customer exports: `~/文档/客户资料/<customer-project-date>/`.
+- Vladimir package moved to `~/文档/客户资料/Vladimir-Univest-20261022/`;
+  old Documents path remains a compatibility symlink. Default XDG desktop
+  and `~/Desktop` have a `客户资料` directory shortcut; GTK3/GTK4 bookmarks
+  both include the same folder. Builder path updated without regenerating files.
+- Broad default now recorded in `~/AGENTS.md`; prefer visible file-manager
+  routes in final replies, not hidden state paths or a separate English Documents.
+
+## 2026-10-23 Incremental metadata refresh after cutover refusal
+
+- Initial 8485-file / 28,528,762,060-byte copy finished 02:45; SHA256 verification completed 02:58. Cutover correctly refused because Windows metadata changed. Original Windows backup remained intact.
+- Diff found no added/removed files and only 5 metadata files totaling 41,401 bytes: backup_time.dat, detail.dat, phoneid.dat, phone_history.dat, pkg_info.dat; detail.dat changed mtime only.
+- Windows fedora-backup-manifest.py now reuses hashes only when path, size and mtime_ns match the previous manifest, with stable before/after stat checks. Refreshed baseline in 3 seconds: 8480 cached hashes, 5 rehashed. Old baseline/verified markers archived with .pre-metadata-refresh-20261023 suffix.
+- Incremental robocopy completed; full destination verification restarted at 12:32. wechat-backup-verify-cutover.service handles verified cutover and removal of exact originals automatically. Check migration-status.json for terminal status; do not call storage complete from copied bytes alone.
+- RMFH iOS content remains undecrypted and no new iOS Matrix events have been sent. Storage completion does not imply Matrix completion.
+
+## 2026-10-23 Vladimir visual quote revision
+
+- User rejected scattered exports and detached thumbnails: primary deliverables must be Excel and Word with left product image and matching quantity, unit price, currency and amount on the right. Use consistent product IDs; missing images stay explicitly missing.
+- New visible delivery: `~/文档/客户资料/Vladimir_清晰图文报价/{Vladimir_图文报价.xlsx,Vladimir_图文报价.docx}`. Earlier evidence archive retained. Six product groups, eight mower options; 3 actual source crops embedded in Word and 4 image occurrences in Excel.
+- Workbook: primary visual table, separate eight-option mower comparison, concise evidence map. Blue quantity cells editable; formulas return blank until numeric quantity and price exist. No overall total across options or currencies. Test copy recalculated 2*23000=46000 and 3*820=2460; blank quantity remains blank.
+- Word rendered in LibreOffice and all 4 landscape A4 pages visually checked; workbook all 5 print pages checked. Remove outer cantSplit around nested tables to avoid whole-product page jumps; reduce compact card content to avoid orphan source lines.
+- Sugar image/41800 USD is historical 10-lane supplier configuration, not requested 4–6 lanes. Mower shared appearance crop is not a verified photo for any of eight variants; original image's $450 must never be mapped to their $756–2044 prices. No paper/lid/test-cup photos recovered. Historical 500pcs each cup samples do not become new order quantity.
+- Builder: `~/.local/share/wechat-quotation-export/build_visual_quote.py`; explicit `--rebuild-generated` required to overwrite editable deliverables. Keep source crops and ID mapping in the 配图 subdirectory.
+
+## 2026-10-23 Account correction and deferred Vladimir extraction
+
+- User explicitly corrected source: Vladimir must come from WeChat account `w422417869`, after its full iOS history is imported into Matrix. Previous mixed Android/desktop exports are NOT the requested delivery. Both old output folders carry a visible account-source mismatch notice; preserve originals. Do not assume the prior account's contact ID proves the target account's Vladimir identity. Resolve within target account after import.
+- Requested layout: portrait contract-style Excel and Word; each product is a two-column block, original image left, vertically stacked editable product/specification/quantity/unit price/amount/terms right; repeat product blocks down the page. No wide multi-column product sheet as the primary delivery.
+- At 12:45:19 storage completed: 8485 files verified, 28,528,762,060 bytes stored on Fedora, Windows original path now directory symlink to encrypted authenticated SMB share. 28,545,056,768 allocated Windows bytes freed. iOS RMFH content is still undecrypted; matrix_sent=0. Do not claim full task or Matrix completion.
+- Outstanding sequence: obtain readable full source for w422417869, account-scoped dedup/provenance-aware Matrix import and validation, then target-account Vladimir extraction and contract-style Excel/Word regeneration. No background decryption/import automation is proven running.
+
+## 2026-10-23 RMFH probe and direct iPhone fallback
+
+- User explicitly requires continuing decryption before Matrix/Vladimir work. Do not imply an unproven decryption daemon is working in the background.
+- Native samples prove RMFH frame header=128 bytes and RMFT footer=128 bytes (backup.attr 258 bytes has 2-byte payload). ChatImportKit's inferred 16-byte header is not sufficient for this backup. Do not treat its inferred header fields as a verified specification.
+- Bounded AES-GCM candidate test: `~/.local/bin/wechat-rmfh-key-probe`, report `.../wechat-ios-backup/research/key-probe.json`; 2 candidate keys, 14,432 trials, zero authenticated successes on backup.attr. This only rejects the tested candidates/layouts, not all possible decryption. No plaintext or keys logged; original backup untouched.
+- No iPhone visible via Fedora idevice_id USB or network. Windows native cfgmgr32 Apple USB presence check also empty; standard Apple MobileSync directories absent; Windows pairing record count zero. Mobile backup key not obtained. Current Windows Weixin 4.1.15.56 running; no proof desktop memory contains the mobile RMFH key.
+- Requested user connect the source iPhone to Fedora, unlock and Trust. This physical source/trust step is required for the currently prepared alternative; no password should be put in chat.
+- Acquisition helper `~/.local/bin/wechat-ios-direct-backup`: default status-only; explicit `--backup` writes default-incremental idevicebackup2 data directly to `/var/mnt/ai/data/wechat-ios-direct-source/MobileSync/Backup`. Refuses ambiguous devices, validates pairing, checks a conservative device-used bound plus 10GiB free reserve, never restores or changes encryption. Check Status.plist SnapshotState and Manifest.plist encryption before exposing app data. Account remains unverified until examined; refuse Matrix import based on intended-account label alone. Syntax passed; no-device check returned needs_iphone_usb_trust. Actual backup path has NOT been device-tested.
+- Fedora data disk currently 147GiB free. If conservative whole-phone upper bound does not fit, inspect capacity before starting; do not exhaust the disk.
+
+## 2026-10-23 Source iPhone connected; filtered backup running
+
+- Fedora USB pairing validated; device fingerprint `3eeba0dc137b`. iOS WeChat version 8.0.75.33. Read-only pymobiledevice3 `backup2 encryption` reports off; no backup encryption setting changed.
+- Device-used upper bound ~171.6GB exceeded Fedora data free ~156.8GB, so do not run the original whole-device conservative path. Installed isolated pymobiledevice3 11.43.1 at `~/.local/share/wechat-ios-tools/venv`; CLI supports --only-regex.
+- User service `wechat-ios-direct-backup.service` runs helper `wechat-ios-direct-backup --backup --wechat-only`. Filter `com\.tencent\.xin(?:[./-]|$)` includes main app and app-group domains. Other payload bytes are drained, not stored; device may still transfer substantial data. Manifest may retain unrelated metadata; never treat this as a restorable whole-phone backup. No --full or --patch-manifest.
+- Backup started 13:38; phone passcode prompt appeared and was dismissed at 13:38:06. Destination `/var/mnt/ai/data/wechat-ios-direct-source/MobileSync/Backup/`; private backup.log. Service guards 10GiB disk reserve and preserves partial files on failure. Initial snapshot entries include zero-byte discard placeholders which are cleaned after completion; do not report placeholder counts as messages recovered.
+- HouseArrest VendContainer and VendDocuments for com.tencent.xin were read-only tested and refused InstallationLookupFailed; no direct AFC shortcut established. Do not retry without changed evidence.
+- Post-backup helper `~/.local/bin/wechat-ios-source-audit` is gated by shared backup lock and successful completion state. It parses LoginInfo2.dat username/alias, requires exact target w422417869, examines SQLite headers, and locates Vladimir candidates without exporting chat content. Actual account verification remains pending backup completion. Syntax check and active-backup refusal tested. Modern MMKV fallback may be needed if LoginInfo2.dat does not identify target.
+- Primary references: https://doronz88.github.io/pymobiledevice3/cli/backup2/ and https://github.com/BlueMatthew/WechatExporter . Read-only parser source retained under direct-source/research for schema verification; do not infer complete data from upstream formats alone.
+
+## 2026-10-23 First filtered backup FAILED payload completeness; file-ID retry
+
+- First transfer ended ~14:16 (38m20s), but end-to-end audit found 94,680 WeChat manifest entries and only 104 main-app payloads / 1 app-group payload actually preserved. All essential Documents/DB SQLite files and LoginInfo2.dat were missing. This is NOT a successful chat acquisition despite CLI 100%/exit0. Old source-audit renamed source-audit.first-filter-missed-payloads.json.
+- Cause: CLI regex applies to device-side paths during transfer. Those paths do not reliably contain the bundle ID; the earlier regex kept only configs whose names included com.tencent.xin. Do not repeat domain regex filtering during first transfer on this phone. No Matrix messages sent.
+- Full index confirms Documents/dda3d19568edb8ced00218da22f32eb9/DB/{MM.sqlite,message_1.sqlite..message_4.sqlite,WCDB_Contact.sqlite}, plus Documents/MMappedKV/mmsetting.archive.w422417869. Hash is MD5(w422417869), but verify actual LoginInfo2 before publishing.
+- Built private `.../direct-source/wechat-selector.db` from complete manifest, 94680 exact WeChat main/group/plugin file IDs. New helper `~/.local/bin/wechat-ios-fileid-backup` matches incoming host payload basename to these IDs; synthetic known opaque-path match and unrelated-ID rejection passed. It writes transfer-progress.json with actual percent + kept/discarded counts and private filter-path-samples.json for diagnostics.
+- Existing direct helper now refuses the failed regex fallback, uses file-ID helper, supports --reacquire-missing, guards 10GiB reserve, and requires essential DB payloads present before declaring completion. User unit currently has one-off --reacquire-missing (forced full replay); REMOVE that argument after successful reacquisition so later backups are incremental. Refresh selector from completed index if paths evolve.
+- File-ID retry started 14:36, phone requested passcode again. User told to enter it on device, never in chat. Source audit service queued after retry. This is a trusted, standard MobileBackup2 operation; no jailbreak or iOS root access obtained.

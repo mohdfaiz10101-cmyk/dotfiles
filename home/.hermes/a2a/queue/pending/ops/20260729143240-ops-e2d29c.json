@@ -1,0 +1,16 @@
+{
+  "id": "20260729143240-ops-e2d29c",
+  "created_at": "2026-07-29T14:32:40.942063+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvx95x5ez7fhk",
+    "title": "OpenHands continuous task execution",
+    "created_at": 1784715084.5232742
+  },
+  "content": "A standard reusable diagnostic workflow for OpenHands CLI continuous task execution is to check if ongoing task processing is stopped, lagging, or stuck to identify and resolve execution issues.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

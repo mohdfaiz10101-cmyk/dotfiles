@@ -1,0 +1,16 @@
+{
+  "id": "20260801120857-ops-48b436",
+  "created_at": "2026-08-01T12:08:57.421787+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msabv5569wbfc3",
+    "title": "",
+    "created_at": 1785586106.0764358
+  },
+  "content": "The current working directory for the active session environment is /var/home/charlie.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123320-ops-a23c92",
+  "created_at": "2026-07-29T12:33:20.828443+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "b2bc0c6a67d3",
+    "title": "",
+    "created_at": 1785131198.0188081
+  },
+  "content": "用户当前排查场景中涉及运行在8648端口的服务，该服务返回内容的<title>标签可作为快速校验标识",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

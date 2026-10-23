@@ -1,0 +1,17 @@
+{
+  "id": "20260729122639-ops-5ddbf8",
+  "created_at": "2026-07-29T12:26:39.793153+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "f7be031b-6af1-4a08-9ab4-7af06fd4e1b5",
+    "title": "",
+    "created_at": 1785229894.6482785
+  },
+  "content": "The user prefers direct, no-formality communication, with no requirement for formal greetings or small talk before submitting requests.",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.659664+00:00"
+}

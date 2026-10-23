@@ -1,0 +1,16 @@
+{
+  "id": "20260729124340-ext-aaf89e",
+  "created_at": "2026-07-29T12:43:40.146512+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_121757_d320c3",
+    "title": "Automated disk cleanup setup",
+    "created_at": 1785039477.1225405
+  },
+  "content": "User has a standing requirement for a scheduled, automated disk cleanup workflow for their personal computer to manage recurring disk space needs with minimal ongoing manual intervention.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

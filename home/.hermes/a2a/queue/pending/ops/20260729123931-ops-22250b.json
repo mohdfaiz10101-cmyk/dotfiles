@@ -1,0 +1,16 @@
+{
+  "id": "20260729123931-ops-22250b",
+  "created_at": "2026-07-29T12:39:31.563464+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_152357_00e8cf",
+    "title": "Mihomo proxy blocking Hermes access",
+    "created_at": 1785050637.0809593
+  },
+  "content": "The user's network environment uses Mihomo as a proxy service that may block access to DuckDNS-resolved self-hosted services from mobile clients, so all future configuration or troubleshooting for these services must include checks for Mihomo proxy rule compatibility to prevent access blockage.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

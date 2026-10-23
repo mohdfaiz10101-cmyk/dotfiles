@@ -1,0 +1,81 @@
+### Caddy TLS handshake details ###
+Connecting to 127.0.0.1
+00F3FE08BF7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:918:SSL alert number 80
+CONNECTED(00000003)
+---
+no peer certificate available
+---
+No client certificate CA names sent
+Negotiated TLS1.3 group: <NULL>
+---
+SSL handshake has read 7 bytes and written 1569 bytes
+Verification: OK
+---
+New, (NONE), Cipher is (NONE)
+Protocol: TLSv1.3
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+
+### Recent Caddy logs last 120 lines ###
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.330311,"logger":"tls","msg":"certificate is in configured renewal window based on expiration date","subjects":["bob.charlie1990.duckdns.org"],"expiration":1786328475,"ari_cert_id":"","next_ari_update":null,"renew_check_interval":600,"window_start":-6795364578.8713455,"window_end":-6795364578.8713455,"remaining":13800.669697595}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6507936,"logger":"tls","msg":"certificate is in configured renewal window based on expiration date","subjects":["charlie.charlie1990.duckdns.org"],"expiration":1786328475,"ari_cert_id":"","next_ari_update":null,"renew_check_interval":600,"window_start":-6795364578.8713455,"window_end":-6795364578.8713455,"remaining":13800.349207201}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.651042,"logger":"tls","msg":"certificate is in configured renewal window based on expiration date","subjects":["studio.charlie1990.duckdns.org"],"expiration":1786328476,"ari_cert_id":"","next_ari_update":null,"renew_check_interval":600,"window_start":-6795364578.8713455,"window_end":-6795364578.8713455,"remaining":13801.348958411}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6512249,"logger":"tls","msg":"certificate is in configured renewal window based on expiration date","subjects":["panel.charlie1990.duckdns.org"],"expiration":1786328475,"ari_cert_id":"","next_ari_update":null,"renew_check_interval":600,"window_start":-6795364578.8713455,"window_end":-6795364578.8713455,"remaining":13800.34877534}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6513422,"logger":"tls","msg":"certificate is in configured renewal window based on expiration date","subjects":["alice.charlie1990.duckdns.org"],"expiration":1786328475,"ari_cert_id":"","next_ari_update":null,"renew_check_interval":600,"window_start":-6795364578.8713455,"window_end":-6795364578.8713455,"remaining":13800.348657959}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6514604,"logger":"tls.cache.maintenance","msg":"certificate expires soon; queuing for renewal","identifiers":["bob.charlie1990.duckdns.org"],"remaining":13800.348540125}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.651497,"logger":"tls.cache.maintenance","msg":"certificate expires soon; queuing for renewal","identifiers":["charlie.charlie1990.duckdns.org"],"remaining":13800.348504285}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6515038,"logger":"tls.cache.maintenance","msg":"certificate expires soon; queuing for renewal","identifiers":["studio.charlie1990.duckdns.org"],"remaining":13801.348496275}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.651514,"logger":"tls.cache.maintenance","msg":"certificate expires soon; queuing for renewal","identifiers":["panel.charlie1990.duckdns.org"],"remaining":13800.348486026}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.651526,"logger":"tls.cache.maintenance","msg":"certificate expires soon; queuing for renewal","identifiers":["alice.charlie1990.duckdns.org"],"remaining":13800.348474169}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.651595,"logger":"tls.cache.maintenance","msg":"attempting certificate renewal","identifiers":["studio.charlie1990.duckdns.org"],"remaining":13801.348406744}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6515713,"logger":"tls.cache.maintenance","msg":"attempting certificate renewal","identifiers":["bob.charlie1990.duckdns.org"],"remaining":13800.348431414}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.651732,"logger":"tls.cache.maintenance","msg":"attempting certificate renewal","identifiers":["alice.charlie1990.duckdns.org"],"remaining":13800.348270362}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6515977,"logger":"tls.cache.maintenance","msg":"attempting certificate renewal","identifiers":["panel.charlie1990.duckdns.org"],"remaining":13800.348404569}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6515796,"logger":"tls.cache.maintenance","msg":"attempting certificate renewal","identifiers":["charlie.charlie1990.duckdns.org"],"remaining":13800.348422285}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.656842,"logger":"tls.renew","msg":"acquiring lock","identifier":"studio.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6762295,"logger":"tls.renew","msg":"acquiring lock","identifier":"charlie.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6762483,"logger":"tls.renew","msg":"acquiring lock","identifier":"alice.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.6762314,"logger":"tls.renew","msg":"acquiring lock","identifier":"bob.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7179153,"logger":"tls.renew","msg":"lock acquired","identifier":"charlie.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.71822,"logger":"tls.renew","msg":"renewing certificate","identifier":"charlie.charlie1990.duckdns.org","remaining":13800.2817828}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7225661,"logger":"tls.renew","msg":"lock acquired","identifier":"alice.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.722565,"logger":"tls.renew","msg":"lock acquired","identifier":"bob.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7227573,"logger":"tls.renew","msg":"renewing certificate","identifier":"alice.charlie1990.duckdns.org","remaining":13800.277244826}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7229896,"logger":"tls.renew","msg":"renewing certificate","identifier":"bob.charlie1990.duckdns.org","remaining":13800.277012055}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7569115,"logger":"tls.renew","msg":"lock acquired","identifier":"studio.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7571695,"logger":"tls.renew","msg":"renewing certificate","identifier":"studio.charlie1990.duckdns.org","remaining":13801.242833189}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.7825725,"logger":"tls.renew","msg":"acquiring lock","identifier":"panel.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.8082523,"logger":"tls.renew","msg":"lock acquired","identifier":"panel.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.8085022,"logger":"tls.renew","msg":"renewing certificate","identifier":"panel.charlie1990.duckdns.org","remaining":13800.191500324}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9153278,"logger":"tls.renew","msg":"certificate renewed successfully","identifier":"studio.charlie1990.duckdns.org","issuer":"local"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9153483,"logger":"tls.renew","msg":"certificate renewed successfully","identifier":"bob.charlie1990.duckdns.org","issuer":"local"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9153292,"logger":"tls.renew","msg":"certificate renewed successfully","identifier":"panel.charlie1990.duckdns.org","issuer":"local"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9154487,"logger":"tls.renew","msg":"releasing lock","identifier":"bob.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9154775,"logger":"tls.renew","msg":"releasing lock","identifier":"panel.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9153354,"logger":"tls.renew","msg":"certificate renewed successfully","identifier":"charlie.charlie1990.duckdns.org","issuer":"local"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9154487,"logger":"tls.renew","msg":"releasing lock","identifier":"studio.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9155483,"logger":"tls","msg":"reloading managed certificate","identifiers":["panel.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.915556,"logger":"tls","msg":"reloading managed certificate","identifiers":["bob.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9155653,"logger":"tls","msg":"reloading managed certificate","identifiers":["studio.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9155717,"logger":"tls.renew","msg":"releasing lock","identifier":"charlie.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9156368,"logger":"tls","msg":"reloading managed certificate","identifiers":["charlie.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"warn","ts":1786314674.915887,"logger":"tls","msg":"stapling OCSP","identifiers":["charlie.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"warn","ts":1786314674.9158933,"logger":"tls","msg":"stapling OCSP","identifiers":["panel.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"warn","ts":1786314674.9158971,"logger":"tls","msg":"stapling OCSP","identifiers":["bob.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9159048,"logger":"tls.cache","msg":"replaced certificate in cache","subjects":["panel.charlie1990.duckdns.org"],"new_expiration":1786357875}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9159122,"logger":"tls.cache","msg":"replaced certificate in cache","subjects":["bob.charlie1990.duckdns.org"],"new_expiration":1786357875}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"warn","ts":1786314674.9158988,"logger":"tls","msg":"stapling OCSP","identifiers":["studio.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.915902,"logger":"tls.cache","msg":"replaced certificate in cache","subjects":["charlie.charlie1990.duckdns.org"],"new_expiration":1786357875}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9159236,"logger":"tls.cache","msg":"replaced certificate in cache","subjects":["studio.charlie1990.duckdns.org"],"new_expiration":1786357875}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9761088,"logger":"tls.renew","msg":"certificate renewed successfully","identifier":"alice.charlie1990.duckdns.org","issuer":"local"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9762,"logger":"tls.renew","msg":"releasing lock","identifier":"alice.charlie1990.duckdns.org"}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.976245,"logger":"tls","msg":"reloading managed certificate","identifiers":["alice.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"warn","ts":1786314674.9764817,"logger":"tls","msg":"stapling OCSP","identifiers":["alice.charlie1990.duckdns.org"]}
+8月 10 06:31:14 fedora caddy[1543652]: {"level":"info","ts":1786314674.9764972,"logger":"tls.cache","msg":"replaced certificate in cache","subjects":["alice.charlie1990.duckdns.org"],"new_expiration":1786357875}
+
+__HERMES_CWD_0b711898177a__/var/home/charlie/workspace__HERMES_CWD_0b711898177a__

@@ -1,0 +1,17 @@
+{
+  "id": "20260729122204-cod-2bca32",
+  "created_at": "2026-07-29T12:22:04.838691+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "84374fb23fa7",
+    "title": "需要不断优化和理解hermes skill调用准确性 请去github搜下方案",
+    "created_at": 1785295269.8851964
+  },
+  "content": "When addressing Hermes skill accuracy optimization needs, the user's preferred initial workflow is to search GitHub for existing proven solutions, reference implementations, or community best practices prior to building custom fixes from scratch.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.662656+00:00"
+}

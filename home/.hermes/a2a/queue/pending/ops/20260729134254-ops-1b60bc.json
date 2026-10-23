@@ -1,0 +1,16 @@
+{
+  "id": "20260729134254-ops-1b60bc",
+  "created_at": "2026-07-29T13:42:54.140109+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrwc4rkj7tep5p",
+    "title": "",
+    "created_at": 1784740089.0844412
+  },
+  "content": "To distinguish between actual Hermes task stalls and UI refresh illusion, you can check the task's running/queued status in the task list, compare the task's `updated_at` timestamp before and after page refresh, or check backend worker logs to confirm if the task was received prior to opening the page.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

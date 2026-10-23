@@ -1,0 +1,16 @@
+{
+  "id": "20260729130817-ops-958bf3",
+  "created_at": "2026-07-29T13:08:17.323918+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_053852",
+    "title": "",
+    "created_at": 1784929143.8106754
+  },
+  "content": "The skill's automated task routing logic bases decisions on three core factors: historical task success rates, task complexity, and user preferences, to select between execute, suggest, or skip actions for incoming tasks.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

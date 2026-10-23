@@ -1,0 +1,16 @@
+{
+  "id": "20260729122830-ops-19db48",
+  "created_at": "2026-07-29T12:28:30.249924+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4eh3mscndruk",
+    "title": "stepfun 按次数切换",
+    "created_at": 1785227781.406812
+  },
+  "content": "接入Hermes Studio时，StepFun的模型组需命名为`stepfun new`，且该配置不得覆盖其他已有模型组配置",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

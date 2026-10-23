@@ -1,0 +1,16 @@
+{
+  "id": "20260729124236-ext-a6e498",
+  "created_at": "2026-07-29T12:42:36.848627+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_125908_563cde",
+    "title": "Hermes Studio version-safe modifications",
+    "created_at": 1785041948.1477995
+  },
+  "content": "User has a standing requirement for Hermes Studio to output post-execution tool call correctness validation results and full step-by-step operation traces after each tool invocation, to enable auditing of agent action processes.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729134227-cod-7c3ce7",
+  "created_at": "2026-07-29T13:42:27.198688+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrx2cd83ek7x0q",
+    "title": "",
+    "created_at": 1784784159.649535
+  },
+  "content": "Codex多账号池问题排查的通用规则：若所有账号HTTP请求状态码均为200，则Sub2API网关+代理链路完全正常，问题100%出在账号本身（如token失效、工作区停用、身份重复等），无需排查代理层。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

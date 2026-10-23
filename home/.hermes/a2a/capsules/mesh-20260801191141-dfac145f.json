@@ -1,0 +1,96 @@
+{
+  "task_id": "mesh-20260801191141-dfac145f",
+  "title": "NET-共同维护-WebTTY路由验收",
+  "objective": "审计 Workbench/WebTTY 在 USB reverse、LAN、NetBird、DuckDNS、5G 下的 best-route 选择和验收链。重点检查 phone-webtty-route-probe、mobile-ai-route-prewarm、codex-webtty-perf-summary、network-scenario-monitor 的职责边界，列出哪些状态文件足以验收，哪些必须通过 ADB phone-side probe。返回 status、route_matrix、evidence_files、gaps、recommended_acceptance。",
+  "profile": "monitor",
+  "mcp_profile": "monitor",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [
+    "~/.ai-context/runbooks/network-scenario-monitor.md",
+    "~/.ai-context/runbooks/control-plane.md",
+    "~/.ai-context/SYSTEM_MAP.md"
+  ],
+  "constraints": [
+    "只读诊断",
+    "不要启动浏览器",
+    "不要重启WebTTY",
+    "不要用Fedora本机curl替代手机证据",
+    "只返回JSON摘要",
+    "引用现有state文件路径"
+  ],
+  "summary_hint": "",
+  "router": {
+    "message": "审计 Workbench/WebTTY 在 USB reverse、LAN、NetBird、DuckDNS、5G 下的 best-route 选择和验收链。重点检查 phone-webtty-route-probe、mobile-ai-route-prewarm、codex-webtty-perf-summary、network-scenario-monitor 的职责边界，列出哪些状态文件足以验收，哪些必须通过 ADB phone-side probe。返回 status、route_matrix、evidence_files、gaps、recommended_acceptance。",
+    "skills_to_load": [
+      "ops-autopilot",
+      "ios-netbird-log-tracking",
+      "android-remote-control-setup",
+      "waydroid-ai-stack",
+      "network-monitoring-ops",
+      "phone-hermes-network",
+      "android-ops",
+      "ops-debugging"
+    ],
+    "workflow_rules": [
+      {
+        "score": 4,
+        "text": "Do not run Mobile AI Browsh as a fresh `browsh` process for every ttyd WebSocket client. Opening `/browsh` in a second tab/window then starts a second Browsh, it exits quickly, and the page enters reconnecting. Keep `~/.local/bin/mobile-ai-browsh-entry` tmux-backed on session `mobile-ai-browsh`, and",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.85, \"id\": \"b95497c09c32\", \"last_verified\": \"2026-07-21T19:14:47\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"router\", \"source_events\": [\"d089807cde063cd1ceba\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): frp.md, duckdns.md, control-pla",
+        "scope": "router",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`. Do not turn `opencode-18910-local.service` into a second `opencode serve` backend for review workspaces. `18910` is the LAN/public Web entry and must remain a proxy to `4",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"8525eaba5c90\", \"last_verified\": \"2026-07-21T19:19:31\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"c757981c9ee0f10ba6d1\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"05c6d9cfa2f3\", \"last_verified\": \"2026-07-21T19:04:38\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"6302c33f8d9808949043\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 3,
+        "text": "Do not treat Sway workspace/window flicker or drifting windows as a pure compositor bug before checking remote-input and auto-window churn. On this host, Sunshine creates `48879:57005:*_passthrough` input devices, and `adb-phone-keepalive.sh` must not auto-start Sunshine unless `ADB_PHONE_KEEPALIVE_",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 3,
+        "text": "Do not repeatedly hammer Windows SSH for phone USB ADB fallback after OpenSSH returns `Exceeded MaxStartups` or immediate `Connection reset`. Windows is reachable at TCP level, but `sshd` is refusing sessions; restart Windows OpenSSH Server or wait for stale unauthenticated sessions to clear.",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 3,
+        "text": "Do not assign Haven profile 2 (`OpenCode 18910`) as `mcp_tunnel_endpoint_profile_id`; it becomes a headless tunnel with no terminal. The local ADB MCP bridge is the active Haven transport, so keep that preference empty. Do not re-enable `haven-mcp-watchdog.timer` or keep `haven-mcp-bridge.service` a",
+        "scope": "opencode",
+        "confidence": 0.85
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T19:11:41+08:00",
+  "status": "queued"
+}

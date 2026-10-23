@@ -1,0 +1,16 @@
+{
+  "id": "20260729122918-ops-1de69f",
+  "created_at": "2026-07-29T12:29:18.474253+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4cky8p60o7yk",
+    "title": "",
+    "created_at": 1785224533.6053004
+  },
+  "content": "Standard troubleshooting workflow for Hermes web UI port 8787 access failures where localhost access works: first confirm the target external IP is bound to the host, then check firewall/security group rules allow inbound traffic on port 8787, finally verify the access request is routed to the correct host/container running the service.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

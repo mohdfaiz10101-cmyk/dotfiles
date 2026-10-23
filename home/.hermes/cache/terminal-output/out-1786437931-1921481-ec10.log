@@ -1,0 +1,122 @@
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-apk-file] start error: proxy [fedora-apk-file] already exists
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-hermes-webui-19976] start error: proxy [fedora-hermes-webui-19976] already exists
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-apk-download] start error: proxy [fedora-apk-download] already exists
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [I] [client/control.go:172] [ca77a875e7c48362] [fedora-cdp-monitor-5003] start proxy success
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-matrix-8008] start error: proxy [fedora-matrix-8008] already exists
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-mosh-1] start error: proxy [fedora-mosh-1] already exists
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-mosh-2] start error: proxy [fedora-mosh-2] already exists
+8月 11 16:34:53 fedora frpc[2042232]: 2026-08-11 16:34:53.367 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex9-tty-19908] start error: proxy [fedora-codex9-tty-19908] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.383 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex-tty-19007] start error: proxy [fedora-codex-tty-19007] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.383 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-crush-ttyd-17698] start error: proxy [fedora-crush-ttyd-17698] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.383 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-mosh-2] start error: proxy [fedora-mosh-2] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.383 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex-tty-19006] start error: proxy [fedora-codex-tty-19006] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.383 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-matrix-8008] start error: proxy [fedora-matrix-8008] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-termhive-18093] start error: proxy [fedora-termhive-18093] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex-tty-19002] start error: proxy [fedora-codex-tty-19002] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-crush-2227] start error: proxy [fedora-ssh-crush-2227] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-apk-file] start error: proxy [fedora-apk-file] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-openhands-cli] start error: proxy [fedora-openhands-cli] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex-tty-19004] start error: proxy [fedora-codex-tty-19004] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-console] start error: proxy [fedora-console] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-codex-2225] start error: proxy [fedora-ssh-codex-2225] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-apk-download] start error: proxy [fedora-apk-download] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-console-18080] start error: proxy [fedora-console-18080] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-2224] start error: proxy [fedora-ssh-2224] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-codexsmart-2230] start error: proxy [fedora-ssh-codexsmart-2230] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-wsscrcpy-19900] start error: proxy [fedora-wsscrcpy-19900] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-codex3-2229] start error: proxy [fedora-ssh-codex3-2229] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ttyd-hub] start error: proxy [fedora-ttyd-hub] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-2223] start error: proxy [fedora-ssh-2223] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-crush-buttons-17700] start error: proxy [fedora-crush-buttons-17700] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-sisy] start error: proxy [fedora-sisy] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-hermes-webui-19976] start error: proxy [fedora-hermes-webui-19976] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-ssh-codex2-2226] start error: proxy [fedora-ssh-codex2-2226] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex-tty-19005] start error: proxy [fedora-codex-tty-19005] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-mosh-1] start error: proxy [fedora-mosh-1] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.384 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex-tty-19003] start error: proxy [fedora-codex-tty-19003] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.385 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-openhands] start error: proxy [fedora-openhands] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.385 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex10-tty-19909] start error: proxy [fedora-codex10-tty-19909] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.385 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-hub-dashboard] start error: proxy [fedora-hub-dashboard] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.385 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-termhive-18081] start error: proxy [fedora-termhive-18081] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.385 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-opencode] start error: proxy [fedora-opencode] already exists
+8月 11 16:35:23 fedora frpc[2042232]: 2026-08-11 16:35:23.385 [W] [client/control.go:170] [ca77a875e7c48362] [fedora-codex9-tty-19908] start error: proxy [fedora-codex9-tty-19908] already exists
+8月 11 16:35:37 fedora systemd[1]: Stopping frpc.service - FRP Client...
+8月 11 16:35:37 fedora systemd[1]: Stopped frpc.service - FRP Client.
+8月 11 16:35:37 fedora systemd[1]: Started frpc.service - FRP Client.
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.600 [I] [client/service.go:306] [1cb90d8745f426dd] login to server success, get run id [1cb90d8745f426dd]
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-crush-2227] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-crush-ttyd-17698] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-console] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-console-18080] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-codex3-2229] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-2223] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.601 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-codexsmart-2230] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex9-tty-19908] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex10-tty-19909] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex-tty-19005] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-crush-buttons-17700] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-codex2-2226] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-termhive-18081] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-2224] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-openhands] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-hermes-webui-19976] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-termhive-18093] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ssh-codex-2225] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex-tty-19006] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex-tty-19007] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-apk-download] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex-tty-19003] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-apk-file] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.602 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex-tty-19002] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-codex-tty-19004] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-opencode] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-ttyd-hub] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-matrix-8008] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-mosh-1] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-sisy] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-cdp-monitor-5003] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-mosh-2] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-openhands-cli] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-wsscrcpy-19900] start proxy success
+8月 11 16:35:37 fedora frpc[2046168]: 2026-08-11 16:35:37.603 [I] [client/control.go:172] [1cb90d8745f426dd] [fedora-hub-dashboard] start proxy success
+8月 11 16:36:54 fedora systemd[1]: Stopping frpc.service - FRP Client...
+8月 11 16:36:54 fedora systemd[1]: Stopped frpc.service - FRP Client.
+8月 11 16:36:54 fedora systemd[1]: Started frpc.service - FRP Client.
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.930 [I] [client/service.go:306] [446b74f482a70ac0] login to server success, get run id [446b74f482a70ac0]
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-crush-ttyd-17698] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex-tty-19002] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-hub-dashboard] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex-tty-19004] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-openhands-cli] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-crush-buttons-17700] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex-tty-19005] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-codexsmart-2230] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-termhive-18081] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-termhive-18093] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.931 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex-tty-19006] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-2223] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex-tty-19007] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-crush-2227] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-codex3-2229] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex-tty-19003] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-2224] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-opencode] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ttyd-hub] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-codex-2225] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-wsscrcpy-19900] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-hermes-webui-19976] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-sisy] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-console-18080] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-openhands] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-console] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.932 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex9-tty-19908] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-matrix-8008] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-cdp-monitor-5003] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-codex10-tty-19909] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-apk-download] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-apk-file] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-mosh-1] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-mosh-2] start proxy success
+8月 11 16:36:54 fedora frpc[2056670]: 2026-08-11 16:36:54.933 [I] [client/control.go:172] [446b74f482a70ac0] [fedora-ssh-codex2-2226] start proxy success
+
+__HERMES_CWD_1102a89d887e__/var/home/charlie/workspace__HERMES_CWD_1102a89d887e__

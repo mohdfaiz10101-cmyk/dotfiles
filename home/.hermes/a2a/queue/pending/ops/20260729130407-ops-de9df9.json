@@ -1,0 +1,16 @@
+{
+  "id": "20260729130407-ops-de9df9",
+  "created_at": "2026-07-29T13:04:07.021059+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_091950",
+    "title": "",
+    "created_at": 1784942401.495576
+  },
+  "content": "The memory-curator skill enforces a 2200 character limit on MEMORY.md; the current file size is 2258 characters, exceeding the threshold and potentially triggering lock/skip behavior.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

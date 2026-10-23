@@ -1,0 +1,16 @@
+{
+  "id": "20260802114136-ops-742674",
+  "created_at": "2026-08-02T11:41:36.355936+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbq4rwp9v9pf9",
+    "title": "",
+    "created_at": 1785670687.7284803
+  },
+  "content": "The existing NetBird + FRP architecture already covers two access layers: direct device access without public IP, and public network fallback for exposed services; to address router or public network instability, the optimal approach is to use NetBird as the unified access layer and add physical layer redundancy, rather than replacing the existing tool stack.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

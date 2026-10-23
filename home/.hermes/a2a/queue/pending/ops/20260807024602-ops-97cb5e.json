@@ -1,0 +1,16 @@
+{
+  "id": "20260807024602-ops-97cb5e",
+  "created_at": "2026-08-07T02:46:02.746609+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e7c28e6ee0c5",
+    "title": "",
+    "created_at": 1786070462.43949
+  },
+  "content": "Hermes的19999端口为系统Monitor监控面板，并非WebUI聊天交互界面，排查前端附件上传、请求发送类问题时需导航到实际的WebUI聊天页面操作。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

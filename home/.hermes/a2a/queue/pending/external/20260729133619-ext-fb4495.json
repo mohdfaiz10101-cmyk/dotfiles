@@ -1,0 +1,16 @@
+{
+  "id": "20260729133619-ext-fb4495",
+  "created_at": "2026-07-29T13:36:19.220715+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxo9xm5pgb3ao",
+    "title": "开源便宜大模型推荐",
+    "created_at": 1784820938.8694615
+  },
+  "content": "消费级硬件运行开源大模型的通用门槛：7B模型仅需4GB显存/8GB统一内存（M系列Mac）即可流畅运行，14B模型需8GB显存/16GB内存可运行，本地部署电费成本几乎为零",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

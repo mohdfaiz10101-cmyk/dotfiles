@@ -1,0 +1,16 @@
+{
+  "id": "20260729132913-ops-68eefc",
+  "created_at": "2026-07-29T13:29:13.541068+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrymqhofkwy2yk",
+    "title": "Hermes跨session记忆修复",
+    "created_at": 1784878984.4031155
+  },
+  "content": "The user has explicitly identified a missing core capability in Hermes: cross-session memory storage and query functionality, and has prioritized fixing this capability before proceeding with any other related tasks.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

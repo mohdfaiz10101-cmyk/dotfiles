@@ -1,0 +1,16 @@
+{
+  "id": "20260729122149-ops-ad2a03",
+  "created_at": "2026-07-29T12:21:49.552973+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2778bc598ef6",
+    "title": "我的手机ntfy订阅全部说是正在连接 连不上",
+    "created_at": 1785295983.8238814
+  },
+  "content": "排查移动端ntfy连接问题时，可通过ADB优先检查Workbench应用共享配置目录、Termux用户目录下的ntfy配置文件，确认订阅的base URL类型（公网域名/内网IP），以此快速定位是公网解析/端口转发问题还是内网通道问题",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

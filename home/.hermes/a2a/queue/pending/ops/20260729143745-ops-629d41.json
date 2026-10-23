@@ -1,0 +1,16 @@
+{
+  "id": "20260729143745-ops-629d41",
+  "created_at": "2026-07-29T14:37:45.603321+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtgnpq9cx1n54",
+    "title": "",
+    "created_at": 1784566274.7146206
+  },
+  "content": "The production Hermes Studio instance is hosted at http://192.168.123.71:8648, with its source code repository cloned to /var/home/charlie/hermes-studio.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

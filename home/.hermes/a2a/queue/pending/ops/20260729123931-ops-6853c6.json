@@ -1,0 +1,16 @@
+{
+  "id": "20260729123931-ops-6853c6",
+  "created_at": "2026-07-29T12:39:31.563255+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_152357_00e8cf",
+    "title": "Mihomo proxy blocking Hermes access",
+    "created_at": 1785050637.0809593
+  },
+  "content": "For all access testing of the user's self-hosted services, the agent must perform self-testing via port 8080 rather than only providing guidance, and is required to complete the test independently without asking the user to perform testing steps.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133751-cod-779ef0",
+  "created_at": "2026-07-29T13:37:51.966968+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_220357_036195",
+    "title": "",
+    "created_at": 1784815437.3543768
+  },
+  "content": "The fetch MCP service is an isolated point of failure for external web retrieval in Hermes: consecutive 'unreachable' errors from this service do not indicate issues with local Hermes APIs, agent-comms, or device bridge components, which remain fully functional.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

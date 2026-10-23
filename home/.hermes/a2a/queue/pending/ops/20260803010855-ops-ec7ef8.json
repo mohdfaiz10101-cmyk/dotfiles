@@ -1,0 +1,16 @@
+{
+  "id": "20260803010855-ops-ec7ef8",
+  "created_at": "2026-08-03T01:08:55.444785+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "0a6385f8d096",
+    "title": "OpenHands端口映射关系",
+    "created_at": 1785719065.3623023
+  },
+  "content": "用户环境中的Hermes与OpenHands是两套独立服务，端口体系完全隔离：Hermes服务端口为8787（WebUI监听）、8648（对外/历史映射入口）、19976（公网FRP入口，映射链路为18999->8787）、19910（ttyd入口）、15555（FRP/ADB相关）；OpenHands服务端口为3000（容器内）、3001（宿主机本地映射）、8443（CLI WebTTY）、13001（设计上的公网代理入口）。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

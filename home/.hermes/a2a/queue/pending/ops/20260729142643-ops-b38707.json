@@ -1,0 +1,16 @@
+{
+  "id": "20260729142643-ops-b38707",
+  "created_at": "2026-07-29T14:26:43.979004+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192709_384ce2",
+    "title": "",
+    "created_at": 1784719631.7003608
+  },
+  "content": "The user applies the 'work kanban task' label to categorize professional work items, separating them from other task types in their workflow.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

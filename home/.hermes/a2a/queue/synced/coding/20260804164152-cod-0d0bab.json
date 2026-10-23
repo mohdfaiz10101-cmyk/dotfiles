@@ -1,0 +1,17 @@
+{
+  "id": "20260804164152-cod-0d0bab",
+  "created_at": "2026-08-04T16:41:52.206654+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4b730cb36c75",
+    "title": "ios tailscale 8787 port can not open",
+    "created_at": 1785861512.945506
+  },
+  "content": "Actionable rule for Hermes WebUI (default port 8787) Tailscale access issues: If local access to port 8787 works but remote Tailscale access fails, prioritize checking Tailscale ACL port rules and host firewall rules for Tailscale interface traffic, as service startup failure and internal Hermes authentication issues are unlikely root causes in this scenario.",
+  "confidence": 0.9,
+  "status": "approved",
+  "review_note": "medium-high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.366855+00:00"
+}

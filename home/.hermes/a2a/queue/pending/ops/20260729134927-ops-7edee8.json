@@ -1,0 +1,16 @@
+{
+  "id": "20260729134927-ops-7edee8",
+  "created_at": "2026-07-29T13:49:27.702442+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200523_2e5484",
+    "title": "",
+    "created_at": 1784721927.5905957
+  },
+  "content": "The user manages work tasks via a kanban tracking system, with individual tasks assigned unique identifiers following the pattern 't_' prepended to an alphanumeric string.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

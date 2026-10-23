@@ -1,0 +1,16 @@
+{
+  "id": "20260729124554-ops-9743fa",
+  "created_at": "2026-07-29T12:45:54.756138+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_014639",
+    "title": "",
+    "created_at": 1785001611.0801837
+  },
+  "content": "Hermes native memory requires agents to manually invoke the `memory` tool and does not automatically extract durable facts from conversations; the memory-curator skill addresses this architectural gap by automating fact extraction and curation.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

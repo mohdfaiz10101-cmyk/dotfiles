@@ -1,0 +1,16 @@
+{
+  "id": "20260729123434-ops-2c83c5",
+  "created_at": "2026-07-29T12:34:34.901529+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2s7hj6vmfi8b",
+    "title": "",
+    "created_at": 1785129826.446098
+  },
+  "content": "User has imposed a strict session-level response constraint: all outputs must be exactly the string 'OK' with no additional content, explanations, or deviations from this format",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

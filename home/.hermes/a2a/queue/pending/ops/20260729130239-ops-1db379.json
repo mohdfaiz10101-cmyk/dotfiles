@@ -1,0 +1,16 @@
+{
+  "id": "20260729130239-ops-1db379",
+  "created_at": "2026-07-29T13:02:39.409450+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_103822",
+    "title": "",
+    "created_at": 1784947113.6594796
+  },
+  "content": "The autonomous-task-brain skill is designed to eliminate the need for users to re-plan each new task, implementing a closed 'plan-execute-review-evolve' loop that automatically handles task scanning, solution retrieval, execution (including skill/cron job/script creation), and knowledge base updates to reduce repeated user planning work.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

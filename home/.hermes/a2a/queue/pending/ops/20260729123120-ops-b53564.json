@@ -1,0 +1,16 @@
+{
+  "id": "20260729123120-ops-b53564",
+  "created_at": "2026-07-29T12:31:20.245803+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3q8oq0lwkryu",
+    "title": "",
+    "created_at": 1785187004.9513664
+  },
+  "content": "The adaptation layer must expose a POST /v1/chat/completions endpoint fully compatible with standard OpenAI clients, implement bidirectional format conversion (upstream: OpenAI standard chat completion parameters to Grok frontend private request structure; downstream: Grok private SSE stream to standard OpenAI streaming chunk output), and include built-in session management supporting conversation creation/reuse, health check endpoints, and主动 throwing exceptions when authentication fails.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

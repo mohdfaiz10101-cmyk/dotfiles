@@ -1,0 +1,15 @@
+{
+  "id": "20260810142904-skill-9e754f",
+  "created_at": "2026-08-10T14:29:04.826922+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "haven-android-backup",
+    "file": "/var/home/charlie/.hermes/skills/haven-android-backup/SKILL.md"
+  },
+  "content": "Skill `haven-android-backup` updated. The haven-android-backup skill was updated to add explicit use case triggers, setup requirements (including the required root binary path at /product/bin/su and directive to prioritize existing workspace scripts/cron jobs for the default Haven target at 127.0.0.1:15555) to support consistent Haven Android data backup and restore operations via ADB and root. Impact: low",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

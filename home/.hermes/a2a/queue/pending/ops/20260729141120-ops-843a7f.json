@@ -1,0 +1,16 @@
+{
+  "id": "20260729141120-ops-843a7f",
+  "created_at": "2026-07-29T14:11:20.941647+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194211_b9e94d",
+    "title": "",
+    "created_at": 1784720534.7007017
+  },
+  "content": "Work-related requests from the user may be tied to specific kanban tasks, so agents should prioritize retrieving and incorporating context from any referenced kanban task IDs when assisting with work tasks.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

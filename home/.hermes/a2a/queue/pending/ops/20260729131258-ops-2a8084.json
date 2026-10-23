@@ -1,0 +1,16 @@
+{
+  "id": "20260729131258-ops-2a8084",
+  "created_at": "2026-07-29T13:12:58.960580+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_025719",
+    "title": "",
+    "created_at": 1784919450.4528184
+  },
+  "content": "The production environment has persistent critical resource constraints: disk usage at 97%, memory utilization 15Gi/23Gi, swap usage 14Gi/23Gi, system load 3.29, which must be prioritized in all task planning and execution to avoid system instability.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

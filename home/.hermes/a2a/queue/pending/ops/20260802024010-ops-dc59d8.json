@@ -1,0 +1,16 @@
+{
+  "id": "20260802024010-ops-dc59d8",
+  "created_at": "2026-08-02T02:40:10.250405+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb6u8bnjrlo6g",
+    "title": "",
+    "created_at": 1785638190.2595809
+  },
+  "content": "The network monitoring configuration differentiates base network connectivity (Wi-Fi, local LAN, netbird management plane, mobile ping) from upper-layer connectivity; a passing base network check does not guarantee upper-layer direct HTTPS or upstream direct connectivity is healthy, with `direct_https = fail` and `network_resilience.layer = upstream-direct-degraded` serving as definitive indicators of upper-layer degradation even when base network is functional.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133855-ext-3d68f7",
+  "created_at": "2026-07-29T13:38:55.432167+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxkqoslpn6enr",
+    "title": "搜索什么值得买内容",
+    "created_at": 1784814987.5178776
+  },
+  "content": "用户提及“搜索什么值得买内容”时，潜在真实需求多为提取该站点内容中的功能描述用于落地实现，而非单纯的内容检索。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

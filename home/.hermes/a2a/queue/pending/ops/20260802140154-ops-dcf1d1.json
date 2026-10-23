@@ -1,0 +1,16 @@
+{
+  "id": "20260802140154-ops-dcf1d1",
+  "created_at": "2026-08-02T14:01:54.147704+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "76cba72687f0",
+    "title": "你好 (fork)",
+    "created_at": 1785679117.8143165
+  },
+  "content": "User's preferred language for initiating and conducting interactions is Simplified Chinese, as they opened the session with a Simplified Chinese greeting.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

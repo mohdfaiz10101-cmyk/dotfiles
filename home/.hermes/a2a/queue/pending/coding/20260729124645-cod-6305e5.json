@@ -1,0 +1,16 @@
+{
+  "id": "20260729124645-cod-6305e5",
+  "created_at": "2026-07-29T12:46:45.543996+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0n8n0sfifzhv",
+    "title": "",
+    "created_at": 1785000620.1751518
+  },
+  "content": "落地低星Playwright类ChatGPT自动化方案时需完成4项必做优化：删除代码内所有固定UA与自定义请求头，增加请求随机延迟与会话定时重建逻辑，外层套curl-impersonate做二次流量整形，且配置一号一独立住宅出口IP（为影响封号速度的核心因素）。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

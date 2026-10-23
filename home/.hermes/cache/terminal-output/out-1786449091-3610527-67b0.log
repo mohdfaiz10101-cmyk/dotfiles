@@ -1,0 +1,267 @@
+540: 
+541:     Raw file copy on purpose: the DB won't open cleanly, so we preserve the
+542:     bytes exactly for forensics / manual restore. WAL and SHM sidecars are
+543:     copied too when present. Returns the backup path, or None on failure.
+544:     """
+545:     import datetime
+546:     import shutil
+547: 
+548:     stamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+549:     backup_path = db_path.with_name(f"{db_path.name}.malformed-backup-{stamp}")
+550:     try:
+551:         shutil.copy2(db_path, backup_path)
+552:         for suffix in ("-wal", "-shm"):
+553:             sidecar = db_path.with_name(db_path.name + suffix)
+554:             if sidecar.exists():
+555:                 shutil.copy2(sidecar, backup_path.with_name(backup_path.name + suffix))
+556:         return backup_path
+557:     except Exception as exc:  # pragma: no cover - best effort
+558:         logger.warning("Could not back up malformed DB %s: %s", db_path, exc)
+559:         return None
+560: 
+561: 
+562: def _db_opens_cleanly(db_path: Path) -> Optional[str]:
+563:     """Probe a DB on a fresh connection. Returns None if healthy, else a reason.
+564: 
+565:     Runs the same first-statement (``PRAGMA journal_mode``) that trips the
+566:     malformed-schema parse, then ``PRAGMA integrity_check`` and a canonical
+567:     ``sessions`` read, and finally a rolled-back ``messages`` write so that
+568:     FTS5 index corruption — which leaves base-table reads and
+569:     ``integrity_check`` passing while every ``INSERT INTO messages`` fails
+570:     through the FTS triggers — is reported as unhealthy rather than slipping
+571:     past as a false "ok" (#50502).
+572:     """
+573:     conn = sqlite3.connect(str(db_path), isolation_level=None)
+574:     try:
+575:         conn.execute("PRAGMA journal_mode").fetchone()
+576:         rows = conn.execute("PRAGMA integrity_check").fetchall()
+577:         problems = [str(r[0]) for r in rows if r and str(r[0]).lower() != "ok"]
+578:         if problems:
+579:             return "; ".join(problems[:3])
+580:         conn.execute("SELECT COUNT(*) FROM sessions").fetchone()
+581: 
+582:         # FTS write probe: drive a row through the messages_fts* triggers in a
+583:         # transaction that is always rolled back, so a corrupt FTS index that
+584:         # rejects writes is caught even though reads look healthy. The probe is
+585:         # best-effort — if the messages/sessions tables don't exist yet (brand
+586:         # new file mid-init) the OperationalError is treated as "not yet a
+587:         # populated DB", not corruption.
+588:         probe_session_id = f"_hermes_fts_health_probe_{time.time_ns()}"
+589:         try:
+590:             conn.execute("BEGIN IMMEDIATE")
+591:             conn.execute(
+592:                 "INSERT INTO sessions (id, source, started_at) VALUES (?, ?, ?)",
+593:                 (probe_session_id, "_health_probe", time.time()),
+594:             )
+595:             conn.execute(
+596:                 "INSERT INTO messages (session_id, role, content, timestamp) "
+597:                 "VALUES (?, ?, ?, ?)",
+598:                 (probe_session_id, "user", "_fts_health_probe", time.time()),
+599:             )
+600:             conn.execute("ROLLBACK")
+601:         except sqlite3.OperationalError as exc:
+602:             # Missing tables / FTS disabled — not the corruption class we probe.
+603:             try:
+604:                 conn.execute("ROLLBACK")
+605:             except sqlite3.Error:
+606:                 pass
+607:             msg = str(exc).lower()
+608:             if "no such table" in msg or "no such column" in msg:
+609:                 return None
+610:             return str(exc)
+618: def repair_state_db_schema(db_path: Path, *, backup: bool = True) -> Dict[str, Any]:
+619:     """Repair a state.db whose ``sqlite_master`` schema is malformed or whose
+620:     FTS indexes reject writes.
+621: 
+622:     Handles two corruption classes: the "duplicate object definition" /
+623:     malformed-schema class where even ``PRAGMA`` statements fail, and the FTS
+624:     write-corruption class (#50502) where base tables read fine and
+625:     ``integrity_check`` passes but writes fail through the ``messages_fts*``
+626:     triggers. Tries least-destructive recovery first and escalates:
+627: 
+628:       1. **Rebuild FTS indexes in place** via the FTS5 ``'rebuild'`` command,
+629:          which rewrites the internal b-tree segments from the canonical
+630:          ``messages`` rows without dropping or recreating anything. Fixes the
+631:          FTS write-corruption class while preserving the schema intact.
+632:       2. **De-duplicate** ``sqlite_master`` (keep the lowest rowid per
+633:          ``type``/``name``). Fixes the canonical "table X already exists"
+634:          case and PRESERVES the existing FTS index intact.
+635:       3. **Drop the FTS schema** (every ``messages_fts*`` object) + ``VACUUM``.
+636:          The next ``SessionDB()`` open rebuilds the FTS indexes from the
+637:          canonical ``messages`` table.
+638: 
+639:     Canonical ``sessions`` / ``messages`` rows are never modified. A
+640:     timestamped raw backup is taken first unless ``backup=False``.
+641: 
+642:     Returns a report dict: ``{repaired: bool, strategy: str|None,
+643:     backup_path: str|None, error: str|None}``.
+644:     """
+645:     report: Dict[str, Any] = {
+646:         "repaired": False,
+647:         "strategy": None,
+648:         "backup_path": None,
+649:         "error": None,
+650:     }
+651: 
+652:     db_path = Path(db_path)
+653:     if not db_path.exists():
+654:         report["error"] = f"{db_path} does not exist"
+655:         return report
+656: 
+657:     if _db_opens_cleanly(db_path) is None:
+658:         report["repaired"] = True
+659:         report["strategy"] = "already_healthy"
+660:         return report
+661: 
+662:     if backup:
+663:         bpath = _backup_db_file(db_path)
+664:         report["backup_path"] = str(bpath) if bpath else None
+665: 
+666:     # ── Strategy 0: rebuild FTS indexes in place (FTS write-corruption) ──
+667:     # The FTS5 'rebuild' command rewrites the internal index from the canonical
+668:     # content table. This is the recommended, least-destructive recovery for a
+669:     # corrupt FTS index that rejects message writes while reads still succeed.
+670:     try:
+671:         conn = sqlite3.connect(str(db_path), isolation_level=None)
+672:         try:
+673:             for table_name in ("messages_fts", "messages_fts_trigram"):
+674:                 try:
+675:                     conn.execute(
+676:                         f"INSERT INTO {table_name}({table_name}) VALUES('rebuild')"
+677:                     )
+678:                 except sqlite3.OperationalError:
+679:                     # Table absent (FTS disabled / trigram off) — skip it.
+680:                     continue
+681:         finally:
+682:             conn.close()
+683:         if _db_opens_cleanly(db_path) is None:
+684:             report["repaired"] = True
+685:             report["strategy"] = "rebuild_fts"
+686:             logger.warning(
+687:                 "state.db FTS indexes rebuilt in place (schema preserved): %s",
+688:                 db_path,
+689:             )
+690:             return report
+691:     except sqlite3.DatabaseError as exc:
+692:         logger.warning("state.db FTS in-place rebuild pass failed: %s", exc)
+693: 
+694:     # ── Strategy 1: de-duplicate sqlite_master (keeps FTS index) ──
+695:     try:
+696:         conn = sqlite3.connect(str(db_path), isolation_level=None)
+697:         try:
+698:             conn.execute("PRAGMA writable_schema=ON")
+699:             dupes = conn.execute(
+700:                 "SELECT type, name, COUNT(*) AS c, MIN(rowid) AS keep "
+701:                 "FROM sqlite_master GROUP BY type, name HAVING c > 1"
+702:             ).fetchall()
+703:             for type_, name, _count, keep in dupes:
+704:                 conn.execute(
+705:                     "DELETE FROM sqlite_master "
+706:                     "WHERE type IS ? AND name IS ? AND rowid <> ?",
+707:                     (type_, name, keep),
+708:                 )
+709:             conn.execute("PRAGMA writable_schema=OFF")
+710:             conn.commit()
+711:         finally:
+712:             conn.close()
+713:         if _db_opens_cleanly(db_path) is None:
+714:             report["repaired"] = True
+715:             report["strategy"] = "dedup_schema"
+716:             logger.warning(
+717:                 "state.db schema repaired by de-duplicating sqlite_master "
+718:                 "(FTS index preserved): %s", db_path
+719:             )
+720:             return report
+721:     except sqlite3.DatabaseError as exc:
+722:         logger.warning("state.db dedup repair pass failed: %s", exc)
+723: 
+724:     # ── Strategy 2: drop all FTS schema, VACUUM, rebuild on next open ──
+725:     try:
+726:         conn = sqlite3.connect(str(db_path), isolation_level=None)
+727:         try:
+728:             conn.execute("PRAGMA writable_schema=ON")
+729:             conn.execute("DELETE FROM sqlite_master WHERE name LIKE 'messages_fts%'")
+730:             conn.execute("PRAGMA writable_schema=OFF")
+731:             conn.commit()
+732:             conn.execute("VACUUM")
+733:         finally:
+734:             conn.close()
+735:         reason = _db_opens_cleanly(db_path)
+736:         if reason is None:
+737:             report["repaired"] = True
+738:             report["strategy"] = "drop_fts_rebuild"
+739:             logger.warning(
+740:                 "state.db schema repaired by dropping FTS schema; indexes "
+741:                 "will rebuild from messages on next open: %s", db_path
+742:             )
+743:             return report
+744:         report["error"] = reason
+745:     except sqlite3.DatabaseError as exc:
+746:         report["error"] = str(exc)
+747: 
+748:     if not report["repaired"]:
+749:         logger.error(
+750:             "state.db schema repair could not recover %s automatically "
+751:             "(backup: %s); manual restore from backup may be required.",
+752:             db_path, report["backup_path"],
+753:         )
+754:     return report
+755: 
+756: 
+757: SCHEMA_SQL = """
+758: CREATE TABLE IF NOT EXISTS schema_version (
+759:     version INTEGER NOT NULL
+760: );
+1035:         # in place at most once per SessionDB instance so a genuinely
+1036:         # unrecoverable database can't put writers into a rebuild loop.
+1037:         self._fts_runtime_rebuild_attempted = False
+1038:         self._fts_enabled = False
+1039:         self._trigram_available = False
+1040:         self._fts_unavailable_warned = False
+1041:         self._conn = None
+1042:         try:
+1043:             if read_only:
+1044:                 # Read-only attach for cross-profile aggregation: SELECT-only,
+1045:                 # so we skip schema init entirely (no DDL, no FTS probe, no
+1046:                 # column reconcile). Crucially this takes NO write lock, so
+1047:                 # polling another profile's live DB on every sidebar refresh
+1048:                 # never contends with that profile's running backend. The DB
+1049:                 # must already exist + be initialised (callers guard on
+1050:                 # db_path.exists()); a SELECT against an empty file raises and
+1051:                 # the caller degrades per-profile.
+1052:                 self._conn = sqlite3.connect(
+1053:                     f"file:{self.db_path}?mode=ro",
+1054:                     uri=True,
+1055:                     check_same_thread=False,
+1056:                     timeout=1.0,
+1057:                     isolation_level=None,
+1058:                 )
+1059:                 self._conn.row_factory = sqlite3.Row
+1060:                 return
+1061: 
+1062:             self.db_path.parent.mkdir(parents=True, exist_ok=True)
+1063: 
+1064:             def _connect_and_init():
+1065:                 self._conn = sqlite3.connect(
+1066:                     str(self.db_path),
+1067:                     check_same_thread=False,
+1068:                     # Short timeout — application-level retry with random
+1069:                     # jitter handles contention instead of sitting in
+1070:                     # SQLite's internal busy handler for up to 30s.
+1071:                     timeout=1.0,
+1072:                     # auto-starts transactions on DML, which conflicts with
+1073:                     # our explicit BEGIN IMMEDIATE.  None = we manage
+1074:                     # transactions ourselves.
+1075:                     isolation_level=None,
+1076:                 )
+1077:                 self._conn.row_factory = sqlite3.Row
+1078:                 apply_wal_with_fallback(self._conn, db_label="state.db")
+1079:                 self._conn.execute("PRAGMA foreign_keys=ON")
+1080:                 self._init_schema()
+1081: 
+1082:             try:
+1083:                 _connect_and_init()
+1084:             except sqlite3.DatabaseError as exc:
+1085:                 # The malformed-schema class (e.g. a duplicate sqlite_master
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

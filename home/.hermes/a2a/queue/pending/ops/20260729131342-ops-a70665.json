@@ -1,0 +1,16 @@
+{
+  "id": "20260729131342-ops-a70665",
+  "created_at": "2026-07-29T13:13:42.216015+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_022319",
+    "title": "",
+    "created_at": 1784917410.580836
+  },
+  "content": "When the autonomous-task-brain skill is active, the default operating mode requires minimal user intervention: users only need to provide high-level goals or feedback, and the agent handles all execution planning autonomously, only escalating to the user for critical unresolved blockers.",
+  "confidence": 0.99,
+  "status": "pending",
+  "review_note": ""
+}

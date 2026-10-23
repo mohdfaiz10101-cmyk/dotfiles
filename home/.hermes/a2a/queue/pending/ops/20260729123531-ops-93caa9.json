@@ -1,0 +1,16 @@
+{
+  "id": "20260729123531-ops-93caa9",
+  "created_at": "2026-07-29T12:35:31.589381+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2qq3gf4u2f9f",
+    "title": "",
+    "created_at": 1785127365.206789
+  },
+  "content": "The current execution environment enforces a policy that blocks access to journalctl and shutdown-related system logs, so automated retrieval of pre-shutdown event timelines (such as Wi-Fi state changes) via standard log commands is not possible.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

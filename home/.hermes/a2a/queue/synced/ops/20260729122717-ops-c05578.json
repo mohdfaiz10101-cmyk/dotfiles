@@ -1,0 +1,17 @@
+{
+  "id": "20260729122717-ops-c05578",
+  "created_at": "2026-07-29T12:27:17.351556+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4eyw0x3axigf",
+    "title": "hermes studio",
+    "created_at": 1785228570.660842
+  },
+  "content": "排查Hermes Studio任务执行快慢波动的标准化优先级流程：1. 优先检查~/.hermes/config.yaml中的model路由、provider配置（base_url/timeout/max_retries）、fallback链设置；2. 直接测量对应provider的API端到端延迟（区分冷启动/热启动场景）；3. 排查系统IO等待（iowait）和swap使用情况，该流程覆盖了绝大多数性能波动的根因场景。",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.660647+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729141627-ops-2a2999",
+  "created_at": "2026-07-29T14:16:27.871222+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193611_d2ad41",
+    "title": "",
+    "created_at": 1784720173.59117
+  },
+  "content": "When a user mentions a work Kanban task ID, the standard reusable workflow is to retrieve task details or perform a requested action (e.g., status update, progress check) on that specific task",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

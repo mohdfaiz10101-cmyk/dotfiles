@@ -1,0 +1,16 @@
+{
+  "id": "20260729133413-cod-23f32d",
+  "created_at": "2026-07-29T13:34:13.785519+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryd6toug6gq1h",
+    "title": "继续检查迁移配置",
+    "created_at": 1784864074.4413028
+  },
+  "content": "StepFun官方已下线模型存在固定替代映射，配置替换需遵循：step-3 替代为 step-3.7-flash；step-1-8k/step-1-32k/step-1v-*/step-2-mini/step-2-16k/step-1o-vision-32k 替代为 step-1o-turbo-vision；step-1x-medium 替代为 step-2x-large",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

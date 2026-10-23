@@ -1,0 +1,16 @@
+{
+  "id": "20260729125943-cod-b835f3",
+  "created_at": "2026-07-29T12:59:43.446006+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_131657_2816e6",
+    "title": "Hermes Web UI访问问题排查 #2",
+    "created_at": 1784956617.6559572
+  },
+  "content": "Android上「Magisk启动脚本+root iptables redir+mihomo fake-ip+NetBird单槽VPN」组合的固有缺陷：网络切换（5G/WiFi/热点切换）时系统重建路由/iptables/netd会导致代理规则失效，NetBird开关会占用VPN槽影响代理工具运行，需设计规则锁死与自动修复机制规避",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123758-ops-cb8df7",
+  "created_at": "2026-07-29T12:37:58.117692+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1mw3xhn3ruhd",
+    "title": "个人申请地图API做导航APP",
+    "created_at": 1785060464.0694861
+  },
+  "content": "选择在线地图API路线时，可将高德/腾讯Web API封装为单脚本CLI工具，通过curl或脚本直接调用，快速实现地理编码、逆地理编码、POI搜索、路径规划等导航基础功能，适合有网场景的轻量工具开发。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

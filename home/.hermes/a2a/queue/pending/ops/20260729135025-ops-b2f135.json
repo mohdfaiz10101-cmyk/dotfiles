@@ -1,0 +1,16 @@
+{
+  "id": "20260729135025-ops-b2f135",
+  "created_at": "2026-07-29T13:50:25.641529+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200422_e254a8",
+    "title": "",
+    "created_at": 1784721868.6746328
+  },
+  "content": "Kanban task IDs matching the 't_<alphanumeric>' pattern can be used to retrieve task-specific context, requirements, or progress details for associated work items in this environment.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

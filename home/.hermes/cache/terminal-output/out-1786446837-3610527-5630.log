@@ -1,0 +1,72 @@
+2026-07-17T18:40:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 32, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T18:40:59.692+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:50598->213.163.201.31:443: read: connection reset by peer
+2026-07-17T18:41:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:41:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:41:16.730+08:00 INFO ./caller_not_available:0: 2026/07/17 18:41:16 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "error reading server preface: read tcp 192.168.123.71:38640->213.163.201.31:443: read: connection timed out"
+2026-07-17T18:41:16.730+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: rpc error: code = Unavailable desc = connection error: desc = "error reading server preface: read tcp 192.168.123.71:38640->213.163.201.31:443: read: connection timed out"
+2026-07-17T18:41:32.704+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: signal is not ready
+2026-07-17T18:41:37.732+08:00 INFO ./caller_not_available:0: 2026/07/17 18:41:37 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "transport: authentication handshake failed: context deadline exceeded"
+2026-07-17T18:41:45.933+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T18:41:45.933+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T18:46:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:46:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:46:34.618+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:35210->213.163.206.27:443: read: connection timed out
+2026-07-17T18:46:50.150+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: signal is not ready
+2026-07-17T18:46:55.618+08:00 INFO ./caller_not_available:0: 2026/07/17 18:46:55 WARNING: [core] [Channel #41 SubChannel #42] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "error reading server preface: read tcp 192.168.123.71:33482->213.163.201.31:443: use of closed network connection"
+2026-07-17T18:47:16.985+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T18:47:16.985+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T18:48:52.269+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:49:05.011+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-07-17T18:49:05.011+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-07-17T18:49:31.380+08:00 WARN shared/management/client/grpc.go:277: job stream disconnected, will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:49:31.380+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:50:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 61, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T18:50:18.170+08:00 INFO ./caller_not_available:0: 2026/07/17 18:50:18 WARNING: [core] [Channel #38 SubChannel #39] grpc: addrConn.createTransport failed to connect to {Addr: "api.netbird.io:443", ServerName: "api.netbird.io:443", }. Err: connection error: desc = "error reading server preface: read tcp 192.168.123.71:37640->213.163.206.27:443: read: connection timed out"
+2026-07-17T18:50:25.979+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-07-17T18:50:28.194+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-07-17T18:50:28.194+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-07-17T18:51:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:51:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:51:41.222+08:00 WARN shared/management/client/grpc.go:277: job stream disconnected, will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:51:41.222+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-07-17T18:51:46.526+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-07-17T18:51:47.130+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-07-17T18:51:47.130+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-07-17T18:54:00.272+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T18:56:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T18:56:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T18:56:06.917+08:00 WARN client/firewall/nftables/external_chain_monitor_linux.go:96: external chain monitor: monitor event: malformed stateful object, reconnecting in 2.89830522s
+2026-07-17T19:00:01.560+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 77, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T19:01:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T19:01:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T19:06:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T19:06:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T19:10:01.561+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 94, RemoteOffer: 1, RemoteAnswer: 1, RemoteCandidate: 0, P2PConnected: 0, SwitchToRelay: 0, WGCheckSuccess: 6, RelayConnected: 1, LocalProxies: 1
+2026-07-17T19:11:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T19:11:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T19:11:38.161+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T19:11:38.171+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Disconnected
+2026-07-17T19:11:38.172+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-07-17T19:11:38.172+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:301: prepare the relayed connection, waiting for remote peer: sha-gqSPJTH+AYERHfY1b9uS+MRrPPEFuW68Xk12PRrmZ8k=
+2026-07-17T19:11:39.176+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:339: remote peer is available: sha-gqSPJTH+AYERHfY1b9uS+MRrPPEFuW68Xk12PRrmZ8k=
+2026-07-17T19:11:39.187+08:00 INFO client/iface/wgproxy/ebpf/proxy.go:120: turn conn added to wg proxy store: rels://streamline-vl-icn-1.relay.netbird.io:443, endpoint port: :2
+2026-07-17T19:11:39.187+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:576: created new wgProxy for relay connection: 127.0.0.1:2
+2026-07-17T19:11:39.188+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/wg_watcher.go:96: WireGuard watcher started
+2026-07-17T19:11:39.288+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:613: start to communicate with peer via relay
+2026-07-17T19:12:09.189+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/wg_watcher.go:116: first wg handshake detected within: 0.41sec, (2026-07-17 19:11:39.59472933 +0800 CST)
+2026-07-17T19:13:57.630+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Connected
+2026-07-17T19:13:57.630+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-07-17T19:13:57.630+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/worker_relay.go:50: Relay is not supported by remote peer
+2026-07-17T19:13:57.630+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/worker_relay.go:50: Relay is not supported by remote peer
+2026-07-17T19:13:59.379+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Connected
+2026-07-17T19:13:59.379+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-07-17T19:14:15.081+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-07-17T19:14:30.148+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Connected
+2026-07-17T19:14:30.148+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-07-17T19:14:31.909+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Connected
+2026-07-17T19:14:31.909+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-07-17T19:16:00.129+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-07-17T19:16:00.129+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-07-17T19:16:24.651+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

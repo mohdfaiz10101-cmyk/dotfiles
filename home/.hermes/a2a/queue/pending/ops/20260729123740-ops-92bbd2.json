@@ -1,0 +1,16 @@
+{
+  "id": "20260729123740-ops-92bbd2",
+  "created_at": "2026-07-29T12:37:40.177267+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1nkuv99vu39i",
+    "title": "Hermes做CLI中枢 手机远程控电脑",
+    "created_at": 1785061683.2237604
+  },
+  "content": "Hermes支持多实例集群化部署以承载复杂远程控制场景：可同时运行多个ttyd后端服务、独立的WebTTY应用（如OpenHands/Aider等代码工具、Browsh等浏览器工具）、分角色的bridge worker（coding/creative/ops等），通过统一入口聚合能力，远超出单实例hermes chat + ttyd的基础模板能力。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

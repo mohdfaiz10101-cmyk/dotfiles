@@ -1,0 +1,74 @@
+{"ts": "2026-08-01T19:11:15+08:00", "task_id": "mesh-20260801191115-b7a4adfa", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:11:33+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "created", "detail": {"profile": "mobile", "source_port": 8648}}
+{"ts": "2026-08-01T19:11:41+08:00", "task_id": "mesh-20260801191141-dfac145f", "event": "created", "detail": {"profile": "monitor", "source_port": 8648}}
+{"ts": "2026-08-01T19:11:50+08:00", "task_id": "mesh-20260801191150-f7a29dd5", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:11:56+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "updated", "detail": {"status": "launch_failed", "summary": "<urlopen error [Errno 1] Operation not permitted>"}}
+{"ts": "2026-08-01T19:11:57+08:00", "task_id": "mesh-20260801191141-dfac145f", "event": "updated", "detail": {"status": "launch_failed", "summary": "<urlopen error [Errno 1] Operation not permitted>"}}
+{"ts": "2026-08-01T19:11:57+08:00", "task_id": "mesh-20260801191115-b7a4adfa", "event": "updated", "detail": {"status": "launch_failed", "summary": "<urlopen error [Errno 1] Operation not permitted>"}}
+{"ts": "2026-08-01T19:11:57+08:00", "task_id": "mesh-20260801191150-f7a29dd5", "event": "updated", "detail": {"status": "launch_failed", "summary": "<urlopen error [Errno 1] Operation not permitted>"}}
+{"ts": "2026-08-01T19:12:27+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:12:45+08:00", "task_id": "mesh-20260801191115-b7a4adfa", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:12:49+08:00", "task_id": "mesh-20260801191150-f7a29dd5", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:12:53+08:00", "task_id": "mesh-20260801191141-dfac145f", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:15:01+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:15:01+08:00", "task_id": "mesh-20260801191141-dfac145f", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:15:01+08:00", "task_id": "mesh-20260801191150-f7a29dd5", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:15:02+08:00", "task_id": "mesh-20260801191115-b7a4adfa", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:16:09+08:00", "task_id": "mesh-20260801191609-f3f21b96", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:16:39+08:00", "task_id": "mesh-20260801191609-f3f21b96", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:22:15+08:00", "task_id": "mesh-20260801192215-60cfa81f", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:22:45+08:00", "task_id": "mesh-20260801192215-60cfa81f", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:26:04+08:00", "task_id": "mesh-20260801192604-912f1cbd", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:26:10+08:00", "task_id": "mesh-20260801192604-912f1cbd", "event": "updated", "detail": {"status": "submitted", "summary": "{\"status\":\"done\",\"summary\":\"bridge ok\",\"artifacts\":[]}"}}
+{"ts": "2026-08-01T19:27:05+08:00", "task_id": "mesh-20260801192705-0ea2739a", "event": "created", "detail": {"profile": "mobile", "source_port": 8648}}
+{"ts": "2026-08-01T19:27:05+08:00", "task_id": "mesh-20260801192705-0ea2739a", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:27:15+08:00", "task_id": "mesh-20260801192715-4af3f441", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:27:19+08:00", "task_id": "mesh-20260801192718-6b6cb09d", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:27:19+08:00", "task_id": "mesh-20260801192715-4af3f441", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:27:19+08:00", "task_id": "mesh-20260801192718-6b6cb09d", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:27:23+08:00", "task_id": "mesh-20260801192723-90a1351b", "event": "created", "detail": {"profile": "monitor", "source_port": 8648}}
+{"ts": "2026-08-01T19:27:23+08:00", "task_id": "mesh-20260801192723-90a1351b", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:31:38+08:00", "task_id": "mesh-20260801193138-b9fe50ee", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T19:31:50+08:00", "task_id": "mesh-20260801193138-b9fe50ee", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T19:53:30+08:00", "task_id": "mesh-20260801195330-9380c3dd", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T20:08:03+08:00", "task_id": "mesh-20260801200803-9cffb56c", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T20:19:12+08:00", "task_id": "mesh-20260801201912-f425ea09", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T20:28:10+08:00", "task_id": "mesh-20260801202810-2b402990", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T20:48:14+08:00", "task_id": "mesh-20260801195330-9380c3dd", "event": "updated", "detail": {"status": "failed", "summary": "<urlopen error [Errno 1] Operation not permitted>"}}
+{"ts": "2026-08-01T21:18:07+08:00", "task_id": "mesh-20260801211807-6b4dcf3c", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T21:24:15+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "updated", "detail": {"status": "failed", "summary": "<urlopen error [Errno 1] Operation not permitted>"}}
+{"ts": "2026-08-01T21:25:08+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T21:31:55+08:00", "task_id": "mesh-20260801192705-0ea2739a", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T21:34:10+08:00", "task_id": "mesh-20260801201912-f425ea09", "event": "updated", "detail": {"status": "completed", "summary": "historical smoke archived"}}
+{"ts": "2026-08-01T21:34:10+08:00", "task_id": "mesh-20260801200803-9cffb56c", "event": "updated", "detail": {"status": "completed", "summary": "historical smoke archived"}}
+{"ts": "2026-08-01T21:34:10+08:00", "task_id": "mesh-20260801202810-2b402990", "event": "updated", "detail": {"status": "completed", "summary": "historical smoke archived"}}
+{"ts": "2026-08-01T21:39:45+08:00", "task_id": "mesh-20260801191141-dfac145f", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:45+08:00", "task_id": "mesh-20260801192723-90a1351b", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801191115-b7a4adfa", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801191150-f7a29dd5", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801191609-f3f21b96", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801192215-60cfa81f", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801192604-912f1cbd", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801192715-4af3f441", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801192718-6b6cb09d", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T21:39:46+08:00", "task_id": "mesh-20260801193138-b9fe50ee", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T22:11:32+08:00", "task_id": "mesh-20260801191133-683c2048", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T22:12:02+08:00", "task_id": "mesh-20260801211807-6b4dcf3c", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-01T22:21:33+08:00", "task_id": "mesh-20260801192705-0ea2739a", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T23:01:35+08:00", "task_id": "mesh-20260801211807-6b4dcf3c", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-01T23:38:42+08:00", "task_id": "mesh-20260801233842-98232efe", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-01T23:42:15+08:00", "task_id": "mesh-20260801233842-98232efe", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-02T00:31:56+08:00", "task_id": "mesh-20260801233842-98232efe", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-02T02:20:34+08:00", "task_id": "mesh-20260802022033-9f5ace15", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-02T02:22:54+08:00", "task_id": "mesh-20260802022033-9f5ace15", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-02T03:12:27+08:00", "task_id": "mesh-20260802022033-9f5ace15", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-02T23:02:11+08:00", "task_id": "mesh-20260802230211-d2eaae78", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-02T23:04:20+08:00", "task_id": "mesh-20260802230211-d2eaae78", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-02T23:53:53+08:00", "task_id": "mesh-20260802235353-65498446", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-02T23:54:00+08:00", "task_id": "mesh-20260802230211-d2eaae78", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-02T23:54:30+08:00", "task_id": "mesh-20260802235353-65498446", "event": "updated", "detail": {"status": "submitted", "summary": "任务已提交，后台执行中（超时未返回结果）"}}
+{"ts": "2026-08-03T00:44:05+08:00", "task_id": "mesh-20260802235353-65498446", "event": "updated", "detail": {"status": "stale", "summary": "submitted timeout; archived for review by hermes-session-mesh"}}
+{"ts": "2026-08-15T17:30:53+08:00", "task_id": "mesh-20260815173053-6e7d0f8b", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-15T17:34:19+08:00", "task_id": "mesh-20260815173053-6e7d0f8b", "event": "updated", "detail": {"status": "failed", "summary": "HTTP 401"}}
+{"ts": "2026-08-16T23:36:00+08:00", "task_id": "mesh-20260816233600-99523822", "event": "created", "detail": {"profile": "ops", "source_port": 8648}}
+{"ts": "2026-08-16T23:36:22+08:00", "task_id": "mesh-20260816233600-99523822", "event": "updated", "detail": {"status": "failed", "summary": "HTTP 401"}}

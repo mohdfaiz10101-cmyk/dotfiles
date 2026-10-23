@@ -1,0 +1,16 @@
+{
+  "id": "20260729123142-ops-5c76de",
+  "created_at": "2026-07-29T12:31:42.221923+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3q2e70bqyapn",
+    "title": "",
+    "created_at": 1785186714.0681767
+  },
+  "content": "When parsing SSE streams for AI chat responses, avoid using fixed small chunk sizes with `decode(errors=\"ignore\")` as this splits multi-byte character boundaries, causes failure to match `data: ` stream prefixes, and leads to stream interruptions or token loss.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

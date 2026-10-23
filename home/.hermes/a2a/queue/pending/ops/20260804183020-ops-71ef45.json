@@ -1,0 +1,16 @@
+{
+  "id": "20260804183020-ops-71ef45",
+  "created_at": "2026-08-04T18:30:20.885205+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "36e6076be57e",
+    "title": "",
+    "created_at": 1785868095.7295334
+  },
+  "content": "No manual workspace configuration is required from the user at session start, as the default workspace is pre-initialized and operational.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

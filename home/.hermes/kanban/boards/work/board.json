@@ -1,0 +1,10 @@
+{
+  "slug": "work",
+  "name": "工作",
+  "description": "工作任务与项目交付",
+  "icon": "💼",
+  "color": "",
+  "default_workdir": null,
+  "created_at": 1784719217,
+  "archived": false
+}

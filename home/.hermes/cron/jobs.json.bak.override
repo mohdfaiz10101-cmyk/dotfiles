@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "name": "\u81ea\u52a8\u538b\u7f29\u91cd\u578b Hermes \u4f1a\u8bdd",
+      "skills": [],
+      "prompt_preview": "",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "schedule": {},
+      "repeat": "forever",
+      "deliver": "local",
+      "enabled_toolsets": [],
+      "no_agent": true,
+      "script": "auto_compress_heavy_sessions.py --compress",
+      "workdir": "/var/home/charlie/workspace",
+      "id": "809292ce4226"
+    }
+  ],
+  "updated_at": "2026-10-23T14:48:28.494856+08:00"
+}

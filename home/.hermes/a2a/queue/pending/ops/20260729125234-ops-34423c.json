@@ -1,0 +1,16 @@
+{
+  "id": "20260729125234-ops-34423c",
+  "created_at": "2026-07-29T12:52:34.933517+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_175421",
+    "title": "",
+    "created_at": 1784973273.363064
+  },
+  "content": "The skill implements a failure throttling policy: after consecutive lock-related failures (observed 37), it stops blind retries and waits for the next natural retry cycle to avoid resource waste.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

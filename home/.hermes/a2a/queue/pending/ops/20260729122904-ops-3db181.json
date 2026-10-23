@@ -1,0 +1,16 @@
+{
+  "id": "20260729122904-ops-3db181",
+  "created_at": "2026-07-29T12:29:04.589692+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4cxpdtdp1rii",
+    "title": "系统性能优化",
+    "created_at": 1785225126.1314518
+  },
+  "content": "When system lag is caused by insufficient memory and heavy swap usage, immediate low-risk high-impact remediation steps include reclaiming filesystem cache and tightening journal log storage limits.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

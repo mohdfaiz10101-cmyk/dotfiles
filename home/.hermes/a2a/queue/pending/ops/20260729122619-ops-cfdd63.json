@@ -1,0 +1,16 @@
+{
+  "id": "20260729122619-ops-cfdd63",
+  "created_at": "2026-07-29T12:26:19.251863+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "f3cd3099-dd02-4447-b0bb-4c417abf3648",
+    "title": "",
+    "created_at": 1785230073.5867937
+  },
+  "content": "Observed user communication preference: The user favors direct, task-focused interaction without unnecessary preliminary small talk, as indicated by the assistant's prompt to state requirements directly after a simple greeting.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

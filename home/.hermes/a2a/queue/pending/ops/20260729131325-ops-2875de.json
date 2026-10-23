@@ -1,0 +1,16 @@
+{
+  "id": "20260729131325-ops-2875de",
+  "created_at": "2026-07-29T13:13:25.803295+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_022537",
+    "title": "",
+    "created_at": 1784917548.720386
+  },
+  "content": "The curator tracks consecutive failures (consecutive_failure count) and recommends waiting for lock release instead of盲目 immediate retry; this prevents thundering herd problems and resource contention.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

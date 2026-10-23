@@ -1,0 +1,16 @@
+{
+  "id": "20260729123207-ops-fc809a",
+  "created_at": "2026-07-29T12:32:07.515201+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "3351f4451fa1",
+    "title": "",
+    "created_at": 1785183391.4974418
+  },
+  "content": "The user's network scheduled tasks are configured as read-only by default, and need to be periodically checked for alignment with current system standards (such as updated network detection rules) following system evolution or upgrades.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

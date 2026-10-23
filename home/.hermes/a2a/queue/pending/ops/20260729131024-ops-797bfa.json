@@ -1,0 +1,16 @@
+{
+  "id": "20260729131024-ops-797bfa",
+  "created_at": "2026-07-29T13:10:24.680746+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_033515",
+    "title": "",
+    "created_at": 1784921725.9199846
+  },
+  "content": "The autonomous-task-brain skill implements a closed-loop 'perceive → retrieve → decide → execute → review' workflow for autonomous task management, designed to eliminate per-task execution path planning for users, who only need to provide goals or feedback.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

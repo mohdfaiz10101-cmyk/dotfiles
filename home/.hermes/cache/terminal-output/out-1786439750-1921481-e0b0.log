@@ -1,0 +1,126 @@
+== server log ==
+[shutdown] Received signal: SIGTERM
+hermes-web-ui v0.6.39 starting...
+(node:4038343) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[bootstrap] ekko-agent setup complete
+[bootstrap] agent bridge failed to start: agent bridge exited before ready code=2 signal=null
+[bootstrap] all stores initialized
+[bootstrap] cors + bodyParser registered
+[bootstrap] routes registered
+[bootstrap] SPA fallback registered
+[bootstrap] listening on 0.0.0.0:18648
+[bootstrap] app.listen called
+[bootstrap] terminal + kanban + LAN peer websocket setup
+[bootstrap] global agent server ready
+[bootstrap] session deleter started, profile=default
+Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)
+Log: /var/home/charlie/.hermes-web-ui/logs/server.log
+Update available: 0.6.39 → 0.6.41
+[bootstrap] profile gateways checked
+[shutdown] Received signal: SIGTERM
+hermes-web-ui v0.6.39 starting...
+(node:289964) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[bootstrap] ekko-agent setup complete
+[bootstrap] profile gateways checked
+[bootstrap] agent bridge failed to start: agent bridge exited before ready code=2 signal=null
+[bootstrap] all stores initialized
+[bootstrap] cors + bodyParser registered
+[bootstrap] routes registered
+[bootstrap] SPA fallback registered
+[bootstrap] listening on 0.0.0.0:18648
+[bootstrap] app.listen called
+[bootstrap] terminal + kanban + LAN peer websocket setup
+[bootstrap] global agent server ready
+[bootstrap] session deleter started, profile=default
+Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)
+Log: /var/home/charlie/.hermes-web-ui/logs/server.log
+[shutdown] Received signal: SIGTERM
+hermes-web-ui v0.6.39 starting...
+(node:417466) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[bootstrap] ekko-agent setup complete
+[bootstrap] profile gateways checked
+[bootstrap] agent bridge started
+[bootstrap] all stores initialized
+[bootstrap] cors + bodyParser registered
+[bootstrap] routes registered
+[bootstrap] SPA fallback registered
+[bootstrap] listening on 0.0.0.0:18648
+[bootstrap] app.listen called
+[bootstrap] terminal + kanban + LAN peer websocket setup
+[bootstrap] global agent server ready
+[bootstrap] session deleter started, profile=default
+Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)
+Log: /var/home/charlie/.hermes-web-ui/logs/server.log
+Update available: 0.6.39 → 0.6.41
+[shutdown] Received signal: SIGTERM
+hermes-web-ui v0.6.39 starting...
+(node:453186) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[bootstrap] ekko-agent setup complete
+[bootstrap] profile gateways checked
+[bootstrap] agent bridge failed to start: agent bridge did not become ready within 120000ms
+[bootstrap] all stores initialized
+[bootstrap] cors + bodyParser registered
+[bootstrap] routes registered
+[bootstrap] SPA fallback registered
+[bootstrap] listening on 0.0.0.0:18648
+[bootstrap] app.listen called
+[bootstrap] terminal + kanban + LAN peer websocket setup
+[bootstrap] global agent server ready
+[bootstrap] session deleter started, profile=default
+Server: http://localhost:18648 (LAN: http://192.168.2.201:18648)
+Log: /var/home/charlie/.hermes-web-ui/logs/server.log
+[shutdown] Received signal: SIGTERM
+hermes-web-ui v0.6.41 starting...
+(node:2433927) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[bootstrap] ekko-agent setup complete
+[bootstrap] profile gateways checked
+== bridge log ==
+{"level":30,"time":1786439748765,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439748765,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439748865,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439748865,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439748966,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439748966,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749066,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749066,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749167,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749167,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749267,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749267,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749369,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749369,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749469,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749470,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":1,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749570,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749570,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749671,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749671,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":1,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749771,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749771,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749872,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749872,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439749973,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439749973,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":1,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750073,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750073,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750174,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750174,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750274,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750274,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750375,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750375,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750475,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750475,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750576,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750576,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":0,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+{"level":30,"time":1786439750676,"pid":2433927,"hostname":"fedora","name":"bridge","endpoint":"ipc:///tmp/hermes-agent-bridge.sock","timeoutMs":1000,"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request"}
+{"level":50,"time":1786439750677,"pid":2433927,"hostname":"fedora","name":"bridge","durationMs":1,"err":{"type":"Object","message":"connect ENOENT /tmp/hermes-agent-bridge.sock","stack":"","name":"Error"},"runtime":{"profile":"default","cwd":"/var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui","profile_dir":"/var/home/charlie/.hermes","config_path":"/var/home/charlie/.hermes/config.yaml"},"request":{"action":"ping"},"msg":"[agent-bridge-client] request failed"}
+== socket ==
+missing
+
+__HERMES_CWD_1102a89d887e__/var/home/charlie/workspace__HERMES_CWD_1102a89d887e__

@@ -1,0 +1,16 @@
+{
+  "id": "20260729143434-cod-40fc4f",
+  "created_at": "2026-07-29T14:34:34.335968+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvmw0q7vm8dad",
+    "title": "Fix openhands ModuleNotFoundError",
+    "created_at": 1784697646.3499825
+  },
+  "content": "User-local pip installations of openhands (run via commands like pip install --user openhands) are prone to this specific error if the installation process is interrupted after the CLI entry point script is written to ~/.local/bin but before the openhands_cli module is installed to the Python environment.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

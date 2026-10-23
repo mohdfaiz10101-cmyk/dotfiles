@@ -1,0 +1,16 @@
+{
+  "id": "20260729131140-cod-166b0f",
+  "created_at": "2026-07-29T13:11:40.435649+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrzb7awoi0577o",
+    "title": "AI手机系统和Linux的区别",
+    "created_at": 1784919936.090138
+  },
+  "content": "Users seeking to test AI agent-focused mobile operating systems often prefer deployment via Waydroid (the Linux-hosted Android container) to avoid modifying their primary system or requiring dedicated mobile hardware.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

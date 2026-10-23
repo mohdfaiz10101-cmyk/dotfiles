@@ -1,0 +1,16 @@
+{
+  "id": "20260807031544-ops-983817",
+  "created_at": "2026-08-07T03:15:44.074569+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a3bcf7924aff",
+    "title": "",
+    "created_at": 1786072391.5033786
+  },
+  "content": "配置Tailscale出口节点的核心流程包含两步：首先在作为出口的电脑端开启Tailscale的Exit Mode，随后在接入的移动设备端指定该电脑为出口节点",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

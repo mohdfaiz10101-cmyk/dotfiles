@@ -1,0 +1,16 @@
+{
+  "id": "20260807162154-ops-ef42a7",
+  "created_at": "2026-08-07T16:21:54.163012+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "58deb7191b0c",
+    "title": "",
+    "created_at": 1786119677.731031
+  },
+  "content": "Proactive monitoring for pdcn services in this environment should include port 19976 accessibility as a core health check metric to detect intermittent outages before they impact service access.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

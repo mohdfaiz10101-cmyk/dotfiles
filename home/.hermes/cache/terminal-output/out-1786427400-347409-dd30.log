@@ -1,0 +1,283 @@
+* **向量知识库**：调用 ModelScope Embedding API（`text-embedding-v1`，768维）将对话标题与内容转化为语义向量，异步持久化至 IndexedDB 的 `vectors` 表。检索时通过纯 JavaScript 实现的余弦相似度计算完成本地 Top-K 匹配，无需外部向量数据库，全程在浏览器端运行。混合检索策略结合关键词召回（命中项获得 1.2× 分数提升）与语义向量检索，适应用户在精确查询与语义漫游两种不同意图下的检索模式。
+
+* **知识图谱可视化**：ECharts 力导向图，规避了 D3.js 在 Chrome 扩展构建环境中的 ESM 兼容性问题。节点与边的视觉属性（大小、颜色、粗细、透明度）全部由真实数据驱动，不存在装饰性的伪数据映射。
+
+* **捕获引擎**：
+  **核心架构与状态流转**：采用 Parser / Observer / Gate 三层架构，Observer 层使用 MutationObserver 监听 DOM 变化，Parser 层根据平台特性提取对话内容（每个平台定义多套主备 Selector 策略，运行时动态检测有效路径），Gate 层控制是否触发解析流程。存储层使用 debounce 机制与增量更新策略大幅减少数据库写操作频次；运行态通过 `GET_ACTIVE_CAPTURE_STATUS` 轮询派生，UI 状态由本地函数统一计算，不引入额外协议变更。
+  **UI 隔离与视觉同步**：Capsule 作为 content script 单体实现，注入 `#vesti-capsule-root` 并挂载 Shadow DOM，样式完全在 `SHADOW_STYLE` 内隔离，通过高优先级 z-index 保证可见性。主题同步来源为 `vesti_ui_settings`，初始化走 `getUiSettings()`，运行时通过 `chrome.storage.onChanged` 增量同步，切换时只改 shadow 内 CSS 变量，不调用 `applyUiTheme` 以防误切宿主页面 dark class；平台色从单色背景升级为 bg / text / border 三元 token，按 light / dark 双表管理，与侧边栏 `style.css` 的 token 定义完全一致。
+  **交互体验与本地持久化**：拖拽交互通过 pointer 事件会话状态管理，设定 5px 阈值防误触，并禁用图标原生拖拽以避免浏览器默认 drag payload 污染输入框。持久化层由 `capsuleSettingsService` 按 host 维度管理，读取失败有默认值回退，写入失败只记录日志，确保不阻断主流程。
+
+* **提示词工程**：Prompt-as-Code 策略——每个提示词模板有明确版本号，运行时日志绑定版本信息，Schema Drift Gate 在结构化输出与预期契约之间建立门禁。Fallback Hierarchy 分四层：`json_mode 内容提取 → reasoning_content 回收 → prompt_json 单次降级 → 结构化本地合成`，45 秒时间预算与两跳封顶机制防止极端情况下的无限等待。
+
+* **AI 模型**：主模型为 `DeepSeek-R1-Distill-Qwen-14B`（具备深度推理能力），备用模型为 `Qwen/Qwen3-14B`。支持 Demo 模式（通过开发者代理路由，开箱可用）与 BYOK 模式（用户填入自有 ModelScope API Key，直连官方接口，适合高频重度用户）。
+
+* **服务层隔离**：UI 组件永远不直接操作数据，所有交互通过统一的服务接口进行。`storageService`、`insightGenerationService`、`llmService` 各司其职，边界清晰。这一设计使得未来引入向量数据库或云端同步时，只需重写服务层内部实现，UI 层完全不受影响。
+
+<table>
+  <tr>
+    <td width="120px"><strong>Frontend</strong></td>
+    <td>React 18, TypeScript, Tailwind CSS, shadcn/ui</td>
+  </tr>
+  <tr>
+    <td width="120px"><strong>Extension</strong></td>
+    <td>Plasmo Framework, Chrome MV3, Content Scripts + Background + Offscreen</td>
+  </tr>
+  <tr>
+    <td width="120px"><strong>Storage</strong></td>
+    <td>Dexie.js (IndexedDB), Local-First, Vectors Table, Schema Drift Gate</td>
+  </tr>
+  <tr>
+    <td width="120px"><strong>AI & RAG</strong></td>
+    <td>ModelScope API (DeepSeek-R1 / Qwen3 双模型容错), Embedding + Cosine Similarity, Hybrid Search</td>
+  </tr>
+  <tr>
+    <td width="120px"><strong>Visualization</strong></td>
+    <td>ECharts Force-Directed Graph, StorageApi Contract Layer</td>
+  </tr>
+  <tr>
+    <td width="120px"><strong>Design</strong></td>
+    <td>Warm Paper Theme, Serif Reading Typography, Design Token System</td>
+  </tr>
+</table>
+
+---
+
+## 🚀 快速开始
+
+我们提供两种安装方式：离线安装包（适合快速体验）和开发者构建（适合贡献代码）。
+
+### 方式一：离线安装包（推荐）
+
+无需配置编程环境，三步即可体验心迹。请优先从 GitHub Release 下载官方安装包（推荐）；如遇网络或访问限制，可在本仓库 `vesti-release/` 目录使用镜像安装包（应急备用）。
+<br>
+官方发布源：GitHub Release（唯一正式附件）；备用源：`vesti-release/`（镜像/兜底，不作为官方发布依据）。
+
+：
+
+<div align="center">
+  <a href="https://github.com/abraxas914/VESTI/releases/latest">
+    <img src="https://img.shields.io/badge/官方发布-GitHub%20Release-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Release 官方下载" style="margin: 0 4px;">
+  </a>
+  <a href="https://vesti-landing-page0211.vercel.app/">
+    <img src="https://img.shields.io/badge/官网下载-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel 官网下载" style="margin: 0 4px;">
+  </a>
+  <a href="https://modelscope.cn/studios/aurorasein/Vesti2/summary">
+    <img src="https://img.shields.io/badge/国内加速-ModelScope-624AFF?style=for-the-badge&logo=modelscope&logoColor=white" alt="ModelScope 下载" style="margin: 0 4px;">
+  </a>
+  <a href="https://github.com/abraxas914/VESTI/tree/main/vesti-release">
+    <img src="https://img.shields.io/badge/本仓备用-vesti--release-181717?style=for-the-badge&logo=github&logoColor=white" alt="本仓备用下载" style="margin: 0 4px;">
+  </a>
+</div>
+
+
+<br>
+
+**安装步骤：**
+1. 解压安装包到本地任意位置，确保能直接看到 `manifest.json` 文件。注意安装完成后请勿删除或移动该文件夹。
+2. 在 Chrome 浏览器地址栏输入 `chrome://extensions/` 进入扩展管理页，开启右上角的"开发者模式"开关。
+3. 点击左上角的"加载已解压的扩展程序"按钮，选择解压后的文件夹。
+
+> 安装成功后，Vesti 图标将出现在浏览器工具栏中。现在打开 ChatGPT 或 Claude 网页开始对话，心迹会自动捕获并开始建立你的本地知识库。
+
+### 方式二：开发者构建
+
+如果你想贡献代码或深度定制，可以从源码构建。**环境要求**：Node.js 18 或更高版本，pnpm 包管理器。
+
+```bash
+# 克隆仓库
+git clone https://github.com/yourusername/vesti.git
+cd vesti
+
+# 安装依赖
+pnpm install
+
+# 开发模式（热重载）
+pnpm -C frontend dev
+
+# 或生产构建
+pnpm -C frontend build
+```
+
+开发模式下，扩展文件在 `frontend/build/chrome-mv3-dev` 目录。生产构建在 `frontend/build/chrome-mv3-prod` 目录。按照方式一的步骤 2-3 加载对应目录即可。
+
+### ⚙️ 配置 ModelScope API
+
+心迹通过 ModelScope API 同时驱动两类核心能力：Thread Summary 的结构化摘要生成，以及 Explore 问答与 Network 图谱所依赖的对话向量化。除了拓展程序默认预埋的API Key之外，你也可以在设置页面配置自己的 API Key 来使用所有功能。
+
+**获取 API 密钥：**
+1. 访问 ModelScope 官网并注册账号。
+2. 点击右上角头像进入「个人中心」→「访问令牌」。
+3. 复制以 `sdk_` 或 `ms_` 开头的字符串。
+
+**在心迹中配置：**
+1. 点击心迹设置图标进入设置页面。
+2. 在 ModelScope 配置区域填入 API Key。
+3. Model ID 填写推荐的模型（如 `Qwen/Qwen3-32B`）。
+4. 点击 **Test** 按钮验证连接。
+
+> **💡 提示：** 配置成功后，向量化任务会在后台异步运行，将你的历史对话逐步建立为可检索的语义索引。这个过程不影响正常使用，完成后 Explore 问答与 Network 图谱将自动激活。
+
+***
+
+| 阶段 | 核心动作 | 具体路径 / 参数 |
+| :--- | :--- | :--- |
+| **构建与加载** | 选择扩展目录 | **开发模式**：`frontend/build/chrome-mv3-dev`<br>**生产模式**：`frontend/build/chrome-mv3-prod` |
+| **获取 API** | 在官网获取令牌 | 注册登录 ➔ 个人中心 ➔ 访问令牌 ➔ 复制 (`sdk_` / `ms_` 开头) |
+| **插件内配置** | 填入设置信息 | 进入设置 ➔ 填入 API Key ➔ 填入 Model ID ➔ 点击 Test |
+| **日常使用** | 侧边栏捕获与摘要 | 对话详情页 ➔ 点击"生成摘要"（结果自动本地缓存） |
+| **知识库探索** | 打开 Web Dashboard | 侧边栏 Insights ➔ 点击"Explore & Network"外链 ➔ 进入独立知识管理平台 |
+
+---
+
+## 📖 使用指南
+
+### 渐进式披露：四层交互管线
+<blockquote>
+  <p>🎨 <b>心迹 (Vesti) 采用渐进式披露设计，实现从轻量捕获到深度管理的无缝流转：</b><br><br>
+  <b>页面常驻（悬浮胶囊-折叠态）</b>在 AI 对话页边缘静默指示捕获状态，实现零干扰；点击小球进入<b>当前控制（悬浮胶囊-展开态）</b>，即可查看状态详情或快捷归档；随后可一键呼出<b>全局浏览（浏览器侧边栏）</b>，支持跨平台检索与当前对话摘要；最后，通过侧边栏 Insights 面板的探索外链，平滑过渡至<b>深度洞察（独立 Dashboard）</b>的 Web 平台，解锁 RAG 问答、思维图谱与策展笔记等高级知识管理功能。</p>
+</blockquote>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="10">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/pipeline-1.png" alt="Vesti Capsule Folded" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>1. 页面常驻 </b> (悬浮胶囊-折叠态)</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/pipeline-2.png" alt="Vesti Capsule Expanded" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>2. 当前控制 </b> (悬浮胶囊-展开态)</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/pipeline-3.png" alt="Vesti Sidebar" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>3. 全局浏览 </b> (浏览器侧边栏)</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/pipeline-4.png" alt="Vesti Web Dashboard" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>4. 深度洞察 </b> (独立 Dashboard)</sub>
+    </td>
+  </tr>
+</table>
+
+心迹采用**渐进式披露**的设计哲学，将从轻量感知到深度管理的完整链路，分布在四个咬合衔接的界面层次中。你不需要在安装时做任何配置决策，每一层都是上一层的自然延伸。
+
+```
+页面常驻          当前控制          全局浏览          深度洞察
+悬浮胶囊           悬浮胶囊          浏览器            独立
+（折叠态）  ──▶  （展开态）  ──▶   侧边栏    ──▶   Dashboard
+静默指示           快捷归档         跨平台检索        RAG问答
+捕获状态           呼出侧边栏       摘要生成          思维图谱
+                                                    策展笔记
+```
+
+**第一层 · 页面常驻（悬浮胶囊折叠态）**：在所有支持平台的 AI 对话页边缘，心迹以一个小球的形式静默驻留，实时显示当前捕获状态，颜色与动效随状态语义变化。它的设计原则是零干扰——你无需主动感知它的存在，但当你需要时它始终在那里。
+
+**第二层 · 当前控制（悬浮胶囊展开态）**：点击小球展开卡片，可以查看当前对话的捕获详情、手动触发归档，或一键呼出浏览器侧边栏。这一层的设计意图是让用户在不离开当前 AI 对话页面的前提下，完成所有与心迹的即时交互。
+
+**第三层 · 全局浏览（浏览器侧边栏）**：从胶囊呼出，或直接点击浏览器工具栏图标打开。侧边栏提供跨平台的时间轴浏览、全文检索、对话详情阅读与 Thread Summary 生成。这是心迹最日常的使用界面，覆盖了大多数用户的核心需求。
+
+**第四层 · 深度洞察（独立 Web Dashboard）**：在侧边栏的 Insights 面板点击"Explore & Network"外链，即可平滑过渡至独立知识管理平台。这一层解锁的是向量知识库的完整能力：RAG 自然语言问答（Explore）、语义关联思维图谱（Network）与手动策展笔记（Notes）。四个层次之间共享同一份本地 IndexedDB 数据，切换界面不意味着切换数据源。
+
+---
+
+### 捕获对话
+
+心迹目前支持 **ChatGPT、Claude、Gemini、DeepSeek、Qwen、Doubao** 六个平台的对话捕获，各平台的解析稳定性处于不同阶段，其中 ChatGPT 与 Claude 的捕获链路经过最充分的测试。当你在这些网站上进行对话时，扩展会自动监听页面变化并提取对话内容，无需任何主动操作。
+
+捕获的对话包含完整的多轮问答内容、时间戳、平台标识等元数据，每个对话被分配一个基于平台原始会话 ID 的唯一 UUID，即使你多次访问同一对话页面，系统也能正确识别并避免重复存储。捕获完成后，Gardener Agent 会在后台异步触发，对对话进行类型分类与标签提取，结果在 Library 中可见。
+
+#### 三种捕获模式
+
+心迹提供三种捕获策略，可在 **Settings → Capture Mode** 中切换，以适应不同的使用习惯与数据管理偏好：
+
+**全量镜像模式**：默认开启。所有支持平台上发生的对话均自动捕获并持久化，适合希望建立完整个人知识档案的用户。
+
+**智能降噪模式**：系统自动过滤低价值对话，包括：特定平台来源的对话（可在设置中自定义屏蔽列表）、对话轮数过少的短会话（低于阈值的单轮或双轮对话默认不入库）。适合对数据质量有要求、希望知识库保持精简的用户。过滤规则完全在本地执行，不影响原始对话的浏览体验。
+
+**手动归档模式**：引擎持续在后台监听对话并识别稳定 UUID，但不自动写入数据库。当你认为某次对话值得保存时，点击悬浮胶囊展开卡片，卡片会显示当前对话的识别状态；确认后点击"Archive now"完成归档。这种模式将数据主权完全交还给用户，每一条进入知识库的对话都是主动选择的结果，而非被动堆积。
+
+#### 悬浮状态胶囊
+
+捕获过程中，页面内常驻心迹的悬浮状态胶囊。它实时反映当前对话的六种捕获语义状态（持续捕获中、已就绪归档、已完成、错误等），状态变化通过颜色与动效区分。你可以将其拖拽到屏幕任意边缘吸附，位置会按平台域名自动记忆。
+
+在手动归档模式下，胶囊是主要的操作界面：当引擎捕获到稳定 UUID 时，卡片上的"Archive now"按钮激活，点击即完成归档；"Open Dock"按钮随时可用，一键呼出侧边栏。
+
+---
+
+### 浏览与搜索
+### 🌙 明暗双态下的全景时间线与沉浸式阅读
+
+<blockquote>
+  <p>🎨 <b>心迹 (Vesti) 在侧边栏提供跨越生态壁垒的统一对话管理体验：</b><br><br>
+  无缝兼容全网主流大模型平台，并自动适应宿主环境的明暗双主题。在视觉呈现上，深度践行“新古典主义”审美与 Warm Paper 设计哲学，通过精致的衬线体排版与长文本智能折叠（渐进式披露）机制，将喧嚣杂乱的网页问答转化为纯粹的沉浸式阅读体验，助你在低视觉噪音中专注回溯思维轨迹。</p>
+</blockquote>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="10">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/threads-1.png" alt="Vesti Dark Mode Timeline" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>全平台阵列与全局时间轴 (Unified Timeline)</b><br>突破生态壁垒，静默捕获各平台的交互记录。完美适配暗黑模式，将散落的思维碎片在侧边栏收束为统一的、可追溯的时间线。</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/threads-2.png" alt="Vesti Light Mode Conversation Detail" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>新古典审美下的沉浸阅读 (Immersive Reading)</b><br>将对话转化为纯粹的阅读体验。以精致的衬线体排版结合长消息智能折叠机制，在明亮模式下依然保持克制、温润的信息密度。</sub>
+    </td>
+  </tr>
+</table>
+
+点击浏览器工具栏上的心迹图标，或通过胶囊"Open Dock"呼出侧边栏。默认页面是**时间轴视图**，显示所有捕获的对话按时间倒序排列。将鼠标悬停在卡片上，会展开显示对话的前100字预览，以及编辑、打开原页面、删除等快捷操作。点击卡片进入详情视图，显示完整的对话历史。
+
+在顶部搜索框中输入关键词，可以实时过滤对话列表。搜索支持**标题匹配**与**内容全文匹配**，结果高亮显示匹配文字，并可按平台标签筛选。如果需要跨越关键词边界的语义检索——例如搜索"缓存策略"能找到讨论 Redis 的对话——请前往 Web Dashboard 的 Explore Tab 使用向量检索模式。
+
+### 查看详情
+
+在对话详情页中，消息按时间正序排列，用户消息与 AI 消息通过不同背景色区分。长消息支持智能折叠，超过500字符的内容自动收起。将鼠标悬停在任意消息上，右上角会出现**复制**按钮。如果消息中包含代码块，会自动应用等宽字体与语法高亮。
+
+详情页顶部的标题栏包含返回按钮、对话标题、平台标签和消息轮数统计。点击平台标签旁边的跳转图标，可以在新标签页中打开对话的原始网页。
+
+### 灵活的模型调用配置
+
+<table border="0" width="100%" cellspacing="0" cellpadding="10">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/vesti-settings-modelscope-1.png" alt="Demo Mode Settings" width="75%" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>默认开箱即用：Demo 模式</b><br>无需配置密钥，通过代理路由直接体验核心功能。</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/vesti-settings-modelscope-2.png" alt="Custom BYOK Mode Settings" width="75%" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+      <sub><b>进阶自定义配置：BYOK 模式</b><br>填入你自己的 ModelScope API Key，直连官方接口。</sub>
+    </td>
+  </tr>
+</table>
+
+心迹提供两种 API 调用模式，可在侧边栏右下角的**设置 (Settings) → Model Access** 面板中切换：
+
+**Demo 模式（开箱即用）**：默认开启。请求通过开发者提供的代理路由发送，无需配置任何密钥。后端实现了双模型容错策略：主模型为 `DeepSeek-R1-Distill-Qwen-14B`，遇到网络超时或速率限制时自动无缝切换至 `Qwen/Qwen3-14B` 进行单次重试。
+
+**自定义 BYOK 模式（Bring Your Own Key）**：打开 `Use Custom Configuration` 开关启用。填入自有 ModelScope API Key 后，所有请求绕过开发者代理，直接发往 ModelScope 官方接口，适合高频重度用户或对数据路由有严格要求的场景。
+
+### 生成 Thread Summary
+
+### ⚡ 结构化摘要与透明思维链：从黑盒到可观测的认知提炼
+
+<blockquote>
+  <p>🎨 <b>心迹 (Vesti) 将暗箱操作的 AI 总结转化为透明、可观测的结构化认知提炼：</b><br><br>
+  在侧边栏的 <b>Insights</b> 面板中，系统拒绝浅层的内容压缩，而是通过多链路推理 API 深入对话脉络。无论是实时展示 Agent 拆解逻辑的思维链（CoT）执行状态，还是最终沉淀为包含核心问题与关键洞察的结构化卡片，Vesti 确保你既能收获高信息密度的知识结晶，也能全程清晰掌控 AI 提炼思维的每一步执行管线。</p>
+</blockquote>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="10">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src=".github/assets/insights-1.png" alt="Vesti Structured Thinking Trajectory" width="100%" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <br>
+
+__HERMES_CWD_a473bfdc8cfa__/var/home/charlie/workspace/vesti__HERMES_CWD_a473bfdc8cfa__

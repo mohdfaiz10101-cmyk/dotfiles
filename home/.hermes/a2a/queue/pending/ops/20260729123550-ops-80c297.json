@@ -1,0 +1,16 @@
+{
+  "id": "20260729123550-ops-80c297",
+  "created_at": "2026-07-29T12:35:50.972433+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260727_030010",
+    "title": "",
+    "created_at": 1785092412.889918
+  },
+  "content": "Current Hermes workspace (/var/home/charlie/.hermes/workspace/) has no active project source code, only Git metadata; the latest commit in the workspace is 05e2adf with message 'pre-task-test-001'.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124036-ops-79a187",
+  "created_at": "2026-07-29T12:40:36.969250+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1d9zxhzisrg9",
+    "title": "网络skill加载排查",
+    "created_at": 1785044399.7722983
+  },
+  "content": "若关闭VPN后仅特定应用的特定功能（如抖音评论）异常，无需优先排查全局网络，应先确认该功能对应的目标域名/IP是否配置了仅走VPN的专属路由，关闭VPN后无对应路由是此类场景的常见根因。",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729131846-ops-7720c4",
+  "created_at": "2026-07-29T13:18:46.843678+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz4q0vg5mxz4y",
+    "title": "",
+    "created_at": 1784909067.037243
+  },
+  "content": "The user's codebase analysis workflow centers on processing cloned git repositories of their projects, so any recommended model for this use case must support ingesting and performing reasoning over local/cloned git codebases.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

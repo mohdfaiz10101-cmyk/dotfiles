@@ -1,0 +1,16 @@
+{
+  "id": "20260729141210-ops-496217",
+  "created_at": "2026-07-29T14:12:10.022074+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194112_ef603b",
+    "title": "",
+    "created_at": 1784720474.8657548
+  },
+  "content": "References to kanban task IDs in the user's work context correspond to actionable work items that may be the subject of future requests for updates, context retrieval, or task management actions.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

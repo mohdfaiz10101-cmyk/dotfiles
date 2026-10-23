@@ -1,0 +1,16 @@
+{
+  "id": "20260729135749-ops-daab59",
+  "created_at": "2026-07-29T13:57:49.919377+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195614_d27982",
+    "title": "",
+    "created_at": 1784721376.1261702
+  },
+  "content": "Work task identifiers in the user's workflow use a 't_' prefix to denote Kanban tasks, as observed with the ID t_0120d003.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

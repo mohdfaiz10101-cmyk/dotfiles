@@ -1,0 +1,16 @@
+{
+  "id": "20260729124036-ops-4b6499",
+  "created_at": "2026-07-29T12:40:36.968818+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1d9zxhzisrg9",
+    "title": "网络skill加载排查",
+    "created_at": 1785044399.7722983
+  },
+  "content": "安卓设备排查VPN关闭后应用网络异常时，首要步骤是执行`ip route show table main`和`ip route get 8.8.8.8`确认默认网关归属，若NetBird等VPN被设为always-on模式，关闭后将直接导致全局断网，这是此类问题的核心排查前提。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

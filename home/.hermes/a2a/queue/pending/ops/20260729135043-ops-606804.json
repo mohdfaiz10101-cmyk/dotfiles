@@ -1,0 +1,16 @@
+{
+  "id": "20260729135043-ops-606804",
+  "created_at": "2026-07-29T13:50:43.225179+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200315_a73ac5",
+    "title": "",
+    "created_at": 1784721798.3568382
+  },
+  "content": "When the user references a kanban task via the `t_` ID format, agents should prioritize aligning responses and actions with the requirements and context of the referenced task rather than treating the reference as transient.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

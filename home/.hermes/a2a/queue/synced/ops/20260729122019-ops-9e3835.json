@@ -1,0 +1,17 @@
+{
+  "id": "20260729122019-ops-9e3835",
+  "created_at": "2026-07-29T12:20:19.562765+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5wyyq47bei1p",
+    "title": "手机重启才能访问DuckDNS地址",
+    "created_at": 1785319278.72873
+  },
+  "content": "动态DNS（如DuckDNS）记录漂移后，若客户端本地DNS缓存未过期，会访问到已失效的旧IP，表现为服务不可达；重启客户端设备仅能清空本地DNS缓存，并非修复服务本身问题，效果等价于等待DNS TTL过期。",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.656459+00:00"
+}

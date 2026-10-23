@@ -1,0 +1,16 @@
+{
+  "id": "20260729130728-ops-5efe00",
+  "created_at": "2026-07-29T13:07:28.485217+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_063219",
+    "title": "",
+    "created_at": 1784932351.2309186
+  },
+  "content": "Task handling decisions made by the autonomous-task-brain skill are based on three core factors: historical task success rates, task complexity, and user preferences, to automatically select one of three actions: execute the task, suggest a solution to the user, or skip the task.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

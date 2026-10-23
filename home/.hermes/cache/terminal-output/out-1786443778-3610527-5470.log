@@ -1,0 +1,202 @@
+/var/home/charlie/.local/bin/haven-session-autorecover:37:    log "FAILED reason=$reason connect_dispatch_failed"
+/var/home/charlie/.local/bin/haven-session-autorecover:93:  dispatch_connect "list_sessions_failed"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:86:probe_phone_mcp() {
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:126:    log "FAILED no usable adb path"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:131:    if probe_phone_mcp "$serial"; then
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:139:      log "OK serial=$healthy_serial phone_mcp=ok bridge=ok"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:142:    log "WARN serial=$healthy_serial phone_mcp=ok bridge=failed restart_bridge"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:145:      log "OK serial=$healthy_serial phone_mcp=ok bridge=recovered"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:147:      log "FAILED serial=$healthy_serial phone_mcp=ok bridge=still_failed"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:153:  log "WARN serial=$serial phone_mcp=failed start_haven"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:157:    if probe_phone_mcp "$serial"; then
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:169:  log "WARN serial=$serial phone_mcp=still_failed force_stop_haven"
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:175:    if probe_phone_mcp "$serial"; then
+/var/home/charlie/.local/bin/haven-mcp-watchdog.sh:184:    log "FAILED serial=$serial phone_mcp=dead_after_force_stop"
+/var/home/charlie/.local/bin/haven-entry-codex:27:SESSION="haven-codex"
+/var/home/charlie/.local/bin/haven-entry-codex2:26:if systemctl --user start haven-codex2.service 2>/dev/null; then
+/var/home/charlie/.local/bin/haven-entry-codex2:34:SESSION="haven-codex2"
+/var/home/charlie/.local/bin/ttyd-codex2-entry:37:SESSION="haven-codex2"
+/var/home/charlie/.local/bin/mosh-server-codex:3:  tmux -S /run/user/1000/tmux/codex.sock attach -d -t haven-codex
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:51:    return { sock: "/run/user/1000/tmux/codex10.sock", session: "haven-codex10" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:54:    return { sock: "/run/user/1000/tmux/codex9.sock", session: "haven-codex9" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:57:    return { sock: "/run/user/1000/tmux/codex8.sock", session: "haven-codex8" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:60:    return { sock: "/run/user/1000/tmux/codex7.sock", session: "haven-codex7" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:63:    return { sock: "/run/user/1000/tmux/codex6.sock", session: "haven-codex6" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:66:    return { sock: "/run/user/1000/tmux/codex5.sock", session: "haven-codex5" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:69:    return { sock: "/run/user/1000/tmux/codex4.sock", session: "haven-codex4" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:72:    return { sock: "/run/user/1000/tmux/codex3.sock", session: "haven-codex3" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:75:    return { sock: "/run/user/1000/tmux/codex2.sock", session: "haven-codex2" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:90:  return CODEX_ACCOUNT_ID === "1" ? "haven-codex.service" : `haven-codex${CODEX_ACCOUNT_ID}.service`
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:94:  return String(account) === "1" ? "haven-codex.service" : `haven-codex${account}.service`
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:110:  return id === "1" ? "/var/home/charlie/.local/bin/haven-codex-ensure" : `/var/home/charlie/.local/bin/haven-codex${id}-ensure`
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:189:  if (id === "8") return { sock: "/run/user/1000/tmux/codex8.sock", session: "haven-codex8" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:190:  if (id === "7") return { sock: "/run/user/1000/tmux/codex7.sock", session: "haven-codex7" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:191:  if (id === "6") return { sock: "/run/user/1000/tmux/codex6.sock", session: "haven-codex6" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:192:  if (id === "5") return { sock: "/run/user/1000/tmux/codex5.sock", session: "haven-codex5" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:193:  if (id === "4") return { sock: "/run/user/1000/tmux/codex4.sock", session: "haven-codex4" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:194:  if (id === "3") return { sock: "/run/user/1000/tmux/codex3.sock", session: "haven-codex3" }
+/var/home/charlie/.local/bin/ttyd-device-gate-proxy:195:  if (id === "2") return { sock: "/run/user/1000/tmux/codex2.sock", session: "haven-codex2" }
+/var/home/charlie/.local/bin/haven-codex2-ensure:28:SESSION="haven-codex2"
+/var/home/charlie/.local/bin/haven-codex2-ensure:32:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex2-ensure.log"
+/var/home/charlie/.local/bin/haven-codex2-ensure:35:/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+/var/home/charlie/.local/bin/haven-codex2-ensure:109:        log "FAILED reason=codex-missing session=$SESSION"
+/var/home/charlie/.local/bin/haven-codex-ensure:22:SESSION="haven-codex"
+/var/home/charlie/.local/bin/haven-codex-ensure:26:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex-ensure.log"
+/var/home/charlie/.local/bin/haven-codex-ensure:103:        log "FAILED reason=codex-missing session=$SESSION"
+/var/home/charlie/.local/bin/codex-timeline-snapshot:54:capture_account 1 /run/user/1000/tmux/codex.sock haven-codex /var/home/charlie/.codex
+/var/home/charlie/.local/bin/codex-timeline-snapshot:55:capture_account 2 /run/user/1000/tmux/codex2.sock haven-codex2 /var/home/charlie/.codex-2
+/var/home/charlie/.local/bin/codex-timeline-snapshot:56:capture_account 3 /run/user/1000/tmux/codex3.sock haven-codex3 /var/home/charlie/.codex-3
+/var/home/charlie/.local/bin/codex-timeline-snapshot:57:capture_account 4 /run/user/1000/tmux/codex4.sock haven-codex4 /var/home/charlie/.codex-4
+/var/home/charlie/.local/bin/codex-timeline-snapshot:58:capture_account 5 /run/user/1000/tmux/codex5.sock haven-codex5 /var/home/charlie/.codex-5
+/var/home/charlie/.local/bin/codex-timeline-snapshot:59:capture_account 6 /run/user/1000/tmux/codex6.sock haven-codex6 /var/home/charlie/.codex-6
+/var/home/charlie/.local/bin/codex-timeline-snapshot:60:capture_account 7 /run/user/1000/tmux/codex7.sock haven-codex7 /var/home/charlie/.codex-7
+/var/home/charlie/.local/bin/haven-entry-codex3:36:systemctl --user start haven-codex3.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex3:40:SESSION="haven-codex3"
+/var/home/charlie/.local/bin/haven-entry-codexsmart:27:SESSION="haven-codexsmart"
+/var/home/charlie/.local/bin/codex-router:42:    "1": {"sock": "/run/user/1000/tmux/codex.sock", "session": "haven-codex", "pane": "haven-codex:0.0"},
+/var/home/charlie/.local/bin/codex-router:43:    "2": {"sock": "/run/user/1000/tmux/codex2.sock", "session": "haven-codex2", "pane": "haven-codex2:0.0"},
+/var/home/charlie/.local/bin/codex-router:44:    "3": {"sock": "/run/user/1000/tmux/codex3.sock", "session": "haven-codex3", "pane": "haven-codex3:0.0"},
+/var/home/charlie/.local/bin/codex-router:45:    "4": {"sock": "/run/user/1000/tmux/codex4.sock", "session": "haven-codex4", "pane": "haven-codex4:0.0"},
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:28:        "session": "haven-codex",
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:34:        "session": "haven-codex2",
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:40:        "session": "haven-codex3",
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:46:        "session": "haven-codex4",
+/var/home/charlie/.local/bin/codex-smart.pre-router-merge.20260713-012852:278:                    raise SystemExit(f"account {forced_account} is not usable: {', '.join(cand.reasons)}")
+/var/home/charlie/.local/bin/codex-account-provision:72:    return "haven-codex" if account == 1 else f"haven-codex{account}"
+/var/home/charlie/.local/bin/codex-account-provision:82:    return "haven-codex.service" if account == 1 else f"haven-codex{account}.service"
+/var/home/charlie/.local/bin/haven-codex4-ensure:40:SESSION="haven-codex4"
+/var/home/charlie/.local/bin/haven-codex4-ensure:43:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex4-ensure.log"
+/var/home/charlie/.local/bin/haven-codex4-ensure:46:/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+/var/home/charlie/.local/bin/haven-codex4-ensure:121:        log "FAILED reason=codex-missing session=$SESSION"
+/var/home/charlie/.local/bin/ttyd-codex3-entry:37:SESSION="haven-codex3"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:20:    service_name="haven-codex.service"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:21:    ensure_script="/var/home/charlie/.local/bin/haven-codex-ensure"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:23:    tmux_session="haven-codex"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:27:    service_name="haven-codex2.service"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:28:    ensure_script="/var/home/charlie/.local/bin/haven-codex2-ensure"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:30:    tmux_session="haven-codex2"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:34:    service_name="haven-codex3.service"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:35:    ensure_script="/var/home/charlie/.local/bin/haven-codex3-ensure"
+/var/home/charlie/.local/bin/codex-sub2api-claim-bind:37:    tmux_session="haven-codex3"
+/var/home/charlie/.local/bin/ttyd-codex4-entry:49:SESSION="haven-codex4"
+/var/home/charlie/.local/bin/codex-foot-tab-entry:15:    session="haven-codex$account"
+/var/home/charlie/.local/bin/haven-entry-codex4:48:systemctl --user start haven-codex4.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex4:52:SESSION="haven-codex4"
+/var/home/charlie/.local/bin/haven-codex3-ensure:28:SESSION="haven-codex3"
+/var/home/charlie/.local/bin/haven-codex3-ensure:31:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex3-ensure.log"
+/var/home/charlie/.local/bin/haven-codex3-ensure:34:/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+/var/home/charlie/.local/bin/haven-codex3-ensure:109:        log "FAILED reason=codex-missing session=$SESSION"
+/var/home/charlie/.local/bin/codex-foot-tabs:20:        find "$HOME/.config/systemd/user" -maxdepth 1 -type f -name 'haven-codex*.service' -printf '%f\n' |
+/var/home/charlie/.local/bin/codex-foot-tabs:21:            sed -n -e 's/^haven-codex\.service$/1/p' -e 's/^haven-codex\([0-9][0-9]*\)\.service$/\1/p'
+/var/home/charlie/.local/bin/ttyd-codex5-entry:50:SESSION="haven-codex5"
+/var/home/charlie/.local/bin/haven-codex5-ensure:40:SESSION="haven-codex5"
+/var/home/charlie/.local/bin/haven-codex5-ensure:43:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex5-ensure.log"
+/var/home/charlie/.local/bin/haven-codex5-ensure:51:/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+/var/home/charlie/.local/bin/haven-codex5-ensure:121:        log "FAILED reason=codex-missing session=$SESSION"
+/var/home/charlie/.local/bin/haven-codex6-ensure:6:  /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/haven-entry-codex5:48:systemctl --user start haven-codex5.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex5:52:SESSION="haven-codex5"
+/var/home/charlie/.local/bin/ttyd-codex8-entry:50:SESSION="haven-codex8"
+/var/home/charlie/.local/bin/codex-exec-memory:19:    "1": (HOME / ".codex", "/run/user/1000/tmux/codex.sock", "haven-codex"),
+/var/home/charlie/.local/bin/codex-exec-memory:20:    "2": (HOME / ".codex-2", "/run/user/1000/tmux/codex2.sock", "haven-codex2"),
+/var/home/charlie/.local/bin/codex-exec-memory:21:    "3": (HOME / ".codex-3", "/run/user/1000/tmux/codex3.sock", "haven-codex3"),
+/var/home/charlie/.local/bin/codex-exec-memory:22:    "4": (HOME / ".codex-4", "/run/user/1000/tmux/codex4.sock", "haven-codex4"),
+/var/home/charlie/.local/bin/codex-exec-memory:23:    "5": (HOME / ".codex-5", "/run/user/1000/tmux/codex5.sock", "haven-codex5"),
+/var/home/charlie/.local/bin/codex-exec-memory:24:    "6": (HOME / ".codex-6", "/run/user/1000/tmux/codex6.sock", "haven-codex6"),
+/var/home/charlie/.local/bin/codex-exec-memory:25:    "7": (HOME / ".codex-7", "/run/user/1000/tmux/codex7.sock", "haven-codex7"),
+/var/home/charlie/.local/bin/haven-codex8-ensure:40:SESSION="haven-codex8"
+/var/home/charlie/.local/bin/haven-codex8-ensure:60:LOG="${XDG_STATE_HOME:-$HOME/.local/state}/haven-codex8-ensure.log"
+/var/home/charlie/.local/bin/haven-codex8-ensure:63:/var/home/charlie/.local/bin/codex-shared-sync --apply >> "$LOG" 2>&1 || printf '%s WARN codex-shared-sync failed; continuing\n' "$(date '+%F %T')" >> "$LOG"
+/var/home/charlie/.local/bin/haven-codex8-ensure:133:        log "FAILED reason=codex-missing session=$SESSION"
+/var/home/charlie/.local/bin/codex-webtty-guard:155:  records+=("$(check_one 1 19000 19881 19899 ttyd-codex.service ttyd-codex-backend.service haven-codex.service /run/user/1000/tmux/codex.sock haven-codex)")
+/var/home/charlie/.local/bin/codex-webtty-guard:156:  records+=("$(check_one 2 19001 19882 19900 ttyd-codex2.service ttyd-codex2-backend.service haven-codex2.service /run/user/1000/tmux/codex2.sock haven-codex2)")
+/var/home/charlie/.local/bin/codex-webtty-guard:157:  records+=("$(check_one 3 19002 19883 19902 ttyd-codex3.service ttyd-codex3-backend.service haven-codex3.service /run/user/1000/tmux/codex3.sock haven-codex3)")
+/var/home/charlie/.local/bin/codex-webtty-guard:158:  records+=("$(check_one 4 19003 19884 19903 ttyd-codex4.service ttyd-codex4-backend.service haven-codex4.service /run/user/1000/tmux/codex4.sock haven-codex4)")
+/var/home/charlie/.local/bin/codex-webtty-guard:159:  records+=("$(check_one 5 19004 19889 19904 ttyd-codex5.service ttyd-codex5-backend.service haven-codex5.service /run/user/1000/tmux/codex5.sock haven-codex5)")
+/var/home/charlie/.local/bin/codex-webtty-guard:160:  records+=("$(check_one 6 19005 20020 19905 ttyd-codex6.service ttyd-codex6-backend.service haven-codex6.service /run/user/1000/tmux/codex6.sock haven-codex6)")
+/var/home/charlie/.local/bin/codex-webtty-guard:161:  records+=("$(check_one 7 19006 20021 19906 ttyd-codex7.service ttyd-codex7-backend.service haven-codex7.service /run/user/1000/tmux/codex7.sock haven-codex7)")
+/var/home/charlie/.local/bin/codex-webtty-guard:162:  records+=("$(check_one 8 19007 20022 19907 ttyd-codex8.service ttyd-codex8-backend.service haven-codex8.service /run/user/1000/tmux/codex8.sock haven-codex8)")
+/var/home/charlie/.local/bin/codex-webtty-guard:163:  records+=("$(check_one 9 19008 20023 19908 ttyd-codex9.service ttyd-codex9-backend.service haven-codex9.service /run/user/1000/tmux/codex9.sock haven-codex9)")
+/var/home/charlie/.local/bin/codex-webtty-guard:164:  records+=("$(check_one 10 19009 20024 19909 ttyd-codex10.service ttyd-codex10-backend.service haven-codex10.service /run/user/1000/tmux/codex10.sock haven-codex10)")
+/var/home/charlie/.local/bin/haven-codex7-ensure:6:  /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.config/systemd/user/ttyd-codex10-backend.service:2:Description=Codex 10 TTY backend (haven-codex10, :20024)
+/var/home/charlie/.local/bin/haven-entry-codex8:48:systemctl --user start haven-codex8.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex8:52:SESSION="haven-codex8"
+/var/home/charlie/.config/systemd/user/ttyd-codex9-backend.service:2:Description=Codex 9 TTY backend (haven-codex9, :20023)
+/var/home/charlie/.local/bin/codex-foot-tab-sort:16:        find /var/home/charlie/.config/systemd/user -maxdepth 1 -type f -name 'haven-codex*.service' -printf '%f\n' |
+/var/home/charlie/.local/bin/codex-foot-tab-sort:17:            sed -n -e 's/^haven-codex\.service$/1/p' -e 's/^haven-codex\([0-9][0-9]*\)\.service$/\1/p'
+/var/home/charlie/.local/bin/haven-entry-codex7:48:systemctl --user start haven-codex7.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex7:52:SESSION="haven-codex7"
+/var/home/charlie/.config/systemd/user/haven-codex10.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex10-ensure
+/var/home/charlie/.local/bin/haven-entry-codex6:48:systemctl --user start haven-codex6.service 2>/dev/null || true
+/var/home/charlie/.local/bin/haven-entry-codex6:52:SESSION="haven-codex6"
+/var/home/charlie/.config/systemd/user/haven-codex9.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex9-ensure
+/var/home/charlie/.local/bin/haven-codex10-ensure:5:exec bash <(sed -e 's/codex-5/codex-10/g' -e 's/codex5/codex10/g' -e 's/ACCOUNT_5/ACCOUNT_10/g' -e 's/7896/7897/g' /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/haven-codex9-ensure:5:exec bash <(sed -e 's/codex-5/codex-9/g' -e 's/codex5/codex9/g' -e 's/ACCOUNT_5/ACCOUNT_9/g' -e 's/7896/7897/g' /var/home/charlie/.local/bin/haven-codex5-ensure)
+/var/home/charlie/.local/bin/haven-entry-codex9:39:SESSION="haven-codex9"
+/var/home/charlie/.local/bin/haven-entry-codex10:39:SESSION="haven-codex10"
+/var/home/charlie/.config/systemd/user/haven-codex8.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex8-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex8-backend.service:2:Description=Codex 8 TTY backend (haven-codex8, :20022)
+/var/home/charlie/.config/systemd/user/haven-codex7.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex7-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex7-backend.service:2:Description=Codex 7 TTY backend (haven-codex7, :20021)
+/var/home/charlie/.local/bin/network-workflow.py:231:def inspect_phone_mcp() -> dict[str, Any]:
+/var/home/charlie/.local/bin/network-workflow.py:239:    phone_mcp_url = "http://100.87.37.3:8080/mcp"
+/var/home/charlie/.local/bin/network-workflow.py:245:            phone_mcp_url,
+/var/home/charlie/.local/bin/network-workflow.py:329:    mcp = inspect_phone_mcp()
+/var/home/charlie/.local/bin/network-workflow.py:330:    report["sources"]["phone_mcp"] = mcp
+/var/home/charlie/.local/bin/network-workflow.py:332:        report["issues"].append("phone_mcp:unreachable")
+/var/home/charlie/.local/bin/network-workflow.py:382:    if any("phone_mcp" in issue for issue in issues):
+/var/home/charlie/.local/bin/network-workflow.py:383:        repairs.append("phone_mcp_unreachable_check_phone")
+/var/home/charlie/.config/systemd/user/haven-codex5.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex5-ensure
+/var/home/charlie/.config/systemd/user/haven-codex3.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex3-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex5-backend.service:2:Description=Codex 5 TTY backend (haven-codex5, :19889)
+/var/home/charlie/.config/systemd/user/ttyd-codex6-backend.service:2:Description=Codex 6 TTY backend (haven-codex6, :20020)
+/var/home/charlie/.config/systemd/user/ttyd-codex2-backend.service:2:Description=Codex 2 TTY backend (haven-codex2, :19882)
+/var/home/charlie/.config/systemd/user/haven-codex4.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex4-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex-backend.service:2:Description=Codex 1 TTY backend (haven-codex, :19881)
+/var/home/charlie/.config/systemd/user/haven-codex6.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex6-ensure
+/var/home/charlie/.config/systemd/user/ttyd-codex3-backend.service:2:Description=Codex 3 TTY backend (haven-codex3, :19883)
+/var/home/charlie/.config/systemd/user/ttyd-codex4-backend.service:2:Description=Codex 4 TTY backend (haven-codex4, :19884)
+/var/home/charlie/.config/systemd/user/haven-codex2.timer:8:Unit=haven-codex2.service
+/var/home/charlie/.config/systemd/user/haven-codex3.timer:8:Unit=haven-codex3.service
+/var/home/charlie/.config/systemd/user/haven-codex2.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex2-ensure
+/var/home/charlie/.config/systemd/user/haven-codex.timer:8:Unit=haven-codex.service
+/var/home/charlie/.config/systemd/user/haven-codex.service:6:ExecStart=/var/home/charlie/.local/bin/haven-codex-ensure
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:141:2026-08-11T09:05:55Z	apps::2026-06-26 02:32:50 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:142:2026-08-11T09:05:55Z	apps::2026-06-26 02:37:25 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:143:2026-08-11T09:05:55Z	apps::2026-06-26 02:39:56 FAILED no adb device addrs=192.168.123.22:5555 192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:144:2026-08-11T09:05:55Z	apps::2026-06-26 05:30:36 FAILED no adb device addrs=192.168.123.22:5555 192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:145:2026-08-11T09:05:55Z	apps::2026-06-26 05:33:41 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:146:2026-08-11T09:05:55Z	apps::2026-06-26 12:30:10 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:147:2026-08-11T09:05:55Z	apps::2026-06-26 12:34:45 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:148:2026-08-11T09:05:55Z	apps::2026-06-26 12:39:19 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:149:2026-08-11T09:05:55Z	apps::2026-06-26 12:43:54 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:150:2026-08-11T09:06:29Z	apps::2026-06-26 12:48:28 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:151:2026-08-11T09:06:29Z	apps::2026-06-26 12:52:58 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:152:2026-08-11T09:06:29Z	apps::2026-06-26 12:57:33 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:153:2026-08-11T09:06:29Z	apps::2026-06-26 13:02:07 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:154:2026-08-11T09:06:29Z	apps::2026-06-26 13:06:42 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:155:2026-08-11T09:06:29Z	apps::2026-06-26 13:11:16 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:156:2026-08-11T09:06:29Z	apps::2026-06-26 13:15:51 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:157:2026-08-11T09:06:29Z	apps::2026-06-26 13:20:25 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:158:2026-08-11T09:06:29Z	apps::2026-06-26 13:24:55 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:159:2026-08-11T09:06:30Z	apps::2026-06-26 13:29:30 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:160:2026-08-11T09:06:30Z	apps::2026-06-26 13:34:04 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:161:2026-08-11T09:06:30Z	apps::2026-06-26 13:38:39 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:162:2026-08-11T09:06:30Z	apps::2026-06-26 13:43:13 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:163:2026-08-11T09:06:30Z	apps::2026-06-26 13:47:47 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:164:2026-08-11T09:06:30Z	apps::2026-06-26 13:52:22 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:165:2026-08-11T09:06:30Z	apps::2026-06-26 13:56:56 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:166:2026-08-11T09:06:30Z	apps::2026-06-26 14:01:31 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:167:2026-08-11T09:06:30Z	apps::2026-06-26 14:06:05 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:168:2026-08-11T09:06:30Z	apps::2026-06-26 14:10:40 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:169:2026-08-11T09:06:30Z	apps::2026-06-26 14:15:14 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:170:2026-08-11T09:06:30Z	apps::2026-06-26 14:19:48 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:171:2026-08-11T09:06:30Z	apps::2026-06-26 14:24:23 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:172:2026-08-11T09:06:30Z	apps::2026-06-26 14:28:53 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:173:2026-08-11T09:06:31Z	apps::2026-06-26 14:33:28 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:174:2026-08-11T09:06:31Z	apps::2026-06-26 14:38:02 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:175:2026-08-11T09:06:31Z	apps::2026-06-26 14:42:37 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+/var/home/charlie/.local/state/system-log-monitoring/notified.jsonl:176:2026-08-11T09:06:31Z	apps::2026-06-26 14:47:11 FAILED no adb device addrs=192.168.123.22:5555 100.108.28.44:5555 100.64.206.110:5555 127.0.0.1:15555	/var/home/charlie/workspace/system-logs/apps/.local/state/adb-phone-keepalive.log
+
+__HERMES_CWD_fe70fe0cdf74__/var/home/charlie/workspace__HERMES_CWD_fe70fe0cdf74__

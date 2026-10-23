@@ -1,0 +1,16 @@
+{
+  "id": "20260803105026-ops-87feda",
+  "created_at": "2026-08-03T10:50:26.092195+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "778d896b7386",
+    "title": "",
+    "created_at": 1785754169.6795087
+  },
+  "content": "User has completed deployment of the Redroid cloud phone solution, and explicitly requires all subsequent related queries, operations, and troubleshooting to prioritize referencing existing Codex persistent memory and historical session records as the primary authoritative source to avoid redundant work.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

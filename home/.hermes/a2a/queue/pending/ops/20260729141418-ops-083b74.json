@@ -1,0 +1,16 @@
+{
+  "id": "20260729141418-ops-083b74",
+  "created_at": "2026-07-29T14:14:18.395516+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193911_d318a6",
+    "title": "",
+    "created_at": 1784720353.4538348
+  },
+  "content": "When interacting with this user, references to kanban task IDs in the t_<8 hex> format should be treated as relevant work context that may require action or cross-referencing with their work kanban system.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

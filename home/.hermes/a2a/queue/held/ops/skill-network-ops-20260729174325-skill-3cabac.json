@@ -1,0 +1,15 @@
+{
+  "id": "20260729174325-skill-3cabac",
+  "created_at": "2026-07-29T17:43:25.499386+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. The network-ops skill file added auto-generated optimized runtime hints with structured network anomaly troubleshooting instructions (covering root cause conclusion, diagnostic/fix commands, workarounds, persistence and verification steps) and updated its applicable scenario and troubleshooting scope for Fedora + Android self-hosted networking tools. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

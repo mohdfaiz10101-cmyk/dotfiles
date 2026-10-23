@@ -1,0 +1,16 @@
+{
+  "id": "20260729130444-ops-785464",
+  "created_at": "2026-07-29T13:04:44.057043+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_085347",
+    "title": "",
+    "created_at": 1784940838.0050464
+  },
+  "content": "The autonomous-task-brain skill enforces a mandatory escalation rule for unresolved recurring failure patterns: if the same task failure is recorded 48 or more consecutive times without resolution, the system must halt silent retry attempts, escalate the issue, and automatically trigger a weekly-review process plus targeted alerts for all related infrastructure components.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

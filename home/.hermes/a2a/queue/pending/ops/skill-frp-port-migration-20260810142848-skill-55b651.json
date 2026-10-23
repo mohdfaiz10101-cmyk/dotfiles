@@ -1,0 +1,15 @@
+{
+  "id": "20260810142848-skill-55b651",
+  "created_at": "2026-08-10T14:28:48.854143+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "frp-port-migration",
+    "file": "/var/home/charlie/.hermes/skills/frp-port-migration/SKILL.md"
+  },
+  "content": "Skill `frp-port-migration` updated. The frp-port-migration skill file was updated to add a dedicated troubleshooting resource for resolving self-hosted service access failures caused by backend port migrations, port conflicts between frps and local reverse proxies, and FRP/tproxy misconfigurations, including use case triggers, a layered 3-layer diagnostic mental model, and repeatable reachability and application health audit checklists. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

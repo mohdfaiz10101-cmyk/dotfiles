@@ -1,0 +1,16 @@
+{
+  "id": "20260729123813-ops-b5ec06",
+  "created_at": "2026-07-29T12:38:13.273413+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_160607_3ab83f",
+    "title": "Mihomo proxy blocking Hermes access #3",
+    "created_at": 1785053167.6851802
+  },
+  "content": "外部访问内部服务失败时，应优先检查路由器vserver链的DNAT规则是否完整，而非立即归咎于客户端代理（如mihomo）；vserver链中缺失的端口规则会被后续catch-all规则转发到错误目标（如192.168.123.209）。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

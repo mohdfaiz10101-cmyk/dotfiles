@@ -1,0 +1,16 @@
+{
+  "id": "20260729143213-ops-885174",
+  "created_at": "2026-07-29T14:32:13.864139+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvzb7p65v4hrg",
+    "title": "任务自动归类",
+    "created_at": 1784718565.3045962
+  },
+  "content": "Hermes Studio requires a configurable automatic task classification feature that can auto-sort tasks into designated folders and auto-assign status labels (e.g., to-do, pending processing) based on user-defined recognition rules.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

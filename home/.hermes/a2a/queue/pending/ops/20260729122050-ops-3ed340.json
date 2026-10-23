@@ -1,0 +1,16 @@
+{
+  "id": "20260729122050-ops-3ed340",
+  "created_at": "2026-07-29T12:20:50.497838+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5os69e8nwqxu",
+    "title": "what port for 19910",
+    "created_at": 1785305899.0695865
+  },
+  "content": "The user's local service public exposure is implemented via the frp (Fast Reverse Proxy) framework, with frpc client configuration located at /var/home/charlie/.config/frpc/frpc.toml; frps server status and frpc configuration are primary troubleshooting points when public Hermes services are unreachable.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

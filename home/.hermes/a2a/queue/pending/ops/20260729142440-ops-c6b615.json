@@ -1,0 +1,16 @@
+{
+  "id": "20260729142440-ops-c6b615",
+  "created_at": "2026-07-29T14:24:40.030752+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192909_27140a",
+    "title": "",
+    "created_at": 1784719751.4785414
+  },
+  "content": "References to task IDs matching the 't_[alphanumeric]' format in work-related contexts correspond to entries in the user's work kanban task tracking system.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": "20260807031155-cod-acff7c",
+  "created_at": "2026-08-07T03:11:55.314317+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ea8a1bebba29",
+    "title": "",
+    "created_at": 1786071951.3587546
+  },
+  "content": "当前运行的Hermes WebUI（进程19976）实际由`hermes-webui-clean`系统服务承载，服务入口为`bootstrap.py`，其自定义systemd配置存放在override.conf中，已配置`ALLOWED_ORIGINS`、`TRUST_FORWARDED_HOST=1`参数，后续升级必须优先保留该自定义配置。",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.369342+00:00"
+}

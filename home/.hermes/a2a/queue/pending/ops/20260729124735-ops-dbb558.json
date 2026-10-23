@@ -1,0 +1,16 @@
+{
+  "id": "20260729124735-ops-dbb558",
+  "created_at": "2026-07-29T12:47:35.574064+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_004431",
+    "title": "",
+    "created_at": 1784997888.0981538
+  },
+  "content": "The skill maintains persistent state in `/var/home/charlie/.hermes/state/memory-curator-watchdog.json` with fields `consecutive_failure`, `last_status`, and `silent_mode` to track operational health and control behavior.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

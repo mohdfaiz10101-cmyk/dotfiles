@@ -1,0 +1,16 @@
+{
+  "id": "20260729143412-ops-b448b3",
+  "created_at": "2026-07-29T14:34:12.345899+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvndra07dqqqy",
+    "title": "",
+    "created_at": 1784698516.7825685
+  },
+  "content": "Category and workspace functions are core functional modules of Hermes Studio, and their abnormal operation is a high-priority fault type that requires immediate troubleshooting to avoid impacting core platform use cases.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

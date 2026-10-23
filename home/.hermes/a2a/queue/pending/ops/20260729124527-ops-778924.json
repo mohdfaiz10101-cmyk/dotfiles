@@ -1,0 +1,16 @@
+{
+  "id": "20260729124527-ops-778924",
+  "created_at": "2026-07-29T12:45:27.477694+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_012555_6ec0bf",
+    "title": "Hermes Studio网络及WebSocket对接检查",
+    "created_at": 1785001705.324827
+  },
+  "content": "The user's self-hosted Hermes Studio instance is hosted at the public DuckDNS domain `charlie1990.duckdns.org` on port 8648, with this base address serving as the root endpoint for both the web UI access path and WebSocket backend connections.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

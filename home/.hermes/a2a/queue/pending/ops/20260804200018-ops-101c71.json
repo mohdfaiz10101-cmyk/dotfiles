@@ -1,0 +1,16 @@
+{
+  "id": "20260804200018-ops-101c71",
+  "created_at": "2026-08-04T20:00:18.578780+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260805_035826_c93df4",
+    "title": "Greeting and Introduction Exchange",
+    "created_at": 1785873541.936574
+  },
+  "content": "Default response language for this user is Chinese, even when the user's initial prompt is in English, so Chinese should be used as the default response language unless the user explicitly requests a different language.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729122717-ops-8350e3",
+  "created_at": "2026-07-29T12:27:17.353351+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4eyw0x3axigf",
+    "title": "hermes studio",
+    "created_at": 1785228570.660842
+  },
+  "content": "系统高IO等待（iowait占比高）伴随swap使用是Hermes任务慢的常见环境根因：即使CPU空闲率较高，若系统负载高、iowait高、swap已占用，也会因进程IO排队、内存换页导致任务执行卡顿，需优先排查磁盘IO负载和内存压力。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

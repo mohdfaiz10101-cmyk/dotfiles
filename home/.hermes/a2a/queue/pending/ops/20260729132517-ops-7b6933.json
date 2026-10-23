@@ -1,0 +1,16 @@
+{
+  "id": "20260729132517-ops-7b6933",
+  "created_at": "2026-07-29T13:25:17.075560+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_194237",
+    "title": "",
+    "created_at": 1784893417.394864
+  },
+  "content": "Task routing decisions in the autonomous-task-brain skill are automatically derived from 3 core factors: historical task success rates, task complexity, and user preferences, to select between execute, suggest, or skip actions without requiring user input for planning steps.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

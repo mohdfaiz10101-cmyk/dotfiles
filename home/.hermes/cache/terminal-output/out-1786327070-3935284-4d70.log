@@ -1,0 +1,88 @@
+proxy_listener
+LISTEN 0      5            0.0.0.0:9090       0.0.0.0:*                                                 
+LISTEN 0      4096               *:19090            *:*                                                 
+LISTEN 0      4096               *:7890             *:*                                                 
+--- mihomo/clash processes ---
+root        1565       1  0 8月05 ?       00:00:06 /usr/bin/gssproxy -i
+charlie     1807    1625  0 8月05 ?       00:00:00 /usr/bin/python3 /var/home/charlie/.local/bin/auth-proxy.py
+charlie     1812    1625  0 8月05 ?       00:00:27 python3 /var/home/charlie/.local/bin/codex3-openai-oauth-proxy
+charlie     1813    1625  0 8月05 ?       00:00:27 python3 /var/home/charlie/.local/bin/codex4-openai-oauth-proxy
+charlie     1814    1625  0 8月05 ?       00:00:26 python3 /var/home/charlie/.local/bin/codex9-openai-oauth-proxy
+charlie     1854    1625  0 8月05 ?       00:00:27 /usr/bin/python3 /var/home/charlie/.local/bin/hermes-smart-proxy.py
+charlie     1878    1625  0 8月05 ?       00:00:20 /usr/bin/mpris-proxy
+charlie     1885    1625  0 8月05 ?       00:00:03 /var/home/charlie/.nvm/versions/node/v24.18.0/bin/node /home/charlie/.local/bin/openclaw-gateway-proxy.mjs
+charlie     1913    1625  0 8月05 ?       00:00:00 bash /var/home/charlie/.local/bin/phone-proxy-watchdog.sh
+charlie     1927    1625  0 8月05 ?       00:00:00 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2237 127.0.0.1 22048
+charlie     1929    1625  0 8月05 ?       00:00:16 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22027 127.0.0.1 22028
+charlie     1935    1625  0 8月05 ?       00:00:06 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22031 127.0.0.1 22032
+charlie     1941    1625  0 8月05 ?       00:00:10 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2231 127.0.0.1 22036
+charlie     1943    1625  0 8月05 ?       00:00:50 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2232 127.0.0.1 22038
+charlie     1944    1625  0 8月05 ?       00:00:07 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2233 127.0.0.1 22040
+charlie     1945    1625  0 8月05 ?       00:00:17 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2234 127.0.0.1 22042
+charlie     1954    1625  0 8月05 ?       00:00:19 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2235 127.0.0.1 22044
+charlie     1959    1625  0 8月05 ?       00:00:00 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2236 127.0.0.1 22046
+charlie     1960    1625  0 8月05 ?       00:00:05 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22033 127.0.0.1 22034
+charlie     1961    1625  0 8月05 ?       00:00:00 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22029 127.0.0.1 22030
+charlie     1966    1625  0 8月05 ?       00:00:15 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22026 127.0.0.1 22025
+charlie     1984    1625  0 8月05 ?       00:00:06 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     1991    1625  0 8月05 ?       00:00:12 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     1993    1625  0 8月05 ?       00:00:12 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     2131    1625  0 8月05 ?       00:00:51 /usr/bin/python3 /var/home/charlie/.local/bin/ttyd-session-proxy.py
+charlie     2134    1625  0 8月05 ?       00:00:00 /var/home/charlie/.local/share/crush-ttyd-proxy-venv/bin/python /var/home/charlie/.local/bin/crush-button-api.py
+charlie     2135    1625  0 8月05 ?       00:00:00 /var/home/charlie/.local/share/crush-ttyd-proxy-venv/bin/python /var/home/charlie/.local/bin/crush-ttyd-proxy.py
+charlie     2575    1625  0 8月05 ?       00:01:05 /usr/lib/systemd/systemd-socket-proxyd 100.91.93.99:22
+charlie     2621    1625  0 8月05 ?       00:00:00 tmux -S /run/user/1000/tmux/crush.sock new-session -d -s haven-crush -c /var/home/charlie -e TERM=tmux-256color -e HOME=/var/home/charlie -e XDG_RUNTIME_DIR=/run/user/1000 -e DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus -e PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin -e LOCAL_ENDPOINT=http://127.0.0.1:4000/v1 -e OPENAI_BASE_URL=http://127.0.0.1:4000/v1 -e OPENAI_API_KEY=sk-lit...2026 -e CRUSH_DISABLE_METRICS=1 -e NO_PROXY=localhost,127.0.0.1,::1,host.containers.internal,192.168.123.0/24,100.64.0.0/10,.ts.net /var/home/charlie/.local/bin/crush.real --host tcp://127.0.0.1:7766 --cwd /var/home/charlie
+charlie     6675    1625  0 8月05 ?       00:00:12 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     6682    1625  0 8月05 ?       00:00:14 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     6683    1625  0 8月05 ?       00:00:12 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     6689    1625  0 8月05 ?       00:00:12 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie     9808    1625  0 8月05 ?       00:00:23 tmux -S /run/user/1000/tmux/codex2.sock new-session -d -s haven-codex2 -c /var/home/charlie -e TERM=tmux-256color -e CODEX_FORCE_NEW=1 -e HOME=/var/home/charlie -e CODEX_HOME=/var/home/charlie/.codex-2 -e XDG_RUNTIME_DIR=/run/user/1000 -e DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus -e PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin -e HTTP_PROXY=http://127.0.0.1:7893 -e HTTPS_PROXY=http://127.0.0.1:7890 -e ALL_PROXY=http://127.0.0.1:7890 -e NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net -e http_proxy=http://127.0.0.1:7893 -e https_proxy=http://127.0.0.1:7890 -e all_proxy=http://127.0.0.1:7890 -e no_proxy=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net -e OPENAI_API_KEY=sk-c13...cf96 /var/home/charlie/.local/bin/codex-resume-or-new
+charlie     9812    1625  0 8月05 ?       00:00:23 tmux -S /run/user/1000/tmux/codex3.sock new-session -d -s haven-codex3 -c /var/home/charlie -e TERM=tmux-256color -e CODEX_FORCE_NEW=1 -e HOME=/var/home/charlie -e CODEX_HOME=/var/home/charlie/.codex-3 -e XDG_RUNTIME_DIR=/run/user/1000 -e DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus -e PATH=/var/home/charlie/.nvm/versions/node/v22.22.3/bin:/var/home/charlie/.local/bin:/usr/bin:/bin -e HTTP_PROXY=http://127.0.0.1:7894 -e HTTPS_PROXY=http://127.0.0.1:7890 -e ALL_PROXY=http://127.0.0.1:7890 -e NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net -e http_proxy=http://127.0.0.1:7894 -e https_proxy=http://127.0.0.1:7890 -e all_proxy=http://127.0.0.1:7890 -e no_proxy=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net -e OPENAI_API_KEY=sk-08e...e6e5 /var/home/charlie/.local/bin/codex-resume-or-new
+charlie    15618    1625  0 8月05 ?       00:00:27 node /var/home/charlie/.local/bin/openhands-public-proxy
+root       16586       1  0 8月05 ?       00:00:27 /usr/bin/python3 /opt/sub2api-autologin/sub2api-autologin-proxy.py
+charlie    18213    1625  0 8月05 ?       00:00:00 python3 /var/home/charlie/.local/bin/waydroid-adb-netns-proxy
+root       35544       1  0 8月07 ?       00:03:59 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --selinux-enabled --userland-proxy-path /usr/bin/docker-proxy --init-path /usr/bin/tini-static
+charlie   153566    1625  0 8月08 ?       00:01:45 /usr/bin/podman run --rm --replace --pull=missing --security-opt label=disable --env-file=/var/home/charlie/.config/openhands/openhands.env -v /run/user/1000/podman/podman.sock:/var/run/docker.sock -v /var/home/charlie/.openhands:/.openhands -v /var/home/charlie/.config/openhands/patches/app_server_config.py:/app/openhands/app_server/config.py:ro -v /var/home/charlie/.config/openhands/patches/docker_sandbox_service.py:/app/openhands/app_server/sandbox/docker_sandbox_service.py:ro -v /var/home/charlie/.config/openhands/patches/docker_sandbox_spec_service.py:/app/openhands/app_server/sandbox/docker_sandbox_spec_service.py:ro -v /var/home/charlie/.config/openhands/patches:/var/home/charlie/.config/openhands/patches:ro -v /var/home/charlie/.config/openhands/patches/command.py:/app/openhands/runtime/utils/command.py:ro -v /var/home/charlie/.config/openhands/patches/live_status_app_conversation_service.py:/app/openhands/app_server/app_conversation/live_status_app_conversation_service.py:ro -v /var/mnt/ai/cache/auto-migrate/.openclaw/workspace:/workspace -p 127.0.0.1:3001:3000 --add-host host.docker.internal:host-gateway --name openhands-app docker.openhands.dev/openhands/openhands:1.2.0
+charlie   387083    1625  0 8月05 ?       00:00:34 node /var/home/charlie/.local/bin/opencode-4096-proxy
+charlie   387084    1625  0 8月05 ?       00:00:39 node /var/home/charlie/.local/bin/opencode-18910-proxy
+charlie   723733    1625  0 8月06 ?       00:00:02 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie   723750    1625  0 8月06 ?       00:00:02 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie   809623  805342  0 09:57 ?        00:00:00 curl -4 -sS --noproxy * --connect-timeout 4 http://charlie1990.duckdns.org:19902/
+charlie  1239186       1  0 8月05 ?       00:01:26 tmux -S /run/user/1000/tmux/hermes-cli.sock new-session -d -s hermes -c /var/home/charlie -e TERM=tmux-256color -e HOME=/var/home/charlie -e XDG_RUNTIME_DIR=/run/user/1000 -e DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus -e PATH=/var/home/charlie/.nvm/versions/node/v23.11.1/bin:/var/home/charlie/.local/bin:/usr/bin:/bin -e NO_PROXY= -e no_proxy= /var/home/charlie/.local/bin/hermes chat
+charlie  1291474    1625  0 8月05 ?       00:00:20 /usr/bin/node /var/home/charlie/.local/bin/ttyd-hermes-proxy.js
+root     1590291       1  0 8月05 ?       00:23:15 /usr/local/bin/mihomo -d /etc/mihomo -f /etc/mihomo/config.yaml
+charlie  2509430    1625  0 8月06 ?       00:04:49 /usr/bin/python3 /var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py
+charlie  3760116 3760094  0 8月09 ?       00:00:00 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3760139 3760108  0 8月09 ?       00:00:00 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3760160 3760119  0 8月09 ?       00:00:00 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3760253 3760250  0 8月09 ?       00:00:00 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3760255 3760251  0 8月09 ?       00:00:00 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3760275 3760252  0 8月09 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3829720 3829719  0 8月09 ?       00:00:01 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3829898 3829897  0 8月09 ?       00:00:01 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3832284 3832266  0 8月09 ?       00:00:01 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3833754 3833753  0 8月09 ?       00:00:01 /var/home/charlie/.nvm/versions/node/current/bin/node /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/lib/node_modules/mcp-remote/dist/proxy.js http://127.0.0.1:8732/mcp
+charlie  3840901    1625  0 8月09 ?       00:00:02 node /var/home/charlie/.local/bin/ttyd-device-gate-proxy
+charlie  4028545    1625  0 8月09 ?       00:00:03 tmux -S /run/user/1000/tmux/codex.sock new-session -d -s haven-codex -c /var/home/charlie -e TERM=tmux-256color -e HOME=/var/home/charlie -e CODEX_HOME=/var/home/charlie/.codex -e XDG_RUNTIME_DIR=/run/user/1000 -e DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus -e PATH=/var/home/charlie/.nvm/versions/node/current/bin:/var/home/charlie/.local/bin:/usr/bin:/bin -e HTTP_PROXY=http://127.0.0.1:7892 -e HTTPS_PROXY=http://127.0.0.1:7890 -e ALL_PROXY=http://127.0.0.1:7890 -e NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net -e http_proxy=http://127.0.0.1:7892 -e https_proxy=http://127.0.0.1:7890 -e all_proxy=http://127.0.0.1:7890 -e no_proxy=localhost,127.0.0.1,0.0.0.0,::1,192.168.123.0/24,100.64.0.0/10,.ts.net -e CODEX_TOKEN_SAFE_RUN=/var/home/charlie/.local/bin/codex-token-safe-run -e BASH_ENV=/var/home/charlie/.config/codex-shell-env/env.sh -e ENV=/var/home/charlie/.config/codex-shell-env/env.sh -e ZDOTDIR=/var/home/charlie/.config/codex-shell-env -e OPENAI_API_KEY=sk-8cc...b382 /var/home/charlie/.local/bin/codex-resume-or-new
+charlie  4076203    1625  0 8月09 ?       00:00:00 /usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:19000
+--- check default proxy reachability ---
+400--- check without proxy using -x "" ---
+200--- check with direct IPv4 to duckdns-visible service ---
+fl=966f46
+h=1.1.1.1
+ip=103.121.208.125
+ts=1786327073.000
+visit_scheme=https
+uag=curl/8.18.0
+colo=NRT
+sliver=010-tier1
+http=http/2
+loc=JP
+tls=TLSv1.3
+sni=off
+warp=off
+gateway=off
+rbi=off
+kex=X25519MLKEM768
+
+__HERMES_CWD_6eca44fb2eb9__/var/home/charlie/workspace__HERMES_CWD_6eca44fb2eb9__

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125016-ops-8aeae2",
+  "created_at": "2026-07-29T12:50:16.142297+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_193634",
+    "title": "",
+    "created_at": 1784979404.8887155
+  },
+  "content": "Task routing decisions made by the autonomous-task-brain skill are automatically weighted against historical task success rates, task complexity, and stored user preferences to select the optimal action (execute, suggest, or skip) for incoming tasks without user input.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

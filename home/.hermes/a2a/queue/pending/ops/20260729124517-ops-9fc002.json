@@ -1,0 +1,16 @@
+{
+  "id": "20260729124517-ops-9fc002",
+  "created_at": "2026-07-29T12:45:17.087361+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_021247_16b30b",
+    "title": "Hermes Studio网络及WebSocket对接检查 #2",
+    "created_at": 1785003167.1736252
+  },
+  "content": "For Hermes Studio deployments using DuckDNS dynamic domains for external access, network stability checks need to additionally verify dynamic DNS resolution validity and update stability, as dynamic DNS issues are a common pitfall for this deployment architecture.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729130630-ops-5a0d26",
+  "created_at": "2026-07-29T13:06:30.037831+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_071250",
+    "title": "",
+    "created_at": 1784934781.1796384
+  },
+  "content": "The memory-curator uses a persistent watchdog state file at /var/home/charlie/.hermes/state/memory-curator-watchdog.json to track execution metrics including consecutive failure count, last run status, and failure reasons, which is updated even when curation is blocked.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

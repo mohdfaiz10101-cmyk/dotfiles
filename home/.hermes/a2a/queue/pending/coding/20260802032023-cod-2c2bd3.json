@@ -1,0 +1,16 @@
+{
+  "id": "20260802032023-cod-2c2bd3",
+  "created_at": "2026-08-02T03:20:23.468894+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb83jd7yfzev9",
+    "title": "Windows原生一键部署Codex服务",
+    "created_at": 1785640530.9642534
+  },
+  "content": "Windows平台托管命令行服务的标准化可复用工作流：通过NSSM工具执行`nssm install <服务名> \"<程序路径>\" \"<启动参数>\"`命令将命令行工具注册为系统服务，支持配置开机自启、按需启动等运行策略",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

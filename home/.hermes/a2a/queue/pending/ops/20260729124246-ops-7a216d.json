@@ -1,0 +1,16 @@
+{
+  "id": "20260729124246-ops-7a216d",
+  "created_at": "2026-07-29T12:42:46.082736+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_124302_8be48e",
+    "title": "",
+    "created_at": 1785041264.371801
+  },
+  "content": "As a preventive configuration for mobile Netbird deployments, users should configure their mobile OS to allow unrestricted background operation for the Netbird app to avoid instability from background process termination.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

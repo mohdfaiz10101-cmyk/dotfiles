@@ -1,0 +1,16 @@
+{
+  "id": "20260729133822-cod-c81717",
+  "created_at": "2026-07-29T13:38:22.944553+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_215937_404626",
+    "title": "",
+    "created_at": 1784815177.2406735
+  },
+  "content": "公开网页线索搜索任务中，若直接抓取工具失效，可通过本地会话搜索检索历史公开线索摘要作为临时交叉核验的备用工作流",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

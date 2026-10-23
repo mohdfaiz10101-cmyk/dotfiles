@@ -1,0 +1,16 @@
+{
+  "id": "20260801121902-ops-19bc0a",
+  "created_at": "2026-08-01T12:19:02.380801+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msac0scv7kie4j",
+    "title": "",
+    "created_at": 1785586491.3499165
+  },
+  "content": "跨主机连通性排障时，若主机名无法解析（如会话中g主机名ping失败），应优先提供真实可达IP（局域网IP/Tailscale/ZeroTier IP）而非主机名，可快速跳过DNS/本地解析问题定位连通性。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

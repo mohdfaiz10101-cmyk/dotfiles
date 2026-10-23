@@ -1,0 +1,16 @@
+{
+  "id": "20260729141439-ops-3ca988",
+  "created_at": "2026-07-29T14:14:39.470869+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193811_631c33",
+    "title": "",
+    "created_at": 1784720293.762164
+  },
+  "content": "Explicit references to specific kanban task IDs are used by the user to disambiguate work-related context from non-work queries in interactions.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

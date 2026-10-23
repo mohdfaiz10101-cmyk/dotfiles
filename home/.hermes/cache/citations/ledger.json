@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://spec.matrix.org/unstable/proposals",
+      "title": "Matrix Spec Change Proposals",
+      "accessed": "2026-10-04"
+    },
+    {
+      "id": 2,
+      "url": "https://github.com/matrix-org/matrix-spec-proposals/pull/2716",
+      "title": "MSC2716: Incrementally importing history into existing rooms",
+      "accessed": "2026-10-04"
+    },
+    {
+      "id": 3,
+      "url": "https://github.com/matrix-org/synapse/issues/10737",
+      "title": "Synapse MSC2716 implementation tracking",
+      "accessed": "2026-10-04"
+    },
+    {
+      "id": 4,
+      "url": "https://github.com/LC044/WeChatMsg",
+      "title": "WeChatMsg source repository",
+      "accessed": "2026-10-04"
+    },
+    {
+      "id": 5,
+      "url": "https://github.com/latorc/Wechat-AI-Assistant/blob/main/wcf_wrapper.py",
+      "title": "Wechat-AI-Assistant message parser source",
+      "accessed": "2026-10-04"
+    }
+  ]
+}

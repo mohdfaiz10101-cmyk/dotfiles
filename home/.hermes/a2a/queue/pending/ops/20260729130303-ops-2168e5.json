@@ -1,0 +1,16 @@
+{
+  "id": "20260729130303-ops-2168e5",
+  "created_at": "2026-07-29T13:03:03.083273+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_102036",
+    "title": "",
+    "created_at": 1784946048.0530465
+  },
+  "content": "The scheduled weekly-review task has never been executed (last_run_at=null, repeat.completed=0) and is the designated immediate remediation action for the unresolved phone-sync-failure pattern.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

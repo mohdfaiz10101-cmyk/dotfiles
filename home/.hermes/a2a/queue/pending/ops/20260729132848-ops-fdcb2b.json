@@ -1,0 +1,16 @@
+{
+  "id": "20260729132848-ops-fdcb2b",
+  "created_at": "2026-07-29T13:28:48.933385+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrynyc4m3hji8i",
+    "title": "手机APK安装崩溃修复",
+    "created_at": 1784880904.2077184
+  },
+  "content": "Domain pitfall to avoid for this issue class: Do not prioritize re-downloading individual APKs or checking APK signature validity as first troubleshooting steps when crashes occur for every app, as these actions do not address the underlying device-level root cause and waste time.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

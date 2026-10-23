@@ -1,0 +1,16 @@
+{
+  "id": "20260729124527-ops-e504c5",
+  "created_at": "2026-07-29T12:45:27.478129+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_012555_6ec0bf",
+    "title": "Hermes Studio网络及WebSocket对接检查",
+    "created_at": 1785001705.324827
+  },
+  "content": "When conducting network and WebSocket checks for this Hermes Studio deployment, dynamic DNS resolution failures (a known risk for DuckDNS-hosted instances) should be included as a standard test pitfall alongside general connectivity and WebSocket communication validation.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

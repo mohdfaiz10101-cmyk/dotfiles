@@ -1,0 +1,15 @@
+{
+  "id": "20260731103209-skill-6b4048",
+  "created_at": "2026-07-31T10:32:09.850951+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "hermes-session-mesh-lite",
+    "file": "/var/home/charlie/.hermes/skills/hermes-session-mesh-lite/SKILL.md"
+  },
+  "content": "Skill `hermes-session-mesh-lite` updated. The hermes-session-mesh-lite skill file has been updated to formalize a lightweight multi-profile collaboration framework for Hermes 8787 and 8648, specifying fixed role divisions, small-context-budget task dispatch rules, session auto-renewal criteria, closed-loop operation processes and port collaboration specifications to support efficient coordination of dispatcher, coding, ops and other specialized profiles. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

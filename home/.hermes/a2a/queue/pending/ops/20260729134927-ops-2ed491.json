@@ -1,0 +1,16 @@
+{
+  "id": "20260729134927-ops-2ed491",
+  "created_at": "2026-07-29T13:49:27.703325+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200523_2e5484",
+    "title": "",
+    "created_at": 1784721927.5905957
+  },
+  "content": "When the user references a kanban task ID matching the 't_<alphanumeric>' pattern in a session, that task serves as the core contextual anchor for all related work requests in that session.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

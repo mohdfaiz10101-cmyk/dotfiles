@@ -1,0 +1,16 @@
+{
+  "id": "20260802135658-ops-f7e12b",
+  "created_at": "2026-08-02T13:56:58.277310+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2a2082e9c86c",
+    "title": "你好",
+    "created_at": 1785678970.1034508
+  },
+  "content": "The `verify_fix` workflow runs verification directly against the current live workspace state, and returns consistent conclusions based on that live state rather than static pre-cached context.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

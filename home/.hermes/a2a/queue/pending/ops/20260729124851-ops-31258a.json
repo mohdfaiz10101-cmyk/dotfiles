@@ -1,0 +1,16 @@
+{
+  "id": "20260729124851-ops-31258a",
+  "created_at": "2026-07-29T12:48:51.501683+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_230949",
+    "title": "",
+    "created_at": 1784992200.3374348
+  },
+  "content": "The memory-curator skill implements a lock-based concurrency control pattern using MEMORY.md.lock. When consecutive lock failures are detected (tracked via watchdog), the skill skips recall, refinement, writing, and syncing rather than retrying blindly, preventing infinite retry loops and resource contention.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

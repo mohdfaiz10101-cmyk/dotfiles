@@ -1,0 +1,17 @@
+{
+  "id": "20260729122747-ops-22fd39",
+  "created_at": "2026-07-29T12:27:47.920237+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4ex0v8n9x6w4",
+    "title": "",
+    "created_at": 1785228471.9832053
+  },
+  "content": "A reusable troubleshooting workflow for DNS_PROBE_POSSIBLE errors on self-hosted dynamic DNS domains is: 1) Verify the dynamic DNS update client is running and has successfully pushed the latest public IP to the dynamic DNS provider, 2) Flush local device and network DNS caches, 3) Test domain resolution via public DNS resolvers (e.g. 8.8.8.8, 1.1.1.1) to isolate if the issue is local caching or upstream record staleness.",
+  "confidence": 0.96,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.660839+00:00"
+}

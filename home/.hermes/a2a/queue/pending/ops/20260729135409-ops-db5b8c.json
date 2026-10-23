@@ -1,0 +1,16 @@
+{
+  "id": "20260729135409-ops-db5b8c",
+  "created_at": "2026-07-29T13:54:09.738255+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200014_3130a3",
+    "title": "",
+    "created_at": 1784721617.1144257
+  },
+  "content": "The user's kanban task IDs follow a consistent format of 't_' followed by a mix of numeric and lowercase alphanumeric characters, as seen in the example task ID t_0120d003.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

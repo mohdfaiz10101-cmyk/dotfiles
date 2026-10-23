@@ -1,0 +1,16 @@
+{
+  "id": "20260806081907-ops-6907d4",
+  "created_at": "2026-08-06T08:19:07.812510+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "b785b29dcd25",
+    "title": "charlie1990.duckdns.org:47989 我新手机添加moonlight是添加这个地址吗 怎么提示有防火墙",
+    "created_at": 1786004252.4910607
+  },
+  "content": "Moonlight对接Sunshine时，Sunshine默认HTTPS管理端口通常为47984，流式传输常用端口为47990、48010，配置连接地址前需优先确认Sunshine实际监听端口，避免使用错误端口导致连接失败。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

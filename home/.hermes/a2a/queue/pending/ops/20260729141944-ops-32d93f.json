@@ -1,0 +1,16 @@
+{
+  "id": "20260729141944-ops-32d93f",
+  "created_at": "2026-07-29T14:19:44.417842+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193310_5b5fe4",
+    "title": "",
+    "created_at": 1784719992.2984295
+  },
+  "content": "When the user references a 'work kanban task' paired with a t_ prefixed ID, it signals a request to interact with a specific tracked work item in their kanban system (e.g., retrieve details, update status, or add context).",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729140820-ops-d169d4",
+  "created_at": "2026-07-29T14:08:20.061374+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194612_ef292e",
+    "title": "",
+    "created_at": 1784720774.4824967
+  },
+  "content": "Referencing kanban task IDs is a standard part of the user's work workflow when interacting with AI assistants, to align assistance with active work items.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

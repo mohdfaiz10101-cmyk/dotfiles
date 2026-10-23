@@ -1,0 +1,16 @@
+{
+  "id": "20260729142229-ops-d9841b",
+  "created_at": "2026-07-29T14:22:29.582804+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_c41c469af4ce_20260722_193042",
+    "title": "",
+    "created_at": 1784719854.982887
+  },
+  "content": "Cron job execution protocol for Hermes: When operating as a scheduled cron job, do not use send_message or manually deliver output; the final response is auto-delivered to the user. Only respond with exactly \"[SILENT]\" if there is no new content to report, and never combine [SILENT] with other content.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

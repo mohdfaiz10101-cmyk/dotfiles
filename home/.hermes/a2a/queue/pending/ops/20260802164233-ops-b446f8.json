@@ -1,0 +1,16 @@
+{
+  "id": "20260802164233-ops-b446f8",
+  "created_at": "2026-08-02T16:42:33.305617+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc102bjhfvqnh",
+    "title": "",
+    "created_at": 1785688816.226032
+  },
+  "content": "A subset of the user base submits account-related support queries in Chinese, so agents need to have localized, accurate Chinese response templates for common account issues (including quota inquiries) to reduce communication friction and improve support efficiency.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

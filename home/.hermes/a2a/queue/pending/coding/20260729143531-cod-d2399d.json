@@ -1,0 +1,16 @@
+{
+  "id": "20260729143531-cod-d2399d",
+  "created_at": "2026-07-29T14:35:31.217872+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrti25wwmt0vyl",
+    "title": "",
+    "created_at": 1784568639.827288
+  },
+  "content": "OpenHands 的跨系统操作、自主多工具调用能力强于 Aider，适合需要长时间自主运行、涉及系统级交互的复杂编程任务；Aider 更轻量，适配单代码库的增量代码修改场景。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729132833-ops-fdee48",
+  "created_at": "2026-07-29T13:28:33.280759+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryofdlmf75v4s",
+    "title": "代码记忆架构方案",
+    "created_at": 1784881747.475838
+  },
+  "content": "The user's current CodeGraph integration with Hermes and OpenHands is limited to storing static code maps, and they require the memory system to additionally capture cross-agent interaction context and per-task iterative evolution history to support continuous improvement across tasks.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

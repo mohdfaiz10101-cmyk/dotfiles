@@ -1,0 +1,16 @@
+{
+  "id": "20260805043630-ops-946ed6",
+  "created_at": "2026-08-05T04:36:30.960607+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260805_123122_511483",
+    "title": "继续19910会话调试",
+    "created_at": 1785904331.006123
+  },
+  "content": "The standard reusable workflow for continuing a Hermes session cut off due to full context is: first retrieve full prior context from the corresponding local Hermes session record, then cross-reference current Hermes/agent configuration and latest logs to pinpoint the exact unfinished step from the prior session, rather than reinitializing the task from scratch.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

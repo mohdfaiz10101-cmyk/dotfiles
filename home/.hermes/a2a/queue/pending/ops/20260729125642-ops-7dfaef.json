@@ -1,0 +1,16 @@
+{
+  "id": "20260729125642-ops-7dfaef",
+  "created_at": "2026-07-29T12:56:42.422016+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_144612",
+    "title": "",
+    "created_at": 1784961985.1419342
+  },
+  "content": "The core operational rule of the autonomous-task-brain skill is minimal human intervention: users only need to provide task goals or feedback, and do not need to plan or specify execution paths for tasks.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729135111-ops-0fc489",
+  "created_at": "2026-07-29T13:51:11.865688+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200315_5c2a0f",
+    "title": "",
+    "created_at": 1784721798.2448113
+  },
+  "content": "The user's standard workflow for work-related requests includes referencing specific Kanban tasks by their unique identifier to provide clear, traceable context for the requested work.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

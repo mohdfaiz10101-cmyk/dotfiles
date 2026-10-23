@@ -1,0 +1,16 @@
+{
+  "id": "20260729132559-ops-32e252",
+  "created_at": "2026-07-29T13:25:59.245672+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrytxn50afsfga",
+    "title": "悬浮按钮功能配置完成",
+    "created_at": 1784890986.2968707
+  },
+  "content": "Hermes的悬浮按钮支持页面级独立配置，无需全局统一设置",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

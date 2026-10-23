@@ -1,0 +1,15 @@
+{
+  "id": "20260731163525-skill-e74c4e",
+  "created_at": "2026-07-31T16:35:25.687030+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "waydroid-control",
+    "file": "/var/home/charlie/.hermes/skills/waydroid-control/SKILL.md"
+  },
+  "content": "Skill `waydroid-control` updated. 该技能文件新增了Waydroid控制的触发条件、默认执行流程、工具使用优先级规则（优先本地CLI与MCP工具、优先低流量控制方式、headless场景优先采用tmux模式的ensure-session、adb/scrcpy仅作为补充工具）及常用命令参考，规范了Waydroid相关自动化任务的执行标准。 Impact: low",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

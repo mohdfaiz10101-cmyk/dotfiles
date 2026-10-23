@@ -1,0 +1,38 @@
+{
+  "last_run_at": "2026-07-25T19:54:29.868315+08:00",
+  "last_action": "suggest",
+  "last_pattern": "phone-sync-failure",
+  "last_result": "escalated",
+  "consecutive_auto_exec": 0,
+  "consecutive_ask_user": 0,
+  "mode": "learn",
+  "approved_patterns": [],
+  "blocked_patterns": [],
+  "history": [
+    {
+      "run_at": "2026-07-24T16:59:55+08:00",
+      "action": "suggest",
+      "pattern": "phone-sync-failure",
+      "result": "reported",
+      "count": 85,
+      "first_seen": "2026-07-24T16:59:55+08:00",
+      "last_seen": "2026-07-25T19:37:25.030890+08:00",
+      "last_result": "escalated",
+      "note": "phone-sync-import 仍 error；连续 85 次记录同一 pattern；weekly-review 已配置但从未执行（last_run_at=null, repeat.completed=0）；系统资源仍高（磁盘 97%、内存 16Gi/23Gi、Swap 12Gi/23Gi、load 0.63/1.31/1.70）；ADB device unavailable（device not found）；phone-sync-import.timer inactive；job 已 paused；触发强制升级，明确建议立即执行 weekly-review 或触发 alert"
+    },
+    {
+      "run_at": "2026-07-25T19:20:54+08:00",
+      "action": "suggest",
+      "pattern": "phone-sync-failure",
+      "result": "escalated",
+      "note": "phone-sync-import 仍 error；连续 84 次记录同一 pattern；weekly-review 已配置但从未执行（last_run_at=null, repeat.completed=0）；系统资源仍高（磁盘 97%、内存 15Gi/23Gi、Swap 12Gi/23Gi、load 2.16）；ADB device unavailable（device not found）；phone-sync-import.timer not-found；job 已 paused（17:11）；触发强制升级，明确建议立即执行 weekly-review 或触发 alert / 人工介入，并建议切至 auto 模式以自动执行 safe 级修复"
+    },
+    {
+      "run_at": "2026-07-25T19:37:25.030890+08:00",
+      "action": "suggest",
+      "pattern": "phone-sync-failure",
+      "result": "escalated",
+      "note": "phone-sync-import 仍 error；连续 85 次记录同一 pattern；weekly-review 已配置但从未执行（last_run_at=null, repeat.completed=0）；系统资源仍高（磁盘 97%、内存 16Gi/23Gi、Swap 12Gi/23Gi、load 0.63/1.31/1.70）；ADB device unavailable（device not found）；phone-sync-import.timer inactive；job 已 paused；触发强制升级，明确建议立即执行 weekly-review 或触发 alert"
+    }
+  ]
+}

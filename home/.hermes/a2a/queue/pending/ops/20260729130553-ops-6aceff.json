@@ -1,0 +1,16 @@
+{
+  "id": "20260729130553-ops-6aceff",
+  "created_at": "2026-07-29T13:05:53.721685+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_074405",
+    "title": "",
+    "created_at": 1784936656.4962912
+  },
+  "content": "The MEMORY.md file currently contains 2258 characters, and the memory-curator skill enforces character limits with automatic capacity control, so agents should monitor size to avoid hitting limits.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729132629-ops-7d07bf",
+  "created_at": "2026-07-29T13:26:29.532282+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_181025",
+    "title": "",
+    "created_at": 1784887886.0102267
+  },
+  "content": "The autonomous-task-brain skill's task triage decision logic uses three core weighted criteria to select handling mode for incoming tasks: historical execution success rate of similar past tasks, current task complexity, and recorded user preferences, to automatically choose between full autonomous execution, solution suggestion to the user, or skipping low-value tasks.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

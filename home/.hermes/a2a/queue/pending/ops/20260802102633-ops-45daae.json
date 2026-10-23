@@ -1,0 +1,16 @@
+{
+  "id": "20260802102633-ops-45daae",
+  "created_at": "2026-08-02T10:26:33.594950+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbnfis3s12ttx",
+    "title": "",
+    "created_at": 1785666089.8317285
+  },
+  "content": "The user's standard Haven configuration pattern is to include both NetBird (zero-trust network) and FRP (reverse proxy) address variants for each managed service port.",
+  "confidence": 0.93,
+  "status": "pending",
+  "review_note": ""
+}

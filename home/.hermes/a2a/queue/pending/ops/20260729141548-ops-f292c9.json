@@ -1,0 +1,16 @@
+{
+  "id": "20260729141548-ops-f292c9",
+  "created_at": "2026-07-29T14:15:48.725697+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193711_cf0865",
+    "title": "",
+    "created_at": 1784720233.6495974
+  },
+  "content": "The user's work kanban system uses task IDs in the format `t_<8-character alphanumeric suffix>` (e.g., `t_0120d003`) to uniquely identify work items.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

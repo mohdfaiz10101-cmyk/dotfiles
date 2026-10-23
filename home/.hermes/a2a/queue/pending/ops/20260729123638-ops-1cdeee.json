@@ -1,0 +1,16 @@
+{
+  "id": "20260729123638-ops-1cdeee",
+  "created_at": "2026-07-29T12:36:38.257549+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms23cqcqpv4r5d",
+    "title": "",
+    "created_at": 1785088099.436596
+  },
+  "content": "Port 8787 is not assigned to a common standardized public service per IANA registry, so when troubleshooting connectivity to non-standard internal service ports, confirm the correct port and service deployment status with the service owner as an early step to rule out port misconfiguration.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

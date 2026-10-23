@@ -1,0 +1,16 @@
+{
+  "id": "20260729125546-ops-248124",
+  "created_at": "2026-07-29T12:55:46.209193+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_153314_3185aa",
+    "title": "Hermes Web UI访问问题排查 #6",
+    "created_at": 1784964794.2862945
+  },
+  "content": "网络工具栈架构：NetBird/Tailscale 作为 VPN 工具在线运行时，若需与 mihomo 代理协同工作，必须额外配置路由策略联动（如路由表优先级、分流规则），当前环境未配置此联动。",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

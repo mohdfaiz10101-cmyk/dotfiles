@@ -1,0 +1,16 @@
+{
+  "id": "20260807061104-ops-e8818b",
+  "created_at": "2026-08-07T06:11:04.468463+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e20cbc8badea",
+    "title": "微信 matrix",
+    "created_at": 1786082880.5511253
+  },
+  "content": "The actionable implementation workflow for this non-real-time WeChat-to-Matrix sync consists of two core steps: first use the WeChatMsg toolchain to complete WeChat chat data extraction, decryption and export, then develop a lightweight message forwarder to send the exported messages to the Matrix network.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

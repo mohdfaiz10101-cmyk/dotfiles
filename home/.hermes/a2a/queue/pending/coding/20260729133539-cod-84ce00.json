@@ -1,0 +1,16 @@
+{
+  "id": "20260729133539-cod-84ce00",
+  "created_at": "2026-07-29T13:35:39.131978+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_235022_c70cb2",
+    "title": "",
+    "created_at": 1784821822.618712
+  },
+  "content": "When assessing the feasibility of local/open source coding agent solutions, runtime cost and hardware entry threshold are mandatory evaluation metrics that need to be verified for different combinations of serving tools and models.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

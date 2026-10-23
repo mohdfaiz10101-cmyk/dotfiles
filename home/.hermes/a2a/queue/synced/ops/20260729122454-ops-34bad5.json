@@ -1,0 +1,17 @@
+{
+  "id": "20260729122454-ops-34bad5",
+  "created_at": "2026-07-29T12:24:54.470844+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4h5js1r42d0c",
+    "title": "",
+    "created_at": 1785232197.4987457
+  },
+  "content": "This workflow requires exact character-for-character matching of specified response strings for simple acknowledgment requests, with no additional content, formatting, or variation permitted.",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.658684+00:00"
+}

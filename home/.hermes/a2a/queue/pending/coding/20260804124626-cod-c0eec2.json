@@ -1,0 +1,16 @@
+{
+  "id": "20260804124626-cod-c0eec2",
+  "created_at": "2026-08-04T12:46:26.360395+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "89554eccdb26",
+    "title": "",
+    "created_at": 1785847287.8521342
+  },
+  "content": "EasyTier部署的目标环境为用户个人本地电脑，非服务器、云端等远程运行环境",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

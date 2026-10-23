@@ -1,0 +1,16 @@
+{
+  "id": "20260729122216-cod-d3cf02",
+  "created_at": "2026-07-29T12:22:16.643274+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "134a025f71dd",
+    "title": "hermes github",
+    "created_at": 1785268697.4558148
+  },
+  "content": "When troubleshooting task queuing behavior in Hermes, the first step should be to review concurrency/worker thread configuration values rather than assuming a hardcoded single-task architectural limitation.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

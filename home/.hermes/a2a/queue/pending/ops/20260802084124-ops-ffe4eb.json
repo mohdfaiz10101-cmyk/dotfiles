@@ -1,0 +1,16 @@
+{
+  "id": "20260802084124-ops-ffe4eb",
+  "created_at": "2026-08-02T08:41:24.042886+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbjsgxq8n56bq",
+    "title": "",
+    "created_at": 1785659926.2141554
+  },
+  "content": "The charlie1990.duckdns.org:19976 self-hosted service is a task-centric service (such as a task management or task execution platform), as its documented core failure mode is inability to create new tasks.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

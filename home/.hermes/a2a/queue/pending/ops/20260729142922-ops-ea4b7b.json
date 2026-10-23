@@ -1,0 +1,16 @@
+{
+  "id": "20260729142922-ops-ea4b7b",
+  "created_at": "2026-07-29T14:29:22.900315+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192408_1520e6",
+    "title": "",
+    "created_at": 1784719451.0097663
+  },
+  "content": "The user regularly references existing work kanban tasks by their t_-prefixed unique ID in AI assistant sessions to tie conversation context to ongoing work items, so agents should treat these references as cues to retrieve or discuss the associated task if integrated with the user's task management tools",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,202 @@
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:40:        "step-3.7-flash",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:42:        "step-router-v1",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:55:      "provider": "stepfun",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:61:        "step-3.7-flash",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:63:        "step-router-v1",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:88:        "step-3.7-flash",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:90:        "step-router-v1",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:175:      "provider": "custom:stepfun-new",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:181:        "step-3.7-flash",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:183:        "step-router-v1",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:197:      "provider": "custom:stepfun",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:203:        "step-3.7-flash",
+/var/home/charlie/.hermes-web-ui-studio/cache/provider-model-catalog.json:205:        "step-router-v1",
+/var/home/charlie/.hermes-web-ui/cache/provider-model-catalog.json:65:      "provider": "stepfun",
+/var/home/charlie/.hermes-web-ui/cache/provider-model-catalog.json:71:        "step-3.7-flash",
+/var/home/charlie/.hermes-web-ui/cache/provider-model-catalog.json:73:        "step-router-v1",
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:4628:- Session model labels now fall back to the friendly `getModelLabel()` form instead of the raw model id when gateway routing info is unavailable (#3174).
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:5469:- **PR #2633** by @dobby-d-elf — Make agent profile switching and initial app boot dramatically faster (~25× on the contributor's benchmark). Switch-time: applies the selected profile's defaults immediately (resolved via a per-profile `_profile_default_model_state(profile)` config read), refreshes the visible/current screen, schedules non-visible workspace/model metadata in the background after the current view settles. A `_profileSwitchGeneration` counter is checked at five `await` boundaries to abort stale switches when the user re-toggles mid-refresh. Boot-time: workspace and onboarding fetches run in parallel instead of serial; onboarding short-circuits with `Promise.resolve(false)` when `onboarding_completed` is true. Boot synthetic model options now carry `data-provider` metadata so a pre-catalog `/api/chat/start` doesn't fuzzy-fallback to the wrong provider. FLIP animation capture/play is index-pinned by a new positional test; `prefers-reduced-motion` is honored in both JS and CSS. Server-side `new_session()` resolves the requesting profile's `config.yaml` directly rather than the process-global, preventing cross-tagging when the URL omits `model`/`model_provider`.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:6013:- **PR #2302** by @franksong2702 (closes #2240 — partial, refs #749 follow-up) — Profile create API now validates `default_model` / `model_provider` against `/api/models` server-side, returning 400 on invalid values instead of writing them to the new profile's config.yaml. Pre-fix, ordinary browser users were protected by the picker, but hand-crafted API requests could create a profile that looked valid until the agent later tried to resolve a nonexistent model.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:7527:- **PR #1738** by @Michaelyklam — Repair stale OpenAI session models for Codex (closes #1734). Existing sessions with `model=openai/gpt-...` (OpenRouter shape) and no saved `model_provider` were being treated as compatible by `_resolve_compatible_session_model_state()` when the active provider was OpenAI Codex (both normalize to "openai" family), so they passed through. At runtime, `resolve_model_provider()` then interpreted that slash-qualified ID as an OpenRouter selection under Codex, producing a misleading provider-credential failure. New branch in `_resolve_compatible_session_model_state()` at `api/routes.py:937-955` repairs the legacy no-`model_provider` shape: when `raw_active_provider == "openai-codex" AND model_provider == "openai" AND requested_provider is None AND default_model`, swap the session to active Codex default and persist `model_provider="openai-codex"`. Explicit OpenRouter selections preserved by the line 838 early return + the `requested_provider is None` gate.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:8832:- **Local model setup no longer fails mid-conversation with `LOCAL_API_KEY` error** (#1388, closes #1384) — when `model.base_url` pointed at an OpenAI-compatible loopback endpoint that didn't match the `ollama`/`localhost`/`lmstudio` keyword classifier (e.g. `http://192.168.1.10:8080/v1`, llama.cpp on `127.0.0.1:8080`, vLLM, TabbyAPI, custom proxies), `_build_available_models_uncached` auto-detected the provider as `"local"` and persisted that into `config.yaml`. Inference worked initially because the main agent has its own direct path that uses the explicit `base_url + api_key`, but once the conversation grew enough to trip auto-compression — or when vision / web extraction / skills-hub fired — the agent's auxiliary client routed through `resolve_provider_client("local", …)`, fell through every branch (since `"local"` is not in `hermes_cli.auth.PROVIDER_REGISTRY`), and raised `Provider 'local' is set in config.yaml but no API key was found`. Three-layer fix: (1) the auto-detect block now writes `provider: "custom"` instead of `"local"` for unknown loopback hosts — `custom` is the canonical OpenAI-compat fall-through; (2) `resolve_model_provider()` rewrites legacy `"local"` to `"custom"` at read time so existing broken configs heal automatically; (3) `set_hermes_default_model()` refuses to persist `"local"` going forward, with a `_PROVIDER_ALIASES["local"] = "custom"` entry. 9 regression tests in `test_issue1384_local_provider.py`. (`api/config.py`, `tests/test_issue1384_local_provider.py`) — PR #1388
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:9028:- **`/api/models` cache metadata preserved** — disk and TTL cache now include `active_provider` and `default_model` alongside `groups`. Legacy `groups`-only cache files are rejected and rebuilt. (`api/config.py`) @franksong2702 — Closes #1239
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:9675:- **Nous default model picker shows correct selection and saves no longer freeze** — two bugs for Nous/portal provider users: (1) Settings → Preferences → Default Model picker showed blank after saving because `set_hermes_default_model()` wrote a bare resolved form that didn't match the `@nous:...` option values in the dropdown; fixed by using `_applyModelToDropdown()`'s smart normalising matcher to find the right option without requiring an exact string match. (2) Every Settings save triggered a blocking live-fetch from the provider API (~5 s freeze) because `set_hermes_default_model()` called `get_available_models()` before returning; the function now returns a lightweight `{ok, model}` ack and invalidates the TTL cache instead. Config.yaml always stores the CLI-compatible bare/slash form (e.g. `anthropic/claude-opus-4.6`) so CLI users on the same install are unaffected. (`api/config.py`, `static/panels.js`) Closes #895.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:9938:- **Default model change surfaced stale value after model-list TTL cache landed** — `set_hermes_default_model()` now explicitly invalidates `_available_models_cache` after `reload_config()`. The 60s TTL cache introduced in v0.50.121 (#780) only invalidates on config-file mtime change, but `reload_config()` resyncs `_cfg_mtime` before `get_available_models()` runs — so the mtime check never fires and the POST response (plus downstream reads within the TTL window) returned the previous model until the cache expired. Root cause of the `test_default_model_updates_hermes_config` CI flake as well. (#788)
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:9939:- **Test teardown restores conftest default deterministically** — `test_default_model_updates_hermes_config` now restores to the conftest-injected `TEST_DEFAULT_MODEL` (via `tests/_pytest_port.py`) instead of reading the pre-test value from `/api/models`, so teardown is stable regardless of ordering. Also updates `TESTING.md` automated-test count to 1578. (#788)
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:9987:- **Default model now reads from Hermes config.yaml** — removes the split-brain state where WebUI Settings and the Hermes runtime/CLI/gateway could have different default models. `default_model` is no longer persisted in `settings.json`; it is read from and written to `config.yaml` via a new `POST /api/default-model` endpoint. Existing saved `default_model` values in `settings.json` are silently migrated away on first load. Saving Settings now calls `/api/default-model` when the model changed, with error handling so a config.yaml write failure doesn't leave the UI in a broken state. (#761, credit: @aronprins)
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:10056:- **Session model normalization: null/empty model no longer triggers index rebuild** — sessions with no stored model (`model: null` or missing) now return the provider default without writing to disk. Previously a spurious `session.save()` (and full session index rebuild) could fire for any such session. (#751 follow-up)
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:10061:- **Session model normalization: unknown provider prefixes now pass through** — custom/unlisted model prefixes (e.g. `custom-provider/my-model`) are no longer incorrectly stripped when switching providers. Only well-known provider prefixes (`gpt-`, `claude-`, `gemini-`, etc.) are normalized. Regression introduced in v0.50.99. (#751)
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:10149:- **System Preferences model dropdown no longer misattributes the default model to unrelated providers** — the `/api/models` builder no longer injects the global `default_model` into unknown provider groups such as `Alibaba` or `Minimax-Cn`. When a provider has no real model catalog of its own, it is now omitted from the dropdown instead of showing a misleading placeholder like `gpt-5.4-mini`. If the active provider still needs a default fallback, it is shown in a separate `Default` group rather than being mixed into another provider's models.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:11042:  - `_build_setup_catalog` now includes `current_is_oauth` boolean; fixed a latent `KeyError` crash when looking up `default_model` for OAuth providers.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:11276:- **Hyphen/space model group injection** (PR #191): The "ensure default_model appears" post-pass used `active_provider.lower() in group_name.lower()`, which fails for `openai-codex` vs display name `OpenAI Codex` (hyphen vs space). Now uses `_PROVIDER_DISPLAY` for exact display-name matching.
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:11473:- **Model dropdown routes non-default provider models correctly (#138).** When the active provider is `anthropic` and you pick a `minimax` model, its ID is now prefixed `minimax/MiniMax-M2.7` so `resolve_model_provider()` can route it through OpenRouter. Guards added: `active_provider=None` prevents all-providers-prefixed, case is normalised, shared `_PROVIDER_MODELS` list is no longer mutated by the default_model injector. (PR #142)
+/var/home/charlie/hermes-webui-clean/CHANGELOG.md:11513:- **Configured default model missing from dropdown (#116).** OpenRouter and other providers replaced the model list with a hardcoded fallback that didn't include `model.default` values like `openrouter/free` or custom local model names. Fix: after building all groups, inject the configured `default_model` at the top of its provider group if absent. (#119)
+/var/home/charlie/hermes-webui-clean/ARCHITECTURE.md:62:      models.py            Session model + CRUD, per-session profile tracking, CLI/state.db bridge
+/var/home/charlie/hermes-webui-clean/ARCHITECTURE.md:711:        models.py             Session model + CRUD (~1927 lines)
+/var/home/charlie/hermes-webui-clean/api/streaming.py:366:    profile_default_model: str | None,
+/var/home/charlie/hermes-webui-clean/api/streaming.py:373:    if not profile_default_model:
+/var/home/charlie/hermes-webui-clean/api/streaming.py:389:                    return profile_default_model, provider_context, True
+/var/home/charlie/hermes-webui-clean/api/streaming.py:395:            return profile_default_model, provider_context, True
+/var/home/charlie/hermes-webui-clean/api/streaming.py:403:            return profile_default_model, provider_context, True
+/var/home/charlie/hermes-webui-clean/api/routes.py:2861:    set_hermes_default_model,
+/var/home/charlie/hermes-webui-clean/api/routes.py:6929:        cfg_default_model = str(model_cfg.get("default") or "").strip()
+/var/home/charlie/hermes-webui-clean/api/routes.py:6932:            not cfg_default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:6935:                cfg_default_model,
+/var/home/charlie/hermes-webui-clean/api/routes.py:6983:    Returns (profile_provider, profile_default_model, profile_config_dict).
+/var/home/charlie/hermes-webui-clean/api/routes.py:6990:    does not override the session provider. ``profile_default_model`` is still
+/var/home/charlie/hermes-webui-clean/api/routes.py:7261:    profile_default_model: str | None = None,
+/var/home/charlie/hermes-webui-clean/api/routes.py:7321:            _profile_default = str(profile_default_model or "").strip()
+/var/home/charlie/hermes-webui-clean/api/routes.py:7376:    default_model = str(catalog.get("default_model") or DEFAULT_MODEL or "").strip()
+/var/home/charlie/hermes-webui-clean/api/routes.py:7381:    # active_provider / default_model. This preserves the repair path
+/var/home/charlie/hermes-webui-clean/api/routes.py:7387:        _profile_default = str(profile_default_model or "").strip()
+/var/home/charlie/hermes-webui-clean/api/routes.py:7389:            _fallback = _profile_default or default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:7407:            _target = _profile_default or default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:7415:            _target = _profile_default or default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:7425:            _target = _profile_default or default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:7457:        return default_model, requested_provider, bool(default_model)
+/var/home/charlie/hermes-webui-clean/api/routes.py:7578:        if default_model:
+/var/home/charlie/hermes-webui-clean/api/routes.py:7581:                if _should_attach_codex_provider_context(default_model, raw_active_provider, catalog)
+/var/home/charlie/hermes-webui-clean/api/routes.py:7584:            return default_model, provider_context, True
+/var/home/charlie/hermes-webui-clean/api/routes.py:7596:                if model_provider and model_provider != active_provider and default_model:
+/var/home/charlie/hermes-webui-clean/api/routes.py:7599:                        if _should_attach_codex_provider_context(default_model, raw_active_provider, catalog)
+/var/home/charlie/hermes-webui-clean/api/routes.py:7602:                    return default_model, provider_context, True
+/var/home/charlie/hermes-webui-clean/api/routes.py:7634:        if default_model:
+/var/home/charlie/hermes-webui-clean/api/routes.py:7635:            return default_model, requested_provider, True
+/var/home/charlie/hermes-webui-clean/api/routes.py:7652:        and default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:7660:        return default_model, raw_active_provider, True
+/var/home/charlie/hermes-webui-clean/api/routes.py:7667:    if model_provider and model_provider not in {"", "custom", "openrouter"} and model_provider != _active_for_compare and default_model:
+/var/home/charlie/hermes-webui-clean/api/routes.py:7668:        return default_model, requested_provider, True
+/var/home/charlie/hermes-webui-clean/api/routes.py:7715:        profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:7739:        profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:14689:            return j(handler, set_hermes_default_model(body.get("model"), provider=provider, advanced=advanced))
+/var/home/charlie/hermes-webui-clean/api/routes.py:14711:                return j(handler, set_hermes_default_model(model, provider=main_provider, advanced=advanced))
+/var/home/charlie/hermes-webui-clean/api/routes.py:15870:        default_model = body.get("default_model", "").strip() if body.get("default_model") else None
+/var/home/charlie/hermes-webui-clean/api/routes.py:15883:                default_model=default_model,
+/var/home/charlie/hermes-webui-clean/api/routes.py:16557:                    get_effective_default_model,
+/var/home/charlie/hermes-webui-clean/api/routes.py:16567:                _main_model, _main_provider, _main_base_url = resolve_model_provider(get_effective_default_model())
+/var/home/charlie/hermes-webui-clean/api/routes.py:20349:                _default_model = (cfg.get("model", {}) or {}).get("model") if isinstance(cfg.get("model"), dict) else None
+/var/home/charlie/hermes-webui-clean/api/routes.py:20350:                _featured, _ = _build_nous_featured_set(ids, selected_model_id=_default_model)
+/var/home/charlie/hermes-webui-clean/api/routes.py:21906:        profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:22293:            profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:22345:                profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:22527:            profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:22560:            from api.config import get_effective_default_model
+/var/home/charlie/hermes-webui-clean/api/routes.py:22564:                _moa_fast_path_model_state(get_effective_default_model(config_snapshot))
+/var/home/charlie/hermes-webui-clean/api/routes.py:22722:            profile_default_model=_pp_default,
+/var/home/charlie/hermes-webui-clean/api/routes.py:23323:            get_effective_default_model,
+/var/home/charlie/hermes-webui-clean/api/routes.py:23334:            else get_effective_default_model()
+/var/home/charlie/hermes-webui-clean/api/models.py:1:"""Hermes Web UI -- Session model and in-memory session store."""
+/var/home/charlie/hermes-webui-clean/api/models.py:33:    get_effective_default_model, _get_session_agent_lock,
+/var/home/charlie/hermes-webui-clean/api/models.py:4885:def _profile_default_model_state(profile=None):
+/var/home/charlie/hermes-webui-clean/api/models.py:4887:    default_model = ""
+/var/home/charlie/hermes-webui-clean/api/models.py:4898:        default_model = model_cfg.strip()
+/var/home/charlie/hermes-webui-clean/api/models.py:4900:        default_model = str(model_cfg.get("default") or "").strip()
+/var/home/charlie/hermes-webui-clean/api/models.py:4903:    return default_model or get_effective_default_model(), default_provider
+/var/home/charlie/hermes-webui-clean/api/models.py:4942:        effective_model, effective_model_provider = _profile_default_model_state(profile)
+/var/home/charlie/hermes-webui-clean/api/config.py:2688:    _default_model = model_cfg.get('default') if isinstance(model_cfg, dict) else None
+/var/home/charlie/hermes-webui-clean/api/config.py:2726:            (_default_model is not None and model_id == _default_model)
+/var/home/charlie/hermes-webui-clean/api/config.py:3179:def get_effective_default_model(config_data: dict | None = None) -> str:
+/var/home/charlie/hermes-webui-clean/api/config.py:3182:    default_model = DEFAULT_MODEL
+/var/home/charlie/hermes-webui-clean/api/config.py:3186:        default_model = model_cfg.strip()
+/var/home/charlie/hermes-webui-clean/api/config.py:3190:            default_model = cfg_default
+/var/home/charlie/hermes-webui-clean/api/config.py:3196:        default_model = env_model.strip()
+/var/home/charlie/hermes-webui-clean/api/config.py:3197:    return default_model
+/var/home/charlie/hermes-webui-clean/api/config.py:4606:def set_hermes_default_model(model_id: str, provider: str | None = None, advanced: dict | None = None) -> dict:
+/var/home/charlie/hermes-webui-clean/api/config.py:5051:    default_model: str,
+/var/home/charlie/hermes-webui-clean/api/config.py:5054:    if active_provider and default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:5058:                "model": default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:5197:        default_model = get_effective_default_model(cfg)
+/var/home/charlie/hermes-webui-clean/api/config.py:5199:        if default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:5201:                label = _get_label_for_model(default_model, [])
+/var/home/charlie/hermes-webui-clean/api/config.py:5203:                label = default_model
+/var/home/charlie/hermes-webui-clean/api/config.py:5208:                    "models": [{"id": default_model, "label": label}],
+/var/home/charlie/hermes-webui-clean/api/config.py:5213:            "default_model": default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:5222:            "default_model": "",
+/var/home/charlie/hermes-webui-clean/api/config.py:5267:        default_model = get_effective_default_model(cfg)
+/var/home/charlie/hermes-webui-clean/api/config.py:5286:            _append_model_id(active_provider, default_model)
+/var/home/charlie/hermes-webui-clean/api/config.py:5489:        if default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:5495:            if default_model not in all_model_ids and f"@{active_provider}:{default_model}" not in all_model_ids:
+/var/home/charlie/hermes-webui-clean/api/config.py:5496:                label = _get_label_for_model(default_model, groups)
+/var/home/charlie/hermes-webui-clean/api/config.py:5502:                    target_group.setdefault("models", []).insert(0, {"id": default_model, "label": label})
+/var/home/charlie/hermes-webui-clean/api/config.py:5508:                            "models": [{"id": default_model, "label": label}],
+/var/home/charlie/hermes-webui-clean/api/config.py:5573:        if not groups and default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:5578:            "default_model": default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:5582:                default_model=default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:6015:    if not {"active_provider", "default_model", "configured_model_badges", "groups"}.issubset(cache):
+/var/home/charlie/hermes-webui-clean/api/config.py:6020:        and isinstance(cache.get("default_model"), str)
+/var/home/charlie/hermes-webui-clean/api/config.py:6105:            "default_model": cache["default_model"],
+/var/home/charlie/hermes-webui-clean/api/config.py:6173:            "default_model": cache["default_model"],
+/var/home/charlie/hermes-webui-clean/api/config.py:6205:            "default_model": cache["default_model"],
+/var/home/charlie/hermes-webui-clean/api/config.py:6515:        'default_model': str,
+/var/home/charlie/hermes-webui-clean/api/config.py:6551:        default_model = get_effective_default_model(cfg)
+/var/home/charlie/hermes-webui-clean/api/config.py:6590:            if active_provider and default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:6594:                        "model": default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:6677:            pass  # default_model already set by get_effective_default_model
+/var/home/charlie/hermes-webui-clean/api/config.py:6683:                default_model = cfg_default
+/var/home/charlie/hermes-webui-clean/api/config.py:7402:                or default_model
+/var/home/charlie/hermes-webui-clean/api/config.py:7869:            if default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:7870:                label = _get_label_for_model(default_model, groups)
+/var/home/charlie/hermes-webui-clean/api/config.py:7872:                    {"provider": "Default", "provider_id": "default", "models": [{"id": default_model, "label": label}]}
+/var/home/charlie/hermes-webui-clean/api/config.py:7875:        if default_model:
+/var/home/charlie/hermes-webui-clean/api/config.py:7885:                str(default_model).strip().lower().replace("_", "-") in _PROVIDER_DISPLAY
+/var/home/charlie/hermes-webui-clean/api/config.py:7886:                or _canonicalise_provider_id(default_model) in _PROVIDER_DISPLAY
+/var/home/charlie/hermes-webui-clean/api/config.py:7893:                    default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:7902:                if _norm_model_id(default_model) not in all_ids_norm:
+/var/home/charlie/hermes-webui-clean/api/config.py:7903:                    label = _get_label_for_model(default_model, groups)
+/var/home/charlie/hermes-webui-clean/api/config.py:7912:                            g["models"].insert(0, {"id": default_model, "label": label})
+/var/home/charlie/hermes-webui-clean/api/config.py:7920:                                "models": [{"id": default_model, "label": label}],
+/var/home/charlie/hermes-webui-clean/api/config.py:7985:            "default_model": default_model,
+/var/home/charlie/hermes-webui-clean/api/config.py:8125:        # default_model/active_provider and trusts the persisted session
+/var/home/charlie/hermes-webui-clean/api/config.py:9371:    "default_model",
+/var/home/charlie/hermes-webui-clean/api/config.py:9478:        if k not in {"default_model", _SETTINGS_PERSISTED_SPEECH_KEYS_FIELD}
+/var/home/charlie/hermes-webui-clean/api/config.py:9568:    settings["default_model"] = get_effective_default_model()
+/var/home/charlie/hermes-webui-clean/api/config.py:9572:            settings["default_model_provider"] = str(model_cfg.get("provider"))
+/var/home/charlie/hermes-webui-clean/api/config.py:9580:    "default_model",
+/var/home/charlie/hermes-webui-clean/api/config.py:9910:    current["default_model"] = get_effective_default_model()
+/var/home/charlie/hermes-webui-clean/api/config.py:9929:    _startup_settings.pop("default_model", None)  # always drop stale value; model comes from config.yaml
+/var/home/charlie/hermes-webui-clean/README.md:610:  models.py       Session model + CRUD + CLI/state.db bridge
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:43:        "default_model": "anthropic/claude-sonnet-4.6",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:54:        "default_model": "claude-sonnet-4.6",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:64:        "default_model": "gpt-4o",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:74:        "default_model": "qwen3:32b",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:98:        "default_model": "gpt-4o-mini",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:112:        "default_model": "gpt-4o-mini",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:126:        "default_model": "gemini-3.1-pro-preview",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:138:        "default_model": "deepseek-v4-flash",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:147:        "default_model": "mimo-v2.5-pro",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:156:        "default_model": "glm-5.1",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:165:        "default_model": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:174:        "default_model": "mistral-large-latest",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:184:        "default_model": "grok-4.20",
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:809:                "default_model": meta["default_model"],
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:853:                "default_model", ""
+/var/home/charlie/hermes-webui-clean/api/onboarding.py:929:            "default_model": settings.get("default_model") or DEFAULT_MODEL,
+/var/home/charlie/hermes-webui-clean/static/ui.js:2992:  if(shouldApplyBootDefault && data&&data.default_model && !(activeSession&&activeSession.model)){
+/var/home/charlie/hermes-webui-clean/static/ui.js:2993:    return _applyOrEnsure(data.default_model, data.active_provider||null);
+/var/home/charlie/hermes-webui-clean/static/ui.js:3407:    window._defaultModel=data.default_model||null;
+/var/home/charlie/hermes-webui-clean/static/ui.js:3434:      if(grouped.size===0&&data&&data.default_model){
+/var/home/charlie/hermes-webui-clean/static/ui.js:3435:        addModel(data.active_provider||'configured',data.default_model);
+/var/home/charlie/hermes-webui-clean/static/sessions.js:1651:    if(data.default_model) window._defaultModel=data.default_model;
+/var/home/charlie/hermes-webui-clean/static/sessions.js:1652:    if(data.default_model_provider) window._activeProvider=data.default_model_provider;
+/var/home/charlie/hermes-webui-clean/static/sessions.js:1654:      refreshProfileTransitionReasoningChip(data.default_model,data.default_model_provider);
+/var/home/charlie/hermes-webui-clean/static/panels.js:7053:    if (data.default_model) window._defaultModel = data.default_model;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7054:    if (data.default_model_provider) window._activeProvider = data.default_model_provider;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7057:    if (data.default_model) {
+/var/home/charlie/hermes-webui-clean/static/panels.js:7059:      const providerId = data.default_model_provider || window._activeProvider || null;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7060:      const existingDefaultOpt = sel ? Array.from(sel.options).find(o => o.value === data.default_model) : null;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7066:        opt.value = data.default_model;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7067:        opt.textContent = typeof getModelLabel === 'function' ? getModelLabel(data.default_model) : data.default_model;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7073:      const resolved = _applyModelToDropdown(data.default_model, sel, providerId);
+/var/home/charlie/hermes-webui-clean/static/panels.js:7074:      const modelToUse = resolved || data.default_model;
+/var/home/charlie/hermes-webui-clean/static/panels.js:7089:    // default_model (empty session / model-less profile). Without this the
+/var/home/charlie/hermes-webui-clean/static/panels.js:7097:      refreshProfileTransitionReasoningChip(data.default_model, data.default_model_provider);
+/var/home/charlie/hermes-webui-clean/static/panels.js:7309:    if (data && data.default_model && typeof _applyModelToDropdown === 'function') {
+/var/home/charlie/hermes-webui-clean/static/panels.js:7310:      _applyModelToDropdown(data.default_model, sel, data.active_provider || window._activeProvider || null);
+/var/home/charlie/hermes-webui-clean/static/panels.js:7351:      if (modelState.model) payload.default_model = modelState.model;
+/var/home/charlie/hermes-webui-clean/static/panels.js:9236:      _settingsHermesDefaultModelOnOpen=(models&&models.default_model)||'';
+/var/home/charlie/hermes-webui-clean/static/panels.js:12025:  _settingsHermesDefaultModelOnOpen=body.default_model||_settingsHermesDefaultModelOnOpen||'';
+/var/home/charlie/hermes-webui-clean/static/panels.js:12026:  if(Object.prototype.hasOwnProperty.call(body,'default_model_provider')) _settingsHermesDefaultModelProviderOnOpen=body.default_model_provider||null;
+/var/home/charlie/hermes-webui-clean/static/panels.js:12028:  if(body.default_model) window._defaultModel=body.default_model;
+/var/home/charlie/hermes-webui-clean/static/panels.js:12029:  if(Object.prototype.hasOwnProperty.call(body,'default_model_provider')) window._activeProvider=body.default_model_provider||null;
+
+__HERMES_CWD_66bf30697103__/var/home/charlie__HERMES_CWD_66bf30697103__

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123621-ops-c2da72",
+  "created_at": "2026-07-29T12:36:21.825966+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "compress_ms23udp5_fa330012ddc3",
+    "title": "",
+    "created_at": 1785088946.3622103
+  },
+  "content": "Durable facts prioritized for Hermes context checkpoints include config patterns, reusable workflows, domain pitfalls, user preferences, environment facts, and architecture decisions, with explicit exclusion of transient one-off debugging details.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

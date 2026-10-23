@@ -1,0 +1,16 @@
+{
+  "id": "20260729133348-ops-b9686a",
+  "created_at": "2026-07-29T13:33:48.449844+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260724_113957_49cda4",
+    "title": "",
+    "created_at": 1784864397.140917
+  },
+  "content": "所有针对hermes-web-ui的配置扫描、代码排查任务，默认基础工作目录为/var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui，无需重复确认路径",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

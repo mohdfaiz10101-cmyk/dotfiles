@@ -1,0 +1,16 @@
+{
+  "id": "20260729140522-ops-b4e359",
+  "created_at": "2026-07-29T14:05:22.489102+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194812_c48eec",
+    "title": "",
+    "created_at": 1784720894.767059
+  },
+  "content": "The user manages work tasks via kanban systems, with individual work tasks identified by unique IDs that use an observed 't_' prefix (example: t_dbc58661, the task associated with this session).",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

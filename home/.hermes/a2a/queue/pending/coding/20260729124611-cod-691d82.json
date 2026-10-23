@@ -1,0 +1,16 @@
+{
+  "id": "20260729124611-cod-691d82",
+  "created_at": "2026-07-29T12:46:11.890410+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0ngw6x8q1735",
+    "title": "[Advisor consultation #1] [Advisor review] The executor hasn't done any subs...",
+    "created_at": 1785001138.9321475
+  },
+  "content": "Reusable baseline workflow for GitHub repo discovery tasks: prioritize direct `curl` calls to `api.github.com` for data fetching, then run repository validation, then output tabular classification results, with the base implementation stored at `/var/home/charlie/.hermes/skills/research/github-repo-discovery/SKILL.md`.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

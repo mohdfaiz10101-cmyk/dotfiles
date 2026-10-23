@@ -1,0 +1,16 @@
+{
+  "id": "20260802164212-ops-d7bbd5",
+  "created_at": "2026-08-02T16:42:12.342007+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msc10urm6hqfx8",
+    "title": "",
+    "created_at": 1785688848.6123679
+  },
+  "content": "When addressing Hermes Studio quota-related user queries, if the `hermes_studio_api_openapi_get` tool is unavailable in the current environment, the default reusable troubleshooting workflow is to first check local configuration and observable system entry points instead of making unverified assumptions about the issue source.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

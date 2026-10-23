@@ -1,0 +1,16 @@
+{
+  "id": "20260729123050-ops-23d192",
+  "created_at": "2026-07-29T12:30:50.545578+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3r5k2o6559hy",
+    "title": "",
+    "created_at": 1785188683.9391496
+  },
+  "content": "The Hermes Studio instance for this deployment is permanently hosted at the fixed internal endpoint http://100.87.31.44:8787, and the associated Hermes backend service is permanently bound to port 19976; these are static environment facts for all Hermes configuration tasks in this context.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

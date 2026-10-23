@@ -1,0 +1,426 @@
+- generic
+  - link "Skip to content" [ref=e1]
+  - banner
+    - heading "Navigation Menu" [level=2, ref=e8]
+    - generic
+      - link "Homepage" [ref=e10]
+      - navigation "Global" [ref=e18]
+        - list
+          - listitem [level=1]
+            - generic
+              - button "Platform" [expanded=false, ref=e68]
+          - listitem [level=1]
+            - generic
+              - button "Solutions" [expanded=false, ref=e69]
+          - listitem [level=1]
+            - generic
+              - button "Resources" [expanded=false, ref=e70]
+          - listitem [level=1]
+            - generic
+              - button "Open Source" [expanded=false, ref=e71]
+          - listitem [level=1]
+            - generic
+              - button "Enterprise" [expanded=false, ref=e72]
+          - listitem [level=1]
+            - link "Pricing" [ref=e48]
+      - button "Search or jump to, type / to search" [expanded=false, ref=e19]
+      - link "Sign in" [ref=e34]
+      - link "Sign up" [ref=e20]
+      - button "Appearance settings" [ref=e21]
+- main
+  - generic
+    - link "remote-android" [ref=e5]
+    - StaticText "/"
+    - strong
+      - link "redroid-doc" [ref=e9]
+    - StaticText "Public"
+    - list
+      - listitem [level=1]
+        - link "You must be signed in to change notification settings" [ref=e22]
+          - StaticText "Notifications"
+      - listitem [level=1]
+        - link "Fork 472" [ref=e23]
+          - StaticText "Fork "
+          - StaticText "472"
+      - listitem [level=1]
+        - link "You must be signed in to star a repository" [ref=e24]
+          - StaticText " Star "
+          - StaticText "6.7k"
+    - navigation "Repository" [ref=e6]
+      - list
+        - listitem [level=1]
+          - link "Code" [ref=e25]
+            - StaticText "Code"
+        - listitem [level=1]
+          - link "Issues 358" [ref=e26]
+            - StaticText "Issues"
+            - StaticText "358"
+        - listitem [level=1]
+          - link "Pull requests 2" [ref=e27]
+            - StaticText "Pull requests"
+            - StaticText "2"
+        - listitem [level=1]
+          - link "Actions" [ref=e28]
+            - StaticText "Actions"
+        - listitem [level=1]
+          - link "Projects" [ref=e29]
+            - StaticText "Projects"
+        - listitem [level=1]
+          - link "Security and quality" [ref=e30]
+            - StaticText "Security and quality"
+        - listitem [level=1]
+          - link "Insights" [ref=e31]
+            - StaticText "Insights"
+  - generic
+    - region "Header" [ref=e35]
+      - heading "Unable to open ashmem device with androidboot.use_memfd enabled #571" [level=1, ref=e37]
+        - code
+          - StaticText "Unable to open ashmem device"
+        - StaticText " with "
+        - code
+          - StaticText "androidboot.use_memfd"
+        - StaticText " enabled"
+        - StaticText "#571"
+      - link "New issue" [ref=e38]
+        - StaticText "New issue"
+      - button "Copy link" [ref=e39]
+    - generic
+      - image "Issue"
+      - StaticText "Open"
+    - heading "Description" [level=2, ref=e40]
+    - link "@SakuraKoi's profile" [ref=e49]
+      - image "@SakuraKoi"
+    - link "SakuraKoi" [ref=e41]
+    - generic
+      - StaticText "opened "
+      - link "on Jan 9, 2024" [ref=e50]
+        - StaticText "on Jan 9, 2024"
+    - button "Last edited by SakuraKoi" [expanded=false, ref=e42]
+      - StaticText "Last edited by "
+      - StaticText "SakuraKoi"
+    - button "Issue body actions" [expanded=false, ref=e43]
+    - generic
+      - generic
+        - paragraph
+          - strong
+            - StaticText "Describe the bug"
+          - LineBreak "\n"
+          - code
+            - StaticText "ashmem  : Unable to open ashmem device /dev/ashmem286560ba-2737-4ed9-a3ef-8fda0eabe024 (error = No such file or directory) and /dev/ashmem(error = No such file or directory)"
+          - StaticText " with "
+          - code
+            - StaticText "androidboot.use_memfd"
+          - StaticText " enabled"
+        - paragraph
+          - StaticText "as the error message is from "
+          - link "__ashmem_open_locked()" [ref=e91]
+          - StaticText ", and the method is called from "
+          - link "__ashmem_open()" [ref=e92]
+          - StaticText ", and "
+          - code
+            - StaticText "__ashmem_open()"
+          - StaticText " is called by "
+          - link "ashmem_create_region()" [ref=e93]
+          - LineBreak "\n"
+          - StaticText "I guess there's something wrong with "
+          - link "has_memfd_support()" [ref=e94]
+        - paragraph
+          - StaticText "I'm not familiar with the internal implementation of Android, any ideas or clues for me to debug it?"
+        - paragraph
+          - StaticText "Platform: Fedora 39 with 6.5.6-300.fc39.x86_64 kernel"
+        - paragraph
+          - strong
+            - StaticText "docker compose file"
+        - generic
+          - code
+            - StaticText "name: redroid\nservices:\n    redroid:\n        stdin_open: true\n        tty: true\n        privileged: true\n        restart: no\n        volumes:\n            - './data:/data'\n        ports:\n            - 5555:5555\n        command:\n            - 'androidboot.redroid_gpu_mode=guest'\n            - 'androidboot.use_memfd=1'\n        container_name: redroid\n        image: redroid/redroid:12.0.0.modified.magisk\n"
+          - button "Copy code to clipboard" [ref=e97]
+        - paragraph
+          - strong
+            - StaticText "make sure the required kernel modules present"
+        - list
+          - listitem [level=1]
+            - ListMarker "• "
+            - code
+              - StaticText "grep binder /proc/filesystems"
+            - blockquote
+              - paragraph
+                - StaticText "nodev binder"
+          - listitem [level=1]
+            - ListMarker "• "
+            - code
+              - StaticText "grep ashmem /proc/misc"
+            - blockquote
+              - paragraph
+                - StaticText "*nothing"
+        - paragraph
+          - strong
+            - StaticText "collect debug logs"
+        - generic
+          - code
+            - StaticText "01-09 15:14:24.110    80    80 W SQLiteCompatibilityWalFlags: Cannot read global setting sqlite_compatibility_wal_flags - Application state not available\n01-09 15:14:24.125    80   112 E ashmem  : Unable to open ashmem device /dev/ashmem286560ba-2737-4ed9-a3ef-8fda0eabe024 (error = No such file or directory) and /dev/ashmem(error = No such file or directory)\n01-09 15:14:24.125    80   112 E LSPosedService: preload dex\n01-09 15:14:24.125    80   112 E LSPosedService: android.system.ErrnoException: SharedMemory_create failed: ENOENT (No such file or directory)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.SharedMemory.nCreate(Native Method)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.SharedMemory.create(SharedMemory.java:87)\n01-09 15:14:24.125    80   112 E LSPosedService:        at z0.j(Unknown Source:5)\n01-09 15:14:24.125    80   112 E LSPosedService:        at z0.g(Unknown Source:14)\n01-09 15:14:24.125    80   112 E LSPosedService:        at O0.run(Unknown Source:226)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.Handler.handleCallback(Handler.java:938)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.Handler.dispatchMessage(Handler.java:99)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.Looper.loopOnce(Looper.java:201)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.Looper.loop(Looper.java:288)\n01-09 15:14:24.125    80   112 E LSPosedService:        at android.os.HandlerThread.run(HandlerThread.java:67)\n"
+          - button "Copy code to clipboard" [ref=e98]
+      - toolbar "Reactions"
+    - heading "Activity" [level=2, ref=e36]
+    - generic
+      - heading "SakuraKoi commented on Jan 10, 2024" [level=3, ref=e51]
+        - StaticText "SakuraKoi commented "
+        - StaticText "on Jan 10, 2024"
+      - link "@SakuraKoi's profile" [ref=e52]
+        - image "@SakuraKoi"
+      - link "SakuraKoi" [ref=e53]
+      - link "on Jan 10, 2024" [ref=e73]
+        - StaticText "on Jan 10, 2024"
+      - StaticText "Author"
+      - button "Actions for SakuraKoi's comment, 11:07 AM on January 10, 2024" [expanded=false, ref=e54]
+      - paragraph
+        - StaticText "built "
+        - code
+          - StaticText "ashmem_linux"
+        - StaticText " using "
+        - link "this fork" [ref=e74]
+        - StaticText " as a workaround and got everything up"
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jan 10, 2024" [level=3, ref=e55]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jan 10, 2024"
+      - link "@zhouziyang's profile" [ref=e56]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e57]
+      - link "on Jan 10, 2024" [ref=e75]
+        - StaticText "on Jan 10, 2024"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 3:56 PM on January 10, 2024" [expanded=false, ref=e58]
+      - generic
+        - paragraph
+          - StaticText "How about "
+          - code
+            - StaticText "docker run <container> setprop sys.use_memfd=1"
+        - paragraph
+          - StaticText "Try with latest official redroid image which should auto-detect "
+          - code
+            - StaticText "memfd"
+          - StaticText " / "
+          - code
+            - StaticText "ashmem"
+          - StaticText "."
+      - toolbar "Reactions"
+      - heading "skunpoj commented 2 days ago" [level=3, ref=e59]
+        - StaticText "skunpoj commented "
+        - StaticText "2 days ago"
+      - link "@skunpoj's profile" [ref=e60]
+        - image "@skunpoj"
+      - link "skunpoj" [ref=e61]
+      - link "2d ago" [ref=e76]
+        - StaticText "2d ago"
+      - button "Actions for skunpoj's comment, 6:56 PM on August 4" [expanded=false, ref=e62]
+      - generic
+        - paragraph
+          - StaticText "Following up with a real fix for modern kernels, since "
+          - code
+            - StaticText "androidboot.use_memfd=1"
+          - StaticText " alone didn't resolve it for me (still got "
+          - code
+            - StaticText "no ashmem-memfd compat support"
+          - StaticText " from the kernel)."
+        - paragraph
+          - StaticText "Root cause on kernel 6.17: "
+          - code
+            - StaticText "ashmem_linux"
+          - StaticText " (from "
+          - code
+            - StaticText "remote-android/redroid-modules"
+          - StaticText ") doesn't compile against recent kernels — three real API removals:"
+        - list
+          - listitem [level=1]
+            - ListMarker "1. "
+            - code
+              - StaticText "mm->get_unmapped_area"
+            - StaticText " member removed → replaced by the free function "
+            - code
+              - StaticText "mm_get_unmapped_area()"
+            - StaticText " ("
+            - code
+              - StaticText "linux/sched/mm.h"
+            - StaticText ")"
+          - listitem [level=1]
+            - ListMarker "2. "
+            - code
+              - StaticText "vma->vm_flags"
+            - StaticText " is now read-only → needs "
+            - code
+              - StaticText "vm_flags_clear()"
+            - StaticText "/"
+            - code
+              - StaticText "vm_flags_set()"
+            - StaticText " ("
+            - code
+              - StaticText "linux/mm.h"
+            - StaticText ")"
+          - listitem [level=1]
+            - ListMarker "3. "
+            - StaticText "The shrinker API was reworked → "
+            - code
+              - StaticText "register_shrinker()"
+            - StaticText "/"
+            - code
+              - StaticText "unregister_shrinker()"
+            - StaticText " on a static struct replaced by "
+            - code
+              - StaticText "shrinker_alloc()"
+            - StaticText "/"
+            - code
+              - StaticText "shrinker_register()"
+            - StaticText "/"
+            - code
+              - StaticText "shrinker_free()"
+            - StaticText " on a dynamically allocated pointer ("
+            - code
+              - StaticText "linux/shrinker.h"
+            - StaticText ")"
+        - paragraph
+          - StaticText "Fixed all three, and hit a fourth issue at link time: "
+          - code
+            - StaticText "deps.c"
+          - StaticText "'s "
+          - code
+            - StaticText "kallsyms_lookup_name()"
+          - StaticText "-based lookup of the internal "
+          - code
+            - StaticText "shmem_zero_setup"
+          - StaticText " symbol fails, because "
+          - code
+            - StaticText "kallsyms_lookup_name"
+          - StaticText " itself is no longer exported to modules. Worked around it with the standard modern replacement: register a "
+          - code
+            - StaticText "kprobe"
+          - StaticText " directly on the target symbol name and read the resolved address back out of "
+          - code
+            - StaticText "kp.addr"
+          - StaticText ", then immediately unregister — this works because kprobe symbol resolution isn't restricted the way direct kallsyms lookup is."
+        - paragraph
+          - StaticText "With this, "
+          - code
+            - StaticText "ashmem_linux.ko"
+          - StaticText " builds cleanly and loads without error on kernel 6.17 (Ubuntu 24.04 GCE image) — "
+          - code
+            - StaticText "/dev/ashmem"
+          - StaticText " appears, "
+          - code
+            - StaticText "dmesg"
+          - StaticText " shows a clean "
+          - code
+            - StaticText "ashmem: initialized"
+          - StaticText ", and Android 16 boots completely (verified: real home screen, real Settings app, zero FATAL/SIGSEGV/SIGABRT anywhere in the boot log — the SwiftShader graphics abort I was separately chasing in "
+          - link "#934" [ref=e77]
+          - StaticText " never happens at all once ashmem is actually working, which strongly suggests that crash was partly/wholly downstream of gralloc's buffer allocation failing without real shared memory, not a pure, independent SwiftShader limitation)."
+        - paragraph
+          - StaticText "Happy to open a PR against "
+          - code
+            - StaticText "redroid-modules"
+          - StaticText " with the patch if useful — didn't want to assume that's wanted without asking first."
+      - toolbar "Reactions"
+      - region "Events" [ref=e44]
+        - generic
+          - generic
+            - generic
+              - link "skunpoj" [ref=e100]
+                - StaticText "skunpoj"
+              - StaticText "mentioned this "
+              - link "2d ago" [ref=e99]
+                - StaticText "2d ago"
+            - region "Issues mentioned" [ref=e95]
+              - list
+                - listitem [level=1]
+                  - image "Open"
+                  - link "ashmem: fix build and load on kernel 6.7+ (verified on 6.17) redroid-modules#23" [ref=e101]
+                    - StaticText "ashmem: fix build and load on kernel 6.7+ (verified on 6.17) redroid-modules#23"
+      - heading "skunpoj commented 2 days ago" [level=3, ref=e63]
+        - StaticText "skunpoj commented "
+        - StaticText "2 days ago"
+      - link "@skunpoj's profile" [ref=e64]
+        - image "@skunpoj"
+      - link "skunpoj" [ref=e65]
+      - link "2d ago" [ref=e78]
+        - StaticText "2d ago"
+      - button "Actions for skunpoj's comment, 7:12 PM on August 4" [expanded=false, ref=e66]
+      - generic
+        - paragraph
+          - StaticText "Opened the fix as a real PR: "
+          - link "remote-android/redroid-modules#23" [ref=e79]
+        - paragraph
+          - StaticText "Summary of the 4 issues it fixes (all version-guarded, 4.14+ kernels unaffected):"
+        - list
+          - listitem [level=1]
+          - listitem [level=1]
+          - listitem [level=1]
+          - listitem [level=1]
+        - paragraph
+          - StaticText "Verified on kernel 6.17: builds clean, loads clean, "
+          - code
+          - StaticText " appears, and — notably — Android 16 then boots completely on the "
+          - emphasis
+          - StaticText " surfaceflinger binary, no graphics patches needed. That also revises the root cause on redroid-doc#934, which I've closed with a pointer back here."
+        - paragraph
+          - StaticText "Not a maintainer on this repo so I can't close this one myself, but flagging that the PR is ready for review whenever someone with merge rights gets to it."
+      - toolbar "Reactions"
+    - generic
+      - link "Sign up for free" [ref=e45]
+        - StaticText "Sign up for free"
+      - strong
+        - StaticText "to join this conversation on GitHub."
+      - StaticText " Already have an account? "
+      - link "Sign in to comment" [ref=e46]
+    - generic
+      - heading "Metadata" [level=2, ref=e47]
+      - generic
+        - heading "Assignees" [level=3, ref=e80]
+        - StaticText "No one assigned"
+        - heading "Labels" [level=3, ref=e81]
+        - StaticText "No labels"
+        - heading "Type" [level=3, ref=e82]
+        - StaticText "No type"
+        - heading "Projects" [level=3, ref=e83]
+        - StaticText "No projects"
+        - heading "Milestone" [level=3, ref=e84]
+        - StaticText "No milestone"
+        - heading "Relationships" [level=3, ref=e85]
+        - StaticText "None yet"
+        - generic
+          - heading "Development" [level=3, ref=e86]
+          - StaticText "No branches or pull requests"
+          - list
+        - generic
+          - heading "Participants" [level=3, ref=e87]
+          - link "@zhouziyang" [ref=e88]
+          - link "@SakuraKoi" [ref=e89]
+          - link "@skunpoj" [ref=e90]
+        - heading "Issue actions" [level=2, ref=e67]
+        - list
+          - listitem [level=1]
+            - button "Open in GitHub Copilot app" [ref=e96]
+- contentinfo
+  - heading "Footer" [level=2, ref=e2]
+  - link "GitHub Homepage" [ref=e3]
+  - StaticText "© 2026 GitHub,Inc."
+  - navigation "Footer" [ref=e4]
+    - heading "Footer navigation" [level=3, ref=e7]
+    - list "Footer navigation"
+      - listitem [level=1]
+        - link "Terms" [ref=e11]
+      - listitem [level=1]
+        - link "Privacy" [ref=e12]
+      - listitem [level=1]
+        - link "Security" [ref=e13]
+      - listitem [level=1]
+        - link "Status" [ref=e14]
+      - listitem [level=1]
+        - link "Community" [ref=e15]
+      - listitem [level=1]
+        - link "Docs" [ref=e16]
+      - listitem [level=1]
+        - link "Contact" [ref=e17]
+      - listitem [level=1]
+        - button "Manage cookies" [ref=e32]
+      - listitem [level=1]
+        - button "Do not share my personal information" [ref=e33]

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123740-ops-7fdf9a",
+  "created_at": "2026-07-29T12:37:40.176203+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1nkuv99vu39i",
+    "title": "Hermes做CLI中枢 手机远程控电脑",
+    "created_at": 1785061683.2237604
+  },
+  "content": "Hermes作为CLI中枢实现手机远程控电脑的成熟可复用模式为：本地常驻tmux会话运行hermes chat，通过ttyd将其暴露为WebTTY，手机浏览器接入同一tmux会话实现状态共享，同时可搭配Hermes WebUI/Studio提供更丰富的交互入口，无需额外开发即可实现跨设备指令下发与本地CLI应用操控。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123758-ops-7c280a",
+  "created_at": "2026-07-29T12:37:58.117544+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1mw3xhn3ruhd",
+    "title": "个人申请地图API做导航APP",
+    "created_at": 1785060464.0694861
+  },
+  "content": "若需要离线导航、自主控制地图数据、支持CLI/文字化操作，最优合规方案为采用OpenStreetMap（OSM）数据搭配OSRM/Valhalla自建路由服务，该方案无需商业API Key，数据遵循ODbL开源协议，但POI（含商家地址）数据丰富度低于高德/腾讯商业地图。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

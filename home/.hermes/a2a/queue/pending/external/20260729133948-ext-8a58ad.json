@@ -1,0 +1,16 @@
+{
+  "id": "20260729133948-ext-8a58ad",
+  "created_at": "2026-07-29T13:39:48.878758+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxhp40kuyh8am",
+    "title": "Hermesjob auto recovery strategy",
+    "created_at": 1784809901.0093637
+  },
+  "content": "Standard config for HermesJob watchdog monitoring job: Set no_agent to false (agent mode supporting Hermes API and ntfy calls), schedule to */10 * * * * (adjust to */8 if avoiding collision with auto_triage's */10 schedule), deliver to 'local'.",
+  "confidence": 0.99,
+  "status": "pending",
+  "review_note": ""
+}

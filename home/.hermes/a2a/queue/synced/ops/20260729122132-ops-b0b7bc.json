@@ -1,0 +1,17 @@
+{
+  "id": "20260729122132-ops-b0b7bc",
+  "created_at": "2026-07-29T12:21:32.283796+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "5bf75ac9f98b",
+    "title": "http://charlie1990.duckdns.org:8648 打不开 检查打开他的稳定性 解决稳定性后锁定",
+    "created_at": 1785296251.1161313
+  },
+  "content": "The user operates a public service accessible via the DuckDNS dynamic domain charlie1990.duckdns.org on port 8648, which is currently non-accessible. The mandated workflow for this service is stability auditing, fault resolution, and post-resolution configuration locking to prevent regressions.",
+  "confidence": 0.99,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.657456+00:00"
+}

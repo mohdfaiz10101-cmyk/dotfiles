@@ -1,0 +1,16 @@
+{
+  "id": "20260729124611-cod-5d93d9",
+  "created_at": "2026-07-29T12:46:11.889877+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0ngw6x8q1735",
+    "title": "[Advisor consultation #1] [Advisor review] The executor hasn't done any subs...",
+    "created_at": 1785001138.9321475
+  },
+  "content": "User-defined durable standard for all future Hermes agents: must integrate Firecrawl + Context7 for GitHub cold/obscure resource discovery, include a low-token self-audit mechanism (no per-item LLM calls for review), and provide both CLI and WebUI management interfaces.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

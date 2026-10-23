@@ -1,0 +1,16 @@
+{
+  "id": "20260729135111-ops-043be9",
+  "created_at": "2026-07-29T13:51:11.866581+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200315_5c2a0f",
+    "title": "",
+    "created_at": 1784721798.2448113
+  },
+  "content": "When discussing work items, the user expects AI agents to retain references to specific Kanban task IDs (such as t_0120d003) across related conversations to maintain continuity for work tracking.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

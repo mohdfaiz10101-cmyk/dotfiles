@@ -1,0 +1,16 @@
+{
+  "id": "20260802084623-ops-bd3e9d",
+  "created_at": "2026-08-02T08:46:23.028196+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "45d7e3b8-ad28-4995-ac4c-3e4d90b77503",
+    "title": "",
+    "created_at": 1785660181.1014502
+  },
+  "content": "Core Hermes service ports persistently in LISTEN state are 8648, 8787, 19999, 18999, and 3000; port 18999 returns a 401 HTTP status by design as it is protected by a Basic Auth proxy, which is expected behavior.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

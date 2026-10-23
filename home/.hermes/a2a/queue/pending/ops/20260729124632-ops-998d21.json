@@ -1,0 +1,16 @@
+{
+  "id": "20260729124632-ops-998d21",
+  "created_at": "2026-07-29T12:46:32.628723+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0nbnwe5to0ae",
+    "title": "",
+    "created_at": 1785000781.9595997
+  },
+  "content": "The Hermes CLI instance running on port 19901 requires its model configuration to be set to step-router-v1 from the StepFun model suite, as explicitly mandated by the user.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

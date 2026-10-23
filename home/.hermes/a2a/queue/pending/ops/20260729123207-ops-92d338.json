@@ -1,0 +1,16 @@
+{
+  "id": "20260729123207-ops-92d338",
+  "created_at": "2026-07-29T12:32:07.515620+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "3351f4451fa1",
+    "title": "",
+    "created_at": 1785183391.4974418
+  },
+  "content": "Any modification or adjustment to the user's read-only network scheduled tasks requires explicit user authorization.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729132314-ops-e04d6e",
+  "created_at": "2026-07-29T13:23:14.047708+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms6416c7jh5gb3",
+    "title": "",
+    "created_at": 1785331156.2327383
+  },
+  "content": "Hermes Studio 无独立一级“智能体”对象，智能体是 Profile + Room + Skills + Memory 的组合概念，多智能体协作的载体为 Room。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

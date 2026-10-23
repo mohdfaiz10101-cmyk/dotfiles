@@ -1,0 +1,16 @@
+{
+  "id": "20260729124611-cod-d93c6f",
+  "created_at": "2026-07-29T12:46:11.890227+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0ngw6x8q1735",
+    "title": "[Advisor consultation #1] [Advisor review] The executor hasn't done any subs...",
+    "created_at": 1785001138.9321475
+  },
+  "content": "Proven reusable architecture pattern for GitHub cold repo discovery agents: use Firecrawl map for initial resource discovery, signal grep for token-free self-audit, output graded (A/B/C) curated JSON + Markdown, with CLI entry point at `scripts/github-cold-repo <topic>`, WebUI integration as a Hermes Studio dashboard card, and persistent result storage at `data/github-cold-repo/<date>.json`.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

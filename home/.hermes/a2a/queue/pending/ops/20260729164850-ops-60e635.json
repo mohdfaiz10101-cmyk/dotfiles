@@ -1,0 +1,16 @@
+{
+  "id": "20260729164850-ops-60e635",
+  "created_at": "2026-07-29T16:48:50.133877+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms6bekvyvv0l78",
+    "title": "",
+    "created_at": 1785343474.4459746
+  },
+  "content": "A common domain pitfall when addressing the '无法访问此网站' error is assuming the target site is unavailable before first validating local network connectivity and DNS resolution, as local configuration issues are the more frequent root cause for this generic error.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

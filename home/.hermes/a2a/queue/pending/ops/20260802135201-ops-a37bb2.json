@@ -1,0 +1,16 @@
+{
+  "id": "20260802135201-ops-a37bb2",
+  "created_at": "2026-08-02T13:52:01.462002+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbuuld1374sk2",
+    "title": "",
+    "created_at": 1785678478.6803946
+  },
+  "content": "When invoking AIAgent.run_conversation(), all keyword argument names must exactly match the method's predefined parameter schema to avoid TypeError exceptions.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

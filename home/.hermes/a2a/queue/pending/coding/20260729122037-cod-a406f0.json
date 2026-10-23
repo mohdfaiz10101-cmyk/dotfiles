@@ -1,0 +1,16 @@
+{
+  "id": "20260729122037-cod-a406f0",
+  "created_at": "2026-07-29T12:20:37.378933+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5qed1be78fm8",
+    "title": "",
+    "created_at": 1785308186.5194461
+  },
+  "content": "Reusable GitHub research workflow for multi-memory agent architectures: 1) Filter initial candidates by star count and stated multi-memory support, 2) Perform file-level code inspection (not just metadata/README scraping) to verify implementation of required features (scoring/decay, deduplication, >3 backends), 3) Prioritize only repos that pass concrete code verification for deep analysis.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

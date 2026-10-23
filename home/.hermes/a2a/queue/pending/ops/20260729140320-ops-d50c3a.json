@@ -1,0 +1,16 @@
+{
+  "id": "20260729140320-ops-d50c3a",
+  "created_at": "2026-07-29T14:03:20.916719+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195013_6a3eba",
+    "title": "",
+    "created_at": 1784721015.2444923
+  },
+  "content": "When referring to specific work items, the user uses the task's unique kanban ID (e.g., t_0120d003) to ensure unambiguous identification of the item being discussed.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125037-ops-23257b",
+  "created_at": "2026-07-29T12:50:37.953836+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_192016",
+    "title": "",
+    "created_at": 1784978430.407278
+  },
+  "content": "Task action selection (execute, suggest, skip) by the autonomous-task-brain skill is governed by three consistent decision factors: historical task success rates, task complexity, and user preferences, which can be reused as a standard decision framework for similar autonomous task routing scenarios.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

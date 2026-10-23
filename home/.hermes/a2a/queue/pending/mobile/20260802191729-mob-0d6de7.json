@@ -1,0 +1,16 @@
+{
+  "id": "20260802191729-mob-0d6de7",
+  "created_at": "2026-08-02T19:17:29.331063+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cc9a99cbbe6646e4abd66effdaa881ee",
+    "title": "磁盘清理操作结果 (fork)",
+    "created_at": 1785698046.9971986
+  },
+  "content": "Linux 用户家目录下常见的占系统盘空间的大体积缓存/运行时目录包括 `~/.cache`、`~/.local/share/ollama`、`~/.local/share/goose`、`~/.cache/ms-playwright`、`~/.nvm`，通用的迁移方式为将目录移动到外置存储后，在原位置创建软链接。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

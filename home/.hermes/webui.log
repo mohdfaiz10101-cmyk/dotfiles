@@ -1,0 +1,51 @@
+[bootstrap] Starting Hermes Web UI on http://0.0.0.0:8787 (foreground mode: --foreground)
+Failed to load plugin 'nous': No module named 'hermes_cli.dashboard_auth'
+
+  Hermes Web UI -- startup config
+  --------------------------------
+  repo root   : /var/home/charlie/hermes-webui
+  agent dir   : /var/home/charlie/.local/lib/python3.14/site-packages  [32m[ok][0m
+  python      : /usr/bin/python3
+  state dir   : /var/home/charlie/.hermes/webui
+  workspace   : /var/home/charlie/workspace
+  host:port   : 0.0.0.0:8787
+  config file : /var/home/charlie/.hermes/config.yaml  (found)
+
+[ok] Raised file descriptor soft limit 1024 -> 4096
+[ok] bg_task_complete drain thread started
+[ok] SessionChannel reaper thread started
+  Hermes Web UI listening on http://0.0.0.0:8787
+  Then open:     http://localhost:8787
+
+[webui] {"ts": "2026-07-27T05:36:25Z", "remote": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "ms": 0.1}
+[webui] {"ts": "2026-07-27T05:36:31Z", "remote": "127.0.0.1", "method": "GET", "path": "/", "status": 302, "ms": 0.0}
+[webui] {"ts": "2026-07-27T05:36:33Z", "remote": "127.0.0.1", "method": "GET", "path": "/", "status": 302, "ms": 0.0}
+[webui] {"ts": "2026-07-27T05:36:34Z", "remote": "127.0.0.1", "method": "GET", "path": "/", "status": 302, "ms": 0.0}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions?source=global_agent", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/assets/js/LoginView-MDEUfUKN.js", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/assets/css/LoginView-CE9MovYO.css", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/assets/css/login?next=/assets/css/LoginView-CE9MovYO.css", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/assets/js/login?next=/assets/js/LoginView-MDEUfUKN.js", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/assets/login?next=/assets/js/LoginView-MDEUfUKN.js", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:36Z", "remote": "127.0.0.1", "method": "GET", "path": "/assets/login?next=/assets/css/LoginView-CE9MovYO.css", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:37Z", "remote": "127.0.0.1", "method": "GET", "path": "/", "status": 302, "ms": 0.0}
+[webui] {"ts": "2026-07-27T05:36:37Z", "remote": "127.0.0.1", "method": "GET", "path": "/login?next=/assets/css/LoginView-CE9MovYO.css", "status": 200, "ms": 996.5}
+[webui] {"ts": "2026-07-27T05:36:37Z", "remote": "127.0.0.1", "method": "GET", "path": "/login?next=/assets/js/LoginView-MDEUfUKN.js", "status": 200, "ms": 996.5}
+[webui] {"ts": "2026-07-27T05:36:37Z", "remote": "127.0.0.1", "method": "GET", "path": "/login?next=/", "status": 200, "ms": 42.8}
+[webui] {"ts": "2026-07-27T05:36:38Z", "remote": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "ms": 0.1}
+[webui] {"ts": "2026-07-27T05:36:40Z", "remote": "127.0.0.1", "method": "GET", "path": "/", "status": 302, "ms": 0.0}
+[webui] {"ts": "2026-07-27T05:36:40Z", "remote": "127.0.0.1", "method": "GET", "path": "/login?next=/", "status": 200, "ms": 0.3}
+[webui] {"ts": "2026-07-27T05:36:45Z", "remote": "127.0.0.1", "method": "GET", "path": "/socket.io/?profile=default&EIO=4&transport=websocket", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:48Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions?source=global_agent", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:36:48Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions", "status": 401, "ms": 0.1}
+[webui] {"ts": "2026-07-27T05:36:54Z", "remote": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "ms": 0.1}
+[webui] {"ts": "2026-07-27T05:37:00Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:37:00Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions?source=global_agent", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:37:12Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:37:12Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions?source=global_agent", "status": 401, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:37:15Z", "remote": "127.0.0.1", "method": "GET", "path": "/socket.io/?profile=default&EIO=4&transport=websocket", "status": 302, "ms": 0.2}
+[webui] {"ts": "2026-07-27T05:37:24Z", "remote": "127.0.0.1", "method": "GET", "path": "/health", "status": 200, "ms": 0.1}
+[webui] {"ts": "2026-07-27T05:37:24Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions", "status": 401, "ms": 0.3}
+[webui] {"ts": "2026-07-27T05:37:24Z", "remote": "127.0.0.1", "method": "GET", "path": "/api/hermes/sessions?source=global_agent", "status": 401, "ms": 0.2}
+[crash-visibility] process exit pid=573349 thread=MainThread

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133839-cod-10441b",
+  "created_at": "2026-07-29T13:38:39.328576+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_215937_5b1f68",
+    "title": "",
+    "created_at": 1784815177.235722
+  },
+  "content": "Niche Chinese e-commerce platform-specific tools (e.g., plugins for the 链动小铺 platform) are almost never published on GitHub with exact platform name + function keywords in repository metadata; they are either private, or labeled with generic functional terms (e.g., generic e-commerce sourcing/filtering plugin) to comply with platform policies or support broader use cases.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

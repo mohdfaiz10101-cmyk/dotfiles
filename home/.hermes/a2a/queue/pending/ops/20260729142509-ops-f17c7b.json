@@ -1,0 +1,16 @@
+{
+  "id": "20260729142509-ops-f17c7b",
+  "created_at": "2026-07-29T14:25:09.953544+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192809_92a0ad",
+    "title": "",
+    "created_at": 1784719691.2613854
+  },
+  "content": "When processing work-related requests for this user, AI agents should recognize and retain context of referenced kanban task IDs to align with their existing work tracking workflow.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

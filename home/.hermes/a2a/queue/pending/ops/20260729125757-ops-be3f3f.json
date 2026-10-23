@@ -1,0 +1,16 @@
+{
+  "id": "20260729125757-ops-be3f3f",
+  "created_at": "2026-07-29T12:57:57.313404+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_140937",
+    "title": "",
+    "created_at": 1784959789.025103
+  },
+  "content": "The skill's solution retrieval layer aggregates 5 distinct knowledge sources: local skills library, historical conversation sessions, memory-engine, letta, and public GitHub repositories, to source reusable patterns for incoming tasks.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

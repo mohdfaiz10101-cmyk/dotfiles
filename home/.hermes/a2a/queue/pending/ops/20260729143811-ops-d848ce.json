@@ -1,0 +1,16 @@
+{
+  "id": "20260729143811-ops-d848ce",
+  "created_at": "2026-07-29T14:38:11.575810+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtfyrocq440an",
+    "title": "",
+    "created_at": 1784565081.7199075
+  },
+  "content": "After updating Node.js, running `npm cache clean --force` followed by reinstalling project dependencies is a necessary step to prevent compatibility issues between the previous Node.js version's cached dependency artifacts and the new runtime.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

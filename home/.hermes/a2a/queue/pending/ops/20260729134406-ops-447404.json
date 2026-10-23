@@ -1,0 +1,16 @@
+{
+  "id": "20260729134406-ops-447404",
+  "created_at": "2026-07-29T13:44:06.013384+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw7aw1vfafc7r",
+    "title": "AI模型接入配置",
+    "created_at": 1784731989.9791822
+  },
+  "content": "执行Hermes Studio配置类任务时，优先加载`hermes-studio-config`技能以获取官方标准配置流程和注意事项",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729130950-ops-1f0fc7",
+  "created_at": "2026-07-29T13:09:50.026417+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_040035",
+    "title": "",
+    "created_at": 1784923246.8521638
+  },
+  "content": "Memory curation uses a file-based lock mechanism (MEMORY.md.lock) that prevents any write operations when present; the process skips entirely and sets watchdog to failure state until the lock is manually removed.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

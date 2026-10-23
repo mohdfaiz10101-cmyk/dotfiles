@@ -1,0 +1,16 @@
+{
+  "id": "20260729125616-ops-00b4ec",
+  "created_at": "2026-07-29T12:56:16.040769+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_150431",
+    "title": "",
+    "created_at": 1784963084.0159438
+  },
+  "content": "The autonomous-task-brain skill automatically persists reusable automation assets (custom skills, cron jobs, scripts) and execution outcome data to a shared knowledge base after each task run, enabling continuous improvement of future task routing and execution accuracy.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

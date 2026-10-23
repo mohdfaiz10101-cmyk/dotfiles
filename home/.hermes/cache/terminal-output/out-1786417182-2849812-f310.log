@@ -1,0 +1,257 @@
+=== SYSTEM_SERVER_MEM ===
+                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap
+  Native Heap   108352   108332        4    54060   111492        0        0        0
+  Dalvik Heap   196384   196344        0     5311   203168        0        0        0
+        TOTAL   599958   385952   113120    85662   700128        0        0        0
+         Native Heap:   108332                         111492
+           TOTAL PSS:   599958            TOTAL RSS:   700128       TOTAL SWAP PSS:    85662
+=== ANR ===
+total 1708
+-rw------- 1 system system 1697037 2026-08-11 10:50 anr_3761_2026-08-11-10-50-16-322
+-rw------- 1 system system   23328 2026-08-11 10:49 anr_5847_2026-08-11-10-49-49-970
+-rw------- 1 system system   23609 2026-08-11 10:49 anr_5986_2026-08-11-10-49-50-518
+=== ANR_HEAD_SYS ===
+Subject: Blocked in handler on main thread (main) for 15s
+Watchdog-Type: pre_watchdog
+
+
+--- CriticalEventLog ---
+capacity: 20
+events <
+  timestamp_ms: 1786416589969
+  anr <
+    pid: 5847
+    process: "android.process.media"
+    process_class: 2
+    subject: "Broadcast of Intent { act=android.hardware.usb.action.USB_STATE flg=0x31100010 xflg=0x4 cmp=com.android.mtp/.MtpReceiver (has extras) }"
+    uid: 10059
+  >
+>
+events <
+  timestamp_ms: 1786416590516
+  anr <
+    pid: 5986
+    process: "android.process.media"
+    process_class: 2
+    subject: "Broadcast of Intent { act=android.hardware.usb.action.USB_STATE flg=0x31100010 xflg=0x4 cmp=com.android.mtp/.MtpReceiver (has extras) }"
+    uid: 1110059
+  >
+>
+timestamp_ms: 1786416615992
+window_ms: 300000
+
+----- dumping pid: 3761 at 1376968
+
+----- pid 3761 at 2026-08-11 10:50:16.332849744+0800 -----
+Cmd line: system_server
+Build fingerprint: 'OnePlus/PKR110/OP60EBL1:16/AP3A.240617.008/V.314736c-e5ac6b-eaf617:user/release-keys'
+ABI: 'arm64'
+Build type: optimized
+Debug Store: 3,16,1376977::ID:17212,C:E,T:1375736||ID:17212,C:S,T:1375736,N:SchRcvReg,D:tname=oplus.fg;tid=262||ID:17211,C:E,T:1371884||ID:17211,C:S,T:1371884,N:SchRcvReg,D:tname=oplus.fg;tid=262||ID:17210,C:E,T:1367374||ID:17210,C:S,T:1367374,N:SchRcvReg,D:tname=oplus.fg;tid=262||ID:17209,C:E,T:1361879||ID:17209,C:S,T:1361879,N:SchRcvReg,D:tname=oplus.fg;tid=262||ID:0,C:P,T:1361877,N:Finish,D:tname=OplusAlarmManagerThread;tid=166;prid=20de07b||ID:17208,C:E,T:1361877||ID:17208,C:S,T:1361877,N:BcRcvReg,D:tname=OplusAlarmManagerThread;tid=166;act=android.intent.action.SCREEN_OFF;cmp=null;pkg=null;prid=20de07b||ID:17207,C:E,T:1361877||ID:17207,C:S,T:1361877,N:SchRcvReg,D:tname=oplus.fg;tid=262||ID:0,C:P,T:1361845,N:Finish,D:tname=StorageManagerService;tid=205;prid=9be4438||ID:17206,C:E,T:1361845||ID:17206,C:S,T:1361844,N:BcRcvReg,D:tname=StorageManagerService;tid=205;act=android.intent.action.DREAMING_STARTED;cmp=null;pkg=null;prid=9be4438;;
+suspend all histogram:	Sum: 277.708ms 99% C.I. 5.438us-13911.039us Avg: 406.600us Max: 62609us
+DALVIK THREADS (467):
+"main" prio=5 tid=1 Blocked
+  | group="main" sCount=1 ucsCount=0 flags=1 obj=0xab4b8fb8 self=0xb400006f94558c00
+  | sysTid=3761 nice=-2 cgrp=ssfg sched=0/0 handle=0x705a69d098
+  | state=S schedstat=( 11213423339 10109586974 31230 ) utm=768 stm=352 core=2 HZ=100
+  | stack=0x7fd8c77000-0x7fd8c79000 stackSize=8188KB
+  | held mutexes=
+  at com.android.server.notification.NotificationManagerService.hasAnyNotification(NotificationManagerService.java:15773)
+  - waiting to lock <0x06c227dd> (a java.lang.Object) held by thread 450
+  at com.android.server.notification.OplusNotificationManagerServiceExtImpl$NotificationUidObserver.lambda$onUidGone$0(OplusNotificationManagerServiceExtImpl.java:1554)
+  at com.android.server.notification.OplusNotificationManagerServiceExtImpl$NotificationUidObserver.$r8$lambda$KLy9pMFcHVS9PF9FYiszTKkyqTA(unavailable:0)
+  at com.android.server.notification.OplusNotificationManagerServiceExtImpl$NotificationUidObserver$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+  at android.os.Handler.handleCallback(Handler.java:1027)
+  at android.os.Handler.dispatchMessage(Handler.java:108)
+  at android.os.Looper.loopOnce(Looper.java:302)
+  at android.os.Looper.loop(Looper.java:412)
+  at com.android.server.SystemServer.run(SystemServer.java:1148)
+  at com.android.server.SystemServer.main(SystemServer.java:713)
+  at java.lang.reflect.Method.invoke(Native method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:613)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1052)
+DumpLatencyMs: 0.44823
+
+"binder:3761_17" prio=5 tid=422 Blocked
+  | group="main" sCount=1 ucsCount=0 flags=1 obj=0x90081f8 self=0xb400006dd4e0d000
+  | sysTid=8171 nice=0 cgrp=ssfg sched=1073741824/0 handle=0x6e252554c0
+  | state=S schedstat=( 4422274650 4754968527 19669 ) utm=322 stm=119 core=1 HZ=100
+  | stack=0x6e2515e000-0x6e25160000 stackSize=989KB
+  | held mutexes=
+  at com.android.server.notification.ManagedServices.getServices(ManagedServices.java:247)
+  - waiting to lock <0x06c227dd> (a java.lang.Object) held by thread 450
+  at com.android.server.notification.NotificationManagerService$NotificationAssistants.onPanelHidden(NotificationManagerService.java:13501)
+  at com.android.server.notification.NotificationManagerService$1.onPanelHidden(NotificationManagerService.java:1585)
+  at com.android.server.statusbar.StatusBarManagerService.onPanelHidden(StatusBarManagerService.java:1982)
+  at com.android.internal.statusbar.IStatusBarService$Stub.onTransact(IStatusBarService.java:848)
+  at android.os.Binder.execTransactInternal(Binder.java:1439)
+  at android.os.Binder.execTransact(Binder.java:1378)
+DumpLatencyMs: 145.266
+
+"FinalizerDaemon" daemon prio=5 tid=6 Waiting
+  | group="system" sCount=1 ucsCount=0 flags=1 obj=0x207d0e8 self=0xb400006f2e3ac800
+  | sysTid=4632 nice=4 cgrp=ssfg sched=0/0 handle=0x6e3f1ef4c0
+=== ANR_HEAD_1 ===
+Subject: Broadcast of Intent { act=android.hardware.usb.action.USB_STATE flg=0x31100010 xflg=0x4 cmp=com.android.mtp/.MtpReceiver (has extras) }
+RssHwmKb: 134312
+RssKb: 133588
+RssAnonKb: 64088
+RssShmemKb: 996
+VmSwapKb: 7884
+
+
+--- CriticalEventLog ---
+capacity: 20
+timestamp_ms: 1786416589968
+window_ms: 300000
+
+Foreground: No
+Process uptime: 10s
+----- dumping pid: 5847 at 1350602
+
+----- pid 5847 at 2026-08-11 10:49:49.967248920+0800 -----
+Cmd line: android.process.media
+Build fingerprint: 'OnePlus/PKR110/OP60EBL1:16/AP3A.240617.008/V.314736c-e5ac6b-eaf617:user/release-keys'
+ABI: 'arm64'
+Build type: optimized
+Debug Store: 3,3,1350611::ID:2,C:S,T:1340592,N:BindApp||ID:1,C:E,T:1340592||ID:1,C:S,T:1340592,N:SchRcv,D:tname=binder:5847_2;tid=47;;
+suspend all histogram:	Sum: 38us 99% C.I. 0.090us-19us Avg: 4.222us Max: 19us
+DALVIK THREADS (11):
+"main" prio=5 tid=1 Native
+  | group="main" sCount=1 ucsCount=0 flags=1 obj=0xab4b8fb8 self=0xb400006f94558c00
+  | sysTid=5847 nice=0 cgrp=background sched=0/0 handle=0x705a69d098
+  | state=S schedstat=( 451835818 18550374 249 ) utm=37 stm=7 core=5 HZ=100
+  | stack=0x7fd8c77000-0x7fd8c79000 stackSize=8188KB
+  | held mutexes=
+  native: #00 pc 000eff4c  /apex/com.android.runtime/lib64/bionic/libc.so (__ioctl+12) (BuildId: f0468d2d3a31c553a7103b6114f35dc6)
+  native: #01 pc 00094f84  /apex/com.android.runtime/lib64/bionic/libc.so (ioctl+156) (BuildId: f0468d2d3a31c553a7103b6114f35dc6)
+  native: #02 pc 000791b4  /system/lib64/libbinder.so (android::IPCThreadState::transact+7680) (BuildId: 19f9b525e2efaba1d4aff0199349d39a)
+  native: #03 pc 00071120  /system/lib64/libbinder.so (android::BpBinder::transact+516) (BuildId: 19f9b525e2efaba1d4aff0199349d39a)
+  native: #04 pc 001faaf0  /system/lib64/libandroid_runtime.so (android_os_BinderProxy_transact+424) (BuildId: 7a70e6fec48e118fb922a4cb7a4d8509)
+  at android.os.BinderProxy.transactNative(Native method)
+  at android.os.BinderProxy.transact(BinderProxy.java:685)
+  at android.app.INotificationManager$Stub$Proxy.createNotificationChannels(INotificationManager.java:3957)
+  at android.app.NotificationManager.createNotificationChannels(NotificationManager.java:1269)
+  at android.app.NotificationManager.createNotificationChannel(NotificationManager.java:1257)
+  at com.android.mtp.ServiceIntentSender.<init>(ServiceIntentSender.java:47)
+  at com.android.mtp.MtpDocumentsProvider.onCreate(MtpDocumentsProvider.java:117)
+  at android.content.ContentProvider.attachInfo(ContentProvider.java:2707)
+  at android.content.ContentProvider.attachInfo(ContentProvider.java:2676)
+  at android.provider.DocumentsProvider.attachInfo(DocumentsProvider.java:180)
+  at android.app.ActivityThread.installProvider(ActivityThread.java:9506)
+  at android.app.ActivityThread.installContentProviders(ActivityThread.java:9015)
+  at android.app.ActivityThread.handleBindApplication(ActivityThread.java:8645)
+  at android.app.ActivityThread.-$$Nest$mhandleBindApplication(unavailable:0)
+  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2813)
+  at android.os.Handler.dispatchMessage(Handler.java:115)
+  at android.os.Looper.loopOnce(Looper.java:302)
+  at android.os.Looper.loop(Looper.java:412)
+  at android.app.ActivityThread.main(ActivityThread.java:9998)
+  at java.lang.reflect.Method.invoke(Native method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:613)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1074)
+DumpLatencyMs: 2.63813
+
+"ReferenceQueueDaemon" daemon prio=5 tid=9 Waiting
+  | group="system" sCount=1 ucsCount=0 flags=1 obj=0x208d280 self=0xb400006f0fc6ec00
+  | sysTid=5973 nice=4 cgrp=background sched=0/0 handle=0x6f378b84c0
+  | state=S schedstat=( 152968 0 1 ) utm=0 stm=0 core=4 HZ=100
+  | stack=0x6f374b5000-0x6f374b7000 stackSize=4109KB
+  | held mutexes=
+  at java.lang.Object.wait(Native method)
+  - waiting on <0x0c62c133> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+  at java.lang.Object.wait(Object.java:405)
+  at java.lang.Object.wait(Object.java:543)
+  at java.lang.Daemons$ReferenceQueueDaemon.runInternal(Daemons.java:265)
+  - locked <0x0c62c133> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+  at java.lang.Daemons$Daemon.run(Daemons.java:137)
+  at java.lang.Thread.run(Thread.java:1119)
+DumpLatencyMs: 36.7995
+
+"FinalizerDaemon" daemon prio=5 tid=10 Waiting
+  | group="system" sCount=1 ucsCount=0 flags=1 obj=0x208d310 self=0xb400006f0fc70800
+  | sysTid=5974 nice=4 cgrp=background sched=0/0 handle=0x6f364ae4c0
+  | state=S schedstat=( 148125 0 2 ) utm=0 stm=0 core=4 HZ=100
+=== ANR_HEAD_2 ===
+Subject: Broadcast of Intent { act=android.hardware.usb.action.USB_STATE flg=0x31100010 xflg=0x4 cmp=com.android.mtp/.MtpReceiver (has extras) }
+RssHwmKb: 134064
+RssKb: 133312
+RssAnonKb: 63924
+RssShmemKb: 744
+VmSwapKb: 7876
+
+
+--- CriticalEventLog ---
+capacity: 20
+events <
+  timestamp_ms: 1786416589969
+  anr <
+    pid: 5847
+    process: "android.process.media"
+    process_class: 2
+    subject: "Broadcast of Intent { act=android.hardware.usb.action.USB_STATE flg=0x31100010 xflg=0x4 cmp=com.android.mtp/.MtpReceiver (has extras) }"
+    uid: 10059
+  >
+>
+timestamp_ms: 1786416590515
+window_ms: 300000
+
+Foreground: No
+Process uptime: 10s
+----- dumping pid: 5986 at 1351156
+
+----- pid 5986 at 2026-08-11 10:49:50.514525274+0800 -----
+Cmd line: android.process.media
+Build fingerprint: 'OnePlus/PKR110/OP60EBL1:16/AP3A.240617.008/V.314736c-e5ac6b-eaf617:user/release-keys'
+ABI: 'arm64'
+Build type: optimized
+Debug Store: 3,3,1351159::ID:2,C:E,T:1341153||ID:2,C:S,T:1341153,N:SchRcv,D:tname=binder:5986_2;tid=47||ID:1,C:S,T:1341153,N:BindApp;;
+suspend all histogram:	Sum: 38us 99% C.I. 0.090us-19us Avg: 4.222us Max: 19us
+DALVIK THREADS (11):
+"main" prio=5 tid=1 Native
+  | group="main" sCount=1 ucsCount=0 flags=1 obj=0xab4b8fb8 self=0xb400006f94558c00
+  | sysTid=5986 nice=0 cgrp=foreground sched=0/0 handle=0x705a69d098
+  | state=S schedstat=( 445303487 7564071 94 ) utm=40 stm=4 core=4 HZ=100
+  | stack=0x7fd8c77000-0x7fd8c79000 stackSize=8188KB
+  | held mutexes=
+  native: #00 pc 000eff4c  /apex/com.android.runtime/lib64/bionic/libc.so (__ioctl+12) (BuildId: f0468d2d3a31c553a7103b6114f35dc6)
+  native: #01 pc 00094f84  /apex/com.android.runtime/lib64/bionic/libc.so (ioctl+156) (BuildId: f0468d2d3a31c553a7103b6114f35dc6)
+  native: #02 pc 000791b4  /system/lib64/libbinder.so (android::IPCThreadState::transact+7680) (BuildId: 19f9b525e2efaba1d4aff0199349d39a)
+  native: #03 pc 00071120  /system/lib64/libbinder.so (android::BpBinder::transact+516) (BuildId: 19f9b525e2efaba1d4aff0199349d39a)
+  native: #04 pc 001faaf0  /system/lib64/libandroid_runtime.so (android_os_BinderProxy_transact+424) (BuildId: 7a70e6fec48e118fb922a4cb7a4d8509)
+  at android.os.BinderProxy.transactNative(Native method)
+  at android.os.BinderProxy.transact(BinderProxy.java:685)
+  at android.app.INotificationManager$Stub$Proxy.createNotificationChannels(INotificationManager.java:3957)
+  at android.app.NotificationManager.createNotificationChannels(NotificationManager.java:1269)
+  at android.app.NotificationManager.createNotificationChannel(NotificationManager.java:1257)
+  at com.android.mtp.ServiceIntentSender.<init>(ServiceIntentSender.java:47)
+  at com.android.mtp.MtpDocumentsProvider.onCreate(MtpDocumentsProvider.java:117)
+  at android.content.ContentProvider.attachInfo(ContentProvider.java:2707)
+  at android.content.ContentProvider.attachInfo(ContentProvider.java:2676)
+  at android.provider.DocumentsProvider.attachInfo(DocumentsProvider.java:180)
+  at android.app.ActivityThread.installProvider(ActivityThread.java:9506)
+  at android.app.ActivityThread.installContentProviders(ActivityThread.java:9015)
+  at android.app.ActivityThread.handleBindApplication(ActivityThread.java:8645)
+  at android.app.ActivityThread.-$$Nest$mhandleBindApplication(unavailable:0)
+  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2813)
+  at android.os.Handler.dispatchMessage(Handler.java:115)
+  at android.os.Looper.loopOnce(Looper.java:302)
+  at android.os.Looper.loop(Looper.java:412)
+  at android.app.ActivityThread.main(ActivityThread.java:9998)
+  at java.lang.reflect.Method.invoke(Native method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:613)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1074)
+DumpLatencyMs: 1.325
+
+"ReferenceQueueDaemon" daemon prio=5 tid=9 Waiting
+  | group="system" sCount=1 ucsCount=0 flags=1 obj=0x208d248 self=0xb400006f0fc6ec00
+  | sysTid=6046 nice=4 cgrp=foreground sched=0/0 handle=0x6f343f84c0
+  | state=S schedstat=( 158282 0 2 ) utm=0 stm=0 core=4 HZ=100
+  | stack=0x6f33ff5000-0x6f33ff7000 stackSize=4109KB
+  | held mutexes=
+  at java.lang.Object.wait(Native method)
+  - waiting on <0x0c62c133> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+  at java.lang.Object.wait(Object.java:405)
+  at java.lang.Object.wait(Object.java:543)
+
+__HERMES_CWD_2f100b147312__/var/home/charlie/workspace__HERMES_CWD_2f100b147312__

@@ -1,0 +1,72 @@
+○ hermes-web-ui.service - Hermes Web UI (:8648 via FRP, service on :18648)
+     Loaded: loaded (/var/home/charlie/.config/systemd/user/hermes-web-ui.service; disabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/user/service.d
+             └─10-timeout-abort.conf
+             /var/home/charlie/.config/systemd/user/hermes-web-ui.service.d
+             └─env.conf, override.conf
+     Active: inactive (dead)
+
+---
+○ hermes-8648-proxy.service - Hermes Web UI local proxy (:8468 -> :8787)
+     Loaded: loaded (/var/home/charlie/.config/systemd/user/hermes-8648-proxy.service; disabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/user/service.d
+             └─10-timeout-abort.conf
+     Active: inactive (dead)
+
+---
+ss listeners:
+egrep: warning: egrep is obsolescent; using grep -E
+LISTEN 0      511          0.0.0.0:8648       0.0.0.0:*    users:(("MainThread",pid=225477,fd=29))      
+
+---
+8648 process root:
+egrep: warning: egrep is obsolescent; using grep -E
+charlie     1847    1625  0 8月05 ?       00:01:41 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/c482cf76c1188462.sock --worker-profile coding --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie     1848    1625  0 8月05 ?       00:01:42 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/7e5bec210b06e29d.sock --worker-profile creative --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie     1849    1625  0 8月05 ?       00:01:41 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/b3c344ad16694bd9.sock --worker-profile monitor --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie     1850    1625  0 8月05 ?       00:01:42 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bde5acd56ade382a.sock --worker-profile ops --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie     1851    1625  0 8月05 ?       00:01:42 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bc175c31a79a41e7.sock --worker-profile research --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie     4729    1849  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1849 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4730    1849  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1849 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4731    1849  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1849 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4732    1848  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1848 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4733    1849  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1849 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4734    1848  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1848 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4735    1847  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1847 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4736    1848  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1848 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4737    1847  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1847 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4738    1848  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1848 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4739    1847  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1847 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4740    1847  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1847 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4741    1850  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1850 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4742    1851  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1851 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4743    1850  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1850 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4744    1851  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1851 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4745    1850  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1850 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4746    1851  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1851 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4747    1851  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1851 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4748    1850  0 8月05 ?       00:00:06 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1850 -- /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4750    4729  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4757    4740  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4759    4742  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4773    4739  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4783    4743  0 8月05 ?       00:00:01 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4786    4732  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4793    4734  0 8月05 ?       00:00:01 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4810    4730  0 8月05 ?       00:00:01 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4812    4741  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4820    4731  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4827    4744  0 8月05 ?       00:00:01 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4843    4745  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4846    4736  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4865    4747  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4866    4733  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4879    4748  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie     4914    4746  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie     4929    4735  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie     4932    4737  0 8月05 ?       00:00:01 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie     4975    4738  0 8月05 ?       00:00:00 /var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   225477    1625  0 8月10 ?       00:04:29 /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/index.js
+charlie   226043  225477  0 8月10 ?       00:00:00 /bin/sh /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+
+__HERMES_CWD_8e7b43f1ccba__/var/home/charlie/workspace__HERMES_CWD_8e7b43f1ccba__

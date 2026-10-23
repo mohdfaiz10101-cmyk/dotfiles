@@ -1,0 +1,89 @@
+{
+  "task_id": "mesh-20260801233842-98232efe",
+  "title": "Rule-root-phone-FRP-fallback",
+  "objective": "规则纠正：不要说root安卓没有兜底方案。root Android已有FRP phone-adb兜底控制面：手机端frpc_smart.sh/frpc.sh主动连回Fedora frps，暴露到127.0.0.1:15555。准确表达应为：当前手机端frpc未连回导致兜底入口暂不可用，需要一次USB ADB或手机本机root shell启动/data/adb/service.d/frpc.sh，然后adb connect 127.0.0.1:15555接管。NetBird不是唯一控制面。",
+  "profile": "ops",
+  "mcp_profile": "ops",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "must_read": [],
+  "constraints": [
+    "Do not load full session history",
+    "Return concise summary only",
+    "Verify before final"
+  ],
+  "summary_hint": "",
+  "router": {
+    "message": "规则纠正：不要说root安卓没有兜底方案。root Android已有FRP phone-adb兜底控制面：手机端frpc_smart.sh/frpc.sh主动连回Fedora frps，暴露到127.0.0.1:15555。准确表达应为：当前手机端frpc未连回导致兜底入口暂不可用，需要一次USB ADB或手机本机root shell启动/data/adb/service.d/frpc.sh，然后adb connect 127.0.0.1:15555接管。NetBird不是唯一控制面。",
+    "skills_to_load": [
+      "ops-autopilot",
+      "android-remote-control-setup",
+      "android-ops",
+      "ios-netbird-log-tracking",
+      "android-proxy-netbird-config",
+      "android-remote-access",
+      "android-remote-sync",
+      "android-root-network"
+    ],
+    "workflow_rules": [
+      {
+        "score": 6,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"8525eaba5c90\", \"last_verified\": \"2026-07-21T19:19:31\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"c757981c9ee0f10ba6d1\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 6,
+        "text": "{\"avoid\": [], \"confidence\": 0.7, \"id\": \"05c6d9cfa2f3\", \"last_verified\": \"2026-07-21T19:04:38\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"6302c33f8d9808949043\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-c",
+        "scope": "phone",
+        "confidence": 0.7
+      },
+      {
+        "score": 5,
+        "text": "Do not diagnose phone `frpc` `EOF` / `session shutdown` as an FRPS outage before checking proxy and DNS state. On 2026-07-08 Fedora shell had `HTTP_PROXY`/`HTTPS_PROXY`/`ALL_PROXY=127.0.0.1:7890`, which made manual frpc tests fail until those vars were unset; the phone resolved `charlie1990.duckdns.",
+        "scope": "router",
+        "confidence": 0.88
+      },
+      {
+        "score": 5,
+        "text": "Do not diagnose phone `frpc` `EOF` / `session shutdown` as an FRPS outage before checking proxy and DNS state. On 2026-07-08 Fedora shell had `HTTP_PROXY`/`HTTPS_PROXY`/`ALL_PROXY=127.0.0.1:7890`, which made manual frpc  Do not treat Waydroid `:18082` as the final control plane. The durable path is ",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "Phone root/shell network tests can differ from app behavior. Tailscale on Android may be per-UID; a service started as `shell` or root can miss the VPN routes even when the Tailscale app itself is online.",
+        "scope": "phone",
+        "confidence": 0.88
+      },
+      {
+        "score": 4,
+        "text": "Do not assign Haven profile 2 (`OpenCode 18910`) as `mcp_tunnel_endpoint_profile_id`; it becomes a headless tunnel with no terminal. The local ADB MCP bridge is the active Haven transport, so keep that preference empty. Do not re-enable `haven-mcp-watchdog.timer` or keep `haven-mcp-bridge.service` a",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "Do not use router Web form as the first write path when it times out. Prefer SSH `/usr/sbin/nvram` plus `/sbin/restart_firewall`. Do not turn `opencode-18910-local.service` into a second `opencode serve` backend for review workspaces. `18910` is the LAN/public Web entry and must remain a proxy to `4",
+        "scope": "opencode",
+        "confidence": 0.85
+      },
+      {
+        "score": 4,
+        "text": "{\"avoid\": [], \"confidence\": 0.45, \"id\": \"60da4f23da03\", \"last_verified\": \"2026-07-21T19:22:11\", \"published_to\": [\"none\"], \"schema\": \"workflow-v1\", \"scope\": \"phone\", \"source_events\": [\"3fde6dffa286d224ca13\"], \"status\": \"candidate\", \"steps\": [\"read relevant runbook(s): haven.md, phone-agent.md, input-",
+        "scope": "phone",
+        "confidence": 0.45
+      }
+    ],
+    "required_checks": [
+      "load listed skills before answering",
+      "verify changes before final",
+      "post-task-hook for complex tasks"
+    ]
+  },
+  "created_at": "2026-08-01T23:38:42+08:00",
+  "status": "queued"
+}

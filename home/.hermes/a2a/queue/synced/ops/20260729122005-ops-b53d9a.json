@@ -1,0 +1,17 @@
+{
+  "id": "20260729122005-ops-b53d9a",
+  "created_at": "2026-07-29T12:20:05.983265+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5zxr85xft2ba",
+    "title": "Hermes A2A多智能体房间分配系统落地",
+    "created_at": 1785324433.8207605
+  },
+  "content": "Hermes 当前活跃端口为 8787/8648/18648/19976（8618 端口不存在/已退役）；A2A 系统文件必须统一部署在 ~/.hermes/a2a/ 目录，严禁修改 workspace 目录。",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.656015+00:00"
+}

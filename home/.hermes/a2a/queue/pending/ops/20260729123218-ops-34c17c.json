@@ -1,0 +1,16 @@
+{
+  "id": "20260729123218-ops-34c17c",
+  "created_at": "2026-07-29T12:32:18.674195+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260728_030027",
+    "title": "",
+    "created_at": 1785178829.0102024
+  },
+  "content": "Scheduled Hermes cron job execution rules: Do not use send_message or attempt manual output delivery, as final responses are auto-delivered by the system; if there are no new findings to report, respond with exactly \"[SILENT]\" (no additional content) to suppress delivery.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

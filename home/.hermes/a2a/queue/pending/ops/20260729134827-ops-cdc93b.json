@@ -1,0 +1,16 @@
+{
+  "id": "20260729134827-ops-cdc93b",
+  "created_at": "2026-07-29T13:48:27.175683+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200622_e0bcbd",
+    "title": "",
+    "created_at": 1784721985.2613192
+  },
+  "content": "The user references work-related tasks in conversations using kanban task IDs that follow the t_[alphanumeric string] naming pattern, as exemplified by the ID t_dbc58661 in this session.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

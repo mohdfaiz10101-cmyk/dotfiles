@@ -1,0 +1,16 @@
+{
+  "id": "20260729125546-ops-85ea80",
+  "created_at": "2026-07-29T12:55:46.208781+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260725_153314_3185aa",
+    "title": "Hermes Web UI访问问题排查 #6",
+    "created_at": 1784964794.2862945
+  },
+  "content": "远程访问配置模式：使用 DuckDNS 动态域名（如 charlie1990.duckdns.org）配合 FRP 隧道（端口 8648）暴露 Web UI，并配置服务开机自启，可实现外网稳定访问。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729133129-ops-a2b2bb",
+  "created_at": "2026-07-29T13:31:29.381890+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260724_121611_835387",
+    "title": "",
+    "created_at": 1784866573.3204248
+  },
+  "content": "Frpc config fix pitfall: Fixing config parse errors does not automatically restore ports previously proxied by the broken config. Always explicitly verify expected open ports post-fix (e.g. via `ss -tlnp | grep <port>` or the FRP server dashboard).",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729130453-ops-a1e5bb",
+  "created_at": "2026-07-29T13:04:53.786204+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_084823",
+    "title": "",
+    "created_at": 1784940515.9989305
+  },
+  "content": "The memory-curator skill uses a lock file mechanism (MEMORY.md.lock) to prevent concurrent writes to MEMORY.md. When the lock exists, curation is skipped and recorded as a failure in the watchdog state.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

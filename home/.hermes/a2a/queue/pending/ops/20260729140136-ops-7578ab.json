@@ -1,0 +1,16 @@
+{
+  "id": "20260729140136-ops-7578ab",
+  "created_at": "2026-07-29T14:01:36.157272+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195213_b81b1b",
+    "title": "",
+    "created_at": 1784721135.812887
+  },
+  "content": "When discussing work items, the user references associated work kanban tasks using their unique 't_' prefixed identifier as the primary point of reference.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

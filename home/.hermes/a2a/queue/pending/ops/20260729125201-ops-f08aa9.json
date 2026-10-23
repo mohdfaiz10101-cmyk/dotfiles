@@ -1,0 +1,16 @@
+{
+  "id": "20260729125201-ops-f08aa9",
+  "created_at": "2026-07-29T12:52:01.607006+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_182536",
+    "title": "",
+    "created_at": 1784975147.1622431
+  },
+  "content": "The memory-curator skill persists runtime execution state (including consecutive failure count, last run status, and per-run failure reason logs) to the watchdog file at `/var/home/charlie/.hermes/state/memory-curator-watchdog.json` after every execution.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

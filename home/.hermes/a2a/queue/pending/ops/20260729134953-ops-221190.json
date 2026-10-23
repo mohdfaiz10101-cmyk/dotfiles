@@ -1,0 +1,16 @@
+{
+  "id": "20260729134953-ops-221190",
+  "created_at": "2026-07-29T13:49:53.088873+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200422_c08243",
+    "title": "",
+    "created_at": 1784721869.0998533
+  },
+  "content": "To align with the user's project tracking conventions, all references to their work tasks should use the 't_' prefixed 8-character alphanumeric ID format.",
+  "confidence": 0.75,
+  "status": "pending",
+  "review_note": ""
+}

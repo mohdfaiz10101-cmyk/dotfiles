@@ -1,0 +1,16 @@
+{
+  "id": "20260729134501-ops-f18f30",
+  "created_at": "2026-07-29T13:45:01.195446+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_201030_41e900",
+    "title": "",
+    "created_at": 1784722232.8809555
+  },
+  "content": "When discussing specific work items, the user uses the kanban task ID as the canonical reference for that item, so future work-related interactions should prioritize matching this ID format to align with the user's workflow.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123142-ops-f1007b",
+  "created_at": "2026-07-29T12:31:42.221661+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3q2e70bqyapn",
+    "title": "",
+    "created_at": 1785186714.0681767
+  },
+  "content": "Reverse-engineering non-public third-party AI platform web endpoints to bypass official APIs violates the platform's user agreement, carries account ban and legal risks, and implementations of such reverse-engineered adapters are not permissible to provide.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

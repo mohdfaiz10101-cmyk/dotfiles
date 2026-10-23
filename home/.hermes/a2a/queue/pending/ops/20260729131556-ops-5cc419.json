@@ -1,0 +1,16 @@
+{
+  "id": "20260729131556-ops-5cc419",
+  "created_at": "2026-07-29T13:15:56.941719+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_005456",
+    "title": "",
+    "created_at": 1784912121.6554487
+  },
+  "content": "The host system is experiencing severe, worsening resource degradation: 91% disk usage, 13.25 system load, 15Gi/23Gi memory usage, 14Gi/23Gi swap usage, and the ADB device is fully unreachable with 100% ping loss.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

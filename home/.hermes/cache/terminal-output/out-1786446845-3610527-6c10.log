@@ -1,0 +1,122 @@
+2026-08-11T18:40:21.853+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:40:21.853+08:00 INFO client/internal/engine.go:924: sync finished in 1.11518ms
+2026-08-11T18:40:21.863+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: EOF
+2026-08-11T18:40:27.010+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-08-11T18:40:27.962+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-08-11T18:40:27.962+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-08-11T18:40:27.962+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-08-11T18:40:27.962+08:00 INFO client/internal/engine_ssh.go:68: SSH server is locally allowed but disabled by management server
+2026-08-11T18:40:27.963+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:40:27.963+08:00 INFO client/internal/engine.go:924: sync finished in 1.036735ms
+2026-08-11T18:40:47.339+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 1162, RemoteOffer: 57, RemoteAnswer: 39, RemoteCandidate: 305, P2PConnected: 8, SwitchToRelay: 8, WGCheckSuccess: 346, RelayConnected: 8, LocalProxies: 10
+2026-08-11T18:42:17.324+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T18:42:42.592+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-08-11T18:42:42.593+08:00 WARN shared/management/client/grpc.go:277: job stream disconnected, will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-08-11T18:43:02.100+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-08-11T18:43:03.326+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-08-11T18:43:03.326+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-08-11T18:43:03.326+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-08-11T18:43:03.326+08:00 INFO client/internal/engine_ssh.go:68: SSH server is locally allowed but disabled by management server
+2026-08-11T18:43:03.327+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:43:03.327+08:00 INFO client/internal/engine.go:924: sync finished in 1.052365ms
+2026-08-11T18:43:13.084+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T18:43:13.084+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T18:43:28.284+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-08-11T18:43:28.284+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-08-11T18:43:28.284+08:00 INFO client/internal/engine_ssh.go:68: SSH server is locally allowed but disabled by management server
+2026-08-11T18:43:28.285+08:00 ERRO client/internal/acl/manager.go:190: failed to apply 4 peer ACL rule(s): 4 errors occurred:
+	* apply firewall rule: add firewall rule: add peer filtering for fd07:a9a2:d7d7:ff39:83a2:be9a:e17f:8f5: IPv6 firewall not initialized
+	* apply firewall rule: add firewall rule: add peer filtering for fd07:a9a2:d7d7:ff39:695d:d9e8:8338:91bf: IPv6 firewall not initialized
+	* apply firewall rule: add firewall rule: add peer filtering for fd07:a9a2:d7d7:ff39:110a:3b49:d3d9:1929: IPv6 firewall not initialized
+	* apply firewall rule: add firewall rule: add peer filtering for fd07:a9a2:d7d7:ff39:c2ae:928e:9d80:78f4: IPv6 firewall not initialized
+2026-08-11T18:43:28.285+08:00 INFO client/internal/acl/manager.go:86: ACL rules processed in: 1.120546ms, total rules count: 4
+2026-08-11T18:43:28.286+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/lazyconn/activity/listener_udp.go:48: created activity listener: 127.0.1.1:34101
+2026-08-11T18:43:28.286+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/conn_mgr.go:222: peer added to lazy conn manager
+2026-08-11T18:43:28.287+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:43:28.287+08:00 INFO client/internal/engine.go:924: sync finished in 2.992454ms
+2026-08-11T18:45:56.373+08:00 WARN shared/management/client/grpc.go:277: job stream disconnected, will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-08-11T18:45:56.373+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-08-11T18:46:18.099+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-08-11T18:46:28.908+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-08-11T18:46:28.908+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-08-11T18:46:28.908+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-08-11T18:46:28.908+08:00 INFO client/internal/engine_ssh.go:68: SSH server is locally allowed but disabled by management server
+2026-08-11T18:46:28.909+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:46:28.909+08:00 INFO client/internal/engine.go:924: sync finished in 1.345524ms
+2026-08-11T18:46:37.548+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.71:53208->213.163.206.27:443: read: connection timed out
+2026-08-11T18:46:43.122+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-08-11T18:46:44.135+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-08-11T18:46:44.135+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-08-11T18:46:44.135+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-08-11T18:46:44.135+08:00 INFO client/internal/engine_ssh.go:68: SSH server is locally allowed but disabled by management server
+2026-08-11T18:46:44.136+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:46:44.136+08:00 INFO client/internal/engine.go:924: sync finished in 1.276459ms
+2026-08-11T18:46:44.136+08:00 WARN shared/management/client/grpc.go:404: disconnected from the Management service but will retry silently. Reason: EOF
+2026-08-11T18:46:51.411+08:00 INFO shared/management/client/grpc.go:388: connected to the Management Service stream
+2026-08-11T18:46:52.180+08:00 INFO client/internal/engine.go:902: auto-update is disabled
+2026-08-11T18:46:52.180+08:00 INFO shared/relay/client/manager.go:321: update relay server URLs: [rels://relay.netbird.io:443]
+2026-08-11T18:46:52.180+08:00 INFO client/internal/engine.go:1081: received metrics configuration from management: enabled=false
+2026-08-11T18:46:52.180+08:00 INFO client/internal/engine_ssh.go:68: SSH server is locally allowed but disabled by management server
+2026-08-11T18:46:52.181+08:00 INFO client/ssh/config/manager.go:263: Created NetBird SSH client config: /etc/ssh/ssh_config.d/99-netbird.conf
+2026-08-11T18:46:52.181+08:00 INFO client/internal/engine.go:924: sync finished in 1.164326ms
+2026-08-11T18:47:14.403+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T18:48:13.085+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T18:48:13.085+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T18:49:08.968+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T18:50:47.339+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 1181, RemoteOffer: 57, RemoteAnswer: 39, RemoteCandidate: 305, P2PConnected: 8, SwitchToRelay: 8, WGCheckSuccess: 346, RelayConnected: 8, LocalProxies: 10
+2026-08-11T18:52:13.569+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T18:53:13.114+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T18:53:13.114+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T18:55:08.641+08:00 WARN shared/signal/client/grpc.go:227: disconnected from the Signal service but will retry silently. Reason: rpc error: code = Unavailable desc = error reading from server: EOF
+2026-08-11T18:55:18.253+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: signal is not ready
+2026-08-11T18:55:22.859+08:00 INFO ./caller_not_available:0: 2026/08/11 18:55:22 WARNING: [core] [Channel #6 SubChannel #7] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "transport: authentication handshake failed: read tcp 192.168.123.71:49320->213.163.206.27:443: read: connection timed out"
+2026-08-11T18:55:43.860+08:00 INFO ./caller_not_available:0: 2026/08/11 18:55:43 WARNING: [core] [Channel #6 SubChannel #7] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "transport: Error while dialing: nbnet.NewDialer().DialContext: dial tcp 213.163.206.27:443: i/o timeout"
+2026-08-11T18:55:48.104+08:00 ERRO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/conn.go:670: failed to send offer: signal is not ready
+2026-08-11T18:56:05.715+08:00 INFO ./caller_not_available:0: 2026/08/11 18:56:05 WARNING: [core] [Channel #6 SubChannel #7] grpc: addrConn.createTransport failed to connect to {Addr: "signal.netbird.io:443", ServerName: "signal.netbird.io:443", }. Err: connection error: desc = "transport: authentication handshake failed: context deadline exceeded"
+2026-08-11T18:56:19.202+08:00 INFO client/internal/peer/guard/sr_watcher.go:107: reconnected to Signal or Relay server
+2026-08-11T18:56:19.202+08:00 INFO shared/signal/client/grpc.go:195: connected to the Signal Service stream
+2026-08-11T18:57:15.003+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T18:58:13.084+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T18:58:13.084+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T19:00:47.339+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 1203, RemoteOffer: 57, RemoteAnswer: 39, RemoteCandidate: 305, P2PConnected: 8, SwitchToRelay: 8, WGCheckSuccess: 346, RelayConnected: 8, LocalProxies: 10
+2026-08-11T19:02:25.606+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:03:13.085+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T19:03:13.085+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T19:04:56.595+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:05:23.882+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/lazyconn/activity/listener_udp.go:74: activity detected, captured 148 bytes for reinjection
+2026-08-11T19:05:23.882+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/lazyconn/manager/manager.go:531: detected peer activity
+2026-08-11T19:05:23.882+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/guard/guard.go:54: starting guard for reconnection with MaxInterval: 34.034s
+2026-08-11T19:05:26.372+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/conn.go:382: OnRemoteOffer, on status ICE: Disconnected, status Relay: Disconnected
+2026-08-11T19:05:26.372+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/handshaker.go:114: received offer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-08-11T19:05:26.372+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/handshaker.go:240: remote peer stopped sending ICE credentials
+2026-08-11T19:05:26.372+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:301: prepare the relayed connection, waiting for remote peer: sha-iaKz5TiGTB5Aykr5uv2a9EnFnO3W/34Ni2UJIvKIn7g=
+2026-08-11T19:05:26.422+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/conn.go:351: OnRemoteAnswer, priority: None, status ICE: Disconnected, status relay: Disconnected
+2026-08-11T19:05:26.422+08:00 WARN [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/handshaker.go:186: skipping remote answer message because receiver not ready
+2026-08-11T19:05:26.900+08:00 INFO [relay: rels://streamline-vl-icn-1.relay.netbird.io:443] shared/relay/client/client.go:339: remote peer is available: sha-iaKz5TiGTB5Aykr5uv2a9EnFnO3W/34Ni2UJIvKIn7g=
+2026-08-11T19:05:26.900+08:00 INFO client/iface/wgproxy/ebpf/proxy.go:120: turn conn added to wg proxy store: rels://streamline-vl-icn-1.relay.netbird.io:443, endpoint port: :11
+2026-08-11T19:05:26.900+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/conn.go:576: created new wgProxy for relay connection: 127.0.0.1:11
+2026-08-11T19:05:26.901+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/wg_watcher.go:96: WireGuard watcher started
+2026-08-11T19:05:27.001+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/conn.go:613: start to communicate with peer via relay
+2026-08-11T19:05:30.071+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/conn.go:351: OnRemoteAnswer, priority: PriorityRelay, status ICE: Disconnected, status relay: Connected
+2026-08-11T19:05:30.071+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/handshaker.go:136: received answer, running version 0.71.0, remote WireGuard listen port 51820, session id: unknown, remote ICE supported: false
+2026-08-11T19:05:40.147+08:00 INFO [peer: 21jd4DJ+5hWd6CxEbsuGAu0Qypdqh675sSzjkZ18/3E=] client/internal/lazyconn/activity/listener_udp.go:74: activity detected, captured 148 bytes for reinjection
+2026-08-11T19:05:40.147+08:00 INFO [peer: 21jd4DJ+5hWd6CxEbsuGAu0Qypdqh675sSzjkZ18/3E=] client/internal/lazyconn/manager/manager.go:531: detected peer activity
+2026-08-11T19:05:40.147+08:00 INFO [peer: 21jd4DJ+5hWd6CxEbsuGAu0Qypdqh675sSzjkZ18/3E=] client/internal/peer/guard/guard.go:54: starting guard for reconnection with MaxInterval: 43.29s
+2026-08-11T19:05:43.148+08:00 INFO [peer: ypxbZ2xhiP5ulHbI+E20P7DGxAZRF5iLdSGR93rOKiY=] client/internal/lazyconn/activity/listener_udp.go:74: activity detected, captured 148 bytes for reinjection
+2026-08-11T19:05:43.148+08:00 INFO [peer: ypxbZ2xhiP5ulHbI+E20P7DGxAZRF5iLdSGR93rOKiY=] client/internal/lazyconn/manager/manager.go:531: detected peer activity
+2026-08-11T19:05:43.148+08:00 INFO [peer: ypxbZ2xhiP5ulHbI+E20P7DGxAZRF5iLdSGR93rOKiY=] client/internal/peer/guard/guard.go:54: starting guard for reconnection with MaxInterval: 30.368s
+2026-08-11T19:05:56.902+08:00 INFO [peer: fENdCrFudH8KzuEnW+72Mt2OIFttQz1Im0iNEpwMAHg=] client/internal/peer/wg_watcher.go:116: first wg handshake detected within: 0.81sec, (2026-08-11 19:05:27.710592788 +0800 CST)
+2026-08-11T19:07:26.512+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:07:52.692+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:08:13.085+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T19:08:13.085+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T19:08:39.298+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:10:45.642+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:10:47.339+08:00 INFO [peer: E3b7qReqdzansDWbc09KSXMktlbDnNWlMz0+x718xQw=] client/internal/peer/state_dump.go:79: Dump stat: Status: Connecting, SentOffer: 1223, RemoteOffer: 57, RemoteAnswer: 39, RemoteCandidate: 305, P2PConnected: 8, SwitchToRelay: 8, WGCheckSuccess: 346, RelayConnected: 8, LocalProxies: 10
+2026-08-11T19:11:22.240+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:12:26.942+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+2026-08-11T19:13:13.085+08:00 WARN client/internal/peer/ice/agent.go:107: ICE agent close timed out after 3s, proceeding with cleanup
+2026-08-11T19:13:13.085+08:00 WARN client/internal/peer/guard/ice_monitor.go:65: Failed to check ICE changes: wait for gathering timed out
+2026-08-11T19:13:35.104+08:00 INFO client/internal/relay/relay.go:103: started new probe for STUN, TURN servers
+
+__HERMES_CWD_9c7e4b72a547__/var/home/charlie/workspace__HERMES_CWD_9c7e4b72a547__

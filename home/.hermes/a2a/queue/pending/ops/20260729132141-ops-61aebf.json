@@ -1,0 +1,16 @@
+{
+  "id": "20260729132141-ops-61aebf",
+  "created_at": "2026-07-29T13:21:41.067680+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_220240",
+    "title": "",
+    "created_at": 1784901770.715394
+  },
+  "content": "The skill's solution retrieval layer aggregates inputs from 5 canonical sources: local skills library, historical conversation sessions, memory-engine, letta, and public GitHub repositories to identify optimal task execution patterns.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

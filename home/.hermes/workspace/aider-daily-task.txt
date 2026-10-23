@@ -1,0 +1,8 @@
+Daily Aider Task
+
+Please review the current workspace and provide a concise summary of:
+1. Recent file changes in the last 24 hours
+2. Any obvious issues or improvements
+3. Suggested next steps
+
+Keep the summary under 200 lines and write it to the output file.

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125400-ops-8c58df",
+  "created_at": "2026-07-29T12:54:00.185751+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_163259",
+    "title": "",
+    "created_at": 1784968390.547831
+  },
+  "content": "Two persistent cron job defects are present: the `phone-sync-import` job is in error state due to 120s script timeouts, and the `weekly-review` job is configured but has never executed (last_run_at=null, repeat.completed=0).",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123540-cre-36bd0d",
+  "created_at": "2026-07-29T12:35:40.341183+00:00",
+  "room": "creative",
+  "target_agent": "creative-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2musz61w8qkj",
+    "title": "Hermes Studio Task Execution Error Fix",
+    "created_at": 1785120875.376127
+  },
+  "content": "A standard reusable pre-execution workflow for Hermes Studio tasks to prevent [Errno 2] errors is to verify all required input assets and runtime dependencies are explicitly uploaded to the Hermes Studio task environment, as the environment does not automatically inherit files or paths from the local development filesystem.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

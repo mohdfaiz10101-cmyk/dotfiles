@@ -1,0 +1,16 @@
+{
+  "id": "20260729123917-ops-df8727",
+  "created_at": "2026-07-29T12:39:17.639663+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_153039_0140ad",
+    "title": "",
+    "created_at": 1785051040.5816896
+  },
+  "content": "When the user provides the instruction '只回复 OK' (Only reply with OK), the assistant must respond with exclusively the exact string 'OK' and no additional content, formatting, or explanatory text.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

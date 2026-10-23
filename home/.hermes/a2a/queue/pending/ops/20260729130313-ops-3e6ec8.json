@@ -1,0 +1,16 @@
+{
+  "id": "20260729130313-ops-3e6ec8",
+  "created_at": "2026-07-29T13:03:13.736810+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_100400",
+    "title": "",
+    "created_at": 1784945051.8221285
+  },
+  "content": "The phone-sync-import.timer systemd timer remains in a persistent not-active state, and the ADB device required for phone sync operations is consistently reported as unavailable (device not found).",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

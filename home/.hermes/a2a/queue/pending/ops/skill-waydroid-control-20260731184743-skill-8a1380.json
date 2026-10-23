@@ -1,0 +1,15 @@
+{
+  "id": "20260731184743-skill-8a1380",
+  "created_at": "2026-07-31T18:47:43.390758+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "waydroid-control",
+    "file": "/var/home/charlie/.hermes/skills/waydroid-control/SKILL.md"
+  },
+  "content": "Skill `waydroid-control` updated. 该技能文件新增了Waydroid控制的标准化默认执行流程，明确了各类控制工具的优先级、headless场景处理规则、ws-scrcpy故障排查要求及scrcpy版本匹配限制，同时划定了视频镜像、18082端口的兜底定位。 Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

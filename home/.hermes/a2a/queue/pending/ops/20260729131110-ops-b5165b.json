@@ -1,0 +1,16 @@
+{
+  "id": "20260729131110-ops-b5165b",
+  "created_at": "2026-07-29T13:11:10.881677+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrzbwu41f1ivd6",
+    "title": "",
+    "created_at": 1784921113.5699778
+  },
+  "content": "The git project deployed by the nesquena entity is explicitly identified as the Hermes WebUI codebase.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

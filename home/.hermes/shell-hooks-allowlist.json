@@ -1,0 +1,40 @@
+{
+  "approvals": [
+    {
+      "approved_at": "2026-07-28T01:16:35.502399Z",
+      "command": "/var/home/charlie/.local/bin/hermes-pre-tool-call",
+      "event": "pre_tool_call",
+      "script_mtime_at_approval": "2026-07-28T01:15:50.381217Z"
+    },
+    {
+      "approved_at": "2026-07-28T01:16:35.502428Z",
+      "command": "/var/home/charlie/.local/bin/hermes-pre-tool-danger-guard",
+      "event": "pre_tool_call",
+      "script_mtime_at_approval": "2026-07-28T01:15:50.373502Z"
+    },
+    {
+      "approved_at": "2026-07-28T01:16:35.502450Z",
+      "command": "/var/home/charlie/.local/bin/hermes-post-tool-call",
+      "event": "post_tool_call",
+      "script_mtime_at_approval": "2026-07-28T01:15:50.384040Z"
+    },
+    {
+      "approved_at": "2026-07-28T01:16:35.502467Z",
+      "command": "/var/home/charlie/.local/bin/hermes-post-tool-verifier",
+      "event": "post_tool_call",
+      "script_mtime_at_approval": "2026-07-28T01:15:50.375931Z"
+    },
+    {
+      "approved_at": "2026-07-28T01:16:35.502482Z",
+      "command": "/var/home/charlie/.local/bin/hermes-on-session-start",
+      "event": "on_session_start",
+      "script_mtime_at_approval": "2026-07-28T01:15:50.386724Z"
+    },
+    {
+      "approved_at": "2026-07-28T01:16:35.502495Z",
+      "command": "/var/home/charlie/.local/bin/hermes-on-session-end",
+      "event": "on_session_end",
+      "script_mtime_at_approval": "2026-07-28T01:15:50.389155Z"
+    }
+  ]
+}

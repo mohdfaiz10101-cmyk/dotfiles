@@ -1,0 +1,16 @@
+{
+  "id": "20260729123016-cod-233da9",
+  "created_at": "2026-07-29T12:30:16.445413+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "124407d04624",
+    "title": "",
+    "created_at": 1785198256.5400114
+  },
+  "content": "This user's core network requirement is stable, maximum speed access (including browser performance) via dynamic node/channel switching, implemented via a long-term multi-exit acceleration architecture: rooted Magisk phone runs mihomo at /data/adb/mihomo_netbird (with DNS port 5354), paired with a host running mihomo, Tailscale, and NetBird. Host mihomo strategy groups and rules are core routing logic for this architecture and must be fully reviewed before designing acceleration optimizations.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

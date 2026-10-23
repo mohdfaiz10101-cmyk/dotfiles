@@ -1,0 +1,16 @@
+{
+  "id": "20260801115857-ops-e6d5cd",
+  "created_at": "2026-08-01T11:58:57.215896+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msabgnv0r6sqxk",
+    "title": "",
+    "created_at": 1785585466.2225766
+  },
+  "content": "When integrating StepFun new group API, avoid relying on native per-conversation switching functionality; implement manual conversation ID tracking and explicit context passing in client code to ensure correct context isolation between conversations.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

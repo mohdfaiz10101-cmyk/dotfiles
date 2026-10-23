@@ -1,0 +1,16 @@
+{
+  "id": "20260729122005-ops-03aeb6",
+  "created_at": "2026-07-29T12:20:05.983760+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5zxr85xft2ba",
+    "title": "Hermes A2A多智能体房间分配系统落地",
+    "created_at": 1785324433.8207605
+  },
+  "content": "A2A 系统需实现三层同步机制：(1)普通对话蒸馏为知识后经审批流程实时更新对应智能体；(2)skill 更新后自动同步到关联 agents；(3)设立总控 agent 统一管理所有 agent 的信息通道。",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

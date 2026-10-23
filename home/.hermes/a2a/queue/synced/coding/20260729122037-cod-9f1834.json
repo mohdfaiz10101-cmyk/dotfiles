@@ -1,0 +1,17 @@
+{
+  "id": "20260729122037-cod-9f1834",
+  "created_at": "2026-07-29T12:20:37.378786+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5qed1be78fm8",
+    "title": "",
+    "created_at": 1785308186.5194461
+  },
+  "content": "Critical domain validation pitfall: Do not rely solely on README/metadata claims when evaluating multi-memory agent repos; qualifying candidates must have verifiable concrete code (not just descriptive text) for scoring/decay, deduplication, and support for >3 distinct memory backends.",
+  "confidence": 0.9,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:21:00.774897+00:00"
+}

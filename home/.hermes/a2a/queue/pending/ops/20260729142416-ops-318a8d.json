@@ -1,0 +1,16 @@
+{
+  "id": "20260729142416-ops-318a8d",
+  "created_at": "2026-07-29T14:24:16.209812+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192909_796cf1",
+    "title": "",
+    "created_at": 1784719751.500502
+  },
+  "content": "The user's work kanban task IDs use a special-character-free alphanumeric suffix format to enable concise, easy-to-communicate task references.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

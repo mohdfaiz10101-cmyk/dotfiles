@@ -1,0 +1,16 @@
+{
+  "id": "20260802090126-ops-7d0da6",
+  "created_at": "2026-08-02T09:01:26.131337+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbkgi08azhoxc",
+    "title": "",
+    "created_at": 1785661110.8948607
+  },
+  "content": "Hermes does not implement automatic model assignment logic; the `step-router-v1` is a fixed, static `model` parameter included in every outbound request sent to the StepFun API, with no dynamic routing or model selection performed on the Hermes side.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

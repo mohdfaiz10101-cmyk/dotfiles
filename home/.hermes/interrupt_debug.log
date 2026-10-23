@@ -1,0 +1,101 @@
+00:54:26 ENTER: queued interrupt msg='ok do it', agent_running=True
+00:54:26 interrupt fired: msg='ok do it', children=0, parent._interrupt=True
+12:53:57 ENTER: queued interrupt msg='你修复下我的网络 就是我手机网络很复杂 有mihomo 有fake ip 抖音评论和抖音直播微信小程序等他们的网络分配规', agent_running=True
+12:53:57 interrupt fired: msg='你修复下我的网络 就是我手机网络很复杂 有mihomo 有fake ip 抖音评论和抖音直播微信小程序等他们的网络分配规', children=0, parent._interrupt=True
+14:25:51 ENTER: queued interrupt msg='继续', agent_running=True
+14:25:51 interrupt fired: msg='继续', children=0, parent._interrupt=True
+16:24:49 ENTER: queued interrupt msg='Bearer Token: 2349afa9-49cd-4712-b091-ad49acea2147URL: http:', agent_running=True
+16:24:49 interrupt fired: msg='Bearer Token: 2349afa9-49cd-4712-b091-ad49acea2147URL: http:', children=0, parent._interrupt=True
+17:00:40 interrupt fired: msg='Bearer Token: 2349afa9-49cd-4712-b091-ad49acea2147还有这个啊什么的，这', children=0, parent._interrupt=True
+17:00:40 ENTER: queued interrupt msg='Bearer Token: 2349afa9-49cd-4712-b091-ad49acea2147还有这个啊什么的，这', agent_running=True
+02:01:47 ENTER: queued interrupt msg='##url', agent_running=True
+02:01:47 ENTER: queued interrupt msg='https://api.stepfun. com/', agent_running=True
+02:01:48 ENTER: queued interrupt msg='step_plan/v1', agent_running=True
+02:01:48 ENTER: queued interrupt msg='## model', agent_running=True
+02:01:48 ENTER: queued interrupt msg='step-3.7-flash', agent_running=True
+02:01:49 ENTER: queued interrupt msg='step-router-v1', agent_running=True
+02:01:49 ENTER: queued interrupt msg='stepaudio-2.5-chat', agent_running=True
+02:01:49 ENTER: queued interrupt msg='stepaudio-2.5-tts', agent_running=True
+02:01:49 ENTER: queued interrupt msg='stepaudio-2.5-asr', agent_running=True
+02:01:51 ENTER: queued interrupt msg='stepaudio-2.5-realtime', agent_running=True
+02:01:51 ENTER: queued interrupt msg='step-image-edit-2', agent_running=True
+02:01:51 ENTER: queued interrupt msg='step-3.5-flash-2603', agent_running=True
+02:01:51 ENTER: queued interrupt msg='step-3.5-flash', agent_running=True
+02:01:51 ENTER: queued interrupt msg='## api_key', agent_running=True
+02:01:52 ENTER: queued interrupt msg='3HtO ToMVg2UVElgIG01Mnz4U', agent_running=True
+02:01:52 ENTER: queued interrupt msg='b37WsOve3 Mgns5FRx614maKt', agent_running=True
+02:01:52 ENTER: queued interrupt msg='519cumyksGl1c1PIA卖家已发货', agent_running=True
+02:01:53 ENTER: queued interrupt msg='##url', agent_running=True
+02:01:53 ENTER: queued interrupt msg='https://api.stepfun. com/', agent_running=True
+02:01:53 ENTER: queued interrupt msg='step_plan/v1', agent_running=True
+02:01:53 ENTER: queued interrupt msg='## model', agent_running=True
+02:01:53 ENTER: queued interrupt msg='step-3.7-flash', agent_running=True
+02:01:53 ENTER: queued interrupt msg='step-router-v1', agent_running=True
+02:01:53 ENTER: queued interrupt msg='stepaudio-2.5-chat', agent_running=True
+02:01:53 ENTER: queued interrupt msg='stepaudio-2.5-tts', agent_running=True
+02:01:53 ENTER: queued interrupt msg='stepaudio-2.5-asr', agent_running=True
+02:01:53 ENTER: queued interrupt msg='stepaudio-2.5-realtime', agent_running=True
+02:01:53 ENTER: queued interrupt msg='step-image-edit-2', agent_running=True
+02:01:53 ENTER: queued interrupt msg='step-3.5-flash-2603', agent_running=True
+02:01:53 ENTER: queued interrupt msg='step-3.5-flash', agent_running=True
+02:01:53 ENTER: queued interrupt msg='## api_key', agent_running=True
+02:01:53 ENTER: queued interrupt msg='3HtO ToMVg2UVElgIG01Mnz4U', agent_running=True
+02:01:53 ENTER: queued interrupt msg='b37WsOve3 Mgns5FRx614maKt', agent_running=True
+02:01:54 interrupt fired: msg='##url', children=0, parent._interrupt=True
+00:44:34 ENTER: queued interrupt msg='charlie1990.duckdns.org 拒绝了我们的连接请求。', agent_running=True
+00:44:34 ENTER: queued interrupt msg='请试试以下办法：', agent_running=True
+00:44:34 ENTER: queued interrupt msg='检查网络连接', agent_running=True
+00:44:34 interrupt fired: msg='charlie1990.duckdns.org 拒绝了我们的连接请求。', children=0, parent._interrupt=True
+00:45:37 interrupt fired: msg='http://charlie1990.duckdns.org:8648/#/he', children=0, parent._interrupt=True
+00:45:37 ENTER: queued interrupt msg='http://charlie1990.duckdns.org:8648/#/he', agent_running=True
+00:55:18 interrupt fired: msg='不能删除这个保护，然后你可以让我可以访问或者是密码访问', children=0, parent._interrupt=True
+00:55:18 ENTER: queued interrupt msg='不能删除这个保护，然后你可以让我可以访问或者是密码访问', agent_running=True
+21:29:41 ENTER: queued interrupt msg='他有追踪日志，你可以查。netbird我开了日志追踪', agent_running=True
+21:29:41 interrupt fired: msg='他有追踪日志，你可以查。netbird我开了日志追踪', children=0, parent._interrupt=True
+22:39:08 ENTER: queued interrupt msg='肯定有综合管理多网络结构的比如5g wifi 路由器 netbird 肯定有个类似的综合综合红木', agent_running=True
+22:39:08 interrupt fired: msg='肯定有综合管理多网络结构的比如5g wifi 路由器 netbird 肯定有个类似的综合综合红木', children=0, parent._interrupt=True
+00:42:18 ENTER: queued interrupt msg='请试试以下办法：', agent_running=True
+00:42:18 ENTER: queued interrupt msg='检查网络连接', agent_running=True
+00:42:18 interrupt fired: msg='请试试以下办法：', children=0, parent._interrupt=True
+11:28:17 ENTER: queued interrupt msg='我是手机浏览器', agent_running=True
+11:28:17 interrupt fired: msg='我是手机浏览器', children=0, parent._interrupt=True
+19:58:15 interrupt fired: msg='1', children=0, parent._interrupt=True
+19:58:15 ENTER: queued interrupt msg='1', agent_running=True
+15:23:30 ENTER: queued interrupt msg='还是童养媳问题', agent_running=True
+15:23:30 interrupt fired: msg='还是童养媳问题', children=0, parent._interrupt=True
+15:24:00 ENTER: queued interrupt msg='都做', agent_running=True
+15:24:00 interrupt fired: msg='都做', children=0, parent._interrupt=True
+17:44:07 interrupt fired: msg='你清理日志', children=0, parent._interrupt=True
+17:44:07 ENTER: queued interrupt msg='你清理日志', agent_running=True
+18:19:52 ENTER: queued interrupt msg='你去搜github此类错误', agent_running=True
+18:19:52 interrupt fired: msg='你去搜github此类错误', children=0, parent._interrupt=True
+18:49:57 interrupt fired: msg='那我不明白了你不是webui好嘛 现在为啥又加上19976', children=0, parent._interrupt=True
+18:49:57 ENTER: queued interrupt msg='那我不明白了你不是webui好嘛 现在为啥又加上19976', agent_running=True
+19:09:54 interrupt fired: msg='完成了吗', children=0, parent._interrupt=True
+19:09:54 ENTER: queued interrupt msg='完成了吗', agent_running=True
+19:50:44 ENTER: queued interrupt msg='我所有浏览器都没开发者工具...', agent_running=True
+19:50:44 interrupt fired: msg='我所有浏览器都没开发者工具...', children=0, parent._interrupt=True
+19:56:43 ENTER: queued interrupt msg='这个按钮点不动', agent_running=True
+19:56:43 interrupt fired: msg='这个按钮点不动', children=0, parent._interrupt=True
+21:00:50 interrupt fired: msg='那既然19976他这个页面的任务切换已经正常了，那你现在不是说把之前的1996去掉去掉，只用web以外那个页面吗？那个网', children=0, parent._interrupt=True
+21:00:50 ENTER: queued interrupt msg='那既然19976他这个页面的任务切换已经正常了，那你现在不是说把之前的1996去掉去掉，只用web以外那个页面吗？那个网', agent_running=True
+00:42:48 ENTER: queued interrupt msg='该网页无法正常运作\ncharlie1990.duckdns.org 未发送任何数据。\nERR_EMPTY_RESPONS', agent_running=True
+00:42:48 interrupt fired: msg='该网页无法正常运作\ncharlie1990.duckdns.org 未发送任何数据。\nERR_EMPTY_RESPONS', children=0, parent._interrupt=True
+01:05:22 ENTER: queued interrupt msg='做任务时候 connection error', agent_running=True
+01:05:22 interrupt fired: msg='做任务时候 connection error', children=0, parent._interrupt=True
+02:06:58 ENTER: queued interrupt msg='同时现在他执行的时候codex做任务的时候同时现在他执行任务的时候codex做任务的时候 提示econnectng', agent_running=True
+02:06:58 interrupt fired: msg='同时现在他执行的时候codex做任务的时候同时现在他执行任务的时候codex做任务的时候 提示econnectng', children=0, parent._interrupt=True
+02:41:16 ENTER: queued interrupt msg='左下角按钮', agent_running=True
+02:41:16 interrupt fired: msg='左下角按钮', children=0, parent._interrupt=True
+02:56:24 interrupt fired: msg='没用啊', children=0, parent._interrupt=True
+02:56:24 ENTER: queued interrupt msg='没用啊', agent_running=True
+02:57:18 ENTER: queued interrupt msg='可以', agent_running=True
+02:57:18 interrupt fired: msg='可以', children=0, parent._interrupt=True
+09:40:32 ENTER: queued interrupt msg='ip address changed so 19976 duckdns can not visit please fix', agent_running=True
+09:40:32 interrupt fired: msg='ip address changed so 19976 duckdns can not visit please fix', children=0, parent._interrupt=True
+09:41:08 ENTER: queued interrupt msg='all duckdns site cannot be visted. i need if ip change or wi', agent_running=True
+09:41:08 interrupt fired: msg='all duckdns site cannot be visted. i need if ip change or wi', children=0, parent._interrupt=True
+10:54:31 ENTER: queued interrupt msg='or you change wifi to match it', agent_running=True
+10:54:31 interrupt fired: msg='or you change wifi to match it', children=0, parent._interrupt=True
+22:58:20 interrupt fired: msg='昨天mihomo可以今天不可以 是节点problem？', children=0, parent._interrupt=True
+22:58:20 ENTER: queued interrupt msg='昨天mihomo可以今天不可以 是节点problem？', agent_running=True

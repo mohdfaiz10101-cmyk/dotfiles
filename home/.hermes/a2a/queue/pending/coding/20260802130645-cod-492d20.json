@@ -1,0 +1,16 @@
+{
+  "id": "20260802130645-cod-492d20",
+  "created_at": "2026-08-02T13:06:45.974375+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbt7ls2pweeoq",
+    "title": "",
+    "created_at": 1785675873.3249981
+  },
+  "content": "外贸采购比价系统的核心数据源优先级与适用场景：第一梯队优先接入made-in-china、aliexpress、globalsources、mfg.com、thomasnet，其中aliexpress适配轻工/小单采购场景，其余站点适配工厂定制/中等规模采购；第二梯队可补充dhgate、ecvv、tradewheel作为数据源延伸",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,193 @@
+NetworkManager general/wifi/device logs:
+8月 08 00:12:17 fedora NetworkManager[1518]: <info>  [1786119137.7267] device (docker0): carrier: link connected
+8月 08 00:12:18 fedora NetworkManager[1518]: <info>  [1786119138.1172] manager: (veth7a0ac27): new Veth device (/org/freedesktop/NetworkManager/Devices/190)
+8月 08 00:13:18 fedora NetworkManager[1518]: <info>  [1786119198.1666] manager: (vethadd24bf): new Veth device (/org/freedesktop/NetworkManager/Devices/191)
+8月 08 00:13:18 fedora NetworkManager[1518]: <info>  [1786119198.2195] device (vethadd24bf): carrier: link connected
+8月 08 00:13:18 fedora NetworkManager[1518]: <info>  [1786119198.2196] device (docker0): carrier: link connected
+8月 08 00:13:18 fedora NetworkManager[1518]: <info>  [1786119198.5656] manager: (vethc5c3cfa): new Veth device (/org/freedesktop/NetworkManager/Devices/192)
+8月 08 00:14:18 fedora NetworkManager[1518]: <info>  [1786119258.6180] manager: (vethf9208ff): new Veth device (/org/freedesktop/NetworkManager/Devices/193)
+8月 08 00:14:18 fedora NetworkManager[1518]: <info>  [1786119258.6698] device (vethf9208ff): carrier: link connected
+8月 08 00:14:18 fedora NetworkManager[1518]: <info>  [1786119258.6699] device (docker0): carrier: link connected
+8月 08 00:14:18 fedora NetworkManager[1518]: <info>  [1786119258.9967] manager: (veth11dc77c): new Veth device (/org/freedesktop/NetworkManager/Devices/194)
+8月 08 00:15:19 fedora NetworkManager[1518]: <info>  [1786119319.0786] manager: (vethd9729ec): new Veth device (/org/freedesktop/NetworkManager/Devices/195)
+8月 08 00:15:19 fedora NetworkManager[1518]: <info>  [1786119319.1284] device (vethd9729ec): carrier: link connected
+8月 08 00:15:19 fedora NetworkManager[1518]: <info>  [1786119319.1286] device (docker0): carrier: link connected
+8月 08 00:15:19 fedora NetworkManager[1518]: <info>  [1786119319.4661] manager: (vethedaeb97): new Veth device (/org/freedesktop/NetworkManager/Devices/196)
+8月 08 00:16:19 fedora NetworkManager[1518]: <info>  [1786119379.5217] manager: (veth91abca2): new Veth device (/org/freedesktop/NetworkManager/Devices/197)
+8月 08 00:16:19 fedora NetworkManager[1518]: <info>  [1786119379.5613] device (veth91abca2): carrier: link connected
+8月 08 00:16:19 fedora NetworkManager[1518]: <info>  [1786119379.5614] device (docker0): carrier: link connected
+8月 08 00:16:19 fedora NetworkManager[1518]: <info>  [1786119379.9320] manager: (veth835f670): new Veth device (/org/freedesktop/NetworkManager/Devices/198)
+8月 08 00:17:20 fedora NetworkManager[1518]: <info>  [1786119440.0040] manager: (veth27c8522): new Veth device (/org/freedesktop/NetworkManager/Devices/199)
+8月 08 00:17:20 fedora NetworkManager[1518]: <info>  [1786119440.0541] device (veth27c8522): carrier: link connected
+8月 08 00:17:20 fedora NetworkManager[1518]: <info>  [1786119440.0543] device (docker0): carrier: link connected
+8月 08 00:17:20 fedora NetworkManager[1518]: <info>  [1786119440.4211] manager: (vethec319f0): new Veth device (/org/freedesktop/NetworkManager/Devices/200)
+8月 08 00:18:20 fedora NetworkManager[1518]: <info>  [1786119500.4527] manager: (veth4f1d334): new Veth device (/org/freedesktop/NetworkManager/Devices/201)
+8月 08 00:18:20 fedora NetworkManager[1518]: <info>  [1786119500.5137] device (veth4f1d334): carrier: link connected
+8月 08 00:18:20 fedora NetworkManager[1518]: <info>  [1786119500.5138] device (docker0): carrier: link connected
+8月 08 00:18:20 fedora NetworkManager[1518]: <info>  [1786119500.8885] manager: (vethdb7351d): new Veth device (/org/freedesktop/NetworkManager/Devices/202)
+8月 08 00:19:20 fedora NetworkManager[1518]: <info>  [1786119560.9320] manager: (veth73b4d63): new Veth device (/org/freedesktop/NetworkManager/Devices/203)
+8月 08 00:19:21 fedora NetworkManager[1518]: <info>  [1786119561.0139] device (veth73b4d63): carrier: link connected
+8月 08 00:19:21 fedora NetworkManager[1518]: <info>  [1786119561.0141] device (docker0): carrier: link connected
+8月 08 00:19:21 fedora NetworkManager[1518]: <info>  [1786119561.3888] manager: (veth68c3855): new Veth device (/org/freedesktop/NetworkManager/Devices/204)
+8月 08 00:20:21 fedora NetworkManager[1518]: <info>  [1786119621.4228] manager: (veth052e9a7): new Veth device (/org/freedesktop/NetworkManager/Devices/205)
+8月 08 00:20:21 fedora NetworkManager[1518]: <info>  [1786119621.4802] device (veth052e9a7): carrier: link connected
+8月 08 00:20:21 fedora NetworkManager[1518]: <info>  [1786119621.4803] device (docker0): carrier: link connected
+8月 08 00:20:21 fedora NetworkManager[1518]: <info>  [1786119621.8219] manager: (veth2bbbfa9): new Veth device (/org/freedesktop/NetworkManager/Devices/206)
+8月 08 00:21:21 fedora NetworkManager[1518]: <info>  [1786119681.8796] manager: (vethd30c4a8): new Veth device (/org/freedesktop/NetworkManager/Devices/207)
+8月 08 00:21:21 fedora NetworkManager[1518]: <info>  [1786119681.9222] device (vethd30c4a8): carrier: link connected
+8月 08 00:21:21 fedora NetworkManager[1518]: <info>  [1786119681.9223] device (docker0): carrier: link connected
+8月 08 00:21:22 fedora NetworkManager[1518]: <info>  [1786119682.3029] manager: (veth252b2ba): new Veth device (/org/freedesktop/NetworkManager/Devices/208)
+8月 08 00:21:37 fedora NetworkManager[1518]: <info>  [1786119697.1518] dhcp4 (wlp0s20f0u5): state changed new lease, address=192.168.123.71
+8月 08 00:22:22 fedora NetworkManager[1518]: <info>  [1786119742.3556] manager: (veth7b575d4): new Veth device (/org/freedesktop/NetworkManager/Devices/209)
+8月 08 00:22:22 fedora NetworkManager[1518]: <info>  [1786119742.4144] device (veth7b575d4): carrier: link connected
+8月 08 00:22:22 fedora NetworkManager[1518]: <info>  [1786119742.4146] device (docker0): carrier: link connected
+8月 08 00:22:22 fedora NetworkManager[1518]: <info>  [1786119742.7495] manager: (vethbec4bca): new Veth device (/org/freedesktop/NetworkManager/Devices/210)
+8月 08 00:23:22 fedora NetworkManager[1518]: <info>  [1786119802.7888] manager: (veth7d6b919): new Veth device (/org/freedesktop/NetworkManager/Devices/211)
+8月 08 00:23:22 fedora NetworkManager[1518]: <info>  [1786119802.8574] device (veth7d6b919): carrier: link connected
+8月 08 00:23:22 fedora NetworkManager[1518]: <info>  [1786119802.8575] device (docker0): carrier: link connected
+8月 08 00:23:23 fedora NetworkManager[1518]: <info>  [1786119803.2951] manager: (veth93daa08): new Veth device (/org/freedesktop/NetworkManager/Devices/212)
+8月 08 00:24:23 fedora NetworkManager[1518]: <info>  [1786119863.4156] manager: (veth83af639): new Veth device (/org/freedesktop/NetworkManager/Devices/213)
+8月 08 00:24:23 fedora NetworkManager[1518]: <info>  [1786119863.4661] device (veth83af639): carrier: link connected
+8月 08 00:24:23 fedora NetworkManager[1518]: <info>  [1786119863.4662] device (docker0): carrier: link connected
+8月 08 00:24:23 fedora NetworkManager[1518]: <info>  [1786119863.8437] manager: (veth2da2345): new Veth device (/org/freedesktop/NetworkManager/Devices/214)
+8月 08 00:25:23 fedora NetworkManager[1518]: <info>  [1786119923.9030] manager: (veth65ba7ae): new Veth device (/org/freedesktop/NetworkManager/Devices/215)
+8月 08 00:25:23 fedora NetworkManager[1518]: <info>  [1786119923.9662] device (veth65ba7ae): carrier: link connected
+8月 08 00:25:23 fedora NetworkManager[1518]: <info>  [1786119923.9663] device (docker0): carrier: link connected
+8月 08 00:25:24 fedora NetworkManager[1518]: <info>  [1786119924.3345] manager: (veth8b62702): new Veth device (/org/freedesktop/NetworkManager/Devices/216)
+8月 08 00:26:24 fedora NetworkManager[1518]: <info>  [1786119984.3866] manager: (vethe30f318): new Veth device (/org/freedesktop/NetworkManager/Devices/217)
+8月 08 00:26:24 fedora NetworkManager[1518]: <info>  [1786119984.4243] device (vethe30f318): carrier: link connected
+8月 08 00:26:24 fedora NetworkManager[1518]: <info>  [1786119984.4244] device (docker0): carrier: link connected
+8月 08 00:26:24 fedora NetworkManager[1518]: <info>  [1786119984.8006] manager: (veth8e72cb9): new Veth device (/org/freedesktop/NetworkManager/Devices/218)
+8月 08 00:27:24 fedora NetworkManager[1518]: <info>  [1786120044.9163] manager: (veth7f7dd3f): new Veth device (/org/freedesktop/NetworkManager/Devices/219)
+8月 08 00:27:24 fedora NetworkManager[1518]: <info>  [1786120044.9752] device (veth7f7dd3f): carrier: link connected
+8月 08 00:27:24 fedora NetworkManager[1518]: <info>  [1786120044.9753] device (docker0): carrier: link connected
+8月 08 00:27:25 fedora NetworkManager[1518]: <info>  [1786120045.3576] manager: (veth9cf952a): new Veth device (/org/freedesktop/NetworkManager/Devices/220)
+8月 08 00:28:25 fedora NetworkManager[1518]: <info>  [1786120105.3856] manager: (vethf47ec24): new Veth device (/org/freedesktop/NetworkManager/Devices/221)
+8月 08 00:28:25 fedora NetworkManager[1518]: <info>  [1786120105.4419] device (vethf47ec24): carrier: link connected
+8月 08 00:28:25 fedora NetworkManager[1518]: <info>  [1786120105.4421] device (docker0): carrier: link connected
+8月 08 00:28:25 fedora NetworkManager[1518]: <info>  [1786120105.7990] manager: (vethbe1b51e): new Veth device (/org/freedesktop/NetworkManager/Devices/222)
+8月 08 00:29:25 fedora NetworkManager[1518]: <info>  [1786120165.8389] manager: (veth3422ca0): new Veth device (/org/freedesktop/NetworkManager/Devices/223)
+8月 08 00:29:25 fedora NetworkManager[1518]: <info>  [1786120165.8958] device (veth3422ca0): carrier: link connected
+8月 08 00:29:25 fedora NetworkManager[1518]: <info>  [1786120165.8961] device (docker0): carrier: link connected
+8月 08 00:29:26 fedora NetworkManager[1518]: <info>  [1786120166.2707] manager: (veth7324280): new Veth device (/org/freedesktop/NetworkManager/Devices/224)
+8月 08 00:30:26 fedora NetworkManager[1518]: <info>  [1786120226.3199] manager: (veth7c5bc03): new Veth device (/org/freedesktop/NetworkManager/Devices/225)
+8月 08 00:30:26 fedora NetworkManager[1518]: <info>  [1786120226.3760] device (veth7c5bc03): carrier: link connected
+8月 08 00:30:26 fedora NetworkManager[1518]: <info>  [1786120226.3761] device (docker0): carrier: link connected
+8月 08 00:30:26 fedora NetworkManager[1518]: <info>  [1786120226.7601] manager: (veth20886f1): new Veth device (/org/freedesktop/NetworkManager/Devices/226)
+8月 08 00:31:27 fedora NetworkManager[1518]: <info>  [1786120287.3886] manager: (vetha1f9e0f): new Veth device (/org/freedesktop/NetworkManager/Devices/227)
+8月 08 00:31:27 fedora NetworkManager[1518]: <info>  [1786120287.4349] device (vetha1f9e0f): carrier: link connected
+8月 08 00:31:27 fedora NetworkManager[1518]: <info>  [1786120287.4351] device (docker0): carrier: link connected
+8月 08 00:31:27 fedora NetworkManager[1518]: <info>  [1786120287.8116] manager: (veth4960275): new Veth device (/org/freedesktop/NetworkManager/Devices/228)
+8月 08 00:32:27 fedora NetworkManager[1518]: <info>  [1786120347.8571] manager: (veth3166f65): new Veth device (/org/freedesktop/NetworkManager/Devices/229)
+8月 08 00:32:27 fedora NetworkManager[1518]: <info>  [1786120347.9019] device (veth3166f65): carrier: link connected
+8月 08 00:32:27 fedora NetworkManager[1518]: <info>  [1786120347.9020] device (docker0): carrier: link connected
+8月 08 00:32:28 fedora NetworkManager[1518]: <info>  [1786120348.2500] manager: (veth7fe6108): new Veth device (/org/freedesktop/NetworkManager/Devices/230)
+8月 08 00:33:28 fedora NetworkManager[1518]: <info>  [1786120408.4330] manager: (vethf88ee8b): new Veth device (/org/freedesktop/NetworkManager/Devices/231)
+8月 08 00:33:28 fedora NetworkManager[1518]: <info>  [1786120408.4853] device (vethf88ee8b): carrier: link connected
+8月 08 00:33:28 fedora NetworkManager[1518]: <info>  [1786120408.4855] device (docker0): carrier: link connected
+8月 08 00:33:28 fedora NetworkManager[1518]: <info>  [1786120408.8965] manager: (veth6983cfc): new Veth device (/org/freedesktop/NetworkManager/Devices/232)
+8月 08 00:34:28 fedora NetworkManager[1518]: <info>  [1786120468.9522] manager: (veth81477c7): new Veth device (/org/freedesktop/NetworkManager/Devices/233)
+8月 08 00:34:29 fedora NetworkManager[1518]: <info>  [1786120469.0027] device (veth81477c7): carrier: link connected
+8月 08 00:34:29 fedora NetworkManager[1518]: <info>  [1786120469.0028] device (docker0): carrier: link connected
+8月 08 00:34:29 fedora NetworkManager[1518]: <info>  [1786120469.3768] manager: (vethf55e9bc): new Veth device (/org/freedesktop/NetworkManager/Devices/234)
+8月 08 00:35:29 fedora NetworkManager[1518]: <info>  [1786120529.4087] manager: (vethf6ca96a): new Veth device (/org/freedesktop/NetworkManager/Devices/235)
+8月 08 00:35:29 fedora NetworkManager[1518]: <info>  [1786120529.4612] device (vethf6ca96a): carrier: link connected
+8月 08 00:35:29 fedora NetworkManager[1518]: <info>  [1786120529.4613] device (docker0): carrier: link connected
+8月 08 00:35:29 fedora NetworkManager[1518]: <info>  [1786120529.8376] manager: (veth1270193): new Veth device (/org/freedesktop/NetworkManager/Devices/236)
+8月 08 00:36:29 fedora NetworkManager[1518]: <info>  [1786120589.8654] manager: (vethd300b88): new Veth device (/org/freedesktop/NetworkManager/Devices/237)
+8月 08 00:36:29 fedora NetworkManager[1518]: <info>  [1786120589.9197] device (vethd300b88): carrier: link connected
+8月 08 00:36:29 fedora NetworkManager[1518]: <info>  [1786120589.9199] device (docker0): carrier: link connected
+8月 08 00:36:30 fedora NetworkManager[1518]: <info>  [1786120590.2795] manager: (veth737498f): new Veth device (/org/freedesktop/NetworkManager/Devices/238)
+8月 08 00:37:30 fedora NetworkManager[1518]: <info>  [1786120650.3612] manager: (veth5d5793e): new Veth device (/org/freedesktop/NetworkManager/Devices/239)
+8月 08 00:37:30 fedora NetworkManager[1518]: <info>  [1786120650.4036] device (veth5d5793e): carrier: link connected
+8月 08 00:37:30 fedora NetworkManager[1518]: <info>  [1786120650.4037] device (docker0): carrier: link connected
+8月 08 00:37:30 fedora NetworkManager[1518]: <info>  [1786120650.7698] manager: (vethfb50c63): new Veth device (/org/freedesktop/NetworkManager/Devices/240)
+8月 08 00:38:30 fedora NetworkManager[1518]: <info>  [1786120710.7939] manager: (vethe1032d4): new Veth device (/org/freedesktop/NetworkManager/Devices/241)
+8月 08 00:38:30 fedora NetworkManager[1518]: <info>  [1786120710.8454] device (vethe1032d4): carrier: link connected
+8月 08 00:38:30 fedora NetworkManager[1518]: <info>  [1786120710.8456] device (docker0): carrier: link connected
+8月 08 00:38:31 fedora NetworkManager[1518]: <info>  [1786120711.1842] manager: (veth2542537): new Veth device (/org/freedesktop/NetworkManager/Devices/242)
+8月 08 00:39:31 fedora NetworkManager[1518]: <info>  [1786120771.2497] manager: (veth44aec0a): new Veth device (/org/freedesktop/NetworkManager/Devices/243)
+8月 08 00:39:31 fedora NetworkManager[1518]: <info>  [1786120771.3123] device (veth44aec0a): carrier: link connected
+8月 08 00:39:31 fedora NetworkManager[1518]: <info>  [1786120771.3125] device (docker0): carrier: link connected
+8月 08 00:39:31 fedora NetworkManager[1518]: <info>  [1786120771.6609] manager: (veth2f7e9a4): new Veth device (/org/freedesktop/NetworkManager/Devices/244)
+8月 08 00:40:31 fedora NetworkManager[1518]: <info>  [1786120831.7282] manager: (veth9558664): new Veth device (/org/freedesktop/NetworkManager/Devices/245)
+8月 08 00:40:31 fedora NetworkManager[1518]: <info>  [1786120831.7885] device (veth9558664): carrier: link connected
+8月 08 00:40:31 fedora NetworkManager[1518]: <info>  [1786120831.7889] device (docker0): carrier: link connected
+8月 08 00:40:32 fedora NetworkManager[1518]: <info>  [1786120832.1649] manager: (vethc724209): new Veth device (/org/freedesktop/NetworkManager/Devices/246)
+8月 08 00:41:32 fedora NetworkManager[1518]: <info>  [1786120892.7342] manager: (vethafe140e): new Veth device (/org/freedesktop/NetworkManager/Devices/247)
+8月 08 00:41:32 fedora NetworkManager[1518]: <info>  [1786120892.7800] device (vethafe140e): carrier: link connected
+8月 08 00:41:32 fedora NetworkManager[1518]: <info>  [1786120892.7802] device (docker0): carrier: link connected
+8月 08 00:41:33 fedora NetworkManager[1518]: <info>  [1786120893.2567] manager: (veth7892146): new Veth device (/org/freedesktop/NetworkManager/Devices/248)
+8月 09 12:52:07 fedora NetworkManager[1518]: <info>  [1786251127.4365] device (tailscale0): state change: activated -> unmanaged (reason 'unmanaged-external-down', managed-type: 'external')
+
+wpa_supplicant logs:
+8月 07 22:56:56 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 07 23:56:58 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 08 00:04:54 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 11:57:38 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 12:57:39 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 13:23:28 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 13:23:29 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 13:23:30 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 13:57:40 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 14:57:41 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 15:39:31 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 15:57:42 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 16:57:43 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 17:57:44 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 18:46:43 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 18:48:41 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 18:57:46 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 19:01:35 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 19:02:27 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 19:02:29 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 19:02:39 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+8月 09 19:57:47 fedora wpa_supplicant[1541]: wlp0s20f0u5: RSN: Group rekeying completed with fc:fc:43:26:60:b8 [GTK=CCMP]
+8月 09 20:29:28 fedora wpa_supplicant[1541]: wlp0s20f0u5: CTRL-EVENT-BEACON-LOSS
+
+rfkill/phy power save:
+0: phy0: Wireless LAN
+	Soft blocked: no
+	Hard blocked: no
+Usage:	iw [options] command
+Options:
+	--debug		enable netlink debugging
+	--version	show version (6.17)
+Commands:
+	phy <phyname> wowlan show 
+		Show WoWLAN status.
+
+	phy <phyname> wowlan disable 
+		Disable WoWLAN.
+
+	phy <phyname> wowlan enable [any] [disconnect] [magic-packet] [gtk-rekey-failure] [eap-identity-request] [4way-handshake] [rfkill-release] [net-detect [interval <in_msecs> | scan_plans [<interval_secs:iterations>*] <interval_secs>] [delay <in_secs>] [freqs <freq>+] [matches [ssid <ssid>]+]] [active [ssid <ssid>]+|passive] [randomise[=<addr>/<mask>]] [coloc] [flush]] [tcp <config-file>] [patterns [offset1+]<pattern1> ...]
+		Enable WoWLAN with the given triggers.
+		Each pattern is given as a bytestring with '-' in places where any byte
+		may be present, e.g. 00:11:22:-:44 will match 00:11:22:33:44 and
+		00:11:22:33:ff:44 etc.
+		Offset and pattern should be separated by '+', e.g. 18+43:34:00:12 will match '43:34:00:12' after 18 bytes of offset in Rx packet.
+		
+		The TCP configuration file contains:
+		  source=ip[:port]
+		  dest=ip:port@mac
+		  data=<hex data packet>
+		  data.interval=seconds
+		  [wake=<hex packet with masked out bytes indicated by '-'>]
+		  [data.seq=len,offset[,start]]
+		  [data.tok=len,offset,<token stream>]
+		
+		Net-detect configuration example:
+		 iw phy0 wowlan enable net-detect interval 5000 delay 30 freqs 2412 2422 matches ssid foo ssid bar
+
+	dev <devname> vendor recvbin <oui> <subcmd> <filename|-|hex data>
+		
+
+	dev <devname> vendor recv <oui> <subcmd> <filename|-|hex data>
+		
+
+	dev <devname> vendor send <oui> <subcmd> <filename|-|hex data>
+		
+
+	dev <devname> survey dump [--radio]
+
+__HERMES_CWD_cfc134c5b3a2__/var/home/charlie/workspace__HERMES_CWD_cfc134c5b3a2__

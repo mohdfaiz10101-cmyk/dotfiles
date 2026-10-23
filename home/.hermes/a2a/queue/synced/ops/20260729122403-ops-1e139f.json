@@ -1,0 +1,17 @@
+{
+  "id": "20260729122403-ops-1e139f",
+  "created_at": "2026-07-29T12:24:03.200208+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4w98ap5py9hk",
+    "title": "5G手机访问8787超时",
+    "created_at": 1785257590.8755236
+  },
+  "content": "For 5G mobile device access timeout issues to a specific service port (e.g., 8787), the standard initial troubleshooting workflow is to first verify the service running status on the target port of the host and the network connectivity between the mobile device and the host.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.658322+00:00"
+}

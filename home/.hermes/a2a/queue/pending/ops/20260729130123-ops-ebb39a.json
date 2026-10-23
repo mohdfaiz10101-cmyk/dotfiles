@@ -1,0 +1,16 @@
+{
+  "id": "20260729130123-ops-ebb39a",
+  "created_at": "2026-07-29T13:01:23.117861+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_120058",
+    "title": "",
+    "created_at": 1784952070.103908
+  },
+  "content": "The skill maintains a watchdog state file at `/var/home/charlie/.hermes/state/memory-curator-watchdog.json` to track consecutive failures and coordinate retry behavior across cron runs.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

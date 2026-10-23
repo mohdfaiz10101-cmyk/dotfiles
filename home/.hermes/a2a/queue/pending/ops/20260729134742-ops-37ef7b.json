@@ -1,0 +1,16 @@
+{
+  "id": "20260729134742-ops-37ef7b",
+  "created_at": "2026-07-29T13:47:42.512215+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200723_df0366",
+    "title": "",
+    "created_at": 1784722045.3191798
+  },
+  "content": "When discussing work context, the user prefers to reference specific work items by their unique kanban task ID rather than descriptive task names to ensure unambiguous identification of the task in question.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

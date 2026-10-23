@@ -1,0 +1,16 @@
+{
+  "id": "20260729130655-ops-8f50dd",
+  "created_at": "2026-07-29T13:06:55.747991+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_070700",
+    "title": "",
+    "created_at": 1784934431.2406201
+  },
+  "content": "Cron jobs in a 'scheduled' state with last_run_at=null and repeat.completed=0 are a reliable indicator of misconfigured, never-executed cron tasks, as observed with the weekly-review job in this session.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

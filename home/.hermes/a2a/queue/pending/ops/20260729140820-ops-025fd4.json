@@ -1,0 +1,16 @@
+{
+  "id": "20260729140820-ops-025fd4",
+  "created_at": "2026-07-29T14:08:20.060928+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194612_ef292e",
+    "title": "",
+    "created_at": 1784720774.4824967
+  },
+  "content": "The user's work kanban system uses task IDs with a 't_' prefix followed by alphanumeric characters (e.g., t_dbc58661) as unique, consistent identifiers for work items.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

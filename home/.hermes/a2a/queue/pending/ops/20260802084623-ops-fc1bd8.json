@@ -1,0 +1,16 @@
+{
+  "id": "20260802084623-ops-fc1bd8",
+  "created_at": "2026-08-02T08:46:23.028698+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "45d7e3b8-ad28-4995-ac4c-3e4d90b77503",
+    "title": "",
+    "created_at": 1785660181.1014502
+  },
+  "content": "Default local Hermes port checks only probe 127.0.0.1 ports 8648, 8787, 19999 (expected 200 OK) and 18999 (expected 401 Unauthorized); checks for remote addresses, non-standard ports, or dev client ports (e.g. 5173) require explicit target specification from the user.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729140320-ops-620c2a",
+  "created_at": "2026-07-29T14:03:20.916411+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195013_6a3eba",
+    "title": "",
+    "created_at": 1784721015.2444923
+  },
+  "content": "The user's work task management system uses a kanban framework, with individual tasks assigned unique identifiers formatted as 't_' followed by an alphanumeric string, as evidenced by the referenced task ID t_0120d003.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

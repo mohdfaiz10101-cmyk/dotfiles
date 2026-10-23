@@ -1,0 +1,16 @@
+{
+  "id": "20260729133822-cod-ad44b9",
+  "created_at": "2026-07-29T13:38:22.944050+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260723_215937_404626",
+    "title": "",
+    "created_at": 1784815177.2406735
+  },
+  "content": "公开线索显示“链动小铺货源筛选浏览器插件”被描述为基于GitHub开源的工具，且该公开内容关联UP主“此愿南方”",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

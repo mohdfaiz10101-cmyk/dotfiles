@@ -1,0 +1,16 @@
+{
+  "id": "20260729124321-ops-a39945",
+  "created_at": "2026-07-29T12:43:21.512629+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1amdd0amn8ri",
+    "title": "电脑定期清理",
+    "created_at": 1785039884.2134786
+  },
+  "content": "系统清理前必须完成审计前置步骤：执行清理前需先完成磁盘整体审计（`df -h`查看使用率）、容器存储审计（`podman system df`查看可回收空间）、大文件/大日志扫描，确认可清理项范围后再执行清理，避免误删有效数据。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

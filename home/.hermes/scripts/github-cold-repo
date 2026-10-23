@@ -1,0 +1,246 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# github-cold-repo <topic> [stars_max] [since] [markdown|json] [context7]
+# Low-token GitHub cold repo discovery using Firecrawl + GitHub API + optional Context7.
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: github-cold-repo <topic> [stars_max] [since] [markdown|json] [context7]" >&2
+  exit 1
+fi
+
+TOPIC="$1"
+STARS_MAX="${2:-2000}"
+SINCE="${3:-2024-01-01}"
+OUTPUT_FORMAT="${4:-markdown}"
+USE_CONTEXT7="${5:-false}"
+
+# Resolve Firecrawl API key from wrapper or env
+FIRECRAWL_API_KEY="${FIRECRAWL_API_KEY:-}"
+if [[ -z "$FIRECRAWL_API_KEY" && -f /var/home/charlie/.local/bin/mcp-firecrawl-wrapper.sh ]]; then
+  FIRECRAWL_API_KEY=$(grep -oE 'export FIRECRAWL_API_KEY=.*' /var/home/charlie/.local/bin/mcp-firecrawl-wrapper.sh | cut -d= -f2 | tr -d "'" || true)
+fi
+if [[ -z "$FIRECRAWL_API_KEY" && -f /var/home/charlie/.hermes/.env ]]; then
+  FIRECRAWL_API_KEY=$(grep -oE '^FIRECRAWL_API_KEY=.*' /var/home/charlie/.hermes/.env | cut -d= -f2- | tr -d "'" || true)
+fi
+
+DATA_DIR="/var/home/charlie/.hermes/data/github-cold-repo"
+mkdir -p "$DATA_DIR"
+DATE_TAG=$(date +%Y%m%d)
+SEEN_FILE="$DATA_DIR/seen.txt"
+touch "$SEEN_FILE"
+
+# Temp files
+TMPDIR=$(mktemp -d)
+trap 'rm -rf "$TMPDIR"' EXIT
+
+# 1) Build GitHub advanced search URL
+QUERY=$(printf '%s' "$TOPIC" | jq -sRr @uri)
+SEARCH_URL="https://github.com/search?q=${QUERY}+stars:10..${STARS_MAX}+pushed:>${SINCE}&type=repositories"
+
+echo "[*] Topic: $TOPIC | stars<${STARS_MAX} | pushed>${SINCE}" >&2
+
+# 2) Discover repo URLs via Firecrawl map (fallback to GitHub HTML)
+REPO_URLS="$TMPDIR/repos.txt"
+: > "$REPO_URLS"
+
+if [[ -n "$FIRECRAWL_API_KEY" ]]; then
+  echo "[*] Mapping via Firecrawl..." >&2
+  MAP_RESULT="$TMPDIR/map.json"
+  curl -sS -L \
+    -H "Authorization: Bearer $FIRECRAWL_API_KEY" \
+    -H "Content-Type: application/json" \
+    -X POST "https://api.firecrawl.dev/v1/map" \
+    -d "{\"url\": \"$SEARCH_URL\"}" \
+    -o "$MAP_RESULT" 2>/dev/null || true
+
+  if [[ -s "$MAP_RESULT" ]]; then
+    jq -r '.links[]? // empty' "$MAP_RESULT" 2>/dev/null | \
+      grep -E '^https?://github.com/[^/]+/[^/]+/?$' | \
+      sed 's#/$##' >> "$REPO_URLS" || true
+  fi
+fi
+
+# Fallback: scrape GitHub search HTML if Firecrawl returned nothing
+if [[ ! -s "$REPO_URLS" ]]; then
+  echo "[*] Firecrawl empty; falling back to GitHub HTML scrape..." >&2
+  curl -sS -L \
+    -H "User-Agent: Mozilla/5.0" \
+    -H "Accept: text/html" \
+    "$SEARCH_URL" > "$TMPDIR/search.html" 2>/dev/null || true
+
+  if [[ -s "$TMPDIR/search.html" ]]; then
+    grep -oE 'href="/[^/"]+/[^/"]+"' "$TMPDIR/search.html" | \
+      grep -E '^href="/[^/]+/[^/]+"$' | \
+      sed 's#^href="/##; s#"$##' | sort -u | sed 's#^#https://github.com/#' >> "$REPO_URLS" || true
+  fi
+fi
+
+# Dedup + filter non-repo paths
+FILTERED_URLS="$TMPDIR/filtered_repos.txt"
+: > "$FILTERED_URLS"
+while IFS= read -r url; do
+  if echo "$url" | grep -qE '^https?://github.com/[^/]+/[^/]+$'; then
+    echo "$url" >> "$FILTERED_URLS"
+  fi
+done < "$REPO_URLS"
+mv "$FILTERED_URLS" "$REPO_URLS"
+
+# Limit to first 50 URLs to keep token budget low
+head -n 50 "$REPO_URLS" > "$TMPDIR/repos_limited.txt"
+mv "$TMPDIR/repos_limited.txt" "$REPO_URLS"
+
+TOTAL=$(wc -l < "$REPO_URLS")
+echo "[*] Discovered $TOTAL candidate repo URLs" >&2
+
+# 3) Fetch metadata + run self-audit
+CANDIDATES="$TMPDIR/candidates.jsonl"
+: > "$CANDIDATES"
+
+while IFS= read -r repo_url; do
+  api_path=$(echo "$repo_url" | sed 's#https://github.com##')
+  api_url="https://api.github.com/repos$api_path"
+
+  repo_id=$(basename "$api_path")
+  if grep -qFx "$repo_id" "$SEEN_FILE"; then
+    continue
+  fi
+
+  meta=$(curl -sS "$api_url" 2>/dev/null || echo '{}')
+  if [[ "$meta" == "{}" ]]; then
+    continue
+  fi
+
+  stars=$(echo "$meta" | jq -r '.stargazers_count // 0')
+  lang=$(echo "$meta" | jq -r '.language // ""')
+  desc=$(echo "$meta" | jq -r '.description // ""')
+  archived=$(echo "$meta" | jq -r '.archived // false')
+  updated=$(echo "$meta" | jq -r '.pushed_at // ""')
+
+  [[ "$archived" == "true" ]] && continue
+  [[ "$stars" -gt "$STARS_MAX" ]] && continue
+  [[ -z "$desc" ]] && continue
+
+  # README signal check (head only)
+  readme_url="$repo_url/raw/HEAD/README.md"
+  readme_head=$(curl -sS -L "$readme_url" 2>/dev/null | head -n 80 || echo "")
+  signal_count=0
+  signals=""
+  for sig in install demo usage docker license badge screenshot config quickstart example; do
+    if echo "$readme_head" | grep -qi "$sig"; then
+      signal_count=$((signal_count + 1))
+      signals="${signals:+$signals,}$sig"
+    fi
+  done
+
+  # File structure signal (optional, cheap HEAD request)
+  contents_url=$(echo "$meta" | jq -r '.contents_url // empty' | sed 's/{+path}//')
+  has_toml=false
+  if [[ -n "$contents_url" ]]; then
+    contents=$(curl -sS "$contents_url" 2>/dev/null || echo "[]")
+    if echo "$contents" | jq -e '.[] | select(.name == "go.mod" or .name == "package.json" or .name == "Cargo.toml" or .name == "pyproject.toml")' >/dev/null 2>&1; then
+      has_toml=true
+    fi
+  fi
+
+  # Audit score
+  audit="C"
+  if [[ $signal_count -ge 3 && "$has_toml" == "true" ]]; then
+    audit="A"
+  elif [[ $signal_count -ge 2 || "$has_toml" == "true" ]]; then
+    audit="B"
+  fi
+
+  context7_note=""
+  if [[ "$USE_CONTEXT7" == "true" && -n "$lang" ]]; then
+    context7_note="context7-pending"
+  fi
+
+  jq -n \
+    --arg full_name "$(echo "$meta" | jq -r '.full_name')" \
+    --arg url "$repo_url" \
+    --argjson stars "$stars" \
+    --arg language "$lang" \
+    --arg description "$desc" \
+    --arg audit "$audit" \
+    --argjson signals "$signal_count" \
+    --arg signal_list "$signals" \
+    --arg has_toml "$has_toml" \
+    --arg context7 "$context7_note" \
+    --arg pushed_at "$updated" \
+    '{
+      full_name: $full_name,
+      url: $url,
+      stars: $stars,
+      language: $language,
+      description: $description,
+      audit: $audit,
+      signals: ($signal_list | split(",") | map(select(length>0))),
+      has_project_file: ($has_toml == "true"),
+      context7: $context7,
+      pushed_at: $pushed_at
+    }' >> "$CANDIDATES"
+
+  echo "  + $repo_url (stars=$stars audit=$audit)" >&2
+done < "$REPO_URLS"
+
+# 4) Finalize JSON
+python3 -c "
+import json, sys
+from datetime import datetime, timezone
+records = []
+with open('$CANDIDATES') as f:
+  for line in f:
+    line=line.strip()
+    if line:
+      records.append(json.loads(line))
+result = {
+  'topic': '$TOPIC',
+  'generated_at': datetime.now(timezone.utc).isoformat(),
+  'params': {'stars_max': $STARS_MAX, 'since': '$SINCE', 'context7': '$USE_CONTEXT7'},
+  'total_discovered': $TOTAL,
+  'accepted': len(records),
+  'candidates': records
+}
+print(json.dumps(result, ensure_ascii=False, indent=2))
+" | tee "$DATA_DIR/${DATE_TAG}.json" > /dev/null
+
+# Update seen dedup file
+python3 -c "
+import json
+with open('$DATA_DIR/${DATE_TAG}.json') as f:
+  data = json.load(f)
+with open('$SEEN_FILE', 'a') as f:
+  for c in data['candidates']:
+    f.write(c['full_name'] + '\n')
+"
+
+# 5) Human output
+if [[ "$OUTPUT_FORMAT" == "json" ]]; then
+  cat "$DATA_DIR/${DATE_TAG}.json"
+else
+  echo "# GitHub Cold Repos: $TOPIC"
+  echo "_Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)_"
+  echo
+  python3 -c "
+import json
+data = json.load(open('$DATA_DIR/${DATE_TAG}.json'))
+print(f'Discovered {data[\"total_discovered\"]} | Accepted {data[\"accepted\"]} | stars<${STARS_MAX} pushed>${SINCE}')
+print()
+for c in data['candidates']:
+    audit = c['audit']
+    stars = c['stars']
+    lang = c['language'] or ''
+    desc = c['description'] or ''
+    signals = ', '.join(c['signals']) if c['signals'] else '-'
+    print(f'[{audit}] {c[\"full_name\"]} | {stars} | {lang}')
+    print(f'     {desc}')
+    print(f'     signals: {signals}')
+    print(f'     url: {c[\"url\"]}')
+    print()
+if not data['candidates']:
+    print('_No qualifying repos found._')
+"
+fi
+
+echo "[*] Saved to $DATA_DIR/${DATE_TAG}.json" >&2

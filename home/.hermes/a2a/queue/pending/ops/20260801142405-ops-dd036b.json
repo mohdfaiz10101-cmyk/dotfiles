@@ -1,0 +1,16 @@
+{
+  "id": "20260801142405-ops-dd036b",
+  "created_at": "2026-08-01T14:24:05.976471+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "3251eb0778da",
+    "title": "hi from webui stepfun-new test",
+    "created_at": 1785594110.266443
+  },
+  "content": "No mandatory intermediate steps are required between confirming the basic connectivity of the WebUI stepfun-new chain and submitting formal business requirements; requests can be submitted directly after connectivity is validated.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": "20260807134645-ext-55cc42",
+  "created_at": "2026-08-07T13:46:45.589389+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4e6f7917cc65",
+    "title": "[已压缩 20260807T214228] moonlight还是redroid",
+    "created_at": 1786110149.066834
+  },
+  "content": "旧版 Linux 内核/OpenSSH 服务器可能仅支持 diffie-hellman-group14-sha1 KEX 算法。连接此类 VM 时，SSH 客户端需显式添加 -oKexAlgorithms=+diffie-hellman-group14-sha1 参数才能成功建立连接。",
+  "confidence": 0.9,
+  "status": "approved",
+  "review_note": "medium-high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.371365+00:00"
+}

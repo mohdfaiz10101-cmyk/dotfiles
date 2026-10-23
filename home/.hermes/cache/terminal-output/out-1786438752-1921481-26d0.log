@@ -1,0 +1,287 @@
+== crontab ==
+
+== systemd timers ==
+NEXT                                  LEFT LAST                               PASSED UNIT                                                                    ACTIVATES
+Tue 2026-08-11 16:59:14 CST             2s Tue 2026-08-11 16:54:14 CST  4min 57s ago hermes-iptables-guard.timer                                             hermes-iptables-guard.service
+Tue 2026-08-11 16:59:19 CST             7s Tue 2026-08-11 14:59:19 CST  1h 59min ago hermes-memory-curator.timer                                             hermes-memory-curator.service
+Tue 2026-08-11 16:59:34 CST            22s Tue 2026-08-11 16:57:34 CST  1min 37s ago codex-foot-tab-sort.timer                                               codex-foot-tab-sort.service
+Tue 2026-08-11 16:59:34 CST            22s Tue 2026-08-11 16:57:34 CST  1min 37s ago hermes-session-switch-audit.timer                                       hermes-session-switch-audit.service
+Tue 2026-08-11 16:59:34 CST            22s Tue 2026-08-11 16:57:34 CST  1min 37s ago opencode-telegram-watchdog.timer                                        opencode-telegram-watchdog.service
+Tue 2026-08-11 16:59:34 CST            22s Tue 2026-08-11 16:57:34 CST  1min 37s ago smart-service-manager.timer                                             smart-service-manager.service
+Tue 2026-08-11 16:59:34 CST            22s Tue 2026-08-11 16:57:34 CST  1min 37s ago phone-webtty-route-probe.timer                                          phone-webtty-route-probe.service
+Tue 2026-08-11 16:59:35 CST            23s Tue 2026-08-11 16:58:35 CST       36s ago hub-workspace-snapshot.timer                                            hub-workspace-snapshot.service
+Tue 2026-08-11 16:59:35 CST            23s Tue 2026-08-11 16:58:35 CST       36s ago opencode-stuck-cleaner.timer                                            opencode-stuck-cleaner.service
+Tue 2026-08-11 16:59:39 CST            27s Tue 2026-08-11 16:58:39 CST       32s ago tailscale-watchdog.timer                                                tailscale-watchdog.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago crush-healthcheck.timer                                                 crush-healthcheck.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago hermes-actions-watch.timer                                              hermes-actions-watch.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago idle-sleep.timer                                                        idle-sleep.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago smart-service-manager-resume.timer                                      smart-service-manager-resume.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago adb-phone-keepalive.timer                                               adb-phone-keepalive.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago phone-netbird-ensure.timer                                              phone-netbird-ensure.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago webtty-usb-reverse-ensure.timer                                         webtty-usb-reverse-ensure.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago duckdns-full-monitor.timer                                              duckdns-full-monitor.service
+Tue 2026-08-11 16:59:40 CST            28s Tue 2026-08-11 16:58:40 CST       31s ago op-task-reliability.timer                                               op-task-reliability.service
+Tue 2026-08-11 16:59:41 CST            29s Tue 2026-08-11 16:59:11 CST     999ms ago haven-codex.timer                                                       haven-codex.service
+Tue 2026-08-11 16:59:41 CST            29s Tue 2026-08-11 16:59:11 CST        1s ago haven-codex2.timer                                                      haven-codex2.service
+Tue 2026-08-11 16:59:41 CST            29s Tue 2026-08-11 16:59:11 CST     999ms ago haven-codex3.timer                                                      haven-codex3.service
+Tue 2026-08-11 16:59:43 CST            31s Tue 2026-08-11 16:54:43 CST  4min 28s ago comm-project-sync.timer                                                 comm-project-sync.service
+Tue 2026-08-11 16:59:43 CST            31s Tue 2026-08-11 16:54:43 CST  4min 28s ago mobile-ai-speed-island.timer                                            mobile-ai-speed-island.service
+Tue 2026-08-11 17:00:00 CST            47s Tue 2026-08-11 16:55:01 CST  4min 10s ago opencode-stuck-detect.timer                                             opencode-stuck-detect.service
+Tue 2026-08-11 17:00:09 CST            57s Tue 2026-08-11 16:57:09 CST   2min 2s ago opencode-crash-auditor.timer                                            opencode-crash-auditor.service
+Tue 2026-08-11 17:00:25 CST       1min 13s Tue 2026-08-11 16:50:25 CST      8min ago op-session-title.timer                                                  op-session-title.service
+Tue 2026-08-11 17:00:50 CST       1min 37s Tue 2026-08-11 16:55:29 CST  3min 42s ago control-plane-supervisor.timer                                          control-plane-supervisor.service
+Tue 2026-08-11 17:01:26 CST       2min 14s Tue 2026-08-11 16:31:26 CST     27min ago hermes-session-compactor.timer                                          hermes-session-compactor.service
+Tue 2026-08-11 17:01:26 CST       2min 14s Tue 2026-08-11 16:31:26 CST     27min ago hermes-session-guard.timer                                              hermes-session-guard.service
+Tue 2026-08-11 17:01:32 CST       2min 20s Tue 2026-08-11 16:58:32 CST       39s ago opencode-health-watchdog.timer                                          opencode-health-watchdog.service
+Tue 2026-08-11 17:01:42 CST       2min 30s Tue 2026-08-11 16:56:42 CST  2min 29s ago hermes-port-lock.timer                                                  hermes-port-lock.service
+Tue 2026-08-11 17:01:42 CST       2min 30s Tue 2026-08-11 16:56:42 CST  2min 29s ago phone-network-stabilize.timer                                           phone-network-stabilize.service
+Tue 2026-08-11 17:01:55 CST       2min 43s Tue 2026-08-11 16:51:55 CST      7min ago hermes-monitor-check.timer                                              hermes-monitor-check.service
+Tue 2026-08-11 17:02:46 CST       3min 34s Tue 2026-08-11 16:47:46 CST     11min ago a2a-skills.timer                                                        a2a-skills.service
+Tue 2026-08-11 17:03:08 CST       3min 56s Tue 2026-08-11 16:53:08 CST      6min ago sway-tab-cleanup.timer                                                  sway-tab-cleanup.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago a2a-distill.timer                                                       a2a-distill.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago codex-account-manager.timer                                             codex-account-manager.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago hermes-context-guard.timer                                              hermes-context-guard.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago hermes-mesh-dispatch.timer                                              hermes-mesh-dispatch.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago hermes-stability-check.timer                                            hermes-stability-check.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago openclaw-gateway-idle-monitor.timer                                     openclaw-gateway-idle-monitor.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago network-scenario-monitor.timer                                          network-scenario-monitor.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago duckdns-update.timer                                                    duckdns-update.service
+Tue 2026-08-11 17:03:22 CST       4min 10s Tue 2026-08-11 16:58:22 CST       49s ago codex3-sub2api-usage-sync.timer                                         codex3-sub2api-usage-sync.service
+Tue 2026-08-11 17:06:13 CST           7min Tue 2026-08-11 16:01:35 CST     57min ago workflow-intel-maintain.timer                                           workflow-intel-maintain.service
+Tue 2026-08-11 17:06:15 CST           7min Tue 2026-08-11 16:51:15 CST      7min ago crush-session-eval.timer                                                crush-session-eval.service
+Tue 2026-08-11 17:06:15 CST           7min Tue 2026-08-11 16:51:15 CST      7min ago opencode-rag-ingester.timer                                             opencode-rag-ingester.service
+Tue 2026-08-11 17:06:15 CST           7min Tue 2026-08-11 16:51:15 CST      7min ago smart-smooth.timer                                                      smart-smooth.service
+Tue 2026-08-11 17:08:28 CST           9min Tue 2026-08-11 16:58:28 CST       43s ago chrome-login-watchdog.timer                                             chrome-login-watchdog.service
+Tue 2026-08-11 17:11:27 CST          12min Tue 2026-08-11 16:56:27 CST  2min 44s ago openhands-letta-sync.timer                                              openhands-letta-sync.service
+Tue 2026-08-11 17:11:27 CST          12min Tue 2026-08-11 16:56:27 CST  2min 44s ago network-resilience-maintenance.timer                                    network-resilience-maintenance.service
+Tue 2026-08-11 17:11:55 CST          12min Tue 2026-08-11 16:55:25 CST  3min 46s ago hermes-experience-map.timer                                             hermes-experience-map.service
+Tue 2026-08-11 17:23:26 CST          24min Tue 2026-08-11 16:53:26 CST      5min ago disk-guard.timer                                                        disk-guard.service
+Tue 2026-08-11 17:24:38 CST          25min Mon 2026-08-10 23:15:11 CST       17h ago opencode-knowledge-maintainer.timer                                     opencode-knowledge-maintainer.service
+Tue 2026-08-11 17:51:49 CST          52min Tue 2026-08-11 16:51:49 CST      7min ago opencode-codegraph-warmup.timer                                         opencode-codegraph-warmup.service
+Tue 2026-08-11 17:54:38 CST          55min Tue 2026-08-11 16:54:38 CST  4min 33s ago ai-scheduler.timer                                                      ai-scheduler.service
+Tue 2026-08-11 17:54:38 CST          55min Tue 2026-08-11 16:54:38 CST  4min 33s ago chrome-login-backup.timer                                               chrome-login-backup.service
+Tue 2026-08-11 18:56:53 CST       1h 57min Tue 2026-08-11 12:56:53 CST   4h 2min ago system-sanity-evolve.timer                                              system-sanity-evolve.service
+Tue 2026-08-11 19:18:49 CST       2h 19min Tue 2026-08-11 13:18:49 CST  3h 40min ago system-maintenance.timer                                                system-maintenance.service
+Tue 2026-08-11 22:56:47 CST       5h 57min -                                       - opencode-post-review-ses_015226f44ffeHN3KCkL2YiGhCX-1786354107402.timer opencode-post-review-ses_015226f44ffeHN3KCkL2YiGhCX-1786354107402.service
+Tue 2026-08-11 22:56:47 CST       5h 57min -                                       - opencode-post-review-ses_0152158a1ffeqQKeZDNiu016Dw-1786354035929.timer opencode-post-review-ses_0152158a1ffeqQKeZDNiu016Dw-1786354035929.service
+Tue 2026-08-11 22:56:47 CST       5h 57min -                                       - opencode-post-review-ses_0229fd567ffeZCRt6rNQKI3rQ6-1786125508703.timer opencode-post-review-ses_0229fd567ffeZCRt6rNQKI3rQ6-1786125508703.service
+Tue 2026-08-11 23:00:00 CST             6h Mon 2026-08-10 23:00:01 CST       17h ago a2a-summary.timer                                                       a2a-summary.service
+Wed 2026-08-12 00:54:40 CST             7h Tue 2026-08-11 00:54:40 CST       16h ago systemd-tmpfiles-clean.timer                                            systemd-tmpfiles-clean.service
+Wed 2026-08-12 02:00:00 CST             9h Tue 2026-08-11 02:00:02 CST       14h ago github-backup.timer                                                     github-backup.service
+Wed 2026-08-12 03:00:00 CST            10h Tue 2026-08-11 03:00:00 CST       13h ago chromium-cleanup.timer                                                  chromium-cleanup.service
+Wed 2026-08-12 03:00:00 CST            10h Tue 2026-08-11 03:00:00 CST       13h ago hermes-cleanup-user.timer                                               hermes-cleanup-user.service
+Wed 2026-08-12 03:40:00 CST            10h Tue 2026-08-11 03:40:01 CST       13h ago opencode-cold-archive-migrate.timer                                     opencode-cold-archive-migrate.service
+Wed 2026-08-12 04:00:00 CST            11h Tue 2026-08-11 04:00:03 CST       12h ago memory-lifecycle.timer                                                  memory-lifecycle.service
+Wed 2026-08-12 04:21:18 CST            11h Tue 2026-08-11 04:22:14 CST       12h ago codex-k2-workspace-watch.timer                                          codex-k2-workspace-watch.service
+Wed 2026-08-12 04:30:00 CST            11h Tue 2026-08-11 04:30:00 CST       12h ago memory-evolution-guard.timer                                            memory-evolution-guard.service
+Wed 2026-08-12 04:45:00 CST            11h Tue 2026-08-11 04:45:03 CST       12h ago memory-vector-ingest.timer                                              memory-vector-ingest.service
+Sun 2026-08-16 03:00:00 CST         4 days Sun 2026-08-09 03:00:00 CST    2 days ago opencode-db-cleanup.timer                                               opencode-db-cleanup.service
+Sun 2026-08-16 04:00:00 CST         4 days Sun 2026-08-09 04:00:01 CST    2 days ago podman-cleanup.timer                                                    podman-cleanup.service
+Sun 2026-08-16 10:10:08 CST         4 days Sun 2026-08-09 10:07:31 CST    2 days ago disk-cleanup.timer                                                      disk-cleanup.service
+Sun 2026-08-16 10:52:35 CST         4 days Sun 2026-08-09 10:45:34 CST    2 days ago docker-prune.timer                                                      docker-prune.service
+Mon 2026-08-17 00:00:00 CST         5 days Mon 2026-08-10 00:00:00 CST 1 day 16h ago opencode-recall-optimize.timer                                          opencode-recall-optimize.service
+Tue 2026-09-01 10:00:00 CST 2 weeks 6 days Sat 2026-08-01 10:00:00 CST             - backup-cleanup.timer                                                    backup-cleanup.service
+
+== likely scripts ==
+/var/home/charlie/.config/waybar/backup-merge-20260622
+/var/home/charlie/.config/systemd/user/memory-backup.timer
+/var/home/charlie/.config/systemd/user/mihomo-backup.service
+/var/home/charlie/.config/systemd/user/backup-cleanup.timer
+/var/home/charlie/.config/systemd/user/chrome-login-backup.service
+/var/home/charlie/.config/systemd/user/chrome-login-backup.timer
+/var/home/charlie/.config/systemd/user/github-backup.service
+/var/home/charlie/.config/systemd/user/github-backup.timer
+/var/home/charlie/.config/systemd/user/backup-cleanup.service
+/var/home/charlie/.config/systemd/user/github-backup.service.d
+/var/home/charlie/.config/ai-shared/roo-state-backup.timer
+/var/home/charlie/.config/ai-shared/roo-state-backup.service
+/var/home/charlie/.config/pygpt-net/css/markdown.light.css.backup
+/var/home/charlie/.config/pygpt-net/css/style.css.backup
+/var/home/charlie/.config/pygpt-net/css/style.dark.css.backup
+/var/home/charlie/.config/pygpt-net/css/style.light.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-blocks.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-blocks.dark.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-blocks.light.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-chatgpt.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-chatgpt.dark.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-chatgpt.light.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-chatgpt_wide.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-chatgpt_wide.dark.css.backup
+/var/home/charlie/.config/pygpt-net/css/web-chatgpt_wide.light.css.backup
+/var/home/charlie/.config/pygpt-net/db.sqlite.backup
+/var/home/charlie/.config/wechat-backup.conf
+/var/home/charlie/.config/chromium/Default/Preferences.backup.20260511_204323
+/var/home/charlie/.config/chromium/Default/Preferences.backup.20260511_204330
+/var/home/charlie/.config/theme-backup-catppuccin-20260616
+/var/home/charlie/.config/browsh/firefox_profile/bookmarkbackups
+/var/home/charlie/.config/browsh/firefox_profile/sessionstore-backups
+/var/home/charlie/.local/state/haven/backups
+/var/home/charlie/.local/state/machine-github-backup
+/var/home/charlie/.local/state/haven-db-backups
+/var/home/charlie/.local/state/sub2api-account-backups
+/var/home/charlie/.local/state/haven-profile-sync/haven.db.backup
+/var/home/charlie/.local/state/phone-clipboard/macrodroid-macros-backup-20260716-221419.tar
+/var/home/charlie/.local/state/chrome-backup
+/var/home/charlie/.local/state/netbird-install/netbird_0.74.6_linux_amd64.github.rpm
+/var/home/charlie/.local/state/mattermost-mobile-backups
+/var/home/charlie/.local/state/bin-backups
+/var/home/charlie/.local/state/hub-backups
+/var/home/charlie/.local/state/systemd-backups
+/var/home/charlie/.local/state/wifi-lockdown-backup-20260727-130319
+/var/home/charlie/.local/share/applications/waydroid.io.github.huskydg.magisk.desktop
+/var/home/charlie/.local/share/opencode/backups
+/var/home/charlie/.local/share/mihomo-backups
+/var/home/charlie/.local/share/machine-github-backup
+/var/home/charlie/.local/bin/proxy-403-monitor.backup.20260416_133142
+/var/home/charlie/.local/bin/roo-backup-config.sh
+/var/home/charlie/.local/bin/sync-session-to-letta-v1-backup
+/var/home/charlie/.local/bin/roo-state-backup
+/var/home/charlie/.local/bin/wechat-android-backup.sh
+/var/home/charlie/.local/bin/backup-claude-config
+/var/home/charlie/.local/bin/backup-ide-configs
+/var/home/charlie/.local/bin/chrome-login-backup.sh
+/var/home/charlie/.local/bin/full-backup.sh
+/var/home/charlie/.local/bin/git-backup.sh
+/var/home/charlie/.local/bin/github-action-trigger
+/var/home/charlie/.local/bin/github-ai-weekly
+/var/home/charlie/.local/bin/letta-health-guard.backup-20260326
+/var/home/charlie/.local/bin/letta-mcp.backup.20260509_020309
+/var/home/charlie/.local/bin/memory-backup
+/var/home/charlie/.local/bin/crush.elf-backup-20260707-1345
+/var/home/charlie/.local/bin/machine-github-backup
+/var/home/charlie/.local/bin/machine-github-restore
+/var/home/charlie/.local/skills/~ithub/github-auth
+/var/home/charlie/.local/skills/~ithub/github-code-review
+/var/home/charlie/.local/skills/~ithub/github-issues
+/var/home/charlie/.local/skills/~ithub/github-pr-workflow
+/var/home/charlie/.local/skills/~ithub/github-repo-management
+/var/home/charlie/.local/skills/github
+/var/home/charlie/.local/skills/github/github-auth
+/var/home/charlie/.local/skills/github/github-code-review
+/var/home/charlie/.local/skills/github/github-issues
+/var/home/charlie/.local/skills/github/github-pr-workflow
+/var/home/charlie/.local/skills/github/github-repo-management
+/var/home/charlie/.var/app/io.github.block.Goose
+/var/home/charlie/ai/openevolve-lab/openevolve/.github
+/var/home/charlie/dotfiles/launcher/floorp-profile-backup.sh
+/var/home/charlie/dotfiles/bin/git-backup.sh
+/var/home/charlie/dotfiles/bin/ai-config-sync-create-github-repo.sh
+/var/home/charlie/.cc-switch/cc-switch.db.backup-clean
+/var/home/charlie/.cc-switch/backups
+/var/home/charlie/.cc-switch/backups/db_backup_20260328_000223.db
+/var/home/charlie/.opencode-archives/config-backups
+/var/home/charlie/.ai-context/runbooks/machine-backup.md
+/var/home/charlie/.ai-context/backups
+/var/home/charlie/opencode-telegram-gateway/node_modules/github-from-package
+/var/home/charlie/opencode-telegram-gateway/node_modules/minimist/.github
+/var/home/charlie/opencode-telegram-gateway/node_modules/pump/.github
+/var/home/charlie/opencode-telegram-gateway/node_modules/napi-build-utils/.github
+/var/home/charlie/opencode-telegram-gateway/node_modules/simple-get/.github
+/var/home/charlie/opencode-telegram-gateway/node_modules/why-is-node-running/.github
+/var/home/charlie/备份/backup_20260808_020001
+/var/home/charlie/备份/backup_20260808_020001/config_backup
+/var/home/charlie/备份/backup_20260808_020001/config_backup/wechat-backup.conf
+/var/home/charlie/备份/backup_20260808_020001/config_backup/theme-backup-catppuccin-20260616
+/var/home/charlie/备份/backup_20260808_020001/ssh_backup
+/var/home/charlie/备份/backup_20260808_020001/local_share/machine-github-backup
+/var/home/charlie/备份/backup_20260808_020001/local_share/mihomo-backups
+/var/home/charlie/备份/backup_20260808_020001.tar.gz
+/var/home/charlie/备份/backup_20260809_020000
+/var/home/charlie/备份/backup_20260809_020000/config_backup
+/var/home/charlie/备份/backup_20260809_020000/config_backup/wechat-backup.conf
+/var/home/charlie/备份/backup_20260809_020000/config_backup/theme-backup-catppuccin-20260616
+/var/home/charlie/备份/backup_20260809_020000/ssh_backup
+/var/home/charlie/备份/backup_20260809_020000/local_share/machine-github-backup
+/var/home/charlie/备份/backup_20260809_020000/local_share/mihomo-backups
+/var/home/charlie/备份/backup_20260809_020000.tar.gz
+/var/home/charlie/备份/backup_20260810_020000
+/var/home/charlie/备份/backup_20260810_020000/config_backup
+/var/home/charlie/备份/backup_20260810_020000/config_backup/wechat-backup.conf
+/var/home/charlie/备份/backup_20260810_020000/config_backup/theme-backup-catppuccin-20260616
+/var/home/charlie/备份/backup_20260810_020000/ssh_backup
+/var/home/charlie/备份/backup_20260810_020000/local_share/machine-github-backup
+/var/home/charlie/备份/backup_20260810_020000/local_share/mihomo-backups
+/var/home/charlie/备份/backup_20260810_020000.tar.gz
+/var/home/charlie/备份/backup_20260811_020002
+/var/home/charlie/备份/backup_20260811_020002/config_backup
+/var/home/charlie/备份/backup_20260811_020002/config_backup/wechat-backup.conf
+/var/home/charlie/备份/backup_20260811_020002/config_backup/theme-backup-catppuccin-20260616
+/var/home/charlie/备份/backup_20260811_020002/ssh_backup
+/var/home/charlie/备份/backup_20260811_020002/local_share/machine-github-backup
+/var/home/charlie/备份/backup_20260811_020002/local_share/mihomo-backups
+/var/home/charlie/备份/backup_20260811_020002.tar.gz
+/var/home/charlie/phone-backups
+/var/home/charlie/opencode-zulip-gateway/node_modules/github-from-package
+/var/home/charlie/opencode-zulip-gateway/node_modules/minimist/.github
+/var/home/charlie/opencode-zulip-gateway/node_modules/pump/.github
+/var/home/charlie/opencode-zulip-gateway/node_modules/simple-get/.github
+/var/home/charlie/opencode-zulip-gateway/node_modules/napi-build-utils/.github
+/var/home/charlie/.hermes/skills/devops/wechat-local-backup
+/var/home/charlie/.hermes/skills/research/github-cold-repo-agent
+/var/home/charlie/.hermes/skills/external-candidates/github
+/var/home/charlie/.hermes/skills/external-candidates/github-trending
+/var/home/charlie/.hermes/skills/.curator_backups
+/var/home/charlie/.hermes/skills/.archive/github-repo-discovery
+/var/home/charlie/.hermes/skills/github
+/var/home/charlie/.hermes/skills/github/github-repo-management
+/var/home/charlie/.hermes/skills/github/github-pr-workflow
+/var/home/charlie/.hermes/skills/github/github-issues
+/var/home/charlie/.hermes/skills/github/github-code-review
+/var/home/charlie/.hermes/skills/github/github-auth
+/var/home/charlie/.hermes/skills/haven-android-backup
+/var/home/charlie/.hermes/scripts/github-cold-repo
+/var/home/charlie/.hermes/scripts/github-cold-repo-server.py
+/var/home/charlie/.hermes/webui/github-cold-repo
+/var/home/charlie/.hermes/data/github-cold-repo
+/var/home/charlie/.m2/repository/com/github
+/var/home/charlie/hermes-studio/.github
+/var/home/charlie/hermes-studio/tests/server/safe-file-store-backup-fallback.test.ts
+/var/home/charlie/hermes-studio/node_modules/simple-yenc/.github
+/var/home/charlie/hermes-studio/node_modules/balanced-match/.github
+/var/home/charlie/hermes-studio/node_modules/brace-expansion/.github
+/var/home/charlie/hermes-studio/node_modules/call-bind-apply-helpers/.github
+/var/home/charlie/hermes-studio/node_modules/call-bound/.github
+/var/home/charlie/hermes-studio/node_modules/cytoscape/.github
+/var/home/charlie/hermes-studio/node_modules/dunder-proto/.github
+/var/home/charlie/hermes-studio/node_modules/es-define-property/.github
+/var/home/charlie/hermes-studio/node_modules/es-errors/.github
+/var/home/charlie/hermes-studio/node_modules/es-object-atoms/.github
+/var/home/charlie/hermes-studio/node_modules/function-bind/.github
+/var/home/charlie/hermes-studio/node_modules/generator-function/.github
+/var/home/charlie/hermes-studio/node_modules/get-intrinsic/.github
+/var/home/charlie/hermes-studio/node_modules/get-proto/.github
+/var/home/charlie/hermes-studio/node_modules/gopd/.github
+/var/home/charlie/hermes-studio/node_modules/has-symbols/.github
+/var/home/charlie/hermes-studio/node_modules/has-tostringtag/.github
+/var/home/charlie/hermes-studio/node_modules/hasown/.github
+/var/home/charlie/hermes-studio/node_modules/help-me/.github
+/var/home/charlie/hermes-studio/node_modules/iconv-lite/.github
+/var/home/charlie/hermes-studio/node_modules/jszip/.github
+/var/home/charlie/hermes-studio/node_modules/math-intrinsics/.github
+/var/home/charlie/hermes-studio/node_modules/minimist/.github
+/var/home/charlie/hermes-studio/node_modules/object-inspect/.github
+/var/home/charlie/hermes-studio/node_modules/on-exit-leak-free/.github
+/var/home/charlie/hermes-studio/node_modules/path-browserify/.github
+/var/home/charlie/hermes-studio/node_modules/pino-abstract-transport/.github
+/var/home/charlie/hermes-studio/node_modules/pino-pretty/.github
+/var/home/charlie/hermes-studio/node_modules/pino-std-serializers/.github
+/var/home/charlie/hermes-studio/node_modules/process-warning/.github
+/var/home/charlie/hermes-studio/node_modules/pump/.github
+/var/home/charlie/hermes-studio/node_modules/qs/.github
+/var/home/charlie/hermes-studio/node_modules/quick-format-unescaped/.github
+/var/home/charlie/hermes-studio/node_modules/resolve/.github
+/var/home/charlie/hermes-studio/node_modules/rfdc/.github
+/var/home/charlie/hermes-studio/node_modules/roughjs/.github
+/var/home/charlie/hermes-studio/node_modules/safe-regex-test/.github
+/var/home/charlie/hermes-studio/node_modules/secure-json-parse/.github
+/var/home/charlie/hermes-studio/node_modules/shell-quote/.github
+/var/home/charlie/hermes-studio/node_modules/side-channel/.github
+/var/home/charlie/hermes-studio/node_modules/side-channel-list/.github
+/var/home/charlie/hermes-studio/node_modules/side-channel-map/.github
+/var/home/charlie/hermes-studio/node_modules/side-channel-weakmap/.github
+/var/home/charlie/hermes-studio/node_modules/supports-preserve-symlinks-flag/.github
+/var/home/charlie/hermes-studio/node_modules/undefsafe/.github
+/var/home/charlie/hermes-studio/node_modules/why-is-node-running/.github
+/var/home/charlie/hermes-studio/node_modules/thread-stream/.github
+
+__HERMES_CWD_1102a89d887e__/var/home/charlie/workspace__HERMES_CWD_1102a89d887e__

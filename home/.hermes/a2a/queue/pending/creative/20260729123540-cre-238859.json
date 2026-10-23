@@ -1,0 +1,16 @@
+{
+  "id": "20260729123540-cre-238859",
+  "created_at": "2026-07-29T12:35:40.341031+00:00",
+  "room": "creative",
+  "target_agent": "creative-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2musz61w8qkj",
+    "title": "Hermes Studio Task Execution Error Fix",
+    "created_at": 1785120875.376127
+  },
+  "content": "When configuring file paths for Hermes Studio tasks, prioritize absolute paths or explicitly validate relative path resolution against the Hermes Studio task runtime's default working directory, as path resolution behavior differs from local development environments and is a common root cause of [Errno 2] errors in this platform.",
+  "confidence": 0.88,
+  "status": "pending",
+  "review_note": ""
+}

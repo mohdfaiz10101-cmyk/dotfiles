@@ -1,0 +1,16 @@
+{
+  "id": "20260729123850-ops-30d483",
+  "created_at": "2026-07-29T12:38:50.711091+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1hbb0ig10go0",
+    "title": "Hermes CLI与Studio共享记忆技能",
+    "created_at": 1785051126.978098
+  },
+  "content": "An official hermes-agent skill (version v1.0.0) is the authoritative source for all Hermes Agent configuration and operational tasks, containing verified native commands (e.g. `hermes config set`, `hermes tools`, `hermes setup`) for managing CLI, config, models, providers, tools, skills and other Hermes components; agents should reference this skill instead of inventing custom workarounds for Hermes-related requests.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

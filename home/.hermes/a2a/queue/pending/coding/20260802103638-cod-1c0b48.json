@@ -1,0 +1,16 @@
+{
+  "id": "20260802103638-cod-1c0b48",
+  "created_at": "2026-08-02T10:36:38.715975+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbnuqrn4kbk9p",
+    "title": "",
+    "created_at": 1785666729.5263517
+  },
+  "content": "The active frpc.toml configuration for this environment only contains a single port mapping rule: 19976 → 18999, with no public port mapping entry configured for port 19910.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

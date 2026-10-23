@@ -1,0 +1,16 @@
+{
+  "id": "20260729124246-ops-fd2944",
+  "created_at": "2026-07-29T12:42:46.081864+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_124302_8be48e",
+    "title": "",
+    "created_at": 1785041264.371801
+  },
+  "content": "When troubleshooting mobile Netbird connectivity issues, a high-priority reusable step is to verify the Netbird app is exempt from the mobile OS's background app restrictions and battery optimization rules.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

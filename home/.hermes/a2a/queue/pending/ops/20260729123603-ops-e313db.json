@@ -1,0 +1,16 @@
+{
+  "id": "20260729123603-ops-e313db",
+  "created_at": "2026-07-29T12:36:03.417505+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms23tvyo0mckzr",
+    "title": "",
+    "created_at": 1785089251.5714533
+  },
+  "content": "The Hermes memory subsystem is already partially enabled with fixed active configuration: memory.memory_enabled=true, memory.user_profile_enabled=true, memory.write_approval=false (auto-write without approval), and memory.memory_char_limit=2200.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

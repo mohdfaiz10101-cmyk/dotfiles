@@ -1,0 +1,16 @@
+{
+  "id": "20260729130152-ops-f345a4",
+  "created_at": "2026-07-29T13:01:52.699404+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_112947",
+    "title": "",
+    "created_at": 1784950198.3829875
+  },
+  "content": "The memory-curator follows a fixed 5-step pipeline: 1) collect from session_search/letta/memory-engine, 2) refine via LLM grading/compression/deduplication, 3) write to MEMORY.md with character limit enforcement, 4) optional sync to letta memory blocks, 5) generate curation report.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

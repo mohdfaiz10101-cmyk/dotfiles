@@ -1,0 +1,16 @@
+{
+  "id": "20260729133316-cod-50bcf6",
+  "created_at": "2026-07-29T13:33:16.063216+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryew3zh7sr5a5",
+    "title": "",
+    "created_at": 1784865669.833503
+  },
+  "content": "This MCP server uses a non-standard HTTPS port (8080) instead of the default 443, so all connection configurations must explicitly specify the port to avoid connection failures.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

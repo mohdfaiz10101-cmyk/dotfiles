@@ -1,0 +1,16 @@
+{
+  "id": "20260729125920-ops-149d4b",
+  "created_at": "2026-07-29T12:59:20.632962+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_133425",
+    "title": "",
+    "created_at": 1784957676.913868
+  },
+  "content": "The watchdog mechanism tracks consecutive failures (currently 28-29) with silent_mode=false, indicating persistent lock contention that requires manual intervention to resolve before automated curation can resume.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

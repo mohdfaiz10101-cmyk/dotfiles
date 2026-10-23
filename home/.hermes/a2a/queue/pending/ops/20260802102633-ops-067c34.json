@@ -1,0 +1,16 @@
+{
+  "id": "20260802102633-ops-067c34",
+  "created_at": "2026-08-02T10:26:33.593760+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbnfis3s12ttx",
+    "title": "",
+    "created_at": 1785666089.8317285
+  },
+  "content": "The user's Haven connection list requires entries for ports 8787 and 8648, with separate NetBird-mapped address and FRP-mapped address entries for each port.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

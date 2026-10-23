@@ -1,0 +1,16 @@
+{
+  "id": "20260801122957-ops-aa9cd9",
+  "created_at": "2026-08-01T12:29:57.996590+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d950d7a6-02b7-4823-8343-bc353d2b9974",
+    "title": "",
+    "created_at": 1785587104.233493
+  },
+  "content": "The default follow-up to casual user greetings is to offer direct task handling support, rather than first asking for clarification of the user's intent.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

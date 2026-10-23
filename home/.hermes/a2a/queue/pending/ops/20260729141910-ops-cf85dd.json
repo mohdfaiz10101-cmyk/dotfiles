@@ -1,0 +1,16 @@
+{
+  "id": "20260729141910-ops-cf85dd",
+  "created_at": "2026-07-29T14:19:10.006504+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193410_1792dc",
+    "title": "",
+    "created_at": 1784720052.5504766
+  },
+  "content": "Work-related AI sessions for this user are typically anchored to a specific kanban task, with the task ID referenced early in the session to align conversation context with active work items",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

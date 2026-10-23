@@ -1,0 +1,16 @@
+{
+  "id": "20260804102605-ops-082548",
+  "created_at": "2026-08-04T10:26:05.199708+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4f1818993420",
+    "title": "SEED_HANDOFF # SESSION_SEED # generated_at: 2026-08-04T18:13:20",
+    "created_at": 1785838950.538221
+  },
+  "content": "Hermes memory refinement is fully decoupled from WebUI session storage: it only relies on `~/.hermes/memories/*` and `memory-index.json`, so old WebUI session JSON files under `~/.hermes/webui/sessions/` can be safely deleted or archived after handoff without impacting memory functionality.",
+  "confidence": 0.99,
+  "status": "pending",
+  "review_note": ""
+}

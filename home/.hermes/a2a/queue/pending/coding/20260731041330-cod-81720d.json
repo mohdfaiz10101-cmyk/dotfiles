@@ -1,0 +1,16 @@
+{
+  "id": "20260731041330-cod-81720d",
+  "created_at": "2026-07-31T04:13:30.767518+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "152ae2ddd26d",
+    "title": "✨ Update available! 0.144.6 -> 0.146.0 Release notes: https:/",
+    "created_at": 1785471002.318119
+  },
+  "content": "In nvm-managed Node.js environments, stale hardcoded wrapper scripts in ~/.local/bin that pin specific Node/CLI versions will cause persistent version mismatches after global npm updates if ~/.local/bin appears earlier in PATH than nvm's version-specific bin directory.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

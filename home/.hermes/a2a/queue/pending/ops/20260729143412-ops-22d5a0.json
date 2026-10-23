@@ -1,0 +1,16 @@
+{
+  "id": "20260729143412-ops-22d5a0",
+  "created_at": "2026-07-29T14:34:12.345619+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvndra07dqqqy",
+    "title": "",
+    "created_at": 1784698516.7825685
+  },
+  "content": "A reusable troubleshooting workflow for Hermes Studio feature failures: when a specific function (e.g. category, workspace) is not working, first consult the official Hermes Studio API documentation for the relevant function interfaces, then perform actual interface calls to reproduce the fault and obtain specific error information for root cause analysis.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729134144-ops-33a649",
+  "created_at": "2026-07-29T13:41:44.620941+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrx70gsyruus7k",
+    "title": "",
+    "created_at": 1784791943.1279473
+  },
+  "content": "Hermes中管理自有Agent的推荐最佳实践架构为：采用1个主入口Agent作为总调度，搭配多个Skills沉淀可复用能力、少量稳定Workflows实现自动化，配合自动识别/分流规则，按Profile隔离不同场景环境，避免创建大量独立人格化Agent，该方案兼顾可维护性与长期有效性。",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

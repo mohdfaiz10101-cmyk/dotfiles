@@ -1,0 +1,16 @@
+{
+  "id": "20260802124646-cod-2cca85",
+  "created_at": "2026-08-02T12:46:46.602110+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbsjulsn52mt1",
+    "title": "",
+    "created_at": 1785674629.3211775
+  },
+  "content": "The user explicitly prefers access to a WebUI interface for OpenHands CLI, either via third-party integration with existing OpenHands WebUI or alternative WebUI implementations for the OpenHands ecosystem.",
+  "confidence": 0.96,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729135222-ops-a04960",
+  "created_at": "2026-07-29T13:52:22.574981+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_200215_56b4b0",
+    "title": "",
+    "created_at": 1784721737.1212142
+  },
+  "content": "The user's kanban task IDs follow the format [type prefix]_[8-character alphanumeric identifier], with a confirmed example of a standard work task ID being t_0120d003 (the 't_' prefix denotes a task-type work item).",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

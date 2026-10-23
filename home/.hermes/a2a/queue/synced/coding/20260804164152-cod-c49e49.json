@@ -1,0 +1,17 @@
+{
+  "id": "20260804164152-cod-c49e49",
+  "created_at": "2026-08-04T16:41:52.201750+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4b730cb36c75",
+    "title": "ios tailscale 8787 port can not open",
+    "created_at": 1785861512.945506
+  },
+  "content": "Reusable troubleshooting workflow for Tailscale remote service access failures: First confirm the target port is listening locally on the host, then verify basic Tailscale connectivity between client and host, then check the service's own authentication/whitelist configuration, then check Tailscale ACL rules for port-level restrictions, and finally check host firewall rules and SYN packet behavior for the target port.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.367491+00:00"
+}

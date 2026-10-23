@@ -1,0 +1,16 @@
+{
+  "id": "20260729132026-ops-9a8e4c",
+  "created_at": "2026-07-29T13:20:26.746923+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_223839",
+    "title": "",
+    "created_at": 1784903930.519324
+  },
+  "content": "Task routing decisions in the autonomous-task-brain skill are governed by three consistent, prioritized criteria: historical success rate of similar past tasks, assessed task complexity, and recorded user preferences, to prevent inappropriate auto-execution of high-risk or user-dispreferred tasks.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,82 @@
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:1:2026-07-21 20:25:11.110 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:2:2026-07-21 20:25:11.110 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:3:2026-07-21 20:25:11.111 [INFO] supervisor: install_root="/tmp/.mount_WsScrcHFOfdG/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:4:2026-07-21 20:25:11.112 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:5:2026-07-21 20:25:11.112 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:7:2026-07-21 20:25:50.751 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:8:2026-07-21 20:25:50.751 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:9:2026-07-21 20:25:50.751 [INFO] supervisor: install_root="/tmp/appimage_extracted_9c57d5eac60586537dee3e3343ddd0bc/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:10:2026-07-21 20:25:51.262 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:11:2026-07-21 20:25:51.262 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:12:2026-07-21 20:25:51.262 [ERROR] launcher failed: failed to spawn "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies/node/bin/node" "/tmp/appimage_extracted_9c57d5eac60586537dee3e3343ddd0bc/usr/bin/dist/index.js": Text file busy (os error 26)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:13:2026-07-21 20:25:51.262 [INFO] ws-scrcpy-web-launcher exiting with code 1
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:14:2026-07-21 20:26:04.899 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:15:2026-07-21 20:26:04.899 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:16:2026-07-21 20:26:04.899 [INFO] supervisor: install_root="/tmp/.mount_WsScrcAoLCPb/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:17:2026-07-21 20:26:05.387 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:18:2026-07-21 20:26:05.387 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:20:2026-07-21 20:26:08.339 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:21:2026-07-21 20:26:08.339 [INFO] argv: ["/tmp/.mount_WsScrcAoLCPb/usr/bin/ws-scrcpy-web-launcher", "--unzip", "/tmp/ws-scrcpy-web/update-adb-1784665567291/platform-tools-latest-linux.zip", "/tmp/ws-scrcpy-web/update-adb-1784665567291"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:22:2026-07-21 20:26:08.339 [INFO] unzip: src=/tmp/ws-scrcpy-web/update-adb-1784665567291/platform-tools-latest-linux.zip dest=/tmp/ws-scrcpy-web/update-adb-1784665567291
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:24:2026-07-21 20:27:30.605 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:25:2026-07-21 20:27:30.605 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:26:2026-07-21 20:27:30.605 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:27:2026-07-21 20:28:44.629 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:28:2026-07-21 20:28:44.629 [INFO] argv: ["/tmp/.mount_WsScrcAoLCPb/usr/bin/ws-scrcpy-web-launcher", "--unzip", "/tmp/ws-scrcpy-web/update-adb-1784665723039/platform-tools-latest-linux.zip", "/tmp/ws-scrcpy-web/update-adb-1784665723039"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:29:2026-07-21 20:28:44.629 [INFO] unzip: src=/tmp/ws-scrcpy-web/update-adb-1784665723039/platform-tools-latest-linux.zip dest=/tmp/ws-scrcpy-web/update-adb-1784665723039
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:31:2026-07-21 20:29:38.732 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:32:2026-07-21 20:29:38.732 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:33:2026-07-21 20:29:38.732 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:34:2026-07-21 20:29:40.854 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:35:2026-07-21 20:29:40.854 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:36:2026-07-21 20:29:40.854 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:37:2026-07-21 20:29:42.920 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:38:2026-07-21 20:29:42.920 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:39:2026-07-21 20:29:42.920 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:40:2026-07-21 20:29:45.016 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:41:2026-07-21 20:29:45.016 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:42:2026-07-21 20:29:45.016 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:43:2026-07-21 20:29:47.292 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:44:2026-07-21 20:29:47.292 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:45:2026-07-21 20:29:47.292 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:46:2026-07-21 20:29:49.516 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:47:2026-07-21 20:29:49.516 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:48:2026-07-21 20:29:49.516 [INFO] another ws-scrcpy-web-launcher instance is already running; exiting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:49:2026-07-22 07:11:06.942 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:50:2026-07-22 07:11:06.943 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:51:2026-07-22 07:11:06.944 [INFO] supervisor: install_root="/tmp/.mount_WsScrcfEdkGO/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:52:2026-07-22 07:11:07.008 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:53:2026-07-22 07:11:07.008 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:55:2026-07-23 16:16:30.515 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:56:2026-07-23 16:16:30.515 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:57:2026-07-23 16:16:30.516 [INFO] supervisor: install_root="/tmp/.mount_WsScrcdbghKg/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:58:2026-07-23 16:16:30.580 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:59:2026-07-23 16:16:30.580 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:61:2026-07-24 12:01:57.274 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:62:2026-07-24 12:01:57.291 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:63:2026-07-24 12:01:57.292 [INFO] supervisor: install_root="/tmp/.mount_WsScrcpIeCIk/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:64:2026-07-24 12:01:57.750 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:65:2026-07-24 12:01:57.750 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:67:2026-07-24 12:47:46.323 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:68:2026-07-24 12:47:46.512 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:69:2026-07-24 12:47:46.542 [INFO] supervisor: install_root="/tmp/.mount_WsScrcIjlafP/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:70:2026-07-24 12:47:49.644 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:71:2026-07-24 12:47:49.667 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:73:2026-07-24 12:53:09.946 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:74:2026-07-24 12:53:09.963 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:75:2026-07-24 12:53:09.965 [INFO] supervisor: install_root="/tmp/.mount_WsScrcNBJaDE/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:76:2026-07-24 12:53:10.236 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:77:2026-07-24 12:53:10.236 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:79:2026-07-24 12:53:27.407 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:80:2026-07-24 12:53:27.407 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:81:2026-07-24 12:53:27.408 [INFO] supervisor: install_root="/tmp/.mount_WsScrccHmOOA/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:82:2026-07-24 12:53:27.509 [INFO] supervisor: refreshed operation-server helper at "/var/home/charlie/.local/share/WsScrcpyWeb/control/operation-server/ws-scrcpy-web-launcher.exe"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:83:2026-07-24 12:53:27.509 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:87:2026-07-25 19:32:47.436 [INFO] ws-scrcpy-web-launcher exiting with code 1
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:88:2026-07-25 19:32:50.421 [INFO] ws-scrcpy-web-launcher v0.1.30-beta.72 starting
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:89:2026-07-25 19:32:53.226 [INFO] argv: ["ws-scrcpy-web-launcher"]
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:90:2026-07-25 19:32:58.713 [INFO] supervisor: install_root="/tmp/.mount_WsScrcgiOgOJ/usr" data_root="/var/home/charlie/.local/share/WsScrcpyWeb" deps_path="/var/home/charlie/.local/share/WsScrcpyWeb/dependencies"
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:92:2026-07-25 19:33:01.743 [INFO] supervisor: deps_path resolved to "/var/home/charlie/.local/share/WsScrcpyWeb/dependencies" (passed to Node child)
+/var/home/charlie/.local/share/WsScrcpyWeb/logs/launcher.log:96:2026-07-25 19:33:14.275 [INFO] ws-scrcpy-web-launcher exiting with code 1
+
+__HERMES_CWD_eba1374fde0f__/var/home/charlie/workspace__HERMES_CWD_eba1374fde0f__

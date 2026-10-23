@@ -1,0 +1,16 @@
+{
+  "id": "20260729132131-ops-505785",
+  "created_at": "2026-07-29T13:21:31.939586+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260724_222003",
+    "title": "",
+    "created_at": 1784902814.8277276
+  },
+  "content": "Per the skill's fault classification rules, background services (e.g., letta/memory-engine) are not marked as faulty if their core process is actively running, even if systemctl --user reports an inactive status for the user-level service unit.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

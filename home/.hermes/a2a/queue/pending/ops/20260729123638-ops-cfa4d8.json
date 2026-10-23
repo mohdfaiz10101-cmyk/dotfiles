@@ -1,0 +1,16 @@
+{
+  "id": "20260729123638-ops-cfa4d8",
+  "created_at": "2026-07-29T12:36:38.255693+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms23cqcqpv4r5d",
+    "title": "",
+    "created_at": 1785088099.436596
+  },
+  "content": "The endpoint http://100.87.31.44:8787/ uses a private carrier-grade NAT IP address (RFC 1918 100.64.0.0/10 range), so it is only accessible from clients connected to the same private network or associated VPN as the host, and cannot be reached from the public internet.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

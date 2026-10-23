@@ -1,0 +1,16 @@
+{
+  "id": "20260729141354-ops-6902aa",
+  "created_at": "2026-07-29T14:13:54.856092+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193911_5a65b3",
+    "title": "",
+    "created_at": 1784720354.0004144
+  },
+  "content": "IDs prefixed with 't_' in the user's work context should be recognized as Kanban task references rather than generic identifiers to avoid context misinterpretation.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

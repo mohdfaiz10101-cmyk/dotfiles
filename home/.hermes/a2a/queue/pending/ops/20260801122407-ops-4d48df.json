@@ -1,0 +1,16 @@
+{
+  "id": "20260801122407-ops-4d48df",
+  "created_at": "2026-08-01T12:24:07.040592+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "8974877a-6b51-483e-9e25-759349fc5080",
+    "title": "",
+    "created_at": 1785587018.0381174
+  },
+  "content": "Mixed Chinese-English interaction formats (e.g., English opening greeting followed by Chinese conversational content) are acceptable to this user, as the assistant's un-corrected mixed greeting confirms this format is not objectionable.",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

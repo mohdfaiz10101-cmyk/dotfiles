@@ -1,0 +1,16 @@
+{
+  "id": "20260729141009-ops-1bed86",
+  "created_at": "2026-07-29T14:10:09.168337+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194412_d6501f",
+    "title": "",
+    "created_at": 1784720653.9404423
+  },
+  "content": "The user tracks work tasks using a kanban system.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,835 @@
+- generic
+  - link "Skip to content" [ref=e1]
+  - banner
+    - heading "Navigation Menu" [level=2, ref=e8]
+    - generic
+      - link "Homepage" [ref=e10]
+      - navigation "Global" [ref=e18]
+        - list
+          - listitem [level=1]
+            - generic
+              - button "Platform" [expanded=false, ref=e152]
+          - listitem [level=1]
+            - generic
+              - button "Solutions" [expanded=false, ref=e153]
+          - listitem [level=1]
+            - generic
+              - button "Resources" [expanded=false, ref=e154]
+          - listitem [level=1]
+            - generic
+              - button "Open Source" [expanded=false, ref=e155]
+          - listitem [level=1]
+            - generic
+              - button "Enterprise" [expanded=false, ref=e156]
+          - listitem [level=1]
+            - link "Pricing" [ref=e50]
+      - button "Search or jump to, type / to search" [expanded=false, ref=e19]
+      - link "Sign in" [ref=e34]
+      - link "Sign up" [ref=e20]
+      - button "Appearance settings" [ref=e21]
+- main
+  - generic
+    - link "remote-android" [ref=e5]
+    - StaticText "/"
+    - strong
+      - link "redroid-doc" [ref=e9]
+    - StaticText "Public"
+    - list
+      - listitem [level=1]
+        - link "You must be signed in to change notification settings" [ref=e22]
+          - StaticText "Notifications"
+      - listitem [level=1]
+        - link "Fork 472" [ref=e23]
+          - StaticText "Fork "
+          - StaticText "472"
+      - listitem [level=1]
+        - link "You must be signed in to star a repository" [ref=e24]
+          - StaticText " Star "
+          - StaticText "6.7k"
+    - navigation "Repository" [ref=e6]
+      - list
+        - listitem [level=1]
+          - link "Code" [ref=e25]
+            - StaticText "Code"
+        - listitem [level=1]
+          - link "Issues 358" [ref=e26]
+            - StaticText "Issues"
+            - StaticText "358"
+        - listitem [level=1]
+          - link "Pull requests 2" [ref=e27]
+            - StaticText "Pull requests"
+            - StaticText "2"
+        - listitem [level=1]
+          - link "Actions" [ref=e28]
+            - StaticText "Actions"
+        - listitem [level=1]
+          - link "Projects" [ref=e29]
+            - StaticText "Projects"
+        - listitem [level=1]
+          - link "Security and quality" [ref=e30]
+            - StaticText "Security and quality"
+        - listitem [level=1]
+          - link "Insights" [ref=e31]
+            - StaticText "Insights"
+  - generic
+    - region "Header" [ref=e35]
+      - heading "Unable to run Redroid on Arch Linux #44" [level=1, ref=e37]
+        - StaticText "Unable to run Redroid on Arch Linux"
+        - StaticText "#44"
+      - link "New issue" [ref=e38]
+        - StaticText "New issue"
+      - button "Copy link" [ref=e39]
+    - generic
+      - image "Issue"
+      - StaticText "Closed"
+    - heading "Description" [level=2, ref=e40]
+    - link "@kebugcheckex's profile" [ref=e51]
+      - image "@kebugcheckex"
+    - link "kebugcheckex" [ref=e41]
+    - generic
+      - StaticText "opened "
+      - link "on Oct 5, 2021" [ref=e52]
+        - StaticText "on Oct 5, 2021"
+    - button "Issue body actions" [expanded=false, ref=e42]
+    - generic
+      - generic
+        - heading "Summary" [level=2, ref=e157]
+        - paragraph
+          - StaticText "Redroid crashes due to not able to find "
+          - code
+            - StaticText "/dev/binder"
+          - StaticText " on Arch Linux with zen kernel, despite that zen kernel has binder builtin."
+        - heading "Context" [level=2, ref=e158]
+        - paragraph
+          - StaticText "I'm trying to run Redroid in Arch Linux with the "
+          - link "zen kernel" [ref=e206]
+          - StaticText ". It has "
+          - code
+            - StaticText "binder"
+          - StaticText " and "
+          - code
+            - StaticText "ashmem"
+          - StaticText " modules built into the kernel (not as loadable kernel modules). I confirmed that the output of the following commands are expected"
+        - generic
+          - code
+            - StaticText "$ grep binder /proc/filesystems \nnodev   binder\n$ grep ashmem /proc/misc\n124 ashmem\n"
+          - button "Copy code to clipboard" [ref=e225]
+        - paragraph
+          - StaticText "Binderfs is present in "
+          - code
+            - StaticText "/dev"
+        - generic
+          - code
+            - StaticText "$ ls -l /dev/binderfs\ntotal 0\ncrw------- 1 root root 238, 0 Oct  4 14:40 binder-control\n"
+          - button "Copy code to clipboard" [ref=e226]
+        - paragraph
+          - StaticText "However, redroid is crash-looping due to not able to open "
+          - code
+            - StaticText "/dev/binder"
+        - generic
+          - code
+            - StaticText "...\n10-04 21:47:11.646    35    35 E ProcessState: Binder driver /dev/binder is unavailable. Using /dev/binder instead.\n10-04 21:47:11.646    35    35 W ProcessState: Opening '/dev/binder' failed: No such file or directory\n10-04 21:47:11.646    35    35 F ProcessState: Binder driver '/dev/binder' could not be opened.  Terminating.\n10-04 21:47:11.646    35    35 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 35 (servicemanager), pid 35 (servicemanager)\n...\n"
+          - button "Copy code to clipboard" [ref=e227]
+        - paragraph
+          - StaticText "Full Logcat output can be found "
+          - link "here" [ref=e207]
+          - StaticText "."
+          - LineBreak "\n"
+          - code
+            - StaticText "dmesg"
+          - StaticText " messages are similar so I omit the details here."
+        - paragraph
+          - StaticText "I manually built a kernel with the appropriate configs and it works. The only difference between zen-kernel and my custom built is that zen kernel is built with"
+          - LineBreak "\n"
+          - StaticText "zen kernel is built with"
+        - generic
+          - code
+            - StaticText "CONFIG_ANDROID_BINDER_DEVICES=\"\"\n"
+          - button "Copy code to clipboard" [ref=e228]
+        - paragraph
+          - StaticText "while my build uses"
+        - generic
+          - code
+            - StaticText "CONFIG_ANDROID_BINDER_DEVICES=\"binder,hwbinder,vndbinder\"\n"
+          - button "Copy code to clipboard" [ref=e229]
+        - paragraph
+          - StaticText "Not sure if this is causing the problem. I posted a while back "
+          - link "in the other repo" [ref=e208]
+          - StaticText ". I'm posting here to have more visibility and potentially more help."
+        - paragraph
+          - StaticText "Any one has successfully run Redroid on Arch Linux (including Manjaro, etc.)? Please share your config/method. Thanks."
+      - toolbar "Reactions"
+    - heading "Activity" [level=2, ref=e36]
+    - generic
+      - region "Events" [ref=e43]
+        - generic
+          - generic
+            - generic
+              - link "zhouziyang" [ref=e241]
+                - StaticText "zhouziyang"
+              - StaticText "self-assigned this"
+              - link "on Oct 5, 2021" [ref=e230]
+                - StaticText "on Oct 5, 2021"
+        - generic
+          - generic
+            - generic
+              - link "zhouziyang" [ref=e242]
+                - StaticText "zhouziyang"
+              - StaticText "added "
+              - generic
+                - link "enhancement New feature or request" [ref=e243]
+              - link "on Oct 5, 2021" [ref=e231]
+                - StaticText "on Oct 5, 2021"
+      - heading "zhouziyang commented on Oct 5, 2021" [level=3, ref=e53]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Oct 5, 2021"
+      - link "@zhouziyang's profile" [ref=e54]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e55]
+      - link "on Oct 5, 2021" [ref=e159]
+        - StaticText "on Oct 5, 2021"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 1:02 PM on October 5, 2021" [expanded=false, ref=e56]
+      - paragraph
+        - StaticText "currently, "
+        - code
+          - StaticText "binder,hwbinder,vndbinder"
+        - StaticText " is required either via kernel build config or kernel module params (like "
+        - code
+          - StaticText "ubuntu 20.04"
+        - StaticText "+)"
+        - LineBreak "\n"
+        - StaticText "I will enhance the "
+        - code
+          - StaticText "binder"
+        - StaticText " device allocation process in "
+        - code
+          - StaticText "redroid"
+        - StaticText " instance (create "
+        - code
+          - StaticText "binder"
+        - StaticText " device if not pre-allocated)."
+      - toolbar "Reactions"
+      - heading "kebugcheckex commented on Oct 7, 2021" [level=3, ref=e57]
+        - StaticText "kebugcheckex commented "
+        - StaticText "on Oct 7, 2021"
+      - link "@kebugcheckex's profile" [ref=e58]
+        - image "@kebugcheckex"
+      - link "kebugcheckex" [ref=e59]
+      - link "on Oct 7, 2021" [ref=e160]
+        - StaticText "on Oct 7, 2021"
+      - StaticText "Author"
+      - button "Actions for kebugcheckex's comment, 1:50 AM on October 7, 2021" [expanded=false, ref=e60]
+      - paragraph
+        - StaticText "How can I help here?"
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Oct 13, 2021" [level=3, ref=e61]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Oct 13, 2021"
+      - link "@zhouziyang's profile" [ref=e62]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e63]
+      - link "on Oct 13, 2021" [ref=e161]
+        - StaticText "on Oct 13, 2021"
+      - button "Last edited by zhouziyang" [expanded=false, ref=e64]
+        - StaticText "Last edited by "
+        - StaticText "zhouziyang"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 4:26 PM on October 13, 2021" [expanded=false, ref=e65]
+      - paragraph
+        - link "@kebugcheckex" [ref=e162]
+        - StaticText " FYI, I will create new binary, and get executed after mount binderfs in "
+        - code
+          - StaticText "init.rc"
+        - StaticText " / "
+        - code
+          - StaticText "init.redroid.rc"
+        - StaticText ". this binary will check binder existance, and allocate new if not exist. "
+        - code
+          - StaticText "vendor_redroid"
+        - StaticText ", "
+        - code
+          - StaticText "device_redroid"
+        - StaticText " are involved."
+      - toolbar "Reactions"
+      - heading "minhducsun2002 commented on Nov 4, 2021" [level=3, ref=e66]
+        - StaticText "minhducsun2002 commented "
+        - StaticText "on Nov 4, 2021"
+      - link "@minhducsun2002's profile" [ref=e67]
+        - image "@minhducsun2002"
+      - link "minhducsun2002" [ref=e68]
+      - link "on Nov 4, 2021" [ref=e163]
+        - StaticText "on Nov 4, 2021"
+      - button "Actions for minhducsun2002's comment, 1:00 PM on November 4, 2021" [expanded=false, ref=e69]
+      - generic
+        - paragraph
+          - link "@kebugcheckex" [ref=e164]
+          - StaticText " I think you can try adding stuff to the command line like I did :"
+        - generic
+          - code
+            - StaticText "$ cat /proc/cmdline \ninitrd=\\intel-ucode.img initrd=\\initramfs-linux-zen.img root=UUID=[redacted] binder.devices=binder,hwbinder,vndbinder,anbox-binder,anbox-hwbinder,anbox-vndbinder```\n"
+          - button "Copy code to clipboard" [ref=e209]
+      - toolbar "Reactions"
+        - switch "👍 1 reaction" [checked=false, ref=e70]
+          - StaticText "👍"
+          - StaticText "React with 👍"
+          - StaticText "1"
+      - heading "DavidVentura commented on Jan 5, 2022" [level=3, ref=e71]
+        - StaticText "DavidVentura commented "
+        - StaticText "on Jan 5, 2022"
+      - link "@DavidVentura's profile" [ref=e72]
+        - image "@DavidVentura"
+      - link "DavidVentura" [ref=e73]
+      - link "on Jan 5, 2022" [ref=e165]
+        - StaticText "on Jan 5, 2022"
+      - button "Actions for DavidVentura's comment, 6:36 AM on January 5, 2022" [expanded=false, ref=e74]
+      - generic
+        - paragraph
+          - StaticText "even on ubuntu 21.04, mounting binderfs only has "
+          - code
+            - StaticText "binder-control"
+          - StaticText " in it."
+        - paragraph
+          - StaticText "/proc/cmdline shows"
+          - LineBreak "\n"
+          - code
+            - StaticText "binder.devices=binder,hwbinder,vndbinder,anbox-binder,anbox-hwbinder,anbox-vndbinder"
+        - paragraph
+          - StaticText "and even running modprobe with the flags "
+          - code
+            - StaticText "modprobe binder_linux devices=binder,hwbinder,vndbinder"
+          - StaticText " does not add the devices."
+        - paragraph
+          - StaticText "for me, the container crash-loops logging"
+        - generic
+          - code
+            - StaticText "[ 6279.683665] DEBUG: Abort message: 'Binder driver '/dev/binder' could not be opened.  Terminating.'\n"
+          - button "Copy code to clipboard" [ref=e210]
+        - paragraph
+          - StaticText "among other things."
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jan 5, 2022" [level=3, ref=e75]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jan 5, 2022"
+      - link "@zhouziyang's profile" [ref=e76]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e77]
+      - link "on Jan 5, 2022" [ref=e166]
+        - StaticText "on Jan 5, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 9:53 AM on January 5, 2022" [expanded=false, ref=e78]
+      - paragraph
+        - StaticText "not tested on "
+        - code
+          - StaticText "Arch"
+        - StaticText ". But it should work in "
+        - code
+          - StaticText "ubuntu 20.04 / ubuntu 21.04"
+        - StaticText " with just "
+        - code
+          - StaticText "modprobe binder_linux devices=binder,hwbinder,vndbinder"
+        - StaticText " (or some other module auto-load mechanism "
+        - code
+          - StaticText "/etc/modules-load.d/"
+        - StaticText ")."
+      - toolbar "Reactions"
+      - heading "DavidVentura commented on Jan 5, 2022" [level=3, ref=e79]
+        - StaticText "DavidVentura commented "
+        - StaticText "on Jan 5, 2022"
+      - link "@DavidVentura's profile" [ref=e80]
+        - image "@DavidVentura"
+      - link "DavidVentura" [ref=e81]
+      - link "on Jan 5, 2022" [ref=e167]
+        - StaticText "on Jan 5, 2022"
+      - button "Actions for DavidVentura's comment, 5:33 PM on January 5, 2022" [expanded=false, ref=e82]
+      - paragraph
+        - StaticText "it is currently not the case for me on 21.04, on kernel 5.11.0-40 I have the same output as "
+        - link "@kebugcheckex" [ref=e168]
+        - StaticText " and I can provide any logs you need to debug"
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jan 5, 2022" [level=3, ref=e83]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jan 5, 2022"
+      - link "@zhouziyang's profile" [ref=e84]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e85]
+      - link "on Jan 5, 2022" [ref=e169]
+        - StaticText "on Jan 5, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 5:38 PM on January 5, 2022" [expanded=false, ref=e86]
+      - generic
+        - paragraph
+          - StaticText "can you check with the following command?"
+        - generic
+          - code
+            - StaticText "# cat /sys/module/binder_linux/parameters/devices\nbinder,hwbinder,vndbinder\n# uname -a\n"
+          - button "Copy code to clipboard" [ref=e211]
+      - toolbar "Reactions"
+      - heading "DavidVentura commented on Jan 5, 2022" [level=3, ref=e87]
+        - StaticText "DavidVentura commented "
+        - StaticText "on Jan 5, 2022"
+      - link "@DavidVentura's profile" [ref=e88]
+        - image "@DavidVentura"
+      - link "DavidVentura" [ref=e89]
+      - link "on Jan 5, 2022" [ref=e170]
+        - StaticText "on Jan 5, 2022"
+      - button "Actions for DavidVentura's comment, 6:06 PM on January 5, 2022" [expanded=false, ref=e90]
+      - generic
+        - code
+          - StaticText "$ cat /sys/module/binder_linux/parameters/devices\n\n$ cat /proc/cmdline                     \nBOOT_IMAGE=/boot/vmlinuz-5.11.0-40-generic ro quiet splash binder.devices=binder,hwbinder,vndbinder,anbox-binder,anbox-hwbinder,anbox-vndbinder vt.handoff=7\n$ lsmod | grep binder\nbinder_linux          204800  0\n$ uname -a\nLinux david 5.11.0-40-generic #44-Ubuntu SMP Wed Oct 20 16:16:42 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux\n"
+        - button "Copy code to clipboard" [ref=e212]
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jan 7, 2022" [level=3, ref=e91]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jan 7, 2022"
+      - link "@zhouziyang's profile" [ref=e92]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e93]
+      - link "on Jan 7, 2022" [ref=e171]
+        - StaticText "on Jan 7, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 12:32 AM on January 7, 2022" [expanded=false, ref=e94]
+      - paragraph
+        - code
+          - StaticText "redroid/redroid:11.0.0-latest"
+        - StaticText " docker image get updated. please try the new image, it will allocate binder devices if needed."
+        - LineBreak "\n"
+        - StaticText "other version of "
+        - code
+          - StaticText "redroid"
+        - StaticText " images will get update soon."
+      - toolbar "Reactions"
+      - heading "DavidVentura commented on Jan 7, 2022" [level=3, ref=e95]
+        - StaticText "DavidVentura commented "
+        - StaticText "on Jan 7, 2022"
+      - link "@DavidVentura's profile" [ref=e96]
+        - image "@DavidVentura"
+      - link "DavidVentura" [ref=e97]
+      - link "on Jan 7, 2022" [ref=e172]
+        - StaticText "on Jan 7, 2022"
+      - button "Actions for DavidVentura's comment, 12:56 AM on January 7, 2022" [expanded=false, ref=e98]
+      - generic
+        - paragraph
+          - StaticText "Same outcome (the new image got pulled); I even added a "
+          - code
+            - StaticText "-v /dev/binder:/dev/binder"
+          - StaticText " after the failure to see if that'd work but it did not."
+        - generic
+          - code
+            - StaticText "docker run -itd --rm --memory-swappiness=0 --privileged     --pull always     -v ~/data:/data -v /dev/binder:/dev/binder     -p 5555:5555     redroid/redroid:11.0.0-latest\n"
+          - button "Copy code to clipboard" [ref=e213]
+        - paragraph
+          - StaticText "and my host's "
+          - code
+            - StaticText "/dev/binder"
+          - StaticText " still only had "
+          - code
+            - StaticText "binder-control"
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jan 7, 2022" [level=3, ref=e99]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jan 7, 2022"
+      - link "@zhouziyang's profile" [ref=e100]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e101]
+      - link "on Jan 7, 2022" [ref=e173]
+        - StaticText "on Jan 7, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 1:07 AM on January 7, 2022" [expanded=false, ref=e102]
+      - generic
+        - paragraph
+          - StaticText "You should not mount binder from your host ("
+          - code
+            - StaticText "-v /dev/binder:/dev/binder"
+          - StaticText ")."
+          - LineBreak "\n"
+          - StaticText "try"
+        - generic
+          - code
+            - StaticText "docker run -itd --rm --memory-swappiness=0 --privileged \\\n    --pull always \\\n    --name redroid11 \\\n    -v ~/data:/data \\\n    -p 5555:5555 \\\n    redroid/redroid:11.0.0-latest\n"
+          - button "Copy code to clipboard" [ref=e214]
+        - paragraph
+          - StaticText "try to collect debug logs if still not work"
+        - generic
+          - code
+            - StaticText "docker exec -it redroid11 -- sh\n# inside container\nlogcat\nls -al /dev/binderfs\n/vendor/bin/binder_alloc\n"
+          - button "Copy code to clipboard" [ref=e215]
+      - toolbar "Reactions"
+      - heading "DavidVentura commented on Jan 7, 2022" [level=3, ref=e103]
+        - StaticText "DavidVentura commented "
+        - StaticText "on Jan 7, 2022"
+      - link "@DavidVentura's profile" [ref=e104]
+        - image "@DavidVentura"
+      - link "DavidVentura" [ref=e105]
+      - link "on Jan 7, 2022" [ref=e174]
+        - StaticText "on Jan 7, 2022"
+      - button "Actions for DavidVentura's comment, 1:20 AM on January 7, 2022" [expanded=false, ref=e106]
+      - generic
+        - generic
+          - code
+            - StaticText "130|3a96063df8ca:/ # ls -al /dev/binderfs\ntotal 0\ndrwxr-xr-x  3 root root        0 2022-01-06 17:17 .\ndrwxr-xr-x 30 root root     4820 2022-01-06 17:17 ..\ncrw-rw-rw-  1 root root 239,   4 2022-01-06 17:17 binder\ncrw-------  1 root root 239,   3 2022-01-06 17:17 binder-control\ndrwxr-xr-x  3 root root        0 2022-01-06 17:17 binder_logs\ncrw-rw-rw-  1 root root 239,   5 2022-01-06 17:17 hwbinder\ncrw-rw-rw-  1 root root 239,   6 2022-01-06 17:17 vndbinder\n3a96063df8ca:/ # ls -al /vendor/bin/binder_alloc                                                                                                            \n-rwxr-xr-x 1 root shell 7040 2022-01-06 14:11 /vendor/bin/binder_alloc\n\n3a96063df8ca:/ # ls -lh /dev/binder                                                                                                                         \ntotal 0\ncrw------- 1 root root 239,   7 2022-01-06 17:17 binder-control\n\n"
+          - button "Copy code to clipboard" [ref=e216]
+        - paragraph
+          - StaticText "The logcat log still complains about "
+          - code
+            - StaticText "/dev/binder"
+          - StaticText " not being openable (attached)"
+          - LineBreak "\n"
+          - link "out.txt" [ref=e175]
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jan 7, 2022" [level=3, ref=e107]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jan 7, 2022"
+      - link "@zhouziyang's profile" [ref=e108]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e109]
+      - link "on Jan 7, 2022" [ref=e176]
+        - StaticText "on Jan 7, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 1:30 AM on January 7, 2022" [expanded=false, ref=e110]
+      - paragraph
+        - StaticText "run "
+        - code
+          - StaticText "umount /dev/binder"
+        - StaticText " in your host."
+        - LineBreak "\n"
+        - StaticText "kill container "
+        - code
+          - StaticText "docker kill redroid11"
+        - StaticText ", then start again"
+      - toolbar "Reactions"
+      - heading "DavidVentura commented on Jan 7, 2022" [level=3, ref=e111]
+        - StaticText "DavidVentura commented "
+        - StaticText "on Jan 7, 2022"
+      - link "@DavidVentura's profile" [ref=e112]
+        - image "@DavidVentura"
+      - link "DavidVentura" [ref=e113]
+      - link "on Jan 7, 2022" [ref=e177]
+        - StaticText "on Jan 7, 2022"
+      - button "Actions for DavidVentura's comment, 1:36 AM on January 7, 2022" [expanded=false, ref=e114]
+      - paragraph
+        - StaticText "Worked great, thanks."
+      - toolbar "Reactions"
+      - heading "tracure1337 commented on Jan 13, 2022" [level=3, ref=e115]
+        - StaticText "tracure1337 commented "
+        - StaticText "on Jan 13, 2022"
+      - link "@tracure1337's profile" [ref=e116]
+        - image "@tracure1337"
+      - link "tracure1337" [ref=e117]
+      - link "on Jan 13, 2022" [ref=e178]
+        - StaticText "on Jan 13, 2022"
+      - button "Last edited by tracure1337" [expanded=false, ref=e118]
+        - StaticText "Last edited by "
+        - StaticText "tracure1337"
+      - button "Actions for tracure1337's comment, 8:57 PM on January 13, 2022" [expanded=false, ref=e119]
+      - paragraph
+        - StaticText "I can confirm it works in arch rn. zen"
+      - toolbar "Reactions"
+      - heading "tkkcc commented on Feb 4, 2022" [level=3, ref=e120]
+        - StaticText "tkkcc commented "
+        - StaticText "on Feb 4, 2022"
+      - link "@tkkcc's profile" [ref=e121]
+        - image "@tkkcc"
+      - link "tkkcc" [ref=e122]
+      - link "on Feb 4, 2022" [ref=e179]
+        - StaticText "on Feb 4, 2022"
+      - button "Actions for tkkcc's comment, 3:40 PM on February 4, 2022" [expanded=false, ref=e123]
+      - generic
+        - paragraph
+          - link "@zhouziyang" [ref=e180]
+          - LineBreak "\n"
+          - StaticText "Hi, I get "
+          - code
+            - StaticText "Binder driver '/dev/binder' could not be opened"
+          - StaticText " too."
+        - generic
+          - code
+            - StaticText "~ sudo modprobe binder_linux devices=binder,hwbinder,vndbinder                                                                                        (bilabila)\n  sudo modprobe ashmem_linux\n  lsmod |grep -e binder -e ashmem\nashmem_linux           20480  0\nbinder_linux          233472  4\n~ sudo umount /dev/binder                                                                                                                             (bilabila)\n  sudo umount /dev/binderfs\numount: /dev/binder: no mount point specified.\numount: /dev/binderfs: no mount point specified.\n~ docker container list                                                                                                                               (bilabila)\nCONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS              PORTS                                       NAMES\ne3d8d6d36eda   redroid/redroid:11.0.0-latest   \"/init qemu=1 androi…\"   About a minute ago   Up About a minute   0.0.0.0:5555->5555/tcp, :::5555->5555/tcp   redroid11\n~ docker kill redroid11                                                                                                                               (bilabila)\nredroid11\n~ docker run -itd --rm --memory-swappiness=0 --privileged \\                                                                                           (bilabila)\n          --name redroid11 \\\n          -v ~/data:/data \\\n          -p 5555:5555 \\\n          redroid/redroid:11.0.0-latest\nWARNING: Your kernel does not support memory swappiness capabilities or the cgroup is not mounted. Memory swappiness discarded.\n551c9a0944886e1214b30538ff66f9fe0a7d8f24cd14d269133992ddca4bf46c\n~ docker exec -it redroid11 sh                                                                                                                        (bilabila)\n551c9a094488:/ # ls /dev/binderfs/                                                                                                                             \nbinder  binder-control  binder_logs  hwbinder  vndbinder\n551c9a094488:/ # ls /vendor/bin/binder_alloc                                                                                                                   \n/vendor/bin/binder_alloc\n551c9a094488:/ # ^D\n~ docker exec -it redroid11 logcat > logcat.log\n"
+          - button "Copy code to clipboard" [ref=e217]
+        - paragraph
+          - link "logcat.log" [ref=e181]
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Feb 6, 2022" [level=3, ref=e124]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Feb 6, 2022"
+      - link "@zhouziyang's profile" [ref=e125]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e126]
+      - link "on Feb 6, 2022" [ref=e182]
+        - StaticText "on Feb 6, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 5:52 PM on February 6, 2022" [expanded=false, ref=e127]
+      - paragraph
+        - link "@tkkcc" [ref=e183]
+        - StaticText " seems binder devices allocated in container. can you help to check permission of binder devices? "
+        - code
+          - StaticText "ls -al /dev/binderfs"
+      - toolbar "Reactions"
+      - heading "tkkcc commented on Feb 7, 2022" [level=3, ref=e128]
+        - StaticText "tkkcc commented "
+        - StaticText "on Feb 7, 2022"
+      - link "@tkkcc's profile" [ref=e129]
+        - image "@tkkcc"
+      - link "tkkcc" [ref=e130]
+      - link "on Feb 7, 2022" [ref=e184]
+        - StaticText "on Feb 7, 2022"
+      - button "Actions for tkkcc's comment, 2:02 PM on February 7, 2022" [expanded=false, ref=e131]
+      - paragraph
+        - link "@zhouziyang" [ref=e185]
+        - StaticText " I switch to linux-zen kernel and it's all right now."
+        - LineBreak "\n"
+        - StaticText "Previously I use anbox-modules-dkms 5.15 with offical kernel 5.16, may be they are not matched."
+      - toolbar "Reactions"
+        - switch "👍 1 reaction" [checked=false, ref=e132]
+          - StaticText "👍"
+          - StaticText "React with 👍"
+          - StaticText "1"
+      - region "Events" [ref=e44]
+        - generic
+          - generic
+            - generic
+              - link "zhouziyang" [ref=e244]
+                - StaticText "zhouziyang"
+              - StaticText "mentioned this "
+              - link "on Mar 15, 2022" [ref=e232]
+                - StaticText "on Mar 15, 2022"
+            - region "Issues mentioned" [ref=e218]
+              - list
+                - listitem [level=1]
+                  - link "binderfs create failed #124" [ref=e249]
+        - generic
+          - generic
+            - generic
+              - link "dennix91" [ref=e245]
+                - StaticText "dennix91"
+              - StaticText "mentioned this "
+              - link "on Apr 20, 2022" [ref=e233]
+                - StaticText "on Apr 20, 2022"
+            - region "Issues mentioned" [ref=e219]
+              - list
+                - listitem [level=1]
+                  - link "Container running, but adb cannot connect (device offline etc.) #136" [ref=e250]
+      - heading "zhouziyang commented on Jun 14, 2022" [level=3, ref=e133]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jun 14, 2022"
+      - link "@zhouziyang's profile" [ref=e134]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e135]
+      - link "on Jun 14, 2022" [ref=e186]
+        - StaticText "on Jun 14, 2022"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 3:08 PM on June 14, 2022" [expanded=false, ref=e136]
+      - paragraph
+        - StaticText "should work after installing "
+        - code
+          - StaticText "linux-zen"
+        - StaticText " kernel"
+      - toolbar "Reactions"
+      - region "Events" [ref=e45]
+        - generic
+          - generic
+            - generic
+              - link "zhouziyang" [ref=e246]
+                - StaticText "zhouziyang"
+              - StaticText "closed this as "
+              - link "completed" [ref=e234]
+              - link "on Jun 14, 2022" [ref=e235]
+                - StaticText "on Jun 14, 2022"
+      - heading "kevinzs2048 commented on Jun 23, 2022" [level=3, ref=e137]
+        - StaticText "kevinzs2048 commented "
+        - StaticText "on Jun 23, 2022"
+      - link "@kevinzs2048's profile" [ref=e138]
+        - image "@kevinzs2048"
+      - link "kevinzs2048" [ref=e139]
+      - link "on Jun 23, 2022" [ref=e187]
+        - StaticText "on Jun 23, 2022"
+      - button "Last edited by kevinzs2048" [expanded=false, ref=e140]
+        - StaticText "Last edited by "
+        - StaticText "kevinzs2048"
+      - button "Actions for kevinzs2048's comment, 4:15 PM on June 23, 2022" [expanded=false, ref=e141]
+      - generic
+        - blockquote
+          - paragraph
+            - StaticText "You should not mount binder from your host ("
+            - code
+              - StaticText "-v /dev/binder:/dev/binder"
+            - StaticText "). try"
+          - generic
+            - code
+              - StaticText "docker run -itd --rm --memory-swappiness=0 --privileged \\\n    --pull always \\\n    --name redroid11 \\\n    -v ~/data:/data \\\n    -p 5555:5555 \\\n    redroid/redroid:11.0.0-latest\n"
+            - button "Copy code to clipboard" [ref=e236]
+          - paragraph
+            - StaticText "try to collect debug logs if still not work"
+          - generic
+            - code
+              - StaticText "docker exec -it redroid11 -- sh\n# inside container\nlogcat\nls -al /dev/binderfs\n/vendor/bin/binder_alloc\n"
+            - button "Copy code to clipboard" [ref=e237]
+        - paragraph
+          - link "@zhouziyang" [ref=e188]
+          - LineBreak "\n"
+          - StaticText "Just encounter something related issue. Can you explain more why don't mount binder from your host ("
+          - code
+            - StaticText "-v /dev/binder:/dev/binder"
+          - StaticText ")?"
+          - LineBreak "\n"
+          - StaticText "I've tried and find that the mounted devices can not be recognized in the container. Got something like:"
+        - generic
+          - code
+            - StaticText "ProcessState: Opening '/dev/binder' failed: No such device or address\nProcessState: Binder driver could not be opened.  Terminating.\n"
+          - button "Copy code to clipboard" [ref=e220]
+        - paragraph
+          - StaticText "Thanks!"
+      - toolbar "Reactions"
+      - heading "zhouziyang commented on Jun 24, 2022" [level=3, ref=e142]
+        - StaticText "zhouziyang commented "
+        - StaticText "on Jun 24, 2022"
+      - link "@zhouziyang's profile" [ref=e143]
+        - image "@zhouziyang"
+      - link "zhouziyang" [ref=e144]
+      - link "on Jun 24, 2022" [ref=e189]
+        - StaticText "on Jun 24, 2022"
+      - button "Last edited by zhouziyang" [expanded=false, ref=e145]
+        - StaticText "Last edited by "
+        - StaticText "zhouziyang"
+      - StaticText "Member"
+      - button "Actions for zhouziyang's comment, 6:09 PM on June 24, 2022" [expanded=false, ref=e146]
+      - generic
+        - paragraph
+          - StaticText "this thread is pretty old"
+          - LineBreak "\n"
+          - StaticText "and I can provide some information:"
+        - list
+          - listitem [level=1]
+            - ListMarker "• "
+            - StaticText "start from Android O, several binder node needed ("
+            - code
+              - StaticText "/dev/binder"
+            - StaticText ", "
+            - code
+              - StaticText "/dev/hwbinder"
+            - StaticText ", and maybe "
+            - code
+              - StaticText "/vendor/vndbinder"
+            - StaticText ")"
+          - listitem [level=1]
+            - ListMarker "• "
+            - StaticText "previously, Android will mount it's own "
+            - code
+              - StaticText "devfs"
+            - StaticText ", and create device nodes via uevent (cold boot process); these behaviors are removed in redroid (mount "
+            - code
+              - StaticText "devfs"
+            - StaticText ", "
+            - code
+              - StaticText "uevent"
+            - StaticText " cold boot etc.)"
+          - listitem [level=1]
+            - ListMarker "• "
+            - StaticText "you can run multiple redroid instances at the same time, and mount binder nodes from your host will not work obviously."
+      - toolbar "Reactions"
+      - heading "kevinzs2048 commented on Jun 24, 2022" [level=3, ref=e147]
+        - StaticText "kevinzs2048 commented "
+        - StaticText "on Jun 24, 2022"
+      - link "@kevinzs2048's profile" [ref=e148]
+        - image "@kevinzs2048"
+      - link "kevinzs2048" [ref=e149]
+      - link "on Jun 24, 2022" [ref=e190]
+        - StaticText "on Jun 24, 2022"
+      - button "Actions for kevinzs2048's comment, 11:16 PM on June 24, 2022" [expanded=false, ref=e150]
+      - paragraph
+        - link "@zhouziyang" [ref=e191]
+        - StaticText " Thanks for your details info. Really appreciated, that make sense."
+      - toolbar "Reactions"
+      - region "Events" [ref=e46]
+        - generic
+          - generic
+            - generic
+              - link "chinese-wzq" [ref=e247]
+                - StaticText "chinese-wzq"
+              - StaticText "mentioned this "
+              - link "on Nov 8, 2022" [ref=e238]
+                - StaticText "on Nov 8, 2022"
+            - region "Issues mentioned" [ref=e221]
+              - list
+                - listitem [level=1]
+                  - link "Native Bridge (Houdini) on Android 12 #261" [ref=e251]
+        - generic
+          - generic
+            - generic
+              - link "xxlovex" [ref=e248]
+                - StaticText "xxlovex"
+              - StaticText "mentioned this "
+              - link "on Dec 24, 2023" [ref=e239]
+                - StaticText "on Dec 24, 2023"
+            - region "Issues mentioned" [ref=e222]
+              - list
+                - listitem [level=1]
+                  - link "运行软件闪退 #550" [ref=e252]
+    - generic
+      - link "Sign up for free" [ref=e47]
+        - StaticText "Sign up for free"
+      - strong
+        - StaticText "to join this conversation on GitHub."
+      - StaticText " Already have an account? "
+      - link "Sign in to comment" [ref=e48]
+    - generic
+      - heading "Metadata" [level=2, ref=e49]
+      - generic
+        - generic
+          - heading "Assignees" [level=3, ref=e192]
+          - list
+            - listitem [level=1]
+              - link "zhouziyang" [ref=e240]
+        - generic
+          - heading "Labels" [level=3, ref=e193]
+          - generic
+            - link "enhancement New feature or request" [ref=e223]
+        - heading "Type" [level=3, ref=e194]
+        - StaticText "No type"
+        - heading "Projects" [level=3, ref=e195]
+        - StaticText "No projects"
+        - heading "Milestone" [level=3, ref=e196]
+        - StaticText "No milestone"
+        - heading "Relationships" [level=3, ref=e197]
+        - StaticText "None yet"
+        - generic
+          - heading "Development" [level=3, ref=e198]
+          - StaticText "No branches or pull requests"
+          - list
+        - generic
+          - heading "Participants" [level=3, ref=e199]
+          - link "@zhouziyang" [ref=e200]
+          - link "@DavidVentura" [ref=e201]
+          - link "@kebugcheckex" [ref=e202]
+          - link "@kevinzs2048" [ref=e203]
+          - link "@tkkcc" [ref=e204]
+          - button "and 2 other participants, click to see the full list" [ref=e205]
+        - heading "Issue actions" [level=2, ref=e151]
+        - list
+          - listitem [level=1]
+            - button "Open in GitHub Copilot app" [ref=e224]
+- contentinfo
+  - heading "Footer" [level=2, ref=e2]
+  - link "GitHub Homepage" [ref=e3]
+  - StaticText "© 2026 GitHub,Inc."
+  - navigation "Footer" [ref=e4]
+    - heading "Footer navigation" [level=3, ref=e7]
+    - list "Footer navigation"
+      - listitem [level=1]
+        - link "Terms" [ref=e11]
+      - listitem [level=1]
+        - link "Privacy" [ref=e12]
+      - listitem [level=1]
+        - link "Security" [ref=e13]
+      - listitem [level=1]
+        - link "Status" [ref=e14]
+      - listitem [level=1]
+        - link "Community" [ref=e15]
+      - listitem [level=1]
+        - link "Docs" [ref=e16]
+      - listitem [level=1]
+        - link "Contact" [ref=e17]
+      - listitem [level=1]
+        - button "Manage cookies" [ref=e32]
+      - listitem [level=1]
+        - button "Do not share my personal information" [ref=e33]

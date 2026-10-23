@@ -1,0 +1,16 @@
+{
+  "id": "20260729132701-ops-ece843",
+  "created_at": "2026-07-29T13:27:01.158886+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_174155",
+    "title": "",
+    "created_at": 1784886176.3498635
+  },
+  "content": "MEMORY.md has a strict 2200 character limit with automatic capacity control; the curation process must compress and deduplicate facts to stay within this limit (current usage: 1966/2200).",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729123621-ops-b03bb1",
+  "created_at": "2026-07-29T12:36:21.825814+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "compress_ms23udp5_fa330012ddc3",
+    "title": "",
+    "created_at": 1785088946.3622103
+  },
+  "content": "Knowledge extraction context checkpoints for Hermes sessions must be formatted as a JSON array of objects, each with an 'insight' (string) field describing the durable fact and a 'confidence' (float 0.0-1.0) field indicating extraction certainty.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

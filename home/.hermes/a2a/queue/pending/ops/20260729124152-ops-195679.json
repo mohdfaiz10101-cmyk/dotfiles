@@ -1,0 +1,16 @@
+{
+  "id": "20260729124152-ops-195679",
+  "created_at": "2026-07-29T12:41:52.771249+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1c5qlyhdk21r",
+    "title": "",
+    "created_at": 1785042441.5045812
+  },
+  "content": "To avoid task truncation caused by conflicting service instances, disable standalone `hermes-gateway.service` in Hermes Studio deployments, and retain only the WebUI's built-in gateway to prevent mutual `--replace` kicks that interrupt running tasks.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -8,7 +8,7 @@ Type=simple
 WorkingDirectory=/var/home/charlie/hermes-webui-clean
 Environment=HOME=%h
 Environment=HERMES_HOME=/var/home/charlie/.hermes
-Environment=HERMES_WEBUI_HOST=::
+Environment=HERMES_WEBUI_HOST=0.0.0.0
 Environment=HERMES_WEBUI_PORT=8787
 Environment=PATH=%h/.local/bin:%h/.nvm/versions/node/v23.11.1/bin:/usr/local/bin:/usr/bin:/bin
 ExecStart=/usr/bin/python3 %h/hermes-webui-clean/bootstrap.py --foreground --no-browser 8787

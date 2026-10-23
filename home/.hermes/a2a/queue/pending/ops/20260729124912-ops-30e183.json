@@ -1,0 +1,16 @@
+{
+  "id": "20260729124912-ops-30e183",
+  "created_at": "2026-07-29T12:49:12.725381+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_220624",
+    "title": "",
+    "created_at": 1784988394.9825227
+  },
+  "content": "P0-grade facts—specifically user preferences, reply style, operation habits, and automation preferences—are designated as highest priority and must always be retained during memory curation.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

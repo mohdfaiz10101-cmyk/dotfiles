@@ -1,0 +1,16 @@
+{
+  "id": "20260804183020-ops-af11b2",
+  "created_at": "2026-08-04T18:30:20.885394+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "36e6076be57e",
+    "title": "",
+    "created_at": 1785868095.7295334
+  },
+  "content": "Standard session startup workflow: First confirm the active workspace is ready, then prompt the user to submit their task requests.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

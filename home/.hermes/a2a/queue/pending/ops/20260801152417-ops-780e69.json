@@ -1,0 +1,16 @@
+{
+  "id": "20260801152417-ops-780e69",
+  "created_at": "2026-08-01T15:24:17.934197+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msain7hcfxg454",
+    "title": "公网服务子域名统一管理",
+    "created_at": 1785597566.9602852
+  },
+  "content": "多端口公网服务统一管理的推荐架构为使用反向代理（优先Caddy）将子域名映射到内网对应端口服务，统一走80/443入口，可实现集中配置、故障隔离、自动HTTPS、减少端口暴露的核心收益",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

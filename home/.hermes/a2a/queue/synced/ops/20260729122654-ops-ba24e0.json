@@ -1,0 +1,17 @@
+{
+  "id": "20260729122654-ops-ba24e0",
+  "created_at": "2026-07-29T12:26:54.688727+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e51b4db5-bb3e-497a-a771-8ebe5692c0e7",
+    "title": "",
+    "created_at": 1785229813.944445
+  },
+  "content": "This user prefers to use Chinese for follow-up conversational messages after receiving an initial English greeting, so Chinese should be used as the default language for casual interactions with this user",
+  "confidence": 1.0,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.660122+00:00"
+}

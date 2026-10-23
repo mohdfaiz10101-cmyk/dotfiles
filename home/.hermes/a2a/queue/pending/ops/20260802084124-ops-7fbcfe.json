@@ -1,0 +1,16 @@
+{
+  "id": "20260802084124-ops-7fbcfe",
+  "created_at": "2026-08-02T08:41:24.042408+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbjsgxq8n56bq",
+    "title": "",
+    "created_at": 1785659926.2141554
+  },
+  "content": "The user maintains a self-hosted service publicly accessible via the DuckDNS domain charlie1990.duckdns.org on port 19976, which has a known recurring failure mode of being unable to create new tasks.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

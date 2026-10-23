@@ -1,0 +1,16 @@
+{
+  "id": "20260731041330-cod-c03860",
+  "created_at": "2026-07-31T04:13:30.779210+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "152ae2ddd26d",
+    "title": "✨ Update available! 0.144.6 -> 0.146.0 Release notes: https:/",
+    "created_at": 1785471002.318119
+  },
+  "content": "After updating a globally installed npm CLI, run `which -a <cli-name>` to verify the resolved binary path matches the expected new version, to catch issues with stale wrappers or misordered PATH entries serving outdated versions.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

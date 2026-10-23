@@ -1,0 +1,16 @@
+{
+  "id": "20260729133054-ops-3920be",
+  "created_at": "2026-07-29T13:30:54.421041+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mryfto7h8z25ja",
+    "title": "手动触发自动延期",
+    "created_at": 1784867346.6825893
+  },
+  "content": "Hermes已存在可复用的周度复盘基础配置与资产：cron任务`weekly-hermes-fix-loop`（ID: ffa1511c834a，固定每周日09:00触发）、历史复盘产物存储路径`~/.hermes/cron/output/`，扩展复盘能力时无需新建cron，可直接复用现有链路避免任务冲突。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

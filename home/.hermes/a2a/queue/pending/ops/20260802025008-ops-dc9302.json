@@ -1,0 +1,16 @@
+{
+  "id": "20260802025008-ops-dc9302",
+  "created_at": "2026-08-02T02:50:08.785890+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb7aa2rpxx5gn",
+    "title": "",
+    "created_at": 1785638906.734599
+  },
+  "content": "For mobile overheating troubleshooting, the standard first diagnostic step is to check the device's battery/power usage statistics to identify apps or processes with abnormally high recent power consumption, a cross-platform (iOS/Android) reusable workflow.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

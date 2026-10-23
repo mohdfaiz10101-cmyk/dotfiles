@@ -1,0 +1,16 @@
+{
+  "id": "20260729140207-ops-013950",
+  "created_at": "2026-07-29T14:02:07.174444+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195113_a5f5e0",
+    "title": "",
+    "created_at": 1784721075.9789186
+  },
+  "content": "When referencing specific work tasks in conversations, the user uses the unique kanban task ID as the primary identifier, rather than descriptive task names, as their standard workflow for task-related discussions",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

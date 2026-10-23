@@ -1,0 +1,16 @@
+{
+  "id": "20260804143143-ops-32700c",
+  "created_at": "2026-08-04T14:31:43.534439+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "d1a540cb4dde",
+    "title": "",
+    "created_at": 1785853815.946773
+  },
+  "content": "This user has raised mobile device overheating (手机很烫) as an active core issue, so all future interactions with this user should prioritize thermal-related troubleshooting workflows when device heat or performance anomalies are mentioned.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

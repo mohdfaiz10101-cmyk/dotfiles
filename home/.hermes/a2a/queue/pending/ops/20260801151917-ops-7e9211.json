@@ -1,0 +1,16 @@
+{
+  "id": "20260801151917-ops-7e9211",
+  "created_at": "2026-08-01T15:19:17.589332+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msaiiqvd0zb3ze",
+    "title": "",
+    "created_at": 1785597429.0356
+  },
+  "content": "For troubleshooting Android NetBird reconnection issues, a reusable first-line workflow is to first check for NetBird battery optimization exemption, unrestricted background activity permissions, and conflicting third-party app process termination, before diagnosing network-level faults.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

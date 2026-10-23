@@ -1,0 +1,16 @@
+{
+  "id": "20260729130207-ops-8aafda",
+  "created_at": "2026-07-29T13:02:07.385307+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_111419",
+    "title": "",
+    "created_at": 1784949270.588716
+  },
+  "content": "The system is running with critically high resource utilization: 97% disk usage, 16Gi/23Gi active memory usage, and 16Gi/23Gi swap usage, which contributes to recurring task timeout failures.",
+  "confidence": 0.96,
+  "status": "pending",
+  "review_note": ""
+}

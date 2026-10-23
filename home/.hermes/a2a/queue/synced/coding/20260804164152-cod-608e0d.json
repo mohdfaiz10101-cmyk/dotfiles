@@ -1,0 +1,17 @@
+{
+  "id": "20260804164152-cod-608e0d",
+  "created_at": "2026-08-04T16:41:52.206483+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "4b730cb36c75",
+    "title": "ios tailscale 8787 port can not open",
+    "created_at": 1785861512.945506
+  },
+  "content": "Domain pitfall: Tailscale ACLs can enforce port-level access restrictions independent of the service's own authentication configuration, so port access failures via Tailscale must include ACL checks even if the service has no auth requirements or local access works normally.",
+  "confidence": 0.9,
+  "status": "approved",
+  "review_note": "medium-high-confidence-substantive",
+  "approved_at": "2026-08-10T14:29:45.367241+00:00"
+}

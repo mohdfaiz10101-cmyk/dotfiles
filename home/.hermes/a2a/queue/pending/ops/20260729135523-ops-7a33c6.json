@@ -1,0 +1,16 @@
+{
+  "id": "20260729135523-ops-7a33c6",
+  "created_at": "2026-07-29T13:55:23.152804+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195814_1adfa3",
+    "title": "",
+    "created_at": 1784721496.871347
+  },
+  "content": "The user operates a work kanban system where individual tasks are assigned short alphanumeric IDs prefixed with 't_' as canonical task identifiers.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

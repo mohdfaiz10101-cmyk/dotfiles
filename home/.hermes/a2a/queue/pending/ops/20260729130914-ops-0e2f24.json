@@ -1,0 +1,16 @@
+{
+  "id": "20260729130914-ops-0e2f24",
+  "created_at": "2026-07-29T13:09:14.224076+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_043237",
+    "title": "",
+    "created_at": 1784925175.2276037
+  },
+  "content": "MEMORY.md has a hard character limit of 2200 with automatic capacity control; as of this session it is over limit by 58 characters (2258/2200), but the overage cannot be auto-repaired while the lock file exists.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

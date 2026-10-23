@@ -1,0 +1,16 @@
+{
+  "id": "20260729143003-ops-412cd9",
+  "created_at": "2026-07-29T14:30:03.621421+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192307_a5650c",
+    "title": "",
+    "created_at": 1784719389.3673973
+  },
+  "content": "Work-related requests from this user may be associated with specific kanban tasks that can be retrieved using the 't_<alphanumeric ID>' identifier pattern.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

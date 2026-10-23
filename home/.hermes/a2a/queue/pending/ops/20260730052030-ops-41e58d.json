@@ -1,0 +1,16 @@
+{
+  "id": "20260730052030-ops-41e58d",
+  "created_at": "2026-07-30T05:20:30.312865+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a48cb8e7f767",
+    "title": "",
+    "created_at": 1785388489.8278878
+  },
+  "content": "Connection refused errors paired with automatic retry prompts for specific service ports indicate the root cause is not transient network jitter, but rather the target service is not running, not listening on the expected port, or network traffic to the port is being blocked before reaching the service.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

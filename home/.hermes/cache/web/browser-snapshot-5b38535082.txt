@@ -1,0 +1,503 @@
+- generic
+  - link "Skip to content" [ref=e1]
+  - banner
+    - heading "Navigation Menu" [level=2, ref=e4]
+    - generic
+      - link "Homepage" [ref=e6]
+      - navigation "Global" [ref=e9]
+        - list
+          - listitem [level=1]
+            - generic
+              - button "Platform" [expanded=false, ref=e54]
+          - listitem [level=1]
+            - generic
+              - button "Solutions" [expanded=false, ref=e55]
+          - listitem [level=1]
+            - generic
+              - button "Resources" [expanded=false, ref=e56]
+          - listitem [level=1]
+            - generic
+              - button "Open Source" [expanded=false, ref=e57]
+          - listitem [level=1]
+            - generic
+              - button "Enterprise" [expanded=false, ref=e58]
+          - listitem [level=1]
+            - link "Pricing" [ref=e46]
+      - button "Search or jump to, type / to search" [expanded=false, ref=e10]
+      - link "Sign in" [ref=e31]
+      - link "Sign up" [ref=e11]
+      - button "Appearance settings" [ref=e12]
+- main
+  - generic
+    - link "remote-android" [ref=e2]
+    - StaticText "/"
+    - strong
+      - link "redroid-doc" [ref=e5]
+    - StaticText "Public"
+    - list
+      - listitem [level=1]
+        - link "You must be signed in to change notification settings" [ref=e13]
+          - StaticText "Notifications"
+      - listitem [level=1]
+        - link "Fork 472" [ref=e14]
+          - StaticText "Fork "
+          - StaticText "472"
+      - listitem [level=1]
+        - link "You must be signed in to star a repository" [ref=e15]
+          - StaticText " Star "
+          - StaticText "6.7k"
+    - navigation "Repository" [ref=e3]
+      - list
+        - listitem [level=1]
+          - link "Code" [ref=e16]
+            - StaticText "Code"
+        - listitem [level=1]
+          - link "Issues 358" [ref=e17]
+            - StaticText "Issues"
+            - StaticText "358"
+        - listitem [level=1]
+          - link "Pull requests 2" [ref=e18]
+            - StaticText "Pull requests"
+            - StaticText "2"
+        - listitem [level=1]
+          - link "Actions" [ref=e19]
+            - StaticText "Actions"
+        - listitem [level=1]
+          - link "Projects" [ref=e20]
+            - StaticText "Projects"
+        - listitem [level=1]
+          - link "Security and quality" [ref=e21]
+            - StaticText "Security and quality"
+        - listitem [level=1]
+          - link "Insights" [ref=e22]
+            - StaticText "Insights"
+  - generic [ref=e7] focusable [tabindex]
+    - generic
+      - generic
+        - heading "Collapse file tree" [level=2, ref=e36]
+          - button "Collapse file tree" [expanded=true, ref=e47]
+        - heading "Files" [level=2, ref=e37]
+        - button "master branch" [expanded=false, ref=e38]
+          - StaticText "master"
+        - generic
+          - button "Search this repository ( forward slash )" [ref=e48]
+        - generic [ref=e39] clickable [onclick]
+          - combobox "Go to file" [expanded=false, ref=e49]
+        - generic [ref=e40] clickable [onclick]
+          - navigation "File Tree Navigation" [ref=e50]
+            - tree "Files"
+              - treeitem ".github" [level=1, expanded=false, ref=e101]
+                - generic [ref=e157] clickable [cursor:pointer]
+                  - generic [ref=e167] clickable [cursor:pointer, onclick]
+              - treeitem "android-builder-docker" [level=1, expanded=false, ref=e102]
+                - generic [ref=e158] clickable [cursor:pointer]
+                  - generic [ref=e168] clickable [cursor:pointer, onclick]
+              - treeitem "assets" [level=1, expanded=false, ref=e103]
+                - generic [ref=e159] clickable [cursor:pointer]
+                  - generic [ref=e169] clickable [cursor:pointer, onclick]
+              - treeitem "deploy" [level=1, expanded=false, ref=e104]
+                - generic [ref=e160] clickable [cursor:pointer]
+                  - generic [ref=e170] clickable [cursor:pointer, onclick]
+              - treeitem "README.md" [level=1, ref=e105]
+                - generic [ref=e161] clickable [cursor:pointer]
+              - treeitem "README.zh-cn.md" [level=1, ref=e106]
+                - generic [ref=e162] clickable [cursor:pointer]
+              - treeitem "debug.sh" [level=1, ref=e107]
+                - generic [ref=e163] clickable [cursor:pointer]
+      - slider "Draggable pane splitter" [ref=e41]: 320
+  - generic [ref=e8] focusable [tabindex]
+    - navigation "Breadcrumbs" [ref=e32]
+      - heading "Breadcrumbs" [level=2, ref=e42]
+      - list
+        - listitem [level=1]
+          - link "redroid-doc" [ref=e59]
+    - heading "README.md" [level=1, ref=e43]
+    - button "Copy path" [ref=e33]
+    - button "More file actions" [expanded=false, ref=e34]
+    - heading "Latest commit" [level=2, ref=e23]
+    - link "zhouziyang" [ref=e24]
+      - image "zhouziyang"
+    - link "commits by zhouziyang" [ref=e25]
+      - StaticText "zhouziyang"
+    - link "remove slack link" [ref=e26]
+    - link "Commit eba9a48" [ref=e27]
+      - StaticText "eba9a48"
+    - StaticText "·"
+    - StaticText "3 months ago"
+    - heading "History" [level=2, ref=e28]
+    - link "History" [ref=e29]
+      - StaticText "History"
+    - generic
+      - generic
+        - heading "File metadata and controls" [level=2, ref=e44]
+        - list "File view"
+          - listitem [level=1]
+            - button "Preview" [ref=e60]
+              - StaticText "Preview"
+          - listitem [level=1]
+            - button "Code" [ref=e61]
+              - StaticText "Code"
+          - listitem [level=1]
+            - button "Blame" [ref=e62]
+              - StaticText "Blame"
+        - StaticText "192 lines (152 loc) · 6.86 KB"
+        - link "Raw" [ref=e51]
+          - StaticText "Raw"
+        - generic
+          - button "Copy raw file" [ref=e52]
+        - generic
+          - button "Download raw file" [ref=e53]
+        - button "Outline" [ref=e45]
+    - region "README.md" [ref=e30]
+      - generic [ref=e35] clickable [onclick]
+        - article
+          - paragraph
+            - StaticText "English | "
+            - link "简体中文" [ref=e63]
+          - generic
+            - heading "Table of contents" [level=1, ref=e64]
+            - link "Permalink: Table of contents" [ref=e65]
+          - list
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "Overview" [ref=e108]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "Getting Started" [ref=e109]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "Configuration" [ref=e110]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "Native Bridge Support" [ref=e111]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "GMS Support" [ref=e112]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "WebRTC Streaming" [ref=e113]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "How To Build" [ref=e114]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "Troubleshooting" [ref=e115]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "Contact Me" [ref=e116]
+            - listitem [level=1]
+              - ListMarker "• "
+              - link "License" [ref=e117]
+          - generic
+            - heading "Overview" [level=2, ref=e66]
+            - link "Permalink: Overview" [ref=e67]
+          - paragraph
+            - emphasis
+              - StaticText "redroid"
+            - StaticText " ("
+            - emphasis
+              - StaticText "Re"
+            - StaticText "mote an"
+            - emphasis
+              - StaticText "Droid"
+            - StaticText ") is a GPU accelerated AIC (Android In Cloud) solution. You can boot many instances in Linux host ("
+            - code
+              - StaticText "Docker"
+            - StaticText ", "
+            - code
+              - StaticText "podman"
+            - StaticText ", "
+            - code
+              - StaticText "k8s"
+            - StaticText " etc.). "
+            - emphasis
+              - StaticText "redroid"
+            - StaticText " supports both "
+            - code
+              - StaticText "arm64"
+            - StaticText " and "
+            - code
+              - StaticText "amd64"
+            - StaticText " architectures. "
+            - emphasis
+              - StaticText "redroid"
+            - StaticText " is suitable for Cloud Gaming, Virtualise Phones, Automation Test and more."
+          - paragraph
+            - link "Screenshot of redroid 11" [ref=e68]
+              - image "Screenshot of redroid 11"
+          - paragraph
+            - StaticText "Currently supported:"
+          - list
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 16 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 16 64bit only ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 15 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 15 64bit only ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 14 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 14 64bit only ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 13 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 13 64bit only ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 12 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 12 64bit only ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 11 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 10 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 9 ("
+              - code
+              - StaticText ")"
+            - listitem [level=1]
+              - ListMarker "• "
+              - StaticText "Android 8.1 ("
+              - code
+              - StaticText ")"
+          - generic
+            - heading "Getting Started" [level=2, ref=e69]
+            - link "Permalink: Getting Started" [ref=e70]
+          - paragraph
+            - emphasis
+              - StaticText "redroid"
+            - StaticText " should be able to run on any linux distribution (with some kernel features enabled)."
+          - paragraph
+            - StaticText "Quick start on "
+            - emphasis
+              - StaticText "Ubuntu 20.04"
+            - StaticText " here; Check "
+            - link "deploy section" [ref=e71]
+            - StaticText " for other distros."
+          - generic
+            - generic
+              - StaticText "## install docker https://docs.docker.com/engine/install/#server\n\n## install required kernel modules\napt install linux-modules-extra-`uname -r`\nmodprobe binder_linux devices=\"binder,hwbinder,vndbinder\"\nmodprobe ashmem_linux\n\n\n## running redroid\ndocker run -itd --rm --privileged \\\n    --pull always \\\n    -v ~/data:/data \\\n    -p 5555:5555 \\\n    redroid/redroid:12.0.0_64only-latest\n\n### Explanation:\n###   --pull always    -- use latest image\n###   -v ~/data:/data  -- mount data partition\n###   -p 5555:5555     -- expose adb port\n\n### DISCLAIMER\n### Should NOT expose adb port on public network\n### otherwise, redroid container (even host OS) may get compromised\n\n## install adb https://developer.android.com/studio#downloads\nadb connect localhost:5555\n### NOTE: change localhost to IP if running redroid remotely\n\n## view redroid screen\n## install scrcpy https://github.com/Genymobile/scrcpy/blob/master/README.md#get-the-app\nscrcpy -s localhost:5555\n### NOTE: change localhost to IP if running redroid remotely\n###     typically running scrcpy on your local PC"
+            - button "Copy code to clipboard" [ref=e72]
+          - generic
+            - heading "Configuration" [level=2, ref=e73]
+            - link "Permalink: Configuration" [ref=e74]
+          - generic
+            - code
+              - StaticText "## running redroid with custom settings (custom display for example)\ndocker run -itd --rm --privileged \\\n    --pull always \\\n    -v ~/data:/data \\\n    -p 5555:5555 \\\n    redroid/redroid:12.0.0_64only-latest \\\n    androidboot.redroid_width=1080 \\\n    androidboot.redroid_height=1920 \\\n    androidboot.redroid_dpi=480 \\\n"
+            - button "Copy code to clipboard" [ref=e75]
+          - table
+            - rowgroup
+              - row
+                - columnheader "Param" [ref=e164]
+                - columnheader "Description" [ref=e165]
+                - columnheader "Default" [ref=e166]
+            - row
+              - cell "androidboot.redroid_width" [ref=e118]
+              - cell "display width" [ref=e119]
+              - cell "720" [ref=e120]
+            - row
+              - cell "androidboot.redroid_height" [ref=e121]
+              - cell "display height" [ref=e122]
+              - cell "1280" [ref=e123]
+            - row
+              - cell "androidboot.redroid_fps" [ref=e124]
+              - cell "display FPS" [ref=e125]
+              - cell "30(GPU enabled) 15 (GPU not enabled)" [ref=e126]
+            - row
+              - cell "androidboot.redroid_dpi" [ref=e127]
+              - cell "display DPI" [ref=e128]
+              - cell "320" [ref=e129]
+            - row
+              - cell "androidboot.use_memfd" [ref=e130]
+              - cell "use memfd to replace deprecated ashmem plan to enable by default" [ref=e131]
+              - cell "false" [ref=e132]
+            - row
+              - cell "androidboot.use_redroid_overlayfs" [ref=e133]
+              - cell "use overlayfs to share data partition /data-base: shared data partition /data-diff: private data" [ref=e134]
+                - StaticText ": shared "
+                - StaticText ": private data"
+              - cell "0" [ref=e135]
+            - row
+              - cell "androidboot.redroid_net_ndns" [ref=e136]
+              - cell "number of DNS server, 8.8.8.8 will be used if no DNS server specified" [ref=e137]
+              - cell "0" [ref=e138]
+            - row
+              - cell "androidboot.redroid_net_dns<1..N>" [ref=e139]
+              - cell "DNS" [ref=e140]
+              - cell
+            - row
+              - cell "androidboot.redroid_net_proxy_type" [ref=e141]
+              - cell "Proxy type; choose from: static, pac, none, unassigned" [ref=e142]
+                - StaticText "Proxy type; choose from: "
+              - cell
+            - row
+              - cell "androidboot.redroid_net_proxy_host" [ref=e143]
+              - cell
+              - cell
+            - row
+              - cell "androidboot.redroid_net_proxy_port" [ref=e144]
+              - cell
+              - cell "3128" [ref=e145]
+            - row
+              - cell "androidboot.redroid_net_proxy_exclude_list" [ref=e146]
+              - cell "comma seperated list" [ref=e147]
+              - cell
+            - row
+              - cell "androidboot.redroid_net_proxy_pac" [ref=e148]
+              - cell
+              - cell
+            - row
+              - cell "androidboot.redroid_gpu_mode" [ref=e149]
+              - cell "choose from: auto, host, guest; guest: use software rendering; host: use GPU accelerated rendering; auto: auto detect" [ref=e150]
+                - StaticText "choose from: "
+                - StaticText ": use software rendering;"
+                - StaticText ": use GPU accelerated rendering;"
+                - StaticText ": auto detect"
+              - cell "guest" [ref=e151]
+            - row
+              - cell "androidboot.redroid_gpu_node" [ref=e152]
+              - cell "auto-detect" [ref=e153]
+            - row
+              - cell "ro.xxx" [ref=e154]
+              - cell "DEBUG purpose, allow override ro.xxx prop; For example, set ro.secure=0, then root adb shell provided by default" [ref=e155]
+          - generic
+            - heading "Native Bridge Support" [level=2, ref=e76]
+            - link "Permalink: Native Bridge Support" [ref=e77]
+          - paragraph
+            - StaticText "It's possible to run "
+            - code
+            - StaticText " Apps in "
+            - code
+            - StaticText " "
+            - emphasis
+            - StaticText " instance via "
+            - code
+            - StaticText ", "
+            - code
+            - StaticText " or "
+            - code
+            - StaticText "."
+          - paragraph
+            - StaticText "Check "
+            - link "@zhouziyang/libndk_translation" [ref=e78]
+            - StaticText " for prebuilt "
+            - code
+            - StaticText ". Published "
+            - code
+            - StaticText " images already got "
+            - code
+            - StaticText " included."
+          - generic
+            - generic
+            - button "Copy code to clipboard" [ref=e79]
+          - generic
+            - generic
+            - button "Copy code to clipboard" [ref=e80]
+          - generic
+            - generic
+            - button "Copy code to clipboard" [ref=e81]
+          - generic
+            - heading "GMS Support" [level=2, ref=e82]
+            - link "Permalink: GMS Support" [ref=e83]
+          - paragraph
+            - StaticText "It's possible to add GMS (Google Mobile Service) support in "
+            - emphasis
+            - StaticText " via "
+            - link "Open GApps" [ref=e84]
+            - StaticText ", "
+            - link "MicroG" [ref=e85]
+            - StaticText " or "
+            - link "MindTheGapps" [ref=e86]
+            - StaticText "."
+          - paragraph
+            - StaticText "Check "
+            - link "android-builder-docker" [ref=e87]
+            - StaticText " for details."
+          - generic
+            - heading "WebRTC Streaming" [level=2, ref=e88]
+            - link "Permalink: WebRTC Streaming" [ref=e89]
+          - paragraph
+            - StaticText "Plan to port "
+            - code
+            - StaticText " solutions from "
+            - code
+            - StaticText ", including frontend (HTML5), backend and many virtual HALs."
+          - generic
+            - heading "How To Build" [level=2, ref=e90]
+            - link "Permalink: How To Build" [ref=e91]
+          - paragraph
+            - StaticText "It's the same way as AOSP building process, but I suggest to use "
+            - code
+            - StaticText " to build it."
+          - paragraph
+            - StaticText "Check "
+            - link "android-builder-docker" [ref=e92]
+            - StaticText " for details."
+          - generic
+            - heading "Troubleshooting" [level=2, ref=e93]
+            - link "Permalink: Troubleshooting" [ref=e94]
+          - list
+            - listitem [level=1]
+          - blockquote
+            - paragraph
+            - paragraph
+          - list
+            - listitem [level=1]
+          - blockquote
+            - paragraph
+          - list
+            - listitem [level=1]
+          - blockquote
+            - paragraph
+            - paragraph
+          - generic
+            - heading "Contact Me" [level=2, ref=e95]
+            - link "Permalink: Contact Me" [ref=e96]
+          - list
+            - listitem [level=1]
+              - link "ziyang.zhou@outlook.com" [ref=e156]
+          - generic
+            - heading "License" [level=2, ref=e97]
+            - link "Permalink: License" [ref=e98]
+          - paragraph
+            - link "Apache License" [ref=e99]
+          - paragraph
+            - link "GPL v2" [ref=e100]

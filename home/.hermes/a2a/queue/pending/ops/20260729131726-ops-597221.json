@@ -1,0 +1,16 @@
+{
+  "id": "20260729131726-ops-597221",
+  "created_at": "2026-07-29T13:17:26.006202+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_003744",
+    "title": "",
+    "created_at": 1784911080.603443
+  },
+  "content": "The pre-configured weekly-review cron job has never been executed (last_run_at=null, 0 completed runs) and is a dormant scheduled task that must be triggered or troubleshooted to resolve recurring system issues.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

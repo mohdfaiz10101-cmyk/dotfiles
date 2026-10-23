@@ -1,0 +1,16 @@
+{
+  "id": "20260729125318-ops-adf13f",
+  "created_at": "2026-07-29T12:53:18.963236+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_170519",
+    "title": "",
+    "created_at": 1784970330.2563412
+  },
+  "content": "The autonomous-task-brain skill has built-in cross-source solution retrieval capabilities, pulling optimal solutions from 5 fixed sources: local skills library, historical sessions, memory-engine, letta, and GitHub repositories, to inform task decision-making.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

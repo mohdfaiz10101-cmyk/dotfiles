@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes WebUI nightly auto-update timer
+
+[Timer]
+# 凌晨 02:30 跑，晚于 github-backup(02:00) 与 disk-cleanup(02:00)，
+# 避开备份窗口；早于 03:00 的各类清理任务。
+OnCalendar=*-*-* 02:30:00
+Persistent=true
+RandomizedDelaySec=20min
+
+[Install]
+WantedBy=timers.target

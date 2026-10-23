@@ -1,0 +1,16 @@
+{
+  "id": "20260729124802-ops-71532d",
+  "created_at": "2026-07-29T12:48:02.154180+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_001330",
+    "title": "",
+    "created_at": 1784996022.37049
+  },
+  "content": "`MEMORY.md` has a hard character limit of 2200; the curator monitors usage (e.g., 1816/2200) and will not write if the lock is held, ensuring capacity control and preventing overflow.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

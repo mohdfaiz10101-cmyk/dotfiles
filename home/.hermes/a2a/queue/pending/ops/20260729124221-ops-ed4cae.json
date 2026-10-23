@@ -1,0 +1,16 @@
+{
+  "id": "20260729124221-ops-ed4cae",
+  "created_at": "2026-07-29T12:42:21.700189+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_125901_a87627",
+    "title": "排查Hermes聊天页面无法访问",
+    "created_at": 1785041965.8907044
+  },
+  "content": "A common reusable configuration pattern for self-hosted personal Hermes instances is to expose the service via a DuckDNS dynamic domain mapped to a high non-standard port (e.g., 8648) to avoid port conflicts with standard web services running on the same host.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

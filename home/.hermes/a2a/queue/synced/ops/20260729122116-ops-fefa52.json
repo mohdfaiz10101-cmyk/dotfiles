@@ -1,0 +1,17 @@
+{
+  "id": "20260729122116-ops-fefa52",
+  "created_at": "2026-07-29T12:21:16.937264+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms5oyhuoybdoss",
+    "title": "六个记忆统一",
+    "created_at": 1785305878.5993717
+  },
+  "content": "The user has a self-hosted service deployed at the DuckDNS address charlie1990.duckdns.org:8648, which is currently unreachable as of this session.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.657084+00:00"
+}

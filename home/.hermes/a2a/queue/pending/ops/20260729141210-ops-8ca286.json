@@ -1,0 +1,16 @@
+{
+  "id": "20260729141210-ops-8ca286",
+  "created_at": "2026-07-29T14:12:10.021651+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194112_ef603b",
+    "title": "",
+    "created_at": 1784720474.8657548
+  },
+  "content": "The user operates a kanban system for work task tracking, with individual tasks assigned unique identifiers matching the pattern `t_` followed by 8 hexadecimal characters (e.g., task ID `t_dbc58661`).",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

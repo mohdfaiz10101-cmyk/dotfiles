@@ -1,0 +1,16 @@
+{
+  "id": "20260807023542-mob-b43e04",
+  "created_at": "2026-08-07T02:35:42.692333+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ae5ee16aa352",
+    "title": "",
+    "created_at": 1786070074.6270783
+  },
+  "content": "The user's primary workspace root directory is /var/home/charlie/workspace",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

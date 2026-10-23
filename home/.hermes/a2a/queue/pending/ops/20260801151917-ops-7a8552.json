@@ -1,0 +1,16 @@
+{
+  "id": "20260801151917-ops-7a8552",
+  "created_at": "2026-08-01T15:19:17.589100+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msaiiqvd0zb3ze",
+    "title": "",
+    "created_at": 1785597429.0356
+  },
+  "content": "A common domain pitfall for persistent network applications on Android (including NetBird) is unexpected process termination triggered by system battery optimization policies, background app restriction settings, or third-party security/utility apps that aggressively kill background network processes.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

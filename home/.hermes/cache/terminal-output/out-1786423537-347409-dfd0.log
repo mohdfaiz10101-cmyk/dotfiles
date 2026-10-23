@@ -1,0 +1,129 @@
+=== NOTIF_SERVICE ===
+  * ServiceRecord{894d273 u0 bitpit.launcher/.notification.NotificationListener c:android}
+    intent={act=android.service.notification.NotificationListenerService cmp=bitpit.launcher/.notification.NotificationListener mCallingUid=1000}
+    infoAllowStartForeground=[callingPackage: android; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=android.service.notification.NotificationListenerService cmp=bitpit.launcher/.notification.NotificationListener mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=android.service.notification.NotificationListenerService cmp=bitpit.launcher/.notification.NotificationListener mCallingUid=1000}
+          ConnectionRecord{b793ee2 u0 CR FGS !PRCP bitpit.launcher/.notification.NotificationListener:@d58ebad flags=0x5000101}
+      ConnectionRecord{b793ee2 u0 CR FGS !PRCP bitpit.launcher/.notification.NotificationListener:@d58ebad flags=0x5000101}
+  * ServiceRecord{3747ef3 u0 com.teslacoilsw.launcher/.notificationlistener.NotificationListener c:android}
+    intent={act=android.service.notification.NotificationListenerService cmp=com.teslacoilsw.launcher/.notificationlistener.NotificationListener mCallingUid=1000}
+  * ServiceRecord{aa17c0e u0 com.heytap.mcs/.addition.assistant.OplusNotificationAssistant c:android}
+    intent={act=android.service.notification.NotificationAssistantService cmp=com.heytap.mcs/.addition.assistant.OplusNotificationAssistant mCallingUid=1000}
+    infoAllowStartForeground=[callingPackage: android; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=android.service.notification.NotificationAssistantService cmp=com.heytap.mcs/.addition.assistant.OplusNotificationAssistant mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:34; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=android.service.notification.NotificationAssistantService cmp=com.heytap.mcs/.addition.assistant.OplusNotificationAssistant mCallingUid=1000}
+          ConnectionRecord{52c7209 u0 CR FGS com.heytap.mcs/.addition.assistant.OplusNotificationAssistant:@a2fe710 flags=0x5000001}
+      ConnectionRecord{52c7209 u0 CR FGS com.heytap.mcs/.addition.assistant.OplusNotificationAssistant:@a2fe710 flags=0x5000001}
+    intent={act=android.service.notification.NotificationListenerService cmp=com.pittvandewitt.wavelet/.session.SessionListenerService mCallingUid=1000}
+  * ServiceRecord{1159383 u0 com.oplus.notificationmanager/com.oplus.notification.NotificationCenterService c:com.android.mms}
+    intent={act=com.oplus.notificationmanager.NOTIFICATION_CENTER_SERVICE pkg=com.oplus.notificationmanager mCallingUid=10118}
+    packageName=com.oplus.notificationmanager
+    processName=com.oplus.notificationmanager
+    dataDir=/data/user_de/0/com.oplus.notificationmanager
+    app=ProcessRecord{bbeaf8e 9352:com.oplus.notificationmanager/1000}
+    infoAllowStartForeground=[callingPackage: com.android.mms; callingUid: 10118; uidState: TOP ; uidBFSL: [BFSL]; intent: Intent { act=com.oplus.notificationmanager.NOTIFICATION_CENTER_SERVICE xflg=0x4 pkg=com.oplus.notificationmanager mCallingUid=10118 }; code:PROC_STATE_TOP; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:12; targetSdkVersion:36; callerTargetSdkVersion:35; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={xflg=0x4 cmp=com.oplus.notificationmanager/com.oplus.notification.NotificationCenterService mCallingUid=10215}
+      intent={act=com.oplus.notificationmanager.NOTIFICATION_CENTER_SERVICE xflg=0x4 pkg=com.oplus.notificationmanager mCallingUid=10118}
+          ConnectionRecord{c0f1a32 u0 CR com.oplus.notificationmanager/com.oplus.notification.NotificationCenterService:@59ae23d flags=0x1}
+      ConnectionRecord{c0f1a32 u0 CR com.oplus.notificationmanager/com.oplus.notification.NotificationCenterService:@59ae23d flags=0x1}
+    intent={act=android.service.notification.NotificationListenerService cmp=ninja.sesame.app.edge/.behavior.NotificationWatchService mCallingUid=1000}
+  * ServiceRecord{2195e82 u0 com.google.android.play.games/com.google.android.libraries.notifications.entrypoints.scheduled.ScheduledTaskService c:android}
+    intent={cmp=com.google.android.play.games/com.google.android.libraries.notifications.entrypoints.scheduled.ScheduledTaskService mCallingUid=1000}
+    intent={act=android.service.notification.NotificationListenerService cmp=com.byyoung.setting/.Applications.utils.NotificationListenerHelper mCallingUid=1000}
+    infoAllowStartForeground=[callingPackage: android; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=android.service.notification.NotificationListenerService cmp=com.byyoung.setting/.Applications.utils.NotificationListenerHelper mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:28; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=android.service.notification.NotificationListenerService cmp=com.byyoung.setting/.Applications.utils.NotificationListenerHelper mCallingUid=1000}
+  * ServiceRecord{fa4145c u0 com.danielealbano.androidremotecontrolmcp.debug/com.danielealbano.androidremotecontrolmcp.services.notifications.McpNotificationListenerService c:android}
+    intent={act=android.service.notification.NotificationListenerService cmp=com.danielealbano.androidremotecontrolmcp.debug/com.danielealbano.androidremotecontrolmcp.services.notifications.McpNotificationListenerService mCallingUid=1000}
+    infoAllowStartForeground=[callingPackage: android; callingUid: 1000; uidState: PER ; uidBFSL: [BFSL]; intent: Intent { act=android.service.notification.NotificationListenerService cmp=com.danielealbano.androidremotecontrolmcp.debug/com.danielealbano.androidremotecontrolmcp.services.notifications.McpNotificationListenerService mCallingUid=1000 }; code:PROC_STATE_PERSISTENT; tempAllowListReason:<,reasonCode:SYSTEM_ALLOW_LISTED,duration:9223372036854775807,callingUid:-1>; allowWiu:10; targetSdkVersion:34; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={act=android.service.notification.NotificationListenerService cmp=com.danielealbano.androidremotecontrolmcp.debug/com.danielealbano.androidremotecontrolmcp.services.notifications.McpNotificationListenerService mCallingUid=1000}
+          ConnectionRecord{4f0672e u0 CR FGS !PRCP com.danielealbano.androidremotecontrolmcp.debug/com.danielealbano.androidremotecontrolmcp.services.notifications.McpNotificationListenerService:@24595a9 flags=0x5000101}
+      ConnectionRecord{4f0672e u0 CR FGS !PRCP com.danielealbano.androidremotecontrolmcp.debug/com.danielealbano.androidremotecontrolmcp.services.notifications.McpNotificationListenerService:@24595a9 flags=0x5000101}
+  * ServiceRecord{7198ee5 u11 com.heytap.mcs/.addition.assistant.OplusNotificationAssistant c:android}
+    intent={act=android.service.notification.NotificationAssistantService cmp=com.heytap.mcs/.addition.assistant.OplusNotificationAssistant mCallingUid=1000}
+=== MEDIA_SERVICE ===
+  * ServiceRecord{2464e83 u0 com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl c:android}
+    intent={cmp=com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl mCallingUid=0}
+    packageName=com.android.providers.media.module
+    processName=com.android.providers.media.module
+    dataDir=/data/user/0/com.android.providers.media.module
+    app=ProcessRecord{a58de7e 12820:com.android.providers.media.module/u0a275}
+    infoAllowStartForeground=[callingPackage: android; callingUid: 0; uidState: NONE; uidBFSL: n/a; intent: Intent { xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl mCallingUid=0 }; code:SYSTEM_UID; tempAllowListReason:<null>; allowWiu:51; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl mCallingUid=0}
+          ConnectionRecord{8c0653d u0 CR IMP com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:@3efeae7 flags=0x41}
+      ConnectionRecord{8c0653d u0 CR IMP com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:@3efeae7 flags=0x41}
+  * ServiceRecord{528804b u11 com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl c:android}
+    intent={cmp=com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl mCallingUid=0}
+    packageName=com.android.providers.media.module
+    processName=com.android.providers.media.module
+    dataDir=/data/user/11/com.android.providers.media.module
+    app=ProcessRecord{49140d4 14087:com.android.providers.media.module/u11a275}
+    infoAllowStartForeground=[callingPackage: android; callingUid: 0; uidState: NONE; uidBFSL: n/a; intent: Intent { xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl mCallingUid=0 }; code:SYSTEM_UID; tempAllowListReason:<null>; allowWiu:51; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+      intent={xflg=0x4 cmp=com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl mCallingUid=0}
+          ConnectionRecord{36a1d1a u0 CR IMP com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:@1d5ffc5 flags=0x41}
+      ConnectionRecord{36a1d1a u0 CR IMP com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:@1d5ffc5 flags=0x41}
+  * ConnectionRecord{36a1d1a u0 CR IMP com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:@1d5ffc5 flags=0x41}
+    binding=AppBindRecord{6c9295a com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:system}
+  * ConnectionRecord{8c0653d u0 CR IMP com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:@3efeae7 flags=0x41}
+    binding=AppBindRecord{19113b2 com.android.providers.media.module/com.android.providers.media.fuse.ExternalStorageServiceImpl:system}
+=== RECENTS ===
+---- TIME 2026/8/11 12:45:38 ----
+ACTIVITY MANAGER RECENT TASKS (dumpsys activity recents)
+mRecentsUid=10212
+mRecentsComponent=ComponentInfo{com.android.launcher/com.android.quickstep.RecentsActivity}
+mFreezeTaskListReordering=false
+mFreezeTaskListReorderingPendingTimeout=false
+  Recent tasks:
+  * Recent #0: Task{b588ba8 #24 type=standard A=10609:com.tencent.mm}
+    userId=0 effectiveUid=u0a609 mCallingUid=u0a627 mUserSetupComplete=true mCallingPackage=bitpit.launcher mCallingFeatureId=null
+    affinity=10609:com.tencent.mm
+    intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 xflg=0x4 cmp=com.tencent.mm/.ui.LauncherUI mCallingUid=10627}
+    mActivityComponent=com.tencent.mm/.ui.LauncherUI
+    autoRemoveRecents=false isPersistable=true activityType=1
+    rootWasReset=true mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
+    Activities=[ActivityRecord{241746586 u0 com.tencent.mm/.ui.LauncherUI t24}]
+    mRootProcess=ProcessRecord{4e152a1 18672:com.tencent.mm/u0a609}
+    taskId=24 rootTaskId=24
+    hasChildPipActivity=false
+    mHasBeenVisible=true
+    mResizeMode=RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION mSupportsPictureInPicture=false isResizeable=true
+    isPerceptible=false
+    lastActiveTime=8114778 (inactive for 183s)
+    isTrimmable=true isForceHidden=false isForceExcludedFromRecents=false
+    mRootLockDeviceTask=false
+    mLaunchedFromMultiSearch=false
+  * Recent #1: Task{364eaff #11 type=recents I=com.android.launcher/com.android.quickstep.RecentsActivity}
+    userId=0 effectiveUid=u0a212 mCallingUid=u0a212 mUserSetupComplete=true mCallingPackage=com.android.launcher mCallingFeatureId=null
+    intent={act=android.intent.action.MAIN cat=[android.intent.category.DEFAULT] flg=0x10810000 cmp=com.android.launcher/com.android.quickstep.RecentsActivity mCallingUid=1000}
+    mActivityComponent=com.android.launcher/com.android.quickstep.RecentsActivity
+    autoRemoveRecents=false isPersistable=false activityType=3
+    rootWasReset=false mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
+    Activities=[ActivityRecord{188727815 u0 com.android.launcher/com.android.quickstep.RecentsActivity t11}]
+    taskId=11 rootTaskId=11
+    hasChildPipActivity=false
+    mHasBeenVisible=true
+    mResizeMode=RESIZE_MODE_RESIZEABLE mSupportsPictureInPicture=false isResizeable=true
+    isPerceptible=false
+    lastActiveTime=7933251 (inactive for 365s)
+    isTrimmable=true isForceHidden=false isForceExcludedFromRecents=false
+    mRootLockDeviceTask=false
+    mLaunchedFromMultiSearch=false
+  * Recent #2: Task{c91370f #9 type=undefined I=bitpit.launcher/.ui.HomeActivity}
+    userId=0 effectiveUid=u0a627 mCallingUid=u0a212 mUserSetupComplete=true mCallingPackage=com.android.launcher mCallingFeatureId=null
+    intent={act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x34000000 xflg=0x4 cmp=bitpit.launcher/.ui.HomeActivity mCallingUid=10212}
+    mActivityComponent=bitpit.launcher/.ui.HomeActivity
+    autoRemoveRecents=false isPersistable=true activityType=2
+    rootWasReset=false mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
+    Activities=[ActivityRecord{53143556 u0 bitpit.launcher/.ui.HomeActivity t9}]
+    mRootProcess=ProcessRecord{3a2b864 25010:bitpit.launcher/u0a627}
+    taskId=9 rootTaskId=1
+    hasChildPipActivity=false
+    mHasBeenVisible=true
+    mResizeMode=RESIZE_MODE_RESIZEABLE mSupportsPictureInPicture=false isResizeable=true
+    isPerceptible=false
+    lastActiveTime=7592967 (inactive for 705s)
+    isTrimmable=true isForceHidden=false isForceExcludedFromRecents=false
+    mRootLockDeviceTask=false
+    mLaunchedFromMultiSearch=false
+  * Recent #3: Task{3ab0ad2 #26 type=standard A=1000:com.android.settings.root}
+    userId=0 effectiveUid=1000 mCallingUid=u0a627 mUserSetupComplete=true mCallingPackage=bitpit.launcher mCallingFeatureId=null
+
+__HERMES_CWD_a473bfdc8cfa__/var/home/charlie/workspace__HERMES_CWD_a473bfdc8cfa__

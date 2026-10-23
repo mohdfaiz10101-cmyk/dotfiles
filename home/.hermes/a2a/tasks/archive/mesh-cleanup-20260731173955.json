@@ -1,0 +1,207 @@
+{
+  "created_at": "2026-07-31T17:39:55+08:00",
+  "tasks": [
+    {
+      "task_id": "mesh-20260731172454-e415f37f",
+      "reason": "orphan_index_only",
+      "status": "missing",
+      "title": "",
+      "updated_at": "",
+      "task_path": "/var/home/charlie/.hermes/a2a/tasks/mesh-20260731172454-e415f37f.json",
+      "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260731172454-e415f37f.json",
+      "queue_paths": []
+    },
+    {
+      "task_id": "mesh-20260731172645-5138f8ef",
+      "reason": "orphan_index_only",
+      "status": "missing",
+      "title": "",
+      "updated_at": "",
+      "task_path": "/var/home/charlie/.hermes/a2a/tasks/mesh-20260731172645-5138f8ef.json",
+      "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260731172645-5138f8ef.json",
+      "queue_paths": []
+    },
+    {
+      "task_id": "mesh-20260731173300-0a63432f",
+      "reason": "smoke_task",
+      "status": "launch_failed",
+      "title": "[general] mesh smoke",
+      "updated_at": "2026-07-31T17:33:00+08:00",
+      "task_path": "/var/home/charlie/.hermes/a2a/tasks/mesh-20260731173300-0a63432f.json",
+      "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260731173300-0a63432f.json",
+      "queue_paths": [
+        "/var/home/charlie/.hermes/a2a/mesh-queue/failed/default/mesh-20260731173300-0a63432f.json"
+      ]
+    },
+    {
+      "task_id": "mesh-20260731173345-0a63432f",
+      "reason": "orphan_index_only",
+      "status": "missing",
+      "title": "",
+      "updated_at": "",
+      "task_path": "/var/home/charlie/.hermes/a2a/tasks/mesh-20260731173345-0a63432f.json",
+      "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260731173345-0a63432f.json",
+      "queue_paths": []
+    }
+  ],
+  "archived_index_rows": [
+    {
+      "ts": "2026-07-31T17:24:54+08:00",
+      "id": "mesh-20260731172454-e415f37f",
+      "status": "queued"
+    },
+    {
+      "ts": "2026-07-31T17:25:24+08:00",
+      "id": "mesh-20260731172454-e415f37f",
+      "status": "partial"
+    },
+    {
+      "ts": "2026-07-31T17:26:10+08:00",
+      "id": "mesh-20260731172454-e415f37f",
+      "status": "partial"
+    },
+    {
+      "ts": "2026-07-31T17:26:45+08:00",
+      "id": "mesh-20260731172645-5138f8ef",
+      "status": "queued"
+    },
+    {
+      "ts": "2026-07-31T17:26:45+08:00",
+      "id": "mesh-20260731172454-e415f37f",
+      "status": "partial"
+    },
+    {
+      "ts": "2026-07-31T17:26:45+08:00",
+      "id": "mesh-20260731172454-e415f37f",
+      "status": "rolled_over"
+    },
+    {
+      "ts": "2026-07-31T17:33:00+08:00",
+      "id": "mesh-20260731173300-0a63432f",
+      "status": "queued"
+    },
+    {
+      "ts": "2026-07-31T17:33:00+08:00",
+      "id": "mesh-20260731173300-0a63432f",
+      "status": "launch_failed"
+    },
+    {
+      "ts": "2026-07-31T17:33:45+08:00",
+      "id": "mesh-20260731173345-0a63432f",
+      "status": "queued"
+    },
+    {
+      "ts": "2026-07-31T17:34:18+08:00",
+      "id": "mesh-20260731173345-0a63432f",
+      "status": "submitted"
+    },
+    {
+      "ts": "2026-07-31T17:34:34+08:00",
+      "id": "mesh-20260731173345-0a63432f",
+      "status": "submitted"
+    }
+  ],
+  "archived_event_rows": [
+    {
+      "ts": "2026-07-31T17:24:54+08:00",
+      "task_id": "mesh-20260731172454-e415f37f",
+      "event": "created",
+      "detail": {
+        "profile": "ops",
+        "source_port": 8648
+      }
+    },
+    {
+      "ts": "2026-07-31T17:25:24+08:00",
+      "task_id": "mesh-20260731172454-e415f37f",
+      "event": "updated",
+      "detail": {
+        "status": "partial",
+        "summary": "已建立测试 capsule 与索引，下一步需要真实 Hermes 会话接管。"
+      }
+    },
+    {
+      "ts": "2026-07-31T17:26:10+08:00",
+      "task_id": "mesh-20260731172454-e415f37f",
+      "event": "updated",
+      "detail": {
+        "status": "partial",
+        "summary": "rollup link verification"
+      }
+    },
+    {
+      "ts": "2026-07-31T17:26:45+08:00",
+      "task_id": "mesh-20260731172645-5138f8ef",
+      "event": "created",
+      "detail": {
+        "profile": "ops",
+        "source_port": 8787
+      }
+    },
+    {
+      "ts": "2026-07-31T17:26:45+08:00",
+      "task_id": "mesh-20260731172454-e415f37f",
+      "event": "linked_child",
+      "detail": {
+        "task_id": "mesh-20260731172645-5138f8ef",
+        "session_id": "test-session-1",
+        "port": 8787,
+        "ts": "2026-07-31T17:26:45+08:00"
+      }
+    },
+    {
+      "ts": "2026-07-31T17:26:45+08:00",
+      "task_id": "mesh-20260731172454-e415f37f",
+      "event": "updated",
+      "detail": {
+        "status": "rolled_over",
+        "summary": "rollup link verification"
+      }
+    },
+    {
+      "ts": "2026-07-31T17:33:00+08:00",
+      "task_id": "mesh-20260731173300-0a63432f",
+      "event": "created",
+      "detail": {
+        "profile": "default",
+        "source_port": 8648
+      }
+    },
+    {
+      "ts": "2026-07-31T17:33:00+08:00",
+      "task_id": "mesh-20260731173300-0a63432f",
+      "event": "updated",
+      "detail": {
+        "status": "launch_failed",
+        "summary": "<urlopen error [Errno 1] Operation not permitted>"
+      }
+    },
+    {
+      "ts": "2026-07-31T17:33:45+08:00",
+      "task_id": "mesh-20260731173345-0a63432f",
+      "event": "created",
+      "detail": {
+        "profile": "default",
+        "source_port": 8648
+      }
+    },
+    {
+      "ts": "2026-07-31T17:34:18+08:00",
+      "task_id": "mesh-20260731173345-0a63432f",
+      "event": "updated",
+      "detail": {
+        "status": "submitted",
+        "summary": "任务已提交，后台执行中（超时未返回结果）"
+      }
+    },
+    {
+      "ts": "2026-07-31T17:34:34+08:00",
+      "task_id": "mesh-20260731173345-0a63432f",
+      "event": "updated",
+      "detail": {
+        "status": "submitted",
+        "summary": "任务已提交，后台执行中（超时未返回结果）"
+      }
+    }
+  ]
+}

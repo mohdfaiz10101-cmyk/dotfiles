@@ -1,0 +1,202 @@
+api/todo_state.py:223:    truncated ``preview`` the sibling ``tool``/``tool_complete`` events send.
+api/streaming.py:60:from api.compression_recovery import stamp_compression_exhausted_recovery
+api/streaming.py:620:    transitive imports, plugin discovery).  Performing those imports while
+api/streaming.py:3960:    reasoning is NOT in the set — that's legitimately recoverable by
+api/streaming.py:4009:        # almost never recovers a useful title (see issue #2083: Qwen3-thinking
+api/streaming.py:4277:def _put_title_status(put_event, session_id: str, status: str, reason: str = '', title: str = '', raw_preview: str = '') -> None:
+api/streaming.py:4283:    if raw_preview:
+api/streaming.py:4284:        payload['raw_preview'] = raw_preview
+api/streaming.py:4287:        "title_status session=%s status=%s reason=%s title=%r raw_preview=%r",
+api/streaming.py:4292:        (raw_preview or '')[:120],
+api/streaming.py:4414:                next_title, llm_status, raw_preview = _generate_llm_session_title_for_agent(agent, user_text, assistant_text)
+api/streaming.py:4416:                    next_title, llm_status, raw_preview = _generate_llm_session_title_via_aux(user_text, assistant_text, agent=agent, use_agent_model=True)
+api/streaming.py:4418:                next_title, llm_status, raw_preview = _generate_llm_session_title_via_aux(user_text, assistant_text)
+api/streaming.py:4420:                    next_title, llm_status, raw_preview = _generate_llm_session_title_for_agent(agent, user_text, assistant_text)
+api/streaming.py:4465:                _put_title_status(put_event, session_id, source, fallback_reason, effective_title, raw_preview)
+api/streaming.py:4467:                _put_title_status(put_event, session_id, source, llm_status, effective_title, raw_preview)
+api/streaming.py:4470:            _put_title_status(put_event, session_id, 'skipped', source or 'unchanged', effective_title, raw_preview)
+api/streaming.py:4506:                next_title, llm_status, raw_preview = _generate_llm_session_title_for_agent(agent, user_text, assistant_text)
+api/streaming.py:4508:                    next_title, llm_status, raw_preview = _generate_llm_session_title_via_aux(user_text, assistant_text, agent=agent, use_agent_model=True)
+api/streaming.py:4510:                next_title, llm_status, raw_preview = _generate_llm_session_title_via_aux(user_text, assistant_text)
+api/streaming.py:4512:                    next_title, llm_status, raw_preview = _generate_llm_session_title_for_agent(agent, user_text, assistant_text)
+api/streaming.py:4514:            _put_title_status(put_event, session_id, 'refresh_skipped', llm_status or 'empty', effective, raw_preview)
+api/streaming.py:4520:            _put_title_status(put_event, session_id, 'refresh_skipped', 'same_title', effective, raw_preview)
+api/streaming.py:4539:        _put_title_status(put_event, session_id, 'refreshed', llm_status, effective_title, raw_preview)
+api/streaming.py:4567:        next_title, llm_status, raw_preview = _generate_llm_session_title_via_aux(user_text, assistant_text, agent=agent)
+api/streaming.py:4569:        return next_title, llm_status, raw_preview
+api/streaming.py:4573:        return fallback_title, reason, raw_preview
+api/streaming.py:4574:    return None, llm_status or 'empty_title', raw_preview
+api/streaming.py:4596:            # than leaving an unreadable recovery snapshot behind.
+api/streaming.py:4705:    can recover.  When WebUI is configured for text-mode image handling, preserve
+api/streaming.py:5055:        # Note: _recovered user messages are NOT skipped here — they may need
+api/streaming.py:5057:        # follows.  The _recovered skip happens in a final pass after orphaned
+api/streaming.py:5059:        # Temporarily mark _recovered users so the final pass can find them.
+api/streaming.py:5060:        is_recovered = msg.get('_recovered') and msg.get('role') == 'user'
+api/streaming.py:5093:        if is_recovered:
+api/streaming.py:5094:            sanitized['_recovered'] = True  # temporary marker — stripped before return
+api/streaming.py:5130:    # Fourth pass: drop _recovered user messages unless removing one would fuse
+api/streaming.py:5134:    # (`final[-1]`) and the next surviving message's role.  A _recovered user is
+api/streaming.py:5141:    # bug that re-introduced `user, _recovered user, assistant` → adjacent users
+api/streaming.py:5145:        if msg.get('_recovered') and msg.get('role') == 'user':
+api/streaming.py:5151:            # Keep only if this recovered user actually separates two assistants.
+api/streaming.py:5155:            msg = {k: v for k, v in msg.items() if k != '_recovered'}
+api/streaming.py:5210:        # Note: _recovered user messages are NOT skipped here — deferred to
+api/streaming.py:5212:        is_recovered = msg.get('_recovered') and msg.get('role') == 'user'
+api/streaming.py:5225:        if is_recovered:
+api/streaming.py:5226:            sanitized['_recovered'] = True  # temporary marker — stripped before return
+api/streaming.py:5257:    # Fourth pass: drop _recovered user messages unless removing one would fuse
+api/streaming.py:5263:        if msg.get('_recovered') and msg.get('role') == 'user':
+api/streaming.py:5271:            msg = {k: v for k, v in msg.items() if k != '_recovered'}
+api/streaming.py:5281:    Compression/reference markers are internal recovery material: keep at most
+api/streaming.py:5751:    LCM summary cards can be re-injected with the same long recovered context
+api/streaming.py:5985:    # `role:"user"` continuation prompts (e.g. "Continue", empty-recovery nudges
+api/streaming.py:6329:def _stream_writeback_can_supersede_recovery_marker(session, msg_text):
+api/streaming.py:6339:    whose last visible row is the recovery marker for this exact user prompt may
+api/streaming.py:6412:    the UI transcript. If the model/context history was compacted and no longer
+api/streaming.py:6415:    internal recovery material and must not become visible user/assistant turns.
+api/streaming.py:6486:    # previous_display.  After context compression recovery, previous_context
+api/streaming.py:6937:# commands/paths get cut and recovery-rebuilt diffs (built from old_string/
+api/streaming.py:7030:    """Extract a bounded result preview from a stored tool message payload."""
+api/streaming.py:7037:            preview = data.get('output') or data.get('result') or data.get('error') or text
+api/streaming.py:7038:            text = str(preview)
+api/streaming.py:7047:    Incidental args keep a short 120-char cap, but content/diff-bearing keys
+api/streaming.py:7048:    (the command, code, and patch fields that tool cards and recovery-rebuilt
+api/streaming.py:7166:            str(tool_call.get('preview') or tool_call.get('snippet') or ''),
+api/streaming.py:7205:# backgrounded its TCP receive window fills; the next handler.wfile.write()/
+api/streaming.py:7257:    bubble disappear on reload/reconcile. Return True when a recovered user turn
+api/streaming.py:7263:    recovered_ts = int(time.time())
+api/streaming.py:7266:        recovered_ts = int(pending_started_at)
+api/streaming.py:7283:            and existing_ts == recovered_ts
+api/streaming.py:7290:    recovered = {
+api/streaming.py:7293:        'timestamp': recovered_ts,
+api/streaming.py:7294:        '_recovered': True,
+api/streaming.py:7296:    stamp_message_source(recovered, pending_source)
+api/streaming.py:7298:        recovered['attachments'] = pending_attachments
+api/streaming.py:7299:    session.messages.append(recovered)
+api/streaming.py:7300:    # Mirror to context_messages so the _recovered flag survives the state.db
+api/streaming.py:7301:    # round-trip (#4283).  state.db has no _recovered column, so without this
+api/streaming.py:7303:    # prefer_context=True) finds the recovered user as a flagless state.db
+api/streaming.py:7310:        ctx.append(dict(recovered))
+api/streaming.py:7318:        session.truncation_watermark = float(recovered_ts)
+api/streaming.py:7872:    provider after fallback/transport recovery. If WebUI refreshes a cached
+api/streaming.py:8397:        # Bind THIS turn's session identity to the worker thread/context BEFORE
+api/streaming.py:8845:                # worth it for a recoverable staleness window.
+api/streaming.py:8975:                preview = None
+api/streaming.py:8979:                    event_type, name, preview, args = cb_args[:4]
+api/streaming.py:8981:                    name, preview, args = cb_args
+api/streaming.py:8990:                    reason_text = preview if event_type == 'reasoning.available' else name
+api/streaming.py:9046:                        'preview': preview,
+api/streaming.py:9103:                        'preview': preview,
+api/streaming.py:9116:                    # back to the truncated `preview` only when the
+api/streaming.py:9119:                    # Graceful degradation on old builds: `preview` is a
+api/streaming.py:9132:                            else preview
+api/streaming.py:9165:                            'preview': None,
+api/streaming.py:9201:                            'preview': result_snippet,
+api/streaming.py:9359:            # provider recovery). Match Hermes CLI/gateway semantics:
+api/streaming.py:9791:            # fallback to now only for recovered/legacy flows where that marker is absent
+api/streaming.py:10014:                    if _stream_writeback_can_supersede_recovery_marker(s, msg_text):
+api/streaming.py:10016:                            "Superseding stale recovery marker for session %s stream %s",
+api/streaming.py:10140:                    # recoverable messages. (#2223)
+api/streaming.py:10164:                    # parent, losing access to the recoverable history in old_sid.json.
+api/streaming.py:10527:                            _recovery = stamp_compression_exhausted_recovery(
+api/streaming.py:10532:                            _error_message['_compressionRecovery'] = _recovery
+api/streaming.py:10533:                            _error_payload['compression_recovery'] = _recovery
+api/streaming.py:10534:                            _error_payload['recommended_recovery_action'] = _recovery.get('recommended_action')
+api/streaming.py:11764:                    _recovery = stamp_compression_exhausted_recovery(
+api/streaming.py:11769:                    _error_message['_compressionRecovery'] = _recovery
+api/streaming.py:11770:                    _error_payload['compression_recovery'] = _recovery
+api/streaming.py:11771:                    _error_payload['recommended_recovery_action'] = _recovery.get('recommended_action')
+api/streaming.py:11817:        # Stop the periodic checkpoint thread before the final recovery path.
+api/streaming.py:12142:    # below while the worker is still unwinding; ACTIVE_RUNS is what recovery /
+api/streaming.py:12297:                    _pending_atts_raw = getattr(_cs, 'pending_attachments', None)
+api/streaming.py:12298:                    _pending_atts = list(_pending_atts_raw) if isinstance(_pending_atts_raw, (list, tuple)) else []
+api/streaming.py:12300:                    _msgs_for_recovery = _cs.messages if isinstance(_cs.messages, list) else None
+api/streaming.py:12301:                    if _pending_user and _msgs_for_recovery is not None:
+api/streaming.py:12303:                        for _m in reversed(_msgs_for_recovery):
+api/streaming.py:12322:                            _recovered_ts = int(time.time())
+api/streaming.py:12324:                                _recovered_ts = int(_pending_started)
+api/streaming.py:12328:                                'timestamp': _recovered_ts,
+api/streaming.py:12331:                            if _pending_atts:
+api/streaming.py:12332:                                _user_turn['attachments'] = _pending_atts
+api/streaming.py:12333:                            _msgs_for_recovery.append(_user_turn)
+api/streaming.py:12336:                        "Failed to recover pending user message on cancel for %s",
+api/streaming.py:12382:                    # failed turn repeatedly during cancel/replay recovery (#2592).
+static/style.css:206:  :root[data-skin="graphite"] .session-item.active .session-preview,
+static/style.css:220:  :root[data-skin="graphite"] .preview-code,
+static/style.css:221:  :root[data-skin="graphite"] .preview-md code,
+static/style.css:332:  :root[data-skin="codex"] .session-item.active .session-preview,
+static/style.css:346:  :root[data-skin="codex"] .preview-code,
+static/style.css:347:  :root[data-skin="codex"] .preview-md code,
+static/style.css:458:  :root[data-skin="terracotta"] .session-item.active .session-preview,
+static/style.css:472:  :root[data-skin="terracotta"] .preview-code,
+static/style.css:473:  :root[data-skin="terracotta"] .preview-md code,
+static/style.css:584:  :root[data-skin="github"] .session-item.active .session-preview,
+static/style.css:598:  :root[data-skin="github"] .preview-code,
+static/style.css:599:  :root[data-skin="github"] .preview-md code,
+static/style.css:900:    --border:#262626;--border2:#3f3f3f;--border-subtle:#171717;--border-muted:#2a2a2a;
+static/style.css:929:  :root[data-skin="geist-contrast"] .preview-md pre,
+static/style.css:974:  :root[data-skin="geist-contrast"] .session-item.active .session-preview,
+static/style.css:1035:  :root[data-skin="geist-contrast"] .preview-md a,
+static/style.css:1424:  :root:not(.dark) .preview-md th{background:rgba(0,0,0,.04);}
+static/style.css:1426:  :root:not(.dark) .preview-md td{border-color:rgba(0,0,0,.08);}
+static/style.css:1428:  :root:not(.dark) .preview-badge.code{background:rgba(0,0,0,.05);}
+static/style.css:1659:  .session-search-preview{font-size:11px;line-height:1.35;color:var(--muted);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere;opacity:.9;}
+static/style.css:1660:  .session-search-hit-preview{background:var(--accent-bg);color:var(--accent-text);}
+static/style.css:1663:  .session-item.active .session-search-preview{color:var(--accent-text);opacity:.72;}
+static/style.css:2233:  .notes-preview-card .memory-content{max-height:420px;overflow:auto;}
+static/style.css:2294:  /* Steer recovery bar: dismissible after failure, same lifecycle as steer-indicator */
+static/style.css:2295:  .steer-recovery{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;margin:0.25rem 0;border-radius:var(--radius-md);background:var(--surface-subtle);font-size:0.85rem}
+static/style.css:2296:  .steer-recovery-label{flex:1;min-width:0;color:var(--text)}
+static/style.css:2297:  .steer-recovery button{padding:0.25rem 0.75rem;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-size:0.8rem;line-height:1.4;white-space:nowrap}
+static/style.css:2298:  .steer-recovery button:hover{background:var(--hover-bg);color:var(--text)}
+static/style.css:2299:  .steer-recovery-retry{border-color:var(--accent);color:var(--accent);font-weight:600}
+static/style.css:2300:  .steer-recovery-retry:hover{color:var(--accent)}
+static/style.css:2326:  .msg-body pre.md-source-block,.preview-md pre.md-source-block{white-space:pre-wrap;overflow-x:hidden;overflow-wrap:anywhere;}
+static/style.css:2327:  .msg-body pre.md-source-block code,.preview-md pre.md-source-block code{display:block;white-space:inherit;overflow-wrap:anywhere;word-break:break-word;}
+static/style.css:2328:  .msg-body pre.md-source-block code .token,.preview-md pre.md-source-block code .token{white-space:inherit;overflow-wrap:anywhere;word-break:inherit;}
+static/style.css:2372:    .msg-body pre,.preview-md pre{white-space:pre-wrap !important;overflow-x:hidden !important;overflow-wrap:anywhere !important;}
+static/style.css:2373:    .msg-body pre code,.preview-md pre code{white-space:inherit !important;overflow-wrap:anywhere !important;word-break:break-word !important;}
+static/style.css:2374:    .msg-body pre code .token,.preview-md pre code .token{white-space:inherit !important;overflow-wrap:anywhere !important;word-break:inherit !important;}
+static/style.css:2482:  /* Generated local image artifact (#3220): clean inline image with a
+static/style.css:2483:     hover/focus-revealed Download button overlaid top-right. The image keeps
+static/style.css:2486:  .msg-artifact-image{position:relative;display:inline-block;width:fit-content;max-width:min(360px,100%);vertical-align:bottom;margin:6px 4px 6px 0;line-height:0;}
+static/style.css:2492:  .msg-artifact-image .msg-media-img{margin:0;display:block;width:auto;height:auto;max-width:min(360px,100%);max-height:360px;object-fit:contain;border-radius:8px;cursor:zoom-in;}
+static/style.css:2493:  .msg-artifact-download{position:absolute;top:8px;right:8px;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.25);box-shadow:0 1px 4px rgba(0,0,0,.35);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);color:#fff;text-decoration:none;opacity:0;transform:translateY(-2px);transition:opacity .12s,transform .12s,background .12s;pointer-events:none;}
+static/style.css:2494:  .msg-artifact-image:hover .msg-artifact-download,.msg-artifact-image:focus-within .msg-artifact-download{opacity:1;transform:translateY(0);pointer-events:auto;}
+static/style.css:2495:  .msg-artifact-download:hover{background:rgba(0,0,0,.82);border-color:rgba(255,255,255,.4);}
+static/style.css:2496:  .msg-artifact-download:focus-visible{opacity:1;pointer-events:auto;outline:2px solid var(--accent-bg-strong);outline-offset:1px;}
+static/style.css:2497:  @media (hover:none){.msg-artifact-download{opacity:1;pointer-events:auto;transform:none;}}
+static/style.css:2524:  .csv-preview-header{justify-content:space-between;flex-wrap:wrap;row-gap:6px;}
+static/style.css:2525:  .csv-preview-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+static/style.css:2586:  /* Image attachment chips show a thumbnail preview instead of a paperclip chip */
+static/style.css:2741:  /* ── Turn-based voice mode (#1333) ── */
+static/style.css:2742:  .voice-mode-btn{transition:color .15s,background .15s;}
+static/style.css:2743:  .voice-mode-btn.active{color:var(--accent);background:rgba(var(--accent-rgb,99,102,241),.15);}
+static/style.css:2744:  .voice-mode-btn.active svg{filter:drop-shadow(0 0 3px rgba(var(--accent-rgb,99,102,241),.5));}
+static/style.css:2745:  .voice-mode-bar{font-size:11px;padding:4px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.05);}
+static/style.css:2746:  .voice-mode-indicator{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+static/style.css:2747:  .voice-mode-indicator.listening{background:var(--error);animation:voice-mode-pulse 1s ease-in-out infinite;}
+static/style.css:2748:  .voice-mode-indicator.speaking{background:var(--accent);animation:voice-mode-pulse 1.5s ease-in-out infinite;}
+static/style.css:2749:  .voice-mode-indicator.thinking{background:var(--warning,#f59e0b);animation:voice-mode-pulse 2s ease-in-out infinite;}
+static/style.css:2750:  .voice-mode-label{color:var(--muted);font-size:11px;}
+static/style.css:2751:  @keyframes voice-mode-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.85);}}
+static/style.css:2907:  .preview-area{flex:1;overflow:auto;padding:14px;flex-direction:column;gap:8px;display:none;opacity:0;transition:opacity .15s;}
+static/style.css:2908:  .preview-area.visible{display:flex;opacity:1;}
+static/style.css:2909:  .preview-path{font-size:11px;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border);flex-shrink:0;}
+static/style.css:2910:  .preview-code{font-family:var(--font-mono);font-size:12px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:var(--pre-text);}
+static/style.css:2911:  /* Workspace preview syntax highlighting (#3337): Prism's prism-tomorrow theme
+static/style.css:2914:     <pre> (.preview-code), so without overriding the <pre> too you get a gray
+static/style.css:2918:  .preview-code[class*="language-"],.preview-code code[class*="language-"]{background:var(--code-bg) !important;}
+static/style.css:2919:  /* Image preview */
+static/style.css:2920:  .preview-img-wrap{display:flex;align-items:center;justify-content:center;flex:1;padding:8px 0;min-height:0;}
+static/style.css:2921:  .preview-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+static/style.css:2922:  .preview-media-wrap{display:flex;align-items:center;justify-content:center;flex:1;min-height:0;padding:12px 0;}
+static/style.css:2923:  .preview-media-wrap .msg-media-editor{width:100%;max-width:100%;background:var(--surface);}
+static/style.css:2924:  .preview-media-wrap .msg-media-video{max-height:60vh;}
+static/style.css:2925:  .preview-pdf-wrap{display:flex;flex:1;min-height:360px;border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:#fff;}
+static/style.css:2926:  .preview-pdf-frame{width:100%;height:100%;min-height:70vh;border:none;background:#fff;}
+static/style.css:2927:  /* Markdown rendered preview */
+static/style.css:2928:  .preview-md{font-size:13px;line-height:1.7;color:var(--text);flex:1;overflow-y:auto;min-height:0;}
+static/style.css:2929:  .preview-md p{margin-bottom:10px;}.preview-md p:last-child{margin-bottom:0;}
+
+__HERMES_CWD_498f71c9828e__/var/home/charlie/hermes-webui-clean__HERMES_CWD_498f71c9828e__

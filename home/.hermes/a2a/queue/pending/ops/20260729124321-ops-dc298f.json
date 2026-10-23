@@ -1,0 +1,16 @@
+{
+  "id": "20260729124321-ops-dc298f",
+  "created_at": "2026-07-29T12:43:21.511704+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms1amdd0amn8ri",
+    "title": "电脑定期清理",
+    "created_at": 1785039884.2134786
+  },
+  "content": "Linux系统定期清理的通用优先级执行工作流：按风险从低到高分三梯队执行，第一梯队零风险项包括journal日志裁剪（`journalctl --vacuum-size=200M`缩至200M）、/var/tmp 7天前未访问文件清理（`find /var/tmp -type f -atime +7 -delete`）；第二梯队低风险项为30天前的/var/log轮转日志清理（`find /var/log -type f -name \"*.log.*\" -mtime +30 -delete`）；第三梯队需人工确认使用状态后再清理（如虚拟化镜像、应用旧备份文件）。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

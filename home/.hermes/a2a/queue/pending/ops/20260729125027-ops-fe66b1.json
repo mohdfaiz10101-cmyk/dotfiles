@@ -1,0 +1,16 @@
+{
+  "id": "20260729125027-ops-fe66b1",
+  "created_at": "2026-07-29T12:50:27.935163+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_192826",
+    "title": "",
+    "created_at": 1784978917.1043556
+  },
+  "content": "The memory-curator skill has accumulated 40 consecutive failures, suggesting a systemic issue with lock file cleanup between cron runs that requires investigation of the cron job's post-execution cleanup mechanism or lock file management logic.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729122216-cod-0e9df2",
+  "created_at": "2026-07-29T12:22:16.642415+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "134a025f71dd",
+    "title": "hermes github",
+    "created_at": 1785268697.4558148
+  },
+  "content": "The official Hermes GitHub repository contains dedicated configuration parameters and documentation for adjusting task execution parallelism, enabling users to explicitly switch between single-task and multi-task execution workflows.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

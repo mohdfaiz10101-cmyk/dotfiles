@@ -1,0 +1,16 @@
+{
+  "id": "20260805171730-ops-5a1503",
+  "created_at": "2026-08-05T17:17:30.486391+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260806_011621_318e54",
+    "title": "",
+    "created_at": 1785950222.4981022
+  },
+  "content": "Intermittent network disconnections in frp (fast reverse proxy) usage scenarios can be attributed to three distinct common root cause layers: frps (frp server) service instability, client-side upstream WiFi network (e.g. pdcn wifi) instability, or local router hardware/configuration issues.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729130943-ops-e750d6",
+  "created_at": "2026-07-29T13:09:43.344133+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_040940",
+    "title": "",
+    "created_at": 1784923791.907131
+  },
+  "content": "The phone-sync-import task has a persistent failure pattern caused by a hard 120s script timeout, so any resolution for this task must either optimize the script runtime to under 120s or adjust the timeout configuration.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

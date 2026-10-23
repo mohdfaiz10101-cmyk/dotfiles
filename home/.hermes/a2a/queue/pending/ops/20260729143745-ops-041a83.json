@@ -1,0 +1,16 @@
+{
+  "id": "20260729143745-ops-041a83",
+  "created_at": "2026-07-29T14:37:45.603615+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrtgnpq9cx1n54",
+    "title": "",
+    "created_at": 1784566274.7146206
+  },
+  "content": "A super-admin-only backend endpoint POST /api/hermes/restart has been implemented in Hermes Studio to enable application restart functionality.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

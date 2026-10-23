@@ -1,0 +1,16 @@
+{
+  "id": "20260729140257-ops-9ebf9d",
+  "created_at": "2026-07-29T14:02:57.144980+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_c41c469af4ce_20260722_195008",
+    "title": "",
+    "created_at": 1784721020.907881
+  },
+  "content": "Explicit session classification keyword rules are defined for the triage workflow: work category matches keywords including 会议、项目、deadline、报告、需求、上线、部署; bugs matches 报错、bug、故障、崩溃、异常、修复; features matches 新功能、需求、产品、迭代、优化; life matches 购物、缴费、日常、家庭、旅行、吃饭; research matches 调研、学习、资料、技术选型.",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

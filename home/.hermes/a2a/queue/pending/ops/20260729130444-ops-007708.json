@@ -1,0 +1,16 @@
+{
+  "id": "20260729130444-ops-007708",
+  "created_at": "2026-07-29T13:04:44.058163+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_085347",
+    "title": "",
+    "created_at": 1784940838.0050464
+  },
+  "content": "When escalating chronic infrastructure failures, the autonomous task brain follows a reusable evidence collection workflow that automatically aggregates standard system health metrics (disk usage percentage, memory/swap utilization, system load, dependent service active status, network reachability of critical linked components) as part of the escalation payload to accelerate root cause analysis.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

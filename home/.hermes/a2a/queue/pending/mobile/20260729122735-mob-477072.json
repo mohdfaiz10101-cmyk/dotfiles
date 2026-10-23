@@ -1,0 +1,16 @@
+{
+  "id": "20260729122735-mob-477072",
+  "created_at": "2026-07-29T12:27:35.009056+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4exewexlcvdz",
+    "title": "",
+    "created_at": 1785228484.7671034
+  },
+  "content": "排查偶发浏览器自动打开问题时，可通过`ps -eo pid,ppid,lstart,cmd | grep -iE 'chromium|firefox|google-chrome' | grep -v grep`抓取浏览器进程的PID、父进程ID、启动命令，或通过`watch -n 1 \"wmctrl -l | grep -i 目标站点关键词\"`实时监控窗口标题变化，定位触发源。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

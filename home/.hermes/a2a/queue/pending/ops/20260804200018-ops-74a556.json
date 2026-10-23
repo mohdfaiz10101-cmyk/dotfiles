@@ -1,0 +1,16 @@
+{
+  "id": "20260804200018-ops-74a556",
+  "created_at": "2026-08-04T20:00:18.577761+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260805_035826_c93df4",
+    "title": "Greeting and Introduction Exchange",
+    "created_at": 1785873541.936574
+  },
+  "content": "User initiates conversations with minimal, low-context prompts (e.g., 'say hi') without providing prior background, so the agent must handle open, uncontextualized initial inputs without relying on previous session history.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

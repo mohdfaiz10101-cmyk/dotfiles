@@ -1,0 +1,16 @@
+{
+  "id": "20260729123447-ops-4e7527",
+  "created_at": "2026-07-29T12:34:47.418675+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms2s5tecj4v4kv",
+    "title": "",
+    "created_at": 1785129799.1824265
+  },
+  "content": "ADB UI interaction commands (e.g., `input tap` to simulate screen touches) are consistently intercepted by the Android system when the device is locked, even if ADB shell and screenshot functionality remain available.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

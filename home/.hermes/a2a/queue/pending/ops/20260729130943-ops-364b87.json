@@ -1,0 +1,16 @@
+{
+  "id": "20260729130943-ops-364b87",
+  "created_at": "2026-07-29T13:09:43.343883+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_040940",
+    "title": "",
+    "created_at": 1784923791.907131
+  },
+  "content": "Recurring phone-sync-failure has accumulated 33 consecutive unresolved log entries, and the autonomous task workflow rule requires immediately triggering a weekly-review session or alert when this failure count threshold is reached.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "20260811113250-skill-f7b2e0",
+  "created_at": "2026-08-11T11:32:50.989071+00:00",
+  "room": "creative",
+  "target_agent": "creative-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "apikey-image-gen",
+    "file": "/var/home/charlie/.hermes/skills/apikey-image-gen/SKILL.md"
+  },
+  "content": "Skill `apikey-image-gen` updated. Skill apikey-image-gen updated; review the SKILL.md diff before promoting behavior changes. Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

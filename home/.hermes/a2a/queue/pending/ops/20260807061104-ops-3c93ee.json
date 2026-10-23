@@ -1,0 +1,16 @@
+{
+  "id": "20260807061104-ops-3c93ee",
+  "created_at": "2026-08-07T06:11:04.466231+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "e20cbc8badea",
+    "title": "微信 matrix",
+    "created_at": 1786082880.5511253
+  },
+  "content": "For WeChat-to-Matrix integration, the offline backup-decrypt-forward workflow (backing up WeChat database from a mobile device to a PC, offline decrypting the database, then forwarding messages to Matrix) is far more stable than real-time bridging and carries almost no WeChat account ban risk.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

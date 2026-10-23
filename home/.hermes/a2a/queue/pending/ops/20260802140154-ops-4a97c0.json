@@ -1,0 +1,16 @@
+{
+  "id": "20260802140154-ops-4a97c0",
+  "created_at": "2026-08-02T14:01:54.148215+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "76cba72687f0",
+    "title": "你好 (fork)",
+    "created_at": 1785679117.8143165
+  },
+  "content": "When responding to the user's Simplified Chinese greeting initiations, a polite reciprocal Simplified Chinese greeting paired with an explicit offer to handle the user's pending requests is an appropriate standard response pattern.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

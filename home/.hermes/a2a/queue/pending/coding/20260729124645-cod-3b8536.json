@@ -1,0 +1,16 @@
+{
+  "id": "20260729124645-cod-3b8536",
+  "created_at": "2026-07-29T12:46:45.544168+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0n8n0sfifzhv",
+    "title": "",
+    "created_at": 1785000620.1751518
+  },
+  "content": "筛选标注“web转api”的开源仓库时需规避仅提供油猴脚本+本地服务的方案，此类方案不支持长时间后台自动化调用，必须确认其支持stream流式SSE输出、可持久保存登录会话（Cookie/state持久化）以适配长期任务。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

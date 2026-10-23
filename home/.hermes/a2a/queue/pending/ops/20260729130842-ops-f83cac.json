@@ -1,0 +1,16 @@
+{
+  "id": "20260729130842-ops-f83cac",
+  "created_at": "2026-07-29T13:08:42.307073+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_050643",
+    "title": "",
+    "created_at": 1784927213.8554535
+  },
+  "content": "The memory-curator skill automates durable fact extraction from session_search, letta, and memory-engine sources, then writes refined facts to MEMORY.md with capacity control and optional letta synchronization.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

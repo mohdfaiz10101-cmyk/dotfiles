@@ -1,0 +1,15 @@
+{
+  "id": "20260810143030-skill-f0d4be",
+  "created_at": "2026-08-10T14:30:30.825876+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "network-ops",
+    "file": "/var/home/charlie/.hermes/skills/network-ops/SKILL.md"
+  },
+  "content": "Skill `network-ops` updated. 该network-ops技能文件明确了Fedora、Android 16 rooted设备及Padavan路由器的网络运维适用边界，新增了存在可用工具时直接执行修复/探测命令无需反问用户的执行风格要求，补充了手机MCP控制面、多网络组合一键巡检等运维场景，并明确了与android-transparent-proxy技能的分工。 Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260802135658-ops-8ce27c",
+  "created_at": "2026-08-02T13:56:58.277032+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2a2082e9c86c",
+    "title": "你好",
+    "created_at": 1785678970.1034508
+  },
+  "content": "The `verify_fix` workflow requires explicit target identification context to execute, as the agent cannot uniquely map the `verify_fix` request to a specific fix using only default workspace context. Acceptable context includes: path of recently modified files, the specific verification phenomenon, or the title of the related issue/PR/task.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

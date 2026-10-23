@@ -1,0 +1,16 @@
+{
+  "id": "20260729123158-ops-955bf3",
+  "created_at": "2026-07-29T12:31:58.465326+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3o9y1g5jf9en",
+    "title": "19910端口打不开原因排查",
+    "created_at": 1785183790.4905274
+  },
+  "content": "Network disconnection is a common trigger for NetBird service abnormal termination, which may subsequently cause associated NetBird service ports (including 19910) to become inaccessible.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

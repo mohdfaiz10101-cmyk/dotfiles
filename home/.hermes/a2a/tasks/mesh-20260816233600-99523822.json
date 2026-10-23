@@ -1,0 +1,42 @@
+{
+  "id": "mesh-20260816233600-99523822",
+  "title": "Codex 1 -> Hermes: 那你信息让hermes全部导出",
+  "objective": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/13/rollout-2026-08-13T04-36-53-019ff7b1-33c7-73e1-b9c9-11a119d99d70.jsonl\nsource_timestamp: 2026-08-16T15:35:41.136Z\n\n任务文本:\n那你信息让hermes全部导出",
+  "profile": "ops",
+  "mcp_profile": "monitor",
+  "source_port": 8648,
+  "source_session": "",
+  "parent_task": "",
+  "parent_session": "",
+  "context_budget": "small",
+  "status": "failed",
+  "capsule_path": "/var/home/charlie/.hermes/a2a/capsules/mesh-20260816233600-99523822.json",
+  "queue_path": "/var/home/charlie/.hermes/a2a/mesh-queue/pending/ops/mesh-20260816233600-99523822.json",
+  "children": [],
+  "rollups": [],
+  "handoffs": [],
+  "done": [],
+  "next_actions": [],
+  "avoid": [],
+  "estimated_tokens": 0,
+  "message_count": 0,
+  "created_at": "2026-08-16T23:36:00+08:00",
+  "updated_at": "2026-08-16T23:36:22+08:00",
+  "history": [
+    {
+      "ts": "2026-08-16T23:36:00+08:00",
+      "event": "created",
+      "title": "Codex 1 -> Hermes: 那你信息让hermes全部导出",
+      "objective": "来自 Codex 的显式 Hermes 委派请求。请按现有 Hermes 任务隔离/分拣规则处理，不要读取完整 Codex transcript；只使用下面的短任务文本、必要 runbook 和后续状态文件。\n\nsource_account: Codex 1\nsource_session_file: /var/home/charlie/.codex/sessions/2026/08/13/rollout-2026-08-13T04-36-53-019ff7b1-33c7-73e1-b9c9-11a119d99d70.jsonl\nsource_timestamp: 2026-08-16T15:35:41.136Z\n\n任务文本:\n那你信息让hermes全部导出",
+      "profile": "ops"
+    },
+    {
+      "ts": "2026-08-16T23:36:22+08:00",
+      "event": "updated",
+      "status": "failed",
+      "summary": "HTTP 401"
+    }
+  ],
+  "summary": "HTTP 401",
+  "active_port": 8648
+}

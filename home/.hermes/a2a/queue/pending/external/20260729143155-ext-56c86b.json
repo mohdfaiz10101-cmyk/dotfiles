@@ -1,0 +1,16 @@
+{
+  "id": "20260729143155-ext-56c86b",
+  "created_at": "2026-07-29T14:31:55.727944+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrvzd6hw614fhi",
+    "title": "网络监控配置与状态",
+    "created_at": 1784718657.0272143
+  },
+  "content": "The user has a pre-configured computer-side network monitoring setup using port 3002 and ntfy for network status detection and alerts, and wants to integrate this existing configuration with NetBird to deliver stable NetBird connectivity and full coverage of all related error notifications.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260805123214-ops-29fba4",
+  "created_at": "2026-08-05T12:32:14.316162+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msg2b4gbc6nkfs",
+    "title": "8484端口Hermes错误处理",
+    "created_at": 1785932879.5489724
+  },
+  "content": "Resolving port 8484 Hermes error log anomalies and task stoppage is a high-priority, recurring operational task for this user's Hermes deployment environment.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

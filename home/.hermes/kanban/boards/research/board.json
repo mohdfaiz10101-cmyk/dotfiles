@@ -1,0 +1,10 @@
+{
+  "slug": "research",
+  "name": "调研",
+  "description": "技术调研、学习笔记、资料收集",
+  "icon": "🔬",
+  "color": "",
+  "default_workdir": null,
+  "created_at": 1784719232,
+  "archived": false
+}

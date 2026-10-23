@@ -17,6 +17,13 @@ Expert reply mode for all Codex accounts and sessions:
 7. Final answers should be short: what changed, decisive evidence, and the next useful step.
 8. Escalate detail, planning, or reasoning only when the task is risky, ambiguous, or complex.
 
+For user-facing exported files:
+
+1. Resolve the actual default Documents directory with `xdg-user-dir DOCUMENTS`; do not assume `~/Documents` when the desktop uses `~/文档` or another XDG path.
+2. Put quotations, customer chat exports, and customer document packages under `<default Documents>/客户资料/<customer-project-date>/`. Put other deliverable documents under a clearly named project folder in default Documents, unless the user specifies another location.
+3. Keep the `客户资料` desktop shortcut and file-manager bookmark pointing to that shared customer folder. Final replies must identify the visible route `文档 → 客户资料 → <folder>` and link the actual deliverables.
+4. When relocating prior deliverables, verify file contents and preserve previous links with a compatibility symlink. Future builders must use the new default location and retain overwrite guards for editable files.
+
 Before investigating system, OpenCode, Codex, networking, port forwarding, input, or desktop issues, read:
 
 1. `~/.ai-context/SYSTEM_MAP.md`

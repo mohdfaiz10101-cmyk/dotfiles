@@ -1,0 +1,16 @@
+{
+  "id": "20260729125727-ops-8bdd49",
+  "created_at": "2026-07-29T12:57:27.595420+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_142712",
+    "title": "",
+    "created_at": 1784960843.0191429
+  },
+  "content": "The autonomous-task-brain skill implements a standardized 5-step closed-loop autonomous task management workflow: 1) Perceive (scan recent sessions to identify new, repeated, or failed tasks), 2) Retrieve (find optimal solutions from local skills, historical sessions, memory engines, and GitHub), 3) Decide (select execute/suggest/skip actions based on historical success rate, task complexity, and user preferences), 4) Execute (auto create/modify skills, cron jobs, scripts or delegate subtasks), 5) Review (record execution results and update the knowledge base for future optimization).",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

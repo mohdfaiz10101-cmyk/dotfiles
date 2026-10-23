@@ -1,0 +1,16 @@
+{
+  "id": "20260729123050-ops-2be406",
+  "created_at": "2026-07-29T12:30:50.546292+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms3r5k2o6559hy",
+    "title": "",
+    "created_at": 1785188683.9391496
+  },
+  "content": "All default model configuration changes for Hermes ecosystem components in this environment must follow a standard reusable workflow: apply the target default model, persist the setting across component version updates, and lock the configuration to prevent accidental overrides.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

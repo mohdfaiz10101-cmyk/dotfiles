@@ -1,0 +1,16 @@
+{
+  "id": "20260729123016-cod-bf590d",
+  "created_at": "2026-07-29T12:30:16.444664+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "124407d04624",
+    "title": "",
+    "created_at": 1785198256.5400114
+  },
+  "content": "For unstable ADB connections to rooted Magisk Android devices, the reusable workflow is: first run a lightweight connectivity probe; if ADB remains unreachable, prioritize implementing immediately effective host-side multi-channel optimizations first, then prepare phone-side configurations for later deployment once ADB is stable, rather than repeatedly attempting unstable ADB read/write operations. Use fixed WiFi retry instead of random retries to improve ADB connection reliability.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

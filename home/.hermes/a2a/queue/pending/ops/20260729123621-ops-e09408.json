@@ -1,0 +1,16 @@
+{
+  "id": "20260729123621-ops-e09408",
+  "created_at": "2026-07-29T12:36:21.825573+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "compress_ms23udp5_fa330012ddc3",
+    "title": "",
+    "created_at": 1785088946.3622103
+  },
+  "content": "Context checkpoint summaries are a standard on-demand handoff artifact for Hermes AI sessions, used to preserve long-term actionable context across session boundaries when explicitly requested.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

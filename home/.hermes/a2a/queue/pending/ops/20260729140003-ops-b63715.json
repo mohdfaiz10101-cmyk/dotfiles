@@ -1,0 +1,16 @@
+{
+  "id": "20260729140003-ops-b63715",
+  "created_at": "2026-07-29T14:00:03.383396+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195314_07807b",
+    "title": "",
+    "created_at": 1784721195.9591048
+  },
+  "content": "References to task IDs matching the 't_<alphanumeric>' pattern in user input indicate a specific work item from the user's kanban system that is likely the focus of the current request or required action.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

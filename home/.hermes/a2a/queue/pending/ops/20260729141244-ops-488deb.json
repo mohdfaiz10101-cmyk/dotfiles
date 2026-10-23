@@ -1,0 +1,16 @@
+{
+  "id": "20260729141244-ops-488deb",
+  "created_at": "2026-07-29T14:12:44.648201+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_c41c469af4ce_20260722_194056",
+    "title": "",
+    "created_at": 1784720468.2763498
+  },
+  "content": "Fixed 5-category Hermes session classification taxonomy with explicit keyword triggers: work (会议/项目/deadline/报告/需求/上线/部署), bugs (报错/bug/故障/崩溃/异常/修复), features (新功能/需求/产品/迭代/优化), life (购物/缴费/日常/家庭/旅行/吃饭), research (调研/学习/资料/技术选型)",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": "20260729122250-cod-269f7a",
+  "created_at": "2026-07-29T12:22:50.538642+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms516z8tk3lyx1",
+    "title": "",
+    "created_at": 1785265877.1913106
+  },
+  "content": "OpenRouter acts as a unified access layer for low-cost and free LLMs across all tiers, supporting both near-free paid high-capability models (e.g., DeepSeek V4 Flash) and niche low-cost/free models, reducing integration overhead for cost-sensitive LLM use cases.",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.663293+00:00"
+}

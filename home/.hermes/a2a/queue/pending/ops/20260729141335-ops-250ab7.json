@@ -1,0 +1,16 @@
+{
+  "id": "20260729141335-ops-250ab7",
+  "created_at": "2026-07-29T14:13:35.848614+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194011_5ff108",
+    "title": "",
+    "created_at": 1784720413.7262542
+  },
+  "content": "When the user references a work kanban task ID starting with the 't_' prefix, it corresponds to a task-type entry in their kanban system, as demonstrated by the task ID t_0120d003.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

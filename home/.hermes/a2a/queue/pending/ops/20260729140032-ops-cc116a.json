@@ -1,0 +1,16 @@
+{
+  "id": "20260729140032-ops-cc116a",
+  "created_at": "2026-07-29T14:00:32.586751+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195313_e90224",
+    "title": "",
+    "created_at": 1784721195.560149
+  },
+  "content": "The kanban task ID 't_0120d003' is a persistent, user-recognized reference to a specific work task that may be brought up in future interactions.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

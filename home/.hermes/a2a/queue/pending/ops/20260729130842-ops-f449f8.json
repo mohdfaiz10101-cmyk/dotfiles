@@ -1,0 +1,16 @@
+{
+  "id": "20260729130842-ops-f449f8",
+  "created_at": "2026-07-29T13:08:42.307515+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_050643",
+    "title": "",
+    "created_at": 1784927213.8554535
+  },
+  "content": "The curator watchdog tracks consecutive failures (currently 13) and last_status, using these metrics to monitor system health and lock contention issues.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729125843-ops-daaff6",
+  "created_at": "2026-07-29T12:58:43.030860+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrzyodmggidawq",
+    "title": "StepFun API Configuration",
+    "created_at": 1784959481.1662202
+  },
+  "content": "The StepFun API integration in Hermes Studio is configured with multiple redundant API keys for fallback access if a single key fails, with the pre-configured valid keys being 3HtOToMVg2UVElgIG01Mnz4U, b37WsOve3Mgns5FRx614maKt, 519cumyksGl1c1PIA (spaces in the first two keys in the original input are formatting artifacts)",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

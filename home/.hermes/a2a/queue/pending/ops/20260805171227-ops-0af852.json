@@ -1,0 +1,16 @@
+{
+  "id": "20260805171227-ops-0af852",
+  "created_at": "2026-08-05T17:12:27.038887+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "f2b058227d8f",
+    "title": "",
+    "created_at": 1785949697.4408622
+  },
+  "content": "User has a recurring operational need for a mature, out-of-the-box maintained project that enables persistent updates to SSH web panel (Hermes) addresses and configurations, and is actively evaluating solutions beyond Termux for this workflow.",
+  "confidence": 0.98,
+  "status": "pending",
+  "review_note": ""
+}

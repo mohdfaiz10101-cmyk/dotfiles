@@ -1,0 +1,16 @@
+{
+  "id": "20260729133522-cod-bb7e37",
+  "created_at": "2026-07-29T13:35:22.076828+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrxpdxhcgczvd3",
+    "title": "",
+    "created_at": 1784822794.4236844
+  },
+  "content": "User preference for Hermes task stoppage troubleshooting: After initial log retrieval, searching the project Git repository for related historical issues or fixes is a mandatory follow-up step.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

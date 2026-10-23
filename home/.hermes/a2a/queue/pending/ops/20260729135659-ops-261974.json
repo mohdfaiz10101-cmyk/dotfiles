@@ -1,0 +1,16 @@
+{
+  "id": "20260729135659-ops-261974",
+  "created_at": "2026-07-29T13:56:59.487311+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_195714_5edbe4",
+    "title": "",
+    "created_at": 1784721436.3415012
+  },
+  "content": "The user uses a kanban system for work task tracking, with individual task IDs formatted as 't_' followed by an alphanumeric string (example ID: t_dbc58661).",
+  "confidence": 0.97,
+  "status": "pending",
+  "review_note": ""
+}

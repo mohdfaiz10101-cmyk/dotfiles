@@ -1,0 +1,16 @@
+{
+  "id": "20260729143621-cod-53008b",
+  "created_at": "2026-07-29T14:36:21.700901+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrth6092ezbjfy",
+    "title": "",
+    "created_at": 1784567128.4632714
+  },
+  "content": "OpenAI侧返回的402 deactivated_workspace错误为平台主动封禁对应workspace，Sub2API侧无修复权限，仅能替换对应账号",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

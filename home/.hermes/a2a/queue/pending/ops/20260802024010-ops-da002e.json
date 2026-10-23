@@ -1,0 +1,16 @@
+{
+  "id": "20260802024010-ops-da002e",
+  "created_at": "2026-08-02T02:40:10.252982+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msb6u8bnjrlo6g",
+    "title": "",
+    "created_at": 1785638190.2595809
+  },
+  "content": "The desktop environment has a configured disk writable usage alert threshold of 95.5%, which has been triggered in recent monitoring cycles and requires proactive capacity management to avoid service disruptions from full disk conditions.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

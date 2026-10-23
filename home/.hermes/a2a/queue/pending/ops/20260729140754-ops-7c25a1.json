@@ -1,0 +1,16 @@
+{
+  "id": "20260729140754-ops-7c25a1",
+  "created_at": "2026-07-29T14:07:54.932278+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_194612_5342c4",
+    "title": "",
+    "created_at": 1784720774.8813186
+  },
+  "content": "The user's work kanban task IDs follow a consistent format of a single lowercase letter prefix followed by 8 alphanumeric characters, as demonstrated by the example ID t_0120d003.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

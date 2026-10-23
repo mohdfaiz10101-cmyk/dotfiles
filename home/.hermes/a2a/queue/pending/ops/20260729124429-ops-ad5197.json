@@ -1,0 +1,16 @@
+{
+  "id": "20260729124429-ops-ad5197",
+  "created_at": "2026-07-29T12:44:29.832894+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms10sgawbb73hj",
+    "title": "其他账号接入方法",
+    "created_at": 1785023369.0868804
+  },
+  "content": "The codex provider bridge is the required core component for integrating third-party account systems with the codex platform.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

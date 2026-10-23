@@ -1,0 +1,15 @@
+{
+  "id": "20260729132804-skill-f36538",
+  "created_at": "2026-07-29T13:28:04.908975+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "skill-update",
+  "source": {
+    "skill": "a2a",
+    "file": "/var/home/charlie/.hermes/skills/a2a/SKILL.md"
+  },
+  "content": "Skill `a2a` updated. 该a2a技能文件明确了Hermes A2A多智能体系统基于Hermes原生Group Chat Rooms API构建，A2A房间与智能体直接注册为原生rooms/agents，可在8648/8787前端直接管理，蒸馏pipeline仍走原有路径但前端展示切换为原生Group Chat界面，同时补充了相关触发词与优先调用原生Group Chat API的核心认知指引。 Impact: medium",
+  "confidence": 0.7,
+  "status": "pending",
+  "review_note": ""
+}

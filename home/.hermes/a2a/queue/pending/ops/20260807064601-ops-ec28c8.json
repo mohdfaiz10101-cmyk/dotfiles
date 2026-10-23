@@ -1,0 +1,16 @@
+{
+  "id": "20260807064601-ops-ec28c8",
+  "created_at": "2026-08-07T06:46:01.639054+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "a50bb8fac1da",
+    "title": "",
+    "created_at": 1786084963.5875275
+  },
+  "content": "When debugging this user's self-hosted infrastructure, standard configuration API interfaces for Caddy and FRP may be unreliable, so fallback to read-only direct command execution is a required workflow to retrieve their configuration.",
+  "confidence": 0.92,
+  "status": "pending",
+  "review_note": ""
+}

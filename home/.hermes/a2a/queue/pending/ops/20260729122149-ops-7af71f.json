@@ -1,0 +1,16 @@
+{
+  "id": "20260729122149-ops-7af71f",
+  "created_at": "2026-07-29T12:21:49.552760+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "2778bc598ef6",
+    "title": "我的手机ntfy订阅全部说是正在连接 连不上",
+    "created_at": 1785295983.8238814
+  },
+  "content": "若使用NetBird作为移动设备与本地主机的通信底层通道，需关注NetBird peers连接状态：当peers连接数低于预期时，所有依赖NetBird入站的路径（包括ADB远程调试、内网服务订阅）均会出现超时故障",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

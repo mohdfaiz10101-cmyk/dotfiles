@@ -1,0 +1,16 @@
+{
+  "id": "20260729134332-mob-8b8cfc",
+  "created_at": "2026-07-29T13:43:32.715964+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw9is41ipm4g0",
+    "title": "NetBird连接故障",
+    "created_at": 1784735709.5378282
+  },
+  "content": "排查NetBird跨设备连接故障时，应优先验证本机NetBird守护进程是否已正常接入管理后端、处于overlay网络中，而非直接排查对端设备配置；若本机未接入NetBird overlay网络，对端设备不会出现在本机peer列表，也无法建立连接。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

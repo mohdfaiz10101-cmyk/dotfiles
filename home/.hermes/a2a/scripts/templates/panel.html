@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>A2A Panel</title>
+<style>
+body{font-family:system-ui;margin:0;background:#0b0d12;color:#e6e6e6}
+header{background:#11151c;padding:16px;border-bottom:1px solid #232a35}
+h1{margin:0;font-size:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px}
+.card{background:#11151c;border:1px solid #232a35;border-radius:10px;padding:14px}
+.card h3{margin:0 0 10px;font-size:14px;color:#93b4c4}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:6px;border-bottom:1px solid #1f2630}
+th{color:#7b8a99}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#1f2630;color:#93b4c4}
+.btn{border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px}
+.btn-approve{background:#154734;color:#b6f5c7}
+.btn-reject{background:#3b1f1f;color:#f5b6b6}
+.btn-sync{background:#1f2d3b;color:#b6d4f5}
+.btn-clean{background:#3b341f;color:#f5e0b6}
+.btn:hover{opacity:.85}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.muted{color:#7b8a99}
+.tree{display:flex;flex-direction:column;gap:10px}
+.tree-node{border:1px solid #1f2630;border-radius:8px;padding:10px;background:#0d1117}
+.tree-children{margin-left:18px;margin-top:8px;border-left:1px dashed #2a3442;padding-left:12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+</style>
+</head>
+<body>
+<header>
+<h1>A2A Panel</h1>
+<div id="stats" style="margin-top:6px"></div>
+</header>
+<div class="grid">
+  <div class="card">
+    <h3>Queue</h3>
+    <div id="queue"></div>
+  </div>
+  <div class="card">
+    <h3>Knowledge</h3>
+    <div id="knowledge"></div>
+  </div>
+  <div class="card">
+    <h3>Hermes Sessions</h3>
+    <div id="sessions"></div>
+  </div>
+  <div class="card">
+    <h3>Rooms / Agents</h3>
+    <div id="rooms"></div>
+  </div>
+  <div class="card">
+    <h3>Mesh Task Tree</h3>
+    <div class="toolbar">
+      <button class="btn btn-clean" id="mesh-preview">预览清理</button>
+      <button class="btn btn-clean" id="mesh-clean">执行清理</button>
+    </div>
+    <div id="mesh-tree"></div>
+  </div>
+  <div class="card">
+    <h3>Handoff / Rollover</h3>
+    <div id="mesh-handoffs"></div>
+  </div>
+</div>
+
+<script>
+async function loadJson(url){const r=await fetch(url);return r.json()}
+function esc(t){return (t||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[m]))}
+function fmtDate(ts){if(!ts)return '';const d=new Date(ts);return d.toISOString().slice(0,19).replace('T',' ')}
+function shortId(v){return (v||'').slice(0,18)}
+function renderTreeNode(node){
+  const status=node.status||'';
+  const handoff=node.handoffs?.length||0;
+  const rollup=node.rollups?.length||0;
+  const session=node.active_session||node.source_session||'';
+  const port=node.active_port||node.source_port||'';
+  const children=(node.children_nodes||[]).map(renderTreeNode).join('');
+  return `<div class="tree-node">
+    <div><span class="tag">${esc(status||'unknown')}</span> <span class="tag">${esc(node.profile||'')}</span> <span class="mono">${esc(shortId(node.id))}</span></div>
+    <div style="margin-top:6px">${esc((node.title||'(no title)').slice(0,110))}</div>
+    <div class="muted" style="margin-top:6px">port ${esc(String(port||''))} · session ${esc(shortId(session))} · children ${node.children?.length||0} · handoff ${handoff} · rollup ${rollup} · msg ${node.message_count||0} · tok ${node.estimated_tokens||0}</div>
+    ${node.summary?`<div class="muted" style="margin-top:6px">${esc(node.summary.slice(0,180))}</div>`:''}
+    ${children?`<div class="tree-children">${children}</div>`:''}
+  </div>`
+}
+async function meshCleanup(execute){
+  const res=await fetch('/api/mesh/cleanup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({execute})});
+  const data=await res.json();
+  const list=(data.candidates||[]).map(it=>`${it.task_id} ${it.reason}`).join('\n')||'no candidates';
+  alert(execute?`已归档 ${data.removed_task_ids?.length||0} 个任务\n${list}`:`预览候选 ${data.candidate_count||0} 个\n${list}`);
+  render();
+}
+async function render(){
+  const [queue, knowledge, sessions, rooms, stats, meshTree, meshHandoffs]=await Promise.all([
+    loadJson('/api/queue?status=pending'),
+    loadJson('/api/knowledge'),
+    loadJson('/api/sessions?limit=15'),
+    loadJson('/api/rooms'),
+    loadJson('/api/stats'),
+    loadJson('/api/mesh/tree?limit=60'),
+    loadJson('/api/mesh/handoffs?limit=20'),
+  ]);
+  document.getElementById('stats').innerHTML='Pending: '+stats.pending+' | Approved: '+stats.approved+' | Synced: '+stats.synced+' | Rejected: '+stats.rejected;
+  let qhtml='<table><tr><th>Time</th><th>Room</th><th>Agent</th><th>Content</th><th>Actions</th></tr>';
+  for(const it of queue.items.slice(0,50)){
+    qhtml+=`<tr><td>${fmtDate(it.created_at)}</td><td><span class="tag">${esc(it.room)}</span></td><td>${esc(it.target_agent)}</td><td title="${esc(it.content)}">${esc(it.content.slice(0,80))}</td><td><button class="btn btn-approve" data-id="${esc(it.id)}">Approve</button> <button class="btn btn-reject" data-id="${esc(it.id)}">Reject</button></td></tr>`;
+  }
+  qhtml+='</table>';
+  document.getElementById('queue').innerHTML=qhtml||'<div style="color:#7b8a99">No pending items.</div>';
+  document.querySelectorAll('#queue .btn-approve').forEach(b=>b.onclick=async()=>{await fetch('/api/approve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:b.dataset.id})});render()});
+  document.querySelectorAll('#queue .btn-reject').forEach(b=>b.onclick=async()=>{await fetch('/api/reject',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:b.dataset.id,reason:'rejected from panel'})});render()});
+
+  let khtml='';
+  for(const [room,files] of Object.entries(knowledge)){
+    khtml+=`<div style="margin-bottom:8px"><b>${esc(room)}</b>: `+files.map(f=>`<a href="/api/knowledge/file?room=${esc(room)}&file=${esc(f)}" target="_blank" style="color:#93b4c4;text-decoration:none">${esc(f)}</a>`).join(', ')+'</div>';
+  }
+  document.getElementById('knowledge').innerHTML=khtml||'<div style="color:#7b8a99">No knowledge files.</div>';
+
+  let shtml='<table><tr><th>Time</th><th>Title</th><th>Source</th><th>Messages</th></tr>';
+  for(const s of sessions.sessions.slice(0,15)){
+    shtml+=`<tr><td>${fmtDate(s.started_at)}</td><td title="${esc(s.title)}">${esc((s.title||'(no title)').slice(0,60))}</td><td><span class="tag">${esc(s.source||'')}</span></td><td>${s.message_count||0}</td></tr>`;
+  }
+  shtml+='</table>';
+  document.getElementById('sessions').innerHTML=shtml;
+
+  let rhtml='<table><tr><th>Room</th><th>Agent</th><th>Profile</th><th>Skills</th></tr>';
+  for(const [key,cfg] of Object.entries(rooms)){
+    rhtml+=`<tr><td><span class="tag">${esc(key)}</span></td><td>${esc(cfg.agents?.[0]||'')}</td><td>${esc(cfg.profile||'')}</td><td>${(cfg.primary_skills||[]).length}</td></tr>`;
+  }
+  rhtml+='</table>';
+  document.getElementById('rooms').innerHTML=rhtml;
+
+  const roots=meshTree.roots||[];
+  document.getElementById('mesh-tree').innerHTML=roots.length?`<div class="tree">${roots.map(renderTreeNode).join('')}</div>`:'<div class="muted">No mesh tasks.</div>';
+
+  let hhtml='<table><tr><th>Time</th><th>Type</th><th>Task</th><th>Route</th><th>Reason</th></tr>';
+  for(const it of (meshHandoffs.items||[])){
+    hhtml+=`<tr><td>${fmtDate(it.ts)}</td><td><span class="tag">${esc(it.type)}</span></td><td title="${esc(it.title||'')}"><span class="mono">${esc(shortId(it.task_id))}</span></td><td>${esc(it.to||'-')}</td><td title="${esc(it.reason||'')}">${esc((it.reason||'').slice(0,120))}</td></tr>`;
+  }
+  hhtml+='</table>';
+  document.getElementById('mesh-handoffs').innerHTML=hhtml;
+}
+render();
+setInterval(render,10000);
+document.getElementById('mesh-preview').onclick=()=>meshCleanup(false);
+document.getElementById('mesh-clean').onclick=()=>meshCleanup(true);
+</script>
+</body>
+</html>

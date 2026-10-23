@@ -1,0 +1,16 @@
+{
+  "id": "20260805153215-ops-6c2746",
+  "created_at": "2026-08-05T15:32:15.946020+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "7ec517b83bd9",
+    "title": "[已压缩 20260805T232843] FRP与EasyTier组网方案对比",
+    "created_at": 1785943723.4163198
+  },
+  "content": "家用路由器（如Padavan固件）默认Web管理端口通常为80，在路由器上部署自定义服务前需先确认端口占用情况，避免将路由器管理端口与业务服务端口混淆导致访问异常。",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": "20260729122930-ops-8c4632",
+  "created_at": "2026-07-29T12:29:30.688480+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "8e65ec916123",
+    "title": "",
+    "created_at": 1785221828.8349442
+  },
+  "content": "The user owns a genuine Codex account designated as 'account 1', and has an explicit requirement to restore this account to official login authentication mode as a prerequisite for integrating it with the Hermes system.",
+  "confidence": 0.98,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:30:14.138391+00:00"
+}

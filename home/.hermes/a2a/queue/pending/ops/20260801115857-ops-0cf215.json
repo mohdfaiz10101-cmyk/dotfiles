@@ -1,0 +1,16 @@
+{
+  "id": "20260801115857-ops-0cf215",
+  "created_at": "2026-08-01T11:58:57.216163+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msabgnv0r6sqxk",
+    "title": "",
+    "created_at": 1785585466.2225766
+  },
+  "content": "Pre-production testing for StepFun new group API integrations must include explicit validation of per-conversation switching behavior, as this feature is known to be unstable in this API variant.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729141750-ops-5310e0",
+  "created_at": "2026-07-29T14:17:50.530228+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_193510_25f936",
+    "title": "",
+    "created_at": 1784720113.376863
+  },
+  "content": "The user references specific work kanban tasks by their unique identifier in session contexts to anchor discussion and associated context to discrete work items.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

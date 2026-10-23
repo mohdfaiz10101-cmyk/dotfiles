@@ -1,0 +1,138 @@
+root        1315  0.0  0.0 245140  6952 ?        Ss   8月05   0:12 /usr/bin/python3 /home/charlie/.config/sway/scripts/ws-scroll-daemon.py
+root        1334  0.0  0.0 363120 13240 ?        Ssl  8月05   0:00 /usr/bin/python3 /usr/bin/waydroid container start
+charlie     1800  0.0  0.0 399140 17876 ?        Ssl  8月05   7:34 /usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/bridge.py
+charlie     1801  0.0  0.0 263076 10452 ?        Ss   8月05   0:31 python3 /var/home/charlie/.local/bin/ai-a2a serve --host 127.0.0.1 --port 9826
+charlie     1807  0.0  0.0 245696  6068 ?        Ss   8月05   0:00 /usr/bin/python3 /var/home/charlie/.local/bin/auth-proxy.py
+charlie     1812  0.0  0.0 261548  9184 ?        Ss   8月05   0:32 python3 /var/home/charlie/.local/bin/codex3-openai-oauth-proxy
+charlie     1813  0.0  0.0 261548  9096 ?        Ss   8月05   0:31 python3 /var/home/charlie/.local/bin/codex4-openai-oauth-proxy
+charlie     1814  0.0  0.0 261548  9268 ?        Ss   8月05   0:31 python3 /var/home/charlie/.local/bin/codex9-openai-oauth-proxy
+charlie     1836  0.0  0.0 271012 14252 ?        Ss   8月05   8:54 /usr/bin/python3 -sP /usr/bin/podman-compose up
+charlie     1837  0.0  0.0 263760 10908 ?        Ss   8月05   0:31 python3 /var/home/charlie/.local/bin/flexime-sync-ai-server
+charlie     1839  0.1  0.0 408064 18648 ?        Ss   8月05   9:52 /usr/bin/python3 /mnt/ai/apps/gelab-zero/mcp_server/simple_gelab_mcp_server.py
+charlie     1846  0.0  0.0 401656 18084 ?        Ssl  8月05   7:35 /usr/bin/python3 /var/home/charlie/.hermes/a2a/scripts/panel.py
+charlie     1852  0.0  0.0 263500  9360 ?        Ss   8月05   0:32 /usr/bin/python3 /var/home/charlie/.local/share/hermes-monitor/panel-server.py
+charlie     1854  0.0  0.0 259776 10448 ?        Ss   8月05   0:32 /usr/bin/python3 /var/home/charlie/.local/bin/hermes-smart-proxy.py
+charlie     1871  0.2  0.1 990984 28708 ?        Ssl  8月05  21:55 /var/home/charlie/.local/matrix-synapse/bin/python3 /var/home/charlie/.local/matrix-synapse/bin/synapse_homeserver --config-path /var/home/charlie/.local/share/synapse/homeserver.yaml
+charlie     1883  0.0  0.0 337696 10796 ?        Ss   8月05   0:32 python3 /var/home/charlie/.local/bin/network-monitor-dashboard
+charlie     1927  0.0  0.0 245412  5924 ?        Ss   8月05   0:00 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2237 127.0.0.1 22048
+charlie     1929  0.0  0.0 245412  6512 ?        Ss   8月05   0:16 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22027 127.0.0.1 22028
+charlie     1935  0.0  0.0 245412  6476 ?        Ss   8月05   0:06 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22031 127.0.0.1 22032
+charlie     1941  0.0  0.0 245412  6712 ?        Ss   8月05   0:10 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2231 127.0.0.1 22036
+charlie     1943  0.0  0.0 245412  6580 ?        Ss   8月05   0:53 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2232 127.0.0.1 22038
+charlie     1944  0.0  0.0 245412  6584 ?        Ss   8月05   0:21 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2233 127.0.0.1 22040
+charlie     1945  0.0  0.0 245412  6520 ?        Ss   8月05   0:18 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2234 127.0.0.1 22042
+charlie     1954  0.0  0.0 245412  6496 ?        Ss   8月05   0:20 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2235 127.0.0.1 22044
+charlie     1959  0.0  0.0 245412  5988 ?        Ss   8月05   0:00 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy-public 2236 127.0.0.1 22046
+charlie     1960  0.0  0.0 245412  6300 ?        Ss   8月05   0:06 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22033 127.0.0.1 22034
+charlie     1961  0.0  0.0 245412  6136 ?        Ss   8月05   0:00 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22029 127.0.0.1 22030
+charlie     1966  0.0  0.0 245412  6304 ?        Ss   8月05   0:16 python3 /var/home/charlie/.local/bin/tcp-keepalive-proxy 22026 127.0.0.1 22025
+charlie     1970  0.1  0.0 304960 12408 ?        Ss   8月05   9:49 /mnt/ai/oa-venv/bin/python3 /var/home/charlie/.local/bin/sys-info-mcp.py
+charlie     1979  0.0  0.0 290608 12572 ?        Ss   8月05   0:32 /usr/bin/python3 /var/home/charlie/workspace/tg-group-hunter/web_app.py
+charlie     2007  0.0  0.0 482904 11780 ?        Ss   8月05   2:01 /usr/bin/python3 /var/home/charlie/.local/bin/waydroid-control-web
+charlie     2008  0.1  0.1 276400 28900 ?        Ss   8月05  12:03 /usr/bin/python3 /home/charlie/.local/bin/waydroid_notify_relay.py
+charlie     2023  0.0  0.0 265500 18668 ?        SNs  8月05   2:06 python3 /var/home/charlie/.local/bin/codex-hermes-bridge
+charlie     2126  0.0  0.0 261604  9084 ?        Ss   8月05   0:31 python3 /var/home/charlie/.local/bin/op-tasker-bridge
+charlie     2131  0.0  0.0 285468 17532 ?        Ss   8月05   1:00 /usr/bin/python3 /var/home/charlie/.local/bin/ttyd-session-proxy.py
+charlie     2818  0.0  0.0 260584 11380 ?        Ss   8月05   0:00 python3 /var/home/charlie/.local/bin/notify-forwarder.py
+charlie     3178  0.2  0.0 1137540 24120 ?       Ssl  8月05  25:11 /usr/bin/python3 /var/home/charlie/workspace/nav/server.py
+charlie     4492  0.0  0.0 265524 20224 ?        SNs  8月05   0:22 python3 /var/home/charlie/.local/bin/codex-ntfy-result-watcher
+charlie     5634  0.0  0.0 247652 10480 ?        Ss   8月05   1:02 python3 /var/home/charlie/.local/bin/sway-workspace-controller
+root       16586  0.0  0.0 332416  9152 ?        Ss   8月05   0:31 /usr/bin/python3 /opt/sub2api-autologin/sub2api-autologin-proxy.py
+charlie    18206  0.0  0.0 265764 10764 ?        Ss   8月05   0:32 python3 /var/home/charlie/.local/bin/codex-router serve --host 127.0.0.1 --port 9828
+charlie    18209  0.0  0.0 267764 11072 ?        Ss   8月05   0:32 /usr/bin/python3 /home/charlie/dotfiles/launcher/launcher-server.py
+charlie    18211  0.0  0.0 263000 11548 ?        Ss   8月05   0:32 /usr/bin/python3 /var/home/charlie/.local/bin/smart-redirector.py
+charlie    18213  0.0  0.0 245768  6124 ?        Ss   8月05   0:00 python3 /var/home/charlie/.local/bin/waydroid-adb-netns-proxy
+root       21547  0.0  0.2 618288 52928 ?        Ssl  8月10   0:01 /usr/bin/python3 -sP /usr/bin/firewalld --nofork --nopid
+charlie   112000  0.0  0.0 248128  7352 ?        S    8月10   0:00 /usr/bin/python3 /mnt/ai/data/memory-engine/memory-mcp-server.py
+charlie   112001  0.0  0.0 258540 10800 ?        S    8月10   0:00 python3 /var/home/charlie/.local/bin/letta-mcp
+charlie   112008  0.0  0.0 246804  7180 ?        S    8月10   0:00 python3 /var/home/charlie/.local/bin/win-mcp-server.py
+charlie   112010  0.0  0.0 470228 16184 ?        Sl   8月10   0:00 python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie   112011  0.0  0.0 470116 16020 ?        Sl   8月10   0:00 python3 /var/home/charlie/.local/bin/mobile-browser-bridge-mcp.py
+charlie   112012  0.0  0.0 470180 16076 ?        Sl   8月10   0:01 python3 /var/home/charlie/.local/bin/codex-account-manager-mcp.py
+charlie   112165  0.0  0.0 448008  3060 ?        Sl   8月10   0:00 /var/mnt/ai/apps/ghidra-mcp/.venv/bin/python3 /var/mnt/ai/apps/ghidra-mcp/.venv/bin/bridge-mcp-ghidra
+charlie   165097  0.1  0.6 1093612 148164 pts/6  Ssl+ 8月08   6:53 python3 -m hermes_cli.main chat
+charlie   165115  0.1  0.7 1424048 179892 pts/12 Ssl+ 8月08   7:19 python3 -m hermes_cli.main chat
+charlie   325005  0.0  0.4 671272 107908 ?       Ssl  12:32   0:04 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/b3c344ad16694bd9.sock --worker-profile monitor --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325083  0.0  0.4 671112 121640 ?       Ssl  12:32   0:04 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/7e5bec210b06e29d.sock --worker-profile creative --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325084  0.0  0.5 671288 123188 ?       Ssl  12:32   0:04 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bde5acd56ade382a.sock --worker-profile ops --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325087  0.0  0.4 671120 117308 ?       Ssl  12:32   0:04 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/c482cf76c1188462.sock --worker-profile coding --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325090  0.0  0.4 671116 121860 ?       Ssl  12:32   0:04 /usr/bin/python3 /var/home/charlie/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge-workers/bc175c31a79a41e7.sock --worker-profile research --agent-root /var/home/charlie/.local/hermes-agent --hermes-home /var/home/charlie/.hermes
+charlie   325263  0.0  0.0 323696  9440 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325264  0.0  0.0 323696  9468 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325265  0.0  0.0 323696 12752 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325266  0.0  0.0 323696  9980 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325005 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325349  0.0  0.0 323696 10012 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325350  0.0  0.0 323696 10156 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325351  0.0  0.0 323696 10168 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325352  0.0  0.0 323696  9768 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325087 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325371  0.0  0.0 323696 14452 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325372  0.0  0.0 323696 10708 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325374  0.0  0.0 323696 12508 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325381  0.0  0.0 323696 13680 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325084 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325430  0.0  0.0 323696 10536 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325431  0.0  0.0 323696 10048 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325433  0.0  0.0 323696 12920 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325435  0.0  0.0 323696 12996 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325090 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   325457  0.0  0.0 323696 11232 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs api
+charlie   325459  0.0  0.0 323696 10404 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs browser
+charlie   325460  0.0  0.0 323696 11132 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs use
+charlie   325465  0.0  0.0 323696 12328 ?        Ssl  12:32   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 325083 -- /var/mnt/ai/home-offload/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.npm-global/lib/node_modules/hermes-web-ui/bin/hermes-studio-mcp.mjs devices
+charlie   513534  0.0  0.0 269988 13504 ?        Ss   8月08   0:00 /usr/bin/python3 -sP /usr/bin/podman-compose up
+charlie   805066  0.1  0.5 1098840 135544 pts/15 Ssl+ 8月09   4:42 python3 -m hermes_cli.main chat
+charlie   805126  0.1  0.8 1789744 205560 pts/16 Ssl+ 8月09   5:51 python3 -m hermes_cli.main chat
+charlie   896081  0.1  0.2 1717380 53908 ?       Ssl  8月10   2:14 /app/.venv/bin/python3 /app/.venv/bin/litellm --host 127.0.0.1 --port 4002 --config /app/config.yaml
+charlie  1034945  0.1  0.1 1074448 29840 pts/7   Ssl+ 8月05  13:20 python3 -m hermes_cli.main chat
+charlie  1034998  0.1  0.2 2035648 70388 pts/8   Ssl+ 8月05  16:43 python3 -m hermes_cli.main chat
+charlie  1239187  0.1  0.1 1744648 47640 pts/5   Ssl+ 8月05  16:10 python3 -m hermes_cli.main chat
+charlie  1267165  0.0  0.1 281396 46408 ?        SNs  14:45   0:00 python3 /var/home/charlie/.local/bin/ntfy-task-inbox
+charlie  1471261  0.0  0.0 334564 12232 ?        Ss   8月10   0:03 /usr/bin/python3 -m http.server 9829 --bind 0.0.0.0
+charlie  1614100  0.0  0.0 324068  7804 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 165097 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  1615301  0.0  0.0 324068  7804 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 3106152 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  1621656  0.0  0.0 324068  7768 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1034998 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  1623587  0.0  0.0 324068  7848 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 3106086 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  1921481  1.4  1.1 2810196 285808 ?      Ssl  16:18   0:09 /var/home/charlie/.local/venvs/hermes-0.20/bin/python3 /var/home/charlie/hermes-webui-clean/server.py
+charlie  1963830  0.4  0.5 828016 123644 ?       Ssl  16:24   0:01 python3 hub-api.py
+charlie  1995279  0.6  0.1 515060 36424 ?        Sl   16:28   0:00 /usr/bin/python3 /usr/bin/gnome-browser-connector-host chrome-extension://gphhapmejobijbbhgpjhcjognlahblep/
+charlie  1995654  0.5  0.1 441184 36828 ?        Ssl  16:28   0:00 /usr/bin/python3 /usr/bin/gnome-browser-connector --gapplication-service
+charlie  2281342  0.0  0.0 324060  7968 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 3106086 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281343  0.0  0.0 324060  7940 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 3106086 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281347  0.0  0.1 535776 25020 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281393  0.0  0.0 324060  7712 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 805126 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281394  0.0  0.0 324060  7928 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 805126 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281397  0.0  0.1 535776 25112 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281445  0.0  0.0 324060  7704 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1239187 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281446  0.0  0.0 324060  7712 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1239187 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281464  0.0  0.1 535752 25120 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281532  0.0  0.0 324060  7712 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 2778085 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281533  0.0  0.0 324060  7960 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 2778085 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281542  0.0  0.1 535768 25092 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281587  0.0  0.0 324060  7868 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 805066 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281588  0.0  0.0 324060  7876 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 805066 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281590  0.0  0.1 535764 24896 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281683  0.0  0.0 324060  7968 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 165097 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281684  0.0  0.0 324060  7964 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 165097 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281688  0.0  0.0 324060  7968 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 165115 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281689  0.0  0.0 324060  7936 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 165115 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281693  0.0  0.1 535800 25044 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281702  0.0  0.1 535772 25108 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281795  0.0  0.0 324060  7932 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 3106152 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281796  0.0  0.0 324060  7844 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 3106152 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281797  0.0  0.1 535760 25124 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281824  0.0  0.0 324060  8008 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1034998 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281825  0.0  0.0 324060  7744 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1034998 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281828  0.0  0.1 535772 25168 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281866  0.0  0.0 324060  7936 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1034945 -- /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2281867  0.0  0.0 324060  7748 ?        Ssl  8月10   0:00 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1034945 -- /var/home/charlie/.nvm/versions/node/v22.22.3/bin/mcp-fetch-server
+charlie  2281868  0.0  0.1 535764 25192 ?        Ssl  8月10   0:01 /usr/bin/python3 /var/home/charlie/.local/bin/agent-comms-mcp.py
+charlie  2509430  0.0  0.1 6635388 25976 ?       Ssl  8月06   5:47 /usr/bin/python3 /var/home/charlie/.local/bin/hermes-8787-basic-auth-proxy.py
+charlie  2778085  0.1  0.1 1491852 44580 pts/11  Ssl+ 8月06  12:13 python3 -m hermes_cli.main chat
+charlie  3106086  0.1  0.6 1166464 148484 pts/13 Ssl+ 8月09   3:22 python3 -m hermes_cli.main chat
+charlie  3106152  0.1  0.3 1653484 92936 pts/18  Ssl+ 8月09   4:34 python3 -m hermes_cli.main chat
+charlie  3760094  0.0  0.0 324068  7948 ?        Ssl  8月09   0:01 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1034945 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  3760108  0.0  0.0 324068  7712 ?        Ssl  8月09   0:01 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 805126 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  3760119  0.0  0.0 324068  7812 ?        Ssl  8月09   0:01 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 165115 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  3760250  0.0  0.0 324068  7764 ?        Ssl  8月09   0:01 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 2778085 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  3760251  0.0  0.0 324068  7944 ?        Ssl  8月09   0:01 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 805066 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+charlie  3760252  0.0  0.0 324060  7844 ?        Ssl  8月09   0:01 /usr/bin/python3 /var/home/charlie/.local/lib/python3.14/site-packages/tools/mcp_stdio_watchdog.py --ppid 1239187 -- /var/home/charlie/.local/bin/haven-mcp-wrapper.sh
+
+__HERMES_CWD_1102a89d887e__/var/home/charlie/workspace__HERMES_CWD_1102a89d887e__

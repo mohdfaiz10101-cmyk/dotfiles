@@ -1,0 +1,16 @@
+{
+  "id": "20260729123320-ops-94c92c",
+  "created_at": "2026-07-29T12:33:20.827704+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "b2bc0c6a67d3",
+    "title": "",
+    "created_at": 1785131198.0188081
+  },
+  "content": "用户偏好规避有环境缺陷的浏览器工具，在需要轻量验证服务状态时优先选择curl命令行工具执行验证",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

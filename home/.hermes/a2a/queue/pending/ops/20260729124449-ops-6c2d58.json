@@ -1,0 +1,16 @@
+{
+  "id": "20260729124449-ops-6c2d58",
+  "created_at": "2026-07-29T12:44:49.745606+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms0zq5p8vl1tj8",
+    "title": "Hermes模型切换配置",
+    "created_at": 1785021549.5578792
+  },
+  "content": "To reliably modify Hermes CLI model configuration, use the `hermes config set` command instead of manually editing protected configuration files, which avoids write failures for locked config entries.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,153 @@
+### current state ###
+○ caddy.service - Caddy web server
+     Loaded: loaded (/usr/lib/systemd/system/caddy.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: inactive (dead) since Mon 2026-08-10 14:07:24 CST; 59s ago
+   Duration: 23.855s
+ Invocation: 334196daad244b59be577f434396e5c5
+       Docs: https://caddyserver.com/docs/
+    Process: 2470761 ExecStartPre=/usr/bin/caddy validate --config /etc/caddy/Caddyfile (code=exited, status=0/SUCCESS)
+    Process: 2470777 ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile (code=exited, status=0/SUCCESS)
+    Process: 2471931 ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile (code=exited, status=1/FAILURE)
+   Main PID: 2470777 (code=exited, status=0/SUCCESS)
+   Mem peak: 33.6M
+        CPU: 164ms
+
+8月 10 14:07:00 fedora caddy[2470777]: LANG=zh_CN.UTF-8
+8月 10 14:07:00 fedora caddy[2470777]: PATH=/usr/local/bin:/usr/bin
+8月 10 14:07:00 fedora caddy[2470777]: XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+8月 10 14:07:00 fedora caddy[2470777]: USER=caddy
+8月 10 14:07:00 fedora caddy[2470777]: LOGNAME=caddy
+8月 10 14:07:00 fedora caddy[2470777]: HOME=/var/lib/caddy
+8月 10 14:07:00 fedora caddy[2470777]: INVOCATION_ID=334196daad244b59be577f434396e5c5
+8月 10 14:07:00 fedora caddy[2470777]: JOURNAL_STREAM=9:2160937451
+8月 10 14:07:00 fedora caddy[2470777]: SYSTEMD_EXEC_PID=2470777
+8月 10 14:07:00 fedora caddy[2470777]: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/caddy.service/memory.pressure
+8月 10 14:07:00 fedora caddy[2470777]: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+8月 10 14:07:00 fedora caddy[2470777]: NOTIFY_SOCKET=/run/systemd/notify
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1940172,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.194713,"msg":"adapted config to JSON","adapter":"caddyfile"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"warn","ts":1786342020.1950822,"logger":"admin","msg":"admin endpoint disabled"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1952577,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x31efcaa2f780"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1955385,"logger":"http.auto_https","msg":"skipping automatic certificate management because one or more matching certificates are already loaded","domain":"charlie1990.duckdns.org","server_name":"srv0"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1955462,"logger":"http.auto_https","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.195875,"logger":"http","msg":"enabling HTTP/3 listener","addr":":443"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1960392,"logger":"http.log","msg":"server running","name":"srv0","protocols":["h1","h2","h3"]}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"warn","ts":1786342020.1960757,"logger":"http","msg":"HTTP/2 skipped because it requires TLS","network":"tcp","addr":":80"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"warn","ts":1786342020.1960814,"logger":"http","msg":"HTTP/3 skipped because it requires TLS","network":"tcp","addr":":80"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1960843,"logger":"http.log","msg":"server running","name":"remaining_auto_https_redirects","protocols":["h1","h2","h3"]}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.196223,"msg":"autosaved config (load with --resume flag)","file":"/var/lib/caddy/.config/caddy/autosave.json"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1962562,"msg":"serving initial configuration"}
+8月 10 14:07:00 fedora systemd[1]: Started caddy.service - Caddy web server.
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.198834,"logger":"tls","msg":"storage cleaning happened too recently; skipping for now","storage":"FileStorage:/var/lib/caddy/.local/share/caddy","instance":"b1e73335-2b9f-4b8e-9ce7-3d0b288d0298","try_again":1786428420.198832,"try_again_in":86399.999999717}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.198906,"logger":"tls","msg":"finished cleaning storage units"}
+8月 10 14:07:12 fedora systemd[1]: Reloading caddy.service - Caddy web server...
+8月 10 14:07:12 fedora caddy[2471931]: {"level":"info","ts":1786342032.2922287,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+8月 10 14:07:12 fedora caddy[2471931]: Error: adapting config using caddyfile: parsing caddyfile tokens for 'admin': wrong argument count or unexpected line ending after 'localhost:2019', at /etc/caddy/Caddyfile:3
+8月 10 14:07:12 fedora systemd[1]: caddy.service: Control process exited, code=exited, status=1/FAILURE
+8月 10 14:07:12 fedora systemd[1]: Reload failed for caddy.service - Caddy web server.
+8月 10 14:07:24 fedora systemd[1]: Stopping caddy.service - Caddy web server...
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"info","ts":1786342044.0517492,"msg":"shutting down apps, then terminating","signal":"SIGTERM"}
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"warn","ts":1786342044.0520055,"msg":"exiting; byeee!! 👋","signal":"SIGTERM"}
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"info","ts":1786342044.0520372,"logger":"http","msg":"servers shutting down with eternal grace period"}
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"info","ts":1786342044.1124766,"msg":"shutdown complete","signal":"SIGTERM","exit_code":0}
+8月 10 14:07:24 fedora systemd[1]: caddy.service: Deactivated successfully.
+8月 10 14:07:24 fedora systemd[1]: Stopped caddy.service - Caddy web server.
+
+no_listeners
+
+### Caddyfile now ###
+{
+	email admin@charlie1990.duckdns.org
+admin admin localhost:2019
+}
+
+charlie1990.duckdns.org {
+	tls /var/lib/caddy/certs/headscale/fullchain.cer /var/lib/caddy/certs/headscale/key.cer
+	reverse_proxy 127.0.0.1:8082
+}
+
+### Caddy journal recent ###
+8月 10 14:06:37 fedora caddy[2463378]: {"level":"info","ts":1786341997.446374,"msg":"shutting down apps, then terminating","signal":"SIGTERM"}
+8月 10 14:06:37 fedora caddy[2463378]: {"level":"warn","ts":1786341997.4465685,"msg":"exiting; byeee!! 👋","signal":"SIGTERM"}
+8月 10 14:06:37 fedora caddy[2463378]: {"level":"info","ts":1786341997.4466243,"logger":"http","msg":"servers shutting down with eternal grace period"}
+8月 10 14:06:37 fedora caddy[2463378]: {"level":"info","ts":1786341997.4467118,"msg":"shutdown complete","signal":"SIGTERM","exit_code":0}
+8月 10 14:06:37 fedora systemd[1]: Stopping caddy.service - Caddy web server...
+8月 10 14:06:37 fedora systemd[1]: caddy.service: Deactivated successfully.
+8月 10 14:06:37 fedora systemd[1]: Stopped caddy.service - Caddy web server.
+8月 10 14:06:37 fedora systemd[1]: Starting caddy.service - Caddy web server...
+8月 10 14:06:37 fedora caddy[2466347]: {"level":"info","ts":1786341997.5144243,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+8月 10 14:06:37 fedora caddy[2466347]: {"level":"info","ts":1786341997.5151622,"msg":"adapted config to JSON","adapter":"caddyfile"}
+8月 10 14:06:37 fedora caddy[2466347]: {"level":"info","ts":1786341997.5154862,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x153481534d80"}
+8月 10 14:06:37 fedora caddy[2466347]: {"level":"info","ts":1786341997.5154943,"logger":"tls.cache.maintenance","msg":"stopped background certificate maintenance","cache":"0x153481534d80"}
+8月 10 14:06:37 fedora caddy[2466347]: {"level":"info","ts":1786341997.5155034,"logger":"http","msg":"servers shutting down with eternal grace period"}
+8月 10 14:06:37 fedora caddy[2466347]: Error: loading http app module: provision http: getting tls app: loading tls app module: provision tls: loading certificates: open /tmp/caddy-fullchain.cer: no such file or directory
+8月 10 14:06:37 fedora systemd[1]: caddy.service: Control process exited, code=exited, status=1/FAILURE
+8月 10 14:06:37 fedora systemd[1]: caddy.service: Failed with result 'exit-code'.
+8月 10 14:06:37 fedora systemd[1]: Failed to start caddy.service - Caddy web server.
+8月 10 14:07:00 fedora systemd[1]: Starting caddy.service - Caddy web server...
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.1443014,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.145231,"msg":"adapted config to JSON","adapter":"caddyfile"}
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.1456113,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x1b9af100c880"}
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.1459181,"logger":"http.auto_https","msg":"skipping automatic certificate management because one or more matching certificates are already loaded","domain":"charlie1990.duckdns.org","server_name":"srv0"}
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.1459277,"logger":"http.auto_https","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.1460526,"logger":"tls.cache.maintenance","msg":"stopped background certificate maintenance","cache":"0x1b9af100c880"}
+8月 10 14:07:00 fedora caddy[2470761]: {"level":"info","ts":1786342020.146061,"logger":"http","msg":"servers shutting down with eternal grace period"}
+8月 10 14:07:00 fedora caddy[2470761]: Valid configuration
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1937478,"msg":"maxprocs: Leaving GOMAXPROCS=12: CPU quota undefined"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1939435,"msg":"GOMEMLIMIT is updated","package":"github.com/KimMachineGun/automemlimit/memlimit","GOMEMLIMIT":22522455244,"previous":9223372036854775807}
+8月 10 14:07:00 fedora caddy[2470777]: caddy.HomeDir=/var/lib/caddy
+8月 10 14:07:00 fedora caddy[2470777]: caddy.AppDataDir=/var/lib/caddy/.local/share/caddy
+8月 10 14:07:00 fedora caddy[2470777]: caddy.AppConfigDir=/var/lib/caddy/.config/caddy
+8月 10 14:07:00 fedora caddy[2470777]: caddy.ConfigAutosavePath=/var/lib/caddy/.config/caddy/autosave.json
+8月 10 14:07:00 fedora caddy[2470777]: caddy.Version=v2.10.2
+8月 10 14:07:00 fedora caddy[2470777]: runtime.GOOS=linux
+8月 10 14:07:00 fedora caddy[2470777]: runtime.GOARCH=amd64
+8月 10 14:07:00 fedora caddy[2470777]: runtime.Compiler=gc
+8月 10 14:07:00 fedora caddy[2470777]: runtime.NumCPU=12
+8月 10 14:07:00 fedora caddy[2470777]: runtime.GOMAXPROCS=12
+8月 10 14:07:00 fedora caddy[2470777]: runtime.Version=go1.26.4-X:nodwarf5
+8月 10 14:07:00 fedora caddy[2470777]: os.Getwd=/
+8月 10 14:07:00 fedora caddy[2470777]: LANG=zh_CN.UTF-8
+8月 10 14:07:00 fedora caddy[2470777]: PATH=/usr/local/bin:/usr/bin
+8月 10 14:07:00 fedora caddy[2470777]: XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+8月 10 14:07:00 fedora caddy[2470777]: USER=caddy
+8月 10 14:07:00 fedora caddy[2470777]: LOGNAME=caddy
+8月 10 14:07:00 fedora caddy[2470777]: HOME=/var/lib/caddy
+8月 10 14:07:00 fedora caddy[2470777]: INVOCATION_ID=334196daad244b59be577f434396e5c5
+8月 10 14:07:00 fedora caddy[2470777]: JOURNAL_STREAM=9:2160937451
+8月 10 14:07:00 fedora caddy[2470777]: SYSTEMD_EXEC_PID=2470777
+8月 10 14:07:00 fedora caddy[2470777]: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/caddy.service/memory.pressure
+8月 10 14:07:00 fedora caddy[2470777]: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+8月 10 14:07:00 fedora caddy[2470777]: NOTIFY_SOCKET=/run/systemd/notify
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1940172,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.194713,"msg":"adapted config to JSON","adapter":"caddyfile"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"warn","ts":1786342020.1950822,"logger":"admin","msg":"admin endpoint disabled"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1952577,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x31efcaa2f780"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1955385,"logger":"http.auto_https","msg":"skipping automatic certificate management because one or more matching certificates are already loaded","domain":"charlie1990.duckdns.org","server_name":"srv0"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1955462,"logger":"http.auto_https","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.195875,"logger":"http","msg":"enabling HTTP/3 listener","addr":":443"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1960392,"logger":"http.log","msg":"server running","name":"srv0","protocols":["h1","h2","h3"]}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"warn","ts":1786342020.1960757,"logger":"http","msg":"HTTP/2 skipped because it requires TLS","network":"tcp","addr":":80"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"warn","ts":1786342020.1960814,"logger":"http","msg":"HTTP/3 skipped because it requires TLS","network":"tcp","addr":":80"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1960843,"logger":"http.log","msg":"server running","name":"remaining_auto_https_redirects","protocols":["h1","h2","h3"]}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.196223,"msg":"autosaved config (load with --resume flag)","file":"/var/lib/caddy/.config/caddy/autosave.json"}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.1962562,"msg":"serving initial configuration"}
+8月 10 14:07:00 fedora systemd[1]: Started caddy.service - Caddy web server.
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.198834,"logger":"tls","msg":"storage cleaning happened too recently; skipping for now","storage":"FileStorage:/var/lib/caddy/.local/share/caddy","instance":"b1e73335-2b9f-4b8e-9ce7-3d0b288d0298","try_again":1786428420.198832,"try_again_in":86399.999999717}
+8月 10 14:07:00 fedora caddy[2470777]: {"level":"info","ts":1786342020.198906,"logger":"tls","msg":"finished cleaning storage units"}
+8月 10 14:07:12 fedora systemd[1]: Reloading caddy.service - Caddy web server...
+8月 10 14:07:12 fedora caddy[2471931]: {"level":"info","ts":1786342032.2922287,"msg":"using config from file","file":"/etc/caddy/Caddyfile"}
+8月 10 14:07:12 fedora caddy[2471931]: Error: adapting config using caddyfile: parsing caddyfile tokens for 'admin': wrong argument count or unexpected line ending after 'localhost:2019', at /etc/caddy/Caddyfile:3
+8月 10 14:07:12 fedora systemd[1]: caddy.service: Control process exited, code=exited, status=1/FAILURE
+8月 10 14:07:12 fedora systemd[1]: Reload failed for caddy.service - Caddy web server.
+8月 10 14:07:24 fedora systemd[1]: Stopping caddy.service - Caddy web server...
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"info","ts":1786342044.0517492,"msg":"shutting down apps, then terminating","signal":"SIGTERM"}
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"warn","ts":1786342044.0520055,"msg":"exiting; byeee!! 👋","signal":"SIGTERM"}
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"info","ts":1786342044.0520372,"logger":"http","msg":"servers shutting down with eternal grace period"}
+8月 10 14:07:24 fedora caddy[2470777]: {"level":"info","ts":1786342044.1124766,"msg":"shutdown complete","signal":"SIGTERM","exit_code":0}
+8月 10 14:07:24 fedora systemd[1]: caddy.service: Deactivated successfully.
+8月 10 14:07:24 fedora systemd[1]: Stopped caddy.service - Caddy web server.
+
+__HERMES_CWD_0b711898177a__/var/home/charlie/workspace__HERMES_CWD_0b711898177a__

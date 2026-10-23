@@ -1,0 +1,16 @@
+{
+  "id": "20260807062057-ops-83780d",
+  "created_at": "2026-08-07T06:20:57.436584+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "337ed2aa4f9d",
+    "title": "我手机访问 19976做任务怎么需要那么多流量消耗 他很多文件不是在电脑本地跑的多吗 手机访问不是接收文字信息only？",
+    "created_at": 1786083365.9671066
+  },
+  "content": "本地运行文件处理类的WebUI服务，用户常默认远程访问仅传输文本结果，需优先核查前端静态资源、脚本等非文本传输项来定位流量异常问题",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

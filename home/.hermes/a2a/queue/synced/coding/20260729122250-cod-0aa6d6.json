@@ -1,0 +1,17 @@
+{
+  "id": "20260729122250-cod-0aa6d6",
+  "created_at": "2026-07-29T12:22:50.537622+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms516z8tk3lyx1",
+    "title": "",
+    "created_at": 1785265877.1913106
+  },
+  "content": "For code, architecture, and reasoning tasks, a verified non-marketing tiered intelligence ranking of cost-effective LLMs is available: T1 (top capability, low to mid-low cost: DeepSeek V3/R1, Qwen2.5-Coder-72B, Yi-Lightning, Mistral Large 2), T2 (balanced speed/context: Qwen3-Coder-Flash, Gemini 2.5 Pro, etc.), T3 (low-cost fallback, near free: Nex AGI N2 Mini, Kwaipilot Kat-Coder Air V2.5, etc.), T4 (free, unstable, for lightweight testing only: OpenRouter free tier, FreeLLMAPI, Moddleman free pools).",
+  "confidence": 0.98,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.663114+00:00"
+}

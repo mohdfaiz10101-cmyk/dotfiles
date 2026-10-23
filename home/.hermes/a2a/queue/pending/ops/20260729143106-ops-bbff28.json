@@ -1,0 +1,16 @@
+{
+  "id": "20260729143106-ops-bbff28",
+  "created_at": "2026-07-29T14:31:06.260822+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260722_192207_dffdc9",
+    "title": "",
+    "created_at": 1784719329.8833547
+  },
+  "content": "When discussing work items, the user references specific kanban tasks by their unique ID, meaning these IDs are high-priority context anchors for work-related AI interactions.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

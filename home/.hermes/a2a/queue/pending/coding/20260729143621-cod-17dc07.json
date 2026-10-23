@@ -1,0 +1,16 @@
+{
+  "id": "20260729143621-cod-17dc07",
+  "created_at": "2026-07-29T14:36:21.699847+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrth6092ezbjfy",
+    "title": "",
+    "created_at": 1784567128.4632714
+  },
+  "content": "若多个API slot绑定同一OpenAI身份（同邮箱或同sub_hash），会共享用量限额，是账号刚购买就快速触发限额的核心结构性根因，需排查并去重重复绑定的身份",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

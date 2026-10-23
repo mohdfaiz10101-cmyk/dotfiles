@@ -1,0 +1,16 @@
+{
+  "id": "20260729131646-mob-9f289e",
+  "created_at": "2026-07-29T13:16:46.042302+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrz6a5bzqo87ci",
+    "title": "",
+    "created_at": 1784911664.884103
+  },
+  "content": "Users working with OpenHands CLI frequently need to query its web access port, which is a common operational environment fact for OpenHands CLI usage workflows",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

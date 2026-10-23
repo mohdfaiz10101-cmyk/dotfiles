@@ -1,0 +1,16 @@
+{
+  "id": "20260729131140-cod-8aeb86",
+  "created_at": "2026-07-29T13:11:40.435922+00:00",
+  "room": "coding",
+  "target_agent": "coding-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrzb7awoi0577o",
+    "title": "AI手机系统和Linux的区别",
+    "created_at": 1784919936.090138
+  },
+  "content": "Open-source AI-native mobile operating systems (built around agent functionality as a core feature, rather than just standard app hosting) are a distinct, in-demand category for users exploring alternatives to mainstream Android and iOS.",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

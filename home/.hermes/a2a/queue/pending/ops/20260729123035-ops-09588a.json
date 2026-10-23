@@ -1,0 +1,16 @@
+{
+  "id": "20260729123035-ops-09588a",
+  "created_at": "2026-07-29T12:30:35.469178+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "48894f910ff5",
+    "title": "",
+    "created_at": 1785190559.9553719
+  },
+  "content": "When browser permission issues impact Hermes WebUI functionality, the user prefers the AI agent to automatically detect and apply the fix (including modifying relevant browser configuration files if needed) instead of providing manual step-by-step instructions for the user to execute.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

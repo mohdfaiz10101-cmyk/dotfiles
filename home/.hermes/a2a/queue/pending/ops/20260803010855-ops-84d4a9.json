@@ -1,0 +1,16 @@
+{
+  "id": "20260803010855-ops-84d4a9",
+  "created_at": "2026-08-03T01:08:55.444461+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "0a6385f8d096",
+    "title": "OpenHands端口映射关系",
+    "created_at": 1785719065.3623023
+  },
+  "content": "用户本地部署的OpenHands服务端口映射规则与官方默认存在差异：官方默认端口为3000，当前实际部署中，容器内OpenHands GUI后端监听3000，宿主机通过Podman映射到127.0.0.1:3001；公网BasicAuth代理设计为13001->3001，但对应服务openhands-public-proxy.service当前处于dead状态；OpenHands CLI的WebTTY（ttyd）监听8443端口；19901端口当前被FRP服务端（frps）占用，不属于OpenHands服务端口。",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

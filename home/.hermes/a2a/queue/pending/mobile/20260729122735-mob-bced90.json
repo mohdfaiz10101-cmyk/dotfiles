@@ -1,0 +1,16 @@
+{
+  "id": "20260729122735-mob-bced90",
+  "created_at": "2026-07-29T12:27:35.008898+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4exewexlcvdz",
+    "title": "",
+    "created_at": 1785228484.7671034
+  },
+  "content": "Fedora环境下Chromium浏览器的web app安装记录会留存于`~/.config/chromium/Preferences`配置文件，但`session_restore`文件不会直接指向对应安装的站点，不能作为站点被自动访问的直接证据。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

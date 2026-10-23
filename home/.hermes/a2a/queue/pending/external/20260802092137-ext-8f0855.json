@@ -1,0 +1,16 @@
+{
+  "id": "20260802092137-ext-8f0855",
+  "created_at": "2026-08-02T09:21:37.336708+00:00",
+  "room": "external",
+  "target_agent": "external-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "msbl5m3vd6nsvf",
+    "title": "",
+    "created_at": 1785662193.3780973
+  },
+  "content": "The prioritized reusable troubleshooting workflow for Android users reporting Google Play access issues in restricted regions is to first verify device network proxy/VPN configuration and confirm core Google service domains (e.g., play.google.com, android.clients.google.com) are whitelisted, before proceeding to Play Store cache clearing, app reinstallation, or system reset steps.",
+  "confidence": 0.88,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729124735-ops-926f1d",
+  "created_at": "2026-07-29T12:47:35.574213+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260726_004431",
+    "title": "",
+    "created_at": 1784997888.0981538
+  },
+  "content": "MEMORY.md is stored at `/var/home/charlie/.hermes/memories/MEMORY.md`, uses `§` as a section separator, and has a hard character limit of 2200 (currently monitored at 1816/2200).",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": "20260729122735-mob-6a8ce2",
+  "created_at": "2026-07-29T12:27:35.008634+00:00",
+  "room": "mobile",
+  "target_agent": "mobile-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms4exewexlcvdz",
+    "title": "",
+    "created_at": 1785228484.7671034
+  },
+  "content": "Fedora系统下排查GUI浏览器被自动打开访问指定站点的标准化排查流程为：依次检查各类shell历史（如.bash_history、fish_history）中的浏览器/站点相关命令、systemd用户服务与定时任务、系统及用户crontab、浏览器本地历史记录、当前运行进程，可覆盖绝大多数自动化触发场景。",
+  "confidence": 0.95,
+  "status": "approved",
+  "review_note": "",
+  "approved_at": "2026-07-29T12:29:02.664257+00:00"
+}

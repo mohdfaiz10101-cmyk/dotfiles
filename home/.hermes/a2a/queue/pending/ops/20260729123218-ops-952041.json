@@ -1,0 +1,16 @@
+{
+  "id": "20260729123218-ops-952041",
+  "created_at": "2026-07-29T12:32:18.674358+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_06031cb6c3ce_20260728_030027",
+    "title": "",
+    "created_at": 1785178829.0102024
+  },
+  "content": "Fixed I/O path configuration for the daily aider scheduled task: The input task file path is /var/home/charlie/.hermes/workspace/aider-daily-task.txt, and the standard output path for processed results is /tmp/aider-hermes-result.md.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

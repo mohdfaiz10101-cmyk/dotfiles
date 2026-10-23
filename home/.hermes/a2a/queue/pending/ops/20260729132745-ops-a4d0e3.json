@@ -1,0 +1,16 @@
+{
+  "id": "20260729132745-ops-a4d0e3",
+  "created_at": "2026-07-29T13:27:45.271696+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260724_171017",
+    "title": "",
+    "created_at": 1784884277.2786803
+  },
+  "content": "The system maintains MEMORY.md with character limit awareness and capacity control, and supports optional synchronization to letta memory blocks for cross-layer memory consistency.",
+  "confidence": 0.8,
+  "status": "pending",
+  "review_note": ""
+}

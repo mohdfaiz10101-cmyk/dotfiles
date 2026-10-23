@@ -1,0 +1,16 @@
+{
+  "id": "20260729134144-ops-3e29dd",
+  "created_at": "2026-07-29T13:41:44.622007+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrx70gsyruus7k",
+    "title": "",
+    "created_at": 1784791943.1279473
+  },
+  "content": "Hermes中可复用的Agent相关能力分为三层核心概念：1. 单次对话Agent：用于临时任务，直接交互即可调用工具；2. 可复用工作流/自动化Agent：通过配置触发条件实现长期自动运行，适合任务分类、分流、自动执行等场景；3. 技能（Skills）：是固化操作流程、步骤、约定的可复用方法集，由Agent在对应任务中自动加载，不独立运行。",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

@@ -1,0 +1,16 @@
+{
+  "id": "20260729121935-ops-bc8c38",
+  "created_at": "2026-07-29T12:19:35.319239+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "ms60q8xelisexl",
+    "title": "",
+    "created_at": 1785325537.2315829
+  },
+  "content": "4 of 6 rooms in the A2A system's rooms.yaml have incorrect target_agent naming, requiring configuration correction to complete the room-to-skill mapping.",
+  "confidence": 0.9,
+  "status": "pending",
+  "review_note": ""
+}

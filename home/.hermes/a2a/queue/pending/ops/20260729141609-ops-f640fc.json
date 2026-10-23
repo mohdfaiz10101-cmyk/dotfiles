@@ -1,0 +1,16 @@
+{
+  "id": "20260729141609-ops-f640fc",
+  "created_at": "2026-07-29T14:16:09.089802+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "mrw0ayjf3cjj1k",
+    "title": "OpenCode执行中断原因分析",
+    "created_at": 1784720221.555373
+  },
+  "content": "同类开源Coding Agent中，OpenHands的稳定性、长任务完成率显著优于OpenCode，若需选用开源编码Agent方案，优先选择OpenHands而非OpenCode。",
+  "confidence": 0.85,
+  "status": "pending",
+  "review_note": ""
+}

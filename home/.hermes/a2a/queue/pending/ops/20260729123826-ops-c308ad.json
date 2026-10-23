@@ -1,0 +1,16 @@
+{
+  "id": "20260729123826-ops-c308ad",
+  "created_at": "2026-07-29T12:38:26.935302+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "20260726_154541_e6b6e9",
+    "title": "",
+    "created_at": 1785051942.0156279
+  },
+  "content": "The user enforces a strict response format rule: when they issue the instruction '只回复 OK' (translated: 'Only reply with OK'), the only acceptable response is the exact string 'OK' with no additional content, explanations, or extra text.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

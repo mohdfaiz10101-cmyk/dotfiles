@@ -1,0 +1,16 @@
+{
+  "id": "20260729124912-ops-0a90f9",
+  "created_at": "2026-07-29T12:49:12.724401+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_97f2f78d90ce_20260725_220624",
+    "title": "",
+    "created_at": 1784988394.9825227
+  },
+  "content": "The memory-curator skill operates on a cron schedule to automatically extract high-value durable facts from multiple sources (session_search, letta, memory-engine), compress and deduplicate them, and write the results to MEMORY.md with built-in capacity control.",
+  "confidence": 0.95,
+  "status": "pending",
+  "review_note": ""
+}

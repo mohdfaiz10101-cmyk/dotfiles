@@ -1,0 +1,16 @@
+{
+  "id": "20260729130444-ops-d1f85c",
+  "created_at": "2026-07-29T13:04:44.058949+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "cron_9b5e54146699_20260725_085347",
+    "title": "",
+    "created_at": 1784940838.0050464
+  },
+  "content": "The core architectural decision of the autonomous-task-brain skill is minimal human intervention: users only need to provide high-level goals or feedback, while the system autonomously manages the full task lifecycle (perception, solution retrieval, decision making, execution, review) to form a closed 'plan-execute-review-evolve' loop without requiring users to define execution paths.",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}

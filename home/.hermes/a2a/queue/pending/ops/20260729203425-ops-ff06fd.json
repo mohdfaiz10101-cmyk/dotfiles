@@ -1,0 +1,16 @@
+{
+  "id": "20260729203425-ops-ff06fd",
+  "created_at": "2026-07-29T20:34:25.859561+00:00",
+  "room": "ops",
+  "target_agent": "ops-agent",
+  "type": "session-insight",
+  "source": {
+    "session_id": "c59d425d-7e6d-47c3-963d-5e57a3724d16",
+    "title": "",
+    "created_at": 1785357136.7214203
+  },
+  "content": "The user uses Chinese as the interaction language for this session, and the AI agent should provide responses in Chinese by default",
+  "confidence": 1.0,
+  "status": "pending",
+  "review_note": ""
+}
