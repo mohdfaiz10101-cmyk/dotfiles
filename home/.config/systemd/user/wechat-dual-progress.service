@@ -1,0 +1,7 @@
+[Unit]
+Description=Write dual-WeChat progress to default Documents
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wechat-dual-progress
+Nice=10

@@ -1,0 +1,16 @@
+[Unit]
+Description=Inte-Sourcing Astro static preview (port 4321)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/home/charlie/workspace/inte-astro/astro/inte
+ExecStart=/var/home/charlie/.nvm/versions/node/v23.11.1/bin/node node_modules/.bin/astro preview --port 4321 --host 0.0.0.0
+Restart=on-failure
+RestartSec=5
+Environment=NO_PROXY=127.0.0.1,localhost
+Environment=no_proxy=127.0.0.1,localhost
+
+[Install]
+WantedBy=default.target

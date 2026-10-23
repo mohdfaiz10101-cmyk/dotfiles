@@ -1,0 +1,9 @@
+[Unit]
+Description=Organize verified WeChat rooms in private Matrix Spaces
+After=matrix-synapse.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wechat-matrix-spaces
+TimeoutStartSec=10min
+Nice=10

@@ -1,0 +1,11 @@
+[Unit]
+Description=Collect only new Android WeChat rows every ten minutes
+
+[Timer]
+OnBootSec=5min
+OnActiveSec=2min
+OnUnitInactiveSec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

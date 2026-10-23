@@ -1,0 +1,9 @@
+[Unit]
+Description=Gradually switch completed dual-WeChat rooms to the phone
+
+[Timer]
+OnActiveSec=45s
+OnUnitInactiveSec=45s
+
+[Install]
+WantedBy=timers.target

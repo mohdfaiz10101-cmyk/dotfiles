@@ -1,0 +1,12 @@
+[Unit]
+Description=Optional Node USB ADB bridge 127.0.0.1:15558 -> 127.0.0.1:15655
+After=phone-adb-forward.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/var/home/charlie/.nvm/versions/node/v23.11.1/bin/node /var/home/charlie/.local/bin/phone-adb-bridge.js
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,7 @@
+[Unit]
+Description=Resume verified dual-WeChat history reconstruction
+Wants=wechat-dual-publish@0.service wechat-dual-publish@1.service wechat-dual-publish@2.service wechat-dual-publish@3.service wechat-dual-publish@4.service wechat-dual-publish@5.service wechat-dual-publish@6.service wechat-dual-publish@7.service wechat-dual-cutover.timer wechat-dual-progress.timer wechat-matrix-spaces.timer wechat-dual-incremental.timer
+After=matrix-synapse.service
+
+[Install]
+WantedBy=default.target

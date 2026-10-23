@@ -1,0 +1,15 @@
+[Unit]
+Description=Verified dual-WeChat Matrix history import shard %i
+After=matrix-synapse.service
+Wants=matrix-synapse.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/wechat-dual-matrix-publish --publish --shard %i --shard-count 8
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=30
+Nice=5
+CPUWeight=25
+IOWeight=25

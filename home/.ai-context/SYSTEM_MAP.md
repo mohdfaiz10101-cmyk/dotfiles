@@ -208,6 +208,11 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Control group should use Forum topics; non-Forum fallback is one group session
 - Runbook: `~/.ai-context/runbooks/telegram.md`
 
+## USB Cold Backup
+- 固态便携 UUID `423CC8003CC7ED4B`; weekly `cold-backup-usb.timer`; script `~/.local/bin/cold-backup-to-usb.sh`.
+- Runbook: `~/.ai-context/runbooks/usb-cold-backup.md`; skill `~/.shared-agent/skills/devops/usb-cold-backup-dr/SKILL.md`.
+- Back up the real `.shared-agent/skills` target and WAL-aware SQLite snapshots. USB deauthorization is not proof of physical power-off. This is an archive backup, not a bootable clone.
+
 ## Syncthing
 - Service: `syncthing.service`, Web UI `127.0.0.1:8384`, sync `:22000`
 - Config: `~/.config/syncthing/`

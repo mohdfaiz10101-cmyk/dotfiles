@@ -1,0 +1,7 @@
+[Unit]
+Description=Verify phone Matrix TLS route and restore default routing off LAN
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/schildichat-matrix-route-ensure
+TimeoutStartSec=45

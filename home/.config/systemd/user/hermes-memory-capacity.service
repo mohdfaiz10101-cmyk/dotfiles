@@ -1,0 +1,6 @@
+[Unit]
+Description=Preserve Hermes cold memory and reserve hot-memory headroom
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hermes-memory-capacity-guard
+TimeoutStartSec=40

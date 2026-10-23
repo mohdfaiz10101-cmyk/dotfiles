@@ -1,0 +1,11 @@
+[Unit]
+Description=Optional USB ADB fallback on loopback 15655 (native phone FRP owns 15555)
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=%h/.local/bin/adb-record --tag usb-adb-forward -- -s ff3ef385 forward tcp:15655 tcp:5555
+
+[Install]
+WantedBy=default.target

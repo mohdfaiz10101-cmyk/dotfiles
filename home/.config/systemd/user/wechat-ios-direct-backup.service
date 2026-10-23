@@ -3,7 +3,7 @@ Description=Acquire source iPhone WeChat data directly onto Fedora
 
 [Service]
 Type=oneshot
-ExecStart=/var/home/charlie/.local/bin/wechat-ios-direct-backup --backup --wechat-only --reacquire-missing
+ExecStart=/var/home/charlie/.local/bin/wechat-ios-direct-backup --backup --wechat-only
 TimeoutStartSec=infinity
 TimeoutStopSec=25
 KillMode=control-group

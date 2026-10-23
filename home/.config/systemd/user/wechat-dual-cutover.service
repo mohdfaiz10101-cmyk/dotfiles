@@ -1,0 +1,9 @@
+[Unit]
+Description=Audit and expose completed dual-WeChat rooms without duplicate tiles
+After=matrix-synapse.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wechat-dual-room-cutover --limit 10
+TimeoutStartSec=5min
+Nice=5

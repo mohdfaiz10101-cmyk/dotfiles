@@ -1,8 +1,8 @@
 [Unit]
-Description=Monthly cold backup to USB disk (sdf2) - 冷备，写完即卸载
+Description=Weekly verified cold backup to 固态便携
 After=local-fs.target
 # 冷备依赖 sdf2 已插入，未插入时失败是预期的
-ConditionPathIsMountPoint=/var/home/charlie
+ConditionPathExists=%h/.local/bin/cold-backup-to-usb.sh
 
 [Service]
 Type=oneshot
@@ -15,4 +15,4 @@ IOSchedulingClass=idle
 # 打包+校验+写入上限 2 小时
 TimeoutStartSec=2h
 # 盘未插入时不要刷屏
-SuccessExitStatus=0 1
+SuccessExitStatus=0

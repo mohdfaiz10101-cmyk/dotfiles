@@ -1,0 +1,12 @@
+[Unit]
+Description=Phone ADB public bridge (adb forward 15555 -> socat 15558 for frpc)
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Re-establish adb USB forward to the phone's adbd (5555) if missing
+ExecStart=/bin/sh -c 'adb forward tcp:15555 tcp:5555 || true'
+
+[Install]
+WantedBy=default.target

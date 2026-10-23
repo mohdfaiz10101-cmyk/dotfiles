@@ -1,0 +1,13 @@
+[Unit]
+Description=Watch for interrupted WebUI sessions to resume
+
+[Timer]
+# 每分钟检查一次 ~/.hermes/state/webui-resume-pending.json。
+# 用独立 timer 而不是挂在 nightly 脚本里的钩子：更新可能由多条路径触发
+# （nightly timer / interrupt-update oneshot / 手动 apply），钩子只在其中
+# 一条上，会漏。marker 被消费后脚本静默退出，零开销。
+OnCalendar=minutely
+Persistent=true
+
+[Install]
+WantedBy=timers.target

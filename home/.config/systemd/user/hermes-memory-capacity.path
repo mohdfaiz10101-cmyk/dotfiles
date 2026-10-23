@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch Hermes hot-memory writes for automatic capacity rollup
+[Path]
+PathChanged=%h/.hermes/memories/MEMORY.md
+PathChanged=%h/.hermes/memories/USER.md
+Unit=hermes-memory-capacity.service
+[Install]
+WantedBy=default.target

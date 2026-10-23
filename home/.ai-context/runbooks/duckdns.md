@@ -117,3 +117,9 @@ nmcli -g 802-11-wireless.powersave connection show PDCN  # expected: disable
   `charlie1990.duckdns.org -> 192.168.5.144` on OpenWrt only. Phone Wi-Fi
   curl to the same hostname returned HTTP 200 with peer `192.168.5.144`.
   Public resolver `1.1.1.1` still returns A `125.110.234.23`, no AAAA.
+
+## 2026-10-23 DDNS与LAN回环纠错
+默认读取光猫WAN，禁止透明代理出口回显覆盖。OpenWrt专用hairpin规则支持
+19976/8648/18300/18094，跟随wan-ip-monitor.sh从光猫读取的WAN IPv4。
+本次蜂窝与Wi-Fi同域名19976均实测200；原生phone FRP支持两网络。
+详细根因、脚本及证据：`hermes-network-evidence.md`。

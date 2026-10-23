@@ -79,3 +79,20 @@ systemctl --user show a2a-skills.service -p Environment -p TimeoutStartUSec
 - Loader verification proves instruction loading only. Verify real answer quality separately; do not report it as proven by a string check.
 - Apply in a new WebUI session. Do not reset existing conversations or restart shared services just to replace their cached prompts. No WebUI code or port changes are required.
 - Session detail endpoint: `/api/session?session_id=<id>`; `/api/session/<id>` returns 404 and `?id=` returns 400.
+
+## Network task quality correction (2026-10-23)
+Before continuing session d14ccbbd9ffe or diagnosing phone/DuckDNS/FRP, read
+`~/.ai-context/runbooks/hermes-network-evidence.md`. SOUL.md now requires evidence
+for causal claims, correct path labeling, and actual phone validation. The pre-task
+memory brief prioritizes that file for phone/network queries; no model change or
+conversation reset is needed for that retrieval path.
+
+## 2026-10-23 自动容量兜底修复（c016a43ccbca）
+- 原curator只整理分隔符并报告大小，没有按SAFE=85%归档；原lifecycle仅首次迁移热文件，后续新写入可能在重生成时丢失。两小时频率也不能阻止任务内连续加满。
+- canonical `memory-index.json`完整保存条目；每次lifecycle先导入当前MEMORY/USER新条目再生成热记忆，flock与原子写保护文件；分类库包括archived条目。
+- 热MEMORY目标1200、触发线1500、硬上限仍2200。`hermes-memory-capacity.path`每次写后检查，timer每5min兜底，memory工具调用前hook同步整理，memory-brief也检查。未提高2200上限。
+- 原curator现在调用同一生命周期；已去掉“锁文件存在就是正在写/删除空锁文件”的判断，避免破坏flock并发安全。
+- `hermes-submemory add --category ops --text '经验'`直接写cold；`hermes-submemory search '主题' --limit 5`按需召回，无LLM/联网依赖。
+- 真实MemoryStore.add从1169增加到1646后，path自动整理到1105且新条目能从索引/分类库召回；清理陈旧事实后965，预留1235字符。模拟1700字符输入确认无丢失、两次运行幂等。
+- 当前脚本：`~/.hermes/memories/scripts/memory-lifecycle.py`、`~/.local/bin/hermes-memory-capacity-guard`、`~/.local/bin/hermes-submemory`。状态`~/.local/state/hermes-memory-capacity/latest.json`。
+- 现有会话系统提示快照不会追改；实际memory工具操作会从磁盘重读，pre-tool hook和冷库CLI可即时使用。不要宣称SOUL修改让旧系统提示热更新。

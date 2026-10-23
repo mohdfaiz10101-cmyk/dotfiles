@@ -1,0 +1,16 @@
+[Unit]
+Description=Directus Auto-Login Proxy (local/LAN only, public -> 403)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /var/home/charlie/.local/bin/directus-auto-login-proxy.py
+Restart=on-failure
+RestartSec=5
+# 不走代理访问本机 Directus
+Environment=NO_PROXY=127.0.0.1,localhost
+Environment=no_proxy=127.0.0.1,localhost
+
+[Install]
+WantedBy=default.target

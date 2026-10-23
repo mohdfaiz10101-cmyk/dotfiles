@@ -1,0 +1,12 @@
+[Unit]
+Description=Acquire and append new WeChat messages with original sender identities
+After=matrix-synapse.service
+Wants=matrix-synapse.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wechat-dual-incremental
+TimeoutStartSec=30min
+Nice=10
+CPUWeight=20
+IOWeight=20

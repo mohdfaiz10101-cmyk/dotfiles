@@ -317,3 +317,11 @@
 ## 2026-10-23 iOS selective backup bundle regex misses Documents
 - Do not assume MobileBackup2 device_name contains AppDomain/bundle ID. `--only-regex com\.tencent\.xin` kept preferences but discarded all WeChat chat DBs on this iPhone, despite 100%/exit0 and a complete Manifest.db.
 - Use exact file IDs from authoritative Manifest.db (`wechat-selector.db`, `wechat-ios-fileid-backup`) and verify expected Documents/DB payload presence. Future incremental runs need accurate selector refresh; changing selection after incomplete capture requires replay.
+
+## 2026-10-23 Matrix puppet profile fanout and SQLite join plans
+- Never PUT a puppet displayname when it already matches profiles.displayname. Synapse schedules update_join_states across every joined room even for repeated identical updates; eight importer workers plus restarts caused448 profile-update tasks, DB queue pressure, 60-second mobile sync timeouts and KeyError noise for cancelled tasks. Read the existing local profile, register only when absent, update only when changed. Reuse existing room membership on resume.
+- Large dual-account joins require ANALYZE and EXPLAIN QUERY PLAN. An unanalysed matches+iOS+Android join selected a Cartesian80billion candidate loop; force matches CROSS JOIN exact(source,local_id) PK lookups if necessary.
+
+## Hermes network evidence correction (2026-10-23)
+- Never publish an IP-echo/proxy-egress address over the modem WAN merely because `curl --noproxy` returned it. Transparent interception still applies. See `runbooks/hermes-network-evidence.md`.
+- Never claim public ADB from USB forward or localhost connectivity. Keep native FRP remote15555 free of USB forwarding; USB fallback uses15655.

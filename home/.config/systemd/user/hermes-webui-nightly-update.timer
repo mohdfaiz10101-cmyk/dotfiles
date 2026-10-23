@@ -2,11 +2,12 @@
 Description=Hermes WebUI nightly auto-update timer
 
 [Timer]
-# 凌晨 02:30 跑，晚于 github-backup(02:00) 与 disk-cleanup(02:00)，
-# 避开备份窗口；早于 03:00 的各类清理任务。
-OnCalendar=*-*-* 02:30:00
+# 每 30 分钟检查一次。用户要求「一有更新就自动解决，不要频繁看到横幅」。
+# apply 接口自带 active-stream 保护：有会话在跑就返回 restart_blocked，
+# 脚本记 ntfy 通知并等下一轮，绝不会打断正在进行的对话。
+OnCalendar=*:00/30
 Persistent=true
-RandomizedDelaySec=20min
+RandomizedDelaySec=5min
 
 [Install]
 WantedBy=timers.target

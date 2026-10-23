@@ -1,6 +1,6 @@
 # Machine Backup
 
-Generated from `hermes-fedora` at `2026-10-23T07:00:04Z`.
+Generated from `hermes-fedora` at `2026-10-23T16:00:00Z`.
 
 This repository is a portable user-space restore set, not a raw disk image.
 It intentionally excludes private keys, OAuth/session files, browser profiles,

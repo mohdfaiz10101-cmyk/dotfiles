@@ -297,3 +297,10 @@ sudo systemctl restart frps
   phone reboot, first inspect duplicate `frpc_smart.sh` wrappers and the Magisk
   boot service `/data/adb/service.d/frpc.sh`; do not assume router CPU or
   conntrack exhaustion.
+
+## 2026-10-23 OpenWrt phone FRP correction
+Current modem2228 -> OpenWrt2228 -> Fedora192.168.5.144:7000 is now mapped.
+Phone wrapper supports both OpenWrt(.5.144) and legacy Padavan(.123.71).
+Native phone-adb owns15555; USB fallback moved to15655 and bridge15558 binds loopback.
+Wrapper TERM trap now exits after cleanup; restart helper removes surviving exact wrapper/client PIDs.
+See `hermes-network-evidence.md` before reusing older topology or localhost-only success claims.

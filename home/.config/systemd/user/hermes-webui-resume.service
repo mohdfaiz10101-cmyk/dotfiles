@@ -1,0 +1,13 @@
+[Unit]
+Description=Resume interrupted Hermes WebUI session after restart
+After=hermes-webui.service
+Wants=hermes-webui.service
+
+[Service]
+Type=oneshot
+Environment=HOME=%h
+Environment=HERMES_STATE_DIR=%h/.hermes
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/.local/bin/hermes-webui-resume-after-update.py
+# marker 不存在时脚本静默 exit 0；存在时会等服务健康后重跑被打断的 turn。
+TimeoutStartSec=300
