@@ -1,0 +1,15 @@
+[Unit]
+Description=wayvnc desktop view for the public noVNC entry (19986)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStart=/usr/bin/wayvnc --websocket --config %h/.config/wayvnc/config --log-level=info
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

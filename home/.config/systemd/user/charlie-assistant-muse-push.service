@@ -1,0 +1,9 @@
+[Unit]
+Description=Align curated shared profile into Muse official memory importer
+After=meta-account-browser.service
+Wants=meta-account-browser.service
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/workspace/charlie-assistant/muse_push.py
+TimeoutStartSec=110
+UMask=0077

@@ -9,6 +9,14 @@ Before searching broadly, agents must read:
 
 Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or container overlay trees unless the map and runbooks do not cover the task.
 
+## Current Network (2026-10-24)
+- Main remote LAN access: WireGuard `wg_home` router `10.77.50.1`, phone `10.77.50.2`; full `192.168.5.0/24` plus modem `/32`. Runbook `~/.ai-context/runbooks/wireguard-home.md`; verify with `~/.local/bin/home-vpn-check`. ZeroTier is retained as a selectable backup.
+- Active home LAN: OpenWrt `192.168.5.1`, Fedora `192.168.5.144`, PKR110 Wi-Fi `192.168.5.211`; older `192.168.123.*` entries below describe the prior Padavan topology.
+- Optical modem `192.168.1.1` -> OpenWrt WAN `192.168.1.4`; WAN/DDNS truth comes from `~/.local/bin/zxhn-wan-ip`, not a proxied IP echo.
+- ZeroTier router `10.68.142.60`, phone `10.68.142.114`; router TCP1024-65535 service gateway -> Fedora same ports. This is not a full LAN/UDP route.
+- Phone roaming recovery, bounded restart and verification: `~/.ai-context/runbooks/zerotier-roaming.md`. Phone native Mihomo stays independent.
+- Other repaired access paths and evidence: `~/.ai-context/runbooks/hermes-network-evidence.md`.
+
 ## Host
 - Host: Fedora Silverblue, Sway/wlroots Wayland
 - Current LAN IPs on PDCN: `192.168.123.209/24` plus compatibility alias
@@ -23,6 +31,10 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
   already owns GameStream port `48010`.
 
 ## Desktop Theme
+
+- Firefox 重复 Hermes 标签：先读 `~/.ai-context/runbooks/firefox-duplicate-tabs.md`；8648 当前由 FRPS→8787 提供，禁止旧 Studio 抢端口或后台自动开浏览器。
+
+- 微信/XWayland 鼠标十字：先查 active grab owner；Hermes 错误 shell 解释器故障及修复见 `~/.ai-context/runbooks/wechat-crosshair.md`。
 - Chromium localhost/browser timeouts: runbook
   `~/.ai-context/runbooks/chromium-network-recovery.md`; diagnostic/recovery
   helper `~/.local/bin/chromium-network-recover` (explicit `--repair`).
@@ -33,6 +45,7 @@ Do not run broad `rg` over `~/.config`, `~/.local`, browser profiles, or contain
 - Runbook: `~/.ai-context/runbooks/desktop-theme.md`
 
 ## AI Infrastructure
+- 知伴独立私人助理（2026-10-24）：公网 `https://charlie1990.duckdns.org:19984/`；`charlie-assistant-https.service` -> loopback `18446` / `charlie-assistant.service`。安卓 `com.charlie.assistant` 已安装配对；独立状态 `~/.local/share/charlie-assistant/`；只读接入各 AI 可用记忆，Muse支持已登录账号的官方导出同步。原19976保持独立。默认先读 `~/.ai-context/runbooks/charlie-assistant.md`，不要用原Hermes服务修新入口。
 - LiteLLM: `litellm.service` (Podman) `:4002`, `litellm-strip-proxy.service` `:4000` → `:4002`
 - Config: `~/ai/litellm-config.yml`, env `~/ai/litellm.env`
 - Letta: `letta-stack.service` (docker compose: postgres + chromadb + letta) `:8283`

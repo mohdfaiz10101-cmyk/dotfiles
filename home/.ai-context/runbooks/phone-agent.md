@@ -1171,3 +1171,11 @@ around 25 minutes after boot. Do not declare PKR110 heat/cardon fully fixed
 from these two mitigations alone; next layer is system_server thread triage
 (`HeapTaskDaemon`, `audioserver_lif`, `android.io/bg`, `NetworkStats`,
 `PackageManager`) and ColorOS/Google sync maintenance.
+
+## Wi-Fi transfer defaults (2026-10-24)
+
+- 当前家中无线ADB地址：`192.168.5.211:5555`。本次实测Wi-Fi上传/下载相同SHA256；无线调试开关1，持久TCP端口5555，wifi_sleep_policy=2。USB默认已有mtp,adb。
+- 持久入口：手机`/data/adb/service.d/adb-wifi-keep.sh`在开机完成后启用Wi-Fi一次，保留用户之后的手动Wi-Fi开关；不stop/restart正在运行的adbd，不切换VPN。`99-adb-tcpip.sh`也已移除强制stop/start。
+- 本机部署源：`~/.local/share/charlie-assistant/phone-wifi-default.sh`、`phone-adb-no-restart.sh`，语法检查通过；手机旧文件备份在`/data/local/tmp/*before-20261024.sh`。此次未重启手机，未做真实重启验收。
+- 主机`adb-phone-keepalive.sh`先试当前Wi-Fi与WireGuard地址，连通后结束探测；不每分钟adb tcpip重启，不写always_on_vpn_app。此前硬编码NetBird会覆盖用户选定VPN，已移除。
+- 后续本机Wi-Fi/FRP均离线，USB设备unauthorized；手机新界面验收待恢复授权/在线。已有无线文件往返成功不能替代后续新界面验收。

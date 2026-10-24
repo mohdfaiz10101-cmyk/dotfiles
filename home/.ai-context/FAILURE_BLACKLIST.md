@@ -325,3 +325,11 @@
 ## Hermes network evidence correction (2026-10-23)
 - Never publish an IP-echo/proxy-egress address over the modem WAN merely because `curl --noproxy` returned it. Transparent interception still applies. See `runbooks/hermes-network-evidence.md`.
 - Never claim public ADB from USB forward or localhost connectivity. Keep native FRP remote15555 free of USB forwarding; USB fallback uses15655.
+
+## 2026-10-24 XWayland crosshair from Hermes shell interpreter
+- Do not diagnose WeChat crosshair as CSS from cross-window screenshots alone. Studio inferred `/bin/sh` from the Hermes CLI wrapper and launched `hermes_bridge.py` with it; `import argparse` became ImageMagick screenshot selection and held an active pointer grab. `XF86LogGrabInfo` identified the exact owner. Set `HERMES_AGENT_BRIDGE_PYTHON=/usr/bin/python3`, restore the Python broker, and verify grab release plus arrow/I-beam screenshots. See `runbooks/wechat-crosshair.md`.
+
+## 2026-10-24 Firefox tab storm from retired Studio
+- Never auto-open GUI browsers from background Type=forking Hermes services: synchronous xdg-open can hold startup open, time out, then open another tab on restart (284 duplicates observed).
+- 8648 currently belongs to system FRPS, fedora-hermes-groupchat-8648 -> 8787. Keep hermes-studio-8648.service disabled and retain --no-open; old health guards must not restart it. See runbooks/firefox-duplicate-tabs.md.
+- A lone UDP DNS reply does not prove DDNS drift; validate via HTTPS DNS before repair. Routine successful DDNS healing should stay in journal.

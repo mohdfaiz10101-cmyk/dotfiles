@@ -1,0 +1,17 @@
+[Unit]
+Description=Workspace application shelf (Quickshell)
+After=waybar.service
+PartOf=graphical-session.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+ExecStart=/usr/bin/quickshell -c workspace-panel --no-duplicate --no-color
+Restart=on-failure
+RestartSec=3
+Environment=QT_QPA_PLATFORM=wayland
+Environment=QT_QUICK_CONTROLS_STYLE=Basic
+Environment=PATH=/var/home/charlie/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

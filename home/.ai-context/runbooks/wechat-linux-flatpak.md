@@ -398,3 +398,11 @@ unless such a pipeline is explicitly added and verified.
   backup completion from menu repair, desktop DB snapshots, or the empty
   migration manager alone. Once initiated, inspect new WeChat sockets, desktop
   confirmation/progress and resulting source history/media counts.
+
+## 2026-10-24 转发窗口跨工作区置顶 / 无法交互
+
+- 根因已确认：`wechat-popup-guard` 只按 UTILITY + KDE_OVERRIDE + transient 匹配，把带 NORMAL + MODAL 的「微信发送给」也改成 override_redirect。日志 13:07:47 `Protected WeChat popup 44040313` 与 X11 `0x2a00079` 对应；不是 active pointer grab（报告无抓取）。
+- 已收紧 `~/.local/bin/wechat-popup-guard`：任何含 `_NET_WM_WINDOW_TYPE_NORMAL` 或 `_NET_WM_STATE_MODAL` 的窗口均不改为 OR；仅菜单继续保护。三种未映射 X11 临时窗口实测：菜单 OR=1，NORMAL/MODAL 转发框 OR=0，纯 MODAL utility OR=0。
+- 无需关闭微信或丢弃待转发内容：对已确认的转发窗口依次 `unmap(); sync(); change_attributes(override_redirect=False); sync(); map(); sync()`，让 Sway 重新接管。不要对菜单或未知窗口批量执行。操作前核对 class、标题、transient 和 MODAL；XID 每次重新查。
+- 已验证原对话框进入工作区 2，`floating_con`、`sticky=false`，切到工作区 1 后截图无残留；聚焦后 X input_focus 为转发框本身。截图见 `~/.local/state/wechat-forward-fix/forward-restored.png`，待转发视频和搜索内容均保留；未代替用户选择收件人或点击发送。
+- 旧 override-redirect 关闭流程仅用于用户明确要关闭的小窗；对于转发不能默认关闭，应先检查上述守护规则并尝试恢复管理。

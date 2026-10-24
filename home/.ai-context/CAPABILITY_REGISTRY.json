@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T18:42:23",
+  "generated_at": "2026-10-24T02:28:37",
   "mcp": [
     {
       "name": "agent-comms",
@@ -595,6 +595,10 @@
       "state": "static"
     },
     {
+      "name": "hermes-memory-capacity.service",
+      "state": "static"
+    },
+    {
       "name": "hermes-memory-curator.service",
       "state": "static"
     },
@@ -621,6 +625,10 @@
     {
       "name": "litellm.service",
       "state": "disabled"
+    },
+    {
+      "name": "memory-backup.service",
+      "state": "static"
     },
     {
       "name": "memory-evolution-guard.service",
@@ -743,8 +751,8 @@
   "rules": [
     {
       "path": "/var/home/charlie/.config/opencode/AGENTS.md",
-      "sha256": "41ddc3d0a1652e89677f0885b09cf4062f6845862334f4e7040db6c5ad64965a",
-      "lines": 59
+      "sha256": "4921795aa2c34941601201e1a1904f3899f111369be41e254c9d5822f83c9750",
+      "lines": 62
     },
     {
       "path": "/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/AGENTS.md",

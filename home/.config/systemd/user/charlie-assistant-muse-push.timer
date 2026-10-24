@@ -1,0 +1,9 @@
+[Unit]
+Description=Check Muse portable profile changes every five minutes
+[Timer]
+OnBootSec=6min
+OnUnitInactiveSec=5min
+RandomizedDelaySec=10
+Unit=charlie-assistant-muse-push.service
+[Install]
+WantedBy=timers.target

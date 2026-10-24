@@ -1,0 +1,27 @@
+[Unit]
+Description=Zhiban private assistant (independent of Hermes 19976)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/workspace/charlie-assistant
+Environment=ASSISTANT_STATE=%h/.local/share/charlie-assistant
+Environment=ASSISTANT_ORIGIN=https://charlie1990.duckdns.org:19984
+Environment=HERMES_HOME=%h/.local/share/charlie-assistant/hermes
+Environment=PATH=%h/.local/bin:%h/.nvm/versions/node/current/bin:/usr/local/bin:/usr/bin:/bin
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 %h/workspace/charlie-assistant/server.py
+Restart=on-failure
+RestartSec=4
+KillMode=control-group
+TimeoutStopSec=15
+UMask=0077
+Nice=5
+MemoryHigh=1200M
+MemoryMax=1800M
+TasksMax=160
+CPUQuota=180%
+
+[Install]
+WantedBy=default.target

@@ -8,6 +8,8 @@
 
 ## Components
 
+- Current workspace shortcuts / temporary Quickshell popover: see `~/.ai-context/runbooks/workspace-app-panel.md`. Default is now one top bar after the user rejected clutter; `简洁 ▾` switches to the preserved complete two-bar layout. Current Waybar styling lives in `~/.config/waybar/style.css`; editable layout sources are under `~/.config/waybar/layouts/`.
+
 - Sway: `~/.config/sway/config`
 - Main Waybar: `~/.config/waybar/style.override.css`
 - Layout toolbar: `~/.config/waybar/toolbar.css`

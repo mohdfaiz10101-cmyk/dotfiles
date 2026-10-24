@@ -1,0 +1,28 @@
+[Unit]
+Description=OpenWrt console WebTTY (router shell for the Muse browser AI)
+After=network-online.target
+
+[Service]
+Type=simple
+User=charlie
+EnvironmentFile=%h/.local/share/credentials/openwrt-ttyd.env
+# -W            writable — Muse must type commands
+# -i 127.0.0.1  loopback only — a root shell must never hit the LAN
+# -b /openwrt   base path
+# -c            ttyd's native Basic Auth (WebSocket-safe, unlike a DIY proxy)
+# -p 7792       backend port
+ExecStart=/usr/local/bin/ttyd -W -t rendererType=dom -t fontSize=16 \
+    -P 15 -p 7792 -i 127.0.0.1 -b /openwrt \
+    -c ${OW_TTYD_USER}:${OW_TTYD_PASS} \
+    -T xterm-256color \
+    /var/home/charlie/.local/bin/openwrt-ttyd-entry
+Restart=always
+RestartSec=5
+
+# The SSH hop needs a TTY and network access; keep the rest tight.
+PrivateTmp=true
+ProtectHome=read-only
+ReadWritePaths=%h
+
+[Install]
+WantedBy=default.target

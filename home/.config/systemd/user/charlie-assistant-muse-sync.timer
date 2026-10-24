@@ -1,0 +1,12 @@
+[Unit]
+Description=Check Muse memory every five minutes without repeated model work
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=5min
+RandomizedDelaySec=10s
+Persistent=true
+Unit=charlie-assistant-muse-sync.service
+
+[Install]
+WantedBy=timers.target

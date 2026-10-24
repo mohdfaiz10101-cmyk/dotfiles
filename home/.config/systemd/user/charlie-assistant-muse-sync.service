@@ -1,0 +1,15 @@
+[Unit]
+Description=Export Muse memory into Zhiban automatically
+Wants=meta-account-browser.service
+After=network-online.target meta-account-browser.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/workspace/charlie-assistant
+Environment=ASSISTANT_STATE=%h/.local/share/charlie-assistant
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/workspace/charlie-assistant/muse_sync.py
+TimeoutStartSec=300
+UMask=0077
+Nice=10
+MemoryMax=600M

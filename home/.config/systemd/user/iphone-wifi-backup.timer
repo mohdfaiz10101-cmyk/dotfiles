@@ -1,0 +1,13 @@
+[Unit]
+Description=Daily iPhone Wi-Fi backup check
+
+[Timer]
+# 每天 03:30 检查；iPhone 不在线则脚本自行静默退出
+OnCalendar=*-*-* 03:30:00
+# 错峰 15 分钟防止与其它任务抢资源
+RandomizedDelaySec=15min
+# 断电/休眠错过则开机后补跑
+Persistent=true
+
+[Install]
+WantedBy=timers.target

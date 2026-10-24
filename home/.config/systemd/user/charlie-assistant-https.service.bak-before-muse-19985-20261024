@@ -1,0 +1,16 @@
+[Unit]
+Description=Zhiban dedicated HTTPS entry on 19984
+After=network-online.target charlie-assistant.service
+Wants=network-online.target charlie-assistant.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/caddy run --config %h/.config/caddy/assistant.Caddyfile --adapter caddyfile
+Restart=on-failure
+RestartSec=4
+Environment=HOME=%h
+UMask=0077
+MemoryMax=180M
+
+[Install]
+WantedBy=default.target

@@ -7,6 +7,7 @@ adb-clipboard-helper.py
 adb-device-monitor.py
 adb-input-file-text
 adb-phone-keepalive.sh
+adb-phone-keepalive.sh.before-wifi-default-1792842334
 adb-record
 adb-resume-pull
 adb-reverse-haven.sh
@@ -322,6 +323,7 @@ deepseek-with-context
 deploy-phone-frpc.sh
 deploy-tasker-gateway.sh
 describeTicket.py
+desktop-controls
 desktop-mjpeg-server.py
 desktop-pet.py
 desktop-pip.html
@@ -546,6 +548,7 @@ hermes-lan-192.168.123.71-alias
 hermes-launcher.py
 hermes-mcp-policy
 hermes-memory-brief
+hermes-memory-brief.before-learning-1792824099
 hermes-memory-brief.before-review-1792767470
 hermes-memory-capacity-guard
 hermes-memory-curator
@@ -595,6 +598,7 @@ hermes-workflow-router
 hermes-wrapper
 hf
 home-essentials-backup.sh
+home-vpn-check
 hqssh
 hqsshd
 hqssh-hosts-info
@@ -628,6 +632,7 @@ inte-selfheal.sh
 inv
 invoke
 ios-connect-mcp.py
+iphone-wifi-backup
 ipython
 ipython3
 isympy
@@ -791,6 +796,8 @@ mosh-server-termhive
 mqtt_check.py
 mssqlclient.py
 mssqlinstance.py
+muse-ttyd-entry
+muse-us-lock
 mutual-review
 navidrome
 netbird-cloud-enroll
@@ -837,6 +844,7 @@ notify-buf-dashboard
 notify-forwarder.py
 notify-screenshot-howto
 notify-send
+notion-autologin
 novnc-full.js
 novnc-test2.js
 novnc-test3.js
@@ -965,6 +973,7 @@ opentelemetry-bootstrap
 opentelemetry-instrument
 open-unified-agents-workspace.sh
 openwrt-proxy-sync
+openwrt-ttyd-entry
 op-exec.sh
 op-exec-viewer.sh
 op-feed-viewer.sh
@@ -1019,6 +1028,7 @@ phone-net-stability-check
 phone-network-stabilize
 phone-proxy-watchdog.sh
 phone-webtty-route-probe
+phone-zerotier-reconnect
 ping6.py
 ping.py
 pip3
@@ -1077,7 +1087,6 @@ qr
 query-router.sh
 quick-run-cmd
 quick-screenshot
-quickshell
 raiseChild.py
 rbcd.py
 rdp_check.py
@@ -1213,6 +1222,7 @@ streamlit
 sub2api
 suspend-guard.sh
 svc
+sway-focus-geom.py
 sway-ipc-title-filter.py
 swaync
 swaync-client
@@ -1327,6 +1337,7 @@ upload-home-essentials.sh
 upnp-ao-18082.py
 upnp-frps-phone-17000.py
 upnp-opencode-18910.py
+upnp-openwrt-map.py
 upnp-termhive-18081.py
 upnp-wayvnc-5900.py
 uv
@@ -1344,6 +1355,7 @@ verify-chromadb-letta
 verify-pipeline.sh
 verify-stats
 version-check
+vicinae-launch
 vision-mcp-wrapper.sh
 voice-ai-context
 voice-ai-correct
@@ -1441,6 +1453,7 @@ wechat-ios-fileid-backup
 wechat-ios-source-audit
 wechat-ios-stage
 wechat-kanban-push.sh
+wechat-legacy-room-cleanup
 wechat-live-monitor.py
 wechat-matrix-backfill-loop
 wechat-matrix-bridge.py
@@ -1489,6 +1502,7 @@ wechat-timer-watchdog
 wechat-uos-safe
 wechat-version-guard.sh
 weekly-error-review
+wg-phone-up.sh
 whisper-stt-server
 wifi-monitor.sh.disabled
 wiki-watch.sh
@@ -1524,6 +1538,7 @@ wol-windows.sh
 workflow-intel
 workspace-launcher.sh
 workspace-menu.py
+workspace-panel
 workspace-warp-prepare.sh
 worktree-cleanup
 wsdump

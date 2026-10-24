@@ -1,0 +1,16 @@
+[Unit]
+Description=Muse WebTTY public HTTPS entry on 19985
+After=network-online.target muse-ttyd.service
+Wants=network-online.target muse-ttyd.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/caddy run --config %h/.config/caddy/muse-ttyd.Caddyfile --adapter caddyfile
+Restart=on-failure
+RestartSec=4
+Environment=HOME=%h
+UMask=0077
+MemoryMax=180M
+
+[Install]
+WantedBy=default.target

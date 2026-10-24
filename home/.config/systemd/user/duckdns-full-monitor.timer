@@ -1,10 +1,1 @@
-[Unit]
-Description=DuckDNS Full Monitor Timer
-
-[Timer]
-OnBootSec=2min
-OnUnitActiveSec=1min
-AccuracySec=30s
-
-[Install]
-WantedBy=timers.target
+/dev/null

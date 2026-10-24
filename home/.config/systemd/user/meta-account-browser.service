@@ -1,0 +1,15 @@
+[Unit]
+Description=Persistent private Muse browser for authorized memory exports
+After=graphical-session.target network-online.target
+StartLimitIntervalSec=600
+StartLimitBurst=3
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-1
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+ExecStart=/usr/bin/chromium-browser --user-data-dir=/var/home/charlie/.local/state/muse-registration/meta-headed --remote-debugging-address=127.0.0.1 --remote-debugging-port=9231 --proxy-server=http://127.0.0.1:17890 --no-first-run --no-default-browser-check https://muse.ai/
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=20

@@ -27,6 +27,35 @@ providers:
       context_length: 240000
     default_model: step-5-preview
     api_mode: chat_completions
+  stepfun-router:
+    api_key: 4GY0L5jyGZlZUrTO8JZlQ5TYHTW5HVettJ9ls7ymImw3nalmM1rGO6CFV0DwayuiC
+    base_url: https://api.stepfun.com/step_plan/v1
+    discover_models: true
+    models:
+      step-3.5-flash:
+        context_length: 240000
+      step-3.5-flash-2603:
+        context_length: 240000
+      step-3.7-flash:
+        context_length: 240000
+      step-image-edit-2:
+        context_length: 240000
+      step-1o-vision-32k:
+        context_length: 32000
+      step-router-v1:
+        context_length: 240000
+      stepaudio-2.5-asr:
+        context_length: 240000
+      stepaudio-2.5-chat:
+        context_length: 240000
+      stepaudio-2.5-realtime:
+        context_length: 240000
+      stepaudio-2.5-tts:
+        context_length: 240000
+    default_model: step-router-v1
+    api_mode: chat_completions
+    model: step-3.7-flash
+    name: StepFun Router
 credential_pool_strategies:
   stepfun: round_robin
 fallback_providers:
@@ -700,7 +729,7 @@ webui:
     enabled: auto
 model:
   default: step-5-preview
-  provider: stepfun
+  provider: stepfun-router
   base_url: https://api.stepfun.com/step_plan/v1
   context_length: 1024000
   aliases:

@@ -1,0 +1,28 @@
+[Unit]
+Description=Muse WebTTY backend (authenticated shell over HTTP for the Muse browser AI)
+After=network-online.target
+
+[Service]
+Type=simple
+User=charlie
+EnvironmentFile=%h/.local/share/credentials/muse-ttyd.env
+# -W            writable (Muse must type commands, not just watch)
+# -i 127.0.0.1  loopback only: never expose a shell to the LAN/WAN
+# -b /muse      base path
+# -c            ttyd's own Basic Auth (native WebSocket support)
+# -p 7790       backend port
+ExecStart=/usr/local/bin/ttyd -W -t rendererType=dom -t fontSize=16 \
+    -P 15 -p 7790 -i 127.0.0.1 -b /muse \
+    -c ${MUSE_TTYD_USER}:${MUSE_TTYD_PASS} \
+    -T xterm-256color \
+    /var/home/charlie/.local/bin/muse-ttyd-entry
+Restart=always
+RestartSec=5
+
+# This process is a root-capable shell; keep the unit tight.
+PrivateTmp=true
+ProtectHome=read-only
+ReadWritePaths=%h
+
+[Install]
+WantedBy=default.target

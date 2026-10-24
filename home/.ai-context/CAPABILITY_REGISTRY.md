@@ -1,7 +1,7 @@
 # Capability Registry
 
 > Generated automatically from live OpenCode config, systemd, rules, and CodeGraph.
-> Updated: 2026-10-05T18:42:23
+> Updated: 2026-10-24T02:28:37
 
 ## MCP
 
@@ -66,4 +66,6 @@
 - [MCP POLICY] `codex-account-manager` is on-demand but enabled by default
 - [MCP POLICY] `ghidra` is on-demand but enabled by default
 - [MCP POLICY] `mobile-browser-bridge` is on-demand but enabled by default
+- [NEW SERVICE] `hermes-memory-capacity.service` → assign owner and Runbook
+- [NEW SERVICE] `memory-backup.service` → assign owner and Runbook
 - [RULE BLOAT] `/var/mnt/ai/cache/auto-migrate/.openclaw/workspace/AGENTS.md` has 212 lines

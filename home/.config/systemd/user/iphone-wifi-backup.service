@@ -1,0 +1,16 @@
+[Unit]
+Description=iPhone Wi-Fi backup via libimobiledevice (wireless usbmuxd)
+Documentation=file:///var/home/charlie/.ai-context/runbooks/iphone-wifi-backup.md
+After=usbmuxd.service avahi-daemon.service
+Wants=usbmuxd.service avahi-daemon.service
+
+[Service]
+Type=oneshot
+# usbmuxd 现在跑 TCP 0.0.0.0:62078；本服务只是调用 libimobiledevice 客户端
+ExecStart=/var/home/charlie/.local/bin/iphone-wifi-backup
+TimeoutStartSec=2h
+# 备份大目录在数据盘，避免拖累系统盘 IO
+IOSchedulingClass=idle
+Nice=10
+StandardOutput=journal
+StandardError=journal

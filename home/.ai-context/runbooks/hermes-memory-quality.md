@@ -96,3 +96,14 @@ conversation reset is needed for that retrieval path.
 - 真实MemoryStore.add从1169增加到1646后，path自动整理到1105且新条目能从索引/分类库召回；清理陈旧事实后965，预留1235字符。模拟1700字符输入确认无丢失、两次运行幂等。
 - 当前脚本：`~/.hermes/memories/scripts/memory-lifecycle.py`、`~/.local/bin/hermes-memory-capacity-guard`、`~/.local/bin/hermes-submemory`。状态`~/.local/state/hermes-memory-capacity/latest.json`。
 - 现有会话系统提示快照不会追改；实际memory工具操作会从磁盘重读，pre-tool hook和冷库CLI可即时使用。不要宣称SOUL修改让旧系统提示热更新。
+
+- 分类导出现在标记`state=historical/active`，过时拓扑保留冷库并明确历史状态，避免下次重新当当前事实。
+- 最终主记忆965/2200，用户记忆目标<=1000/1375；新增内容和原始记录保存在canonical索引，测试确认原文保留及重复运行幂等。
+
+## 2026-10-24 Codex 经验共享与 Hermes 主动召回
+
+- 路径已核对：`~/.hermes/skills` 指向 `~/.shared-agent/skills`，Codex 的 `skills.lean/wechat-linux-desktop` 指向同一文件。引用更新可共用；共享文件存在不证明模型本轮读过。
+- 已发现并修复 `hermes-memory-brief` 分类缺口：微信/WeChat/Weixin 优先匹配 `wechat`，不再被“转发”归入网络。返回 `must_read_first` 现在含本主题技能与 runbook。
+- `~/.hermes/SOUL.md` 的 `Shared experience recall` 要求每个非简单执行/排障任务先跑 memory brief 并读取返回文件；微信经验入口已补到共享技能正文及 description。已有配置的自动钩子是 `on_session_start`，不是逐消息 `pre_llm_call`；不能宣称已实现每轮强制注入。
+- 验证：中英文微信问题、网络端口转发、手机5G分类均通过；实际 brief 返回微信必读文件；共享文件 samefile 通过；技能校验通过。SOUL 规则对新会话生效，旧会话缓存不强改；已有会话可先执行 `~/.local/bin/hermes-memory-brief --json '微信转发窗口异常'` 并读取其返回文件。
+- 保证层级：共享文件 + 召回路径 + 行为指令已验证；模型在真实后续任务中是否实际读取仍须看工具记录，不能用静态检查冒充端到端使用成功。

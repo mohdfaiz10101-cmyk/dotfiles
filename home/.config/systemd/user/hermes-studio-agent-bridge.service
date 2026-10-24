@@ -1,0 +1,13 @@
+[Unit]
+Description=Python bridge for the current Hermes Studio session
+After=network.target
+
+[Service]
+Type=simple
+Environment=HOME=%h
+Environment=HERMES_HOME=%h/.hermes
+Environment=HERMES_AGENT_ROOT=%h/.local/hermes-agent
+Environment=PATH=%h/.local/bin:%h/.nvm/versions/node/v23.11.1/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/.nvm/versions/node/v23.11.1/lib/node_modules/hermes-web-ui/dist/server/agent-bridge/python/hermes_bridge.py --endpoint ipc:///tmp/hermes-agent-bridge.sock --agent-root %h/.local/hermes-agent --hermes-home %h/.hermes
+Restart=on-failure
+RestartSec=3

@@ -19,5 +19,7 @@ org.gnome.Papers
 org.gnome.Snapshot
 org.gnome.TextEditor
 org.gnome.Weather
+org.keepassxc.KeePassXC
+org.mozilla.thunderbird
 org.pwmt.zathura
 org.telegram.desktop
